@@ -1,4 +1,6 @@
-﻿# Git 学习记录
+﻿---
+title: Git 学习记录
+---
 
 ## Introduction
 

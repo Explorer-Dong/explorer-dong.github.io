@@ -6,6 +6,8 @@ category_bar: true
 
 ## _template
 
+## 高精度
+
 ```cpp
 class Int : public std::vector<int> {
 public:

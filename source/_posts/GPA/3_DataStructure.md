@@ -1,5 +1,7 @@
 ---
 title: DataStructure
+katex: true
+mathjax: true
 ---
 
 > $\mathscr {score:}$

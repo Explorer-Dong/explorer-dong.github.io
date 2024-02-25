@@ -1,3 +1,9 @@
+---
+title: number theory
+categories: Algorithm
+category_bar: true
+---
+
 ## number theory
 
 ### 1. Divide and Equalize

@@ -1,3 +1,9 @@
+---
+title: Hexo 学习记录
+categories: FrontEnd
+category_bar: true
+---
+
 ## 前言
 
 操作系统：Windows 11 OS

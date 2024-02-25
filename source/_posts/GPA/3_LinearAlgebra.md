@@ -1,3 +1,9 @@
+---
+title: 3_LinearAlgebra
+categories: GPA
+category_bar: true
+---
+
 # 线性代数
 
 ## 第1章 行列式

@@ -1,3 +1,9 @@
+---
+title: implement
+categories: Algorithm
+category_bar: true
+---
+
 ## implement
 
 ### 1. 所有三角形

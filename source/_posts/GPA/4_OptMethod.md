@@ -1,3 +1,10 @@
+---
+title: 4_OptMethod
+categories: GPA
+category_bar: true
+---
+
+
 # 最优化方法
 
 ## 前言

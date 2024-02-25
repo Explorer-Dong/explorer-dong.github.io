@@ -1,4 +1,8 @@
-# 大学物理下
+---
+title: 3_CollegePhysicsⅡ
+categories: GPA
+category_bar: true
+---
 
 ## 第九章 振动
 

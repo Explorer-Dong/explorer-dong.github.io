@@ -1,3 +1,9 @@
+---
+title: graphs
+categories: Algorithm
+category_bar: true
+---
+
 ## graphs
 
 ### 1. 有向图的拓扑序列

@@ -1,3 +1,9 @@
+---
+title: Front End
+categories: FrontEnd
+category_bar: true
+---
+
 # Front End
 
 ## Info

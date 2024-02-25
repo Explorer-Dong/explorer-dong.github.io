@@ -1,3 +1,9 @@
+---
+title: hashing
+categories: Algorithm
+category_bar: true
+---
+
 ## hashing
 
 ### 1. 分组

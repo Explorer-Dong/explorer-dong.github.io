@@ -1,3 +1,9 @@
+---
+title: 2_ObjectOrientedClassDesign
+categories: GPA
+category_bar: true
+---
+
 ## Bg
 
 本项目是大一下学期的面向对象（Object Oriented）课程设计作品，成果展示如下

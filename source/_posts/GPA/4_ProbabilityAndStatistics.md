@@ -1,3 +1,9 @@
+---
+title: 4_ProbabilityAndStatistics
+categories: GPA
+category_bar: true
+---
+
 # 概率论与数理统计
 
 ## 前言

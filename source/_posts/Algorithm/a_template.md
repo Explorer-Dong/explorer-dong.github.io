@@ -1,4 +1,10 @@
-## 高精度
+---
+title: a_template
+categories: Algorithm
+category_bar: true
+---
+
+## _template
 
 ```cpp
 class Int : public std::vector<int> {

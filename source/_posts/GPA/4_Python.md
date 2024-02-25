@@ -1,3 +1,9 @@
+---
+title: 4_Python
+categories: GPA
+category_bar: true
+---
+
 # Python高级应用
 
 ## 前言

@@ -1,3 +1,9 @@
+---
+title: 4_ComputerSys
+categories: GPA
+category_bar: true
+---
+
 # 计算机系统基础
 
 ## 前言

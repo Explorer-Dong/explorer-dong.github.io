@@ -1,4 +1,10 @@
-﻿# Git 学习记录
+﻿---
+title: Git 学习记录
+categories: DevTools
+category_bar: true
+---
+
+# Git 学习记录
 
 ## Introduction
 

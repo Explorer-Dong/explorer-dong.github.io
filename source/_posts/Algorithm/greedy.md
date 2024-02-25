@@ -1,3 +1,10 @@
+---
+title: greedy
+categories: Algorithm
+category_bar: true
+---
+
+
 ## greedy
 
 大胆猜测，小心求证（不会证也没事，做下一题吧）。证明方法总结了以下几种

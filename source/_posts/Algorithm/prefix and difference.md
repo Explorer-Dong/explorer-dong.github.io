@@ -1,3 +1,10 @@
+---
+title: prefix and difference
+categories: Algorithm
+category_bar: true
+---
+
+
 ## prefix and difference
 
 ### 1. 充能计划

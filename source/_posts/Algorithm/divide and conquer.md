@@ -1,3 +1,9 @@
+---
+title: divide and conquer
+categories: Algorithm
+category_bar: true
+---
+
 ## divide and conquer
 
 ### 1. 随机排列

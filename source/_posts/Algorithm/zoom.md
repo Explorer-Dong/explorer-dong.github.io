@@ -1,3 +1,9 @@
+---
+title: 思维题
+categories: Algorithm
+category_bar: true
+---
+
 ## 思维题
 
 ### 1. 最长严格递增子序列

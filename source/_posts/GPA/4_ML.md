@@ -1,3 +1,10 @@
+---
+title: 4_ML
+categories: GPA
+category_bar: true
+---
+
+
 # 机器学习与模式识别
 
 ## 前言

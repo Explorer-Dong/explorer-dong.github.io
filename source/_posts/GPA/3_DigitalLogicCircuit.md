@@ -1,4 +1,9 @@
-# 电子技术基础 - 数字部分
+---
+title: 3_DigitalLogicCircuit
+categories: GPA
+category_bar: true
+---
+
 
 > 联系方式：
 >

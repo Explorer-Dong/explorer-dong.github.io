@@ -1,3 +1,9 @@
+---
+title: geometry
+categories: Algorithm
+category_bar: true
+---
+
 ## geometry
 
 ### 1. Minimum Manhattan Distance

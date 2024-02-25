@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: dwj | blog
+title: Dwj の Blog
 subtitle: ''
 description: '人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程'
 keywords: '人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程'
@@ -104,7 +104,12 @@ deploy:
   repo: https://github.com/Explorer-Dong/explorer-dong.github.io.git
   branch: main
 
+# ---------- Fluid ----------
 # math - latex
 markdown:
   plugins:
     - "@traptitech/markdown-it-katex"
+
+
+
+# ---------- Fluid ----------

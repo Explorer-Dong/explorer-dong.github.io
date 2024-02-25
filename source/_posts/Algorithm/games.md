@@ -1,3 +1,11 @@
+---
+title: games
+categories: Algorithm
+category_bar: true
+---
+
+
+
 ## games
 
 ### 1. Salyg1n and the MEX Game

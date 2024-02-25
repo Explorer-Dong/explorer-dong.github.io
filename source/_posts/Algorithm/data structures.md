@@ -1,3 +1,9 @@
+---
+title: data structures
+categories: Algorithm
+category_bar: true
+---
+
 ## data structures
 
 ### 1. 单调栈

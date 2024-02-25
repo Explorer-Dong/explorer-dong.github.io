@@ -1,8 +1,8 @@
 ---
 title: DataStructure
 category: GPA
-katex: true
-mathjax: true
+math: true
+category_bar: true
 ---
 
 > $\mathscr {score:}$

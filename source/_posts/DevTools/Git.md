@@ -1,7 +1,4 @@
-﻿---
-title: Git 学习记录
-category: stack
----
+﻿# Git 学习记录
 
 ## Introduction
 

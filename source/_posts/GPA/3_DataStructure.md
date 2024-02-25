@@ -1,10 +1,3 @@
----
-title: DataStructure
-category: GPA
-math: true
-category_bar: true
----
-
 > $\mathscr {score:}$
 >
 > - 平时 20%（出勤、作业、实验）

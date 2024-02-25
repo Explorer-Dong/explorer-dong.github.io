@@ -104,3 +104,17 @@ deploy:
   type: git
   repo: https://github.com/Explorer-Dong/explorer-dong.github.io.git
   branch: main
+
+# math
+math:
+  katex:
+    css: 'https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css'
+    options:
+      throwOnError: false
+  mathjax:
+    css: 'https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css'
+    options:
+      conversion:
+        display: false
+      tex:
+      svg:

@@ -4,7 +4,7 @@ categories: Algorithm
 category_bar: true
 ---
 
-## _template
+# _template
 
 ## 高精度
 

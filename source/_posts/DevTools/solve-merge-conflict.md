@@ -1,6 +1,6 @@
 ---
 title: solve-merge-conflict
-categoried: DevTools
+categories: DevTools
 category_bar: true
 ---
 

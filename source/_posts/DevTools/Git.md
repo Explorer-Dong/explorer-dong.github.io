@@ -294,3 +294,11 @@ git push <RemoteName> --delete <OldName>
 # 首先将当前分支切换到需要被合并的分支 <NowBranch>，接着合并需要被合并的分支 <TodoBranch>
 git merge <TodoBranch>
 ```
+
+#### 4.5 拉取分支
+
+```bash
+# 在 clone 后只会拉取默认分支，想要拉取其余的分支执行
+git checkout -t <RemoteName>/<BranchName>
+```
+

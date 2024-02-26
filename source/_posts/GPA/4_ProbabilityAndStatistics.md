@@ -33,8 +33,5 @@ category_bar: true
     - 本地路径（自用）：[概率论答案.pdf](D:\BaiduSyncdisk\2. Score\4. 概率论与数理统计\概率论答案.pdf)
     - 网盘资源（共享）：[提取码：448w](https://pan.baidu.com/s/1yeC0rxatHaLeNHQaW85Kpw?pwd=448w)
 
-
-==纸质教材：见学长==
-
 ## 一、
 

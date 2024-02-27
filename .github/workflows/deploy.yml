@@ -24,8 +24,8 @@ jobs:
           CI: false
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        run:
+          npx hexo deploy
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: auto-deploy
           FOLDER: public

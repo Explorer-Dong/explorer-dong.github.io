@@ -26,6 +26,3 @@ jobs:
       - name: Deploy 🚀
         run:
           npx hexo deploy
-        with:
-          BRANCH: auto-deploy
-          FOLDER: public

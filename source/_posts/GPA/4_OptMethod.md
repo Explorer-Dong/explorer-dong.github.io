@@ -32,7 +32,5 @@ category_bar: true
 - :tv: 视频资源：[最优化：建模、算法与理论 【北京大学 文再文】](https://www.bilibili.com/video/BV1Kc411i7kJ)
 - :book: 电子资源：[最优化方法 (2023年秋季)](http://faculty.bicmr.pku.edu.cn/~wenzw/opt-2023-fall.html)
 
-==纸质教材：见学长==
-
 ## 一、
 

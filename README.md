@@ -17,3 +17,9 @@ CSDN地址：<https://blog.csdn.net/qq_73408594>
 - `DevTools`：开发工具笔记
 - `FrontEnd`：前端开发笔记
 - `Operation`：运维笔记
+
+## Expect
+
+- 修复：无法显示更改时间的 bug - 工作流编程
+- 解决：访问速度慢的问题 - gitee 同步备份
+- 自定义域名便于网站推流 - 长期可用域名

@@ -17,8 +17,8 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm install
-          hexo clean
-          hexo generate
+          npx hexo clean
+          npx hexo generate
           npm run build
         env:
           CI: false

@@ -17,12 +17,12 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm install
-          npx hexo clean
-          npx hexo generate
           npm run build
         env:
           CI: false
 
       - name: Deploy 🚀
         run:
+          npx hexo clean
+          npx hexo generate
           npx hexo deploy

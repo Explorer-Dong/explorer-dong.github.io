@@ -14,10 +14,13 @@ git 是一款版本管理软件，适用目前绝大多数操作系统；Github 
 
 ## Architecture
 
-| 工作区 | 暂存区 | 仓库区 |
-| :----: | :----: | :----: |
+<table>
+    <tr>
+        <th>工作区</th><th>暂存区</th><th>仓库区</th>
+    </tr>
+</table>
 
-![image-20240123013803133](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260117394.png)
+<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402271037959.png" alt="git architecture" />
 
 ## Command
 

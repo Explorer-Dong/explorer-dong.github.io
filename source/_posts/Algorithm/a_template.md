@@ -1,10 +1,8 @@
 ---
-title: a_template
+title: template
 categories: Algorithm
 category_bar: true
 ---
-
-# _template
 
 ## 高精度
 

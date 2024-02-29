@@ -1,6 +1,8 @@
 ---
 title: use-cpp-io
-categories: BackEnd
+categories: 
+  - BackEnd
+  - cppBasic
 category_bar: true
 ---
 

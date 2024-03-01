@@ -1,6 +1,8 @@
 ---
 title: solve-clion-cannot-open-relative-file
-categories: DevTools
+categories: 
+  - DevTools
+  - CLion
 category_bar: true
 ---
 

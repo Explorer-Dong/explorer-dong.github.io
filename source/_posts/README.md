@@ -1,3 +1,8 @@
+---
+title: READMD
+update: 2024.03.01
+---
+
 ## Pre
 
 本（网站）仓库收录了个人本科期间学习相关 **课程** 或相关 **技术** 时做的电子笔记相关源码，内容采用 Markdown 格式记录可供下载自我修改补充，也欢迎 PR。若还不了解 Markdown，可以移步 [Markdown 官方教程](https://markdown.com.cn/)。

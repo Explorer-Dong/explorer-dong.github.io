@@ -1,5 +1,5 @@
 ---
-title: Hexo 学习记录
+title: hexo-learning-record
 categories: FrontEnd
 category_bar: true
 ---

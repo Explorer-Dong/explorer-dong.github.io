@@ -1,6 +1,8 @@
 ---
-title: 3_DigitalLogicCircuit
-categories: GPA
+title: DigitalLogicCircuit
+categories:
+  - GPA
+  - 3rd-term
 category_bar: true
 ---
 

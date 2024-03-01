@@ -1,6 +1,8 @@
 ---
-title: 2_ObjectOrientedClassDesign
-categories: GPA
+title: ObjectOrientedClassDesign
+categories:
+  - GPA
+  - 2nd-term
 category_bar: true
 ---
 
@@ -8,7 +10,7 @@ category_bar: true
 
 本项目是大一下学期的面向对象（Object Oriented）课程设计作品，成果展示如下
 
-<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402180130011.gif" alt="演示" style="zoom: 50%;" />
+![演示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402180130011.gif)
 
 ## Intro
 

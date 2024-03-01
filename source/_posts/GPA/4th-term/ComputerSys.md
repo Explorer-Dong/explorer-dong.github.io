@@ -1,6 +1,8 @@
 ---
-title: 4_ComputerSys
-categories: GPA
+title: ComputerSys
+categories:
+  - GPA
+  - 4th-term
 category_bar: true
 ---
 

@@ -1,6 +1,8 @@
 ---
-title: 4_Algorithm
-categories: GPA
+title: Algorithm
+categories:
+  - GPA
+  - 4th-term
 category_bar: true
 ---
 

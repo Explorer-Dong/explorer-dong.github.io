@@ -1,6 +1,8 @@
 ---
-title: 4_Python
-categories: GPA
+title: Python
+categories:
+  - GPA
+  - 4th-term
 category_bar: true
 ---
 

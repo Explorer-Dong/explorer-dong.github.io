@@ -1,6 +1,8 @@
 ---
-title: 4_ML
-categories: GPA
+title: MachineLearning
+categories:
+  - GPA
+  - 4th-term
 category_bar: true
 ---
 

@@ -1,6 +1,8 @@
 ---
-title: 4_OptMethod
-categories: GPA
+title: OptMethod
+categories:
+  - GPA
+  - 4th-term
 category_bar: true
 ---
 

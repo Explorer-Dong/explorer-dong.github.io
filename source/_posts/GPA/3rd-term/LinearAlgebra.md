@@ -1,6 +1,8 @@
 ---
-title: 3_LinearAlgebra
-categories: GPA
+title: LinearAlgebra
+categories:
+  - GPA
+  - 3rd-term
 category_bar: true
 ---
 

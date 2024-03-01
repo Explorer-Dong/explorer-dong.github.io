@@ -1,6 +1,8 @@
 ---
-title: 3_DataStructure
-categories: GPA
+title: DataStructure
+categories: 
+  - GPA
+  - 3rd-term
 category_bar: true
 ---
 

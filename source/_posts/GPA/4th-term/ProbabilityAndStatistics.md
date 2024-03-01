@@ -1,6 +1,8 @@
 ---
-title: 4_ProbabilityAndStatistics
-categories: GPA
+title: ProbabilityAndStatistics
+categories:
+  - GPA
+  - 4th-term
 category_bar: true
 ---
 

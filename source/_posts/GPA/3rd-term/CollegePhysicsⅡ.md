@@ -1,6 +1,8 @@
 ---
-title: 3_CollegePhysicsⅡ
-categories: GPA
+title: CollegePhysicsⅡ
+categories: 
+  - GPA
+  - 3rd-term
 category_bar: true
 ---
 

@@ -1,8 +1,3 @@
----
-title: README
-sticky: 100
----
-
 ## Pre
 
 本（网站）仓库收录了个人本科期间学习相关 **课程** 或相关 **技术** 时做的电子笔记相关源码，内容采用 Markdown 格式记录可供下载自我修改补充，也欢迎 PR。若还不了解 Markdown，可以移步 [Markdown 官方教程](https://markdown.com.cn/)。
@@ -22,3 +17,11 @@ CSDN地址：<https://blog.csdn.net/qq_73408594>
 - `DevTools`：开发工具笔记
 - `FrontEnd`：前端开发笔记
 - `Operation`：运维笔记
+
+## Expect
+
+- [x] 新增：自动化目录 & 增加层级目录 - 配置插件 hexo-auto-category
+- [x] 修复：文章无法更新的 bug - 修改 github 的自动部署配置解决
+- [ ] 修复：无法显示更改时间的 bug - 工作流编程
+- [ ] 解决：访问速度慢的问题 - gitee 同步备份
+- [ ] 新增：自定义域名便于网站推流 - 长期可用域名

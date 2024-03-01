@@ -20,7 +20,7 @@ CSDN地址：<https://blog.csdn.net/qq_73408594>
 
 ## Expect
 
-- [x] 新增：自动化目录 & 增加层级目录 - 配置插件 hexo-auto-category
+- [x] 新增：配置文章二级目录 - 通过 hexo 的层叠目录实现
 - [x] 修复：文章无法更新的 bug - 修改 github 的自动部署配置解决
 - [ ] 修复：无法显示更改时间的 bug - 工作流编程
 - [ ] 解决：访问速度慢的问题 - gitee 同步备份

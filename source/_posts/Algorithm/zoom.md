@@ -344,3 +344,132 @@ https://www.acwing.com/problem/content/description/5468/
 ```cpp
 
 ```
+
+### 6. 套餐设计
+
+https://www.acwing.com/problem/content/5480/
+
+> 题意：给定 n 个食物，其中可能有相同种类的，现在需要设计一个食物套餐包含 k 个食物，问如何设计套餐可以使得产生的套餐数最多，给出最多数量的套餐数
+>
+> 思路：如果不限定套餐中食物的种类数，那么我们可以从最多可生产的套餐数 $\left \lfloor \frac{n}{k} \right \rfloor$ 开始降序检查，直到一套都无法生产为止（即一套需要的食物数超过了总的食物数）。检查的逻辑很简单，我们知道对于当前的套餐数 $i$，每一种食物的数量如果超过了 $i$，就至少可以对套餐贡献 $1$ 个食物的数量。我们统计当前需要套餐数的局面下，所有食物可以贡献的食物数量 $cnt$，如果超过了需要的套餐数 $i$，显然是可以满足需求的套餐数的。为了求得最大的套餐数，从降序开始检查直到可以满足即可。
+>
+> 时间复杂度：$O(n^2)$
+
+```cpp
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+typedef long long ll;
+
+const int N = 110;
+
+int n, k, a[N];
+unordered_map<int, int> v;
+
+void solve() {
+	cin >> k >> n;
+	for (int i = 1; i <= n; i++) {
+		cin >> a[i];
+		v[a[i]]++;
+	}
+	
+	int res = 0;
+	
+	int i; // 当前需要生产的套餐数
+	for (i = n / k; i >= 1; i--) {
+        // 所有食物对于当前套餐需要的食物数量可以贡献的最大食物数量
+		int cnt = 0; 
+		for (auto& x: v) {
+            // 每种食物对于当前套餐需要的食物数量可以贡献的最大食物数量
+			cnt += x.second / i;
+		}
+		if (cnt >= k) {
+			res = i;
+			break;
+		}
+	}
+	
+	cout << res << "\n";
+}
+
+int main() {
+	ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+	int T = 1;
+//	cin >> T;
+	while(T--) solve();
+	return 0;
+}
+```
+
+### 7. 分班
+
+https://www.acwing.com/problem/content/5481/
+
+> 题意：给定 $n \times k$ 个学生，需要将这些学生分成 $n$ 组，每组 $k$ 个人，第 $i$ 个学生有一个属性值 $a_i$ 。问如何分组可以使得在满足任意两组学生中最小值相差不超过 $lim$ 的情况下，所有组最小值之和最大，给出这个最大值
+>
+> 思路：一开始觉得是二分答案，但是不知道在已知答案的情况下如何检查，因为我不知道应该如何分组最优，未遂。重读题目发现题中的 lim 约束不是相邻两组，而是任意两组，思路打开，那我直接根据这个条件将满足约束的所有学生枚举出来（很显然是相对于数值最小的学生而言），然后设计如何将这些学生安排到 n 组且保证他们是组里最小的即可。先看下面的学生编号 - 学生属性示意图：
+>
+> ![学生编号 - 学生属性示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403030040949.png)
+>
+> 很显然我们需要将这 $n \times k$ 个学生按数值升序排序，为了满足任意两组的最小值不超过 $lim$，我们找到前 $r$ 个学生满足比最小的学生超过的数不超过 $lim$ 即可。接下来就是从这 $r$ 个学生中选择出 $n$ 个安排到 $n$ 个组中，即可满足题中 $lim$ 的限制，现在就是考虑如何分组可以使得答案最大了。不难发现一共有三种情况
+>
+> - $r<n$ ：即可选择人数都没有组数多。那么分完组以后肯定无法满足任意两组的最小值不超过 $lim$，直接输出 $0$ 即可
+> - $r=n$ ：即可选择人数和组数相等。这种情况最好理解，就是将这 $r(n)$ 个人安排到 $n$ 组，答案就是这 $r(n)$ 个人数值之和
+> - $r>n$ ：即可选择人数多于组数。如果纯粹的贪心，将第一个人放在第一组，然后从第 $r$ 个人开始将 $n-1$ 个人安排在剩余的 $n-1$ 组。这样的确可以满足答案最大，但是忽略了一个点就是从第 $2$ 个人开始的 $r-n$ 个人何去何从？如果全部安排到了第一组那万事大吉，如果第一组塞不进去就不得不安排到别的组，这样答案就不是上面计算的结果了，应该更小才对！那么应该如何解决这个问题呢？我们可以从往第一组塞剩余的人得到启发：如果第一组可以容纳剩余的人活着还有空位就已经满足了第二种情况，就可以直接计算结果，如果第一组无法容纳从第 $2$ 个人开始的 $r-n$ 个人，就将第 $1+k$ 个人作为一组的最小值，继续贪心的容纳紧跟着的人，从而确保剩下的人数值尽可能的大。如此循环知道出现 **剩余的人的数量=还未安排最小值的组的数量** 为止，计算答案总和即可！
+>
+> 时间复杂度：$O(n \log n)$
+
+```cpp
+#include <iostream>
+using namespace std;
+typedef long long ll;
+
+const int N = 1e5 + 10;
+
+ll n, k, lim, a[N];
+
+void solve() {
+	cin >> n >> k >> lim;
+
+	int num = n * k;
+
+	for (int i = 1; i <= num; i++) cin >> a[i];
+
+	sort(a + 1, a + num + 1);
+
+    // 找到最大的满足 lim 限制的人的下标 r - 线性或二分均可
+	int l = 1, r = num;
+	while (l < r) {
+		int mid = (l + r + 1) >> 1;
+  		if (a[mid] <= a[1] + lim) l = mid;
+  		else r = mid - 1;
+	}
+
+	ll res = 0;
+
+	if (r < n) res = 0;
+	else {
+		res += a[1];
+		int idx = 2;   // 指针
+		int in = 1;    // 已安排作为组内最小值的人员数
+		int team = 1;  // 当前组内的人员数
+		while (r - idx + 1 > n - in) { // 当可选择人数多于组数时
+			if (team < k) team++, idx++; // 塞得下就继续塞
+			else team = 1, res += a[idx], idx++, in++; // 塞不下就重开一组
+		}
+		for (int i = idx; i <= r; i++) {
+		    res += a[i];
+		}
+	}
+
+	cout << res << "\n";
+}
+
+int main() {
+	ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+	int T = 1;
+//	cin >> T;
+	while(T--) solve();
+	return 0;
+}
+```

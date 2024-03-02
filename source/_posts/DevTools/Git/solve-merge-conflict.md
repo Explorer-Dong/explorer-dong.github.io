@@ -1,6 +1,8 @@
 ---
 title: solve-merge-conflict
-categories: DevTools
+categories:
+  - DevTools
+  - Git
 category_bar: true
 ---
 

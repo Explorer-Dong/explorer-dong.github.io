@@ -1,6 +1,8 @@
 ﻿---
 title: git-record
-categories: DevTools
+categories:
+  - DevTools
+  - Git
 category_bar: true
 ---
 

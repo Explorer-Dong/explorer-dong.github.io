@@ -6,6 +6,16 @@ categories:
 category_bar: true
 ---
 
+## 效果演示
+
+![sort 窗口程序](D:/BaiduSyncdisk/_images/typora-user-images/202403021745287-1709372833350-5.gif)
+
+![hash 窗口程序](D:/BaiduSyncdisk/_images/typora-user-images/202403021745763-1709372845300-8.gif)
+
+> [!note]
+>
+> 以下为课设报告内容
+
 ## 一、必做题
 
 题目：编程实现希尔、快速、堆排序、归并排序算法。要求随机产生 10000 个数据存入磁盘文件，然后读入数据文件，分别采用不同的排序方法进行排序，并将结果存入文件中。

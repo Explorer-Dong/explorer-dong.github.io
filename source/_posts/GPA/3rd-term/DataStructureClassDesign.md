@@ -8,9 +8,9 @@ category_bar: true
 
 ## 效果演示
 
-![sort 窗口程序](D:/BaiduSyncdisk/_images/typora-user-images/202403021745287-1709372833350-5.gif)
+![sort 窗口程序](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403021802720.gif)
 
-![hash 窗口程序](D:/BaiduSyncdisk/_images/typora-user-images/202403021745763-1709372845300-8.gif)
+![hash 窗口程序](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403021802061.gif)
 
 > [!note]
 >

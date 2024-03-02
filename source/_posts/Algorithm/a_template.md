@@ -4,6 +4,8 @@ categories: Algorithm
 category_bar: true
 ---
 
+# template
+
 ## 高精度
 
 ```cpp

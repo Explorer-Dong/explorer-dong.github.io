@@ -4,7 +4,7 @@ categories: Algorithm
 category_bar: true
 ---
 
-## binary search 
+## binary search
 
 二分查找理论上还是一个线性的算法思维，只是与一般的线性思维更进一步的是，二分思维需要提炼出题面中两个线性相关的变量，即单调变化的两个变量，从而采用二分加速检索
 

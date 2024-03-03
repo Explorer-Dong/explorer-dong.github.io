@@ -28,7 +28,7 @@ jobs:
       # 构建静态页面并部署
       - name: Build and Deploy 🚀
         env:
-          HEXO_DEPLOY: ${{ secrets.HEXO_DEPLOY }}
+          token: ${{ secrets.HEXO_DEPLOY }}
         run: |
           git config --global user.email "explorer-dong@foxmail.com"
           git config --global user.name "Mr_Dwj"

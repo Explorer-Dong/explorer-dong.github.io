@@ -1,5 +1,5 @@
 ---
-title: READMD
+title: README
 sticky: 100
 ---
 

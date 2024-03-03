@@ -23,7 +23,7 @@ category_bar: true
 
 > 操作系统为 Windows OS 11
 
-我们进入 Git 软甲的安装目录，我的是 `D:\installation_package\Git`，然后进入 `etc\profile.d` 并编辑 `aliases.sh` 文件，默认内容为：
+我们进入 Git 软件的安装目录，我的是 `D:\installation_package\Git`，然后进入 `etc\profile.d` 并编辑 `aliases.sh` 文件，默认内容为：
 
 ```sh
 # Some good standards, which are not used if the user

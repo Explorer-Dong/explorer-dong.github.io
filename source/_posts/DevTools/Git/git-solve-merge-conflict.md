@@ -1,5 +1,5 @@
 ---
-title: solve-merge-conflict
+title: git-solve-merge-conflict
 categories:
   - DevTools
   - Git

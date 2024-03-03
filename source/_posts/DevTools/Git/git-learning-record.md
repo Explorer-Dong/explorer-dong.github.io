@@ -1,5 +1,5 @@
 ﻿---
-title: git-record
+title: git-learning-record
 categories:
   - DevTools
   - Git
@@ -22,7 +22,7 @@ git 是一款版本管理软件，适用目前绝大多数操作系统；Github 
     </tr>
 </table>
 
-<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402271037959.png" alt="git architecture" />
+![git architecture](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402271037959.png)
 
 ## Command
 
@@ -242,21 +242,31 @@ git commit --amend
 
 #### 3.4 取消服务器的修改
 
-```bash
-# 删除本地的远程缓存后重新推送（单文件）
-git rm --cached <FileName>.<FileFormat>
-git commit -m 'remove <FileName>'
-git push
+取消**当前版本**某文件(夹)的版本管理
 
-# 删除本地的远程缓存后重新推（文件夹）
-git rm -r --cached <FolderName>
-git commit -m 'remote <FolderName>'
+```bash
+# 希望某些文件取消版本管理，但是依然保留在工作区
+git rm --cached <FileName>
+git commit -m 'remove xxx file(folder)'
+git push
+在 .gitignore 中增加上述 <FileName>
+
+# 希望某些文件取消版本管理，同时在不保留在工作区
+git rm <FileName>
+git commit -m 'delete xxx file(folder)'
 git push
 ```
 
+取消**所有版本**某文件(夹)的版本管理
+
 ```bash
-# 取消某些文件的版本管理
-# 参考 https://www.cnblogs.com/zhangcaihua/p/15261392.html
+https://blog.csdn.net/qq_36237810/article/details/109773614
+```
+
+希望某些文件加入版本管理
+
+```bash
+删除在 .gitignore 中的相应语句即可
 ```
 
 ### 四、分支

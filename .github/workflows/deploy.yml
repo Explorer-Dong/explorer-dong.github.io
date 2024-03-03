@@ -28,5 +28,7 @@ jobs:
       # 构建静态页面并部署
       - name: Build and Deploy 🚀
         run: |
+          git config --global user.email "explorer-dong@foxmail.com"
+          git config --global user.name "Mr_Dwj"
           npm run build
           npm run deploy

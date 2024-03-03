@@ -30,7 +30,7 @@ jobs:
         env:
           token: ${{ secrets.HEXO_DEPLOY }}
         run: |
-          git config --global user.email "explorer-dong@foxmail.com"
-          git config --global user.name "Mr_Dwj"
+          git config user.email "explorer-dong@foxmail.com"
+          git config user.name "Mr_Dwj"
           npm run build
           npm run deploy

@@ -247,7 +247,7 @@ git commit --amend
 ```bash
 # 希望某些文件取消版本管理，但是依然保留在工作区
 git rm --cached <FileName>
-git commit -m 'remove xxx file(folder)'
+git commit -m 'remove xxx file'
 git push
 在 .gitignore 中增加上述 <FileName>
 
@@ -256,13 +256,19 @@ git rm <FileName>
 git commit -m 'delete xxx file(folder)'
 git push
 
-# -r 参数
+# 如果希望某个目录离开暂存区可以添加 -r 参数，从而可以递归的将该目录下所有的文件 & 子目录全部取消版本管理
+git rm -r --cached <Folder>
+git commit -m 'remove xxx floder'
+git push
 ```
 
-取消**所有版本**某文件(夹)的版本管理
+取消**所有版本**某文件的版本管理
 
 ```bash
-https://blog.csdn.net/qq_36237810/article/details/109773614
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch <FilePath>' --prune-empty --tag-name-filter cat -- --all
+
+# 参考
+https://blog.csdn.net/q258523454/article/details/83899911
 ```
 
 希望某些文件加入版本管理

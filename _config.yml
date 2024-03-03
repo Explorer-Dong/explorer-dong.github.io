@@ -101,7 +101,7 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: git@github.com:Explorer-Dong/explorer-dong.github.io.git
+  repo: https://github.com/Explorer-Dong/explorer-dong.github.io.git
   branch: auto-deploy
   token: ${{ secrets.HEXO_DEPLOY }}
 

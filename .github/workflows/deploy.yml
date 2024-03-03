@@ -27,6 +27,10 @@ jobs:
 
       # 构建静态页面并部署
       - name: Build and Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          BRANCH: auto-deploy
+          FOLDER: public
         run: |
           npm run build
           npm run deploy

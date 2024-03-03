@@ -7,23 +7,26 @@ on:
 
 jobs:
   build-and-deploy:
+
     runs-on: ubuntu-latest
+
     steps:
+      # 相当于 git clone 到服务器
       - name: Checkout 🛎️
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false
 
-      - name: Install and Build 🔧
+      # 在服务器上安装 Node.js 环境
+      - name: Setup Node.js environment 📦
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20.11.1
+
+      # 安装依赖
+      - name: Install Dependencies 🔨
+        run: npm install
+
+      # 构建静态页面并部署
+      - name: Build and Deploy 🚀
         run: |
-          npm install
           npm run build
-        env:
-          CI: false
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: auto-deploy
-          FOLDER: public
+          npm run deploy

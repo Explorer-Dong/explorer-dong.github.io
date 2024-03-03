@@ -255,6 +255,8 @@ git push
 git rm <FileName>
 git commit -m 'delete xxx file(folder)'
 git push
+
+# -r 参数
 ```
 
 取消**所有版本**某文件(夹)的版本管理

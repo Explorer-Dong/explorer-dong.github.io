@@ -16,7 +16,7 @@ category_bar: true
 
 ### 项目练习
 
-![image-20240213233543945](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402132335880.png)
+![项目练习指南](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402132335880.png)
 
 ### 学习资源
 

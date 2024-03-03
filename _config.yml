@@ -103,7 +103,7 @@ deploy:
   type: git
   repo: https://github.com/Explorer-Dong/explorer-dong.github.io.git
   branch: auto-deploy
-  token: ${{ secrets.HEXO_DEPLOY }}
+  token: $HEXO_DEPLOY
 
 # ---------- Fluid ----------
 # math - latex

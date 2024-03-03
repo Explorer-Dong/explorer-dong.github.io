@@ -6,15 +6,23 @@ categories:
 category_bar: true
 ---
 
-问题描述：在使用 CLion 进行文件路径索引时，出现文件无法打开的现象，如图：
+# CLion 解决无法打开文件的问题
+
+## 问题描述
+
+在使用 CLion 进行文件路径索引时，出现文件无法打开的现象，如图：
 
 ![无法打开文件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402292258802.png)
+
+## 检测问题
 
 我们使用 `cstring` 库的 `strerror()` 函数检测一下问题：
 
 ![使用 cstring 库的 strerror() 函数检测问题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402292258397.png)
 
 可以发现是未找到文件。因为在 CLion 中相对路径索引的起始根默认为 `cmake-build-debug` 文件夹，故无法找到。
+
+## 解决方案
 
 解决方法有三个：
 

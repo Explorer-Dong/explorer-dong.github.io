@@ -107,7 +107,7 @@ hexo 服务默认启动 4000 端口，现在浏览器访问 localhost:4000 即�
     hexo deploy
     ```
 
-现在访问 https://[username].github.io 如果可以看到与之前本地测试一样的界面的，恭喜你，现在已经可以进行快乐的博客编写并且链接分享进行技术交流~~（装b）~~了
+现在访问 `https://[username].github.io` 如果可以看到与之前本地测试一样的界面的，恭喜你，现在已经可以进行快乐的博客编写并且链接分享进行技术交流~~（装b）~~了
 
 ## 四、自动部署云端
 
@@ -115,13 +115,13 @@ hexo 服务默认启动 4000 端口，现在浏览器访问 localhost:4000 即�
 
 其实就是将本地源码修改完后 push 到该仓库的另一个分支下，然后 github 自带的 Github Action 会监听到该仓库的 push 操作，然后进行工作流脚本文件的执行，实现在本地部署的一系列操作。是不是很简单的逻辑！写到这其实可以发现，自动化部署还有一个好处就是：博客编写者只需要熟悉 git 的相关指令与逻辑即可，不需要关心 hexo 的指令，提高了编写的效率。接下来进行详细步骤的讲解：
 
-- 创建工作流文件。在根目目录下创建以下文件关系
+- 创建工作流文件。在根目录下创建以下文件关系：
 
     ```bash
     touch .github/workflows/deploy.yml
     ```
 
-- 编辑 deploy.yml 文件，模板如下
+- 编辑 deploy.yml 文件。模板如下：
 
     ```bash
     name: Build and Deploy
@@ -130,11 +130,13 @@ hexo 服务默认启动 4000 端口，现在浏览器访问 localhost:4000 即�
       build-and-deploy:
         runs-on: ubuntu-latest
         steps:
+          # 相当于 git clone 到服务器
           - name: Checkout 🛎️
             uses: actions/checkout@v3
             with:
               persist-credentials: false
     
+          # 安装依赖并生成页面
           - name: Install and Build 🔧
             run: |
               npm install
@@ -142,6 +144,7 @@ hexo 服务默认启动 4000 端口，现在浏览器访问 localhost:4000 即�
             env:
               CI: false
     
+          # 部署
           - name: Deploy 🚀
             uses: JamesIves/github-pages-deploy-action@v4
             with:
@@ -156,7 +159,7 @@ hexo 服务默认启动 4000 端口，现在浏览器访问 localhost:4000 即�
     git branch auto-deploy
     ```
 
-push 到仓库，等待 github 自动部署后，重新加载 https://[username].github.io 就可以发现站点内容已经更新了！
+push 到仓库，等待 github 自动部署后，重新加载 `https://[username].github.io` 就可以发现站点内容已经更新了！
 
 ## 参考
 

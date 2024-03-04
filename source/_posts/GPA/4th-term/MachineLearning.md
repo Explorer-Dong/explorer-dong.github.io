@@ -33,20 +33,9 @@ category_bar: true
 
 - :tv: 西瓜书视频、PPT 资源：[机器学习初步](https://www.xuetangx.com/learn/nju0802bt/nju0802bt/19322711/)、[PPT - 百度网盘链接](https://pan.baidu.com/s/1-OfnKcJ_bfWHcGHgzeQmpg?pwd=k3gk
     )
-
 - :book: 西瓜书电子资源：[Machine_Learning/机器学习_周志华.pdf](https://github.com/jingyuexing/Ebook/blob/master/Machine_Learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_%E5%91%A8%E5%BF%97%E5%8D%8E.pdf)
-
 - :tv: ​南瓜书视频资源：[《机器学习公式详解》（南瓜书）与西瓜书公式推导直播合集](https://www.bilibili.com/video/BV1Mh411e7VU/)
-
 - :book: 南瓜书电子资源：[《机器学习》（西瓜书）公式详解](https://github.com/datawhalechina/pumpkin-book)
-
-- 教材选取：《西瓜书》是教材；《南瓜书》最好也买，辅助看公式进行理解；《统计学习方法》选买，期末题目可能会从中选
-
-- 教材一览：
-
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401261333725.png" alt="image-20231216215709501" style="zoom: 33%;" />
-
-
 
 ## 第1章 绪论
 

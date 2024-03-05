@@ -19,9 +19,9 @@ category_bar: true
 
 成绩组成：
 
-| 平时 | 期中 | 期末 |
-| :--: | :--: | :--: |
-|      |      |      |
+| 上机+课堂 | 课堂测验（3次） | 期末（闭卷） |
+| :-------: | :-------------: | :----------: |
+|    20%    |       30%       |     50%      |
 
 教材情况：
 
@@ -36,6 +36,15 @@ category_bar: true
 - :book: 西瓜书电子资源：[Machine_Learning/机器学习_周志华.pdf](https://github.com/jingyuexing/Ebook/blob/master/Machine_Learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_%E5%91%A8%E5%BF%97%E5%8D%8E.pdf)
 - :tv: ​南瓜书视频资源：[《机器学习公式详解》（南瓜书）与西瓜书公式推导直播合集](https://www.bilibili.com/video/BV1Mh411e7VU/)
 - :book: 南瓜书电子资源：[《机器学习》（西瓜书）公式详解](https://github.com/datawhalechina/pumpkin-book)
+- :book: 统计学习方法：​
+
+实验平台：
+
+- AI Studio：https://aistudio.baidu.com/index
+
+本地路径：
+
+- :watermelon: 西瓜书电子书：[机器学习_周志华](D:\BaiduSyncdisk\2. Score\4. 机器学习与模式识别\机器学习_周志华.pdf)
 
 ## 第1章 绪论
 
@@ -113,15 +122,15 @@ category_bar: true
 
 
 
-## 第10章 降维与度量学习
+## 第10章 降维与度量学习 *
 
 
 
-## 第11章 特征选择与稀疏学习
+## 第11章 特征选择与稀疏学习 *
 
 
 
-## 第12章 计算学习理论
+## ~~第12章 计算学习理论~~
 
 
 
@@ -133,7 +142,7 @@ category_bar: true
 
 
 
-## 第15章 规则学习
+## ~~第15章 规则学习~~
 
 
 

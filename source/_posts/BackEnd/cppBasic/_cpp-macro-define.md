@@ -1,5 +1,5 @@
 ---
-title: cpp-micro-define
+title: cpp-macro-define
 categories: 
   - BackEnd
   - cppBasic

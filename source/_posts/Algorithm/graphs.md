@@ -686,3 +686,130 @@ int main() {
     return 0;
 }
 ```
+
+### 8. 图的遍历
+
+https://www.luogu.com.cn/problem/P3916
+
+> 题意：给定一个有向图，求解每一个点可以到达的编号最大的点
+>
+> 思路：如果从正向考虑，很显然的一个暴力方法就是对于每一个点都跑一遍 dfs 或者 bfs 获取可达的最大点编号，时间复杂度 $O(n^2)$，如果想要在遍历的过程中同时更新其余的点，那只有起点到最大点之间的点可以被更新，可以通过递归时记录路径点进行，时间复杂度几乎不变。我们尝试反向考虑：**反向建边**。既然正向考虑时需要标记的点为最大点与起点的路径，那不如直接从最大值点开始遍历搜索，在将所有的边全部反向以后，从最大值点开始遍历图，这样就可以在线性时间复杂度内解决问题
+>
+> 时间复杂度：$O(n+m)$
+
+bfs 代码
+
+```cpp
+#include <iostream>
+#include <queue>
+#include <cstring>
+#include <vector>
+using namespace std;
+
+const int N = 100010;
+
+int n, m;
+vector<int> g[N], res(N);
+
+void bfs(int now) {
+	queue<int> q;
+
+	res[now] = now;
+	q.push(now);
+	
+	while (q.size()) {
+		int h = q.front();
+		q.pop();
+		for (auto& ch: g[h]) {
+			if (!res[ch]) {
+				res[ch] = now;
+				q.push(ch);
+			}
+		}
+	}
+}
+
+void solve() {
+	cin >> n >> m;
+	while (m--) {
+		int a, b;
+		cin >> a >> b;
+		g[b].push_back(a);
+	}
+
+	for (int i = n; i >= 1; i--) {
+		if (!res[i]) {
+			bfs(i);
+		}
+	}
+	
+	for (int i = 1; i <= n; i++) {
+		cout << res[i] << ' ';
+	}
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
+```
+
+dfs 代码
+
+```cpp
+#include <iostream>
+#include <queue>
+#include <cstring>
+#include <vector>
+using namespace std;
+
+const int N = 100010;
+
+int n, m, val;
+vector<int> g[N], res(N);
+
+void dfs(int now) {
+	res[now] = val;
+	for (auto& ch: g[now]) {
+		if (!res[ch]) {
+			dfs(ch);
+		}
+	}
+}
+
+void solve() {
+	cin >> n >> m;
+	while (m--) {
+		int a, b;
+		cin >> a >> b;
+		g[b].push_back(a);
+	}
+
+	for (int i = n; i >= 1; i--) {
+		if (!res[i]) {
+			val = i;
+			dfs(i);
+		}
+	}
+	
+	for (int i = 1; i <= n; i++) {
+		cout << res[i] << ' ';
+	}
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
+```
+
+
+

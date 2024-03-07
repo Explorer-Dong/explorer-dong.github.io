@@ -36,7 +36,6 @@ category_bar: true
 - :book: 西瓜书电子资源：[Machine_Learning/机器学习_周志华.pdf](https://github.com/jingyuexing/Ebook/blob/master/Machine_Learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_%E5%91%A8%E5%BF%97%E5%8D%8E.pdf)
 - :tv: ​南瓜书视频资源：[《机器学习公式详解》（南瓜书）与西瓜书公式推导直播合集](https://www.bilibili.com/video/BV1Mh411e7VU/)
 - :book: 南瓜书电子资源：[《机器学习》（西瓜书）公式详解](https://github.com/datawhalechina/pumpkin-book)
-- :book: 统计学习方法：​
 
 实验平台：
 
@@ -45,14 +44,24 @@ category_bar: true
 本地路径：
 
 - :watermelon: 西瓜书电子书：[机器学习_周志华](D:\BaiduSyncdisk\2. Score\4. 机器学习与模式识别\机器学习_周志华.pdf)
+- :page_with_curl: 上课 PPT by 周志华：[机器学习\_课件\_周志华](D:\BaiduSyncdisk\2. Score\4. 机器学习与模式识别\机器学习_课件_周志华)
+- :page_with_curl: 上课 PPT by 杨琬琪：[机器学习\_课件\_杨琬琪](D:\BaiduSyncdisk\2. Score\4. 机器学习与模式识别\机器学习_课件_杨琬琪)
 
 ## 第1章 绪论
 
 ### 1.1 引言
 
-
+pass
 
 ### 1.2 基本术语
+
+机器学习定义：利用**经验**改善系统自身性能，主要研究**智能数据分析**的理论和方法。
+
+计算学习理论：最重要的理论模型是 PAC(Probably Approximately Correct, 概率近似正确) learning model，即以很高的概率得到很好的模型。
+
+P 问题：在多项式时间内计算出答案的解。
+
+NP 问题：在多项式时间内检验解的正确性。
 
 
 
@@ -66,11 +75,11 @@ category_bar: true
 
 ### 1.5 发展历程
 
-
+pass
 
 ### 1.6 应用现状
 
-
+pass
 
 ## 第2章 模型评估与选择
 

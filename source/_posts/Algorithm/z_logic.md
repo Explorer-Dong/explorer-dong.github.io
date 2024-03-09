@@ -473,3 +473,89 @@ int main() {
 	return 0;
 }
 ```
+
+### 8. 双端队列
+
+https://www.acwing.com/problem/content/5484/
+
+> 题意：给定一个序列，每次可以从序列头或尾取出一个数，在满足：按取出数的顺序是升序序列的条件下，给定的序列最多可以取出多少数？
+>
+> 思路：首先很容易想到的就是哪头小取哪头，因为取了较小者后较大者可以后续继续被选择，反之则不能。当然，还需要考虑的一个点就是如果较小者不符合题意，即较小者比上一次选出来的数更小从而无法组成严格升序序列时，还是得考虑较大值的那一头数。接下来考虑相等的情况，若两头数值相等，那一定只能选择一端且后续都只能从那端继续选择，我们直接两种方法都计算统计一遍可选择的数的数量，取较大者即可
+>
+> 时间复杂度：$O(n)$
+
+```cpp
+#include <iostream>
+#include <queue>
+#include <cstring>
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+#include <stack>
+using namespace std;
+
+const int N = 200010;
+
+int n, a[N];
+
+void solve() {
+	cin >> n;
+	for (int i = 1; i <= n; i++) cin >> a[i];
+	
+	int res = 0, top = -1, l = 1, r = n;
+	while (l <= r) {
+        // 左端是较小值
+		if (a[l] < a[r]) {
+			if (a[l] > top) {
+				res++;
+				top = a[l++];
+			} else if (a[r] > top) {
+				res++;
+				top = a[r--];
+			} else {
+				break;
+			}
+        // 右端是较小值
+		} else if (a[l] > a[r]) {
+			if (a[r] > top) {
+				res++;
+				top = a[r--];
+			} else if (a[l] > top) {
+				res++;
+				top = a[l++];
+			} else {
+				break;
+			}
+        // 两端数值相等
+		} else { // a[l] == a[r]
+			if (a[l] > top) {
+				int lcnt = 1, rcnt = 1;
+				for (int i = l + 1; i <= r; i++) {
+					if (a[i] > a[i - 1]) lcnt++;
+					else break;
+				}
+				for (int i = r - 1; i >= l; i--) {
+					if (a[i] > a[i + 1]) rcnt++;
+					else break;
+				}
+				res += max(lcnt, rcnt);
+				break;
+			} else {
+				break;
+			}
+		}
+	}
+
+	cout << res;
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
+```
+

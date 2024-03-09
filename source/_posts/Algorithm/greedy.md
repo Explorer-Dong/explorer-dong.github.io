@@ -1244,3 +1244,71 @@ signed main() {
 	return 0;
 }
 ```
+
+### 23. 截断数组
+
+https://www.acwing.com/problem/content/5483/
+
+> 题意：定义平衡数组为奇偶数数量相同的数组，现在给定一个平衡数组，和一个总成本数，最多可以将原数组截成多少截子平衡数组，且截断代价总和不超过总成本，截断代价计算公式为 $|a_i-a_{i+1}|$
+>
+> 思路：我们直接枚举所有的可以被截断的位置，统计所有的代价值，然后根据成本总数按降序枚举代价值即可
+>
+> 时间复杂度：$O(n \log n)$
+
+```cpp
+#include <iostream>
+#include <queue>
+#include <cstring>
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+using namespace std;
+
+const int N = 110;
+
+int n, b;
+int a[N], odd[N], even[N];
+
+void solve() {
+	cin >> n >> b;
+	
+	for (int i = 1; i <= n; i++) {
+		cin >> a[i];
+		if (a[i] % 2 == 0) {
+			even[i] = even[i - 1] + 1;
+			odd[i] = odd[i - 1];
+		} else {
+			even[i] = even[i - 1];
+			odd[i] = odd[i - 1] + 1;
+		}
+	}
+	
+	vector<int> c;
+	for (int i = 2; i <= n - 2; i += 2) {
+		if (odd[i] == even[i]) {
+			c.push_back(abs(a[i] - a[i + 1]));
+		}
+	}
+	
+	int res = 0;
+	sort(c.begin(), c.end());
+	for (auto& x: c) {
+		if (b >= x) {
+			b -= x;
+			res++;
+		}
+	}
+	
+	cout << res;
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
+```
+

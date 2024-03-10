@@ -45,13 +45,13 @@ category_bar: true
 
 **凸集的定义**
 $$
-\forall \quad x,y \in D \ \and \ \lambda \in [0,1] \\
+\forall \quad x,y \in D \ \land \ \lambda \in [0,1] \\
 s.t. \quad \lambda x+(1-\lambda)y \in D \\
 \text{则称} D \text{为凸集}
 $$
 **凸集的性质**：设 $D_1,D_2 \subset R^n$ 均为凸集（下列 $x,y$ 均表示向量），则：
 
-1. 两凸集的交 $D_1 \cap D_2 = \{x\ |\ x \in D_1 \and x \in D_2\}$ 是凸集
+1. 两凸集的交 $D_1 \cap D_2 = \{x\ |\ x \in D_1 \land x \in D_2\}$ 是凸集
 2. 两凸集的和 $D_1 + D_2 = \{x,y\ |\ x \in D_1 , y \in D_2\}$ 是凸集
 3. 两凸集的差 $D_1 - D_2 = \{x,y\ |\ x \in D_1 , y \in D_2\}$ 是凸集
 4. 对于任意非零实数 $\alpha$，集合 $\alpha D_1 = \{ \alpha x \ |\ x \in D_1 \}$​ 是凸集

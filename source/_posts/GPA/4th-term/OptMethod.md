@@ -43,22 +43,42 @@ category_bar: true
 
 #### 1.2.1 凸集
 
-凸集的定义
+**凸集的定义**
+$$
+\forall \quad x,y \in D \ \and \ \lambda \in [0,1] \\
+s.t. \quad \lambda x+(1-\lambda)y \in D \\
+\text{则称} D \text{为凸集}
+$$
+**凸集的性质**：设 $D_1,D_2 \subset R^n$ 均为凸集（下列 $x,y$ 均表示向量），则：
 
+1. 两凸集的交 $D_1 \cap D_2 = \{x\ |\ x \in D_1 \and x \in D_2\}$ 是凸集
+2. 两凸集的和 $D_1 + D_2 = \{x,y\ |\ x \in D_1 , y \in D_2\}$ 是凸集
+3. 两凸集的差 $D_1 - D_2 = \{x,y\ |\ x \in D_1 , y \in D_2\}$ 是凸集
+4. 对于任意非零实数 $\alpha$，集合 $\alpha D_1 = \{ \alpha x \ |\ x \in D_1 \}$​ 是凸集
 
+证明：
 
-凸集的性质
+![凸集的性质证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101941905.png)
 
-1. qqq
-2. qqq
-3. qqq
-4. qqq
-
-凸集的应用
+**凸集的应用**
 
 1. 刻画可行域
     - 凸组合定义
-    - 凸组合定理
+        $$
+        设\ x^{(1)},x^{(2)}, \cdots, x^{(p)} \in R^n ,且\ \sum_{i=1}^p \alpha_i = 1(a_i \ge 0)  \\
+        s.t. \quad x = \alpha_1x^1 + \alpha_2x^2 + \cdots + \alpha_px^p  \\
+        则称\ x\ 为向量\ x^{(1)},x^{(2)}, \cdots, x^{(p)}\ 的凸组合
+        $$
+    
+    - 凸组合定理：$D \in R^n$ 是凸集的充分必要条件是 $D$ 中任取 $m$ 个点 $x^i(1,2,\cdots m)$ 的凸组合任属于 $D$，即：
+        $$
+        \sum_{i=1}^m \alpha_ix_i \in D\left( \alpha_i \ge 0(i=1,2,\cdots,m),\sum_{i-1}^m \alpha_i = 1 \right)
+        $$
+    
+      证明：
+      
+      ![凸组合定理证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403102025159.png)
+    
 2. 分析最优解的最优性条件
     - 超平面定义
     - 投影定理

@@ -45,4 +45,14 @@ category_bar: true
 
 等待几分钟 DNS 解析即可使用 `[domain].[xxx]` or `www.[domain].[xxx]` or `[username].github.io` 访问自己的静态网站啦！
 
+### 第三步
+
+这一步其实是为了解决一个 bug，如果你在操作完上述两步以后，会发现静态页面仓库内多了一个 CNAME 文件。这是因为自定义域名以后，GitHub Pages 服务需要知道将请求路由到哪个域名上，而这需要从 CNAME 文件中获取信息
+
+![仓库内多了一个 CNAME 文件](D:\华为云盘\_images\typora-user-images\image-20240310113214366.png)
+
+但是如果后期更新站点时，由于 Hexo 强制覆盖分支的特性，会自动覆盖掉这个 CNAME 文件，从而无法正确的路由请求，也就会出现 404 的错误。解决方案就是在 hexo 的 `source/` 文件夹下添加一个 CNAME 文件。这样该 CNAME 文件就会被 hexo 识别为自己的内容，从而每次都可以部署到相应的分支上了
+
+![在 hexo 的 source/ 文件夹下添加一个 CNAME 文件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101140516.png)
+
 $END$

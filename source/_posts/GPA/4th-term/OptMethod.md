@@ -35,7 +35,10 @@ category_bar: true
 
 本目主要讲解最优化问题的一些分类，下附脑图（由 Xmind 软件制作）：
 
-![最优化问题概念辨析](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403091214182.png)
+<details>
+    <summary>分类脑图</summary>
+    <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403091214182.png" alt="最优化问题概念辨析" /></center>
+</details>
 
 ### 1.2 凸集和凸函数
 
@@ -56,9 +59,10 @@ $$
 3. 两凸集的差 $D_1 - D_2 = \{x,y\ |\ x \in D_1 , y \in D_2\}$ 是凸集
 4. 对于任意非零实数 $\alpha$，集合 $\alpha D_1 = \{ \alpha x \ |\ x \in D_1 \}$​ 是凸集
 
-证明：
-
-![凸集的性质证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101941905.png)
+<details>
+    <summary>证明</summary>
+    <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101941905.png" alt="凸集的性质证明" /></center>
+</details>
 
 **凸集的应用**
 
@@ -75,9 +79,10 @@ $$
         \sum_{i=1}^m \alpha_ix_i \in D\left( \alpha_i \ge 0(i=1,2,\cdots,m),\sum_{i-1}^m \alpha_i = 1 \right)
         $$
     
-      证明：
-      
-      ![凸组合定理证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403102025159.png)
+      <details>
+          <summary>证明</summary>
+          <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403102025159.png" alt="凸组合定理证明" /></center>
+      </details>
     
 2. 分析最优解的最优性条件
     - 超平面定义（凸集分离定理）：设 $D_1,D_2 \subset R^n$ 为两非空凸集，若存在非零向量 $\alpha \in R^n$ 和实数 $\beta$，使得
@@ -89,8 +94,10 @@ $$
     
     - 投影定理：设 $D \in R^n$ 是非空闭凸集，$y \in R^n$ 但 $y \notin D$，则
         $$
-        (1)& 存在唯一的点 \ \overline x \in D,使得集合D到点 y 的距离最小 \\
-        (2)& \overline x \in D 是点 y 到 集合D的最短距离点的充分必要条件为:\forall x \in D,<x-\overline x,y - \overline x> \le 0
+        \begin{align*}
+            (1)& 存在唯一的点 \ \overline x \in D,使得集合D到点 y 的距离最小 \\
+            (2)& \overline x \in D 是点 y 到 集合D的最短距离点的充分必要条件为:\forall x \in D,<x-\overline x,y - \overline x> \le 0
+        \end{align*}
         $$
 
 #### 1.2.2 凸函数
@@ -107,12 +114,12 @@ $$
 3. 如果 $f_i(x)(i=1,2,\cdots,m)$ 是非空凸集 $D$ 上的凸函数，则 $f(x) = \max_{1 \le i \le m} |f_i(x)|$ 也是凸集 $D$ 上的凸函数
 4. 如果 $f_i(x)(i=1,2,\cdots,m)$ 是非空凸集 $D$ 上的凸函数，则 $f(x) = \displaystyle \sum_{i=1}^m \alpha_i f_i(x)\quad(\alpha_i \ge 0)$ 也是凸集 $D$​ 上的凸函数
 
-证明（第3条待定）：
-
 <details>
+    <summary>证明（第3条待定）：</summary>
     <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png" alt="第1、2条"></center>
     <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png" alt="第4条"></center>
 </details>
+
 
 #### 1.2.3 凸规划 *
 

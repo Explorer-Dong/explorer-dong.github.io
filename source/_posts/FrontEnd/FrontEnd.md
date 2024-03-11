@@ -58,7 +58,7 @@ Html 全称超文本标记语言，可以和 Markdown 进行类比，即不同�
 >
 > - 头部：在 head 标签中，设置 Css 样式文件地址 link 标签，设置 base 全局标签等等
 > - 超链接：`<a href="https://www.runoob.com" target="_blank">这是一个链接，新开一面展示相关内容</a>`
-> - 图像：`<img src="/images/logo.png" width="258" height="39" />`
+> - 图像：`<img src="/images/logo.png" alt="alternative text" width="258" height="39" />`
 > - 属性：
 >   - `class` 属性为标签的样式渲染属性，每一个 class 都封装了特定的 Css 样式，通过在标签中添加一个或多个 class 属性，实现对指定标签的渲染
 >

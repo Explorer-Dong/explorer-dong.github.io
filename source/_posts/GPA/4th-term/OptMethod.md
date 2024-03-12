@@ -119,33 +119,58 @@ $$
     <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png" alt="第1、2条"></center>
     <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png" alt="第4条"></center>
 </details>
-
-
-#### 1.2.3 凸规划 *
+#### 1.2.3 凸规划（个人补充）
 
 本目为个人补充内容，用于整合上述 1.2.1 与 1.2.2 内容。我们知道，学习凸集和凸函数的终极目标是为了求解凸规划问题，凸规划问题可以简述为**凸可行域+凸目标函数+局部最优解=全局最优解**，那么如何证明这个定理是正确的呢？局部最优解求出来以后，目标函数也确定为凸函数以后，如何确定可行域是凸集呢？下面揭晓：
 
-证明凸规划问题的正确性
+**证明凸规划问题的正确性**
 
 1. 定理：在可行域是凸集，目标函数非严格凸的情况下，局部最优解 $x^*$​ 也是全局最优解
 
-    证明（反证法）：
-
-    
+    <details>
+        <summary>证明（反证法）</summary>
+        <center>
+            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122016285.png" alt="目标函数非严格凸的情况下，局部最优解也是全局最优解" />
+        </center>
+    </details>
 
 2. 定理：在可行域是凸集，目标函数是严格凸的情况下，局部最优解 $x^*$ 也是唯一的全局最优解
 
-    证明：
-    
-    
+    <details>
+        <summary>证明（反证法）</summary>
+        <center>
+            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122017101.png" alt="目标函数是严格凸的情况下，局部最优解也是唯一的全局最优解" />
+        </center>
+    </details>
 
-确定可行域是否为凸集
+**确定可行域是否为凸集**
 
-- 定理：若约束条件中每一个约束函数 $c_i(x)$ 都是凹函数，则可行域 $F$ 是凸集
+1. 定理：若约束条件中每一个约束函数 $c_i(x)$ 都是凹函数，则可行域 $F$ 是凸集
 
-- 证明：
+    <details>
+        <summary>证明</summary>
+        <center>
+            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019899.png" alt="若约束条件中每一个约束函数都是凹函数，则可行域是凸集" />
+        </center>
+    </details>
 
-    
+2. 定理：若约束条件中每一个约束函数 $c_i(x)$ 都是凹函数，则可行域 $F$ 是凸集
+
+    <details>
+        <summary>证明</summary>
+        <center>
+            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019572.png" alt="若约束条件中每一个约束函数都是凹函数，则可行域是凸集" />
+        </center>
+    </details>
+
+3. 定理：若约束条件中每一个约束函数 $c_i(x)$ 都恒等于零，则可行域 $F$ 是凸集
+
+    <details>
+        <summary>证明</summary>
+        <center>
+            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019751.png" alt="若约束条件中每一个约束函数都恒等于零，则可行域是凸集" />
+        </center>
+    </details>
 
 ### 1.3 最优性条件
 

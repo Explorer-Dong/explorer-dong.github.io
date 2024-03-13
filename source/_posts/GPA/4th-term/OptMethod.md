@@ -200,20 +200,20 @@ $$
 
 - **下降方向**定义：设 $f(x)$ 为定义在空间 $R^n$ 的连续函数，点 $\bar x \in R^n$，若对于方向 $s \in R^n$ 存在数 $\delta >$ 0 使
     $$
-    
+    f(\bar x+\alpha s) < f(\bar x),\quad \forall \alpha \in (0,\delta)
     $$
     成立，则称 $s$ 为 $f(x)$ 在 $\bar x$ 处的一个下降方向。在 点 $\bar x$ 处的所有下降方向的全体记为 $D(\bar x)$
 
-- 下降方向定理：设函数 $f(x)$ 在点 $\bar x$ 处连续可微，如存在非零向量 $s  \in R^n$ 使
+- **下降方向**定理：设函数 $f(x)$ 在点 $\bar x$ 处连续可微，如存在非零向量 $s  \in R^n$ 使
     $$
-    
+    \nabla f(\bar x)^Ts < 0
     $$
     成立，则 $s$ 是 $f(x)$ 在点 $\bar x$ 处的一个下降方向
 
     <details>
         <summary>证明</summary>
         <center>
-            111
+            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131639082.jpg" alt="下降方向定理证明" />
         </center>
     </details>
 
@@ -221,13 +221,6 @@ $$
     $$
     g(x^*)=0
     $$
-
-    <details>
-        <summary>证明</summary>
-        <center>
-            111
-        </center>
-    </details>
 
 
 ### 1.4 最优化方法概述

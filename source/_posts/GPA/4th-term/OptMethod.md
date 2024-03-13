@@ -119,6 +119,28 @@ $$
     <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png" alt="第1、2条"></center>
     <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png" alt="第4条"></center>
 </details>
+凸函数的判别定理：
+
+1. 函数值角度：函数 $f(x)$ 是 $R^n$ 上的凸函数的充分必要条件是 $\forall x,y \in R^n$，单变量函数 $\phi(\alpha)=f(x + \alpha y)$ 是关于 $\alpha$ 的凸函数
+
+    <details>
+        <summary>证明</summary>
+        <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131019868.png" alt="凸函数的判别定理 - 函数值角度" /></center>
+    </details>
+
+2. 一阶导数角度：设 $f(x)$ 是定义在非空开凸集 $D$ 上的可微函数，则
+
+    - $f(x)$ 是 $D$ 上凸函数的充分必要条件是 $f(y) \ge f(x)+\nabla f(x)^T(y-x)$
+    - $f(x)$ 是 $D$ 上严格凸函数的充分必要条件是 $f(y) > f(x)+\nabla f(x)^T(y-x)$
+
+    <details>
+        <summary>证明</summary>
+        <p>无需掌握证明，但是为了便于理解性记忆，可以从<b>二次凸函数</b>进行辅助理解记忆。</p>
+        <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131018032.png" alt="凸函数的判别定理 - 函数值角度" /></center>
+    </details>
+
+3. 二阶导数角度：略
+
 #### 1.2.3 凸规划（个人补充）
 
 本目为个人补充内容，用于整合上述 1.2.1 与 1.2.2 内容。我们知道，学习凸集和凸函数的终极目标是为了求解凸规划问题，凸规划问题可以简述为**凸可行域+凸目标函数+局部最优解=全局最优解**，那么如何证明这个定理是正确的呢？局部最优解求出来以后，目标函数也确定为凸函数以后，如何确定可行域是凸集呢？下面揭晓：
@@ -173,6 +195,40 @@ $$
     </details>
 
 ### 1.3 最优性条件
+
+最优性条件是指最优化问题的最优解所必须满足的条件，本目只介绍**无约束最优化**的**一阶必要条件**。
+
+- **下降方向**定义：设 $f(x)$ 为定义在空间 $R^n$ 的连续函数，点 $\bar x \in R^n$，若对于方向 $s \in R^n$ 存在数 $\delta >$ 0 使
+    $$
+    
+    $$
+    成立，则称 $s$ 为 $f(x)$ 在 $\bar x$ 处的一个下降方向。在 点 $\bar x$ 处的所有下降方向的全体记为 $D(\bar x)$
+
+- 下降方向定理：设函数 $f(x)$ 在点 $\bar x$ 处连续可微，如存在非零向量 $s  \in R^n$ 使
+    $$
+    
+    $$
+    成立，则 $s$ 是 $f(x)$ 在点 $\bar x$ 处的一个下降方向
+
+    <details>
+        <summary>证明</summary>
+        <center>
+            111
+        </center>
+    </details>
+
+- **一阶必要条件**定理：设 $f:D \subset R^n \to R^1$ 在开集 $D$ 上连续可微，若 $x^* \in D$ 是目标函数的局部极小点，$f(x)$ 的一阶导数 $\nabla f(x)$ 表示为 $g(x)$，则
+    $$
+    g(x^*)=0
+    $$
+
+    <details>
+        <summary>证明</summary>
+        <center>
+            111
+        </center>
+    </details>
+
 
 ### 1.4 最优化方法概述
 

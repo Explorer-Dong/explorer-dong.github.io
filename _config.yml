@@ -102,6 +102,7 @@ theme: fluid
 deploy:
   type: git
   repo: https://github.com/Explorer-Dong/explorer-dong.github.io.git
+  repo: https://gitee.com/explorer-dong/explorer-dong.git
   branch: auto-deploy
 
 # ---------- Fluid ----------

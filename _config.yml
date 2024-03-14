@@ -100,18 +100,16 @@ theme: fluid
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
-  repo: 
-    github: https://github.com/Explorer-Dong/explorer-dong.github.io.git
-    gitee: https://gitee.com/explorer-dong/explorer-dong.git
-  branch: auto-deploy
+  - type: git
+    repo: https://github.com/Explorer-Dong/explorer-dong.github.io.git
+    branch: auto-deploy
+  - type: git
+    repo: https://gitee.com/explorer-dong/explorer-dong.git
+    branch: auto-deploy
 
 # ---------- Fluid ----------
 # math - latex
 markdown:
   plugins:
     - "@traptitech/markdown-it-katex"
-
-
-
 # ---------- Fluid ----------

@@ -136,6 +136,9 @@ git remote rename <OldRemoteName> <NewRemoteName>
 
 # 修改远程 URL
 git remote set-url <RemoteName> <NewURL>
+
+# 删除远程
+git remote rm <RemoteName>
 ```
 
 ### 二、迭代

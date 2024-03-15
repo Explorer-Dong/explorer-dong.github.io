@@ -104,15 +104,15 @@ Linux 是操作系统的一种，是便于用户与计算机资源进行交互�
 
 ##### (2) 解析二级域名绑定到服务器上
 
-每一个**二级域名**都需要解析到相应的**IP地址**，即**主机记录**对应**记录值**，才能进行后续的访问。其实可以理解为，将不同的二级域名都绑定到当前的服务器上，像这样：
+每一个**二级域名**都需要解析到相应的 **IP 地址**，即**主机记录**对应**记录值**，才能进行后续的访问。其实可以理解为，将不同的二级域名都绑定到当前的服务器上，像这样：
 
-<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126611.png" alt="image-20230826011106105" style="zoom:50%;" />
+![将二级域名绑定到服务器](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126611.png)
 
 ##### (3) 理解二级域名的访问
 
 我们通过不同的二级域名访问网站时，其实就是访问不同的文件夹中的文件信息，像这样：
 
-![image-20230826011328462](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126612.png)
+![访问不同的文件夹中的文件信息](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126612.png)
 
 ##### (4) 实现不同的域名访问不同的文件
 
@@ -137,10 +137,10 @@ server {
     # 项目路径
     location / {
         proxy_pass https://localhost:8080/; # 转向“本地”8080端口
-        # root path;  						# 网站根目录
-        # index demo.html;  				# 设置默认页
-        # deny 127.0.0.1;  					# 拒绝的ip
-        # allow 172.18.5.54; 				# 允许的ip       
+        # root path;                          # 网站根目录
+        # index demo.html;                  # 设置默认页
+        # deny 127.0.0.1;                      # 拒绝的ip
+        # allow 172.18.5.54;                 # 允许的ip       
     }
 }
 ```
@@ -150,8 +150,8 @@ server {
 ```bash
 #----- docs.example.com 访问文档分站 -----#
 server {
-    listen       443 ssl; 			# 监听的端口
-    server_name  docs.example.com; 	# 监听的网址
+    listen       443 ssl;             # 监听的端口
+    server_name  docs.example.com;     # 监听的网址
 
     # ssl证书的相关文件路径
     ssl_certificate      /usr/local/nginx/ssl/test.cn_bundle.pem;
@@ -165,16 +165,16 @@ server {
 
     # 项目路径
     location / {
-        root /usr/web/docs; 		# 网站根目录
+        root /usr/web/docs;         # 网站根目录
     }
 }
 
 #----- www.example.com 访问主站 -----#
 server {
-    listen       443 ssl; 			# 监听的端口
-    server_name  www.example.com; 	# 监听的网址
+    listen       443 ssl;             # 监听的端口
+    server_name  www.example.com;     # 监听的网址
 
-	# ssl证书的相关文件路径
+    # ssl证书的相关文件路径
     ssl_certificate      /usr/local/nginx/ssl/b.test.cn_bundle.pem;
     ssl_certificate_key  /usr/local/nginx/ssl/b.test.cn.key;
 
@@ -185,16 +185,16 @@ server {
     ssl_prefer_server_ciphers  on;
 
     location / {
-		root /usr/web/www;  				# 根目录
+        root /usr/web/www;                  # 根目录
     }
 }
 
 #----- example.com 通过重定向的方式也访问主站 -----#
 server {
-    listen       443 ssl; 			# 监听的端口
-    server_name  www.example.com; 	# 监听的网址
+    listen       443 ssl;             # 监听的端口
+    server_name  example.com;     # 监听的网址
 
-	# ssl证书的相关文件路径
+    # ssl证书的相关文件路径
     ssl_certificate      /usr/local/nginx/ssl/b.test.cn_bundle.pem;
     ssl_certificate_key  /usr/local/nginx/ssl/b.test.cn.key;
 
@@ -205,7 +205,7 @@ server {
     ssl_prefer_server_ciphers  on;
 
     location / {
-		proxy_pass  https://www;  			# 请求转向 mysvr 定义的服务器列表
+        proxy_pass  https://www;              # 请求转向 mysvr 定义的服务器列表
     }
 }
 ```
@@ -227,15 +227,15 @@ Flask 是使用 Python 作为后端语言的 Web 微框，旨在帮助开发者�
 ```bash
 [root@DwjDemo1 ~]# cat /etc/os-release
 
-NAME="Alibaba Cloud Linux"								发行版的名称
-VERSION="3 (Soaring Falcon)"							发行版的版本号
-ID="alinux"												唯一的标识符
-ID_LIKE="rhel fedora centos anolis"						一些类似的发行版
-VERSION_ID="3"											发行版的版本编号
-PLATFORM_ID="platform:al8"								平台的标识符
-PRETTY_NAME="Alibaba Cloud Linux 3 (Soaring Falcon)"	可读的发行版名称和版本号
-ANSI_COLOR="0;31"										ANSI终端输出的颜色: "0;31"，通常用于表示错误或警告信息
-HOME_URL="https://www.aliyun.com/"						发行版的官方网站链接
+NAME="Alibaba Cloud Linux"                             发行版的名称
+VERSION="3 (Soaring Falcon)"                           发行版的版本号
+ID="alinux"                                            唯一的标识符
+ID_LIKE="rhel fedora centos anolis"                    一些类似的发行版
+VERSION_ID="3"                                         发行版的版本编号
+PLATFORM_ID="platform:al8"                             平台的标识符
+PRETTY_NAME="Alibaba Cloud Linux 3 (Soaring Falcon)"   可读的发行版名称和版本号
+ANSI_COLOR="0;31"                                      ANSI终端输出的颜色: "0;31"，通常用于表示错误或警告信息
+HOME_URL="https://www.aliyun.com/"                     发行版的官方网站链接
 ```
 
 连接方法
@@ -305,8 +305,8 @@ FLUSH PRIVILEGES;
 
 '''
 配置文件：
-	1. 数据库配置信息
-	2. ...
+    1. 数据库配置信息
+    2. ...
 '''
 
 # 数据库的配置信息
@@ -531,10 +531,10 @@ python app.py
 >     ```bash
 >     # 检测端口占用 
 >     netstat -npl | grep "端口"
->                                                                                         
+>                                                                                             
 >     # 查找占用端口的进程的PID
 >     sudo lsof -i:"端口"
->                                                                                         
+>                                                                                             
 >     # 根据PID杀死该进程
 >     sudo kill -9 <PID>
 >     ```
@@ -609,35 +609,9 @@ python app.py
     uwsgi -d --ini uwsgi.ini
     
     # 此时想要停止就需要找到uwsgi的进程并全部杀死
-    	# 找到所有uwsgi进程
-    	ps -ef|grep uwsgi
-    	
-    	# 杀死所有进程
-    	kill -9 <进程号>
+        # 找到所有uwsgi进程
+        ps -ef|grep uwsgi
+        
+        # 杀死所有进程
+        kill -9 <进程号>
     ```
-
-##### (5) 一些 bug
-
-问题一：读取json时出现问题
-
-> error: UnicodeDecodeError: 'utf-8' codec can't decode byte 0xc3 in position 39: invalid continuation byte
->
-> reason: 对 string 解码时出现错误
->
-> solve: 
->
-> 将app.py中的
->
-> ```python
-> with open('static/json/image_text.json', 'r') as f:
-> 	image_text = json.load(f)
-> ```
->
-> 改为
->
-> ```python
-> with open('static/json/image_text.json', 'r', encoding='gbk') as f:
-> 	image_text = json.load(f)
-> ```
->
-> 参考：<https://bobbyhadz.com/blog/python-unicodedecodeerror-utf-8-codec-cant-decode-byte>

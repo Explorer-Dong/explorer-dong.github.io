@@ -7,7 +7,9 @@ category_bar: true
 
 # RoadMap
 
-参考自：https://www.codefather.cn/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/
+参考：<https://www.codefather.cn/学习路线/>
+
+说明：上述链接未涉及到的路线属于付费内容，侵权必删
 
 ## 一、计算机基础
 
@@ -15,7 +17,7 @@ category_bar: true
 
 大纲：
 
-![image-20240213235859106](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402140035674.png)
+![计算机网络学习路线，大纲](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402140035674.png)
 
 内容：
 

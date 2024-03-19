@@ -226,7 +226,7 @@ https://vijos.org/d/nnu_contest/p/1534
 >
 >     先看图：
 >
->     <img src="D:/BaiduSyncdisk/_images/typora-user-images/202402012332953.png" alt="image-20231105233631038" style="zoom:50%;" />
+>     ![image-20231105233631038](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214257.png)
 >
 >     - 我们可以发现，对于当前的根结点 `fa`，我们选择其中的一个子结点 `ch`，将 `ch` 作为新的根结点（如右图）。那么对于当前的 `ch` 的深度和，我们可以借助 `fa` 的深度和进行求解。我们假设以 `ch` 为子树的结点总数为 `x`，那么这 `x` 个结点在换根之后，相对于 `ch` 的深度和，贡献了 `-x` 的深度；而对于 `fa` 的剩下来的 `n-x` 个结点，相对于 `ch` 的深度和，贡献了 `n-x` 的深度。于是 `ch` 的深度和就是 `fa的深度和` `-x+n-x`，即
 >         $$
@@ -602,7 +602,7 @@ https://www.luogu.com.cn/problem/P1044
 >
 >     如图：
 >
->     <img src="D:/BaiduSyncdisk/_images/typora-user-images/202402012332954.png" alt="image-20231121192133801" style="zoom:50%;" />
+>     <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214793.png" alt="image-20231121192133801" style="zoom:50%;" />
 >
 >     而我们在dp的时候，需要考虑的是子结构的解来得出当前状态的答案，就需要考虑之前的状态。即当前状态是从之前的哪些状态转移过来的。和上述dfs思路是相反的。我们需要考虑的是
 >
@@ -613,7 +613,7 @@ https://www.luogu.com.cn/problem/P1044
 >
 >     如图：
 >
->     <img src="D:/BaiduSyncdisk/_images/typora-user-images/202402012332955.png" alt="image-20231121192152555" style="zoom: 33%;" />
+>     <img src="D:/华为云盘/_images/typora-user-images/202402012332955.png" alt="image-20231121192152555" style="zoom: 33%;" />
 >
 > - 我们知道，入栈数一定是大于等于出栈数的，即 $i\ge j$。于是我们在枚举 $j$ 的时候，枚举的范围是 $[1,i]$
 >
@@ -822,7 +822,9 @@ https://www.luogu.com.cn/problem/P1990
 >
 > 手绘：
 >
-> <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402012332894.png" alt="image-20231221100352559" style="zoom:50%;" /> <img src="D:/BaiduSyncdisk/_images/typora-user-images/202402012332956.png" alt="image-20231221100410409" style="zoom:50%;" />
+> <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402012332894.png" alt="image-20231221100352559" style="zoom:50%;" />
+>
+> <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403181626377.png" alt="image-20231221100410409" style="zoom:50%;" />
 
 ```cpp
 #include <bits/stdc++.h>
@@ -848,6 +850,141 @@ void solve() {
 
 	// result
 	cout << f[n] << "\n";
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
+```
+
+### 12. 牛的语言学
+
+https://www.acwing.com/problem/content/description/5559/
+
+> 题意：已知一个字符串由前段的一个词根和后段的多个词缀组成。词根的要求是长度至少为 5，词缀的要求是长度要么是 2, 要么是 3，以及不允许连续的相同词缀组成后段。现在给定最终的字符串，问一共有多少种词缀？按照字典序输出所有可能的词缀
+>
+> - 思路一：**搜索**。很显然我们应该从字符串的最后开始枚举词缀进行搜索，因为词缀前面的所有字符全部都可以作为词根合法存在，我们只需要考虑当前划分出来的词缀是否合法即可。约束只有一个，不能与后面划分出来的词缀相同即可，由于我们是从后往前搜索，因此我们在搜索时保留后一个词缀即可。如果当前词缀和上一个词缀相同则返回，反之如果合法则加入 set 自动进行字典序排序。
+>
+>     时间复杂度：$O(2^{\frac{n}{2}})$
+>
+> - 思路二：**动态规划（递推）**。动规其实就是 **dfs 的逆过程**，我们从已知结果判断当前局面是否合法。很显然词根是包罗万象的，只要长度合法，不管什么样的都是可行的，故我们在判断当前局面是否合法时，只需要判断当前词缀是否合法即可。于是便可知当前状态是从后面的字符串转移过来的。我们定义状态转移记忆数组 `f[i]` 表示字符串 `s[1,i]` 是否可以组成词根。如果 `f[i]` 为真，则表示 `s[1,i]` 为一个合法的词根，`s[i+1,n]` 为一个合法的词缀串，那么词根后面紧跟着的一定是一个长度为 2 或 3 的合法词缀。
+>
+>     - 我们以紧跟着长度为 2 的合法词缀为例。如果 `s[i+1,i+2]` 为一个合法的词缀，则必须要满足以下两个条件之一
+>         1. `s[i+1,i+2]` 与 `s[i+3,i+4]` 不相等，即后面的后面是一个长度也为 **2** 且合法的词缀
+>         2. `s[1,i+5]` 是一个合法的词根，即 `f[i+5]` 标记为真，即后面的后面是一个长度为 **3** 且合法的词缀
+>     
+>     - 以紧跟着长度为 3 的哈法词缀同理。如果 `s[i+1,i+3]` 为一个合法的词缀，则必须要满足以下两个条件之一
+>         1. `s[i+1,i+3]` 与 `s[i+4,i+6]` 不相等，即后面的后面是一个长度也为 **3** 且合法的词缀
+>         2. `s[1,i+5]` 是一个合法的词根，即 `f[i+5]` 标记为真，即后面的后面是一个长度为 **2** 且合法的词缀
+>     
+>     时间复杂度：$O(n \log n)$ - `dp` 的过程是线性的，主要时间开销在 `set` 的自动排序上
+
+dfs 代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
+using namespace std;
+
+string s;
+set<string> res;
+
+// 当前词缀起始下标 idx，当前词缀长度 length，后方相邻的词缀 post
+void dfs(int idx, int length, string post) {
+	if (idx <= 5) return;
+	
+	string now = s.substr(idx, length);
+
+	if (now == post) {
+        // 不合法直接返回
+        return;
+    } else {
+        // 合法则将当前词缀加入集合自动排序，并继续搜索接下来可能的词缀
+        res.insert(now);
+        dfs(idx - 2, 2, now);
+        dfs(idx - 3, 3, now);
+    }
+}
+
+void solve() {
+	cin >> s;
+	s = "$" + s;
+    
+    int tail_point = s.size();
+
+	dfs(tail_point - 2, 2, "");
+	dfs(tail_point - 3, 3, "");
+	
+	cout << res.size() << "\n";
+	for (auto& str: res) cout << str << "\n";
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
+```
+
+dp 代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
+using namespace std;
+
+const int N = 50010;
+
+string s;
+set<string> res;
+bool f[N]; // f[i] 表示 s[1,i] 是否可以作为词根存在
+
+void solve() {
+	cin >> s;
+	s = "$" + s;
+	
+	// 字符串定义在 [1,n] 上
+	int n = s.size() - 1;
+	
+	// 长度为 n 的字符串一定可以作为词根
+	f[n] = true;
+	
+	for (int i = n; i >= 5; i--) {
+		for (int len = 2; len <= 3; len++) {
+			if (f[i + len]) {
+				string a = s.substr(i + 1, len);
+				string b = s.substr(i + 1 + len, len);
+				if (a != b || f[i + 5]) {
+					res.insert(a);
+					f[i] = true;
+				}
+			}
+		}
+	}
+	
+	cout << res.size() << "\n";
+	
+	for (auto& x: res) cout << x << "\n";
 }
 
 int main() {

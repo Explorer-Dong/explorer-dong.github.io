@@ -138,7 +138,7 @@ pass
 
 ### 2.3 性能度量
 
-回归任务
+#### 2.3.1 回归任务
 
 - 均方误差：$\displaystyle MSE=\frac{1}{m} \sum_{i=1}^m(f(x_i) - y_i)^2$
 
@@ -152,7 +152,7 @@ pass
         <p>为了保证回归拟合的结果尽可能不受数据离散性的影响，我们通过相除来判断预测的数据是否离散。如果和原始数据离散性差不多，那么商就接近1，R方就接近0，表示性能较差，反之如果比原始数据离散性小，那么商就接近0，R方就接近1，表示性能较优。</p>
     </details>
 
-分类任务
+#### 2.3.2 分类任务
 
 - 错误率：$\displaystyle E(f;D) = \frac{1}{m} \sum_{i=1}^mf(x_i \neq y_i)$
 
@@ -160,22 +160,114 @@ pass
 
 - 混淆矩阵
 
-    - 查准率（precision）：$\displaystyle P = \frac{TP}{TP+FP}$
-    - 查全率/召回率（recall）：$\displaystyle R = \frac{TP}{TP+FN}$
+    - 查准率（precision）：$\displaystyle P = \frac{TP}{TP+FP}$ - 适用场景：商品搜索推荐（尽可能推荐出适当的商品即可，至于商品数量无所谓）
+    - 查全率/召回率（recall）：$\displaystyle R = \frac{TP}{TP+FN}$ - 适用场景：逃犯、病例检测（尽可能将正例检测出来，至于查准率无所谓）
     - 准确率（accuracy）：$\displaystyle A = \frac{TP+TN}{TP+FN+FP+TN}$
-
+    - F1 度量（F1-score）：$\displaystyle F_1 = \frac{2\times P \times R}{P + R}$​ - 用于综合查准率和查全率的指标
+    
     <details>
         <summary>分类结果混淆矩阵图</summary>
         <center>
             <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403121018205.png" alt="分类结果混淆矩阵" />
         </center>
     </details>
+    
+    - 对于多分类问题，我们可以将该问题分解为多个二分类问题（ps：假设为 n 个）。从而可以获得多个上述的混淆矩阵，那么也就获得了多个 $P_i$、$R_i$ 以及全局均值 $\overline{TP}$、$\overline{FP}$、$\overline{FN}$，进而衍生出两个新的概念
+    
+        宏
+    
+        - 宏查准率：$\displaystyle macroP = \frac{1}{n} \sum_{i=1}^n P_i$
+        - 宏查全率：$\displaystyle macroR = \frac{1}{n} \sum_{i=1}^n R_i$
+        - 宏 $F1$：$\displaystyle macroF_1 = \frac{2 \times macroP \times macroR}{macroP+macroR}$
+    
+        微
+    
+        - 微查准率：$\displaystyle microP = \frac{\overline{TP}}{\overline{TP}+\overline{FP}}$
+        - 微查全率：$\displaystyle microR = \frac{\overline{TP}}{\overline{TP}+\overline{FN}}$
+        - 微 $F1$：$\displaystyle microF_1 = \frac{2 \times microP \times microR}{microP+microR}$
+    
+- P-R 曲线
 
-### 2.4 比较检验
+    - 横纵坐标：横坐标为查全率（Recall），纵坐标为查准率（Precision）
 
+    - 如何产生？我们根据学习器对于每一个样本的预测值（正例性的概率）进行降序排序，然后调整截断点将预测后的样本进行二分类，将截断点之前的所有数据全部认为**预测正例**，截断点之后的所有数据全部认为**预测反例**。然后计算两个指标进行绘图。
 
+        <details>
+            <summary>预测值解读</summary>
+            <p>
+                我们知道学习器得到最终的结果一般不是一个绝对的二值，如 0,1。往往是一个连续的值，比如 [0,1]，因此我们才可以选择合适的截断点将所有的样本数据划分为两类。
+            </p>
+        </details>
 
-### 2.5 偏差与方差
+    - 趋势解读：随着截断点的值不断下降，很显然查全率 $R$ 会不断上升，查全率 $P$ 会不断下降
+
+    - 不同曲线对应学习器的性能度量：**曲线与横纵坐标围成的面积**衡量了样本预测排序的质量。因此下图中 A 曲线的预测质量比 C 曲线的预测质量高。但是我们往往会遇到比较 A 与 B 的预测质量的情况，由于曲线与坐标轴围成的面积难以计算，因此我们引入了**平衡点**的概念。平衡点就是查准率与查询率相等的曲线，即 $P=R$ 的曲线。平衡点越往右上，学习器的预测性能越好。
+
+    <details>
+        <summary>P-R 曲线趋势图</summary>
+        <center>
+            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190830311.png" alt="P-R 曲线" />
+        </center>
+    </details>
+
+- ROC 曲线与 AUC :star:
+
+    - 横纵坐标：横坐标为**假正例率** $\displaystyle FPR = \frac{FP}{FP+TN}$，纵坐标为**真正例率** $\displaystyle TPR = \frac{TP}{TP+FN}$
+
+    - 如何产生？与 P-R 图的产生类似，只不过计算横纵坐标的规则不同，不再赘述。
+    - 趋势解读：随着截断点的值不断下降，真正例率与假正例率均会不断上升，因为分子都是从 0 开始逐渐增加的
+
+    - 不同曲线对应学习器的性能度量：**AUC** 衡量了样本预测的排序质量。AUC 即 ROC 曲线右下方的面积，面积越大则对应的预测质量更高，学习器性能更好。不同于上述引入平衡点的概念，此处的面积我们可以直接计算，甚至 1-AUC 也可以直接计算。
+
+        我们定义 $AUC$ 的计算公式为：（其实就是每一块梯形的面积求和，ps：矩形也可以用梯形面积计算公式代替）
+        $$
+        \sum _{i=1}^{m-1} \frac{(y_{i}+y_{i+1}) \cdot (x_{i+1} - x_i)}{2}
+        $$
+        我们定义损失函数（$loss$） $l_{rank} = 1-AUC$ 的计算公式为：（ps：感觉下述公式不是很准，因为正反例预测值相等的比例比不一定就是一比一）
+
+        ![损失函数计算公式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403191055792.png)
+
+    <details>
+        <summary>ROC 曲线图 - 受试者工作特征</summary>
+        <center>
+            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190851371.png" alt="ROC 曲线图 - 受试者工作特征" />
+        </center>
+    </details>
+
+### 2.4 比较检验 TODO
+
+理论依据：统计假设检验（hypothesis test）
+
+两个学习器性能比较：
+
+- 交叉验证 t 检验
+- McNemar 检验
+
+### 2.5 偏差与方差 TODO
+
+现在我们得到了学习算法的泛化性能，我们还想知道为什么会有这样的泛化性能，即我们应该如何解释这样的泛化性能呢？我们引入 **偏差-方差分解** 的概念。那么这个方法一定是完美解释的吗？也有一定的缺点，我们引入 **偏差-方差窘境** 的概念。
+
+#### 2.5.1 偏差-方差分解
+
+我们定义以下符号：测试样本 $x$，$y_D$ 为 $x$ 在数据集中的标记，$y$ 为 $x$ 的真实标记，$f(x;D)$ 为模型在训练集 $D$ 上学习后的预测输出。
+
+我们以回归任务为例：
+
+- 模型的**期望预测输出**为：
+- 使用样本数目相同的不同训练集产生的**方差**为：
+- **噪声**为：
+- 期望预测输出与真实标记的差别表示的**偏差**为：
+
+偏差-方差分解的结论是：
+
+<details>
+    <summary>偏差-方差分解结论推导</summary>
+    <center>
+        111
+    </center>
+</details>
+
+#### 2.5.2 偏差-方差窘境
 
 
 

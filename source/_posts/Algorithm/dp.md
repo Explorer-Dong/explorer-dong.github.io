@@ -226,7 +226,7 @@ https://vijos.org/d/nnu_contest/p/1534
 >
 >     先看图：
 >
->     ![image-20231105233631038](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214257.png)
+>     ![优化图解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214257.png)
 >
 >     - 我们可以发现，对于当前的根结点 `fa`，我们选择其中的一个子结点 `ch`，将 `ch` 作为新的根结点（如右图）。那么对于当前的 `ch` 的深度和，我们可以借助 `fa` 的深度和进行求解。我们假设以 `ch` 为子树的结点总数为 `x`，那么这 `x` 个结点在换根之后，相对于 `ch` 的深度和，贡献了 `-x` 的深度；而对于 `fa` 的剩下来的 `n-x` 个结点，相对于 `ch` 的深度和，贡献了 `n-x` 的深度。于是 `ch` 的深度和就是 `fa的深度和` `-x+n-x`，即
 >         $$
@@ -602,7 +602,7 @@ https://www.luogu.com.cn/problem/P1044
 >
 >     如图：
 >
->     <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214793.png" alt="image-20231121192133801" style="zoom:50%;" />
+>     ![图解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214793.png)
 >
 >     而我们在dp的时候，需要考虑的是子结构的解来得出当前状态的答案，就需要考虑之前的状态。即当前状态是从之前的哪些状态转移过来的。和上述dfs思路是相反的。我们需要考虑的是
 >
@@ -613,7 +613,7 @@ https://www.luogu.com.cn/problem/P1044
 >
 >     如图：
 >
->     <img src="D:/华为云盘/_images/typora-user-images/202402012332955.png" alt="image-20231121192152555" style="zoom: 33%;" />
+>     ![图解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403191805594.png)
 >
 > - 我们知道，入栈数一定是大于等于出栈数的，即 $i\ge j$。于是我们在枚举 $j$ 的时候，枚举的范围是 $[1,i]$
 >
@@ -761,7 +761,7 @@ https://www.luogu.com.cn/problem/P2437
 
 > 题意：可以按照下面的路线从小数到相邻大数，问给定起点和终点，一共有多少种走法
 >
-> <img src="C:/Users/%E8%91%A3%E6%96%87%E6%9D%B0/AppData/Roaming/Typora/typora-user-images/image-20231126231329349.png" alt="image-20231126231329349" style="zoom:33%;" />
+> ![图解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403191806646.png)
 >
 > 思路：
 >
@@ -822,9 +822,9 @@ https://www.luogu.com.cn/problem/P1990
 >
 > 手绘：
 >
-> <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402012332894.png" alt="image-20231221100352559" style="zoom:50%;" />
+> ![图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402012332894.png)
 >
-> <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403181626377.png" alt="image-20231221100410409" style="zoom:50%;" />
+> ![图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403181626377.png)
 
 ```cpp
 #include <bits/stdc++.h>

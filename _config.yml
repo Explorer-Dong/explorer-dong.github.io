@@ -104,7 +104,7 @@ deploy:
     repo: https://github.com/Explorer-Dong/explorer-dong.github.io.git
     branch: auto-deploy
   - type: git
-    repo: https://gitee.com/explorer-dong/explorer-dong.git
+    repo: https://gitee.com/idwj/idwj.git
     branch: auto-deploy
 
 # ---------- Fluid ----------

@@ -137,6 +137,9 @@ git remote rename <OldRemoteName> <NewRemoteName>
 # 修改远程 URL
 git remote set-url <RemoteName> <NewURL>
 
+# 增加远程 push 的仓库
+git remote set-url --add github https://gitee.com/idwj/idwj.git
+
 # 删除远程
 git remote rm <RemoteName>
 ```

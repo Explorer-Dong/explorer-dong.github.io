@@ -1,5 +1,5 @@
 ---
-title: template
+title: a_template
 categories: Algorithm
 category_bar: true
 ---

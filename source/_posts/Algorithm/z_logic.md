@@ -1,5 +1,5 @@
 ---
-title: logic
+title: z_logic
 categories: Algorithm
 category_bar: true
 ---
@@ -559,3 +559,70 @@ int main() {
 }
 ```
 
+### 9. 你说的对，但是这是签到 I
+
+https://hydro.ac/d/nnu_contest/p/P1201
+
+> 题意：给定两个单调不减且只含有小写字母的字符串，求解其中最长公共子串长度
+>
+> 思路：
+>
+> - 一眼 dp？错误的，那时间复杂度就是 $O(n^2)$，显然不可能。可以发现与常规的最长公共子串的题目不同，本题中两个字符串是单调的，这个性质一定很有用。事实的确如此。
+> - 对于单调的两个字符串而言，如果**连续的**字符数量之和相等，即对于 $c_i,c_j$ 之间的所有的字符对应的数量都相等 $a[c_k]=b[c_k],(k=i+1,i+1, \cdots,j-1)$，则该段字符串就一定是公共子串。答案就是 $\displaystyle  \sum_{k=i+1}^{j-1}a[c_k]$ 或 $\displaystyle  \sum_{k=i+1}^{j-1}b[c_k]$。在枚举字符时，需要特判一下只有一种字符的情况。
+>
+> 时间复杂度：$O(n + 26^3)$
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
+using namespace std;
+
+const int N = 26;
+
+string s, t;
+int a[N], b[N];
+
+void solve() {
+	cin >> s >> t;
+	
+	for (auto c: s) a[c - 'a']++;
+	for (auto c: t) b[c - 'a']++;
+	
+	int res = -1;
+	
+	for (int i = 0; i < N; i++) {
+		for (int j = i; j < N; j++) {
+			if (j == i) res = max(res, min(a[i], b[j]));
+			else {
+				bool ok = true;
+				int mid = 0;
+				for (int k = i + 1; k <= j - 1; k++) {
+					if (a[k] != b[k]) ok = false;
+					mid += a[k];
+				}
+				
+				if (ok) {
+					res = max(res, min(a[i], b[i]) + mid + min(a[j], b[j]));
+				}
+			}
+		}
+	}
+	
+	cout << res << "\n";
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
+```

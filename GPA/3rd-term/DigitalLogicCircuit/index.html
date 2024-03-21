@@ -1,0 +1,2084 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Mr_Dwj">
+  <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
+  
+    <meta name="description" content="联系方式： :email: lijuncst@njnu.edu.cn :phone: 13770610040  一、数字逻辑概论 1.1 数字信号与数字电路 1.1.1 数字技术的发展及其应用   电流控制器件  电子管 晶体管（二极管、三极管） 半导体集成电路    EDA(Electronic Design Automation)技术：硬件设计软件化  设计：EWB or Verilog 仿">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DigitalLogicCircuit">
+<meta property="og:url" content="https://blog.dwj601.cn/GPA/3rd-term/DigitalLogicCircuit/index.html">
+<meta property="og:site_name" content="Dwj の Blog">
+<meta property="og:description" content="联系方式： :email: lijuncst@njnu.edu.cn :phone: 13770610040  一、数字逻辑概论 1.1 数字信号与数字电路 1.1.1 数字技术的发展及其应用   电流控制器件  电子管 晶体管（二极管、三极管） 半导体集成电路    EDA(Electronic Design Automation)技术：硬件设计软件化  设计：EWB or Verilog 仿">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/GEUD6RHFs8rkczJ.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/E4It79u8qrRBSAD.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/q3N7TyQIxUfKGuS.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/Zk4jUSRhqluK7rb.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/47p2xuD53TUXOKJ.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/jB3kCIUfaPDtFh7.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/31SzlwMtqRuoyOd.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/4T3s1XbzQNHJpeU.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/ylzJxHVufn7eSQv.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/oPYBuSd91bfQ8lW.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/1KrGPUWwoxe4DOk.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/VIpNdrf6vHyl2sF.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/Qynhed86Gp74cfr.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/M8xJFauW1wintyN.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/RqD2iTrEhwOMgHt.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/dbZBgWYfkeprTI8.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/izWdDaYbqhuMp2P.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/SdzovLpqUgMlYDX.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/Pc9YT6RAeKqZjmF.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/BWfgyan2bKcx5su.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/QDPGl8gbyKveB1d.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/hkNY6x2RaeSmlMq.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/UHjlmAfKCpBbqE8.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/937PNvVGrY5oy4z.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/xwBG79WU3Ds6eiM.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/T2V5X1MP9Y6EZvN.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/roblZjwI2Bvi4YQ.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/qxBWgfJAZwe6DE3.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/uKWUgxHlmObLqAk.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/NUh1LeTfSaDV6pw.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/zrw3m4fKEhNJWpD.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/NhHLG68CuMA5TcY.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/HRtaLmlFoiBS61q.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/UnNiplexuhs5JOC.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/5rhiwY1oRUNJ3mI.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/lmNhkEonzv1JiuD.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/22/jJ7ovdiOGAFKDZ2.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/Se6MkH5XKIRBWrF.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/aUBAIhs9q8k3QfG.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/CnaZG9JXSfogxzP.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/Ftobv6pJxnRX3Ia.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/dB519gvxEGm8IyZ.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/KeVjRv46Nwa1B78.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/JuVkPZ7wO6Wijam.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/uxDM6hsWS4UvaIY.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/XnHKZB1pVsk8jDd.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/16/gDvKXTZ4qud1zQ6.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/lQdMLmZRECPG3up.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/mh5YTC4IWfVMNLO.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/ivMQokz1frchV3F.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/WwryKDohuUQNdRb.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/TxSmAM4JWNzrcPH.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/epvhCVM5i7YjLlx.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/vywCkcDum8p7oeN.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/bfPq9Ky5uAxgGJB.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/JoDtxw6SPzVCy7K.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/62knjaMHCcL1w9G.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/kh8MAxoNbW6iysV.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/Syz1Ij92mXBTAF8.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/6VxbGlNFjR7q5zK.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/22/QnYLVDN5psEfwjS.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/22/LyEQRduPZ4rnNM5.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/IlF6DTd3hLqwsCy.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/CH4FTD2jeOK3BZq.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/w12WPdbls7FLtQn.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/oFVuQXnYMkatNw5.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/vU5QVSTYxWOwotF.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/W51HqJeAP3Ovujc.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/22/sGB8rZY4OWzQHbS.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/22/1i8JxBwD23ptZnL.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/22/IHi4sR5V8NbQgZY.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/22/pejKlVkMrQqv8h9.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/22/tzFvJp8ulGnRsj5.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/22/HYM3aZBkdAVxELl.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/22/OhlvsLBzTN9UeDj.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/c9PIvzZCYbOMTrD.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/22/LRE6ksiwZzjIBcy.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/xikroK2MRsenh5V.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/qzpDMR7BXtQETbr.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/GY3msiIEMtXr1kU.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/xdGvs9XIzbLYOaU.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/REXJoHwFDcNOSxU.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/6I87VrOzxYQpaeK.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/mEStlVuhGJ4pg8T.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/zcdCbRZ5TS6plgf.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/FnTsovQrBXORP9Y.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/idCy2oIkGKnYJPh.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/DHiZQdAJM9hbWeC.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/8pMfb3I5rGsHhc6.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/YseWSrogu4tCZxh.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/jXT7Ndw1RpMiLfq.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/ScmYjJIsWEvNzXl.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/3aoNH2br5Dg9hKL.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/hBv3Lc4KOI9juU8.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/7E1UavqONz2SL9h.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/S3j8wN2VGiJt7Xb.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/IpdM6UYkoJL29ue.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/17/ObrXesipQHkwqA3.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/11/Ivm2g5NrxeCL7Du.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/11/EHIDkge2vYOUVZX.png">
+<meta property="article:published_time" content="2024-03-21T02:08:56.809Z">
+<meta property="article:modified_time" content="2024-03-21T02:08:56.809Z">
+<meta property="article:author" content="Mr_Dwj">
+<meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2024/01/16/GEUD6RHFs8rkczJ.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>DigitalLogicCircuit | Dwj の Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?d08d23389220ad9b8f711cfb85757f4b";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>dwj&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="DigitalLogicCircuit"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-21 10:08" pubdate>
+          2024年3月21日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="GPA"
+        id="heading-11d966e9bbe1b7890699e782736981f0" role="tab" data-toggle="collapse" href="#collapse-11d966e9bbe1b7890699e782736981f0"
+        aria-expanded="true"
+      >
+        GPA
+        <span class="list-group-count">(13)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-11d966e9bbe1b7890699e782736981f0"
+           role="tabpanel" aria-labelledby="heading-11d966e9bbe1b7890699e782736981f0">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="2nd-term"
+        id="heading-4f9def72ea94610534c6cb0802f79527" role="tab" data-toggle="collapse" href="#collapse-4f9def72ea94610534c6cb0802f79527"
+        aria-expanded="false"
+      >
+        2nd-term
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4f9def72ea94610534c6cb0802f79527"
+           role="tabpanel" aria-labelledby="heading-4f9def72ea94610534c6cb0802f79527">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/GPA/2nd-term/ObjectOrientedClassDesign/" title="ObjectOrientedClassDesign"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ObjectOrientedClassDesign</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="3rd-term"
+        id="heading-d44acd21237d2687b9dc09822bc8c390" role="tab" data-toggle="collapse" href="#collapse-d44acd21237d2687b9dc09822bc8c390"
+        aria-expanded="true"
+      >
+        3rd-term
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-d44acd21237d2687b9dc09822bc8c390"
+           role="tabpanel" aria-labelledby="heading-d44acd21237d2687b9dc09822bc8c390">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/GPA/3rd-term/CollegePhysics%E2%85%A1/" title="CollegePhysicsⅡ"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CollegePhysicsⅡ</span>
+        </a>
+      
+    
+      
+      
+        <a href="/GPA/3rd-term/DataStructure/" title="DataStructure"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">DataStructure</span>
+        </a>
+      
+    
+      
+      
+        <a href="/GPA/3rd-term/DataStructureClassDesign/" title="DataStructureClassDesign"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">DataStructureClassDesign</span>
+        </a>
+      
+    
+      
+      
+        <a href="/GPA/3rd-term/DigitalLogicCircuit/" title="DigitalLogicCircuit"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">DigitalLogicCircuit</span>
+        </a>
+      
+    
+      
+      
+        <a href="/GPA/3rd-term/LinearAlgebra/" title="LinearAlgebra"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">LinearAlgebra</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="4th-term"
+        id="heading-eae4577fedd99361af840c113f4e776a" role="tab" data-toggle="collapse" href="#collapse-eae4577fedd99361af840c113f4e776a"
+        aria-expanded="false"
+      >
+        4th-term
+        <span class="list-group-count">(7)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-eae4577fedd99361af840c113f4e776a"
+           role="tabpanel" aria-labelledby="heading-eae4577fedd99361af840c113f4e776a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/GPA/4th-term/Algorithm/" title="Algorithm"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Algorithm</span>
+        </a>
+      
+    
+      
+      
+        <a href="/GPA/4th-term/ComputerSys/" title="ComputerSys"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ComputerSys</span>
+        </a>
+      
+    
+      
+      
+        <a href="/GPA/4th-term/MachineLearning/" title="MachineLearning"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MachineLearning</span>
+        </a>
+      
+    
+      
+      
+        <a href="/GPA/4th-term/OptMethod/" title="OptMethod"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">OptMethod</span>
+        </a>
+      
+    
+      
+      
+        <a href="/GPA/4th-term/ProbabilityAndStatistics/" title="ProbabilityAndStatistics"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ProbabilityAndStatistics</span>
+        </a>
+      
+    
+      
+      
+        <a href="/GPA/4th-term/Python/" title="Python"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Python</span>
+        </a>
+      
+    
+      
+      
+        <a href="/GPA/4th-term/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%88%9B%E6%96%B0%E5%9F%BA%E7%A1%80%EF%BC%88%E5%8D%9A%E9%9B%85%EF%BC%89/" title="大学生创新基础（博雅）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">大学生创新基础（博雅）</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">DigitalLogicCircuit</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>联系方式：</p>
+<p>:email: <a href="mailto:lijuncst@njnu.edu.cn">lijuncst@njnu.edu.cn</a></p>
+<p>:phone: 13770610040</p>
+</blockquote>
+<h2 id="一、数字逻辑概论">一、数字逻辑概论</h2>
+<h3 id="1-1-数字信号与数字电路">1.1 数字信号与数字电路</h3>
+<h4 id="1-1-1-数字技术的发展及其应用">1.1.1 数字技术的发展及其应用</h4>
+<ol>
+<li>
+<p>电流控制器件</p>
+<ol>
+<li>电子管</li>
+<li>晶体管（二极管、三极管）</li>
+<li>半导体集成电路</li>
+</ol>
+</li>
+<li>
+<p>EDA(Electronic Design Automation)技术：硬件设计软件化</p>
+<ol>
+<li>设计：EWB or Verilog</li>
+<li>仿真</li>
+<li>下载</li>
+<li>验证结果</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-1-2-数字集成电路的分类及特点">1.1.2 数字集成电路的分类及特点</h4>
+<ol>
+<li>
+<p>数字集成电路的分类</p>
+<ol>
+<li>
+<p>从结构特点及其对输入信号的响应规则角度</p>
+<ul>
+<li>组合逻辑电路</li>
+<li>时序逻辑电路</li>
+</ul>
+</li>
+<li>
+<p>从电路的形式角度</p>
+<ul>
+<li>集成电路</li>
+<li>分立电路</li>
+</ul>
+</li>
+<li>
+<p>从器件的角度</p>
+<ul>
+<li>TTL电路</li>
+<li>CMOS电路</li>
+</ul>
+</li>
+<li>
+<p>从集成度的角度</p>
+<blockquote>
+<p>集成度：每一个芯片所包含的门个数</p>
+</blockquote>
+<ul>
+<li>小规模</li>
+<li>中规模</li>
+<li>大规模</li>
+<li>超大规模</li>
+<li>甚大规模</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>数字集成电路的特点</p>
+<ol>
+<li>稳定性高：抗干扰能力强</li>
+<li>易于设计：对0和1表示的信号进行逻辑运算和处理</li>
+<li>便于集成：体积小、通用性好、成本低</li>
+<li>可编程性：可实现硬件设计软件化</li>
+<li>高速度、低功耗</li>
+<li>便于存储、传输、处理</li>
+</ol>
+</li>
+<li>
+<p>数字电路的<strong>分析</strong>、<strong>设计</strong>与测试</p>
+<ol>
+<li>分析方法
+<ul>
+<li>目标：确定输入与输出</li>
+<li>工具：逻辑代数</li>
+<li>方法：真值表、功能表、逻辑表达式和波形图</li>
+</ul>
+</li>
+<li>设计方法
+<ul>
+<li>从功能要求出发，选择合适的逻辑器件进行设计</li>
+<li>设计方式：传统的设计方法 or 基于EDA的软件设计方法</li>
+</ul>
+</li>
+<li>测试技术</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-1-3-模拟信号与数字信号">1.1.3 模拟信号与数字信号</h4>
+<ol>
+<li>
+<p>模拟信号：时间和数值均<strong>连续</strong>变化的信号</p>
+</li>
+<li>
+<p>数字信号：时间和数值均<strong>离散</strong>变化的信号</p>
+</li>
+<li>
+<p>模拟量的数字表示：模数转换，即将连续的模拟信号经过<strong>采样与编码</strong>转化为数字信号</p>
+<ul>
+<li>首先对时间离散</li>
+<li>然后对幅值离散</li>
+<li>最后对得到的数字量进行编码</li>
+</ul>
+</li>
+</ol>
+<h4 id="1-1-4-数字信号的描述方法">1.1.4 数字信号的描述方法</h4>
+<ol>
+<li>
+<p>二值数字逻辑和逻辑电平</p>
+<p>二值数字逻辑：0和1两种状态（定量）</p>
+<p>逻辑电平：高电压和低电压（定性）</p>
+ <center>
+     表1 <strong>正逻辑</strong>关系表（负逻辑相反）
+ </center>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">电压（V）</th>
+<th style="text-align:center">二值逻辑</th>
+<th style="text-align:center">电平</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">3.5~5</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">H（高电压）</td>
+</tr>
+<tr>
+<td style="text-align:center">0~1.5</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">L（低电压）</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>数字波形</p>
+</li>
+<li>
+<p>实际数字信号波形</p>
+</li>
+<li>
+<p>波形图、时序图或定时图</p>
+</li>
+</ol>
+<h3 id="1-2-数制">1.2 数制</h3>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mi>N</mi><msub><mo stretchy="false">)</mo><mi>r</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mi mathvariant="normal">∞</mi></munderover><msub><mi>K</mi><mi>i</mi></msub><mtext> </mtext><msup><mi>r</mi><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">(N)_r=\sum_{i=-\infty}^\infty K_i\ r^i
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.9874em;vertical-align:-1.336em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">−</span><span class="mord mtight">∞</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">∞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.336em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8747em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h4 id="1-2-1-十进制">1.2.1 十进制</h4>
+<h4 id="1-2-2-二进制">1.2.2 二进制</h4>
+<p>优点：<strong>易于表达</strong>；二进制数字电路<strong>逻辑简单</strong>，所用元件少；基本运算<strong>规则简单</strong>，运算操作方便</p>
+<p>波形表示：应用比如“计数器”</p>
+<p>数据传输：应用比如“串行传输”</p>
+<h4 id="1-2-3-十-二进制之间的转换">1.2.3 十-二进制之间的转换</h4>
+<p>十进制小数转化为二进制：将小数部位不断×2，取整数，直到没有小数部分为止</p>
+<h4 id="1-2-4-十六进制和八进制">1.2.4 十六进制和八进制</h4>
+<p>二进制转十六进制：从右往左每四位换算成十六进制</p>
+<p>二进制转八进制：从右往左每三位换算成八进制</p>
+<h3 id="1-3-二进制数的算术运算">1.3 二进制数的算术运算</h3>
+<h4 id="1-3-1-无符号二进制数的运算">1.3.1 无符号二进制数的运算</h4>
+<h4 id="1-3-2-有符号二进制数的运算">1.3.2 有符号二进制数的运算</h4>
+<p>定义：其实就是多了一个符号位，且不可以省略。其中0表示正数，1表示负数：</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mo>+</mo><mn>11</mn><msub><mo stretchy="false">)</mo><mi>D</mi></msub><mo>=</mo><mo stretchy="false">(</mo><mn>01011</mn><msub><mo stretchy="false">)</mo><mi>B</mi></msub><mspace linebreak="newline"></mspace><mo stretchy="false">(</mo><mo>−</mo><mn>11</mn><msub><mo stretchy="false">)</mo><mi>D</mi></msub><mo>=</mo><mo stretchy="false">(</mo><mn>11011</mn><msub><mo stretchy="false">)</mo><mi>B</mi></msub><mspace linebreak="newline"></mspace></mrow><annotation encoding="application/x-tex">(+11)_D=(01011)_B \\
+(-11)_D=(11011)_B \\
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">+</span><span class="mord">11</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">01011</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">11</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">11011</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mspace newline"></span></span></span></span></p>
+<p>补码、反码和原码：</p>
+<ul>
+<li>
+<p>对于正数，补码反码原码全部一样</p>
+</li>
+<li>
+<p>对于负数，反码为：符号位不动，原码按位取反；补码为：反码最低位+1即可</p>
+</li>
+</ul>
+<p>加法：与十进制竖式计算类似</p>
+<p>减法：与十进制竖式计算类似</p>
+<p>溢出：是因为数值位不够了，解决方法是进行<strong>位扩展</strong></p>
+<p>溢出的判别：</p>
+<ul>
+<li>
+<p>两个正数的求和，得到的补码的最高位如果为 1，则溢出</p>
+</li>
+<li>
+<p>两个负数的求和，得到的补码的最高位如果为 0，则溢出</p>
+</li>
+</ul>
+<h3 id="1-4-二进制代码">1.4 二进制代码</h3>
+<h4 id="1-4-1-二-十进制码">1.4.1 二-十进制码</h4>
+<p>其实就是在表示 0-15 的十六个二进制里面，按照不同的规则选取 10 个二进制数来进行转换</p>
+<ol>
+<li>有权码 - 最接近逻辑的：8421BCD码</li>
+<li>无权码</li>
+</ol>
+<h4 id="1-4-2-格雷码">1.4.2 格雷码</h4>
+<h4 id="1-4-3-ASCII码">1.4.3 ASCII码</h4>
+<h3 id="1-5-二值逻辑变量与基本逻辑运算">1.5 二值逻辑变量与基本逻辑运算</h3>
+<h4 id="1-5-1-常见逻辑符号示例">1.5.1 常见逻辑符号示例</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算类型</th>
+<th style="text-align:center">逻辑符号</th>
+<th style="text-align:center">逻辑表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">与</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/GEUD6RHFs8rkczJ.png" srcset="/img/loading.gif" lazyload alt="image-20231008095031818" style="zoom:33%;" /></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mi>A</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">Y=AB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:center">或</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/E4It79u8qrRBSAD.png" srcset="/img/loading.gif" lazyload alt="image-20231008095047759" style="zoom:33%;" /></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mi>A</mi><mo>+</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">Y=A+B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:center">非</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/q3N7TyQIxUfKGuS.png" srcset="/img/loading.gif" lazyload alt="image-20231008094808523" style="zoom:33%;" /></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">Y=\overline{A}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:center">与非</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/Zk4jUSRhqluK7rb.png" srcset="/img/loading.gif" lazyload alt="image-20231008095111128" style="zoom:33%;" /></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mover accent="true"><mrow><mi>A</mi><mi>B</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">Y=\overline{AB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:center">或非</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/47p2xuD53TUXOKJ.png" srcset="/img/loading.gif" lazyload alt="image-20231008095809755" style="zoom:33%;" /></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mover accent="true"><mrow><mi>A</mi><mo>+</mo><mi>B</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">Y=\overline{A+B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9667em;vertical-align:-0.0833em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.0833em;"><span></span></span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:center">异或</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/jB3kCIUfaPDtFh7.png" srcset="/img/loading.gif" lazyload alt="image-20231008095902796" style="zoom:33%;" /></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover><mi>B</mi><mo>+</mo><mi>A</mi><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover><mo>=</mo><mi>A</mi><mo>⊕</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">Y=\overline A B+A \overline B=A \oplus B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9667em;vertical-align:-0.0833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord mathnormal">A</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:center">同或</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/31SzlwMtqRuoyOd.png" srcset="/img/loading.gif" lazyload alt="image-20231008095922663" style="zoom:33%;" /></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mi>A</mi><mi>B</mi><mo>+</mo><mover accent="true"><mi>A</mi><mo>ˉ</mo></mover><mover accent="true"><mi>B</mi><mo>ˉ</mo></mover><mo>=</mo><mi>A</mi><mo>⊙</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">Y = AB + \bar A \bar B = A\odot B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8201em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">A</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1111em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊙</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:center">与或非</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/4T3s1XbzQNHJpeU.png" srcset="/img/loading.gif" lazyload alt="image-20231008095947154" style="zoom:33%;" /></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mover accent="true"><mrow><mi>A</mi><mi>B</mi><mo>+</mo><mi>C</mi><mi>D</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">Y=\overline{AB+CD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9667em;vertical-align:-0.0833em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.0833em;"><span></span></span></span></span></span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-5-2-使用逻辑函数表示实际问题">1.5.2 使用逻辑函数表示实际问题</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">实际问题</th>
+<th style="text-align:center">图片示例</th>
+<th style="text-align:center">变量表示</th>
+<th style="text-align:center">列真值表</th>
+<th style="text-align:center">逻辑函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/ylzJxHVufn7eSQv.png" srcset="/img/loading.gif" lazyload alt="image-20231008102102546" style="zoom:25%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/oPYBuSd91bfQ8lW.png" srcset="/img/loading.gif" lazyload alt="image-20231008102037276" style="zoom:25%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/1KrGPUWwoxe4DOk.png" srcset="/img/loading.gif" lazyload alt="image-20231008101253710" style="zoom:50%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/VIpNdrf6vHyl2sF.png" srcset="/img/loading.gif" lazyload alt="image-20231008101303842" style="zoom: 33%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/Qynhed86Gp74cfr.png" srcset="/img/loading.gif" lazyload alt="image-20231008101318582" style="zoom:33%;" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-6-逻辑函数及其表示方法">1.6 逻辑函数及其表示方法</h3>
+<p>描述输入逻辑变量和输出逻辑变量之间的因果关系，称为逻辑函数</p>
+<h4 id="1-6-1-逻辑函数的几种表示方法">1.6.1 逻辑函数的几种表示方法</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">真值表</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/M8xJFauW1wintyN.png" srcset="/img/loading.gif" lazyload alt="image-20231008110656451" style="zoom: 33%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">逻辑函数表达式</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/RqD2iTrEhwOMgHt.png" srcset="/img/loading.gif" lazyload alt="image-20231008110713908" style="zoom:25%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">逻辑图</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/dbZBgWYfkeprTI8.png" srcset="/img/loading.gif" lazyload alt="image-20240116131615935" style="zoom: 25%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">波形图</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/izWdDaYbqhuMp2P.png" srcset="/img/loading.gif" lazyload alt="image-20231008111013474" style="zoom:33%;" /></td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-6-2-逻辑函数表示方法之间的转换">1.6.2 逻辑函数表示方法之间的转换</h4>
+<p><strong>真值表到逻辑图的转换</strong></p>
+<ul>
+<li>
+<p>查看真值表</p>
+  <img src="https://s2.loli.net/2024/01/16/SdzovLpqUgMlYDX.png" srcset="/img/loading.gif" lazyload alt="image-20231008112605100" style="zoom:33%;" />
+</li>
+<li>
+<p>根据真值表写出逻辑表达式</p>
+  <img src="https://s2.loli.net/2024/01/16/Pc9YT6RAeKqZjmF.png" srcset="/img/loading.gif" lazyload alt="image-20231008112628066" style="zoom: 50%;" />
+</li>
+<li>
+<p>化简（上式不用化简）</p>
+</li>
+<li>
+<p>绘制逻辑图</p>
+  <img src="https://s2.loli.net/2024/01/16/BWfgyan2bKcx5su.png" srcset="/img/loading.gif" lazyload alt="image-20231008112708161" style="zoom:50%;" />
+</li>
+</ul>
+<p><strong>逻辑图到真值表的转换</strong></p>
+<ul>
+<li>
+<p>根据逻辑图逐级写出表达式</p>
+  <img src="https://s2.loli.net/2024/01/16/QDPGl8gbyKveB1d.png" srcset="/img/loading.gif" lazyload alt="image-20231008112800422" style="zoom:50%;" />
+</li>
+<li>
+<p>化简</p>
+</li>
+<li>
+<p>代入所有输入变量求真值表</p>
+  <img src="https://s2.loli.net/2024/01/16/hkNY6x2RaeSmlMq.png" srcset="/img/loading.gif" lazyload alt="image-20231008112839220" style="zoom:50%;" />
+</li>
+</ul>
+<h2 id="二、逻辑代数与硬件描述语言基础">二、逻辑代数与硬件描述语言基础</h2>
+<h3 id="2-1-逻辑代数的基本定律和规则">2.1 逻辑代数的基本定律和规则</h3>
+<h4 id="2-1-1-逻辑代数的基本定律和恒等式-star">2.1.1 逻辑代数的基本定律和恒等式:star:</h4>
+<img src="https://s2.loli.net/2024/01/16/UHjlmAfKCpBbqE8.png" srcset="/img/loading.gif" lazyload alt="image-20231008114849627" style="zoom:50%;" />
+<img src="https://s2.loli.net/2024/01/16/937PNvVGrY5oy4z.png" srcset="/img/loading.gif" lazyload alt="image-20231008114943429" style="zoom:50%;" />
+<h4 id="2-1-2-逻辑代数的基本规则">2.1.2 逻辑代数的基本规则</h4>
+<ol>
+<li>
+<p><strong>代入规则</strong> - 类似于换元</p>
+ <img src="https://s2.loli.net/2024/01/16/xwBG79WU3Ds6eiM.png" srcset="/img/loading.gif" lazyload alt="image-20231008115435355" style="zoom:50%;" />
+</li>
+<li>
+<p><strong>反演规则</strong>（获得反函数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>Y</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span> ）</p>
+<blockquote>
+<p>觉得烦可以直接进行取反运算，简单明了不会错</p>
+</blockquote>
+<ul>
+<li>对于任意一个逻辑表达式L，与门 &amp; 或门取反，变量取反，0 &amp; 1取反</li>
+<li>保持原来的运算优先顺序（即如果在原函数表达式中，AB之间先运算，再和其他变量进行运算，那么非函数的表达式中，仍然是AB之间先运算）</li>
+<li>对于反变量以外的非号应保留不变</li>
+</ul>
+ <img src="https://s2.loli.net/2024/01/16/T2V5X1MP9Y6EZvN.png" srcset="/img/loading.gif" lazyload alt="image-20231008115328932" style="zoom:50%;" />
+ <img src="https://s2.loli.net/2024/01/16/roblZjwI2Bvi4YQ.png" srcset="/img/loading.gif" lazyload alt="image-20231008115337125" style="zoom:25%;" />
+</li>
+<li>
+<p><strong>对偶规则</strong>（获得对偶式 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">L&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> ）</p>
+<ul>
+<li>对于任何逻辑函数式：与门、或门取反，0、1 取反</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-2-逻辑函数表达式的形式">2.2 逻辑函数表达式的形式</h3>
+<h4 id="2-2-1-逻辑函数表达式的基本形式">2.2.1 逻辑函数表达式的基本形式</h4>
+<ol>
+<li>
+<p>与或表达式：若干个与项相或</p>
+ <img src="https://s2.loli.net/2024/01/16/qxBWgfJAZwe6DE3.png" srcset="/img/loading.gif" lazyload alt="image-20231013094928938" style="zoom:33%;" />
+</li>
+<li>
+<p>或与表达式：若干个或项相与</p>
+ <img src="https://s2.loli.net/2024/01/16/uKWUgxHlmObLqAk.png" srcset="/img/loading.gif" lazyload alt="image-20231013094938441" style="zoom: 50%;" />
+</li>
+</ol>
+<h4 id="2-2-2-最小项与最小项表达式">2.2.2 最小项与最小项表达式</h4>
+<ol>
+<li>
+<p>最小项的定义和性质：n 个变量的最小项一共有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> 个</p>
+</li>
+<li>
+<p>最小项表达式：所有的最小项相或</p>
+ <img src="https://s2.loli.net/2024/01/16/NUh1LeTfSaDV6pw.png" srcset="/img/loading.gif" lazyload alt="image-20231013100105922" style="zoom: 33%;" />
+</li>
+</ol>
+<h4 id="2-2-3-最大项与最大项表达式">2.2.3 最大项与最大项表达式</h4>
+<ol>
+<li>
+<p>最大项的定义和性质：n 个变量的最大项一共有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> 个</p>
+</li>
+<li>
+<p>最大项表达式：所有的最大项相与</p>
+ <img src="https://s2.loli.net/2024/01/16/zrw3m4fKEhNJWpD.png" srcset="/img/loading.gif" lazyload alt="image-20240116134303065" style="zoom: 50%;" />
+</li>
+</ol>
+<h4 id="2-2-4-最大项和最小项的关系">2.2.4 最大项和最小项的关系</h4>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>m</mi><mi>i</mi></msub><mo>=</mo><mover accent="true"><msub><mi>M</mi><mi>i</mi></msub><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">m_i=\overline {M_i}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0333em;vertical-align:-0.15em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="2-3-逻辑函数的代数化简法">2.3 逻辑函数的代数化简法</h3>
+<p>为什么要学化简？因为化简之后可以减少门的使用，从而增强电路可靠性、降低成本</p>
+<h4 id="2-3-1-逻辑函数的最简形式">2.3.1 逻辑函数的最简形式</h4>
+<p>最简与或表达式：包含的与项数最少，且每个与项中变量数最少的与或表达式</p>
+<h4 id="2-3-2-逻辑函数的代数化简法">2.3.2 逻辑函数的代数化简法</h4>
+<ol>
+<li>
+<p>逻辑函数的<strong>化简</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">逻辑函数</th>
+<th style="text-align:center">证明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">并项法</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>+</mo><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">A+\overline A = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></td>
+<td style="text-align:center">显然</td>
+</tr>
+<tr>
+<td style="text-align:center">吸收法</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>+</mo><mi>A</mi><mi>B</mi><mo>=</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">A+AB = A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></td>
+<td style="text-align:center">提取公因子</td>
+</tr>
+<tr>
+<td style="text-align:center">消去法</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>+</mo><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover><mi>B</mi><mo>=</mo><mi>A</mi><mo>+</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A+\overline A B = A+B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+<td style="text-align:center">摩根定律使用两次</td>
+</tr>
+<tr>
+<td style="text-align:center">配项法</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi>A</mi><mo stretchy="false">(</mo><mi>B</mi><mo>+</mo><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A = A(B + \overline B)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1333em;vertical-align:-0.25em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td>
+<td style="text-align:center">显然</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>逻辑函数形式的<strong>变换</strong></p>
+<blockquote>
+<p>使用场景：通常在一片集成电路芯片中只有一种门电路，为了减少门电路的种类，需要对逻辑函数表达式进行变换</p>
+<p>变换方法：常常使用两次取反的套路进行变换</p>
+</blockquote>
+ <img src="https://s2.loli.net/2024/01/16/NhHLG68CuMA5TcY.png" srcset="/img/loading.gif" lazyload alt="image-20231013112834593" style="zoom:50%;" />
+</li>
+</ol>
+<h3 id="2-4-逻辑函数的卡诺图化简法">2.4 逻辑函数的卡诺图化简法</h3>
+<h4 id="2-4-1-用卡诺图表示逻辑函数">2.4.1 用卡诺图表示逻辑函数</h4>
+<p>首先写出逻辑函数的表达式并且转化为最小项表达式，最后将最小项填入相应的矩阵中即可</p>
+<h4 id="2-4-2-用卡诺图化简逻辑函数">2.4.2 用卡诺图化简逻辑函数</h4>
+<p>尽可能使得圈出来的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">2^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span> 圈中包含的数尽可能的多，即让 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 尽可能的大。注意：圈中的数全部都得是最小项的数</p>
+<h3 id="2-5-硬件描述语言-Verilog-HDL-基础">2.5 硬件描述语言 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>e</mi><mi>r</mi><mi>i</mi><mi>l</mi><mi>o</mi><mi>g</mi><mtext> </mtext><mi>H</mi><mi>D</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">Verilog\ HDL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.02778em;">HD</span><span class="mord mathnormal">L</span></span></span></span> 基础</h3>
+<p>为了从软件代码的角度描述电路，从下面三个方面介绍如何用相关的方式进行描述</p>
+<h4 id="2-5-1-门级描述">2.5.1 门级描述</h4>
+<p>门级元件中，第一个位置是输出变量，之后的都是输入变量，可解释为：多输入门</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">门级元件</th>
+<th style="text-align:center">元件符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">与</td>
+<td style="text-align:center">and</td>
+</tr>
+<tr>
+<td style="text-align:center">或</td>
+<td style="text-align:center">or</td>
+</tr>
+<tr>
+<td style="text-align:center">非</td>
+<td style="text-align:center">not</td>
+</tr>
+<tr>
+<td style="text-align:center">与非</td>
+<td style="text-align:center">nand</td>
+</tr>
+<tr>
+<td style="text-align:center">或非</td>
+<td style="text-align:center">nor</td>
+</tr>
+<tr>
+<td style="text-align:center">异或</td>
+<td style="text-align:center">xor</td>
+</tr>
+<tr>
+<td style="text-align:center">同或</td>
+<td style="text-align:center">xnor</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-5-2-数据流描述">2.5.2 数据流描述</h4>
+<p>简单的概括就是使用相关的位运算进行表述，因为电路逻辑本就是二元逻辑，因此位运算就刚好匹配。在使用数据流进行电路描述时，采用的语句都是连续赋值语句，由 assign 关键词开始，多条 assign 语句是<strong>并行</strong>运行的</p>
+<p>需要注意的是，在连续赋值语句中，被赋值的变量一定是 wire 的<strong>线网</strong>类型的变量，示例如下</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-comment">// 其中 Y 为 wire 类型的变量</span><br><span class="hljs-keyword">assign</span> Y = (~S &amp; D0) | (S &amp; D1)<br></code></pre></td></tr></table></figure>
+<h4 id="2-5-3-行为描述">2.5.3 行为描述</h4>
+<p>简单的概括就是使用底层语言进行编程，类似于最开始的 C 语言。使用行为描述语句进行描述时，使用 always 关键字开始变量赋值逻辑，多条 always 语句是<strong>串行</strong>运行的</p>
+<p>需要注意的是，在行为描述语句中，被赋值的变量一定是 reg 等<strong>寄存器</strong>类型的变量，这与上述数据流描述的方式不同，示例如下</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-comment">// 其中 Y 为 reg 类型的变量</span><br><span class="hljs-keyword">always</span>@(*)	<span class="hljs-comment">// * 为敏感变量，对于组合电路而言，所有的输入都是敏感变量</span><br>    <span class="hljs-keyword">if</span> (S) Y = D1;<br>	<span class="hljs-keyword">else</span>   Y = D0;<br></code></pre></td></tr></table></figure>
+<h2 id="三、逻辑门电路">三、逻辑门电路</h2>
+<h3 id="3-1-逻辑门电路简介">3.1 逻辑门电路简介</h3>
+<p>MOS 管含有 NMOS 管和 PMOS 管，NMOS 管与 PMOS 管的组合称为互补 MOS，或称为 CMOS 电路</p>
+<h3 id="3-2-基本CMOS逻辑门电路">3.2 基本CMOS逻辑门电路</h3>
+<p>附上启蒙的博客：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/258852620">MOS管及简单CMOS逻辑门电路原理图解析！</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">器件</th>
+<th style="text-align:center">电路</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">开关</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/HRtaLmlFoiBS61q.png" srcset="/img/loading.gif" lazyload alt="image-20231201090156879" style="zoom:50%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">反相器（非门）</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/UnNiplexuhs5JOC.png" srcset="/img/loading.gif" lazyload alt="image-20231201090250860" style="zoom:33%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">与非门</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/5rhiwY1oRUNJ3mI.png" srcset="/img/loading.gif" lazyload alt="image-20231201090233084" style="zoom: 33%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">或非门</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/lmNhkEonzv1JiuD.png" srcset="/img/loading.gif" lazyload alt="image-20231201090319423" style="zoom:33%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">传输门（开关）</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/12/22/jJ7ovdiOGAFKDZ2.png" srcset="/img/loading.gif" lazyload alt="image-20231222104533397" style="zoom:33%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">与门</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/Se6MkH5XKIRBWrF.png" srcset="/img/loading.gif" lazyload alt="image-20240117003028351" style="zoom:33%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">或门</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/aUBAIhs9q8k3QfG.png" srcset="/img/loading.gif" lazyload alt="image-20240117003058029" style="zoom:33%;" /></td>
+</tr>
+</tbody>
+</table>
+<p><strong>应用示例</strong></p>
+<p>解读的逻辑其实很简单，在理解之前，应该首先观看上面给出的连接中的 MOS 电路的简化版，从而理解电路的正确结构！即，每一个 MOS 管都理解为一个开关，何时闭合与断开完全取决于相应的 MOS 管的种类与电平，如果是 NMOS 管，即箭头指向左边的，为高电平导通，PMOS 管则相反，只需要知道此电路基本逻辑，那么接下来的分析结果就是水到渠成的事</p>
+<p>需要知道一个理念就是，两个电路如果是并联的存在，那么逻辑表达式就是或，简称为<strong>并联相或</strong>；对应的，两个电路如果是串联的存在，那么逻辑表达式就是与，简称为<strong>串联相与</strong>。最后需要补充一点的就是关于取反的辨识，我们知道一个反相器 MOS 管的逻辑是非常简单的，就是一个 NMOS 管和一个 PMOS 管的组合，那么只需要在分析多个线路是串联还是并联的关系之后，最后经过一个反相器就是一个<strong>取反</strong>逻辑</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">电路</th>
+<th style="text-align:center">逻辑表达式</th>
+<th style="text-align:center">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/CnaZG9JXSfogxzP.png" srcset="/img/loading.gif" lazyload alt="image-20231201090643503" style="zoom:50%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/Ftobv6pJxnRX3Ia.png" srcset="/img/loading.gif" lazyload alt="image-20231201090727291" style="zoom:50%;" /></td>
+<td style="text-align:center">异或门</td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/dB519gvxEGm8IyZ.png" srcset="/img/loading.gif" lazyload alt="image-20240117103214449"></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mover accent="true"><mrow><mo stretchy="false">(</mo><mi>B</mi><mi>C</mi><mo>+</mo><mi>D</mi><mo stretchy="false">)</mo><mi>A</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">L=\overline{(BC+D)A}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.25em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span><span class="mord mathnormal">A</span></span></span><span style="top:-3.87em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span></span></span></span></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/KeVjRv46Nwa1B78.png" srcset="/img/loading.gif" lazyload alt="image-20240117103238963"></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mover accent="true"><mrow><mo stretchy="false">(</mo><mi>A</mi><mo>+</mo><mi>B</mi><mo stretchy="false">)</mo><mi>X</mi></mrow><mo stretchy="true">‾</mo></mover><mo>=</mo><mover accent="true"><mrow><mo stretchy="false">(</mo><mi>A</mi><mo>+</mo><mi>B</mi><mo stretchy="false">)</mo><mover accent="true"><mrow><mi>A</mi><mi>B</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><mo stretchy="true">‾</mo></mover><mo>=</mo><mi>A</mi><mo>⊙</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">L=\overline{(A+B)X}=\overline{(A+B)\overline{AB}}=A\odot B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.25em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span><span style="top:-3.87em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3333em;vertical-align:-0.25em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:-4.0033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊙</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+<td style="text-align:center">同或门</td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/JuVkPZ7wO6Wijam.png" srcset="/img/loading.gif" lazyload alt="image-20231201091736402" style="zoom:50%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/uxDM6hsWS4UvaIY.png" srcset="/img/loading.gif" lazyload alt="image-20231201091750341" style="zoom:50%;" /></td>
+<td style="text-align:center">异或门</td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/XnHKZB1pVsk8jDd.png" srcset="/img/loading.gif" lazyload alt="image-20231201091831389" style="zoom:50%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/16/gDvKXTZ4qud1zQ6.png" srcset="/img/loading.gif" lazyload alt="image-20231201091858929" style="zoom:50%;" /></td>
+<td style="text-align:center">2选1数据选择器</td>
+</tr>
+</tbody>
+</table>
+<h2 id="四、组合逻辑电路-star">四、组合逻辑电路:star:</h2>
+<h3 id="4-1-组合逻辑电路的分析">4.1 组合逻辑电路的分析</h3>
+<h4 id="4-1-1-定义">4.1.1 定义</h4>
+<p>只取决于实时输入，从而给出相应的输出，与之前的运行结果无关。<strong>没有反馈</strong>，<strong>没有记忆单元</strong></p>
+<h4 id="4-1-2-分析步骤与方法">4.1.2 分析步骤与方法</h4>
+<ol>
+<li>由逻辑图得到<strong>逻辑表达式</strong></li>
+<li><strong>化简和变换</strong></li>
+<li>列<strong>真值表</strong></li>
+<li>根据真值表（或者波形图）<strong>分析电路功能</strong></li>
+</ol>
+<h3 id="4-2-组合逻辑电路的设计">4.2 组合逻辑电路的设计</h3>
+<h4 id="4-2-1-设计过程">4.2.1 设计过程</h4>
+<ol>
+<li>明确逻辑含义：确定输入输出并定义逻辑状态的含义</li>
+<li>列出真值表：根据逻辑描述写出真值表</li>
+<li>写出逻辑表达式：由真值表写出逻辑表达式，真值取原、假值取反</li>
+<li>化简逻辑表达式：代数化简法 or 卡诺图化简法</li>
+<li>画出逻辑图：使用相应的门级元件进行组合连接</li>
+</ol>
+<h4 id="4-2-2-优化实现">4.2.2 优化实现</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">电路类型</th>
+<th style="text-align:center">优化策略</th>
+<th style="text-align:center">电路图</th>
+<th style="text-align:center">优化结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">单输出电路</td>
+<td style="text-align:center">统一元件类型</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/lQdMLmZRECPG3up.png" srcset="/img/loading.gif" lazyload alt="image-20231117112320588" style="zoom: 33%;" /></td>
+<td style="text-align:center">见左图文字</td>
+</tr>
+<tr>
+<td style="text-align:center">多输出电路</td>
+<td style="text-align:center">共享相同逻辑项</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/mh5YTC4IWfVMNLO.png" srcset="/img/loading.gif" lazyload alt="image-20231117112426358" style="zoom:33%;" /></td>
+<td style="text-align:center">见左图文字</td>
+</tr>
+<tr>
+<td style="text-align:center">多级逻辑电路（限定入数）</td>
+<td style="text-align:center">提取公因项</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/ivMQokz1frchV3F.png" srcset="/img/loading.gif" lazyload alt="image-20231117112559081" style="zoom:33%;" /></td>
+<td style="text-align:center">见左图文字</td>
+</tr>
+<tr>
+<td style="text-align:center">多级逻辑电路（限定入数）</td>
+<td style="text-align:center">提取公因项</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/WwryKDohuUQNdRb.png" srcset="/img/loading.gif" lazyload alt="image-20231117112618856" style="zoom: 33%;" /></td>
+<td style="text-align:center">见左图文字</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-3-组合逻辑电路中的竞争与冒险">4.3 组合逻辑电路中的竞争与冒险</h3>
+<h4 id="4-3-1-产生的原因">4.3.1 产生的原因</h4>
+<p>门级元件的延时效应</p>
+<h4 id="4-3-2-消去的方法">4.3.2 消去的方法</h4>
+<ol>
+<li>
+<p>消除互补变量</p>
+</li>
+<li>
+<p>增加乘积项，避免互补项相加</p>
+</li>
+<li>
+<p>输出端并联电容器</p>
+ <img src="https://s2.loli.net/2024/01/17/TxSmAM4JWNzrcPH.png" srcset="/img/loading.gif" lazyload alt="image-20231117115217185" style="zoom: 50%;" />
+</li>
+</ol>
+<h3 id="4-4-若干典型的组合逻辑电路">4.4 若干典型的组合逻辑电路</h3>
+<h4 id="4-4-1-编码器">4.4.1 编码器</h4>
+<p>普通编码器：只允许有一个输入，从而进行编码，一旦出现多输入就会发生错误</p>
+<p>优先编码器：无论多少输入，都会按照一开始设定的优先级进行最高等级的那一个信号位的编码</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">型号</th>
+<th style="text-align:center">逻辑符号</th>
+<th style="text-align:center">功能分析</th>
+<th style="text-align:center">逻辑图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">4-2优先编码器</td>
+<td style="text-align:center">74LS00</td>
+<td style="text-align:center">2片7400（4个2输入与非门）实现</td>
+<td style="text-align:center">需要将4-2优先编码器的两个逻辑函数转化为与非式，从而进行电路逻辑的搭建。化简后发现需要7个2输入与非门，故需要2片7400才能实现4-2线优先编码器</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">8-3优先编码器</td>
+<td style="text-align:center">CD4532</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/epvhCVM5i7YjLlx.png" srcset="/img/loading.gif" lazyload alt="image-20231208104642447" style="zoom: 50%;" /></td>
+<td style="text-align:center">除了8个输入端与3个输出端，还有EI、EO与GS端。其中<strong>GS</strong>是用来标明当前电路是否处于工作状态的，即如果没有输入端为有效信号，GS就是低电平，反之则是高电平。而<strong>EI与EO</strong>是为了电路扩展而诞生的，当EI为高电平且没有任何输入的情况下，EO也是1，此时的4532就相当于一根导线，从而可以进行片子的扩展</td>
+<td style="text-align:center">由于有现成的集成电路板，故就是逻辑符号</td>
+</tr>
+<tr>
+<td style="text-align:center">16-4优先编码器</td>
+<td style="text-align:center">CD4532</td>
+<td style="text-align:center">2片4532实现</td>
+<td style="text-align:center">首先确保EI始终为高电平。<strong>输出后三位</strong>就是两个4532片子的3输出分别或的结果，<strong>最高位的输出</strong>是高位片的GS端的结果</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/vywCkcDum8p7oeN.png" srcset="/img/loading.gif" lazyload alt="image-20240117120736794" style="zoom:200%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">32-5优先编码器</td>
+<td style="text-align:center">74LS00+CD4532</td>
+<td style="text-align:center">1片7400+4片4532实现</td>
+<td style="text-align:center">首先确保EI始终为高电平。<strong>输出后三位</strong>就是四个4532片子的3输出分别或的结果，<strong>最高位的两个输出</strong>取决于4个片子GS端4-2优先编码的结果。</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/bfPq9Ky5uAxgGJB.png" srcset="/img/loading.gif" lazyload alt="image-20240117121434992" style="zoom:200%;" /></td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-4-2-译码器-数据分配器">4.4.2 译码器/数据分配器</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">型号</th>
+<th style="text-align:center">逻辑符号</th>
+<th style="text-align:center">功能分析</th>
+<th style="text-align:center">逻辑图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2-4译码器</td>
+<td style="text-align:center">74X139</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/JoDtxw6SPzVCy7K.png" srcset="/img/loading.gif" lazyload alt="image-20231208101820876" style="zoom: 33%;" /></td>
+<td style="text-align:center">使能端有效时。按照对应的输出给出相应输出的低电平信号</td>
+<td style="text-align:center">由于有现成的集成电路板，故就是逻辑符号</td>
+</tr>
+<tr>
+<td style="text-align:center">3-8译码器</td>
+<td style="text-align:center">74X138</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/62knjaMHCcL1w9G.png" srcset="/img/loading.gif" lazyload alt="image-20231208101658175" style="zoom:25%;" /></td>
+<td style="text-align:center">使能端有效时。按照对应的输出给出相应输出的低电平信号</td>
+<td style="text-align:center">由于有现成的集成电路板，故就是逻辑符号</td>
+</tr>
+<tr>
+<td style="text-align:center">4-16译码器</td>
+<td style="text-align:center">74X138或74X139</td>
+<td style="text-align:center">2片74X138或5片74X139</td>
+<td style="text-align:center">使能端有效时。<strong>输入的前三位</strong>分别接入两片3-8译码器的输入端，<strong>输入的最后一位</strong>接入两片3-8译码器的高电平使能端即可；如果用2-4译码器来实现，<strong>输入的前两位</strong>分别接入四片2-4译码器的输入端，<strong>输入的后两位</strong>通过一个2-4译码器的四个输入分别接入4片2-4译码器的低电平使能端即可</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/kh8MAxoNbW6iysV.png" srcset="/img/loading.gif" lazyload alt="image-20240117125311036"></td>
+</tr>
+<tr>
+<td style="text-align:center">5-32译码器</td>
+<td style="text-align:center">74X139+74X138</td>
+<td style="text-align:center">1片74X139+4片74X138</td>
+<td style="text-align:center">使能端有效时。<strong>输入的前三位</strong>分别接入四片3-8译码器的输入端，<strong>输入的后两位</strong>通过2-4译码的4个结果分别接入四片3-8译码器的低电平使能端，从而决定是哪一个3-8译码器在工作</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/Syz1Ij92mXBTAF8.png" srcset="/img/loading.gif" lazyload alt="image-20231208104231966" style="zoom: 200%;" /></td>
+</tr>
+</tbody>
+</table>
+<p><strong>使用译码器实现逻辑函数</strong></p>
+<p>我们知道译码器的每一个输出代表一个最小项，那么对于一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 变量的逻辑函数，可以通过以下步骤用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>−</mo><msup><mn>2</mn><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">x-2^x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span></span></span> 译码器实现任意 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 变量的逻辑函数</p>
+<ol>
+<li>将逻辑函数转化为最小项表达式（大量使用摩根定律）</li>
+<li>转化为译码器的输出（写成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><msub><mi>m</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\sum m_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的形式）</li>
+<li>在译码器的输出端加一个多输入与非门即可（对结果进行与非）</li>
+</ol>
+<img src="https://s2.loli.net/2024/01/17/6VxbGlNFjR7q5zK.png" srcset="/img/loading.gif" lazyload alt="image-20231208110328594" style="zoom:50%;" />
+<p><strong>数据分配器</strong></p>
+<p>功能：相当于多输出的单刀多掷开关，是将公共数据线上的数据按需要送到不同的通道上去的逻辑电路。</p>
+<img src="https://s2.loli.net/2023/12/22/QnYLVDN5psEfwjS.png" srcset="/img/loading.gif" lazyload alt="image-20231208114700981" style="zoom:50%;" />
+<center>图一：示意图</center>
+<img src="https://s2.loli.net/2023/12/22/LyEQRduPZ4rnNM5.png" srcset="/img/loading.gif" lazyload alt="image-20231208114749275" style="zoom:50%;" />
+<center>图二：功能仿真图</center>
+<h4 id="4-4-3-数据选择器">4.4.3 数据选择器</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">型号</th>
+<th style="text-align:center">逻辑符号</th>
+<th style="text-align:center">功能分析</th>
+<th style="text-align:center">逻辑图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2选1</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/IlF6DTd3hLqwsCy.png" srcset="/img/loading.gif" lazyload alt="image-20240117135219030" style="zoom:33%;" /></td>
+<td style="text-align:center">通过控制端 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 来选择 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>D</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">D_0,D_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/CH4FTD2jeOK3BZq.png" srcset="/img/loading.gif" lazyload alt="image-20240117135236405" style="zoom:33%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">4选1</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/w12WPdbls7FLtQn.png" srcset="/img/loading.gif" lazyload alt="image-20240117135258894" style="zoom:33%;" /></td>
+<td style="text-align:center">通过控制端 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>S</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">S_0,S_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 来选择 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>D</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>D</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>D</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">D_0,D_1,D_2,D_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/oFVuQXnYMkatNw5.png" srcset="/img/loading.gif" lazyload alt="image-20240117135326247" style="zoom:33%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">8选1</td>
+<td style="text-align:center">74HC151</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/vU5QVSTYxWOwotF.png" srcset="/img/loading.gif" lazyload alt="image-20240117135401170" style="zoom: 25%;" /></td>
+<td style="text-align:center">通过控制端 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub><mo>−</mo><msub><mi>S</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">S_0-S_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 来选择 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>0</mn></msub><mo>−</mo><msub><mi>D</mi><mn>7</mn></msub></mrow><annotation encoding="application/x-tex">D_0-D_7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td style="text-align:center">由于有现成的集成电路板，故就是逻辑符号</td>
+</tr>
+<tr>
+<td style="text-align:center">16选1</td>
+<td style="text-align:center">2片74HC151</td>
+<td style="text-align:center">—</td>
+<td style="text-align:center">通过控制端 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub><mo>−</mo><msub><mi>S</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">S_0-S_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 来选择 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>0</mn></msub><mo>−</mo><msub><mi>D</mi><mn>15</mn></msub></mrow><annotation encoding="application/x-tex">D_0-D_{15}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">15</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，<strong>输入的前三位</strong>连接三个控制端，<strong>输入的最后一位</strong>连接两片74151的使能端，其实就是译码器的魔改版，让输出为相应的译码结果的高电平而已</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/W51HqJeAP3Ovujc.png" srcset="/img/loading.gif" lazyload alt="image-20240117135555070"  /></td>
+</tr>
+</tbody>
+</table>
+<p><strong>使用数据选择器实现逻辑函数</strong></p>
+<ul>
+<li>变量个数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo></mrow><annotation encoding="application/x-tex">&lt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span></span></span></span> 数据选择端个数：变量直接对应数据选择端，多余的选择端置0，最后相应的信号输入端进行赋1或赋0的操作即可</li>
+<li>变量个数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span></span></span></span> 数据选择端个数：本质上就是将逻辑函数转化为最小项表达式，然后与标准与或式进行比对，已出现的最小项与1，未出现的最小项与0，从而配凑产生了数据选择器最开始的式子。落到逻辑图上就是，数据选择端接入函数变量，信号输入端接入相应的高低电平，出现的最小项就输入1，未出现的就输入0即可</li>
+<li>变量个数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span></span></span></span> 数据选择端个数：
+<ul>
+<li>刚好多 1 个：变量 or 变量的非接入信号输入端</li>
+<li>不止多 1 个：同样采用将变量作为数据信号输入端，此外可能需要借助相关的门电路辅助进行</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-4-4-数值比较器">4.4.4 数值比较器</h4>
+<p>略</p>
+<h4 id="4-4-5-算术运算电路">4.4.5 算术运算电路</h4>
+<p>半加器：即不考虑低位进位的一位二进制加法器。其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 为输出位，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span> 为进位，没有考虑低位的进位</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>S</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">=</mo></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mo>⊕</mo><mi>B</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>C</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">=</mo></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mi>B</mi></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+S &amp;=&amp; A \oplus B \\
+C &amp;=&amp; AB
+\end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mrel">=</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mrel">=</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>全加器：即考虑低位进位的一位二进制加法器。其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 为输出位，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">C_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 为低位的进位，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>o</mi></msub></mrow><annotation encoding="application/x-tex">C_o</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 为进位</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>S</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">=</mo></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mo>⊕</mo><mi>B</mi><mo>⊕</mo><msub><mi>C</mi><mi>i</mi></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>C</mi><mi>o</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">=</mo></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mi>B</mi><mo>+</mo><mo stretchy="false">(</mo><mi>A</mi><mo>⊕</mo><mi>B</mi><mo stretchy="false">)</mo><msub><mi>C</mi><mi>i</mi></msub><mo>=</mo><mi>A</mi><mi>B</mi><mo>+</mo><mo stretchy="false">(</mo><mi>A</mi><mo>+</mo><mi>B</mi><mo stretchy="false">)</mo><msub><mi>C</mi><mi>i</mi></msub></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+S &amp;=&amp; A \oplus B \oplus C_i \\
+C_o &amp;=&amp; AB + (A \oplus B)C_i = AB+(A+B)C_i
+\end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mrel">=</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mrel">=</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h3 id="4-5-用-verilog-描述组合逻辑电路">4.5 用 verilog 描述组合逻辑电路</h3>
+<h2 id="五、锁存器和触发器">五、锁存器和触发器</h2>
+<p>本章介绍时序逻辑电路的存储单元，分别为锁存器和触发器。其中锁存器对电平敏感，触发器对边沿敏感</p>
+<h3 id="5-1-基本双稳态电路">5.1 基本双稳态电路</h3>
+<img src="https://s2.loli.net/2023/12/22/sGB8rZY4OWzQHbS.png" srcset="/img/loading.gif" lazyload alt="image-20231222110345818" style="zoom:80%;" />
+<h3 id="5-2-SR-锁存器">5.2 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">SR</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">SR</span></span></span></span> 锁存器</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">门级元件组成</th>
+<th style="text-align:center">电路图</th>
+<th style="text-align:center">功能分析</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">或非门实现</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/12/22/1i8JxBwD23ptZnL.png" srcset="/img/loading.gif" lazyload alt="image-20231222100822028" style="zoom:50%;" /></td>
+<td style="text-align:center">高电平有效。全0不变，谁1谁有效，都1不确定状态</td>
+</tr>
+<tr>
+<td style="text-align:center">与非门实现</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/12/22/IHi4sR5V8NbQgZY.png" srcset="/img/loading.gif" lazyload alt="image-20231222100904959" style="zoom:50%;" /></td>
+<td style="text-align:center">低电平有效。全1不变，谁0谁有效，都0不确定状态</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">应用</th>
+<th style="text-align:center">电路图</th>
+<th style="text-align:center">功能分析</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">开关电路</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/12/22/pejKlVkMrQqv8h9.png" srcset="/img/loading.gif" lazyload alt="image-20231222101855246" style="zoom:50%;" />	<img src="https://s2.loli.net/2023/12/22/tzFvJp8ulGnRsj5.png" srcset="/img/loading.gif" lazyload alt="image-20231222102251343" style="zoom:35%;" /></td>
+<td style="text-align:center">无论开关如何震动，输出始终正常</td>
+</tr>
+<tr>
+<td style="text-align:center">门控 SR 锁存器</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/12/22/HYM3aZBkdAVxELl.png" srcset="/img/loading.gif" lazyload alt="image-20231222103758704" style="zoom:33%;" /></td>
+<td style="text-align:center">就是加了一个使能端 E，如果 E 为 1，则就是一个基本的 SR 锁存器，如果 E 为 0，则保持</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-3-D-锁存器">5.3 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span> 锁存器</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">电路名称</th>
+<th style="text-align:center">逻辑电路图</th>
+<th style="text-align:center">功能分析</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">传输门控制的D锁存器</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/12/22/OhlvsLBzTN9UeDj.png" srcset="/img/loading.gif" lazyload alt="image-20231222105139215" style="zoom: 50%;" /></td>
+<td style="text-align:center">E=0, Q=不变；E=1, Q=D</td>
+</tr>
+<tr>
+<td style="text-align:center">逻辑门控制的D锁存器</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/c9PIvzZCYbOMTrD.png" srcset="/img/loading.gif" lazyload alt="image-20240117191849592" style="zoom:67%;" /></td>
+<td style="text-align:center">E=0, Q=不变；E=1, Q=D</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-4-触发器">5.4 触发器</h3>
+<h4 id="5-4-1-主从-D-触发器的电路结构和工作原理">5.4.1 主从 D 触发器的电路结构和工作原理</h4>
+<img src="https://s2.loli.net/2023/12/22/LRE6ksiwZzjIBcy.png" srcset="/img/loading.gif" lazyload alt="image-20231222112319354" style="zoom:80%;" />
+<h4 id="5-4-2-典型的主从-D-触发器集成电路">5.4.2 典型的主从 D 触发器集成电路</h4>
+<img src="https://s2.loli.net/2024/01/17/xikroK2MRsenh5V.png" srcset="/img/loading.gif" lazyload alt="image-20231222113334822" style="zoom:50%;" />
+<center>
+    <img src="https://s2.loli.net/2024/01/17/qzpDMR7BXtQETbr.png" srcset="/img/loading.gif" lazyload alt="image-20231222113438371" style="zoom:67%;" />
+    <img src="https://s2.loli.net/2024/01/17/GY3msiIEMtXr1kU.png" srcset="/img/loading.gif" lazyload alt="image-20231222113452256" style="zoom:50%;" />
+</center>
+### 5.5 触发器的逻辑功能
+<p>本目需要掌握有关触发器的<strong>特性表</strong>、<strong>特性方程</strong>、<strong>状态图</strong>三者的单独书写以及相互转化的逻辑过程，还需要掌握不同的触发器之间的相互<strong>替换实现</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">逻辑符号</th>
+<th style="text-align:center">特性表</th>
+<th style="text-align:center">特性方程</th>
+<th style="text-align:center">状态图</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">D 触发器</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/xdGvs9XIzbLYOaU.png" srcset="/img/loading.gif" lazyload alt="image-20240117190140089" style="zoom: 33%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/REXJoHwFDcNOSxU.png" srcset="/img/loading.gif" lazyload alt="image-20240117190521349" style="zoom:25%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/6I87VrOzxYQpaeK.png" srcset="/img/loading.gif" lazyload alt="image-20240117190538232" style="zoom:25%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/mEStlVuhGJ4pg8T.png" srcset="/img/loading.gif" lazyload alt="image-20240117190553444" style="zoom:33%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">JK 触发器</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/zcdCbRZ5TS6plgf.png" srcset="/img/loading.gif" lazyload alt="image-20240117190400613" style="zoom:33%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/FnTsovQrBXORP9Y.png" srcset="/img/loading.gif" lazyload alt="image-20240117190647444" style="zoom:25%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/idCy2oIkGKnYJPh.png" srcset="/img/loading.gif" lazyload alt="image-20240117190703599" style="zoom:25%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/DHiZQdAJM9hbWeC.png" srcset="/img/loading.gif" lazyload alt="image-20240117190716843" style="zoom: 67%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">T 触发器</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/8pMfb3I5rGsHhc6.png" srcset="/img/loading.gif" lazyload alt="image-20240117190415482" style="zoom:33%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/YseWSrogu4tCZxh.png" srcset="/img/loading.gif" lazyload alt="image-20240117190800382" style="zoom:33%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/jXT7Ndw1RpMiLfq.png" srcset="/img/loading.gif" lazyload alt="image-20240117190818921" style="zoom:25%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/ScmYjJIsWEvNzXl.png" srcset="/img/loading.gif" lazyload alt="image-20240117190838344" style="zoom:67%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center">T’ 触发器</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/3aoNH2br5Dg9hKL.png" srcset="/img/loading.gif" lazyload alt="image-20240117190915612" style="zoom:33%;" /></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">T\equiv 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/hBv3Lc4KOI9juU8.png" srcset="/img/loading.gif" lazyload alt="image-20240117190926990" style="zoom:33%;" /></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">SR 触发器</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/7E1UavqONz2SL9h.png" srcset="/img/loading.gif" lazyload alt="image-20240117190440059" style="zoom:33%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/S3j8wN2VGiJt7Xb.png" srcset="/img/loading.gif" lazyload alt="image-20240117191017989" style="zoom:25%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/IpdM6UYkoJL29ue.png" srcset="/img/loading.gif" lazyload alt="image-20240117191040611" style="zoom:33%;" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2024/01/17/ObrXesipQHkwqA3.png" srcset="/img/loading.gif" lazyload alt="image-20240117191057024" style="zoom:33%;" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="六、时序逻辑电路-star">六、时序逻辑电路:star:</h2>
+<h3 id="6-1-同步时序逻辑电路的分析">6.1 同步时序逻辑电路的分析</h3>
+<p>本部分只需要掌握同步时序逻辑电路的分析即可，具体直接从例题出发。三道同步时序逻辑电路分析的例题见教材 P282 ~ P286，分别为</p>
+<ul>
+<li>例一：可控二进制计数器</li>
+<li>例二：可控双向二进制计数器</li>
+<li>例三：脉冲分配器</li>
+</ul>
+<p>下面介绍同步时序逻辑电路分析的五个步骤。在分析之前我们要知道我们的最终目标是什么，可以知道，我们分析电路的最终目标是想要量化的确定电路的物理实现的功能，至于如何设计，此处不予讨论。现在给定了一个同步时序逻辑电路的<strong>逻辑电路图</strong>，接下来我们应该：</p>
+<ol>
+<li>
+<p>了解电路组成：同步 or 异步？穆尔型输出（与输入无关） or 米利型输出（与输入有关） or 都有？由什么触发器组成的？触发器类型是上升沿出发 or 下降沿触发？</p>
+</li>
+<li>
+<p>列出三个方程：</p>
+<ul>
+<li>
+<p>输出方程：电路的最终输出</p>
+</li>
+<li>
+<p>激励方程：触发器的输入</p>
+</li>
+<li>
+<p>状态方程：触发器的输出（将触发器的输入也就是激励方程代入触发器的特性方程即可）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>写出转换表（分析功能用）</p>
+</li>
+<li>
+<p>写出状态图（分析功能用）</p>
+</li>
+<li>
+<p>写出时序图（分析功能用）默认状态的初值设置为 0</p>
+</li>
+</ol>
+<h3 id="6-2-典型的时序逻辑电路-计数器">6.2 典型的时序逻辑电路 - 计数器</h3>
+<p>主要讲 N 位二进制计数器中，利用集成电路板 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>74</mn><mi>L</mi><mi>V</mi><mi>C</mi><mn>161</mn></mrow><annotation encoding="application/x-tex">74LVC161</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">74</span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord">161</span></span></span></span> 实现的 <strong>4 位同步二进制递增计数器</strong>。进而引出利用该 4 位计数器<strong>实现模 N 计数器</strong>的分析与设计思路。同时补充 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>74</mn><mi>L</mi><mi>V</mi><mi>C</mi><mn>162</mn></mrow><annotation encoding="application/x-tex">74LVC162</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">74</span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord">162</span></span></span></span> 实现的 <strong>4 位同步十进制递增计时器</strong>，进而引出相关的模 N 设计思路。下面分析 74LVC161 4 位同步二进制递增计数器集成板</p>
+<center><img src="https://s2.loli.net/2024/01/11/Ivm2g5NrxeCL7Du.png" srcset="/img/loading.gif" lazyload alt="image-20240111233651905" /></center>
+<center>图1 74LVC161集成板</center>
+<img src="https://s2.loli.net/2024/01/11/EHIDkge2vYOUVZX.png" srcset="/img/loading.gif" lazyload alt="image-20240111234456513" style="zoom: 50%;" />
+<center>图2 74LVC161逻辑功能表</center>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mrow><mi>C</mi><mi>R</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{CR}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">CR</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span>: <strong>异步清零</strong>。即无视时钟脉冲信号，直接清零</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mrow><mi>P</mi><mi>E</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{PE}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">PE</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span>: <strong>同步预置</strong>。即当有效始终脉冲沿到来时，实现 4 个预置位的输出，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>3</mn></msub><mo separator="true">,</mo><msub><mi>D</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>D</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>D</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">D_3,D_2,D_1,D_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>E</mi><mi>P</mi><mo separator="true">,</mo><mi>C</mi><mi>E</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">CEP,CET</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CEP</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CET</span></span></span></span>: 使能端。同时为高电平电路才能正常工作</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">TC</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">TC</span></span></span></span>: 进位输出</p>
+<p><strong>本目小结</strong></p>
+<p>多个集成板进行计数</p>
+<p>考虑如何通信：低位进位作为高位使能？</p>
+<p>考虑如何清零：同步（异步）清零？同步（异步）置数？</p>
+<p>学会利用 74LVC161 的“反馈清零法”实现模 N 计数器</p>
+<p>学会利用 74LVC161 的”反馈置数法“实现模 N 计数器</p>
+<p>学会实现 74LVC162 十进制递增功能功能（<strong>同步清零</strong>、<strong>同步置数</strong>）</p>
+<p>学会利用 74LVC162 的同步清零的特性实现模 9 的九进制计数器功能</p>
+<p>学会利用 74LVC162 实现模 24 的二十四进制计数器功能</p>
+<blockquote>
+<p>00-09与10-19的计数：通过低位片的进位端，作为高位片的使能端即可</p>
+<p>20-23与23-00的计数：通过将低位片的两个低位与高位片通过 4023 三输入与非门连接起来，当全为1时，就是计数到23的状态，此时对高低片进行同步清零即可</p>
+</blockquote>
+<h3 id="6-3-用-verilog-描述同步时序逻辑电路">6.3 用 verilog 描述同步时序逻辑电路</h3>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/GPA/" class="category-chain-item">GPA</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/GPA/3rd-term/" class="category-chain-item">3rd-term</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>DigitalLogicCircuit</div>
+      <div>https://blog.dwj601.cn/GPA/3rd-term/DigitalLogicCircuit/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Mr_Dwj</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/GPA/3rd-term/DataStructureClassDesign/" title="DataStructureClassDesign">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">DataStructureClassDesign</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/GPA/3rd-term/DataStructure/" title="DataStructure">
+                        <span class="hidden-mobile">DataStructure</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

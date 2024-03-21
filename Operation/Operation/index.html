@@ -1,0 +1,1019 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Mr_Dwj">
+  <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
+  
+    <meta name="description" content="Operation 前言 1. 内容大纲 全栈开发之 Linux 运维学习。在有了一定的前端的基础上，进行云计算运维相关知识的学习，内容包括但不限于  Linux基础：常用命令、文件及用户管理、文本处理、Vim工具使用 网络基础：网络基础知识、TCP&#x2F;IP协议、七层网络模型、Linux网络管理与配置 服务器基础：SSH远程连接、文件上传下载、Nginx和MySQL服务器搭建、LVS负载均衡配置以及">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operation">
+<meta property="og:url" content="https://blog.dwj601.cn/Operation/Operation/index.html">
+<meta property="og:site_name" content="Dwj の Blog">
+<meta property="og:description" content="Operation 前言 1. 内容大纲 全栈开发之 Linux 运维学习。在有了一定的前端的基础上，进行云计算运维相关知识的学习，内容包括但不限于  Linux基础：常用命令、文件及用户管理、文本处理、Vim工具使用 网络基础：网络基础知识、TCP&#x2F;IP协议、七层网络模型、Linux网络管理与配置 服务器基础：SSH远程连接、文件上传下载、Nginx和MySQL服务器搭建、LVS负载均衡配置以及">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402092306641.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126611.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126612.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126613.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126614.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126615.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126616.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126617.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126618.png">
+<meta property="article:published_time" content="2024-03-21T02:08:56.809Z">
+<meta property="article:modified_time" content="2024-03-21T02:08:56.809Z">
+<meta property="article:author" content="Mr_Dwj">
+<meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402092306641.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Operation | Dwj の Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?d08d23389220ad9b8f711cfb85757f4b";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>dwj&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Operation"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-21 10:08" pubdate>
+          2024年3月21日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Operation"
+        id="heading-2a78ed76450c3cb42320882b3e055b31" role="tab" data-toggle="collapse" href="#collapse-2a78ed76450c3cb42320882b3e055b31"
+        aria-expanded="true"
+      >
+        Operation
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-2a78ed76450c3cb42320882b3e055b31"
+           role="tabpanel" aria-labelledby="heading-2a78ed76450c3cb42320882b3e055b31">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/Operation/Operation/" title="Operation"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Operation</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Operation</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>Operation</h1>
+<h2 id="前言">前言</h2>
+<h3 id="1-内容大纲">1. 内容大纲</h3>
+<p>全栈开发之 Linux 运维学习。在有了一定的前端的基础上，进行云计算运维相关知识的学习，内容包括但不限于</p>
+<ol>
+<li>Linux基础：常用命令、文件及用户管理、文本处理、Vim工具使用</li>
+<li>网络基础：网络基础知识、TCP/IP协议、七层网络模型、Linux网络管理与配置</li>
+<li>服务器基础：SSH远程连接、文件上传下载、Nginx和MySQL服务器搭建、LVS负载均衡配置以及服务器优化经验</li>
+<li>自动化基础：Shell脚本编写、自动化运维工具Ansible的使用</li>
+</ol>
+<ul>
+<li>部署流程</li>
+</ul>
+<h3 id="2-学习资源">2. 学习资源</h3>
+<ul>
+<li>路线：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/learning/roadmap/linux">Linux运维学习路线 - 阿里云</a></li>
+<li>文档：<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-tutorial.html">菜鸟 Linux 教程</a></li>
+<li>部署：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16A4y1X7vg/">搭建一个自己的网站？看这个就够了！</a></li>
+</ul>
+<h2 id="一、Linux-基础">一、Linux 基础</h2>
+<p>Linux 是操作系统的一种，是便于用户与计算机资源进行交互的媒介</p>
+<blockquote>
+<p>[!note]</p>
+<ul>
+<li>
+<p>操作系统的地位。在正式开始 Linux 操作系统的学习之前，有必要了解一下整个计算机组成中，操作系统的地位（如下图）。可以发现，操作系统其实为用户搭建了访问硬件资源、网络资源的桥梁，使用户能够方便地与计算机进行交互</p>
+  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402092306641.png" srcset="/img/loading.gif" lazyload alt="image-20240209230617073" style="zoom:50%;" />
+</li>
+<li>
+<p>Linux 发展史。有必要了解一下 Linux 的发展史：Unix <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> Minix <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>​ Linux (linux is not unix) ，因此往往称 Linux 为 类Unix。Unix 为最开始的操作系统，在此基础之上开发了只在教育界开源使用的 Minix 操作系统，最后由于 Minix 停止更新维护，一个学生在 Minix 的基础之上创造了 Linux 操作系统并且已经成为了当下最为流行的开源操作系统</p>
+</li>
+<li>
+<p>Linux 发行版本。正因为其开源，从而诞生了很多的版本，其中的广为流行的发行版本主要有 Ubuntu、CentOS、Debian 等</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="二、网络基础">二、网络基础</h2>
+<h2 id="三、服务器基础">三、服务器基础</h2>
+<p>服务器 server 就是类似于一台台低配版电脑，量产后在全球各地通过网络为用户提供高质量的便捷服务。在学习服务器相关知识之前，有必要先了解计算机网络相关的概念，有助于后续理解代理系统等的运作逻辑与开发逻辑。在正式开始之前，首先罗列一下最基本的概念：</p>
+<blockquote>
+<p>[!note]</p>
+<ul>
+<li>
+<p>云服务器：</p>
+<ul>
+<li>实例：一个云服务器相当于一个抽象的类，在其中购买配置了指定的实例后相当于实例化一个类，从而一个云服务器对应一个实例</li>
+<li>ip 地址：一台云服务器对应唯一的一个 ip 地址。其中 IPv4 为</li>
+<li>备案：所谓的网站备案其实是对云服务器进行备案。当前的形式是，对于指向中国大陆 ip 的云服务器需要备案，如果指向的是非中国大陆的 ip，就不需要备案了。一般而言，中文的指向 HK，英文的指向 UK</li>
+<li>端口：一台电脑能做的肯定不止一种，ip 地址端口的概念就好比一台电脑可以有不同的功能模块，不同的端口对应服务器不同的数据通道，开发者可以通过不同的端口开发不同的功能，用户可以通过不同的端口使用一台服务器上的不同服务</li>
+<li><a target="_blank" rel="noopener" href="https://www.bt.cn/new/download.html">宝塔面板</a>：由于 linux 操作系统的命令行操作方式与 windows 的图形化界面操作方式差别较大，对于习惯图形化操作的用户不友好，故有一系列<strong>图形化管理</strong> linux 操作系统的工具，宝塔面板就是其中的一个代表</li>
+</ul>
+</li>
+<li>
+<p>域名：</p>
+<ul>
+<li>概念：代替 ip 地址访问的一种更加容易记忆与推广的媒介，通过 DNS 服务器将域名与 ip 地址进行绑定后，用户通过域名 domain 即可访问相应的服务器的资源</li>
+<li>顶级域名：即 <strong>域名+后缀</strong> 的组合</li>
+<li>二级域名：即 <strong>主机名+域名+后缀</strong> 的组合</li>
+</ul>
+</li>
+<li>
+<p>协议：</p>
+<ul>
+<li>
+<p>概念：服务器与用户进行数据传输的一种约定规则</p>
+</li>
+<li>
+<p>http：传统的数据传输协议，默认服务器 80 端口进行访问</p>
+</li>
+<li>
+<p>https：即 http + ssl，传统协议 + ssl 加密证书，默认服务器 443 端口访问</p>
+</li>
+<li>
+<p>ssl：即 Secret Sockets Layer 安全套件层，用于加密服务器与用户之间传输的数据。其中证书文件为 pem 文件，密钥文件为 key 文件</p>
+</li>
+</ul>
+</li>
+<li>
+<p>网站框架：</p>
+<ul>
+<li>目前两款主流的网站框架分别为 LNMP 与 LAMP，都是用于搭建 Web 服务器环境的<strong>软件堆栈</strong></li>
+<li>LNMP：表示使用 Linux 操作系统、Nginx 作为 Web 服务器、MySQL 作为数据库、PHP 作为服务器端脚本语言的技术堆栈</li>
+<li>LAMP：表示使用 Linux 操作系统、Apache 作为 Web 服务器、MySQL 作为数据库、PHP 作为服务器端脚本语言的技术堆栈</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="3-1-网络系统">3.1 网络系统</h3>
+<h3 id="3-2-代理系统">3.2 代理系统</h3>
+<p>简单来说就是连接用户与服务器的中间媒介，有正向代理、反向代理等实际应用，与以往传统的用户与服务器直连的方式不同，通过代理系统可以完成很多前者无法完成的任务，同时也有性能上质的飞跃，下面从理论的角度介绍代理系统的实际应用示例以及优势</p>
+<h4 id="3-2-1-基本概念">3.2.1 基本概念</h4>
+<ul>
+<li>
+<p>正向代理：所谓的正向代理其实就是<strong>面向用户</strong>进行运作。常见的正向代理应用比如 VPN 服务就是很典型的一种。</p>
+</li>
+<li>
+<p>反向代理：所谓的反向代理的与上述正向代理对应，就是<strong>面向服务器</strong>进行运作。常见的反向代理应用比如 Nginx 与 Apache 服务器就是典型的应用。通过选择性的配置性的从服务器获取数据返回给前端渲染给用户，来实现负载均衡、加速优化等效果</p>
+</li>
+</ul>
+<h4 id="3-2-2-反向代理应用举例">3.2.2 反向代理应用举例</h4>
+<blockquote>
+<p>单服务器 + 单顶级域名 = 多网站</p>
+</blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38431321/article/details/123018259">通过Nginx在一台服务器部署多个Web应用</a></p>
+<h5 id="1-创建多个二级域名">(1) 创建多个二级域名</h5>
+<p>多个网站可以通过<strong>二级域名</strong>的形式只依赖一个<strong>顶级域名</strong>，从而实现一个域名衍生出多个子域名的形式，即一级域名为 <code>baidu.com</code>，二级域名为 <code>mcn.baidu.com</code>、<code>career.baidu.com</code> 等等</p>
+<h5 id="2-解析二级域名绑定到服务器上">(2) 解析二级域名绑定到服务器上</h5>
+<p>每一个<strong>二级域名</strong>都需要解析到相应的 <strong>IP 地址</strong>，即<strong>主机记录</strong>对应<strong>记录值</strong>，才能进行后续的访问。其实可以理解为，将不同的二级域名都绑定到当前的服务器上，像这样：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126611.png" srcset="/img/loading.gif" lazyload alt="将二级域名绑定到服务器"></p>
+<h5 id="3-理解二级域名的访问">(3) 理解二级域名的访问</h5>
+<p>我们通过不同的二级域名访问网站时，其实就是访问不同的文件夹中的文件信息，像这样：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126612.png" srcset="/img/loading.gif" lazyload alt="访问不同的文件夹中的文件信息"></p>
+<h5 id="4-实现不同的域名访问不同的文件">(4) 实现不同的域名访问不同的文件</h5>
+<p>这时我们就需要配置 Nginx 的代理服务器了， Nginx 中的 nginx.conf 文件示例配置如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#----- example project -----#</span><br>server &#123;<br>    listen       443 ssl; <span class="hljs-comment"># 监听的端口</span><br>    server_name  test.cn; <span class="hljs-comment"># 监听的网址(domain)</span><br><br>    <span class="hljs-comment"># ssl证书的相关文件路径</span><br>    ssl_certificate      /usr/local/nginx/ssl/test.cn_bundle.pem;<br>    ssl_certificate_key  /usr/local/nginx/ssl/test.cn.key;<br><br>    <span class="hljs-comment"># ssl相关配置</span><br>    ssl_session_cache    shared:SSL:1m;<br>    ssl_session_timeout  5m;<br>    ssl_ciphers  HIGH:!aNULL:!MD5;<br>    ssl_prefer_server_ciphers  on;<br><br>    <span class="hljs-comment"># 项目路径</span><br>    location / &#123;<br>        proxy_pass https://localhost:8080/; <span class="hljs-comment"># 转向“本地”8080端口</span><br>        <span class="hljs-comment"># root path;                          # 网站根目录</span><br>        <span class="hljs-comment"># index demo.html;                  # 设置默认页</span><br>        <span class="hljs-comment"># deny 127.0.0.1;                      # 拒绝的ip</span><br>        <span class="hljs-comment"># allow 172.18.5.54;                 # 允许的ip       </span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>假如此时我们需要 <code>docs.example.com</code> 访问文档分站，<code>www.example.com</code> 与 <code>example.com</code> 都访问主站，我们就需要配置 Nginx 中的 nginx.conf 文件，如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#----- docs.example.com 访问文档分站 -----#</span><br>server &#123;<br>    listen       443 ssl;             <span class="hljs-comment"># 监听的端口</span><br>    server_name  docs.example.com;     <span class="hljs-comment"># 监听的网址</span><br><br>    <span class="hljs-comment"># ssl证书的相关文件路径</span><br>    ssl_certificate      /usr/local/nginx/ssl/test.cn_bundle.pem;<br>    ssl_certificate_key  /usr/local/nginx/ssl/test.cn.key;<br><br>    <span class="hljs-comment"># ssl相关配置</span><br>    ssl_session_cache    shared:SSL:1m;<br>    ssl_session_timeout  5m;<br>    ssl_ciphers  HIGH:!aNULL:!MD5;<br>    ssl_prefer_server_ciphers  on;<br><br>    <span class="hljs-comment"># 项目路径</span><br>    location / &#123;<br>        root /usr/web/docs;         <span class="hljs-comment"># 网站根目录</span><br>    &#125;<br>&#125;<br><br><span class="hljs-comment">#----- www.example.com 访问主站 -----#</span><br>server &#123;<br>    listen       443 ssl;             <span class="hljs-comment"># 监听的端口</span><br>    server_name  www.example.com;     <span class="hljs-comment"># 监听的网址</span><br><br>    <span class="hljs-comment"># ssl证书的相关文件路径</span><br>    ssl_certificate      /usr/local/nginx/ssl/b.test.cn_bundle.pem;<br>    ssl_certificate_key  /usr/local/nginx/ssl/b.test.cn.key;<br><br>    ssl_session_cache    shared:SSL:1m;<br>    ssl_session_timeout  5m;<br><br>    ssl_ciphers  HIGH:!aNULL:!MD5;<br>    ssl_prefer_server_ciphers  on;<br><br>    location / &#123;<br>        root /usr/web/www;                  <span class="hljs-comment"># 根目录</span><br>    &#125;<br>&#125;<br><br><span class="hljs-comment">#----- example.com 通过重定向的方式也访问主站 -----#</span><br>server &#123;<br>    listen       443 ssl;             <span class="hljs-comment"># 监听的端口</span><br>    server_name  example.com;     <span class="hljs-comment"># 监听的网址</span><br><br>    <span class="hljs-comment"># ssl证书的相关文件路径</span><br>    ssl_certificate      /usr/local/nginx/ssl/b.test.cn_bundle.pem;<br>    ssl_certificate_key  /usr/local/nginx/ssl/b.test.cn.key;<br><br>    <span class="hljs-comment"># ssl相关配置</span><br>    ssl_session_cache    shared:SSL:1m;<br>    ssl_session_timeout  5m;<br>    ssl_ciphers  HIGH:!aNULL:!MD5;<br>    ssl_prefer_server_ciphers  on;<br><br>    location / &#123;<br>        proxy_pass  https://www;              <span class="hljs-comment"># 请求转向 mysvr 定义的服务器列表</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="四、自动化基础">四、自动化基础</h2>
+<h2 id="部署">部署</h2>
+<h3 id="1-部署-Flask">1. 部署 Flask</h3>
+<p>Flask 是使用 Python 作为后端语言的 Web 微框，旨在帮助开发者快速开发出一个小型网站。个人示例项目就采用了 Flask 框架，前端直接使用 Flask 自带的 Jinja2 进行渲染，数据库采用 MySQL。项目地址 <a target="_blank" rel="noopener" href="https://github.com/Explorer-Dong/YunJinWeb">YunJinWeb</a>，下面为以此项目为 demo 进行云服务器部署的过程</p>
+<h4 id="1-1-远程连接服务器">1.1 远程连接服务器</h4>
+<p>服务器信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@DwjDemo1 ~]<span class="hljs-comment"># cat /etc/os-release</span><br><br>NAME=<span class="hljs-string">&quot;Alibaba Cloud Linux&quot;</span>                             发行版的名称<br>VERSION=<span class="hljs-string">&quot;3 (Soaring Falcon)&quot;</span>                           发行版的版本号<br>ID=<span class="hljs-string">&quot;alinux&quot;</span>                                            唯一的标识符<br>ID_LIKE=<span class="hljs-string">&quot;rhel fedora centos anolis&quot;</span>                    一些类似的发行版<br>VERSION_ID=<span class="hljs-string">&quot;3&quot;</span>                                         发行版的版本编号<br>PLATFORM_ID=<span class="hljs-string">&quot;platform:al8&quot;</span>                             平台的标识符<br>PRETTY_NAME=<span class="hljs-string">&quot;Alibaba Cloud Linux 3 (Soaring Falcon)&quot;</span>   可读的发行版名称和版本号<br>ANSI_COLOR=<span class="hljs-string">&quot;0;31&quot;</span>                                      ANSI终端输出的颜色: <span class="hljs-string">&quot;0;31&quot;</span>，通常用于表示错误或警告信息<br>HOME_URL=<span class="hljs-string">&quot;https://www.aliyun.com/&quot;</span>                     发行版的官方网站链接<br></code></pre></td></tr></table></figure>
+<p>连接方法</p>
+<ul>
+<li>方法一：利用阿里云自带的服务器连接入口，远程连接服务器。输入 username 和 password</li>
+<li>方法二：使用 MobaXterm 端口连接工具并使用 <code>yum update</code> 命令更新全局软件。输入 username 和 password</li>
+</ul>
+<h4 id="1-2-配置-MySQL">1.2 配置 MySQL</h4>
+<h5 id="1-放通端口">(1) 放通端口</h5>
+<p>服务器放通端口3306</p>
+<h5 id="2-安装-MySQL-并启动">(2) 安装 MySQL 并启动</h5>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_55914667/article/details/126410095">Linux安装mysql8.0（官方教程！）</a></p>
+<h5 id="3-配置-MySQL">(3) 配置 MySQL</h5>
+<p>设置 mysql 登录密码</p>
+<p>在服务器中连接 mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql -uroot -p<br></code></pre></td></tr></table></figure>
+<p>授予权限给自己</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># MySQL 5 版本<br>GRANT ALL ON *.* TO root@&#x27;%&#x27; IDENTIFIED BY &#x27;password&#x27; WITH GRANT OPTION;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># MySQL 8 版本<br>ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;password&#x27;;<br></code></pre></td></tr></table></figure>
+<p>使用数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">use mysql<br></code></pre></td></tr></table></figure>
+<p>允许远程登录数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">update user set host = &#x27;%&#x27; where user = &#x27;root&#x27;;<br></code></pre></td></tr></table></figure>
+<p>刷新更新配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs my">FLUSH PRIVILEGES;<br></code></pre></td></tr></table></figure>
+<h4 id="1-3-更改项目文件-config-py">1.3 更改项目文件 <a target="_blank" rel="noopener" href="http://config.py">config.py</a></h4>
+<p>修改项目中 <code>config.py</code> 中的配置信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># @Time   : 2023-12-03 23:25</span><br><span class="hljs-comment"># @File   : config.py</span><br><span class="hljs-comment"># @Author : Mr_Dwj</span><br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">配置文件：</span><br><span class="hljs-string">    1. 数据库配置信息</span><br><span class="hljs-string">    2. ...</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br><span class="hljs-comment"># 数据库的配置信息</span><br>HOSTNAME = <span class="hljs-string">&#x27;&#x27;</span><br>PORT = <span class="hljs-string">&#x27;3306&#x27;</span><br>DATABASE = <span class="hljs-string">&#x27;test1&#x27;</span><br>USERNAME = <span class="hljs-string">&#x27;&#x27;</span><br>PASSWORD = <span class="hljs-string">&#x27;&#x27;</span><br>DB_URI = <span class="hljs-string">&#x27;mysql+pymysql://&#123;&#125;:&#123;&#125;@&#123;&#125;:&#123;&#125;/&#123;&#125;?charset=utf8mb4&#x27;</span>.<span class="hljs-built_in">format</span>(USERNAME, PASSWORD, HOSTNAME, PORT, DATABASE)<br>SQLALCHEMY_DATABASE_URI = DB_URI<br></code></pre></td></tr></table></figure>
+<h4 id="1-4-构造服务器数据库信息">1.4 构造服务器数据库信息</h4>
+<p>由于数据库相关的资源已经被我存储在了本地 Windows，故直接在本地开发环境中利用 DataGrip 数据库管理工具将相应的信息复制到这台服务器的数据库中。</p>
+<h5 id="1-连接服务器数据库">(1) 连接服务器数据库</h5>
+<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126613.png" srcset="/img/loading.gif" lazyload alt="image-20231207232537233" style="zoom:50%;" />
+<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126614.png" srcset="/img/loading.gif" lazyload alt="image-20231207232615304" style="zoom:50%;" />
+<h5 id="2-拷贝本地资源至数据库">(2) 拷贝本地资源至数据库</h5>
+<p>直接在 DataGrip 中将本地已经构建好的数据拷贝到远程服务器即可</p>
+<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126615.png" srcset="/img/loading.gif" lazyload alt="image-20231207232434015" style="zoom:50%;" />
+<h4 id="1-5-配置-Nginx">1.5 配置 Nginx</h4>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45752401/article/details/122660965">Linux安装Nginx（超详细步骤）</a></p>
+<h5 id="1-放通端口-2">(1) 放通端口</h5>
+<p>服务器放通80端口</p>
+<h5 id="2-安装-Nginx-并启动">(2) 安装 Nginx 并启动</h5>
+<p>进入 <a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">nginx官网</a> 并下载稳定版至本地</p>
+<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126616.png" srcset="/img/loading.gif" lazyload alt="image-20231208234403083" style="zoom: 50%;" />
+<p>上传服务器（直接通过 MobaXterm 拖拽）后，解压到当前目录下并进入 nginx 文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -zxvf nginx-1.20.tar.gz<br><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;/home/nginx-1.20/&quot;</span><br></code></pre></td></tr></table></figure>
+<p>配置 nginx 并编译安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置configure</span><br><span class="hljs-comment"># --prefix 代表安装的路径</span><br><span class="hljs-comment"># --with-http_ssl_module 安装ssl</span><br><span class="hljs-comment"># --with-http_stub_status_module 查看nginx的客户端状态</span><br>./configure --prefix=/usr/local/nginx-1.20 --with-http_ssl_module --with-http_stub_status_module<br><br><span class="hljs-comment"># 编译 安装</span><br>make &amp;&amp; make install<br></code></pre></td></tr></table></figure>
+<p>进入 sbin 目录，启动 nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./nginx<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>遇到问题：解决启动遇到的端口占用的问题</p>
+<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126617.png" srcset="/img/loading.gif" lazyload alt="image-20231209001749320" style="zoom:67%;" />
+<p>解决方案：<code>killall -9 nginx</code> 杀掉 nginx 的进程，然后重启</p>
+<p>最终结果：然后浏览器通过 http 协议默认的 80 端口访问公网 ip，就可以看到欢呼雀跃的一幕</p>
+<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126618.png" srcset="/img/loading.gif" lazyload alt="image-20231209001703919" style="zoom:67%;" />
+</blockquote>
+<h4 id="1-6-配置-python">1.6 配置 python</h4>
+<h5 id="1-安装-python">(1) 安装 python</h5>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_64940494/article/details/126266917">linux安装python</a></p>
+<p>命令集合</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装python依赖</span><br>If you want a release build with all stable optimizations active (PGO, etc),please run ./configure --enable-optimizations<br><br><span class="hljs-comment"># 本地下载拖拽上传至服务器，解压安装包</span><br>tar -xvf Python-3.11.tgz<br><br><span class="hljs-comment"># 进入安装包，配置安装路径</span><br><span class="hljs-built_in">cd</span> Python-3.10.6<br>./configure --prefix=/usr/local/python311<br><br><span class="hljs-comment"># 编译 安装</span><br>make &amp;&amp; make install<br><br><span class="hljs-comment"># 将最新的 python 创建软链链接</span><br><span class="hljs-built_in">ln</span> -s /usr/local/python311/bin/python3.11 /usr/bin/python311<br><br><span class="hljs-comment"># 修改 yum 依赖默认的 python 版本</span><br>vi /usr/libexec/urlgrabber-ext-down<br>vi /usr/bin/yum<br><br><span class="hljs-comment"># 修改防火墙</span><br>vi /usr/bin/firewall-cmd<br>vi /usr/sbin/firewalld<br><br><span class="hljs-comment"># 创建 pip 软连接</span><br><span class="hljs-built_in">ln</span> -s /usr/local/python311/bin/pip3.11 /usr/bin/pip311<br></code></pre></td></tr></table></figure>
+<p>vim 的编辑指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 进入编辑模式</span><br>i<br><br><span class="hljs-comment"># 退出编辑模式进入命令模式</span><br>Esc<br><br><span class="hljs-comment"># 保存并关闭文件</span><br>:w<br><br><span class="hljs-comment"># 退出vim编辑模式</span><br>:q<br></code></pre></td></tr></table></figure>
+<h5 id="2-安装-python-环境管理包">(2) 安装 python 环境管理包</h5>
+<p>安装 python 虚拟环境管理依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install virtualenvwrapper<br></code></pre></td></tr></table></figure>
+<p>配置虚拟环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在根目录下进入.bashrc文件进行编辑</span><br>vi .bashrc<br>i<br><br><span class="hljs-comment"># ctrl+f进入末尾，粘贴一下文字，保存并退出</span><br><span class="hljs-built_in">export</span> WORKON_HOME=<span class="hljs-variable">$HOME</span>/.virtualenvs<br>VIRTUALENVWRAPPER_PYTHON=/usr/bin/python311<br><span class="hljs-built_in">source</span> /usr/local/bin/virtualenvwrapper.sh<br><br><span class="hljs-comment"># 刷新配置文件</span><br><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>刷新配置文件时报错：<code>virtualenvwrapper.sh: There was a problem running the initialization hooks.</code></p>
+<p>解决方案参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cpl9412290130/p/10019231.html">virtualenvwrapper.sh报错: There was a problem running the initialization hooks.解决</a></p>
+</blockquote>
+<h4 id="1-7-项目相关">1.7 项目相关</h4>
+<h5 id="1-创建-py-虚拟环境">(1) 创建 py 虚拟环境</h5>
+<p>创建虚拟 py 环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkvirtualenv --python=/usr/bin/python311 &lt;EnvName&gt;<br></code></pre></td></tr></table></figure>
+<p>启动虚拟环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">workon &lt;EnvName&gt;<br></code></pre></td></tr></table></figure>
+<p>退出虚拟环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">deactivate<br></code></pre></td></tr></table></figure>
+<h5 id="2-Git-版本管理">(2) Git 版本管理</h5>
+<p>进入 python 虚拟环境目录 &lt;EnvName&gt;</p>
+<ul>
+<li>
+<p>初次部署：拉取远程源文件</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/Explorer-Dong/YunJinWeb.git<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>后续更新：覆盖原始代码并重新运行应用</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-配置-Flask-运行环境">(3) 配置 Flask 运行环境</h5>
+<p>安装所需py模块</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install -r requirements.txt<br></code></pre></td></tr></table></figure>
+<h5 id="4-运行-Flask-应用">(4) 运行 Flask 应用</h5>
+<p><strong>内测阶段</strong>：使用 Flask 自带的服务器运行</p>
+<p>运行 Flask 主接口文件 <code>app.py</code>，之后就可以通过 ip 地址 + 端口号的方式进行访问了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python app.py<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>运行app.py时报错，端口已被占用，解决方案：</p>
+<ul>
+<li>
+<p>方法一：换一个端口运行</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45753080/article/details/124114096">方法二：</a>杀死其余的端口占用进程，重启应用</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 检测端口占用 </span><br>netstat -npl | grep <span class="hljs-string">&quot;端口&quot;</span><br>                                                                                        <br><span class="hljs-comment"># 查找占用端口的进程的PID</span><br>sudo lsof -i:<span class="hljs-string">&quot;端口&quot;</span><br>                                                                                        <br><span class="hljs-comment"># 根据PID杀死该进程</span><br>sudo <span class="hljs-built_in">kill</span> -9 &lt;PID&gt;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p><strong>公测阶段</strong>：使用 uwsgi 应用服务器运行</p>
+<p>安装配置 uwsgi 应用服务器后运行，之后就可以通过 ip 地址 + 端口号的方式进行访问了</p>
+<ul>
+<li>
+<p>安装 uwsgi 包</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install uwsgi<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>创建 uwsgi.ini 文件并编辑</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> uwsgi.ini<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs bash">[uwsgi]<br><br><span class="hljs-comment"># -------------------- 路径相关的设置 --------------------</span><br><br><span class="hljs-comment"># 项目的路径</span><br><span class="hljs-built_in">chdir</span>           = /root/.virtualenvs/test111/demo/<br><br><span class="hljs-comment"># Flask的uwsgi文件配对的应用</span><br>wsgi-file       = /root/.virtualenvs/test111/demo/app.py<br><br><span class="hljs-comment"># 回调的app对象</span><br>callable        = app<br><br><span class="hljs-comment"># Python虚拟环境的路径</span><br>home            = /root/.virtualenvs/test111<br><br><span class="hljs-comment"># -------------------- 进程相关的设置 --------------------</span><br><br><span class="hljs-comment"># 主进程</span><br>master          = <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># 最大数量的工作进程</span><br>processes       = 10<br><br><span class="hljs-comment"># 监听5000端口（或监听socket文件，与nginx配合）</span><br>http            = :5000 <br><br><span class="hljs-comment"># socket监听</span><br><span class="hljs-comment"># socket        = /srv/[项目名称]/[项目名称].sock</span><br><br><span class="hljs-comment"># 设置socket的权限</span><br><span class="hljs-comment"># chmod-socket    = 666</span><br><br><span class="hljs-comment"># 退出的时候是否清理环境</span><br>vacuum          = <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>通过 uwsgi 应用服务器运行 Flask 应用</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pengpengdeyuan/p/14742090.html">uwsgi启动Flask项目(venv虚拟环境)</a></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 初始启动uwsgi指令</span><br>uwsgi --ini uwsgi.ini<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wjwj1203/article/details/105336943">退出uwsgi但是不停止服务的操作</a></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 退出uwsgi但是不停止服务的操作</span><br>uwsgi -d --ini uwsgi.ini<br><br><span class="hljs-comment"># 此时想要停止就需要找到uwsgi的进程并全部杀死</span><br>    <span class="hljs-comment"># 找到所有uwsgi进程</span><br>    ps -ef|grep uwsgi<br>    <br>    <span class="hljs-comment"># 杀死所有进程</span><br>    <span class="hljs-built_in">kill</span> -9 &lt;进程号&gt;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Operation/" class="category-chain-item">Operation</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Operation</div>
+      <div>https://blog.dwj601.cn/Operation/Operation/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Mr_Dwj</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/RoadMap/RoadMap/" title="RoadMap">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">RoadMap</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/BackEnd/cppBasic/cpp-decl-and-defi-default-para/" title="cpp-decl-and-defi-default-para">
+                        <span class="hidden-mobile">cpp-decl-and-defi-default-para</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

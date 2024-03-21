@@ -167,7 +167,7 @@ $$
 
 **确定可行域是否为凸集**
 
-1. 定理：若约束条件中每一个约束函数 $c_i(x)$ 都是凹函数，则可行域 $F$ 是凸集
+1. 定理：若约束条件 $c_i(x) \ge 0$ 中每一个约束函数 $c_i(x)$ 都是凹函数，则可行域 $F$ 是凸集
 
     <details>
         <summary>证明</summary>
@@ -176,7 +176,7 @@ $$
         </center>
     </details>
 
-2. 定理：若约束条件中每一个约束函数 $c_i(x)$ 都是凹函数，则可行域 $F$ 是凸集
+2. 定理：若约束条件 $c_i(x) \le 0$ 中每一个约束函数 $c_i(x)$ 都是凸函数，则可行域 $F$ 是凸集
 
     <details>
         <summary>证明</summary>
@@ -325,13 +325,93 @@ $$
 
 #### 2.1.1 线性规划问题
 
+<details>
+    <summary>线性规划一般形式</summary>
+    <center>
+        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211918859.png" alt="线性规划问题一般形式" />
+    </center>
+</details>
+
 #### 2.1.2 图解法
+
+**仅适用于二元变量**的线性规划问题。我们将所有的约束条件全部画到平面直角坐标系中构成一个可行域，然后将目标函数作为一条直线进行平移，直到与可行域初次有交点，则该交点就是最优解对应的点。当然不一定会有交点，一共分为四种情况：
+
+<details>
+    <summary>刚好只有一个最优解</summary>
+    <center>
+        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211917063.png" alt="刚好只有一个最优解" style="zoom:67%;" />
+    </center>
+</details>
+
+<details>
+    <summary>有无穷多最优解</summary>
+    <center>
+        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211920849.png" alt="有无穷多最优解" style="zoom:67%;" />
+    </center>
+</details>
+
+<details>
+    <summary>有无界解</summary>
+    <center>
+        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211921495.png" alt="有无界解" style="zoom:67%;" />
+    </center>
+</details>
+
+<details>
+    <summary>无可行解 - 可行域为空集</summary>
+    <center>
+        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211922747.png" alt="无可行解 - 可行域为空集" style="zoom:67%;" />
+    </center>
+</details>
 
 #### 2.1.3 基本性质
 
-#### 2.1.4 线性规划的标准型
+1. 线性规划问题的可行域如果非空，则是一个凸集
+
+    <details>
+        <summary>证明</summary>
+        <center>
+            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403212109584.jpg" alt="线性规划问题的可行域如果非空，则是一个凸集" style="zoom: 25%;" />
+        </center>
+    </details>
+
+2. 如果线性规划问题有最优解，那么最优解可在可行域的顶点中确定
+
+3. 如果可行域有界且可行域只有有限个顶点，则问题的最优解必存在，并在这有限个顶点中确定
+
+4. 最优解可由最优顶点处的**有效约束**形成的方程组的解确定
+
+#### 2.1.4 线性规划的标准形 :star:
+
+为什么要学习线性规划的标准形？
+
+- 我们要学习单纯形法来计算多维线性规划的最优解
+- 单纯形法需要线性规划的具有所谓的标准形
+
+线性规划的标准形的定义：
+
+- 只含有线性等式约束和对变量的非负约束
+
+一般线性规划转化为标准形的方法：
+
+1. 对于目标函数：需要将取 $\max$ 通过**取相反数**转化为取 $\min$
+2. 对于约束条件：需要将不等式约束**松弛**转化为等式约束
+    - 对于 $\le$ 的不等式约束，等式左边加上非负新变量，从而转化为等式
+    - 对于 $\ge$ 的不等式约数，等式左边减去非负新变量，从而转化为等式
+3. 对于无约束的变量：需要将其转化为**两个新变量之差**（可正可负），产生了一个新的等式，如果该无约束变量存在于目标函数中，还需要将目标函数中的该变量表示为两个新变量之差
+
+<details>
+    <summary>举个例子</summary>
+    <center>
+        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403212111330.jpg" alt="一般线性规划转化为标准形 - 演示" style="zoom:25%;" />
+    </center>
+</details>
 
 #### 2.1.5 基本可行解
+
+直接说结论：对于标准形的线性规划问题，其基本可行解就是凸集的顶点。
+
+基本可行解 $\subset$ 基本解，而基本解的个数 $\le C_{m}^{n}$。其中基本可行解需要满足解序列元素非负。如果序列含有 0 元素，称其为退化的基本可行解，产生退化的基本可行解的原因是存在可删除的约数条件。
 
 #### 2.1.6 最优解的性质
 

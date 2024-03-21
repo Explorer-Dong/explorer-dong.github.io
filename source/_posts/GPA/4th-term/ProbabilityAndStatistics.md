@@ -345,12 +345,12 @@ $$
 
 #### 2.3.2 常用连续型随机变量及其密度函数
 
-|               |           分布定义式            |                         概率密度函数                         | 分布函数 |
-| :-----------: | :-----------------------------: | :----------------------------------------------------------: | :------: |
-|   均匀分布    |         $X \sim U[a,b]$         | $p(x) = \begin{cases} \frac{1}{b-a}, & a \le x \le b, \\ 0, & 其他 \end{cases}$ |          |
-|   指数分布    |      $X \sim e (\lambda)$       |                                                              |          |
-|   正态分布    |    $X \sim N(\mu,\sigma^2)$     |                                                              |          |
-| $\Gamma$ 分布 | $X \sim \Gamma(\alpha,\lambda)$ |                                                              |          |
+|               |           分布定义式            |                         概率密度函数                         |                           分布函数                           |
+| :-----------: | :-----------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|   均匀分布    |         $X \sim U[a,b]$         | $p(x) = \begin{cases} \frac{1}{b-a}, & a \le x \le b, \\ 0, & 其他 \end{cases}$ | $F(x) = \begin{cases} 0, & x < a \\ \frac{x - a}{b - a}, & a \le x < b \\ 1, & x \ge b \end{cases}$ |
+|   指数分布    |      $X \sim e (\lambda)$       | $p(x) = \begin{cases} 0, & x < 0 \\ \lambda e^{-\lambda x} , & x \ge 0 \end{cases}$ | $F(x) = \begin{cases} 0, & x < 0 \\ 1- e^{-\lambda x}, & x \ge 0 \end{cases}$ |
+|   正态分布    |    $X \sim N(\mu,\sigma^2)$     | $\displaystyle p(x) = \frac{1}{\sqrt{2 \pi} \sigma } e^{- \frac{(x - \mu)^2}{2 \sigma ^2}} , \quad -\infty < x < + \infty$ | $\displaystyle F(x) = \frac{1}{\sqrt{2 \pi} \sigma } \int_{- \infty}^x e^{- \frac{(y - \mu)^2}{2 \sigma ^2}} dy $ |
+| $\Gamma$ 分布 | $X \sim \Gamma(\alpha,\lambda)$ |                                                              |                                                              |
 
 ### 2.4 随机变量函数的分布
 

@@ -187,7 +187,7 @@ git push --force <RemoteName> <BranchName>
 
 ```bash
 # 从服务器克隆仓库
-git clone https://github.com/<UserName>/<ProjectName>.git
+git clone https://github.com/<UserName>/<ProjectName>.git <ProjectName>
 ```
 
 远程更新，本地未更新（方法一）

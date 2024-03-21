@@ -52,3 +52,6 @@ git remote set-url --add github https://gitee.com/idwj/idwj.git
 git push -u github main
 ```
 
+## 缺点
+
+修改编辑路径以后，会导致所有的文章的**编写**日期刷新为当前时间

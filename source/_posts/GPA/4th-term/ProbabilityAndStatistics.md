@@ -351,6 +351,11 @@ $$
 | 指数分布 |   $X \sim e (\lambda)$   | $p(x) = \begin{cases} 0, & x < 0 \\ \lambda e^{-\lambda x} , & x \ge 0 \end{cases}$ | $F(x) = \begin{cases} 0, & x < 0 \\ 1- e^{-\lambda x}, & x \ge 0 \end{cases}$ |
 | 正态分布 | $X \sim N(\mu,\sigma^2)$ | $p(x) = \frac{1}{\sqrt{2 \pi} \sigma } e^{- \frac{(x - \mu)^2}{2 \sigma ^2}} , \quad -\infty < x < + \infty$ | $F(x) = \frac{1}{\sqrt{2 \pi} \sigma } \int_{- \infty}^x e^{- \frac{(y - \mu)^2}{2 \sigma ^2}} dy$ |
 
+一般正态函数 $F(x)$ 转化为标准正态函数 $\Phi(x)$：$\displaystyle F(x) = \Phi(\frac{x - \mu}{\sigma})$，于是一般正态函数求解密度就可以通过下式进行转化，最后查表即可
+$$
+p(X \le x) = F(x) = \Phi (\frac{x - \mu}{\sigma})
+$$
+
 ### 2.4 随机变量函数的分布
 
 本目主要介绍给定一个随机变量 $X$ 的分布情况，通过一个关系式 $y=g(x)$ 来求解随机变量 $Y$ 的分布情况

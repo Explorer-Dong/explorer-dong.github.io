@@ -345,18 +345,38 @@ $$
 
 #### 2.3.2 常用连续型随机变量及其密度函数
 
-|               |           分布定义式            |                         概率密度函数                         |                           分布函数                           |
-| :-----------: | :-----------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|   均匀分布    |         $X \sim U[a,b]$         | $p(x) = \begin{cases} \frac{1}{b-a}, & a \le x \le b, \\ 0, & 其他 \end{cases}$ | $F(x) = \begin{cases} 0, & x < a \\ \frac{x - a}{b - a}, & a \le x < b \\ 1, & x \ge b \end{cases}$ |
-|   指数分布    |      $X \sim e (\lambda)$       | $p(x) = \begin{cases} 0, & x < 0 \\ \lambda e^{-\lambda x} , & x \ge 0 \end{cases}$ | $F(x) = \begin{cases} 0, & x < 0 \\ 1- e^{-\lambda x}, & x \ge 0 \end{cases}$ |
-|   正态分布    |    $X \sim N(\mu,\sigma^2)$     | $p(x) = \frac{1}{\sqrt{2 \pi} \sigma } e^{- \frac{(x - \mu)^2}{2 \sigma ^2}} , \quad -\infty < x < + \infty$ | $F(x) = \frac{1}{\sqrt{2 \pi} \sigma } \int_{- \infty}^x e^{- \frac{(y - \mu)^2}{2 \sigma ^2}} dy$ |
-| $\Gamma$ 分布 | $X \sim \Gamma(\alpha,\lambda)$ |                                                              |                                                              |
+|          |        分布定义式        |                         概率密度函数                         |                           分布函数                           |
+| :------: | :----------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| 均匀分布 |     $X \sim U[a,b]$      | $p(x) = \begin{cases} \frac{1}{b-a}, & a \le x \le b, \\ 0, & 其他 \end{cases}$ | $F(x) = \begin{cases} 0, & x < a \\ \frac{x - a}{b - a}, & a \le x < b \\ 1, & x \ge b \end{cases}$ |
+| 指数分布 |   $X \sim e (\lambda)$   | $p(x) = \begin{cases} 0, & x < 0 \\ \lambda e^{-\lambda x} , & x \ge 0 \end{cases}$ | $F(x) = \begin{cases} 0, & x < 0 \\ 1- e^{-\lambda x}, & x \ge 0 \end{cases}$ |
+| 正态分布 | $X \sim N(\mu,\sigma^2)$ | $p(x) = \frac{1}{\sqrt{2 \pi} \sigma } e^{- \frac{(x - \mu)^2}{2 \sigma ^2}} , \quad -\infty < x < + \infty$ | $F(x) = \frac{1}{\sqrt{2 \pi} \sigma } \int_{- \infty}^x e^{- \frac{(y - \mu)^2}{2 \sigma ^2}} dy$ |
 
 ### 2.4 随机变量函数的分布
 
+本目主要介绍给定一个随机变量 $X$ 的分布情况，通过一个关系式 $y=g(x)$ 来求解随机变量 $Y$ 的分布情况
+
 #### 2.4.1 离散型随机变量函数的分布
 
+通过关系式 $y=g(x)$​ 将所有的 $Y$ 的取值全部枚举出来，然后一一统计即可。
+
 #### 2.4.2 连续型随机变量函数的分布
+
+给定随机变量 $X$ 的概率密度函数 $p(x)$，以及关系式 $y=g(x)$，求解随机变量 $Y$ 的分布函数 $F_Y(y)$、概率密度函数 $p_Y(y)$
+
+- **方法一**：先求解随机变量 $Y$ 的分布函数 $F_Y(y)$，再通过对其求导得到概率密度函数 $p_Y(y)$​
+
+    即先 $F_Y(y) = P(Y \le y) = P(g(X) \le y) = P(X \le f(y))$ 得到 $Y$ 的分布函数
+
+    再对 $F_Y(y)$ 求导得 $p_Y(y) = F_Y'(y)$
+
+- **方法二**：如果关系式 $y=g(x)$ 单调且反函数 $x=h(y)$ 连续可导，则可以直接得出随机变量 $Y$ 的概率密度函数 $p_Y(y)$ 为下式。其中 $\alpha$ 和 $\beta$ 为 $Y=g(X)$ 的取值范围
+    $$
+    p_Y(y) = 
+    \begin{cases}
+    p(h(y)) \cdot |h'(y)|, & \alpha < y < \beta \\
+    0, & \text{其他}
+    \end{cases}
+    $$
 
 ## 第3章 随机向量及其分布
 

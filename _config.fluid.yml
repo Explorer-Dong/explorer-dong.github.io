@@ -1016,14 +1016,14 @@ links:
     }
     - {
       title: "CSDN",
-      intro: "CSDN 博客",
+      intro: "我的 CSDN 博客",
       link: "https://blog.csdn.net/qq_73408594",
       avatar: "/img/csdn.png"
     }
     - {
       title: "Gitee",
-      intro: "Gitee 仓库",
-      link: "https://gitee.com/explorer-dong",
+      intro: "主题 Gitee 仓库",
+      link: "https://gitee.com/idwj/idwj",
       avatar: "/img/gitee.png"
     }
 

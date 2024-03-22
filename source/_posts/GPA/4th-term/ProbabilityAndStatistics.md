@@ -353,7 +353,7 @@ $$
 
 一般正态函数 $F(x)$ 转化为标准正态函数 $\Phi(x)$：$\displaystyle F(x) = \Phi(\frac{x - \mu}{\sigma})$，于是一般正态函数求解密度就可以通过下式进行转化，最后查表即可
 $$
-p(X \le x) = F(x) = \Phi (\frac{x - \mu}{\sigma})
+P(X \le x) = F(x) = \Phi (\frac{x - \mu}{\sigma})
 $$
 
 ### 2.4 随机变量函数的分布
@@ -370,11 +370,11 @@ $$
 
 - **方法一**：先求解随机变量 $Y$ 的分布函数 $F_Y(y)$，再通过对其求导得到概率密度函数 $p_Y(y)$​
 
-    即先 $F_Y(y) = P(Y \le y) = P(g(X) \le y) = P(X \le f(y))$ 得到 $Y$ 的分布函数
+    即先 $F_Y(y) = P_Y(Y \le y) = P_Y(g(X) \le y) = P_X(X \le f(y)) = F_X(f(y))$ 得到 $Y$ 的分布函数
 
-    再对 $F_Y(y)$ 求导得 $p_Y(y) = F_Y'(y)$
+    再对 $F_Y(y)$ 求导得 $\displaystyle p_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} F_X(f(y)) = F_X'(f(y)) \cdot f'(y)$
 
-- **方法二**：如果关系式 $y=g(x)$ 单调且反函数 $x=h(y)$ 连续可导，则可以直接得出随机变量 $Y$ 的概率密度函数 $p_Y(y)$ 为下式。其中 $\alpha$ 和 $\beta$ 为 $Y=g(X)$ 的取值范围
+- **方法二**：如果关系式 $y=g(x)$ 单调且反函数 $x=h(y)$ 连续可导，则可以直接得出随机变量 $Y$ 的概率密度函数 $p_Y(y)$ 为下式。其中 $\alpha$ 和 $\beta$ 为 $Y=g(X)$ 的取值范围（$x$ 应该怎么取值，$h(y)$ 就应该怎么取值，从而计算出 $y$ 的取值范围）
     $$
     p_Y(y) = 
     \begin{cases}

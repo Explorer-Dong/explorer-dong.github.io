@@ -229,20 +229,18 @@ font:
   letter_spacing: 0.02em
   code_font_size: 85%
 
-# 指定自定义 .js 文件路径，支持列表；路径是相对 source 目录，如 /js/custom.js 对应存放目录 source/js/custom.js
-# Specify the path of your custom js file, support list. The path is relative to the source directory, such as `/js/custom.js` corresponding to the directory `source/js/custom.js`
-custom_js:
-  # - /js/custom.js
-  # - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js # 动态彩带
-  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js # 运行时间
 
+# 指定自定义 .js 文件路径，支持列表；路径是相对 source 目录，如 /js/custom.js 对应存放目录 source/js/custom.js
+custom_js:
+  - /js/custom.js
+  # - ///cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js # 动态彩带
 
 
 # 指定自定义 .css 文件路径，用法和 custom_js 相同
-# The usage is the same as custom_js
 custom_css:
   - /css/custom.css
-  # - //cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css # 鼠标指针
+  - ///cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css # 鼠标指针
+
 
 # 网页访问统计
 # Analysis of website visitors

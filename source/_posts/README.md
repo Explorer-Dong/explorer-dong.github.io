@@ -2,6 +2,7 @@
 title: README
 sticky: 100
 category_bar: true
+index_img: /img/hello.png
 ---
 
 ## Pre
@@ -33,8 +34,9 @@ Finishing !
 - [x] 修复：无法显示更改时间的 bug - 放弃 `.github/workflows/deploy.yml` 方案，本地手动部署
 - [x] 新增：自定义域名便于网站推流 - 长期可用域名 [blog.dwj601.cn](https://blog.dwj601.cn/)
 - [x] 新增：网站流量统计 - 后端使用百度统计服务，前端使用不算子服务
+- [x] 新增：折叠标签语法提升阅读体验 - 通过 hexo-fluid 的折叠标签实现
 
 Fighting !
 
-- [ ] 解决：访问速度慢的问题 - 使用国内自己的服务
+- [ ] 修复：访问速度慢的问题 - 使用国内自己的服务器
 - [ ] 新增：评论功能 - 使用内置插件，增加互动性，提升内容准确性与可信度

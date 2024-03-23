@@ -35,10 +35,9 @@ category_bar: true
 
 本目主要讲解最优化问题的一些分类，下附脑图（由 Xmind 软件制作）：
 
-<details>
-    <summary>分类脑图</summary>
-    <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403091214182.png" alt="最优化问题概念辨析" /></center>
-</details>
+{% fold info @分类脑图 %}
+![分类脑图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403091214182.png)
+{% endfold %}
 
 ### 1.2 凸集和凸函数
 
@@ -59,10 +58,9 @@ $$
 3. 两凸集的差 $D_1 - D_2 = \{x,y\ |\ x \in D_1 , y \in D_2\}$ 是凸集
 4. 对于任意非零实数 $\alpha$，集合 $\alpha D_1 = \{ \alpha x \ |\ x \in D_1 \}$​ 是凸集
 
-<details>
-    <summary>证明</summary>
-    <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101941905.png" alt="凸集的性质证明" /></center>
-</details>
+{% fold info @凸集的性质证明 %}
+![凸集的性质证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101941905.png)
+{% endfold %}
 
 **凸集的应用**
 
@@ -79,10 +77,10 @@ $$
         \sum_{i=1}^m \alpha_ix_i \in D\left( \alpha_i \ge 0(i=1,2,\cdots,m),\sum_{i=1}^m \alpha_i = 1 \right)
         $$
     
-      <details>
-          <summary>证明</summary>
-          <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403102025159.png" alt="凸组合定理证明" /></center>
-      </details>
+      {% fold info @凸组合定理证明 %}
+      ![凸组合定理证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403102025159.png)
+      {% endfold %}
+
     
 2. 分析最优解的最优性条件
     - 超平面定义（凸集分离定理）：设 $D_1,D_2 \subset R^n$ 为两非空凸集，若存在非零向量 $\alpha \in R^n$ 和实数 $\beta$，使得
@@ -114,30 +112,28 @@ $$
 3. 如果 $f_i(x)(i=1,2,\cdots,m)$ 是非空凸集 $D$ 上的凸函数，则 $f(x) = \max_{1 \le i \le m} |f_i(x)|$ 也是凸集 $D$ 上的凸函数
 4. 如果 $f_i(x)(i=1,2,\cdots,m)$ 是非空凸集 $D$ 上的凸函数，则 $f(x) = \displaystyle \sum_{i=1}^m \alpha_i f_i(x)\quad(\alpha_i \ge 0)$ 也是凸集 $D$​ 上的凸函数
 
-<details>
-    <summary>证明（第3条待定）：</summary>
-    <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png" alt="第1、2条"></center>
-    <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png" alt="第4条"></center>
-</details>
+{% fold info @凸函数的性质证明（第3条待定） %}
+![第1、2条](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png)
+![第4条](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png)
+{% endfold %}
+
 凸函数的判别定理：
 
 1. 函数值角度：函数 $f(x)$ 是 $R^n$ 上的凸函数的充分必要条件是 $\forall x,y \in R^n$，单变量函数 $\phi(\alpha)=f(x + \alpha y)$ 是关于 $\alpha$ 的凸函数
 
-    <details>
-        <summary>证明</summary>
-        <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131019868.png" alt="凸函数的判别定理 - 函数值角度" /></center>
-    </details>
+    {% fold info @凸函数的判别定理证明：函数值角度 %}
+    ![凸函数的判别定理证明 - 函数值角度](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131019868.png)
+    {% endfold %}
 
 2. 一阶导数角度：设 $f(x)$ 是定义在非空开凸集 $D$ 上的可微函数，则
 
     - $f(x)$ 是 $D$ 上凸函数的充分必要条件是 $f(y) \ge f(x)+\nabla f(x)^T(y-x)$
     - $f(x)$ 是 $D$ 上严格凸函数的充分必要条件是 $f(y) > f(x)+\nabla f(x)^T(y-x)$
 
-    <details>
-        <summary>证明</summary>
-        <p>无需掌握证明，但是为了便于理解性记忆，可以从<b>二次凸函数</b>进行辅助理解记忆。</p>
-        <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131018032.png" alt="凸函数的判别定理 - 函数值角度" /></center>
-    </details>
+    {% fold info @凸函数的判别定理证明：一阶导数角度 %}
+    无需掌握证明，但是为了便于理解性记忆，可以从**二次凸函数**进行辅助理解记忆。
+    ![凸函数的判别定理证明 - 一阶导数角度](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131018032.png)
+    {% endfold %}
 
 3. 二阶导数角度：略
 
@@ -149,50 +145,35 @@ $$
 
 1. 定理：在可行域是凸集，目标函数非严格凸的情况下，局部最优解 $x^*$​ 也是全局最优解
 
-    <details>
-        <summary>证明（反证法）</summary>
-        <center>
-            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122016285.png" alt="目标函数非严格凸的情况下，局部最优解也是全局最优解" />
-        </center>
-    </details>
+    {% fold info @证明（反证法） %}
+    ![证明（反证法）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122016285.png)
+    {% endfold %}
 
 2. 定理：在可行域是凸集，目标函数是严格凸的情况下，局部最优解 $x^*$ 也是唯一的全局最优解
 
-    <details>
-        <summary>证明（反证法）</summary>
-        <center>
-            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122017101.png" alt="目标函数是严格凸的情况下，局部最优解也是唯一的全局最优解" />
-        </center>
-    </details>
+    {% fold info @证明（反证法） %}
+    ![证明（反证法）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122017101.png)
+    {% endfold %}
 
 **确定可行域是否为凸集**
 
 1. 定理：若约束条件 $c_i(x) \ge 0$ 中每一个约束函数 $c_i(x)$ 都是凹函数，则可行域 $F$ 是凸集
 
-    <details>
-        <summary>证明</summary>
-        <center>
-            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019899.png" alt="若约束条件中每一个约束函数都是凹函数，则可行域是凸集" />
-        </center>
-    </details>
+    {% fold info @证明 %}
+    ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019899.png)
+    {% endfold %}
 
 2. 定理：若约束条件 $c_i(x) \le 0$ 中每一个约束函数 $c_i(x)$ 都是凸函数，则可行域 $F$ 是凸集
 
-    <details>
-        <summary>证明</summary>
-        <center>
-            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019572.png" alt="若约束条件中每一个约束函数都是凹函数，则可行域是凸集" />
-        </center>
-    </details>
+    {% fold info @证明 %}
+    ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019572.png)
+    {% endfold %}
 
 3. 定理：若约束条件中每一个约束函数 $c_i(x)$ 都恒等于零，则可行域 $F$ 是凸集
 
-    <details>
-        <summary>证明</summary>
-        <center>
-            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019751.png" alt="若约束条件中每一个约束函数都恒等于零，则可行域是凸集" />
-        </center>
-    </details>
+    {% fold info @证明 %}
+    ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019751.png)
+    {% endfold %}
 
 ### 1.3 最优性条件
 
@@ -210,12 +191,9 @@ $$
     $$
     成立，则 $s$ 是 $f(x)$ 在点 $\bar x$ 处的一个下降方向
 
-    <details>
-        <summary>证明</summary>
-        <center>
-            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131639082.jpg" alt="下降方向定理证明" />
-        </center>
-    </details>
+    {% fold info @证明 %}
+    ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131639082.jpg)
+    {% endfold %}
 
 - **一阶必要条件**定理：设 $f:D \subset R^n \to R^1$ 在开集 $D$ 上连续可微，若 $x^* \in D$ 是目标函数的局部极小点，$f(x)$ 的一阶导数 $\nabla f(x)$ 表示为 $g(x)$，则
     $$
@@ -266,12 +244,9 @@ $$
 
 - 定理：$r>1$​ 时的算法均为超线性收敛算法
 
-    <details>
-        <summary>证明</summary>
-        <center>
-            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201331819.png" alt="r>1 时的算法均为超线性收敛算法" />
-        </center>
-    </details>
+    {% fold info @证明 %}
+    ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201331819.png)
+    {% endfold %}
 
 #### 1.4.4 迭代的终止条件
 
@@ -294,24 +269,18 @@ $$
         || x^{(k+1)} - x^{(k)} || \le \epsilon
         $$
 
-        <details>
-            <summary>证明</summary>
-            <center>
-                <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201425856.jpg" alt="利用函数解序列进行替代" style="zoom: 25%;" />
-            </center>
-        </details>
+        {% fold info @证明 %}
+        ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201425856.jpg)
+        {% endfold %}
 
     2. 方案二：利用**函数值序列**进行替代。即以下式作为迭代的终止条件
         $$
         || f(x^{(k+1)}) - f(x^{(k)}) || \le \epsilon
         $$
 
-        <details>
-            <summary>证明</summary>
-            <center>
-                <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201425473.jpg" alt="利用函数值序列进行替代" style="zoom:25%;" />
-            </center>
-        </details>
+        {% fold info @证明 %}
+        ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201425473.jpg)
+        {% endfold %}
 
 - 一般情况下，对于上述超线性算法的判断收敛的方法，只用其中一种往往不适当。此时一般使用两种方法集成的思路进行判断。
 
@@ -325,55 +294,37 @@ $$
 
 #### 2.1.1 线性规划问题
 
-<details>
-    <summary>线性规划一般形式</summary>
-    <center>
-        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211918859.png" alt="线性规划问题一般形式" />
-    </center>
-</details>
+{% fold info @线性规划问题的一般形式 %}
+![线性规划问题的一般形式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211918859.png)
+{% endfold %}
 
 #### 2.1.2 图解法
 
 **仅适用于二元变量**的线性规划问题。我们将所有的约束条件全部画到平面直角坐标系中构成一个可行域，然后将目标函数作为一条直线进行平移，直到与可行域初次有交点，则该交点就是最优解对应的点。当然不一定会有交点，一共分为四种情况：
 
-<details>
-    <summary>刚好只有一个最优解</summary>
-    <center>
-        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211917063.png" alt="刚好只有一个最优解" style="zoom:67%;" />
-    </center>
-</details>
+{% fold info @刚好只有一个最优解 %}
+![刚好只有一个最优解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211917063.png)
+{% endfold %}
 
-<details>
-    <summary>有无穷多最优解</summary>
-    <center>
-        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211920849.png" alt="有无穷多最优解" style="zoom:67%;" />
-    </center>
-</details>
+{% fold info @有无穷多最优解 %}
+![有无穷多最优解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211920849.png)
+{% endfold %}
 
-<details>
-    <summary>有无界解</summary>
-    <center>
-        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211921495.png" alt="有无界解" style="zoom:67%;" />
-    </center>
-</details>
+{% fold info @有无界解 %}
+![有无界解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211921495.png)
+{% endfold %}
 
-<details>
-    <summary>无可行解 - 可行域为空集</summary>
-    <center>
-        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211922747.png" alt="无可行解 - 可行域为空集" style="zoom:67%;" />
-    </center>
-</details>
+{% fold info @无可行解 - 可行域为空集 %}
+![无可行解 - 可行域为空集](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211922747.png)
+{% endfold %}
 
 #### 2.1.3 基本性质
 
 1. 线性规划问题的可行域如果非空，则是一个凸集
 
-    <details>
-        <summary>证明</summary>
-        <center>
-            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403212109584.jpg" alt="线性规划问题的可行域如果非空，则是一个凸集" style="zoom: 25%;" />
-        </center>
-    </details>
+    {% fold info @证明 %}
+    ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403212109584.jpg)
+    {% endfold %}
 
 2. 如果线性规划问题有最优解，那么最优解可在可行域的顶点中确定
 
@@ -400,12 +351,9 @@ $$
     - 对于 $\ge$ 的不等式约数，等式左边减去非负新变量，从而转化为等式
 3. 对于无约束的变量：需要将其转化为**两个新变量之差**（可正可负），产生了一个新的等式，如果该无约束变量存在于目标函数中，还需要将目标函数中的该变量表示为两个新变量之差
 
-<details>
-    <summary>举个例子</summary>
-    <center>
-        <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403212111330.jpg" alt="一般线性规划转化为标准形 - 演示" style="zoom:25%;" />
-    </center>
-</details>
+{% fold info @举个例子 %}
+![一般线性规划转化为标准形 - 演示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403212111330.jpg)
+{% endfold %}
 
 #### 2.1.5 基本可行解
 
@@ -417,12 +365,9 @@ $$
 
 - 若可行域有界，则线性规划问题的目标函数一定可以在其可行域的顶点上达到最优。
 
-    <details>
-        <summary>证明 - 反证法</summary>
-        <center>
-            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403222103333.jpg" alt="若可行域有界，则线性规划问题的目标函数一定可以在其可行域的顶点上达到最优" style="zoom: 50%;" />
-        </center>
-    </details>
+    {% fold info @证明 - 反证法 %}
+    ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403222103333.jpg)
+    {% endfold %}
 
 - 有时，目标函数可能在多个顶点处达到最大，这时在这些顶点的**凸组合**上也达到最大值，这时线性规划问题有无限多个最优解。
 

@@ -304,10 +304,9 @@ $$
 
     2. $\displaystyle \sum_{k=0}^\infty P(X=k)=1$
 
-        <details>
-            <summary>泊松分布正规性证明</summary>
-            <center><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403151012817.png" alt="泊松分布正规性证明" /></center>
-        </details>
+        {% fold info @泊松分布正规性证明 %}
+        ![泊松分布正规性证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403151012817.png)
+        {% endfold %}
 
 ### 2.3 连续型随机变量及其概率密度函数
 

@@ -215,24 +215,25 @@ pass
     - 横纵坐标：横坐标为**假正例率** $\displaystyle FPR = \frac{FP}{FP+TN}$，纵坐标为**真正例率** $\displaystyle TPR = \frac{TP}{TP+FN}$
 
     - 如何产生？与 P-R 图的产生类似，只不过计算横纵坐标的规则不同，不再赘述。
+    
     - 趋势解读：随着截断点的值不断下降，真正例率与假正例率均会不断上升，因为分子都是从 0 开始逐渐增加的
-
+    
     - 不同曲线对应学习器的性能度量：**AUC** 衡量了样本预测的排序质量。AUC 即 ROC 曲线右下方的面积，面积越大则对应的预测质量更高，学习器性能更好。不同于上述引入平衡点的概念，此处的面积我们可以直接计算，甚至 1-AUC 也可以直接计算。
-
+    
         我们定义 $AUC$ 的计算公式为：（其实就是每一块梯形的面积求和，ps：矩形也可以用梯形面积计算公式代替）
         $$
         \sum _{i=1}^{m-1} \frac{(y_{i}+y_{i+1}) \cdot (x_{i+1} - x_i)}{2}
         $$
         我们定义损失函数（$loss$） $l_{rank} = 1-AUC$ 的计算公式为：（ps：感觉下述公式不是很准，因为正反例预测值相等的比例比不一定就是一比一）
-
+    
         ![损失函数计算公式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403191055792.png)
-
-    <details>
-        <summary>ROC 曲线图 - 受试者工作特征</summary>
-        <center>
-            <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190851371.png" alt="ROC 曲线图 - 受试者工作特征" />
-        </center>
-    </details>
+        
+    - {% fold info @ROC 曲线图 - 受试者工作特征 %}
+    
+        ![ROC 曲线图 - 受试者工作特征](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190851371.png)
+    
+        {% endfold %}
+    
 
 ### 2.4 比较检验 TODO
 
@@ -260,12 +261,11 @@ pass
 
 偏差-方差分解的结论是：
 
-<details>
-    <summary>偏差-方差分解结论推导</summary>
-    <center>
-        111
-    </center>
-</details>
+{% fold info @偏差-方差分解结论推导 %}
+
+
+
+{% endfold %}
 
 #### 2.5.2 偏差-方差窘境
 

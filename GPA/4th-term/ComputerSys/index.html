@@ -23,11 +23,13 @@
 <meta property="og:site_name" content="Dwj の Blog">
 <meta property="og:description" content="计算机系统基础 前言 学科地位：    主讲教师 学分配额 学科类别     闫文珠 3.5 专业课    成绩组成：    实验（9次） 平时作业 期末（闭卷）     20% 30% 50%    教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN号     计算机系统基础 计算机系统基础 4 袁春风 机械工业出版社 978-7-111-60489-1    学习资源：  :t">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403252043639.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-03-21T02:08:56.809Z">
+<meta property="article:modified_time" content="2024-03-25T14:02:45.451Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403252043639.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -233,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          567 字
+          2.1k 字
         
       </span>
     
@@ -244,7 +246,7 @@
         
         
         
-          4 分钟
+          14 分钟
         
       </span>
     
@@ -541,7 +543,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月21日 上午
+                    本文最后更新于 2024年3月25日 晚上
                   
                 
               </p>
@@ -623,19 +625,139 @@
 <h3 id="1-2-程序的开发与运行">1.2 程序的开发与运行</h3>
 <h3 id="1-3-计算机系统的层次结构">1.3 计算机系统的层次结构</h3>
 <h3 id="1-4-计算机系统性能评价">1.4 计算机系统性能评价</h3>
+<p>一个完整的计算机系统由软件和硬件共同组成，而硬件的性能对其起决定性作用，但是硬件的性能检测和评价比较困难。本目介绍综合性测试、评价<strong>硬件性能</strong>的方法。</p>
+<h4 id="1-4-1-计算机性能的定义">1.4.1 计算机性能的定义</h4>
+<p>考量一个计算机性能的基本指标有两个，分别为吞吐率（throughput）和响应时间（response time），下面做出相应的理论解释和自己的理解。</p>
+<p>理论定义</p>
+<ul>
+<li>
+<p>吞吐率：计算机系统单位时间内完成的工作量。</p>
+</li>
+<li>
+<p>响应时间：计算机系统完成一个作业从提交开始到作业完成所用的时间。</p>
+</li>
+</ul>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-2ec5a2b9" role="button" aria-expanded="false" aria-controls="collapse-2ec5a2b9">
+        <div class="fold-arrow">▶</div>个人理解 + 适合场景
+      </div>
+      <div class="fold-collapse collapse" id="collapse-2ec5a2b9">
+        <div class="fold-content">
+          <p><strong>个人理解</strong>：我们以备份文件为例。<strong>对于一个大文件</strong>，我们希望计算机系统的吞吐率性能足够好，这样处理单文件的能力就会很高。<strong>对于很多的小文件</strong>，吞吐率高没有什么决定性作用，起决定性作用的是响应时间，我们希望响应时间尽可能的短，这样处理大规模小文件集合的时候就会有优势。那么相应的适用场景也就合理了。</p><p><strong>适用场景</strong>：对于多媒体应用场景，就相当于大型文件，此时自然希望吞吐率尽可能的高。对于银行、证券交易业务，就相当于大规模小文件集合，我们希望系统的响应时间尽可能的短，这样就可以在单位时间解决更多的小型业务。当然，两者性能均优异自然是最佳选择，对于一些用户体验很重要的应用，比如 ATM、文件服务、Web 服务 等等，就需要两者性能均优。</p>
+        </div>
+      </div>
+    </div>
+<h4 id="1-4-2-计算机性能的测试">1.4.2 计算机性能的测试</h4>
+<p>如果不考虑应用背景而直接比较计算机性能，往往通过<strong>程序的执行时间</strong>来衡量。下附程序的执行时间组成图：</p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-823d17d7" role="button" aria-expanded="false" aria-controls="collapse-823d17d7">
+        <div class="fold-arrow">▶</div>程序的执行时间组成图
+      </div>
+      <div class="fold-collapse collapse" id="collapse-823d17d7">
+        <div class="fold-content">
+          <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403252043639.png" srcset="/img/loading.gif" lazyload alt="程序的执行时间（用户感受到的）"></p>
+        </div>
+      </div>
+    </div>
+<p>我们关注的是<strong>用户 CPU 时间</strong>。那么如何计算呢？我们引入三个相关计算量：</p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-4a38fb0e" role="button" aria-expanded="false" aria-controls="collapse-4a38fb0e">
+        <div class="fold-arrow">▶</div>三个相关计算量
+      </div>
+      <div class="fold-collapse collapse" id="collapse-4a38fb0e">
+        <div class="fold-content">
+          <ol><li>时钟周期：一个时钟脉冲信号持续的时间。由于计算机执行官一条指令得过程会被分为不同的小模块进行，因此我们需要控制每一个小模块的执行。于是引入脉冲信号来控制信号的发出、作用时间等。</li><li>时钟频率：单位时间内的时钟周期数。即上述时钟周期的倒数。</li><li>CPI（Cycles Per Instruction）<ul><li>对于一条指令而言：CPI 指的是一条指令所需的时钟周期数</li><li>对于一个程序或一台机器而言：CPI 指的是该程序或机器的指令集中所有指令平均执行所需的时钟周期数</li></ul></li></ol>
+        </div>
+      </div>
+    </div>
+<p>计算<strong>用户 CPU 时间</strong>的公式：</p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-14e69d6f" role="button" aria-expanded="false" aria-controls="collapse-14e69d6f">
+        <div class="fold-arrow">▶</div>计算公式
+      </div>
+      <div class="fold-collapse collapse" id="collapse-14e69d6f">
+        <div class="fold-content">
+          <p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.16em" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mtext>用户 CPU 时间</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mtext>程序总时钟周期数</mtext><mo>×</mo><mtext>时钟周期</mtext></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mtext>程序总时钟周期数</mtext><mo>÷</mo><mtext>时钟频率</mtext></mrow></mstyle></mtd></mtr></mtable></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{equation*}\begin{aligned}\text{用户 CPU 时间} &amp;= \text{程序总时钟周期数} \times \text{时钟周期} \\&amp;= \text{程序总时钟周期数} \div \text{时钟频率}\end{aligned}\end{equation*}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.75em;"><span style="top:-3.75em;"><span class="pstrut" style="height:3.75em;"></span><span class="mord"><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.75em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">用户</span><span class="mord"> CPU </span><span class="mord cjk_fallback">时间</span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.25em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.75em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord cjk_fallback">程序总时钟周期数</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord cjk_fallback">时钟周期</span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord cjk_fallback">程序总时钟周期数</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">÷</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord cjk_fallback">时钟频率</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.25em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.25em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+        </div>
+      </div>
+    </div>
+<p>补充说明：</p>
+<ul>
+<li>显然，用户 CPU 时间与计算机性能成反比</li>
+<li>上述三个相关计算量是相互制约的，不存在只提升或下降某一个指标</li>
+</ul>
+<h4 id="1-4-3-用指令执行速度进行性能评估">1.4.3 用指令执行速度进行性能评估</h4>
+<h4 id="1-4-4-用基准程序进行性能评估">1.4.4 用基准程序进行性能评估</h4>
+<h4 id="1-4-5-Amdahl-定律">1.4.5 Amdahl 定律</h4>
 <h3 id="1-5-本书的主要内容与组织结构">1.5 本书的主要内容与组织结构</h3>
 <p>第一章主要介绍：计算机的基本工作原理、计算机系统的基本组成、程序的开发与执行过程、计算机系统的层次结构以及性能评价的基本概念。</p>
 <p>第二章主要介绍：各类数据在计算机中的表示与运算。</p>
 <p>第三章主要介绍：高级语言中的过程调用和控制语句所对应的汇编指令序列，以及各类数据结构元素的访问所对应的汇编指令。</p>
 <p>第四章主页介绍：如何将多个模块链接起来生成一个可执行的目标文件。</p>
 <h2 id="第2章-数据的机器级表示与处理">第2章 数据的机器级表示与处理</h2>
+<p>本章主要从四个方面展开，分别为：数值数据的表示、非数值数据的表示、数据的存储、数据的运算。</p>
 <h3 id="2-1-数制和编码">2.1 数制和编码</h3>
+<h4 id="2-1-1-信息的二进制编码">2.1.1 信息的二进制编码</h4>
+<h4 id="2-1-2-进位计数制">2.1.2 进位计数制</h4>
+<p>进制表示</p>
+<ol>
+<li>二进制：后缀为 B（即 Binary，如 0110B）</li>
+<li>八进制：后缀为 O（即 Octal，如 12673O）</li>
+<li>十进制：后缀为 D（即 Decimal，如 291D；可省略，即 291）</li>
+<li>十六进制：后缀为 H（即 Hexadecimal，如 3F9H；可以前缀 0x 标记，即 0x3F9）</li>
+</ol>
+<p>进制转换</p>
+<ol>
+<li>R 进制转换为 十进制</li>
+<li>十进制转换为 R 进制</li>
+<li>二、八、十六进制的相互转换</li>
+</ol>
+<h4 id="2-1-3-定点与浮点的表示">2.1.3 定点与浮点的表示</h4>
+<h4 id="2-1-4-定点数的编码表示">2.1.4 定点数的编码表示</h4>
+<ol>
+<li>原码表示法</li>
+<li>补码表示法
+<ul>
+<li>模运算：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>对一个负数取模</mtext><mo>=</mo><mtext>模</mtext><mo>−</mo><mi mathvariant="normal">∣</mi><mtext>负数</mtext><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">\text{对一个负数取模} = \text{模} - |\text{负数}|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">对一个负数取模</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord cjk_fallback">模</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord text"><span class="mord cjk_fallback">负数</span></span><span class="mord">∣</span></span></span></span></li>
+<li>补码的定义：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>X</mi><msub><mo stretchy="false">]</mo><mtext>补</mtext></msub><mo>=</mo><msup><mn>2</mn><mi>n</mi></msup><mo>+</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">[X]_{\text{补}}=2^n+X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord cjk_fallback mtight">补</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span>，对于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 位的运算系统，可以表示补码的数据范围为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≤</mo><mi>X</mi><mo>&lt;</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">-2^{n-1} \le X &lt; 2^{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9501em;vertical-align:-0.136em;"></span><span class="mord">−</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+</li>
+<li>反码表示法</li>
+<li>移码表示法</li>
+</ol>
 <h3 id="2-2-整数的表示">2.2 整数的表示</h3>
+<h4 id="2-2-1-无符号整数和带符号整数的表示">2.2.1 无符号整数和带符号整数的表示</h4>
+<p>无符号整数：所有的二进制位都用来表示数值。比如对于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 位的二进制数，无符号整数的数值范围为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,2^{n} - 1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span></p>
+<p>有符号整数：第一位二进制位必须用来进行正负性表示，后 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 位用来表示数值。同样对于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 位的二进制数，有符号整数的数值范围为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mo>−</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo separator="true">,</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[-2^{n-1}, 2^{n-1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<h4 id="2-2-2-C-语言中的整数及其相互转换">2.2.2 C 语言中的整数及其相互转换</h4>
+<p>C 语言标准中规定：若运算中同时有无符号和带符号整数，则按无符号整数运算</p>
 <h3 id="2-3-浮点数的表示">2.3 浮点数的表示</h3>
+<h4 id="2-3-1-浮点数的表示范围">2.3.1 浮点数的表示范围</h4>
+<h4 id="2-3-2-浮点数的规格化">2.3.2 浮点数的规格化</h4>
+<h4 id="2-3-3-IEEE-754-浮点数标准">2.3.3 IEEE 754 浮点数标准</h4>
+<h4 id="2-3-4-C-语言中的浮点数类型">2.3.4 C 语言中的浮点数类型</h4>
 <h3 id="2-4-十进制数的表示">2.4 十进制数的表示</h3>
+<h4 id="2-4-1-用-ASCII-码字符表示">2.4.1 用 ASCII 码字符表示</h4>
+<h4 id="2-4-2-用-BCD-码表示">2.4.2 用 BCD 码表示</h4>
 <h3 id="2-5-非数值数据的编码表示">2.5 非数值数据的编码表示</h3>
+<h4 id="2-5-1-逻辑值">2.5.1 逻辑值</h4>
+<h4 id="2-5-2-西文字符">2.5.2 西文字符</h4>
+<h4 id="2-5-3-汉字字符">2.5.3 汉字字符</h4>
 <h3 id="2-6-数据的宽度和存储">2.6 数据的宽度和存储</h3>
+<h4 id="2-6-1-数据的宽度和单位">2.6.1 数据的宽度和单位</h4>
+<h4 id="2-6-2-数据的存储和排列顺序">2.6.2 数据的存储和排列顺序</h4>
 <h3 id="2-7-数据的基本运算">2.7 数据的基本运算</h3>
+<h4 id="2-7-1-按位运算和逻辑运算">2.7.1 按位运算和逻辑运算</h4>
+<h4 id="2-7-2-左移运算和右移运算">2.7.2 左移运算和右移运算</h4>
+<h4 id="2-7-3-位扩展运算和位截断运算">2.7.3 位扩展运算和位截断运算</h4>
+<h4 id="2-7-4-整数加减运算">2.7.4 整数加减运算</h4>
+<h4 id="2-7-5-整数乘除运算">2.7.5 整数乘除运算</h4>
+<h4 id="2-7-6-常量的乘除运算">2.7.6 常量的乘除运算</h4>
+<h4 id="2-7-7-浮点数运算">2.7.7 浮点数运算</h4>
 <h2 id="第3章-程序的转换及机器级表示">第3章 程序的转换及机器级表示</h2>
 <h3 id="3-1-程序转换概述">3.1 程序转换概述</h3>
 <h3 id="3-2-IA-32-指令系统概述">3.2 IA-32 指令系统概述</h3>
@@ -714,7 +836,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年3月21日</div>
+          <div>2024年3月25日</div>
         </div>
       
       
@@ -745,9 +867,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/GPA/4th-term/Python/" title="Python">
+                      <a href="/GPA/4th-term/Algorithm/" title="Algorithm">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Python</span>
+                        <span class="hidden-mobile">Algorithm</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -755,8 +877,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/4th-term/Algorithm/" title="Algorithm">
-                        <span class="hidden-mobile">Algorithm</span>
+                      <a href="/GPA/4th-term/OptMethod/" title="OptMethod">
+                        <span class="hidden-mobile">OptMethod</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

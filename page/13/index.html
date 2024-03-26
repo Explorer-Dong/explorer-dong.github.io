@@ -68,7 +68,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -134,7 +134,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>dwj&#39;s blog</strong>
+      <strong>Dwj&#39;s Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -146,6 +146,18 @@
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
         
           
           
@@ -299,15 +311,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/BackEnd/cppBasic/cpp-multi-file-call-format/" target="_self">
-          cpp-multi-file-call-format
+        <a href="/BackEnd/cppBasic/cpp-decl-and-defi-default-para/" target="_self">
+          cpp-decl-and-defi-default-para
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/cppBasic/cpp-multi-file-call-format/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/cppBasic/cpp-decl-and-defi-default-para/" target="_self">
         <div>
-          C++ 多文件调用规范 一、常规认知 .h 后缀文件编写类的声明文件，.cpp 后缀文件编写类的定义文件，示例如下： .h 文件 123456789#include &lt;iostream&gt;class TestClassFunction &#123;private:	int classVar;public:	void classFun();&#125;; .cpp 文件 123456#in
+          C++ 函数声明与定义中的缺省参数 实践 无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段： 123456789101112131415161718192021#include &lt;iostream&gt;class demoClass &#123;public:	int classFun(int num=100);&#125;;int fun(int num
         </div>
       </a>
 
@@ -360,15 +372,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/BackEnd/cppBasic/cpp-decl-and-defi-default-para/" target="_self">
-          cpp-decl-and-defi-default-para
+        <a href="/BackEnd/cppBasic/cpp-multi-file-call-format/" target="_self">
+          cpp-multi-file-call-format
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/cppBasic/cpp-decl-and-defi-default-para/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/cppBasic/cpp-multi-file-call-format/" target="_self">
         <div>
-          C++ 函数声明与定义中的缺省参数 实践 无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段： 123456789101112131415161718192021#include &lt;iostream&gt;class demoClass &#123;public:	int classFun(int num=100);&#125;;int fun(int num
+          C++ 多文件调用规范 一、常规认知 .h 后缀文件编写类的声明文件，.cpp 后缀文件编写类的定义文件，示例如下： .h 文件 123456789#include &lt;iostream&gt;class TestClassFunction &#123;private:	int classVar;public:	void classFun();&#125;; .cpp 文件 123456#in
         </div>
       </a>
 

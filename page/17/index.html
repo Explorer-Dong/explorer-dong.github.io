@@ -68,7 +68,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -134,7 +134,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>dwj&#39;s blog</strong>
+      <strong>Dwj&#39;s Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -146,6 +146,18 @@
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
         
           
           
@@ -238,15 +250,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Algorithm/a_template/" target="_self">
-          a_template
+        <a href="/Algorithm/data%20structures/" target="_self">
+          data structures
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Algorithm/a_template/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/Algorithm/data%20structures/" target="_self">
         <div>
-          template 高精度 12345678910111213141516171819202122232425262728293031323334353637383940414243class Int : public std::vector&lt;int&gt; &#123;public:	Int(int n = 0) &#123;		push_back(n);		check();	&#125;
+          data structures 1. 单调栈 https://www.acwing.com/problem/content/832/  题意：对于一个序列中的每一个元素，寻找每一个元素前面第一个比他小的元素 思路：  首先很容易想到一个暴力的做法，就是对于每一个数，再从 i→0i \to 0i→0 进行枚举寻找第一个比当前数小的那个数 时间复杂度：O(n2)O(n^2)O(n2)  优化：首先每一
         </div>
       </a>
 
@@ -346,15 +358,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Algorithm/data%20structures/" target="_self">
-          data structures
+        <a href="/Algorithm/binary%20search/" target="_self">
+          binary search
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Algorithm/data%20structures/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/Algorithm/binary%20search/" target="_self">
         <div>
-          data structures 1. 单调栈 https://www.acwing.com/problem/content/832/  题意：对于一个序列中的每一个元素，寻找每一个元素前面第一个比他小的元素 思路：  首先很容易想到一个暴力的做法，就是对于每一个数，再从 i→0i \to 0i→0 进行枚举寻找第一个比当前数小的那个数 时间复杂度：O(n2)O(n^2)O(n2)  优化：首先每一
+          binary search 二分查找理论上还是一个线性的算法思维，只是与一般的线性思维更进一步的是，二分思维需要提炼出题面中两个线性相关的变量，即单调变化的两个变量，从而采用二分加速检索 1. Building an Aquarium https://codeforces.com/contest/1873/problem/E  题意：想象有一个二维平面，现在有一个数列，每一个数表示平面对应列的高度
         </div>
       </a>
 

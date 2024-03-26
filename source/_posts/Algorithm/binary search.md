@@ -442,7 +442,7 @@ signed main() {
 }
 ```
 
-### 8. [NOIP2010 提高组] 关押罪犯
+### 8. [NOIP2010 提高组] 关押罪犯 # TODO
 
 https://www.luogu.com.cn/problem/P1525
 
@@ -468,3 +468,78 @@ https://www.luogu.com.cn/problem/P1525
 ```cpp
 ```
 
+### 9. 摆放棋子
+
+https://www.acwing.com/problem/content/5562/
+
+> 题意：给定一个 01 序列表示一个 $1\times n$ 的棋子序列，其中 1 表示有棋子，0 表示没有棋子。现在给定 k 个棋子，如何放置可以使得棋盘上连续的棋子长度尽可能长？给出一个合法的最长的序列
+>
+> 思路：可以发现，想要序列尽可能的长，那么需要放置的棋子就要尽可能的多，具备单调性，可以二分。我们二分答案，即最长序列长度。对于已知的 k 个可放置棋子，我们需要找到最大的序列长度，于是我们套用**寻找右边界**模板。检查方法就是判断对于当前的长度，通过前缀和与滑动窗口的形式计算当前窗口内需要放置多少颗棋子才能连为一体：
+>
+> - 若需要的棋子数 < k，说明可以继续增大长度
+> - 若需要的棋子数 > k，说明当前长度无法满足，要缩小长度
+> - 若需要的棋子数 = k，归属在 < k 的类比中即可。
+>
+> 时间复杂度：$O(n \log n)$
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
+using namespace std;
+
+const int N = 300010;
+
+int n, k;
+int a[N], s[N];
+
+bool chk(int x) {
+	for (int i = x; i <= n; i++) {
+		if (x - (s[i] - s[i - x]) <= k) {
+			return true;
+		}
+	}
+	return false;
+}
+
+void solve() {
+	cin >> n >> k;
+	for (int i = 1; i <= n; i++) {
+		cin >> a[i];
+		s[i] = s[i - 1] + a[i];
+	}
+
+	int l = 0, r = n;
+	while (l < r) {
+		int mid = (l + r + 1) >> 1;
+		if (chk(mid)) l = mid;
+		else r = mid - 1;
+	}
+
+	for (int i = r; i <= n; i++) {
+		if (r - (s[i] - s[i - r]) <= k) {
+			for (int j = i - r + 1; j <= i; j++) {
+				a[j] = 1;
+			}
+			break;
+		}
+	}
+
+	cout << r << "\n";
+	for (int i = 1; i <= n; i++) cout << a[i] << " ";
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
+```

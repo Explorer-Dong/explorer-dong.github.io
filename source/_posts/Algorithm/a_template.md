@@ -54,6 +54,36 @@ public:
 };
 ```
 
+## binary
+
+```c++
+// 寻找左边界
+
+bool binary(int x) {
+    int l = 0, r = n - 1;
+    while (l < r) {
+        int mid = (l + r) >> 1;
+        if (check(mid)) l = mid + 1;
+        else r = mid;
+    }
+    return a[r] == x;
+}
+```
+
+```c++
+// 寻找右边界
+
+bool binary(int x) {
+    int l = 0, r = n - 1;
+    while (l < r) {
+        int mid = (l + r + 1) >> 1;
+        if (check(mid)) l = mid;
+        else r = mid - 1;
+    }
+    return a[r] == x;
+}
+```
+
 ## dsu
 
 ```cpp
@@ -67,3 +97,4 @@ struct dsu {
 	int block() { std::set<int> a; for (int i = 1; i <= n; i++) a.insert(find(p[i])); return a.size(); }
 };
 ```
+

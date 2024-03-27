@@ -49,8 +49,11 @@
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403212111330.jpg">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403222103333.jpg">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056146.jpg">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056440.jpg">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-03-27T05:13:35.180Z">
+<meta property="article:modified_time" content="2024-03-27T13:00:37.547Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -274,7 +277,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.3k 字
+          5.4k 字
         
       </span>
     
@@ -348,7 +351,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月27日 下午
+                    本文最后更新于 2024年3月27日 晚上
                   
                 
               </p>
@@ -924,15 +927,26 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
 <p>有时，目标函数可能在多个顶点处达到最大，这时在这些顶点的<strong>凸组合</strong>上也达到最大值，这时线性规划问题有无限多个最优解。</p>
 </li>
 </ul>
-<h3 id="2-2-单纯形法">2.2 单纯形法</h3>
+<h3 id="2-2-单纯形法-star">2.2 单纯形法 <span class="github-emoji"><span>⭐</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8" srcset="/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>
 <div class="note note-info">
             <p>本目主要介绍一种常用的计算线性规划问题可行解的方法：单纯形法。其中，<strong>前三条</strong>分别介绍单纯性方法计算步骤的理论可行性，<strong>第四条</strong>具体介绍单纯形法的计算步骤与过程，<strong>第五条</strong>讨论当迭代过程中出现“退化”现象时如何判定是否要终止迭代</p>
           </div>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-436e35b2" role="button" aria-expanded="false" aria-controls="collapse-436e35b2">
+        <div class="fold-arrow">▶</div>理论知识开始之前，先过一遍单纯形法的求解步骤
+      </div>
+      <div class="fold-collapse collapse" id="collapse-436e35b2">
+        <div class="fold-content">
+          <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056146.jpg" srcset="/img/loading.gif" lazyload alt="单纯形法的求解步骤"></p><p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056440.jpg" srcset="/img/loading.gif" lazyload alt="单纯形法的求解步骤"></p>
+        </div>
+      </div>
+    </div>
 <h4 id="2-2-1-初始基可行解的确定">2.2.1 初始基可行解的确定</h4>
 <ol>
-<li>直接观察：直接看出系数矩阵中含有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m \times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 的单位矩阵，则选择该单位矩阵为初始基</li>
-<li>加松弛变量：当所有的约束条件都是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≤</span></span></span></span> 时，每一个约束条件都加一个非负的松弛变量，则这 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 个松弛变量的系数就对应了一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m \times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 的单位矩阵，选择其为初始基即可</li>
-<li>加非负的人工变量：求解方法与常规的线性规划问题不一样，见下述 2.2.3 条。
+<li><strong>直接观察</strong>：直接看出系数矩阵中含有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m \times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 的单位矩阵，则选择该单位矩阵为初始基</li>
+<li><strong>加松弛变量</strong>：当所有的约束条件都是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≤</span></span></span></span> 时，每一个约束条件都加一个非负的松弛变量，则这 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 个松弛变量的系数就对应了一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m \times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 的单位矩阵，选择其为初始基即可</li>
+<li><strong>加非负的人工变量</strong>：求解方法与常规的线性规划问题不一样，见下述 2.2.3 条。
 <ul>
 <li>对于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span></span></span></span> 约束，我们在约束条件的左边加上非负人工变量</li>
 <li>对于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo></mrow><annotation encoding="application/x-tex">\ge</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≥</span></span></span></span> 约束，我们先在约束条件的左边减去非负松弛变量，再在约束条件的左边加上非负的人工变量</li>
@@ -953,19 +967,21 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
     </div>
 <ol>
 <li>最优解判别定理：对于<strong>目标函数求解最大值</strong>的情形。若。。。有。。。则。。。为最优解。# TODO</li>
-<li>无穷多最优解判别定理 # TODO</li>
+<li>无穷多最优解判别定理：# TODO</li>
 <li>无界解判别定理：# TODO</li>
 </ol>
 <h4 id="2-2-3-计算新的基本可行解">2.2.3 计算新的基本可行解</h4>
 <p>对于<strong>常规</strong>的线性规划问题</p>
 <ol>
-<li>向量方程法 # TODO
+<li>向量方程法
 <ul>
 <li>确定入基变量：选择目标函数中<strong>系数最大的变量</strong>作为入基变量，即将其对应的系数列向量与出基变量对应的系数列向量进行置换</li>
-<li>确定出基变量：</li>
+<li>确定出基变量：线性表示基方程组以后，利用变量非负的特性找到入基变量刚好取 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 时对应的变量即为出基变量（示例的第二轮迭代中出基变量即为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">x_5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）</li>
 </ul>
 </li>
-<li>系数矩阵法</li>
+<li>
+<h2 id="系数矩阵法">系数矩阵法</h2>
+</li>
 </ol>
 <p>对于<strong>添加人工变量</strong>的线性规划问题</p>
 <ol>
@@ -1074,9 +1090,9 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/GPA/4th-term/ProbabilityAndStatistics/" title="ProbabilityAndStatistics">
+                      <a href="/GPA/4th-term/ComputerSys/" title="ComputerSys">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ProbabilityAndStatistics</span>
+                        <span class="hidden-mobile">ComputerSys</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1084,8 +1100,8 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/4th-term/MachineLearning/" title="MachineLearning">
-                        <span class="hidden-mobile">MachineLearning</span>
+                      <a href="/GPA/4th-term/ProbabilityAndStatistics/" title="ProbabilityAndStatistics">
+                        <span class="hidden-mobile">ProbabilityAndStatistics</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

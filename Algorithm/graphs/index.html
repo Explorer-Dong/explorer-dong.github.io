@@ -16,16 +16,17 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="graphs 1. 有向图的拓扑序列 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;850&#x2F;  题意：输出一个图的拓扑序，不存在则输出-1 思路：  首先我们要知道拓扑图的概念，感官上就是一张图可以从一个方向拓展到全图，用数学语言就是：若一个由图中所有点构成的序列 A 满足：对于图中的每条边 (x,y)，x 在 A 中都出现在 y 之前，则称 A 是该图的一个拓扑序">
+    <meta name="description" content="《图论》 1. 有向图的拓扑序列 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;850&#x2F;  题意：输出一个图的拓扑序，不存在则输出-1 思路：  首先我们要知道拓扑图的概念，感官上就是一张图可以从一个方向拓展到全图，用数学语言就是：若一个由图中所有点构成的序列 A 满足：对于图中的每条边 (x,y)，x 在 A 中都出现在 y 之前，则称 A 是该图的一个拓扑序列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="graphs">
 <meta property="og:url" content="https://blog.dwj601.cn/Algorithm/graphs/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="graphs 1. 有向图的拓扑序列 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;850&#x2F;  题意：输出一个图的拓扑序，不存在则输出-1 思路：  首先我们要知道拓扑图的概念，感官上就是一张图可以从一个方向拓展到全图，用数学语言就是：若一个由图中所有点构成的序列 A 满足：对于图中的每条边 (x,y)，x 在 A 中都出现在 y 之前，则称 A 是该图的一个拓扑序">
+<meta property="og:description" content="《图论》 1. 有向图的拓扑序列 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;850&#x2F;  题意：输出一个图的拓扑序，不存在则输出-1 思路：  首先我们要知道拓扑图的概念，感官上就是一张图可以从一个方向拓展到全图，用数学语言就是：若一个由图中所有点构成的序列 A 满足：对于图中的每条边 (x,y)，x 在 A 中都出现在 y 之前，则称 A 是该图的一个拓扑序列">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
 <meta property="article:published_time" content="2024-03-21T05:55:02.055Z">
-<meta property="article:modified_time" content="2024-03-21T02:08:56.809Z">
+<meta property="article:modified_time" content="2024-03-27T15:56:01.971Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -249,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.1k 字
+          6.5k 字
         
       </span>
     
@@ -260,7 +261,7 @@
         
         
         
-          38 分钟
+          41 分钟
         
       </span>
     
@@ -323,7 +324,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月21日 上午
+                    本文最后更新于 2024年3月27日 晚上
                   
                 
               </p>
@@ -331,7 +332,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="graphs">graphs</h2>
+                <h2 id="《图论》">《图论》</h2>
 <h3 id="1-有向图的拓扑序列">1. 有向图的拓扑序列</h3>
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/850/">https://www.acwing.com/problem/content/850/</a></p>
 <blockquote>
@@ -533,6 +534,19 @@
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 实现 dsu 算法</span><br><br>p = [_ <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">100010</span>)]<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Find</span>(<span class="hljs-params">x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-keyword">if</span> x != p[x]: p[x] = Find(p[x])<br>    <span class="hljs-keyword">return</span> p[x]<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>() -&gt; <span class="hljs-literal">None</span>:<br>    n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br><br>    edgeNum = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>) <span class="hljs-comment"># 每个点的连边数</span><br><br>    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>        u, v = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br>        edgeNum[u] += <span class="hljs-number">1</span><br>        edgeNum[v] += <span class="hljs-number">1</span><br>        p[Find(u)] = Find(v)<br><br>    union = {}<br><br>    <span class="hljs-keyword">class</span> <span class="hljs-title class_">node</span>:<br>        <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>            self.v = self.e = <span class="hljs-number">0</span><br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        nowp = Find(i)<br>        <span class="hljs-keyword">if</span> nowp <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> union: union[nowp] = node()<br><br>        union[nowp].v += <span class="hljs-number">1</span><br>        union[nowp].e += edgeNum[i]<br><br>    res = <span class="hljs-number">0</span><br><br>    <span class="hljs-keyword">for</span> comp <span class="hljs-keyword">in</span> union:<br>        <span class="hljs-keyword">if</span> union[comp].e &gt;&gt; <span class="hljs-number">1</span> == union[comp].v - <span class="hljs-number">1</span>:<br>            res += <span class="hljs-number">1</span><br><br>    <span class="hljs-built_in">print</span>(res)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:<br>    solve()<br></code></pre></td></tr></tbody></table></figure>
 <p>JavaScript</p>
 <figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 实现 dsu 算法</span><br><br><span class="hljs-keyword">const</span> readline = <span class="hljs-built_in">require</span>(<span class="hljs-string">'readline'</span>);<br><span class="hljs-keyword">const</span> rl = readline.<span class="hljs-title function_">createInterface</span>({<br>    <span class="hljs-attr">input</span>: process.<span class="hljs-property">stdin</span>,<br>    <span class="hljs-attr">output</span>: process.<span class="hljs-property">stdout</span>,<br>});<br><br><span class="hljs-keyword">let</span> n = <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">let</span> m = <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">let</span> p = [], edgeNum = [];<br><br>rl.<span class="hljs-title function_">on</span>(<span class="hljs-string">'line'</span>, <span class="hljs-function"><span class="hljs-params">line</span> =&gt;</span> {<br>    <span class="hljs-keyword">const</span> [a, b] = line.<span class="hljs-title function_">split</span>(<span class="hljs-string">' '</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> <span class="hljs-title class_">Number</span>(i));<br>    <span class="hljs-keyword">if</span> (n === <span class="hljs-literal">null</span>) {<br>        n = a;<br>        m = b;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {<br>            p[i] = i;<br>            edgeNum[i] = <span class="hljs-number">0</span>;<br>        }<br>    } <span class="hljs-keyword">else</span> {<br>        edgeNum[a]++;<br>        edgeNum[b]++;<br>        p[<span class="hljs-title class_">Find</span>(a)] = <span class="hljs-title class_">Find</span>(b);<br>    }<br>});<br><br>rl.<span class="hljs-title function_">on</span>(<span class="hljs-string">'close'</span>, <span class="hljs-function">() =&gt;</span> {<br>    <span class="hljs-keyword">const</span> res = <span class="hljs-title function_">solve</span>();<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);<br>});<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Find</span>(<span class="hljs-params">x</span>) {<br>    <span class="hljs-keyword">if</span> (x != p[x]) p[x] = <span class="hljs-title class_">Find</span>(p[x]);<br>    <span class="hljs-keyword">return</span> p[x];<br>}<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">solve</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">let</span> res = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-comment">// 自定义结构体</span><br>    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Node</span> {<br>        <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">v</span> = <span class="hljs-number">0</span>;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">e</span> = <span class="hljs-number">0</span>;<br>        }<br>    }<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        另一种结构体定义方法</span><br><span class="hljs-comment">        function Node() {</span><br><span class="hljs-comment">            this.v = 0;</span><br><span class="hljs-comment">            this.e = 0;</span><br><span class="hljs-comment">        }</span><br><span class="hljs-comment">    */</span><br><br>    <span class="hljs-comment">// 哈希</span><br>    <span class="hljs-keyword">let</span> union = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {<br>        <span class="hljs-keyword">let</span> nowp = <span class="hljs-title class_">Find</span>(i); <span class="hljs-comment">// 当前结点的祖宗结点 nowp</span><br>        <span class="hljs-keyword">if</span> (!union.<span class="hljs-title function_">has</span>(nowp)) union.<span class="hljs-title function_">set</span>(nowp, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>());<br><br>        union.<span class="hljs-title function_">get</span>(nowp).<span class="hljs-property">v</span> += <span class="hljs-number">1</span>;<br>        union.<span class="hljs-title function_">get</span>(nowp).<span class="hljs-property">e</span> += edgeNum[i];<br>    }<br><br>    <span class="hljs-comment">// 判断</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> union.<span class="hljs-title function_">keys</span>()) {<br>        <span class="hljs-keyword">if</span> (union.<span class="hljs-title function_">get</span>(i).<span class="hljs-property">e</span> &gt;&gt; <span class="hljs-number">1</span> === union.<span class="hljs-title function_">get</span>(i).<span class="hljs-property">v</span> - <span class="hljs-number">1</span>) {<br>            res++;<br>        }<br>    }<br><br>    <span class="hljs-keyword">return</span> res;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="10-树的直径-fire">10. 树的直径 <span class="github-emoji"><span>🔥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8" srcset="/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/5563/">https://www.acwing.com/problem/content/5563/</a></p>
+<blockquote>
+<p>题意：给定一棵树，初始时含有 4 个结点分别为 1 到 4，其中 1 号为根结点，2 到 4 均为根结点的叶子结点。现在进行 Q 次操作，每次指定一个已经存在的结点向其插入两个新结点作为叶节点。现在需要在每次操作以后输出这棵树的直径。我们定义<strong>树的直径</strong>为：树中距离最远的两个点之间的距离。</p>
+<p>思路一：暴力搜索。我们将树重构为无向图，对于每一个状态的无向图，首先从任意一个已存在的结点 A 开始搜索到距离他最远的点 B，然后从 B 点出发搜索到离他最远的点 C，则 B 与 C 之间的距离就是当前状态的树的直径。由于每一个状态的树都要遍历两遍树，于是时间复杂度就是平方阶</p>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>q</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nq)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mclose">)</span></span></span></span></p>
+<p>思路二：最近公共祖先 LCA。</p>
+<p>时间复杂度：</p>
+</blockquote>
+<p>暴力搜索代码</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stack&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unordered_map&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;set&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">500010</span>;<br><br>vector&lt;<span class="hljs-type">int</span>&gt; g[N];<br><span class="hljs-type">int</span> d[N];<br><span class="hljs-type">bool</span> vis[N];<br>pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; res;     <span class="hljs-comment">// first 为最远距离；second 为对应结点编号</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> pre, <span class="hljs-type">int</span> now)</span> </span>{<br>	<span class="hljs-keyword">if</span> (vis[now]) <span class="hljs-keyword">return</span>;<br>	<br>	vis[now] = <span class="hljs-literal">true</span>;<br>	<br>	<span class="hljs-keyword">if</span> (pre != <span class="hljs-number">-1</span>) {<br>		d[now] = d[pre] + <span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">if</span> (d[now] &gt; res.first) {<br>			res = {d[now], now};<br>		}<br>	}<br>	<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; ch: g[now]) {<br>		<span class="hljs-built_in">dfs</span>(now, ch);<br>	}<br>}<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>{<br>	<span class="hljs-comment">// init</span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;= <span class="hljs-number">4</span>; i++) {<br>		g[<span class="hljs-number">1</span>].<span class="hljs-built_in">push_back</span>(i);<br>		g[i].<span class="hljs-built_in">push_back</span>(<span class="hljs-number">1</span>);<br>	}<br>	<br>	<span class="hljs-type">int</span> now = <span class="hljs-number">4</span>;<br>	<br>	<span class="hljs-type">int</span> Q;<br>	cin &gt;&gt; Q;<br>	<span class="hljs-keyword">while</span> (Q--) {<br>		<span class="hljs-type">int</span> id;<br>		cin &gt;&gt; id;<br>		<br>		g[id].<span class="hljs-built_in">push_back</span>(++now);<br>		g[now].<span class="hljs-built_in">push_back</span>(id);<br>		<br>		g[id].<span class="hljs-built_in">push_back</span>(++now);<br>		g[now].<span class="hljs-built_in">push_back</span>(id);<br>		<br>		res = {<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>};<br>		<br>		<span class="hljs-comment">// 第一趟</span><br>		<span class="hljs-built_in">memset</span>(vis, <span class="hljs-literal">false</span>, <span class="hljs-keyword">sizeof</span> vis);<br>		<span class="hljs-built_in">memset</span>(d, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> d);<br>		d[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>		<span class="hljs-built_in">dfs</span>(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>);<br>		<br>		<span class="hljs-comment">// 第二趟</span><br>		<span class="hljs-built_in">memset</span>(vis, <span class="hljs-literal">false</span>, <span class="hljs-keyword">sizeof</span> vis);<br>		<span class="hljs-built_in">memset</span>(d, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> d);<br>		d[res.second] = <span class="hljs-number">0</span>;<br>		<span class="hljs-built_in">dfs</span>(<span class="hljs-number">-1</span>, res.second);<br>		<br>		cout &lt;&lt; res.first &lt;&lt; <span class="hljs-string">"\n"</span>;<br>	}<br>}<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>	cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>), cout.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>	<span class="hljs-type">int</span> T = <span class="hljs-number">1</span>;<br><span class="hljs-comment">//	cin &gt;&gt; T;</span><br>	<span class="hljs-keyword">while</span> (T--) <span class="hljs-built_in">solve</span>();<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>LCA 代码</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br></code></pre></td></tr></tbody></table></figure>
 
                 
               </div>
@@ -590,7 +604,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年3月21日</div>
+          <div>2024年3月27日</div>
         </div>
       
       
@@ -621,9 +635,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Algorithm/games/" title="games">
+                      <a href="/Algorithm/geometry/" title="geometry">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">games</span>
+                        <span class="hidden-mobile">geometry</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -631,8 +645,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Algorithm/geometry/" title="geometry">
-                        <span class="hidden-mobile">geometry</span>
+                      <a href="/Algorithm/hashing/" title="hashing">
+                        <span class="hidden-mobile">hashing</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -728,28 +742,28 @@
     
       
       
-        <a href="/Algorithm/binary%20search/" title="binary search"
+        <a href="/Algorithm/binary-search/" title="binary-search"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">binary search</span>
+          <span class="category-post">binary-search</span>
         </a>
       
     
       
       
-        <a href="/Algorithm/data%20structures/" title="data structures"
+        <a href="/Algorithm/data-structure/" title="data-structure"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">data structures</span>
+          <span class="category-post">data-structure</span>
         </a>
       
     
       
       
-        <a href="/Algorithm/dfs%20and%20similar/" title="dfs and similar"
+        <a href="/Algorithm/dfs-and-similar/" title="dfs-and-similar"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">dfs and similar</span>
+          <span class="category-post">dfs-and-similar</span>
         </a>
       
     

@@ -133,7 +133,9 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -247,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          756 字
+          720 字
         
       </span>
     
@@ -338,16 +340,16 @@
 <ol>
 <li>
 <p>看似需要积分，其实我们可以发现，对于点p到C1中某个点q1的曼哈顿距离，我们一定可以找到q1关于C1对称的点q2，那么点p到q1和q2的曼哈顿距离之和就是点p到C1的曼哈顿距离的两倍（证明就是中线定理）那么期望的最小值就是点p到C1的曼哈顿距离的最小值。目标转化后，我们开始思考如何计算此目标的最小值，思路如下图</p>
- <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402252321057.png" srcset="/img/loading.gif" lazyload alt="image-20240116175917260" style="zoom:50%;" />
+ <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402252321057.png" srcset="/img/loading.gif" lazyload alt="image-20240116175917260" style="zoom:50%;">
 </li>
 </ol>
 <p>==注意点：==</p>
 <ol>
 <li>double的读取速度很慢，可以用 <code>int</code> or <code>long long</code> 读入，后续强制类型转换（显示 or 和浮点数计算）</li>
-<li>注意输出答案的精度控制  <code>cout &lt;&lt; fixed &lt;&lt; setprecision(10) &lt;&lt; res &lt;&lt; &quot;\n&quot;;</code></li>
+<li>注意输出答案的精度控制  <code>cout &lt;&lt; fixed &lt;&lt; setprecision(10) &lt;&lt; res &lt;&lt; "\n";</code></li>
 </ol>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-type">double</span> x1, y1, x2, y2;<br>	<span class="hljs-type">long</span> <span class="hljs-type">long</span> a, b, c, d;<br><br>	cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;<br>	x1 = (a + c) / <span class="hljs-number">2.0</span>;<br>	y1 = (b + d) / <span class="hljs-number">2.0</span>;<br><br>	cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;<br>	x2 = (a + c) / <span class="hljs-number">2.0</span>;<br>	y2 = (b + d) / <span class="hljs-number">2.0</span>;<br><br>	<span class="hljs-type">double</span> r2 = <span class="hljs-built_in">sqrt</span>((a - c) * (a - c) + (b - d) * (b - d)) / <span class="hljs-number">2</span>;<br><br>	cout &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">10</span>) &lt;&lt;  <span class="hljs-built_in">abs</span>(x1 - x2) + <span class="hljs-built_in">abs</span>(y1 - y2) - <span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>) * r2 &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>{<br>	<span class="hljs-type">double</span> x1, y1, x2, y2;<br>	<span class="hljs-type">long</span> <span class="hljs-type">long</span> a, b, c, d;<br><br>	cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;<br>	x1 = (a + c) / <span class="hljs-number">2.0</span>;<br>	y1 = (b + d) / <span class="hljs-number">2.0</span>;<br><br>	cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;<br>	x2 = (a + c) / <span class="hljs-number">2.0</span>;<br>	y2 = (b + d) / <span class="hljs-number">2.0</span>;<br><br>	<span class="hljs-type">double</span> r2 = <span class="hljs-built_in">sqrt</span>((a - c) * (a - c) + (b - d) * (b - d)) / <span class="hljs-number">2</span>;<br><br>	cout &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">10</span>) &lt;&lt;  <span class="hljs-built_in">abs</span>(x1 - x2) + <span class="hljs-built_in">abs</span>(y1 - y2) - <span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>) * r2 &lt;&lt; <span class="hljs-string">"\n"</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
 <h3 id="2-三角形">2. 三角形</h3>
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/5383/">https://www.acwing.com/problem/content/5383/</a></p>
 <blockquote>
@@ -355,7 +357,7 @@
 <p>思路：首先确定两个直角边的顶点为原点 (0, 0)，接着根据对称性直接在第一象限中按照边长枚举其中一个顶点 A，对于每一个枚举到的顶点 A，按照斜率枚举最后一个顶点 B，如果满足长度以及不平行于坐标轴的条件就是合法的点。如果全部枚举完都没有找到就是没有合法组合，直接输出 NO 即可。</p>
 <p>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>a</mi><mn>2</mn></msup><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(a^2b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal">b</span><span class="mclose">)</span></span></span></span></p>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><br><span class="hljs-type">int</span> a, b;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>&#123;<br>	cin &gt;&gt; a &gt;&gt; b;<br><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= a; i++) &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= a; j++) &#123;<br>			<span class="hljs-keyword">if</span> (i * i + j * j == a * a &amp;&amp; i &amp;&amp; j) &#123;<br>				<span class="hljs-type">int</span> gcd = __gcd(i, j);<br>				<span class="hljs-type">int</span> p = -i / gcd, q = j / gcd;<br>				<span class="hljs-type">int</span> y = p, x = q;<br>				<span class="hljs-keyword">while</span> (x * x + y * y &lt; b * b) &#123;<br>					x += q, y += p;<br>				&#125;<br>				<span class="hljs-keyword">if</span> (x * x + y * y == b * b &amp;&amp; x != i &amp;&amp; y != j) &#123;<br>					cout &lt;&lt; <span class="hljs-string">&quot;YES\n&quot;</span>;<br>					cout &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span> &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>					cout &lt;&lt; i &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span> &lt;&lt; j &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>					cout &lt;&lt; x &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span> &lt;&lt; y &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>					<span class="hljs-keyword">return</span>;<br>				&#125;<br>			&#125;<br>		&#125;<br>	&#125;<br><br>	cout &lt;&lt; <span class="hljs-string">&quot;NO\n&quot;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>	cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>), cout.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>	<span class="hljs-type">int</span> T = <span class="hljs-number">1</span>;<br><span class="hljs-comment">//	cin &gt;&gt; T;</span><br>	<span class="hljs-keyword">while</span> (T--) <span class="hljs-built_in">solve</span>();<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><br><span class="hljs-type">int</span> a, b;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>{<br>	cin &gt;&gt; a &gt;&gt; b;<br><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= a; i++) {<br>		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= a; j++) {<br>			<span class="hljs-keyword">if</span> (i * i + j * j == a * a &amp;&amp; i &amp;&amp; j) {<br>				<span class="hljs-type">int</span> gcd = __gcd(i, j);<br>				<span class="hljs-type">int</span> p = -i / gcd, q = j / gcd;<br>				<span class="hljs-type">int</span> y = p, x = q;<br>				<span class="hljs-keyword">while</span> (x * x + y * y &lt; b * b) {<br>					x += q, y += p;<br>				}<br>				<span class="hljs-keyword">if</span> (x * x + y * y == b * b &amp;&amp; x != i &amp;&amp; y != j) {<br>					cout &lt;&lt; <span class="hljs-string">"YES\n"</span>;<br>					cout &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; <span class="hljs-string">' '</span> &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; <span class="hljs-string">"\n"</span>;<br>					cout &lt;&lt; i &lt;&lt; <span class="hljs-string">' '</span> &lt;&lt; j &lt;&lt; <span class="hljs-string">"\n"</span>;<br>					cout &lt;&lt; x &lt;&lt; <span class="hljs-string">' '</span> &lt;&lt; y &lt;&lt; <span class="hljs-string">"\n"</span>;<br>					<span class="hljs-keyword">return</span>;<br>				}<br>			}<br>		}<br>	}<br><br>	cout &lt;&lt; <span class="hljs-string">"NO\n"</span>;<br>}<br><br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>	cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>), cout.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>	<span class="hljs-type">int</span> T = <span class="hljs-number">1</span>;<br><span class="hljs-comment">//	cin &gt;&gt; T;</span><br>	<span class="hljs-keyword">while</span> (T--) <span class="hljs-built_in">solve</span>();<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
                 
               </div>
             
@@ -443,9 +445,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Algorithm/games/" title="games">
+                      <a href="/BackEnd/cppBasic/cpp-io/" title="cpp-io">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">games</span>
+                        <span class="hidden-mobile">cpp-io</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -453,8 +455,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Algorithm/hashing/" title="hashing">
-                        <span class="hidden-mobile">hashing</span>
+                      <a href="/Algorithm/games/" title="games">
+                        <span class="hidden-mobile">games</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -469,6 +471,32 @@
   
     <article id="comments" lazyload>
       
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Explorer-Dong/BlogComment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   

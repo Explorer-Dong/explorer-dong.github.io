@@ -121,7 +121,9 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -250,15 +252,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/BackEnd/cppBasic/cpp-io/" target="_self">
-          cpp-io
+        <a href="/Algorithm/z_logic/" target="_self">
+          z_logic
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/cppBasic/cpp-io/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/Algorithm/z_logic/" target="_self">
         <div>
-          C++ 文件 I/O C++ 封装了三个类用来进行文件 IO 操作，分别为 ifstream、ofstream 和 fstream。其中 ifstream 负责读文件，ofstream 负责写文件，fstream 读写都可以，三个类都需要依赖 iostream 和 fstream 头文件。下面分三个部分大致介绍一下，后续遇到了继续补充： 一、ifstream 只读 1234567891011121
+          思维题 1. 最长严格递增子序列 https://www.acwing.com/problem/content/5273/  题意：给定长度为n的序列，问将这个序列拼接n次后，最长严格递增子序列的长度为多少？ 思路：其实最终的思路很简单，讲题目转化为在每个序列中选一个数，一共可以选出多少个不同的数。但是在产生这样的想法之前，先讲一下我的思考过程。我将序列脑补出一幅散点折线图，然后将这些点投影到y轴
         </div>
       </a>
 
@@ -282,15 +284,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/BackEnd/" class="category-chain-item">BackEnd</a>
+  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/BackEnd/cppBasic/" class="category-chain-item">cppBasic</a>
-  
-  
-
   
 
       </span>
@@ -319,7 +314,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/cppBasic/cpp-decl-and-defi-default-para/" target="_self">
         <div>
-          C++ 函数声明与定义中的缺省参数 实践 无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段： 123456789101112131415161718192021#include &lt;iostream&gt;class demoClass &#123;public:	int classFun(int num=100);&#125;;int fun(int num
+          C++ 函数声明与定义中的缺省参数 实践 无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段： 123456789101112131415161718192021#include &lt;iostream&gt;class demoClass {public:	int classFun(int num=100);};int fun(int num=100);int
         </div>
       </a>
 
@@ -380,7 +375,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/cppBasic/cpp-multi-file-call-format/" target="_self">
         <div>
-          C++ 多文件调用规范 一、常规认知 .h 后缀文件编写类的声明文件，.cpp 后缀文件编写类的定义文件，示例如下： .h 文件 123456789#include &lt;iostream&gt;class TestClassFunction &#123;private:	int classVar;public:	void classFun();&#125;; .cpp 文件 123456#in
+          C++ 多文件调用规范 一、常规认知 .h 后缀文件编写类的声明文件，.cpp 后缀文件编写类的定义文件，示例如下： .h 文件 123456789#include &lt;iostream&gt;class TestClassFunction {private:	int classVar;public:	void classFun();}; .cpp 文件 123456#include "Tes
         </div>
       </a>
 

@@ -16,18 +16,19 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="CLion 解决中文输出乱码的问题 问题介绍 在 Clion 的默认设置下，输出中文会出现乱码，如下 1234567#include &lt;iostream&gt;using namespace std;int main() &#123;    cout &lt;&lt; &quot;你好&quot; &lt;&lt; endl;    return 0;&#125; 输出 123浣犲ソ	Pro">
+    <meta name="description" content="CLion 解决中文输出乱码的问题 问题介绍 在 Clion 的默认设置下，输出中文会出现乱码，如下 1234567#include &lt;iostream&gt;using namespace std;int main() {    cout &lt;&lt; &quot;你好&quot; &lt;&lt; endl;    return 0;} 输出 123浣犲ソ	Process finished with e">
 <meta property="og:type" content="article">
 <meta property="og:title" content="solve-clion-decoding-error">
 <meta property="og:url" content="https://blog.dwj601.cn/DevTools/CLion/solve-clion-decoding-error/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="CLion 解决中文输出乱码的问题 问题介绍 在 Clion 的默认设置下，输出中文会出现乱码，如下 1234567#include &lt;iostream&gt;using namespace std;int main() &#123;    cout &lt;&lt; &quot;你好&quot; &lt;&lt; endl;    return 0;&#125; 输出 123浣犲ソ	Pro">
+<meta property="og:description" content="CLion 解决中文输出乱码的问题 问题介绍 在 Clion 的默认设置下，输出中文会出现乱码，如下 1234567#include &lt;iostream&gt;using namespace std;int main() {    cout &lt;&lt; &quot;你好&quot; &lt;&lt; endl;    return 0;} 输出 123浣犲ソ	Process finished with e">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403011101299.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403011101301.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403011101302.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403011101303.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403011101304.png">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f60e.png?v8">
 <meta property="article:published_time" content="2024-03-21T05:55:02.116Z">
 <meta property="article:modified_time" content="2024-03-21T02:08:56.809Z">
 <meta property="article:author" content="Mr_Dwj">
@@ -137,7 +138,9 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -251,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          148 字
+          143 字
         
       </span>
     
@@ -336,9 +339,9 @@
                 <h1>CLion 解决中文输出乱码的问题</h1>
 <h2 id="问题介绍">问题介绍</h2>
 <p>在 <code>Clion</code> 的默认设置下，输出中文会出现乱码，如下</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;你好&quot;</span> &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>    cout &lt;&lt; <span class="hljs-string">"你好"</span> &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
 <p>输出</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">浣犲ソ<br>	<br>Process finished with <span class="hljs-keyword">exit</span> code <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">浣犲ソ<br>	<br>Process finished with <span class="hljs-keyword">exit</span> code <span class="hljs-number">0</span><br></code></pre></td></tr></tbody></table></figure>
 <h2 id="解决方案">解决方案</h2>
 <p>编码问题就需要修改编码方式，按照下面的流程进行操作即可</p>
 <p>进入设置<br>
@@ -350,8 +353,8 @@
 <p>在主页面的右下角，将这个选项设置为 <code>GBK</code><br>
 <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403011101303.png" srcset="/img/loading.gif" lazyload alt="设置为 GBK"></p>
 <p>选择 <code>Convert</code><br>
-<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403011101304.png" srcset="/img/loading.gif" lazyload alt="选择 Convert">重新运行即可:sunglasses:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">你好<br>Process finished with <span class="hljs-built_in">exit</span> code <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403011101304.png" srcset="/img/loading.gif" lazyload alt="选择 Convert">重新运行即可<span class="github-emoji"><span>😎</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60e.png?v8" srcset="/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">你好<br>Process finished with <span class="hljs-built_in">exit</span> code <span class="hljs-number">0</span><br></code></pre></td></tr></tbody></table></figure>
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>N</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">END</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">EN</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></p>
 
                 
@@ -448,9 +451,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/DevTools/CLion/solve-proxy-setting/" title="solve-proxy-setting">
+                      <a href="/DevTools/DevCpp/self-config/" title="self-config">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">solve-proxy-setting</span>
+                        <span class="hidden-mobile">self-config</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -458,8 +461,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/DataBase/DataBase/" title="Data Base">
-                        <span class="hidden-mobile">Data Base</span>
+                      <a href="/DevTools/CLion/solve-proxy-setting/" title="solve-proxy-setting">
+                        <span class="hidden-mobile">solve-proxy-setting</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -474,6 +477,32 @@
   
     <article id="comments" lazyload>
       
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Explorer-Dong/BlogComment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   

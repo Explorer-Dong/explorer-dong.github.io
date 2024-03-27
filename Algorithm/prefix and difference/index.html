@@ -131,7 +131,9 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -245,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          657 字
+          627 字
         
       </span>
     
@@ -256,7 +258,7 @@
         
         
         
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -343,7 +345,7 @@
 <li>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>q</mi><mi>log</mi><mo>⁡</mo><mi>q</mi><mo>+</mo><mi>q</mi><mo>+</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(q\log q+q+n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
 </ul>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">100010</span>;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span> &#123;<br>	<span class="hljs-type">int</span> p, k; <span class="hljs-comment">// 第p种宝石丢在了第k个坑</span><br>	<span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span>&lt;(<span class="hljs-type">const</span> node &amp;t) <span class="hljs-type">const</span> &#123;<br>		<span class="hljs-keyword">if</span> (p == t.p) &#123;<br>			<span class="hljs-keyword">return</span> k &gt; t.k;<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			<span class="hljs-keyword">return</span> p &gt; t.p;<br>		&#125;<br>	&#125;<br>&#125;;<br><br><span class="hljs-type">int</span> n, m, q, s[N]; <span class="hljs-comment">// n个坑，m种宝石，q个采集的宝石，s[i]表示第i种宝石的能量</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">last</span><span class="hljs-params">(N, <span class="hljs-number">-1e6</span>)</span></span>; <span class="hljs-comment">// last[i]表示上一个第i种宝石的位置</span><br><span class="hljs-type">int</span> a[N], b[N]; <span class="hljs-comment">// a[]为原数组，b[]为差分数组</span><br>priority_queue&lt;node&gt; que;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>&#123;<br>	cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) &#123;<br>		cin &gt;&gt; s[i];<br>	&#125;<br><br>	<span class="hljs-keyword">while</span> (q--) &#123;<br>		<span class="hljs-type">int</span> p, k;<br>		cin &gt;&gt; p &gt;&gt; k;<br>		que.<span class="hljs-built_in">push</span>(&#123;p, k&#125;);<br>	&#125;<br><br>	<span class="hljs-keyword">while</span> (que.<span class="hljs-built_in">size</span>()) &#123;<br>		<span class="hljs-keyword">auto</span> h = que.<span class="hljs-built_in">top</span>();<br>		que.<span class="hljs-built_in">pop</span>();<br>		<span class="hljs-type">int</span> p = h.p, k = h.k; <span class="hljs-comment">// 第p种宝石丢在了第k个坑</span><br><br>		<span class="hljs-type">int</span> l, r;<br>		<span class="hljs-keyword">if</span> (k - last[p] &gt;= s[p]) &#123;<br>			<span class="hljs-comment">// 和上一种没有重叠</span><br>			l = k, r = <span class="hljs-built_in">min</span>(n, k + s[p] - <span class="hljs-number">1</span>);<br>			b[l]++, b[r + <span class="hljs-number">1</span>]--;<br>			last[p] = k;<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			<span class="hljs-comment">// 和上一种有重叠</span><br>			l = last[p] + s[p];<br>			r = <span class="hljs-built_in">min</span>(n, k + s[p] - <span class="hljs-number">1</span>);<br>			<span class="hljs-keyword">if</span> (l &lt;= r) &#123;<br>				b[l]++, b[r + <span class="hljs-number">1</span>]--;<br>			&#125;<br>			last[p] = k;<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>		a[i] = a[i - <span class="hljs-number">1</span>] + b[i];<br>		cout &lt;&lt; a[i] &lt;&lt; <span class="hljs-string">&quot; \n&quot;</span>[i == n];<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>	cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>), cout.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>	<span class="hljs-type">int</span> T = <span class="hljs-number">1</span>;<br><span class="hljs-comment">//	cin &gt;&gt; T;</span><br>	<span class="hljs-keyword">while</span> (T--) <span class="hljs-built_in">solve</span>();<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">100010</span>;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span> {<br>	<span class="hljs-type">int</span> p, k; <span class="hljs-comment">// 第p种宝石丢在了第k个坑</span><br>	<span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span>&lt;(<span class="hljs-type">const</span> node &amp;t) <span class="hljs-type">const</span> {<br>		<span class="hljs-keyword">if</span> (p == t.p) {<br>			<span class="hljs-keyword">return</span> k &gt; t.k;<br>		} <span class="hljs-keyword">else</span> {<br>			<span class="hljs-keyword">return</span> p &gt; t.p;<br>		}<br>	}<br>};<br><br><span class="hljs-type">int</span> n, m, q, s[N]; <span class="hljs-comment">// n个坑，m种宝石，q个采集的宝石，s[i]表示第i种宝石的能量</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">last</span><span class="hljs-params">(N, <span class="hljs-number">-1e6</span>)</span></span>; <span class="hljs-comment">// last[i]表示上一个第i种宝石的位置</span><br><span class="hljs-type">int</span> a[N], b[N]; <span class="hljs-comment">// a[]为原数组，b[]为差分数组</span><br>priority_queue&lt;node&gt; que;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>{<br>	cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) {<br>		cin &gt;&gt; s[i];<br>	}<br><br>	<span class="hljs-keyword">while</span> (q--) {<br>		<span class="hljs-type">int</span> p, k;<br>		cin &gt;&gt; p &gt;&gt; k;<br>		que.<span class="hljs-built_in">push</span>({p, k});<br>	}<br><br>	<span class="hljs-keyword">while</span> (que.<span class="hljs-built_in">size</span>()) {<br>		<span class="hljs-keyword">auto</span> h = que.<span class="hljs-built_in">top</span>();<br>		que.<span class="hljs-built_in">pop</span>();<br>		<span class="hljs-type">int</span> p = h.p, k = h.k; <span class="hljs-comment">// 第p种宝石丢在了第k个坑</span><br><br>		<span class="hljs-type">int</span> l, r;<br>		<span class="hljs-keyword">if</span> (k - last[p] &gt;= s[p]) {<br>			<span class="hljs-comment">// 和上一种没有重叠</span><br>			l = k, r = <span class="hljs-built_in">min</span>(n, k + s[p] - <span class="hljs-number">1</span>);<br>			b[l]++, b[r + <span class="hljs-number">1</span>]--;<br>			last[p] = k;<br>		} <span class="hljs-keyword">else</span> {<br>			<span class="hljs-comment">// 和上一种有重叠</span><br>			l = last[p] + s[p];<br>			r = <span class="hljs-built_in">min</span>(n, k + s[p] - <span class="hljs-number">1</span>);<br>			<span class="hljs-keyword">if</span> (l &lt;= r) {<br>				b[l]++, b[r + <span class="hljs-number">1</span>]--;<br>			}<br>			last[p] = k;<br>		}<br>	}<br><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {<br>		a[i] = a[i - <span class="hljs-number">1</span>] + b[i];<br>		cout &lt;&lt; a[i] &lt;&lt; <span class="hljs-string">" \n"</span>[i == n];<br>	}<br>}<br><br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>	cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>), cout.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>	<span class="hljs-type">int</span> T = <span class="hljs-number">1</span>;<br><span class="hljs-comment">//	cin &gt;&gt; T;</span><br>	<span class="hljs-keyword">while</span> (T--) <span class="hljs-built_in">solve</span>();<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
                 
               </div>
             
@@ -431,9 +433,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Algorithm/implement/" title="implement">
+                      <a href="/Algorithm/greedy/" title="greedy">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">implement</span>
+                        <span class="hidden-mobile">greedy</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -441,8 +443,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Algorithm/greedy/" title="greedy">
-                        <span class="hidden-mobile">greedy</span>
+                      <a href="/Algorithm/implement/" title="implement">
+                        <span class="hidden-mobile">implement</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -457,6 +459,32 @@
   
     <article id="comments" lazyload>
       
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Explorer-Dong/BlogComment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   

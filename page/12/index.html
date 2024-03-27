@@ -121,7 +121,9 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -250,6 +252,67 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/DevTools/CLion/solve-clion-cannot-open-relative-file/" target="_self">
+          solve-clion-cannot-open-relative-file
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/CLion/solve-clion-cannot-open-relative-file/" target="_self">
+        <div>
+          CLion 解决无法打开文件的问题 问题描述 在使用 CLion 进行文件路径索引时，出现文件无法打开的现象，如图：  检测问题 我们使用 cstring 库的 strerror() 函数检测一下问题：  可以发现是未找到文件。因为在 CLion 中相对路径索引的起始根默认为 cmake-build-debug 文件夹，故无法找到。 解决方案 解决方法有三个：   跳出 cmake-build-d
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-21 13:55" pubdate>
+              2024-03-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/DevTools/" class="category-chain-item">DevTools</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/DevTools/CLion/" class="category-chain-item">CLion</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/BackEnd/cppBasic/cpp-namespace/" target="_self">
           cpp-namespace
         </a>
@@ -291,60 +354,6 @@
   
   
 
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/Algorithm/z_logic/" target="_self">
-          z_logic
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/Algorithm/z_logic/" target="_self">
-        <div>
-          思维题 1. 最长严格递增子序列 https://www.acwing.com/problem/content/5273/  题意：给定长度为n的序列，问将这个序列拼接n次后，最长严格递增子序列的长度为多少？ 思路：其实最终的思路很简单，讲题目转化为在每个序列中选一个数，一共可以选出多少个不同的数。但是在产生这样的想法之前，先讲一下我的思考过程。我将序列脑补出一幅散点折线图，然后将这些点投影到y轴
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-21 13:55" pubdate>
-              2024-03-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
-  
   
 
       </span>

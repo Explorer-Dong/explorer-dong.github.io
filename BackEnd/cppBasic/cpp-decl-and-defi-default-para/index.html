@@ -16,12 +16,12 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="C++ 函数声明与定义中的缺省参数 实践 无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段： 123456789101112131415161718192021#include &lt;iostream&gt;class demoClass &#123;public:	int classFun(int num&#x3D;100);&#125;;int fun(int num">
+    <meta name="description" content="C++ 函数声明与定义中的缺省参数 实践 无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段： 123456789101112131415161718192021#include &lt;iostream&gt;class demoClass {public:	int classFun(int num&#x3D;100);};int fun(int num&#x3D;100);int">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cpp-decl-and-defi-default-para">
 <meta property="og:url" content="https://blog.dwj601.cn/BackEnd/cppBasic/cpp-decl-and-defi-default-para/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="C++ 函数声明与定义中的缺省参数 实践 无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段： 123456789101112131415161718192021#include &lt;iostream&gt;class demoClass &#123;public:	int classFun(int num&#x3D;100);&#125;;int fun(int num">
+<meta property="og:description" content="C++ 函数声明与定义中的缺省参数 实践 无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段： 123456789101112131415161718192021#include &lt;iostream&gt;class demoClass {public:	int classFun(int num&#x3D;100);};int fun(int num&#x3D;100);int">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428426.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428507.png">
@@ -134,7 +134,9 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -248,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          340 字
+          332 字
         
       </span>
     
@@ -333,7 +335,7 @@
                 <h1>C++ 函数声明与定义中的缺省参数</h1>
 <h2 id="实践">实践</h2>
 <p>无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">demoClass</span> &#123;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">classFun</span><span class="hljs-params">(<span class="hljs-type">int</span> num=<span class="hljs-number">100</span>)</span></span>;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">int</span> num=<span class="hljs-number">100</span>)</span></span>;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	std::cout &lt;&lt; <span class="hljs-built_in">fun</span>(<span class="hljs-number">10</span>) &lt;&lt; std::endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">demoClass::classFun</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>	<span class="hljs-keyword">return</span> num;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>	<span class="hljs-keyword">return</span> num;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">demoClass</span> {<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">classFun</span><span class="hljs-params">(<span class="hljs-type">int</span> num=<span class="hljs-number">100</span>)</span></span>;<br>};<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">int</span> num=<span class="hljs-number">100</span>)</span></span>;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>	std::cout &lt;&lt; <span class="hljs-built_in">fun</span>(<span class="hljs-number">10</span>) &lt;&lt; std::endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">demoClass::classFun</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>{<br>	<span class="hljs-keyword">return</span> num;<br>}<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>{<br>	<span class="hljs-keyword">return</span> num;<br>}<br></code></pre></td></tr></tbody></table></figure>
 <p>如果在函数定义中继续进行缺省参数初始化，则会报错重定义缺省参数 <code>Redefinition of default argument</code> ：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428426.png" srcset="/img/loading.gif" lazyload alt="Redefinition of default argument"></p>
 <h2 id="理论">理论</h2>
@@ -436,9 +438,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/BackEnd/cppBasic/cpp-io/" title="cpp-io">
+                      <a href="/Algorithm/z_logic/" title="z_logic">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">cpp-io</span>
+                        <span class="hidden-mobile">z_logic</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -462,6 +464,32 @@
   
     <article id="comments" lazyload>
       
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Explorer-Dong/BlogComment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   
@@ -494,7 +522,7 @@
         aria-expanded="true"
       >
         BackEnd
-        <span class="list-group-count">(6)</span>
+        <span class="list-group-count">(7)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -612,6 +640,43 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">cpp-namespace</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="shellBasic"
+        id="heading-cecbaf319edfe900a259608c0f2fe559" role="tab" data-toggle="collapse" href="#collapse-cecbaf319edfe900a259608c0f2fe559"
+        aria-expanded="false"
+      >
+        shellBasic
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cecbaf319edfe900a259608c0f2fe559"
+           role="tabpanel" aria-labelledby="heading-cecbaf319edfe900a259608c0f2fe559">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/BackEnd/shellBasic/kill-windows-process/" title="kill-windows-process"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">kill-windows-process</span>
         </a>
       
     

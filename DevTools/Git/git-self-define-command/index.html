@@ -131,7 +131,9 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -245,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          454 字
+          439 字
         
       </span>
     
@@ -341,7 +343,7 @@
 <p>操作系统为 Windows OS 11</p>
 </blockquote>
 <p>我们进入 Git 软件的安装目录，我的是 <code>D:\installation_package\Git</code>，然后进入 <code>etc\profile.d</code> 并编辑 <code>aliases.sh</code> 文件，默认内容为：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># Some good standards, which are not used if the user</span><br><span class="hljs-comment"># creates his/her own .bashrc/.bash_profile</span><br><br><span class="hljs-comment"># --show-control-chars: help showing Korean or accented characters</span><br><span class="hljs-built_in">alias</span> <span class="hljs-built_in">ls</span>=<span class="hljs-string">&#x27;ls -F --color=auto --show-control-chars&#x27;</span><br><span class="hljs-built_in">alias</span> ll=<span class="hljs-string">&#x27;ls -l&#x27;</span><br><br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$TERM</span>&quot;</span> <span class="hljs-keyword">in</span><br>xterm*)<br>	<span class="hljs-comment"># The following programs are known to require a Win32 Console</span><br>	<span class="hljs-comment"># for interactive usage, therefore let&#x27;s launch them through winpty</span><br>	<span class="hljs-comment"># when run inside `mintty`.</span><br>	<span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> node ipython php php5 psql python2.7 winget<br>	<span class="hljs-keyword">do</span><br>		<span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(type -p <span class="hljs-string">&quot;<span class="hljs-variable">$name</span>&quot;</span>.exe 2&gt;/dev/null)</span>&quot;</span> <span class="hljs-keyword">in</span><br>		<span class="hljs-string">&#x27;&#x27;</span>|/usr/bin/*) <span class="hljs-built_in">continue</span>;;<br>		<span class="hljs-keyword">esac</span><br>		<span class="hljs-built_in">alias</span> <span class="hljs-variable">$name</span>=<span class="hljs-string">&quot;winpty <span class="hljs-variable">$name</span>.exe&quot;</span><br>	<span class="hljs-keyword">done</span><br>	;;<br><span class="hljs-keyword">esac</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># Some good standards, which are not used if the user</span><br><span class="hljs-comment"># creates his/her own .bashrc/.bash_profile</span><br><br><span class="hljs-comment"># --show-control-chars: help showing Korean or accented characters</span><br><span class="hljs-built_in">alias</span> <span class="hljs-built_in">ls</span>=<span class="hljs-string">'ls -F --color=auto --show-control-chars'</span><br><span class="hljs-built_in">alias</span> ll=<span class="hljs-string">'ls -l'</span><br><br><span class="hljs-keyword">case</span> <span class="hljs-string">"<span class="hljs-variable">$TERM</span>"</span> <span class="hljs-keyword">in</span><br>xterm*)<br>	<span class="hljs-comment"># The following programs are known to require a Win32 Console</span><br>	<span class="hljs-comment"># for interactive usage, therefore let's launch them through winpty</span><br>	<span class="hljs-comment"># when run inside `mintty`.</span><br>	<span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> node ipython php php5 psql python2.7 winget<br>	<span class="hljs-keyword">do</span><br>		<span class="hljs-keyword">case</span> <span class="hljs-string">"<span class="hljs-subst">$(type -p <span class="hljs-string">"<span class="hljs-variable">$name</span>"</span>.exe 2&gt;/dev/null)</span>"</span> <span class="hljs-keyword">in</span><br>		<span class="hljs-string">''</span>|/usr/bin/*) <span class="hljs-built_in">continue</span>;;<br>		<span class="hljs-keyword">esac</span><br>		<span class="hljs-built_in">alias</span> <span class="hljs-variable">$name</span>=<span class="hljs-string">"winpty <span class="hljs-variable">$name</span>.exe"</span><br>	<span class="hljs-keyword">done</span><br>	;;<br><span class="hljs-keyword">esac</span><br></code></pre></td></tr></tbody></table></figure>
 <p>我们向 alias 中添加一行自定义的宏定义：<code>alias gph='git push &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d'</code>，就可以实现在 push 的同时使用 hexo 的部署插件进行部署了！</p>
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>N</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">END</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">EN</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></p>
 
@@ -465,6 +467,32 @@
   
     <article id="comments" lazyload>
       
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Explorer-Dong/BlogComment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   

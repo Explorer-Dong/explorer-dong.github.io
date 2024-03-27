@@ -131,7 +131,9 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -360,30 +362,30 @@
 <ul>
 <li>
 <p>创建 git 仓库进行版本管理</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init<br></code></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>安装 JavaScrip 第三方包 Hexo</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli<br></code></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>检查是否安装成功</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo -v<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo -v<br></code></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>初始化一个静态站点并刷新</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init<br>npm install<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init<br>npm install<br></code></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <h2 id="二、本地运行测试">二、本地运行测试</h2>
 <ul>
 <li>
 <p>生成静态文件，可简写为 <code>hexo g -d</code>（就是最终部署的文件，会打包在一个叫 public 的文件夹中）不要少 -d 参数</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo generate -d<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo generate -d<br></code></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>启动本地服务，可简写为 <code>hexo s</code></p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo server<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo server<br></code></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <p>hexo 服务默认启动 4000 端口，现在浏览器访问 localhost:4000 即可看到 hexo 的模板博客网站</p>
@@ -392,20 +394,20 @@
 <ul>
 <li>
 <p>安装 hexo 部署插件 hexo-deployer-git，也是 nodejs 第三方包（一定不要漏掉 --save 参数，否则卸载重装该包）</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-deployer-git --save<br></code></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>创建一个 github 仓库，仓库名就设置为 [username].github.io，然后在本地进行远程绑定，即</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote add origin &lt;https <span class="hljs-built_in">link</span> or ssh <span class="hljs-built_in">link</span>&gt;<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote add origin &lt;https <span class="hljs-built_in">link</span> or ssh <span class="hljs-built_in">link</span>&gt;<br></code></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>如果没有执行生成静态文件的命令，需要执行一下（一定不要漏掉 -d 参数，否则重新执行）</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo generate -d<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo generate -d<br></code></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>执行部署命令，下面两条均可</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm run deploy<br></code></pre></td></tr></table></figure>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo deploy<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm run deploy<br></code></pre></td></tr></tbody></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo deploy<br></code></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <p>现在访问 <code>https://[username].github.io</code> 如果可以看到与之前本地测试一样的界面的，恭喜你，现在已经可以进行快乐的博客编写并且链接分享进行技术交流~~（装b）~~了</p>
@@ -415,15 +417,15 @@
 <ul>
 <li>
 <p>创建工作流文件。在根目录下创建以下文件关系：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> .github/workflows/deploy.yml<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> .github/workflows/deploy.yml<br></code></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>编辑 deploy.yml 文件。模板如下：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash">name: Build and Deploy<br>on: [push]<br><span class="hljs-built_in">jobs</span>:<br>  build-and-deploy:<br>    runs-on: ubuntu-latest<br>    steps:<br>      <span class="hljs-comment"># 相当于 git clone 到服务器</span><br>      - name: Checkout 🛎️<br>        uses: actions/checkout@v3<br>        with:<br>          persist-credentials: <span class="hljs-literal">false</span><br><br>      <span class="hljs-comment"># 安装依赖并生成页面</span><br>      - name: Install and Build 🔧<br>        run: |<br>          npm install<br>          npm run build<br>        <span class="hljs-built_in">env</span>:<br>          CI: <span class="hljs-literal">false</span><br><br>      <span class="hljs-comment"># 部署</span><br>      - name: Deploy 🚀<br>        uses: JamesIves/github-pages-deploy-action@v4<br>        with:<br>          GITHUB_TOKEN: <span class="hljs-variable">$&#123;&#123; secrets.GITHUB_TOKEN &#125;</span>&#125;<br>          BRANCH: main   <span class="hljs-comment"># 修改为你的静态文件分支</span><br>          FOLDER: public <span class="hljs-comment"># 修改为你的静态文件生成存放的文件夹</span><br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash">name: Build and Deploy<br>on: [push]<br><span class="hljs-built_in">jobs</span>:<br>  build-and-deploy:<br>    runs-on: ubuntu-latest<br>    steps:<br>      <span class="hljs-comment"># 相当于 git clone 到服务器</span><br>      - name: Checkout 🛎️<br>        uses: actions/checkout@v3<br>        with:<br>          persist-credentials: <span class="hljs-literal">false</span><br><br>      <span class="hljs-comment"># 安装依赖并生成页面</span><br>      - name: Install and Build 🔧<br>        run: |<br>          npm install<br>          npm run build<br>        <span class="hljs-built_in">env</span>:<br>          CI: <span class="hljs-literal">false</span><br><br>      <span class="hljs-comment"># 部署</span><br>      - name: Deploy 🚀<br>        uses: JamesIves/github-pages-deploy-action@v4<br>        with:<br>          GITHUB_TOKEN: <span class="hljs-variable">${{ secrets.GITHUB_TOKEN }</span>}<br>          BRANCH: main   <span class="hljs-comment"># 修改为你的静态文件分支</span><br>          FOLDER: public <span class="hljs-comment"># 修改为你的静态文件生成存放的文件夹</span><br></code></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>将本地相关文件进行 git 管理后，创建分支（假设叫 auto-deploy）</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch auto-deploy<br></code></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch auto-deploy<br></code></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 <p>push 到仓库，等待 github 自动部署后，重新加载 <code>https://[username].github.io</code> 就可以发现站点内容已经更新了！</p>
@@ -526,9 +528,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/FrontEnd/Hexo/hexo-githubpages-domain/" title="hexo-githubpages-domain">
+                      <a href="/FrontEnd/Hexo/hexo-migrate/" title="hexo-migrate">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">hexo-githubpages-domain</span>
+                        <span class="hidden-mobile">hexo-migrate</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -536,8 +538,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/FrontEnd/Hexo/hexo-migrate/" title="hexo-migrate">
-                        <span class="hidden-mobile">hexo-migrate</span>
+                      <a href="/FrontEnd/FrontEnd/" title="Front End">
+                        <span class="hidden-mobile">Front End</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -552,6 +554,32 @@
   
     <article id="comments" lazyload>
       
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Explorer-Dong/BlogComment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   

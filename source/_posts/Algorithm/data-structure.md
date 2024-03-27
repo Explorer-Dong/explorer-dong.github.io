@@ -1,10 +1,10 @@
 ---
-title: data structures
+title: data-structure
 categories: Algorithm
 category_bar: true
 ---
 
-## data structures
+## 《数据结构》
 
 ### 1. 单调栈
 

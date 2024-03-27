@@ -1,10 +1,10 @@
 ---
-title: dfs and similar
+title: dfs-and-similar
 categories: Algorithm
 category_bar: true
 ---
 
-## dfs and similar
+## 《搜索》
 
 搜索专题。无论是深搜还是宽搜，都逃不掉图的思维。我们将搜索图建立起来之后，剩余的编码过程就会跃然纸上
 

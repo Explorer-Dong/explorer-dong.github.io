@@ -4,7 +4,7 @@ categories: Algorithm
 category_bar: true
 ---
 
-## graphs
+## 《图论》
 
 ### 1. 有向图的拓扑序列
 
@@ -1127,3 +1127,108 @@ function solve() {
 }
 ```
 
+### 10. 树的直径 :fire:
+
+https://www.acwing.com/problem/content/5563/
+
+> 题意：给定一棵树，初始时含有 4 个结点分别为 1 到 4，其中 1 号为根结点，2 到 4 均为根结点的叶子结点。现在进行 Q 次操作，每次指定一个已经存在的结点向其插入两个新结点作为叶节点。现在需要在每次操作以后输出这棵树的直径。我们定义**树的直径**为：树中距离最远的两个点之间的距离。
+>
+> 思路一：暴力搜索。我们将树重构为无向图，对于每一个状态的无向图，首先从任意一个已存在的结点 A 开始搜索到距离他最远的点 B，然后从 B 点出发搜索到离他最远的点 C，则 B 与 C 之间的距离就是当前状态的树的直径。由于每一个状态的树都要遍历两遍树，于是时间复杂度就是平方阶
+>
+> 时间复杂度：$O(nq)$
+>
+> 思路二：最近公共祖先 LCA。
+>
+> 时间复杂度：
+
+暴力搜索代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
+using namespace std;
+
+const int N = 500010;
+
+vector<int> g[N];
+int d[N];
+bool vis[N];
+pair<int, int> res;     // first 为最远距离；second 为对应结点编号
+
+void dfs(int pre, int now) {
+	if (vis[now]) return;
+	
+	vis[now] = true;
+	
+	if (pre != -1) {
+		d[now] = d[pre] + 1;
+		if (d[now] > res.first) {
+			res = {d[now], now};
+		}
+	}
+	
+	for (auto& ch: g[now]) {
+		dfs(now, ch);
+	}
+}
+
+void solve() {
+	// init
+	for (int i = 2; i <= 4; i++) {
+		g[1].push_back(i);
+		g[i].push_back(1);
+	}
+	
+	int now = 4;
+	
+	int Q;
+	cin >> Q;
+	while (Q--) {
+		int id;
+		cin >> id;
+		
+		g[id].push_back(++now);
+		g[now].push_back(id);
+		
+		g[id].push_back(++now);
+		g[now].push_back(id);
+		
+		res = {-1, -1};
+		
+		// 第一趟
+		memset(vis, false, sizeof vis);
+		memset(d, 0, sizeof d);
+		d[1] = 0;
+		dfs(-1, 1);
+		
+		// 第二趟
+		memset(vis, false, sizeof vis);
+		memset(d, 0, sizeof d);
+		d[res.second] = 0;
+		dfs(-1, res.second);
+		
+		cout << res.first << "\n";
+	}
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
+```
+
+LCA 代码
+
+```cpp
+
+```

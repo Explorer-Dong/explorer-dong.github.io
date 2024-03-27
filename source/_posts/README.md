@@ -36,8 +36,8 @@ Finishing !
 - [x] 新增：网站流量统计 - 后端使用百度统计服务，前端使用不算子服务
 - [x] 新增：折叠标签语法提升阅读体验 - 通过 hexo-fluid 的折叠标签实现
 - [x] 新增：支持 emoji 表情 - 通过 hexo 的 [hexo-filter-github-emojis](https://github.com/crimx/hexo-filter-github-emojis) 插件实现 :sunglasses:
+- [x] 新增：支持评论功能 - 使用 [utterances](https://utteranc.es/) 的第三方评论服务，基于 GitHub Issue 实现
 
 Fighting !
 
 - [ ] 修复：访问速度慢的问题 - 使用国内自己的服务器
-- [ ] 新增：评论功能 - 使用内置插件，增加互动性，提升内容准确性与可信度

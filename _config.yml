@@ -107,6 +107,15 @@ deploy:
     repo: https://gitee.com/idwj/idwj.git
     branch: auto-deploy
 
+# GitHub Emojis
+## Docs: https://github.com/crimx/hexo-filter-github-emojis
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:
+
 # ---------- Fluid ----------
 # math - latex
 markdown:

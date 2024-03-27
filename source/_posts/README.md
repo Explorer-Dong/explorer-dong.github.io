@@ -35,6 +35,7 @@ Finishing !
 - [x] 新增：自定义域名便于网站推流 - 长期可用域名 [blog.dwj601.cn](https://blog.dwj601.cn/)
 - [x] 新增：网站流量统计 - 后端使用百度统计服务，前端使用不算子服务
 - [x] 新增：折叠标签语法提升阅读体验 - 通过 hexo-fluid 的折叠标签实现
+- [x] 新增：支持 emoji 表情 - 通过 hexo 的 [hexo-filter-github-emojis](https://github.com/crimx/hexo-filter-github-emojis) 插件实现 :sunglasses:
 
 Fighting !
 

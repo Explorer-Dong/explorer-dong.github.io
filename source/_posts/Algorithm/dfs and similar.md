@@ -449,7 +449,7 @@ https://www.luogu.com.cn/problem/P1464
 > 思路一：直接dfs
 >
 > - 直接按照题意进行dfs代码的编写，但是很显然时间复杂极高
-> - 时间复杂度：$O(T \times 情况数)$
+> - 时间复杂度：$O(T \times \text{情况数})$
 >
 > 思路二：记忆化dfs
 >

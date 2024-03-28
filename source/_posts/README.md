@@ -18,27 +18,52 @@ index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/hell
 
 详情请跳转至 [分类界面](https://blog.dwj601.cn/categories/) 阅读，目前共含有以下几个板块：
 
-- `GPA`：本科课程相关笔记
 - `Algorithm`：传统算法竞赛 OJ 笔记
 - `BackEnd`：后端开发笔记
 - `DataBase`：数据库笔记
 - `DevTools`：开发工具笔记
 - `FrontEnd`：前端开发笔记
+- `GPA`：本科课程相关笔记
 - `Operation`：运维笔记
+
+## Update
+
+24.02.27
+
+:sparkles: 新增：配置文章二级目录 - 通过 hexo 的层叠目录实现。提升文章检索速度
+
+24.03.01
+
+:bug: 修复：文章无法更新的问题 - 修改 github 的自动部署配置解决
+
+24.03.03
+
+:bug: 修复：文章更新时间无法显示的问题 - 放弃 `.github/workflows/deploy.yml` 方案，本地手动部署
+
+24.03.07
+
+:sparkles: 新增：自定义域名 - 长期可用域名 [blog.dwj601.cn](https://blog.dwj601.cn/) 。便于网站推流
+
+24.03.09
+
+:sparkles: 新增：网站流量统计 - 后端使用 [百度统计](https://tongji.baidu.com/web5/welcome/login) 服务，前端使用 [不蒜子](https://busuanzi.ibruce.info/) 服务。提升网站、文章可信度
+
+242.03.15
+
+:sparkles: 新增：折叠标签 - 通过 hexo-fluid 的折叠标签实现。提升阅读体验
+
+24.03.27
+
+:sparkles: 新增：emojis 表情渲染 - 通过 hexo 的 [hexo-filter-github-emojis](https://github.com/crimx/hexo-filter-github-emojis) 插件实现 :sunglasses:。提升阅读体验
+
+:sparkles: 新增：评论功能 - 使用 [utterances](https://utteranc.es/) 的第三方评论服务，基于 GitHub Issue 实现。提升文章可信度
+
+24.03.28
+
+:sparkles: 新增：图片加载加速服务 - 放弃静态资源加载，使用阿里云 OSS 服务。提升网站体验
 
 ## Expect
 
-Finishing !
+:sparkles: 新增：访问速度慢的问题 - 使用国内自己的服务器。提升网站体验
 
-- [x] 新增：配置文章二级目录 - 通过 hexo 的层叠目录实现
-- [x] 修复：文章无法更新的 bug - 修改 github 的自动部署配置解决
-- [x] 修复：无法显示更改时间的 bug - 放弃 `.github/workflows/deploy.yml` 方案，本地手动部署
-- [x] 新增：自定义域名便于网站推流 - 长期可用域名 [blog.dwj601.cn](https://blog.dwj601.cn/)
-- [x] 新增：网站流量统计 - 后端使用百度统计服务，前端使用不算子服务
-- [x] 新增：折叠标签语法提升阅读体验 - 通过 hexo-fluid 的折叠标签实现
-- [x] 新增：支持 emoji 表情 - 通过 hexo 的 [hexo-filter-github-emojis](https://github.com/crimx/hexo-filter-github-emojis) 插件实现 :sunglasses:
-- [x] 新增：支持评论功能 - 使用 [utterances](https://utteranc.es/) 的第三方评论服务，基于 GitHub Issue 实现
-
-Fighting !
-
-- [ ] 修复：访问速度慢的问题 - 使用国内自己的服务器
+:sparkles: 新增：全站检索速度慢的问题 - xml 文件检索配置。提升网站体验

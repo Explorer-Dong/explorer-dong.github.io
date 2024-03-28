@@ -1127,7 +1127,7 @@ function solve() {
 }
 ```
 
-### 10. 树的直径 :fire:
+### 10. 树的直径
 
 https://www.acwing.com/problem/content/5563/
 
@@ -1135,11 +1135,28 @@ https://www.acwing.com/problem/content/5563/
 >
 > 思路一：暴力搜索。我们将树重构为无向图，对于每一个状态的无向图，首先从任意一个已存在的结点 A 开始搜索到距离他最远的点 B，然后从 B 点出发搜索到离他最远的点 C，则 B 与 C 之间的距离就是当前状态的树的直径。由于每一个状态的树都要遍历两遍树，于是时间复杂度就是平方阶
 >
-> 时间复杂度：$O(nq)$
+> 时间复杂度：$O(qn)$
 >
 > 思路二：最近公共祖先 LCA。
 >
-> 时间复杂度：
+> - **从树的直径出发**。我们知道，树的直径由直径的两个结点之间的距离决定，因此我们着眼于这两个结点 $A$ 和 $B$ 展开。不妨设当前局面直径的两个结点已知为 $A$ 和 $B$，现在插入两个叶子结点 $L_1$ 和 $L_2$。是否改变了树的直径大小取决于新插入的两个结点对于当前树的影响情况。如果 $L_1$ 或 $L_2$ 可以替代 $A$ 或 $B$，则树的直径就会改变。很显然新插入的两个叶子结点对于直径的两个端点影响是同效果的，因此我们统称新插入的叶子结点为 $L$。
+>
+> - **什么时候树的直径会改变**？对于 $A$、$B$ 和 $L$ 来说，直径是否改变取决于 $L$ 能否替代 $A$ 或 $B$，一共有六种情况。我们记 $\text{dist}(A,L)=da$，$\text{dist}(B,L)=db$，当前树的直径为 $res$，六种情况如下：
+>
+>     1. $\text{max}(da, db) \le \text{res}$，交换 $A$ 和 $B$ 得到 $2$ 种
+>     2. $\text{min}(da,db) \ge \text{res}$，交换 $A$ 和 $B$ 得到 $2$ 种
+>     3. $\text{max}(da,db) >res,\text{min}(da,db) < \text{res}$，交换 $A$ 和 $B$ 得到 $2$​ 种
+>
+>     如图：我们只需要在其中的最大值严格超过当前树的直径 $\text{res}$ 时更新**直径对应的结点**以及**直径的长度**即可
+>
+>     ![六种情况](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403282344777.jpg)
+>
+> - **如何快速计算树上任意两个点之间的距离**？我们可以使用最近公共祖先 LCA 算法。则树上任意两点 $x,y$ 之间的距离 $\text{dist}(x,y)$ 为：
+>     $$
+>     \text{dist}(x,y) = \text{dist}(x,root) + \text{dist}(y,root) - 2 \times \text{dist}(\text{lca}(x,y),root)
+>     $$
+>
+> 时间复杂度：$O(q \log n)$
 
 暴力搜索代码
 
@@ -1230,5 +1247,90 @@ int main() {
 LCA 代码
 
 ```cpp
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
+using namespace std;
 
+const int N = 1000010, M = 20;
+
+int d[N];        // d[i] 表示 i 号点到根结点的距离
+int to[N][M];    // to[i][j] 表示 i 号点向上跳 2^j 步后到达的结点编号
+
+int lca(int a, int b) {
+	if (d[a] < d[b]) swap(a, b);
+
+	for (int k = M - 1; k >= 0; k--)
+		if (d[to[a][k]] >= d[b])
+			a = to[a][k];
+
+	if (a == b) return a;
+
+	for (int k = M - 1; k >= 0; k--)
+		if (to[a][k] != to[b][k])
+			a = to[a][k], b = to[b][k];
+
+	return to[a][0];
+}
+
+int dist(int a, int b) {
+	return d[a] + d[b] - 2 * d[lca(a, b)];
+}
+
+void solve() {
+	int Q;
+	cin >> Q;
+
+	// init lca
+	for (int i = 2; i <= 4; i++) {
+	    d[i] = 1;
+		to[i][0] = 1;
+	}
+
+	int A = 2, B = 4, now = 4, res = 2;
+
+	while (Q--) {
+		int fa;
+		cin >> fa;
+
+		int L1 = ++now, L2 = ++now;
+
+		// upd lca
+		d[L1] = d[fa] + 1;
+		d[L2] = d[fa] + 1;
+		to[L1][0] = fa;
+		to[L2][0] = fa;
+		for (int k = 1; k <= M - 1; k++) {
+			to[L1][k] = to[ to[L1][k-1] ][ k-1 ];
+			to[L2][k] = to[ to[L2][k-1] ][ k-1 ];
+		}
+
+		int da = dist(A, L1), db = dist(B, L1);
+
+		if (max(da, db) <= res) res = res;
+		else if (min(da, db) >= res) {
+			if (da > db) res = da, B = L1;
+			else res = db, A = L1;
+		} else {
+			if (da > db) res = da, B = L1;
+			else res = db, A = L1;
+		}
+
+		cout << res << "\n";
+	}
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
 ```

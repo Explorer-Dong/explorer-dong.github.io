@@ -16,15 +16,15 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="yum 与 rpm 的定义与区别 yum（Yellowdog Updater Modified）和rpm（Red Hat Package Manager）是两个在Linux系统中用于管理软件包的工具，它们之间有一定的关系，但是功能和作用不完全相同。   rpm：  rpm 是 Red Hat 包管理器的简称，是一种用于管理和安装软件包的命令行工具。 通过 rpm 可以直接安装、卸载、更新和查询软件">
+    <meta name="description" content="Ubuntu 修改终端语言 前言 报错英文看不懂？提示英文看不懂？搜索查询太费事？直接解决终端语言！接下来将介绍在 Linux 的 Ubuntu 22.04 上修改终端语言的操作。 命令 1. 安装中文语言包 1apt install language-pack-zh-hans 2. 添加中文语言支持 1locale-gen zh_CN.UTF-8 3. 修改 locale 文件配置地域 1234">
 <meta property="og:type" content="article">
-<meta property="og:title" content="yum-and-rpm">
-<meta property="og:url" content="https://blog.dwj601.cn/Operation/yum-and-rpm/index.html">
+<meta property="og:title" content="ubuntu-modify-sys-language">
+<meta property="og:url" content="https://blog.dwj601.cn/Operation/Ubuntu/ubuntu-modify-sys-language/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="yum 与 rpm 的定义与区别 yum（Yellowdog Updater Modified）和rpm（Red Hat Package Manager）是两个在Linux系统中用于管理软件包的工具，它们之间有一定的关系，但是功能和作用不完全相同。   rpm：  rpm 是 Red Hat 包管理器的简称，是一种用于管理和安装软件包的命令行工具。 通过 rpm 可以直接安装、卸载、更新和查询软件">
+<meta property="og:description" content="Ubuntu 修改终端语言 前言 报错英文看不懂？提示英文看不懂？搜索查询太费事？直接解决终端语言！接下来将介绍在 Linux 的 Ubuntu 22.04 上修改终端语言的操作。 命令 1. 安装中文语言包 1apt install language-pack-zh-hans 2. 添加中文语言支持 1locale-gen zh_CN.UTF-8 3. 修改 locale 文件配置地域 1234">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-03-26T07:30:36.785Z">
-<meta property="article:modified_time" content="2024-03-26T07:31:52.422Z">
+<meta property="article:published_time" content="2024-03-26T10:38:41.794Z">
+<meta property="article:modified_time" content="2024-03-29T15:08:30.026Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>yum-and-rpm | Dwj の Blog</title>
+  <title>ubuntu-modify-sys-language | Dwj の Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -224,7 +224,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="yum-and-rpm"></span>
+            <span id="subtitle" data-typed-text="ubuntu-modify-sys-language"></span>
           
         </div>
 
@@ -235,8 +235,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-26 15:30" pubdate>
-          2024年3月26日 下午
+        <time datetime="2024-03-26 18:38" pubdate>
+          2024年3月26日 晚上
         </time>
       </span>
     
@@ -247,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          397 字
+          155 字
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
         
-          3 分钟
+          1 分钟
         
       </span>
     
@@ -316,12 +316,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">yum-and-rpm</h1>
+            <h1 id="seo-header">ubuntu-modify-sys-language</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月26日 下午
+                    本文最后更新于 2024年3月29日 晚上
                   
                 
               </p>
@@ -329,32 +329,20 @@
             
               <div class="markdown-body">
                 
-                <h1>yum 与 rpm 的定义与区别</h1>
-<p><code>yum</code>（Yellowdog Updater Modified）和<code>rpm</code>（Red Hat Package Manager）是两个在Linux系统中用于管理软件包的工具，它们之间有一定的关系，但是功能和作用不完全相同。</p>
-<ol>
-<li>
-<p><strong>rpm</strong>：</p>
-<ul>
-<li><code>rpm</code> 是 Red Hat 包管理器的简称，是一种用于管理和安装软件包的命令行工具。</li>
-<li>通过 <code>rpm</code> 可以直接安装、卸载、更新和查询软件包，但是它只能处理单个软件包，不能自动解决软件包之间的依赖关系。</li>
-<li>使用 <code>rpm</code> 安装软件包时，可能会因为缺少依赖而导致安装失败，需要手动解决依赖关系。</li>
-</ul>
-</li>
-<li>
-<p><strong>yum</strong>：</p>
-<ul>
-<li><code>yum</code> 是基于 RPM 包管理器的高级包管理工具，它可以自动解决软件包之间的依赖关系。</li>
-<li><code>yum</code> 不仅可以安装、卸载和更新软件包，还可以自动下载并安装软件包所需的依赖项。</li>
-<li>与 <code>rpm</code> 不同，<code>yum</code> 还提供了软件仓库的管理功能，可以从指定的软件源（repository）中下载软件包，这样就可以轻松地获取更多软件包。</li>
-</ul>
-</li>
-</ol>
-<p>关系：</p>
-<ul>
-<li><code>yum</code> 依赖于 <code>rpm</code>，因为它使用 <code>rpm</code> 来执行实际的软件包操作，如安装、升级和删除。</li>
-<li><code>yum</code> 扩展了 <code>rpm</code> 的功能，提供了更方便的软件包管理方式，特别是在解决依赖关系方面更加强大和智能。</li>
-<li>通常情况下，使用 <code>yum</code> 更方便，因为它简化了软件包管理过程，并且能够自动处理依赖关系，而不需要用户手动介入。</li>
-</ul>
+                <h1>Ubuntu 修改终端语言</h1>
+<h2 id="前言">前言</h2>
+<p>报错英文看不懂？提示英文看不懂？搜索查询太费事？直接解决终端语言！接下来将介绍在 Linux 的 Ubuntu 22.04 上修改终端语言的操作。</p>
+<h2 id="命令">命令</h2>
+<h3 id="1-安装中文语言包">1. 安装中文语言包</h3>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt install language-pack-zh-hans<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="2-添加中文语言支持">2. 添加中文语言支持</h3>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">locale-gen zh_CN.UTF-8<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="3-修改-locale-文件配置地域">3. 修改 locale 文件配置地域</h3>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/default/locale<br><br>LANG=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LANGUAGE=<span class="hljs-string">"zh_CN:zh:en_US:en"</span><br>LC_NUMERIC=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_TIME=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_MONETARY=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_PAPER=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_IDENTIFICATION=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_NAME=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_ADDRESS=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_TELEPHONE=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_MEASUREMENT=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_ALL=zh_CN.UTF-8<br></code></pre></td></tr></tbody></table></figure>
+<p>重启</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">reboot<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="参考">参考</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/BobYuan888/article/details/88662779">https://blog.csdn.net/BobYuan888/article/details/88662779</a></p>
 
                 
               </div>
@@ -376,6 +364,13 @@
   <a href="/categories/Operation/" class="category-chain-item">Operation</a>
   
   
+    <span>></span>
+    
+  <a href="/categories/Operation/Ubuntu/" class="category-chain-item">Ubuntu</a>
+  
+  
+
+  
 
       </span>
     
@@ -393,8 +388,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>yum-and-rpm</div>
-      <div>https://blog.dwj601.cn/Operation/yum-and-rpm/</div>
+      <div>ubuntu-modify-sys-language</div>
+      <div>https://blog.dwj601.cn/Operation/Ubuntu/ubuntu-modify-sys-language/</div>
     </div>
     <div class="license-meta">
       
@@ -412,7 +407,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年3月26日</div>
+          <div>2024年3月29日</div>
         </div>
       
       
@@ -443,9 +438,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/DataBase/MySQL/slove-connection-refused/" title="slove-connection-refused">
+                      <a href="/BackEnd/shellBasic/kill-windows-process/" title="kill-windows-process">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">slove-connection-refused</span>
+                        <span class="hidden-mobile">kill-windows-process</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -453,8 +448,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/BackEnd/Flask/deploy/" title="deploy">
-                        <span class="hidden-mobile">deploy</span>
+                      <a href="/DataBase/MySQL/familiar-command/" title="familiar-command">
+                        <span class="hidden-mobile">familiar-command</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -549,15 +544,6 @@
         </a>
       
     
-      
-      
-        <a href="/Operation/yum-and-rpm/" title="yum-and-rpm"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">yum-and-rpm</span>
-        </a>
-      
-    
   </div>
 
           
@@ -566,17 +552,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Ubuntu"
         id="heading-3d945423f8e9496c429a5d8c65b4604f" role="tab" data-toggle="collapse" href="#collapse-3d945423f8e9496c429a5d8c65b4604f"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         Ubuntu
-        <span class="list-group-count">(1)</span>
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-3d945423f8e9496c429a5d8c65b4604f"
+      <div class="category-collapse collapse show" id="collapse-3d945423f8e9496c429a5d8c65b4604f"
            role="tabpanel" aria-labelledby="heading-3d945423f8e9496c429a5d8c65b4604f">
         
         
@@ -586,10 +572,19 @@
     
       
       
-        <a href="/Operation/Ubuntu/modify-lang/" title="modify-lang"
+        <a href="/Operation/Ubuntu/apt-command/" title="apt-command"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">modify-lang</span>
+          <span class="category-post">apt-command</span>
+        </a>
+      
+    
+      
+      
+        <a href="/Operation/Ubuntu/ubuntu-modify-sys-language/" title="ubuntu-modify-sys-language"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">ubuntu-modify-sys-language</span>
         </a>
       
     

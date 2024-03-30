@@ -35,7 +35,7 @@ apt upgrade
 安装指定的软件包
 
 ```bash
-apt install <PackgeName>
+apt install <PackageName>
 ```
 
 ### 4. 删除软件包
@@ -43,7 +43,7 @@ apt install <PackgeName>
 删除指定的软件包
 
 ```bash
-apt remove <PackgeName>
+apt remove <PackageName>
 ```
 
 ## 补充
@@ -56,5 +56,5 @@ sudo 的全称是 superuser do，即**超级用户执行**。命令之前加上 
 
 <https://runkodo.com/post/如何在linux中安装和管理软件包：一个完全的初学者>
 
-
+<https://www.runoob.com/linux/linux-comm-apt.html>
 

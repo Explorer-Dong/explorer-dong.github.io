@@ -1,7 +1,7 @@
 ---
 title: kill-windows-process
 categories:
-  - BackEnd
+  - Operation
   - shellBasic
 category_bar: true
 ---

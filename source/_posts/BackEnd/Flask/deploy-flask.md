@@ -1,5 +1,5 @@
 ---
-title: deploy
+title: deploy-flask
 categories:
   - BackEnd
   - Flask
@@ -327,10 +327,10 @@ python app.py
 > netstat -npl | grep "5000"
 > 
 > # 查找占用端口的进程的PID
->                                                                                                                         sudo lsof -i:"端口"
+>    sudo lsof -i:"端口"
 > 
 > # 根据PID杀死该进程
->                                                                                                                         sudo kill -9 <PID>
+>    sudo kill -9 <PID>
 > ```
 
 {% endfold %}

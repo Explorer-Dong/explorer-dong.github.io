@@ -100,12 +100,15 @@ theme: fluid
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
+  # - type: git
+  #   repo: https://github.com/Explorer-Dong/explorer-dong.github.io.git
+  #   branch: auto-deploy
+  # - type: git
+  #   repo: https://gitee.com/idwj/idwj.git
+  #   branch: auto-deploy
   - type: git
-    repo: https://github.com/Explorer-Dong/explorer-dong.github.io.git
-    branch: auto-deploy
-  - type: git
-    repo: https://gitee.com/idwj/idwj.git
-    branch: auto-deploy
+    repo: git@blog.dwj601.cn:/home/git/blog.git
+    branch: main
 
 # GitHub Emojis
 ## Docs: https://github.com/crimx/hexo-filter-github-emojis

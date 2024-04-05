@@ -107,7 +107,7 @@ deploy:
   #   repo: https://gitee.com/idwj/idwj.git
   #   branch: auto-deploy
   - type: git
-    repo: git@47.100.217.241:/home/git/HexoBlog
+    repo: git@47.100.217.241:/home/git/blog.git
     branch: main
 
 # GitHub Emojis

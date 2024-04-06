@@ -4,7 +4,7 @@ categories:
   - Operation
   - Nginx
 category_bar: true
-
+index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/nginx.png
 ---
 
 # 使用 apt 安装 Nginx 后的软件包是如何布局的

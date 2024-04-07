@@ -58,8 +58,10 @@
 
 :sparkles: 新增：网站 ICP 备案信息 - 通过 [ICP 备案信息查询](https://beian.miit.gov.cn/) 服务。提升网站可信度
 
-## Expect
+24.04.07
 
 :sparkles: 新增：访问速度慢的问题 - 使用国内自己的服务器。提升网站体验
 
-:sparkles: 新增：全站检索速度慢的问题 - xml 文件检索配置。提升网站体验
+## Expect
+
+:sparkles: 新增：全站检索速度慢的问题 - local-search.xml 文件检索配置。提升网站体验

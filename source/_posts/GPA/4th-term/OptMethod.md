@@ -6,7 +6,7 @@ categories:
 category_bar: true
 ---
 
-# 《最优化方法》
+## 《最优化方法》
 
 ## 前言
 
@@ -46,9 +46,11 @@ category_bar: true
 
 **凸集的定义**
 $$
+\begin{aligned}
 \forall \quad x,y \in D \ \land \ \lambda \in [0,1] \\
 s.t. \quad \lambda x+(1-\lambda)y \in D \\
 \text{则称} D \text{为凸集}
+\end{aligned}
 $$
 **凸集的性质**：设 $D_1,D_2 \subset R^n$ 均为凸集（下列 $x,y$ 均表示向量），则：
 
@@ -66,12 +68,14 @@ $$
 1. 刻画可行域
     - 凸组合定义
         $$
+        \begin{aligned}
         \text{设}\ x^{(1)},x^{(2)}, \cdots, x^{(p)} \in R^n ,\text{且}\ \sum_{i=1}^p \alpha_i = 1(a_i \ge 0)  \\
         s.t. \quad x = \alpha_1x^1 + \alpha_2x^2 + \cdots + \alpha_px^p  \\
         \text{则称}\ x\ \text{为向量}\ x^{(1)},x^{(2)}, \cdots, x^{(p)}\ \text{的凸组合}
+        \end{aligned}
         $$
     
-    - 凸组合定理：$D \in R^n$ \text{是凸集的充分必要条件是} $D$ 中任取 $m$ 个点 $x^i(1,2,\cdots m)$ 的凸组合任属于 $D$，即：
+    - 凸组合定理：$D \in R^n$ 是凸集的充分必要条件是 $D$ 中任取 $m$ 个点 $x^i(1,2,\cdots m)$ 的凸组合任属于 $D$，即：
         $$
         \sum_{i=1}^m \alpha_ix_i \in D\left( \alpha_i \ge 0(i=1,2,\cdots,m),\sum_{i=1}^m \alpha_i = 1 \right)
         $$
@@ -83,8 +87,10 @@ $$
 2. 分析最优解的最优性条件
     - 超平面定义（凸集分离定理）：设 $D_1,D_2 \subset R^n$ 为两非空凸集，若存在非零向量 $\alpha \in R^n$ 和实数 $\beta$，使得
         $$
+        \begin{aligned}
         D_1 \subset H^+ = \{ x \in R^n \ | \ \alpha^T x \ge \beta\} \\
         D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
+        \end{aligned}
         $$
         则称超平面 $H = \{ x \in R^n \ | \ \alpha^Tx=\beta \}$ **分离**集合 $D_1$ 和 $D_2$，**严格分离**时上述不等式无法取等
     
@@ -369,17 +375,13 @@ $$
 
 - 有时，目标函数可能在多个顶点处达到最大，这时在这些顶点的**凸组合**上也达到最大值，这时线性规划问题有无限多个最优解。
 
-### 2.2 单纯形法 :star:
+### 2.2 单纯形法
+
+{% note info %}
 
 本目主要介绍一种常用的计算线性规划问题可行解的方法：单纯形法。其中，**前三条**分别介绍单纯性方法计算步骤的理论可行性，**第四条**具体介绍单纯形法的计算步骤与过程，**第五条**讨论当迭代过程中出现“退化”现象时如何判定是否要终止迭代
 
-{% fold info @理论知识开始之前，先过一遍单纯形法的求解步骤 %}
-
-![单纯形法的求解步骤](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056146.jpg)
-
-![单纯形法的求解步骤](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056440.jpg)
-
-{% endfold %}
+{% endnote %}
 
 #### 2.2.1 初始基可行解的确定
 
@@ -423,47 +425,77 @@ $$
 
     我们可以将任意一个检验数为 0 的非基变量与基变量进行置换得到新的一个基本可行解对应的目标函数值保持不变。于是下述凸组合内的可行解都是最优解
     $$
-    x^{(k)}, \\ 
-    s.t. 
+    \begin{aligned}
+    & x^{(k)} \\ 
+    & s.t. 
     \begin{cases} 
     k &\in& [m+1, n] \\
     \sigma_k &=& 0
     \end{cases}
+    \end{aligned}
     $$
     {% endfold %}
 
-3. **无界解**判别定理：略
+3. **无界解**判别定理：# TODO
 
 4. **无解**判别定理：可行域为空集
 
 #### 2.2.3 计算新的基本可行解
 
-对于**常规**的线性规划问题
+对于**常规**的线性规划问题（即初始基本可行解可以找到）
 
 1. 向量方程法
     - 确定入基变量：选择目标函数中**系数最大的变量**作为入基变量，即将其对应的系数列向量与出基变量对应的系数列向量进行置换
     - 确定出基变量：线性表示基方程组以后，利用变量非负的特性找到入基变量刚好取 $0$ 时对应的变量即为出基变量（示例的第二轮迭代中出基变量即为 $x_5$）
 2. 系数矩阵法
+    - 按照检验数的大小确定入基变量，
 
-对于**添加人工变量**的线性规划问题
+对于**添加人工变量**的线性规划问题（即初始基本可行解不能直接找到，需要手动构造初始基本可行解）
 
-1. 大 M 法
+1. 大 M 法：pass
 2. 两阶段法
+    - 第一阶段：pass
+    - 第二阶段：pass
 
 #### 2.2.4 单纯形法计算步骤
 
+{% fold info @向量方程法%}
+
+![单纯形法的求解步骤 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056146.jpg)
+
+![单纯形法的求解步骤 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056440.jpg)
+
+{% endfold %}
 
 
 #### 2.2.5 特殊情况 - 退化现象
 
-
+pass
 
 ### 2.3 线性规划的对偶与对偶单纯形法
 
-#### 2.3.1 确定线性规划的对偶问题
+#### 2.3.1 确定线性规划的对偶问题 TODO
 
-#### 2.3.2 对偶定理
+掌握：已知原问题的表达式，给出对偶问题的表达式
+
+{% fold info @转化规则 %}
+
+![转化规则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071144213.png)
+
+{% endfold %}
+
+{% fold info @实战演练 %}
+
+TODO
+
+{% endfold %}
+
+#### 2.3.2 对偶定理 TODO
+
+
 
 #### 2.3.3 对偶单纯形法
+
+
 
 ## 第三章 线性搜索与信赖域方法

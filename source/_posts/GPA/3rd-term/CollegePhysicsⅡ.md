@@ -19,24 +19,31 @@ category_bar: true
 $$
 F=-kx
 $$
+
 加速度 $a$：
 
 $$
-a=\frac{F}{m}=-\frac{k}{m}x \\
+a=\frac{F}{m}=-\frac{k}{m}x
 $$
+
 将 $\frac{k}{m}$ 代换为 $\omega^2$，得到 $a$ :
+
 $$
 a = \frac{d^2x}{dt^2} =-\omega^2x
 $$
+
 解得 $x$ 为：
+
 $$
 x=A\cos{(\omega t+\phi)}
 $$
+
 对 $x$ 求导得 $v$ 为：
 
 $$
 v=-\omega A\sin{(\omega t+\phi)}
 $$
+
 对 $v$ 求导得 $a$ 为：
 
 $$
@@ -685,9 +692,11 @@ $$
 
 - **理想气体物态方程: **
     $$
+    \begin{aligned}
     pV&=&NkT\\
     pV&=&\nu RT\\
     p&=&nkT
+    \end{aligned}
     $$
     其中 $p$ 为气压，$V$ 为全部气体所占的体积
 
@@ -764,14 +773,20 @@ $$
 
 其中 $E$ 为 $\nu\ \text{mol}$ 气体分子所含有的平均能量（**内能**），$i$ 为该气体的自由度。又
 $$
+\begin{aligned}
 pV=NkT\\
 pV=\nu RT
+\end{aligned}
 $$
+
 可得
+
 $$
 N_Ak=R
 $$
+
 于是
+
 $$
 E=\nu\frac{i}{2}RT
 $$

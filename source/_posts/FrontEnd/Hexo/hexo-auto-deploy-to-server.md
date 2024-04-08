@@ -10,12 +10,12 @@ category_bar: true
 
 ## 前言
 
-由于使用 Github Pages 服务访问速度过慢（因为托管的服务器在国外），使用 Gitee Pages 又不能自定义域名。故综合考虑还是部署到自己的国内服务器上。加上网上相关内容不是时间长远，就是环境不一，而且感觉都是一个人写完以后大家照着抄的，几乎都长一样。所以决定自己也整理一下（也抄一篇），并且补充相关原理。本篇博客将以阿里云 Ubuntu22.04 为例，介绍如何将自己的 hexo 静态博客项目部署到属于自己的服务器上。
+由于使用 Github Pages 服务访问速度过慢（因为托管的服务器在国外），使用 Gitee Pages 又不能自定义域名。故综合考虑还是部署到自己的国内服务器上。加上网上相关内容不是时间长远，就是环境不一，而且感觉都是一个人写完以后大家照着抄的，几乎都长一样。所以决定自己也整理一下（也抄一篇），并且补充相关原理。本篇博客将以阿里云 Ubuntu22.04 为例，介绍如何将自己的 hexo 静态博客项目部署到属于自己的服务器上并持续集成。
 
 在开始之前，你应已具备以下条件：
 
 - 已国内备案的[云服务器](https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=jpec1z57)
-- 基本的 [hexo](https://blog.dwj601.cn/FrontEnd/Hexo/hexo-learning-record/) 的部署知识
+- 基本的 [hexo](https://blog.dwj601.cn/FrontEnd/Hexo/hexo-learning-record/) 部署知识
 - 基本的 [linux](https://explorer-dong.github.io/categories/Operation/Ubuntu/) 运维知识
 - 基本的 [git](https://blog.dwj601.cn/DevTools/Git/git-learning-record/) 指令
 
@@ -41,7 +41,7 @@ category_bar: true
     useradd git
     ```
 
-- 修改新用户密码。
+- 修改新用户密码。后续采用 SSH 免密通信，因此这个密码无所谓
 
     ```bash
     passwd git
@@ -172,10 +172,36 @@ server {
 
 ## 原理
 
+![hexo 持续集成原理图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081614614.jpg)
+
 ### Git Hooks 是什么？工作原理是什么？
+
+可以将其类比 github workflows，可以在我们做出某些行为的前后自动执行一些我们预设定的任务。此处使用到的就是 post-receive 任务，[原文](https://git-scm.com/docs/githooks#post-receive)是这样解释的：
+
+> This hook is invoked by [git-receive-pack[1\]](https://www.git-scm.com/docs/git-receive-pack) when it reacts to `git push` and updates reference(s) in its repository. It executes on the remote repository once after all the refs have been updated.
+
+即当其接收到 push 任务并且存储库的索引被更新后，该钩子就会执行其中的内容。我们利用其特点，在将我们的 hexo 项目 push 到服务器后，执行其中的部署指令，即可实现自动部署、持续集成的功能。
 
 ### SSH 是什么，工作原理是什么？
 
+可以简单的将其理解为一种用来连接本地客户端与远程服务器的通信隧道。下面是[较为官方](https://info.support.huawei.com/info-finder/encyclopedia/zh/SSH.html)的解释：
+
+> SSH（Secure Shell，安全外壳）是一种网络安全协议，通过加密和认证机制实现安全的访问和文件传输等业务。传统远程登录和文件传输方式，例如Telnet、FTP，使用明文传输数据，存在很多的安全隐患。随着人们对网络安全的重视，这些方式已经慢慢不被接受。SSH协议通过对网络数据进行加密和验证，在不安全的网络环境中提供了安全的网络服务。作为Telnet和其他不安全远程shell协议的安全替代方案，目前SSH协议已经被全世界广泛使用，大多数设备都支持SSH功能。
+
+用一张图来更加清晰直观的理解：
+
+![SSH常用场景](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081642038.png)
+
 ## 参考
 
-https://www.glimound.com/build-hexo-blog/
+[基于Hexo的静态博客网站搭建并部署至云服务器](https://www.glimound.com/build-hexo-blog/)
+
+[Linux chmod命令](https://www.runoob.com/linux/linux-comm-chmod.html)
+
+[Linux chown 命令](https://www.runoob.com/linux/linux-comm-chown.html)
+
+[Git Hooks](https://githooks.com/)
+
+[githooks - Hooks used by Git](https://git-scm.com/docs/githooks)
+
+[什么是SSH？](https://info.support.huawei.com/info-finder/encyclopedia/zh/SSH.html)

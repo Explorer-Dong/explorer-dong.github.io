@@ -711,7 +711,7 @@ pass
 
 激活函数可以参考 3.3 中的逻辑函数（logistic function），此处将其声明为 sigmoid 函数，同样不采用不。连续光滑的分段函数。
 
-### 5.2 感知机与多层网络 TODO
+### 5.2 感知机与多层网络
 
 {% note info %}
 
@@ -727,9 +727,15 @@ pass
 
 通过单层的感知机，我们可以实现简单的线性可分的分类任务，比如逻辑运算中的 **与、或、非** 运算，下面演示一下如何使用单层感知机实现上述三种逻辑运算：
 
-{% fold info @使用单层感知机实现与、或、非三种逻辑运算 %}
+{% fold info @使用单层感知机实现线性可分任务：与、或、非三种逻辑运算 %}
 
-TODO
+与运算、或运算是二维线性可分任务，一定可以找到一条直线将其划分为两个类别：
+
+![二维线性可分任务](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091955554.png)
+
+非运算是一维线性可分任务，同样也可以找到一条直线将其划分为两个类别：
+
+![一维线性可分任务](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091959633.png)
 
 {% endfold %}
 
@@ -748,7 +754,7 @@ w_i \leftarrow w_i + \Delta w_i \\
 $$
 {% fold info @使用多层感知机实现异或逻辑运算 %}
 
-TODO
+![使用多层感知机实现异或逻辑运算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092000730.png)
 
 {% endfold %}
 
@@ -769,22 +775,118 @@ TODO
 
 {% endnote %}
 
+#### 5.3.1 模型参数
 
+我们对着神经网络图，从输入到输出进行介绍与理解：
 
+![单隐层神经网络](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404090923723.png)
+
+- 隐层：对于隐层的第 $h$ 个神经元
+    - 输入：$\alpha_h = \sum_{i=1}^dx_i v_{ih}$
+    - 输出：$b_h = f(\alpha_h - \gamma_h)$
+- 输出层：对于输出层的第 $j$ 个神经元
+    - 输入：$\beta_j=\sum_{h=1}^q b_h w_{hj}$
+    - 输出：$\hat y_j = f(\beta j - \theta_j)$
+
+现在给定一个训练集学习一个分类器。其中每一个样本都含有 $d$ 个特征，$l$ 个输出。现在使用**标准 BP 神经网络模型**，每输入一个样本都迭代一次。对于单隐层神经网络而言，一共有 4 种参数，即：
+
+- 输入层到隐层的 $d \times q$ 个权值 $v_{ih}(i=1,2,\cdots,d,\ h=1,2,\cdots,q)$
+- 隐层的 $q$ 个 M-P 神经元的阈值 $\gamma_h(h=1,2,\cdots,q)$​
+- 隐层到输出层的 $q\times l$ 个权值 $w_{hj}(h=1,2,\cdots,q,\ j=1,2,\cdots,l)$
+- 输出层的 $l$ 个 M-P 神经元的阈值 $\theta_j(j=1,2,\cdots,l)$
+
+#### 5.3.2 参数推导
+
+确定损失函数。
+
+- 对于上述 4 种参数，我们均采用梯度下降策略。**以损失函数的负梯度方向对参数进行调整**。每次输入一个训练样本，都会进行一次参数迭代更新，这叫**标准 BP 算法**。
+
+- 根本目标是使损失函数尽可能小，我们定义损失函数 $E$ 为当前样本的均方误差，并为了求导计算方便添加一个常量 $\frac{1}{2}$，对于第 $k$ 个训练样本，有如下损失函数：
+
+$$
+E_k = \frac{1}{2} \sum _{j=1}^l (\hat y_j^k - y_j^k)^2
+$$
+确定迭代修正量。
+
+- 假定当前学习率为 $\eta$，对于上述 4 种参数的迭代公式为：
+    $$
+    \begin{aligned}
+    w_{hj} &\leftarrow w_{hj}+\Delta w_{hj} \\
+    \theta_{j} &\leftarrow \theta_{j}+\Delta \theta_{j} \\
+    v_{ih} &\leftarrow v_{ih}+\Delta v_{ih} \\
+    \gamma_{h} &\leftarrow \gamma_{h}+\Delta \gamma_{h} \\
+    \end{aligned}
+    $$
+    
+- 其中，修正量分别为：
+    $$
+    \begin{aligned}
+    \Delta w_{hj} &= \eta g_j b_h \\
+    \Delta \theta_{j} &= -\eta g_j \\
+    \Delta v_{ih} &= \eta e_h x_i \\
+    \Delta \gamma_{h} &= -\eta e_h \\
+    \end{aligned}
+    $$
+
+{% fold info @修正量推导 - 链式法则 %}
+
+公式表示：
+
+![公式表示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092222942.jpg)
+
+隐层到输出层的权重、输出神经元的阈值：
+
+![隐层到输出层的权重、输出神经元的阈值](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092222625.jpg)
+
+输入层到隐层的权重、隐层神经元的阈值：
+
+![输入层到隐层的权重、隐层神经元的阈值](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092223804.jpg)
+
+{% endfold %}
+
+#### 5.3.3 算法流程
+
+对于当前样本的输出损失 $E_k$ 和学习率 $\eta$，我们进行以下迭代过程：
+
+![BP 神经网络算法流程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404090920527.png)
+
+还有一种 BP 神经网络方法就是**累计 BP 神经网络**算法，基本思路就是对于全局训练样本计算累计误差，从而更新参数。在实际应用过程中，一般先采用累计 BP 算法，再采用标准 BP 算法。还有一种思路就是使用随机 BP 算法，即每次随机选择一个训练样本进行参数更新。
 
 ### 5.4 全局最小与局部极小
 
-
+pass
 
 ### 5.5 其他常见神经网络
 
-
+pass
 
 ### 5.6 深度学习
 
-
+pass
 
 ## 第6章 支持向量机
+
+### 6.1 间隔与支持向量 TODO
+
+
+
+### 6.2 对偶问题 TODO
+
+
+
+### 6.3 核函数
+
+
+
+### 6.4 软间隔与正则化
+
+
+
+### 6.5 支持向量回归
+
+
+
+### 6.6 核方法
 
 
 

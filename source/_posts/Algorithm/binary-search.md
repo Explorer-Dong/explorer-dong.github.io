@@ -4,7 +4,7 @@ categories: Algorithm
 category_bar: true
 ---
 
-## 《二分》
+### 《二分》
 
 二分查找理论上还是一个线性的算法思维，只是与一般的线性思维更进一步的是，二分思维需要提炼出题面中两个线性相关的变量，即单调变化的两个变量，从而采用二分加速检索
 
@@ -442,7 +442,7 @@ signed main() {
 }
 ```
 
-### 8. [NOIP2010 提高组] 关押罪犯 # TODO
+### 8. [NOIP2010 提高组] 关押罪犯 TODO
 
 https://www.luogu.com.cn/problem/P1525
 
@@ -543,3 +543,95 @@ int main() {
 	return 0;
 }
 ```
+
+### 10. 盖楼
+
+https://www.acwing.com/problem/content/description/5569/
+
+> 题意：给定 H 个正整数分别为 1 到 H。现在要将这 H 个正整数分给两个人，其中一个人希望获得可以不被 x 整除的数，另一个人希望可以获得不被 y 整除的数。其中 x 和 y 均为质数，问最小的 H 是多少？
+>
+> 思路：
+>
+> - 很显然的一个二分答案。因为 H 越大，越有可能满足这两个人的要求，具备单调性。
+>
+> - 那么现在的问题就是检查函数的设计。对于当前的高度 h，即 h 个正整数，很显然可以划分出下面的集合关系
+>
+>     <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091829325.png" alt="集合关系" style="zoom:50%;" />
+>
+>     其中 h-p-q+a 的部分两个人都可以获得。最策略是，p-a 与 q-a 的都给另外的人，如果不够，从 h-p-q+a 中拿，如果还不够那就说明当前 h 无法满足，需要增大 h，反之说明 h 可以满足，继续寻找答案的左边界。
+>
+> 时间复杂度：$O(\log (N+M))$
+
+```cpp
+#include <iostream>
+using namespace std;
+typedef long long ll;
+
+ll n, m, x, y;
+
+bool chk(ll h) {
+	ll p = h / x, q = h / y, a = h / (x * y);
+
+	return max(0ll, n - (q - a)) + max(0ll, m - (p - a)) <= h - p - q + a;
+}
+
+void solve() {
+	cin >> n >> m >> x >> y;
+
+	ll l = 1, r = 1e15;
+	while (l < r) {
+		ll mid = (l + r) >> 1;
+		if (chk(mid)) r = mid;
+		else l = mid + 1;
+	}
+
+	cout << r << "\n";
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
+```
+
+小插曲。一开始写的检查函数 code 始终只能通过 9/10，检查函数的代码如下：
+
+```cpp
+bool chk(ll h) {
+    ll p = h / x, q = h / y, a = h / (x * y);
+
+    if (h - p >= n && h - q >= m) {
+        // 如果满足第一人，检查第二人是否满足
+        if (q - a >= n) return true;
+        else if (h - (n - (q - a)) - q >= m) return true;
+
+        // 如果满足第二人，检查第一人是否满足
+        if (p - a >= m) return true;
+        else if (h - (n - (p - a)) - p >= n) return true;
+    }
+    return false;
+}
+```
+
+其实是因为有逻辑错误，即对于当前的 h，必须两个人都能满足才行。而上述代码可能会出现第一个人不满足，但是第二个人满足，却返回 true 的情况，而这是错误的。因此上述代码改成两个人同时满足就可以通过了，即如果有一个人不满足，则返回 false：
+
+```cpp
+bool chk(ll h) {
+    ll p = h / x, q = h / y, a = h / (x * y);
+
+    if (h - p >= n && h - q >= m) {
+        // 如果满足第一人，检查第二人是否满足
+        if (q - a >= n) return true;
+        else if (h - (n - (q - a)) - q >= m) return true;
+
+        return false;
+    }
+    return false;
+}
+```
+
+小结：过多的分支语句不如一个 max 来的更加清晰，也可以避免一定的逻辑错误。

@@ -11,7 +11,7 @@ category_bar: true
 
 ## 前言
 
-学科情况：
+学科地位：
 
 | 主讲教师 | 学分配额 | 学科类别 |
 | :------: | :------: | :------: |
@@ -157,33 +157,32 @@ pass
 
 - 混淆矩阵
 
-    - 查准率/精度（precision）：$\displaystyle P = \frac{TP}{TP+FP}$ - 适用场景：商品搜索推荐（尽可能推荐出适当的商品即可，至于商品数量无所谓）
-    - 查全率/召回率（recall）：$\displaystyle R = \frac{TP}{TP+FN}$ - 适用场景：逃犯、病例检测（尽可能将正例检测出来，至于查准率无所谓）
-    - F1 度量（F1-score）：$\displaystyle F_1 = \frac{2\times P \times R}{P + R}$​ - 用于综合查准率和查全率的指标
-    
-    {% fold info @分类结果混淆矩阵 %}
-    
-    ![分类结果混淆矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403121018205.png)
-    
+    {% fold info @图例 %}
+
+    ![混淆矩阵 - 图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403121018205.png)
+
     {% endfold %}
+
+    - **查准率/精度（precision）**：$\displaystyle P = \frac{TP}{TP+FP}$ - 适用场景：商品搜索推荐（尽可能推荐出适当的商品即可，至于商品数量无所谓）
+    - **查全率/召回率（recall）**：$\displaystyle R = \frac{TP}{TP+FN}$ - 适用场景：逃犯、病例检测（尽可能将正例检测出来，至于查准率无所谓）
+    - **F1 度量（F1-score）**：$\displaystyle F_1 = \frac{2\times P \times R}{P + R}$​ - 用于综合查准率和查全率的指标
     
-    - 对于多分类问题，我们可以将该问题分解为多个二分类问题（ps：假设为 n 个）。从而可以获得多个上述的混淆矩阵，那么也就获得了多个 $P_i$、$R_i$ 以及全局均值 $\overline{TP}$、$\overline{FP}$、$\overline{FN}$，进而衍生出两个新的概念
+    - 对于**多分类问题**，我们可以将该问题分解为多个二分类问题（ps：假设为 n 个）。从而可以获得多个上述的混淆矩阵，那么也就获得了多个 $P_i$、$R_i$ 以及全局均值 $\overline{TP}$、$\overline{FP}$、$\overline{FN}$，进而衍生出两个新的概念
     
-        宏
-    
-        - 宏查准率：$\displaystyle macroP = \frac{1}{n} \sum_{i=1}^n P_i$
-        - 宏查全率：$\displaystyle macroR = \frac{1}{n} \sum_{i=1}^n R_i$
-        - 宏 $F1$：$\displaystyle macroF_1 = \frac{2 \times macroP \times macroR}{macroP+macroR}$
-    
-        微
-    
-        - 微查准率：$\displaystyle microP = \frac{\overline{TP}}{\overline{TP}+\overline{FP}}$
-        - 微查全率：$\displaystyle microR = \frac{\overline{TP}}{\overline{TP}+\overline{FN}}$
-        - 微 $F1$：$\displaystyle microF_1 = \frac{2 \times microP \times microR}{microP+microR}$
+        - **宏**
+          - 宏查准率：$\displaystyle macroP = \frac{1}{n} \sum_{i=1}^n P_i$
+          - 宏查全率：$\displaystyle macroR = \frac{1}{n} \sum_{i=1}^n R_i$
+          - 宏 $F1$：$\displaystyle macroF_1 = \frac{2 \times macroP \times macroR}{macroP+macroR}$
+          
+        - **微**
+        
+          - 微查准率：$\displaystyle microP = \frac{\overline{TP}}{\overline{TP}+\overline{FP}}$
+          - 微查全率：$\displaystyle microR = \frac{\overline{TP}}{\overline{TP}+\overline{FN}}$
+          - 微 $F1$：$\displaystyle microF_1 = \frac{2 \times microP \times microR}{microP+microR}$
     
 - P-R 曲线
 
-    {% fold info @P-R 曲线趋势图 %}
+    {% fold info @图例 %}
 
     ![P-R 曲线趋势图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190830311.png)
 
@@ -203,7 +202,7 @@ pass
 
 - ROC 曲线与 AUC :star:
 
-    {% fold info @ROC 曲线图 - 受试者工作特征 %}
+    {% fold info @图例 %}
 
     ![ROC 曲线图 - 受试者工作特征](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190851371.png)
     
@@ -240,11 +239,7 @@ pass
 
 - McNemar 检验：对于二分类问题，我们可以得到下方的列联表
 
-    {% fold info @二分类问题 - 列联表 %}
-
     ![列联表](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403231541827.png)
-
-    {% endfold %}
 
     若变量 $\Gamma_{\chi ^2}$ 小于临界值，则表明学习器没有显著差异，其中变量 $\Gamma_{\chi ^2}$ 为
     $$
@@ -276,7 +271,7 @@ pass
 $$
 E(f;D) = bias^2(x) + var(x) + \epsilon^2
 $$
-{% fold info @偏差-方差分解结论推导 %}
+{% fold info @推导 %}
 
 ![偏差-方差分解结论推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403231651554.jpg)
 
@@ -288,7 +283,7 @@ $$
 
 其实偏差和方差是有冲突的，这被称为偏差-方差窘境（bias-variance-dilemma）。对于以下的示意图我们可以知道：对于给定的学习任务。一开始拟合能力较差，学习器对于不同的训练数据不够敏感，此时泛化错误率主要来自偏差；随着训练的不断进行，学习器的拟合能力逐渐增强，对于数据的扰动更加敏感，使得方差主导了泛化错误率；在训练充分以后，数据的轻微扰动都可能导致预测输出发生显著的变化，此时方差就几乎完全主导了泛化错误率。
 
-{% fold info @偏差-方差窘境 示意图 %}
+{% fold info @图例 %}
 
 ![偏差-方差窘境 示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403231628114.png)
 
@@ -333,7 +328,7 @@ $$
 
 现在假设只有一个属性 x，对应一维输出 y。现在我们试图根据已知的 \<x,y\> 样本数据学习出一个模型 $f(x_i) = wx_i+b$ 使得尽可能准确的预测未来的数据。那么此时如何求解模型中当目标函数取最小值时的参数 w 和 b 呢？很显然我们可以使用无约束优化问题的一阶必要条件求解。
 
-{% fold info @一元线性回归：参数 w 和 b 的求解推导（式 3.7、式 3.8） %}
+{% fold info @参数 w 和 b 的求解推导（式 3.7、式 3.8） %}
 
 前置说明：在机器学习中，很少有闭式解（解析解），但是线性回归是特例，可以解出闭式解。
 
@@ -401,7 +396,7 @@ E_{\hat w} = (y - X \hat w) ^T (y - X \hat w)
 $$
 我们用同样的方法求解其闭式解：
 
-{% fold info @多元线性回归：参数 w 的求解推导（式 3.10） %}
+{% fold info @参数 w 的求解推导（式 3.10） %}
 
 ![多元线性回归：参数 w 的求解推导（式 3.10）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403301607772.jpg)
 
@@ -483,7 +478,7 @@ $$
 
 1.  最简单的一种阈值函数就是**单位阶跃函数**。映射关系如下。但是有一个问题就是单位阶跃函数不是单调可微函数，因此不可取
 
-    {% fold info @为什么阈值函数需要单调可微呢？ %}
+    {% fold light @为什么阈值函数需要单调可微呢？ %}
 
     一直有一个疑问，单位跃阶函数已经可以将线性模型的进行二值映射了，干嘛还要求阈值函数的反函数呢？
 
@@ -510,7 +505,7 @@ $$
 
 现在我们站在前人的肩膀上学习到了一种阈值函数：逻辑函数（$\text{logistic function}$）。在开始讲解参数 $w$ 和 $b$ 的求解过程之前，我们先解决一个疑问：为什么英文名是 $\text{logistic}$​，中文翻译却成了 **对数几率** 函数呢？
 
-{% fold info @“对数几率”名称解读 %}
+{% fold light @“对数几率”名称解读 %}
 
 这就要从逻辑函数的实际意义出发了。对于逻辑函数，我们代入线性模型，并做以下转化：
 $$
@@ -525,7 +520,7 @@ $$
 {% endfold %}
 
 知道了逻辑函数的实际意义是**真实标记的对数几率**以后，接下来我们实际意义出发，讲解模型参数 $w$ 和 $b$​ 的推导过程。
-{% fold info @参数推导 %}
+{% fold info @推导 %}
 
 若我们将 $y$ 视作类后验概率估计 $p(y=1 \ | \ x)$​，则有
 $$
@@ -617,7 +612,7 @@ pass
 
 #### 3.5.1 一对一
 
-{% fold info @图例：一对一 %}
+{% fold info @图例 %}
 
 ![一对一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404020850504.png)
 
@@ -630,7 +625,7 @@ pass
 
 #### 3.5.2 一对其余
 
-{% fold info @图例：一对其余 %}
+{% fold info @图例 %}
 
 ![一对其余](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404020852608.png)
 
@@ -642,7 +637,7 @@ pass
 
 #### 3.5.3 多对多
 
-{% fold info @编码解码矩阵：多对多 %}
+{% fold info @图例 %}
 
 ![多对多](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404020853931.png)
 
@@ -727,7 +722,7 @@ pass
 
 通过单层的感知机，我们可以实现简单的线性可分的分类任务，比如逻辑运算中的 **与、或、非** 运算，下面演示一下如何使用单层感知机实现上述三种逻辑运算：
 
-{% fold info @使用单层感知机实现线性可分任务：与、或、非三种逻辑运算 %}
+{% fold light @使用单层感知机实现线性可分任务：与、或、非三种逻辑运算 %}
 
 与运算、或运算是二维线性可分任务，一定可以找到一条直线将其划分为两个类别：
 
@@ -752,7 +747,7 @@ w_i \leftarrow w_i + \Delta w_i \\
 \Delta_i = \eta (y - \hat y) x_i
 \end{aligned}
 $$
-{% fold info @使用多层感知机实现异或逻辑运算 %}
+{% fold light @使用多层感知机实现异或逻辑运算 %}
 
 ![使用多层感知机实现异或逻辑运算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092000730.png)
 

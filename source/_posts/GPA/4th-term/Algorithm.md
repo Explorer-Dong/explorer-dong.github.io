@@ -6,7 +6,7 @@ categories:
 category_bar: true
 ---
 
-# 算法设计与分析
+## 《算法设计与分析》
 
 ## 前言
 

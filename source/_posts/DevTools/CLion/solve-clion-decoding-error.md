@@ -45,7 +45,9 @@ Process finished with exit code 0
 ![设置为 GBK](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403011101303.png)
 
 选择 `Convert`
-![选择 Convert](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403011101304.png)重新运行即可:sunglasses:
+![选择 Convert](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403011101304.png)
+
+重新运行即可:sunglasses:
 
 ```c
 你好

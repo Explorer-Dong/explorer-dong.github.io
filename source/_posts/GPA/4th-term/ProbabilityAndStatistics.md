@@ -6,7 +6,7 @@ categories:
 category_bar: true
 ---
 
-# 《概率论与数理统计》
+## 《概率论与数理统计》
 
 ## 前言
 
@@ -367,7 +367,11 @@ $$
 
 ### 2.4 随机变量函数的分布
 
-本目主要介绍给定一个随机变量 $X$ 的分布情况，通过一个关系式 $y=g(x)$ 来求解随机变量 $Y$ 的分布情况
+{% note info %}
+
+本目主要介绍给定一个随机变量 $X$ 的分布情况，通过一个关系式 $y=g(x)$ 来求解随机变量 $Y$​ 的分布情况
+
+{% endnote %}
 
 #### 2.4.1 离散型随机变量函数的分布
 
@@ -375,13 +379,13 @@ $$
 
 #### 2.4.2 连续型随机变量函数的分布
 
-给定随机变量 $X$ 的概率密度函数 $p(x)$，以及关系式 $y=g(x)$，求解随机变量 $Y$ 的分布函数 $F_Y(y)$、概率密度函数 $p_Y(y)$
+给定随机变量 $X$ 的概率密度函数 $p_X(x)$，以及关系式 $y=g(x)$，求解随机变量 $Y$ 的分布函数 $F_Y(y)$、概率密度函数 $p_Y(y)$
 
 - **方法一**：先求解随机变量 $Y$ 的分布函数 $F_Y(y)$，再通过对其求导得到概率密度函数 $p_Y(y)$​
 
     即先 $F_Y(y) = P_Y(Y \le y) = P_Y(g(X) \le y) = P_X(X \le f(y)) = F_X(f(y))$ 得到 $Y$ 的分布函数
 
-    再对 $F_Y(y)$ 求导得 $\displaystyle p_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} F_X(f(y)) = F_X'(f(y)) \cdot f'(y)$
+    再对 $F_Y(y)$ 求导得 $\displaystyle p_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} F_X(f(y)) = F_X'(f(y)) \cdot f'(y) = p_X(f(y)) \cdot f'(y)$
 
 - **方法二**：如果关系式 $y=g(x)$ 单调且反函数 $x=h(y)$ 连续可导，则可以直接得出随机变量 $Y$ 的概率密度函数 $p_Y(y)$ 为下式。其中 $\alpha$ 和 $\beta$ 为 $Y=g(X)$ 的取值范围（$x$ 应该怎么取值，$h(y)$ 就应该怎么取值，从而计算出 $y$ 的取值范围）
     $$
@@ -647,6 +651,99 @@ $$
     2. 若随机变量 $X$ 和 $Y$ 相互独立，且 $h(\cdot)$ 和 $g(\cdot)$ 连续，则 $h(X),g(Y)$ 也相互独立
 
 ### 3.5 随机向量函数的分布
+
+{% note info %}
+
+在 2.4 目中我们了解到了随机变量函数的分布，现在我们讨论随机向量函数的分布。在生活中，假设我们已经知道了一个人群中所有人的身高和体重的分布情况，现在想要血糖根据身高和体重的分布情况，就需要用到本目的理念。我们从离散型和连续型随机向量 $(X,Y)$ 出发，讨论 $g(X,Y)$ 的分布情况。
+
+{% endnote %}
+
+#### 3.5.1 离散型随机向量函数的分布
+
+按照规则枚举即可。
+
+#### 3.5.2 连续型随机向量函数的分布
+
+与连续型随机变量函数的分布类似，这类题目一般也是：给定随机向量 $(X,Y)$ 的密度函数 $p(x,y)$ 和 映射函数 $g(x,y)$，现在需要求解 $Z=g(X,Y)$ 的分布函数（若 $g(x,y)$ 二元连续，则 $Z$ 也是连续型随机变量）。方法同理，先求解 $Z$ 的分布函数，再对 $z$ 求导得到密度函数 $p_Z(z)$​。接下来我们介绍两种常见随机向量的分布。
+
+和的分布：
+
+- 先求分布函数 $F_Z(z)$：
+    $$
+    \begin{aligned}
+    F_Z(z) &= P(X+Y \le z) \\
+    &= \iint\limits_{x+y \le z} p(x,y) dxdy \\
+    
+    &\begin{align}
+    &= \int _{-\infty}^z \left [ \int_{-\infty}^{+\infty} p(x,t-x)dx \right ] dt \\
+    &= \int _{-\infty}^z \left [ \int_{-\infty}^{+\infty} p(t-y,y)dy \right ] dt
+    \end{align}
+    
+    \end{aligned}
+    $$
+    
+- 由分布函数定义：
+    $$
+    F_X(x) = \int_{-\infty}^xp(u)du
+    $$
+    
+- 所以可得 $Z=X+Y$ 的密度函数 $p_Z(z)$ 为：
+    $$
+    \begin{aligned}
+    p_Z(z) = \int_{-\infty}^{+\infty} p(x,z-x)dx \quad &(1) \\
+    p_Z(z) = \int_{-\infty}^{+\infty} p(z-y,y)dy \quad &(2) \\
+    \end{aligned}
+    $$
+    
+- 若 X 和 Y 相互独立，还可得卷积式：
+    $$
+    \begin{aligned}
+    p_Z(z) &= \int_{-\infty}^{+\infty} p(x,z-x)dx \\
+    &= \int_{-\infty}^{+\infty} p_X(x)\cdot p_Y(z-x) dx \quad &(1) \\
+    p_Z(z) &= \int_{-\infty}^{+\infty} p(z-y,y)dy \\
+    &= \int_{-\infty}^{+\infty} p_X(z-y)\cdot p_Y(y) dy \quad &(2)
+    \end{aligned}
+    $$
+
+$M=\max{(X,Y)},\quad N=\min{(X,Y)}$ 的分布（对于两个相互独立的随机变量 X 和 Y）：
+
+- 对于 $M=\max{(X,Y)}$ 的分布函数，有：
+    $$
+    \begin{aligned}
+    F_M(z) &= P(M \le z) \\
+    &= P(\max{(X+Y)} \le z) \\
+    &= P(X \le z, Y \le z) \\
+    &= P(X \le z) \cdot P(Y \le z) \\
+    &= F_X(z) \cdot F_Y(z)
+    \end{aligned}
+    $$
+
+- 对于 $N=\min{(X,Y)}$ 的分布函数，有：
+    $$
+    \begin{aligned}
+    F_N(z) &= P(N \le z) \\
+    &= P(\min{(X+Y)} \le z) \\
+    &= 1 - P(\min{(X+Y)} \ge z) \\
+    &= 1 - P(X \ge z,Y \ge z) \\
+    &= 1 - P(X \ge z) \cdot P(Y \ge z) \\
+    &= 1 - [1 - F_X(z)] \cdot [1 - F_Y(z)]
+    \end{aligned}
+    $$
+
+- 若拓展到 $n$ 个相互独立且同分布的随机变量，则有：
+    $$
+    \begin{aligned}
+    F_M(z) &= [F(z)]^n \\
+    p_M(z) &= np(z)[F(z)]^{n-1}
+    \end{aligned}
+    $$
+
+    $$
+    \begin{aligned}
+    F_N(z) &= 1 - [1-F(z)]^n \\
+    p_N(z) &= np(z)[1-F(z)]^{n-1}
+    \end{aligned}
+    $$
 
 ## 第4章 随机变量的数字特征
 

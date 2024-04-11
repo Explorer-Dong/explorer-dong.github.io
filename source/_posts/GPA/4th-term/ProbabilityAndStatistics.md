@@ -302,7 +302,7 @@ $$
     X \sim \text{超几何分布}(n,N,M)
     $$
 
-- 泊松分布：当二项分布中，试验次数很大或者概率很小时，可以近似为泊松分布，即 $\displaystyle P(X=k)=C_n^k p^k(1-p)^{n-k} \to \frac{\lambda^k}{k!}e^{-\lambda}$，记作
+- 泊松分布：当二项分布中，试验次数很大或者概率很小时，可以近似为泊松分布，即 $\displaystyle P(X=k)=C_n^k p^k(1-p)^{n-k} \to \frac{\lambda^k}{k!}e^{-\lambda}$，其中常数 $\lambda > 0$，记作
     $$
     X \sim P(\lambda)
     $$

@@ -54,7 +54,7 @@ category_bar: true
 3. 并（和）：$A \cup B$
 4. 交（积）：$A \cap B \quad (AB)$
 5. **互斥**（互不相容）：$AB=\Phi$
-6. **对立事件**（余事件）：$A \cap B=\Phi \and A \cup B=\Omega$
+6. **对立事件**（余事件）：$A \cap B=\Phi \land A \cup B=\Omega$
 7. 差：$A-B=A \cap \overline{B} = A \overline B$
 8. 德摩根律
 

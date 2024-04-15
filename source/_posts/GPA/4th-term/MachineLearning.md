@@ -861,11 +861,63 @@ pass
 
 ## 第6章 支持向量机
 
-### 6.1 间隔与支持向量 TODO
+{% note light %}
 
+依然是分类学习任务。我们希望找到一个超平面将训练集中样本划分开来，那么如何寻找这个超平面呢？下面开始介绍。
 
+{% endnote %}
 
-### 6.2 对偶问题 TODO
+### 6.1 间隔与支持向量
+
+对于只有两个特征，输出只有两种状态的训练集而言，很显然我们得到如下图所示的超平面，并且显然应该选择最中间的泛化能力最强的那一个超平面：
+
+![间隔与支持向量](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404152019991.png)
+
+我们定义超平面为：
+$$
+w^Tx+b=0
+$$
+定义支持向量机为满足下式的样例：
+$$
+\begin{aligned}
+w^T+b&=1 \\
+w^T+b&=-1
+\end{aligned}
+$$
+很显然，为了求得这“最中间”的超平面，就是让异类支持向量机之间的距离尽可能的大，根据两条平行线距离的计算公式，可知间隔为：
+$$
+\gamma = \frac{2}{|| w ||}
+$$
+于是最优化目标函数就是：
+$$
+\max_{w,b} \frac{2}{||w||}
+$$
+可以等价转化为：
+$$
+\begin{aligned}
+&\min_{w,b} \frac{1}{2} ||w||^2 \\
+&s.t. \quad y_i(w^Tx_i+b) \ge 1 \quad(i=1,2,\cdots,m)
+\end{aligned}
+$$
+这就是 SVM（support vector machine）的基本型
+
+### 6.2 对偶问题
+
+#### 6.2.1 对偶转换
+
+将上述 SVM 基本型转化为对偶问题，从而可以更高效的求解该最优化问题。
+
+{% fold light @对偶转化推导 %}
+
+![对偶转化推导 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404152113847.jpg)
+
+![对偶转化推导 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404152113969.jpg)
+
+{% endfold %}
+
+#### 6.2.2  SMO 求解
+
+现在得到的对偶问题其实是一个二次规划问题，我们采用 SMO（Sequential Minimal Optimization） 算法求解。
 
 
 

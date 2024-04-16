@@ -34,7 +34,7 @@ category_bar: true
 
 本目主要讲解最优化问题的一些分类，下附脑图（由 Xmind 软件制作）：
 
-{% fold info @分类脑图 %}
+{% fold light @分类脑图 %}
 ![分类脑图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403091214182.png)
 {% endfold %}
 
@@ -59,7 +59,7 @@ $$
 3. 两凸集的差 $D_1 - D_2 = \{x,y\ |\ x \in D_1 , y \in D_2\}$ 是凸集
 4. 对于任意非零实数 $\alpha$，集合 $\alpha D_1 = \{ \alpha x \ |\ x \in D_1 \}$​ 是凸集
 
-{% fold info @凸集的性质证明 %}
+{% fold light @凸集的性质证明 %}
 ![凸集的性质证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101941905.png)
 {% endfold %}
 
@@ -80,7 +80,7 @@ $$
         \sum_{i=1}^m \alpha_ix_i \in D\left( \alpha_i \ge 0(i=1,2,\cdots,m),\sum_{i=1}^m \alpha_i = 1 \right)
         $$
     
-      {% fold info @凸组合定理证明 %}
+      {% fold light @凸组合定理证明 %}
       ![凸组合定理证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403102025159.png)
       {% endfold %}
 
@@ -116,7 +116,7 @@ $$
 3. 如果 $f_i(x)(i=1,2,\cdots,m)$ 是非空凸集 $D$ 上的凸函数，则 $f(x) = \max_{1 \le i \le m} |f_i(x)|$ 也是凸集 $D$ 上的凸函数
 4. 如果 $f_i(x)(i=1,2,\cdots,m)$ 是非空凸集 $D$ 上的凸函数，则 $f(x) = \displaystyle \sum_{i=1}^m \alpha_i f_i(x)\quad(\alpha_i \ge 0)$ 也是凸集 $D$​ 上的凸函数
 
-{% fold info @凸函数的性质证明（第3条待定） %}
+{% fold light @凸函数的性质证明（第3条待定） %}
 ![第1、2条](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png)
 ![第4条](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png)
 {% endfold %}
@@ -125,7 +125,7 @@ $$
 
 1. 函数值角度：函数 $f(x)$ 是 $R^n$ 上的凸函数的充分必要条件是 $\forall x,y \in R^n$，单变量函数 $\phi(\alpha)=f(x + \alpha y)$ 是关于 $\alpha$ 的凸函数
 
-    {% fold info @凸函数的判别定理证明：函数值角度 %}
+    {% fold light @凸函数的判别定理证明：函数值角度 %}
     ![凸函数的判别定理证明 - 函数值角度](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131019868.png)
     {% endfold %}
 
@@ -134,7 +134,7 @@ $$
     - $f(x)$ 是 $D$ 上凸函数的充分必要条件是 $f(y) \ge f(x)+\nabla f(x)^T(y-x)$
     - $f(x)$ 是 $D$ 上严格凸函数的充分必要条件是 $f(y) > f(x)+\nabla f(x)^T(y-x)$
 
-    {% fold info @凸函数的判别定理证明：一阶导数角度 %}
+    {% fold light @凸函数的判别定理证明：一阶导数角度 %}
     无需掌握证明，但是为了便于理解性记忆，可以从**二次凸函数**进行辅助理解记忆。
     ![凸函数的判别定理证明 - 一阶导数角度](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131018032.png)
     {% endfold %}
@@ -149,13 +149,13 @@ $$
 
 1. 定理：在可行域是凸集，目标函数非严格凸的情况下，局部最优解 $x^*$​ 也是全局最优解
 
-    {% fold info @证明（反证法） %}
+    {% fold light @证明（反证法） %}
     ![证明（反证法）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122016285.png)
     {% endfold %}
 
 2. 定理：在可行域是凸集，目标函数是严格凸的情况下，局部最优解 $x^*$ 也是唯一的全局最优解
 
-    {% fold info @证明（反证法） %}
+    {% fold light @证明（反证法） %}
     ![证明（反证法）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122017101.png)
     {% endfold %}
 
@@ -163,19 +163,19 @@ $$
 
 1. 定理：若约束条件 $c_i(x) \ge 0$ 中每一个约束函数 $c_i(x)$ 都是凹函数，则可行域 $F$ 是凸集
 
-    {% fold info @证明 %}
+    {% fold light @证明 %}
     ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019899.png)
     {% endfold %}
 
 2. 定理：若约束条件 $c_i(x) \le 0$ 中每一个约束函数 $c_i(x)$ 都是凸函数，则可行域 $F$ 是凸集
 
-    {% fold info @证明 %}
+    {% fold light @证明 %}
     ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019572.png)
     {% endfold %}
 
 3. 定理：若约束条件中每一个约束函数 $c_i(x)$ 都恒等于零，则可行域 $F$ 是凸集
 
-    {% fold info @证明 %}
+    {% fold light @证明 %}
     ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019751.png)
     {% endfold %}
 
@@ -195,7 +195,7 @@ $$
     $$
     成立，则 $s$ 是 $f(x)$ 在点 $\bar x$ 处的一个下降方向
 
-    {% fold info @证明 %}
+    {% fold light @证明 %}
     ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131639082.jpg)
     {% endfold %}
 
@@ -248,7 +248,7 @@ $$
 
 - 定理：$r>1$​ 时的算法均为超线性收敛算法
 
-    {% fold info @证明 %}
+    {% fold light @证明 %}
     ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201331819.png)
     {% endfold %}
 
@@ -273,7 +273,7 @@ $$
         || x^{(k+1)} - x^{(k)} || \le \epsilon
         $$
 
-        {% fold info @证明 %}
+        {% fold light @证明 %}
         ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201425856.jpg)
         {% endfold %}
 
@@ -282,7 +282,7 @@ $$
         || f(x^{(k+1)}) - f(x^{(k)}) || \le \epsilon
         $$
 
-        {% fold info @证明 %}
+        {% fold light @证明 %}
         ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201425473.jpg)
         {% endfold %}
 
@@ -300,23 +300,23 @@ $$
 
 ![线性规划问题的一般形式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211918859.png)
 
-#### 2.1.2 图解法
+#### 2.1.2 图解法 :star:
 
 **仅适用于二元变量**的线性规划问题。我们将所有的约束条件全部画到平面直角坐标系中构成一个可行域，然后将目标函数作为一条直线进行平移，直到与可行域初次有交点，则该交点就是最优解对应的点。当然不一定会有交点，一共分为四种情况：
 
-{% fold info @刚好只有一个最优解 %}
+{% fold light @刚好只有一个最优解 %}
 ![刚好只有一个最优解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211917063.png)
 {% endfold %}
 
-{% fold info @有无穷多最优解 %}
+{% fold light @有无穷多最优解 %}
 ![有无穷多最优解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211920849.png)
 {% endfold %}
 
-{% fold info @有无界解 %}
+{% fold light @有无界解 %}
 ![有无界解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211921495.png)
 {% endfold %}
 
-{% fold info @无可行解 - 可行域为空集 %}
+{% fold light @无可行解 - 可行域为空集 %}
 ![无可行解 - 可行域为空集](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211922747.png)
 {% endfold %}
 
@@ -324,7 +324,7 @@ $$
 
 1. 线性规划问题的可行域如果非空，则是一个凸集
 
-    {% fold info @证明 %}
+    {% fold light @证明 %}
     ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403212109584.jpg)
     {% endfold %}
 
@@ -353,7 +353,7 @@ $$
     - 对于 $\ge$ 的不等式约数，等式左边减去非负新变量，从而转化为等式
 3. 对于无约束的变量：需要将其转化为**两个新变量之差**（可正可负），产生了一个新的等式，如果该无约束变量存在于目标函数中，还需要将目标函数中的该变量表示为两个新变量之差
 
-{% fold info @举个例子 %}
+{% fold light @举个例子 %}
 ![一般线性规划转化为标准形 - 演示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403212111330.jpg)
 {% endfold %}
 
@@ -367,7 +367,7 @@ $$
 
 - 若可行域有界，则线性规划问题的目标函数一定可以在其可行域的顶点上达到最优。
 
-    {% fold info @证明 - 反证法 %}
+    {% fold light @证明 - 反证法 %}
     ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403222103333.jpg)
     {% endfold %}
 
@@ -375,7 +375,7 @@ $$
 
 ### 2.2 单纯形法
 
-{% note info %}
+{% note light %}
 
 本目主要介绍一种常用的计算线性规划问题可行解的方法：单纯形法。其中，**前三条**分别介绍单纯性方法计算步骤的理论可行性，**第四条**具体介绍单纯形法的计算步骤与过程。
 
@@ -391,7 +391,7 @@ $$
 
 #### 2.2.2 最优性检验
 
-{% fold info @符号说明 %}
+{% fold light @符号说明 %}
 
 一、当前局面：已经计算出一个基本可行解
 
@@ -419,7 +419,7 @@ $$
 
 2. **无穷多最优解**判别定理：在满足第一条所有的检验数非正的情况下，$\exist j \in [m+1, n]$，有 $\sigma_j=0$，则该线性规划问题有无穷多最优解。
 
-    {% fold info @证明 %}
+    {% fold light @证明 %}
 
     我们可以将任意一个检验数为 0 的非基变量与基变量进行置换得到新的一个基本可行解对应的目标函数值保持不变。于是下述凸组合内的可行解都是最优解
     $$
@@ -455,11 +455,11 @@ $$
     - 第一阶段：pass
     - 第二阶段：pass
 
-#### 2.2.4 单纯形法计算步骤 :star: TODO
+#### 2.2.4 单纯形表法 :star: TODO
 
 向量方程法：
 
-{% fold info @实战演练 %}
+{% fold light @实战演练 %}
 
 ![单纯形法的求解步骤 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056146.jpg)
 
@@ -467,9 +467,9 @@ $$
 
 {% endfold %}
 
-单纯表法：
+单纯形表法：
 
-{% fold info @实战演练 %}
+{% fold light @实战演练 %}
 
 TODO
 
@@ -483,7 +483,7 @@ TODO
 
 ![转化规则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071144213.png)
 
-{% fold info @实战演练 %}
+{% fold light @实战演练 %}
 
 TODO
 
@@ -499,7 +499,7 @@ TODO
 
 ## 第三章 线性搜索与信赖域方法
 
-{% note info %}
+{% note light %}
 
 本章介绍最优化问题求解过程中，迭代解的确定方法。
 
@@ -509,7 +509,7 @@ TODO
 
 {% endnote %}
 
-### 3.1 线性搜索 TODO
+### 3.1 线性搜索
 
 对于多变量最优化问题中，对于每一个迭代的状态，我们都需要计算对应的解 $x_k$。一般而言，解的迭代格式为：
 $$
@@ -525,9 +525,7 @@ $$
 1. 确定初始搜索区间 $[a,b]$，我们介绍进退法
 2. 缩小搜索区间直到 $|b-a| < \epsilon$，就是后续的精确线性搜索与不精确线性搜索​
 
-我们首先介绍 **进退法** 来确定初始搜索区间：
-
-TODO
+我们用 **进退法** 来确定初始搜索区间：进退法 pass
 
 ### 3.2 直接法缩小搜索区间
 

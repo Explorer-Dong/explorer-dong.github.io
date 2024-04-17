@@ -471,15 +471,15 @@ $$
 
 {% fold light @实战演练 %}
 
-![图一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171016220.jpg)
+![实战演练](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171407440.jpg)
 
-![图2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171016109.jpg)
+![代码验算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171410846.jpg)
 
 {% endfold %}
 
-### 2.3 线性规划的对偶与对偶单纯形法
+### 2.3 对偶与对偶单纯形法
 
-#### 2.3.1 确定线性规划的对偶问题 :star:
+#### 2.3.1 确定对偶问题 :star:
 
 已知原问题的表达式，如何求解对偶问题的表达式？我们需掌握以下对偶转换规则：
 
@@ -499,7 +499,9 @@ pass
 
 {% fold light @实战演练 %}
 
-![图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171019551.jpg)
+![实战演练](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171409291.jpg)
+
+![代码验算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171411832.jpg)
 
 {% endfold %}
 

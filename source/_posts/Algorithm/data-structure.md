@@ -4,7 +4,7 @@ categories: Algorithm
 category_bar: true
 ---
 
-## 《数据结构》
+### 《数据结构》
 
 ### 1. 单调栈
 
@@ -1019,4 +1019,82 @@ signed main() {
 	while (T--) solve();
 	return 0;
 }
+```
+
+### 14. 尽量减少恶意软件的传播
+
+https://leetcode.cn/problems/minimize-malware-spread/description/
+
+>题意：给定一个由邻接矩阵存储的无向图，其中某些结点具备感染能力，可以感染相连的所有结点，问消除哪一个结点的感染能力可以使得最终不被感染的结点数量尽可能少，给出消除的有感染能力的最小结点编号
+>
+>思路：很显然我们可以将当前无向图的多个连通分量，共三种感染情况：
+>
+>1. 如果一个连通分量中含有 $\ge 2$ 个感染结点，则当前连通分量一定会被全部感染；
+>
+>2. 如果一个连通块中含有 $0$ 个感染结点，则无需任何操作；
+>
+>3. 如果一个连通块中含有 $1$ 个感染结点，则最佳实践就是移除该连通块中唯一的那个感染结点。
+>
+>当然了，由于只能移走一个感染结点，我们需要从所有只含有 $1$ 个感染结点的连通块中移走连通块结点最多的那个感染结点。因此我们需要统计每一个连通分量中感染结点的数量以及总结点数，采用并查集进行统计。需要注意的是题目中的“索引最小”指的是结点编号最小而非结点在序列 $initial$ 中的下标最小。算法流程见代码。
+>
+>时间复杂度：$O(n^2)$
+
+```cpp
+class Solution {
+public:
+    int p[310];
+
+    int Find(int x) {
+        if (x != p[x]) p[x] = Find(p[x]);
+        return p[x];
+    }
+
+    int minMalwareSpread(vector<vector<int>>& graph, vector<int>& initial) {
+        // 1. 维护并查集数组：p[]
+        int n = graph.size();
+        for (int i = 0; i < n; i++) p[i] = i;
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (graph[i][j])
+                    p[Find(i)] = Find(j);
+
+        // 2. 维护哈希表：每一个连通块中的感染结点数、总结点数
+        unordered_map<int, pair<int, int>> ha;
+        for (auto& x: initial) ha[Find(x)].first++;
+        for (int i = 0; i < n; i++) ha[Find(i)].second++;
+
+        // 3. 排序：按照感染结点数升序，总结点数降序
+        vector<pair<int, int>> v;
+        for (auto& it: ha) v.push_back(it.second);
+        sort(v.begin(), v.end(), [&](pair<int, int>& x, pair<int, int>& y){
+            if (x.first == y.first) return x.second > y.second;
+            return x.first < y.first;
+        });
+
+        // 4. 寻找符合条件的连通块属性：找到序列中第一个含有 1 个感染结点的连通块祖宗结点编号 idx
+        int idx = -1;
+        for (int i = 0; i < v.size(); i++) {
+            if (v[i].first == 1) {
+                idx = i;
+                break;
+            }
+        }
+
+        // 5. 返回答案：比对感染结点所在的连通块属性与目标连通块属性
+        if (idx == -1) {
+            // 特判没有连通块只含有 1 个感染结点的情况
+            return *min_element(initial.begin(), initial.end());
+        }
+        
+        int res = n + 10;
+        for (auto& x: initial) {
+            int px = Find(x);
+            if (ha[px].first == v[idx].first && ha[px].second == v[idx].second) {
+                res = min(res, x);
+            }
+        }
+
+        return res;
+    }
+};
 ```

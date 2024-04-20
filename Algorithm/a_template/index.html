@@ -16,15 +16,15 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="template 高精度 12345678910111213141516171819202122232425262728293031323334353637383940414243class Int : public std::vector&lt;int&gt; {public:	Int(int n &#x3D; 0) {		push_back(n);		check();	}	Int&amp; check(">
+    <meta name="description" content="板子              你渴望力量吗？那就把板子理解背过吧！            高精度 12345678910111213141516171819202122232425262728293031323334353637383940414243class Int : public std::vector&lt;int&gt; {public:	Int(int n &#x3D; 0) {		push">
 <meta property="og:type" content="article">
 <meta property="og:title" content="a_template">
 <meta property="og:url" content="https://blog.dwj601.cn/Algorithm/a_template/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="template 高精度 12345678910111213141516171819202122232425262728293031323334353637383940414243class Int : public std::vector&lt;int&gt; {public:	Int(int n &#x3D; 0) {		push_back(n);		check();	}	Int&amp; check(">
+<meta property="og:description" content="板子              你渴望力量吗？那就把板子理解背过吧！            高精度 12345678910111213141516171819202122232425262728293031323334353637383940414243class Int : public std::vector&lt;int&gt; {public:	Int(int n &#x3D; 0) {		push">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-21T05:55:02.037Z">
-<meta property="article:modified_time" content="2024-03-25T15:42:06.425Z">
+<meta property="article:modified_time" content="2024-04-19T14:56:21.411Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -247,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          303 字
+          337 字
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
         
-          2 分钟
+          3 分钟
         
       </span>
     
@@ -321,7 +321,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月25日 晚上
+                    本文最后更新于 2024年4月19日 晚上
                   
                 
               </p>
@@ -329,7 +329,10 @@
             
               <div class="markdown-body">
                 
-                <h1>template</h1>
+                <h2 id="板子">板子</h2>
+<div class="note note-light">
+            <p>你渴望力量吗？那就把板子<s>理解</s>背过吧！</p>
+          </div>
 <h2 id="高精度">高精度</h2>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Int</span> : <span class="hljs-keyword">public</span> std::vector&lt;<span class="hljs-type">int</span>&gt; {<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">Int</span>(<span class="hljs-type">int</span> n = <span class="hljs-number">0</span>) {<br>		<span class="hljs-built_in">push_back</span>(n);<br>		<span class="hljs-built_in">check</span>();<br>	}<br><br>	<span class="hljs-function">Int&amp; <span class="hljs-title">check</span><span class="hljs-params">()</span> </span>{<br>		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-built_in">size</span>(); ++i) {<br>			(*<span class="hljs-keyword">this</span>)[i] += (*<span class="hljs-keyword">this</span>)[i - <span class="hljs-number">1</span>] / <span class="hljs-number">10</span>;<br>			(*<span class="hljs-keyword">this</span>)[i - <span class="hljs-number">1</span>] %= <span class="hljs-number">10</span>;<br>		}<br>		<span class="hljs-keyword">while</span> (<span class="hljs-built_in">back</span>() &gt;= <span class="hljs-number">10</span>) {<br>			<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">back</span>() / <span class="hljs-number">10</span>);<br>			(*<span class="hljs-keyword">this</span>)[<span class="hljs-built_in">size</span>() - <span class="hljs-number">2</span>] %= <span class="hljs-number">10</span>;<br>		}<br>		<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>	}<br><br>	<span class="hljs-keyword">friend</span> std::istream&amp; <span class="hljs-keyword">operator</span>&gt;&gt;(std::istream&amp; in, Int&amp; n) {<br>		std::string s;<br>		in &gt;&gt; s;<br>		n.<span class="hljs-built_in">clear</span>();<br>		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = s.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; --i) n.<span class="hljs-built_in">push_back</span>(s[i] - <span class="hljs-string">'0'</span>);<br>		<span class="hljs-keyword">return</span> in;<br>	}<br><br>	<span class="hljs-keyword">friend</span> std::ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(std::ostream&amp; out, <span class="hljs-type">const</span> Int&amp; n) {<br>		<span class="hljs-keyword">if</span> (n.<span class="hljs-built_in">empty</span>()) out &lt;&lt; <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = n.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; --i) out &lt;&lt; n[i];<br>		<span class="hljs-keyword">return</span> out;<br>	}<br><br>	<span class="hljs-keyword">friend</span> Int&amp; <span class="hljs-keyword">operator</span>+=(Int&amp; a, <span class="hljs-type">const</span> Int&amp; b) {<br>		<span class="hljs-keyword">if</span> (a.<span class="hljs-built_in">size</span>() &lt; b.<span class="hljs-built_in">size</span>()) a.<span class="hljs-built_in">resize</span>(b.<span class="hljs-built_in">size</span>());<br>		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i != b.<span class="hljs-built_in">size</span>(); ++i) a[i] += b[i];<br>		<span class="hljs-keyword">return</span> a.<span class="hljs-built_in">check</span>();<br>	}<br><br>	<span class="hljs-keyword">friend</span> Int <span class="hljs-keyword">operator</span>+(Int a, <span class="hljs-type">const</span> Int&amp; b) {<br>		<span class="hljs-keyword">return</span> a += b;<br>	}<br>};<br></code></pre></td></tr></tbody></table></figure>
 <h2 id="binary">binary</h2>
@@ -337,6 +340,11 @@
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 寻找右边界</span><br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">binary</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = n - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r) {<br>        <span class="hljs-type">int</span> mid = (l + r + <span class="hljs-number">1</span>) &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) l = mid;<br>        <span class="hljs-keyword">else</span> r = mid - <span class="hljs-number">1</span>;<br>    }<br>    <span class="hljs-keyword">return</span> a[r] == x;<br>}<br></code></pre></td></tr></tbody></table></figure>
 <h2 id="dsu">dsu</h2>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">dsu</span> {<br>	<span class="hljs-type">int</span> n;<br>	std::vector&lt;<span class="hljs-type">int</span>&gt; p;<br>	<span class="hljs-built_in">dsu</span>(<span class="hljs-type">int</span> _n) { n = _n; p.<span class="hljs-built_in">resize</span>(n + <span class="hljs-number">1</span>); <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) p[i] = i; }<br>	<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{ <span class="hljs-keyword">return</span> (p[x] == x ? p[x] : p[x] = <span class="hljs-built_in">find</span>(p[x])); }<br>	<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>{ p[<span class="hljs-built_in">find</span>(a)] = <span class="hljs-built_in">find</span>(b); }<br>	<span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(a) == <span class="hljs-built_in">find</span>(b); }<br>	<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">block</span><span class="hljs-params">()</span> </span>{ std::set&lt;<span class="hljs-type">int</span>&gt; a; <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) a.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">find</span>(p[i])); <span class="hljs-keyword">return</span> a.<span class="hljs-built_in">size</span>(); }<br>};<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="qmi-TODO">qmi TODO</h2>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">qmi</span><span class="hljs-params">()</span></span><br></code></pre></td></tr></tbody></table></figure>
+<h2 id="comb-TODO">comb TODO</h2>
+<h3 id="组合数一：递推">组合数一：递推</h3>
+<h3 id="组合数二：乘法逆元">组合数二：乘法逆元</h3>
 
                 
               </div>
@@ -394,7 +402,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年3月25日</div>
+          <div>2024年4月19日</div>
         </div>
       
       
@@ -425,9 +433,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/README/" title="README">
+                      <a href="/Algorithm/binary-search/" title="binary-search">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">README</span>
+                        <span class="hidden-mobile">binary-search</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -435,8 +443,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Algorithm/binary-search/" title="binary-search">
-                        <span class="hidden-mobile">binary-search</span>
+                      <a href="/Algorithm/data-structure/" title="data-structure">
+                        <span class="hidden-mobile">data-structure</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -631,10 +639,10 @@
     
       
       
-        <a href="/Algorithm/number%20theory/" title="number theory"
+        <a href="/Algorithm/number-theory/" title="number-theory"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">number theory</span>
+          <span class="category-post">number-theory</span>
         </a>
       
     

@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081008751.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081025914.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-04-18T13:06:52.588Z">
+<meta property="article:modified_time" content="2024-04-22T11:10:14.116Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.3k 字
+          5.6k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          34 分钟
+          35 分钟
         
       </span>
     
@@ -331,7 +331,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年4月18日 晚上
+                    本文最后更新于 2024年4月22日 晚上
                   
                 
               </p>
@@ -840,15 +840,51 @@
 </ul>
 <p>实例中浮点数机器码理解</p>
 <h2 id="第3章-程序的转换及机器级表示">第3章 程序的转换及机器级表示</h2>
+<div class="note note-light">
+            <p>计算机的指令有微指令、机器指令、伪（宏）指令，其中微指令是硬件层面、伪指令是软件层面，而机器指令介于两者之间，是用来进行硬件和软件的交互的。本章主要介绍的就是 C 语言程序与 IA-32 机器级指令之间的对应关系。</p>
+          </div>
 <h3 id="3-1-程序转换概述">3.1 程序转换概述</h3>
 <h4 id="3-1-1-机器指令及汇编指令">3.1.1 机器指令及汇编指令</h4>
 <h4 id="3-1-2-指令集体系结构">3.1.2 指令集体系结构</h4>
 <h4 id="3-1-3-生成机器代码的过程">3.1.3 生成机器代码的过程</h4>
 <h3 id="3-2-IA-32-指令系统概述">3.2 IA-32 指令系统概述</h3>
+<p>IA-32 即 x86-32</p>
 <h4 id="3-2-1-数据类型及其格式">3.2.1 数据类型及其格式</h4>
+<p>IA-32支持的数据类型及格式与 C 语言之间的对应关系</p>
 <h4 id="3-2-2-寄存器组织和寻址方式">3.2.2 寄存器组织和寻址方式</h4>
+<p>寄存器组织：</p>
+<ul>
+<li>8 个通用寄存器</li>
+<li>2 个专用寄存器</li>
+<li>6 个段寄存器</li>
+</ul>
+<p>寻址方式：根据指令给定的信息得到操作数或操作数地址</p>
+<ul>
+<li>操作数所在位置：
+<ol>
+<li>指令中：立即寻址</li>
+<li>寄存器中：寄存器寻址</li>
+<li>存储器中（内存 or 磁盘）：存储器寻址</li>
+</ol>
+</li>
+<li>保护模式下的寻址方式：
+<ol>
+<li>立即寻址：指令直接给出操作数</li>
+<li>寄存器寻址：指定寄存器 R 的内容为操作数</li>
+<li>存储器寻址：段基址+偏移地址</li>
+</ol>
+</li>
+</ul>
 <h4 id="3-2-3-机器指令格式">3.2.3 机器指令格式</h4>
+<p>查表</p>
 <h3 id="3-3-IA-32-常用指令类型及其操作">3.3 IA-32 常用指令类型及其操作</h3>
+<h4 id="3-3-1-传送指令">3.3.1 传送指令</h4>
+<h4 id="3-3-2-定点算数运算指令">3.3.2 定点算数运算指令</h4>
+<h4 id="3-3-3-按位运算指令">3.3.3 按位运算指令</h4>
+<hr>
+<hr>
+<hr>
+<h4 id="3-3-4-控制转移指令">3.3.4 控制转移指令</h4>
 <h3 id="3-4-C-语言程序的机器级表示">3.4 C 语言程序的机器级表示</h3>
 <h3 id="3-5-复杂数据类型的分配和访问">3.5 复杂数据类型的分配和访问</h3>
 <h3 id="3-6-越界访问和缓冲区溢出">3.6 越界访问和缓冲区溢出</h3>
@@ -923,7 +959,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年4月18日</div>
+          <div>2024年4月22日</div>
         </div>
       
       
@@ -954,9 +990,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/GPA/4th-term/Algorithm/" title="Algorithm">
+                      <a href="/GPA/4th-term/MachineLearning/" title="MachineLearning">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Algorithm</span>
+                        <span class="hidden-mobile">MachineLearning</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -964,8 +1000,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/4th-term/MachineLearning/" title="MachineLearning">
-                        <span class="hidden-mobile">MachineLearning</span>
+                      <a href="/GPA/4th-term/ProbabilityAndStatistics/" title="ProbabilityAndStatistics">
+                        <span class="hidden-mobile">ProbabilityAndStatistics</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

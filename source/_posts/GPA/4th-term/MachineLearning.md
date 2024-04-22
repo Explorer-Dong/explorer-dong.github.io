@@ -941,7 +941,7 @@ $$
 
 {% endfold %}
 
-现在得到的对偶问题其实是一个二次规划问题，我们采用 SMO（Sequential Minimal Optimization） 算法求解。具体略。
+现在得到的对偶问题其实是一个二次规划问题，我们可以采用 SMO（Sequential Minimal Optimization） 算法求解。具体略。
 
 ### 6.3 核函数
 
@@ -949,7 +949,7 @@ $$
 
 ![常用核函数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404160949464.png)
 
-### 6.4 软间隔与正则化 TODO
+### 6.4 软间隔与正则化
 
 对于超平面的选择，其实并不是那么容易，并且即使训练出了一个超平面，我们也不知道是不是过拟合产生的，因此我们需要稍微减轻约束条件的强度，因此引入软间隔的概念。
 

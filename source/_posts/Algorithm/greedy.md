@@ -4,14 +4,17 @@ categories: Algorithm
 category_bar: true
 ---
 
-
 ## greedy
+
+{% note light %}
 
 大胆猜测，小心求证（不会证也没事，做下一题吧）。证明方法总结了以下几种
 
 - 反证法：假设取一种方案比贪心方案更好，得出相反的结论
 - 边界法：从边界开始考虑，因为满足边界条件更加容易枚举，从而进行后续的贪心
 - 直觉法：遵循社会法则（）
+
+{% endnote %}
 
 ### 1. green_gold_dog, array and permutation
 

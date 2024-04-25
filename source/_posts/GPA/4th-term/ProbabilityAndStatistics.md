@@ -714,7 +714,7 @@ $M=\max{(X,Y)},\quad N=\min{(X,Y)}$ 的分布（对于两个相互独立的随�
     $$
     \begin{aligned}
     F_M(z) &= P(M \le z) \\
-    &= P(\max{(X+Y)} \le z) \\
+    &= P(\max{(X,Y)} \le z) \\
     &= P(X \le z, Y \le z) \\
     &= P(X \le z) \cdot P(Y \le z) \\
     &= F_X(z) \cdot F_Y(z)
@@ -725,7 +725,7 @@ $M=\max{(X,Y)},\quad N=\min{(X,Y)}$ 的分布（对于两个相互独立的随�
     $$
     \begin{aligned}
     F_N(z) &= P(N \le z) \\
-    &= P(\min{(X+Y)} \le z) \\
+    &= P(\min{(X,Y)} \le z) \\
     &= 1 - P(\min{(X+Y)} \ge z) \\
     &= 1 - P(X \ge z,Y \ge z) \\
     &= 1 - P(X \ge z) \cdot P(Y \ge z) \\

@@ -635,3 +635,55 @@ bool chk(ll h) {
 ```
 
 小结：过多的分支语句不如一个 max 来的更加清晰，也可以避免一定的逻辑错误。
+
+### 11. 找出叠涂元素
+
+https://leetcode.cn/problems/first-completely-painted-row-or-column/description/
+
+> 题意：给定一个 $m\times n$ 的矩阵，以及一个存储矩阵中所有元素值的数组，现在从左往右将数组中的元素在对应矩阵中涂色，问序列中最左边使得矩阵中某一行或列全部涂色的下标是什么
+>
+> 思路：显然，下标越往右越有可能出现矩阵中某一行或列全部涂色，具备单调性，可以二分答案。我们直接二分序列下标，对于 chk 函数我们直接 $O(n\times m)$ 模拟即可
+>
+> 时间复杂度：$O(n\times m \log (n\times m))$
+
+```cpp
+class Solution {
+public:
+    int firstCompleteIndex(vector<int>& arr, vector<vector<int>>& mat) {
+        int m = mat.size(), n = mat[0].size();
+
+        auto chk = [&](int idx) {
+            bool vis[100010] {};
+            for (int i = 0; i <= idx; i++) {
+                vis[arr[i]] = true;
+            }
+
+            for (int i = 0; i < m; i++) {
+                int s = 0;
+                for (int j = 0; j < n; j++) {
+                    s += vis[mat[i][j]];
+                }
+                if (s == n) return true;
+            }
+
+            for (int j = 0; j < n; j++) {
+                int s = 0;
+                for (int i = 0; i < m; i++) {
+                    s += vis[mat[i][j]];
+                }
+                if (s == m) return true;
+            }
+
+            return false;
+        };
+
+        int l = 0, r = m * n - 1;
+        while (l < r) {
+            int mid = (l + r) >> 1;
+            if (chk(mid)) r = mid;
+            else l = mid + 1;
+        }
+        return r;
+    }
+};
+```

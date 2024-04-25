@@ -626,3 +626,131 @@ int main() {
 	return 0;
 }
 ```
+
+### 10. 从双倍数组中还原原数组
+
+https://leetcode.cn/problems/find-original-array-from-doubled-array/description/
+
+> 题意：给定一个改变后数组，问其原始数组是什么？我们定义改变后数组为原始数组每一个元素乘以2以后加入原始数组，并随机打乱得到的数组
+>
+> 思路：答案与下标无关，我们考虑对原始数组升序排序。在哈希统计每一个元素出现的频率后，可以枚举每一个元素，如果当前元素与当前元素的二倍都存在，则说明当前元素一定存在于原始数组中，我们将其加入答案并对两个数的频率统计减一。
+>
+> 时间复杂度：$O(n\log n)$
+
+```cpp
+class Solution {
+public:
+    vector<int> findOriginalArray(vector<int>& changed) {
+        vector<int> res;
+
+        // 剪枝：合法原始数组一定是偶数个
+        int n = changed.size();
+        if (n & 1) return {};
+
+        sort(changed.begin(), changed.end());
+        unordered_map<int, int> cnt;
+        for (int x: changed) cnt[x]++;
+
+        for (int x: changed) {
+            if (cnt[x] == 0) continue;
+
+            cnt[x]--;
+            if (cnt[x * 2]) {
+                cnt[x * 2]--;
+                res.push_back(x);
+            }
+            else {
+                return {};
+            }
+        }
+
+        return res;
+    }
+};
+```
+
+### 11. 可获得的最大点数
+
+https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/description/
+
+> 题意：给定一个序列，每次可以从头或尾取一个元素并弹出该元素，问如何取数可以使得取到的数总和最大
+>
+> 思路：**前缀和、双指针**。很显然，我们选到的数的组成一定是原数组的头部一部分和尾部一部分，从反面思考，其实就是让中间一部分的数值总和最小！因此我们用前缀和记录一下然后双指针枚举序列即可。之所以记录本地是因为双指针好久没写了，调了好久 : (
+>
+> 时间复杂度：$O(n)$
+
+```cpp
+class Solution {
+public:
+    int maxScore(vector<int>& cardPoints, int k) {
+        int n = cardPoints.size();
+        vector<int> s(n + 1, 0);
+        for (int i = 1; i <= n; i++) {
+            s[i] = s[i - 1] + cardPoints[i - 1];
+        }
+
+        int res = -1;
+        int l = 1, r = l + n - k - 1;
+        while (r <= n) {
+            res = max(res, s[n] - (s[r] - s[l - 1]));
+            l++, r++;
+        }
+
+        return res;
+    }
+};
+```
+
+### 12. 确定两个字符串是否接近
+
+https://leetcode.cn/problems/determine-if-two-strings-are-close/description/
+
+> 题意：给定两个字符串，可以对两个字符串进行任意次下面的操作：问在操作后使得两个字符串完全相等
+>
+> 1. 交换一个字符串中的任意两个字符
+> 2. 交换一个字符串中的任意两个相同字符的集合。比如 $\underline {aa} c \underline{abb} \to \underline{bb}c\underline{baa}$
+>
+> 思路：一道纯纯思维题。首先对于第一个操作，我们可以直接对两个字符串排序即可，至于第二个操作，我们需要确保两个字符串哈希值中，所有的键全部相等，即两个字符串排序去重后应该完全相等，同时还需要确保两个字符串哈希的结果中值排序的结果完全相等，这样就可以通过操作二使得两个字符串完全相等
+>
+> 时间复杂度：$O(n \log n)$
+
+```cpp
+class Solution {
+public:
+    bool closeStrings(string word1, string word2) {
+        // 剪枝：两个字符串长度不相等，则操作后一定不可能相等
+        if (word1.size() != word2.size()) return false;
+
+        // 执行操作1
+        sort(word1.begin(), word1.end());
+        sort(word2.begin(), word2.end());
+        
+        // 剪枝：若两个字符串排序后相等就不需要执行操作2了，已经相等了
+        if (word1 == word2) return true;
+
+        // 哈希两个字符串的字符与对应字符数量
+        unordered_map<char, int> a, b;
+        for (auto& c: word1) a[c]++;
+        for (auto& c: word2) b[c]++;
+        
+        // 剪枝：字符种类数不一样，则操作2后一定不可能相等
+        if (a.size() != b.size()) return false;
+        
+        // 剪枝：字符种类数一样但是种类不一样，则操作2后一定不可能相等
+        for (auto it: a) {
+            if (b[it.first] == 0) {
+                return false;
+            }
+        }
+        
+        // 执行操作2：比较所有种类字符的数量
+        vector<int> va, vb;
+        for (auto& it: a) va.push_back(it.second);
+        for (auto& it: b) vb.push_back(it.second);
+        sort(va.begin(), va.end());
+        sort(vb.begin(), vb.end());
+        return va == vb;
+    }
+};
+```
+

@@ -1315,3 +1315,52 @@ int main() {
 }
 ```
 
+### 24. 修改后的最大二进制字符串
+
+https://leetcode.cn/problems/maximum-binary-string-after-change/description/
+
+> 题意：给定一个仅由01组成的字符串，现在可以执行下面两种操作任意次，使得最终的字符串对应的十进制数值最大，给出最终的字符串
+>
+> 1. $00 \to 10$
+> 2. $10 \to 01$
+>
+> 思路：
+>
+> - 有点像之前做的翻转转化为平移的问题，事实确实如此。首先需要确定一点就是：如果字符串起始有连续的1，则保留，因为两种操作都是针对0的。接着就是对从第一个0开始的尾串处理的思路
+> - 对于尾串而言，我们自然希望1越多、越靠前越好，但是第二种操作只能将1向后移，第一种操作又必须要连续的两个0，因此我们就产生了这样的贪心思路：将所有的1通过操作二移动到串尾，接着对尾串的开头连续的0串执行第二种操作，这样就可以得到最大数值的二进制串
+>
+> 时间复杂度：$O(n)$
+
+```cpp
+class Solution {
+public:
+    string maximumBinaryString(string binary) {
+        int n = binary.size();
+
+        string res;
+
+        // 前缀1全部加入答案
+        int i = 0;
+        for (i = 0; i < n; i++) {
+            if (binary[i] == '0') {
+                break;
+            }
+            else {
+                res += '1';
+            }
+        }
+
+        // 非前缀1的部分一定可以操作为 00...011..1，进而转化为 11...11011...1
+        int zero = count(binary.begin() + i, binary.end(), '0');
+        if (zero > 0) {
+            for (int j = 0; j < zero - 1; j++) res += '1';
+            res += '0';
+        }
+
+        while (res.size() < n) res += '1';
+
+        return res;
+    }
+};
+```
+

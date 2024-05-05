@@ -1098,3 +1098,72 @@ public:
     }
 };
 ```
+
+### 15. 切蛋糕
+
+https://www.acwing.com/problem/content/description/5581/
+
+> 题意：给定一个矩形，由左下角和右上角的坐标确定。现在对这个矩形进行切割操作，要么竖着切，要么横着切。现在需要给出每次切割后最大子矩形的面积
+>
+> 思路：STL set。很容易想到，横纵坐标是相互独立的，最大子矩形面积一定产生于最大长度与最大宽度的乘积。因此我们只需要维护一个序列的最大值即可。对于二维可以直接当做一维来看，于是问题就变成了，需要在 $\log n$ 的时间复杂度内，对一个序列完成下面三个操作：
+>
+> 1. 删除一个数
+> 2. 增加一个数（执行两次）
+> 3. 获取最大值
+>
+> 如何实现呢？我们需要有序记录每一个子线段的长度，并且子线段的长度可能重复，因此我们用 `std::multiset` 来存储所有子线段的长度
+>
+> 1. 使用 `M.erase(M.find(value))` 实现：删除一个子线段长度值
+> 2. 使用 `M.insert(value)` 实现：增加子线段一个长度值
+> 3. 使用 `*M.rbegin()` 实现：获取当前所有子线段长度的最大值
+>
+> 由于给的是切割的位置坐标 `x`，因此上述操作 1 不能直接实现，我们需要利用给定的切割坐标 `x` 计算出当前切割位置对应子线段的长度。如何实现呢？我们知道，对于当前切割的坐标 `x`，对应的子线段的长度取决于当前切割坐标左右两个切割的位置 `rp, lp`，因此我们只需要存储每一个切割的坐标即可。由于切割位置不会重复，并且需要在 $\log n$ 的时间复杂度内查询到，因此我们还是可以使用 `std::set` 来存储切割位置
+>
+> 时间复杂度：$O(n \log n)$
+
+```cpp
+#include <iostream>
+#include <set>
+using namespace std;
+using ll = long long;
+
+void work(int x, set<int>& S, multiset<int>& M) {
+	set<int>::iterator rp = S.upper_bound(x), lp = rp;
+	lp--;
+	S.insert(x);
+
+	M.erase(M.find(*rp - *lp));
+	M.insert(*rp - x);
+	M.insert(x - *lp);
+}
+
+void solve() {
+	int w, h, n;
+	cin >> w >> h >> n;
+
+	set<int> S1, S2;
+	multiset<int> M1, M2;
+	S1.insert(0), S1.insert(w), M1.insert(w);
+	S2.insert(0), S2.insert(h), M2.insert(h);
+
+	while (n--) {
+		char op;
+		int x;
+		cin >> op >> x;
+		if (op == 'X') work(x, S1, M1);
+		else work(x, S2, M2);
+
+		cout << (ll)*M1.rbegin() * *M2.rbegin() << "\n";
+	}
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	int T = 1;
+//	cin >> T;
+	while (T--) solve();
+	return 0;
+}
+```
+

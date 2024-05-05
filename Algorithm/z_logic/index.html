@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403030040949.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.068Z">
-<meta property="article:modified_time" content="2024-04-25T14:48:26.335Z">
+<meta property="article:modified_time" content="2024-05-05T15:12:20.115Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.1k 字
+          6.4k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          39 分钟
+          41 分钟
         
       </span>
     
@@ -325,7 +325,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年4月25日 晚上
+                    本文最后更新于 2024年5月5日 晚上
                   
                 
               </p>
@@ -510,6 +510,14 @@
 <p>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
 </blockquote>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">closeStrings</span><span class="hljs-params">(string word1, string word2)</span> </span>{<br>        <span class="hljs-comment">// 剪枝：两个字符串长度不相等，则操作后一定不可能相等</span><br>        <span class="hljs-keyword">if</span> (word1.<span class="hljs-built_in">size</span>() != word2.<span class="hljs-built_in">size</span>()) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br><br>        <span class="hljs-comment">// 执行操作1</span><br>        <span class="hljs-built_in">sort</span>(word1.<span class="hljs-built_in">begin</span>(), word1.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-built_in">sort</span>(word2.<span class="hljs-built_in">begin</span>(), word2.<span class="hljs-built_in">end</span>());<br>        <br>        <span class="hljs-comment">// 剪枝：若两个字符串排序后相等就不需要执行操作2了，已经相等了</span><br>        <span class="hljs-keyword">if</span> (word1 == word2) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br><br>        <span class="hljs-comment">// 哈希两个字符串的字符与对应字符数量</span><br>        unordered_map&lt;<span class="hljs-type">char</span>, <span class="hljs-type">int</span>&gt; a, b;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c: word1) a[c]++;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; c: word2) b[c]++;<br>        <br>        <span class="hljs-comment">// 剪枝：字符种类数不一样，则操作2后一定不可能相等</span><br>        <span class="hljs-keyword">if</span> (a.<span class="hljs-built_in">size</span>() != b.<span class="hljs-built_in">size</span>()) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <br>        <span class="hljs-comment">// 剪枝：字符种类数一样但是种类不一样，则操作2后一定不可能相等</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it: a) {<br>            <span class="hljs-keyword">if</span> (b[it.first] == <span class="hljs-number">0</span>) {<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            }<br>        }<br>        <br>        <span class="hljs-comment">// 执行操作2：比较所有种类字符的数量</span><br>        vector&lt;<span class="hljs-type">int</span>&gt; va, vb;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; it: a) va.<span class="hljs-built_in">push_back</span>(it.second);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; it: b) vb.<span class="hljs-built_in">push_back</span>(it.second);<br>        <span class="hljs-built_in">sort</span>(va.<span class="hljs-built_in">begin</span>(), va.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-built_in">sort</span>(vb.<span class="hljs-built_in">begin</span>(), vb.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-keyword">return</span> va == vb;<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="13-同位字符串连接的最小长度">13. 同位字符串连接的最小长度</h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-length-of-anagram-concatenation/">https://leetcode.cn/problems/minimum-length-of-anagram-concatenation/</a></p>
+<blockquote>
+<p>题意：给定一个由若干个同位字符串 t 组成的字符串 s，问这个同位字符串最短是什么？定义同位字符串为字符数量相等且每种字符的数量相等的字符串</p>
+<p>思路：很显然的一个分配问题。我们预统计每一种字符的数量，假设答案同位字符串长度为 len，则显然就需要将所有的字符等分为 <code>s.size() / len</code> 份，每一份的每一种字符数量均相等。也就是每一种字符都需要分为 <code>s.size() / len</code> 份。为了最小化 len，就需要分出尽可能多的同位字符串。每一种字符可以分出的份数是其因数，取所有字符可分出份数的最大值就是求解每一种字符数量的最大公因数！于是问题就转化为了求解每一种字符数量的最大公因数</p>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+</blockquote>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minAnagramLength</span><span class="hljs-params">(string s)</span> </span>{<br>        unordered_map&lt;<span class="hljs-type">char</span>, <span class="hljs-type">int</span>&gt; a;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c: s) a[c]++;<br>        <br>        vector&lt;<span class="hljs-type">int</span>&gt; v;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; it: a) v.<span class="hljs-built_in">push_back</span>(it.second);<br>        <br>        <span class="hljs-type">int</span> gcd;<br>        <span class="hljs-keyword">if</span> (v.<span class="hljs-built_in">size</span>() == <span class="hljs-number">1</span>) gcd = v[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">else</span> {<br>            gcd = __gcd(v[<span class="hljs-number">0</span>], v[<span class="hljs-number">1</span>]);<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt; v.<span class="hljs-built_in">size</span>(); i++) {<br>                gcd = __gcd(gcd, v[i]);<br>            }<br>        }<br>        <br>        <span class="hljs-keyword">return</span> s.<span class="hljs-built_in">size</span>() / gcd;<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
 
                 
               </div>
@@ -567,7 +575,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年4月25日</div>
+          <div>2024年5月5日</div>
         </div>
       
       
@@ -598,9 +606,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/BackEnd/cppBasic/cpp-namespace/" title="cpp-namespace">
+                      <a href="/BackEnd/BackEnd/" title="Back End">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">cpp-namespace</span>
+                        <span class="hidden-mobile">Back End</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -608,8 +616,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/BackEnd/BackEnd/" title="Back End">
-                        <span class="hidden-mobile">Back End</span>
+                      <a href="/BackEnd/cppBasic/cpp-decl-and-defi-default-para/" title="cpp-decl-and-defi-default-para">
+                        <span class="hidden-mobile">cpp-decl-and-defi-default-para</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

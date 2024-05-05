@@ -754,3 +754,37 @@ public:
 };
 ```
 
+### 13. 同位字符串连接的最小长度
+
+https://leetcode.cn/problems/minimum-length-of-anagram-concatenation/
+
+> 题意：给定一个由若干个同位字符串 t 组成的字符串 s，问这个同位字符串最短是什么？定义同位字符串为字符数量相等且每种字符的数量相等的字符串
+>
+> 思路：很显然的一个分配问题。我们预统计每一种字符的数量，假设答案同位字符串长度为 len，则显然就需要将所有的字符等分为 `s.size() / len` 份，每一份的每一种字符数量均相等。也就是每一种字符都需要分为 `s.size() / len` 份。为了最小化 len，就需要分出尽可能多的同位字符串。每一种字符可以分出的份数是其因数，取所有字符可分出份数的最大值就是求解每一种字符数量的最大公因数！于是问题就转化为了求解每一种字符数量的最大公因数
+>
+> 时间复杂度：$O(n)$
+
+```cpp
+class Solution {
+public:
+    int minAnagramLength(string s) {
+        unordered_map<char, int> a;
+        for (auto c: s) a[c]++;
+        
+        vector<int> v;
+        for (auto& it: a) v.push_back(it.second);
+        
+        int gcd;
+        if (v.size() == 1) gcd = v[0];
+        else {
+            gcd = __gcd(v[0], v[1]);
+            for (int i = 2; i < v.size(); i++) {
+                gcd = __gcd(gcd, v[i]);
+            }
+        }
+        
+        return s.size() / gcd;
+    }
+};
+```
+

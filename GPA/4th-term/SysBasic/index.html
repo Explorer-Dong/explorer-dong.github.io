@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081008751.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081025914.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-05-05T13:59:28.226Z">
+<meta property="article:modified_time" content="2024-05-06T04:27:54.118Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -259,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.2k 字
+          6.3k 字
         
       </span>
     
@@ -270,7 +270,7 @@
         
         
         
-          39 分钟
+          40 分钟
         
       </span>
     
@@ -333,7 +333,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月5日 晚上
+                    本文最后更新于 2024年5月6日 中午
                   
                 
               </p>
@@ -920,9 +920,21 @@
 <h4 id="3-3-4-控制转移指令">3.3.4 控制转移指令</h4>
 <h3 id="3-4-C-语言程序的机器级表示">3.4 C 语言程序的机器级表示</h3>
 <h4 id="3-4-1-过程调用的机器级表示">3.4.1 过程调用的机器级表示</h4>
+<p>本目主要讲解 C 语言中的函数调用底层过程。记调用者为 P，被调用者为 Q，则调用可被抽象为 6 步：</p>
+<ol>
+<li>P 将参数存储到 Q 可以访问到的地方</li>
+<li>P 保存返回地址（即调用函数的下一个语句）并将控制权给 P</li>
+<li>Q 保存 P 的现场并为自己的非静态变量分配空间</li>
+<li>执行 Q 的函数体</li>
+<li>Q 恢复 P 的现场并释放局部变量空间</li>
+<li>Q 取出返回地址并将控制权给 P</li>
+</ol>
 <h4 id="3-4-2-选择语句的机器级表示">3.4.2 选择语句的机器级表示</h4>
 <h4 id="3-4-3-循环语句的机器级表示">3.4.3 循环语句的机器级表示</h4>
 <h3 id="3-5-复杂数据类型的分配和访问">3.5 复杂数据类型的分配和访问</h3>
+<hr>
+<hr>
+<hr>
 <h3 id="3-6-越界访问和缓冲区溢出">3.6 越界访问和缓冲区溢出</h3>
 <h3 id="3-7-兼容-IA-32-的-64-位系统">3.7 兼容 IA-32 的 64 位系统</h3>
 <h2 id="第4章-程序的链接">第4章 程序的链接</h2>
@@ -995,7 +1007,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年5月5日</div>
+          <div>2024年5月6日</div>
         </div>
       
       
@@ -1026,9 +1038,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/GPA/4th-term/ProbabilityAndStatistics/" title="ProbabilityAndStatistics">
+                      <a href="/GPA/4th-term/MachineLearning/" title="MachineLearning">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ProbabilityAndStatistics</span>
+                        <span class="hidden-mobile">MachineLearning</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1036,8 +1048,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/3rd-term/DataStructure/" title="DataStructure">
-                        <span class="hidden-mobile">DataStructure</span>
+                      <a href="/GPA/4th-term/ProbabilityAndStatistics/" title="ProbabilityAndStatistics">
+                        <span class="hidden-mobile">ProbabilityAndStatistics</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

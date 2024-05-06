@@ -760,9 +760,15 @@ https://leetcode.cn/problems/minimum-length-of-anagram-concatenation/
 
 > 题意：给定一个由若干个同位字符串 t 组成的字符串 s，问这个同位字符串最短是什么？定义同位字符串为字符数量相等且每种字符的数量相等的字符串
 >
-> 思路：很显然的一个分配问题。我们预统计每一种字符的数量，假设答案同位字符串长度为 len，则显然就需要将所有的字符等分为 `s.size() / len` 份，每一份的每一种字符数量均相等。也就是每一种字符都需要分为 `s.size() / len` 份。为了最小化 len，就需要分出尽可能多的同位字符串。每一种字符可以分出的份数是其因数，取所有字符可分出份数的最大值就是求解每一种字符数量的最大公因数！于是问题就转化为了求解每一种字符数量的最大公因数
+> ~~错误思路：很显然的一个分配问题。我们预统计每一种字符的数量，假设答案同位字符串长度为 len，则显然就需要将所有的字符等分为 `s.size() / len` 份，每一份的每一种字符数量均相等。也就是每一种字符都需要分为 `s.size() / len` 份。为了最小化 len，就需要分出尽可能多的同位字符串。每一种字符可以分出的份数是其因数，取所有字符可分出份数的最大值就是求解每一种字符数量的最大公因数！于是问题就转化为了求解每一种字符数量的最大公因数~~
 >
 > 时间复杂度：$O(n)$
+>
+> 正确思路：上述思路忽略了同位字符串必须存在于原始字符串中这个约束。正确做法就更加无脑了，直接枚举字符串 s 的每一个因数，然后检查所有长度的子串是否可以作为同位字符串即可
+>
+> 时间复杂度：$O(128 \times n)$
+
+WA code
 
 ```cpp
 class Solution {
@@ -788,3 +794,44 @@ public:
 };
 ```
 
+AC code
+
+```cpp
+class Solution {
+public:
+    int minAnagramLength(string s) {
+        int n = s.size();
+        
+        vector<int> v;
+        for (int i = 1; i <= n / i; i++) {
+            if (n % i == 0) {
+                v.push_back(i);
+                v.push_back(n / i);
+            }
+        }
+
+        int res = n + 1;
+
+        for (int len: v) {
+            bool ok = true;
+
+            string pre = s.substr(0, len);
+            sort(pre.begin(), pre.end());
+            for (int i = len; i <= n - len; i += len) {
+                string now = s.substr(i, len);
+                sort(now.begin(), now.end());
+                if (now != pre) {
+                    ok = false;
+                    break;
+                }
+            }
+
+            if (ok) {
+                res = min(res, len);
+            }
+        }
+
+        return res;
+    }
+};
+```

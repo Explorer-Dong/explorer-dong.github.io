@@ -70,7 +70,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404121125961.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404170915756.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-04-26T03:41:51.417Z">
+<meta property="article:modified_time" content="2024-05-08T02:13:50.088Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -368,7 +368,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年4月26日 中午
+                    本文最后更新于 2024年5月8日 上午
                   
                 
               </p>
@@ -547,12 +547,12 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
 </ol>
 
     <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-0a5b7b2d" role="button" aria-expanded="false" aria-controls="collapse-0a5b7b2d">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-dcc9b38c" role="button" aria-expanded="false" aria-controls="collapse-dcc9b38c">
         <div class="fold-arrow">▶</div>凸函数的性质证明（第3条待定）
       </div>
-      <div class="fold-collapse collapse" id="collapse-0a5b7b2d">
+      <div class="fold-collapse collapse" id="collapse-dcc9b38c">
         <div class="fold-content">
-          <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="第1、2条"><br><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="第4条"></p>
+          <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="第1、2条"></p><p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="第4条"></p>
         </div>
       </div>
     </div>
@@ -1132,7 +1132,7 @@ b_n-a_n &amp;= \frac{F_1}{F_2}(b_{n-1}-a_{n-1}) \\
 <p><strong>两点二次插值法</strong>。只不过少取了一个点，多利用了一个点的导数值来确定二次函数的三个参数罢了，其余迭代过程与三点二次插值完全一致。</p>
 <h3 id="3-4-精确线性搜索方法的收敛性">3.4 精确线性搜索方法的收敛性</h3>
 <p>pass</p>
-<h3 id="3-5-不精确线性搜索方法">3.5 不精确线性搜索方法</h3>
+<h3 id="3-5-不精确线性搜索方法-TODO">3.5 不精确线性搜索方法 TODO</h3>
 <div class="note note-light">
             <p>精确搜索有时会导致搜索时间过长，尤其是当最优解离当前点还很远时。接下来我们介绍不精确线性搜索方法。只需要确保每一步有充分的下降即可。</p>
           </div>
@@ -1142,7 +1142,7 @@ b_n-a_n &amp;= \frac{F_1}{F_2}(b_{n-1}-a_{n-1}) \\
 <p>pass</p>
 <h4 id="3-5-3-Armijo-准则">3.5.3 Armijo 准则</h4>
 <p>pass</p>
-<h2 id="第四章-无约束最优化问题">第四章 无约束最优化问题</h2>
+<h2 id="第四章-无约束最优化问题-TODO">第四章 无约束最优化问题 TODO</h2>
 <h3 id="4-1-最速下降法">4.1 最速下降法</h3>
 <div class="note note-light">
             <p>即<strong>梯度下降法</strong>，每次迭代时选择的方向是当前解 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">x_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>​ 处的导数的负方向。步长因子采用上述第三章的精确线性搜索算法求解。</p>
@@ -1182,6 +1182,11 @@ b_n-a_n &amp;= \frac{F_1}{F_2}(b_{n-1}-a_{n-1}) \\
       </div>
     </div>
 <h3 id="4-3-共轭梯度法">4.3 共轭梯度法</h3>
+<h4 id="4-3-1-共轭方向法">4.3.1 共轭方向法</h4>
+<h4 id="4-3-2-共轭梯度法">4.3.2 共轭梯度法</h4>
+<h4 id="4-3-3-对于非二次函数的共轭梯度法">4.3.3 对于非二次函数的共轭梯度法</h4>
+<h3 id="4-4-拟牛顿法">4.4 拟牛顿法</h3>
+<h2 id="第五章-线性与非线性最小二乘问题">第五章 线性与非线性最小二乘问题</h2>
 
                 
               </div>
@@ -1246,7 +1251,7 @@ b_n-a_n &amp;= \frac{F_1}{F_2}(b_{n-1}-a_{n-1}) \\
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年4月26日</div>
+          <div>2024年5月8日</div>
         </div>
       
       
@@ -1277,9 +1282,9 @@ b_n-a_n &amp;= \frac{F_1}{F_2}(b_{n-1}-a_{n-1}) \\
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/GPA/4th-term/Algorithm/" title="Algorithm">
+                      <a href="/GPA/4th-term/PythonApplication/" title="PythonApplication">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Algorithm</span>
+                        <span class="hidden-mobile">PythonApplication</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1287,8 +1292,8 @@ b_n-a_n &amp;= \frac{F_1}{F_2}(b_{n-1}-a_{n-1}) \\
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/4th-term/MachineLearning/" title="MachineLearning">
-                        <span class="hidden-mobile">MachineLearning</span>
+                      <a href="/GPA/4th-term/SysBasic/" title="SysBasic">
+                        <span class="hidden-mobile">SysBasic</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

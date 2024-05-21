@@ -1,5 +1,5 @@
 ---
-title: ProbabilityAndStatistics
+title: ProbAndStat
 categories:
   - GPA
   - 4th-term
@@ -1013,35 +1013,108 @@ $$
 - 样本标准差：$\displaystyle S_0 = \sqrt{S_0^2}$
 - 修正样本方差：$\displaystyle S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2$
 - 修正样本标准差：$\displaystyle S = \sqrt{S^2}$
+  {% fold light @推导 %}
 
-{% fold light @推导 %}
+  设总体 $X$ 的数学期望和方差分别为 $\mu$ 和 $\sigma^2$，$(X_1,X_2,...,X_n)$ 是简单随机样本，则：
 
-设总体 $X$ 的数学期望和方差分别为 $\mu$ 和 $\sigma^2$，$(X_1,X_2,...,X_n)$ 是简单随机样本，则：
+  ![样本均值的数学期望与总体的数学期望相等](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101145088.png)
 
-![样本均值的数学期望与总体的数学期望相等](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101145088.png)
+  即：样本均值的数学期望 $=$ 总体的数学期望
 
-即：样本均值的数学期望 $=$ 总体的数学期望
+  ![样本方差的数学期望与总体的数学期望 不相等](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101148690.png)
 
-![样本方差的数学期望与总体的数学期望 不相等](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101148690.png)
+  即：样本方差的数学期望 $\ne$ 总体的数学期望
 
-即：样本方差的数学期望 $\ne$ 总体的数学期望
+  ![修正样本方差推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101148126.png)
 
-![修正样本方差推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101148126.png)
+  上图即：修正样本方差推导
+  
+  {% endfold %}
+  
+- 样本 $k$ 阶原点矩：$\displaystyle A_k = \frac{1}{n} \sum_{i=1}^n X_i^k,\quad k=1,2,\cdots$
 
-上图即：修正样本方差推导
-
-{% endfold %}
+- 样本 $k$ 阶中心矩：$\displaystyle B_k = \frac{1}{n} \sum_{i=1}^n (X_i-\overline{X})^k,\quad k=2,3,\cdots$
 
 二、次序统计量
 
-
-
-三、样本相关系数
-
-- 样本协方差
-- 样本相关系数
+- 序列最小值
+- 序列最大值
+- 极差 = 序列最大值 - 序列最小值
 
 ### 6.4 正态总体抽样分布定理
+
+{% note light %}
+
+时刻牢记一句话：构造性定义！
+
+{% endnote %}
+
+#### 6.4.1 $\chi^2$ 分布、$t$ 分布、$F$​ 分布
+
+**分位数**
+
+- 我们定义实数 $\lambda_\alpha$ 为随机变量 $X$ 的上侧 $\alpha$ 分位数（点）当且仅当 $P(X > \lambda_\alpha) = \alpha$​
+- 我们定义实数 $\lambda_{1-\beta}$ 为随机变量 $X$ 的下侧 $\beta$ 分位数（点）当且仅当 $P(X < \lambda_{1-\beta})=\beta$
+
+**$\chi^2$ 分布**
+
+{% fold light @密度函数图像 %}
+
+![密度函数图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405171013305.webp)
+
+{% endfold %}
+
+定义：
+
+- 对于 $n$ 个独立同分布的标准正态随机变量 $X_1,X_2,\cdots ,X_n$，若 $Y = X_1^2 + X_2^2 + \cdots + X_n^2$
+- 则 $Y$ 服从自由度为 $n$ 的 $\chi^2$ 分布，记作：$Y \sim \chi^2(n)$
+
+性质：
+
+- 可加性：若 $Y_1 \sim \chi^2(n_1), Y_2 \sim \chi^2(n_2)$ 且 $Y_1,Y_2$ 相互独立，则 $Y_1+Y_2 \sim \chi^2(n_1+n_2)$
+
+- 统计性：对于 $Y \sim \chi^2(n)$，有 $EY = n, DY = 2n$
+
+  {% fold light @推导 %}
+  TODO
+  {% endfold %}
+
+**$t$ 分布**
+
+{% fold light @密度函数图像 %}
+
+![密度函数图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405171014091.webp)
+
+{% endfold %}
+
+定义：
+
+- 若随机变量 $X \sim N(0, 1),Y \sim \chi^2 (n)$ 且 $X,Y$ 相互独立
+- 则称随机变量 $T = \displaystyle \frac{X}{\sqrt{Y/n}}$ 为服从自由度为 $n$ 的 $t$ 分布，记作 $T \sim t(n)$​
+
+性质：
+
+- 密度函数是偶函数，具备对称性
+
+**$F$ 分布**
+
+{% fold light @密度函数图像 %}
+
+![密度函数图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405171015933.webp)
+
+{% endfold %}
+
+定义：
+
+- 若随机变量 $X \sim \chi^2(m), Y \sim \chi^2(n)$ 且相互独立
+- 则称随机变量 $G=\displaystyle \frac{X/m}{Y/n}$ 服从自由度为 $(m,n)$ 的 $F$ 分布，记作 $G \sim F(m, n)$​
+
+性质：
+
+- 倒数自由度转换：$\displaystyle \frac{1}{G} \sim F(n, m)$
+- [三变性质](https://zhuanlan.zhihu.com/p/382940609)：$\displaystyle F_{1-\alpha}(m, n) = \left [F_\alpha (n, m)\right]^{-1}$
+
+#### 6.4.2 正态总体抽样分布基本定理
 
 ## 第7章 参数估计
 

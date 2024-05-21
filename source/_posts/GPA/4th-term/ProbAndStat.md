@@ -1076,7 +1076,14 @@ $$
 - 统计性：对于 $Y \sim \chi^2(n)$，有 $EY = n, DY = 2n$
 
   {% fold light @推导 %}
-  TODO
+  EY 的推导利用：$EX^2 = DX - (EX)^2$
+  
+  ![EY 的推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405211524059.png)
+  
+  DY 的推导利用：方差计算公式、随机变量函数的数学期望进行计算
+  
+  ![DY 的推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405211524574.png)
+  
   {% endfold %}
 
 **$t$ 分布**
@@ -1115,6 +1122,18 @@ $$
 - [三变性质](https://zhuanlan.zhihu.com/p/382940609)：$\displaystyle F_{1-\alpha}(m, n) = \left [F_\alpha (n, m)\right]^{-1}$
 
 #### 6.4.2 正态总体抽样分布基本定理
+
+设 $X_1,X_2,\cdots ,X_n$ 是来自正态总体 $N(\mu, \sigma^2)$ 的简单随机样本，$\overline{X},S^2$ 分别是样本均值和修正样本方差。则有：
+
+定理：
+
+- $\displaystyle \overline{X} \sim N(\mu, \frac{\sigma^2}{n})$
+- $\displaystyle \frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1)$
+- $\overline{X}$ 和 $S^2$ 相互独立
+
+推论：
+
+- $\displaystyle \frac{\sqrt{n}(\overline{X} - \mu)}{S} \sim t(n-1)$
 
 ## 第7章 参数估计
 

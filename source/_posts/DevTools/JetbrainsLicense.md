@@ -28,3 +28,13 @@ category_bar: true
 ![page-1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405081327808.jpg)
 
 ![page-2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405081327540.jpg)
+
+### 四、更新成功
+
+收到官方邮件
+
+![收到官方邮件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405171107619.png)
+
+进入官网后可以发现有效期已经增加一年！
+
+![有效期已增加一年](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405171111855.png)

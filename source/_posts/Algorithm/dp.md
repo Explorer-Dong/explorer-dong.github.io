@@ -10,8 +10,6 @@ category_bar: true
 
 动态规划的根本在于状态表示，如何不重不漏的表示所有的状态，以及如何划分子集从而进行状态更新。
 
-
-
 {% endnote %}
 
 ### 1. 对称山脉
@@ -1066,5 +1064,53 @@ int main() {
 	
 	return 0;
 }
+```
+
+### 14. 规划兼职工作
+
+https://leetcode.cn/problems/maximum-profit-in-job-scheduling/description/
+
+> 题意：给定 n 份工作的起始时间、终止时间、收益值，现在需要不重叠时间的选择工作使得收益最大
+>
+> 思路：动态规划、二分答案。为了不重不漏的枚举每一份工作，我们将工作按照结束时间进行排序，然后就可以枚举每一份工作了。接下来要解决的问题是，如何根据起始时间和终止时间进行工作的选择。显然的，每一份工作有选与不选两种状态，是否选择取决于收益是否更优，我们考虑动态规划。我们定义状态表 `f[i]` 表示在前 i 个工作中选择的最大工作收益，返回值就是 `f[n]`，先看图
+>
+> ![图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405281439070.png)
+>
+> 1. 选择第 i 个工作：`f[i] = f[r] + profit[i]`（其中 r 表示 `[1,i-1]` 份工作中，结束时间早于当前工作起始时间的最右边的工作，在 `[1,i-1]` 中二分查找即可）
+> 2. 不选第 i 个工作：`f[i] = f[i - 1]`
+>
+> 选择最大属性进行状态转移即可：`f[i] = max(f[i - 1], f[r] + profit[i])`
+>
+> 时间复杂度：$O(n\log n)$
+
+```cpp
+class Solution {
+public:
+    int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
+        int n = startTime.size();
+        vector<array<int, 3>> jobs(n + 1);
+
+        for (int i = 1; i <= n; i++) {
+            jobs[i] = {startTime[i - 1], endTime[i - 1], profit[i - 1]};
+        }
+
+        sort(jobs.begin() + 1, jobs.end(), [&](array<int, 3>& x, array<int, 3>& y){
+            return x[1] < y[1];
+        });
+
+        vector<int> f(n + 1);
+        for (int i = 1; i <= n; i++) {
+            int l = 0, r = i - 1;
+            while (l < r) {
+                int mid = (l + r + 1) >> 1;
+                if (jobs[mid][1] <= jobs[i][0]) l = mid;
+                else r = mid - 1;
+            }
+            f[i] = max(f[i - 1], f[r] + jobs[i][2]);
+        }
+
+        return f[n];
+    }
+};
 ```
 

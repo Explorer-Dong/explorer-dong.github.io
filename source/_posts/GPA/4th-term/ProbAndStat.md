@@ -841,19 +841,22 @@ $$
 
 1. $D(aX+b) = a^2D(X)$
 2. 若 $X_1,X_2,\cdots$ 相互独立，则 $D(aX_1 \pm bX_2 \pm \cdots) = a^2D(X_1) + b^2D(X_2) + \cdots$
-3. $E\left[ (X-EX)^2 \right] \le E \left [ (X-C)^2 \right ]$
+3. $E\left[ (X-EX)^2 \right] \le E \left [ (X-C)^2 \right ]$​
+4. 切比雪夫不等式~~（本以为不要求掌握的，但是被小测拷打了，补一下）~~：$\displaystyle \forall \epsilon >0, P(|X - EX| < \epsilon) \ge 1 - \frac{DX}{\epsilon^2}$
 
 ### 4.3 常见概型的结论与推导（补）
 
-|  类型  |   分布   |                          符号                           |            期望 $E(X)$            |             方差 $D(X)$             |
-| :----: | :------: | :-----------------------------------------------------: | :-------------------------------: | :---------------------------------: |
-| 离散型 | 0-1 分布 | $X \sim \begin{pmatrix} 0 & 1 \\ 1-p & p \end{pmatrix}$ |                $p$                |              $p(1-p)$               |
-| 离散型 | 二项分布 |                     $X \sim B(n,p)$                     |               $np$                |              $np(1-p)$              |
-| 离散型 | 几何分布 |                      $X \sim G(p)$                      |    $\displaystyle \frac{1}{p}$    |   $\displaystyle \frac{1-p}{p^2}$   |
-| 离散型 | 泊松分布 |                   $X \sim P(\lambda)$                   |             $\lambda$             |              $\lambda$              |
-| 连续型 | 均匀分布 |                     $X \sim U[a,b]$                     |   $\displaystyle \frac{a+b}{2}$   | $\displaystyle \frac{(b-a)^2}{12}$  |
-| 连续型 | 指数分布 |                   $X \sim e(\lambda)$                   | $\displaystyle \frac{1}{\lambda}$ | $\displaystyle \frac{1}{\lambda^2}$ |
-| 连续型 | 正态分布 |                $X \sim N(\mu,\sigma^2)$                 |               $\mu$               |             $\sigma^2$              |
+|  类型  |   分布    |                          符号                           |            期望 $E(X)$            |             方差 $D(X)$             |
+| :----: | :-------: | :-----------------------------------------------------: | :-------------------------------: | :---------------------------------: |
+| 离散型 | 0-1 分布  | $X \sim \begin{pmatrix} 0 & 1 \\ 1-p & p \end{pmatrix}$ |                $p$                |              $p(1-p)$               |
+|  ---   | *二项分布 |                     $X \sim B(n,p)$                     |               $np$                |              $np(1-p)$              |
+|  ---   | 几何分布  |                      $X \sim G(p)$                      |    $\displaystyle \frac{1}{p}$    |   $\displaystyle \frac{1-p}{p^2}$   |
+|  ---   | *泊松分布 |                   $X \sim P(\lambda)$                   |             $\lambda$             |              $\lambda$              |
+| 连续型 | 均匀分布  |                     $X \sim U[a,b]$                     |   $\displaystyle \frac{a+b}{2}$   | $\displaystyle \frac{(b-a)^2}{12}$  |
+|  ---   | 指数分布  |                   $X \sim e(\lambda)$                   | $\displaystyle \frac{1}{\lambda}$ | $\displaystyle \frac{1}{\lambda^2}$ |
+|  ---   | *正态分布 |                $X \sim N(\mu,\sigma^2)$                 |               $\mu$               |             $\sigma^2$              |
+
+注：打星号表示在两个随机变量相互独立时，具备可加性
 
 {% fold light @推导 %}
 
@@ -1181,9 +1184,33 @@ $$
 
 ### 7.2 估计量的评价标准
 
+{% note light %}
 
+如何衡量不同的点估计方法好坏？我们引入三种点估计量的评价指标：无偏性、有效性、一致性。其中一致性一笔带过，不做详细讨论。补充一点，参数的估计量 $\theta$ 是关于样本的统计量，因此可以对其进行求期望、方差等操作。
+
+{% endnote %}
+
+#### 7.2.1 无偏性
+
+顾名思义，就是希望估计出来的参数量尽可能不偏离真实值。我们定义满足下式的估计量 $\hat \theta$ 为真实参数的无偏估计：
+$$
+E\hat \theta =\theta
+$$
+
+#### 7.2.2 有效性
+
+有效性是基于比较的定义方法。对于两个无偏估计 $\hat\theta_1,\hat\theta_2$，谁的方差越小谁就越有效。即若 $D(\hat\theta_1),D(\hat\theta_2)$ 满足下式，则称 $\hat\theta_1$ 更有效
+$$
+D(\hat\theta_1) < D(\hat\theta_2)
+$$
+
+#### 7.2.3 一致性
+
+即当样本容量 n 趋近于无穷时，参数的估计值也能趋近于真实值，则称该估计量 $\hat\theta$ 为 $\theta$ 的一致估计量
 
 ### 7.3 区间估计
+
+
 
 ## 第8章 假设检验
 
@@ -1193,9 +1220,9 @@ $$
 
 ### 8.3 正态总体方差的假设检验
 
-### 8.4 皮尔逊的 $\chi^2$ 检验法
+### 8.4 皮尔逊的卡方检验法
 
-### 8.5 假设检验与区间估计的关系及 $p$ 值问题
+### 8.5 假设检验与区间估计的关系及p值问题
 
 ## 第9章 方差分析与回归分析初步
 

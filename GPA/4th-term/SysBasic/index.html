@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131238885.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131239595.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-05-21T12:44:52.159Z">
+<meta property="article:modified_time" content="2024-05-27T03:51:49.315Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.9k 字
+          8.5k 字
         
       </span>
     
@@ -280,7 +280,7 @@
         
         
         
-          50 分钟
+          54 分钟
         
       </span>
     
@@ -343,7 +343,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月21日 晚上
+                    本文最后更新于 2024年5月27日 中午
                   
                 
               </p>
@@ -960,11 +960,18 @@
 </ul>
 <h4 id="3-2-3-机器指令格式">3.2.3 机器指令格式</h4>
 <p>查表</p>
-<h3 id="3-3-IA-32-常用指令类型及其操作-TODO">3.3 IA-32 常用指令类型及其操作 TODO</h3>
+<h3 id="3-3-IA-32-常用指令类型及其操作">3.3 IA-32 常用指令类型及其操作</h3>
 <h4 id="3-3-1-传送指令">3.3.1 传送指令</h4>
+<p><code>mov 0x8(%ebp,%edx,4), %eax</code> 功能为 <code>R[eax] = M[R[ebp] + R[edx] * 4 + 8]</code></p>
+<p><code>lea 0x8(%ebp,%edx,4), %eax</code> 功能为 <code>R[eax] = R[ebp] + R[edx] * 4 + 8</code></p>
+<p>上述例子中，R 表示取寄存器操作数，M 表示取存储器操作数。可以将 lea 看做 mov 的特殊，即 C 语言中的取地址操作。</p>
 <h4 id="3-3-2-定点算数运算指令">3.3.2 定点算数运算指令</h4>
+<p>加减乘除分别为：<code>add, sub, mul, div</code></p>
+<p>关于定点寄存器的说明：<code>EAX,EBX,ECX,EDX</code> 均为 32 位寄存器，对应的 <code>AH,BH,CH,DH</code> 均为低16 位寄存器，<code>AL,BL,CL,DL</code> 均为低 8 位寄存器</p>
 <h4 id="3-3-3-按位运算指令">3.3.3 按位运算指令</h4>
+<p>了解算术和逻辑的左移右移。</p>
 <h4 id="3-3-4-控制转移指令">3.3.4 控制转移指令</h4>
+<p>查表。</p>
 <h3 id="3-4-C-语言程序的机器级表示-TODO">3.4 C 语言程序的机器级表示 TODO</h3>
 <div class="note note-light">
             <p>用任何汇编语言或高级语言编写的<strong>源程序</strong>都必须<strong>翻译</strong>（汇编、解释或编译）成以指令形式表示的<strong>机器语言</strong>，才能在计算机上运行。本节高级语言选用 <strong>C 语言</strong>，机器语言选用 <strong>IA-32 指令系统</strong>，简单介绍高级语言转化为机器语言的过程。</p>
@@ -1044,11 +1051,39 @@
 <h3 id="3-6-越界访问和缓冲区溢出-TODO">3.6 越界访问和缓冲区溢出 TODO</h3>
 <h2 id="第4章-程序的链接">第4章 程序的链接</h2>
 <div class="note note-light">
-            <p>在编写大型程序时，往往需要分开进行编写，这就需要我们对多个分散的源代码片段进行组合。目前的组合方法是：首先对每一个部分分开进行编译和汇编生成对应的目标代码文件，然后通过链接器（linker）将所有的目标代码文件与使用到的其他库的目标代码文件结合，形成最终的可执行文件。本章主要讲解链接器的工作原理。</p>
+            <p>在编写大型程序时，为了<strong>提升效率</strong>以及<strong>不断复用</strong>，往往需要模块化开发，这就需要我们对多个分散的源代码片段进行组合。目前的组合方法是：首先对每一个部分分开进行编译和汇编生成对应的目标代码文件，然后通过链接器（linker）将所有的目标代码文件与使用到的其他库的目标代码文件结合，形成最终的可执行文件。本章主要讲解链接器的工作原理。</p>
           </div>
 <h3 id="4-1-编译、汇编和静态链接">4.1 编译、汇编和静态链接</h3>
+<p>模块化的好处</p>
+<ol>
+<li>模块化（1）一个程序可以分成很多源程序文件（2）可构建公共函数库，如数学库，标准I/O库等</li>
+<li>效率高（1）时间上，可分开编译只需重新编译被修改的源程序文件，然后重新链接（2）空间上，无需包含共享库所有代码      源文件中无需包含共享库函数的源码，只要直接调用即可，      可执行文件和运行时的内存中只需包含所调用函数的代码        而不需要包含整个共享库</li>
+</ol>
 <h3 id="4-2-目标文件格式">4.2 目标文件格式</h3>
 <h3 id="4-3-符号表和符号解析">4.3 符号表和符号解析</h3>
+<h4 id="4-3-1-符号表">4.3.1 符号表</h4>
+<p>每一个可重定位文件 <code>demo.o</code> 都有一个符号表用来记录本模块的符号信息</p>
+<h4 id="4-3-2-符号解析">4.3.2 符号解析</h4>
+<p>符号解析的目的：将本模块中引用的符号与某个目标模块中的定义符号建立关联</p>
+<p>建立关联的原理：每个定义符号在代码段或数据段中都被分配了存储空间，将引用符号与定义符号建立关联后，就可在重定位时将引用符号的地址重定位为相关联的定义符号的地址</p>
+<p>链接器符号：</p>
+<ul>
+<li>Global symbols（模块内部定义的全局符号）</li>
+<li>External symbols（外部定义的全局符号）</li>
+<li>Local symbols（本模块的局部符号）</li>
+</ul>
+<p>（1）<strong>全局符号的强、弱特性</strong>：</p>
+<ul>
+<li>强符号：函数的定义、已初始化的全局变量</li>
+<li>弱符号：函数的声明、未初始化的全局变量</li>
+</ul>
+<p>符号解析定义的规则：由于每个符号仅占一处存储空间，因此有以下规则</p>
+<ul>
+<li>强符号不能多次定义</li>
+<li>若一个符号被定义为一次强符号和多次弱符号，则按强定义为准</li>
+<li>若有多个弱符号定义，则任选其中一个</li>
+</ul>
+<p>（2）<strong>符号解析过程</strong>：</p>
 <h3 id="4-4-重定位">4.4 重定位</h3>
 <h3 id="4-5-动态链接">4.5 动态链接</h3>
 
@@ -1115,7 +1150,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年5月21日</div>
+          <div>2024年5月27日</div>
         </div>
       
       
@@ -1146,9 +1181,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/GPA/4th-term/OptMethod/" title="OptMethod">
+                      <a href="/GPA/4th-term/ProbAndStat/" title="ProbAndStat">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">OptMethod</span>
+                        <span class="hidden-mobile">ProbAndStat</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1156,8 +1191,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/3rd-term/DataStructure/" title="DataStructure">
-                        <span class="hidden-mobile">DataStructure</span>
+                      <a href="/GPA/3rd-term/CollegePhysics%E2%85%A1/" title="CollegePhysicsⅡ">
+                        <span class="hidden-mobile">CollegePhysicsⅡ</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -30,8 +30,9 @@
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402012332894.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403181626377.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405281439070.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.037Z">
-<meta property="article:modified_time" content="2024-04-21T09:31:10.112Z">
+<meta property="article:modified_time" content="2024-05-28T06:43:38.185Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -255,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.7k 字
+          7.1k 字
         
       </span>
     
@@ -266,7 +267,7 @@
         
         
         
-          42 分钟
+          45 分钟
         
       </span>
     
@@ -329,7 +330,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年4月21日 下午
+                    本文最后更新于 2024年5月28日 下午
                   
                 
               </p>
@@ -667,6 +668,20 @@
 <p>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
 </blockquote>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">100010</span>;<br><br><span class="hljs-type">int</span> n, w[N];<br>string s[N][<span class="hljs-number">2</span>];  <span class="hljs-comment">// s[i][0] 表示原始字符串，s[i][1] 表示反转后的字符串</span><br>ll f[N][<span class="hljs-number">2</span>];      <span class="hljs-comment">// f[i][j] 表示第i个字符串在翻转状态为j的情况下的最小代价</span><br><br><span class="hljs-function">ll <span class="hljs-title">dp</span><span class="hljs-params">()</span> </span>{<br>	f[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>, f[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = w[<span class="hljs-number">1</span>];<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) {<br>		<span class="hljs-keyword">if</span> (s[i - <span class="hljs-number">1</span>][<span class="hljs-number">0</span>] &lt;= s[i][<span class="hljs-number">0</span>]) f[i][<span class="hljs-number">0</span>] = <span class="hljs-built_in">min</span>(f[i][<span class="hljs-number">0</span>], f[i - <span class="hljs-number">1</span>][<span class="hljs-number">0</span>]);<br>		<span class="hljs-keyword">if</span> (s[i - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>] &lt;= s[i][<span class="hljs-number">0</span>]) f[i][<span class="hljs-number">0</span>] = <span class="hljs-built_in">min</span>(f[i][<span class="hljs-number">0</span>], f[i - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>]);<br>		<span class="hljs-keyword">if</span> (s[i - <span class="hljs-number">1</span>][<span class="hljs-number">0</span>] &lt;= s[i][<span class="hljs-number">1</span>]) f[i][<span class="hljs-number">1</span>] = <span class="hljs-built_in">min</span>(f[i][<span class="hljs-number">1</span>], f[i - <span class="hljs-number">1</span>][<span class="hljs-number">0</span>] + w[i]);<br>		<span class="hljs-keyword">if</span> (s[i - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>] &lt;= s[i][<span class="hljs-number">1</span>]) f[i][<span class="hljs-number">1</span>] = <span class="hljs-built_in">min</span>(f[i][<span class="hljs-number">1</span>], f[i - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>] + w[i]);<br>	}<br>	<span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>(f[n][<span class="hljs-number">0</span>], f[n][<span class="hljs-number">1</span>]);<br>}<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>	cin &gt;&gt; n;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) cin &gt;&gt; w[i];<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {<br>		cin &gt;&gt; s[i][<span class="hljs-number">0</span>];<br>		s[i][<span class="hljs-number">1</span>] = s[i][<span class="hljs-number">0</span>];<br>		<span class="hljs-built_in">reverse</span>(s[i][<span class="hljs-number">1</span>].<span class="hljs-built_in">begin</span>(), s[i][<span class="hljs-number">1</span>].<span class="hljs-built_in">end</span>());<br>	}<br>	<span class="hljs-built_in">memset</span>(f, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> f);<br>	<br>	ll res = <span class="hljs-built_in">dp</span>();<br>	<span class="hljs-keyword">if</span> (res == <span class="hljs-number">0x3f3f3f3f3f3f3f3f</span>ll) res = <span class="hljs-number">-1</span>;<br>	cout &lt;&lt; res &lt;&lt; <span class="hljs-string">"\n"</span>;<br>	<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="14-规划兼职工作">14. 规划兼职工作</h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-profit-in-job-scheduling/description/">https://leetcode.cn/problems/maximum-profit-in-job-scheduling/description/</a></p>
+<blockquote>
+<p>题意：给定 n 份工作的起始时间、终止时间、收益值，现在需要不重叠时间的选择工作使得收益最大</p>
+<p>思路：动态规划、二分答案。为了不重不漏的枚举每一份工作，我们将工作按照结束时间进行排序，然后就可以枚举每一份工作了。接下来要解决的问题是，如何根据起始时间和终止时间进行工作的选择。显然的，每一份工作有选与不选两种状态，是否选择取决于收益是否更优，我们考虑动态规划。我们定义状态表 <code>f[i]</code> 表示在前 i 个工作中选择的最大工作收益，返回值就是 <code>f[n]</code>，先看图</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405281439070.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="图例"></p>
+<ol>
+<li>选择第 i 个工作：<code>f[i] = f[r] + profit[i]</code>（其中 r 表示 <code>[1,i-1]</code> 份工作中，结束时间早于当前工作起始时间的最右边的工作，在 <code>[1,i-1]</code> 中二分查找即可）</li>
+<li>不选第 i 个工作：<code>f[i] = f[i - 1]</code></li>
+</ol>
+<p>选择最大属性进行状态转移即可：<code>f[i] = max(f[i - 1], f[r] + profit[i])</code></p>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+</blockquote>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">jobScheduling</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; startTime, vector&lt;<span class="hljs-type">int</span>&gt;&amp; endTime, vector&lt;<span class="hljs-type">int</span>&gt;&amp; profit)</span> </span>{<br>        <span class="hljs-type">int</span> n = startTime.<span class="hljs-built_in">size</span>();<br>        vector&lt;array&lt;<span class="hljs-type">int</span>, 3&gt;&gt; <span class="hljs-built_in">jobs</span>(n + <span class="hljs-number">1</span>);<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {<br>            jobs[i] = {startTime[i - <span class="hljs-number">1</span>], endTime[i - <span class="hljs-number">1</span>], profit[i - <span class="hljs-number">1</span>]};<br>        }<br><br>        <span class="hljs-built_in">sort</span>(jobs.<span class="hljs-built_in">begin</span>() + <span class="hljs-number">1</span>, jobs.<span class="hljs-built_in">end</span>(), [&amp;](array&lt;<span class="hljs-type">int</span>, <span class="hljs-number">3</span>&gt;&amp; x, array&lt;<span class="hljs-type">int</span>, <span class="hljs-number">3</span>&gt;&amp; y){<br>            <span class="hljs-keyword">return</span> x[<span class="hljs-number">1</span>] &lt; y[<span class="hljs-number">1</span>];<br>        });<br><br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">f</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {<br>            <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = i - <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">while</span> (l &lt; r) {<br>                <span class="hljs-type">int</span> mid = (l + r + <span class="hljs-number">1</span>) &gt;&gt; <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">if</span> (jobs[mid][<span class="hljs-number">1</span>] &lt;= jobs[i][<span class="hljs-number">0</span>]) l = mid;<br>                <span class="hljs-keyword">else</span> r = mid - <span class="hljs-number">1</span>;<br>            }<br>            f[i] = <span class="hljs-built_in">max</span>(f[i - <span class="hljs-number">1</span>], f[r] + jobs[i][<span class="hljs-number">2</span>]);<br>        }<br><br>        <span class="hljs-keyword">return</span> f[n];<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
 
                 
               </div>
@@ -724,7 +739,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年4月21日</div>
+          <div>2024年5月28日</div>
         </div>
       
       
@@ -755,9 +770,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Algorithm/dfs-and-similar/" title="dfs-and-similar">
+                      <a href="/Algorithm/data-structure/" title="data-structure">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">dfs-and-similar</span>
+                        <span class="hidden-mobile">data-structure</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -765,8 +780,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Algorithm/binary-search/" title="binary-search">
-                        <span class="hidden-mobile">binary-search</span>
+                      <a href="/Algorithm/divide%20and%20conquer/" title="divide and conquer">
+                        <span class="hidden-mobile">divide and conquer</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

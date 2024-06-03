@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131238885.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131239595.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-05-27T03:51:49.315Z">
+<meta property="article:modified_time" content="2024-06-03T03:55:00.647Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.5k 字
+          8.6k 字
         
       </span>
     
@@ -343,7 +343,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月27日 中午
+                    本文最后更新于 2024年6月3日 中午
                   
                 
               </p>
@@ -1049,19 +1049,22 @@
       </div>
     </div>
 <h3 id="3-6-越界访问和缓冲区溢出-TODO">3.6 越界访问和缓冲区溢出 TODO</h3>
-<h2 id="第4章-程序的链接">第4章 程序的链接</h2>
+<h2 id="第4章-程序的链接-TODO">第4章 程序的链接 TODO</h2>
 <div class="note note-light">
-            <p>在编写大型程序时，为了<strong>提升效率</strong>以及<strong>不断复用</strong>，往往需要模块化开发，这就需要我们对多个分散的源代码片段进行组合。目前的组合方法是：首先对每一个部分分开进行编译和汇编生成对应的目标代码文件，然后通过链接器（linker）将所有的目标代码文件与使用到的其他库的目标代码文件结合，形成最终的可执行文件。本章主要讲解链接器的工作原理。</p>
+            <p>在编写大型程序时，为了<strong>提升效率</strong>以及<strong>不断复用</strong>，往往需要模块化开发，这就需要我们对多个分散的源代码片段进行组合。目前的组合方法是：首先对每一个部分分开进行编译和汇编生成对应的目标代码文件，然后通过链接器（linker）将所有的目标代码文件与使用到的其他库的目标代码文件结合，形成最终的可执行文件。本章主要讨论链接器的工作原理。</p>
           </div>
-<h3 id="4-1-编译、汇编和静态链接">4.1 编译、汇编和静态链接</h3>
+<h3 id="4-1-编译、汇编和静态链接-TODO">4.1 编译、汇编和静态链接 TODO</h3>
 <p>模块化的好处</p>
 <ol>
 <li>模块化（1）一个程序可以分成很多源程序文件（2）可构建公共函数库，如数学库，标准I/O库等</li>
 <li>效率高（1）时间上，可分开编译只需重新编译被修改的源程序文件，然后重新链接（2）空间上，无需包含共享库所有代码      源文件中无需包含共享库函数的源码，只要直接调用即可，      可执行文件和运行时的内存中只需包含所调用函数的代码        而不需要包含整个共享库</li>
 </ol>
-<h3 id="4-2-目标文件格式">4.2 目标文件格式</h3>
-<h3 id="4-3-符号表和符号解析">4.3 符号表和符号解析</h3>
-<h4 id="4-3-1-符号表">4.3.1 符号表</h4>
+<h3 id="4-2-目标文件格式-TODO">4.2 目标文件格式 TODO</h3>
+<h4 id="4-2-1-ELF-目标文件格式">4.2.1 ELF 目标文件格式</h4>
+<h4 id="4-2-2-可重定位目标文件格式">4.2.2 可重定位目标文件格式</h4>
+<h4 id="4-2-3-可执行目标文件格式">4.2.3 可执行目标文件格式</h4>
+<h3 id="4-3-符号表和符号解析-TODO">4.3 符号表和符号解析 TODO</h3>
+<h4 id="4-3-1-符号和符号表">4.3.1 符号和符号表</h4>
 <p>每一个可重定位文件 <code>demo.o</code> 都有一个符号表用来记录本模块的符号信息</p>
 <h4 id="4-3-2-符号解析">4.3.2 符号解析</h4>
 <p>符号解析的目的：将本模块中引用的符号与某个目标模块中的定义符号建立关联</p>
@@ -1084,8 +1087,15 @@
 <li>若有多个弱符号定义，则任选其中一个</li>
 </ul>
 <p>（2）<strong>符号解析过程</strong>：</p>
-<h3 id="4-4-重定位">4.4 重定位</h3>
-<h3 id="4-5-动态链接">4.5 动态链接</h3>
+<h4 id="4-3-3-与静态库的链接">4.3.3 与静态库的链接</h4>
+<p>按照符号引用顺序进行静态链接。引用在前，定义在后。</p>
+<h3 id="4-4-重定位-TODO">4.4 重定位 TODO</h3>
+<h4 id="4-4-1-重定位信息">4.4.1 重定位信息</h4>
+<h4 id="4-4-2-重定位过程">4.4.2 重定位过程</h4>
+<p>（一）相对重定位方式 <code>R_386_PC32</code></p>
+<p>根据相对位置进行简单的加减运算得出相对的虚拟地址信息。</p>
+<p>（二）绝对重定位方式 <code>R_386_32</code></p>
+<p>直接给出引用信息的虚拟内存地址。</p>
 
                 
               </div>
@@ -1150,7 +1160,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年5月27日</div>
+          <div>2024年6月3日</div>
         </div>
       
       
@@ -1181,9 +1191,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/GPA/4th-term/ProbAndStat/" title="ProbAndStat">
+                      <a href="/GPA/4th-term/OptMethod/" title="OptMethod">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ProbAndStat</span>
+                        <span class="hidden-mobile">OptMethod</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1191,8 +1201,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/3rd-term/CollegePhysics%E2%85%A1/" title="CollegePhysicsⅡ">
-                        <span class="hidden-mobile">CollegePhysicsⅡ</span>
+                      <a href="/GPA/4th-term/MachineLearning/" title="MachineLearning">
+                        <span class="hidden-mobile">MachineLearning</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -1975,3 +1975,100 @@ signed main() {
 	return 0;
 }
 ```
+
+### 24. 树的直径 :fire:
+
+树的路径问题，考虑回溯。如何更新值？如何返回值？
+
+参考：https://www.bilibili.com/video/BV17o4y187h1/
+
+
+
+### 25. 在带权树网络中统计可连接服务器对数目
+
+https://leetcode.cn/problems/count-pairs-of-connectable-servers-in-a-weighted-tree-network/description/
+
+> 题意：给定一棵带权无根树，定义「中转结点」为以当前结点为根，能够寻找到两个不同分支下的结点，使得这两个结点到当前结点的简单路径长度可以被给定值 k 整除，问树中每一个结点的「中转结点」的有效对数是多少
+>
+> 思路：dfs+乘法原理。
+>
+> - 由于数据量是 $n=10^3$，可以直接枚举每一个顶点，并且每一个顶点的操作可以是 $O(n)$ 的，我们考虑遍历。对于每一个结点，对应的有效对数取决于每一个子树中的简单路径长度合法的结点数，通过深搜统计即可
+> - 统计出每一个子树的合法结点后还需要进行答案的计算，也就是有效对数的统计。对于每一个合法结点，都可以和非当前子树上的所有结点结合形成一个合法有效对，直接这样统计会导致结果重复计算一次，因此需要答案除以二。当然也可以利用乘法原理，一边统计每一个子树中有效的结点数，一边和已统计过的有效结点数进行计算
+>
+> 时间复杂度：$O(n^2)$
+>
+> 注：总结本题根本原因是提升对建图的理解以及针对 `vector` 用法的总结
+>
+> - 关于建图
+>     - 一开始编码时，我设置了结点访问状态数组 `vector<bool> vis` 和每一个结点到当前根结点的距离数组 `vector<int> d`，但其实都可以规避，因为本题是「树」形图，可以通过在深搜时同时传递父结点来规避掉 `vis` 数组的使用
+>     - 同时由于只需要在遍历时计算路径是否合法从而计数，因此不需要存储每一个结点到当前根结点的路径值，可以通过再增加一个搜索状态参数来规避掉 `d` 数组的使用
+> - 关于 `vector`
+>     - 一开始使用了全局 `vis` 数组，因此每次都需要进行清空操作。我使用了 `.clear()` 方法试图重新初始化数组，但这导致了状态的错误记录，可能是 LeetCode 平台 C++ 语言特有的坑，还是少用全局变量
+>     - `.clear()` 方法会导致 `.size()` 为 0，但是仍然可以通过 `[]` 方法获得合法范围内的元素值，这是 `vector` 内存分配优化的结果
+
+```cpp []
+class Solution {
+public:
+    vector<int> countPairsOfConnectableServers(vector<vector<int>>& edges, int signalSpeed) {
+        int n = edges.size() + 1;
+        
+        struct node { int to, w; };
+        vector<vector<node>> g(n, vector<node>());
+        for (auto e: edges) {
+            int u = e[0], v = e[1], w = e[2];
+            g[u].push_back({v, w});
+            g[v].push_back({u, w});
+        }
+
+        function<int(int, int, int)> dfs = [&](int fa, int now, int d) {
+            int res = d % signalSpeed == 0;
+            for (auto ch: g[now]) {
+                if (ch.to != fa) {
+                    res += dfs(now, ch.to, d + ch.w);
+                }
+            }
+            return res;
+        };
+
+        vector<int> res(n);
+        for (int i = 0; i < n; i++) {
+            int sum = 0;
+            for (auto ch: g[i]) {
+                int cnt = dfs(i, ch.to, ch.w);
+                res[i] += cnt * sum;
+                sum += cnt;
+            }
+        }
+
+        return res;
+    }
+};
+```
+
+```python []
+class Solution:
+    def countPairsOfConnectableServers(self, edges: List[List[int]], signalSpeed: int) -> List[int]:
+        n = len(edges) + 1
+
+        g = [[] for _ in range(n)]
+        for u, v, w in edges:
+            g[u].append((v, w))
+            g[v].append((u, w))
+
+        def dfs(fa: int, now: int, d: int) -> int:
+            ret = d % signalSpeed == 0
+            for ch in g[now]:
+                if ch[0] != fa:
+                    ret += dfs(now, ch[0], d + ch[1])
+            return ret
+
+        res = [0] * n
+        for i in range(n):
+            sum = 0
+            for ch in g[i]:
+                cnt = dfs(i, ch[0], ch[1])
+                res[i] += sum * cnt
+                sum += cnt
+
+        return res
+```

@@ -117,7 +117,9 @@ $$
 4. 如果 $f_i(x)(i=1,2,\cdots,m)$ 是非空凸集 $D$ 上的凸函数，则 $f(x) = \displaystyle \sum_{i=1}^m \alpha_i f_i(x)\quad(\alpha_i \ge 0)$ 也是凸集 $D$​ 上的凸函数
 
 {% fold light @凸函数的性质证明（第3条待定） %}
+
 ![第1、2条](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png)
+
 ![第4条](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png)
 {% endfold %}
 
@@ -505,47 +507,35 @@ pass
 
 {% endfold %}
 
-## 第三章 线性搜索与信赖域方法
+## 第三章 线性搜索 TODO
 
 {% note light %}
 
-本章介绍最优化问题求解过程中，迭代解的确定方法。
+假设搜索方向 $d_{k}$ 是一个定值。本章介绍迭代解过程中步长 $\alpha_{k}$ 的计算选择策略。大概分为两步，首先是确定步长的搜索区间，然后通过精确 or 不精确算法来搜索合适的步长
 
-- 3.1 介绍相关概念，并且介绍**确定初始搜索区间**的方法：进退法
-- 3.2 $\to$ 3.5 介绍**缩小搜索区间**的方法：精确线性搜索算法
-- 3.6 介绍**缩小搜索区间**的方法：不精确线性搜索算法
+- 3.1 介绍相关概念，并且介绍**确定初始搜索区间**的「进退法」
+- 3.2 介绍**缩小搜索区间**的「精确线性搜索算法」：0.618 法、斐波那契法、二分法、插值法
+- 3.3 介绍**缩小搜索区间**的「不精确线性搜索算法」：Goldstein 准则、Wolfe 准则、Armijo 准则
 
 {% endnote %}
 
-### 3.1 线性搜索
+### 3.1 确定初始搜索区间
 
-对于多变量最优化问题中，对于每一个迭代的状态，我们都需要计算对应的解 $x_k$。一般而言，解的迭代格式为：
+对于多变量最优化问题中，对于每一个新迭代的状态，我们都需要基于上一个状态解 $x_k$ 计算当前状态解 $x_{k+1}$，即：
 $$
 x_{k+1} = x_k + \alpha_kd_k
 $$
-我们需要确定两个参数：步长因子 $\alpha_k$ 和搜索方向 $d_k$。首先讨论参数 $\alpha_k$ 的确定方法，即关于 $\alpha$ 的线性搜索问题。一般有两种求解方法：
+我们需要确定两个参数：步长因子 $\alpha_k$ 和搜索方向 $d_k$。假定 $d_{k}$ 已知，讨论参数 $\alpha_k$ 的确定方法，即关于 $\alpha$ 的线性搜索问题。一般有两种求解方法：
 
-1. 利用**精确线性搜索方法**，求解**精确步长因子**。3.1 和 3.2 目分别利用函数值和导数值来求解精确步长因子
-2. 利用**不精确线性搜索方法**，求解**不精确步长因子**。3.5 目进行相关介绍
+1. 利用**精确线性搜索方法**，求解**精确步长因子**
+2. 利用**不精确线性搜索方法**，求解**不精确步长因子**
 
 而线性搜索问题一般分两步：
 
-1. 确定初始搜索区间 $[a,b]$，我们介绍进退法
-2. 缩小搜索区间直到 $|b-a| < \epsilon$，就是后续的精确线性搜索与不精确线性搜索​
+1. 确定初始搜索区间 $[a,b]$，我们利用进退法
+2. 缩小搜索区间直到收敛，我们利用精确线性搜索与不精确线性搜索​
 
-我们用 **进退法** 来确定初始搜索区间：进退法 pass
-
-### 3.2 直接法缩小搜索区间
-
-{% note light %}
-
-本目介绍精确线性搜索算法中的第一种：直接法。其中包含三种策略，分别为黄金分割法、斐波那契数列法、二分法。
-
-有一个疑惑的点就是这三种方法其实都直接知道下一个状态的解，完全不需要求解步长就可以进行迭代计算，也是奇怪 : (
-
-{% endnote %}
-
-
+### 3.2 精确线性搜索算法
 
 {% fold light @预备知识：单峰函数定理 %}
 
@@ -569,20 +559,168 @@ $$
 
 {% endfold %}
 
+{% fold light @计算代码：基于 python 实现 0.618 法、斐波那契法、二分法 %}
+
+迭代计算代码：
+
+```python
+class ExactLinearSearch:
+    def __init__(self, 
+                 a: float, b: float, delta: float, 
+                 f: Callable[[float], float], 
+                 criterion: str="0.618", max_iter=100) -> None:
+        
+        self.a = a
+        self.b = b
+        self.delta = delta
+        self.f = f
+        self.max_iter = max_iter
+        
+        if criterion == "0.618":
+            new_a, new_b, x_star, count = self._f_goad()
+        elif criterion == "fibonacci":
+            new_a, new_b, x_star, count = self._f_fibo()
+        else: # criterion == "binary"
+            new_a, new_b, x_star, count = self._f_binary()
+
+        fixed = lambda x, acc: round(x, acc)
+        print(f"算法为：“{criterion}” 法")
+        print(f"共迭代：{count} 次")
+        print(f"左边界: {fixed(new_a, 4)}")
+        print(f"右边界: {fixed(new_b, 4)}")
+        print(f"最优解: {fixed(x_star, 4)}")
+        print(f"最优值: {fixed(f(x_star), 6)}\n")
+        
+    
+    def _f_goad(self) -> Tuple[float, float, float, int]:
+        a, b, delta, f = self.a, self.b, self.delta, self.f
+        count = 0
+
+        lam = a + 0.382 * (b - a)
+        mu = b - 0.382 * (b - a)
+
+        while count <= self.max_iter:
+            phi_lam = f(lam)
+            phi_mu = f(mu)
+
+            if phi_lam <= phi_mu:
+                b = mu
+            else:
+                a = lam
+            
+            lam = a + 0.382 * (b - a)
+            mu = b - 0.382 * (b - a)
+
+            if b - lam <= delta:
+                return a, b, lam, count
+            if mu - a <= delta:
+                return a, b, mu, count
+            
+            count += 1
+        
+        return a, b, lam if f(lam) <= f(mu) else mu, count
+
+    def _f_fibo(self) -> Tuple[float, float, float, int]:
+        a, b, delta, f, max_iter = self.a, self.b, self.delta, self.f, self.max_iter
+        count = None
+
+        F = [0.0] * max_iter
+        F[1] = F[2] = 1
+        for i in range(3, max_iter):
+            F[i] = F[i - 1] + F[i - 2]
+            if F[i] >= (b - a) / delta:
+                count = i - 2
+                break
+        
+        if count == None:
+            ValueError("区间过大或精度过高导致，找不到合适的迭代次数")
+
+        lam, mu = a, b
+        for i in range(3, count + 1):
+
+            lam = a + (1 - F[i - 1] / F[i]) * (b - a)
+            mu = b - (1 - F[i - 1] / F[i]) * (b - a)
+
+            if f(lam) <= f(mu):
+                b = mu
+            else:
+                a = lam
+
+        return a, b, lam if f(lam) <= f(mu) else mu, count
+    
+    def _f_binary(self) -> Tuple[float, float, float, int]:
+        a, b, delta, f, max_iter = self.a, self.b, self.delta, self.f, self.max_iter
+        count = None
+        
+        count = np.ceil(np.log2((b - a) / delta)).astype(int)
+
+        if count > max_iter:
+            ValueError("区间过大或精度过高导致迭代次数过高")
+    
+        for _ in range(count):
+            c = (a + b) / 2.0
+            if f(c) >= 0.0:
+                b = c
+            else:
+                a = c
+
+        return a, b, c, count
+```
+
+分别调用 0.618 法、斐波那契法、二分法进行迭代计算：
+
+```python
+a, b, delta = -1, 1, 0.01
+f = lambda x: np.exp(-x) + np.exp(x)  # 原函数
+calc_goad = ExactLinearSearch(a, b, delta, f, criterion="0.618")
+calc_fibo = ExactLinearSearch(a, b, delta, f, criterion="fibonacci")
+
+a, b, delta = -3, 6, 0.1
+f = lambda x: 2 * x + 2               # 导函数
+calc_bina = ExactLinearSearch(a, b, delta, f, criterion="binary")
+```
+
+计算结果为：
+
+```
+算法为：“0.618” 法
+共迭代：10 次
+左边界: -0.0031
+右边界: 0.0069
+最优解: 0.0007
+最优值: 2.000001
+
+算法为：“fibonacci” 法
+共迭代：11 次
+左边界: -0.0225
+右边界: 0.0
+最优解: -0.0139
+最优值: 2.000193
+
+算法为：“binary” 法
+共迭代：7 次
+左边界: -1.0312
+右边界: -0.9609
+最优解: -0.9609
+最优值: 0.078125
+```
+
+{% endfold %}
+
 #### 3.2.1 0.618 法
 
-按照黄金分割的比例取点 $x_1$ 和 $x_2$，不断迭代判断 $f(x_1)$ 和 $f(x_2)$ 的值，直到 $|b-a| < \epsilon$ 则结束迭代，取最优解 $x^*$ 为：
-$$
-x^* = \frac{a+b}{2}
-$$
+基于「函数值」进行选点。
 
+按照黄金分割的比例取点 $x_1$ 和 $x_2$，不断迭代判断 $f(x_1)$ 和 $f(x_2)$ 的值，直到 $b_k-\lambda_k<\delta$ 或 $\mu_k-a_k<\delta$ 则结束迭代，取最优解 $x^*$ 为对应的 $\lambda_k$ 或 $\mu_k$ 即可。
 #### 3.2.2 Fibonacci 法
 
-第 k 次迭代的区间长度是上一个区间长度的 $\frac{F_{n-k}}{F_{n-k+1}}$​，即：
+基于「函数值」进行选点。
+
+第 $k$ 次迭代的区间长度是上一个区间长度的 $\frac{F_{n-k}}{F_{n-k+1}}$​，即：
 $$
 b_{k+1} - a_{k+1} = \frac{F_{n-k}}{F_{n-k+1}} (b_{k} - a_{k})
 $$
-经过 n 次迭代后，得到区间 $[a_n,b_n]$，且 $b_n-a_n \le \delta$，于是可得：
+经过 $n$ 次迭代后，得到区间 $[a_n,b_n]$，且 $b_n-a_n \le \delta$，于是可得：
 $$
 \begin{aligned}
 b_n-a_n &= \frac{F_1}{F_2}(b_{n-1}-a_{n-1}) \\
@@ -592,13 +730,15 @@ b_n-a_n &= \frac{F_1}{F_2}(b_{n-1}-a_{n-1}) \\
 &= \frac{F_1}{F_n}(b_1-a_1) \le \delta
 \end{aligned}
 $$
-在已知上界 $\delta$ 的情况下可以直接计算出 $n$ 的值，于是迭代 $n$ 次即可得到极值点
+在已知上界 $\delta$ 的情况下可以直接计算出 $n$ 的值，于是迭代 $n$ 次即可得到最终的步长值 $\lambda_n$ 或 $\mu_n$
 
 #### 3.2.3 二分法
 
-单调性存在于导数上，极值点左边导数 <0，极值点右边导数 >0，于是可以进行二分搜索
+基于「一阶导数」进行选点。
 
-### 3.3 插值法缩小搜索区间
+单调性存在于导数上。极值点左边导数 $<0$，极值点右边导数 $>0$，于是可以进行二分搜索。
+
+#### 3.2.4 插值法
 
 ![三点二次插值法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404170915756.png)
 
@@ -608,34 +748,156 @@ $$
 
 **两点二次插值法**。只不过少取了一个点，多利用了一个点的导数值来确定二次函数的三个参数罢了，其余迭代过程与三点二次插值完全一致。
 
-### 3.4 精确线性搜索方法的收敛性
+### 3.3 不精确线性搜索算法 TODO
+
+{% note light %}
+
+精确搜索有时会导致搜索时间过长，尤其是当最优解离当前点还很远时。接下来我们介绍不精确线性搜索方法。只需要确保每一步有充分的下降即可。
+
+{% endnote %}
+
+#### 3.3.1 Goldstein 准则
+
+pass
+
+#### 3.3.2 Wolfe 准则
+
+pass
+
+#### 3.3.3 Armijo 准则
+
+pass
+
+## 第四章 无约束最优化问题 TODO
+
+{% note light %}
+
+本章介绍无约束条件的求解目标函数最值的算法。
+
+{% endnote %}
+
+### 4.1 最速下降法
+
+{% note light %}
+
+即**梯度下降法**，每次迭代时选择的方向是当前解 $x_k$​ 处的导数的负方向。步长因子采用上述第三章的精确线性搜索算法求解。
+
+{% endnote %}
+
+迭代公式：
 
 
 
-### 3.5 不精确线性搜索方法
-
-#### 3.5.1 Goldstein 准则
-
-#### 3.5.2 Wolfe 准则
-
-#### 3.5.3 Armijo 准则
+其中：
 
 
 
-### 3.6 不精确线性搜索方法的收敛性 *
+{% fold light @实战演练 %}
 
 
 
-### 3.7 信赖域方法的思想和算法框架
+{% endfold %}
+
+### 4.2 牛顿法
+
+{% note light %}
+
+牛顿法的核心思路是利用二次逼近的思路，每次迭代时都采用当前解 $x_k$​​ 的二次逼近，然后求解二次函数的极小值即可。
+
+{% endnote %}
+
+迭代公式：
+$$
+x_{k+1} = x_k - G_k^{-1}g_k
+$$
+其中：
+$$
+G_k = \nabla^2f(x_k),\quad g_k=\nabla f(x_k)
+$$
+{% fold light @实战演练 %}
 
 
 
-### 3.8 信赖域方法的收敛性 *
+{% endfold %}
+
+### 4.3 共轭梯度法
+
+#### 4.3.1 共轭方向法
+
+#### 4.3.2 共轭梯度法
+
+#### 4.3.3 非二次函数的共轭梯度法
+
+### 4.4 拟牛顿法
 
 
 
-### 3.9 解信赖域子问题
+## 第五章 线性与非线性最小二乘问题 TODO
+
+{% note light %}
+
+本章介绍无约束最优化问题，不过对目标函数进行了指定，即最小二乘问题。分别针对残量函数 $r_i(x)$ 为线性与非线性进行讨论。
+
+{% endnote %}
+
+###  5.1 引言
+
+**定义**。无约束最小二乘问题形式为：
 
 
 
-## 第四章 无约束最优化问题
+**分类**。其中 $r(x)=(r_1(x),r_2(x), \cdots, r_m(x))^T$。当 $r_i(x)$ 为线性函数时，当前问题为线性最小二乘问题；当 $r_i(x)$ 为非线性函数时，当前问题为非线性最小二乘问题。
+
+
+
+**应用**。无约束最小二乘问题在实际中应用很广，例如：我们试图寻找一个函数 $f(x,\alpha_i),(i=1,2,\cdots,m)$ 来拟合 $b$，于是问题就转化为了
+$$
+\min { \sum_{i=1}^m [f(x,\alpha_i) - b_i]^2 }=\min { \sum_{i=1}^m [r_i(x)]^2 }
+$$
+
+### 5.2 线性最小二乘
+
+### 5.3 非线性最小二乘
+
+## 第六章 二次规划 TODO
+
+{% note light %}
+
+本章介绍目标函数仍然为二次目标函数的最优化问题，不过，有约束条件了，不过，约束条件仅仅是线性约束。此类问题被称为二次线性规划问题。分别从约束条件含有等式和不含有等式两个方面进行讨论。
+
+{% endnote %}
+
+### 6.1 二次规划
+
+定义：**目标函数为二次**、**约束条件为线性**的问题称为二次规划问题。形式为：
+$$
+\begin{aligned}
+&\min \quad q(x) = \frac{1}{2}x^TGx + g^Tx \\
+&s.t.\quad 
+\begin{cases}
+a_i^Tx = b_i& ,i\in S\\
+a_i^Tx \ge b_i& ,i \in M\\
+\end{cases}
+\end{aligned}
+$$
+
+### 6.2 等式约束二次规划问题
+
+#### 6.2.1 直接消去法
+
+#### 6.2.2 广义消去法
+
+#### 6.2.3 拉格朗日方法 :star:
+
+### 6.3 不等式约束二次规划问题
+
+首先显然的最优解一定存在于等式约束上，那么不等式的约束仅仅在取等时有效。我们可以直接枚举每一种约束条件的组合（所有等式+枚举的不等式，并将不等式看做等式约束），然后判定当前的解是否满足没有选择的不等式约束。这种方法是可行的但是计算量极大。于是有效集方法应运而生。
+
+#### 6.3.1 有效集方法 :star:
+
+## 第七章 约束最优化的理论和方法 TODO
+
+
+
+
+

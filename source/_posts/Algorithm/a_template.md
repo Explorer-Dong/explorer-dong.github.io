@@ -287,6 +287,40 @@ int main() {
 }
 ```
 
+### 树状数组
+
+```cpp
+template<class T>
+class BinaryIndexedTree {
+private:
+	std::vector<T> _arr;
+	int _n;
+
+	int lowbit(int x) { return x & (-x); }
+
+public:
+	BinaryIndexedTree(int n) :_n(n) {
+		_arr.resize(_n + 1, 0);
+	}
+
+	void add(int pos, T x) {
+		while (pos <= _n) {
+			_arr[pos] += x;
+			pos += lowbit(pos);
+		}
+	}
+
+	T sum(int pos) {
+		T ret = 0;
+		while (pos) {
+			ret += _arr[pos];
+			pos -= lowbit(pos);
+		}
+		return ret;
+	}
+};
+```
+
 ## Python
 
 ### SortedList
@@ -550,3 +584,28 @@ class SortedList:
 > 引自：https://www.acwing.com/activity/content/code/content/8475415/
 >
 > 官方：https://github.com/grantjenks/python-sortedcontainers/blob/master/src/sortedcontainers/sortedlist.py
+
+### 树状数组
+
+```python
+class BinaryIndexedTree:
+    def __init__(self, n: int):
+        self._n = n
+        self._arr = [0] * (n + 1)
+
+    def _lowbit(self, x: int) -> int:
+        return x & (-x)
+
+    def add(self, pos: int, x: int) -> None:
+        while pos <= self._n:
+            self._arr[pos] += x
+            pos += self._lowbit(pos)
+
+    def sum(self, pos: int) -> int:
+        ret = 0
+        while pos:
+            ret += self._arr[pos]
+            pos -= self._lowbit(pos)
+        return ret
+```
+

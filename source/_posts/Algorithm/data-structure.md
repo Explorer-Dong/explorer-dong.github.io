@@ -392,7 +392,7 @@ https://www.luogu.com.cn/problem/P1229
 >
 >     如何寻找单分支结点呢？根据下面的递归图可以发现，无论是左单分支还是右单分支，如果 pre 的连续两个结点与 post 的连续两个结点对称相同，那么就一定有一个单分支结点，故只需要寻找前后序序列中连续两个字符对称相同的情况数 cnt 即可。最终的答案数就是 $2^{cnt}$
 >
->     <img src="D:/BaiduSyncdisk/_images/typora-user-images/202402062336561.png" alt="image-20240206233550245" style="zoom:50%;" />
+>     ![图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406061327025.png)
 >
 > - 时间复杂度：$O(nm)$
 
@@ -903,14 +903,14 @@ signed main() {
 }
 ```
 
-### 13. [HNOI2002] 营业额统计
+### 13. [HNOI2002] 营业额统计（set）
 
 https://www.luogu.com.cn/problem/P2234
 
 > - 题意：给定一个序列 a，需要计算 $a_1 + \displaystyle \sum_{i=2,1 \le j <i}^{n} \min {|a_i - a_j|}$ ，即计算每一个数与序列中当前数之前的数的最小差值之和
 > - 思路：很显然的思路，对于每一个数，我们需要对之前的序列在短时间内找到一个数值最接近当前数的数。
 >     - TLE：一开始的思路是每次对之前的序列进行排序，然后二分查找与当前值匹配的数，为了确保所有的情况都找到，就直接判断二分查到的数，查到的数之前的一个数，之后的一个数，但是时间复杂度极高（我居然没想到），是 $O(n^2 \log n)$
->     - AC：后来看了题解才知道 `set` 的正确用法，就是一个**平衡树的 STL**。我们对于之前的序列不断的插入平衡树中（默认升序排序），每次利用 `s.lower_bound(x)` 查找集合 `s` 中第一个 $\ge$ 当前数的数，然后进行判断即可。`lower_bound()` 的时间复杂度为 $O(\log n)$ 。需要注意的是边界的判断，一开始的思路虽然会超时，但是二分后边界的判断很简单，使用 STL 后同样需要考虑边界的情况。分为三种（详情见代码）
+>     - AC：后来看了题解才知道 `set` 的正确用法，就是一个**平衡树的 STL**。我们对于之前的序列不断的插入平衡树中（默认升序排序），每次利用 `s.lower_bound(x)` 返回「集合 `s` 中第一个 $\ge$ 当前数的迭代器」，然后进行判断即可。`lower_bound()` 的时间复杂度为 $O(\log n)$ 。需要注意的是边界的判断，一开始的思路虽然会超时，但是二分后边界的判断很简单，使用 STL 后同样需要考虑边界的情况。分为三种（详情见代码）
 >         - 当前数比集合中所有的数都大，那么 `lower_bound` 就会返回 `s.end()` 答案就是当前数与集合中最后一个数的差值
 >         - 当前数比集合中所有的数都小，那么 `lower_bound` 就会返回 `s.bigin()` 答案就是集合中第一个数与当前数的差值
 >         - 当前数存在于集合中 or 集合中既有比当前数大的又有比当前数小的，那么就比较查到的数与查到的数前一个数和当前数的差值，取最小的差值即可
@@ -1099,7 +1099,7 @@ public:
 };
 ```
 
-### 15. 切蛋糕
+### 15. 切蛋糕（multiset）
 
 https://www.acwing.com/problem/content/description/5581/
 
@@ -1165,5 +1165,194 @@ int main() {
 	while (T--) solve();
 	return 0;
 }
+```
+
+### 16. 将元素分配到两个数组中 II
+
+https://leetcode.cn/problems/distribute-elements-into-two-arrays-ii/description/
+
+> 题意：给定 $n$ 个数，现在需要将这些数按照某种规则分配到两个数组 $A$ 和 $B$ 中。初始化分配 `nums[0]` 到 $A$ 中，`nums[1]` 到 $B$ 中，接下来对于剩余的每个元素 `nums[i]`，分配取决于 $A$ 和 $B$ 中比当前元素 `nums[i]` 大的个数，最终返回两个分配好的数组
+>
+> 思路：首先每一个元素都需要进行枚举，那么本题需要考虑的就是如何在 $\log$ 时间复杂度内统计出两数组中比当前元素大的元素个数。针对 C++ 和 Python 分别讨论
+>
+> - C++
+>     - 法一：`std::multiset<int>`。可惜不行，因为统计比当前元素大的个数时，`s.rbegin() - s.upper_bound(nums[i])` 是不合法的，因为 `std::multiset<int>` 的迭代器不是基于指针的，因此无法直接进行加减来计算地址差，遂作罢
+>     - 法二：树状数组。很容易想到利用前缀和统计比当前数大的数字个数，但是由于此处需要对前缀和进行单点修改，因此时间复杂度肯定会寄。有什么数据结构支持「单点修改，区间更新」呢？我们引入树状数组。我们将数组元素哈希到 `[1, len(set(nums))]` 区间，定义哈希后的当前元素 `nums[i]` 为 `x`，对于当前哈希后的 `x` 而言想要知道两个数组中有多少数比当前数严格大，只需要计算前缀和数组 `arr` 中 `arr[n] - arr[x]` 的结果即可
+> - Python
+>     - `SortedList`。python 有一个 `sortedcontainers` 包其中有 `SortedList` 模块，可以实现 `std::multiset<int>` 所有 $\log$ 操作并且可以进行随机下标访问，于是就可以进行下标访问 $O(1)$ 计算比当前数大的元素个数
+>     - 题外话。LeetCode 可以进行第三方库导入的操作，某些比赛不允许，需要手搓 `SortedList` 模块，~~当然可以用树状数组 or 线段树解决~~，板子链接：https://blog.dwj601.cn/Algorithm/a_template/#SortedList
+>
+> 时间复杂度：$O(n \log n)$
+
+```cpp []
+template<class T>
+class BinaryIndexedTree {
+private:
+	std::vector<T> _arr;
+	int _n;
+
+	int lowbit(int x) { return x & (-x); }
+
+public:
+	BinaryIndexedTree(int n) :_n(n) {
+		_arr.resize(_n + 1, 0);
+	}
+
+	void add(int pos, T x) {
+		while (pos <= _n) {
+			_arr[pos] += x;
+			pos += lowbit(pos);
+		}
+	}
+
+	T sum(int pos) {
+		T ret = 0;
+		while (pos) {
+			ret += _arr[pos];
+			pos -= lowbit(pos);
+		}
+		return ret;
+	}
+};
+
+
+class Solution {
+public:
+    vector<int> resultArray(vector<int>& nums) {
+        vector<int> copy = nums;
+        sort(copy.begin(), copy.end());
+        copy.erase(unique(copy.begin(), copy.end()), copy.end());
+
+        int n = copy.size(), cnt = 1;
+        unordered_map<int, int> a;
+        for (int i = 0; i < n; i++) {
+            a[copy[i]] = cnt++;
+        }
+
+        vector<int> v1, v2;
+        v1.push_back(nums[0]);
+        v2.push_back(nums[1]);
+
+        BinaryIndexedTree<int> t1(n), t2(n);
+        t1.add(a[nums[0]], 1);
+        t2.add(a[nums[1]], 1);
+
+        for (int i = 2; i < nums.size(); i++) {
+            int d1 = t1.sum(n) - t1.sum(a[nums[i]]);
+            int d2 = t2.sum(n) - t2.sum(a[nums[i]]);
+
+            if (d1 > d2) {
+                v1.push_back(nums[i]);
+                t1.add(a[nums[i]], 1);                
+            } else if (d1 < d2) {
+                v2.push_back(nums[i]);
+                t2.add(a[nums[i]], 1);
+            } else if (d1 == d2 && v1.size() < v2.size()) {
+                v1.push_back(nums[i]);
+                t1.add(a[nums[i]], 1);
+            } else if (d1 == d2 && v1.size() > v2.size()) {
+                v2.push_back(nums[i]);
+                t2.add(a[nums[i]], 1);
+            } else {
+                v1.push_back(nums[i]);
+                t1.add(a[nums[i]], 1);
+            }
+        }
+
+        for (int x: v2) {
+            v1.push_back(x);
+        }
+
+        return v1;
+    }
+};
+```
+
+```python []
+class BinaryIndexedTree:
+    def __init__(self, n: int):
+        self._n = n
+        self._arr = [0] * (n + 1)
+
+    def _lowbit(self, x: int) -> int:
+        return x & (-x)
+
+    def add(self, pos: int, x: int) -> None:
+        while pos <= self._n:
+            self._arr[pos] += x
+            pos += self._lowbit(pos)
+
+    def sum(self, pos: int) -> int:
+        ret = 0
+        while pos:
+            ret += self._arr[pos]
+            pos -= self._lowbit(pos)
+        return ret
+
+
+class Solution:
+    def resultArray(self, nums: List[int]) -> List[int]:
+        copy = sorted(set(nums))
+        
+        n, cnt, a = len(copy), 1, {}
+        for x in copy:
+            a[x] = cnt
+            cnt += 1
+
+        v1, v2 = [nums[0]], [nums[1]]
+        t1, t2 = BinaryIndexedTree(n), BinaryIndexedTree(n)
+        t1.add(a[nums[0]], 1)
+        t2.add(a[nums[1]], 1)
+        
+        for x in nums[2:]:
+            d1, d2 = t1.sum(n) - t1.sum(a[x]), t2.sum(n) - t2.sum(a[x])
+            
+            if d1 > d2:
+                v1.append(x)
+                t1.add(a[x], 1)
+            elif d1 < d2:
+                v2.append(x)
+                t2.add(a[x], 1)
+            elif d1 == d2 and len(v1) < len(v2):
+                v1.append(x)
+                t1.add(a[x], 1)
+            elif d1 == d2 and len(v1) > len(v2):
+                v2.append(x)
+                t2.add(a[x], 1)
+            else:
+                v1.append(x)
+                t1.add(a[x], 1)
+        
+        return v1 + v2
+```
+
+```python []
+class Solution:
+    def resultArray(self, nums: List[int]) -> List[int]:
+        from sortedcontainers import SortedList
+        
+        v1, v2 = copy.deepcopy(nums[:1]), copy.deepcopy(nums[1:2])
+        s1, s2 = SortedList(v1), SortedList(v2)
+
+        for x in nums[2:]:
+            d1, d2 = len(v1) - s1.bisect_right(x), len(v2) - s2.bisect_right(x)
+            
+            if d1 > d2:
+                v1.append(x)
+                s1.add(x)
+            elif d1 < d2:
+                v2.append(x)
+                s2.add(x)
+            elif d1 == d2 and len(v1) < len(v2):
+                v1.append(x)
+                s1.add(x)
+            elif d1 == d2 and len(v1) > len(v2):
+                v2.append(x)
+                s2.add(x)
+            else:
+                v1.append(x)
+                s1.add(x)
+        
+        return v1 + v2
 ```
 

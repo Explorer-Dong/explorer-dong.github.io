@@ -16,13 +16,14 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="Git Pull Request 前言 发现了本博客站点的配置文件中一个失效的链接，就想着对原项目进行修改。早闻 git 的 pr 功能，撑着端午修整便来实战一波，并进行记录。 原理 首先聊聊 pr 名字的由来。pr 即 pull request，顾名思义是「拉取请求」的意思。pr 根本逻辑是将原项目 fork 到自己的仓库后进行修改，然后向原项目作者发起 pull request 请求，直到 m">
+    <meta name="description" content="Git Pull Request 前言 发现了本博客站点的配置文件中一个失效的链接，就想着对原项目进行修改。早闻 git 的 pr 功能，趁着端午放假在家便来实战一波，做个小小的记录 😎 原理 首先聊聊 pr 名字的由来。pr 即 pull request，顾名思义是「拉取请求」的意思。pr 根本逻辑是将原项目 fork 到自己的仓库后进行修改，然后向原项目作者发起 pull request 请">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git-pull-request">
 <meta property="og:url" content="https://blog.dwj601.cn/DevTools/Git/git-pull-request/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="Git Pull Request 前言 发现了本博客站点的配置文件中一个失效的链接，就想着对原项目进行修改。早闻 git 的 pr 功能，撑着端午修整便来实战一波，并进行记录。 原理 首先聊聊 pr 名字的由来。pr 即 pull request，顾名思义是「拉取请求」的意思。pr 根本逻辑是将原项目 fork 到自己的仓库后进行修改，然后向原项目作者发起 pull request 请求，直到 m">
+<meta property="og:description" content="Git Pull Request 前言 发现了本博客站点的配置文件中一个失效的链接，就想着对原项目进行修改。早闻 git 的 pr 功能，趁着端午放假在家便来实战一波，做个小小的记录 😎 原理 首先聊聊 pr 名字的由来。pr 即 pull request，顾名思义是「拉取请求」的意思。pr 根本逻辑是将原项目 fork 到自己的仓库后进行修改，然后向原项目作者发起 pull request 请">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f60e.png?v8">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091607490.svg">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091618430.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091620622.png">
@@ -30,11 +31,11 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091633666.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091633736.png">
 <meta property="article:published_time" content="2024-06-09T07:24:03.007Z">
-<meta property="article:modified_time" content="2024-06-09T08:35:02.990Z">
+<meta property="article:modified_time" content="2024-06-09T11:21:59.146Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091607490.svg">
+<meta name="twitter:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f60e.png?v8">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -254,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          662 字
+          666 字
         
       </span>
     
@@ -328,7 +329,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月9日 下午
+                    本文最后更新于 2024年6月9日 晚上
                   
                 
               </p>
@@ -338,7 +339,7 @@
                 
                 <h1>Git Pull Request</h1>
 <h2 id="前言">前言</h2>
-<p>发现了本博客站点的配置文件中一个失效的链接，就想着对原项目进行修改。早闻 git 的 pr 功能，撑着端午修整便来实战一波，并进行记录。</p>
+<p>发现了本博客站点的配置文件中一个失效的链接，就想着对原项目进行修改。早闻 git 的 pr 功能，趁着端午放假在家便来实战一波，做个小小的记录 <span class="github-emoji"><span>😎</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60e.png?v8" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 <h2 id="原理">原理</h2>
 <p>首先聊聊 pr 名字的由来。pr 即 <code>pull request</code>，顾名思义是「拉取请求」的意思。pr 根本逻辑是将原项目 fork 到自己的仓库后进行修改，然后向原项目作者发起 pull request 请求，直到 merge 到原项目或被拒绝。这样的一个工作流程为什么被叫做「拉取请求」呢？依稀记得之前在某乎上看到过相关文章，程序员届大概有两个流派，主要从这个工作流的执行主体角度来理解。对于原项目作者，需要考虑修改者的请求是否适合合并，就是 pull 的过程；相对的，修改者发送修改合并的请求是一个 push 的过程。因此我们从原项目作者的角度来理解这个名称就有据可寻了。下附一张图解：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091607490.svg" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="pull-request-workflow"></p>

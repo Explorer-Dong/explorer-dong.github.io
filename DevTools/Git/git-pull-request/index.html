@@ -16,27 +16,31 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="C++ 函数声明与定义中的缺省参数 实践 无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段： 123456789101112131415161718192021#include &lt;iostream&gt;class demoClass {public:	int classFun(int num&#x3D;100);};int fun(int num&#x3D;100);int">
+    <meta name="description" content="Git Pull Request 前言 发现了本博客站点的配置文件中一个失效的链接，就想着对原项目进行修改。早闻 git 的 pr 功能，撑着端午修整便来实战一波，并进行记录。 原理 首先聊聊 pr 名字的由来。pr 即 pull request，顾名思义是「拉取请求」的意思。pr 根本逻辑是将原项目 fork 到自己的仓库后进行修改，然后向原项目作者发起 pull request 请求，直到 m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cpp-decl-and-defi-default-para">
-<meta property="og:url" content="https://blog.dwj601.cn/BackEnd/cppBasic/cpp-decl-and-defi-default-para/index.html">
+<meta property="og:title" content="git-pull-request">
+<meta property="og:url" content="https://blog.dwj601.cn/DevTools/Git/git-pull-request/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="C++ 函数声明与定义中的缺省参数 实践 无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段： 123456789101112131415161718192021#include &lt;iostream&gt;class demoClass {public:	int classFun(int num&#x3D;100);};int fun(int num&#x3D;100);int">
+<meta property="og:description" content="Git Pull Request 前言 发现了本博客站点的配置文件中一个失效的链接，就想着对原项目进行修改。早闻 git 的 pr 功能，撑着端午修整便来实战一波，并进行记录。 原理 首先聊聊 pr 名字的由来。pr 即 pull request，顾名思义是「拉取请求」的意思。pr 根本逻辑是将原项目 fork 到自己的仓库后进行修改，然后向原项目作者发起 pull request 请求，直到 m">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428426.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428507.png">
-<meta property="article:published_time" content="2024-03-21T05:55:02.068Z">
-<meta property="article:modified_time" content="2024-03-21T02:08:56.809Z">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091607490.svg">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091618430.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091620622.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091634960.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091633666.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091633736.png">
+<meta property="article:published_time" content="2024-06-09T07:24:03.007Z">
+<meta property="article:modified_time" content="2024-06-09T08:35:02.990Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428426.png">
+<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091607490.svg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>cpp-decl-and-defi-default-para | Dwj の Blog</title>
+  <title>git-pull-request | Dwj の Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="cpp-decl-and-defi-default-para"></span>
+            <span id="subtitle" data-typed-text="git-pull-request"></span>
           
         </div>
 
@@ -238,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-21 13:55" pubdate>
-          2024年3月21日 下午
+        <time datetime="2024-06-09 15:24" pubdate>
+          2024年6月9日 下午
         </time>
       </span>
     
@@ -250,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          332 字
+          662 字
         
       </span>
     
@@ -261,7 +265,7 @@
         
         
         
-          3 分钟
+          5 分钟
         
       </span>
     
@@ -319,12 +323,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">cpp-decl-and-defi-default-para</h1>
+            <h1 id="seo-header">git-pull-request</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月21日 上午
+                    本文最后更新于 2024年6月9日 下午
                   
                 
               </p>
@@ -332,17 +336,36 @@
             
               <div class="markdown-body">
                 
-                <h1>C++ 函数声明与定义中的缺省参数</h1>
-<h2 id="实践">实践</h2>
-<p>无论是非内联函数还是内联函数，缺省参数均只能定义在函数的声明语句中，如下面的程序段：</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">demoClass</span> {<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">classFun</span><span class="hljs-params">(<span class="hljs-type">int</span> num=<span class="hljs-number">100</span>)</span></span>;<br>};<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">int</span> num=<span class="hljs-number">100</span>)</span></span>;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>	std::cout &lt;&lt; <span class="hljs-built_in">fun</span>(<span class="hljs-number">10</span>) &lt;&lt; std::endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">demoClass::classFun</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>{<br>	<span class="hljs-keyword">return</span> num;<br>}<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>{<br>	<span class="hljs-keyword">return</span> num;<br>}<br></code></pre></td></tr></tbody></table></figure>
-<p>如果在函数定义中继续进行缺省参数初始化，则会报错重定义缺省参数 <code>Redefinition of default argument</code> ：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428426.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="Redefinition of default argument"></p>
-<h2 id="理论">理论</h2>
-<p>编译时，编译器会查找函数的声明来获取该函数的签名信息，包括：参数类型和返回类型，并不关心函数体的内容。假如只在函数定义中定义了缺省参数，在函数声明时没有定义缺省参数，此时在调用该函数时没有传递参数，由于编译器在编译函数调用时只会寻找函数声明语句而不关心函数定义，就会发生无法寻找到目标函数的错误：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428507.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="无法寻找到目标函数"></p>
-<h2 id="总结">总结</h2>
-<p>无论是非内联函数（全局函数）还是内联函数（成员函数），缺省参数都只能定义在函数声明的参数列表中，而不能只在函数声明中重复定义或者只在函数定义中定义缺省参数值</p>
+                <h1>Git Pull Request</h1>
+<h2 id="前言">前言</h2>
+<p>发现了本博客站点的配置文件中一个失效的链接，就想着对原项目进行修改。早闻 git 的 pr 功能，撑着端午修整便来实战一波，并进行记录。</p>
+<h2 id="原理">原理</h2>
+<p>首先聊聊 pr 名字的由来。pr 即 <code>pull request</code>，顾名思义是「拉取请求」的意思。pr 根本逻辑是将原项目 fork 到自己的仓库后进行修改，然后向原项目作者发起 pull request 请求，直到 merge 到原项目或被拒绝。这样的一个工作流程为什么被叫做「拉取请求」呢？依稀记得之前在某乎上看到过相关文章，程序员届大概有两个流派，主要从这个工作流的执行主体角度来理解。对于原项目作者，需要考虑修改者的请求是否适合合并，就是 pull 的过程；相对的，修改者发送修改合并的请求是一个 push 的过程。因此我们从原项目作者的角度来理解这个名称就有据可寻了。下附一张图解：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091607490.svg" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="pull-request-workflow"></p>
+<h2 id="实操">实操</h2>
+<h3 id="一、fork-目标仓库">一、fork 目标仓库</h3>
+<p>进入目标仓库，点击右上角的 fork 按钮进行 fork</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091618430.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="fork 目标仓库"></p>
+<h3 id="二、clone-至本地">二、clone 至本地</h3>
+<p>进入自己的仓库，找到对应的项目并复制克隆链接</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091620622.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="clone 至本地"></p>
+<h3 id="三、编辑内容并版本管理">三、编辑内容并版本管理</h3>
+<div class="note note-warning">
+            <p>注意：如果在进行 clone 时，只克隆了默认的主分支，我们需要按照原项目规定的 pr 分支创建同名的分支。比如此处：原项目只允许在 develop 分支上进行 pr，因此我们在默认只拉取了 master 分支的前提下，需要自己在本地创建一个 develop 分支，并在此基础之上进行内容的修改与编写。</p>
+          </div>
+<p>我们将需要修改的内容完善后，进行 add 和 commit 操作即可。</p>
+<h3 id="四、push-至仓库">四、push 至仓库</h3>
+<p>此处将已经版本管理好的内容 push 到自己刚才 fork 出来的仓库即可。上述示例中需要 push 到 develop 分支上。</p>
+<h3 id="五、发起-pr-请求">五、发起 pr 请求</h3>
+<p>在选择合适的分支后，点击 Contribute 按钮即可看到 Open pull request 选项，点击即可发起 pr 请求：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091634960.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="发起 pr 请求"></p>
+<h2 id="尾声">尾声</h2>
+<p>在进行实战时，由于原项目的作者进行了分支保护，即编写了 pr 的安全检查流，以至于我前两次分别踩到了：master 分支保护和 develop 分支名称不一致，两个坑。因此不得已提前自己手动关闭掉这两个 pr，也因此获得了人生中首个<s>非正式</s>的 Achievement 哈哈：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091633666.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="Achievement"></p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091633736.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="Achievement"></p>
+<h2 id="参考">参考</h2>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/347918608">吵疯了，Pull Request到底是个啥？</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11d4y1H74N/">百大技术UP带你玩转 Pull Request</a></p>
 
                 
               </div>
@@ -361,12 +384,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/BackEnd/" class="category-chain-item">BackEnd</a>
+  <a href="/categories/DevTools/" class="category-chain-item">DevTools</a>
   
   
     <span>></span>
     
-  <a href="/categories/BackEnd/cppBasic/" class="category-chain-item">cppBasic</a>
+  <a href="/categories/DevTools/Git/" class="category-chain-item">Git</a>
   
   
 
@@ -388,8 +411,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>cpp-decl-and-defi-default-para</div>
-      <div>https://blog.dwj601.cn/BackEnd/cppBasic/cpp-decl-and-defi-default-para/</div>
+      <div>git-pull-request</div>
+      <div>https://blog.dwj601.cn/DevTools/Git/git-pull-request/</div>
     </div>
     <div class="license-meta">
       
@@ -401,13 +424,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年3月21日</div>
+          <div>2024年6月9日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年3月21日</div>
+          <div>2024年6月9日</div>
         </div>
       
       
@@ -438,18 +461,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/BackEnd/cppBasic/cpp-io/" title="cpp-io">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">cpp-io</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/BackEnd/cppBasic/cpp-multi-file-call-format/" title="cpp-multi-file-call-format">
-                        <span class="hidden-mobile">cpp-multi-file-call-format</span>
+                      <a href="/Operation/SSL/what-is-ssl/" title="what-is-ssl">
+                        <span class="hidden-mobile">what-is-ssl</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -517,17 +534,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="BackEnd"
-        id="heading-2ef1323c08ddc2382d250091a0d76917" role="tab" data-toggle="collapse" href="#collapse-2ef1323c08ddc2382d250091a0d76917"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="DevTools"
+        id="heading-482a4dca0bbd8fcdda5acc6f95f3c279" role="tab" data-toggle="collapse" href="#collapse-482a4dca0bbd8fcdda5acc6f95f3c279"
         aria-expanded="true"
       >
-        BackEnd
-        <span class="list-group-count">(7)</span>
+        DevTools
+        <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-2ef1323c08ddc2382d250091a0d76917"
-           role="tabpanel" aria-labelledby="heading-2ef1323c08ddc2382d250091a0d76917">
+      <div class="category-collapse collapse show" id="collapse-482a4dca0bbd8fcdda5acc6f95f3c279"
+           role="tabpanel" aria-labelledby="heading-482a4dca0bbd8fcdda5acc6f95f3c279">
         
         
           
@@ -537,10 +554,10 @@
     
       
       
-        <a href="/BackEnd/BackEnd/" title="Back End"
+        <a href="/DevTools/JetbrainsLicense/" title="JetbrainsLicense"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Back End</span>
+          <span class="category-post">JetbrainsLicense</span>
         </a>
       
     
@@ -553,17 +570,17 @@
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Flask"
-        id="heading-9784e91c7b2657917226bc82afdd6789" role="tab" data-toggle="collapse" href="#collapse-9784e91c7b2657917226bc82afdd6789"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="CLion"
+        id="heading-40b9c8689153670e5490a925b7685700" role="tab" data-toggle="collapse" href="#collapse-40b9c8689153670e5490a925b7685700"
         aria-expanded="false"
       >
-        Flask
-        <span class="list-group-count">(1)</span>
+        CLion
+        <span class="list-group-count">(3)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-9784e91c7b2657917226bc82afdd6789"
-           role="tabpanel" aria-labelledby="heading-9784e91c7b2657917226bc82afdd6789">
+      <div class="category-collapse collapse " id="collapse-40b9c8689153670e5490a925b7685700"
+           role="tabpanel" aria-labelledby="heading-40b9c8689153670e5490a925b7685700">
         
         
           
@@ -572,10 +589,65 @@
     
       
       
-        <a href="/BackEnd/Flask/deploy-flask/" title="deploy-flask"
+        <a href="/DevTools/CLion/solve-clion-cannot-open-relative-file/" title="solve-clion-cannot-open-relative-file"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">deploy-flask</span>
+          <span class="category-post">solve-clion-cannot-open-relative-file</span>
+        </a>
+      
+    
+      
+      
+        <a href="/DevTools/CLion/solve-clion-decoding-error/" title="solve-clion-decoding-error"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">solve-clion-decoding-error</span>
+        </a>
+      
+    
+      
+      
+        <a href="/DevTools/CLion/solve-proxy-setting/" title="solve-proxy-setting"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">solve-proxy-setting</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="DevCpp"
+        id="heading-86f596ad3a8e0ab4ac9d39fff05e7724" role="tab" data-toggle="collapse" href="#collapse-86f596ad3a8e0ab4ac9d39fff05e7724"
+        aria-expanded="false"
+      >
+        DevCpp
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-86f596ad3a8e0ab4ac9d39fff05e7724"
+           role="tabpanel" aria-labelledby="heading-86f596ad3a8e0ab4ac9d39fff05e7724">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/DevTools/DevCpp/devc-self-config/" title="self-config"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">self-config</span>
         </a>
       
     
@@ -590,17 +662,17 @@
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="cppBasic"
-        id="heading-2cd1187fb0b1f12c2fbf33b7babb0fa5" role="tab" data-toggle="collapse" href="#collapse-2cd1187fb0b1f12c2fbf33b7babb0fa5"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Git"
+        id="heading-0bcc70105ad279503e31fe7b3f47b665" role="tab" data-toggle="collapse" href="#collapse-0bcc70105ad279503e31fe7b3f47b665"
         aria-expanded="true"
       >
-        cppBasic
+        Git
         <span class="list-group-count">(4)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-2cd1187fb0b1f12c2fbf33b7babb0fa5"
-           role="tabpanel" aria-labelledby="heading-2cd1187fb0b1f12c2fbf33b7babb0fa5">
+      <div class="category-collapse collapse show" id="collapse-0bcc70105ad279503e31fe7b3f47b665"
+           role="tabpanel" aria-labelledby="heading-0bcc70105ad279503e31fe7b3f47b665">
         
         
           
@@ -609,37 +681,37 @@
     
       
       
-        <a href="/BackEnd/cppBasic/cpp-decl-and-defi-default-para/" title="cpp-decl-and-defi-default-para"
+        <a href="/DevTools/Git/git-learning-record/" title="git-learning-record"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">git-learning-record</span>
+        </a>
+      
+    
+      
+      
+        <a href="/DevTools/Git/git-pull-request/" title="git-pull-request"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">cpp-decl-and-defi-default-para</span>
+          <span class="category-post">git-pull-request</span>
         </a>
       
     
       
       
-        <a href="/BackEnd/cppBasic/cpp-io/" title="cpp-io"
+        <a href="/DevTools/Git/git-self-define-command/" title="git-self-define-command"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">cpp-io</span>
+          <span class="category-post">git-self-define-command</span>
         </a>
       
     
       
       
-        <a href="/BackEnd/cppBasic/cpp-multi-file-call-format/" title="cpp-multi-file-call-format"
+        <a href="/DevTools/Git/git-solve-merge-conflict/" title="git-solve-merge-conflict"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">cpp-multi-file-call-format</span>
-        </a>
-      
-    
-      
-      
-        <a href="/BackEnd/cppBasic/cpp-namespace/" title="cpp-namespace"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">cpp-namespace</span>
+          <span class="category-post">git-solve-merge-conflict</span>
         </a>
       
     
@@ -654,17 +726,17 @@
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="pyBasic"
-        id="heading-971a9f95d8e54390093d9d2addfd8da7" role="tab" data-toggle="collapse" href="#collapse-971a9f95d8e54390093d9d2addfd8da7"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="IDLE"
+        id="heading-a5daf7f2ebbba4975d61dab1c40188c7" role="tab" data-toggle="collapse" href="#collapse-a5daf7f2ebbba4975d61dab1c40188c7"
         aria-expanded="false"
       >
-        pyBasic
+        IDLE
         <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-971a9f95d8e54390093d9d2addfd8da7"
-           role="tabpanel" aria-labelledby="heading-971a9f95d8e54390093d9d2addfd8da7">
+      <div class="category-collapse collapse " id="collapse-a5daf7f2ebbba4975d61dab1c40188c7"
+           role="tabpanel" aria-labelledby="heading-a5daf7f2ebbba4975d61dab1c40188c7">
         
         
           
@@ -673,10 +745,10 @@
     
       
       
-        <a href="/BackEnd/pyBasic/py-print-model-path/" title="py-print-model-path"
+        <a href="/DevTools/IDLE/idle-self-config/" title="idle-self-config"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">py-print-model-path</span>
+          <span class="category-post">idle-self-config</span>
         </a>
       
     

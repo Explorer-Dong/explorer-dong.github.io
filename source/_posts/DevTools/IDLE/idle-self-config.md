@@ -18,7 +18,7 @@ category_bar: true
 
 我们点击左上角的 File 即可进行新建或打开 `.py` 文件的操作：
 
-![image-20240609164334223](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091647404.png)
+![新建 or 打开](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091647404.png)
 
 ### 修改样式
 

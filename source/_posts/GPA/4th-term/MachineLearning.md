@@ -1516,6 +1516,10 @@ pass
 
 #### 10.6.2 LMNN
 
+paper: [Distance Metric Learning for Large Margin Nearest Neighbor Classification](https://papers.nips.cc/paper/2005/file/a7f592cef8b130a6967a90617db5681b-Paper.pdf)
+
+explain: [【LMNN】浅析"从距离测量到基于Margin的邻近分类问题"](https://zhuanlan.zhihu.com/p/90409085)
+
 ## ~~第11章 特征选择与稀疏学习~~
 
 

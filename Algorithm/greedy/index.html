@@ -16,17 +16,17 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="greedy              大胆猜测，小心求证（不会证也没事，做下一题吧）。证明方法总结了以下几种反证法：假设取一种方案比贪心方案更好，得出相反的结论边界法：从边界开始考虑，因为满足边界条件更加容易枚举，从而进行后续的贪心直觉法：遵循社会法则（）            1. green_gold_dog, array and permutation https:&#x2F;&#x2F;codeforces">
+    <meta name="description" content="贪心              大胆猜测，小心求证（不会证也没事，做下一题吧）。证明方法总结了以下几种反证法：假设取一种方案比贪心方案更好，得出相反的结论边界法：从边界开始考虑，因为满足边界条件更加容易枚举，从而进行后续的贪心直觉法：遵循社会法则（）            1. green_gold_dog, array and permutation https:&#x2F;&#x2F;codeforces.com">
 <meta property="og:type" content="article">
 <meta property="og:title" content="greedy">
 <meta property="og:url" content="https://blog.dwj601.cn/Algorithm/greedy/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="greedy              大胆猜测，小心求证（不会证也没事，做下一题吧）。证明方法总结了以下几种反证法：假设取一种方案比贪心方案更好，得出相反的结论边界法：从边界开始考虑，因为满足边界条件更加容易枚举，从而进行后续的贪心直觉法：遵循社会法则（）            1. green_gold_dog, array and permutation https:&#x2F;&#x2F;codeforces">
+<meta property="og:description" content="贪心              大胆猜测，小心求证（不会证也没事，做下一题吧）。证明方法总结了以下几种反证法：假设取一种方案比贪心方案更好，得出相反的结论边界法：从边界开始考虑，因为满足边界条件更加容易枚举，从而进行后续的贪心直觉法：遵循社会法则（）            1. green_gold_dog, array and permutation https:&#x2F;&#x2F;codeforces.com">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="d:/BaiduSyncdisk/_images/typora-user-images/202402012332958.png">
 <meta property="og:image" content="d:/BaiduSyncdisk/_images/typora-user-images/202402012332959.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.055Z">
-<meta property="article:modified_time" content="2024-04-24T15:03:05.989Z">
+<meta property="article:modified_time" content="2024-06-13T08:56:56.526Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -250,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.9k 字
+          11k 字
         
       </span>
     
@@ -261,7 +261,7 @@
         
         
         
-          62 分钟
+          66 分钟
         
       </span>
     
@@ -324,7 +324,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年4月24日 晚上
+                    本文最后更新于 2024年6月13日 下午
                   
                 
               </p>
@@ -332,7 +332,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="greedy">greedy</h2>
+                <h2 id="贪心">贪心</h2>
 <div class="note note-light">
             <p>大胆猜测，小心求证（不会证也没事，做下一题吧）。证明方法总结了以下几种</p><ul><li>反证法：假设取一种方案比贪心方案更好，得出相反的结论</li><li>边界法：从边界开始考虑，因为满足边界条件更加容易枚举，从而进行后续的贪心</li><li>直觉法：遵循社会法则（）</li></ul>
           </div>
@@ -655,6 +655,25 @@
 <p>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
 </blockquote>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">maximumBinaryString</span><span class="hljs-params">(string binary)</span> </span>{<br>        <span class="hljs-type">int</span> n = binary.<span class="hljs-built_in">size</span>();<br><br>        string res;<br><br>        <span class="hljs-comment">// 前缀1全部加入答案</span><br>        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++) {<br>            <span class="hljs-keyword">if</span> (binary[i] == <span class="hljs-string">'0'</span>) {<br>                <span class="hljs-keyword">break</span>;<br>            }<br>            <span class="hljs-keyword">else</span> {<br>                res += <span class="hljs-string">'1'</span>;<br>            }<br>        }<br><br>        <span class="hljs-comment">// 非前缀1的部分一定可以操作为 00...011..1，进而转化为 11...11011...1</span><br>        <span class="hljs-type">int</span> zero = <span class="hljs-built_in">count</span>(binary.<span class="hljs-built_in">begin</span>() + i, binary.<span class="hljs-built_in">end</span>(), <span class="hljs-string">'0'</span>);<br>        <span class="hljs-keyword">if</span> (zero &gt; <span class="hljs-number">0</span>) {<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; zero - <span class="hljs-number">1</span>; j++) res += <span class="hljs-string">'1'</span>;<br>            res += <span class="hljs-string">'0'</span>;<br>        }<br><br>        <span class="hljs-keyword">while</span> (res.<span class="hljs-built_in">size</span>() &lt; n) res += <span class="hljs-string">'1'</span>;<br><br>        <span class="hljs-keyword">return</span> res;<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="25-子序列最大优雅度">25. 子序列最大优雅度</h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-elegance-of-a-k-length-subsequence/">https://leetcode.cn/problems/maximum-elegance-of-a-k-length-subsequence/</a></p>
+<blockquote>
+<p>标签：反悔贪心</p>
+<p>题意：给定长度为 n 的物品序列，现在需要从中寻找一个长度为 k 的子序列使得子序列的总价值最大，给出最终的最大价值。一个序列的价值定义为每个物品的 <strong>本身价值之和</strong> + <strong>物品种类数的平方</strong></p>
+<p>思路：我们采用反悔贪心的思路。首先按照物品本身价值进行降序排序并选择前 k 个物品作为集合 S，然后按顺序枚举剩下的物品进行替换决策。我们记每个物品有一个「本身价值」，集合 S 有一个「种类价值」。那么就会遇到下面两种情况：</p>
+<ul>
+<li>第 i 个物品对应的种类<strong>存在</strong>集合 S 中。此时该物品「一定不选」，因为无论当前物品替代集合中的 S 哪一个物品，本身价值的贡献会下降、种类价值的贡献保持不变。</li>
+<li>第 i 个物品对应的种类<strong>不在</strong>集合 S 中。此时该物品一定选择吗？不一定。有两种情况：
+<ul>
+<li>集合 S 没有重复种类的物品。此时该物品「一定不选」，同样的，无论当前物品替代集合中的 S 哪一个物品，本身价值的贡献会下降、种类价值的贡献保持不变。</li>
+<li>集合 S 存在重复种类的物品。此时该物品「一定选」，因为一定可以提升种类价值的贡献，至于减去本身价值的损失后是否使得总贡献增加，并不具备可能的性质，只能每次替换物品时<strong>更新全局答案</strong>进行记录。</li>
+</ul>
+</li>
+</ul>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+</blockquote>
+<figure class="highlight cpp"><figcaption><span>[]</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">findMaximumElegance</span><span class="hljs-params">(std::vector&lt;std::vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; items, <span class="hljs-type">int</span> k)</span> </span>{<br>        <span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br>        std::<span class="hljs-built_in">sort</span>(items.<span class="hljs-built_in">rbegin</span>(), items.<span class="hljs-built_in">rend</span>());<br><br>        ll t = <span class="hljs-number">0</span>, cat = <span class="hljs-number">0</span>, res = <span class="hljs-number">0</span>;<br>        std::unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; cnt;<br>        std::stack&lt;ll&gt; stk;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; items.<span class="hljs-built_in">size</span>(); i++) {<br>            ll v = items[i][<span class="hljs-number">0</span>], c = items[i][<span class="hljs-number">1</span>];<br>            <span class="hljs-keyword">if</span> (i &lt; k) {<br>                <span class="hljs-comment">// 前 k 个物品</span><br>                t += v;<br>                cnt[c]++;<br>                cat += cnt[c] == <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">if</span> (cnt[c] &gt; <span class="hljs-number">1</span>) {<br>                    stk.<span class="hljs-built_in">push</span>(v);<br>                }<br>            } <span class="hljs-keyword">else</span> {<br>                <span class="hljs-comment">// 后 n-k 个物品</span><br>                <span class="hljs-keyword">if</span> (cnt[c]) {<br>                    <span class="hljs-comment">// 已经出现过的物品种类</span><br>                    <span class="hljs-keyword">continue</span>;<br>                } <span class="hljs-keyword">else</span> {<br>                    <span class="hljs-comment">// 没有出现过的物品种类</span><br>                    <span class="hljs-keyword">if</span> (stk.<span class="hljs-built_in">size</span>()) {<br>                        cat++;<br>                        t -= stk.<span class="hljs-built_in">top</span>();<br>                        t += v;<br><br>                        stk.<span class="hljs-built_in">pop</span>();<br>                        cnt[c]++;<br>                    }<br>                }<br>            }<br>            <span class="hljs-comment">// 更新全局答案</span><br>            res = <span class="hljs-built_in">max</span>(res, t + cat * cat);<br>        }<br><br>        <span class="hljs-keyword">return</span> res;<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><figcaption><span>[]</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findMaximumElegance</span>(<span class="hljs-params">self, items: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict<br>        items.sort(reverse=<span class="hljs-literal">True</span>)<br><br>        t, cat, res = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span><br>        cnt, stk = defaultdict(<span class="hljs-built_in">int</span>), []<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(items)):<br>            v, c = items[i][<span class="hljs-number">0</span>], items[i][<span class="hljs-number">1</span>]<br>            <span class="hljs-keyword">if</span> i &lt; k:<br>                t += v<br>                cnt[c] += <span class="hljs-number">1</span><br>                cat += cnt[c] == <span class="hljs-number">1</span><br>                <span class="hljs-keyword">if</span> cnt[c] &gt; <span class="hljs-number">1</span>:<br>                    stk.append(v)<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">if</span> cnt[c]:<br>                    <span class="hljs-keyword">continue</span><br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(stk):<br>                        t -= stk[-<span class="hljs-number">1</span>]<br>                        t += v<br>                        cat += <span class="hljs-number">1</span><br>                        stk.pop()<br>                        cnt[c] += <span class="hljs-number">1</span><br>            res = <span class="hljs-built_in">max</span>(res, t + cat**<span class="hljs-number">2</span>)<br><br>        <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></tbody></table></figure>
 
                 
               </div>
@@ -712,7 +731,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年4月24日</div>
+          <div>2024年6月13日</div>
         </div>
       
       

@@ -4,7 +4,7 @@ categories: Algorithm
 category_bar: true
 ---
 
-## greedy
+## 贪心
 
 {% note light %}
 
@@ -1364,3 +1364,99 @@ public:
 };
 ```
 
+### 25. 子序列最大优雅度
+
+https://leetcode.cn/problems/maximum-elegance-of-a-k-length-subsequence/
+
+> 标签：反悔贪心
+>
+> 题意：给定长度为 n 的物品序列，现在需要从中寻找一个长度为 k 的子序列使得子序列的总价值最大，给出最终的最大价值。一个序列的价值定义为每个物品的 **本身价值之和** + **物品种类数的平方**
+>
+> 思路：我们采用反悔贪心的思路。首先按照物品本身价值进行降序排序并选择前 k 个物品作为集合 S，然后按顺序枚举剩下的物品进行替换决策。我们记每个物品有一个「本身价值」，集合 S 有一个「种类价值」。那么就会遇到下面两种情况：
+>
+> - 第 i 个物品对应的种类**存在**集合 S 中。此时该物品「一定不选」，因为无论当前物品替代集合中的 S 哪一个物品，本身价值的贡献会下降、种类价值的贡献保持不变。
+> - 第 i 个物品对应的种类**不在**集合 S 中。此时该物品一定选择吗？不一定。有两种情况：
+>     - 集合 S 没有重复种类的物品。此时该物品「一定不选」，同样的，无论当前物品替代集合中的 S 哪一个物品，本身价值的贡献会下降、种类价值的贡献保持不变。
+>     - 集合 S 存在重复种类的物品。此时该物品「一定选」，因为一定可以提升种类价值的贡献，至于减去本身价值的损失后是否使得总贡献增加，并不具备可能的性质，只能每次替换物品时**更新全局答案**进行记录。
+>
+> 时间复杂度：$O(n \log n)$
+
+```cpp []
+class Solution {
+public:
+    long long findMaximumElegance(std::vector<std::vector<int>>& items, int k) {
+        using ll = long long;
+
+        std::sort(items.rbegin(), items.rend());
+
+        ll t = 0, cat = 0, res = 0;
+        std::unordered_map<int, int> cnt;
+        std::stack<ll> stk;
+
+        for (int i = 0; i < items.size(); i++) {
+            ll v = items[i][0], c = items[i][1];
+            if (i < k) {
+                // 前 k 个物品
+                t += v;
+                cnt[c]++;
+                cat += cnt[c] == 1;
+                if (cnt[c] > 1) {
+                    stk.push(v);
+                }
+            } else {
+                // 后 n-k 个物品
+                if (cnt[c]) {
+                    // 已经出现过的物品种类
+                    continue;
+                } else {
+                    // 没有出现过的物品种类
+                    if (stk.size()) {
+                        cat++;
+                        t -= stk.top();
+                        t += v;
+
+                        stk.pop();
+                        cnt[c]++;
+                    }
+                }
+            }
+            // 更新全局答案
+            res = max(res, t + cat * cat);
+        }
+
+        return res;
+    }
+};
+```
+
+```python []
+class Solution:
+    def findMaximumElegance(self, items: List[List[int]], k: int) -> int:
+        from collections import defaultdict
+        items.sort(reverse=True)
+
+        t, cat, res = 0, 0, 0
+        cnt, stk = defaultdict(int), []
+
+        for i in range(len(items)):
+            v, c = items[i][0], items[i][1]
+            if i < k:
+                t += v
+                cnt[c] += 1
+                cat += cnt[c] == 1
+                if cnt[c] > 1:
+                    stk.append(v)
+            else:
+                if cnt[c]:
+                    continue
+                else:
+                    if len(stk):
+                        t -= stk[-1]
+                        t += v
+                        cat += 1
+                        stk.pop()
+                        cnt[c] += 1
+            res = max(res, t + cat**2)
+
+        return res
+```

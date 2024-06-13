@@ -791,8 +791,8 @@ $$
 
 > 参考：
 >
-> - [【优化算法】线搜索方法-步长](https://www.bilibili.com/video/BV11N411m75b/)
-> - [线搜索技术](https://blog.csdn.net/luzhanbo207/article/details/121559905)
+> - [路人 - 视频 - 更通俗的解释](https://www.bilibili.com/video/BV11N411m75b/)
+> - [路人 - 博客 - 更通俗的解释](https://blog.csdn.net/luzhanbo207/article/details/121559905)
 
 ## 第四章 「无约束最优化」TODO
 
@@ -800,42 +800,136 @@ $$
 
 本章介绍无约束函数的最优化算法。其中：
 
-- 最速下降法基于「函数值」
-- 牛顿法基于「二阶导数」
-- 共轭梯度法基于「一阶导数」
-- 拟牛顿法基于「函数值和一阶导数」
+- 最速下降法基于「一阶梯度」。最基本的方法
+- 牛顿法基于「二阶梯度」。最主要的方法
+- 共轭梯度法基于「一阶梯度」。解大型最优化问题的首选
+- 拟牛顿法基于「函数值和一阶梯度」。尤其是其中的 BFGS 是目前最成功的方法
 
 {% endnote %}
 
 ### 4.1 最速下降法
 
-{% note light %}
+{% fold light @极小化 Rosenbrock 函数的 python 代码 %}
 
-即**梯度下降法**，每次迭代时选择的方向是当前解 $x_k$​ 处的导数的负方向。步长因子采用上述第三章的精确线性搜索算法求解。
-
-{% endnote %}
-
-迭代公式：
+```python
+import numpy as np
 
 
-
-其中：
-
-
-
-{% fold light @实战演练 %}
+def f(x):
+    return (1 - x[0])**2 + 100 * (x[1] - x[0]**2)**2
 
 
+def g(x):
+    grad_x = -2 * (1 - x[0]) - 400 * x[0] * (x[1] - x[0]**2)
+    grad_y = 200 * (x[1] - x[0]**2)
+    return np.array([grad_x, grad_y])
+
+
+def gradient_descent(initial_point, max_iter=5, eps=1e-6):
+    x = np.array(initial_point)
+    points = [x]
+    gradients = [g(x)]
+    alphas = []
+
+    for _ in range(max_iter):
+        grad = gradients[-1]
+        direction = -grad
+
+        # 无法确定准确的步长最小化函数，因此此处采用二分答案
+        alpha = 1
+        while f(x + alpha * direction) > f(x):
+            alpha /= 2
+
+        x = x + alpha * direction
+        points.append(x)
+        gradients.append(g(x))
+        alphas.append(alpha)
+
+        if np.linalg.norm(grad) < eps:
+            break
+
+    return points, gradients, alphas
+
+
+initial_point = [-1.2, 1]
+points, gradients, alphas = gradient_descent(initial_point, max_iter=5, eps=1e-6)
+
+for i, (point, grad, alpha) in enumerate(zip(points, gradients, [1] + alphas)):
+    print(f"Iteration {i}:")
+    print(f"  Point       = {point}")
+    print(f"  Gradient    = {grad}")
+    print(f"  Step Size   = {alpha}")
+    print(f"  Direction   = {-grad}")
+    print(f"  Function Val= {f(point)}\n")
+```
+
+已知最优点为 $x^*=(1, 1)^T$，最优解 $f(x^*)=0$，以书中例题初始点 $(-1.2,1)^T$ 为例开始迭代，可得前五个迭代结果为：
+
+```makefile
+Iteration 0:
+  Point       = [-1.2  1. ]
+  Gradient    = [-215.6  -88. ]
+  Step Size   = 1
+  Direction   = [215.6  88. ]
+  Function Val= 24.199999999999996
+
+Iteration 1:
+  Point       = [-0.98945312  1.0859375 ]
+  Gradient    = [38.33803031 21.38400269]
+  Step Size   = 0.0009765625
+  Direction   = [-38.33803031 -21.38400269]
+  Function Val= 5.101112663710957
+
+Iteration 2:
+  Point       = [-1.06433209  1.04417187]
+  Gradient    = [-41.86176097 -17.7261858 ]
+  Step Size   = 0.001953125
+  Direction   = [41.86176097 17.7261858 ]
+  Function Val= 5.047011137654621
+
+Iteration 3:
+  Point       = [-1.02345146  1.0614826 ]
+  Gradient    = [1.696583   2.80593957]
+  Step Size   = 0.0009765625
+  Direction   = [-1.696583   -2.80593957]
+  Function Val= 4.1140390714609625
+
+Iteration 4:
+  Point       = [-1.0267651   1.05600225]
+  Gradient    = [-3.33246584  0.35113404]
+  Step Size   = 0.001953125
+  Direction   = [ 3.33246584 -0.35113404]
+  Function Val= 4.108085021297817
+
+Iteration 5:
+  Point       = [-1.02025638  1.05531644]
+  Gradient    = [1.83345256 2.8786712 ]
+  Step Size   = 0.001953125
+  Direction   = [-1.83345256 -2.8786712 ]
+  Function Val= 4.10215271407615
+```
 
 {% endfold %}
 
-### 4.2 牛顿法
+放一张生动的图：
 
-{% note light %}
+![梯度下降法 - 图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132016327.png)
+
+迭代公式：
+
+![迭代公式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132038143.png)
+
+每次迭代时，**下降方向** $d_k$ 采用当前解 $x_k$ 处的负梯度方向 $- \nabla f(x_k)$，**步长因子** $\alpha_k$ 采用精确线性搜索算法的计算结果。易证相邻迭代解 $x_k,x_{k+1}$ 的方向 $d_k,d_{k+1}$ 是正交的：
+
+由于 $\phi(\alpha) = f(x_k + \alpha d_k)$，在采用线搜索找最优步长时，步长的搜索结果 $\alpha_k$ 即为使得 $\phi'(\alpha)=0$ 的解，于是可得 $0=\phi'(\alpha) = \phi'(\alpha_k) = \nabla f(x_k+\alpha_k d_k)d_k = -d_{k+1}^T \cdot d_k$，即 $d_{k+1}^T \cdot d_k = 0$。如图：
+
+![相邻迭代解的方向正交](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132046068.png)
+
+也正因为搜索方向正交的特性导致最速下降法的收敛速度往往不尽如人意。
+
+### 4.2 牛顿法 TODO
 
 牛顿法的核心思路是利用二次逼近的思路，每次迭代时都采用当前解 $x_k$​​ 的二次逼近，然后求解二次函数的极小值即可。
-
-{% endnote %}
 
 迭代公式：
 $$
@@ -845,23 +939,19 @@ $$
 $$
 G_k = \nabla^2f(x_k),\quad g_k=\nabla f(x_k)
 $$
-{% fold light @实战演练 %}
+### 4.3 共轭梯度法 TODO
 
 
 
-{% endfold %}
-
-### 4.3 共轭梯度法
-
-#### 4.3.1 共轭方向法
-
-#### 4.3.2 共轭梯度法
-
-#### 4.3.3 非二次函数的共轭梯度法
-
-### 4.4 拟牛顿法
+### 4.4 拟牛顿法 TODO
 
 
+
+> 参考：
+>
+> - [西北工业大学 - 课件 - 含例题与解析](https://max.book118.com/html/2017/0606/111956214.shtm)
+> - [北京大学 - 教材 - 含例题与解析](https://www.math.pku.edu.cn/teachers/lidf/docs/statcomp/html/_statcompbook/opt-uncons.html#opt-uncons)
+> - [路人 - 博客 - 更通俗的解释](https://blog.csdn.net/Serendipity_zyx/article/details/120515338)
 
 ## 第五章 「无约束最优化」最小二乘 TODO
 
@@ -957,7 +1047,7 @@ $$
 
 ## 后记
 
-下面罗列一下考试题型（考前就透露完了 :joy:）：
+下面罗列一下考试题型（考前就透露完了🤣）：
 
 - 选择 `6 * 2'`
     - 拉格朗日函数中，等式对应的乘子 $\lambda>0$
@@ -980,4 +1070,4 @@ $$
 
         4. 当 $\sigma \to \infty$​ 时求最优解，并判断是否和第一问计算结果一致
 
-很遗憾将这门课学成了面向已知考试题型的过拟合形式。我并不觉得我掌握了多少优化理论的知识，最多称得上知道了优化问题的大致分类和一些基本的优化应用。从我的笔记就可以看出，自第三章开始就没怎么涉及到理论的证明，确实是证不明白 :joy:。你我皆是局内人，祝好。
+很遗憾将这门课学成了面向已知考试题型的过拟合形式。我并不觉得我掌握了多少优化理论的知识，最多称得上知道了优化问题的大致分类和一些基本的优化应用。从我的笔记就可以看出，自第三章开始就没怎么涉及到理论的证明，确实是证不明白🤡。你我皆是局内人，祝好。

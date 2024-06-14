@@ -6,7 +6,7 @@ categories:
 category_bar: true
 ---
 
-# 线性代数
+## 《线性代数》
 
 ## 第1章 行列式
 
@@ -103,31 +103,31 @@ $$
 
 证明很简单，就是从原行列式出发，如果两行（列）元素完全一致，那么行列式显然为0
 
-> ==考点：==
+> 考点：
 >
 > 一般就是把不同行（列）的元素乘上其他行（列）的元素，然后适当配凑即可
 >
-> <img src="https://s2.loli.net/2023/12/26/UqoA1TysYV8vClP.png" alt="image-20230920193358783" style="zoom:33%;" />
+> ![例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140938343.png)
 
-### * 几种特殊的行列式
+### 几种特殊的行列式（补）
 
-#### *.1 分块行列式
+#### 分块行列式
 
-0在左下或右上就是左上角与右下角行列式之积（$D=D_1D_2$），0在左上或右下就是左下角与右上角行列式之积加上符号判定
+0 在左下或右上就是左上角与右下角行列式之积（$D=D_1D_2$），0 在左上或右下就是左下角与右上角行列式之积加上符号判定
 
-<img src="https://s2.loli.net/2023/12/26/W7MaBckEUz6hZGo.png" alt="image-20230920192705683" style="zoom: 33%;" />
+![分块行列式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140938721.png)
 
 证明：分区域转换为上三角即可
 
-#### *.2 $2n$ 阶行列式
+#### 2n 阶行列式
 
 先行对换，再列对换，通过分块行列式和数学归纳法，可得答案为一个等比数列
 
-<img src="https://s2.loli.net/2023/12/26/oOmvwyIMnkBTLDA.png" alt="image-20230920193526577" style="zoom:50%;" />
+![2n 阶行列式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140939983.png)
 
-#### *.3 范德蒙德行列式:star:
+#### 范德蒙德行列式 :star:
 
-<img src="https://s2.loli.net/2023/12/26/A7XHUtnYGDJ9uvL.png" alt="image-20230920192940206" style="zoom:33%;" />
+![范德蒙德行列式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140939979.png)
 
 证明：首先从最后一行开始，依次减去前一行的 $x_1$ 倍，凑出第一列一个元素不为零的情况，最后通过数学归纳发，即可求解。项数为
 $$
@@ -144,7 +144,7 @@ $$
 
 #### 2.1.2 矩阵的定义
 
-相较于行列式是一个==数==，矩阵就是一个==数表==
+相较于行列式是一个数，矩阵就是一个数表
 
 - n阶矩阵
 - 行（列）矩阵
@@ -163,59 +163,66 @@ $$
 
 按元素一个一个乘
 
-#### 2.2.3 矩阵与矩阵相乘 :fire:（乘法算律）
+#### 2.2.3 矩阵与矩阵相乘
 
-1. 基本规则：$AB=C$ 中 $c_{ij}$ 就是A的第i行与B的第j列元素依次相乘求和
-2. 没有交换律： $AB$ 称为A左乘B，交换成立的前提是==A和B两个**方阵**左乘和右乘相等==才可以
-3. 有结合律
-4. 有分配率
-5. 单位矩阵：主对角线上元素全为1，其余全为0
-6. 纯量矩阵：主对角线上元素全为 $\lambda$ ，其余全为0
-7. 幂运算：当A、B两个方阵可交换时，有幂运算规律（因为有结合律）
-8. ==算律==
+1. 基本规则：$AB=C$ 中 $c_{ij}$ 就是A的第 i 行与 B 的第 j 列元素依次相乘求和
+2. 没有交换律： $AB$ 称为 A 左乘 B，交换成立的前提是 A 和 B 两个**方阵**左乘和右乘相等才可以
+3. 有结合律、分配率
+4. 单位矩阵：主对角线上元素全为1，其余全为0
+5. 纯量矩阵：主对角线上元素全为 $\lambda$ ，其余全为0
+6. 幂运算：当A、B两个方阵可交换时，有幂运算规律（因为有结合律）
 
-<img src="https://s2.loli.net/2023/12/26/r8PJEn6SUFYl7bZ.png" alt="image-20230927200440429" style="zoom:50%;" />
+矩阵乘法算律：
 
-#### 2.2.4 矩阵的转置 :fire:（转置算律）
+![矩阵乘法算律](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140939006.png)
 
-类似于沿着主对角线翻转，其实就是每一个元素的行列号交换一下位置
+#### 2.2.4 矩阵的转置
 
-1. ==算律==
+矩阵转置算律：
 
-    <img src="https://s2.loli.net/2023/12/26/KdDrv2Igth5H3Ew.png" alt="image-20230927200631513" style="zoom:50%;" />
+![矩阵转置算律](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140940894.png)
 
-    > （4）证明：左边的 $c_{ij}$ 其实应该是 $AB$ 的 $c_{ji}$ ，对应 $A$ 的第 $j$ 行与 $B$ 的第 $i$ 列，那么反过来对于ij就是B转置的第i行与A转置的第j列
+证明 (4)：左边的 $c_{ij}$ 其实应该是 $AB$ 的 $c_{ji}$ ，对应 $A$ 的第 $j$ 行与 $B$ 的第 $i$ 列，那么反过来对于 ij 就是 B 转置的第 i 行与 A 转置的第 j 列
 
-2. 对称矩阵：对于一个方阵A，如果 $A = A^T$ 则称A为对称阵
+对称矩阵：对于一个方阵 A，如果 $A = A^T$ 则称 A 为对称阵
 
-3. 应用举例
+![对称矩阵 - 例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140940661.png)
 
-    <img src="https://s2.loli.net/2023/12/26/F7zcqHhaxXMmZU8.png" alt="image-20231013154124164" style="zoom: 33%;" />
+#### 2.2.5 方阵的行列式
 
-#### 2.2.5 方阵的行列式 :fire:（行列式算律）
+行列式算律：
 
-1. ==算律==
+![行列式算律](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140940619.png)
 
-    <img src="https://s2.loli.net/2023/12/26/oBFwv4OWVMIsqxP.png" alt="image-20231013154307875" style="zoom:50%;" />
-
-2. 伴随矩阵
-    $$
-    AA^* = A^*A = \left | A \right |E
-    $$
-    <img src="https://s2.loli.net/2023/12/26/1EDZkxrYljewOyC.png" alt="image-20231013154434881" style="zoom:33%;" />
+伴随矩阵：
+$$
+AA^* = A^*A = \left | A \right |E
+$$
+![伴随矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140940481.png)
 
 ### 2.3 逆矩阵
 
-#### 2.3.1 逆矩阵的定义、性质和求法 :fire:（逆算律）
+#### 2.3.1 逆矩阵的定义、性质、求法
 
-1. 定义：如果对于矩阵A，有 $AB = BA = E$ ，则称B为A的逆矩阵
-2. 如果矩阵A可逆，则A的逆矩阵是唯一的
-3. 如果矩阵A可逆，则 $|A| \ne 0$ 
-4. 若 $|A| \ne 0$ ，则矩阵A可逆，且 $A^{-1} = \frac{1}{|A|}A^*$
-5. 奇异矩阵：$|A| = 0$ ，非奇异矩阵：$|A| \ne 0$
-6. 若 $AB=E$ （或 $BA = E$），则A可逆且 $B = A^{-1}$
+定义：
 
-算律：
+- 如果对于矩阵 A，有 $AB = BA = E$ ，则称 B 为 A 的逆矩阵
+
+性质：
+
+- 唯一性：如果矩阵 A 可逆，则 A 的逆矩阵是唯一的
+
+- 行列式：如果矩阵A可逆，则 $|A| \ne 0$ 
+
+- 奇异矩阵：$|A| = 0$ ，非奇异矩阵：$|A| \ne 0$
+
+- 必要条件：若 $AB=E$ （或 $BA = E$），则 A 可逆且 $B = A^{-1}$
+
+求法：
+
+- 若 $|A| \ne 0$ ，则矩阵 A 可逆，且 $A^{-1} = \frac{1}{|A|}A^*$
+
+逆矩阵算律：
 $$
 \begin{aligned}
 {(A^{-1})}^{-1} &=& A \\
@@ -227,267 +234,276 @@ $$
 \end{aligned}
 $$
 
-<img src="https://s2.loli.net/2023/12/26/s8NPuCtSZmMYz9U.png" alt="image-20231226233254694" style="zoom:80%;" />
-
 #### 2.3.2 逆矩阵的初步应用
 
-1. **求逆矩阵**
-    $$
-    \text{已知矩阵}A，B，C，\text{且}AXB=C，\text{求矩阵}X
-    $$
-    只需要将矩阵X左乘A右乘B即可
+（一）求逆矩阵：
+$$
+\begin{aligned}
+\text{已知矩阵 $A,B,C$ 且 $AXB=C$,求矩阵 $X$}\\
+\text{只需将矩阵 $X$ 左乘 $A^{-1}$ 右乘 $B^{-1}$ 即可}
+\end{aligned}
+$$
+（二）矩阵多项式：
 
-2. **矩阵多项式**
+定义：
 
-    - 定义：
+![定义](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140941791.png)
 
-        <img src="https://s2.loli.net/2023/12/26/6oPNwmfryO7ztIG.png" alt="image-20231021155745119" style="zoom:33%;" />
+计算技巧一：直接代入
 
-    - 计算技巧一
+![直接代入](https://s2.loli.net/2023/12/26/5cNFKJSY79kzxIw.png)
 
-        <img src="https://s2.loli.net/2023/12/26/5cNFKJSY79kzxIw.png" alt="image-20231021155904932" style="zoom:33%;" />
+计算技巧二：对角阵幂运算
 
-    - 计算技巧二：**对角阵幂运算**
+![对角阵幂运算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946426.png)
 
-        <img src="https://s2.loli.net/2023/12/26/mLgyCwkA4xtIGEn.png" alt="image-20231021155947814" style="zoom:33%;" />
+计算技巧三：对角矩阵多项式转化为数的多项式计算
 
-    - 计算技巧三：**对角矩阵多项式转化为数的多项式计算**
-
-        <img src="https://s2.loli.net/2023/12/26/criCbESgTqkRaeN.png" alt="image-20231021160018932" style="zoom:33%;" />
+![对角矩阵多项式转化为数的多项式计算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937968.png)
 
 ### 2.4 克拉默法则
 
-- **解决问题的场景：**
+应用：
 
-    解决==未知数数量和方程个数相等，且系数行列式不为零==的线性方程组。
+- 求解未知数数量和方程个数相等，且系数行列式不为零的线性方程组
 
-    是求解一般线性方程组的一个特殊场景。
+- 是求解一般线性方程组的一个特殊场景
 
-- **结论：**
+结论：
 
-    如果线性方程组
+如果线性方程组
 
-    <img src="https://s2.loli.net/2023/12/26/A6IZXiq1gme2pOU.png" alt="image-20231021162423180" style="zoom:33%;" />
+![线性方程组](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937686.png)
 
-    的系数矩阵A的行列式不为零，即
+的系数矩阵 A 的行列式不为零，即
 
-    <img src="https://s2.loli.net/2023/12/26/NLjAgzkdQFnuRHb.png" alt="image-20231021162450292" style="zoom:33%;" />
+![系数矩阵 A 的行列式不为零](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937651.png)
 
-    则方程组有唯一解
+则方程组有唯一解
 
-    <img src="https://s2.loli.net/2023/12/26/uL3kPFQVO4mHpMZ.png" alt="image-20231021162512127" style="zoom:33%;" />
+![方程组有唯一解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937081.png)
 
-    其中 $A_j(j=1,2,...,n)$ 是把系数矩阵A中第 $j$ 列的元素用方程组右端的常数项代替后所得到的n阶矩阵，即
+其中 $A_j(j=1,2,...,n)$ 是把系数矩阵 A 中第 $j$ 列的元素用方程组右端的常数项代替后所得到的 n 阶矩阵，即
 
-    <img src="https://s2.loli.net/2023/12/26/StcNO2BduhwPVzm.png" alt="image-20231021162710174" style="zoom:33%;" />
+![任意一列](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937003.png)
 
-- **证明：**
+证明：
 
-    第一步：方程组转化为矩阵方程
+第一步：方程组转化为矩阵方程
 
-    <img src="https://s2.loli.net/2023/12/26/4gEwPQjFKAU5Wdc.png" alt="image-20231021162913234" style="zoom:33%;" />
+![方程组转化为矩阵方程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937364.png)
 
-    第二步：应用逆矩阵消元
+第二步：应用逆矩阵消元
 
-    <img src="https://s2.loli.net/2023/12/26/gwrVUXlbFdva7jI.png" alt="image-20231021162928918" style="zoom:33%;" />
+![应用逆矩阵消元](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937245.png)
 
-    第三步：应用行列式的性质计算
+第三步：应用行列式的性质计算
 
-    <img src="https://s2.loli.net/2023/12/26/eYA7h2NX1jZfuvG.png" alt="image-20231021162940241" style="zoom:33%;" />
+![应用行列式的性质计算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937432.png)
 
 ### 2.5 矩阵分块法
 
-个人感觉就是一种向量化的更高级的思维，对于一个向量，进行全新向量的拆解，从而实现拆分计算。以下是5个拆分规则，重点关注第5点，即==分块对角矩阵==以及最后的==按行按列分块==的两个应用
+个人感觉就是一种向量化的更高级的思维，对于一个向量，进行全新向量的拆解，从而实现拆分计算。以下是 5 个拆分规则，重点关注第 5 点，即分块对角矩阵以及最后的按行按列分块的两个应用。
 
-1. 拆分规则
+#### 2.5.1 拆分规则
 
-    首先需要知道的是，在对矩阵进行分块计算的时候，前提有两个：**一个是两个矩阵一开始的规格要相同，另一个是两个矩阵分块之后的规格也要相同**。
+首先需要知道的是，在对矩阵进行分块计算的时候，前提有两个：**一个是两个矩阵一开始的规格要相同，另一个是两个矩阵分块之后的规格也要相同**。
 
-    - **按位加**
+按位加：
 
-        若
+若
 
-        <img src="https://s2.loli.net/2023/12/26/DtshE17eCk6bWMu.png" alt="image-20231021171335434" style="zoom:33%;" />
+![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946427.png)
 
-        则
+则
 
-        <img src="https://s2.loli.net/2023/12/26/4fX86Hl2yTPnuca.png" alt="image-20231021171359581" style="zoom:33%;" />
+![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946428.png)
 
-    - **按位数乘**
+按位数乘：
 
-        若
+若
 
-        <img src="https://s2.loli.net/2023/12/26/bzv5uXMxHECOwAB.png" alt="image-20231021171433798" style="zoom:33%;" />
+![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946429.png)
 
-        则
+则
 
-        <img src="https://s2.loli.net/2023/12/26/3Y7JH5c49vky6XU.png" alt="image-20231021171451511" style="zoom:33%;" />
+![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946430.png)
 
-    - **矩阵乘法**
+矩阵乘法：
 
-        若
+若
 
-        <img src="https://s2.loli.net/2023/12/26/YzxliFbPsDryBpZ.png" alt="image-20231021171524198" style="zoom:33%;" />
+![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946431.png)
 
-        则
+则
 
-        <img src="https://s2.loli.net/2023/12/26/oCSQUvujLbcgmM1.png" alt="image-20231021171548611" style="zoom:33%;" />
+![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946432.png)
 
-        其中
+其中
 
-        <img src="https://s2.loli.net/2023/12/26/nwItUHMg1dmz2fK.png" alt="image-20231021171606419" style="zoom:33%;" />
+![其中](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946433.png)
 
-    - **按位转置**
+按位转置：
 
-        若
+若
 
-        <img src="https://s2.loli.net/2023/12/26/ArN7sfPwh9t4gkE.png" alt="image-20231021171643394" style="zoom:33%;" />
+![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946434.png)
 
-        则
+则
 
-        <img src="https://s2.loli.net/2023/12/26/Gs5i1LSkcbvAeOT.png" alt="image-20231021171701572" style="zoom:33%;" />
+![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946435.png)
 
-    - **对角分块矩阵**
+对角分块矩阵：
 
-        <img src="https://s2.loli.net/2023/12/26/NLYMzAd3vXFniHE.png" alt="image-20231021171744452" style="zoom:33%;" />
+![对角分块矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946436.png)
 
-        其中 $A_1,A_2,...,A_s$ 都是方阵，则称 $A$ 为对角分块矩阵
+其中 $A_1,A_2,...,A_s$ 都是方阵，则称 $A$ 为对角分块矩阵
 
-        运算性质：
+#### 2.5.2 运算性质
 
-        1. **幂运算就是主对角线相应元素的幂运算**
+幂运算就是主对角线相应元素的幂运算
 
-            <img src="https://s2.loli.net/2023/12/26/jRBUlp9V4zsScQL.png" alt="image-20231021172102979" style="zoom:33%;" />
+![幂运算就是主对角线相应元素的幂运算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946437.png)
 
-        2. **矩阵行列式运算性质**
+矩阵行列式运算性质
 
-            <img src="https://s2.loli.net/2023/12/26/1PL3yUDsAca9Kvg.png" alt="image-20231021172132310" style="zoom:33%;" />
+![矩阵行列式运算性质](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946438.png)
 
-        3. **矩阵的逆就是主对角线的块按位取逆**
+矩阵的逆就是主对角线的块按位取逆
 
-            <img src="https://s2.loli.net/2023/12/26/K4Y1shjGCaI3mOR.png" alt="image-20231021172215986" style="zoom:33%;" />
+![矩阵的逆就是主对角线的块按位取逆](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946439.png)
 
-2. 按行按列分块的应用
+按行按列分块的应用
 
-    - $A^T A=O$ 的充要条件是 $A=O$
-    - 线性方程组的三种表示方式：
-        1. 就是类似于一开始的矩阵数表的表示方式
-        2. 将系数表示为一个矩阵，将未知数表示成一个矩阵，将常数项也表示成一个矩阵
-        3. 同上，只是未知数保持不变，即 $x_1 \symbf{a_1} + x_2 \symbf{a_2} + \cdots + x_n \symbf{a_3} = \symbf{b}$
-    - 线性方程组的解的两种表示方式：
-        1. 一一表示
-        2. 列向量表示
+- $A^T A=O$ 的充要条件是 $A=O$
+- 线性方程组的三种表示方式：
+    1. 就是类似于一开始的矩阵数表的表示方式
+    2. 将系数表示为一个矩阵，将未知数表示成一个矩阵，将常数项也表示成一个矩阵
+    3. 同上，只是未知数保持不变，即 $x_1 {a_1} + x_2 {a_2} + \cdots + x_n {a_3} = {b}$
+- 线性方程组的解的两种表示方式：
+    1. 一一表示
+    2. 列向量表示
 
-3. 两个好题
+#### 2.5.3 好题举例
 
-    - 分块的整体运算思想+矩阵提取公因子
+分块的整体运算思想 + 矩阵提取公因子
 
-        <img src="https://s2.loli.net/2023/12/26/ytsq2TaIuDmVBJK.png" alt="image-20231021174011922" style="zoom:33%;" />
+![分块的整体运算思想 + 矩阵提取公因子](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946440.png)
 
-    - 逆矩阵的按定义的求法，即配凑求出逆矩阵（常规计算法是利用了伴随矩阵的计算思想）
+逆矩阵的按定义的求法，即配凑求出逆矩阵（常规计算法是利用了伴随矩阵的计算思想）
 
-        <img src="https://s2.loli.net/2023/12/26/PUAc27rYjvLghBa.png" alt="image-20231021174034125" style="zoom:33%;" />
+![配凑求出逆矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946441.png)
 
 ## 第3章 矩阵的初等变换与线性方程组
 
 ### 3.1 矩阵的初等变换
 
-#### 引入
+#### 3.1.1 引入
 
-**矩阵的变换** $\to$ **矩阵增广矩阵的行变换** $\to$ **行最简形矩阵**
+矩阵的变换 $\to$ 矩阵增广矩阵的行变换 $\to$ 行最简形矩阵
 
-#### 矩阵的初等行变换
+#### 3.1.2 矩阵的初等行变换
+
+定义：
 
 1. $r_i \leftrightarrow r_j$
 2. $r_i \leftarrow r_i \times k\ (k \neq 0)$
-3. $r_i \leftarrow r_i + kr_j$
+3. $r_i \leftarrow r_i + kr_j$​
 
-- 将行变为列，就是矩阵的初等列变换
-- 初等行变换与初等列变化统称初等变换
-- 三种变换都是可逆的
+性质：
 
-#### 矩阵的等价关系
+1. 将行变为列，就是矩阵的初等列变换
+2. 初等行变换与初等列变化统称初等变换
+3. 三种变换都是可逆的
 
-- $A$ 经过有限次初等行变换变成矩阵 $B$，就称 $A$ 与 $B$ 行等价，记作 $A \stackrel{r}{\sim} B$
-- $A$ 经过有限次初等列变换变成矩阵 $B$，就称 $A$ 与 $B$ 列等价，记作 $A \stackrel{c}{\sim} B$
-- $A$ 经过有限次初等变换变成矩阵 $B$，就称 $A$ 与 $B$ 等价，记作 $A \sim B$
+#### 3.1.3 矩阵的等价关系
 
-1. 反身性：$A \sim A$
+定义：
+
+1. $A$ 经过有限次初等行变换变成矩阵 $B$，就称 $A$ 与 $B$ 行等价，记作 $A \stackrel{r}{\sim} B$
+1. $A$ 经过有限次初等列变换变成矩阵 $B$，就称 $A$ 与 $B$ 列等价，记作 $A \stackrel{c}{\sim} B$
+1. $A$ 经过有限次初等变换变成矩阵 $B$，就称 $A$ 与 $B$ 等价，记作 $A \sim B$
+
+性质：
+
+1. 反身性：$A \sim A$​
 2. 对称性：若 $\ A \sim B$ ，则 $\ B \sim A$
 3. 传递性：若 $\ A \sim B$ ，$B \sim C$ ，则 $\ A \sim C$
 
-#### 三种形式的矩阵
+#### 3.1.3 三种形式的矩阵
 
-1. 行阶梯型矩阵
+行阶梯型矩阵
 
-    <img src="https://s2.loli.net/2023/12/26/pm4gPFM3WQnj7BH.png" alt="image-20231028112516340" style="zoom: 33%;" />
+![行阶梯型矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946442.png)
 
-2. 行最简形矩阵
+行最简形矩阵
 
-    <img src="https://s2.loli.net/2023/12/26/6BnUs9Q3W2Kp8kX.png" alt="image-20231028112539020" style="zoom:33%;" />
+![行最简形矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946443.png)
 
-3. 标准形
+标准形
 
-    <img src="https://s2.loli.net/2023/12/26/tsYGolFOdbWZwHq.png" alt="image-20231028112726679" style="zoom:33%;" />
+![标准形](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946444.png)
 
-    <img src="https://s2.loli.net/2023/12/26/nYexESfP9IrpZ2s.png" alt="image-20231028112702780" style="zoom:33%;" />
+![image-20231028112702780](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946445.png)
 
-#### ==性质1：矩阵初等变换的性质==
+#### 3.1.4 性质1：矩阵初等变换的性质
 
 - 对 $A_{m\times n}$ 施行一次初等行变换，相当于在 $A$ 的左边乘以相应的 $m$ 阶初等矩阵
 
 - 对 $A_{m\times n}$ 施行一次初等列变换，相当于在 $A$ 的右边乘以相应的 $n$ 阶初等矩阵
 
-<img src="https://s2.loli.net/2023/12/26/x8pdcaFrWuNhkE4.png" alt="image-20231028114217720" style="zoom:33%;" />
+![矩阵初等变换的性质](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946446.png)
 
 其中：
 
-$E_m(i,j)$ 表示：交换初等矩阵的第 $i$ 行与第 $j$ 行
+- $E_m(i,j)$ 表示：交换初等矩阵的第 $i$ 行与第 $j$ 行
+- $E_m(i(k))$ 表示：将初等矩阵的第 $i$ 行乘以 $k$
+- $E_m(ij(k))$ 表示：将初等矩阵的第 $i$ 行加上第 $j$ 行的 $k$ 倍
 
-$E_m(i(k))$ 表示：将初等矩阵的第 $i$ 行乘以 $k$
+#### 3.1.5 性质2：可逆的充要条件
 
-$E_m(ij(k))$ 表示：将初等矩阵的第 $i$ 行加上第 $j$ 行的 $k$ 倍
+![image-20231102163134078](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946447.png)
 
-#### ==性质2：==
+#### 3.1.6 定理：矩阵初等变换的存在性定理
 
-<img src="https://s2.loli.net/2023/12/26/jgI4Rm6OhdyvliA.png" alt="image-20231102163134078" style="zoom: 50%;" />
+![矩阵初等变换的存在性定理](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946448.png)
 
-#### ==定理1：==
+对于（1）计算 $P$ 的方法：有配凑的味道 - 计算变换矩阵
 
-<img src="https://s2.loli.net/2023/12/26/93GzM1q8b2khEwf.png" alt="image-20231102163243381" style="zoom:50%;" />
+![计算变换矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946449.png)
 
-- 对于（1），计算 $P$ 的方法：有配凑的味道 - ==计算变换矩阵==
+#### 3.1.7 推论：方阵可逆的等价推导
 
-<img src="https://s2.loli.net/2023/12/26/oL5QnXlaytBJzTx.png" alt="image-20231102163540003" style="zoom:50%;" />
+![方阵可逆的等价推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946450.png)
 
-#### ==推论：==
+于是证明一个方阵 $A$可逆就又多了一个策略，即将 $A$ 经过有限次的初等行变换之后变成了单位阵。
 
-<img src="https://s2.loli.net/2023/12/26/cazomZkAd2rRFUE.png" alt="image-20231102163257748" style="zoom:50%;" />
+对于（1）当 $A$ 为可逆方阵时计算 $P$ 的方法：此时计算出来的 $P$ 就是 $A^{-1}$ - 证明可逆 + 计算逆矩阵
 
-- 于是证明一个方阵 $A$可逆就又多了一个策略，即将 $A$ 经过有限次的初等行变换之后变成了单位阵。
+![当 A 为可逆方阵时计算 P 的方法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946451.png)
 
-- 对于（1），当 $A$ 为可逆方阵时：计算 $P$ 的方法：此时计算出来的 $P$ 就是 $A^{-1}$ - ==证明可逆 + 计算逆矩阵==
+#### 3.1.8 初等变换的应用
 
-<img src="https://s2.loli.net/2023/12/26/2s16Iin947uL3Cj.png" alt="image-20231102163706516" style="zoom:50%;" />
+（一）解方程
 
-==解方程==
+问题：已知矩阵 $A,B$，且 $AX=B$，现在需要求解 $X$ 矩阵
 
-已知矩阵 $A,B$，且 $AX=B$，现在需要求解 $X$ 矩阵。
+思路：首先需要证明 $A$ 可逆，然后需要计算 $A^{-1}B$，那么采用本节的知识：如果 $A \stackrel{r}{\sim} E$，则 $A$ 可逆，即 $PA=E$，还需要求 $A^{-1}B$。可以发现，此时的 $P = A^{-1}$，那么答案就是 $PB$，于是我们只需要将 $A,B$ 同时进行 $P$ 初等变换即可
 
-思路：首先需要证明 $A$ 可逆，然后需要计算 $A^{-1}B$，那么采用本节的知识：如果 $A \stackrel{r}{\sim} E$，则 $A$ 可逆，即 $PA=E$，还需要求 $A^{-1}B$。可以发现，此时的 $P = A^{-1}$，那么答案就是 $PB$，于是我们只需要将 $A,B$ 同时进行 $P$ 初等变换即可。
+答案：最终的目标就是将拼接后的矩阵转化为行最简形矩阵，左边是一个单位矩阵即可
 
-最终的目标就是将拼接后的矩阵转化为行最简形矩阵，左边是一个单位矩阵即可。
+（二）解线性方程组
 
-==计算方程数量和未知数数量一致的线性方程组==
+问题：求解方程数量和未知数数量一致的线性方程组
 
-思路同上方解方程的思路 $Ax=b$，只不过 $A$ 就是系数矩阵，$b$ 就是常数矩阵，$x$ 就是解方程
+思路：同上方解方程的思路 $Ax=b$，只不过 $A$ 就是系数矩阵，$b$ 就是常数矩阵，$x$ 就是解方程
 
-四种解这种线性方程组的策略：
+补充：解这种线性方程组的策略：
 
-1. 消元
-2. 克拉默法则
-3. 求 $A^{-1}b$
-4. 线性变换
+1. 高中学的：消元
+2. 第二章第 3 目：求 $A^{-1}b$
+3. 第二章第 4 目：克拉默法则
+4. 上面刚学的：线性变换
 
 ### 3.2 矩阵的秩
 
@@ -495,17 +511,19 @@ $E_m(ij(k))$ 表示：将初等矩阵的第 $i$ 行加上第 $j$ 行的 $k$ 倍
 
 性质：
 
-1. $0 \le R(A_{m\times n}) \le \min \{m, n\}$
+1. 转置不变性：$R(A^T)=R(A)$
 
-2. $R(A^T)=R(A)$
+2. 相似不变性：若 $A \sim B $，则 $R(A)=R(B)$
 
-3. 若 $A \sim B $，则 $R(A)=R(B)$
+3. 初等变换不变性：若 $P,Q$ 可逆，则 $R(PAQ)=R(A)$
 
-4. 若 $P,Q$ 可逆，则 $R(PAQ)=R(A)$
+4. 乘法性质：$0 \le R(A_{m\times n}) \le \min \{m, n\}$
 
-5. 性质：<img src="https://s2.loli.net/2023/12/26/4LwcvgDzfkQeIlP.png" alt="image-20231108224218756" style="zoom:25%;" />
+5. 加法性质：
 
-6. 若 $A_{m\times n}$ 的秩为 $r$，则 $A$ 一定可以转化为 
+    ![加法性质](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946453.png)
+
+6. 压缩性：若 $A_{m\times n}$ 的秩为 $r$，则 $A$ 一定可以转化为 
     $$
     \begin{bmatrix}
     E_r & O \\
@@ -515,13 +533,13 @@ $E_m(ij(k))$ 表示：将初等矩阵的第 $i$ 行加上第 $j$ 行的 $k$ 倍
 
 ### 3.3 线性方程组的解
 
-概括：利用**矩阵的初等变换**和**矩阵的秩**求解一般的线性方程组的问题
+求解策略：利用 **矩阵的初等变换** 和 **矩阵的秩** 求解一般的线性方程组
 
 对于 $Ax=b$ 的线性方程组：
 
-1. 无解的充要条件：$R(A)<R(A,b)$
-2. 有唯一解的充要条件：$R(A)=R(A,b)=n$
-3. 有无限多解的充要条件：$R(A)=R(A,b)<n$
+- 无解的充要条件：$R(A)<R(A,b)$
+- 有唯一解的充要条件：$R(A)=R(A,b)=n$
+- 有无限多解的充要条件：$R(A)=R(A,b)<n$
 
 求解齐次线性方程组：
 
@@ -537,97 +555,124 @@ $E_m(ij(k))$ 表示：将初等矩阵的第 $i$ 行加上第 $j$ 行的 $k$ 倍
 
 #### 4.1.1 n维向量的概念
 
-- $n>3$ 的向量没有直观的几何形象
+显然的 $n>3$ 的向量没有直观的几何形象，所谓向量组就是由同维度的列（行）向量所组成的集合。
 
-- 所谓向量组，就是由同维度的列（行）向量所组成的集合
+向量组与矩阵的关系：
 
-- 向量组与矩阵的关系
-
-    <img src="https://s2.loli.net/2023/12/26/suIvDH8Zo5pLrh6.png" alt="image-20231122195648569" style="zoom:75%;" />
+![向量组与矩阵的关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946454.png)
 
 #### 4.1.2 线性组合和线性表示
 
-1. 定义：
-    - 线性组合：<img src="https://s2.loli.net/2023/12/26/BqZHQP8tNyoiKh5.png" alt="image-20231122195848433" style="zoom:50%;" />
-    - 线性表示：<img src="https://s2.loli.net/2023/12/26/7EI5ZQDsobjAwm6.png" alt="image-20231122195909024" style="zoom:50%;" />
+定义：
 
-2. 判定：
+（一）线性组合：
 
-    > 转化为方程组有解问题，从而转化为求解矩阵的秩的问题5
+![线性组合定义](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946455.png)
 
-    - 判定**向量** $b$ 能否被**向量组** $A$ 线性表示：<img src="https://s2.loli.net/2023/12/26/SvX9GTtEP2haprk.png" alt="image-20231122200148341" style="zoom:50%;" />
-    - 判定**向量组** $B$ 能否被**向量组** $A$ 线性表示：<img src="https://s2.loli.net/2023/12/26/b6gUmMnxFPaXjlo.png" alt="image-20231122201003536" style="zoom:60%;" />
-        - 推论：<img src="https://s2.loli.net/2023/12/26/UjKot3z64fyuORT.png" alt="image-20231122202652437" style="zoom:67%;" />
-    - 判定**向量组** $B$ 与**向量组** $A$ 等价：<img src="https://s2.loli.net/2023/12/26/wtSH7ajTe5vnApb.png" alt="image-20231122201122856" style="zoom:67%;" />
+（二）线性表示：
+
+![线性表示定义](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946456.png)
+
+判定：转化为判定方程组有解问题，从而转化为求解矩阵的秩的问题 5
+
+- 判定**向量** $b$ 能否被**向量组** $A$ 线性表示：
+
+    ![向量被向量组线性表示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946457.png)
+
+- 判定**向量组** $B$ 能否被**向量组** $A$ 线性表示：
+  
+    ![向量组被向量组线性表示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946458.png)
+    
+    该判定定理有以下推论：
+    
+    ![放缩性质](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946459.png)
+    
+- 判定**向量组** $B$ 与**向量组** $A$ 等价：
+
+    ![向量组与向量组等价](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946460.png)
 
 ### 4.2 向量组的线性相关性
 
-1. 定义：
-    - 线性相关：<img src="https://s2.loli.net/2023/12/26/jr4GTKEXQLc7l6g.png" alt="image-20231122203108481" style="zoom:67%;" />
-    - 注意：<img src="https://s2.loli.net/2023/12/26/R1LMr243XCGEANv.png" alt="image-20231129200937221" style="zoom: 67%;" />
+定义：
+
+![线性相关定义](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946461.png)
+
+![注意](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946462.png)
+
+判定：
+- 定理一：
+
+    ![定理一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946463.png)
+
+    证明：按照定义，只需要移项 or 同除，进行构造即可
+
+- 定理二：
+
+    ![定理二](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946464.png)
     
-2. 判定：
-    - 定理一：<img src="https://s2.loli.net/2023/12/26/JGZyLaumV9EO1xN.png" alt="image-20231129201146611" style="zoom: 50%;" />
+    证明：按照定义，转化为齐次线性方程组解的问题
     
-        > note: 按照定义，只需要移项 or 同除，进行构造即可
+    - 有非零解 $\Leftrightarrow$ 无数组解（将解方程取倍数即可），$R(A)=R(A,0)<m$
+    - 仅有零解 $\Leftrightarrow$ 唯一解，$R(A)=R(A,0)=m$
+
+结论：
+- 结论一：
+
+    ![结论一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946465.png)
+
+    证明：$R(A)<m \to R(B)\le R(A)+1 <m+1$
+
+- 结论二：
+
+    ![结论二](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946466.png)
+
+    证明：$R(A_{x\times m})=m \to R\binom{A}{b}=m$
+
+- 结论三：
+
+    ![结论三](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946467.png)
+
+    证明：$R(A)\le n <m$
+
+- 结论四：
+
+    ![结论四](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946468.png)
     
-    - 定理二：<img src="https://s2.loli.net/2023/12/26/qetsXCMVYHudibW.png" alt="image-20231129202342608" style="zoom:67%;" />
+    证明：$R(A)=m,R(A,b)<m+1 \to Ax=b\text{有唯一解}$
     
-        > note: 按照定义，转化为齐次线性方程组解的问题
-        >
-        > - 有非零解 $\Leftrightarrow$ 无数组解（将解方程取倍数即可），$R(A)=R(A,0)<m$
-        > - 仅有零解 $\Leftrightarrow$ 唯一解，$R(A)=R(A,0)=m$
-    
-3. 结论：
-    - 一：<img src="https://s2.loli.net/2023/12/26/Qjfqc7oHayIMrpU.png" alt="image-20231129212308358" style="zoom:67%;" />
-    
-        > note: $R(A)<m \to R(B)\le R(A)+1 <m+1$
-    
-    - 二：<img src="https://s2.loli.net/2023/12/26/DCxHm9NnhFoVAQ7.png" alt="image-20231129212327353" style="zoom:67%;" />
-    
-        > note: $R(A_{x\times m})=m \to R\binom{A}{b}=m$
-    
-    - 三：<img src="https://s2.loli.net/2023/12/26/ER7OPjXcpgLvU5W.png" alt="image-20231129212345238" style="zoom:67%;" />
-    
-        > note: $R(A)\le n <m$
-    
-    - 四：<img src="https://s2.loli.net/2023/12/26/yguaIsOtHUrkYZ8.png" alt="image-20231129214914607" style="zoom: 50%;" />
-    
-        > target: $R(A)=m,R(A,b)<m+1 \to Ax=b\text{有唯一解}$
-        >
-        > confirm: 
-        >
-        > - $\max \{ R(A),R(b) \} \le R(A,b) \le m+1 \to m \le R(A,b) \le m+1$
-        > - 又 $R(A,b)<m+1$
-        > - 故 $R(A,b)=m$
-        > - 因此 $R(A)=R(A,b)=m \to \text{有唯一解}$
+    - $\max \{ R(A),R(b) \} \le R(A,b) \le m+1 \to m \le R(A,b) \le m+1$
+    - 又 $R(A,b)<m+1$
+    - 故 $R(A,b)=m$
+    - 因此 $R(A)=R(A,b)=m \to \text{有唯一解}$
 
 ### 4.3 向量组的秩
 
 #### 4.3.1 最大无关组的定义
 
-1. 定义一：<img src="https://s2.loli.net/2023/12/26/267L9aBYWp4yDu1.png" alt="image-20231129220733692" style="zoom: 50%;" />
+定义一：
 
-    > note:
-    >
-    > - 最大无关组之间等价
-    > - 最大无关组 $A_0$ 和原向量组 $A$ 等价
+![定义一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946469.png)
 
-2. 定义二：<img src="https://s2.loli.net/2023/12/26/SFravdLHBt1s7mc.png" alt="image-20231205201511109" style="zoom:50%;" />
+注意：
+
+- 最大无关组之间等价
+- 最大无关组 $A_0$ 和原向量组 $A$ 等价
+
+定义二：
+
+![定义二](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946470.png)
 
 #### 4.3.2 向量组的秩和矩阵的秩的关系
 
-<img src="https://s2.loli.net/2023/12/26/DuvfMw9tciqxNYo.png" alt="image-20231205202042746" style="zoom:67%;" />
+![向量组的秩和矩阵的秩的关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946471.png)
 
 #### 4.3.3 向量组的秩的结论
 
-<img src="https://s2.loli.net/2023/12/26/j7tK34yu1JXkRMd.png" alt="image-20231205202658101" style="zoom:50%;" />
+![向量组的秩的结论 1-2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946472.png)
 
-<img src="https://s2.loli.net/2023/12/26/natMNklCR1zSjHf.png" alt="image-20231205202712876" style="zoom:50%;" />
+![向量组的秩的结论 3-5](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946473.png)
 
-> note：
->
-> 全部可以使用矩阵的秩的性质进行证明
+证明：全部可以使用矩阵的秩的性质进行证明
 
 ### 4.4 向量空间
 
@@ -647,11 +692,11 @@ x = A \  \lambda
 $$
 **考点二：求解过度矩阵 P**
 
-我们已知一个向量空间中的两个基分别为 A 和 B，若有矩阵 P 满足==基变换公式==：$B = AP$，我们就称 P 为从基 A 到基 B 的过渡矩阵
+我们已知一个向量空间中的两个基分别为 A 和 B，若有矩阵 P 满足基变换公式：$B = AP$，我们就称 P 为从基 A 到基 B 的过渡矩阵
 
 **考点三：已知空间中的某向量 x 在基 A 下坐标为 $\lambda$，以及从基 A 到基 B 的过渡矩阵为 P，求解转换基为 B 之后的坐标 $\gamma$**
 
-<img src="https://s2.loli.net/2023/12/29/R6rXdjaUCVDAvkL.png" alt="image-20231229185334826" style="zoom: 50%;" />
+![求解过程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946474.png)
 
 ### 4.5 线性方程组的解的结构
 
@@ -666,79 +711,82 @@ $$
 - 齐次线性方程组记为 $Ax=0$，解为 $\eta$，则有 $A \eta = 0$
 - 非齐次线性方程组记为 $Ax=b$，假如其中的一个特解为 $\eta^*$，则 $A\eta^*=b$，假如此时我们又计算出了该方程组的其次线性解 $\eta$，则有 $A\eta=0$。那么显然有 $A(\eta^*+\eta)=b$，此时 $\eta^* + \eta$ 就是该非齐次线性方程组的通解
 
-也就是说本目对 3.3 目的线性方程组的求解给出了进一步的结构上的解释，即非齐次线性方程组的解的结构是基于本身的一个特解与齐次的通解之上的，仅此而已。当然了，本目在介绍齐次线性方程组解的结构时还引入了一个新的定理，即：
+也就是说本目对 3.3 目的线性方程组的求解给出了进一步的结构上的解释，即非齐次线性方程组的解的结构是基于本身的一个特解与齐次的通解之上的，仅此而已。当然了，本目在介绍齐次线性方程组解的结构时还引入了一个新的定理：
 $$
 \begin{aligned}
-\text{若矩阵}A_{m\times n}\text{的秩为}r，\text{则该矩阵的解空间的维度（基础解系中线性无关向量的个数）就是}n-r\text{，即：}\\
-dimS = n-r
+\text{若矩阵 $A_{m\times n}$ 的秩为 $r$,则该矩阵的解空间的维度(基础解系中线性无关向量的个数)就是 $n-r$,即:}
 \end{aligned}
 $$
+$$
+dimS = n-r
+$$
+
 该定理可以作为一些证明秩相等的证明题的切入点。若想要证明两个$ n$ 元矩阵 $A$ 和 $B$ 的秩相等，可以转化为证明两个矩阵的基础解析的维度相等，即解空间相等。证明解空间相等进一步转向证明 $Ax=0$ 与 $Bx=0$ 同解，证明同解就很简单了，就是类似于证明一个充要条件，即证明 $Ax=0 \to Bx=0$ 以及 $Bx=0 \to Ax=0$
 
 ## 第5章 相似矩阵及二次型
 
 ### 5.1 向量的内积、长度及正交性
 
-#### 内积：
+#### 5.1.1 内积
 
-各个位置的数依次相乘
+即各个位置的数依次相乘。运算规律如下：
 
-> 1. 运算规律：<img src="https://s2.loli.net/2023/12/13/V7WI2qmZiKXs8TB.png" alt="image-20231213210321658" style="zoom: 33%;" />
-> 2. 推导全部按照内积的定义来，肥肠煎蛋
+![运算规律](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946475.png)
 
-#### 长度：
+推导全部按照内积的定义来，肥肠煎蛋
 
-类似于模长
+#### 5.1.2 长度
 
-> 性质：<img src="https://s2.loli.net/2023/12/13/cvRwelfuaESU91O.png" alt="image-20231213210549826" style="zoom:33%;" />
->
-> n维向量与n维向量间的夹角：
->
-> <img src="https://s2.loli.net/2023/12/13/gsjlef6bkZ7HWKF.png" alt="image-20231213210654513" style="zoom:33%;" />
+类似于模长，有以下性质：
 
-#### 正交：
+![性质](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946476.png)
 
-类似于两个==非零==向量垂直的关系，即两向量内积为0
+n 维向量与 n 维向量间的夹角：
 
-> 正交向量组
->
-> - 定义：向量组之间的任意两两向量均正交
->
-> - 性质：正交向量组一定线性无关
->
-> 标准正交基
->
-> - 定义：是某空间向量的基+正交向量组+每一个向量都是单位向量
->
-> - 求解方法：施密特正交化
->
->     1. 正交化：（其实就是对基础解系的一个线性组合）
->
->         <img src="https://s2.loli.net/2023/12/13/Py2kWsNRbAIOG8M.png" alt="image-20231213211434849" style="zoom:33%;" />
->
->         <img src="https://s2.loli.net/2023/12/13/Vdfws3QnOPBvmKc.png" alt="image-20231213211449866" style="zoom:33%;" />
->
->     2. 单位化：
->
->         <img src="https://s2.loli.net/2023/12/26/7SWd2PNJ8TVEMhb.png" alt="image-20231213211514814" style="zoom:33%;" />
+![n 维向量与 n 维向量间的夹角](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946477.png)
 
-#### 正交矩阵与正交变换：
+#### 5.1.3 正交
 
-> 正交矩阵：（方阵）
->
-> 1. 定义：满足 $A^TA=E\ \text{or} \ AA^T=E$ 的矩阵
-> 2. 定理：正交矩阵的==充要条件==为矩阵的行（列）向量为单位向量且两两正交
->
-> 正交变换：
->
-> 1. 定义：对于正交矩阵 $A$，$y=Ax$ 称为称为正交变换
-> 2. 性质：$||y||=\sqrt{y^Ty}=\sqrt{x^TA^TAx}=\sqrt{x^TEx}=\sqrt{x^Tx}=||x||$，即线段经过正交变换之后长度保持不变
+类似于两个非零向量垂直的关系，即两向量内积为 0。
+
+（一）正交向量组
+
+- 定义：向量组之间的任意两两向量均正交
+- 性质：正交向量组一定线性无关
+
+（二）标准正交基
+
+- 定义：是某空间向量的基+正交向量组+每一个向量都是单位向量
+
+- 求解方法：施密特正交化
+
+    1. 正交化：（其实就是对基础解系的一个线性组合）
+
+        ![正交化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946478.png)
+
+        ![正交化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946479.png)
+
+    2. 单位化：
+    
+        ![单位化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946480.png)
+
+#### 5.1.4 正交矩阵与正交变换
+
+正交矩阵：（方阵）
+
+1. 定义：满足 $A^TA=E\ \text{or} \ AA^T=E$ 的矩阵
+2. 定理：正交矩阵的充要条件为矩阵的行（列）向量为单位向量且两两正交
+
+正交变换：
+
+1. 定义：对于正交矩阵 $A$，$y=Ax$ 称为称为正交变换
+2. 性质：$||y||=\sqrt{y^Ty}=\sqrt{x^TA^TAx}=\sqrt{x^TEx}=\sqrt{x^Tx}=||x||$，即线段经过正交变换之后长度保持不变
 
 ### 5.2 方阵的特征值与特征向量
 
 #### 5.2.1 定义
 
-对于一个n阶方阵 A，存在一个复数 $\lambda$ 和一组n阶==非零==向量 x 使得 
+对于一个n阶方阵 A，存在一个复数 $\lambda$ 和一组n阶非零向量 x 使得 
 $$
 Ax=\lambda x
 $$

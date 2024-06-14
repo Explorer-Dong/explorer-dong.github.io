@@ -913,7 +913,7 @@ Iteration 5:
 
 放一张生动的图：
 
-![梯度下降法 - 图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132016327.png)
+![最速下降法 - 迭代示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132016327.png)
 
 迭代公式：
 
@@ -927,21 +927,91 @@ Iteration 5:
 
 也正因为搜索方向正交的特性导致最速下降法的收敛速度往往不尽如人意。
 
-### 4.2 牛顿法 TODO
+### 4.2 牛顿法
 
-牛顿法的核心思路是利用二次逼近的思路，每次迭代时都采用当前解 $x_k$​​ 的二次逼近，然后求解二次函数的极小值即可。
+放一张生动的图：
+
+![牛顿法 - 迭代示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140902324.gif)
+
+{% note warning %}
+
+注：本图演示的是求解一维函数零点的迭代过程，需要使得 $f(x)=0$，因此比值式为原函数除以导函数。后续介绍的是极小化函数的过程，需要使得 $f'(x)=0$，因此比值式为一阶导数除以二阶导数，高维就是二阶梯度的逆乘以一阶梯度。
+
+{% endnote %}
 
 迭代公式：
 $$
-x_{k+1} = x_k - G_k^{-1}g_k
-$$
-其中：
-$$
-G_k = \nabla^2f(x_k),\quad g_k=\nabla f(x_k)
+x_{k+1} = x_k - \nabla^2f(x_k)^{-1}\nabla f(x_k)
 $$
 ### 4.3 共轭梯度法 TODO
 
+我们利用共轭梯度法解决「正定二次函数」的极小化问题。由于最速下降法中相邻迭代点的方向是正交的导致搜索效率下降，牛顿法又由于需要计算和存储海塞矩阵导致存储开销过大，共轭梯度法的核心思想是**相邻两个迭代点的搜索方向是关于正定二次型的正定阵正交的**。这样既保证了迭代收敛的速度也避免了计算存储海塞矩阵的开销。
 
+概念补充：
+
+1. 共轭：$x$ 与 $y$ 共轭当且仅当 $x^TGy=0$，其中 G 为对称正定阵
+2. 正定二次：$f(x) =\frac{1}{2} x^TGx - b^Tx + c$
+
+公式推导：
+
+1. 首先给定初始迭代点 $x_0$，收敛阈值 $\epsilon$，迭代公式是不变的：$x_{k+1} = x_k + \alpha_k d_k$，关键在于计算每一次迭代过程中的步长因子 $\alpha_k$​ 和搜索方向 $d_k$​
+
+2. 确定步长因子 $\alpha_k$：
+    $$
+    \begin{aligned}
+    \alpha &= \min_{\alpha} \phi(\alpha) \\
+    &= \min_{\alpha} f(x_k+\alpha d_k) \\
+    &= \min_{\alpha} \frac{1}{2}(x_k+\alpha d_k)^TG(x_k+\alpha d_k) - b^T(x_k+\alpha d_k) + c \\
+    &= \min_{\alpha} \frac{1}{2} (x_k^TGx_k + 2\alpha x_k^T G d_k + \alpha^2d_K^Td_k) - b^Tx_k - b^T \alpha d_k + c\\
+    &= \min_{\alpha} \frac{1}{2} x_k^TGx_k + \alpha x_k^T G d_k + \frac{1}{2}\alpha^2d_k^T G d_k - b^T \alpha d_k + c
+    \end{aligned}
+    $$
+    由于目标函数是正定二次型，显然可以直接求出步长因子的闭式解：
+    $$
+    \begin{aligned}
+    \frac{d \phi(\alpha)}{d\alpha} &= x_k^T G d_k + \alpha d_k^T G d_k - b^Td_k \\
+    &=0
+    \end{aligned}
+    $$
+    于是可以导出当前的步长因子 $\alpha_k$ 的闭式解为：
+    $$
+    \begin{aligned}
+    \alpha_k &= \frac{(b^T - x^TG)d_k}{d_k^TGd_k} \\
+    &= -\frac{g_k^T d_k}{d_k^TGd_k}
+    \end{aligned}
+    $$
+
+3. 确定搜索方向 $d_k$：
+    $$
+    d_k = -g_k + \beta d_{k-1}
+    $$
+    可见只需要确定组合系数 $\beta$。由于共轭梯度法遵循相邻迭代点的搜索方向共轭，即 $d_{k-1}^TGd_k=0$，因此对上式两侧同时左乘 $d_{k-1}^TG$，有：
+    $$
+    \begin{aligned}
+    d_{k-1}^TGd_k &= -d_{k-1}^TGg_k + \beta d_{k-1}^TGd_{k-1} \\
+    &= 0
+    \end{aligned}
+    $$
+    于是可得当前的组合系数 $\beta$ 为：
+    $$
+    \beta = \frac{d_{k-1}^TGg_k}{d_{k-1}^TGd_{k-1}}
+    $$
+    {% note warning %}
+
+    上述组合系数 $\beta$ 的结果是共轭梯度最原始的表达式，后人又进行了变形，~~没证出来，难崩，直接背吧~~，给出 FR 的组合系数表达式：
+    $$
+    \beta = \frac{g_k^Tg_k}{g_{k-1}^T g_{k-1}}
+    $$
+    {% endnote %}
+
+    于是可以导出当前的搜索方向 $d_k$​ 为：
+    $$
+    d_k = -g_k + \frac{d_{k-1}^TGg_k}{d_{k-1}^TGd_{k-1}} d_{k-1}
+    $$
+    当然了由于初始迭代时没有前一个搜索方向，因此直接用初始点的梯度作为搜索方向，即：
+    $$
+    d_0=-g_0
+    $$
 
 ### 4.4 拟牛顿法 TODO
 
@@ -952,6 +1022,7 @@ $$
 > - [西北工业大学 - 课件 - 含例题与解析](https://max.book118.com/html/2017/0606/111956214.shtm)
 > - [北京大学 - 教材 - 含例题与解析](https://www.math.pku.edu.cn/teachers/lidf/docs/statcomp/html/_statcompbook/opt-uncons.html#opt-uncons)
 > - [路人 - 博客 - 更通俗的解释](https://blog.csdn.net/Serendipity_zyx/article/details/120515338)
+> - [牛顿法 - wiki - 更权威的解释](https://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E6%B3%95)
 
 ## 第五章 「无约束最优化」最小二乘 TODO
 
@@ -1058,6 +1129,8 @@ $$
 
     - 线性规划对偶定理 `1 * 12'`
 
+    - 计算点到超平面的距离 `1 * 12'`。转化为有约束的最优化问题：目标函数为超平面中的一点 $x_a$ 到指定点 $x_b$ 的距离，约束条件为 $x_a$ 在超平面上。求解方法就是构造一个拉格朗日函数，然后利用一阶必要条件即可求解
+
     - ...
 
     - 等式二次罚函数法 `1 * 12'`。一个约束函数，一个等式约束条件
@@ -1067,7 +1140,7 @@ $$
         2. 写出二次罚函数表达式 $P_E(x,\sigma)$，讨论罚因子 $\sigma$ 取何值时可以使得海塞矩阵 $\nabla^2P_E(x,\sigma)$​ [正定](https://baike.baidu.com/item/%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5/11030459?fr=ge_ala#5)（说直接写让行列式大于零的计算结果即可，樂）
 
         3. 求最优解 $x^*$（直接计算一阶梯度 $\nabla$ 并消去 $\sigma$ 即可）
-
+    
         4. 当 $\sigma \to \infty$​ 时求最优解，并判断是否和第一问计算结果一致
 
 很遗憾将这门课学成了面向已知考试题型的过拟合形式。我并不觉得我掌握了多少优化理论的知识，最多称得上知道了优化问题的大致分类和一些基本的优化应用。从我的笔记就可以看出，自第三章开始就没怎么涉及到理论的证明，确实是证不明白🤡。你我皆是局内人，祝好。

@@ -462,7 +462,7 @@ $$
 
 #### 3.1.5 性质2：可逆的充要条件
 
-![image-20231102163134078](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946447.png)
+![可逆的充要条件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946447.png)
 
 #### 3.1.6 定理：矩阵初等变换的存在性定理
 

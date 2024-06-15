@@ -807,24 +807,40 @@ $$
 
 {% endnote %}
 
-### 4.1 最速下降法
-
 {% fold light @极小化 Rosenbrock 函数的 python 代码 %}
 
+目标函数 $f$、一阶梯度 $g$、二阶梯度 $G$、初始点 $x_0$
+
 ```python
-import numpy as np
-
-
-def f(x):
+def f(x: np.ndarray) -> float:
     return (1 - x[0])**2 + 100 * (x[1] - x[0]**2)**2
 
 
-def g(x):
+def g(x: np.ndarray) -> np.ndarray:
     grad_x = -2 * (1 - x[0]) - 400 * x[0] * (x[1] - x[0]**2)
     grad_y = 200 * (x[1] - x[0]**2)
     return np.array([grad_x, grad_y])
 
 
+def G(x: np.ndarray) -> np.ndarray:
+    grad_xx = 2 - 400 * x[1] + 1200 * x[0]**2
+    grad_xy = -400 * x[0]
+    grad_yx = -400 * x[0]
+    grad_yy = 200
+    return np.array([
+        [grad_xx, grad_xy],
+        [grad_yx, grad_yy]
+    ])
+
+
+initial_point = [-1.2, 1]
+```
+
+已知最优点为 $x^*=(1, 1)^T$，最优解 $f(x^*)=0$，以书中例题初始点 $(-1.2,1)^T$ 为例开始迭代。
+
+**一、最速下降法**
+
+```python
 def gradient_descent(initial_point, max_iter=5, eps=1e-6):
     x = np.array(initial_point)
     points = [x]
@@ -833,9 +849,11 @@ def gradient_descent(initial_point, max_iter=5, eps=1e-6):
 
     for _ in range(max_iter):
         grad = gradients[-1]
+
+        # 搜索方向
         direction = -grad
 
-        # 无法确定准确的步长最小化函数，因此此处采用二分答案
+        # 步长因子：无法确定准确的步长最小化函数，因此此处采用二分法搜索最优步长
         alpha = 1
         while f(x + alpha * direction) > f(x):
             alpha /= 2
@@ -851,8 +869,7 @@ def gradient_descent(initial_point, max_iter=5, eps=1e-6):
     return points, gradients, alphas
 
 
-initial_point = [-1.2, 1]
-points, gradients, alphas = gradient_descent(initial_point, max_iter=5, eps=1e-6)
+points, gradients, alphas = gradient_descent(initial_point, max_iter=100, eps=1e-6)
 
 for i, (point, grad, alpha) in enumerate(zip(points, gradients, [1] + alphas)):
     print(f"Iteration {i}:")
@@ -863,62 +880,193 @@ for i, (point, grad, alpha) in enumerate(zip(points, gradients, [1] + alphas)):
     print(f"  Function Val= {f(point)}\n")
 ```
 
-已知最优点为 $x^*=(1, 1)^T$，最优解 $f(x^*)=0$，以书中例题初始点 $(-1.2,1)^T$ 为例开始迭代，可得前五个迭代结果为：
+迭代100次后输出为：
 
 ```makefile
-Iteration 0:
-  Point       = [-1.2  1. ]
-  Gradient    = [-215.6  -88. ]
-  Step Size   = 1
-  Direction   = [215.6  88. ]
-  Function Val= 24.199999999999996
+Iteration 98:
+  Point       = [0.93432802 0.87236513]
+  Gradient    = [ 0.0942865  -0.12074477]
+  Step Size   = 0.00390625
+  Direction   = [-0.0942865   0.12074477]
+  Function Val= 0.004349256784446673
 
-Iteration 1:
-  Point       = [-0.98945312  1.0859375 ]
-  Gradient    = [38.33803031 21.38400269]
-  Step Size   = 0.0009765625
-  Direction   = [-38.33803031 -21.38400269]
-  Function Val= 5.101112663710957
-
-Iteration 2:
-  Point       = [-1.06433209  1.04417187]
-  Gradient    = [-41.86176097 -17.7261858 ]
+Iteration 99:
+  Point       = [0.93414387 0.87260096]
+  Gradient    = [-0.12281587 -0.00476179]
   Step Size   = 0.001953125
-  Direction   = [41.86176097 17.7261858 ]
-  Function Val= 5.047011137654621
+  Direction   = [0.12281587 0.00476179]
+  Function Val= 0.004337086557103718
 
-Iteration 3:
-  Point       = [-1.02345146  1.0614826 ]
-  Gradient    = [1.696583   2.80593957]
-  Step Size   = 0.0009765625
-  Direction   = [-1.696583   -2.80593957]
-  Function Val= 4.1140390714609625
-
-Iteration 4:
-  Point       = [-1.0267651   1.05600225]
-  Gradient    = [-3.33246584  0.35113404]
+Iteration 100:
+  Point       = [0.93438374 0.87261026]
+  Gradient    = [ 0.04171114 -0.09254423]
   Step Size   = 0.001953125
-  Direction   = [ 3.33246584 -0.35113404]
-  Function Val= 4.108085021297817
+  Direction   = [-0.04171114  0.09254423]
+  Function Val= 0.004326904052586884
+```
 
+**二、牛顿法**
+
+```python
+def newton_method(initial_point, max_iter=5, eps=1e-6):
+    x = np.array(initial_point)
+    points = [x]
+    gradients = [g(x)]
+    Hessians = [G(x)]
+
+    for _ in range(max_iter):
+        grad = gradients[-1]
+        Hessian = Hessians[-1]
+
+        # 搜索方向
+        direction = np.linalg.inv(Hessian) @ grad
+
+        # 步长因子：假定使用固定步长的牛顿法
+        alpha = 1
+
+        x = x - alpha * direction
+        points.append(x)
+        gradients.append(g(x))
+        Hessians.append(G(x))
+
+        if np.linalg.norm(grad) < eps:
+            break
+
+    return points, gradients, Hessians
+
+
+points, gradients, Hessians = newton_method(initial_point, max_iter=50, eps=1e-6)
+
+for i, (point, grad, Hessian) in enumerate(zip(points, gradients, Hessians)):
+    print(f"Iteration {i}:")
+    print(f"  Point       = {point}")
+    print(f"  Gradient    = {grad}")
+    print(f"  Hessian     = {Hessian}")
+    print(f"  Function Val= {f(point)}\n")
+```
+
+迭代7次即收敛：
+
+```makefile
 Iteration 5:
-  Point       = [-1.02025638  1.05531644]
-  Gradient    = [1.83345256 2.8786712 ]
-  Step Size   = 0.001953125
-  Direction   = [-1.83345256 -2.8786712 ]
-  Function Val= 4.10215271407615
+  Point       = [0.9999957  0.99999139]
+  Gradient    = [-8.60863343e-06 -2.95985458e-11]
+  Hessian     = [[ 801.99311306 -399.99827826]
+ [-399.99827826  200.        ]]
+  Function Val= 1.8527397192178054e-11
+
+Iteration 6:
+  Point       = [1. 1.]
+  Gradient    = [ 7.41096051e-09 -3.70548037e-09]
+  Hessian     = [[ 802.00000001 -400.        ]
+ [-400.          200.        ]]
+  Function Val= 3.4326461875363225e-20
+
+Iteration 7:
+  Point       = [1. 1.]
+  Gradient    = [-0.  0.]
+  Hessian     = [[ 802. -400.]
+ [-400.  200.]]
+  Function Val= 0.0
+```
+
+**三、共轭梯度法**
+
+```python
+def conjugate_gradient(initial_point, max_iter=5, eps=1e-6):
+    x = np.array(initial_point)
+    points = [x]
+    gradients = [g(x)]
+    directions = [-g(x)]
+    alphas = []
+
+    for i in range(max_iter):
+        grad = gradients[-1]
+
+        # 搜索方向：FR公式
+        if i == 0:
+            direction = -grad
+        else:
+            beta = np.dot(g(x), g(x)) / np.dot(g(points[-2]), g(points[-2]))
+            direction = -g(x) + beta * direction
+
+        # 步长因子：精确线搜索直接得到闭式解
+        alpha = -np.dot(grad, direction) / np.dot(direction, G(x) @ direction)
+        
+
+        x = x + alpha * direction
+
+        directions.append(direction)
+        alphas.append(alpha)
+        points.append(x)
+        gradients.append(g(x))
+
+        if np.linalg.norm(grad) < eps:
+            break
+
+    return points, gradients, alphas
+
+
+points, gradients, alphas = conjugate_gradient(initial_point, max_iter=1000, eps=1e-6)
+
+for i, (point, grad, alpha) in enumerate(zip(points, gradients, alphas)):
+    print(f"Iteration {i}:")
+    print(f"  Point       = {point}")
+    print(f"  Gradient    = {grad}")
+    print(f"  Step Size   = {alpha}")
+    print(f"  Direction   = {-grad}")
+    print(f"  Function Val= {f(point)}\n")
+```
+
+迭代1000次后输出为：
+
+```makefile
+Iteration 997:
+  Point       = [0.9999994  0.99999875]
+  Gradient    = [ 1.90794906e-05 -1.01414007e-05]
+  Step Size   = 0.0005161468619784313
+  Direction   = [-1.90794906e-05  1.01414007e-05]
+  Function Val= 6.191018745155016e-13
+
+Iteration 998:
+  Point       = [0.99999931 0.99999861]
+  Gradient    = [ 5.43686111e-06 -3.40374227e-06]
+  Step Size   = 0.0005078748917694624
+  Direction   = [-5.43686111e-06  3.40374227e-06]
+  Function Val= 4.986125950068217e-13
+
+Iteration 999:
+  Point       = [0.9999993 0.9999986]
+  Gradient    = [ 1.34784246e-06 -1.36924747e-06]
+  Step Size   = 0.0005356250138048412
+  Direction   = [-1.34784246e-06  1.36924747e-06]
+  Function Val= 4.881643528976312e-13
+```
+
+**四、拟牛顿法**
+
+```python
+
+```
+
+输出：
+
+```makefile
+
 ```
 
 {% endfold %}
+
+### 4.1 最速下降法
 
 放一张生动的图：
 
 ![最速下降法 - 迭代示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132016327.png)
 
 迭代公式：
-
-![迭代公式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132038143.png)
-
+$$
+x_{k+1} = x_k - \alpha_k \nabla f(x_k)
+$$
 每次迭代时，**下降方向** $d_k$ 采用当前解 $x_k$ 处的负梯度方向 $- \nabla f(x_k)$，**步长因子** $\alpha_k$ 采用精确线性搜索算法的计算结果。易证相邻迭代解 $x_k,x_{k+1}$ 的方向 $d_k,d_{k+1}$ 是正交的：
 
 由于 $\phi(\alpha) = f(x_k + \alpha d_k)$，在采用线搜索找最优步长时，步长的搜索结果 $\alpha_k$ 即为使得 $\phi'(\alpha)=0$ 的解，于是可得 $0=\phi'(\alpha) = \phi'(\alpha_k) = \nabla f(x_k+\alpha_k d_k)d_k = -d_{k+1}^T \cdot d_k$，即 $d_{k+1}^T \cdot d_k = 0$。如图：
@@ -943,7 +1091,7 @@ Iteration 5:
 $$
 x_{k+1} = x_k - \nabla^2f(x_k)^{-1}\nabla f(x_k)
 $$
-### 4.3 共轭梯度法 TODO
+### 4.3 共轭梯度法
 
 我们利用共轭梯度法解决「正定二次函数」的极小化问题。由于最速下降法中相邻迭代点的方向是正交的导致搜索效率下降，牛顿法又由于需要计算和存储海塞矩阵导致存储开销过大，共轭梯度法的核心思想是**相邻两个迭代点的搜索方向是关于正定二次型的正定阵正交的**。这样既保证了迭代收敛的速度也避免了计算存储海塞矩阵的开销。
 
@@ -1000,22 +1148,40 @@ $$
 
     上述组合系数 $\beta$ 的结果是共轭梯度最原始的表达式，后人又进行了变形，~~没证出来，难崩，直接背吧~~，给出 FR 的组合系数表达式：
     $$
+    \begin{aligned}
     \beta = \frac{g_k^Tg_k}{g_{k-1}^T g_{k-1}}
+    \end{aligned}
     $$
     {% endnote %}
-
-    于是可以导出当前的搜索方向 $d_k$​ 为：
-    $$
-    d_k = -g_k + \frac{d_{k-1}^TGg_k}{d_{k-1}^TGd_{k-1}} d_{k-1}
-    $$
+    
     当然了由于初始迭代时没有前一个搜索方向，因此直接用初始点的梯度作为搜索方向，即：
     $$
     d_0=-g_0
     $$
+    于是可以导出当前的搜索方向 $d_k$ 的闭式解为：
+    $$
+    d_k = -g_k + \frac{g_k^Tg_k}{g_{k-1}^T g_{k-1}} d_{k-1}
+    $$
+
+迭代公式：
+$$
+\begin{aligned}
+x_{k+1} =& x_k + \alpha_k d_k\\
+=& x_k + (-\frac{g_k^T d_k}{d_k^TGd_k}) (-g_k + \frac{g_k^Tg_k}{g_{k-1}^T g_{k-1}} d_{k-1})
+\end{aligned}
+$$
 
 ### 4.4 拟牛顿法 TODO
 
+4.1 和 4.2 介绍的基于一阶梯度和二阶梯度的下降法都可以统一成下面的表达式：
+$$
+x_{k+1} = x_k - \alpha_k H_k \nabla f(x_k)
+$$
 
+- 4.1 的最速下降法的步长因子通过精确线搜索获得，海塞矩阵的逆 $H_k$ 不存在，可以看做为单位阵 $E$
+- 4.2 的牛顿法的步长因子同样可以通过精确线搜索获得，当然也可以设置为定值，海塞矩阵的逆 $H_k$ 对应二阶梯度的逆 $(\nabla^2 f(x_k))^{-1}$
+
+前者收敛速度差、后者计算量和存储量大，我们尝试构造一个对称正定阵 $H_k$ 来近似代替e二阶梯度的逆，即 $H_k \approx (\nabla^2 f(x_k))^{-1}$
 
 > 参考：
 >

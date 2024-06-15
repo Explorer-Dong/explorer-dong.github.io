@@ -133,7 +133,7 @@ category_bar: true
     ssh git@xxx.xxx.xxx.xxx
     ```
 
-    如果进入了命令行界面，表示连接成功！
+    如果不需要输入密码就进入了命令行界面，表示 ssh 通信建立成功！
 
     ![连接成功](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071826099.png)
 

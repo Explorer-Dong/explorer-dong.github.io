@@ -294,7 +294,7 @@ $$
 
 本书介绍的迭代修正值都是使得当前迭代后的值小于上一个状态的函数值，我们称这类使评价函数值下降的算法为**单调下降算法**。至于如何得出修正量，我们往往通过求解一个相对简单易于求解的最优化问题（通常成为子问题），来计算获得修正量。
 
-## 第二章 「约束最优化」线性规划
+## 第二章「约束最优化」线性规划
 
 {% note light %}
 
@@ -794,7 +794,7 @@ $$
 > - [路人 - 视频 - 更通俗的解释](https://www.bilibili.com/video/BV11N411m75b/)
 > - [路人 - 博客 - 更通俗的解释](https://blog.csdn.net/luzhanbo207/article/details/121559905)
 
-## 第四章 「无约束最优化」TODO
+## 第四章「无约束最优化」
 
 {% note light %}
 
@@ -1046,13 +1046,58 @@ Iteration 999:
 **四、拟牛顿法**
 
 ```python
+def bfgs(initial_point, max_iter=5, eps=1e-6):
+    x = np.array(initial_point)
+    points = [x]
+    gradients = [g(x)]
+    B = G(x)
 
+    for _ in range(max_iter):
+        grad = gradients[-1]
+
+        # 迭代公式
+        x = x - np.linalg.inv(B) @ grad
+
+        # 更新 B 矩阵
+        s = x - points[-1]
+        y = g(x) - gradients[-1]
+        B = B + np.outer(y, y) / (s @ y) - (B @ np.outer(s, s) @ B) / (s @ B @ s)
+
+        points.append(x)
+        gradients.append(g(x))
+
+        if np.linalg.norm(grad) < eps:
+            break
+
+    return points, gradients
+
+
+points, gradients = bfgs(initial_point, max_iter=1000, eps=1e-6)
+
+for i, (point, grad) in enumerate(zip(points, gradients)):
+    print(f"Iteration {i}:")
+    print(f"  Point       = {point}")
+    print(f"  Gradient    = {grad}")
+    print(f"  Function Val= {f(point)}\n")
 ```
 
-输出：
+迭代 78 次收敛：
 
 ```makefile
+Iteration 76:
+  Point       = [1.00000075 0.99999921]
+  Gradient    = [ 0.000918   -0.00045825]
+  Function Val= 5.255482679080297e-10
 
+Iteration 77:
+  Point       = [1.00000006 1.00000012]
+  Gradient    = [ 6.46055099e-07 -2.63592925e-07]
+  Function Val= 3.7061757712619374e-15
+
+Iteration 78:
+  Point       = [1. 1.]
+  Gradient    = [6.75185684e-10 4.68913797e-10]
+  Function Val= 6.510026595267928e-19
 ```
 
 {% endfold %}
@@ -1171,17 +1216,35 @@ x_{k+1} =& x_k + \alpha_k d_k\\
 \end{aligned}
 $$
 
-### 4.4 拟牛顿法 TODO
+### 4.4 拟牛顿法
 
 4.1 和 4.2 介绍的基于一阶梯度和二阶梯度的下降法都可以统一成下面的表达式：
 $$
-x_{k+1} = x_k - \alpha_k H_k \nabla f(x_k)
+x_{k+1} = x_k - \alpha_k B_k \nabla f(x_k)
 $$
 
-- 4.1 的最速下降法的步长因子通过精确线搜索获得，海塞矩阵的逆 $H_k$ 不存在，可以看做为单位阵 $E$
-- 4.2 的牛顿法的步长因子同样可以通过精确线搜索获得，当然也可以设置为定值，海塞矩阵的逆 $H_k$ 对应二阶梯度的逆 $(\nabla^2 f(x_k))^{-1}$
+- 4.1 的最速下降法的步长因子通过精确线搜索获得，海塞矩阵的逆 $B_k$ 不存在，可以看做为单位阵 $E$
+- 4.2 的牛顿法的步长因子同样可以通过精确线搜索获得，当然也可以设置为定值，海塞矩阵的逆 $B_k$ 对应二阶梯度的逆 $(\nabla^2 f(x_k))^{-1}$
 
-前者收敛速度差、后者计算量和存储量大，我们尝试构造一个对称正定阵 $H_k$ 来近似代替e二阶梯度的逆，即 $H_k \approx (\nabla^2 f(x_k))^{-1}$
+前者收敛速度差、后者计算量和存储量大，我们尝试构造一个对称正定阵 $B_k$ 来近似代替二阶梯度的逆，即 $B_k \approx (\nabla^2 f(x_k))^{-1}$，使得该法具备较快的收敛速度与较少的内存开销。
+
+介绍最著名的 **BFGS** 拟牛顿法。迭代公式：
+$$
+\begin{aligned}
+&x_{k+1} = x_k - B_k^{-1}g_k \\
+&\text{记: }
+\begin{cases}
+s_k= x_{k+1} - x_k\\
+y_k=g_{k+1} - g_k
+\end{cases}\\
+
+&\text{则: }
+\begin{cases}
+B_0 = \nabla^2f(x_0)\\
+\displaystyle B_{k+1} = B_k + \frac{y_ky_k^T}{s_k^Ty_k} - \frac{B_ks_ks_k^TB_k}{s_k^TB_ks_k}
+\end{cases}
+\end{aligned}
+$$
 
 > 参考：
 >
@@ -1190,7 +1253,7 @@ $$
 > - [路人 - 博客 - 更通俗的解释](https://blog.csdn.net/Serendipity_zyx/article/details/120515338)
 > - [牛顿法 - wiki - 更权威的解释](https://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E6%B3%95)
 
-## 第五章 「无约束最优化」最小二乘 TODO
+## 第五章「无约束最优化」最小二乘 TODO
 
 {% note light %}
 
@@ -1217,7 +1280,7 @@ $$
 
 ### 5.3 非线性最小二乘
 
-## 第六章 「约束最优化」二次规划 TODO
+## 第六章「约束最优化」二次规划 TODO
 
 {% note light %}
 
@@ -1253,7 +1316,7 @@ $$
 
 #### 6.3.1 有效集方法 :star:
 
-## 第七章 「约束最优化」TODO
+## 第七章「约束最优化」TODO
 
 ### 7.1 约束问题
 

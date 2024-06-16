@@ -290,34 +290,32 @@ int main() {
 ### 树状数组
 
 ```cpp
-template<class T>
-class BinaryIndexedTree {
-private:
-	std::vector<T> _arr;
-	int _n;
-
-	int lowbit(int x) { return x & (-x); }
-
+template <class T> class BinaryIndexedTree {
 public:
-	BinaryIndexedTree(int n) :_n(n) {
-		_arr.resize(_n + 1, 0);
-	}
+    std::vector<T> arr;
+    int n;
+    
+    BinaryIndexedTree(int n) : n(n) { arr.resize(n + 1, 0); }
 
-	void add(int pos, T x) {
-		while (pos <= _n) {
-			_arr[pos] += x;
-			pos += lowbit(pos);
-		}
-	}
+    int lowbit(int x) {
+        return x & (-x);
+    }
 
-	T sum(int pos) {
-		T ret = 0;
-		while (pos) {
-			ret += _arr[pos];
-			pos -= lowbit(pos);
-		}
-		return ret;
-	}
+    void add(int pos, T x) {
+        while (pos <= n) {
+            arr[pos] += x;
+            pos += lowbit(pos);
+        }
+    }
+
+    T sum(int pos) {
+        T ret = 0;
+        while (pos) {
+            ret += arr[pos];
+            pos -= lowbit(pos);
+        }
+        return ret;
+    }
 };
 ```
 
@@ -589,23 +587,23 @@ class SortedList:
 
 ```python
 class BinaryIndexedTree:
-    def __init__(self, n: int):
-        self._n = n
-        self._arr = [0] * (n + 1)
-
-    def _lowbit(self, x: int) -> int:
-        return x & (-x)
-
-    def add(self, pos: int, x: int) -> None:
-        while pos <= self._n:
-            self._arr[pos] += x
-            pos += self._lowbit(pos)
-
-    def sum(self, pos: int) -> int:
-        ret = 0
-        while pos:
-            ret += self._arr[pos]
-            pos -= self._lowbit(pos)
-        return ret
+	def __init__(self, n: int):
+		self.n = n
+		self.arr = [0] * (n + 1)
+	
+	def lowbit(self, x: int) -> int:
+		return x & (-x)
+	
+	def add(self, pos: int, x: int) -> None:
+		while pos <= self.n:
+			self.arr[pos] += x
+			pos += self.lowbit(pos)
+	
+	def sum(self, pos: int) -> int:
+		ret = 0
+		while pos:
+			ret += self.arr[pos]
+			pos -= self.lowbit(pos)
+		return ret
 ```
 

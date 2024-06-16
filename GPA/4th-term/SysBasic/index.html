@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131238885.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131239595.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-06-03T03:55:00.647Z">
+<meta property="article:modified_time" content="2024-06-16T15:05:25.494Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.6k 字
+          8.7k 字
         
       </span>
     
@@ -280,7 +280,7 @@
         
         
         
-          54 分钟
+          55 分钟
         
       </span>
     
@@ -343,7 +343,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月3日 中午
+                    本文最后更新于 2024年6月16日 晚上
                   
                 
               </p>
@@ -893,7 +893,7 @@
 </ul>
 <h2 id="第3章-程序的转换及机器级表示-TODO">第3章 程序的转换及机器级表示 TODO</h2>
 <div class="note note-light">
-            <p>计算机的指令有微指令、机器指令、伪（宏）指令，其中微指令是硬件层面、伪指令是软件层面，而机器指令介于两者之间，是用来进行硬件和软件的交互的。本章主要介绍的就是 C 语言程序与 IA-32 机器级指令之间的对应关系。</p>
+            <p>上一章节我们学习了数据的机器级表示，本章我们将学习程序的机器级表示。我们知道现代编程语言大约会经过下面几个步骤：</p><p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mtext>源代码&nbsp;</mtext><mstyle scriptlevel="0" displaystyle="false"><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mtext>①预处理</mtext></mpadded></munderover></mstyle><mtext>&nbsp;源代码&nbsp;</mtext><mstyle scriptlevel="0" displaystyle="false"><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mtext>②编译</mtext></mpadded></munderover></mstyle><mtext>&nbsp;汇编代码&nbsp;</mtext><mstyle scriptlevel="0" displaystyle="false"><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mtext>③汇编</mtext></mpadded></munderover></mstyle><mtext>&nbsp;机器代码&nbsp;</mtext><mstyle scriptlevel="0" displaystyle="false"><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mtext>④链接</mtext></mpadded></munderover></mstyle><mtext>&nbsp;机器代码</mtext></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}\text{源代码 $\xrightarrow[]{①预处理}$ 源代码 $\xrightarrow[]{②编译}$ 汇编代码 $\xrightarrow[]{③汇编}$ 机器代码 $\xrightarrow[]{④链接}$ 机器代码}\end{aligned}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.7603em;vertical-align:-0.6302em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1302em;"><span style="top:-3.1302em;"><span class="pstrut" style="height:3.1003em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">源代码</span><span class="mord">&nbsp;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mtight">①</span><span class="mord cjk_fallback mtight">预处理</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">&nbsp;</span><span class="mord cjk_fallback">源代码</span><span class="mord">&nbsp;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mtight">②</span><span class="mord cjk_fallback mtight">编译</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">&nbsp;</span><span class="mord cjk_fallback">汇编代码</span><span class="mord">&nbsp;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mtight">③</span><span class="mord cjk_fallback mtight">汇编</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">&nbsp;</span><span class="mord cjk_fallback">机器代码</span><span class="mord">&nbsp;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mtight">④</span><span class="mord cjk_fallback mtight">链接</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">&nbsp;</span><span class="mord cjk_fallback">机器代码</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6302em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
           </div>
 <h3 id="3-1-程序转换概述">3.1 程序转换概述</h3>
 <h4 id="3-1-1-机器指令及汇编指令">3.1.1 机器指令及汇编指令</h4>
@@ -1160,7 +1160,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年6月3日</div>
+          <div>2024年6月16日</div>
         </div>
       
       
@@ -1191,9 +1191,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/GPA/4th-term/ProbAndStat/" title="ProbAndStat">
+                      <a href="/GPA/4th-term/Algorithm/" title="Algorithm">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ProbAndStat</span>
+                        <span class="hidden-mobile">Algorithm</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1201,8 +1201,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/4th-term/MachineLearning/" title="MachineLearning">
-                        <span class="hidden-mobile">MachineLearning</span>
+                      <a href="/GPA/4th-term/OptMethod/" title="OptMethod">
+                        <span class="hidden-mobile">OptMethod</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

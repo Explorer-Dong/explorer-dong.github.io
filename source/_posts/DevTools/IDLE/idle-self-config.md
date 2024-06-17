@@ -41,3 +41,17 @@ category_bar: true
 ### 题外话
 
 为什么直接点击 `pythonw.exe` 无法打开 IDLE？说实在的困扰好久了，因为这个原因就没打开过所谓的 python 自带的编辑器，惭愧。搜遍 Google 和 Baidu 都未能找到准确的答案，比较多的是：因为 pythonw.exe 就没打算让你双击打开它，所以只能通过快捷方式打开？？？
+
+### upd
+
+正如底部评论所言，`pythonw` 可以理解为一个命令行工具，那显然就不是用来双击打开的。与 `python demo.py` 表示运行 `demo.py` 文件逻辑类似，`pythonw demo.pyw` 表示运行 `demo.pyw` 文件。比如这个目录下的 `.pyw` 文件：`D:\Program Files\Python38\Lib\idlelib\idle.pyw`，我们在任意位置运行下方命令：
+
+```bash
+pythonw "D:\Program Files\Python38\Lib\idlelib\idle.pyw"
+```
+
+即可弹出对应 `.pyw` 窗口文件的内容：
+
+![pythonw运行测试](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406171020868.gif)
+
+至于其中的解释器版本，尽管打开的 `python3.8` 对应的窗口文件，但是由于使用的 `pythonw` 工具是系统环境变量对应的 `python3.11` 版本，因此显示的解释器版本也就是 `python3.11`

@@ -1114,3 +1114,93 @@ public:
 };
 ```
 
+### 15. 施咒的最大总伤害
+
+https://leetcode.cn/problems/maximum-total-damage-with-spell-casting/
+
+> 标签：线性 dp
+>
+> 题意：给定一个数组，选择一个子序列使得总和最大。约束为：如果选择了值为 $x$ 的元素，则不允许选择值为 $x-2,x-1,x+1,x+2$ 的元素
+>
+> 思路：
+>
+> - 哈希计数。首先很显然的我们需要进行哈希计数，便于按数值升序枚举元素。我们定义哈希后的序列为 `v`，大小为 `m`，存储每一种数的数值 `val: int` 和个数 `cnt: int`
+> - 状态定义。我们定义状态 `f[i]` 表示哈希序列 `[1,i]` 中子序列总和的最大值，则最终答案就是 `f[m]`
+> - 状态转移。对于每一个哈希元素，都有选择和不选两种状态。假设当前枚举到的哈希元素为 `i`，
+>     - 不选当前元素。就相当于没有当前元素，则 `f[i] = f[i-1]`
+>     - 选择当前元素。我们就需要从哈希序列 `[1,i-1]` 中，比当前哈希元素 `v[i].val` 小 2 且对应子序列之和最大的那个状态 `f[j]` 转移过来。显然我们可以直接枚举哈希序列 `[1,i-1]`，但是这样就是 $O(n^2)$ 必然超时，考虑优化。不难发现 `f[]` 数组是单调递增的并且哈希序列的元素数值 `v[].val` 也是单调递增的。也就是说对于当前状态 `f[i]`，在枚举哈希序列 `[1,i-1]` 时，其实并不需要从 `1` 开始枚举，可以从上一个状态枚举到的状态（记作 `j`）开始枚举（因为上一个状态对应的 `f[j]` 是上一个状态可转移的方案中最大的并且 `v[j].val` 一定比当前方案的哈希数值 `v[i].val` 小 2）。于是状态转移的时间开销就从 $O(n)$ 优化到 $O(1)$，可以通过此题
+>
+> 时间复杂度：$O(n)$
+>
+> 空间复杂度：$O(n)$
+
+```cpp []
+class Solution {
+public:
+    long long maximumTotalDamage(vector<int>& power) {
+        using ll = long long;
+
+        // hash
+        map<int, int> a;
+        for (int x: power) {
+            a[x]++;
+        }
+        int m = a.size(), idx = 1;
+        struct node { ll val, cnt; };
+        vector<node> v(m + 1);
+        for (auto it: a) {
+            v[idx++] = {it.first, it.second};
+        }
+
+        // dp
+        vector<ll> f(m + 1);
+        f[1] = v[1].val * v[1].cnt;
+        for (int i = 2, j = 1; i <= m; i++) {
+            while (j < i && v[j].val < v[i].val - 2) {
+                j++;
+            }
+            j--;
+            
+            f[i] = max(f[i - 1], f[j] + v[i].val * v[i].cnt);
+        }
+
+        return f[m];
+    }
+};
+```
+
+```python []
+class Solution:
+    def maximumTotalDamage(self, power: List[int]) -> int:
+        from collections import defaultdict
+
+        # hash
+        a = defaultdict(int)
+        for x in power:
+            a[x] += 1
+        a = sorted(a.items(), key=lambda x: x[0])
+
+        class node:
+            def __init__(self, val: int, cnt: int) -> None:
+                self.val = val
+                self.cnt = cnt
+        
+        m, idx = len(a), 1
+        v = [node(0, 0)] * (m + 1)
+        for it in a:
+            v[idx] = node(it[0], it[1])
+            idx += 1
+
+        # dp
+        f = [0] * (m + 1)
+        f[1], j = v[1].val * v[1].cnt, 1
+        for i in range(2, m + 1):
+            while j < i and v[j].val < v[i].val - 2:
+                j += 1
+            j -= 1
+
+            f[i] = max(f[i - 1], f[j] + v[i].val * v[i].cnt)
+
+        return f[m]
+```
+

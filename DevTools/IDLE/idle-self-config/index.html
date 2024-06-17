@@ -29,8 +29,9 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091649022.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091650602.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091651415.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406171020868.gif">
 <meta property="article:published_time" content="2024-06-05T14:56:22.686Z">
-<meta property="article:modified_time" content="2024-06-09T09:00:14.696Z">
+<meta property="article:modified_time" content="2024-06-17T02:20:51.804Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -254,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          326 字
+          499 字
         
       </span>
     
@@ -265,7 +266,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -328,7 +329,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月9日 下午
+                    本文最后更新于 2024年6月17日 上午
                   
                 
               </p>
@@ -354,6 +355,12 @@
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091651415.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="修改运行模块快捷键为 Ctrl+F5 从而和 CLion 对应"></p>
 <h3 id="题外话">题外话</h3>
 <p>为什么直接点击 <code>pythonw.exe</code> 无法打开 IDLE？说实在的困扰好久了，因为这个原因就没打开过所谓的 python 自带的编辑器，惭愧。搜遍 Google 和 Baidu 都未能找到准确的答案，比较多的是：因为 pythonw.exe 就没打算让你双击打开它，所以只能通过快捷方式打开？？？</p>
+<h3 id="upd">upd</h3>
+<p>正如底部评论所言，<code>pythonw</code> 可以理解为一个命令行工具，那显然就不是用来双击打开的。与 <code>python demo.py</code> 表示运行 <code>demo.py</code> 文件逻辑类似，<code>pythonw demo.pyw</code> 表示运行 <code>demo.pyw</code> 文件。比如这个目录下的 <code>.pyw</code> 文件：<code>D:\Program Files\Python38\Lib\idlelib\idle.pyw</code>，我们在任意位置运行下方命令：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pythonw <span class="hljs-string">"D:\Program Files\Python38\Lib\idlelib\idle.pyw"</span><br></code></pre></td></tr></tbody></table></figure>
+<p>即可弹出对应 <code>.pyw</code> 窗口文件的内容：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406171020868.gif" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="pythonw运行测试"></p>
+<p>至于其中的解释器版本，尽管打开的 <code>python3.8</code> 对应的窗口文件，但是由于使用的 <code>pythonw</code> 工具是系统环境变量对应的 <code>python3.11</code> 版本，因此显示的解释器版本也就是 <code>python3.11</code></p>
 
                 
               </div>
@@ -418,7 +425,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年6月9日</div>
+          <div>2024年6月17日</div>
         </div>
       
       

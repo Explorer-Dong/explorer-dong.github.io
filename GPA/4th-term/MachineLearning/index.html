@@ -100,7 +100,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406110848096.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406110915333.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-06-11T15:31:28.618Z">
+<meta property="article:modified_time" content="2024-06-18T01:04:43.687Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -335,7 +335,7 @@
         
         
         
-          125 分钟
+          126 分钟
         
       </span>
     
@@ -398,7 +398,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月11日 晚上
+                    本文最后更新于 2024年6月18日 上午
                   
                 
               </p>
@@ -1793,6 +1793,8 @@ h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​
 <li>流形分布</li>
 </ol>
 <h3 id="13-2-生成式方法">13.2 生成式方法</h3>
+<p>生成式：用联合分布 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span> 进行建模</p>
+<p>判别式：用条件分布 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>y</mi><mtext>&nbsp;</mtext><mi mathvariant="normal">∣</mi><mtext>&nbsp;</mtext><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(y\ |\ x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace">&nbsp;</span><span class="mord">∣</span><span class="mspace">&nbsp;</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> 进行建模</p>
 <p>根本思想就是将每一个未标记样本的缺失标记看做一个特征，此时就可以利用 EM 算法进行隐变量（标签）的求解。</p>
 <h3 id="自监督训练（补）">自监督训练（补）</h3>
 <p>根本思想就是利用有标记数据进行模型训练，然后对未标记数据进行预测，选择置信度较高的一些样本加入训练集重新训练模型，不断迭代进行直到最终训练出来一个利用大量未标记数据训练出来的模型。</p>
@@ -1816,11 +1818,22 @@ h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​
 <p>多学习器协同训练。</p>
 <h2 id="第14章-概率图模型-TODO">第14章 概率图模型 TODO</h2>
 <h3 id="14-1-隐马尔可夫模型">14.1 隐马尔可夫模型</h3>
+<p>生成式方法。</p>
 <p>隐马尔可夫模型（Hidden Markov Model，简称 HMM）是结构最简单的动态贝叶斯网。</p>
 <p>结构信息：</p>
 <p>参数信息：</p>
 <p>应用场景：</p>
+<h3 id="14-2-马尔科夫随机场">14.2 马尔科夫随机场</h3>
+<p>生成式方法。</p>
+<h3 id="14-3-条件随机场">14.3 条件随机场</h3>
+<p>判别式方法。</p>
+<h3 id="14-4-学习和推断">14.4 学习和推断</h3>
+<h3 id="14-5-近似推断">14.5 近似推断</h3>
+<h4 id="14-5-1-MCMC-推断">14.5.1 MCMC 推断</h4>
+<h4 id="14-5-2-变分推断">14.5.2 变分推断</h4>
+<p>pass</p>
 <h2 id="第15章-规则学习"><s>第15章 规则学习</s></h2>
+<h2 id="补充">补充</h2>
 
                 
               </div>
@@ -1885,7 +1898,7 @@ h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年6月11日</div>
+          <div>2024年6月18日</div>
         </div>
       
       

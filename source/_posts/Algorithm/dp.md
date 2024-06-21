@@ -1204,3 +1204,177 @@ class Solution:
         return f[m]
 ```
 
+### 16. LIS
+
+https://www.luogu.com.cn/problem/B3637
+
+> 题意：给定序列，求解其中最长上升子序列的长度。
+>
+> 思路：我们采用动态规划。
+>
+> **状态定义**。定义状态数组 `f[i]` 表示以元素 `a[i]` 结尾的最长上升子序列的长度，显然的初始状态全都是 `1`
+>
+> **状态转移**。
+>
+> - 暴力枚举。首先很显然的 `f[i]` 一定是从 `[0,i-1]` 中比当前元素值小的状态转移过来，于是可以很轻松的写出双重循环的代码，但是这样时间复杂度是 $O(n^2)$ 的，必然超时。
+>
+> - 贪心+二分优化。
+>
+>     - 回顾朴素。优化需要在理解转移本质的基础上展开，因此我们先来回顾一下朴素版的转移方案：从 `[0,i-1]` 中比当前元素小的元素 `a[j]` 对应的最长上升子序列 `f[j]` 转移过来。我们枚举了 `[0,i-1]` 所有的状态确保了不重不漏，见下图：其中✔表示进入了 `if` 的判断逻辑。最终我们选择从 `j = 5` 对应的 `f[j] = 3` 转移而来。不难发现这里有两个判断准则，一个是元素，一个是长度。朴素版枚举了前者。即：枚举了所有的元素，然后选择了最优的长度。
+>
+>         ![枚举元素](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406211528778.png)
+>
+>     - 转换视角。可以枚举长度吗？当然也可以！我们可以枚举所有的长度，然后判断对应的元素，如下图。这样也可以做到不重不漏的枚举所有状态。但是显然的，既然和朴素版枚举元素一样枚举了所有长度，那么枚举的总量不会改变，时间复杂度也就不会改变，仍然是 $O(n^2)$，并且和枚举元素相比还多了一点思维量，即长度枚举一定是在**连续**的 `[1,max_len]` 中进行，其中每一个长度都一定存在元素。与枚举元素那般无脑相比，谈何优化？
+>
+>         ![枚举长度](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406211532051.png)
+>
+>     - 优化诞生。在枚举元素时，并没有任何有价值的信息，比如元素并非单调排列，`f[]` 数组并非单调趋势。但转换到枚举长度，让我们有机会进行优化！不难发现，对于同一个长度下的所有元素，为了确保可以尽可能的作为旧状态而被转移，我们只需要存储其中「值最小」的元素，如下图圈出的元素！这也是贪心的思路由来。这样在枚举长度 `[1,max_len]` 时，就不再需要枚举每一个长度下所有的元素，仅需枚举每一个长度下唯一的那个元素，但如果每一个长度都刚好只有一个元素，那岂不是还是需要线性枚举？并不是。不难发现此时每一个长度对应的唯一元素组成的序列是严格单调递增的（反证法易证）！有了这样单调的性质我们就可以利用二分加速枚举，套找右边界的板子即可。优化完毕。
+>
+>         ![优化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406211532875.png)
+>
+>     - 代码实现。枚举每一个元素肯定是少不了的，我们使用 `dp[len]` 表示最长上升子序列长度为 `len` 的序列的最后一个元素的最小值。初始状态显然就是 `dp[1] = a[0]`。在每一个元素二分查询「最大的比当前元素小的元素」时，如果查出来的元素 `dp[r]` 确实比当前元素小，则需要更新 `dp[r+1]` 的值；反之如果查出来的元素 `dp[r]` 比当前元素还小，则表明二分到了左边界，此时 `r` 一定是 1，直接用当前元素覆盖 `dp[1]` 即可。
+>
+> **答案表示**。最终答案就是 `max_len`
+>
+> 时间复杂度：$O(n \log n)$
+
+暴力枚举元素
+
+```cpp
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+void solve() {
+    int n;
+    cin >> n;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    vector<int> f(n, 1);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < i; j++) {
+            if (a[i] > a[j]) {
+                f[i] = max(f[i], f[j] + 1);
+            }
+        }
+    }
+
+    cout << *max_element(f.begin(), f.end()) << "\n";
+}
+
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int T = 1;
+//    std::cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+暴力枚举长度
+
+```cpp
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+void solve() {
+    int n;
+    cin >> n;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    vector<vector<int>> dp(n + 1, vector<int>());
+    int max_len = 1;
+    dp[1].push_back(a[0]);
+    for (int i = 1; i < n; i++) {
+        bool ok = false;
+        for (int j = max_len; j >= 1; j--) {
+            for (int x: dp[j]) {
+                if (a[i] > x) {
+                    dp[j + 1].push_back(a[i]);
+                    max_len = max(max_len, j + 1);
+                    ok = true;
+                    break;
+                }
+            }
+            if (ok) {
+                break;
+            }
+        }
+        if (!ok) {
+            dp[1].push_back(a[i]);
+        }
+    }
+
+    cout << max_len << "\n";
+}
+
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int T = 1;
+//    std::cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+贪心二分优化
+
+```cpp
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+void solve() {
+    int n;
+    cin >> n;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    vector<int> dp(n + 1, INT_MAX);
+    int max_len = 1;
+    dp[1] = a[0];
+    for (int i = 1; i < n; i++) {
+        int l = 1, r = max_len;
+        while (l < r) {
+            int mid = (l + r + 1) >> 1;
+            if (dp[mid] < a[i]) l = mid;
+            else r = mid - 1;
+        }
+
+        if (dp[r] < a[i]) {
+            dp[r + 1] = min(dp[r + 1], a[i]);
+            max_len += r == max_len;
+        } else {
+            dp[1] = a[i];
+        }
+    }
+
+    cout << max_len << "\n";
+}
+
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int T = 1;
+//    std::cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```

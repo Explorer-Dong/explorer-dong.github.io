@@ -1330,6 +1330,57 @@ signed main() {
 }
 ```
 
+暴力枚举长度 - 使用 `goto` 关键字
+
+```cpp
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+void solve() {
+    int n;
+    cin >> n;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    vector<vector<int>> dp(n + 1, vector<int>());
+    int max_len = 1;
+    dp[1].push_back(a[0]);
+    for (int i = 1; i < n; i++) {
+        bool ok = false;
+        for (int j = max_len; j >= 1; j--) {
+            for (int x: dp[j]) {
+                if (a[i] > x) {
+                    dp[j + 1].push_back(a[i]);
+                    max_len = max(max_len, j + 1);
+                    ok = true;
+                    goto flag;
+                }
+            }
+        }
+        flag:
+        if (!ok) {
+            dp[1].push_back(a[i]);
+        }
+    }
+
+    cout << max_len << "\n";
+}
+
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int T = 1;
+//    std::cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
 贪心二分优化
 
 ```cpp

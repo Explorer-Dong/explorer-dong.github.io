@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131238885.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131239595.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-06-18T15:07:17.126Z">
+<meta property="article:modified_time" content="2024-06-22T12:27:56.261Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -268,7 +268,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.4k 字
+          9.6k 字
         
       </span>
     
@@ -279,7 +279,7 @@
         
         
         
-          59 分钟
+          60 分钟
         
       </span>
     
@@ -342,7 +342,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月18日 晚上
+                    本文最后更新于 2024年6月22日 晚上
                   
                 
               </p>
@@ -696,13 +696,13 @@
 <p>现代计算机都是对字节进行编址方式。由于程序中对每个数据只给定一个地址，那么对于多字节的数据如何根据仅有的一个地址进行 CPU 的内存分配呢？这就是经典的字节排序问题。现在介绍两种内存分配方式：大端方式、小端方式</p>
 <ul>
 <li>
-<p>大端方式：最低有效字节存放在最高位</p>
+<p>大端方式：最低有效字节存放在最高位。对应的机器码中最低有效字节在最右端，例如数值 <code>0x0000001E</code> 在大端方式下存储为 <code>00 00 00 1E</code></p>
 </li>
 <li>
-<p>小端方式：最低有效字节存放在最低位</p>
+<p>小端方式：最低有效字节存放在最低位。对应的机器码中最低有效字节在最左端，例如数值 <code>0x0000001E</code> 在小端方式下存储为 <code>1E 00 00 00</code></p>
 </li>
 <li>
-<p>举例说明：对于机器数 <code>FFFFFFF6</code> 而言，下面的表示方式中，左侧为小端存储，右侧为大端存储</p>
+<p>举例说明：对于机器数 <code>0xFFFFFFF6</code> 而言，下面的表示方式中，左侧为小端存储，右侧为大端存储</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081008751.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="左侧为小端存储，右侧为大端存储"></p>
 </li>
 </ul>
@@ -1024,9 +1024,13 @@
 </table>
 <h3 id="3-3-IA-32-常用指令类型及其操作">3.3 IA-32 常用指令类型及其操作</h3>
 <h4 id="3-3-1-传送指令">3.3.1 传送指令</h4>
+<p>R 表示取寄存器操作数，M 表示取存储器操作数：</p>
 <p><code>mov 0x8(%ebp,%edx,4), %eax</code> 功能为 <code>R[eax] = M[R[ebp] + R[edx] * 4 + 8]</code></p>
 <p><code>lea 0x8(%ebp,%edx,4), %eax</code> 功能为 <code>R[eax] = R[ebp] + R[edx] * 4 + 8</code></p>
-<p>上述例子中，R 表示取寄存器操作数，M 表示取存储器操作数。可以将 lea 看做 mov 的特殊，即 C 语言中的取地址操作。</p>
+<ul>
+<li>第一条指令表示：将计算出来的地址 <code>R[ebp] + R[edx] * 4 + 8</code> 对应的值 <code>M[R[ebp] + R[edx] * 4 + 8]</code> 赋给寄存器 <code>%eax</code>，此时寄存器中存储的信息为<strong>值</strong> <code>R[eax]</code></li>
+<li>第二条指令表示：将计算出来的地址 <code>R[ebp] + R[edx] * 4 + 8</code> 赋给寄存器 <code>%eax</code>，此时寄存器中存储的信息为<strong>地址</strong> <code>R[eax]</code></li>
+</ul>
 <h4 id="3-3-2-定点算数运算指令">3.3.2 定点算数运算指令</h4>
 <p>加减乘除分别为：<code>add, sub, mul, div</code></p>
 <p>关于定点寄存器的说明：<code>EAX,EBX,ECX,EDX</code> 均为 32 位寄存器，对应的 <code>AH,BH,CH,DH</code> 均为低16 位寄存器，<code>AL,BL,CL,DL</code> 均为低 8 位寄存器</p>
@@ -1222,7 +1226,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年6月18日</div>
+          <div>2024年6月22日</div>
         </div>
       
       

@@ -38,13 +38,14 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081008751.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081025914.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406172152319.svg">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406232114184.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405212043567.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131154702.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131154636.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131238885.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131239595.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-06-22T12:27:56.261Z">
+<meta property="article:modified_time" content="2024-06-23T13:16:38.798Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -268,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.6k 字
+          9.7k 字
         
       </span>
     
@@ -279,7 +280,7 @@
         
         
         
-          60 分钟
+          61 分钟
         
       </span>
     
@@ -342,7 +343,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月22日 晚上
+                    本文最后更新于 2024年6月23日 晚上
                   
                 
               </p>
@@ -890,7 +891,7 @@
 <li>尾数规格化：只能让 1 出现在小数点的左边一位</li>
 <li>阶码溢出判断</li>
 </ul>
-<h2 id="第3章-程序的转换及机器级表示-TODO">第3章 程序的转换及机器级表示 TODO</h2>
+<h2 id="第3章-程序的转换及机器级表示">第3章 程序的转换及机器级表示</h2>
 <div class="note note-light">
             <p>上一章节我们学习了<strong>数据的机器级表示</strong>，本章我们将学习<strong>程序的机器级表示</strong>。包括我们写的屎山是怎么转化成机器能理解的 01 序列的（程序的转换）以及机器理解东西的规则是什么（机器级表示，以 IA-32 指令集为例）。</p><p><strong>程序的转换</strong> 大约用下面这个流程图就能概括了：</p><p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mtext>源代码&nbsp;</mtext><mstyle scriptlevel="0" displaystyle="false"><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mtext>①预处理</mtext></mpadded></munderover></mstyle><mtext>&nbsp;源代码&nbsp;</mtext><mstyle scriptlevel="0" displaystyle="false"><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mtext>②编译</mtext></mpadded></munderover></mstyle><mtext>&nbsp;汇编代码&nbsp;</mtext><mstyle scriptlevel="0" displaystyle="false"><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mtext>③汇编</mtext></mpadded></munderover></mstyle><mtext>&nbsp;机器代码&nbsp;</mtext><mstyle scriptlevel="0" displaystyle="false"><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mtext>④链接</mtext></mpadded></munderover></mstyle><mtext>&nbsp;机器代码</mtext></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}\text{源代码 $\xrightarrow[]{\text{①预处理}}$ 源代码 $\xrightarrow[]{\text{②编译}}$ 汇编代码 $\xrightarrow[]{\text{③汇编}}$ 机器代码 $\xrightarrow[]{\text{④链接}}$ 机器代码}\end{aligned}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.7603em;vertical-align:-0.6302em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1302em;"><span style="top:-3.1302em;"><span class="pstrut" style="height:3.1003em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">源代码</span><span class="mord">&nbsp;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">①</span><span class="mord cjk_fallback mtight">预处理</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">&nbsp;</span><span class="mord cjk_fallback">源代码</span><span class="mord">&nbsp;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">②</span><span class="mord cjk_fallback mtight">编译</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">&nbsp;</span><span class="mord cjk_fallback">汇编代码</span><span class="mord">&nbsp;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">③</span><span class="mord cjk_fallback mtight">汇编</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">&nbsp;</span><span class="mord cjk_fallback">机器代码</span><span class="mord">&nbsp;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">④</span><span class="mord cjk_fallback mtight">链接</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">&nbsp;</span><span class="mord cjk_fallback">机器代码</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6302em;"><span></span></span></span></span></span></span></span></span></span></span></span></p><p><strong>机器级表示</strong> 无法直接阅读，只能从更高层面的汇编来理解。从上图可以看出，汇编代码可以从「源代码编译」而来，也可以从「机器代码反汇编」而来。本章主要就是按 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>AT&amp;T</mtext></mrow><annotation encoding="application/x-tex">\text{AT\&amp;T}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">AT&amp;T</span></span></span></span></span> 格式对上述两种来源的汇编代码进行分析和理解。</p><p>本章内容梗概：</p><ul><li>3.1 节：概述高级语言到汇编语言到机器语言的转换；</li><li>3.2 节：概述 IA-32 指令集的三个主要方面，分别为 <strong>①数据类型及其存储格式</strong>、<strong>②寄存器存取数据的逻辑</strong>、<strong>③机器指令的汇编格式</strong>，为后续小节的详细展开做铺垫；</li><li>3.3 节：详细展开 <strong>③机器指令的汇编格式</strong>；</li><li>3.4、3.5 节：以 C 语言为高级语言示例，详细展开 <strong>①数据类型及其存储格式</strong>、<strong>③机器指令的汇编格式</strong>；</li><li>3.6 节：分析异常情况的汇编表示和内部逻辑。</li></ul>
           </div>
@@ -997,7 +998,25 @@
 </tbody>
 </table>
 <h4 id="3-2-2-寄存器组织和寻址方式">3.2.2 寄存器组织和寻址方式</h4>
-<p>寄存器组织：</p>
+<p>寄存器组织：共有三大类</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406232114184.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="寄存器组织"></p>
+<ul>
+<li>
+<p>8 个通用寄存器，其中</p>
+<ul>
+<li><code>EAX, EBX, ECX, EDX</code> 均为 32 位寄存器</li>
+<li><code>AX, BX, CX, DX</code> 均为 16 位寄存器</li>
+<li><code>AH, BH, CH, DH</code> 均为高 8 位寄存器</li>
+<li><code>AL, BL, CL, DL</code> 均为低 8 位寄存器</li>
+</ul>
+</li>
+<li>
+<p>2 个专用寄存器</p>
+</li>
+<li>
+<p>6 个段寄存器</p>
+</li>
+</ul>
 <p>寻址方式：</p>
 <ol>
 <li>立即寻址：指令直接给出操作数。准确的说不用寻址了；</li>
@@ -1025,32 +1044,25 @@
 <h3 id="3-3-IA-32-常用指令类型及其操作">3.3 IA-32 常用指令类型及其操作</h3>
 <h4 id="3-3-1-传送指令">3.3.1 传送指令</h4>
 <p>R 表示取寄存器操作数，M 表示取存储器操作数：</p>
-<p><code>mov 0x8(%ebp,%edx,4), %eax</code> 功能为 <code>R[eax] = M[R[ebp] + R[edx] * 4 + 8]</code></p>
-<p><code>lea 0x8(%ebp,%edx,4), %eax</code> 功能为 <code>R[eax] = R[ebp] + R[edx] * 4 + 8</code></p>
+<p>值运算语句：<code>mov 0x8(%ebp,%edx,4), %eax</code> 功能为 <code>R[eax] = M[R[ebp] + R[edx] * 4 + 8]</code></p>
+<p>地址运算语句：<code>lea 0x8(%ebp,%edx,4), %eax</code> 功能为 <code>R[eax] = R[ebp] + R[edx] * 4 + 8</code></p>
 <ul>
 <li>第一条指令表示：将计算出来的地址 <code>R[ebp] + R[edx] * 4 + 8</code> 对应的值 <code>M[R[ebp] + R[edx] * 4 + 8]</code> 赋给寄存器 <code>%eax</code>，此时寄存器中存储的信息为<strong>值</strong> <code>R[eax]</code></li>
 <li>第二条指令表示：将计算出来的地址 <code>R[ebp] + R[edx] * 4 + 8</code> 赋给寄存器 <code>%eax</code>，此时寄存器中存储的信息为<strong>地址</strong> <code>R[eax]</code></li>
 </ul>
 <h4 id="3-3-2-定点算数运算指令">3.3.2 定点算数运算指令</h4>
-<p>加减乘除分别为：<code>add, sub, mul, div</code></p>
-<p>关于定点寄存器的说明：<code>EAX,EBX,ECX,EDX</code> 均为 32 位寄存器，对应的 <code>AH,BH,CH,DH</code> 均为低16 位寄存器，<code>AL,BL,CL,DL</code> 均为低 8 位寄存器</p>
+<p>加减乘除分别为：<code>add, sub, mul, div</code>，都是将「源目的地址」的值运算到「转移目标地址」，即左边对应的值运算到右边对应的值。</p>
 <h4 id="3-3-3-按位运算指令">3.3.3 按位运算指令</h4>
-<p>了解算术和逻辑的左移右移。</p>
+<p>常用的有按位运算，以及算数、逻辑的左移和右移。按位运算中有一个用于判定单个数情况的指令为 <code>test</code>，<code>test</code> 不修改右边对应的值，其余都遵循上述「左运算到右进而修改右」的规则。</p>
 <h4 id="3-3-4-控制转移指令">3.3.4 控制转移指令</h4>
-<p>查表。</p>
-<h3 id="3-4-C-语言程序的机器级表示​-TODO">3.4 C 语言程序的机器级表示​ TODO</h3>
+<p>常用的有无条件转移，对应 C 语言中的 <code>goto</code> 关键字，汇编表示为 <code>jmp</code> 等。以及有条件转移，比如 <code>je, jne</code> 等，取决于逻辑运算的结果。</p>
+<h3 id="3-4-C-语言程序的机器级表示​">3.4 C 语言程序的机器级表示​</h3>
 <div class="note note-light">
             <p>用任何汇编语言或高级语言编写的<strong>源程序</strong>都必须<strong>翻译</strong>（汇编、解释或编译）成以指令形式表示的<strong>机器语言</strong>，才能在计算机上运行。本节高级语言选用 <strong>C 语言</strong>，机器语言选用 <strong>IA-32 指令系统</strong>，简单介绍高级语言转化为机器语言的过程。</p>
           </div>
-<h4 id="3-4-1-过程调用的机器级表示​-TODO">3.4.1 过程调用的机器级表示​ TODO</h4>
-<p>本目讲解不同模块之间的调用接口约定。由于 C 语言中，程序的过程性体现在函数中，因此我们用函数来表示过程。</p>
-<ol>
-<li>
-<p><strong>IA-32 中用于过程调用的指令</strong></p>
+<h4 id="3-4-1-过程调用的机器级表示​">3.4.1 过程调用的机器级表示​</h4>
 <p>CALL 调用指令：在执行调用过程之前需要将返回地址压入栈</p>
 <p>RET 返回指令：在返回调用过程之前从栈中取出返回地址</p>
-</li>
-<li>
 <p><strong>过程调用的执行步骤</strong>（记调用者为 P，被调用者为 Q）</p>
 <table>
 <thead>
@@ -1066,7 +1078,7 @@
 </tr>
 <tr>
 <td style="text-align:center">P 保存返回地址（即调用函数的下一个语句）并将控制权给 P</td>
-<td style="text-align:center">通过 CALL 指令</td>
+<td style="text-align:center">将返回地址入栈并执行 CALL 指令</td>
 </tr>
 <tr>
 <td style="text-align:center">Q 保存 P 的现场并为自己的非静态变量分配空间</td>
@@ -1086,21 +1098,21 @@
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p><strong>过程调用所使用的栈</strong></p>
-<p>从上述调用过程来看，我们需要至少需要保存以下数据：入口参数、返回地址、调用过程执行时用到的寄存器、被调用过程中的非静态局部变量、过程返回的结果。最好就是直接存储到寄存器中，但现在的问题是用户可见寄存器的数量有限并且所有过程使用的寄存器是共享的，因此我们不能直接存储到寄存器中。因此我们才用 <strong>栈(stack)</strong> 结构来存储这些数据</p>
-</li>
-<li></li>
-</ol>
-<h4 id="3-4-2-选择语句的机器级表示-TODO">3.4.2 选择语句的机器级表示 TODO</h4>
-<h4 id="3-4-3-循环语句的机器级表示-TODO">3.4.3 循环语句的机器级表示 TODO</h4>
-<h3 id="3-5-复杂数据类型的分配和访问-TODO">3.5 复杂数据类型的分配和访问 TODO</h3>
-<h4 id="3-5-1-数组的分配与访问-TODO">3.5.1 数组的分配与访问 TODO</h4>
+<h4 id="3-4-2-选择语句的机器级表示">3.4.2 选择语句的机器级表示</h4>
+<p>主要由常用指令组合而成，相比于过程调用更加简单。</p>
+<h4 id="3-4-3-循环语句的机器级表示">3.4.3 循环语句的机器级表示</h4>
+<p>同选择语句。</p>
+<h3 id="3-5-复杂数据类型的分配和访问">3.5 复杂数据类型的分配和访问</h3>
+<h4 id="3-5-1-数组的分配与访问">3.5.1 数组的分配与访问</h4>
+<p>采用相对寻址，这大一一开始就学过了，关键有两点。</p>
+<ul>
+<li>知道数组存的是什么类型的数据（进而知道每一个元素占用多少字节）</li>
+<li>知道数组首地址。以二维数组为例，运算公式就是 <code>&amp;a + (typeof a) * (i * M) + j</code>，其中 <code>typeof a</code> 就表示单个元素的字节数，<code>i, j</code> 就表示下标索引，<code>M</code> 就表示行数（默认按行优先规则）</li>
+</ul>
 <h4 id="3-5-2-结构体数据的分配与访问">3.5.2 结构体数据的分配与访问</h4>
-<p>采用首地址+偏移的逻辑分配与访问数据。一个结构体存储所有字段的数据。</p>
+<p>采用首地址+偏移的逻辑分配与访问数据，与数组类似。同时，一个结构体存储所有字段的数据。</p>
 <h4 id="3-5-3-联合体数据的分配与访问">3.5.3 联合体数据的分配与访问</h4>
-<p>同样采用首地址+偏移的逻辑分配和访问数据。一个在同一时刻只存储一种数据类型。即相同的位序列可以在不同时刻存储不同的数据类型变量。</p>
+<p>同样采用首地址+偏移的方式分配和访问数据。一个联合体在同一时刻只存储一种数据类型。即相同的位序列可以在不同时刻存储不同的数据类型变量。</p>
 <h4 id="3-5-4-数据的对齐">3.5.4 数据的对齐</h4>
 <p>对于 32 位 OS 而言，存储器一行存储 32 位共 4 个字节，计算机系统一次访问存储空间只能读写固定长度的位。假定最多可以读写 64 位，则称为 8 字节宽的存储器机制。一般采用<strong>按边界对齐</strong>的对齐策略。按边界对齐会浪费一些存储空间，但是有利于数据的访问。</p>
 
@@ -1114,7 +1126,6 @@
         </div>
       </div>
     </div>
-<h3 id="3-6-越界访问和缓冲区溢出-TODO">3.6 越界访问和缓冲区溢出 TODO</h3>
 <h2 id="第4章-程序的链接-TODO">第4章 程序的链接 TODO</h2>
 <div class="note note-light">
             <p>在编写大型程序时，为了<strong>提升效率</strong>以及<strong>不断复用</strong>，往往需要模块化开发，这就需要我们对多个分散的源代码片段进行组合。目前的组合方法是：首先对每一个部分分开进行编译和汇编生成对应的目标代码文件，然后通过链接器（linker）将所有的目标代码文件与使用到的其他库的目标代码文件结合，形成最终的可执行文件。本章主要讨论链接器的工作原理。</p>
@@ -1226,7 +1237,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年6月22日</div>
+          <div>2024年6月23日</div>
         </div>
       
       
@@ -1257,9 +1268,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/GPA/4th-term/OptMethod/" title="OptMethod">
+                      <a href="/GPA/4th-term/ProbAndStat/" title="ProbAndStat">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">OptMethod</span>
+                        <span class="hidden-mobile">ProbAndStat</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1267,8 +1278,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/4th-term/ProbAndStat/" title="ProbAndStat">
-                        <span class="hidden-mobile">ProbAndStat</span>
+                      <a href="/GPA/3rd-term/CollegePhysics%E2%85%A1/" title="CollegePhysicsⅡ">
+                        <span class="hidden-mobile">CollegePhysicsⅡ</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

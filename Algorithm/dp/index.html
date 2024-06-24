@@ -16,12 +16,12 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="dp              动态规划的根本在于状态表示，如何不重不漏的表示所有的状态，以及如何划分子集从而进行状态更新。            1. 对称山脉 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;5169&#x2F; 模拟，时间复杂度 O(n3)O(n^3)O(n3) 12345678910111213141516171819202122232425262728">
+    <meta name="description" content="《动态规划》              动态规划的根本在于状态表示，如何不重不漏的表示所有的状态，以及如何划分子集从而进行状态更新。            1. 对称山脉 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;5169&#x2F; 模拟，时间复杂度 O(n3)O(n^3)O(n3) 1234567891011121314151617181920212223242526">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dp">
 <meta property="og:url" content="https://blog.dwj601.cn/Algorithm/dp/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="dp              动态规划的根本在于状态表示，如何不重不漏的表示所有的状态，以及如何划分子集从而进行状态更新。            1. 对称山脉 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;5169&#x2F; 模拟，时间复杂度 O(n3)O(n^3)O(n3) 12345678910111213141516171819202122232425262728">
+<meta property="og:description" content="《动态规划》              动态规划的根本在于状态表示，如何不重不漏的表示所有的状态，以及如何划分子集从而进行状态更新。            1. 对称山脉 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;5169&#x2F; 模拟，时间复杂度 O(n3)O(n^3)O(n3) 1234567891011121314151617181920212223242526">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214257.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214793.png">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406211532051.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406211532875.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.037Z">
-<meta property="article:modified_time" content="2024-06-22T12:43:41.155Z">
+<meta property="article:modified_time" content="2024-06-24T02:04:23.074Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -259,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.4k 字
+          10k 字
         
       </span>
     
@@ -270,7 +270,7 @@
         
         
         
-          59 分钟
+          65 分钟
         
       </span>
     
@@ -333,7 +333,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月22日 晚上
+                    本文最后更新于 2024年6月24日 上午
                   
                 
               </p>
@@ -341,7 +341,7 @@
             
               <div class="markdown-body">
                 
-                <h3 id="dp">dp</h3>
+                <h3 id="《动态规划》">《动态规划》</h3>
 <div class="note note-light">
             <p>动态规划的根本在于状态表示，如何不重不漏的表示所有的状态，以及如何划分子集从而进行状态更新。</p>
           </div>
@@ -749,6 +749,45 @@
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>{<br>    <span class="hljs-type">int</span> n;<br>    cin &gt;&gt; n;<br><br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">a</span><span class="hljs-params">(n)</span></span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {<br>        cin &gt;&gt; a[i];<br>    }<br><br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">dp</span>(n + <span class="hljs-number">1</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;());<br>    <span class="hljs-type">int</span> max_len = <span class="hljs-number">1</span>;<br>    dp[<span class="hljs-number">1</span>].<span class="hljs-built_in">push_back</span>(a[<span class="hljs-number">0</span>]);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) {<br>        <span class="hljs-type">bool</span> ok = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = max_len; j &gt;= <span class="hljs-number">1</span>; j--) {<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> x: dp[j]) {<br>                <span class="hljs-keyword">if</span> (a[i] &gt; x) {<br>                    dp[j + <span class="hljs-number">1</span>].<span class="hljs-built_in">push_back</span>(a[i]);<br>                    max_len = <span class="hljs-built_in">max</span>(max_len, j + <span class="hljs-number">1</span>);<br>                    ok = <span class="hljs-literal">true</span>;<br>                    <span class="hljs-keyword">goto</span> flag;<br>                }<br>            }<br>        }<br>        flag:<br>        <span class="hljs-keyword">if</span> (!ok) {<br>            dp[<span class="hljs-number">1</span>].<span class="hljs-built_in">push_back</span>(a[i]);<br>        }<br>    }<br><br>    cout &lt;&lt; max_len &lt;&lt; <span class="hljs-string">"\n"</span>;<br>}<br><br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>    std::ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    std::cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>    <span class="hljs-type">int</span> T = <span class="hljs-number">1</span>;<br><span class="hljs-comment">//    std::cin &gt;&gt; T;</span><br>    <span class="hljs-keyword">while</span> (T--) <span class="hljs-built_in">solve</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
 <p>贪心二分优化</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>{<br>    <span class="hljs-type">int</span> n;<br>    cin &gt;&gt; n;<br><br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">a</span><span class="hljs-params">(n)</span></span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {<br>        cin &gt;&gt; a[i];<br>    }<br><br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n + <span class="hljs-number">1</span>, INT_MAX)</span></span>;<br>    <span class="hljs-type">int</span> max_len = <span class="hljs-number">1</span>;<br>    dp[<span class="hljs-number">1</span>] = a[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) {<br>        <span class="hljs-type">int</span> l = <span class="hljs-number">1</span>, r = max_len;<br>        <span class="hljs-keyword">while</span> (l &lt; r) {<br>            <span class="hljs-type">int</span> mid = (l + r + <span class="hljs-number">1</span>) &gt;&gt; <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (dp[mid] &lt; a[i]) l = mid;<br>            <span class="hljs-keyword">else</span> r = mid - <span class="hljs-number">1</span>;<br>        }<br><br>        <span class="hljs-keyword">if</span> (dp[r] &lt; a[i]) {<br>            dp[r + <span class="hljs-number">1</span>] = <span class="hljs-built_in">min</span>(dp[r + <span class="hljs-number">1</span>], a[i]);<br>            max_len += r == max_len;<br>        } <span class="hljs-keyword">else</span> {<br>            dp[<span class="hljs-number">1</span>] = a[i];<br>        }<br>    }<br><br>    cout &lt;&lt; max_len &lt;&lt; <span class="hljs-string">"\n"</span>;<br>}<br><br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>    std::ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    std::cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>    <span class="hljs-type">int</span> T = <span class="hljs-number">1</span>;<br><span class="hljs-comment">//    std::cin &gt;&gt; T;</span><br>    <span class="hljs-keyword">while</span> (T--) <span class="hljs-built_in">solve</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="17-最大化子数组的总成本">17. 最大化子数组的总成本</h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximize-total-cost-of-alternating-subarrays/">https://leetcode.cn/problems/maximize-total-cost-of-alternating-subarrays/</a></p>
+<blockquote>
+<p>题意：给定长度为 n 的序列，现在需要将其分割为子数组，并定义每一个子数组的价值为「奇数位置为原数值，偶数位置为相反数」，返回最大分割价值</p>
+<p>思路：~~一开始还在想着如何贪心，即仅考虑连续的负数区间，但是显然的贪不出全局最优解。~~于是转而考虑暴力 dp。思路和朴素 01 背包有相似之处。</p>
+<ul>
+<li>
+<p>状态定义。首先我们一定需要按照元素进行枚举，因此第一维度我们就定义为序列长度，但是仅仅这样定义就能表示全部的状态了吗？显然不行。根据题目的奇偶价值约束，我们在判定每一个<strong>负数</strong>是否可以「取相反数」价值时，是取决于上一个负数是否取了相反数价值。为了统一化，我们将正负数一起考虑前一个数是否取了相反价值的情况，因此我们需要再增加「前一个数是否取了相反价值」的状态表示，而这仅仅是一个二值逻辑，直接开两个空间即可。于是状态定义呼之欲出：</p>
+<ul>
+<li><code>f[i][0]</code> 表示第 <code>i</code> 个数取<strong>原始价值</strong>的情况下，序列 <code>[0, i-1]</code> 的最大价值</li>
+<li><code>f[i][1]</code> 表示第 <code>i</code> 个数取<strong>相反价值</strong>的情况下，序列 <code>[0, i-1]</code> 的最大价值</li>
+</ul>
+</li>
+<li>
+<p>状态转移。显然对于上述状态定义，仅仅需要对「连续负数区间」进行考虑，因此对于 <code>nums[i] &gt;= 0</code> 的情况是没有选择约束的，原始价值和相反价值都是可行的方案那么为了最大化最终收益显然选择原始正价值，并且可以从上一个情况的任意状态转移过来那么同样为了最大化最终受益显然选择最大的基状态，于是可得：</p>
+<ul>
+<li><code>f[i][0] = max(f[i-1][0], f[i-1][1]) + nums[i]</code></li>
+<li><code>f[i][1] = max(f[i-1][0], f[i-1][1]) - nums[i]</code></li>
+</ul>
+<p>而对于 <code>nunms[i] &lt; 0</code> 的情况，能否选择相反数取决于前一个数的正负性。当前一个数 <code>nums[i-1] &gt;= 0</code> 时，显然当前负数原始价值和相反价值都可以取到；当前一个数 <code>nums[i-1] &lt; 0</code> 时，则当前负数仅有在前一个负数取原始价值的情况下才能取相反价值，于是可得：</p>
+<p><code>if nums[i-1] &gt;= 0</code></p>
+<ul>
+<li><code>f[i][0] = max(f[i-1][0], f[i-1][1]) + nums[i]</code></li>
+<li><code>f[i][1] = max(f[i-1][0], f[i-1][1] - nums[i])</code></li>
+</ul>
+<p><code>if nums[i-1] &lt; 0</code></p>
+<ul>
+<li><code>f[i][0] = max(f[i-1][0], f[i-1][1] + nums[i])</code></li>
+<li><code>f[i][1] = f[i-1][0] - nums[i]</code></li>
+</ul>
+</li>
+<li>
+<p>答案表示。<code>max(f[n-1][0], f[n-1][1])</code></p>
+</li>
+</ul>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+</blockquote>
+<figure class="highlight cpp"><figcaption><span>[]</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">maximumTotalCost</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>{<br>        <span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br>        <span class="hljs-type">int</span> n =  nums.<span class="hljs-built_in">size</span>();<br><br>        vector&lt;vector&lt;ll&gt;&gt; <span class="hljs-built_in">f</span>(n, <span class="hljs-built_in">vector</span>&lt;ll&gt;(<span class="hljs-number">2</span>, <span class="hljs-number">0</span>));<br>        f[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = f[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) {<br>            <span class="hljs-keyword">if</span> (nums[i] &gt;= <span class="hljs-number">0</span> || nums[i<span class="hljs-number">-1</span>] &gt;= <span class="hljs-number">0</span>) {<br>                f[i][<span class="hljs-number">0</span>] = <span class="hljs-built_in">max</span>(f[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>], f[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>]) + nums[i];<br>                f[i][<span class="hljs-number">1</span>] = <span class="hljs-built_in">max</span>(f[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>], f[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>]) - nums[i];<br>            } <span class="hljs-keyword">else</span> {<br>                f[i][<span class="hljs-number">0</span>] = <span class="hljs-built_in">max</span>(f[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>], f[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>]) + nums[i];<br>                f[i][<span class="hljs-number">1</span>] = f[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>] - nums[i];<br>            }<br>        }<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(f[n<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>], f[n<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>]);<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><figcaption><span>[]</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maximumTotalCost</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        n = <span class="hljs-built_in">len</span>(nums)<br><br>        f = [[<span class="hljs-number">0</span>] * <span class="hljs-number">2</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<br>        f[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = f[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = nums[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):<br>            <span class="hljs-keyword">if</span> nums[i] &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> nums[i-<span class="hljs-number">1</span>] &gt;= <span class="hljs-number">0</span>:<br>                f[i][<span class="hljs-number">0</span>] = <span class="hljs-built_in">max</span>(f[i-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>], f[i-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]) + nums[i]<br>                f[i][<span class="hljs-number">1</span>] = <span class="hljs-built_in">max</span>(f[i-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>], f[i-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]) - nums[i]<br>            <span class="hljs-keyword">else</span>:<br>                f[i][<span class="hljs-number">0</span>] = <span class="hljs-built_in">max</span>(f[i-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>], f[i-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]) + nums[i]<br>                f[i][<span class="hljs-number">1</span>] = f[i-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] - nums[i]<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(f[n-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>], f[n-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>])<br></code></pre></td></tr></tbody></table></figure>
 
                 
               </div>
@@ -806,7 +845,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年6月22日</div>
+          <div>2024年6月24日</div>
         </div>
       
       
@@ -837,9 +876,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Algorithm/divide%20and%20conquer/" title="divide and conquer">
+                      <a href="/Algorithm/a_template/" title="a_template">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">divide and conquer</span>
+                        <span class="hidden-mobile">a_template</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -847,8 +886,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Algorithm/dfs-and-similar/" title="dfs-and-similar">
-                        <span class="hidden-mobile">dfs-and-similar</span>
+                      <a href="/Algorithm/data-structure/" title="data-structure">
+                        <span class="hidden-mobile">data-structure</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

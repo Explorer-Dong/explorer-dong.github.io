@@ -44,8 +44,10 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131154636.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131238885.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131239595.png">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-06-23T13:16:38.798Z">
+<meta property="article:modified_time" content="2024-06-24T03:39:55.198Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +271,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.7k 字
+          9.9k 字
         
       </span>
     
@@ -280,7 +282,7 @@
         
         
         
-          61 分钟
+          62 分钟
         
       </span>
     
@@ -343,7 +345,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月23日 晚上
+                    本文最后更新于 2024年6月24日 中午
                   
                 
               </p>
@@ -1126,21 +1128,36 @@
         </div>
       </div>
     </div>
+<h3 id="3-6-越界访问和缓冲区溢出">3.6 越界访问和缓冲区溢出</h3>
+<p>缓冲区溢出其实和越界访问是一个东西，只不过缓冲区溢出是单独针对栈空间中对局部数组进行了越界访问。一般而言的越界访问往往表示错误访问了栈空间中的返回地址导致程序出现意想不到的错误。</p>
 <h2 id="第4章-程序的链接-TODO">第4章 程序的链接 TODO</h2>
 <div class="note note-light">
-            <p>在编写大型程序时，为了<strong>提升效率</strong>以及<strong>不断复用</strong>，往往需要模块化开发，这就需要我们对多个分散的源代码片段进行组合。目前的组合方法是：首先对每一个部分分开进行编译和汇编生成对应的目标代码文件，然后通过链接器（linker）将所有的目标代码文件与使用到的其他库的目标代码文件结合，形成最终的可执行文件。本章主要讨论链接器的工作原理。</p>
+            <p>在编写大型程序时，为了<strong>提升效率</strong>以及<strong>不断复用</strong>，往往需要模块化开发，这就需要我们对多个分散的源代码片段进行整合。目前的整合方法是：首先对每一个源代码片段 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>(*.c)</mtext></mrow><annotation encoding="application/x-tex">\text{(*.c)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">(*.c)</span></span></span></span></span> 分开进行编译、汇编生成对应的可重定位目标代码文件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>(*.o&nbsp;或&nbsp;*.obj)</mtext></mrow><annotation encoding="application/x-tex">\text{(*.o 或 *.obj)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">(*.o&nbsp;</span><span class="mord cjk_fallback">或</span><span class="mord">&nbsp;*.obj)</span></span></span></span></span>，然后通过链接器 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>(linker)</mtext></mrow><annotation encoding="application/x-tex">\text{(linker)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">(linker)</span></span></span></span></span> 将所有的可重定位目标代码文件与使用到的其他库的可重定位目标代码文件结合，形成最终的可执行文件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>(*.exe)</mtext></mrow><annotation encoding="application/x-tex">\text{(*.exe)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">(*.exe)</span></span></span></span></span>。本章主要讨论链接器的工作原理。</p>
           </div>
 <h3 id="4-1-编译、汇编和静态链接-TODO">4.1 编译、汇编和静态链接 TODO</h3>
-<p>模块化的好处</p>
-<ol>
-<li>模块化（1）一个程序可以分成很多源程序文件（2）可构建公共函数库，如数学库，标准I/O库等</li>
-<li>效率高（1）时间上，可分开编译只需重新编译被修改的源程序文件，然后重新链接（2）空间上，无需包含共享库所有代码      源文件中无需包含共享库函数的源码，只要直接调用即可，      可执行文件和运行时的内存中只需包含所调用函数的代码        而不需要包含整个共享库</li>
-</ol>
+<p>模块化的好处：</p>
+<ul>
+<li>模块化
+<ul>
+<li>一个程序可以分成很多源程序文件，便于管理</li>
+<li>可构建公共函数库，如数学库，标准 I/O 库等</li>
+</ul>
+</li>
+<li>效率高
+<ul>
+<li>时间优，由于可以可以分开编译因此只需重新编译被修改的源程序文件，然后重新链接即可</li>
+<li>空间优，源文件中无需包含共享库函数的源码因此只需包含所调用函数的代码即可</li>
+</ul>
+</li>
+</ul>
 <h3 id="4-2-目标文件格式-TODO">4.2 目标文件格式 TODO</h3>
 <h4 id="4-2-1-ELF-目标文件格式">4.2.1 ELF 目标文件格式</h4>
+<p>包含两种视图对应 4.2.2 中的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>(*.o&nbsp;或&nbsp;*.obj)</mtext></mrow><annotation encoding="application/x-tex">\text{(*.o 或 *.obj)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">(*.o&nbsp;</span><span class="mord cjk_fallback">或</span><span class="mord">&nbsp;*.obj)</span></span></span></span></span> 文件和 4.2.3 中的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>(*.exe)</mtext></mrow><annotation encoding="application/x-tex">\text{(*.exe)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">(*.exe)</span></span></span></span></span> 文件。</p>
 <h4 id="4-2-2-可重定位目标文件格式">4.2.2 可重定位目标文件格式</h4>
+<p>即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>(*.o&nbsp;或&nbsp;*.obj)</mtext></mrow><annotation encoding="application/x-tex">\text{(*.o 或 *.obj)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">(*.o&nbsp;</span><span class="mord cjk_fallback">或</span><span class="mord">&nbsp;*.obj)</span></span></span></span></span> 文件。</p>
 <h4 id="4-2-3-可执行目标文件格式">4.2.3 可执行目标文件格式</h4>
-<h3 id="4-3-符号表和符号解析-TODO">4.3 符号表和符号解析 TODO</h3>
+<p>即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>(*.exe)</mtext></mrow><annotation encoding="application/x-tex">\text{(*.exe)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">(*.exe)</span></span></span></span></span> 文件。</p>
+<h3 id="4-3-符号表和符号解析-star-TODO">4.3 符号表和符号解析 <span class="github-emoji"><span>⭐</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> TODO</h3>
 <h4 id="4-3-1-符号和符号表">4.3.1 符号和符号表</h4>
 <p>每一个可重定位文件 <code>demo.o</code> 都有一个符号表用来记录本模块的符号信息</p>
 <h4 id="4-3-2-符号解析">4.3.2 符号解析</h4>
@@ -1166,7 +1183,8 @@
 <p>（2）<strong>符号解析过程</strong>：</p>
 <h4 id="4-3-3-与静态库的链接">4.3.3 与静态库的链接</h4>
 <p>按照符号引用顺序进行静态链接。引用在前，定义在后。</p>
-<h3 id="4-4-重定位-TODO">4.4 重定位 TODO</h3>
+<h3 id="4-4-重定位-star-TODO">4.4 重定位 <span class="github-emoji"><span>⭐</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> TODO</h3>
+<p>只关心全局变量和静态模块变量，对于所有的局部变量全部忽略。</p>
 <h4 id="4-4-1-重定位信息">4.4.1 重定位信息</h4>
 <h4 id="4-4-2-重定位过程">4.4.2 重定位过程</h4>
 <p>（一）相对重定位方式 <code>R_386_PC32</code></p>
@@ -1237,7 +1255,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年6月23日</div>
+          <div>2024年6月24日</div>
         </div>
       
       
@@ -1278,8 +1296,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/3rd-term/CollegePhysics%E2%85%A1/" title="CollegePhysicsⅡ">
-                        <span class="hidden-mobile">CollegePhysicsⅡ</span>
+                      <a href="/GPA/4th-term/MachineLearning/" title="MachineLearning">
+                        <span class="hidden-mobile">MachineLearning</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

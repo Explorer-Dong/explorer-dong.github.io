@@ -4,7 +4,7 @@ categories: Algorithm
 category_bar: true
 ---
 
-### dp
+### 《动态规划》
 
 {% note light %}
 
@@ -1428,4 +1428,81 @@ signed main() {
     while (T--) solve();
     return 0;
 }
+```
+
+### 17. 最大化子数组的总成本
+
+https://leetcode.cn/problems/maximize-total-cost-of-alternating-subarrays/
+
+> 题意：给定长度为 n 的序列，现在需要将其分割为子数组，并定义每一个子数组的价值为「奇数位置为原数值，偶数位置为相反数」，返回最大分割价值
+>
+> 思路：~~一开始还在想着如何贪心，即仅考虑连续的负数区间，但是显然的贪不出全局最优解。~~于是转而考虑暴力 dp。思路和朴素 01 背包有相似之处。
+>
+> - 状态定义。首先我们一定需要按照元素进行枚举，因此第一维度我们就定义为序列长度，但是仅仅这样定义就能表示全部的状态了吗？显然不行。根据题目的奇偶价值约束，我们在判定每一个**负数**是否可以「取相反数」价值时，是取决于上一个负数是否取了相反数价值。为了统一化，我们将正负数一起考虑前一个数是否取了相反价值的情况，因此我们需要再增加「前一个数是否取了相反价值」的状态表示，而这仅仅是一个二值逻辑，直接开两个空间即可。于是状态定义呼之欲出：
+>
+>     - `f[i][0]` 表示第 `i` 个数取**原始价值**的情况下，序列 `[0, i-1]` 的最大价值
+>     - `f[i][1]` 表示第 `i` 个数取**相反价值**的情况下，序列 `[0, i-1]` 的最大价值
+>
+> - 状态转移。显然对于上述状态定义，仅仅需要对「连续负数区间」进行考虑，因此对于 `nums[i] >= 0` 的情况是没有选择约束的，原始价值和相反价值都是可行的方案那么为了最大化最终收益显然选择原始正价值，并且可以从上一个情况的任意状态转移过来那么同样为了最大化最终受益显然选择最大的基状态，于是可得：
+>
+>     - `f[i][0] = max(f[i-1][0], f[i-1][1]) + nums[i]`
+>     - `f[i][1] = max(f[i-1][0], f[i-1][1]) - nums[i]`
+>
+>     而对于 `nunms[i] < 0` 的情况，能否选择相反数取决于前一个数的正负性。当前一个数 `nums[i-1] >= 0` 时，显然当前负数原始价值和相反价值都可以取到；当前一个数 `nums[i-1] < 0` 时，则当前负数仅有在前一个负数取原始价值的情况下才能取相反价值，于是可得：
+>
+>     `if nums[i-1] >= 0`
+>
+>     - `f[i][0] = max(f[i-1][0], f[i-1][1]) + nums[i]`
+>     - `f[i][1] = max(f[i-1][0], f[i-1][1] - nums[i])`
+>
+>     `if nums[i-1] < 0`
+>
+>     - `f[i][0] = max(f[i-1][0], f[i-1][1] + nums[i])`
+>     - `f[i][1] = f[i-1][0] - nums[i]`
+>
+> - 答案表示。`max(f[n-1][0], f[n-1][1])`
+>
+> 时间复杂度：$O(n)$
+
+```cpp []
+class Solution {
+public:
+    long long maximumTotalCost(vector<int>& nums) {
+        using ll = long long;
+
+        int n =  nums.size();
+
+        vector<vector<ll>> f(n, vector<ll>(2, 0));
+        f[0][0] = f[0][1] = nums[0];
+        for (int i = 1; i < n; i++) {
+            if (nums[i] >= 0 || nums[i-1] >= 0) {
+                f[i][0] = max(f[i-1][0], f[i-1][1]) + nums[i];
+                f[i][1] = max(f[i-1][0], f[i-1][1]) - nums[i];
+            } else {
+                f[i][0] = max(f[i-1][0], f[i-1][1]) + nums[i];
+                f[i][1] = f[i-1][0] - nums[i];
+            }
+        }
+
+        return max(f[n-1][0], f[n-1][1]);
+    }
+};
+```
+
+```python []
+class Solution:
+    def maximumTotalCost(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        f = [[0] * 2 for _ in range(n)]
+        f[0][0] = f[0][1] = nums[0]
+        for i in range(1, n):
+            if nums[i] >= 0 or nums[i-1] >= 0:
+                f[i][0] = max(f[i-1][0], f[i-1][1]) + nums[i]
+                f[i][1] = max(f[i-1][0], f[i-1][1]) - nums[i]
+            else:
+                f[i][0] = max(f[i-1][0], f[i-1][1]) + nums[i]
+                f[i][1] = f[i-1][0] - nums[i]
+
+        return max(f[n-1][0], f[n-1][1])
 ```

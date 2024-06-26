@@ -30,8 +30,23 @@ category_bar: true
 
 ## 一、贪心
 
+Dijkstra、Prim、Kruskal、Huffman
+
 ## 二、分治
+
+二分、归并、快排（第 k 个数）
 
 ## 三、动规
 
-## 四、深搜与宽搜
+矩阵连乘、LCS、多重背包
+
+## 四、深搜
+
+排列树
+
+- TSP
+- n 皇后
+
+子集数
+
+- 01背包

@@ -1,5 +1,5 @@
 ---
-title: PythonApplication
+title: PyApply
 categories:
   - GPA
   - 4th-term

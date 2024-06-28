@@ -16,30 +16,26 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="解决服务器入侵攻击 刚想登录阿里云看看云 GPU 怎么租的，结果给我报了个安全问题。平时都是直接忽略，今天有兴致看了一眼，不看不知道一看吓一跳，尼玛被一个从没去过且没有挂 VPN 的 IP 登陆了。虽然不是 root 用户登的并且机子上也没啥机密文件，但是还是有一种被人看光的感觉。他爹的，我也不知道该怎么报复，记录一下修复的过程 一、确认被入侵 本来的公钥文件 authorized_keys 没了">
+    <meta name="description" content="解决 windows powershell 编码错误 进来使用 windows powershell 时发现会出现奇怪的中文编码错误。有些语句可以正常显示中文，有些则不行，查阅后发现了一个好方法可以解决这个问题，如图： 进入 &gt; 控制面板 &gt; 时钟和区域 目录，并将复选框选中：  操作完成后重启即可正常显示中文！ 参考：解决Windows PowerShell 乱码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="solve-server-invade">
-<meta property="og:url" content="https://blog.dwj601.cn/Operation/solve-server-invade/index.html">
+<meta property="og:title" content="solve-windows-powershell-encode-error">
+<meta property="og:url" content="https://blog.dwj601.cn/Operation/ShellBasic/solve-windows-powershell-encode-error/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="解决服务器入侵攻击 刚想登录阿里云看看云 GPU 怎么租的，结果给我报了个安全问题。平时都是直接忽略，今天有兴致看了一眼，不看不知道一看吓一跳，尼玛被一个从没去过且没有挂 VPN 的 IP 登陆了。虽然不是 root 用户登的并且机子上也没啥机密文件，但是还是有一种被人看光的感觉。他爹的，我也不知道该怎么报复，记录一下修复的过程 一、确认被入侵 本来的公钥文件 authorized_keys 没了">
+<meta property="og:description" content="解决 windows powershell 编码错误 进来使用 windows powershell 时发现会出现奇怪的中文编码错误。有些语句可以正常显示中文，有些则不行，查阅后发现了一个好方法可以解决这个问题，如图： 进入 &gt; 控制面板 &gt; 时钟和区域 目录，并将复选框选中：  操作完成后重启即可正常显示中文！ 参考：解决Windows PowerShell 乱码">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152117426.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121682.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121637.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152152670.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152158086.png">
-<meta property="article:published_time" content="2024-06-15T12:40:50.514Z">
-<meta property="article:modified_time" content="2024-06-15T13:58:15.395Z">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406282333554.png">
+<meta property="article:published_time" content="2024-06-28T15:25:41.651Z">
+<meta property="article:modified_time" content="2024-06-28T15:35:27.732Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152117426.png">
+<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406282333554.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>solve-server-invade | Dwj の Blog</title>
+  <title>solve-windows-powershell-encode-error | Dwj の Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +226,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="solve-server-invade"></span>
+            <span id="subtitle" data-typed-text="solve-windows-powershell-encode-error"></span>
           
         </div>
 
@@ -241,8 +237,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-15 20:40" pubdate>
-          2024年6月15日 晚上
+        <time datetime="2024-06-28 23:25" pubdate>
+          2024年6月28日 晚上
         </time>
       </span>
     
@@ -253,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          518 字
+          108 字
         
       </span>
     
@@ -264,7 +260,7 @@
         
         
         
-          4 分钟
+          1 分钟
         
       </span>
     
@@ -322,12 +318,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">solve-server-invade</h1>
+            <h1 id="seo-header">solve-windows-powershell-encode-error</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月15日 晚上
+                    本文最后更新于 2024年6月28日 晚上
                   
                 
               </p>
@@ -335,37 +331,12 @@
             
               <div class="markdown-body">
                 
-                <h2 id="解决服务器入侵攻击">解决服务器入侵攻击</h2>
-<p>刚想登录阿里云看看云 GPU 怎么租的，结果给我报了个安全问题。平时都是直接忽略，今天有兴致看了一眼，不看不知道一看吓一跳，尼玛被一个从没去过且没有挂 VPN 的 IP 登陆了。虽然不是 root 用户登的并且机子上也没啥机密文件，但是还是有一种被人看光的感觉。他爹的，我也不知道该怎么报复，记录一下修复的过程</p>
-<h3 id="一、确认被入侵">一、确认被入侵</h3>
-<p>本来的公钥文件 <code>authorized_keys</code> 没了：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152117426.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="本来的公钥文件 authorized_keys 没了"></p>
-<p>本地进行 ssh 免密传输就失效了：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121682.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="需要输入密码说明 ssh 免密传输失效"></p>
-<p>查看系统日志 <code>/var/log/auth.log</code> 发现被腾讯云的上海 ip 爆破了：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121637.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="发现真凶！"></p>
-<h3 id="二、调整鉴权信息">二、调整鉴权信息</h3>
-<h4 id="2-1-更改所有用户的密码">2.1 更改所有用户的密码</h4>
-<p>一共就创建了 root 超级用户和 git 普通用户。root 用户就没改了，把 git 用户的改了：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo passwd git<br></code></pre></td></tr></tbody></table></figure>
-<h4 id="2-2-重新配置-ssh-密钥对">2.2 重新配置 ssh 密钥对</h4>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen<br></code></pre></td></tr></tbody></table></figure>
-<p>然后在 <code>/home/git/.ssh/</code> 路径下重新创建了 <code>authorized_keys</code> 文本文件用来存储公钥信息。本地测试连接：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh git@xxx.xxx.xxx.xxx<br></code></pre></td></tr></tbody></table></figure>
-<p>不需要输入密码即连接成功，表明 ssh 通信建立成功。接下来使用 hexo 的部署就不需要输入密码了。</p>
-<h4 id="2-3-禁用密码登录">2.3 禁用密码登录</h4>
-<p>由于 root 用户我还需要使用密码登录，因此我仅仅禁用 git 用户的密码登录，只能通过 ssh 进行主机连接。</p>
-<p>（一）编辑 ssh 配置文件。编辑 <code>/etc/ssh/sshd_config</code> 文件，在末尾添加：</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile">Match User git<br>PasswordAuthentication no<br></code></pre></td></tr></tbody></table></figure>
-<p>（二）重启 ssh 服务。保存上述修改文件后运行：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl restart sshd<br></code></pre></td></tr></tbody></table></figure>
-<p>（三）测试密码连接。禁用后换一台机子尝试进行 ssh 连接，连接失败说明设置成功：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152152670.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="连接失败说明禁用密码登录设置成功"></p>
-<h3 id="三、问题溯源">三、问题溯源</h3>
-<p>曾经在新建 git 用户时没有设置登录密码？曾经在创建这个 git 用户时，没有注意到密码是怎么设置的，可能设置的太简单了？或者没有设置密码？当时还记录了，如下：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152158086.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="翻车原罪"></p>
-<h3 id="四、参考">四、参考</h3>
-<p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/troubleshooting-ssh/error-permission-denied-publickey?platform=linux">Error: Permission denied (publickey)</a></p>
+                <h1>解决 windows powershell 编码错误</h1>
+<p>进来使用 windows powershell 时发现会出现奇怪的中文编码错误。有些语句可以正常显示中文，有些则不行，查阅后发现了一个好方法可以解决这个问题，如图：</p>
+<p>进入 <code>&gt; 控制面板 &gt; 时钟和区域</code> 目录，并将复选框选中：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406282333554.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="详细操作顺序如图所示"></p>
+<p>操作完成后重启即可正常显示中文！</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/woods1815/p/14023352.html">解决Windows PowerShell 乱码</a></p>
 
                 
               </div>
@@ -387,6 +358,13 @@
   <a href="/categories/Operation/" class="category-chain-item">Operation</a>
   
   
+    <span>></span>
+    
+  <a href="/categories/Operation/ShellBasic/" class="category-chain-item">ShellBasic</a>
+  
+  
+
+  
 
       </span>
     
@@ -404,8 +382,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>solve-server-invade</div>
-      <div>https://blog.dwj601.cn/Operation/solve-server-invade/</div>
+      <div>solve-windows-powershell-encode-error</div>
+      <div>https://blog.dwj601.cn/Operation/ShellBasic/solve-windows-powershell-encode-error/</div>
     </div>
     <div class="license-meta">
       
@@ -417,13 +395,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月15日</div>
+          <div>2024年6月28日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年6月15日</div>
+          <div>2024年6月28日</div>
         </div>
       
       
@@ -454,18 +432,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/BackEnd/pyBasic/numpy/" title="numpy">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">numpy</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/DevTools/Git/git-pull-request/" title="git-pull-request">
-                        <span class="hidden-mobile">git-pull-request</span>
+                      <a href="/BackEnd/pyBasic/py-value-and-reference-pass/" title="py-value-and-reference-pass">
+                        <span class="hidden-mobile">py-value-and-reference-pass</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -538,7 +510,7 @@
         aria-expanded="true"
       >
         Operation
-        <span class="list-group-count">(7)</span>
+        <span class="list-group-count">(8)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -557,15 +529,6 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">Operation</span>
-        </a>
-      
-    
-      
-      
-        <a href="/Operation/solve-server-invade/" title="solve-server-invade"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">solve-server-invade</span>
         </a>
       
     
@@ -624,6 +587,89 @@
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Safe"
+        id="heading-c6eea0560cd6f377e78dff2c85cc9122" role="tab" data-toggle="collapse" href="#collapse-c6eea0560cd6f377e78dff2c85cc9122"
+        aria-expanded="false"
+      >
+        Safe
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c6eea0560cd6f377e78dff2c85cc9122"
+           role="tabpanel" aria-labelledby="heading-c6eea0560cd6f377e78dff2c85cc9122">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/Operation/Safe/solve-server-invade/" title="solve-server-invade"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">solve-server-invade</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="ShellBasic"
+        id="heading-164aea2c111d6194e4dd17ebbba44e4a" role="tab" data-toggle="collapse" href="#collapse-164aea2c111d6194e4dd17ebbba44e4a"
+        aria-expanded="true"
+      >
+        ShellBasic
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-164aea2c111d6194e4dd17ebbba44e4a"
+           role="tabpanel" aria-labelledby="heading-164aea2c111d6194e4dd17ebbba44e4a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/Operation/ShellBasic/kill-windows-process/" title="kill-windows-process"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">kill-windows-process</span>
+        </a>
+      
+    
+      
+      
+        <a href="/Operation/ShellBasic/solve-windows-powershell-encode-error/" title="solve-windows-powershell-encode-error"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">solve-windows-powershell-encode-error</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Ubuntu"
         id="heading-3d945423f8e9496c429a5d8c65b4604f" role="tab" data-toggle="collapse" href="#collapse-3d945423f8e9496c429a5d8c65b4604f"
         aria-expanded="false"
@@ -656,43 +702,6 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">ubuntu-modify-sys-language</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="shellBasic"
-        id="heading-cecbaf319edfe900a259608c0f2fe559" role="tab" data-toggle="collapse" href="#collapse-cecbaf319edfe900a259608c0f2fe559"
-        aria-expanded="false"
-      >
-        shellBasic
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-cecbaf319edfe900a259608c0f2fe559"
-           role="tabpanel" aria-labelledby="heading-cecbaf319edfe900a259608c0f2fe559">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/Operation/shellBasic/kill-windows-process/" title="kill-windows-process"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">kill-windows-process</span>
         </a>
       
     

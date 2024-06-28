@@ -16,24 +16,30 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="Hexo 学习记录 前言 操作系统：Windows 11 OS 建站第一枪，使用 Hexo 静态站点生成器搭建自己的博客网站。首先解释一下什么叫静态站点生成器，其实就是将自己写好的 Markdown   文件自动构建为 HTML 文件，然后进行浏览器渲染，而不需要自己编写前端样式文件。在开始介绍 Hexo 建站步骤之前，最好需要掌握一下技能（不掌握也没事，边建边学也行，我就是这样，不过可能会比较浪">
+    <meta name="description" content="解决服务器入侵攻击 刚想登录阿里云看看云 GPU 怎么租的，结果给我报了个安全问题。平时都是直接忽略，今天有兴致看了一眼，不看不知道一看吓一跳，尼玛被一个从没去过且没有挂 VPN 的 IP 登陆了。虽然不是 root 用户登的并且机子上也没啥机密文件，但是还是有一种被人看光的感觉。他爹的，我也不知道该怎么报复，记录一下修复的过程 一、确认被入侵 本来的公钥文件 authorized_keys 没了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo-learning-record">
-<meta property="og:url" content="https://blog.dwj601.cn/FrontEnd/Hexo/hexo-learning-record/index.html">
+<meta property="og:title" content="solve-server-invade">
+<meta property="og:url" content="https://blog.dwj601.cn/Operation/Safe/solve-server-invade/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="Hexo 学习记录 前言 操作系统：Windows 11 OS 建站第一枪，使用 Hexo 静态站点生成器搭建自己的博客网站。首先解释一下什么叫静态站点生成器，其实就是将自己写好的 Markdown   文件自动构建为 HTML 文件，然后进行浏览器渲染，而不需要自己编写前端样式文件。在开始介绍 Hexo 建站步骤之前，最好需要掌握一下技能（不掌握也没事，边建边学也行，我就是这样，不过可能会比较浪">
+<meta property="og:description" content="解决服务器入侵攻击 刚想登录阿里云看看云 GPU 怎么租的，结果给我报了个安全问题。平时都是直接忽略，今天有兴致看了一眼，不看不知道一看吓一跳，尼玛被一个从没去过且没有挂 VPN 的 IP 登陆了。虽然不是 root 用户登的并且机子上也没啥机密文件，但是还是有一种被人看光的感觉。他爹的，我也不知道该怎么报复，记录一下修复的过程 一、确认被入侵 本来的公钥文件 authorized_keys 没了">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-03-21T05:55:02.163Z">
-<meta property="article:modified_time" content="2024-03-21T02:08:56.809Z">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152117426.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121682.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121637.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152152670.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152158086.png">
+<meta property="article:published_time" content="2024-06-15T12:40:50.514Z">
+<meta property="article:modified_time" content="2024-06-28T15:25:27.712Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152117426.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>hexo-learning-record | Dwj の Blog</title>
+  <title>solve-server-invade | Dwj の Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -224,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="hexo-learning-record"></span>
+            <span id="subtitle" data-typed-text="solve-server-invade"></span>
           
         </div>
 
@@ -235,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-21 13:55" pubdate>
-          2024年3月21日 下午
+        <time datetime="2024-06-15 20:40" pubdate>
+          2024年6月15日 晚上
         </time>
       </span>
     
@@ -247,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          518 字
         
       </span>
     
@@ -258,7 +264,7 @@
         
         
         
-          11 分钟
+          4 分钟
         
       </span>
     
@@ -316,12 +322,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">hexo-learning-record</h1>
+            <h1 id="seo-header">solve-server-invade</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月21日 上午
+                    本文最后更新于 2024年6月28日 晚上
                   
                 
               </p>
@@ -329,110 +335,37 @@
             
               <div class="markdown-body">
                 
-                <h1>Hexo 学习记录</h1>
-<h2 id="前言">前言</h2>
-<p>操作系统：Windows 11 OS</p>
-<p>建站第一枪，使用 Hexo 静态站点生成器搭建自己的博客网站。首先解释一下什么叫静态站点生成器，其实就是将自己写好的 Markdown   文件自动构建为 HTML 文件，然后进行浏览器渲染，而不需要自己编写前端样式文件。在开始介绍 Hexo 建站步骤之前，最好需要掌握一下技能（不掌握也没事，边建边学也行，我就是这样，不过可能会比较浪费时间）：</p>
-<ul>
-<li>git 与 github：进行项目版本管理，并且在后期自动化打包部署上有很大的用</li>
-<li>nodejs 与 npm：可以将其粗略的类比为 python 与 pip 的关系与作用</li>
-<li>html、css、javascrip：大概看得懂会 Ctrl C+V 即可，可以后期修改主题样式</li>
-</ul>
-<p>为了防止某些同学还没开始就结束，先补充一下 nodejs 与 npm 的说明与使用、避坑指南，本地已经有可运行 node 环境的同学可以直接跳到 <strong>#步骤一：创建本地环境</strong>。下面开始介绍：</p>
-<blockquote>
-<p>概念介绍：</p>
-<ul>
-<li>
-<p>nodejs：就是 JavaScript 语言的运行环境，可以将其粗略的类比于 python 解释器（实质上功能远不止解释器），你需要将其下载到本地，推荐长期支持版（LTS）。</p>
-</li>
-<li>
-<p>npm：npm 是 JavaScript 第三方包的管理工具，可以将其粗略的类比于 pip 包管理工具。本篇博客使用的 Hexo 其实就是一个 JavaScrip 第三方包。在下载 nodejs 时，npm 就会自动打包一起下载在同一个目录下。</p>
-</li>
-</ul>
-<p>注意点：</p>
-<ul>
-<li>第一个就是需要将下载解压后的 nodejs 文件夹的权限设置为最高，即所有的权限全部赋予。防止后期出现安装第三方包失败的情况（因为需要对该文件夹中的内容进行读写）</li>
-<li>第二个就是需要设定环境变量，不光设定 npm 的环境变量，还需要设定第三方包的环境变量。前者是为了使用 npm 命令行工具，后者是为了使用第三方包携带的自己的命令行工具，比如此处涉及到的 hexo 命令行工具</li>
-<li>第三个就是需要设定 npm 的代理。因为 node 的第三方库下载地址墙的严重，不设置代理会很慢。具体设定语法自行搜索</li>
-</ul>
-</blockquote>
-<p>下面开始正式介绍基于 hexo 搭建个人博客网站的步骤</p>
-<h2 id="一、创建本地环境">一、创建本地环境</h2>
-<p>就像一个项目一样，一个 hexo 网站也就是一个项目。接下来进入该项目后，打开命令行工具进行操作。目前主流的几乎都可以：bash、cmd、当然由于本地环境时 Windows OS，故对于 Linux、MacOS 的用户就不用说了。</p>
-<ul>
-<li>
-<p>创建 git 仓库进行版本管理</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init<br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>安装 JavaScrip 第三方包 Hexo</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli<br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>检查是否安装成功</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo -v<br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>初始化一个静态站点并刷新</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init<br>npm install<br></code></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
-<h2 id="二、本地运行测试">二、本地运行测试</h2>
-<ul>
-<li>
-<p>生成静态文件，可简写为 <code>hexo g -d</code>（就是最终部署的文件，会打包在一个叫 public 的文件夹中）不要少 -d 参数</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo generate -d<br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>启动本地服务，可简写为 <code>hexo s</code></p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo server<br></code></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
-<p>hexo 服务默认启动 4000 端口，现在浏览器访问 localhost:4000 即可看到 hexo 的模板博客网站</p>
-<h2 id="三、手动部署云端">三、手动部署云端</h2>
-<p>现在我们需要将其部署到 [username].github.io 上。一般博客该路径进行部署，如果想要展示其他的网站 demo，一般路径设置为 [username].github.io/[repo]。</p>
-<ul>
-<li>
-<p>安装 hexo 部署插件 hexo-deployer-git，也是 nodejs 第三方包（一定不要漏掉 --save 参数，否则卸载重装该包）</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-deployer-git --save<br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>创建一个 github 仓库，仓库名就设置为 [username].github.io，然后在本地进行远程绑定，即</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote add origin &lt;https <span class="hljs-built_in">link</span> or ssh <span class="hljs-built_in">link</span>&gt;<br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>如果没有执行生成静态文件的命令，需要执行一下（一定不要漏掉 -d 参数，否则重新执行）</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo generate -d<br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>执行部署命令，下面两条均可</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm run deploy<br></code></pre></td></tr></tbody></table></figure>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo deploy<br></code></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
-<p>现在访问 <code>https://[username].github.io</code> 如果可以看到与之前本地测试一样的界面的，恭喜你，现在已经可以进行快乐的博客编写并且链接分享进行技术交流~~（装b）~~了</p>
-<h2 id="四、自动部署云端">四、自动部署云端</h2>
-<p>这一步个人认为属于锦上添花的一步。其实进行自动化部署相比手动部署只少了两步，分别为生成静态文件 <code>hexo generate -d</code> 与部署 <code>hexo deploy</code> 的步骤。那么我们为什么还要弄自动化部署呢？愚以为：是为了源文件备份。我们知道，当前仓库里的博客文件格式都是 .html 但是我们博客的源码都是 .md，前者不便于修改，后者十分便于修改。如果本地数据丢失，那么对于之前写的博客就丢失了所有的 md 源码。但是自动化部署的逻辑就可以规避掉这个问题，可以实现 md 文件的云端备份，当然也可以自动化部署啦~。下面介绍一下如何使用 Github Action 进行自动化部署的逻辑：</p>
-<p>其实就是将本地源码修改完后 push 到该仓库的另一个分支下，然后 github 自带的 Github Action 会监听到该仓库的 push 操作，然后进行工作流脚本文件的执行，实现在本地部署的一系列操作。是不是很简单的逻辑！写到这其实可以发现，自动化部署还有一个好处就是：博客编写者只需要熟悉 git 的相关指令与逻辑即可，不需要关心 hexo 的指令，提高了编写的效率。接下来进行详细步骤的讲解：</p>
-<ul>
-<li>
-<p>创建工作流文件。在根目录下创建以下文件关系：</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> .github/workflows/deploy.yml<br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>编辑 deploy.yml 文件。模板如下：</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash">name: Build and Deploy<br>on: [push]<br><span class="hljs-built_in">jobs</span>:<br>  build-and-deploy:<br>    runs-on: ubuntu-latest<br>    steps:<br>      <span class="hljs-comment"># 相当于 git clone 到服务器</span><br>      - name: Checkout 🛎️<br>        uses: actions/checkout@v3<br>        with:<br>          persist-credentials: <span class="hljs-literal">false</span><br><br>      <span class="hljs-comment"># 安装依赖并生成页面</span><br>      - name: Install and Build 🔧<br>        run: |<br>          npm install<br>          npm run build<br>        <span class="hljs-built_in">env</span>:<br>          CI: <span class="hljs-literal">false</span><br><br>      <span class="hljs-comment"># 部署</span><br>      - name: Deploy 🚀<br>        uses: JamesIves/github-pages-deploy-action@v4<br>        with:<br>          GITHUB_TOKEN: <span class="hljs-variable">${{ secrets.GITHUB_TOKEN }</span>}<br>          BRANCH: main   <span class="hljs-comment"># 修改为你的静态文件分支</span><br>          FOLDER: public <span class="hljs-comment"># 修改为你的静态文件生成存放的文件夹</span><br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>将本地相关文件进行 git 管理后，创建分支（假设叫 auto-deploy）</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch auto-deploy<br></code></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
-<p>push 到仓库，等待 github 自动部署后，重新加载 <code>https://[username].github.io</code> 就可以发现站点内容已经更新了！</p>
-<h2 id="参考">参考</h2>
-<p>搭建：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1dt4y1Q7UE">Luke教你20分钟快速搭建个人博客系列(hexo篇)</a></p>
-<p>个性化定制：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yaorongke/article/details/119089190">GitHub Pages + Hexo搭建个人博客网站，史上最全教程</a></p>
-<p>原理：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42596246/article/details/129586384">npm install是什么意思</a></p>
+                <h2 id="解决服务器入侵攻击">解决服务器入侵攻击</h2>
+<p>刚想登录阿里云看看云 GPU 怎么租的，结果给我报了个安全问题。平时都是直接忽略，今天有兴致看了一眼，不看不知道一看吓一跳，尼玛被一个从没去过且没有挂 VPN 的 IP 登陆了。虽然不是 root 用户登的并且机子上也没啥机密文件，但是还是有一种被人看光的感觉。他爹的，我也不知道该怎么报复，记录一下修复的过程</p>
+<h3 id="一、确认被入侵">一、确认被入侵</h3>
+<p>本来的公钥文件 <code>authorized_keys</code> 没了：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152117426.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="本来的公钥文件 authorized_keys 没了"></p>
+<p>本地进行 ssh 免密传输就失效了：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121682.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="需要输入密码说明 ssh 免密传输失效"></p>
+<p>查看系统日志 <code>/var/log/auth.log</code> 发现被腾讯云的上海 ip 爆破了：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121637.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="发现真凶！"></p>
+<h3 id="二、调整鉴权信息">二、调整鉴权信息</h3>
+<h4 id="2-1-更改所有用户的密码">2.1 更改所有用户的密码</h4>
+<p>一共就创建了 root 超级用户和 git 普通用户。root 用户就没改了，把 git 用户的改了：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo passwd git<br></code></pre></td></tr></tbody></table></figure>
+<h4 id="2-2-重新配置-ssh-密钥对">2.2 重新配置 ssh 密钥对</h4>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen<br></code></pre></td></tr></tbody></table></figure>
+<p>然后在 <code>/home/git/.ssh/</code> 路径下重新创建了 <code>authorized_keys</code> 文本文件用来存储公钥信息。本地测试连接：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh git@xxx.xxx.xxx.xxx<br></code></pre></td></tr></tbody></table></figure>
+<p>不需要输入密码即连接成功，表明 ssh 通信建立成功。接下来使用 hexo 的部署就不需要输入密码了。</p>
+<h4 id="2-3-禁用密码登录">2.3 禁用密码登录</h4>
+<p>由于 root 用户我还需要使用密码登录，因此我仅仅禁用 git 用户的密码登录，只能通过 ssh 进行主机连接。</p>
+<p>（一）编辑 ssh 配置文件。编辑 <code>/etc/ssh/sshd_config</code> 文件，在末尾添加：</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile">Match User git<br>PasswordAuthentication no<br></code></pre></td></tr></tbody></table></figure>
+<p>（二）重启 ssh 服务。保存上述修改文件后运行：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl restart sshd<br></code></pre></td></tr></tbody></table></figure>
+<p>（三）测试密码连接。禁用后换一台机子尝试进行 ssh 连接，连接失败说明设置成功：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152152670.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="连接失败说明禁用密码登录设置成功"></p>
+<h3 id="三、问题溯源">三、问题溯源</h3>
+<p>曾经在新建 git 用户时没有设置登录密码？曾经在创建这个 git 用户时，没有注意到密码是怎么设置的，可能设置的太简单了？或者没有设置密码？当时还记录了，如下：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152158086.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="翻车原罪"></p>
+<h3 id="四、参考">四、参考</h3>
+<p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/troubleshooting-ssh/error-permission-denied-publickey?platform=linux">Error: Permission denied (publickey)</a></p>
 
                 
               </div>
@@ -451,12 +384,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/FrontEnd/" class="category-chain-item">FrontEnd</a>
+  <a href="/categories/Operation/" class="category-chain-item">Operation</a>
   
   
     <span>></span>
     
-  <a href="/categories/FrontEnd/Hexo/" class="category-chain-item">Hexo</a>
+  <a href="/categories/Operation/Safe/" class="category-chain-item">Safe</a>
   
   
 
@@ -478,8 +411,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>hexo-learning-record</div>
-      <div>https://blog.dwj601.cn/FrontEnd/Hexo/hexo-learning-record/</div>
+      <div>solve-server-invade</div>
+      <div>https://blog.dwj601.cn/Operation/Safe/solve-server-invade/</div>
     </div>
     <div class="license-meta">
       
@@ -491,13 +424,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年3月21日</div>
+          <div>2024年6月15日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年3月21日</div>
+          <div>2024年6月28日</div>
         </div>
       
       
@@ -528,9 +461,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/FrontEnd/Hexo/hexo-githubpages-domain/" title="hexo-githubpages-domain">
+                      <a href="/BackEnd/pyBasic/numpy/" title="numpy">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">hexo-githubpages-domain</span>
+                        <span class="hidden-mobile">numpy</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -538,8 +471,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/FrontEnd/Hexo/hexo-migrate/" title="hexo-migrate">
-                        <span class="hidden-mobile">hexo-migrate</span>
+                      <a href="/DevTools/Git/git-pull-request/" title="git-pull-request">
+                        <span class="hidden-mobile">git-pull-request</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -607,17 +540,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="FrontEnd"
-        id="heading-d9340b0bafdac107e90b55ab622d6207" role="tab" data-toggle="collapse" href="#collapse-d9340b0bafdac107e90b55ab622d6207"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Operation"
+        id="heading-2a78ed76450c3cb42320882b3e055b31" role="tab" data-toggle="collapse" href="#collapse-2a78ed76450c3cb42320882b3e055b31"
         aria-expanded="true"
       >
-        FrontEnd
-        <span class="list-group-count">(6)</span>
+        Operation
+        <span class="list-group-count">(8)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-d9340b0bafdac107e90b55ab622d6207"
-           role="tabpanel" aria-labelledby="heading-d9340b0bafdac107e90b55ab622d6207">
+      <div class="category-collapse collapse show" id="collapse-2a78ed76450c3cb42320882b3e055b31"
+           role="tabpanel" aria-labelledby="heading-2a78ed76450c3cb42320882b3e055b31">
         
         
           
@@ -627,10 +560,10 @@
     
       
       
-        <a href="/FrontEnd/FrontEnd/" title="Front End"
+        <a href="/Operation/Operation/" title="Operation"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Front End</span>
+          <span class="category-post">Operation</span>
         </a>
       
     
@@ -642,18 +575,18 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Hexo"
-        id="heading-c00d1eb68b529768ba98c975c76a9b66" role="tab" data-toggle="collapse" href="#collapse-c00d1eb68b529768ba98c975c76a9b66"
-        aria-expanded="true"
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Nginx"
+        id="heading-62e0b5b350c9e3d2c19aa801d9442ba9" role="tab" data-toggle="collapse" href="#collapse-62e0b5b350c9e3d2c19aa801d9442ba9"
+        aria-expanded="false"
       >
-        Hexo
-        <span class="list-group-count">(5)</span>
+        Nginx
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-c00d1eb68b529768ba98c975c76a9b66"
-           role="tabpanel" aria-labelledby="heading-c00d1eb68b529768ba98c975c76a9b66">
+      <div class="category-collapse collapse " id="collapse-62e0b5b350c9e3d2c19aa801d9442ba9"
+           role="tabpanel" aria-labelledby="heading-62e0b5b350c9e3d2c19aa801d9442ba9">
         
         
           
@@ -662,46 +595,148 @@
     
       
       
-        <a href="/FrontEnd/Hexo/hexo-auto-deploy-to-server/" title="hexo-auto-deploy-to-server"
+        <a href="/Operation/Nginx/nginx-command/" title="nginx-command"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">hexo-auto-deploy-to-server</span>
+          <span class="category-post">nginx-command</span>
         </a>
       
     
       
       
-        <a href="/FrontEnd/Hexo/hexo-githubpages-domain/" title="hexo-githubpages-domain"
+        <a href="/Operation/Nginx/whereis-nginx/" title="whereis-nginx"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">hexo-githubpages-domain</span>
+          <span class="category-post">whereis-nginx</span>
         </a>
       
     
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Safe"
+        id="heading-c6eea0560cd6f377e78dff2c85cc9122" role="tab" data-toggle="collapse" href="#collapse-c6eea0560cd6f377e78dff2c85cc9122"
+        aria-expanded="true"
+      >
+        Safe
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-c6eea0560cd6f377e78dff2c85cc9122"
+           role="tabpanel" aria-labelledby="heading-c6eea0560cd6f377e78dff2c85cc9122">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
       
       
-        <a href="/FrontEnd/Hexo/hexo-learning-record/" title="hexo-learning-record"
+        <a href="/Operation/Safe/solve-server-invade/" title="solve-server-invade"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">hexo-learning-record</span>
+          <span class="category-post">solve-server-invade</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="ShellBasic"
+        id="heading-164aea2c111d6194e4dd17ebbba44e4a" role="tab" data-toggle="collapse" href="#collapse-164aea2c111d6194e4dd17ebbba44e4a"
+        aria-expanded="false"
+      >
+        ShellBasic
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-164aea2c111d6194e4dd17ebbba44e4a"
+           role="tabpanel" aria-labelledby="heading-164aea2c111d6194e4dd17ebbba44e4a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/Operation/ShellBasic/kill-windows-process/" title="kill-windows-process"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">kill-windows-process</span>
         </a>
       
     
       
       
-        <a href="/FrontEnd/Hexo/hexo-migrate/" title="hexo-migrate"
+        <a href="/Operation/ShellBasic/solve-windows-powershell-encode-error/" title="solve-windows-powershell-encode-error"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">hexo-migrate</span>
+          <span class="category-post">solve-windows-powershell-encode-error</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Ubuntu"
+        id="heading-3d945423f8e9496c429a5d8c65b4604f" role="tab" data-toggle="collapse" href="#collapse-3d945423f8e9496c429a5d8c65b4604f"
+        aria-expanded="false"
+      >
+        Ubuntu
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-3d945423f8e9496c429a5d8c65b4604f"
+           role="tabpanel" aria-labelledby="heading-3d945423f8e9496c429a5d8c65b4604f">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/Operation/Ubuntu/apt-command/" title="apt-command"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">apt-command</span>
         </a>
       
     
       
       
-        <a href="/FrontEnd/Hexo/why-hexo/" title="why-hexo"
+        <a href="/Operation/Ubuntu/ubuntu-modify-sys-language/" title="ubuntu-modify-sys-language"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">why-hexo</span>
+          <span class="category-post">ubuntu-modify-sys-language</span>
         </a>
       
     

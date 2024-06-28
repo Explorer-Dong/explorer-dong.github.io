@@ -1190,7 +1190,7 @@ $$
 $$
 L(\theta) = \prod_{i=1}^n p(x_i;\theta)
 $$
-当然也有一些特殊情况我们没法进行上述第四步，也就是我们没法得到参数关于样本统计量的表达式。其实就是如何求解一个多元函数的问题，常见的可以直接从原函数恒增或恒减、定义域等角度出发解决问题。
+可以看出极大似然估计本质上就是一个多元函数求极值的问题。特别地，当我们没法得到参数关于样本统计量的表达式 $L(\theta)$ 时，可以直接从定义域、原函数恒增或恒减等角度出发求解这个多元函数的极值。
 
 ### 7.2 估计量的评价标准
 
@@ -1222,7 +1222,7 @@ $$
 
 {% note light %}
 
-由于点估计只能进行比较，无法对单一估计进行性能度量。因此引入「区间估计」概念与「主元法」的区间估计策略
+由于点估计只能进行比较，无法对单一估计进行性能度量。因此引入「主元法」的概念与「区间估计」策略
 
 {% endnote %}
 
@@ -1234,47 +1234,72 @@ $$
 
 #### 7.3.2 区间估计常用方法之主元法
 
-主元法的核心逻辑就一个：在已知数据总体分布的情况下，构造一个关于样本和待估参数的函数 $Z(X,\theta)$，然后利用置信度和总体分布函数，通过查表得到 $Z(X,\theta)$ 的取值范围，最后通过移项变形得到待估参数的区间，也就是估计区间。
+主元法的核心逻辑就一个：在已知数据总体分布的情况下，构造一个关于样本 $X$ 和待估参数 $\theta$ 的函数 $Z(X,\theta)$，然后利用置信度和总体分布函数，通过查表得到 $Z(X,\theta)$ 的取值范围，最后通过移项变形得到待估参数的区间，也就是估计区间。
 
 #### 7.3.3 正态总体的区间估计
 
-以总体服从正态分布为例，进行主元法的实际应用。详细介绍「一个正态总体参数的区间估计」中的第一种情况。~~记结论有助于考场上快速切题~~
+我们只需要掌握「一个总体服从正态分布」的情况。这种情况下的区间估计分为三种，其中估计均值 $\mu$ 有 2 种，估计方差 $\sigma^2$ 有 1 种。估计的逻辑我总结为了以下三步：
 
-**（1）一个正态总体参数的区间估计**
+1. 构造主元 $Z(X,\theta)$
+2. 利用置信度 $1-\alpha$ 计算主元 $Z$ 的取值范围
+3. 对主元 $Z$ 的取值范围移项得到参数 $\theta$ 的取值范围
 
-求 $\mu$ 的置信区间：
+为了提升区间估计的可信度，我们希望上述第 2 步计算出来的关于主元的取值范围尽可能准确。我们不加证明的给出以下结论：取主元的取值范围为 **主元服从的分布的上下 $\frac{\alpha}{2}$ 分位数之间**。
 
-- $\sigma^2$ 已知
-    $$
-    \begin{aligned}
-    \text{构造主元：}& Z = \frac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)\\
-    \text{列出置信度为 } 1-\alpha \text{ 的概率函数：}& P(|Z| \le \lambda) = 1-\alpha\\
-    \text{查表得到主元的取值范围：}& z \in [-\lambda,\lambda]=[-u_{\frac{\alpha}{2}},u_\frac{\alpha}{2}]\\
-    \text{移项得到待估参数的取值范围：}& \overline{X} - \frac{\sigma}{\sqrt{n}} u_\frac{\alpha}{2} \le \mu \le \overline{X} + \frac{\sigma}{\sqrt{n}} u_\frac{\alpha}{2}
-    \end{aligned}
-    $$
+**(一) 求 $\mu$ 的置信区间，$\sigma^2$ 已知**
 
-- $\sigma^2$ 未知
+构造主元 $Z(X,\theta)$：
+$$
+Z = \frac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)
+$$
+利用置信度 $1-\alpha$ 计算主元 $Z$ 的取值范围：
+$$
+\begin{aligned}
+P(|Z| \le \lambda) &= 1-\alpha \\
+&\downarrow\\
+Z \in [-\lambda,\lambda] &= [-u_{\frac{\alpha}{2}},u_\frac{\alpha}{2}]
+\end{aligned}
+$$
+对主元 $Z$ 的取值范围移项得到参数 $\theta$ 的取值范围：
+$$
+\overline{X} - \frac{\sigma}{\sqrt{n}} u_\frac{\alpha}{2} \le \mu \le \overline{X} + \frac{\sigma}{\sqrt{n}} u_\frac{\alpha}{2}
+$$
+**(二) 求 $\mu$ 的置信区间，$\sigma^2$ 未知**
 
-    $$
-    Z = \frac{\overline{X} - \mu}{S / \sqrt{n}} \sim t(n-1)
-    $$
+构造主元 $Z(X,\theta)$：
+$$
+Z = \frac{\overline{X} - \mu}{S / \sqrt{n}} \sim t(n-1)
+$$
+利用置信度 $1-\alpha$ 计算主元 $Z$ 的取值范围：
+$$
+\begin{aligned}
+P(|Z| \le \lambda) &= 1-\alpha \\
+&\downarrow\\
+Z \in [-\lambda,\lambda] &= [-t_{\frac{\alpha}{2}}(n-1),t_\frac{\alpha}{2}(n-1)]
+\end{aligned}
+$$
+对主元 $Z$ 的取值范围移项得到参数 $\theta$ 的取值范围：
+$$
+\overline{X} - \frac{S}{\sqrt{n}} t_\frac{\alpha}{2}(n-1) \le \mu \le \overline{X} + \frac{S}{\sqrt{n}} t_\frac{\alpha}{2}(n-1)
+$$
+**(三) 求 $\sigma^2$ 的置信区间，构造的主元与总体均值无关，因此不需要考虑 $\mu$ 的情况：**
 
-求 $\sigma^2$ 的置信区间：
-
+构造主元 $Z(X,\theta)$：
 $$
 Z = \frac{(n-1)S^2}{\sigma^2}\sim \chi^2(n-1)
 $$
-
-**（2）两个正态总体参数的区间估计**
-
-- $\sigma_1^2,\sigma_2^2$ 已知，求两总体均值之差 $\mu_1-\mu_2$​​ 的置信区间
-
-    ![主元](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406012204163.png)
-
-- $\sigma_1^2=\sigma_2^2=\sigma^2$ 未知，求两总体均值之差 $\mu_1-\mu_2$​ 的置信区间
-
-    ![主元](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406012204413.png)
+利用置信度 $1-\alpha$ 计算主元 $Z$ 的取值范围：
+$$
+\begin{aligned}
+P(\lambda_1 \le Z \le \lambda_2) &= 1-\alpha \\
+&\downarrow\\
+Z \in [\lambda_1,\lambda_2] &= [\chi^2_{1-\frac{\alpha}{2}}(n-1),\chi^2_\frac{\alpha}{2}(n-1)]
+\end{aligned}
+$$
+对主元 $Z$ 的取值范围移项得到参数 $\theta$ 的取值范围：
+$$
+\frac{(n-1)S^2}{\chi^2_\frac{\alpha}{2}(n-1)} \le \sigma^2 \le \frac{(n-1)S^2}{\chi^2_{1-\frac{\alpha}{2}}(n-1)}
+$$
 
 ## 第8章 假设检验
 

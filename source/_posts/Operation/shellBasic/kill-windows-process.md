@@ -2,7 +2,7 @@
 title: kill-windows-process
 categories:
   - Operation
-  - shellBasic
+  - ShellBasic
 category_bar: true
 ---
 

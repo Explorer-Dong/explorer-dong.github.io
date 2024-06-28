@@ -2,7 +2,7 @@
 title: solve-windows-powershell-encode-error
 categories:
   - Operation
-  - ShellBasic
+  - shellBasic
 category_bar: true
 ---
 

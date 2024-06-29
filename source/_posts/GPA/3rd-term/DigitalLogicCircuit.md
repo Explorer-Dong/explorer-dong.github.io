@@ -20,46 +20,22 @@ category_bar: true
 
 #### 1.1.1 数字技术的发展及其应用
 
-1. 电流控制器件
+1. 电流控制器件：电子管、晶体管（二极管、三极管）、半导体集成电路
 
-    1. 电子管
-    2. 晶体管（二极管、三极管）
-    3. 半导体集成电路
-2. EDA(Electronic Design Automation)技术：硬件设计软件化
-    1. 设计：EWB or Verilog
-    2. 仿真
-    3. 下载
-    4. 验证结果
+2. EDA(Electronic Design Automation)技术（硬件设计软件化）：设计：EWB or Verilog、仿真、下载、验证结果
 
 #### 1.1.2 数字集成电路的分类及特点
 
 1. 数字集成电路的分类
 
-    1. 从结构特点及其对输入信号的响应规则角度
+    1. 从结构特点及其对输入信号的响应规则角度：组合逻辑电路、时序逻辑电路
 
-        - 组合逻辑电路
-        - 时序逻辑电路
-
-    2. 从电路的形式角度
-
-        - 集成电路
-        - 分立电路
-
-    3. 从器件的角度
-
-        - TTL电路
-        - CMOS电路
-
-    4. 从集成度的角度
-
-        > 集成度：每一个芯片所包含的门个数
-
-        - 小规模
-        - 中规模
-        - 大规模
-        - 超大规模
-        - 甚大规模
-
+    2. 从电路的形式角度：集成电路、分立电路
+    
+    3. 从器件的角度：TTL电路、CMOS电路
+    
+    4. 从集成度（每一个芯片所包含的门个数）的角度：小规模、中规模、大规模、超大规模、甚大规模
+    
 2. 数字集成电路的特点
 
     1. 稳定性高：抗干扰能力强
@@ -100,9 +76,8 @@ category_bar: true
 
     逻辑电平：高电压和低电压（定性）
 
-    <center>
-        表1 <strong>正逻辑</strong>关系表（负逻辑相反）
-    </center>
+    正逻辑关系表（负逻辑相反）：
+    
     
     | 电压（V） | 二值逻辑 |    电平     |
     | :-------: | :------: | :---------: |
@@ -150,8 +125,10 @@ $$
 定义：其实就是多了一个符号位，且不可以省略。其中0表示正数，1表示负数：
 
 $$
+\begin{aligned}
 (+11)_D=(01011)_B \\
 (-11)_D=(11011)_B \\
+\end{aligned}
 $$
 补码、反码和原码：
 
@@ -252,17 +229,17 @@ $$
 
 ### 2.1 逻辑代数的基本定律和规则
 
-#### 2.1.1 逻辑代数的基本定律和恒等式:star:
+#### 2.1.1 逻辑代数的基本定律和恒等式
 
-<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245115.png" alt="image-20231008114849627" style="zoom:50%;" />
+![image-20231008114849627](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245115.png)
 
-<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245116.png" alt="image-20231008114943429" style="zoom:50%;" />
+![image-20231008114943429](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245116.png)
 
 #### 2.1.2 逻辑代数的基本规则
 
 1. **代入规则** - 类似于换元
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245117.png" alt="image-20231008115435355" style="zoom:50%;" />
+    ![image-20231008115435355](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245117.png)
 
 2. **反演规则**（获得反函数 $\overline Y$ ）
 
@@ -272,9 +249,9 @@ $$
     - 保持原来的运算优先顺序（即如果在原函数表达式中，AB之间先运算，再和其他变量进行运算，那么非函数的表达式中，仍然是AB之间先运算）
     - 对于反变量以外的非号应保留不变
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245118.png" alt="image-20231008115328932" style="zoom:50%;" />
+    ![image-20231008115328932](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245118.png)
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245119.png" alt="image-20231008115337125" style="zoom:25%;" />
+    ![image-20231008115337125](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245119.png)
 
 3. **对偶规则**（获得对偶式 $L'$ ）
 
@@ -286,11 +263,11 @@ $$
 
 1. 与或表达式：若干个与项相或
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245120.png" alt="image-20231013094928938" style="zoom:33%;" />
+    ![image-20231013094928938](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245120.png)
 
 2. 或与表达式：若干个或项相与
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245121.png" alt="image-20231013094938441" style="zoom: 50%;" />
+    ![image-20231013094938441](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245121.png)
 
 #### 2.2.2 最小项与最小项表达式
 
@@ -298,7 +275,7 @@ $$
 
 2. 最小项表达式：所有的最小项相或
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245122.png" alt="image-20231013100105922" style="zoom: 33%;" />
+    ![image-20231013100105922](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245122.png)
 
 #### 2.2.3 最大项与最大项表达式
 
@@ -306,7 +283,7 @@ $$
 
 2. 最大项表达式：所有的最大项相与
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245123.png" alt="image-20240116134303065" style="zoom: 50%;" />
+    ![image-20240116134303065](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245123.png)
 
 #### 2.2.4 最大项和最小项的关系
 $$
@@ -426,7 +403,7 @@ MOS 管含有 NMOS 管和 PMOS 管，NMOS 管与 PMOS 管的组合称为互补 M
 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245136.png" alt="image-20231201091736402" style="zoom:50%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245137.png" alt="image-20231201091750341" style="zoom:50%;" /> |     异或门     |
 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245138.png" alt="image-20231201091831389" style="zoom:50%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245139.png" alt="image-20231201091858929" style="zoom:50%;" /> | 2选1数据选择器 |
 
-## 四、组合逻辑电路:star:
+## 四、组合逻辑电路
 
 ### 4.1 组合逻辑电路的分析
 
@@ -514,11 +491,11 @@ MOS 管含有 NMOS 管和 PMOS 管，NMOS 管与 PMOS 管的组合称为互补 M
 
 功能：相当于多输出的单刀多掷开关，是将公共数据线上的数据按需要送到不同的通道上去的逻辑电路。
 
-<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245153.png" alt="image-20231208114700981" style="zoom:50%;" />
+![image-20231208114700981](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245153.png)
 
 <center>图一：示意图</center>
 
-<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245154.png" alt="image-20231208114749275" style="zoom:50%;" />
+![image-20231208114749275](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245154.png)
 
 <center>图二：功能仿真图</center>
 

@@ -18,25 +18,14 @@ category_bar: true
 
 #### 1.1.1 逻辑结构
 
-对于当前的数据之间的关系进行分析，进而思考应该如何存储
-
-- 集合
-- 线性结构
-- 树形结构
-- 图结构
+对于当前的数据之间的关系进行分析，进而思考应该如何存储，有以下几种逻辑结构：集合、线性结构、树形结构、图结构。
 
 #### 1.1.2 存储结构
 
-设计一定的方法存储到程序中
+设计一定的方法存储到程序中，需要思考：存什么？怎么存？
 
-- 存储内容
-    - 数值存储
-    - 数据与数据之间关系域的存储
-- 存储方式
-    - 顺序存储
-    - 链式存储
-    - 树形存储
-    - 图存储
+- 存什么？数值存储、数据与数据之间关系域的存储
+- 怎么存？顺序存储、链式存储、树形存储、图存储
 
 #### 1.1.3 算法实现
 
@@ -46,9 +35,11 @@ category_bar: true
 
 约束：值集 + 运算集
 
-数据类型 $Data\ Type$（DT）：一般编程语言已经实现好了
+数据类型 $\text{(Data Type, 简称 DT)}$：一般编程语言已经实现好了
 
-抽象数据类型 $Abstract\ Data\ Type$（ADT）：数据结构+算法操作
+抽象数据类型 $\text{Abstract Data Type, 简称 ADT}$：数据结构 + 算法操作
+
+![ADT 的不同视图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218513.png)
 
 ### 1.3 算法方法
 
@@ -71,8 +62,6 @@ category_bar: true
         - $\Theta()$ `average bound`：平均时间复杂度
 
 ## 二、线性表
-
-<center><img src="https://s2.loli.net/2023/12/04/4Nn73PGspUM2Cwl.png" alt="image-20230920231245137" style="zoom:50%;" /></center>
 
 ### 2.1 线性表的逻辑结构
 
@@ -99,9 +88,7 @@ public:
 }
 ```
 
-顺序表可以直接存储元素与关系
-
-链表的元素存储也是可以直接实现的，但是关系要通过指针域来实现
+顺序表可以直接存储元素与关系。链表的元素存储也是可以直接实现的，但是关系要通过指针域来实现
 
 #### 2.2.2 链式存储结构
 
@@ -115,7 +102,7 @@ public:
 
 #### 2.3.1 顺序表的操作算法
 
-1. 顺序表初始化构造
+1. 初始化构造
 
 2. 求顺序表长度
 
@@ -173,7 +160,7 @@ public:
 
     - 插入
 
-        <center><img src="https://s2.loli.net/2023/12/04/7d4ygetnDPANTzU.png" alt="image-20230925092012868" style="zoom:50%;" /></center>
+        ![插入](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218514.png)
 
         ```c++
         // 插入当前结点 s
@@ -185,7 +172,7 @@ public:
 
     - 删除
 
-        <center><img src="https://s2.loli.net/2023/12/04/CiJzh1HXaGqvURB.png" alt="image-20230925091955866" style="zoom:50%;" /></center>
+        ![删除](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218515.png)
 
         ```c++
         // 删除当前结点 p
@@ -199,7 +186,7 @@ public:
 
 #### 3.1.1 栈的基本概念
 
-<center><img src="https://s2.loli.net/2023/12/04/MuQ7ZHX6xNKSqbf.png" alt="image-20230928095521363" /></center>
+![卡特兰数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218516.png)
 
 卡特兰数：假设 $f(k)$ 表示第 k 个数最后一个出栈的总个数，则 $f(k)=f(k-1)f(n-k)$
 $$
@@ -208,13 +195,13 @@ $$
 
 #### 3.1.2 栈的存储结构
 
-1. 顺序存储
+顺序存储
 
-    <center><img src="https://s2.loli.net/2023/12/04/DGIASXO27NbC8Ji.png" alt="image-20230928095919380" style="zoom:67%;" /></center>
+![顺序存储](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218517.png)
 
-2. 链式存储
+链式存储
 
-    <center><img src="https://s2.loli.net/2023/12/04/o8mYC2XQvqUJ5BL.png" alt="image-20230928100849337" style="zoom:67%;" /></center>
+![链式存储](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218518.png)
 
 #### 3.1.3 栈的操作算法
 
@@ -266,15 +253,15 @@ $$
 
 #### 3.2.2 队列的存储结构
 
-1. 顺序存储
+顺序存储
 
-    <center><img src="https://s2.loli.net/2023/12/04/GJh3alEndfXKCMq.png" alt="image-20231007091939711"  style="zoom:67%;" /></center>
+![顺序存储 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218519.png)
 
-    <center><img src="https://s2.loli.net/2024/01/14/2DNAL7e1UBlECas.png" alt="image-20231007091951161" style="zoom:67%;" /></center>
+![顺序存储 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218520.png)
 
-2. 链式存储
+链式存储
 
-    <center><img src="https://s2.loli.net/2023/12/04/h1rZ6A3FVN9mRaq.png" alt="image-20231007090752380" style="zoom:67%;" /></center>
+![链式存储](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218521.png)
 
 #### 3.2.3 队列的操作算法
 
@@ -311,11 +298,7 @@ $$
 
 ### 4.1 串的基本概念
 
-由字符组成的串
-
-- 子串（连续）
-- 主串
-- 位置
+由字符组成的串：子串、主串、位置
 
 ### 4.2 串的存储结构
 
@@ -323,11 +306,11 @@ $$
 
 使用固定长度的数组来存储，3种存储字符串长度的方法如下：
 
-<center><img src="https://s2.loli.net/2023/12/04/lwkEMtF2mXjPpaz.png" alt="image-20231012095542232" style="zoom:50%;" /></center>
+![存储字符串长度的方法 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218522.png)
 
-<center><img src="https://s2.loli.net/2023/12/04/vbFg17sAwLBModl.png" alt="image-20231012095512268" style="zoom:50%;" /></center>
+![存储字符串长度的方法 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218523.png)
 
-<center><img src="https://s2.loli.net/2023/12/04/DIQATWxkN5J3eH1.png" alt="image-20231012095528625" style="zoom:50%;" /></center>
+![存储字符串长度的方法 - 3](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218524.png)
 
 #### 4.2.2 串的链式存储
 
@@ -335,112 +318,109 @@ $$
 \text{存储密度} = \frac {\text{串值所占的内存}}{\text{一个结点的总内存}}
 $$
 
-1. 非压缩形式：一个结点存一个字符
+非压缩形式：一个结点存一个字符
 
-    ```c++
-    // 存储密度为：1/9 （64位操作系统）
-    struct String {
-        char data;
-        String* next;
-    };
-    ```
+```c++
+// 存储密度为：1/9 （64位操作系统）
+struct String {
+    char data;
+    String* next;
+};
+```
 
-2. 压缩形式（块链）：一个结点存储指定长度的字符
+压缩形式（块链）：一个结点存储指定长度的字符
 
-    ```c++
-    // 存储密度为：4/12 （64位操作系统）
-    const int MaxSize = 4;
-    struct String {
-        char data[MaxSize];
-        String* next;
-    }
-    ```
+```c++
+// 存储密度为：4/12 （64位操作系统）
+const int MaxSize = 4;
+struct String {
+    char data[MaxSize];
+    String* next;
+}
+```
 
 ### 4.3 串的操作算法
 
 #### 4.3.1 串的基本操作算法
 
-1. 串连接
-2. 串比较
-3. 串拷贝
+串连接、串比较、串拷贝
 
 #### 4.3.2 串的模式匹配
 
-1. BF算法（Brute - Force）
+BF算法（Brute - Force）
 
-    <center><img src="https://s2.loli.net/2023/12/04/NemPEzIdOpLh3Vb.png" alt="image-20231012105536936" style="zoom:60%;" /></center>
+![BF算法（Brute - Force）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218525.png)
 
-    ```c++
-    // 返回匹配上的所有位置下标（下标从0开始）
-    vector<int> BF(string& s, string& t) {
-    	vector<int> res;
-    	int i = 0, j = 0, n = s.size(), m = t.size();
-        
-    	while (i < n && j < m) {
-    		if (s[i] == t[j]) i++, j++;
-    		else i = i - j + 1, j = 0;
-                
-    		if (j == m) {
-    			res.emplace_back(i - j);
-    			j = 0;
-    		}
-    	}
+```c++
+// 返回匹配上的所有位置下标（下标从0开始）
+vector<int> BF(string& s, string& t) {
+	vector<int> res;
+	int i = 0, j = 0, n = s.size(), m = t.size();
     
-        return res;
+	while (i < n && j < m) {
+		if (s[i] == t[j]) i++, j++;
+		else i = i - j + 1, j = 0;
+            
+		if (j == m) {
+			res.emplace_back(i - j);
+			j = 0;
+		}
+	}
+
+    return res;
+}
+```
+
+KMP算法
+
+![KMP算法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218526.png)
+
+> **优化思想**：
+>
+> 先看暴力思想，我们需要每次将模式串 t 后移一位重新进行比较，其中浪费了已匹配的串数据，优化就是从这块已匹配的串数据入手。而已匹配的串数据就是模式串本身的串数据，因为我们可以直接从模式串本身入手。
+>
+> **初步猜想**：
+>
+> 根据模式串的性质，构造一个数表 `next`，存储模式串应该后移的指针数 `k`
+>
+> **算法实现**：
+>
+> 1. 递推求 `next` 数组
+>2. KMP 中 `i` 指针不回溯，`j` 回溯到 `next[j]`
+
+```c++
+// 求 next 数组	下标从1开始
+for (int i = 2, j = 0; i <= m; i++) {
+    while (j && t[i] != t[j + 1])
+        // 未匹配上则不断回溯
+        j = ne[j];
+    
+    if (t[i] == t[j + 1])
+        // 匹配上了则j指针后移一位
+        j++;
+    
+    ne[i] = j;
+}
+```
+
+```c++
+// KMP 匹配		 下标从1开始
+for (int i = 1, j = 0; i <= n; i++) {
+    while (j && news[i] != newt[j + 1])
+        // 未匹配上则不断回溯
+        j = ne[j];
+    
+    if (news[i] == newt[j + 1])
+        // 匹配上了则j指针后移一位
+        j++;
+
+    if (j == m) {
+        // 匹配完全，则统计并且回溯
+        cnt++;
+        j = ne[j];
     }
-    ```
-    
-2. KMP算法
-
-    <center><img src="https://s2.loli.net/2023/12/04/X2VvgtLuKnH1NwJ.png" alt="image-20231012194432323" style="zoom:80%;" /></center>
-
-   > **优化思想**：
-   >
-   > 先看暴力思想，我们需要每次将模式串 t 后移一位重新进行比较，其中浪费了已匹配的串数据，优化就是从这块已匹配的串数据入手。而已匹配的串数据就是模式串本身的串数据，因为我们可以直接从模式串本身入手。
-   >
-   > **初步猜想**：
-   >
-   > 根据模式串的性质，构造一个数表 `next`，存储模式串应该后移的指针数 `k`
-   >
-   > **算法实现**：
-   >
-   > 1. 递推求 `next` 数组
-   >2. KMP 中 `i` 指针不回溯，`j` 回溯到 `next[j]`
-   
-   ```c++
-   // 求 next 数组	下标从1开始
-   for (int i = 2, j = 0; i <= m; i++) {
-       while (j && t[i] != t[j + 1])
-           // 未匹配上则不断回溯
-           j = ne[j];
-       
-       if (t[i] == t[j + 1])
-           // 匹配上了则j指针后移一位
-           j++;
-       
-       ne[i] = j;
-   }
-   ```
-   
-   ```c++
-   // KMP 匹配		 下标从1开始
-   for (int i = 1, j = 0; i <= n; i++) {
-       while (j && news[i] != newt[j + 1])
-           // 未匹配上则不断回溯
-           j = ne[j];
-       
-       if (news[i] == newt[j + 1])
-           // 匹配上了则j指针后移一位
-           j++;
-   
-       if (j == m) {
-           // 匹配完全，则统计并且回溯
-           cnt++;
-           j = ne[j];
-       }
-   }
-   ```
-   
+}
+```
 
 ## 五、数组和特殊矩阵
 
@@ -468,7 +448,7 @@ typedef arr1 arr2[m];
 
 #### 5.2.1 对称矩阵的压缩存储
 
-<center><img src="https://s2.loli.net/2023/12/04/TKBNSHyJ7RcdFu3.png" alt="image-20231016092313887" style="zoom:50%;" /></center>
+![对称矩阵的压缩存储](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218527.png)
 
 假设现在有一个 n*n 的对称矩阵
 
@@ -490,7 +470,7 @@ typedef arr1 arr2[m];
 
 #### 5.2.2 三角矩阵的压缩存储
 
-<center><img src="https://s2.loli.net/2023/12/04/6OPLDYtrKld1iGv.png" alt="image-20231019094830937" style="zoom:50%;" /></center>
+![三角矩阵的压缩存储](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218528.png)
 
 假设现在有一个 n*n 的三角矩阵（上三角或下三角为常数c）
 
@@ -498,7 +478,7 @@ typedef arr1 arr2[m];
 
 #### 5.2.3 对角矩阵的压缩存储
 
-<center><img src="https://s2.loli.net/2023/12/04/PwcA7Tu5XBZ2q8y.png" alt="image-20231019094859766" style="zoom:50%;" /></center>
+![对角矩阵的压缩存储](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218529.png)
 
 假设现在有一个 n*n 的对角矩阵（围绕主对角线有数据，其余数据均为0）
 
@@ -519,9 +499,11 @@ typedef arr1 arr2[m];
 
 ### 6.1 广义表的概念
 
-- 与以往的线性表的区别在于：线性表的元素只能是DT或ADT。而对于广义表，元素还可以是一个广义表，即可递归结构
-- 表头、表尾：对于当前序列，第一个元素就是表头，其余元素的集合就是表尾
-- 特点：层次结构、共享结构、递归结构
+与以往的线性表的区别在于：线性表的元素只能是 DT 或 ADT。而对于广义表，元素还可以是一个广义表，即可递归结构。
+
+表头、表尾。对于当前序列，第一个元素就是表头，其余元素的集合就是表尾
+
+特点：层次结构、共享结构、递归结构
 
 ### 6.2 广义表的存储结构
 
@@ -529,11 +511,11 @@ typedef arr1 arr2[m];
 
 采用联合结构体存储结点类型
 
-<center><img src="https://s2.loli.net/2023/12/04/Gjiltk6f74yO5L9.png" alt="image-20231023084427729" style="zoom:50%;" /></center>
+![采用联合结构体存储结点类型](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218530.png)
 
 #### 6.2.2 广义表的存储结构
 
-<center><img src="https://s2.loli.net/2023/12/04/G9yUhn4mzEDPBxo.png" alt="image-20231023090301534" style="zoom: 67%;" /></center>
+![广义表的存储结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218531.png)
 
 ### 6.3 广义表的操作算法
 
@@ -542,10 +524,7 @@ typedef arr1 arr2[m];
 
 #### 6.3.3 广义表的其他操作算法
 
-1. 复制广义表
-2. 计算广义表的长度
-3. 计算广义表的深度 - 原子深度为0，空表深度为1
-4. 释放广义表的存储空间
+复制广义表、计算广义表的长度、计算广义表的深度、释放广义表的存储空间
 
 ## 七、树和二叉树
 
@@ -585,15 +564,15 @@ typedef arr1 arr2[m];
 
 3. 满二叉树：每一层都是满结点
 
-    <center><img src="https://s2.loli.net/2023/12/04/dECpXhRImnJHxiw.png" alt="image-20231030085031394" style="zoom: 50%;" /></center>
+    ![满二叉树](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218532.png)
 
 4. 完全二叉树：对于一个 $k$ 层的二叉树，$1\to k-1$ 都是满的，第 $k$ 层从左到右连接叶子结点
 
-    <center><img src="https://s2.loli.net/2023/12/04/2xWt4QInCRXKulf.png" alt="image-20231030085057862" style="zoom:50%;" /></center>
+    ![完全二叉树](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218533.png)
 
    结点数固定，则完全二叉树的形状唯一
 
-   <center><img src="https://s2.loli.net/2023/12/04/qDFBM34ghjwkCzR.png" alt="image-20231030090400650" style="zoom:67%;" /></center>
+   ![完全二叉树的性质](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218534.png)
 
    若 $i$ 为奇数，且 $i\neq1$，则左兄弟就是 $i-1$
 
@@ -619,7 +598,7 @@ typedef arr1 arr2[m];
     2. 栈式遍历
 2. 层序遍历
 
-#### 7.4.3 二叉树的构造和析构:star:
+#### 7.4.3 二叉树的构造和析构
 
 1. 由含空指针标记的单个遍历序列构造二叉树
 
@@ -627,16 +606,17 @@ typedef arr1 arr2[m];
 
    **先序序列**进行构造：按照遍历的思路来，对于先序序列而言，第一个元素一定是根元素，因此首先根据“当前局面”的第一个元素创建根结点，接着递归创建左子树和右子树即可。注意传递的序列起始下标是引用类型的变量
 
-   <center><img src="https://s2.loli.net/2024/01/14/45xM2KrThuV8mkF.png" alt="image-20231102112448133" style="zoom:75%;" /></center>
+   ![示例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218535.png)
 
-   <center><img src="https://s2.loli.net/2023/12/04/EIX38hF67pVitun.png" alt="image-20231102112515427" style="zoom:75%;" /></center>
+   ![示例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218536.png)
+   
    **中序序列**进行构造：
    
-    <center>不可以，因为不能确定根节点以及左子树和右子树的部分</center>
+    不可以，因为不能确定根节点以及左子树和右子树的部分
    
    **后序序列**进行构造：与上述先序序列进行构建的逻辑一致，只不过有一个小 trick，即我们从后序序列的最后一个元素开始创建，那么得到的第一个元素就是根结点的值，然后首先递归创建右子树，再递归创建左子树即可。同样需要注意的是传递参数时，序列起始下标是引用类型的变量
    
-   <center>与先序序列构造逻辑相同，只是递归的顺序需要调整一下</center>
+   与先序序列构造逻辑相同，只是递归的顺序需要调整一下
    
 2. 由两个遍历序列构造二叉树
 
@@ -657,7 +637,7 @@ typedef arr1 arr2[m];
 3. 根据关键值查找结点
 4. 查找结点的父结点
 
-### 7.6 线索二叉树:star:
+### 7.6 线索二叉树
 
 #### 7.6.1 线索二叉树的概念
 
@@ -669,20 +649,18 @@ typedef arr1 arr2[m];
 
 #### 7.6.3 线索二叉树的操作算法
 
-> 中序线索化的二叉树
+以中序线索化的二叉树为例，涉及到以下几种算法：
 
-1. 线索化算法
+1. 线索化：设置一个全局变量 pre，为了简化思维，我们可以将一个中序遍历的过程想象成一个线性结构。前驱为 pre，当前为 p
 
-   设置一个全局变量 pre，为了简化思维，我们可以将一个中序遍历的过程想象成一个线性结构。前驱为pre，当前为p。
+    - p 的左子树为空，则 p 的前驱为 pre
+    - pre 的右子树为空，则 pre 的后继为 p
+   
+2. 求后继结点和前驱结点
 
-    - p的左子树为空，则p的前驱为pre
-    - pre的右子树为空，则pre的后继为p
+3. 遍历
 
-2. 求后继结点和前驱结点的算法
-
-3. 遍历算法
-
-4. 求父结点的算法
+4. 求父结点
 
     - 首先，若已知当前是左子树，则父结点一定是当前右孩子的中序前驱线索；若已知当前是右子树，则父结点一定是当前左孩子的中序前驱线索
     - 但是在未知当前结点的位置（未知左右子树）时，同时搜索两边的父结点，然后根据试探出来的父结点，特判父结点的子结点是否是当前结点即可
@@ -691,16 +669,12 @@ typedef arr1 arr2[m];
 
 #### 7.7.1 树的存储结构
 
-1. 多叉链表表示法
+1. 多叉链表表示法：将每一个结点的子结点都预设置为一个定值（树的最大度数）：浪费空间
 
-   将每一个结点的子结点都预设置为一个定值（树的最大度数）：浪费空间
-
-2. 孩子链表表示法
-
-   自顶向下存储边的信息
+2. 孩子链表表示法：自顶向下存储边的信息
 
     ```c++
-    template<class T>
+ template<class T>
     struct CTBox {
         T data;
         CTNode* firstchild;
@@ -710,26 +684,21 @@ typedef arr1 arr2[m];
         CTNode* next;
     };
     ```
-
-   <center><img src="https://s2.loli.net/2023/12/04/eKfb6koTwzBUAOV.png" alt="image-20231109115729850" style="zoom:50%;" /></center>
-
-3. 双亲表示法
-
-   自下向上存储边的信息
-
-   <center><img src="https://s2.loli.net/2023/12/04/Pc4ZMp2eQE1aCfN.png" alt="image-20231109115759641" style="zoom:50%;" /></center>
    
-4. 孩子兄弟表示法
+   ![孩子链表表示法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218537.png)
 
-   左结点存储孩子，右结点存储兄弟
+3. 双亲表示法：自下向上存储边的信息
+
+   ![双亲表示法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218538.png)
+
+4. 孩子兄弟表示法：左结点存储孩子，右结点存储兄弟
+
 
 #### 7.7.2 树的操作算法
 
-1. 构造
-2. 计算树的高度
-3. 计算树中所有结点的度
+构造、计算树的高度、计算树中所有结点的度
 
-### 7.8 哈夫曼树与哈夫曼编码:star:
+### 7.8 哈夫曼树与哈夫曼编码
 
 #### 7.8.1 哈夫曼树的定义
 
@@ -739,13 +708,11 @@ typedef arr1 arr2[m];
 2. $WPL$ 最小的树就叫做哈夫曼树：对于一个结点序列n，每次选择其中的两个权值最小的两个结点进行合并，在进行了n-1次以后，得到的二叉树就是哈夫曼树
 3. 哈夫曼编码：
     - 编码：利用二叉树进行前缀编码 - 避免解码时的二义性
-    - 解码：根据编码的二叉trie树，进行解码
+    - 解码：根据编码的二叉 trie 树，进行解码
 
 #### 7.8.2 操作算法
 
-- 构造 Huffman 树
-- 编码
-- 解码
+构造 Huffman 树、编码、解码
 
 ## 八、图
 
@@ -765,19 +732,15 @@ $$
 
 - 带权图称为网
 
-- 连通图和连通分量：
-
-    - **无向图**
+- 无向图：连通图和连通分量
 
     - 连通图：每一个顶点之间都有路径可达
     - 连通分量：极大连通子图
-
-- 强连通图和强连通分量：
-
-    - **有向图**
+    
+- 有向图：强连通图和强连通分量
 
     - 强连通图：每一个顶点之间都有路径可达
-    - 强连通分量：极大强连通子图
+- 强连通分量：极大强连通子图
 
 ### 8.2 图的存储结构
 
@@ -785,28 +748,23 @@ $$
 
 #### 8.2.1 邻接矩阵
 
-- 无向图的度：第 $i$ 行（列）的非标记数的个数
+无向图的度：第 $i$ 行（列）的非标记数的个数
 
-- 有向图的度：
+有向图的度：入度为第 $i$ 行的非标记数的个数；出度为第 $i$ 列的非标记数的个数
 
-    - 入度：第 $i$ 行的非标记数的个数
-    - 出度：第 $i$ 列的非标记数的个数
+类定义：
 
-- 类定义：
+![邻接矩阵 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218539.png)
 
-    <center><img src="https://s2.loli.net/2023/11/23/bR61nTfc34wNVgH.png" alt="image-20231123111517468" style="zoom:67%;" /></center>
-
-    <center><img src="https://s2.loli.net/2023/11/23/O3HzLeM87SyUqN6.png" alt="image-20231123111541444" style="zoom:67%;" /></center>
+![邻接矩阵 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218540.png)
 
 #### 8.2.2 邻接表
 
-- 存储出边表（邻接表）
+存储出边表称为邻接表，存储入编表称为逆邻接表
 
-- 存储入编表（逆邻接表）
+类定义：
 
-- 类定义：
-
-    <center><img src="https://s2.loli.net/2023/11/23/g5Hw6kdlGj8XvfQ.png" alt="image-20231123113744911" style="zoom:67%;" /></center>
+![邻接表](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218541.png)
 
 ### 8.3 图的遍历
 
@@ -816,47 +774,41 @@ $$
 
 #### 8.3.2 深度优先搜索
 
-<center><img src="https://s2.loli.net/2023/12/04/hXzEj7fZQqrJl3u.png" alt="image-20231127083412848" style="zoom:67%;" /></center>
+![深度优先搜索](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218542.png)
 
-1. 邻接矩阵：
+邻接矩阵：
 
-    - 时间复杂度：$O(n^2)$
+- 时间复杂度：$O(n^2)$
 
-    - 针对**邻接矩阵**的一个**无向**连通图的搜索代码示例
+- 针对**邻接矩阵**的一个**无向**连通图的搜索代码示例
 
-        <center><img src="https://s2.loli.net/2023/12/04/IqEmULWtYw5Chv9.png" alt="image-20231127083039909" style="zoom:67%;" /></center>
+    ![邻接矩阵的一个无向连通图的搜索代码示例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218543.png)
 
-2. 邻接表：
+邻接表：
 
-    - 时间复杂度：$O(n+e)$
+- 时间复杂度：$O(n+e)$
 
-    - 针对**邻接表**的一个**无向**连通图的搜索代码示例
+- 针对**邻接表**的一个**无向**连通图的搜索代码示例
 
-        ```c++
-        template<class T>
-        void ALGraph::DFS(int v, bool* visited) {
-            cout << vexs[v];
-            visited[v] = true;
-            // 遍历所有的边
-        }
-        ```
+    ```c++
+    template<class T>
+    void ALGraph::DFS(int v, bool* visited) {
+        cout << vexs[v];
+        visited[v] = true;
+        // 遍历所有的边
+    }
+    ```
 
 #### 8.3.3 广度优先搜索
 
-- 通过队列实现
-- 时间复杂度与上述 DFS 算法类似
+通过队列实现、时间复杂度与上述 DFS 算法类似
 
 #### 8.3.4 图遍历算法的应用
 
-1. 求 `(u,v)` 的所有简单路径
+1. 求 `(u,v)` 的所有简单路径：dfs + 回溯法的简单应用
 
-    dfs+回溯法的简单应用
+2. 染色法求二部图：bfs 的简单应用。当然 dfs 也是可以的，只需要在染色之后判断是否有相同颜色的邻接点即可
 
-2. 染色法求二部图
-
-    > bfs的简单应用
-    >
-    > 当然dfs也是可以的，只需要在染色之后判断是否有相同颜色的邻接点即可
 
 ### 8.4 最小生成树
 
@@ -866,7 +818,7 @@ $Minimum\ Spanning\ Tree(MST)$
 
 证明：
 
-<center><img src="https://s2.loli.net/2023/11/30/YjIDAz6dsPUbTOB.png" alt="image-20231130114331973" style="zoom: 67%;" /></center>
+![最小生成树性质证明 - 图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218544.png)
 
 对于上述的一个割，选择其中权值最小的交叉边。从而对于所有的状态，每次选择最小交叉边即可。
 
@@ -976,7 +928,7 @@ $Minimum\ Spanning\ Tree(MST)$
 
 结合顺序查找与分块查找的一种方法
 
-<center><img src="https://s2.loli.net/2023/12/25/dkaKtQWFMbAR2Hh.png" alt="image-20231225093347357" style="zoom:67%;" /></center>
+![分块查找](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218545.png)
 
 - 索引表可以折半或者顺序查找
 - 块内部只能顺序查找
@@ -997,14 +949,15 @@ $Minimum\ Spanning\ Tree(MST)$
 
 构建：当插入结点进行构建时出现了有结点平衡因子的绝对值超过了1，则进行“旋转”调整，旋转共分为4种
 
-<center><img src="https://s2.loli.net/2024/01/04/z29qmNZYl1xpKDh.png" alt="image-20240104125111608" style="zoom:50%;" /></center>
+![旋转 - LL、LR](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218546.png)
 
-<center><img src="https://s2.loli.net/2024/01/04/7AaqC84f6eit13s.png" alt="image-20240104125140305" style="zoom:50%;" /></center>
+![旋转 - LR](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218547.png)
 
-<center><img src="https://s2.loli.net/2024/01/04/kP98Y7MBTcm2VQI.png" alt="image-20240104125159728" style="zoom:50%;" /></center>
+![旋转 - RL](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218548.png)
+
 尝试模拟一遍下列序列的构造过程就可以理解了
 
-<center><img src="https://s2.loli.net/2024/01/14/AfC6nZv3FaU1MYo.png" alt="image-20240114231458389" style="zoom:50%;" /></center>
+![例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218549.png)
 
 ### 9.3 Hash 查找
 
@@ -1073,9 +1026,7 @@ $Minimum\ Spanning\ Tree(MST)$
 
 ### 10.2 冒泡排序
 
-基于交换的思路进行
-
-**稳定的**
+**稳定的**。基于交换的思路进行
 
 ### 10.3 选择排序
 
@@ -1085,13 +1036,15 @@ $Minimum\ Spanning\ Tree(MST)$
 
 ### 10.4 插入排序
 
+**稳定的**。
+
 - 直接插入排序：依次向前缀已经排好序的序列中进行插入 - $O(n^2)$
 - 折半插入排序：同上，只是选择插入位置的使用二分 - $O(n\log n)$
 - 递归插入排序：排序 `[1,i]` 等价于先排好 `[1,i-1]`，然后插入当前 `num[i]` 即可
 
-**稳定的**
-
 ### 10.5 希尔排序
+
+**不稳定**。
 
 基于插入直接排序的优点：
 
@@ -1104,9 +1057,9 @@ $Minimum\ Spanning\ Tree(MST)$
 2. 每次划分都对组内的元素进行直接插入排序
 3. 最后分为 1 组时，直接排序一趟以后就可以得到 sortrd sequence
 
-**不稳定**
-
 ### 10.6 快速排序
+
+**不稳定**。
 
 分治法三步骤：divide、conquer and combine
 
@@ -1127,57 +1080,41 @@ void Sort(int l, int r) {
 }
 ```
 
-**不稳定**
-
 ### 10.7 堆排序
 
-堆与堆排序的定义
+**不稳定**。
 
-> 首先我们得知道什么是堆结构。堆是具有下面性质（对于任意的 $1\le i \le n/2$ ）的完全二叉树
->
-> - $k_i \le k_{2i},k_i \le k_{2i+1}$ 叫做 小顶堆
->
-> - $k_i \ge k_{2i},k_i \ge k_{2i+1}$ 叫做 大顶堆
->
-> 因此一个堆结构可以采用线性的单元进行存储与维护
->
-> 而堆排序利用堆顶是最值这一性质，通过不断的**取堆顶，调整堆**的方式获得最终的排好序的序列
+堆与堆排序的定义：首先我们得知道什么是堆结构。堆是具有下面性质（对于任意的 $1\le i \le n/2$ ）的完全二叉树
 
-建立初始堆
+- $k_i \le k_{2i},k_i \le k_{2i+1}$ 叫做 小顶堆
+- $k_i \ge k_{2i},k_i \ge k_{2i+1}$ 叫做 大顶堆
+- 因此一个堆结构可以采用线性的单元进行存储与维护。而堆排序利用堆顶是最值这一性质，通过不断的**取堆顶，调整堆**的方式获得最终的排好序的序列
 
-> 由于完全二叉树中，每一个叶子结点都已经是堆结构，因此直接从第一个非叶子结点开始建堆即可。对每一个元素与左孩子、 右孩子进行比较
->
-> - 如果当前结点的值比左右孩子都大，那么无需修改，当前位置就是堆顶
-> - 如果当前结点的值比左孩子或者右孩子中的最大值小，则将最大的孩子作为堆顶，并将当前值不断的“下沉”即可
+建立初始堆：由于完全二叉树中，每一个叶子结点都已经是堆结构，因此直接从第一个非叶子结点开始建堆即可。对每一个元素与左孩子、 右孩子进行比较
 
-交换堆顶与记录位置后重新建堆
+- 如果当前结点的值比左右孩子都大，那么无需修改，当前位置就是堆顶
+- 如果当前结点的值比左孩子或者右孩子中的最大值小，则将最大的孩子作为堆顶，并将当前值不断的“下沉”即可
 
-> 交换记录值获取当前堆中最值以后，需要将除了已记录的值的结点以外的所有结点重新调整为堆结构
->
-> - 调整为堆结构的过程与上述初始建堆的过程完全一致，只是结点数每次 -1
+交换堆顶与记录位置后重新建堆：交换记录值获取当前堆中最值以后，需要将除了已记录的值的结点以外的所有结点重新调整为堆结构
 
-时间复杂度 $O(n \log n)$
+- 调整为堆结构的过程与上述初始建堆的过程完全一致，只是结点数每次 -1
 
-**不稳定**
+时间复杂度：$O(n \log n)$
 
 ### 10.8 归并排序
 
-递归
+**稳定的**。
 
-> 同样采用分治法，我们按照分治法的三个步骤进行讨论
->
-> - divide: 将当前序列划分为左右两部分
-> - conquer: 递归处理上述划分出来的两部分
-> - combine: 归并上述递归完的两部分
->
-> 时间复杂度 $O(n \log n)\leftarrow T(n)=2T(\frac{n}{2}) + O(n)$
+递归：同样采用分治法，我们按照分治法的三个步骤进行讨论
 
-非递归
+- divide：将当前序列划分为左右两部分
+- conquer：递归处理上述划分出来的两部分
+- combine：归并上述递归完的两部分
 
-> 就是模拟上述递归的过程，可以拆分为三步
->
-> - 归并
-> - 按照指定的长度处理整个序列
-> - 划分局部排序的长度
+非递归：就是模拟上述递归的过程，可以拆分为三步
 
-**稳定的**
+- 归并
+- 按照指定的长度处理整个序列
+- 划分局部排序的长度
+
+时间复杂度：$O(n \log n)\leftarrow T(n)=2T(\frac{n}{2}) + O(n)$

@@ -394,7 +394,7 @@ $$
     $$
     p_Y(y) = 
     \begin{cases}
-    p(h(y)) \cdot |h'(y)|, & \alpha < y < \beta \\
+    p_X(h(y)) \cdot |h'(y)|, & \alpha < y < \beta \\
     0, & \text{其他}
     \end{cases}
     $$
@@ -860,7 +860,7 @@ $$
 
 注：打星号表示在两个随机变量 $X,Y$ 相互独立时，具备可加性。具体的：
 
-1. $X \sim N(\mu_1,\sigma_1^2), Y \sim N(\mu_2,\sigma_2^2) \to X+Y\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$
+1. $X \sim N(\mu_1,\sigma_1^2), Y \sim N(\mu_2,\sigma_2^2) \to X\pm Y\sim N(\mu_1\pm\mu_2,\sigma_1^2+\sigma_2^2)$
 2. $X \sim B(n_1,p), Y \sim B(n_2,p) \to X+Y\sim B(n_1+n_2,p)$
 3. $X \sim P(\lambda_1),Y\sim P(\lambda_2) \to X+Y \sim P(\lambda_1+\lambda_2)$
 

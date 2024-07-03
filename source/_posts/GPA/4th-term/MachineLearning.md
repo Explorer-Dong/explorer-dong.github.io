@@ -179,93 +179,89 @@ pass
 
 #### 2.3.1 回归任务
 
-- 均方误差：$\displaystyle MSE=\frac{1}{m} \sum_{i=1}^m(f(x_i) - y_i)^2$
+均方误差：$\displaystyle MSE=\frac{1}{m} \sum_{i=1}^m(f(x_i) - y_i)^2$
 
-- 均方根误差：$\displaystyle RMSE=\sqrt{\frac{1}{m} \sum_{i=1}^m(f(x_i) - y_i)^2}$
+均方根误差：$\displaystyle RMSE=\sqrt{\frac{1}{m} \sum_{i=1}^m(f(x_i) - y_i)^2}$
 
-- $R^2$ 分数：$\displaystyle R^2 = 1 - \frac{\sum_{i=1}^m(f(x_i)-y_i)^2}{\sum_{i=1}^m(\bar{y} - y_i)^2},\quad \bar{y} = \frac{1}{m}\sum_{i=1}^m y_i$
+$R^2$ 分数：$\displaystyle R^2 = 1 - \frac{\sum_{i=1}^m(f(x_i)-y_i)^2}{\sum_{i=1}^m(\bar{y} - y_i)^2},\quad \bar{y} = \frac{1}{m}\sum_{i=1}^m y_i$
 
-    {% fold light @个人理解 %}
-    首先理解各部分的含义。减数的分子表示预测数据的平方差，减数的分母表示真实数据的平方差。而平方差是用来描述数据离散程度的统计量。
+{% fold light @R-square 个人理解 %}
+首先理解各部分的含义。减数的分子表示预测数据的平方差，减数的分母表示真实数据的平方差。而平方差是用来描述数据离散程度的统计量。
 
-    为了保证回归拟合的结果尽可能不受数据离散性的影响，我们通过相除来判断预测的数据是否离散。如果和原始数据离散性差不多，那么商就接近1，R方就接近0，表示性能较差，反之如果比原始数据离散性小，那么商就接近0，R方就接近1，表示性能较优。
-    {% endfold %}
+为了保证回归拟合的结果尽可能不受数据离散性的影响，我们通过相除来判断预测的数据是否离散。如果和原始数据离散性差不多，那么商就接近1，R方就接近0，表示性能较差，反之如果比原始数据离散性小，那么商就接近0，R方就接近1，表示性能较优。
+{% endfold %}
 
 #### 2.3.2 分类任务
 
-- 错误率（error）：$\displaystyle E(f;D) = \frac{1}{m} \sum_{i=1}^mf(x_i \neq y_i)$
+混淆矩阵
 
-- 准确率（accuracy）：$\displaystyle A(f;D) = \frac{1}{m} \sum_{i=1}^mf(x_i = y_i)$
+{% fold light @图例 %}
 
-- 混淆矩阵
+![混淆矩阵 - 图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403121018205.png)
 
-    {% fold light @图例 %}
+{% endfold %}
 
-    ![混淆矩阵 - 图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403121018205.png)
+- **准确率（accuracy）**：$\displaystyle P=\frac{TP+TN}{TP+FN+FP+TN}$
+- **查准率/精度（precision）**：$\displaystyle P = \frac{TP}{TP+FP}$ - 适用场景：商品搜索推荐（尽可能推荐出适当的商品即可，至于商品数量无所谓）
+- **查全率/召回率（recall）**：$\displaystyle R = \frac{TP}{TP+FN}$ - 适用场景：逃犯、病例检测（尽可能将正例检测出来，至于查准率无所谓）
+- **F1 度量（F1-score）**：$\displaystyle F_1 = \frac{2\times P \times R}{P + R}$​ - 用于综合查准率和查全率的指标
 
+- 对于**多分类问题**，我们可以将该问题分解为多个二分类问题（ps：假设为 n 个）。从而可以获得多个上述的混淆矩阵，那么也就获得了多个 $P_i$、$R_i$ 以及全局均值 $\overline{TP}$、$\overline{FP}$、$\overline{FN}$，进而衍生出两个新的概念
+
+    - **宏**
+      - 宏查准率：$\displaystyle macroP = \frac{1}{n} \sum_{i=1}^n P_i$
+      - 宏查全率：$\displaystyle macroR = \frac{1}{n} \sum_{i=1}^n R_i$
+      - 宏 $F1$：$\displaystyle macroF_1 = \frac{2 \times macroP \times macroR}{macroP+macroR}$
+      
+    - **微**
+    
+      - 微查准率：$\displaystyle microP = \frac{\overline{TP}}{\overline{TP}+\overline{FP}}$
+      - 微查全率：$\displaystyle microR = \frac{\overline{TP}}{\overline{TP}+\overline{FN}}$
+      - 微 $F1$：$\displaystyle microF_1 = \frac{2 \times microP \times microR}{microP+microR}$
+
+P-R 曲线
+
+{% fold light @图例 %}
+
+![P-R 曲线趋势图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190830311.png)
+
+{% endfold %}
+
+- 横纵坐标：横坐标为查全率（Recall），纵坐标为查准率（Precision）
+
+- 如何产生？我们根据学习器对于每一个样本的**预测值**（正例性的概率）进行降序排序，然后调整截断点将预测后的样本进行二分类，将截断点之前的所有数据全部认为**预测正例**，截断点之后的所有数据全部认为**预测反例**。然后计算两个指标进行绘图。
+
+    {% fold light @什么分类任务中的是预测值？ %}
+我们知道学习器得到最终的结果一般不是一个绝对的二值，如 0,1。往往是一个连续的值，比如 [0,1]，也就是“正例性的概率”。因此我们才可以选择合适的截断点将所有的样本数据划分为两类。
     {% endfold %}
 
-    - **查准率/精度（precision）**：$\displaystyle P = \frac{TP}{TP+FP}$ - 适用场景：商品搜索推荐（尽可能推荐出适当的商品即可，至于商品数量无所谓）
-    - **查全率/召回率（recall）**：$\displaystyle R = \frac{TP}{TP+FN}$ - 适用场景：逃犯、病例检测（尽可能将正例检测出来，至于查准率无所谓）
-    - **F1 度量（F1-score）**：$\displaystyle F_1 = \frac{2\times P \times R}{P + R}$​ - 用于综合查准率和查全率的指标
-    
-    - 对于**多分类问题**，我们可以将该问题分解为多个二分类问题（ps：假设为 n 个）。从而可以获得多个上述的混淆矩阵，那么也就获得了多个 $P_i$、$R_i$ 以及全局均值 $\overline{TP}$、$\overline{FP}$、$\overline{FN}$，进而衍生出两个新的概念
-    
-        - **宏**
-          - 宏查准率：$\displaystyle macroP = \frac{1}{n} \sum_{i=1}^n P_i$
-          - 宏查全率：$\displaystyle macroR = \frac{1}{n} \sum_{i=1}^n R_i$
-          - 宏 $F1$：$\displaystyle macroF_1 = \frac{2 \times macroP \times macroR}{macroP+macroR}$
-          
-        - **微**
-        
-          - 微查准率：$\displaystyle microP = \frac{\overline{TP}}{\overline{TP}+\overline{FP}}$
-          - 微查全率：$\displaystyle microR = \frac{\overline{TP}}{\overline{TP}+\overline{FN}}$
-          - 微 $F1$：$\displaystyle microF_1 = \frac{2 \times microP \times microR}{microP+microR}$
-    
-- P-R 曲线
+- 趋势解读：随着截断点的值不断下降，很显然查全率 $R$ 会不断上升，查准率 $P$ 会不断下降
 
-    {% fold light @图例 %}
+- 不同曲线对应学习器的性能度量：**曲线与横纵坐标围成的面积**衡量了样本预测排序的质量。因此上图中 A 曲线的预测质量比 C 曲线的预测质量高。但是我们往往会遇到比较 A 与 B 的预测质量的情况，由于曲线与坐标轴围成的面积难以计算，因此我们引入了**平衡点**的概念。平衡点就是查准率与查询率相等的曲线，即 $P=R$ 的曲线。平衡点越往右上，学习器的预测性能越好。
 
-    ![P-R 曲线趋势图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190830311.png)
+ROC 曲线与 AUC :star:
 
-    {% endfold %}
-    
-    - 横纵坐标：横坐标为查全率（Recall），纵坐标为查准率（Precision）
+{% fold light @图例 %}
 
-    - 如何产生？我们根据学习器对于每一个样本的**预测值**（正例性的概率）进行降序排序，然后调整截断点将预测后的样本进行二分类，将截断点之前的所有数据全部认为**预测正例**，截断点之后的所有数据全部认为**预测反例**。然后计算两个指标进行绘图。
+![ROC 曲线图 - 受试者工作特征](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190851371.png)
 
-        {% fold light @什么分类任务中的是预测值？ %}
-    我们知道学习器得到最终的结果一般不是一个绝对的二值，如 0,1。往往是一个连续的值，比如 [0,1]，也就是“正例性的概率”。因此我们才可以选择合适的截断点将所有的样本数据划分为两类。
-        {% endfold %}
-    
-    - 趋势解读：随着截断点的值不断下降，很显然查全率 $R$ 会不断上升，查准率 $P$ 会不断下降
-    
-    - 不同曲线对应学习器的性能度量：**曲线与横纵坐标围成的面积**衡量了样本预测排序的质量。因此下图中 A 曲线的预测质量比 C 曲线的预测质量高。但是我们往往会遇到比较 A 与 B 的预测质量的情况，由于曲线与坐标轴围成的面积难以计算，因此我们引入了**平衡点**的概念。平衡点就是查准率与查询率相等的曲线，即 $P=R$ 的曲线。平衡点越往右上，学习器的预测性能越好。
+{% endfold %}
 
-- ROC 曲线与 AUC :star:
+- 横纵坐标：横坐标为**假正例率** $\displaystyle FPR = \frac{FP}{FP+TN}$，纵坐标为**真正例率** $\displaystyle TPR = \frac{TP}{TP+FN}$
 
-    {% fold light @图例 %}
+- 如何产生？与 P-R 图的产生类似，只不过计算横纵坐标的规则不同，不再赘述。
 
-    ![ROC 曲线图 - 受试者工作特征](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190851371.png)
-    
-    {% endfold %}
-    
-    - 横纵坐标：横坐标为**假正例率** $\displaystyle FPR = \frac{FP}{FP+TN}$，纵坐标为**真正例率** $\displaystyle TPR = \frac{TP}{TP+FN}$
-    
-    - 如何产生？与 P-R 图的产生类似，只不过计算横纵坐标的规则不同，不再赘述。
-    
-    - 趋势解读：随着截断点的值不断下降，真正例率与假正例率均会不断上升，因为分子都是从 0 开始逐渐增加的
-    
-    - 不同曲线对应学习器的性能度量：**AUC** 衡量了样本预测的排序质量。AUC 即 ROC 曲线右下方的面积，面积越大则对应的预测质量更高，学习器性能更好。不同于上述引入平衡点的概念，此处的面积我们可以直接计算，甚至 1-AUC 也可以直接计算。
-    
-        我们定义 $\text{AUC}$ 的计算公式为：（其实就是每一块梯形的面积求和，ps：矩形也可以用梯形面积计算公式代替）
-        $$
-        \sum _{i=1}^{m-1} \frac{(y_{i}+y_{i+1}) \cdot (x_{i+1} - x_i)}{2}
-        $$
-        我们定义损失函数（$loss$） $l_{rank} = 1-AUC$ 的计算公式为：（ps：感觉下述公式不是很准，因为正反例预测值相等的比例比不一定就是一比一）
-    
-        ![损失函数计算公式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403191055792.png)
-        
+- 趋势解读：随着截断点的值不断下降，真正例率与假正例率均会不断上升，因为分子都是从 0 开始逐渐增加的
+
+- 不同曲线对应学习器的性能度量：**AUC** 衡量了样本预测的排序质量。AUC 即 ROC 曲线右下方的面积，面积越大则对应的预测质量更高，学习器性能更好。不同于上述引入平衡点的概念，此处的面积我们可以直接计算，甚至 1-AUC 也可以直接计算。
+
+    我们定义 $\text{AUC}$ 的计算公式为：（其实就是每一块梯形的面积求和，ps：矩形也可以用梯形面积计算公式代替）
+    $$
+    \sum _{i=1}^{m-1} \frac{(y_{i}+y_{i+1}) \cdot (x_{i+1} - x_i)}{2}
+    $$
+    我们定义损失函数（$loss$） $l_{rank} = 1-AUC$ 的计算公式为：（ps：感觉下述公式不是很准，因为正反例预测值相等的比例比不一定就是一比一）
+
+    ![损失函数计算公式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403191055792.png)
     
 
 ### 2.4 比较检验
@@ -438,7 +434,7 @@ E_{\hat w} = (y - X \hat w) ^T (y - X \hat w)
 $$
 我们用同样的方法求解其闭式解：
 
-{% fold light @参数 w 的求解推导（式 3.10） %}
+{% fold light @参数 w 的求解推导（式 3.10，非岭回归+岭回归） %}
 
 ![多元线性回归：参数 w 的求解推导（式 3.10）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403301607772.jpg)
 
@@ -449,7 +445,7 @@ $$
     f(x_i) = \hat x_i ^T \hat w^*
     $$
 
-2. $X^T X$ 不可逆：我们引入 $L_2$ 正则化项 $\alpha || \hat w ||^2$
+2. $X^T X$ 不可逆：我们引入 $L_2$ 正则化项 $\alpha || \hat w ||^2$，此时就是所谓的「岭回归」算法：
 
     现在的损失函数就定义为：
     $$
@@ -618,7 +614,7 @@ l(w,b) &= l(\beta) \\
 &= \sum_{i=1}^m \left( y_i e^{\beta^T\hat x} - \ln({1 + e^{\beta^T\hat x}})\right )
 \end{aligned}
 $$
-进而从**极大似然估计**转化为：求解极小化上述目标函数时的参数 $\beta$ 的值：
+进而从**极大似然估计**转化为：求解「极小化负的上述目标函数时」参数 $\beta$ 的值：
 $$
 \arg \min_{\beta} l(\beta) = \sum_{i=1}^m \left(- y_i e^{\beta^T\hat x} + \ln({1 + e^{\beta^T\hat x}})\right )
 $$
@@ -642,7 +638,7 @@ $$
 
 ### 3.4 线性判别分析
 
-pass
+线性判别分析的原理是：对于给定的训练集，设法将样本投影到一条直线上，使得同类的投影点尽可能接近，异类样本的投影点尽可能远离；在对新样本进行分类时，将其投影到这条直线上，再根据投影点的位置来确定新样本的类别。
 
 ### 3.5 多分类学习
 
@@ -1019,18 +1015,6 @@ $$
 
 还有一种 BP 神经网络方法就是**累计 BP 神经网络**算法，基本思路就是对于全局训练样本计算累计误差，从而更新参数。在实际应用过程中，一般先采用累计 BP 算法，再采用标准 BP 算法。还有一种思路就是使用随机 BP 算法，即每次随机选择一个训练样本进行参数更新。
 
-### 5.4 全局最小与局部极小
-
-pass
-
-### 5.5 其他常见神经网络
-
-pass
-
-### 5.6 深度学习
-
-pass
-
 ## 第6章 支持向量机
 
 {% note light %}
@@ -1120,6 +1104,14 @@ $$
 对原始样本进行升维，即 $x_i \to \phi(x_i)$，新的问题出现了，计算内积 $\phi(x_i)^T \phi(x_i)$ 变得很困难，我们尝试解决这个内积的计算，即使用一个函数（核函数）来近似代替上述内积的计算结果，常用的核函数如下：
 
 ![常用核函数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404160949464.png)
+
+表格中的高斯核也就是所谓的径向基函数核 $\text{(Radial Basis Function Kernel, 简称 RBF 核)}$，其中的参数 $\gamma=\frac{1}{2\sigma^2}$，因此 RBF 核的表达式也可以写成：
+$$
+\kappa(x_i, x_j) = \exp(-\gamma \|x_i - x_j\|^2)
+$$
+
+- 当 $\gamma$ 较大时，$\exp(-\gamma \|x_i - x_j\|^2)$ 的衰减速度会很快。这意味着只有非常接近的样本点才会有较高的相似度。此时，模型会更关注局部特征。并且会导致模型具有较高的复杂度，因为模型会更容易拟合训练数据中的细节和噪声，从而可能导致过拟合。
+- 当 $\gamma$ 较小时，$\exp(-\gamma \|x_i - x_j\|^2)$ 的衰减速度会变慢。较远的样本点之间也可能会有较高的相似度。此时，模型会更关注全局特征。但此时模型的复杂度较低，容易忽略训练数据中的细节，从而可能导致欠拟合
 
 ### 6.4 软间隔与正则化
 
@@ -1245,7 +1237,7 @@ $$
 有两个问题：哪来的参数？什么时候迭代终止？
 
 - 对于第一个问题：我们随机化初始得到参数 $\Theta_0$
-- 对于第二个问题：相邻两次迭代结果中**参数**差值的范数小于阈值 $(|| \theta^{(i+1)} - \theta^{(i)}) || < \epsilon_1)$ 或**隐变量条件分布期望**差值的范数小于阈值 $(|| Q(\theta^{(i+1)} , \theta^{(i)})) - Q(\theta^{(i+1)} , \theta^{(i)}) || < \epsilon_2)$
+- 对于第二个问题：相邻两次迭代结果中**参数**差值的范数小于阈值 $(|| \theta^{(i+1)} - \theta^{(i)}) || < \epsilon_1)$ 或**隐变量条件分布期望**差值的范数小于阈值 $(|| Q(\theta^{(i+1)} , \theta^{(i)})) - Q(\theta^{(i)} , \theta^{(i)}) || < \epsilon_2)$
 
 ## 第8章 集成学习
 
@@ -1493,9 +1485,9 @@ $$
 
 {% endnote %}
 
-### 10.1 k近邻学习
+### 10.1 k 近邻学习
 
-k近邻（k-Nearest Neighbor，简称 KNN）是一种监督学习方法。一句话概括就是「近朱者赤近墨者黑」，每一个测试样本的分类或回归结果取决于在某种距离度量下的最近的 k 个邻居的性质。不需要训练，可以根据检测样本实时预测，即懒惰学习。为了实现上述监督学习的效果，我们需要解决以下两个问题：
+k 近邻（k-Nearest Neighbor，简称 KNN）是一种监督学习方法。一句话概括就是「近朱者赤近墨者黑」，每一个测试样本的分类或回归结果取决于在某种距离度量下的最近的 k 个邻居的性质。不需要训练，可以根据检测样本实时预测，即懒惰学习。为了实现上述监督学习的效果，我们需要解决以下两个问题：
 
 - 如何确定「距离度量」的准则？就那么几种，一个一个试即可。
 - 如何定义「分类结果」的标签？分类任务是 k 个邻居中最多类别的标签，回归任务是 k 个邻居中最多类别标签的均值。
@@ -1508,7 +1500,7 @@ k近邻（k-Nearest Neighbor，简称 KNN）是一种监督学习方法。一句
 
 「**多维缩放（MDS）降维算法**」的原则：对于任意的两个样本，降维后两个样本之间的距离保持不变。
 
-基于此思想，可以得到以下降维流程：我们定义 $b_{ij}$ 为降维后任意两个样本之间的内积，$dist_{ij}$ 表示任意两个样本的原始距离，$Z \in R^{d'\times m},d' \le d$ 为降维后数据集的属性值矩阵
+基于此思想，可以得到以下降维流程：我们定义 $b_{ij}$ 为降维后任意两个样本之间的内积，$dist_{ij}$ 表示任意两个样本的原始距离，$Z \in R^{d'\times m},d' \le d$ 为降维后数据集的属性值矩阵。
 
 内积计算：
 
@@ -1529,7 +1521,71 @@ k近邻（k-Nearest Neighbor，简称 KNN）是一种监督学习方法。一句
 
 ![PCA 算法流程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406040911195.png)
 
+{% fold light @3 个样本 2 个特征降维到 1 个特征的算例 %}
 
+假设我们有一个简单的数据集 $D$，包括以下三个样本点：
+
+$$
+x_1 = \begin{pmatrix} 2 \\ 3 \end{pmatrix}, \quad x_2 = \begin{pmatrix} 3 \\ 4 \end{pmatrix}, \quad x_3 = \begin{pmatrix} 4 \\ 5 \end{pmatrix}
+$$
+
+我们希望将这些样本从二维空间降维到一维空间（即 $d' = 1$ ）。
+
+步骤 1: **样本中心化**
+
+首先计算样本的均值向量：
+
+$$
+\mu = \frac{1}{3} (x_1 + x_2 + x_3) = \frac{1}{3} \begin{pmatrix} 2 \\ 3 \end{pmatrix} + \frac{1}{3} \begin{pmatrix} 3 \\ 4 \end{pmatrix} + \frac{1}{3} \begin{pmatrix} 4 \\ 5 \end{pmatrix} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}
+$$
+
+然后对所有样本进行中心化：
+
+$$
+\tilde{x}_1 = x_1 - \mu = \begin{pmatrix} 2 \\ 3 \end{pmatrix} - \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} -1 \\ -1 \end{pmatrix}
+$$
+
+$$
+\tilde{x}_2 = x_2 - \mu = \begin{pmatrix} 3 \\ 4 \end{pmatrix} - \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+$$
+
+$$
+\tilde{x}_3 = x_3 - \mu = \begin{pmatrix} 4 \\ 5 \end{pmatrix} - \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+$$
+
+步骤 2: **计算协方差矩阵**
+
+样本的协方差矩阵为：
+
+$$
+\begin{aligned}
+XX^T &= \frac{1}{m} \sum_{i=1}^m \tilde{x}_i \tilde{x}_i^T \\
+&= \frac{1}{3} \left( \begin{pmatrix} -1 \\ -1 \end{pmatrix} \begin{pmatrix} -1 & -1 \end{pmatrix} + \begin{pmatrix} 0 \\ 0 \end{pmatrix} \begin{pmatrix} 0 & 0 \end{pmatrix} + \begin{pmatrix} 1 \\ 1 \end{pmatrix} \begin{pmatrix} 1 & 1 \end{pmatrix} \right)\\
+&= \frac{1}{3} \left( \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} + \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} + \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \right) \\
+&= \frac{1}{3} \begin{pmatrix} 2 & 2 \\ 2 & 2 \end{pmatrix} \\
+&= \begin{pmatrix} \frac{2}{3} & \frac{2}{3} \\ \frac{2}{3} & \frac{2}{3} \end{pmatrix}
+\end{aligned}
+$$
+
+步骤 3: **对协方差矩阵进行特征值分解**
+
+协方差矩阵的特征值分解：
+
+$$
+\begin{pmatrix} \frac{2}{3} & \frac{2}{3} \\ \frac{2}{3} & \frac{2}{3} \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ -1 & 1 \end{pmatrix} \begin{pmatrix} \frac{4}{3} & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix}
+$$
+
+特征值为 $\lambda_1 = \frac{4}{3}$ 和 $\lambda_2 = 0$，对应的特征向量分别为：
+
+$$
+w_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad w_2 = \begin{pmatrix} -1 \\ 1 \end{pmatrix}
+$$
+
+步骤 4: **取最大的 $d'$ 个特征值对应的特征向量**
+
+我们选择最大的特征值对应的特征向量 $w_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ 作为最终的投影矩阵。
+
+{% endfold %}
 
 ### 10.4 核化线性降维
 
@@ -1581,14 +1637,6 @@ pass
 paper: [Distance Metric Learning for Large Margin Nearest Neighbor Classification](https://papers.nips.cc/paper/2005/file/a7f592cef8b130a6967a90617db5681b-Paper.pdf)
 
 explain: [【LMNN】浅析"从距离测量到基于Margin的邻近分类问题"](https://zhuanlan.zhihu.com/p/90409085)
-
-## ~~第11章 特征选择与稀疏学习~~
-
-
-
-## ~~第12章 计算学习理论~~
-
-
 
 ## 第13章 半监督学习
 
@@ -1685,6 +1733,12 @@ explain: [【LMNN】浅析"从距离测量到基于Margin的邻近分类问题"]
 
 隐马尔可夫模型 $\text{(Hidden Markov Model, 简称 HMM)}$ 是结构最简单的动态贝叶斯网。是为了研究变量之间的关系而存在的，因此是生成式方法。
 
+需要解决三个问题：
+
+1. 如何评估建立的网络模型和实际观测数据的匹配程度？
+2. 如果上面第一个问题中匹配程度不好，如何调整模型参数来提升模型和实际观测数据的匹配程度呢？
+3. 如何根据实际的观测数据利用网络推断出有价值的隐藏状态？
+
 ### 14.2 马尔科夫随机场
 
 马尔科夫随机场 $\text{(Markov Random Field, 简称 MRF)}$ 是典型的马尔科夫网。同样是为了研究变量之间的关系而存在的，因此也是生成式方法。
@@ -1705,8 +1759,6 @@ explain: [【LMNN】浅析"从距离测量到基于Margin的邻近分类问题"]
 
 - 采样法：蒙特卡洛采样法
 - 变分推断：考虑近似分布
-
-## ~~第15章 规则学习~~
 
 ## 考试大纲
 

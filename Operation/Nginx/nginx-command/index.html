@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/nginx.png">
 <meta property="article:published_time" content="2024-04-02T15:19:06.225Z">
-<meta property="article:modified_time" content="2024-04-06T14:49:07.185Z">
+<meta property="article:modified_time" content="2024-07-05T06:27:06.710Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -323,7 +323,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年4月6日 晚上
+                    本文最后更新于 2024年7月5日 下午
                   
                 
               </p>
@@ -354,7 +354,7 @@
 <p>我们用 <code>nginx -T</code> 来测试配置文件是否格式正确，同时将所有的配置信息输出到屏幕上，我们可以对输出信息转存用来备份配置：</p>
 <figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs nginx">root@dwj2:~<span class="hljs-comment"># nginx -T</span><br>nginx: <span class="hljs-attribute">the</span> configuration file /etc/nginx/nginx.conf syntax is ok<br>nginx: configuration file /etc/nginx/nginx.conf test is successful<br><br><span class="hljs-comment"># 所有配置信息</span><br>...<br></code></pre></td></tr></tbody></table></figure>
 <h2 id="nginx-q">nginx -q</h2>
-<p>我们用 <code>nginx -q</code> 来测试配置，与 -t 和 -T 不同的时，该命令不会显示非错误信息从而简化输出</p>
+<p>我们用 <code>nginx -q</code> 来测试配置，与 -t 和 -T 不同的是，该命令不会显示非错误信息从而简化输出</p>
 <figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs nginx">root@dwj2:~<span class="hljs-comment"># nginx -q</span><br>nginx: [emerg] bind() <span class="hljs-attribute">to</span> <span class="hljs-number">0.0.0.0:80</span> failed (<span class="hljs-number">98</span>: Unknown <span class="hljs-literal">error</span>)<br>nginx: [emerg] bind() to [::]:<span class="hljs-number">80</span> failed (<span class="hljs-number">98</span>: Unknown <span class="hljs-literal">error</span>)<br>nginx: [emerg] bind() to <span class="hljs-number">0.0.0.0:80</span> failed (<span class="hljs-number">98</span>: Unknown <span class="hljs-literal">error</span>)<br>nginx: [emerg] bind() to [::]:<span class="hljs-number">80</span> failed (<span class="hljs-number">98</span>: Unknown <span class="hljs-literal">error</span>)<br>nginx: [emerg] bind() to <span class="hljs-number">0.0.0.0:80</span> failed (<span class="hljs-number">98</span>: Unknown <span class="hljs-literal">error</span>)<br>nginx: [emerg] bind() to [::]:<span class="hljs-number">80</span> failed (<span class="hljs-number">98</span>: Unknown <span class="hljs-literal">error</span>)<br>nginx: [emerg] bind() to <span class="hljs-number">0.0.0.0:80</span> failed (<span class="hljs-number">98</span>: Unknown <span class="hljs-literal">error</span>)<br>nginx: [emerg] bind() to [::]:<span class="hljs-number">80</span> failed (<span class="hljs-number">98</span>: Unknown <span class="hljs-literal">error</span>)<br>nginx: [emerg] bind() to <span class="hljs-number">0.0.0.0:80</span> failed (<span class="hljs-number">98</span>: Unknown <span class="hljs-literal">error</span>)<br>nginx: [emerg] bind() to [::]:<span class="hljs-number">80</span> failed (<span class="hljs-number">98</span>: Unknown <span class="hljs-literal">error</span>)<br>nginx: [emerg] still could not bind()<br></code></pre></td></tr></tbody></table></figure>
 <h2 id="nginx-s-signal">nginx -s &lt;signal&gt;</h2>
 <p>我们使用 <code>nginx -s &lt;signal&gt;</code> 相关指令来对控制 nginx 的 master 进程</p>
@@ -436,7 +436,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年4月6日</div>
+          <div>2024年7月5日</div>
         </div>
       
       
@@ -551,7 +551,7 @@
         aria-expanded="true"
       >
         Operation
-        <span class="list-group-count">(8)</span>
+        <span class="list-group-count">(9)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -587,7 +587,7 @@
         aria-expanded="true"
       >
         Nginx
-        <span class="list-group-count">(2)</span>
+        <span class="list-group-count">(3)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -605,6 +605,15 @@
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">nginx-command</span>
+        </a>
+      
+    
+      
+      
+        <a href="/Operation/Nginx/solve-nginx-reload-error/" title="solve-nginx-reload-error"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">solve-nginx-reload-error</span>
         </a>
       
     

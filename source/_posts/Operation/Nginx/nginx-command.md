@@ -166,7 +166,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 ## nginx -q
 
-我们用 `nginx -q` 来测试配置，与 -t 和 -T 不同的时，该命令不会显示非错误信息从而简化输出
+我们用 `nginx -q` 来测试配置，与 -t 和 -T 不同的是，该命令不会显示非错误信息从而简化输出
 
 ```nginx
 root@dwj2:~# nginx -q

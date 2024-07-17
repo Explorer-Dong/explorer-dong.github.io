@@ -96,59 +96,59 @@ int fa[N][20], dep[N];
 queue<int> q;
 
 void init() {
-	dep[root] = 1;
-	q.push(root);
+    dep[root] = 1;
+    q.push(root);
 
-	while (q.size()) {
-		int now = q.front();
-		q.pop();
-		for (int ch: G[now]) {
-			if (!dep[ch]) {
-				dep[ch] = dep[now] + 1;
-				fa[ch][0] = now;
-				for (int k = 1; k <= 19; k++) {
-					fa[ch][k] = fa[ fa[ch][k-1] ][k-1];
-				}
-				q.push(ch);
-			}
-		}
-	}
+    while (q.size()) {
+        int now = q.front();
+        q.pop();
+        for (int ch: G[now]) {
+            if (!dep[ch]) {
+                dep[ch] = dep[now] + 1;
+                fa[ch][0] = now;
+                for (int k = 1; k <= 19; k++) {
+                    fa[ch][k] = fa[ fa[ch][k-1] ][k-1];
+                }
+                q.push(ch);
+            }
+        }
+    }
 }
 
 int lca(int a, int b) {
-	if (dep[a] < dep[b]) swap(a, b);
+    if (dep[a] < dep[b]) swap(a, b);
 
     // 二进制拼凑从而跳到一样高
-	for (int k = 19; k >= 0; k--)
-		if (dep[fa[a][k]] >= dep[b])
-			a = fa[a][k];
+    for (int k = 19; k >= 0; k--)
+        if (dep[fa[a][k]] >= dep[b])
+            a = fa[a][k];
 
-	if (a == b) return a;
+    if (a == b) return a;
 
-	for (int k = 19; k >= 0; k--)
-		if (fa[a][k] != fa[b][k])
-			a = fa[a][k], b = fa[b][k];
+    for (int k = 19; k >= 0; k--)
+        if (fa[a][k] != fa[b][k])
+            a = fa[a][k], b = fa[b][k];
 
-	return fa[a][0];
+    return fa[a][0];
 }
 
 void solve() {
-	cin >> n >> Q >> root;
-	for (int i = 0; i < n - 1; ++i) {
-		int a, b;
-		cin >> a >> b;
-		G[a].push_back(b);
-		G[b].push_back(a);
-	}
+    cin >> n >> Q >> root;
+    for (int i = 0; i < n - 1; ++i) {
+        int a, b;
+        cin >> a >> b;
+        G[a].push_back(b);
+        G[b].push_back(a);
+    }
 
-	init();
+    init();
 
-	while (Q--) {
-		int a, b;
-		cin >> a >> b;
-		cout << lca(a, b) << "\n";
-	}
-}	
+    while (Q--) {
+        int a, b;
+        cin >> a >> b;
+        cout << lca(a, b) << "\n";
+    }
+}    
 ```
 
 ### 3. [USACO19DEC] Milk Visits S
@@ -173,45 +173,45 @@ int n, m, p[N];
 char col[N];
 
 int find(int x) {
-	if (p[x] != x) {
-		p[x] = find(p[x]);
-	}
-	return p[x];
+    if (p[x] != x) {
+        p[x] = find(p[x]);
+    }
+    return p[x];
 }
 
 void solve() {
-	cin >> n >> m;
-	cin >> (col + 1);
+    cin >> n >> m;
+    cin >> (col + 1);
 
-	for (int i = 1; i <= n; i++) {
-		p[i] = i;
-	}
+    for (int i = 1; i <= n; i++) {
+        p[i] = i;
+    }
 
-	for (int i = 1; i <= n - 1; i++) {
-		int a, b;
-		cin >> a >> b;
-		if (col[a] == col[b]) {
-			p[find(a)] = find(b);
-		}
-	}
+    for (int i = 1; i <= n - 1; i++) {
+        int a, b;
+        cin >> a >> b;
+        if (col[a] == col[b]) {
+            p[find(a)] = find(b);
+        }
+    }
 
-	string res;
+    string res;
 
-	while (m--) {
-		int u, v;
-		cin >> u >> v;
+    while (m--) {
+        int u, v;
+        cin >> u >> v;
 
-		char cow;
-		cin >> cow;
+        char cow;
+        cin >> cow;
 
-		if (find(u) == find(v)) {
-			res += to_string(col[u] == cow);
-		} else {
-			res += '1';
-		}
-	}
+        if (find(u) == find(v)) {
+            res += to_string(col[u] == cow);
+        } else {
+            res += '1';
+        }
+    }
 
-	cout << res << "\n";
+    cout << res << "\n";
 }
 ```
 
@@ -235,45 +235,45 @@ const int N = 30;
 string mid, pre;
 
 struct Node {
-	char data;
-	Node* le, * ri;
-	Node(char _data) : data(_data), le(nullptr), ri(nullptr) {}
+    char data;
+    Node* le, * ri;
+    Node(char _data) : data(_data), le(nullptr), ri(nullptr) {}
 };
 
 Node* build(int i, int j, int p, int q) {
-	if (i > j) return nullptr;
-	
-	Node* root = new Node(pre[i]);
-	
-	int k; // 根结点在中序序列的下标 
-	for (k = p; k <= q; k++)
-		if (mid[k] == root->data)
-			break;
-	
-	root->le = build(i + 1, k - p + i, p, k - 1);
-	root->ri = build(k - p + i + 1, j, k + 1, q);
-	
-	cout << root->data; 
-	
-	return root;
+    if (i > j) return nullptr;
+    
+    Node* root = new Node(pre[i]);
+    
+    int k; // 根结点在中序序列的下标 
+    for (k = p; k <= q; k++)
+        if (mid[k] == root->data)
+            break;
+    
+    root->le = build(i + 1, k - p + i, p, k - 1);
+    root->ri = build(k - p + i + 1, j, k + 1, q);
+    
+    cout << root->data; 
+    
+    return root;
 }
 
 void solve() {
-	cin >> mid >> pre;
-	
-	int i = 0, j = pre.size() - 1;
-	int p = 0, q = mid.size() - 1;
-	
-	build(i, j, p, q);
+    cin >> mid >> pre;
+    
+    int i = 0, j = pre.size() - 1;
+    int p = 0, q = mid.size() - 1;
+    
+    build(i, j, p, q);
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -290,37 +290,37 @@ string mid, pre;
 
 // 前序起始 i，前序末尾 j，中序起始 p，中序末尾 q 
 void build(int i, int j, int p, int q) {
-	if (i > j) return;
-	
-	char root = pre[i];
-	
-	int k;
-	for (k = p; k <= q; k++)
-		if (mid[k] == root)
-			break;
-			
-	build(i + 1, k - p + i, p, k - 1);
-	build(k - p + i + 1, j, k + 1, q);
-	
-	cout << root;
+    if (i > j) return;
+    
+    char root = pre[i];
+    
+    int k;
+    for (k = p; k <= q; k++)
+        if (mid[k] == root)
+            break;
+            
+    build(i + 1, k - p + i, p, k - 1);
+    build(k - p + i + 1, j, k + 1, q);
+    
+    cout << root;
 } 
 
 void solve() {
-	cin >> mid >> pre;
-	
-	int i = 0, j = pre.size() - 1;
-	int p = 0, q = mid.size() - 1;
-	
-	build(i, j, p, q);
+    cin >> mid >> pre;
+    
+    int i = 0, j = pre.size() - 1;
+    int p = 0, q = mid.size() - 1;
+    
+    build(i, j, p, q);
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -342,36 +342,36 @@ string s;
 char root;
 
 struct Node {
-	char l, r;
+    char l, r;
 } tree[200];
 
 void pre(char now) {
-	if (now == '*') return;
-	cout << now;
-	pre(tree[now].l);
-	pre(tree[now].r);
+    if (now == '*') return;
+    cout << now;
+    pre(tree[now].l);
+    pre(tree[now].r);
 }
 
 void solve() {
-	cin >> n;
-	
-	for (int i = 1; i <= n; i++) {
-		cin >> s;
-		if (i == 1) root = s[0];
-		tree[s[0]].l = s[1];
-		tree[s[0]].r = s[2];
-	}
-	
-	pre(root);
+    cin >> n;
+    
+    for (int i = 1; i <= n; i++) {
+        cin >> s;
+        if (i == 1) root = s[0];
+        tree[s[0]].l = s[1];
+        tree[s[0]].r = s[2];
+    }
+    
+    pre(root);
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -397,25 +397,25 @@ using namespace std;
 string pre, post;
 
 void solve() {
-	cin >> pre >> post;
-	
-	int cnt = 0;
-	
-	for (int i = 0; i < pre.size() - 1; i++)
-		for (int j = 0; j < post.size(); j++)
-			if (pre[i] == post[j + 1] && pre[i + 1] == post[j])
-				cnt++;
-	
-	cout << (1 << cnt) << "\n";
+    cin >> pre >> post;
+    
+    int cnt = 0;
+    
+    for (int i = 0; i < pre.size() - 1; i++)
+        for (int j = 0; j < post.size(); j++)
+            if (pre[i] == post[j + 1] && pre[i + 1] == post[j])
+                cnt++;
+    
+    cout << (1 << cnt) << "\n";
 } 
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -446,67 +446,67 @@ vector<int> G[N];
 int cnt[N];
 
 int bfs(int v) {
-	int res = 0;
-	vector<bool> vis(n + 1, false);
-	vector<int> d(n + 1, 0); // d[i] 表示点 i 到点 v 的距离
-		
-	queue<int> q;
-	vis[v] = true;
-	d[v] = 0;
-	q.push(v);
-	
-	while (q.size()) {
-		int now = q.front();
-		q.pop();
-		
-		for (auto& ch: G[now]) {
-			if (!vis[ch]) {
-				vis[ch] = true;
-				d[ch] = d[now] + 1;
-				q.push(ch);
-				
-				res += cnt[ch] * d[ch]; 
-			}
-		}
-	}
-	
-	return res;
+    int res = 0;
+    vector<bool> vis(n + 1, false);
+    vector<int> d(n + 1, 0); // d[i] 表示点 i 到点 v 的距离
+        
+    queue<int> q;
+    vis[v] = true;
+    d[v] = 0;
+    q.push(v);
+    
+    while (q.size()) {
+        int now = q.front();
+        q.pop();
+        
+        for (auto& ch: G[now]) {
+            if (!vis[ch]) {
+                vis[ch] = true;
+                d[ch] = d[now] + 1;
+                q.push(ch);
+                
+                res += cnt[ch] * d[ch]; 
+            }
+        }
+    }
+    
+    return res;
 }
 
 void solve() {
-	cin >> n;
-	for (int i = 1; i <= n; i++) {
-		int count, l, r;
-		cin >> count >> l >> r;
-		cnt[i] = count;
-		
-		if (l) {
-			G[i].push_back(l);
-			G[l].push_back(i);
-		}
-		
-		if (r) {
-			G[i].push_back(r);
-			G[r].push_back(i);
-		}
-	}
-	
-	int res = 1e7 + 10;
-	
-	for (int i = 1; i <= n; i++) {
-		res = min(res, bfs(i));
-	}
-	
-	cout << res << "\n";
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        int count, l, r;
+        cin >> count >> l >> r;
+        cnt[i] = count;
+        
+        if (l) {
+            G[i].push_back(l);
+            G[l].push_back(i);
+        }
+        
+        if (r) {
+            G[i].push_back(r);
+            G[r].push_back(i);
+        }
+    }
+    
+    int res = 1e7 + 10;
+    
+    for (int i = 1; i <= n; i++) {
+        res = min(res, bfs(i));
+    }
+    
+    cout << res << "\n";
 } 
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -534,32 +534,32 @@ const int N = 1000010;
 int n;
 
 struct Node {
-	int l, r;
+    int l, r;
 } t[N];
 
 int dep(int now) {
-	if (!now) return 0;
-	return max(dep(t[now].l), dep(t[now].r)) + 1;
+    if (!now) return 0;
+    return max(dep(t[now].l), dep(t[now].r)) + 1;
 }
 
 void solve() {
-	cin >> n;
-	for (int i = 1; i <= n; i++) {
-		int x, y;
-		cin >> x >> y;
-		t[i].l = x, t[i].r = y;
-	}
-	
-	cout << dep(1);
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        int x, y;
+        cin >> x >> y;
+        t[i].l = x, t[i].r = y;
+    }
+    
+    cout << dep(1);
 } 
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -579,36 +579,36 @@ using namespace std;
 const int N = 1 << 8;
 
 struct Node {
-	int id, val;
+    int id, val;
 } a[N];
 
 int n;
 
 void solve() {
-	cin >> n;
-	
-	n = 1 << n;
-	
-	for (int i = n; i <= 2 * n - 1; i++) {
-		a[i].id = i - n + 1;
-		cin >> a[i].val;
-	}
-	
-	for (int i = n - 1; i >= 1; i--)
-		if (a[i * 2].val > a[i * 2 + 1].val) a[i] = a[i * 2];
-		else a[i] = a[i * 2 + 1];
-			
-	if (a[2].val > a[3].val) cout << a[3].id;
-	else cout << a[2].id;
+    cin >> n;
+    
+    n = 1 << n;
+    
+    for (int i = n; i <= 2 * n - 1; i++) {
+        a[i].id = i - n + 1;
+        cin >> a[i].val;
+    }
+    
+    for (int i = n - 1; i >= 1; i--)
+        if (a[i * 2].val > a[i * 2 + 1].val) a[i] = a[i * 2];
+        else a[i] = a[i * 2 + 1];
+            
+    if (a[2].val > a[3].val) cout << a[3].id;
+    else cout << a[2].id;
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -642,61 +642,61 @@ vector<int> temp, rx, ry;   // 根结点到 x 号点与 y 号点直接的路径�
 
 // 当前结点编号 now，当前深度 level
 void dfs(int now, int level) {
-	depth = max(depth, level);
-	
-	temp.push_back(now);
-	if (now == x) rx = temp;
-	if (now == y) ry = temp;
-	
-	ha[level]++;
-	d[now] = level - 1;
-	
-	for (auto& ch: G[now]) {
-		dfs(ch, level + 1);
-		temp.pop_back();
-	}
+    depth = max(depth, level);
+    
+    temp.push_back(now);
+    if (now == x) rx = temp;
+    if (now == y) ry = temp;
+    
+    ha[level]++;
+    d[now] = level - 1;
+    
+    for (auto& ch: G[now]) {
+        dfs(ch, level + 1);
+        temp.pop_back();
+    }
 }
 
 // 暴力 lca + 计算路径长度
 int len(int x, int y) {
-	int i = 0;
-	while (i < rx.size() && i < ry.size() && rx[i] == ry[i]) i++;
-	
-	int lca = rx[--i];
-	
-	return 2 * (d[x] - d[lca]) + (d[y] - d[lca]);
+    int i = 0;
+    while (i < rx.size() && i < ry.size() && rx[i] == ry[i]) i++;
+    
+    int lca = rx[--i];
+    
+    return 2 * (d[x] - d[lca]) + (d[y] - d[lca]);
 }
 
 void solve() {
-	cin >> n;
-	
-	for (int i = 1; i <= n - 1; i++) {
-		int a, b;
-		cin >> a >> b;
-		G[a].push_back(b);
-	}
-	
-	cin >> x >> y;
-	
-	// 二叉树的深度 depth
-	dfs(1, 1);
-	cout << depth << "\n";
-	
-	// 二叉树的宽度 width
-	for (auto& item: ha) width = max(width, item.second);
-	cout << width << "\n";
-	
-	// 两个结点之间的路径长度
-	cout << len(x, y) << "\n";
+    cin >> n;
+    
+    for (int i = 1; i <= n - 1; i++) {
+        int a, b;
+        cin >> a >> b;
+        G[a].push_back(b);
+    }
+    
+    cin >> x >> y;
+    
+    // 二叉树的深度 depth
+    dfs(1, 1);
+    cout << depth << "\n";
+    
+    // 二叉树的宽度 width
+    for (auto& item: ha) width = max(width, item.second);
+    cout << width << "\n";
+    
+    // 两个结点之间的路径长度
+    cout << len(x, y) << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -723,118 +723,118 @@ int n;
 int h, t, idx, e[N], l[N], r[N];
 
 void init() {
-	// 空结点
-	h = 0, t = 0, idx = 0;
-	l[0] = -1;
-	r[0] = -1;
+    // 空结点
+    h = 0, t = 0, idx = 0;
+    l[0] = -1;
+    r[0] = -1;
 }
 
 // 头插
 void insertToHead(int x) {
-	idx++;
-	e[idx] = x;
-	l[idx] = -1;
-	r[idx] = h;
-	l[h] = idx;
-	h = idx;
+    idx++;
+    e[idx] = x;
+    l[idx] = -1;
+    r[idx] = h;
+    l[h] = idx;
+    h = idx;
 }
 
 // 尾插
 void insertToTail(int x) {
-	idx++;
-	e[idx] = x;
-	r[idx] = -1;
-	l[idx] = t;
-	r[t] = idx;
-	t = idx;
+    idx++;
+    e[idx] = x;
+    r[idx] = -1;
+    l[idx] = t;
+    r[t] = idx;
+    t = idx;
 }
 
 void create() {
-	while (n--) {
-		string op;
-		cin >> op;
+    while (n--) {
+        string op;
+        cin >> op;
 
-		if (op == "L") {
-			int x; cin >> x;
-			insertToHead(x);
-		} else if (op == "R") {
-			int x; cin >> x;
-			insertToTail(x);
-		} else if (op == "IL") {
-			// 在第 k 个数左侧插入数 x
-			int k, x; cin >> k >> x;
-			
-			if (l[k] == -1) {
-				// 头插入
-				insertToHead(x);
-			} else {
-				// 一般插入
-				idx++;
-				e[idx] = x;
-				r[idx] = k;
-				l[idx] = l[k];
-				r[l[k]] = idx;
-				l[k] = idx;
-			}
-		} else if (op == "IR") {
-			// 在第 k 个数右侧插入数 x
-			int k, x; cin >> k >> x;
-			
-			if (r[k] == -1) {
-				// 尾插入
-				insertToTail(x);
-			} else {
-				// 一般插入
-				idx++;
-				e[idx] = x;
-				l[idx] = k;
-				r[idx] = r[k];
-				l[r[k]] = idx;
-				r[k] = idx;
-			}
-		} else {
-			// 删除第 k 个数
-			int k; cin >> k;
-			
-			if (h == k) {
-				// 头删除
-				h = r[k];
-				l[r[k]] = -1;
-			}  else if (t == k) {
-				// 尾删除
-				t = l[k];
-				r[l[k]] = -1;
-			} else {
-				// 中间删除
-				r[l[k]] = r[k];
-				l[r[k]] = l[k];
-			}
-		}
-	}
+        if (op == "L") {
+            int x; cin >> x;
+            insertToHead(x);
+        } else if (op == "R") {
+            int x; cin >> x;
+            insertToTail(x);
+        } else if (op == "IL") {
+            // 在第 k 个数左侧插入数 x
+            int k, x; cin >> k >> x;
+            
+            if (l[k] == -1) {
+                // 头插入
+                insertToHead(x);
+            } else {
+                // 一般插入
+                idx++;
+                e[idx] = x;
+                r[idx] = k;
+                l[idx] = l[k];
+                r[l[k]] = idx;
+                l[k] = idx;
+            }
+        } else if (op == "IR") {
+            // 在第 k 个数右侧插入数 x
+            int k, x; cin >> k >> x;
+            
+            if (r[k] == -1) {
+                // 尾插入
+                insertToTail(x);
+            } else {
+                // 一般插入
+                idx++;
+                e[idx] = x;
+                l[idx] = k;
+                r[idx] = r[k];
+                l[r[k]] = idx;
+                r[k] = idx;
+            }
+        } else {
+            // 删除第 k 个数
+            int k; cin >> k;
+            
+            if (h == k) {
+                // 头删除
+                h = r[k];
+                l[r[k]] = -1;
+            }  else if (t == k) {
+                // 尾删除
+                t = l[k];
+                r[l[k]] = -1;
+            } else {
+                // 中间删除
+                r[l[k]] = r[k];
+                l[r[k]] = l[k];
+            }
+        }
+    }
 }
 
 void output() {
     // 避开初始 0 号空结点
-	for (int i = h; i != -1; i = r[i])
-		if (i)
-			cout << e[i] << " ";
+    for (int i = h; i != -1; i = r[i])
+        if (i)
+            cout << e[i] << " ";
 }
 
 void solve() {
-	cin >> n;
-	
-	init();
-	create();
-	output();
+    cin >> n;
+    
+    init();
+    create();
+    output();
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -863,36 +863,36 @@ https://www.luogu.com.cn/problem/P4387
 using namespace std;
 
 void solve() {
-	int n;
-	cin >> n;
-	
-	vector<int> a(n), b(n);
-	for (int i = 0; i < n; i++) cin >> a[i];
-	for (int i = 0; i < n; i++) cin >> b[i];
-	
-	stack<int> stk;
-	int i = 0, j = 0;
-	while (i < n) {
-		if (a[i] != b[j]) stk.push(a[i++]);
-		else {
-			i++, j++;
-			while (!stk.empty() && b[j] == stk.top()) {
-				stk.pop();
-				j++;
-			}
-		}
-	}
-	
-	cout << (stk.empty() ? "Yes" : "No") << "\n";
+    int n;
+    cin >> n;
+    
+    vector<int> a(n), b(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+    for (int i = 0; i < n; i++) cin >> b[i];
+    
+    stack<int> stk;
+    int i = 0, j = 0;
+    while (i < n) {
+        if (a[i] != b[j]) stk.push(a[i++]);
+        else {
+            i++, j++;
+            while (!stk.empty() && b[j] == stk.top()) {
+                stk.pop();
+                j++;
+            }
+        }
+    }
+    
+    cout << (stk.empty() ? "Yes" : "No") << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -921,43 +921,43 @@ const int N = 1 << 16;
 int n, a[N];
 
 void solve() {
-	cin >> n;
-	
-	int res = 0;
-	cin >> a[1];
-	res += a[1];
-	
-	for (int i = 2; i <= n; i++) {
+    cin >> n;
+    
+    int res = 0;
+    cin >> a[1];
+    res += a[1];
+    
+    for (int i = 2; i <= n; i++) {
         // 维护之前序列有序
-		sort(a + 1, a + i);
-		cin >> a[i];
+        sort(a + 1, a + i);
+        cin >> a[i];
 
         // 二分查找目标数
-		int l = 1, r = i - 1;
-		while (l < r) {
-			int mid = (l + r) >> 1;
-			if (a[mid] < a[i]) l = mid + 1;
-			else r = mid;
-		}
-		
+        int l = 1, r = i - 1;
+        while (l < r) {
+            int mid = (l + r) >> 1;
+            if (a[mid] < a[i]) l = mid + 1;
+            else r = mid;
+        }
+        
         // 边界判断
-		int ans = abs(a[i] - a[r]);
-		if (r + 1 >= 1 && r + 1 <= i - 1) ans = min(ans, abs(a[i] - a[r + 1]));
-		if (r - 1 >= 1 && r - 1 <= i - 1) ans = min(ans, abs(a[i] - a[r - 1]));
-		
-		res += ans;
-	}
-	
-	cout << res << "\n";
+        int ans = abs(a[i] - a[r]);
+        if (r + 1 >= 1 && r + 1 <= i - 1) ans = min(ans, abs(a[i] - a[r + 1]));
+        if (r - 1 >= 1 && r - 1 <= i - 1) ans = min(ans, abs(a[i] - a[r - 1]));
+        
+        res += ans;
+    }
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -973,44 +973,44 @@ int n, res;
 set<int> s;
 
 void solve() {
-	cin >> n;
-	
-	int x;
-	cin >> x;
-	res += x;
-	s.insert(x);
-	
-	while (--n) {
-		cin >> x;
+    cin >> n;
+    
+    int x;
+    cin >> x;
+    res += x;
+    s.insert(x);
+    
+    while (--n) {
+        cin >> x;
 
-		auto it = s.lower_bound(x);
+        auto it = s.lower_bound(x);
 
-		if (it == s.end()) {
-			// 没有比当前数大的
-			res += x - *s.rbegin();
-		} else if (it == s.begin()) {
-			// 没有比当前数小的
-			res += *s.begin() - x;
-		} else {
-			// 当前数已存在于集合中 or 既有比当前数大的也有比当前数小的
-			auto pre = it;
-			pre--;
-			res += min(abs(x - *it), abs(x - *pre));
-		}
-		
-		s.insert(x);
-	}
-	
-	cout << res << "\n";
+        if (it == s.end()) {
+            // 没有比当前数大的
+            res += x - *s.rbegin();
+        } else if (it == s.begin()) {
+            // 没有比当前数小的
+            res += *s.begin() - x;
+        } else {
+            // 当前数已存在于集合中 or 既有比当前数大的也有比当前数小的
+            auto pre = it;
+            pre--;
+            res += min(abs(x - *it), abs(x - *pre));
+        }
+        
+        s.insert(x);
+    }
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1121,42 +1121,42 @@ using namespace std;
 using ll = long long;
 
 void work(int x, set<int>& S, multiset<int>& M) {
-	set<int>::iterator rp = S.upper_bound(x), lp = rp;
-	lp--;
-	S.insert(x);
+    set<int>::iterator rp = S.upper_bound(x), lp = rp;
+    lp--;
+    S.insert(x);
 
-	M.erase(M.find(*rp - *lp));
-	M.insert(*rp - x);
-	M.insert(x - *lp);
+    M.erase(M.find(*rp - *lp));
+    M.insert(*rp - x);
+    M.insert(x - *lp);
 }
 
 void solve() {
-	int w, h, n;
-	cin >> w >> h >> n;
+    int w, h, n;
+    cin >> w >> h >> n;
 
-	set<int> S1, S2;
-	multiset<int> M1, M2;
-	S1.insert(0), S1.insert(w), M1.insert(w);
-	S2.insert(0), S2.insert(h), M2.insert(h);
+    set<int> S1, S2;
+    multiset<int> M1, M2;
+    S1.insert(0), S1.insert(w), M1.insert(w);
+    S2.insert(0), S2.insert(h), M2.insert(h);
 
-	while (n--) {
-		char op;
-		int x;
-		cin >> op >> x;
-		if (op == 'X') work(x, S1, M1);
-		else work(x, S2, M2);
+    while (n--) {
+        char op;
+        int x;
+        cin >> op >> x;
+        if (op == 'X') work(x, S1, M1);
+        else work(x, S2, M2);
 
-		cout << (ll)*M1.rbegin() * *M2.rbegin() << "\n";
-	}
+        cout << (ll)*M1.rbegin() * *M2.rbegin() << "\n";
+    }
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1181,31 +1181,31 @@ https://leetcode.cn/problems/distribute-elements-into-two-arrays-ii/description/
 template<class T>
 class BinaryIndexedTree {
 private:
-	std::vector<T> _arr;
-	int _n;
+    std::vector<T> _arr;
+    int _n;
 
-	int lowbit(int x) { return x & (-x); }
+    int lowbit(int x) { return x & (-x); }
 
 public:
-	BinaryIndexedTree(int n) :_n(n) {
-		_arr.resize(_n + 1, 0);
-	}
+    BinaryIndexedTree(int n) :_n(n) {
+        _arr.resize(_n + 1, 0);
+    }
 
-	void add(int pos, T x) {
-		while (pos <= _n) {
-			_arr[pos] += x;
-			pos += lowbit(pos);
-		}
-	}
+    void add(int pos, T x) {
+        while (pos <= _n) {
+            _arr[pos] += x;
+            pos += lowbit(pos);
+        }
+    }
 
-	T sum(int pos) {
-		T ret = 0;
-		while (pos) {
-			ret += _arr[pos];
-			pos -= lowbit(pos);
-		}
-		return ret;
-	}
+    T sum(int pos) {
+        T ret = 0;
+        while (pos) {
+            ret += _arr[pos];
+            pos -= lowbit(pos);
+        }
+        return ret;
+    }
 };
 
 
@@ -1349,3 +1349,127 @@ class Solution:
         return v1 + v2
 ```
 
+### 17. 账户合并
+
+https://leetcode.cn/problems/accounts-merge/
+
+> 标签：并查集
+>
+> 题意：给定 n 个账户，每一个账户含有一个用户名和最多 m 个绑定的邮箱。由于一个用户可能注册多个账户，因此我们需要对所有的账户进行合并使得一个用户对应一个账户。合并的规则是将所有「含有相同邮箱的账户」视作同一个用户注册的账户。返回合并后的账户列表。
+>
+> 思路：这道题的需求很显然，我们需要合并含有相同邮箱的账户。显然有一个暴力的做法，我们直接枚举每一个账户中所有的邮箱，接着枚举剩余账户中的邮箱进行匹配，匹配上就进行合并，但这样做显然会造成大量的冗余匹配和冗余合并，我们不妨将这两个过程进行拆分。我们需要解决两个问题：
+>
+> - 哪些账户需要合并？很容易想到并查集这样的数据结构。我们使用哈希表存储每一个邮箱的账户编号，最后进行集合合并即可维护好每一个账号归属的集合编号。$O(nm)$
+> - 如何合并指定账户？对于上述维护好的集合编号，我们需要合并所有含有相同“祖先”的账户。排序去重或使用有序列表均可实现。$O(n\log n)$
+>
+> 时间复杂度：$O(n\log n)$
+
+```cpp []
+struct dsu {
+    int n;
+    std::vector<int> p;
+    dsu(int _n) { n = _n; p.resize(n + 1); for (int i = 1; i <= n; i++) p[i] = i; }
+    int find(int x) { return (p[x] == x ? p[x] : p[x] = find(p[x])); }
+    void merge(int a, int b) { p[find(a)] = find(b); }
+    bool query(int a, int b) { return find(a) == find(b); }
+    int block() { int ret = 0; for (int i = 1; i <= n; i++) ret += p[i] == i; return ret; }
+};
+
+class Solution {
+public:
+    vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
+        // 维护每一个子账户归属的集合
+        int n = accounts.size();
+        unordered_map<string, vector<int>> hash;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j < accounts[i - 1].size(); j++) {
+                hash[accounts[i - 1][j]].push_back(i);
+            }
+        }        
+        dsu d(n);
+        for (auto& it: hash) {
+            vector<int> v = it.second;
+            for (int i = 1; i < v.size(); i++) {
+                d.merge(v[i - 1], v[i]);
+            }
+        }
+
+        // 按照子账户归属的集合合并出最终的账户
+        unordered_set<int> fa;
+        for (int i = 1; i <= n; i++) {
+            fa.insert(d.find(i));
+        }
+        vector<vector<string>> res;
+        for (auto p: fa) {
+            set<string> se;
+            vector<string> ans;
+            for (int i = 1; i <= n; i++) {
+                if (d.find(i) == p) {
+                    if (ans.empty()) {
+                        ans.push_back(accounts[i - 1][0]);
+                    }
+                    for (int j = 1; j < accounts[i - 1].size(); j++) {
+                        se.insert(accounts[i - 1][j]);
+                    }
+                }
+            }
+            for (auto mail: se) {
+                ans.push_back(mail);
+            }
+            res.push_back(ans);
+        }
+
+        return res;
+    }
+};
+```
+
+```python []
+class dsu:
+    def __init__(self, n: int) -> None:
+        self.n = n
+        self.p = [i for i in range(n + 1)]
+    def find(self, x: int) -> int:
+        if self.p[x] != x: self.p[x] = self.find(self.p[x])
+        return self.p[x]
+    def merge(self, a: int, b: int) -> None:
+        self.p[self.find(a)] = self.find(b)
+    def query(self, a: int, b: int) -> bool:
+        return self.find(a) == self.find(b)
+    def block(self) -> int:
+        return sum([1 for i in range(1, self.n + 1) if self.p[i] == i])
+
+class Solution:
+    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+        from collections import defaultdict
+        
+        n = len(accounts)
+        hash = defaultdict(list)
+        for i in range(1, n + 1):
+            for j in range(1, len(accounts[i - 1])):
+                hash[accounts[i - 1][j]].append(i)
+        
+        d = dsu(n)
+        for _, ids in hash.items():
+            for i in range(1, len(ids)):
+                d.merge(ids[i - 1], ids[i])
+        
+        fa = set()
+        for i in range(1, n + 1):
+            fa.add(d.find(i))
+        
+        res = []
+        for p in fa:
+            ans = []
+            se = set()
+            for i in range(1, n + 1):
+                if d.find(i) == p:
+                    if len(ans) == 0:
+                        ans.append(accounts[i - 1][0])
+                    for j in range(1, len(accounts[i - 1])):
+                        se.add(accounts[i - 1][j])
+            ans += sorted(se)
+            res.append(ans)
+        
+        return res
+```

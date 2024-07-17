@@ -29,48 +29,48 @@ int n, m;
 vector<int> G[N];
 
 void solve() {
-	// 建图 
-	cin >> n >> m;
-	vector<int> d(n + 1, 0);
-	for (int i = 1; i <= m; i++) {
-		int a, b;
-		cin >> a >> b;
-		d[b]++;
-		G[a].push_back(b);
-	}
-	
-	// 预处理宽搜起始点集
-	queue<int> q;
-	for (int i = 1; i <= n; i++)
-		if (!d[i])
-			q.push(i);
-	
-	// 宽搜处理
-	vector<int> res;
-	while (q.size()) {
-		auto h = q.front();
-		q.pop();
-		res.push_back(h);
-		
-		for (auto& ch: G[h]) {
-			d[ch]--;
-			if (!d[ch]) q.push(ch);
-		}
-	}
-	
-	// 输出合法拓扑序
-	if (res.size() == n) {
-		for (auto& x: res) {
-			cout << x << " ";
-		}
-	} else {
-		cout << -1 << "\n";
-	}
+    // 建图 
+    cin >> n >> m;
+    vector<int> d(n + 1, 0);
+    for (int i = 1; i <= m; i++) {
+        int a, b;
+        cin >> a >> b;
+        d[b]++;
+        G[a].push_back(b);
+    }
+    
+    // 预处理宽搜起始点集
+    queue<int> q;
+    for (int i = 1; i <= n; i++)
+        if (!d[i])
+            q.push(i);
+    
+    // 宽搜处理
+    vector<int> res;
+    while (q.size()) {
+        auto h = q.front();
+        q.pop();
+        res.push_back(h);
+        
+        for (auto& ch: G[h]) {
+            d[ch]--;
+            if (!d[ch]) q.push(ch);
+        }
+    }
+    
+    // 输出合法拓扑序
+    if (res.size() == n) {
+        for (auto& x: res) {
+            cout << x << " ";
+        }
+    } else {
+        cout << -1 << "\n";
+    }
 }
 
 int main() {
-	solve();
-	return 0;
+    solve();
+    return 0;
 }
 ```
 
@@ -105,87 +105,87 @@ int rd[N], tag, d[N];
 bool del[N], vis[N];
 
 void init() {
-	for (int i = 1; i <= n; i++) {
-		G[i].clear();		// 存无向图 
-		rd[i] = 0;			// 统计每一个结点的入度 
-		del[i] = false;		// 拓扑删点删边时使用 
-		d[i] = 0;			// 图上所有点到 tag 点的距离 
-		vis[i] = false;		// bfs计算距离时使用 
-	}
+    for (int i = 1; i <= n; i++) {
+        G[i].clear();        // 存无向图 
+        rd[i] = 0;            // 统计每一个结点的入度 
+        del[i] = false;        // 拓扑删点删边时使用 
+        d[i] = 0;            // 图上所有点到 tag 点的距离 
+        vis[i] = false;        // bfs计算距离时使用 
+    }
 }
 
 void topu(int now) {
-	if (rd[now] == 1) {
-		rd[now]--;
-		del[now] = true;
-		for (auto& ch: G[now]) {
-			if (del[ch]) continue;
-			rd[ch]--;
-			if (now == tag) {
-				tag = ch;
-			}
-			topu(ch);
-		}
-	}
+    if (rd[now] == 1) {
+        rd[now]--;
+        del[now] = true;
+        for (auto& ch: G[now]) {
+            if (del[ch]) continue;
+            rd[ch]--;
+            if (now == tag) {
+                tag = ch;
+            }
+            topu(ch);
+        }
+    }
 }
 
 void bfs() {
-	queue<int> q;
-	q.push(tag);
-	d[tag] = 0;
-	
-	while (q.size()) {
-		auto now = q.front();
-		vis[now] = true;
-		q.pop();
-		
-		for (auto& ch: G[now]) {
-			if (!vis[ch]) {
-				d[ch] = d[now] + 1;
-				q.push(ch);
-				vis[ch] = true;
-			}
-		}
-	}
+    queue<int> q;
+    q.push(tag);
+    d[tag] = 0;
+    
+    while (q.size()) {
+        auto now = q.front();
+        vis[now] = true;
+        q.pop();
+        
+        for (auto& ch: G[now]) {
+            if (!vis[ch]) {
+                d[ch] = d[now] + 1;
+                q.push(ch);
+                vis[ch] = true;
+            }
+        }
+    }
 }
 
 void solve() {
-	// 初始化
-	cin >> n >> a >> b; 
-	init();
-	
-	// 建图 
-	for (int i = 1; i <= n; i++) {
-		int u, v;
-		cin >> u >> v;
-		G[u].push_back(v), rd[v]++;
-		G[v].push_back(u), rd[u]++;
-	}
-	
-	// 拓扑删边 & 缩b点
-	tag = b;
-	for (int i = 1; i <= n; i++) {
-		topu(i);
-	}
+    // 初始化
+    cin >> n >> a >> b; 
+    init();
+    
+    // 建图 
+    for (int i = 1; i <= n; i++) {
+        int u, v;
+        cin >> u >> v;
+        G[u].push_back(v), rd[v]++;
+        G[v].push_back(u), rd[u]++;
+    }
+    
+    // 拓扑删边 & 缩b点
+    tag = b;
+    for (int i = 1; i <= n; i++) {
+        topu(i);
+    }
 
-	// 判断结果 & 计算距离 
-	if (rd[b] == 2 && a != b) {
-		// b点在环上
-		cout << "Yes\n";
-	} else {
-		// b不在环上
-		bfs();
-		cout << (d[a] > d[b] ? "Yes\n" : "No\n");
-	}
+    // 判断结果 & 计算距离 
+    if (rd[b] == 2 && a != b) {
+        // b点在环上
+        cout << "Yes\n";
+    } else {
+        // b不在环上
+        bfs();
+        cout << (d[a] > d[b] ? "Yes\n" : "No\n");
+    }
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int T = 1;
-	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    int T = 1;
+    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -211,48 +211,48 @@ int n, m;
 vector<int> G[N], col(N);
 
 bool bfs(int u) {
-	queue<int> q;
-	q.push(u);
-	col[u] = 1;
+    queue<int> q;
+    q.push(u);
+    col[u] = 1;
 
-	while (q.size()) {
-		int now = q.front();
-		q.pop();
-		for (auto& ch: G[now]) {
-			if (!col[ch]) {
-				col[ch] = -col[now];
-				q.push(ch);
-			}
-			else if (col[ch] == col[now]) {
-				return false;
-			}
-		}
-	}
+    while (q.size()) {
+        int now = q.front();
+        q.pop();
+        for (auto& ch: G[now]) {
+            if (!col[ch]) {
+                col[ch] = -col[now];
+                q.push(ch);
+            }
+            else if (col[ch] == col[now]) {
+                return false;
+            }
+        }
+    }
 
-	return true;
+    return true;
 }
 
 void solve() {
-	cin >> n >> m;
-	while (m--) {
-		int u, v;
-		cin >> u >> v;
-		G[u].push_back(v);
-		G[v].push_back(u);
-	}
+    cin >> n >> m;
+    while (m--) {
+        int u, v;
+        cin >> u >> v;
+        G[u].push_back(v);
+        G[v].push_back(u);
+    }
 
-	// 遍历每一个连通分量
-	for (int i = 1; i <= n; i++) {
-		if (!col[i]) {
-			bool ok = bfs(i);
-			if (!ok) {
-				cout << "No\n";
-				return;
-			}
-		}
-	}
+    // 遍历每一个连通分量
+    for (int i = 1; i <= n; i++) {
+        if (!col[i]) {
+            bool ok = bfs(i);
+            if (!ok) {
+                cout << "No\n";
+                return;
+            }
+        }
+    }
 
-	cout << "Yes\n";
+    cout << "Yes\n";
 }
 ```
 
@@ -284,8 +284,8 @@ typedef long long ll;
 const int N = 100010;
 
 struct edge {
-	int a, b;
-	int w;
+    int a, b;
+    int w;
 };
 
 int n, m;
@@ -293,64 +293,64 @@ vector<edge> edges;
 vector<int> p(N);
 
 int Find(int now) {
-	if (p[now] != now) {
-		p[now] = Find(p[now]);
-	}
-	return p[now];
+    if (p[now] != now) {
+        p[now] = Find(p[now]);
+    }
+    return p[now];
 }
 
 void solve() {
-	cin >> n >> m;
-	for (int i = 1; i <= m; i++) {
-		int a, b, w;
-		cin >> a >> b >> w;
-		if (a == b) {
-			continue;
-		}
-		edges.push_back({a, b, w});
-	}
+    cin >> n >> m;
+    for (int i = 1; i <= m; i++) {
+        int a, b, w;
+        cin >> a >> b >> w;
+        if (a == b) {
+            continue;
+        }
+        edges.push_back({a, b, w});
+    }
 
-	// 按照边权升序排序
-	sort(edges.begin(), edges.end(), [&](edge& x, edge& y) {
-		return x.w < y.w;
-	});
+    // 按照边权升序排序
+    sort(edges.begin(), edges.end(), [&](edge& x, edge& y) {
+        return x.w < y.w;
+    });
 
-	// 选边
-	for (int i = 1; i <= n; i++) {
-		p[i] = i;
-	}
+    // 选边
+    for (int i = 1; i <= n; i++) {
+        p[i] = i;
+    }
 
-	int res = 0, num = 0;
+    int res = 0, num = 0;
 
-	for (auto& e: edges) {
-		int pa = Find(e.a), pb = Find(e.b);
-		if (pa != pb) {
-			num++;
-			p[pa] = pb;
-			res += e.w;
-		}
+    for (auto& e: edges) {
+        int pa = Find(e.a), pb = Find(e.b);
+        if (pa != pb) {
+            num++;
+            p[pa] = pb;
+            res += e.w;
+        }
 
-		if (num == n - 1) {
-			break;
-		}
-	}
+        if (num == n - 1) {
+            break;
+        }
+    }
 
-	// 特判：选出来的边数无法构成一棵树
-	if (num < n - 1) {
-		cout << "impossible\n";
-		return;
-	}
+    // 特判：选出来的边数无法构成一棵树
+    if (num < n - 1) {
+        cout << "impossible\n";
+        return;
+    }
 
-	cout << res << "\n";
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -491,68 +491,68 @@ bool MST[N];
 int res;
 
 void prim() {
-	// 选任意一个点到MST中并更新d数组
-	MST[1] = true;
-	for (int i = 1; i <= n; i++)
-		if (!MST[i])
-			d[i] = min(d[i], g[i][1]);
+    // 选任意一个点到MST中并更新d数组
+    MST[1] = true;
+    for (int i = 1; i <= n; i++)
+        if (!MST[i])
+            d[i] = min(d[i], g[i][1]);
 
-	// 选剩下的n-1个点到MST中
-	for (int i = 2; i <= n; i++) {
-		// 1. 找到最短边
-		int e = INT_MAX, v = -1; // e: 最短边长度，v: 最短边不在MST集合中的顶点
-		for (int j = 1; j <= n; j++)
-			if (!MST[j] && d[j] < e)
-				e = d[j], v = j;
+    // 选剩下的n-1个点到MST中
+    for (int i = 2; i <= n; i++) {
+        // 1. 找到最短边
+        int e = INT_MAX, v = -1; // e: 最短边长度，v: 最短边不在MST集合中的顶点
+        for (int j = 1; j <= n; j++)
+            if (!MST[j] && d[j] < e)
+                e = d[j], v = j;
 
-		// 2. 加入MST集合
-		MST[v] = true;
-		if (e == INT_MAX) {
-			// 特判无法构造MST的情况
-			cout << "impossible\n";
-			return;
-		} else {
-			res += e;
-		}
+        // 2. 加入MST集合
+        MST[v] = true;
+        if (e == INT_MAX) {
+            // 特判无法构造MST的情况
+            cout << "impossible\n";
+            return;
+        } else {
+            res += e;
+        }
 
-		// 3. 更新交叉边 - 迭代（覆盖更新）
-		for (int j = 1; j <= n; j++)
-			if (!MST[j])
-				d[j] = min(d[j], g[j][v]);
-	}
+        // 3. 更新交叉边 - 迭代（覆盖更新）
+        for (int j = 1; j <= n; j++)
+            if (!MST[j])
+                d[j] = min(d[j], g[j][v]);
+    }
 
-	cout << res << "\n";
+    cout << res << "\n";
 }
 
 void solve() {
-	cin >> n >> m;
-	while (m--) {
-		int a, b, w;
-		cin >> a >> b >> w;
+    cin >> n >> m;
+    while (m--) {
+        int a, b, w;
+        cin >> a >> b >> w;
 
-		if (a == b) {
-			continue;
-		}
+        if (a == b) {
+            continue;
+        }
 
-		if (g[a][b] == INT_MAX) {
-			g[a][b] = w;
-			g[b][a] = w;
-		} else {
-			g[a][b] = min(g[a][b], w);
-			g[b][a] = min(g[b][a], w);
-		}
-	}
+        if (g[a][b] == INT_MAX) {
+            g[a][b] = w;
+            g[b][a] = w;
+        } else {
+            g[a][b] = min(g[a][b], w);
+            g[b][a] = min(g[b][a], w);
+        }
+    }
 
-	prim();
+    prim();
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -581,61 +581,61 @@ int n, m;
 int g[N][N];
 
 int dijkstra(int start, int end) {
-	vector<int> d(n + 1, INF);
-	vector<bool> SPT(n + 1, false);
+    vector<int> d(n + 1, INF);
+    vector<bool> SPT(n + 1, false);
 
-	d[start] = 0;
+    d[start] = 0;
 
-	/* 1. 将起点加入SPT集合 */
-	SPT[start] = true;
-	for (int j = 1; j <= n; j++)
-		if (!SPT[j])
-			d[j] = min(d[j], d[start] + g[start][j]);
+    /* 1. 将起点加入SPT集合 */
+    SPT[start] = true;
+    for (int j = 1; j <= n; j++)
+        if (!SPT[j])
+            d[j] = min(d[j], d[start] + g[start][j]);
 
-	/* 2. 选择到起点最近的点(greedy)，更新到起点最近的点(dp) */
-	for (int i = 1; i <= n - 1; i++) {
-		// 找到V-SPT中到起点最近的点vex
-		int vex = -1;
-		for (int j = 1; j <= n; j++)
-			if (!SPT[j] && (vex == -1 || d[j] < d[vex]))
-				vex = j;
+    /* 2. 选择到起点最近的点(greedy)，更新到起点最近的点(dp) */
+    for (int i = 1; i <= n - 1; i++) {
+        // 找到V-SPT中到起点最近的点vex
+        int vex = -1;
+        for (int j = 1; j <= n; j++)
+            if (!SPT[j] && (vex == -1 || d[j] < d[vex]))
+                vex = j;
 
-		// 将vex加入SPT
-		SPT[vex] = true;
+        // 将vex加入SPT
+        SPT[vex] = true;
 
-		// 更新所有V-SPT中的点到起点的最短距离
-		for (int j = 1; j <= n; j++)
-			if (!SPT[j])
-				d[j] = min(d[j], d[vex] + g[vex][j]);
-	}
+        // 更新所有V-SPT中的点到起点的最短距离
+        for (int j = 1; j <= n; j++)
+            if (!SPT[j])
+                d[j] = min(d[j], d[vex] + g[vex][j]);
+    }
 
-	return d[end] == INF ? -1 : d[end];
+    return d[end] == INF ? -1 : d[end];
 }
 
 void solve() {
-	cin >> n >> m;
+    cin >> n >> m;
 
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= n; j++)
-			g[i][j] = i == j ? 0 : INF;
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            g[i][j] = i == j ? 0 : INF;
 
-	while (m--) {
-		int u, v, w;
-		cin >> u >> v >> w;
-		g[u][v] = min(g[u][v], w);
-//		g[v][u] = min(g[v][u], w);
-	}
+    while (m--) {
+        int u, v, w;
+        cin >> u >> v >> w;
+        g[u][v] = min(g[u][v], w);
+//        g[v][u] = min(g[v][u], w);
+    }
 
-	cout << dijkstra(1, n) << "\n";
+    cout << dijkstra(1, n) << "\n";
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -817,49 +817,49 @@ int n, m;
 vector<int> g[N], res(N);
 
 void bfs(int now) {
-	queue<int> q;
+    queue<int> q;
 
-	res[now] = now;
-	q.push(now);
-	
-	while (q.size()) {
-		int h = q.front();
-		q.pop();
-		for (auto& ch: g[h]) {
-			if (!res[ch]) {
-				res[ch] = now;
-				q.push(ch);
-			}
-		}
-	}
+    res[now] = now;
+    q.push(now);
+    
+    while (q.size()) {
+        int h = q.front();
+        q.pop();
+        for (auto& ch: g[h]) {
+            if (!res[ch]) {
+                res[ch] = now;
+                q.push(ch);
+            }
+        }
+    }
 }
 
 void solve() {
-	cin >> n >> m;
-	while (m--) {
-		int a, b;
-		cin >> a >> b;
-		g[b].push_back(a);
-	}
+    cin >> n >> m;
+    while (m--) {
+        int a, b;
+        cin >> a >> b;
+        g[b].push_back(a);
+    }
 
-	for (int i = n; i >= 1; i--) {
-		if (!res[i]) {
-			bfs(i);
-		}
-	}
-	
-	for (int i = 1; i <= n; i++) {
-		cout << res[i] << ' ';
-	}
+    for (int i = n; i >= 1; i--) {
+        if (!res[i]) {
+            bfs(i);
+        }
+    }
+    
+    for (int i = 1; i <= n; i++) {
+        cout << res[i] << ' ';
+    }
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -878,41 +878,41 @@ int n, m, val;
 vector<int> g[N], res(N);
 
 void dfs(int now) {
-	res[now] = val;
-	for (auto& ch: g[now]) {
-		if (!res[ch]) {
-			dfs(ch);
-		}
-	}
+    res[now] = val;
+    for (auto& ch: g[now]) {
+        if (!res[ch]) {
+            dfs(ch);
+        }
+    }
 }
 
 void solve() {
-	cin >> n >> m;
-	while (m--) {
-		int a, b;
-		cin >> a >> b;
-		g[b].push_back(a);
-	}
+    cin >> n >> m;
+    while (m--) {
+        int a, b;
+        cin >> a >> b;
+        g[b].push_back(a);
+    }
 
-	for (int i = n; i >= 1; i--) {
-		if (!res[i]) {
-			val = i;
-			dfs(i);
-		}
-	}
-	
-	for (int i = 1; i <= n; i++) {
-		cout << res[i] << ' ';
-	}
+    for (int i = n; i >= 1; i--) {
+        if (!res[i]) {
+            val = i;
+            dfs(i);
+        }
+    }
+    
+    for (int i = 1; i <= n; i++) {
+        cout << res[i] << ' ';
+    }
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -954,44 +954,44 @@ vector<int> G[N];
 bool vis[N];
 
 void dfs(int fa, int now, bool& hasLoop) {
-	vis[now] = true;
-	for (auto& ch: G[now]) {
-		if (ch != fa) {
-			if (vis[ch]) hasLoop = true;
-			else dfs(now, ch, hasLoop);
-		}
-	}
+    vis[now] = true;
+    for (auto& ch: G[now]) {
+        if (ch != fa) {
+            if (vis[ch]) hasLoop = true;
+            else dfs(now, ch, hasLoop);
+        }
+    }
 }
 
 void solve() {
-	cin >> n >> m;
-	while (m--) {
-		int a, b;
-		cin >> a >> b;
-		G[a].push_back(b);
-		G[b].push_back(a);
-	}
-	
-	int res = 0;
-	
-	for (int i = 1; i <= n; i++) {
-		if (!vis[i]) {
-			bool hasLoop = false;
-			dfs(-1, i, hasLoop);
-			if (!hasLoop) res++;
-		}
-	}
-	
-	cout << res << "\n";
+    cin >> n >> m;
+    while (m--) {
+        int a, b;
+        cin >> a >> b;
+        G[a].push_back(b);
+        G[b].push_back(a);
+    }
+    
+    int res = 0;
+    
+    for (int i = 1; i <= n; i++) {
+        if (!vis[i]) {
+            bool hasLoop = false;
+            dfs(-1, i, hasLoop);
+            if (!hasLoop) res++;
+        }
+    }
+    
+    cout << res << "\n";
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1179,68 +1179,68 @@ bool vis[N];
 pair<int, int> res;     // first 为最远距离；second 为对应结点编号
 
 void dfs(int pre, int now) {
-	if (vis[now]) return;
-	
-	vis[now] = true;
-	
-	if (pre != -1) {
-		d[now] = d[pre] + 1;
-		if (d[now] > res.first) {
-			res = {d[now], now};
-		}
-	}
-	
-	for (auto& ch: g[now]) {
-		dfs(now, ch);
-	}
+    if (vis[now]) return;
+    
+    vis[now] = true;
+    
+    if (pre != -1) {
+        d[now] = d[pre] + 1;
+        if (d[now] > res.first) {
+            res = {d[now], now};
+        }
+    }
+    
+    for (auto& ch: g[now]) {
+        dfs(now, ch);
+    }
 }
 
 void solve() {
-	// init
-	for (int i = 2; i <= 4; i++) {
-		g[1].push_back(i);
-		g[i].push_back(1);
-	}
-	
-	int now = 4;
-	
-	int Q;
-	cin >> Q;
-	while (Q--) {
-		int id;
-		cin >> id;
-		
-		g[id].push_back(++now);
-		g[now].push_back(id);
-		
-		g[id].push_back(++now);
-		g[now].push_back(id);
-		
-		res = {-1, -1};
-		
-		// 第一趟
-		memset(vis, false, sizeof vis);
-		memset(d, 0, sizeof d);
-		d[1] = 0;
-		dfs(-1, 1);
-		
-		// 第二趟
-		memset(vis, false, sizeof vis);
-		memset(d, 0, sizeof d);
-		d[res.second] = 0;
-		dfs(-1, res.second);
-		
-		cout << res.first << "\n";
-	}
+    // init
+    for (int i = 2; i <= 4; i++) {
+        g[1].push_back(i);
+        g[i].push_back(1);
+    }
+    
+    int now = 4;
+    
+    int Q;
+    cin >> Q;
+    while (Q--) {
+        int id;
+        cin >> id;
+        
+        g[id].push_back(++now);
+        g[now].push_back(id);
+        
+        g[id].push_back(++now);
+        g[now].push_back(id);
+        
+        res = {-1, -1};
+        
+        // 第一趟
+        memset(vis, false, sizeof vis);
+        memset(d, 0, sizeof d);
+        d[1] = 0;
+        dfs(-1, 1);
+        
+        // 第二趟
+        memset(vis, false, sizeof vis);
+        memset(d, 0, sizeof d);
+        d[res.second] = 0;
+        dfs(-1, res.second);
+        
+        cout << res.first << "\n";
+    }
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1263,74 +1263,202 @@ int d[N];        // d[i] 表示 i 号点到根结点的距离
 int to[N][M];    // to[i][j] 表示 i 号点向上跳 2^j 步后到达的结点编号
 
 int lca(int a, int b) {
-	if (d[a] < d[b]) swap(a, b);
+    if (d[a] < d[b]) swap(a, b);
 
-	for (int k = M - 1; k >= 0; k--)
-		if (d[to[a][k]] >= d[b])
-			a = to[a][k];
+    for (int k = M - 1; k >= 0; k--)
+        if (d[to[a][k]] >= d[b])
+            a = to[a][k];
 
-	if (a == b) return a;
+    if (a == b) return a;
 
-	for (int k = M - 1; k >= 0; k--)
-		if (to[a][k] != to[b][k])
-			a = to[a][k], b = to[b][k];
+    for (int k = M - 1; k >= 0; k--)
+        if (to[a][k] != to[b][k])
+            a = to[a][k], b = to[b][k];
 
-	return to[a][0];
+    return to[a][0];
 }
 
 int dist(int a, int b) {
-	return d[a] + d[b] - 2 * d[lca(a, b)];
+    return d[a] + d[b] - 2 * d[lca(a, b)];
 }
 
 void solve() {
-	int Q;
-	cin >> Q;
+    int Q;
+    cin >> Q;
 
-	// init lca
-	for (int i = 2; i <= 4; i++) {
-	    d[i] = 1;
-		to[i][0] = 1;
-	}
+    // init lca
+    for (int i = 2; i <= 4; i++) {
+        d[i] = 1;
+        to[i][0] = 1;
+    }
 
-	int A = 2, B = 4, now = 4, res = 2;
+    int A = 2, B = 4, now = 4, res = 2;
 
-	while (Q--) {
-		int fa;
-		cin >> fa;
+    while (Q--) {
+        int fa;
+        cin >> fa;
 
-		int L1 = ++now, L2 = ++now;
+        int L1 = ++now, L2 = ++now;
 
-		// upd lca
-		d[L1] = d[fa] + 1;
-		d[L2] = d[fa] + 1;
-		to[L1][0] = fa;
-		to[L2][0] = fa;
-		for (int k = 1; k <= M - 1; k++) {
-			to[L1][k] = to[ to[L1][k-1] ][ k-1 ];
-			to[L2][k] = to[ to[L2][k-1] ][ k-1 ];
-		}
+        // upd lca
+        d[L1] = d[fa] + 1;
+        d[L2] = d[fa] + 1;
+        to[L1][0] = fa;
+        to[L2][0] = fa;
+        for (int k = 1; k <= M - 1; k++) {
+            to[L1][k] = to[ to[L1][k-1] ][ k-1 ];
+            to[L2][k] = to[ to[L2][k-1] ][ k-1 ];
+        }
 
-		int da = dist(A, L1), db = dist(B, L1);
+        int da = dist(A, L1), db = dist(B, L1);
 
-		if (max(da, db) <= res) res = res;
-		else if (min(da, db) >= res) {
-			if (da > db) res = da, B = L1;
-			else res = db, A = L1;
-		} else {
-			if (da > db) res = da, B = L1;
-			else res = db, A = L1;
-		}
+        if (max(da, db) <= res) res = res;
+        else if (min(da, db) >= res) {
+            if (da > db) res = da, B = L1;
+            else res = db, A = L1;
+        } else {
+            if (da > db) res = da, B = L1;
+            else res = db, A = L1;
+        }
 
-		cout << res << "\n";
-	}
+        cout << res << "\n";
+    }
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
+```
+
+### 11. 关闭分部的可行集合数目
+
+https://leetcode.cn/problems/number-of-possible-sets-of-closing-branches/
+
+> 标签：二进制枚举、最短路
+>
+> 题意：给定一个含有 $n$ 个顶点的无向图，如何删点可以使得剩余的图中顶点两两可达且最大距离不超过 maxDistance？返回所有删点的方案数。
+>
+> 思路：由于 $n$ 的数据范围只有 $1 \to 10$，我们可以直接枚举所有的删点方案。那么如何检查一个方案的合法性呢？直接使用最短路算法检查「所有顶点到每一个顶点」的最远距离即可。这里我们采用朴素 dijkstra 算法。
+>
+> 时间复杂度：$O(2^n \times n^3)$ - 其中枚举需要 $O(2^n)$、计算所有顶点到某个顶点的最远距离需要 $O(n^2)$、检查所有顶点需要 $O(n)$
+
+```cpp []
+class Solution {
+public:
+    int numberOfSets(int n, int maxDistance, vector<vector<int>>& roads) {
+        vector<vector<int>> g(n, vector<int>(n, INT_MAX >> 1));
+        for (auto& r: roads) {
+            int u = r[0], v = r[1], w = r[2];
+            g[u][v] = g[v][u] = min(g[u][v], w);
+        }
+
+        auto get_max_dist = [&](int mask, int v) {
+            vector<bool> SPT(n);
+            vector<int> d(n, INT_MAX);
+            
+            d[v] = 0;
+            SPT[v] = true;
+            
+            int cnt = 0;
+            for (int i = 0; i < n; i++) {
+                if (mask & (1 << i) && !SPT[i]) {
+                    cnt++;
+                    d[i] = min(d[i], d[v] + g[v][i]);
+                }
+            }
+
+            for (int k = 1; k <= cnt - 1; k++) {
+                int vex = -1;
+                for (int i = 0; i < n; i++) {
+                    if (mask & (1 << i) && !SPT[i] && (vex == -1 || d[i] < d[vex])) {
+                        vex = i;
+                    }
+                }
+                SPT[vex] = true;
+                for (int i = 0; i < n; i++) {
+                    if (mask & (1 << i) && !SPT[i]) {
+                        d[i] = min(d[i], d[vex] + g[vex][i]);
+                    }
+                }
+            }
+            
+            int max_dist = -1;
+            for (int i = 0; i < n; i++) {
+                if (mask & (1 << i)) {
+                    max_dist = max(max_dist, d[i]);
+                }
+            }
+            
+            return max_dist;
+        };
+
+        int res = 0;
+        for (int mask = 0; mask < 1 << n; mask++) {
+            bool ok = true;
+            for (int i = 0; i < n; i++) {
+                if (mask & (1 << i) && get_max_dist(mask, i) > maxDistance) {
+                    ok = false;
+                    break;
+                }
+            }
+            res += ok;
+        }
+
+        return res;
+    }
+};
+```
+
+```python []
+class Solution:
+    def numberOfSets(self, n: int, maxDistance: int, roads: List[List[int]]) -> int:
+        g = [[10 ** 6 for _ in range(n)] for _ in range(n)]
+        for u, v, w in roads:
+            g[u][v] = g[v][u] = min(g[u][v], w)
+        
+        def get_max_dist(mask: int, v: int):
+            SPT = [False for _ in range(n)]
+            d = [10 ** 6 for _ in range(n)]
+
+            SPT[v] = True
+            d[v] = 0
+
+            cnt = 0
+            for i in range(n):
+                if mask & (1 << i) and not SPT[i]:
+                    cnt += 1
+                    d[i] = min(d[i], d[v] + g[v][i])
+            
+            for _ in range(cnt - 1):
+                vex = -1
+                for i in range(n):
+                    if mask & (1 << i) and not SPT[i] and (vex == -1 or d[i] < d[vex]):
+                        vex = i
+                SPT[vex] = True
+                for i in range(n):
+                    if mask & (1 << i) and not SPT[i]:
+                        d[i] = min(d[i], d[vex] + g[vex][i])
+                
+            max_dist = -1
+            for i in range(n):
+                if mask & (1 << i):
+                    max_dist = max(max_dist, d[i])
+            
+            return max_dist
+
+        res = 0
+        for mask in range(1 << n):
+            ok = True
+            for i in range(n):
+                if mask & (1 << i) and get_max_dist(mask, i) > maxDistance:
+                    ok = False
+                    break
+            res += ok
+
+        return res
 ```

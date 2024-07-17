@@ -275,14 +275,30 @@ bool findRight(int x) {
 
 ```cpp
 struct dsu {
-	int n;
-	std::vector<int> p;
-	dsu(int _n) { n = _n; p.resize(n + 1); for (int i = 1; i <= n; i++) p[i] = i; }
-	int find(int x) { return (p[x] == x ? p[x] : p[x] = find(p[x])); }
-	void merge(int a, int b) { p[find(a)] = find(b); }
-	bool query(int a, int b) { return find(a) == find(b); }
-	int block() { std::set<int> a; for (int i = 1; i <= n; i++) a.insert(find(p[i])); return a.size(); }
+    int n;
+    std::vector<int> p;
+    dsu(int _n) { n = _n; p.resize(n + 1); for (int i = 1; i <= n; i++) p[i] = i; }
+    int find(int x) { return (p[x] == x ? p[x] : p[x] = find(p[x])); }
+    void merge(int a, int b) { p[find(a)] = find(b); }
+    bool query(int a, int b) { return find(a) == find(b); }
+    int block() { int ret = 0; for (int i = 1; i <= n; i++) ret += p[i] == i; return ret; }
 };
+```
+
+```python
+class dsu:
+    def __init__(self, n: int) -> None:
+        self.n = n
+        self.p = [i for i in range(n + 1)]
+    def find(self, x: int) -> int:
+        if self.p[x] != x: self.p[x] = self.find(self.p[x])
+        return self.p[x]
+    def merge(self, a: int, b: int) -> None:
+        self.p[self.find(a)] = self.find(b)
+    def query(self, a: int, b: int) -> bool:
+        return self.find(a) == self.find(b)
+    def block(self) -> int:
+        return sum([1 for i in range(1, self.n + 1) if self.p[i] == i])
 ```
 
 ### 树状数组
@@ -319,24 +335,24 @@ public:
 
 ```python
 class BinaryIndexedTree:
-	def __init__(self, n: int):
-		self.n = n
-		self.arr = [0] * (n + 1)
-	
-	def lowbit(self, x: int) -> int:
-		return x & (-x)
-	
-	def add(self, pos: int, x: int) -> None:
-		while pos <= self.n:
-			self.arr[pos] += x
-			pos += self.lowbit(pos)
-	
-	def sum(self, pos: int) -> int:
-		ret = 0
-		while pos:
-			ret += self.arr[pos]
-			pos -= self.lowbit(pos)
-		return ret
+    def __init__(self, n: int):
+        self.n = n
+        self.arr = [0] * (n + 1)
+    
+    def lowbit(self, x: int) -> int:
+        return x & (-x)
+    
+    def add(self, pos: int, x: int) -> None:
+        while pos <= self.n:
+            self.arr[pos] += x
+            pos += self.lowbit(pos)
+    
+    def sum(self, pos: int) -> int:
+        ret = 0
+        while pos:
+            ret += self.arr[pos]
+            pos -= self.lowbit(pos)
+        return ret
 ```
 
 ### SortedList
@@ -746,39 +762,39 @@ int fact[N];    // fact[i]   表示 i! % mod
 int infact[N];  // infact[i] 表示 (i!)^{-1}
 
 int qmi(int a, int b, int p) {
-	int res = 1 % p;
-	while (b) {
-		if (b & 1) res = (ll)res * a % p;
-		a = (ll)a * a % p;
-		b >>= 1;
-	}
-	return res;
+    int res = 1 % p;
+    while (b) {
+        if (b & 1) res = (ll)res * a % p;
+        a = (ll)a * a % p;
+        b >>= 1;
+    }
+    return res;
 }
 
 void init() {
-	fact[0] = 1, infact[0] = 1;
-	for (int i = 1; i < N; i++) {
-		// i! = (i-1)! * i
-		fact[i] = (ll)fact[i - 1] * i % mod;
-		
-		// (i!)^{-1} = (i-1)!^{-1} * i^{-1}
-		// i^{-1} = i^{mod-2}
-		infact[i] = (ll)infact[i - 1] * qmi(i, mod - 2, mod) % mod;
-	}
+    fact[0] = 1, infact[0] = 1;
+    for (int i = 1; i < N; i++) {
+        // i! = (i-1)! * i
+        fact[i] = (ll)fact[i - 1] * i % mod;
+        
+        // (i!)^{-1} = (i-1)!^{-1} * i^{-1}
+        // i^{-1} = i^{mod-2}
+        infact[i] = (ll)infact[i - 1] * qmi(i, mod - 2, mod) % mod;
+    }
 }
 
 int main() {
-	init();
-	
-	int n;
-	cin >> n;
-	while (n--) {
-		int a, b;
-		cin >> a >> b;
-		cout << (ll)fact[a] * infact[b] % mod * infact[a - b] % mod << "\n";
-	}
-	
-	return 0;
+    init();
+    
+    int n;
+    cin >> n;
+    while (n--) {
+        int a, b;
+        cin >> a >> b;
+        cout << (ll)fact[a] * infact[b] % mod * infact[a - b] % mod << "\n";
+    }
+    
+    return 0;
 }
 ```
 

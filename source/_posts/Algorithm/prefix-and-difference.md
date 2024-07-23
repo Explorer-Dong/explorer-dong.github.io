@@ -5,7 +5,7 @@ category_bar: true
 ---
 
 
-## prefix and difference
+### 前缀和与差分
 
 ### 1. 充能计划
 
@@ -176,4 +176,82 @@ public:
         return -1;
     }
 };
+```
+
+### 3. 增减序列
+
+https://www.acwing.com/problem/content/description/102/
+
+> 标签：差分、贪心
+>
+> 题意：给定一个序列，每次可以对序列中的**子数组**进行同时 `+1` 或 `-1` 的操作，问最少操作多少次可以使得最终的数组所有元素都相等。并给出在最少操作次数的情况下，有多少种操作方案。
+>
+> 思路：区间同时操作可以联想到差分，我们定义原始数组为 `s[]`，差分数组为 `a[]`，并且下标均从 `1` 开始。那么对于「所有元素都相等」这个约束，可以发现所有元素在操作相等后差分数组 `a[2:n]` 均为 `0`。因此本题转化为对差分数组 `a[2:n]` 中的**元素**进行 `+1` 或 `-1` 操作使得最终的差分数组中 `a[2:n]` 均为 `0`。一个很显然的贪心思路就是每次在 `a[2:n]` 中选择一对符号相反的数，对其正数进行 `-1` 操作，对其负数进行 `+1` 操作。最终可能会因为无法匹配剩余某个正数或负数，我们假设其下标为 `i`，此时的序列就是 `s[1:i]` 全部相等，`s[i+1,n]` 全部相等。我们可以同时调整前缀或同时调整后缀来达到最终序列全部相等的情况。分析到这，最少操作次数和所有满足最少操作次数的方案数就呼之欲出了。
+>
+> 时间复杂度：$O(n)$
+
+```cpp
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+void solve() {
+    int n;
+    cin >> n;
+    
+    vector<int> s(n + 1);
+    for (int i = 1; i <= n; i++) {
+        cin >> s[i];
+    }
+    
+    ll neg = 0, pos = 0;
+    for (int i = 2; i <= n; i++) {
+        ll x = s[i] - s[i - 1];
+        if (x > 0) pos += x;
+        else neg += x;
+    }
+    
+    cout << max(pos, abs(neg)) << "\n" << abs(pos - abs(neg)) + 1 << "\n";
+}
+
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int T = 1;
+//    std::cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+```python
+from collections import defaultdict
+from typing import List, Tuple
+from itertools import combinations, permutations
+import math, heapq, queue
+
+II = lambda: int(input())
+FI = lambda: float(input())
+MII = lambda: tuple(map(int, input().split()))
+LII = lambda: list(map(int, input().split()))
+
+
+def solve() -> None:
+    n = II()
+    s = [0] * (n + 1)
+    pos, neg = 0, 0
+    for i in range(1, n + 1):
+        s[i] = II()
+    for i in range(2, n + 1):
+        x = s[i] - s[i - 1]
+        if x > 0: pos += x
+        else: neg += x
+    print(f"{max(pos, abs(neg))}\n{abs(pos - abs(neg)) + 1}")
+
+
+if __name__ == '__main__':
+    T = 1
+    # T = II()
+    while T: solve(); T -= 1
 ```

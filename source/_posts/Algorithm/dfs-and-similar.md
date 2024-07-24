@@ -4,11 +4,15 @@ categories: Algorithm
 category_bar: true
 ---
 
-## 《搜索》
+### 搜索
 
-搜索专题。无论是深搜还是宽搜，都逃不掉图的思维。我们将搜索图建立起来之后，剩余的编码过程就会跃然纸上
+{% note light %}
 
-### 1. 机器人的运动范围
+搜索专题。无论是深搜还是宽搜，都逃不掉图的思维。我们将搜索图建立起来之后，剩余的编码过程就会跃然纸上。
+
+{% endnote %}
+
+### 【dfs】机器人的运动范围
 
 https://www.acwing.com/problem/content/22/
 
@@ -50,7 +54,7 @@ public:
 };
 ```
 
-### 2. CCC单词搜索
+### 【dfs】CCC单词搜索
 
 https://www.acwing.com/problem/content/5168/
 
@@ -81,89 +85,91 @@ int res;
 // 正十字，a，b为之前的位置，x，y为当前的位置，now为当前待匹配的字母位，cnt为转弯次数
 void dfs1(int a, int b, int x, int y, int now, int cnt)
 {
-	if (g[x][y] != s[now]) return;
-	
-	if (now == s.size() - 1)
-	{
-		if (cnt <= 1) res++; 
-		return;
-	}
-	
-	int dx[] = {-1, 0, 1, 0}, dy[] = {0, 1, 0, -1};
-	
-	for (int k = 0; k < 4; k ++)
-	{
-		int i = x + dx[k], j = y + dy[k];
-		if (x < 0 || x >= m || y < 0 || y >= n) continue;
-		
-		// 判断是否转弯（now不是起点 且 pre和next行列均不相等） 
-		if (a != -1 && b != -1 && a != i && b != j) dfs1(x, y, i, j, now + 1, cnt + 1);
-		else dfs1(x, y, i, j, now + 1, cnt);
-	}
+    if (g[x][y] != s[now]) return;
+    
+    if (now == s.size() - 1)
+    {
+        if (cnt <= 1) res++; 
+        return;
+    }
+    
+    int dx[] = {-1, 0, 1, 0}, dy[] = {0, 1, 0, -1};
+    
+    for (int k = 0; k < 4; k ++)
+    {
+        int i = x + dx[k], j = y + dy[k];
+        if (x < 0 || x >= m || y < 0 || y >= n) continue;
+        
+        // 判断是否转弯（now不是起点 且 pre和next行列均不相等） 
+        if (a != -1 && b != -1 && a != i && b != j) dfs1(x, y, i, j, now + 1, cnt + 1);
+        else dfs1(x, y, i, j, now + 1, cnt);
+    }
 }
 
 // 斜十字
 void dfs2(int a, int b, int x, int y, int now, int cnt)
 {
-	if (g[x][y] != s[now]) return;
-	
-	if (now == s.size() - 1)
-	{
-		if (cnt <= 1) res++; 
-		return;
-	}
-	
-	int dx[] = {-1, -1, 1, 1}, dy[] = {-1, 1, 1, -1};
-	
-	for (int k = 0; k < 4; k ++)
-	{
-		int i = x + dx[k], j = y + dy[k];
-		if (x < 0 || x >= m || y < 0 || y >= n) continue;
-		
-		// 判断是否转弯（now不是起点 且 不在同一对角线） 
-		if (a != -1 && b != -1 && (a == i || b == j)) dfs2(x, y, i, j, now + 1, cnt + 1);
-		else dfs2(x, y, i, j, now + 1, cnt);
-	}
+    if (g[x][y] != s[now]) return;
+    
+    if (now == s.size() - 1)
+    {
+        if (cnt <= 1) res++; 
+        return;
+    }
+    
+    int dx[] = {-1, -1, 1, 1}, dy[] = {-1, 1, 1, -1};
+    
+    for (int k = 0; k < 4; k ++)
+    {
+        int i = x + dx[k], j = y + dy[k];
+        if (x < 0 || x >= m || y < 0 || y >= n) continue;
+        
+        // 判断是否转弯（now不是起点 且 不在同一对角线） 
+        if (a != -1 && b != -1 && (a == i || b == j)) dfs2(x, y, i, j, now + 1, cnt + 1);
+        else dfs2(x, y, i, j, now + 1, cnt);
+    }
 }
 
 
 int main()
 {
-	cin >> s;
-	cin >> m >> n;
-	
-	for (int i = 0; i < m; i ++)
-		for (int j = 0; j < n; j ++)
-			cin >> g[i][j];
-	
-	for (int i = 0; i < m; i ++)
-		for (int j = 0; j < n; j ++)
-			dfs1(-1, -1, i, j, 0, 0);
-	
-	for (int i = 0; i < m; i ++)
-		for (int j = 0; j < n; j ++)
-			dfs2(-1, -1, i, j, 0, 0);
-	
-	cout << res << "\n";
-	
-	return 0;
+    cin >> s;
+    cin >> m >> n;
+    
+    for (int i = 0; i < m; i ++)
+        for (int j = 0; j < n; j ++)
+            cin >> g[i][j];
+    
+    for (int i = 0; i < m; i ++)
+        for (int j = 0; j < n; j ++)
+            dfs1(-1, -1, i, j, 0, 0);
+    
+    for (int i = 0; i < m; i ++)
+        for (int j = 0; j < n; j ++)
+            dfs2(-1, -1, i, j, 0, 0);
+    
+    cout << res << "\n";
+    
+    return 0;
 }
 ```
 
-### 3. 数量
+### 【dfs/二进制枚举】数量
 
 https://www.acwing.com/problem/content/5150/
 
-法一：dfs
-
 > 题意：给定一个数n，问[1, n]中有多少个数只含有4或7
 >
-> 思路：对于一个数，我们可以构造一个二叉搜数进行搜索，因为每一位只有两种可能，那么从最高位开始搜索。如果当前数超过了n就return，否则就算一个答案
+> 思路一：dfs
 >
-> 时间复杂度：
-> $$
-> O(2^{1 + \lg{(\max(a[i])})})
-> $$
+> - 对于一个数，我们可以构造一个二叉搜数进行搜索，因为每一位只有两种可能，那么从最高位开始搜索。如果当前数超过了n就return，否则就算一个答案
+> - 时间复杂度：$\Theta(2^{1 + \lg{(\max(a[i])})})$
+>
+> 思路二：二进制枚举
+>
+> - 按照数位进行计算。对于一个 x 位的数，1 到 x-1 位的情况下所有的数都符合条件，对于一个 t 位的数，满情况就是 $2^t$ 种，所以 `[1,x-1]` 位就一共有 $2^1 + 2^2 + \cdots + 2^{x - 1} = 2^{x} - 2$ 种情况 。对于第 x 位，采取二进制枚举与原数进行比较，如果小于原数，则答案 +1，反之结束循环输出答案即可
+
+dfs 代码：
 
 ```cpp
 #include <iostream>
@@ -191,79 +197,72 @@ signed main() {
 }
 ```
 
-法二：二进制枚举
-
-> 题意：给定一个数n，问[1, n]中有多少个数只含有4或7
->
-> 思路：按照数位进行计算。对于一个x位的数，1到x-1位的情况下所有的数都符合条件，对于一个t位的数，满情况就是 $2^t$ 种，所以[1, x - 1]位就一共有 $2^1 + 2^2 + \cdots + 2^{x - 1} = 2^{x} - 2$ 种情况 。对于第x位，采取二进制枚举与原数进行比较，如果小于原数，则答案+1，反之结束循环输出答案即可
+二进制枚举代码：
 
 ```cpp
 #include <iostream>
 using namespace std;
 
 int WS(int x) {
-	int res = 0;
-	while (x) {
-		res++;
-		x /= 10;
-	}
-	return res;
+    int res = 0;
+    while (x) {
+        res++;
+        x /= 10;
+    }
+    return res;
 }
 
 int calc(int a[], int ws) {
-	int res = 0;
-	for (int i = ws - 1; i >= 0; i --) {
-		res = res * 10 + a[i];
-	}
-	return res;
+    int res = 0;
+    for (int i = ws - 1; i >= 0; i --) {
+        res = res * 10 + a[i];
+    }
+    return res;
 }
 
 int main() {
-	int n;
-	cin >> n;
-	
-	int ws = WS(n);
-	
-	int ans = (1 << ws) - 2;
-	
-	int a[20] {};
-	for (int i = 0; i < (1 << ws); i ++) {
-		for (int j = 0; j < ws; j ++) {
-			if ((1 << j) & i) {
-				a[j] = 7;
-			} else {
-				a[j] = 4;
-			}
-		}
-		if (calc(a, ws) <= n) {
-			ans ++;
-		} else {
-			break;
-		}
-	}
-	
-	cout << ans;
-	
-	return 0;
+    int n;
+    cin >> n;
+    
+    int ws = WS(n);
+    
+    int ans = (1 << ws) - 2;
+    
+    int a[20] {};
+    for (int i = 0; i < (1 << ws); i ++) {
+        for (int j = 0; j < ws; j ++) {
+            if ((1 << j) & i) {
+                a[j] = 7;
+            } else {
+                a[j] = 4;
+            }
+        }
+        if (calc(a, ws) <= n) {
+            ans ++;
+        } else {
+            break;
+        }
+    }
+    
+    cout << ans;
+    
+    return 0;
 }
 ```
 
-### 4. 组合总和
+### 【dfs】组合总和
 
 https://leetcode.cn/problems/combination-sum/
 
 > 题意：给定一个序列，其中的元素没有重复，问如何选取其中的元素，使得选出的数字总和为指定的数字target，选取的数字可以重复
 >
-> 思路：思路比较简答，很容易想到用dfs搜索出所有的组合情况，即对于每一个“结点”，我们直接遍历序列中的元素即可。但是由于题目的限制，即不允许合法的序列经过排序后相等。那么为了解决这个约束，我们可以将最终搜索到的序列排序后进行去重，但是这样的时间复杂度会很高，于是我们从搜索的过程切入。观看这一篇题解[防止出现重复序列的启蒙题解](https://leetcode.cn/problems/combination-sum/solutions/2363929/39-zu-he-zong-he-hui-su-qing-xi-tu-jie-b-9zx7/)，我们提取其中最关键的一个图解
+> 思路：思路比较简答，很容易想到用dfs搜索出所有的组合情况，即对于每一个“结点”，我们直接遍历序列中的元素即可。但是由于题目的限制，即不允许合法的序列经过排序后相等。那么为了解决这个约束，我们可以将最终搜索到的序列排序后进行去重，但是这样的时间复杂度会很高，于是我们从搜索的过程切入。观看这一篇题解 [防止出现重复序列的启蒙题解](https://leetcode.cn/problems/combination-sum/solutions/2363929/39-zu-he-zong-he-hui-su-qing-xi-tu-jie-b-9zx7/)，我们提取其中最关键的一个图解
 >
-> ![subset_sum_i_pruning.png](D:/BaiduSyncdisk/_images/typora-user-images/202402012332951.png)
+> ![subset_sum_i_pruning.png](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407250146195.png)
 >
 > 可见3，4和4，3的剩余选项（其中可能包含了答案序列）全部重复，因此我们直接减去这个枝即可。不难发现，我们根据上述优化思想，剪枝的操作可以为：让当前序列开始枚举的下标 `idx` 从上一层开始的下标 `i` 开始，于是剪枝就可以实现了。
 >
-> 时间复杂度：??? 
-> $$
-> O \left ( 2^{\frac{n}{\log n}}\right)
-> $$
+> 时间复杂度：$\Theta \left ( 2^{\frac{n}{\log n}}\right)$
 
 ```cpp
 class Solution {
@@ -292,7 +291,7 @@ public:
 };
 ```
 
-### 5. 扩展字符串
+### 【递归】扩展字符串
 
 https://www.acwing.com/problem/content/5284/
 
@@ -323,70 +322,70 @@ string t3 = "AB";
 
 // 记录每一层构造出来的字符串 Si 的长度 len，当前递归的层数 i (i>=1)，对于当前层数需要查询的字符的下标 pos
 void dfs(vector<int>& len, int i, int pos, bool& ok) {
-	// 已经搜到答案了就不断返回
-	if (ok) {
-		return;
-	}
+    // 已经搜到答案了就不断返回
+    if (ok) {
+        return;
+    }
 
-	// 如果还没有搜到答案，并且已经递归到了最开始的一层，就输出原始字符串相应位置的字符即可
-	if (!i) {
-		cout << s[pos - 1];
-		return;
-	}
+    // 如果还没有搜到答案，并且已经递归到了最开始的一层，就输出原始字符串相应位置的字符即可
+    if (!i) {
+        cout << s[pos - 1];
+        return;
+    }
 
-	int l1 = t1.size(), l2 = l1 + len[i - 1], l3 = l2 + t2.size(), l4 = l3 + len[i - 1];
-	if (pos <= l1) {
-		cout << t1[pos - 1];
-		ok = true;
-		return;
-	} else if (pos <= l2) {
-		dfs(len, i - 1, pos - l1, ok);
-	} else if (pos <= l3) {
-		cout << t2[pos - l2 - 1];
-		ok = true;
-		return;
-	} else if (pos <= l4) {
-		dfs(len, i - 1, pos - l3, ok);
-	} else {
-		cout << t3[pos - l4 - 1];
-		ok = true;
-		return;
-	}
+    int l1 = t1.size(), l2 = l1 + len[i - 1], l3 = l2 + t2.size(), l4 = l3 + len[i - 1];
+    if (pos <= l1) {
+        cout << t1[pos - 1];
+        ok = true;
+        return;
+    } else if (pos <= l2) {
+        dfs(len, i - 1, pos - l1, ok);
+    } else if (pos <= l3) {
+        cout << t2[pos - l2 - 1];
+        ok = true;
+        return;
+    } else if (pos <= l4) {
+        dfs(len, i - 1, pos - l3, ok);
+    } else {
+        cout << t3[pos - l4 - 1];
+        ok = true;
+        return;
+    }
 }
 
 void solve() {
-	cin >> n >> k;
+    cin >> n >> k;
 
-	vector<int> len(n + 10);
-	len[0] = s.size();
+    vector<int> len(n + 10);
+    len[0] = s.size();
 
-	for (int i = 1; i <= n; i++) {
-		len[i] = 2 * len[i - 1] + t1.size() + t2.size() + t3.size();
-		len[i] = min(len[i], (int)2e18); // 点睛之笔...
-	}
+    for (int i = 1; i <= n; i++) {
+        len[i] = 2 * len[i - 1] + t1.size() + t2.size() + t3.size();
+        len[i] = min(len[i], (int)2e18); // 点睛之笔...
+    }
 
-	// 特判下标越界的情况
-	if (k > len[n]) {
-		cout << ".";
-		return;
-	}
+    // 特判下标越界的情况
+    if (k > len[n]) {
+        cout << ".";
+        return;
+    }
 
-	// 否则开始从第n层开始递归搜索
-	bool ok = false;
-	dfs(len, n, k, ok);
+    // 否则开始从第n层开始递归搜索
+    bool ok = false;
+    dfs(len, n, k, ok);
 }
 
 signed main() {
-	int T = 1;
-	cin >> T;
-	while (T--) {
-		solve();
-	}
-	return 0;
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+    return 0;
 }
 ```
 
-### 6. 让我们异或吧
+### 【dfs】让我们异或吧
 
 https://www.luogu.com.cn/problem/P2420
 
@@ -394,53 +393,53 @@ https://www.luogu.com.cn/problem/P2420
 >
 > 思路：对于每次询问，我们当然可以遍历从根到两个结点的所有边权，然后全部异或计算结果，但是时间复杂度是 $O(n)$，显然不行，那么有什么优化策略吗？答案是有的。我们可以发现，对于两个结点之间的所有边权，其实就是根到两个结点的边权相异或得到的结果（异或的性质），我们只需要预处理出根结点到所有结点的边权已异或值，后续询问的时候直接 $O(1)$ 计算即可
 >
-> 时间复杂度：$O(n+q)$
+> 时间复杂度：$\Theta(n+q)$
 
 ```cpp
 const int N = 100010;
 
 struct node {
-	int id;
-	int w;
+    int id;
+    int w;
 };
 
-int n, m, f[N];		// f[i] 表示从根结点到 i 号结点的所有边权的异或值
+int n, m, f[N];        // f[i] 表示从根结点到 i 号结点的所有边权的异或值
 vector<node> G[N];
 bool vis[N];
 
 void dfs(int fa) {
-	if (!vis[fa]) {
-		vis[fa] = true;
-		for (auto& ch: G[fa]) {
-			f[ch.id] = f[fa] ^ ch.w;
-			dfs(ch.id);
-		}
-	}
+    if (!vis[fa]) {
+        vis[fa] = true;
+        for (auto& ch: G[fa]) {
+            f[ch.id] = f[fa] ^ ch.w;
+            dfs(ch.id);
+        }
+    }
 }
 
 void solve() {
-	cin >> n;
+    cin >> n;
 
-	for (int i = 0; i < n - 1; i++) {
-		int a, b, w;
-		cin >> a >> b >> w;
-		G[a].push_back({b, w});
-		G[b].push_back({a, w});
-	}
+    for (int i = 0; i < n - 1; i++) {
+        int a, b, w;
+        cin >> a >> b >> w;
+        G[a].push_back({b, w});
+        G[b].push_back({a, w});
+    }
 
-	dfs(1);
+    dfs(1);
 
-	cin >> m;
+    cin >> m;
 
-	while (m--) {
-		int u, v;
-		cin >> u >> v;
-		cout << (f[u] ^ f[v]) << "\n";
-	}
+    while (m--) {
+        int u, v;
+        cin >> u >> v;
+        cout << (f[u] ^ f[v]) << "\n";
+    }
 }
 ```
 
-### 7. Function
+### 【记忆化搜索】Function
 
 https://www.luogu.com.cn/problem/P1464
 
@@ -471,28 +470,28 @@ using namespace std;
 typedef long long ll;
 
 ll dfs(int a, int b, int c) {
-	if (a <= 0 || b <= 0 || c <= 0) return 1;
-	else if (a > 20 || b > 20 || c > 20) return dfs(20, 20, 20);
-	else if (a < b && b < c) return dfs(a, b, c - 1) + dfs(a, b - 1, c - 1) - dfs(a, b - 1, c);
-	else return dfs(a - 1, b, c) + dfs(a - 1, b - 1, c) + dfs(a - 1, b, c - 1) - dfs(a - 1, b - 1, c - 1);
+    if (a <= 0 || b <= 0 || c <= 0) return 1;
+    else if (a > 20 || b > 20 || c > 20) return dfs(20, 20, 20);
+    else if (a < b && b < c) return dfs(a, b, c - 1) + dfs(a, b - 1, c - 1) - dfs(a, b - 1, c);
+    else return dfs(a - 1, b, c) + dfs(a - 1, b - 1, c) + dfs(a - 1, b, c - 1) - dfs(a - 1, b - 1, c - 1);
 }
 
 void solve() {
-	int a, b, c;
-	cin >> a >> b >> c;
-	while (a != -1 && b != -1 && c != -1) {
-		printf("w(%d, %d, %d) = %lld\n", a, b, c, dfs(a, b, c));
-		cin >> a >> b >> c;
-	}
+    int a, b, c;
+    cin >> a >> b >> c;
+    while (a != -1 && b != -1 && c != -1) {
+        printf("w(%d, %d, %d) = %lld\n", a, b, c, dfs(a, b, c));
+        cin >> a >> b >> c;
+    }
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -508,41 +507,41 @@ const int N = 25;
 ll f[N][N][N];
 
 ll dfs(ll a, ll b, ll c) {
-	// 上下界
-	if (a <= 0 || b <= 0 || c <= 0) return 1;
-	else if (a > 20 || b > 20 || c > 20) return dfs(20, 20, 20);
+    // 上下界
+    if (a <= 0 || b <= 0 || c <= 0) return 1;
+    else if (a > 20 || b > 20 || c > 20) return dfs(20, 20, 20);
 
-	if (f[a][b][c]) {
-		// 已经记忆化过了，直接返回当前状态的解
-		return f[a][b][c];
-	}
-	else {
-		// 没有记忆化过，就递归计算并且记忆化
-		if (a < b && b < c) return f[a][b][c] = dfs(a, b, c - 1) + dfs(a, b - 1, c - 1) - dfs(a, b - 1, c);
-		else return f[a][b][c] = dfs(a - 1, b, c) + dfs(a - 1, b - 1, c) + dfs(a - 1, b, c - 1) - dfs(a - 1, b - 1, c - 1);
-	}
+    if (f[a][b][c]) {
+        // 已经记忆化过了，直接返回当前状态的解
+        return f[a][b][c];
+    }
+    else {
+        // 没有记忆化过，就递归计算并且记忆化
+        if (a < b && b < c) return f[a][b][c] = dfs(a, b, c - 1) + dfs(a, b - 1, c - 1) - dfs(a, b - 1, c);
+        else return f[a][b][c] = dfs(a - 1, b, c) + dfs(a - 1, b - 1, c) + dfs(a - 1, b, c - 1) - dfs(a - 1, b - 1, c - 1);
+    }
 }
 
 void solve() {
-	ll a, b, c;
-	cin >> a >> b >> c;
-	while (!(a == -1 && b == -1 && c == -1)) {
-		printf("w(%lld, %lld, %lld) = %lld\n", a, b, c, dfs(a, b, c));
-		cin >> a >> b >> c;
-	}
+    ll a, b, c;
+    cin >> a >> b >> c;
+    while (!(a == -1 && b == -1 && c == -1)) {
+        printf("w(%lld, %lld, %lld) = %lld\n", a, b, c, dfs(a, b, c));
+        cin >> a >> b >> c;
+    }
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 8. 外星密码
+### 【递归】外星密码
 
 https://www.luogu.com.cn/problem/P1928
 
@@ -585,14 +584,14 @@ https://www.luogu.com.cn/problem/P1928
 >         - 最外层中括号组成的单元：递归处理
 >         - 连续的字母单元：直接加入当前答案字符串即可
 >
-> - 手模样例：
+> - 手玩样例：
 >
->     <img src="C:/Users/%E8%91%A3%E6%96%87%E6%9D%B0/AppData/Roaming/Typora/typora-user-images/image-20231125121853866.png" alt="image-20231125121853866" style="zoom: 50%;" />
+>     ![手玩样例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407250147150.png)
 >
 >     - 显然按照定义，上述压缩字符串一共有五个单元
 >     - 我们用红色表示进入递归，蓝色表示驱动递归结束并回溯。可以发现
 >
-> - 时间复杂度：$O(\text{res.length()})$
+> - 时间复杂度：$\Theta(\text{res.length()})$
 
 ```cpp
 #include <bits/stdc++.h>
@@ -603,55 +602,55 @@ string s;
 int i;
 
 string dfs() {
-	string res;
+    string res;
 
-	while (i < s.size()) {
-		if (s[i] >= 'A' && s[i] <= 'Z') {
-			while (s[i] >= 'A' && s[i] <= 'Z') {
-				res += s[i++];
-			}
-		}
-		if (s[i] == '[') {
-			i++;
-			res += dfs();
-		}
-		if (isdigit(s[i])) {
-			int cnt = 0;
-			while (isdigit(s[i])) {
-				cnt = cnt * 10 + s[i] - '0';
-				i++;
-			}
-			string t = dfs();
-			while (cnt--) {
-				res += t;
-			}
-			return res;
-		}
-		if (s[i] == ']') {
-			i++;
-			return res;
-		}
-	}
+    while (i < s.size()) {
+        if (s[i] >= 'A' && s[i] <= 'Z') {
+            while (s[i] >= 'A' && s[i] <= 'Z') {
+                res += s[i++];
+            }
+        }
+        if (s[i] == '[') {
+            i++;
+            res += dfs();
+        }
+        if (isdigit(s[i])) {
+            int cnt = 0;
+            while (isdigit(s[i])) {
+                cnt = cnt * 10 + s[i] - '0';
+                i++;
+            }
+            string t = dfs();
+            while (cnt--) {
+                res += t;
+            }
+            return res;
+        }
+        if (s[i] == ']') {
+            i++;
+            return res;
+        }
+    }
 
-	return res;
+    return res;
 }
 
 void solve() {
-	cin >> s;
-	cout << dfs() << "\n";
+    cin >> s;
+    cout << dfs() << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 9. [NOIP2002 普及组] 选数
+### 【dfs+剪枝/二进制枚举】选数
 
 https://www.luogu.com.cn/problem/P1036
 
@@ -683,11 +682,11 @@ int n, k, a[N];
 int res;
 
 bool isPrime(int x) {
-	if (x < 2) return false;
-	for (int i = 2; i <= x / i; i++)
-		if (x % i == 0)
-			return false;
-	return true;
+    if (x < 2) return false;
+    for (int i = 2; i <= x / i; i++)
+        if (x % i == 0)
+            return false;
+    return true;
 }
 
 /**
@@ -696,35 +695,35 @@ bool isPrime(int x) {
  * @param sum 当前选数状态下的总和
  */
 void dfs(int cnt, int idx, int sum) {
-	if (idx > n) return;
+    if (idx > n) return;
 
-	if (cnt == k) {
-		if (isPrime(sum)) res++;
-		return;
-	}
+    if (cnt == k) {
+        if (isPrime(sum)) res++;
+        return;
+    }
 
-	dfs(cnt, idx + 1, sum);
-	dfs(cnt + 1, idx + 1, sum + a[idx + 1]);
+    dfs(cnt, idx + 1, sum);
+    dfs(cnt + 1, idx + 1, sum + a[idx + 1]);
 }
 
 void solve() {
-	cin >> n >> k;
-	for (int i = 1; i <= n; i++)
-		cin >> a[i];
+    cin >> n >> k;
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
 
-	dfs(0, 1, 0);		// 不选第一个数
-	dfs(1, 1, a[1]);	// 选第一个数
+    dfs(0, 1, 0);        // 不选第一个数
+    dfs(1, 1, a[1]);    // 选第一个数
 
-	cout << res << "\n";
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -741,43 +740,43 @@ int n, k, a[N];
 int res;
 
 bool isPrime(int x) {
-	if (x < 2) return false;
-	for (int i = 2; i <= x / i; i++)
-		if (x % i == 0)
-			return false;
-	return true;
+    if (x < 2) return false;
+    for (int i = 2; i <= x / i; i++)
+        if (x % i == 0)
+            return false;
+    return true;
 }
 
 void solve() {
-	cin >> n >> k;
-	for (int i = 1; i <= n; i++)
-		cin >> a[i];
+    cin >> n >> k;
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
 
-	for (int i = 0; i < (1 << n); i++) {
-		int cnt = 0, sum = 0;
-		for (int j = 0; j < n; j++)
-			if (i & (1 << j))
-				cnt++, sum += a[j + 1];
+    for (int i = 0; i < (1 << n); i++) {
+        int cnt = 0, sum = 0;
+        for (int j = 0; j < n; j++)
+            if (i & (1 << j))
+                cnt++, sum += a[j + 1];
 
-		if (cnt != k) continue;
+        if (cnt != k) continue;
 
-		if (isPrime(sum)) res++;
-	}
+        if (isPrime(sum)) res++;
+    }
 
-	cout << res << "\n";
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 10. 01迷宫
+### 【dfs/bfs】01迷宫
 
 https://www.luogu.com.cn/problem/P1141
 
@@ -785,13 +784,10 @@ https://www.luogu.com.cn/problem/P1141
 >
 > 思路：我们可以将此问题转化为一个求解连通块的问题。对于矩阵中的一个连通块，我们定义为：在其中任意一个位置开始行走，都可以走过整个连通块每一个位置。那么在询问时，只需要输出所在连通块元素的个数即可。现在将问题转化为了
 >
-> 1. 如何遍历每一个连通块？
+> 1. 如何遍历每一个连通块？按照标记数组的情况，如果一个位置没有被标记，就从这个位置出发开始打标记并统计
 >
->     按照标记数组的情况，如果一个位置没有被标记，就从这个位置出发开始打标记并统计
+> 2. 如何统计每一个连通块中元素的个数？按照题目中给定的迷宫行走规则，可以通过bfs或者dfs实现遍历
 >
-> 2. 如何统计每一个连通块中元素的个数？
->
->     按照题目中给定的迷宫行走规则，可以通过bfs或者dfs实现遍历
 
 bfs代码
 
@@ -806,66 +802,66 @@ char g[N][N];
 bool vis[N][N];
 
 void bfs(int u, int v) {
-	queue<pair<int, int>> q;
-	int cnt = 0; // 当前“连通块”的大小
-	vector<pair<int, int>> a;
+    queue<pair<int, int>> q;
+    int cnt = 0; // 当前“连通块”的大小
+    vector<pair<int, int>> a;
 
-	q.push({u, v});
-	a.push_back({u, v});
-	vis[u][v] = true;
-	cnt++;
+    q.push({u, v});
+    a.push_back({u, v});
+    vis[u][v] = true;
+    cnt++;
 
-	int dx[4] = {-1, 1, 0, 0}, dy[4] = {0, 0, 1, -1};
+    int dx[4] = {-1, 1, 0, 0}, dy[4] = {0, 0, 1, -1};
 
-	while (q.size()) {
-		auto& now = q.front();
-		q.pop();
+    while (q.size()) {
+        auto& now = q.front();
+        q.pop();
 
-		for (int i = 0; i < 4; i++) {
-			int x = dx[i] + now.first, y = dy[i] + now.second;
-			if (x >= 1 && x <= n && y >= 1 && y <= n && !vis[x][y] && g[x][y] != g[now.first][now.second]) {
-				q.push({x, y});
-				a.push_back({x, y});
-				vis[x][y] = true;
-				cnt++;
-			}
-		}
-	}
+        for (int i = 0; i < 4; i++) {
+            int x = dx[i] + now.first, y = dy[i] + now.second;
+            if (x >= 1 && x <= n && y >= 1 && y <= n && !vis[x][y] && g[x][y] != g[now.first][now.second]) {
+                q.push({x, y});
+                a.push_back({x, y});
+                vis[x][y] = true;
+                cnt++;
+            }
+        }
+    }
 
-	for (auto& loc: a) {
-		res[loc.first][loc.second] = cnt;
-	}
+    for (auto& loc: a) {
+        res[loc.first][loc.second] = cnt;
+    }
 }
 
 void solve() {
-	cin >> n >> m;
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= n; j++)
-			cin >> g[i][j];
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            cin >> g[i][j];
 
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= n; j++)
-			if (!vis[i][j])
-				bfs(i, j);
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            if (!vis[i][j])
+                bfs(i, j);
 
-	while (m--) {
-		int a, b;
-		cin >> a >> b;
-		if (vis[a][b]) {
-			cout << res[a][b] << "\n";
-		} else {
-			cout << 1 << "\n";
-		}
-	}
+    while (m--) {
+        int a, b;
+        cin >> a >> b;
+        if (vis[a][b]) {
+            cout << res[a][b] << "\n";
+        } else {
+            cout << 1 << "\n";
+        }
+    }
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -883,59 +879,59 @@ bool vis[N][N];
 
 // 当前点的坐标 (u, v)，当前连通块的元素个数cnt，当前连通块的元素存到 a 数组
 void dfs(int u, int v, int& cnt, vector<pair<int, int>>& a) {
-	cnt++;
-	a.push_back({u, v});
-	vis[u][v] = true;
+    cnt++;
+    a.push_back({u, v});
+    vis[u][v] = true;
 
-	int dx[4] = {0, 0, 1, -1}, dy[4] = {1, -1, 0, 0};
+    int dx[4] = {0, 0, 1, -1}, dy[4] = {1, -1, 0, 0};
 
-	for (int k = 0; k < 4; k++) {
-		int x = u + dx[k], y = v + dy[k];
-		if (x >= 1 && x <= n && y >= 1 && y <= n && !vis[x][y] && g[x][y] != g[u][v]) {
-			dfs(x, y, cnt, a);
-		}
-	}
+    for (int k = 0; k < 4; k++) {
+        int x = u + dx[k], y = v + dy[k];
+        if (x >= 1 && x <= n && y >= 1 && y <= n && !vis[x][y] && g[x][y] != g[u][v]) {
+            dfs(x, y, cnt, a);
+        }
+    }
 }
 
 void solve() {
-	cin >> n >> m;
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= n; j++)
-			cin >> g[i][j];
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            cin >> g[i][j];
 
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= n; j++)
-			if (!vis[i][j]) {
-				int cnt = 0;
-				vector<pair<int, int>> a;
-				dfs(i, j, cnt, a);
-				for (auto& loc: a) {
-					res[loc.first][loc.second] = cnt;
-				}
-			}
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            if (!vis[i][j]) {
+                int cnt = 0;
+                vector<pair<int, int>> a;
+                dfs(i, j, cnt, a);
+                for (auto& loc: a) {
+                    res[loc.first][loc.second] = cnt;
+                }
+            }
 
-	while (m--) {
-		int a, b;
-		cin >> a >> b;
-		if (vis[a][b]) {
-			cout << res[a][b] << "\n";
-		} else {
-			cout << 1 << "\n";
-		}
-	}
+    while (m--) {
+        int a, b;
+        cin >> a >> b;
+        if (vis[a][b]) {
+            cout << res[a][b] << "\n";
+        } else {
+            cout << 1 << "\n";
+        }
+    }
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 11. kkksc03考前临时抱佛脚
+### 【dfs/二进制枚举】kkksc03考前临时抱佛脚
 
 https://www.luogu.com.cn/problem/P2392
 
@@ -965,37 +961,37 @@ const int N = 25;
 int a[N], res;
 
 void fun(int n) {
-	int MIN = 20 * 60;
-	for (int i = 0; i <= (1 << n); i++) {
-		int l = 0, r = 0; 
-		for (int j = 0; j < n; j++) {
-			if (i & (1 << j)) r += a[j];
-			else l += a[j];
-		}
-		MIN = min(MIN, max(l, r));
-	}
-	res += MIN;
+    int MIN = 20 * 60;
+    for (int i = 0; i <= (1 << n); i++) {
+        int l = 0, r = 0; 
+        for (int j = 0; j < n; j++) {
+            if (i & (1 << j)) r += a[j];
+            else l += a[j];
+        }
+        MIN = min(MIN, max(l, r));
+    }
+    res += MIN;
 }
 
 void solve() {
-	int x[4] {};
-	for (int i = 0; i < 4; i++) cin >> x[i];
-	
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < x[i]; j++) cin >> a[j];
-		fun(x[i]);
-	}
-	
-	cout << res << "\n";
+    int x[4] {};
+    for (int i = 0; i < 4; i++) cin >> x[i];
+    
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < x[i]; j++) cin >> a[j];
+        fun(x[i]);
+    }
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1013,50 +1009,50 @@ int MIN; // 每一组数据划分为 2 组后每一组的最大和值
 
 // 第 idx 个数分到某一组时左组之和 ls，右组之和 rs 
 void dfs(int idx, bool isRight, int ls, int rs, int n) {
-	if (idx == n) {
-		MIN = min(MIN, max(ls, rs));
-		return;
-	}
-	
-	if (ls > MIN || rs > MIN) {
-		// 剪枝：当前左组之和 or 右组之和比最大和值都大 
-		return;
-	}
-	
-	if (isRight) rs += a[idx];
-	else ls += a[idx];
-	
-	dfs(idx + 1, false, ls, rs, n);
-	dfs(idx + 1, true , ls, rs, n); 
+    if (idx == n) {
+        MIN = min(MIN, max(ls, rs));
+        return;
+    }
+    
+    if (ls > MIN || rs > MIN) {
+        // 剪枝：当前左组之和 or 右组之和比最大和值都大 
+        return;
+    }
+    
+    if (isRight) rs += a[idx];
+    else ls += a[idx];
+    
+    dfs(idx + 1, false, ls, rs, n);
+    dfs(idx + 1, true , ls, rs, n); 
 }
 
 void solve() {
-	int x[4] {};
-	for (int i = 0; i < 4; i++) cin >> x[i];
-	
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < x[i]; j++) cin >> a[j];
-		
-		MIN = 20 * 60;
-		dfs(0, false, 0, 0, x[i]);
-		dfs(0, true , 0, 0, x[i]);
-		res += MIN;
-	}
-	
-	cout << res << "\n";
+    int x[4] {};
+    for (int i = 0; i < 4; i++) cin >> x[i];
+    
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < x[i]; j++) cin >> a[j];
+        
+        MIN = 20 * 60;
+        dfs(0, false, 0, 0, x[i]);
+        dfs(0, true , 0, 0, x[i]);
+        res += MIN;
+    }
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 12. [COCI 2008/2009 #2] PERKET
+### 【dfs/二进制枚举】PERKET
 
 https://www.luogu.com.cn/problem/P2036
 
@@ -1087,41 +1083,41 @@ int n;
 int res = 1e9;
 
 struct {
-	int l, r;
+    int l, r;
 } a[N];
 
 void solve() {
-	cin >> n;
-	for (int i = 0; i < n; i++) cin >> a[i].l >> a[i].r;
-	
-	for (int i = 0; i <= (1 << n); i++) {
-		// 特判没有调料的情况 
-		int cnt = 0;
-		for (int j = 0; j < n; j++)
-			if (i & (1 << j))
-				cnt++;
-				
-		if (!cnt) continue;
-		
-		// 计算两个味道的差值
-		int ls = 1, rs = 0;
-		for (int j = 0; j < n; j++)
-			if (i & (1 << j))
-				ls *= a[j].l, rs += a[j].r;
-				
-		res = min(res, abs(ls - rs));
-	}
-	
-	cout << res << "\n";
+    cin >> n;
+    for (int i = 0; i < n; i++) cin >> a[i].l >> a[i].r;
+    
+    for (int i = 0; i <= (1 << n); i++) {
+        // 特判没有调料的情况 
+        int cnt = 0;
+        for (int j = 0; j < n; j++)
+            if (i & (1 << j))
+                cnt++;
+                
+        if (!cnt) continue;
+        
+        // 计算两个味道的差值
+        int ls = 1, rs = 0;
+        for (int j = 0; j < n; j++)
+            if (i & (1 << j))
+                ls *= a[j].l, rs += a[j].r;
+                
+        res = min(res, abs(ls - rs));
+    }
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1138,47 +1134,47 @@ int n;
 int res = 1e9;
 
 struct {
-	int l, r;
+    int l, r;
 } a[N];
 
 // 当前决策元素的下标idx，是否被选择choose，酸度之积ls，苦度之和rs 
 void dfs(int idx, bool choose, int ls, int rs) {
-	if (idx == n) {
-		if (ls == 1 && rs == 0) return;
-		res = min(res, abs(ls - rs));
-		return;
-	}
-	
-	if (choose) {
-		ls *= a[idx].l;
-		rs += a[idx].r;
-	}
-	
-	dfs(idx + 1, false, ls, rs);
-	dfs(idx + 1, true , ls, rs);
+    if (idx == n) {
+        if (ls == 1 && rs == 0) return;
+        res = min(res, abs(ls - rs));
+        return;
+    }
+    
+    if (choose) {
+        ls *= a[idx].l;
+        rs += a[idx].r;
+    }
+    
+    dfs(idx + 1, false, ls, rs);
+    dfs(idx + 1, true , ls, rs);
 }
 
 void solve() {
-	cin >> n;
-	for (int i = 0; i < n; i++) cin >> a[i].l >> a[i].r;
-	
-	dfs(0, false, 1, 0);
-	dfs(0, true , 1, 0);
-	
-	cout << res << "\n";
+    cin >> n;
+    for (int i = 0; i < n; i++) cin >> a[i].l >> a[i].r;
+    
+    dfs(0, false, 1, 0);
+    dfs(0, true , 1, 0);
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 13. 迷宫
+### 【dfs】迷宫
 
 https://www.luogu.com.cn/problem/P1605
 
@@ -1203,47 +1199,47 @@ int res;
 int dx[] = {-1, 1, 0, 0}, dy[] = {0, 0, 1, -1};
 
 void dfs(int x, int y) {
-	if (x == cc && y == dd) {
-		res++;
-		return;
-	}
-	
-	for (int k = 0; k < 4; k++) {
-		int xx = x + dx[k], yy = y + dy[k];
-		if (xx > 0 && xx <= n && yy > 0 && yy <= m && !g[xx][yy] && !vis[xx][yy]) {
-			vis[x][y] = true;
-			dfs(xx, yy);
-			vis[x][y] = false;
-		}
-	}
+    if (x == cc && y == dd) {
+        res++;
+        return;
+    }
+    
+    for (int k = 0; k < 4; k++) {
+        int xx = x + dx[k], yy = y + dy[k];
+        if (xx > 0 && xx <= n && yy > 0 && yy <= m && !g[xx][yy] && !vis[xx][yy]) {
+            vis[x][y] = true;
+            dfs(xx, yy);
+            vis[x][y] = false;
+        }
+    }
 }
 
 void solve() {
-	cin >> n >> m >> k;
-	cin >> aa >> bb >> cc >> dd;
-	
-	while (k--) {
-		int x, y;
-		cin >> x >> y;
-		g[x][y] = 1;
-	}
-	
-	dfs(aa, bb);
-	
-	cout << res << "\n";
+    cin >> n >> m >> k;
+    cin >> aa >> bb >> cc >> dd;
+    
+    while (k--) {
+        int x, y;
+        cin >> x >> y;
+        g[x][y] = 1;
+    }
+    
+    dfs(aa, bb);
+    
+    cout << res << "\n";
 } 
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 14. 单词方阵
+### 【dfs】单词方阵
 
 https://www.luogu.com.cn/problem/P1101
 
@@ -1263,57 +1259,57 @@ char g[N][N], res[N][N], s[10] = "yizhong";
 
 // oa,ob 父结点坐标，a,b 当前结点坐标，idx 当前匹配的位置
 void dfs(int oa, int ob, int a, int b, int idx) {
-	if (s[idx] != g[a][b]) return;
-	
-	if (idx == 6) {
-		int i = a, j = b;
-		for (int t = 6; t >= 0; t--) {
-			res[i][j] = s[t];
-			i -= a - oa;
-			j -= b - ob;
-		}
-		return;
-	}
-	
-	int dx[] = {1, -1, 0, 0, 1, -1, -1, 1}, dy[] = {0, 0, 1, -1, 1, 1, -1, -1};
-	
-	for (int k = 0; k < 8; k++) {
-		int x = a + dx[k], y = b + dy[k];
-		if (x < 1 || x > n || y < 1 || y > n) continue;
-		
-		if ((oa == -1 && ob == -1) || (x - a == a - oa && y - b == b - ob))
-			dfs(a, b, x, y, idx + 1);
-	}
+    if (s[idx] != g[a][b]) return;
+    
+    if (idx == 6) {
+        int i = a, j = b;
+        for (int t = 6; t >= 0; t--) {
+            res[i][j] = s[t];
+            i -= a - oa;
+            j -= b - ob;
+        }
+        return;
+    }
+    
+    int dx[] = {1, -1, 0, 0, 1, -1, -1, 1}, dy[] = {0, 0, 1, -1, 1, 1, -1, -1};
+    
+    for (int k = 0; k < 8; k++) {
+        int x = a + dx[k], y = b + dy[k];
+        if (x < 1 || x > n || y < 1 || y > n) continue;
+        
+        if ((oa == -1 && ob == -1) || (x - a == a - oa && y - b == b - ob))
+            dfs(a, b, x, y, idx + 1);
+    }
 }
 
 void solve() {
-	cin >> n;
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= n; j++)
-			cin >> g[i][j], res[i][j] = '*';
-	
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= n; j++)
-			dfs(-1, -1, i, j, 0);
-	
-	for (int i = 1; i <= n; i++) {
-		for (int j = 1; j <= n; j++)
-			cout << res[i][j];
-		cout << "\n";
-	}
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            cin >> g[i][j], res[i][j] = '*';
+    
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            dfs(-1, -1, i, j, 0);
+    
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++)
+            cout << res[i][j];
+        cout << "\n";
+    }
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 15. 自然数的拆分问题
+### 【dfs】自然数的拆分问题
 
 https://www.luogu.com.cn/problem/P2404
 
@@ -1331,42 +1327,42 @@ vector<int> res;
 
 // now 表示当前结点的值，sum 表示根到当前结点的路径之和
 void dfs(int now, int sum) {
-	if (sum > n) return;
-	
-	if (sum == n) {
-		for (int i = 0; i < res.size(); i++)
-			cout << res[i] << "+\n"[i == res.size() - 1];
-		return;
-	}
-	
-	for (int i = now; i < n; i++) {
-		res.push_back(i);
-		dfs(i, sum + i);
-		res.pop_back();
-	}
+    if (sum > n) return;
+    
+    if (sum == n) {
+        for (int i = 0; i < res.size(); i++)
+            cout << res[i] << "+\n"[i == res.size() - 1];
+        return;
+    }
+    
+    for (int i = now; i < n; i++) {
+        res.push_back(i);
+        dfs(i, sum + i);
+        res.pop_back();
+    }
 }
 
 void solve() {
-	cin >> n;
-	
-	for (int i = 1; i < n; i++) {
-		res.push_back(i);
-		dfs(i, i);
-		res.pop_back();
-	}
+    cin >> n;
+    
+    for (int i = 1; i < n; i++) {
+        res.push_back(i);
+        dfs(i, i);
+        res.pop_back();
+    }
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 16. [USACO10OCT] Lake Counting S
+### 【dfs】Lake Counting S
 
 https://www.luogu.com.cn/problem/P1596
 
@@ -1389,37 +1385,37 @@ bool vis[N][N];
 int res, dx[] = {1, -1, 0, 0, 1, 1, -1, -1}, dy[] = {0, 0, 1, -1, 1, -1, 1, -1};
 
 void dfs(int i, int j) {
-	if (i < 1 || i > n || j < 1 || j > m || vis[i][j] || g[i][j] != 'W') return;
-	
-	vis[i][j] = true;
-	
-	for (int k = 0; k < 8; k++) {
-		int x = i + dx[k], y = j + dy[k];
-		dfs(x, y);
-	}
+    if (i < 1 || i > n || j < 1 || j > m || vis[i][j] || g[i][j] != 'W') return;
+    
+    vis[i][j] = true;
+    
+    for (int k = 0; k < 8; k++) {
+        int x = i + dx[k], y = j + dy[k];
+        dfs(x, y);
+    }
 }
 
 void solve() {
-	cin >> n >> m;
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= m; j++)
-			cin >> g[i][j];
-	
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= m; j++)
-			if (!vis[i][j] && g[i][j] == 'W')
-				dfs(i, j), res++;
-	
-	cout << res << "\n";
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= m; j++)
+            cin >> g[i][j];
+    
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= m; j++)
+            if (!vis[i][j] && g[i][j] == 'W')
+                dfs(i, j), res++;
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1438,51 +1434,51 @@ bool vis[N][N];
 int res, dx[] = {1, -1, 0, 0, 1, 1, -1, -1}, dy[] = {0, 0, 1, -1, 1, -1, 1, -1};
 
 void bfs(int i, int j) {
-	queue<pair<int, int>> q;
-	
-	q.push({i, j});
-	vis[i][j] = true;
-	
-	while (q.size()) {
-		auto h = q.front();
-		q.pop();
-		
-		int x = h.first, y = h.second;
-		for (int k = 0; k < 8; k++) {
-			int xx = x + dx[k], yy = y + dy[k];
-			if (!vis[xx][yy] && g[xx][yy] == 'W') {
-				q.push({xx, yy});
-				vis[xx][yy] = true;
-			}
-		}
-	}
+    queue<pair<int, int>> q;
+    
+    q.push({i, j});
+    vis[i][j] = true;
+    
+    while (q.size()) {
+        auto h = q.front();
+        q.pop();
+        
+        int x = h.first, y = h.second;
+        for (int k = 0; k < 8; k++) {
+            int xx = x + dx[k], yy = y + dy[k];
+            if (!vis[xx][yy] && g[xx][yy] == 'W') {
+                q.push({xx, yy});
+                vis[xx][yy] = true;
+            }
+        }
+    }
 }
 
 void solve() {
-	cin >> n >> m;
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= m; j++)
-			cin >> g[i][j];
-	
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= m; j++)
-			if (!vis[i][j] && g[i][j] == 'W')
-				bfs(i, j), res++;
-	
-	cout << res << "\n";
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= m; j++)
+            cin >> g[i][j];
+    
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= m; j++)
+            if (!vis[i][j] && g[i][j] == 'W')
+                bfs(i, j), res++;
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 17. 填涂颜色
+### 【dfs】填涂颜色
 
 https://www.luogu.com.cn/problem/P1162
 
@@ -1502,46 +1498,46 @@ int dx[] = {0, 0, 1, -1}, dy[] = {1, -1, 0, 0};
 bool vis[N][N];
 
 void dfs(int i, int j) {
-	if (i < 1 || i > n || j < 1 || j > n || g[i][j] == 1 || vis[i][j]) return;
-	
-	vis[i][j] = true;
-	
-	for (int k = 0; k < 4; k++) {
-		int x = i + dx[k], y = j + dy[k];
-		dfs(x, y);
-	}
+    if (i < 1 || i > n || j < 1 || j > n || g[i][j] == 1 || vis[i][j]) return;
+    
+    vis[i][j] = true;
+    
+    for (int k = 0; k < 4; k++) {
+        int x = i + dx[k], y = j + dy[k];
+        dfs(x, y);
+    }
 }
 
 void solve() {
-	cin >> n;
-	
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= n; j++)
-			cin >> g[i][j];
-	
-	for (int i = 1; i <= n; i++) if (g[1][i] == 0 && !vis[1][i]) dfs(1, i);
-	for (int i = 1; i <= n; i++) if (g[i][n] == 0 && !vis[i][n]) dfs(i, n);
-	for (int i = 1; i <= n; i++) if (g[n][i] == 0 && !vis[n][i]) dfs(n, i);
-	for (int i = 1; i <= n; i++) if (g[i][1] == 0 && !vis[i][1]) dfs(i, 1);
-	
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= n; j++)
-			if (vis[i][j]) cout << 0 << " \n"[j == n];
-			else if (g[i][j] == 0) cout << 2 << " \n"[j == n];
-			else cout << g[i][j] << " \n"[j == n];
+    cin >> n;
+    
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            cin >> g[i][j];
+    
+    for (int i = 1; i <= n; i++) if (g[1][i] == 0 && !vis[1][i]) dfs(1, i);
+    for (int i = 1; i <= n; i++) if (g[i][n] == 0 && !vis[i][n]) dfs(i, n);
+    for (int i = 1; i <= n; i++) if (g[n][i] == 0 && !vis[n][i]) dfs(n, i);
+    for (int i = 1; i <= n; i++) if (g[i][1] == 0 && !vis[i][1]) dfs(i, 1);
+    
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            if (vis[i][j]) cout << 0 << " \n"[j == n];
+            else if (g[i][j] == 0) cout << 2 << " \n"[j == n];
+            else cout << g[i][j] << " \n"[j == n];
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 18. 马的遍历
+### 【bfs】马的遍历
 
 https://www.luogu.com.cn/problem/P1443
 
@@ -1557,7 +1553,7 @@ using namespace std;
 const int N = 410;
 
 struct Idx {
-	int x, y;
+    int x, y;
 };
 
 int n, m, x, y;
@@ -1565,52 +1561,52 @@ int d[N][N];
 int dx[] = {1, 1, -1, -1, 2, 2, -2, -2}, dy[] = {2, -2, 2, -2, 1, -1, 1, -1};
 
 void bfs() {
-	queue<Idx> q;
-	q.push({x, y});
-	d[x][y] = 0;
-	
-	while (q.size()) {
-		auto h = q.front();
-		q.pop();
-		
-		for (int k = 0; k < 8; k++) {
-			int i = h.x + dx[k], j = h.y + dy[k];
-			if (i < 1 || i > n || j < 1 || j > m || d[i][j] != -1) continue;
-			d[i][j] = d[h.x][h.y] + 1;
-			q.push({i, j});
-		}
-	}
+    queue<Idx> q;
+    q.push({x, y});
+    d[x][y] = 0;
+    
+    while (q.size()) {
+        auto h = q.front();
+        q.pop();
+        
+        for (int k = 0; k < 8; k++) {
+            int i = h.x + dx[k], j = h.y + dy[k];
+            if (i < 1 || i > n || j < 1 || j > m || d[i][j] != -1) continue;
+            d[i][j] = d[h.x][h.y] + 1;
+            q.push({i, j});
+        }
+    }
 }
 
 void solve() {
-	cin >> n >> m >> x >> y;
-	
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= m; j++)
-			d[i][j] = -1;
-	
-	bfs();
-	
-	for (int i = 1; i <= n; i++)
-		for (int j = 1; j <= m; j++)
-			cout << d[i][j] << " \n"[j == m];
+    cin >> n >> m >> x >> y;
+    
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= m; j++)
+            d[i][j] = -1;
+    
+    bfs();
+    
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= m; j++)
+            cout << d[i][j] << " \n"[j == m];
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 19. 奇怪的电梯
+### 【bfs】奇怪的电梯
 
 https://www.luogu.com.cn/problem/P1135
 
-> - 题意：给定一个电梯，第 i 层只能上升或者下降 a[i] 层，问从起点开始到终点最少需要乘坐几次电梯
+> - 题意：给定一个电梯，第 `i` 层只能上升或者下降 `a[i]` 层，问从起点开始到终点最少需要乘坐几次电梯
 > - 思路：很显然的一个宽搜，关键在于需要对打标记避免重复访问结点造成死循环
 > - 时间复杂度：$O(n)$
 
@@ -1626,56 +1622,56 @@ int d[N]; // d[i] 表示起点到第 i 层楼的最小操作次数
 bool vis[N];
 
 void bfs() {
-	queue<int> q;
-	
-	q.push(x);
-	d[x] = 0;
-	vis[x] = true;
-	
-	while (q.size()) {
-		int now = q.front();
-		q.pop();
-		
-		if (now == y) break;
-		
-		int high = now + a[now], low = now - a[now];
-		
-		if (!vis[high] && high >= 1 && high <= n) {
-			q.push(high);
-			d[high] = d[now] + 1;
-			vis[high] = true;
-		}
-		if (!vis[low] && low >= 1 && low <= n) {
-			q.push(low);
-			d[low] = d[now] + 1;
-			vis[low] = true;
-		}
-	}
+    queue<int> q;
+    
+    q.push(x);
+    d[x] = 0;
+    vis[x] = true;
+    
+    while (q.size()) {
+        int now = q.front();
+        q.pop();
+        
+        if (now == y) break;
+        
+        int high = now + a[now], low = now - a[now];
+        
+        if (!vis[high] && high >= 1 && high <= n) {
+            q.push(high);
+            d[high] = d[now] + 1;
+            vis[high] = true;
+        }
+        if (!vis[low] && low >= 1 && low <= n) {
+            q.push(low);
+            d[low] = d[now] + 1;
+            vis[low] = true;
+        }
+    }
 }
 
 void solve() {
-	cin >> n >> x >> y;
-	for (int i = 1; i <= n; i++) {
-		cin >> a[i];
-		d[i] = -1;
-	}
-	
-	bfs();
-	
-	cout << d[y] << "\n";
+    cin >> n >> x >> y;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+        d[i] = -1;
+    }
+    
+    bfs();
+    
+    cout << d[y] << "\n";
 } 
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 20. 吃奶酪:fire:
+### 【dfs/状压dp】吃奶酪 :star:
 
 > 题意：给定一个平面直角坐标系与 n 个点的坐标，起点在坐标原点。问如何选择行进路线使得到达每一个点且总路程最短 
 > - 思路一：爆搜。题中的 $n \le 15$ 直接无脑爆搜，但是 **TLE**。爆搜的思路为：每次选择其中的一个点，接下来选择剩余的没有被选择过的点继续搜索，知道所有的点全部都搜到为止
@@ -1700,49 +1696,49 @@ double res = 4000.0;
 bool vis[N];
 
 struct Idx {
-	double x, y;
+    double x, y;
 } a[N];
 
 double d(Idx be, Idx en) {
-	return sqrt((be.x - en.x) * (be.x - en.x) + (be.y - en.y) * (be.y - en.y));
+    return sqrt((be.x - en.x) * (be.x - en.x) + (be.y - en.y) * (be.y - en.y));
 }
 
 // 父结点坐标 fa，当前结点次序 now，当前路径长度 len 
 void dfs(Idx fa, int now, double len) {
-	vis[now] = true;
-	
-	if (count(vis + 1, vis + n + 1, true) == n) {
-		res = min(res, len);
-	}
-	
-	for (int i = 1; i <= n; i++)
-		if (!vis[i])
-			dfs(a[now], i, len + d(a[now], a[i]));
-	
-	vis[now] = false;
+    vis[now] = true;
+    
+    if (count(vis + 1, vis + n + 1, true) == n) {
+        res = min(res, len);
+    }
+    
+    for (int i = 1; i <= n; i++)
+        if (!vis[i])
+            dfs(a[now], i, len + d(a[now], a[i]));
+    
+    vis[now] = false;
 }
 
 void solve() {
-	cin >> n;
-	for (int i = 1; i <= n; i++) {
-		cin >> a[i].x >> a[i].y; 
-	}
-	
-	for (int i = 1; i <= n; i++) {
-		Idx fa = {0, 0};
-		dfs(fa, i, d(fa, a[i]));
-	}
-	
-	cout << fixed << setprecision(2) << res << "\n";
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i].x >> a[i].y; 
+    }
+    
+    for (int i = 1; i <= n; i++) {
+        Idx fa = {0, 0};
+        dfs(fa, i, d(fa, a[i]));
+    }
+    
+    cout << fixed << setprecision(2) << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1752,7 +1748,7 @@ signed main() {
 
 ```
 
-### 21. 递归实现指数型枚举
+### 【dfs】递归实现指数型枚举
 
 https://www.acwing.com/problem/content/94/
 
@@ -1770,25 +1766,25 @@ using namespace std;
 int n;
 
 void solve() {
-	cin >> n;
-	
-	for (int i = 0; i < (1 << n); i++) {
-		for (int j = 0; j < n; j++) {
-			if (i & (1 << j)) {
-				cout << j + 1 << ' ';
-			}
-		}
-		cout << "\n";
-	}
+    cin >> n;
+    
+    for (int i = 0; i < (1 << n); i++) {
+        for (int j = 0; j < n; j++) {
+            if (i & (1 << j)) {
+                cout << j + 1 << ' ';
+            }
+        }
+        cout << "\n";
+    }
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1803,42 +1799,42 @@ int n;
 vector<int> a;
 
 void dfs(int now, bool cho) {
-	if (now == n) {
-		for (auto& x: a) {
-			cout << x << ' ';
-		}
-		cout << "\n";
-		return;
-	}
-	
-	dfs(now + 1, false);
-	
-	a.push_back(now + 1);
-	dfs(now + 1, true);
-	a.pop_back();
+    if (now == n) {
+        for (auto& x: a) {
+            cout << x << ' ';
+        }
+        cout << "\n";
+        return;
+    }
+    
+    dfs(now + 1, false);
+    
+    a.push_back(now + 1);
+    dfs(now + 1, true);
+    a.pop_back();
 }
 
 void solve() {
-	cin >> n;
-	
-	dfs(1, false);
+    cin >> n;
+    
+    dfs(1, false);
 
-	a.push_back(1);
-	dfs(1, true);
-	a.pop_back();
+    a.push_back(1);
+    dfs(1, true);
+    a.pop_back();
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 22. 递归实现排列型枚举
+### 【dfs】递归实现排列型枚举
 
 https://www.acwing.com/problem/content/96/
 
@@ -1859,124 +1855,41 @@ vector<int> a;
 
 // 当前数位 now
 void dfs(int now) {
-	if (now > n) {
-		for (auto& x: a) {
-			cout << x << ' ';
-		}
-		cout << "\n";
-		return;
-	}
+    if (now > n) {
+        for (auto& x: a) {
+            cout << x << ' ';
+        }
+        cout << "\n";
+        return;
+    }
 
-	for (int i = 1; i <= n; i++) {
-		if (!vis[i]) {
-			a.push_back(i);
-			vis[i] = true;
-			dfs(now + 1);
-			a.pop_back();
-			vis[i] = false;
-		}
-	}
+    for (int i = 1; i <= n; i++) {
+        if (!vis[i]) {
+            a.push_back(i);
+            vis[i] = true;
+            dfs(now + 1);
+            a.pop_back();
+            vis[i] = false;
+        }
+    }
 }
 
 void solve() {
-	cin >> n;
-	dfs(1);
+    cin >> n;
+    dfs(1);
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 23. 费解的开关
-
-https://www.acwing.com/problem/content/97/
-
-> - 题意：给定 n 个 `5*5` 的矩阵，代表当前局面。矩阵中每一个元素要么是 0 要么是 1，现在需要计算从当前状态操作到全 1 状态最少需要几次操作？操作描述为改变当前状态为相反状态后，四周的四个元素也需要改变为相反的状态
-> - 思路：我们采用递推的思路。为了尽可能少的进行按灯操作，我们从第二行开始考虑，若前一行的某一元素为 0，则下一行的同一列位置就需要按一下，以此类推将 $2 \to 5$ 行全部按完。现在考虑两点，当前按下状态是否合法？当前按下状态是是否最优？
->     1. 对于第一个问题：从上述思路可以看出，$1 \to n-1$ 行一定全部都是 1 的状态，但是第 $n-1$ 行不一定全 1，因此不合法状态就是第 $n-1$ 行不全为 1。此时局面的总操作数不能更新最小操作次数
->     2. 对于第二个问题：可以发现，上述算法思路中，对于第一行是没有任何操作的（可以将第一行看做递推的初始化条件），第一行的状态影响全局的总操作数，我们不能确定不对第一行进行任何操作得到的总操作数就是最优的，故我们需要对第一行 5 个灯进行**枚举**按下。我们采用 5 位二进制的方法对第一行的 5 个灯进行枚举按下操作，然后对于当前第一行的按下局面（递推初始化状态）进行 $2 \to n$ 行的按下递推操作。对于每一种合法状态更新最小的操作数即可
-> - 时间复杂度：$O(T \times 2^5 \times 25 \times 5)$
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-const int N = 10;
-
-char g[N][N], now[N][N];
-int dx[] = {0, 1, -1, 0, 0}, dy[] = {0, 0, 0, 1, -1};
-
-void turn(int x, int y) {
-	for (int k = 0; k < 5; k++) {
-		int nx = x + dx[k], ny = y + dy[k];
-		now[nx][ny] ^= 1;
-	}
-}
-
-void solve() {
-	for (int i = 1; i <= 5; i++) {
-		cin >> (g[i] + 1);
-	}
-
-	int res = 30;
-
-	for (int op = 0; op < (1 << 5); op++) {
-		memcpy(now, g, sizeof g);
-		int step = 0;
-		
-		// 统计第 1 行的按下次数
-		for (int i = 0; i < 5; i++) {
-			if (op & (1 << i)) {
-				step++;
-				turn(1, 5 - i);
-			}
-		}
-		
-		// 统计 2 ~ 5 行的按下次数
-		for (int i = 1; i <= 4; i++) {
-			for (int j = 1; j <= 5; j++) {
-				if (now[i][j] == '0') {
-					step++;
-					turn(i + 1, j);
-				}
-			}
-		}
-		
-		// 判断当前操作方案是否合法
-		bool ok = true;
-		for (int j = 1; j <= 5; j++) {
-			if (now[5][j] == '0') {
-				ok = false;
-			}
-		}
-		
-		// 若当前操作方案合法则更新最小操作次数
-		if (ok) {
-			res = min(res, step);
-		}
-	}
-	
-	cout << (res > 6 ? -1 : res) << "\n";
-}
-
-signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-	cin >> T;
-	while (T--) solve();
-	return 0;
-}
-```
-
-### 24. 树的直径 :fire:
+### 【dfs/树形dp】树的直径 :star:
 
 树的路径问题，考虑回溯。如何更新值？如何返回值？
 
@@ -1984,7 +1897,7 @@ signed main() {
 
 
 
-### 25. 在带权树网络中统计可连接服务器对数目
+### 【dfs】在带权树网络中统计可连接服务器对数目
 
 https://leetcode.cn/problems/count-pairs-of-connectable-servers-in-a-weighted-tree-network/description/
 
@@ -2069,6 +1982,160 @@ class Solution:
                 cnt = dfs(i, ch[0], ch[1])
                 res[i] += sum * cnt
                 sum += cnt
+
+        return res
+```
+
+### 【dfs】将石头分散到网格图的最少移动次数
+
+https://leetcode.cn/problems/minimum-moves-to-spread-stones-over-grid/
+
+> 标签：搜索、全排列、库函数
+>
+> 题意：给定一个 $3\times 3$ 的矩阵 $g$，其中数字总和为 9 且 $g[i][j] \ge 0$，现在需要将其中 $>1$ 的数字逐个移动到值为 0 的位置上使得最终矩阵全为 1，问最少移动长度是多少。
+>
+> 思路一：手写全排列
+>
+> - 思路：可以将这道题抽象为求解「将 a 个大于 1 位置的数分配到 b 个 0 位置」的方案中的最小代价问题。容易联想到全排列选数的母问题：数字的位数对应这里的 b 个 0 位置，每个位置可以填的数对应这里的用哪个 a 来填。区别在于：0 的位置顺序不是固定的，用哪个 a 来填的顺序也不是固定的。这与全排列数中：被填的位置顺序是固定的，用哪个数来填不是固定的，有所区别。因此我们可以全排列枚举每一个位置，在此基础之上再全排列枚举每一个位置上可选的 a 进行填充。可以理解为全排列的嵌套。那么最终递归树的深度就是 0 的个数，递归时再用一个参数记录每一个选数分支对应的代价即可。
+> - 时间复杂度：$O(9\times 9!)$
+>
+> 思路二：库函数全排列
+>
+> - 思路：由于方阵的总和为 9，因此 >1 的位置上减去 1 剩下的数值之和一定等于方阵中 0 的个数。因此我们可以将前者展开为和 0 相同大小的向量，并全排列枚举任意一者进行两者的匹配计算，维护其中的最小代价即是答案。
+>     - C++ 的全排列枚举库函数为 `std::next_permutation(ItFirst, ItEnd)`
+>     - Python 的全排列枚举库函数为 `itertools.permutations(Iterable)`
+> - 时间复杂度：$O(9\times 9!)$
+
+```cpp []
+class Solution {
+public:
+    int minimumMoves(vector<vector<int>>& g) {
+        vector<pair<int, int>> z, a;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (!g[i][j]) {
+                    z.push_back({i, j});
+                } else if (g[i][j] > 1) {
+                    a.push_back({i, j});
+                }
+            }
+        }
+
+        int res = INT_MAX, n = z.size();
+        vector<bool> vis(n);
+
+        auto dfs = [&](auto&& dfs, int dep, int t) -> void {
+            if (dep == n) {
+                res = min(res, t);
+                return;
+            }
+
+            for (int i = 0; i < n; i++) {
+                if (vis[i]) continue;
+                vis[i] = true;
+                for (auto& [x, y]: a) {
+                    if (g[x][y] <= 1) continue;
+                    g[x][y]--;
+                    dfs(dfs, dep + 1, t + abs(z[i].first - x) + abs(z[i].second - y));
+                    g[x][y]++;
+                }
+                vis[i] = false;
+            }
+        };
+        
+        dfs(dfs, 0, 0);
+
+        return res;
+    }
+};
+```
+
+```cpp [C++库函数]
+class Solution {
+public:
+    int minimumMoves(vector<vector<int>>& g) {
+        vector<pair<int, int>> z, a;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (!g[i][j]) {
+                    z.push_back({i, j});
+                } else {
+                    while (g[i][j] > 1) {
+                        a.push_back({i, j});
+                        g[i][j]--;
+                    }
+                }
+            }
+        }
+
+        int res = INT_MAX;
+        do {
+            int t = 0;
+            for (int i = 0; i < z.size(); i++) {
+                t += abs(a[i].first - z[i].first) + abs(a[i].second - z[i].second);
+            }
+            res = min(res, t);
+        } while (next_permutation(a.begin(), a.end()));
+
+        return res;
+    }
+};
+```
+
+```python []
+class Solution:
+    def minimumMoves(self, g: List[List[int]]) -> int:
+        a, z = [], []
+        for i in range(3):
+            for j in range(3):
+                if not g[i][j]:
+                    z.append((i, j))
+                elif g[i][j] > 1:
+                    a.append((i, j))
+
+        res = 1000
+        n = len(z)
+        vis = [False] * n
+        
+        def dfs(dep: int, t: int) -> None:
+            nonlocal res
+            if dep == n:
+                res = min(res, t)
+                return
+            for i in range(n):
+                if vis[i]: continue
+                vis[i] = True
+                for x, y in a:
+                    if g[x][y] <= 1: continue
+                    g[x][y] -= 1
+                    dfs(dep + 1, t + abs(z[i][0] - x) + abs(z[i][1] - y))
+                    g[x][y] += 1
+                vis[i] = False
+
+        dfs(0, 0)
+        
+        return res
+```
+
+```python [Python库函数]
+class Solution:
+    def minimumMoves(self, g: List[List[int]]) -> int:
+        from itertools import permutations
+        a, z = [], []
+        for i in range(3):
+            for j in range(3):
+                if not g[i][j]:
+                    z.append((i, j))
+                while g[i][j] > 1:
+                    a.append((i, j))
+                    g[i][j] -= 1
+        
+        res, n = 1000, len(a)
+        for p in permutations(a):
+            t = 0
+            for i in range(n):
+                t += abs(p[i][0] - z[i][0]) + abs(p[i][1] - z[i][1])
+            res = min(res, t)
 
         return res
 ```

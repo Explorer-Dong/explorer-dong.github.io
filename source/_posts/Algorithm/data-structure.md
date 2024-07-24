@@ -4,9 +4,194 @@ categories: Algorithm
 category_bar: true
 ---
 
-### 《数据结构》
+### 数据结构
 
-### 1. 单调栈
+每次新学到一种数据结构都会被其神奇的想法惊艳许久。
+
+### 【模板】双链表
+
+https://www.acwing.com/problem/content/829/
+
+> 思路：用两个空结点作为起始状态的边界，避免所有边界讨论。
+>
+> 时间复杂度：插入、删除结点均为 $O(1)$，遍历为 $O(n)$
+
+```cpp
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+template<class T>
+class myList {
+private:
+    int idx;
+    std::vector<T> val;
+    std::vector<int> left, right;
+
+public:
+    myList(const int n) {
+        idx = 2;
+        val.resize(n + 10);
+        left.resize(n + 10);
+        right.resize(n + 10);
+        left[1] = 0, right[0] = 1;
+    }
+
+    void push_back(T x) {
+        insert_left(1, x);
+    }
+
+    void push_front(T x) {
+        insert_right(0, x);
+    }
+
+    void insert_left(int k, T x) {
+        insert_right(left[k], x);
+    }
+
+    void insert_right(int k, T x) {
+        val[idx] = x;
+        right[idx] = right[k];
+        left[right[k]] = idx;
+        left[idx] = k;
+        right[k] = idx++;
+    }
+
+    void erase(int k) {
+        right[left[k]] = right[k];
+        left[right[k]] = left[k];
+    }
+
+    void output() {
+        for (int i = right[0]; i != 1; i = right[i]) {
+            cout << val[i] << " \n"[i == 1];
+        }
+    }
+};
+
+void solve() {
+    int n;
+    cin >> n;
+
+    myList<int> ls(n);
+
+    while (n--) {
+        string op;
+        cin >> op;
+
+        int k, x;
+
+        if (op == "L") {
+            cin >> x;
+            ls.push_front(x);
+        } else if (op == "R") {
+            cin >> x;
+            ls.push_back(x);
+        } else if (op == "D") {
+            cin >> k;
+            ls.erase(k + 1);
+        } else if (op == "IL") {
+            cin >> k >> x;
+            ls.insert_left(k + 1, x);
+        } else {
+            cin >> k >> x;
+            ls.insert_right(k + 1, x);
+        }
+    }
+
+    ls.output();
+}
+
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int T = 1;
+//    std::cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+```python
+import heapq
+from collections import defaultdict
+from typing import List, Tuple
+import math
+from itertools import combinations
+
+II = lambda: int(input())
+FI = lambda: float(input())
+MII = lambda: tuple(map(int, input().split()))
+LII = lambda: list(map(int, input().split()))
+
+
+class myList:
+    def __init__(self, n: int) -> None:
+        self.val = [0] * (n + 10)
+        self.left = [0] * (n + 10)
+        self.right = [0] * (n + 10)
+        self.idx = 2
+        self.right[0] = 1
+        self.left[1] = 0
+
+    def push_front(self, x: int):
+        self.insert_right(0, x)
+
+    def push_back(self, x: int):
+        self.insert_left(1, x)
+
+    def insert_left(self, k: int, x: int):
+        self.insert_right(self.left[k], x)
+
+    def insert_right(self, k: int, x: int):
+        self.val[self.idx] = x
+        self.right[self.idx] = self.right[k]
+        self.left[self.right[k]] = self.idx
+        self.left[self.idx] = k
+        self.right[k] = self.idx
+        self.idx += 1
+
+    def erase(self, k: int):
+        self.left[self.right[k]] = self.left[k]
+        self.right[self.left[k]] = self.right[k]
+
+    def output(self) -> None:
+        i = self.right[0]
+        while i != 1:
+            print(self.val[i], end=' ')
+            i = self.right[i]
+
+
+def solve() -> None:
+    n = II()
+
+    ls = myList(n)
+
+    for _ in range(n):
+        op = input().split()
+
+        if op[0] == 'L':
+            ls.push_front(int(op[-1]))
+        elif op[0] == 'R':
+            ls.push_back(int(op[-1]))
+        elif op[0] == 'D':
+            ls.erase(int(op[-1]) + 1)
+        elif op[0] == 'IL':
+            ls.insert_left(int(op[1]) + 1, int(op[-1]))
+        else:
+            ls.insert_right(int(op[1]) + 1, int(op[-1]))
+
+    ls.output()
+
+
+if __name__ == '__main__':
+    T = 1
+    # T = II()
+    while T: solve(); T -= 1
+```
+
+### 【模板】单调栈
 
 https://www.acwing.com/problem/content/832/
 
@@ -70,11 +255,158 @@ signed main() {
 
 [下一个更大元素 II](https://leetcode.cn/problems/next-greater-element-ii/)
 
-### 2. 【模板】最近公共祖先（LCA）
+### 【模板】单调队列
+
+> 标签：双端队列、滑动窗口、单调队列
+>
+> 题意：给定一个含有 n 个元素的序列，求解其中每个长度为 k 的子数组中的最值。
+>
+> 思路：显然我们可以 $O(nk)$ 暴力求解，有没有什么方法可以将「求解子数组中最值」的时间开销从 $O(k)$ 降低为 $O(1)$ 呢？有的！我们重新定义一个队列就好了。为了做到线性时间复杂度的优化，我们对队列做以下自定义，以「求解子数组最小值」为例：
+>
+> 1. 插入元素到队尾：此时和单调栈的逻辑类似。如果当前元素可以作为当前子数组或后续子数组的最小值，则需要从当前队尾开始依次弹出比当前元素严格大的元素，最后再将当前元素入队。**注意**：当遇到和当前元素值相等的元素时不能出队，因为每一个元素都会经历入队和出队的操作，一旦此时出队了，后续进行出队判定时会提前弹出本不应该出队的与其等值的元素。
+> 2. 弹出队头元素：如果队头元素和子数组左端点 `nums[i-k]` 的元素值相等，则弹出。
+> 3. 获得队头元素：$O(1)$ 的获取队头元素，即队列中的最小值。
+>
+> 时间复杂度：$O(n)$
+
+```cpp
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+template<class T>
+struct minQueue {
+    std::deque<T> q;
+    void pushBack(T x) {
+        while (q.size() && x < q.back()) {
+            q.pop_back();
+        }
+        q.push_back(x);
+    }
+    void popFront(T x) {
+        if (q.size() && q.front() == x) {
+            q.pop_front();
+        }
+    }
+    T getMinValue() {
+        return q.front();
+    }
+};
+
+template<class T>
+struct maxQueue {
+    std::deque<T> q;
+    void pushBack(T x) {
+        while (q.size() && x > q.back()) {
+            q.pop_back();
+        }
+        q.push_back(x);
+    }
+    void popFront(T x) {
+        if (q.size() && q.front() == x) {
+            q.pop_front();
+        }
+    }
+    T getMaxValue() {
+        return q.front();
+    }
+};
+
+void solve() {
+    int n, k;
+    cin >> n >> k;
+    
+    vector<int> nums(n);
+    for (int i = 0; i < n; i++) {
+        cin >> nums[i];
+    }
+    
+    minQueue<int> minq;
+    for (int i = 0; i < n; i++) {
+        minq.pushBack(nums[i]);
+        if (i >= k) {
+            minq.popFront(nums[i - k]);
+        }
+        if (i >= k - 1) {
+            cout << minq.getMinValue() << " \n"[i == n - 1];
+        }
+    }
+    
+    maxQueue<int> maxq;
+    for (int i = 0; i < n; i++) {
+        maxq.pushBack(nums[i]);
+        if (i >= k) {
+            maxq.popFront(nums[i - k]);
+        }
+        if (i >= k - 1) {
+            cout << maxq.getMaxValue() << " \n"[i == n - 1];
+        }
+    }
+}
+
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int T = 1;
+//    std::cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+```python
+from collections import defaultdict, deque
+from typing import List, Tuple
+from itertools import combinations, permutations
+import math, heapq, queue
+
+II = lambda: int(input())
+FI = lambda: float(input())
+MII = lambda: tuple(map(int, input().split()))
+LII = lambda: list(map(int, input().split()))
+
+
+def solve() -> None:
+    n, k = MII()
+    nums = LII()
+    
+    qa, qb = deque(), deque()
+    ra, rb = [], []
+    for i in range(n):
+        # push back
+        while len(qa) and nums[i] < qa[-1]:
+            qa.pop()
+        qa.append(nums[i])
+        while len(qb) and nums[i] > qb[-1]:
+            qb.pop()
+        qb.append(nums[i])
+        if i >= k:
+            # pop front
+            if len(qa) and qa[0] == nums[i - k]:
+                qa.popleft()
+            if len(qb) and qb[0] == nums[i - k]:
+                qb.popleft()
+        if i >= k - 1:
+            # get ans
+            ra.append(qa[0])
+            rb.append(qb[0])
+    
+    print(' '.join(map(str, ra)))
+    print(' '.join(map(str, rb)))
+
+
+if __name__ == '__main__':
+    T = 1
+    # T = II()
+    while T: solve(); T -= 1
+```
+
+### 【模板】最近公共祖先
 
 https://www.luogu.com.cn/problem/P3379
 
-> 题意：寻找树中指定两个结点的最近公共祖先
+> 题意：寻找树中指定两个结点的最近公共祖先 $\text{(Lowest Common Ancestor, 简称 LCA)}$。
 >
 > 思路：对于每次查询，我们可以从指定的两个结点开始往上跳，第一个公共结点就是目标的 LCA，每一次询问的时间复杂度均为 $O(n)$，为了加速查询，我们可以采用倍增法，预处理出往上跳的结果，即 `fa[i][j]` 数组，表示 $i$ 号点向上跳 $2^j$ 步后到达的结点。接下来在往上跳跃的过程中，利用二进制拼凑的思路，即可在 $O(\log n)$ 的时间内查询到 LCA。
 >
@@ -82,7 +414,7 @@ https://www.luogu.com.cn/problem/P3379
 >
 > 跳跃：我们首先需要将两个结点按照倍增的思路向上跳到同一个深度，接下来两个结点同时按照倍增的思路向上跳跃，为了确保求出最近的，我们需要确保在跳跃的步调一致的情况下，两者的祖先始终不相同，那么倍增结束后，两者的父结点就是最近公共祖先，即 `fa[x][k]` 或 `fa[y][k]`
 >
-> 时间复杂度：$O(n \log n + m \log n)$ 
+> 时间复杂度：$\Theta(n \log n + m \log n)$ 
 >
 > - $n \log n$ 为预处理每一个结点向上跳跃抵达的情况
 > - $m \log n$ 为 $m$ 次询问的情况
@@ -151,71 +483,65 @@ void solve() {
 }    
 ```
 
-### 3. [USACO19DEC] Milk Visits S
+### 【栈】验证栈序列
 
-https://www.luogu.com.cn/problem/P5836
+https://www.luogu.com.cn/problem/P4387
 
-> tag：并查集
+> - 题意：给定入栈序列与出栈序列，问出栈序列是否合法
 >
-> 题意：给定一棵树，结点被标记成两种，一种是H，一种是G，在每一次查询中，需要知道指定的两个结点之间是否含有某一种标记
+> - 思路：思路很简单，就是对于当前出栈的数，和入栈序列中最后已出栈的数之间，如果还有数没有出，那么就是不合法的出栈序列，反之合法。这是从入栈的结果来看的，如果这么判断就需要扫描入栈序列 n 次，时间复杂度为 $O(n^2)$。我们按照入栈的顺序来看，对于当前待入栈的数，若与出栈序列的队头不等，则成功入栈等待后续出栈；若与出栈序列相等，则匹配成功直接出栈无需入栈，同时对已入栈的数与出栈序列队头不断匹配直到不相等。最后判断待入栈的数与出栈序列是否全部匹配掉了，如果全部匹配掉了说明该出栈序列合法，反之不合法
 >
-> 思路：对于树上标记，我们可以将相同颜色的分支连成一个连通块
+>     抽象总结上述思路：为了判断出栈序列是否合法，我们不妨思考：对于每一个出栈的数，出栈的时机是什么？可以发现出栈的时机无非两种：
 >
-> - 如果查询的两个结点在同一个连通块，则查询两个结点所在的颜色与所需的颜色是否匹配即可
-> - 如果查询的两个结点不在同一个连通块，两个结点之间的路径一定是覆盖了两种颜色的标记，则答案一定是1
+>     - 一入栈就出栈（对应于枚举待入栈序列时发现待入栈的数与出栈序列队头相等）
+>     - 紧跟着刚出栈的数继续出栈（对应于枚举待入栈序列时发现待入栈的数与出栈序列队头相等之后，继续判断出栈序列队头与已入栈的数是否相等，若相等则不断判断并出栈）
 >
-> 时间复杂度：$O(n+m)$
+> - 时间复杂度：$O(n)$
 
 ```cpp
-const int N = 100010;
-
-int n, m, p[N];
-char col[N];
-
-int find(int x) {
-    if (p[x] != x) {
-        p[x] = find(p[x]);
-    }
-    return p[x];
-}
+// #include <bits/stdc++.h>
+// #define int long long
+#include <iostream>
+#include <unordered_map>
+#include <stack>
+#include <queue>
+using namespace std;
 
 void solve() {
-    cin >> n >> m;
-    cin >> (col + 1);
-
-    for (int i = 1; i <= n; i++) {
-        p[i] = i;
-    }
-
-    for (int i = 1; i <= n - 1; i++) {
-        int a, b;
-        cin >> a >> b;
-        if (col[a] == col[b]) {
-            p[find(a)] = find(b);
+    int n;
+    cin >> n;
+    
+    vector<int> a(n), b(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+    for (int i = 0; i < n; i++) cin >> b[i];
+    
+    stack<int> stk;
+    int i = 0, j = 0;
+    while (i < n) {
+        if (a[i] != b[j]) stk.push(a[i++]);
+        else {
+            i++, j++;
+            while (!stk.empty() && b[j] == stk.top()) {
+                stk.pop();
+                j++;
+            }
         }
     }
+    
+    cout << (stk.empty() ? "Yes" : "No") << "\n";
+}
 
-    string res;
-
-    while (m--) {
-        int u, v;
-        cin >> u >> v;
-
-        char cow;
-        cin >> cow;
-
-        if (find(u) == find(v)) {
-            res += to_string(col[u] == cow);
-        } else {
-            res += '1';
-        }
-    }
-
-    cout << res << "\n";
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 4. 美国血统 American Heritage
+### 【树】美国血统
 
 https://www.luogu.com.cn/problem/P1827
 
@@ -324,7 +650,7 @@ signed main() {
 }
 ```
 
-### 5. 新二叉树
+### 【树】新二叉树
 
 https://www.luogu.com.cn/problem/P1305
 
@@ -375,7 +701,7 @@ signed main() {
 }
 ```
 
-### 6. 遍历问题
+### 【树】遍历问题
 
 https://www.luogu.com.cn/problem/P1229
 
@@ -419,17 +745,22 @@ signed main() {
 }
 ```
 
-### 7. 医院设置 :fire:
+### 【树】医院设置 :fire:
 
 https://www.luogu.com.cn/problem/P1364
 
-> - 题意：给定一棵二叉树，树中每一个结点存储了一个数值表示一个医院的人数，现在需要在所有的结点中将一个结点设置为医院使得其余结点中的所有人到达该医院走的路总和最小。路程为结点到医院的最短路，边权均为 1。给出最终的最短路径总和
+> 题意：给定一棵二叉树，树中每一个结点存储了一个数值表示一个医院的人数，现在需要在所有的结点中将一个结点设置为医院使得其余结点中的所有人到达该医院走的路总和最小。路程为结点到医院的最短路，边权均为 1。给出最终的最短路径总和
 >
-> - 思路：**暴力**。很显然对于已经设置好医院的局面，需要求解的路径总和就直接将图遍历一边即可。每一个结点都可以作为医院进行枚举，每次遍历图都需要遍历所有的结点
+> 思路一：暴力
 >
->     **优化**。# TODO
+> - 显然的对于已经设置好医院的局面，需要求解的路径总和就直接将树遍历一边即可。每一个结点都可以作为医院进行枚举，每次遍历是 $O(n)$ 的
 >
 > - 时间复杂度：$O(n^2)$
+>
+> 思路二：带权树的重心
+>
+> - TODO
+> - 时间复杂度：$O(n)$
 
 暴力代码
 
@@ -516,11 +847,11 @@ signed main() {
 
 ```
 
-### 8. 二叉树深度
+### 【树】二叉树深度
 
 https://www.luogu.com.cn/problem/P4913
 
-> - 题意：给定一棵二叉树，需要求解这棵二叉树的深度
+> - 题意：给定一棵二叉树，求解这棵二叉树的深度
 > - 思路：有两个考点，一个是如何根据给定的信息（从根结点开始依次给出已存在树上结点的左右孩子的编号）构建二叉树，一个是如何求解已经构建好的二叉树的深度。对于构建二叉树，我们沿用 T5 数组模拟构建的思路，直接定义结点类型即可；对于求解深度，很显然的一个递归求解，即左右子树深度值 +1 即可
 > - 时间复杂度：$O(n)$
 
@@ -563,13 +894,13 @@ signed main() {
 }
 ```
 
-### 9. 淘汰赛
+### 【树】淘汰赛
 
 https://www.luogu.com.cn/problem/P1364
 
 > - 题意：给定 $2^n$ 支球队的编号与能力值，进行淘汰赛，能力值者晋级下一轮直到赛出冠军。输出亚军编号
 > - 思路：很显然的一个完全二叉树的题目。我们都不需要进行递归操作，直接利用完全二叉树的下标性质利用数组模拟循环计算即可。给出的信息就是完全二叉树的全部叶子结点的信息，分别为球队编号 id 与球队能力值 val，我们从第 n-1 个结点开始循环枚举到第 1 个结点计算每一轮的胜者信息，最终输出最后一场的能力值较小者球队编号即可
-> - 时间复杂度：$O(2n)$
+> - 时间复杂度：$\Theta(2n)$
 
 ```cpp
 #include <bits/stdc++.h>
@@ -612,7 +943,7 @@ signed main() {
 }
 ```
 
-### 10. [JLOI2009] 二叉树问题
+### 【树/LCA】二叉树问题
 
 https://www.luogu.com.cn/problem/P3884
 
@@ -700,203 +1031,270 @@ signed main() {
 }
 ```
 
-### 11. 双链表
+### 【并查集】Milk Visits S
 
-https://www.acwing.com/problem/content/829/
+https://www.luogu.com.cn/problem/P5836
 
-> 思路：主思路就是围绕初始空结点展开。空指针设置为 -1。在模拟链表之前我们先回顾一下指针链表是如何实现的？我们知道无非就是结点信息域、指针域，至于单链表还是双链表无非就是指针域有几个罢了。那么我们在模拟的时候就只需要对照着考虑这么几个因素：
+> 题意：给定一棵树，结点被标记成两种，一种是H，一种是G，在每一次查询中，需要知道指定的两个结点之间是否含有某一种标记
 >
-> - 结点空间创建：指针操作中我们需要 new 一个结点对象出来，模拟只需要赋予一个虚拟的内存地址即可，此处使用 idx 正整数作为虚拟内存地址进行索引
-> - 结点信息存储：我们需要存储结点的信息，如 e[i] 数组表示第 i 个结点的信息
-> - 结点指针存储：我们需要存储结点的左结点与右结点的“地址”，如 r[i]、l[i] 就分别代表第 i 个结点左结点的地址、右结点的地址
-> - 链表头、尾指针：其实如果单纯的创建、修改链表是不需要头、尾指针的，但是此题需要遍历指针就需要一个链表起始的“地址”索引，故引入头指针。至于尾指针是因为有尾插入的操作，为了 $O(1)$ 地进行尾插入，故引入尾指针
+> 思路：对于树上标记，我们可以将相同颜色的分支连成一个连通块
 >
-> 时间复杂度：插入、删除结点均为 $O(1)$，遍历为 $O(n)$
+> - 如果查询的两个结点在同一个连通块，则查询两个结点所在的颜色与所需的颜色是否匹配即可
+> - 如果查询的两个结点不在同一个连通块，两个结点之间的路径一定是覆盖了两种颜色的标记，则答案一定是1
+>
+> 时间复杂度：$\Theta(n+m)$
 
 ```cpp
-#include <iostream>
-using namespace std;
-
 const int N = 100010;
 
-int n;
-int h, t, idx, e[N], l[N], r[N];
+int n, m, p[N];
+char col[N];
 
-void init() {
-    // 空结点
-    h = 0, t = 0, idx = 0;
-    l[0] = -1;
-    r[0] = -1;
-}
-
-// 头插
-void insertToHead(int x) {
-    idx++;
-    e[idx] = x;
-    l[idx] = -1;
-    r[idx] = h;
-    l[h] = idx;
-    h = idx;
-}
-
-// 尾插
-void insertToTail(int x) {
-    idx++;
-    e[idx] = x;
-    r[idx] = -1;
-    l[idx] = t;
-    r[t] = idx;
-    t = idx;
-}
-
-void create() {
-    while (n--) {
-        string op;
-        cin >> op;
-
-        if (op == "L") {
-            int x; cin >> x;
-            insertToHead(x);
-        } else if (op == "R") {
-            int x; cin >> x;
-            insertToTail(x);
-        } else if (op == "IL") {
-            // 在第 k 个数左侧插入数 x
-            int k, x; cin >> k >> x;
-            
-            if (l[k] == -1) {
-                // 头插入
-                insertToHead(x);
-            } else {
-                // 一般插入
-                idx++;
-                e[idx] = x;
-                r[idx] = k;
-                l[idx] = l[k];
-                r[l[k]] = idx;
-                l[k] = idx;
-            }
-        } else if (op == "IR") {
-            // 在第 k 个数右侧插入数 x
-            int k, x; cin >> k >> x;
-            
-            if (r[k] == -1) {
-                // 尾插入
-                insertToTail(x);
-            } else {
-                // 一般插入
-                idx++;
-                e[idx] = x;
-                l[idx] = k;
-                r[idx] = r[k];
-                l[r[k]] = idx;
-                r[k] = idx;
-            }
-        } else {
-            // 删除第 k 个数
-            int k; cin >> k;
-            
-            if (h == k) {
-                // 头删除
-                h = r[k];
-                l[r[k]] = -1;
-            }  else if (t == k) {
-                // 尾删除
-                t = l[k];
-                r[l[k]] = -1;
-            } else {
-                // 中间删除
-                r[l[k]] = r[k];
-                l[r[k]] = l[k];
-            }
-        }
+int find(int x) {
+    if (p[x] != x) {
+        p[x] = find(p[x]);
     }
-}
-
-void output() {
-    // 避开初始 0 号空结点
-    for (int i = h; i != -1; i = r[i])
-        if (i)
-            cout << e[i] << " ";
+    return p[x];
 }
 
 void solve() {
-    cin >> n;
-    
-    init();
-    create();
-    output();
-}
+    cin >> n >> m;
+    cin >> (col + 1);
 
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
+    for (int i = 1; i <= n; i++) {
+        p[i] = i;
+    }
+
+    for (int i = 1; i <= n - 1; i++) {
+        int a, b;
+        cin >> a >> b;
+        if (col[a] == col[b]) {
+            p[find(a)] = find(b);
+        }
+    }
+
+    string res;
+
+    while (m--) {
+        int u, v;
+        cin >> u >> v;
+
+        char cow;
+        cin >> cow;
+
+        if (find(u) == find(v)) {
+            res += to_string(col[u] == cow);
+        } else {
+            res += '1';
+        }
+    }
+
+    cout << res << "\n";
 }
 ```
 
-### 12. 验证栈序列
+### 【并查集】尽量减少恶意软件的传播
 
-https://www.luogu.com.cn/problem/P4387
+https://leetcode.cn/problems/minimize-malware-spread/description/
 
-> - 题意：给定入栈序列与出栈序列，问出栈序列是否合法
+>题意：给定一个由邻接矩阵存储的无向图，其中某些结点具备感染能力，可以感染相连的所有结点，问消除哪一个结点的感染能力可以使得最终不被感染的结点数量尽可能少，给出消除的有感染能力的最小结点编号
 >
-> - 思路：思路很简单，就是对于当前出栈的数，和入栈序列中最后已出栈的数之间，如果还有数没有出，那么就是不合法的出栈序列，反之合法。这是从入栈的结果来看的，如果这么判断就需要扫描入栈序列 n 次，时间复杂度为 $O(n^2)$。我们按照入栈的顺序来看，对于当前待入栈的数，若与出栈序列的队头不等，则成功入栈等待后续出栈；若与出栈序列相等，则匹配成功直接出栈无需入栈，同时对已入栈的数与出栈序列队头不断匹配直到不相等。最后判断待入栈的数与出栈序列是否全部匹配掉了，如果全部匹配掉了说明该出栈序列合法，反之不合法
+>思路：很显然我们可以将当前无向图的多个连通分量，共三种感染情况：
 >
->     抽象总结上述思路：为了判断出栈序列是否合法，我们不妨思考：对于每一个出栈的数，出栈的时机是什么？可以发现出栈的时机无非两种：
+>1. 如果一个连通分量中含有 $\ge 2$ 个感染结点，则当前连通分量一定会被全部感染；
 >
->     - 一入栈就出栈（对应于枚举待入栈序列时发现待入栈的数与出栈序列队头相等）
->     - 紧跟着刚出栈的数继续出栈（对应于枚举待入栈序列时发现待入栈的数与出栈序列队头相等之后，继续判断出栈序列队头与已入栈的数是否相等，若相等则不断判断并出栈）
+>2. 如果一个连通块中含有 $0$ 个感染结点，则无需任何操作；
 >
-> - 时间复杂度：$O(n)$
+>3. 如果一个连通块中含有 $1$ 个感染结点，则最佳实践就是移除该连通块中唯一的那个感染结点。
+>
+>当然了，由于只能移走一个感染结点，我们需要从所有只含有 $1$ 个感染结点的连通块中移走连通块结点最多的那个感染结点。因此我们需要统计每一个连通分量中感染结点的数量以及总结点数，采用并查集进行统计。需要注意的是题目中的“索引最小”指的是结点编号最小而非结点在序列 $initial$ 中的下标最小。算法流程见代码。
+>
+>时间复杂度：$O(n^2)$
 
 ```cpp
-// #include <bits/stdc++.h>
-// #define int long long
-#include <iostream>
-#include <unordered_map>
-#include <stack>
-#include <queue>
-using namespace std;
+class Solution {
+public:
+    int p[310];
 
-void solve() {
-    int n;
-    cin >> n;
-    
-    vector<int> a(n), b(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
-    for (int i = 0; i < n; i++) cin >> b[i];
-    
-    stack<int> stk;
-    int i = 0, j = 0;
-    while (i < n) {
-        if (a[i] != b[j]) stk.push(a[i++]);
-        else {
-            i++, j++;
-            while (!stk.empty() && b[j] == stk.top()) {
-                stk.pop();
-                j++;
+    int Find(int x) {
+        if (x != p[x]) p[x] = Find(p[x]);
+        return p[x];
+    }
+
+    int minMalwareSpread(vector<vector<int>>& graph, vector<int>& initial) {
+        // 1. 维护并查集数组：p[]
+        int n = graph.size();
+        for (int i = 0; i < n; i++) p[i] = i;
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (graph[i][j])
+                    p[Find(i)] = Find(j);
+
+        // 2. 维护哈希表：每一个连通块中的感染结点数、总结点数
+        unordered_map<int, pair<int, int>> ha;
+        for (auto& x: initial) ha[Find(x)].first++;
+        for (int i = 0; i < n; i++) ha[Find(i)].second++;
+
+        // 3. 排序：按照感染结点数升序，总结点数降序
+        vector<pair<int, int>> v;
+        for (auto& it: ha) v.push_back(it.second);
+        sort(v.begin(), v.end(), [&](pair<int, int>& x, pair<int, int>& y){
+            if (x.first == y.first) return x.second > y.second;
+            return x.first < y.first;
+        });
+
+        // 4. 寻找符合条件的连通块属性：找到序列中第一个含有 1 个感染结点的连通块祖宗结点编号 idx
+        int idx = -1;
+        for (int i = 0; i < v.size(); i++) {
+            if (v[i].first == 1) {
+                idx = i;
+                break;
             }
         }
-    }
-    
-    cout << (stk.empty() ? "Yes" : "No") << "\n";
-}
 
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-    cin >> T;
-    while (T--) solve();
-    return 0;
-}
+        // 5. 返回答案：比对感染结点所在的连通块属性与目标连通块属性
+        if (idx == -1) {
+            // 特判没有连通块只含有 1 个感染结点的情况
+            return *min_element(initial.begin(), initial.end());
+        }
+        
+        int res = n + 10;
+        for (auto& x: initial) {
+            int px = Find(x);
+            if (ha[px].first == v[idx].first && ha[px].second == v[idx].second) {
+                res = min(res, x);
+            }
+        }
+
+        return res;
+    }
+};
 ```
 
-### 13. [HNOI2002] 营业额统计（set）
+### 【并查集】账户合并
+
+https://leetcode.cn/problems/accounts-merge/
+
+> 题意：给定 n 个账户，每一个账户含有一个用户名和最多 m 个绑定的邮箱。由于一个用户可能注册多个账户，因此我们需要对所有的账户进行合并使得一个用户对应一个账户。合并的规则是将所有「含有相同邮箱的账户」视作同一个用户注册的账户。返回合并后的账户列表。
+>
+> 思路：这道题的需求很显然，我们需要合并含有相同邮箱的账户。显然有一个暴力的做法，我们直接枚举每一个账户中所有的邮箱，接着枚举剩余账户中的邮箱进行匹配，匹配上就进行合并，但这样做显然会造成大量的冗余匹配和冗余合并，我们不妨将这两个过程进行拆分。我们需要解决两个问题：
+>
+> - 哪些账户需要合并？很容易想到并查集这样的数据结构。我们使用哈希表存储每一个邮箱的账户编号，最后进行集合合并即可维护好每一个账号归属的集合编号。$O(nm)$
+> - 如何合并指定账户？对于上述维护好的集合编号，我们需要合并所有含有相同“祖先”的账户。排序去重或使用有序列表均可实现。$O(n\log n)$
+>
+> 时间复杂度：$O(n\log n)$
+
+```cpp []
+struct dsu {
+    int n;
+    std::vector<int> p;
+    dsu(int _n) { n = _n; p.resize(n + 1); for (int i = 1; i <= n; i++) p[i] = i; }
+    int find(int x) { return (p[x] == x ? p[x] : p[x] = find(p[x])); }
+    void merge(int a, int b) { p[find(a)] = find(b); }
+    bool query(int a, int b) { return find(a) == find(b); }
+    int block() { int ret = 0; for (int i = 1; i <= n; i++) ret += p[i] == i; return ret; }
+};
+
+class Solution {
+public:
+    vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
+        // 维护每一个子账户归属的集合
+        int n = accounts.size();
+        unordered_map<string, vector<int>> hash;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j < accounts[i - 1].size(); j++) {
+                hash[accounts[i - 1][j]].push_back(i);
+            }
+        }        
+        dsu d(n);
+        for (auto& it: hash) {
+            vector<int> v = it.second;
+            for (int i = 1; i < v.size(); i++) {
+                d.merge(v[i - 1], v[i]);
+            }
+        }
+
+        // 按照子账户归属的集合合并出最终的账户
+        unordered_set<int> fa;
+        for (int i = 1; i <= n; i++) {
+            fa.insert(d.find(i));
+        }
+        vector<vector<string>> res;
+        for (auto p: fa) {
+            set<string> se;
+            vector<string> ans;
+            for (int i = 1; i <= n; i++) {
+                if (d.find(i) == p) {
+                    if (ans.empty()) {
+                        ans.push_back(accounts[i - 1][0]);
+                    }
+                    for (int j = 1; j < accounts[i - 1].size(); j++) {
+                        se.insert(accounts[i - 1][j]);
+                    }
+                }
+            }
+            for (auto mail: se) {
+                ans.push_back(mail);
+            }
+            res.push_back(ans);
+        }
+
+        return res;
+    }
+};
+```
+
+```python []
+class dsu:
+    def __init__(self, n: int) -> None:
+        self.n = n
+        self.p = [i for i in range(n + 1)]
+    def find(self, x: int) -> int:
+        if self.p[x] != x: self.p[x] = self.find(self.p[x])
+        return self.p[x]
+    def merge(self, a: int, b: int) -> None:
+        self.p[self.find(a)] = self.find(b)
+    def query(self, a: int, b: int) -> bool:
+        return self.find(a) == self.find(b)
+    def block(self) -> int:
+        return sum([1 for i in range(1, self.n + 1) if self.p[i] == i])
+
+class Solution:
+    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+        from collections import defaultdict
+        
+        n = len(accounts)
+        hash = defaultdict(list)
+        for i in range(1, n + 1):
+            for j in range(1, len(accounts[i - 1])):
+                hash[accounts[i - 1][j]].append(i)
+        
+        d = dsu(n)
+        for _, ids in hash.items():
+            for i in range(1, len(ids)):
+                d.merge(ids[i - 1], ids[i])
+        
+        fa = set()
+        for i in range(1, n + 1):
+            fa.add(d.find(i))
+        
+        res = []
+        for p in fa:
+            ans = []
+            se = set()
+            for i in range(1, n + 1):
+                if d.find(i) == p:
+                    if len(ans) == 0:
+                        ans.append(accounts[i - 1][0])
+                    for j in range(1, len(accounts[i - 1])):
+                        se.add(accounts[i - 1][j])
+            ans += sorted(se)
+            res.append(ans)
+        
+        return res
+```
+
+### 【set】营业额统计
 
 https://www.luogu.com.cn/problem/P2234
 
@@ -1014,85 +1412,7 @@ signed main() {
 }
 ```
 
-### 14. 尽量减少恶意软件的传播
-
-https://leetcode.cn/problems/minimize-malware-spread/description/
-
->题意：给定一个由邻接矩阵存储的无向图，其中某些结点具备感染能力，可以感染相连的所有结点，问消除哪一个结点的感染能力可以使得最终不被感染的结点数量尽可能少，给出消除的有感染能力的最小结点编号
->
->思路：很显然我们可以将当前无向图的多个连通分量，共三种感染情况：
->
->1. 如果一个连通分量中含有 $\ge 2$ 个感染结点，则当前连通分量一定会被全部感染；
->
->2. 如果一个连通块中含有 $0$ 个感染结点，则无需任何操作；
->
->3. 如果一个连通块中含有 $1$ 个感染结点，则最佳实践就是移除该连通块中唯一的那个感染结点。
->
->当然了，由于只能移走一个感染结点，我们需要从所有只含有 $1$ 个感染结点的连通块中移走连通块结点最多的那个感染结点。因此我们需要统计每一个连通分量中感染结点的数量以及总结点数，采用并查集进行统计。需要注意的是题目中的“索引最小”指的是结点编号最小而非结点在序列 $initial$ 中的下标最小。算法流程见代码。
->
->时间复杂度：$O(n^2)$
-
-```cpp
-class Solution {
-public:
-    int p[310];
-
-    int Find(int x) {
-        if (x != p[x]) p[x] = Find(p[x]);
-        return p[x];
-    }
-
-    int minMalwareSpread(vector<vector<int>>& graph, vector<int>& initial) {
-        // 1. 维护并查集数组：p[]
-        int n = graph.size();
-        for (int i = 0; i < n; i++) p[i] = i;
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                if (graph[i][j])
-                    p[Find(i)] = Find(j);
-
-        // 2. 维护哈希表：每一个连通块中的感染结点数、总结点数
-        unordered_map<int, pair<int, int>> ha;
-        for (auto& x: initial) ha[Find(x)].first++;
-        for (int i = 0; i < n; i++) ha[Find(i)].second++;
-
-        // 3. 排序：按照感染结点数升序，总结点数降序
-        vector<pair<int, int>> v;
-        for (auto& it: ha) v.push_back(it.second);
-        sort(v.begin(), v.end(), [&](pair<int, int>& x, pair<int, int>& y){
-            if (x.first == y.first) return x.second > y.second;
-            return x.first < y.first;
-        });
-
-        // 4. 寻找符合条件的连通块属性：找到序列中第一个含有 1 个感染结点的连通块祖宗结点编号 idx
-        int idx = -1;
-        for (int i = 0; i < v.size(); i++) {
-            if (v[i].first == 1) {
-                idx = i;
-                break;
-            }
-        }
-
-        // 5. 返回答案：比对感染结点所在的连通块属性与目标连通块属性
-        if (idx == -1) {
-            // 特判没有连通块只含有 1 个感染结点的情况
-            return *min_element(initial.begin(), initial.end());
-        }
-        
-        int res = n + 10;
-        for (auto& x: initial) {
-            int px = Find(x);
-            if (ha[px].first == v[idx].first && ha[px].second == v[idx].second) {
-                res = min(res, x);
-            }
-        }
-
-        return res;
-    }
-};
-```
-
-### 15. 切蛋糕（multiset）
+### 【multiset】切蛋糕
 
 https://www.acwing.com/problem/content/description/5581/
 
@@ -1160,7 +1480,7 @@ int main() {
 }
 ```
 
-### 16. 将元素分配到两个数组中 II
+### 【树状数组】将元素分配到两个数组中 II
 
 https://leetcode.cn/problems/distribute-elements-into-two-arrays-ii/description/
 
@@ -1347,129 +1667,4 @@ class Solution:
                 s1.add(x)
         
         return v1 + v2
-```
-
-### 17. 账户合并
-
-https://leetcode.cn/problems/accounts-merge/
-
-> 标签：并查集
->
-> 题意：给定 n 个账户，每一个账户含有一个用户名和最多 m 个绑定的邮箱。由于一个用户可能注册多个账户，因此我们需要对所有的账户进行合并使得一个用户对应一个账户。合并的规则是将所有「含有相同邮箱的账户」视作同一个用户注册的账户。返回合并后的账户列表。
->
-> 思路：这道题的需求很显然，我们需要合并含有相同邮箱的账户。显然有一个暴力的做法，我们直接枚举每一个账户中所有的邮箱，接着枚举剩余账户中的邮箱进行匹配，匹配上就进行合并，但这样做显然会造成大量的冗余匹配和冗余合并，我们不妨将这两个过程进行拆分。我们需要解决两个问题：
->
-> - 哪些账户需要合并？很容易想到并查集这样的数据结构。我们使用哈希表存储每一个邮箱的账户编号，最后进行集合合并即可维护好每一个账号归属的集合编号。$O(nm)$
-> - 如何合并指定账户？对于上述维护好的集合编号，我们需要合并所有含有相同“祖先”的账户。排序去重或使用有序列表均可实现。$O(n\log n)$
->
-> 时间复杂度：$O(n\log n)$
-
-```cpp []
-struct dsu {
-    int n;
-    std::vector<int> p;
-    dsu(int _n) { n = _n; p.resize(n + 1); for (int i = 1; i <= n; i++) p[i] = i; }
-    int find(int x) { return (p[x] == x ? p[x] : p[x] = find(p[x])); }
-    void merge(int a, int b) { p[find(a)] = find(b); }
-    bool query(int a, int b) { return find(a) == find(b); }
-    int block() { int ret = 0; for (int i = 1; i <= n; i++) ret += p[i] == i; return ret; }
-};
-
-class Solution {
-public:
-    vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
-        // 维护每一个子账户归属的集合
-        int n = accounts.size();
-        unordered_map<string, vector<int>> hash;
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j < accounts[i - 1].size(); j++) {
-                hash[accounts[i - 1][j]].push_back(i);
-            }
-        }        
-        dsu d(n);
-        for (auto& it: hash) {
-            vector<int> v = it.second;
-            for (int i = 1; i < v.size(); i++) {
-                d.merge(v[i - 1], v[i]);
-            }
-        }
-
-        // 按照子账户归属的集合合并出最终的账户
-        unordered_set<int> fa;
-        for (int i = 1; i <= n; i++) {
-            fa.insert(d.find(i));
-        }
-        vector<vector<string>> res;
-        for (auto p: fa) {
-            set<string> se;
-            vector<string> ans;
-            for (int i = 1; i <= n; i++) {
-                if (d.find(i) == p) {
-                    if (ans.empty()) {
-                        ans.push_back(accounts[i - 1][0]);
-                    }
-                    for (int j = 1; j < accounts[i - 1].size(); j++) {
-                        se.insert(accounts[i - 1][j]);
-                    }
-                }
-            }
-            for (auto mail: se) {
-                ans.push_back(mail);
-            }
-            res.push_back(ans);
-        }
-
-        return res;
-    }
-};
-```
-
-```python []
-class dsu:
-    def __init__(self, n: int) -> None:
-        self.n = n
-        self.p = [i for i in range(n + 1)]
-    def find(self, x: int) -> int:
-        if self.p[x] != x: self.p[x] = self.find(self.p[x])
-        return self.p[x]
-    def merge(self, a: int, b: int) -> None:
-        self.p[self.find(a)] = self.find(b)
-    def query(self, a: int, b: int) -> bool:
-        return self.find(a) == self.find(b)
-    def block(self) -> int:
-        return sum([1 for i in range(1, self.n + 1) if self.p[i] == i])
-
-class Solution:
-    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
-        from collections import defaultdict
-        
-        n = len(accounts)
-        hash = defaultdict(list)
-        for i in range(1, n + 1):
-            for j in range(1, len(accounts[i - 1])):
-                hash[accounts[i - 1][j]].append(i)
-        
-        d = dsu(n)
-        for _, ids in hash.items():
-            for i in range(1, len(ids)):
-                d.merge(ids[i - 1], ids[i])
-        
-        fa = set()
-        for i in range(1, n + 1):
-            fa.add(d.find(i))
-        
-        res = []
-        for p in fa:
-            ans = []
-            se = set()
-            for i in range(1, n + 1):
-                if d.find(i) == p:
-                    if len(ans) == 0:
-                        ans.append(accounts[i - 1][0])
-                    for j in range(1, len(accounts[i - 1])):
-                        se.add(accounts[i - 1][j])
-            ans += sorted(se)
-            res.append(ans)
-        
-        return res
 ```

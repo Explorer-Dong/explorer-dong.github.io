@@ -4,9 +4,9 @@ categories: Algorithm
 category_bar: true
 ---
 
-## implement
+### 模拟
 
-### 1. 所有三角形
+### 【模拟】所有三角形
 
 https://www.acwing.com/problem/content/5167/
 
@@ -26,55 +26,55 @@ int a[N], b[N];
 
 int main()
 {
-	cin >> n;
-	
-	int res = 0;
-	
-	for (int i = 1; i <= n; i ++)
-	{
-		cin >> a[i];
-		if (a[i] == 1) res += 3;
-	}
-	
-	for (int i = 1; i <= n; i ++)
-	{
-		cin >> b[i];
-		if (b[i] == 1) res += 3;
-	}
-	
-	for (int i = 1; i <= n; i ++)
-	{
-		if (a[i])
-		{
-			if (a[i - 1]) res --;
-			if (a[i + 1]) res --;
-			if (i % 2 == 1)
-			{
-				if (b[i] == 1) res --;
-			}
-		}
-	}
-	
-	for (int i = 1; i <= n; i ++)
-	{
-		if (b[i])
-		{
-			if (b[i - 1]) res --;
-			if (b[i + 1]) res --;
-			if (i % 2 == 1)
-			{
-				if (a[i] == 1) res --;
-			}
-		}
-	}
-	
-	cout << res << endl;
-	
-	return 0;
+    cin >> n;
+    
+    int res = 0;
+    
+    for (int i = 1; i <= n; i ++)
+    {
+        cin >> a[i];
+        if (a[i] == 1) res += 3;
+    }
+    
+    for (int i = 1; i <= n; i ++)
+    {
+        cin >> b[i];
+        if (b[i] == 1) res += 3;
+    }
+    
+    for (int i = 1; i <= n; i ++)
+    {
+        if (a[i])
+        {
+            if (a[i - 1]) res --;
+            if (a[i + 1]) res --;
+            if (i % 2 == 1)
+            {
+                if (b[i] == 1) res --;
+            }
+        }
+    }
+    
+    for (int i = 1; i <= n; i ++)
+    {
+        if (b[i])
+        {
+            if (b[i - 1]) res --;
+            if (b[i + 1]) res --;
+            if (i % 2 == 1)
+            {
+                if (a[i] == 1) res --;
+            }
+        }
+    }
+    
+    cout << res << endl;
+    
+    return 0;
 }
 ```
 
-### 2. XOR Palindromes
+### 【模拟】XOR Palindromes
 
 https://codeforces.com/contest/1867/problem/B
 
@@ -94,60 +94,60 @@ using namespace std;
 
 int main()
 {
-	int T;
-	cin >> T;
-	
-	while (T--)
-	{
-		int n; cin >> n;
-		string s; cin >> s;
-		
+    int T;
+    cin >> T;
+    
+    while (T--)
+    {
+        int n; cin >> n;
+        string s; cin >> s;
+        
          // 判断原串是否为奇数个字符
-		bool odd = false;
-		if (n % 2) odd = true;
-		
+        bool odd = false;
+        if (n % 2) odd = true;
+        
          // 双指针统计原串的对应情况
-		int l = 0, r = n - 1;
-		int same = 0, dif = 0;
-		while (l < r)
-		{
-			if (s[l] == s[r]) same ++;
-			else dif ++;
-			l ++, r --;
-		}
-		
-		// 对当前s的x个数位进行转换数字 
-		for (int x = 0; x <= n; x ++)
+        int l = 0, r = n - 1;
+        int same = 0, dif = 0;
+        while (l < r)
+        {
+            if (s[l] == s[r]) same ++;
+            else dif ++;
+            l ++, r --;
+        }
+        
+        // 对当前s的x个数位进行转换数字 
+        for (int x = 0; x <= n; x ++)
              // 不同的对应位是一定要改变的
-			if (x < dif) cout << 0;
-			else
-			{
-				int aft = x - dif; // aft为消耗掉不同对应位次数后剩余的改变次数
-				for (int i = 2 * same; i >= 0; i -= 2) // 时间复杂度为log n
-					if (aft >= i)
-					{
-						aft -= i;
-						break;
-					}
-				
+            if (x < dif) cout << 0;
+            else
+            {
+                int aft = x - dif; // aft为消耗掉不同对应位次数后剩余的改变次数
+                for (int i = 2 * same; i >= 0; i -= 2) // 时间复杂度为log n
+                    if (aft >= i)
+                    {
+                        aft -= i;
+                        break;
+                    }
+                
                   // 此时为消耗掉不同对应位和相同对应位次数之后的剩余改变次数
-				if (aft > 1) cout << 0;
-				else if (aft == 1)
-				{
-					if (odd) cout << 1;
-					else cout << 0;
-				}
-				else cout << 1;
-			}
-		
-		cout << endl;
-	}
-	
-	return 0;
+                if (aft > 1) cout << 0;
+                else if (aft == 1)
+                {
+                    if (odd) cout << 1;
+                    else cout << 0;
+                }
+                else cout << 1;
+            }
+        
+        cout << endl;
+    }
+    
+    return 0;
 }
 ```
 
-### 3. Target Practice
+### 【模拟】Target Practice
 
 https://codeforces.com/contest/1873/problem/C
 
@@ -163,41 +163,43 @@ typedef long long ll;
 
 void solve()
 {
-	vector<string> a(10);
-	for (int i = 0; i < 10; i ++)
-		cin >> a[i];
-	
-	bool st[10][10] {};
-	
-	int res = 0;
-	
-	for (int i = 0; i < 10; i ++)
-		for (int j = 0; j < 10; j ++)
-		{
-			if (i == 0 || i == 9 || j == 0 || j == 9) if (a[i][j] == 'X') res += 1, st[i][j] = true;
-			if (i == 1 || i == 8 || j == 1 || j == 8) if (a[i][j] == 'X' && !st[i][j]) res += 2, st[i][j] = true;
-			if (i == 2 || i == 7 || j == 2 || j == 7) if (a[i][j] == 'X' && !st[i][j]) res += 3, st[i][j] = true;
-			if (i == 3 || i == 6 || j == 3 || j == 6) if (a[i][j] == 'X' && !st[i][j]) res += 4, st[i][j] = true;
-			if (i == 4 || i == 5 || j == 4 || j == 5) if (a[i][j] == 'X' && !st[i][j]) res += 5, st[i][j] = true;
-		}
-	cout << res << endl;
+    vector<string> a(10);
+    for (int i = 0; i < 10; i ++)
+        cin >> a[i];
+    
+    bool st[10][10] {};
+    
+    int res = 0;
+    
+    for (int i = 0; i < 10; i ++)
+        for (int j = 0; j < 10; j ++)
+        {
+            if (i == 0 || i == 9 || j == 0 || j == 9) if (a[i][j] == 'X') res += 1, st[i][j] = true;
+            if (i == 1 || i == 8 || j == 1 || j == 8) if (a[i][j] == 'X' && !st[i][j]) res += 2, st[i][j] = true;
+            if (i == 2 || i == 7 || j == 2 || j == 7) if (a[i][j] == 'X' && !st[i][j]) res += 3, st[i][j] = true;
+            if (i == 3 || i == 6 || j == 3 || j == 6) if (a[i][j] == 'X' && !st[i][j]) res += 4, st[i][j] = true;
+            if (i == 4 || i == 5 || j == 4 || j == 5) if (a[i][j] == 'X' && !st[i][j]) res += 5, st[i][j] = true;
+        }
+    cout << res << endl;
 }
 
 int main()
 {
-	int T; cin >> T;
-	while (T --) solve();
-	return 0;
+    int T; cin >> T;
+    while (T --) solve();
+    return 0;
 }
 ```
 
-### 4. 修改数列
+### 【模拟】修改数列
 
 https://www.acwing.com/problem/content/5465/
 
-> - 题意：给定一个序列，现在可以对序列中的每一个数进行加一或减一操作，问如何操作可以使得序列变为等差数列且操作数尽可能少
-> - 思路：**从边界考虑**。一个等差数列可以通过数列的前两项完全确定所有信息，故我们直接分类讨论前两项的所有情况来涵盖所有的情况。前两项的组合显然一共 $3*3=9$ 种，对于每一种情况，我们枚举剩余元素与标准值进行比对即可得到操作数
-> - 时间复杂度：$O(3\times 3 \times n)$
+> 题意：给定一个序列，现在可以对序列中的每一个数进行加一或减一操作，问如何操作可以使得序列变为等差数列且操作数尽可能少
+>
+> 思路：**从边界考虑**。一个等差数列可以通过数列的前两项完全确定所有信息，故我们直接分类讨论前两项的所有情况来涵盖所有的情况。前两项的组合显然一共 $3*3=9$ 种，对于每一种情况，我们枚举剩余元素与标准值进行比对即可得到操作数
+>
+> 时间复杂度：$O(3\times 3 \times n)$
 
 ```cpp
 #include <bits/stdc++.h>
@@ -210,54 +212,54 @@ int n;
 int a[N];
 
 void solve() {
-	cin >> n;
-	for (int i = 1; i <= n; i++) cin >> a[i];
-	
-	if (n <= 2) {
-		cout << 0 << "\n";
-		return;
-	}
-	
-	int res = N; 
-	
-	for (int i = -1; i <= 1; i++) {
-		int x = a[1] + i;     // 第一项
-		for (int j = -1; j <= 1; j++) {
-			int y = a[2] + j; // 第二项
-			
-			int det = y - x; // 公差 
-			int cnt = 0;	 // 需要改变的数 
-			bool ok = true;  // 序列是否可以凑成等差数列 
-			
-			for (int k = 3; k <= n; k++) {
-				int _ak = x + (k - 1) * det; // 当前理论值 
-				
-				if (abs(_ak - a[k]) > 1) {
-					ok = false;
-					break;
-				} 
-				else if (abs(_ak - a[k])) {
-					cnt++;
-				}
-			}
-			
-			if (i) cnt++;
-			if (j) cnt++; 
-			
-			if (ok) res = min(res, cnt);
-		}
-	}
-	
-	if (res == N) cout << -1 << "\n";
-	else cout << res << "\n";
+    cin >> n;
+    for (int i = 1; i <= n; i++) cin >> a[i];
+    
+    if (n <= 2) {
+        cout << 0 << "\n";
+        return;
+    }
+    
+    int res = N; 
+    
+    for (int i = -1; i <= 1; i++) {
+        int x = a[1] + i;     // 第一项
+        for (int j = -1; j <= 1; j++) {
+            int y = a[2] + j; // 第二项
+            
+            int det = y - x; // 公差 
+            int cnt = 0;     // 需要改变的数 
+            bool ok = true;  // 序列是否可以凑成等差数列 
+            
+            for (int k = 3; k <= n; k++) {
+                int _ak = x + (k - 1) * det; // 当前理论值 
+                
+                if (abs(_ak - a[k]) > 1) {
+                    ok = false;
+                    break;
+                } 
+                else if (abs(_ak - a[k])) {
+                    cnt++;
+                }
+            }
+            
+            if (i) cnt++;
+            if (j) cnt++; 
+            
+            if (ok) res = min(res, cnt);
+        }
+    }
+    
+    if (res == N) cout << -1 << "\n";
+    else cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```

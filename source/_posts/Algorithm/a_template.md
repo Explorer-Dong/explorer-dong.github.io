@@ -4,13 +4,9 @@ categories: Algorithm
 category_bar: true
 ---
 
-## 《板子》
-
-{% note light %}
+## 板子
 
 你渴望力量吗？那就把板子~~理解~~背过吧！
-
-{% endnote %}
 
 ## 基础算法
 

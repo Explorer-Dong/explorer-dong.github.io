@@ -4,17 +4,13 @@ categories: Algorithm
 category_bar: true
 ---
 
-## 贪心
-
-{% note light %}
+### 贪心
 
 大胆猜测，小心求证（不会证也没事，做下一题吧）。证明方法总结了以下几种
 
 - 反证法：假设取一种方案比贪心方案更好，得出相反的结论
 - 边界法：从边界开始考虑，因为满足边界条件更加容易枚举，从而进行后续的贪心
 - 直觉法：遵循社会法则（）
-
-{% endnote %}
 
 ### 1. green_gold_dog, array and permutation
 
@@ -57,42 +53,42 @@ using namespace std;
 
 void solve()
 {
-	int n; cin >> n;
-	
+    int n; cin >> n;
+    
     // 第一关键词是原数列，第二关键词是赋予的唯一下标
-	vector<pair<int, int>> a(n + 1);
-	for (int i = 1; i <= n; i ++)
-	{
-		cin >> a[i].first;
-		a[i].second = i;
-	}
-	
+    vector<pair<int, int>> a(n + 1);
+    for (int i = 1; i <= n; i ++)
+    {
+        cin >> a[i].first;
+        a[i].second = i;
+    }
+    
     // 按照第一关键词排序
-	sort(a.begin() + 1, a.end(), [&](pair<int, int> x, pair<int, int> y) {
-		return x.first > y.first;
-	});
-	
+    sort(a.begin() + 1, a.end(), [&](pair<int, int> x, pair<int, int> y) {
+        return x.first > y.first;
+    });
+    
     // 以下标作为原数列的替身，每一个替身对应一个升序的最终排名
-	vector<pair<int, int>> res(n + 1);
-	for (int i = 1; i <= n; i ++)
-	{
-		res[i].first = a[i].second;
-		res[i].second = i;
-	}
-	
+    vector<pair<int, int>> res(n + 1);
+    for (int i = 1; i <= n; i ++)
+    {
+        res[i].first = a[i].second;
+        res[i].second = i;
+    }
+    
     // 通过下标，还原原数列的排序
-	sort(res.begin() + 1, res.end());
-	
+    sort(res.begin() + 1, res.end());
+    
     // 输出第二关键词
-	for (int i = 1; i <= n; i ++)
-		cout << res[i].second << " \n"[i == n];
+    for (int i = 1; i <= n; i ++)
+        cout << res[i].second << " \n"[i == n];
 }
 
 int main()
 {
-	int T; cin >> T;
-	while (T --) solve();
-	return 0;
+    int T; cin >> T;
+    while (T --) solve();
+    return 0;
 }
 ```
 
@@ -112,25 +108,25 @@ typedef long long ll;
 
 void solve()
 {
-	int n; cin >> n;
-	vector<int> a(n);
-	
-	for (int i = 0; i < n; i ++)
-		cin >> a[i];
-	
-	sort(a.begin(), a.end());
-	
-	ll res = a[0] + 1;
-	for (int i = 1; i < n; i ++)
-		res *= a[i];
-	cout << res << endl; 
+    int n; cin >> n;
+    vector<int> a(n);
+    
+    for (int i = 0; i < n; i ++)
+        cin >> a[i];
+    
+    sort(a.begin(), a.end());
+    
+    ll res = a[0] + 1;
+    for (int i = 1; i < n; i ++)
+        res *= a[i];
+    cout << res << endl; 
 }
 
 int main()
 {
-	int T; cin >> T;
-	while (T --) solve();
-	return 0;
+    int T; cin >> T;
+    while (T --) solve();
+    return 0;
 }
 ```
 
@@ -150,30 +146,30 @@ typedef long long ll;
 
 void solve()
 {
-	int n, k;
-	cin >> n >> k;
-	string s;
-	cin >> s;
-	
-	int res = 0;
-	
-	for (int i = 0; i < n;)
-	{
-		if (s[i] == 'B')
-		{
-			res ++;
-			i += k;
-		}
-		else i++;
-	}
-	cout << res << endl;
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+    
+    int res = 0;
+    
+    for (int i = 0; i < n;)
+    {
+        if (s[i] == 'B')
+        {
+            res ++;
+            i += k;
+        }
+        else i++;
+    }
+    cout << res << endl;
 }
 
 int main()
 {
-	int T; cin >> T;
-	while (T --) solve();
-	return 0;
+    int T; cin >> T;
+    while (T --) solve();
+    return 0;
 }
 ```
 
@@ -195,40 +191,40 @@ typedef long long ll;
 
 void solve()
 {
-	string s; cin >> s;
-	int cntb = 0, blocka = 0, cnta = 0; // B字符的数量，A连续区间的数量，A字符的个数 
-	
-	vector<int> a; // 每一个A连续区间中A字符的数量 
-	
-	for (int i = 0; i < s.size();)
-	{
-		if (s[i] == 'A')
-		{
-			int sum = 0;
-			while (s[i] == 'A') cnta ++, sum ++, i ++;
-			a.emplace_back(sum);
-			blocka ++;
-		}
-		else
-		{
-			cntb ++;
-			i ++;
-		}
-	}
-	
-	if (cntb >= blocka) cout << cnta << endl;
-	else
-	{
-		sort(a.begin(), a.end());
-		cout << cnta - a[0] << endl;
-	}
+    string s; cin >> s;
+    int cntb = 0, blocka = 0, cnta = 0; // B字符的数量，A连续区间的数量，A字符的个数 
+    
+    vector<int> a; // 每一个A连续区间中A字符的数量 
+    
+    for (int i = 0; i < s.size();)
+    {
+        if (s[i] == 'A')
+        {
+            int sum = 0;
+            while (s[i] == 'A') cnta ++, sum ++, i ++;
+            a.emplace_back(sum);
+            blocka ++;
+        }
+        else
+        {
+            cntb ++;
+            i ++;
+        }
+    }
+    
+    if (cntb >= blocka) cout << cnta << endl;
+    else
+    {
+        sort(a.begin(), a.end());
+        cout << cnta - a[0] << endl;
+    }
 }
 
 int main()
 {
-	int T; cin >> T;
-	while (T --) solve();
-	return 0;
+    int T; cin >> T;
+    while (T --) solve();
+    return 0;
 }
 ```
 
@@ -260,31 +256,31 @@ https://codeforces.com/contest/1891/problem/C
 
 ```cpp
 void solve() {
-	n = read(); s = 0; res = 0;
-	for (int i = 1; i <= n; i++) {
-		a[i] = read();
-		s += a[i];
-	}
+    n = read(); s = 0; res = 0;
+    for (int i = 1; i <= n; i++) {
+        a[i] = read();
+        s += a[i];
+    }
  
-	s >>= 1;
+    s >>= 1;
  
-	sort(a + 1, a + n + 1);
+    sort(a + 1, a + n + 1);
  
-	for (int i = n; i >= 1; i--) {
-		if (s >= a[i]) {
-			s -= a[i], a[i] = 0, res++;
-		} else if (s) {
-			a[i] -= s;
-			s = 0;
-			res++;
-		}
-	}
+    for (int i = n; i >= 1; i--) {
+        if (s >= a[i]) {
+            s -= a[i], a[i] = 0, res++;
+        } else if (s) {
+            a[i] -= s;
+            s = 0;
+            res++;
+        }
+    }
  
-	for (int i = 1; i <= n; i++) {
-		res += a[i];
-	}
+    for (int i = 1; i <= n; i++) {
+        res += a[i];
+    }
  
-	printf("%lld\n", res);
+    printf("%lld\n", res);
 }
 ```
 
@@ -296,9 +292,9 @@ https://www.lanqiao.cn/problems/5889/learning/?contest_id=145
 >
 > ```cpp
 > struct Node {
-> int id;		// 当前结点的编号
-> int a;	// 属性1
-> int b;	// 属性2
+> int id;        // 当前结点的编号
+> int a;    // 属性1
+> int b;    // 属性2
 > };
 > vector<Node> G[N];
 > ```
@@ -380,8 +376,8 @@ const int N = 100010;
 typedef long long ll;
 
 struct Node {
-	int id;
-	ll w;
+    int id;
+    ll w;
 };
 
 int n;
@@ -395,48 +391,48 @@ ll sum, d, dist[N];
  * @param x 上一个点到当前点的距离
  */
 void dfs(int now, ll x) {
-	if (!st[now]) {
-		st[now] = true;
-		dist[now] = x;
-		for (int i = 0; i < G[now].size(); i++) {
-			int ch = G[now][i].id;
-			dfs(ch, x + G[now][i].w);
-		}
-	}
+    if (!st[now]) {
+        st[now] = true;
+        dist[now] = x;
+        for (int i = 0; i < G[now].size(); i++) {
+            int ch = G[now][i].id;
+            dfs(ch, x + G[now][i].w);
+        }
+    }
 }
 
 void solve() {
-	cin >> n;
-	for (int i = 0; i < n - 1; i++) {
-		int a, b, w;
-		cin >> a >> b >> w;
-		sum += w;
-		G[a].push_back({b, w});
-		G[b].push_back({a, w});
-	}
+    cin >> n;
+    for (int i = 0; i < n - 1; i++) {
+        int a, b, w;
+        cin >> a >> b >> w;
+        sum += w;
+        G[a].push_back({b, w});
+        G[b].push_back({a, w});
+    }
 
-	// 以1号点为根，计算所有点到1号点的距离
-	dfs(1, 0);
+    // 以1号点为根，计算所有点到1号点的距离
+    dfs(1, 0);
 
-	memset(st, 0, sizeof st);
+    memset(st, 0, sizeof st);
 
-	// 到1号点最远的那个点的编号 maxi，即直径的一个端点
-	int maxi = 0;
-	for (int i = 1; i <= n; i++) {
-		if (dist[i] > dist[maxi]) {
-			maxi = i;
-		}
-	}
+    // 到1号点最远的那个点的编号 maxi，即直径的一个端点
+    int maxi = 0;
+    for (int i = 1; i <= n; i++) {
+        if (dist[i] > dist[maxi]) {
+            maxi = i;
+        }
+    }
 
-	// 以直径的一个端点 maxi 为根，计算所有点到 maxi 点的距离
-	dfs(maxi, 0);
+    // 以直径的一个端点 maxi 为根，计算所有点到 maxi 点的距离
+    dfs(maxi, 0);
 
-	// 找到直径长度
-	for (int i = 1; i <= n; i++) {
-		d = max(d, dist[i]);
-	}
+    // 找到直径长度
+    for (int i = 1; i <= n; i++) {
+        d = max(d, dist[i]);
+    }
 
-	cout << sum * 2 - d << "\n";
+    cout << sum * 2 - d << "\n";
 }
 ```
 
@@ -480,27 +476,27 @@ https://vijos.org/d/nnu_contest/p/1532
 
 ```cpp
 void solve() {
-	cin >> n >> k;
-	for (int i = 0; i < n; i++) {
-		cin >> a[i];
-	}
+    cin >> n >> k;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
 
-	sort(a, a + n);
+    sort(a, a + n);
 
-	int i = 0;
-	for (; i < n; i++) {
-		if (a[i] > k) {
-			break;
-		}
-	}
+    int i = 0;
+    for (; i < n; i++) {
+        if (a[i] > k) {
+            break;
+        }
+    }
 
-	double res = k;
+    double res = k;
 
-	for (; i < n; i++) {
-		res = (res * 3.0 + a[i] * 1.0) / 4.0;
-	}
+    for (; i < n; i++) {
+        res = (res * 3.0 + a[i] * 1.0) / 4.0;
+    }
 
-	cout << (int)(res + 0.5) << "\n";
+    cout << (int)(res + 0.5) << "\n";
 }
 ```
 
@@ -538,18 +534,18 @@ using namespace std;
 const int N = 1010;
 
 struct Item {
-	int id, weight, money;
-	bool operator< (const Item& t) const {
-		if (money != t.money) return money > t.money;
-		else return weight < t.weight;
-	}
+    int id, weight, money;
+    bool operator< (const Item& t) const {
+        if (money != t.money) return money > t.money;
+        else return weight < t.weight;
+    }
 } item[N];
 
 struct Car {
-	int id, v;
-	bool operator< (const Car& t) const {
-		return v < t.v;
-	}
+    int id, v;
+    bool operator< (const Car& t) const {
+        return v < t.v;
+    }
 } car[N];
 
 pair<int, int> res[N];
@@ -557,48 +553,48 @@ bool vis[N];
 int cnt, sum;
 
 void solve() {
-	int n;
-	cin >> n;
-	for (int i = 1; i <= n; i++) {
-		item[i].id = i;
-		cin >> item[i].weight >> item[i].money;
-	}
+    int n;
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        item[i].id = i;
+        cin >> item[i].weight >> item[i].money;
+    }
 
-	int k;
-	cin >> k;
-	for (int i = 1; i <= k; i++) {
-		car[i].id = i;
-		cin >> car[i].v;
-	}
+    int k;
+    cin >> k;
+    for (int i = 1; i <= k; i++) {
+        car[i].id = i;
+        cin >> car[i].v;
+    }
 
-	sort(item + 1, item + n + 1);
-	sort(car + 1, car + k + 1);
+    sort(item + 1, item + n + 1);
+    sort(car + 1, car + k + 1);
 
-	for (int i = 1; i <= n; i++) {
-		for (int j = 1; j <= k; j++) {
-			if (!vis[j] && car[j].v >= item[i].weight) {
-				sum += item[i].money;
-				vis[j] = true;
-				res[cnt++] = {item[i].id, car[j].id};
-				break;
-			}
-		}
-	}
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= k; j++) {
+            if (!vis[j] && car[j].v >= item[i].weight) {
+                sum += item[i].money;
+                vis[j] = true;
+                res[cnt++] = {item[i].id, car[j].id};
+                break;
+            }
+        }
+    }
 
-	cout << cnt << " " << sum << "\n";
+    cout << cnt << " " << sum << "\n";
 
-	for (int i = 0; i < cnt; i++) {
-		cout << res[i].first << " " << res[i].second << "\n";
-	}
+    for (int i = 0; i < cnt; i++) {
+        cout << res[i].first << " " << res[i].second << "\n";
+    }
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -621,41 +617,41 @@ int n, W;
 double res;
 
 struct Item {
-	double w;
-	double val;
-	
-	bool operator< (const Item& t) const {
-		return this->val / this->w > t.val / t.w;
-	}
+    double w;
+    double val;
+    
+    bool operator< (const Item& t) const {
+        return this->val / this->w > t.val / t.w;
+    }
 } a[N];
 
 void solve() {
-	cin >> n >> W;
-	for (int i = 0; i < n; i++) cin >> a[i].w >> a[i].val;	
-	
-	sort(a, a + n);
-	
-	for (int i = 0; i < n; i++) {
-		if (W > a[i].w) {
-			W -= a[i].w;
-			res += a[i].val;
-		} else {
-			res += W * a[i].val / a[i].w;
-			break;
-		}
-	}
-	
-	cout << fixed << setprecision(2) << res << "\n";
+    cin >> n >> W;
+    for (int i = 0; i < n; i++) cin >> a[i].w >> a[i].val;    
+    
+    sort(a, a + n);
+    
+    for (int i = 0; i < n; i++) {
+        if (W > a[i].w) {
+            W -= a[i].w;
+            res += a[i].val;
+        } else {
+            res += W * a[i].val / a[i].w;
+            break;
+        }
+    }
+    
+    cout << fixed << setprecision(2) << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	cout << fixed << setprecision(2);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    cout << fixed << setprecision(2);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -681,40 +677,40 @@ const int N = 1010;
 int n;
 
 struct Item {
-	int time;
-	int i;
-	
-	bool operator< (const Item& t) const {
-		return this->time < t.time;
-	}
+    int time;
+    int i;
+    
+    bool operator< (const Item& t) const {
+        return this->time < t.time;
+    }
 } a[N]; 
 
 void solve() {
-	cin >> n;
-	for (int i = 1; i <= n; i++) {
-		cin >> a[i].time;
-		a[i].i = i;
-	}
-	
-	sort(a + 1, a + n + 1);
-	
-	double sum = 0;
-	
-	for (int i = 1; i <= n; i++) {
-		sum += a[i].time * (n - i);
-		cout << a[i].i << " \n"[i == n];
-	}
-	
-	cout << fixed << setprecision(2) << sum / n << "\n";
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i].time;
+        a[i].i = i;
+    }
+    
+    sort(a + 1, a + n + 1);
+    
+    double sum = 0;
+    
+    for (int i = 1; i <= n; i++) {
+        sum += a[i].time * (n - i);
+        cout << a[i].i << " \n"[i == n];
+    }
+    
+    cout << fixed << setprecision(2) << sum / n << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -736,37 +732,37 @@ const int N = 1000010;
 int n;
 
 struct Item {
-	int l, r;
-	bool operator< (const Item& t) const {
-		return this->r < t.r;
-	}
+    int l, r;
+    bool operator< (const Item& t) const {
+        return this->r < t.r;
+    }
 } a[N];
 
 void solve() {
-	cin >> n;
-	for (int i = 1; i <= n; i++) cin >> a[i].l >> a[i].r;
-	
-	sort(a + 1, a + n + 1);
-	
-	int right = -1, res = 0;
-	
-	for (int i = 1; i <= n; i++) {
-		if (a[i].l >= right) {
-			res++;
-			right = a[i].r;
-		}
-	}
-	
-	cout << res << "\n";
+    cin >> n;
+    for (int i = 1; i <= n; i++) cin >> a[i].l >> a[i].r;
+    
+    sort(a + 1, a + n + 1);
+    
+    int right = -1, res = 0;
+    
+    for (int i = 1; i <= n; i++) {
+        if (a[i].l >= right) {
+            res++;
+            right = a[i].r;
+        }
+    }
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -789,29 +785,29 @@ int n, x;
 int a[N];
 
 void solve() {
-	cin >> n >> x;
-	for (int i = 1; i <= n; i++) cin >> a[i];
-	
-	int res = 0;
-	
-	for (int i = 2; i <= n; i++) {
-		if (a[i] + a[i - 1] > x) {
-			int eat = a[i] + a[i - 1] - x;
-			res += eat;
-			a[i] = a[i] >= eat ? a[i] - eat : 0;
-		}
-	}
-	
-	cout << res << "\n";
+    cin >> n >> x;
+    for (int i = 1; i <= n; i++) cin >> a[i];
+    
+    int res = 0;
+    
+    for (int i = 2; i <= n; i++) {
+        if (a[i] + a[i - 1] > x) {
+            int eat = a[i] + a[i - 1] - x;
+            res += eat;
+            a[i] = a[i] >= eat ? a[i] - eat : 0;
+        }
+    }
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -834,38 +830,38 @@ int n, s;
 int aa, bb;
 
 struct Apple {
-	int h, cost;
-	bool operator< (const Apple& t) const {
-		return this->cost < t.cost;
-	}
+    int h, cost;
+    bool operator< (const Apple& t) const {
+        return this->cost < t.cost;
+    }
 } a[N];
 
 void solve() {
-	cin >> n >> s;
-	cin >> aa >> bb;
-	for (int i = 1; i <= n; i++) cin >> a[i].h >> a[i].cost;
-	
-	sort(a + 1, a + n + 1);
-	
-	int cnt = 0;
-	
-	for (int i = 1; i <= n; i++) {
-		if (s >= a[i].cost && a[i].h <= aa + bb) {
-			cnt++;
-			s -= a[i].cost;
-		}
-	}
-	
-	cout << cnt << "\n";
+    cin >> n >> s;
+    cin >> aa >> bb;
+    for (int i = 1; i <= n; i++) cin >> a[i].h >> a[i].cost;
+    
+    sort(a + 1, a + n + 1);
+    
+    int cnt = 0;
+    
+    for (int i = 1; i <= n; i++) {
+        if (s >= a[i].cost && a[i].h <= aa + bb) {
+            cnt++;
+            s -= a[i].cost;
+        }
+    }
+    
+    cout << cnt << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -894,25 +890,25 @@ const int N = 100010;
 int n, a[N];
 
 void solve() {
-	cin >> n;
-	for (int i = 1; i <= n; i++) cin >> a[i];
-	
-	int res = a[1];
-	
-	for (int i = 2; i <= n; i++)
-		if (a[i] > a[i - 1])
-			res += a[i] - a[i - 1];
-	
-	cout << res << "\n";
+    cin >> n;
+    for (int i = 1; i <= n; i++) cin >> a[i];
+    
+    int res = a[1];
+    
+    for (int i = 2; i <= n; i++)
+        if (a[i] > a[i - 1])
+            res += a[i] - a[i - 1];
+    
+    cout << res << "\n";
 } 
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -934,40 +930,40 @@ const int N = 2000010;
 int need, n;
 
 struct Milk {
-	int per, tot;
-	bool operator< (const Milk& t) const {
-		return per < t.per;
-	}
+    int per, tot;
+    bool operator< (const Milk& t) const {
+        return per < t.per;
+    }
 } a[N];
 
 void solve() {
-	cin >> need >> n;
-	for (int i = 1; i <= n; i++) cin >> a[i].per >> a[i].tot;
-	
-	sort(a + 1, a + n + 1);
-	
-	int res = 0;
-	
-	for (int i = 1; i <= n; i++) {
-		if (need >= a[i].tot) {
-			need -= a[i].tot;
-			res += a[i].tot * a[i].per;
-		} else {
-			res += need * a[i].per;
-			need = 0;
-		}
-	}
-	
-	cout << res << "\n";
+    cin >> need >> n;
+    for (int i = 1; i <= n; i++) cin >> a[i].per >> a[i].tot;
+    
+    sort(a + 1, a + n + 1);
+    
+    int res = 0;
+    
+    for (int i = 1; i <= n; i++) {
+        if (need >= a[i].tot) {
+            need -= a[i].tot;
+            res += a[i].tot * a[i].per;
+        } else {
+            res += need * a[i].per;
+            need = 0;
+        }
+    }
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -991,32 +987,32 @@ int lim, n;
 int a[N];
 
 void solve() {
-	cin >> lim >> n;
-	for (int i = 1; i <= n; i++) cin >> a[i];
-	
-	sort(a + 1, a + n + 1, [&](int x, int y) {
-		return x > y;
-	});
-	
-	int res = 0, l = 1, r = n;
-	
-	while (l < r) {
-		if (a[l] + a[r] <= lim) r--;
-		l++, res++;
-	}
-	
-	if (l == r) res++;
-	
-	cout << res << "\n";
+    cin >> lim >> n;
+    for (int i = 1; i <= n; i++) cin >> a[i];
+    
+    sort(a + 1, a + n + 1, [&](int x, int y) {
+        return x > y;
+    });
+    
+    int res = 0, l = 1, r = n;
+    
+    while (l < r) {
+        if (a[l] + a[r] <= lim) r--;
+        l++, res++;
+    }
+    
+    if (l == r) res++;
+    
+    cout << res << "\n";
 } 
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1043,34 +1039,34 @@ const int N = 310;
 int n, a[N];
 
 void solve() {
-	cin >> n;
-	for (int i = 1; i <= n; i++) cin >> a[i];
+    cin >> n;
+    for (int i = 1; i <= n; i++) cin >> a[i];
 
-	sort(a + 1, a + n + 1, [&](int x, int y) {
-		return x > y;
-	});
+    sort(a + 1, a + n + 1, [&](int x, int y) {
+        return x > y;
+    });
 
-	int res = a[1] * a[1], l = 1, r = n;
-	
-	while (l < r) {
-		res += (a[l] - a[r]) * (a[l] - a[r]);
-		l++;
-		if (l < r) {
-			res += (a[l] - a[r]) * (a[l] - a[r]);
-			r--;
-		}
-	}
-	
-	cout << res << "\n";
+    int res = a[1] * a[1], l = 1, r = n;
+    
+    while (l < r) {
+        res += (a[l] - a[r]) * (a[l] - a[r]);
+        l++;
+        if (l < r) {
+            res += (a[l] - a[r]) * (a[l] - a[r]);
+            r--;
+        }
+    }
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1093,48 +1089,48 @@ int n, m;
 int res[N];
 
 struct Item {
-	int id;
-	int begi, arri, time;
-	bool operator< (const Item& t) const {
-		return arri < t.arri;
-	}
+    int id;
+    int begi, arri, time;
+    bool operator< (const Item& t) const {
+        return arri < t.arri;
+    }
 } a[N];
 
 void solve() {
-	cin >> n >> m;
-	for (int i = 1; i <= m; i++) {
-		cin >> a[i].begi >> a[i].arri >> a[i].time;
-		a[i].id = i;
-		res[a[i].arri] = m + 1; // 接客 
-	}
-	
-	sort(a + 1, a + m + 1);
-	
-	for (int i = 1; i <= m; i++) {
-		int t = a[i].time;
-		for (int j = a[i].begi; j <= a[i].arri - 1; j++) {
-			if (t > 0 && !res[j]) {
-				res[j] = a[i].id; // 做菜 
-				t--;
-			}
-		}
-		
-		if (t) {
-			cout << -1 << "\n";
-			return;
-		}
-	}
-	
-	for (int i = 1; i <= n; i++) cout << res[i] << " \n"[i == n];
+    cin >> n >> m;
+    for (int i = 1; i <= m; i++) {
+        cin >> a[i].begi >> a[i].arri >> a[i].time;
+        a[i].id = i;
+        res[a[i].arri] = m + 1; // 接客 
+    }
+    
+    sort(a + 1, a + m + 1);
+    
+    for (int i = 1; i <= m; i++) {
+        int t = a[i].time;
+        for (int j = a[i].begi; j <= a[i].arri - 1; j++) {
+            if (t > 0 && !res[j]) {
+                res[j] = a[i].id; // 做菜 
+                t--;
+            }
+        }
+        
+        if (t) {
+            cout << -1 << "\n";
+            return;
+        }
+    }
+    
+    for (int i = 1; i <= n; i++) cout << res[i] << " \n"[i == n];
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1158,32 +1154,32 @@ priority_queue<int, vector<int>, greater<int>> q;
 int res;
 
 void solve() {
-	cin >> n;
-	for (int i = 1; i <= n; i++) {
-		int x;
-		cin >> x;
-		q.push(x);
-	}
-	
-	for (int i = 1; i <= n - 1; i++) {
-		int a = q.top(); q.pop();
-		int b = q.top(); q.pop();
-		
-		res += a + b;
-		
-		q.push(a + b);
-	}
-	
-	cout << res << "\n";
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        int x;
+        cin >> x;
+        q.push(x);
+    }
+    
+    for (int i = 1; i <= n - 1; i++) {
+        int a = q.top(); q.pop();
+        int b = q.top(); q.pop();
+        
+        res += a + b;
+        
+        q.push(a + b);
+    }
+    
+    cout << res << "\n";
 } 
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1204,47 +1200,47 @@ string s, res;
 int k;
 
 void solve() {
-	cin >> s >> k;
-	int n = s.size();
-	
-	// 特判保留的数字个数 n-k 为负数的情况 
-	if (n - k <= 0) {
-		cout << 0 << "\n";
-		return;
-	}
-	
-	// 循环 n-k 次选择保留的数 
-	int l = 0, r = k;
-	for (int i = 0; i < n - k; i++) {
-		int idx = -1;
-		for (int j = l; j <= r; j++)
-			if (idx == -1 || s[j] < s[idx])
-				idx = j;
-		
-		res += s[idx];
-		
-		l = idx + 1, r++;
-	}
-	
-	// 删除前导零 
-	int i = 0;
-	while (res[i] == '0') i++;
-	
-	// 输出结果 
-	if (i == res.size()) 
-		cout << 0;
-	else
-		for (int j = i; j < res.size(); j++) 
-			cout << res[j];
+    cin >> s >> k;
+    int n = s.size();
+    
+    // 特判保留的数字个数 n-k 为负数的情况 
+    if (n - k <= 0) {
+        cout << 0 << "\n";
+        return;
+    }
+    
+    // 循环 n-k 次选择保留的数 
+    int l = 0, r = k;
+    for (int i = 0; i < n - k; i++) {
+        int idx = -1;
+        for (int j = l; j <= r; j++)
+            if (idx == -1 || s[j] < s[idx])
+                idx = j;
+        
+        res += s[idx];
+        
+        l = idx + 1, r++;
+    }
+    
+    // 删除前导零 
+    int i = 0;
+    while (res[i] == '0') i++;
+    
+    // 输出结果 
+    if (i == res.size()) 
+        cout << 0;
+    else
+        for (int j = i; j < res.size(); j++) 
+            cout << res[j];
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -1273,45 +1269,45 @@ int n, b;
 int a[N], odd[N], even[N];
 
 void solve() {
-	cin >> n >> b;
-	
-	for (int i = 1; i <= n; i++) {
-		cin >> a[i];
-		if (a[i] % 2 == 0) {
-			even[i] = even[i - 1] + 1;
-			odd[i] = odd[i - 1];
-		} else {
-			even[i] = even[i - 1];
-			odd[i] = odd[i - 1] + 1;
-		}
-	}
-	
-	vector<int> c;
-	for (int i = 2; i <= n - 2; i += 2) {
-		if (odd[i] == even[i]) {
-			c.push_back(abs(a[i] - a[i + 1]));
-		}
-	}
-	
-	int res = 0;
-	sort(c.begin(), c.end());
-	for (auto& x: c) {
-		if (b >= x) {
-			b -= x;
-			res++;
-		}
-	}
-	
-	cout << res;
+    cin >> n >> b;
+    
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+        if (a[i] % 2 == 0) {
+            even[i] = even[i - 1] + 1;
+            odd[i] = odd[i - 1];
+        } else {
+            even[i] = even[i - 1];
+            odd[i] = odd[i - 1] + 1;
+        }
+    }
+    
+    vector<int> c;
+    for (int i = 2; i <= n - 2; i += 2) {
+        if (odd[i] == even[i]) {
+            c.push_back(abs(a[i] - a[i + 1]));
+        }
+    }
+    
+    int res = 0;
+    sort(c.begin(), c.end());
+    for (auto& x: c) {
+        if (b >= x) {
+            b -= x;
+            res++;
+        }
+    }
+    
+    cout << res;
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 

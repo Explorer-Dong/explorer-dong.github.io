@@ -4,9 +4,9 @@ categories: Algorithm
 category_bar: true
 ---
 
-## geometry
+### 计算几何
 
-### 1. Minimum Manhattan Distance
+### 【二维/数学】Minimum Manhattan Distance
 
 https://codeforces.com/gym/104639/problem/J
 
@@ -14,14 +14,14 @@ https://codeforces.com/gym/104639/problem/J
 >
 > 思路：
 >
-> 1. 看似需要积分，其实我们可以发现，对于点p到C1中某个点q1的曼哈顿距离，我们一定可以找到q1关于C1对称的点q2，那么点p到q1和q2的曼哈顿距离之和就是点p到C1的曼哈顿距离的两倍（证明就是中线定理）那么期望的最小值就是点p到C1的曼哈顿距离的最小值。目标转化后，我们开始思考如何计算此目标的最小值，思路如下图
+> - 看似需要积分，其实我们可以发现，对于点p到C1中某个点q1的曼哈顿距离，我们一定可以找到q1关于C1对称的点q2，那么点p到q1和q2的曼哈顿距离之和就是点p到C1的曼哈顿距离的两倍（证明就是中线定理）那么期望的最小值就是点p到C1的曼哈顿距离的最小值。目标转化后，我们开始思考如何计算此目标的最小值，思路如下图
 >
->     <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402252321057.png" alt="image-20240116175917260" style="zoom:50%;" />
+>     ![image-20240116175917260](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402252321057.png)
 >
 > 注意点：
 >
-> 1. double的读取速度很慢，可以用 `int` or `long long` 读入，后续强制类型转换（显示 or 和浮点数计算）
-> 2. 注意输出答案的精度控制  `cout << fixed << setprecision(10) << res << "\n";`
+> - double的读取速度很慢，可以用 `int` or `long long` 读入，后续强制类型转换（显示 or 和浮点数计算）
+> - 注意输出答案的精度控制  `cout << fixed << setprecision(10) << res << "\n";`
 
 ```cpp
 void solve() {
@@ -42,7 +42,7 @@ void solve() {
 }
 ```
 
-### 2. 三角形
+### 【枚举】三角形
 
 https://www.acwing.com/problem/content/5383/
 
@@ -96,7 +96,7 @@ signed main() {
 }
 ```
 
-### 3. 奶牛过马路
+### 【凸包】奶牛过马路
 
 https://www.acwing.com/problem/content/5572/
 

@@ -4,11 +4,11 @@ categories: Algorithm
 category_bar: true
 ---
 
-### 《二分》
+### 二分
 
-二分查找理论上还是一个线性的算法思维，只是与一般的线性思维更进一步的是，二分思维需要提炼出题面中两个线性相关的变量，即单调变化的两个变量，从而采用二分加速检索
+二分理论上还是一个线性的算法思维，只是比一般的线性思维更进一步的是，二分思维需要提炼出题面中两个线性相关的变量，即单调变化的两个变量，从而采用二分加速检索。
 
-### 1. Building an Aquarium
+### 【二分答案】Building an Aquarium
 
 https://codeforces.com/contest/1873/problem/E
 
@@ -24,61 +24,57 @@ typedef long long ll;
 
 void solve()
 {
-	int n, w;
-	cin >> n >> w;
-	vector<ll> a(n);
-	
-	for (int i = 0; i < n; i ++)
-		cin >> a[i];
-	
-	sort(a.begin(), a.end());
-	
-	ll l = 0, r = 2e9 + 1;
-	while (l < r)
-	{
-		ll h = (l + r + 1) >> 1;
-		
-		ll t = 0;
-		for (int i = 0; i < n; i ++)
-			if (a[i] < h)
-				t += h - a[i];
-			else break;
-		
-		if (t <= w) l = h;
-		else r = h - 1;
-	}
-	cout << r << endl;
+    int n, w;
+    cin >> n >> w;
+    vector<ll> a(n);
+    
+    for (int i = 0; i < n; i ++)
+        cin >> a[i];
+    
+    sort(a.begin(), a.end());
+    
+    ll l = 0, r = 2e9 + 1;
+    while (l < r)
+    {
+        ll h = (l + r + 1) >> 1;
+        
+        ll t = 0;
+        for (int i = 0; i < n; i ++)
+            if (a[i] < h)
+                t += h - a[i];
+            else break;
+        
+        if (t <= w) l = h;
+        else r = h - 1;
+    }
+    cout << r << endl;
 }
 
 int main()
 {
-	int T; cin >> T;
-	while (T --) solve();
-	return 0;
+    int T; cin >> T;
+    while (T --) solve();
+    return 0;
 }
 ```
 
-### 2. 分组
+### 【二分答案】分组
 
 https://www.lanqiao.cn/problems/5129/learning/
 
 > 题意：给定一个序列，现在需要将这个数列分为k组，如何分组可以使得每一组的极差中，最大值最小
 >
-> 最开始想到的思路：
->
-> 很容易联想到的一种方法其实就是高中组合数学中学到的“隔板法”，现在有n个数，需要分成k组，则方案数就是在n-1个空档中插入k-1个隔板，即 $C_{n-1}^{k-1}$ 种方案
+> 最开始想到的思路：很容易联想到的一种方法其实就是高中组合数学中学到的“隔板法”，现在有n个数，需要分成k组，则方案数就是在n-1个空档中插入k-1个隔板，即 $C_{n-1}^{k-1}$ 种方案
 >
 > 时间复杂度 $O(n^2)$
 >
-> 优化思路：
->
-> 上述思路是正向思维，即对于构思分组情况计算极差。我们不妨逆向思维，即枚举极差的情况，判断此时的分组情况。如果对于当前的极差lim，我们显然可以分成n组，即有一个最大分组值；我们也可以求一个最小分组值cnt，即如果再少分一组那么此时的极差就会超过当前约束的极差值lim。因此对于当前约束的极差值lim，我们可以求一个最小分组值cnt
+> 优化思路：上述思路是正向思维，即对于构思分组情况计算极差。我们不妨逆向思维，即枚举极差的情况，判断此时的分组情况。如果对于当前的极差lim，我们显然可以分成n组，即有一个最大分组值；我们也可以求一个最小分组值cnt，即如果再少分一组那么此时的极差就会超过当前约束的极差值lim。因此对于当前约束的极差值lim，我们可以求一个最小分组值cnt
 >
 > - 如果当前的最小分组值cnt > k，那么 $\left [ cnt,n \right ]$ 就无法包含k，也就是说当前约束的极差lim不符合条件，lim偏小
-> - 如果当前的最小分组值cnt <= k，那么 $\left [ cnt,n \right ]$ 就一定包含k，且当前分组的最小极差一定是 <= 约束的极差值lim，lim偏大
->
-> 于是二分极差的思路就跃然纸上了。我们二分极差，然后根据可以分组的最小数量cnt判断二分的结果进行左右约束调整即可。
->
+>- 如果当前的最小分组值cnt <= k，那么 $\left [ cnt,n \right ]$ 就一定包含k，且当前分组的最小极差一定是 <= 约束的极差值lim，lim偏大
+> 
+>于是二分极差的思路就跃然纸上了。我们二分极差，然后根据可以分组的最小数量cnt判断二分的结果进行左右约束调整即可。
+> 
 > 时间复杂度 $O(n \log n)$
 
 ```cpp
@@ -138,7 +134,7 @@ int main() {
 }
 ```
 
-### 3. 木材加工
+### 【二分答案】木材加工
 
 https://www.luogu.com.cn/problem/P2440
 
@@ -159,43 +155,43 @@ int n, k;
 int a[N];
 
 bool chk(int x) {
-	int sum = 0;
-	for (int i = 0; i < n; i++)
-		sum += a[i] / x;
-	return sum >= k;
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+        sum += a[i] / x;
+    return sum >= k;
 }
 
 void solve() {
-	cin >> n >> k;
-	
-	int sum = 0;
-	for (int i = 0; i < n; i++) {
-		cin >> a[i];
-		sum += a[i];
-	}
-	
-	int l = 1, r = 1e8;
-	while (l < r) {
-		int mid = (l + r + 1) >> 1;
-		if (chk(mid)) l = mid;
-		else r = mid - 1;
-	}
-	
-	if (k > sum) cout << "0\n";
-	else cout << r << "\n";	
+    cin >> n >> k;
+    
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        sum += a[i];
+    }
+    
+    int l = 1, r = 1e8;
+    while (l < r) {
+        int mid = (l + r + 1) >> 1;
+        if (chk(mid)) l = mid;
+        else r = mid - 1;
+    }
+    
+    if (k > sum) cout << "0\n";
+    else cout << r << "\n";    
 } 
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();	
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();    
+    return 0;
 }
 ```
 
-### 4. 跳石头
+### 【二分答案】跳石头
 
 https://www.luogu.com.cn/problem/P2678
 
@@ -217,54 +213,54 @@ int a[N], b[N];
 bool del[N];
 
 bool ok(int x) {
-	int cnt = 0;
-	memset(del, false, sizeof del);
-	
-	for (int i = 1; i <= n; i++) {
-		b[i] = a[i];
-	}
-	
-	for (int i = 1; i <= n; i++) {
-		if (b[i] - b[i - 1] < x) {
-			del[i] = true;
-			b[i] = b[i - 1];
-			cnt++;
-		}
-	}
-	
-	if (lim - b[n] < x) {
-		cnt++;
-	}
-	
-	return cnt <= k;
+    int cnt = 0;
+    memset(del, false, sizeof del);
+    
+    for (int i = 1; i <= n; i++) {
+        b[i] = a[i];
+    }
+    
+    for (int i = 1; i <= n; i++) {
+        if (b[i] - b[i - 1] < x) {
+            del[i] = true;
+            b[i] = b[i - 1];
+            cnt++;
+        }
+    }
+    
+    if (lim - b[n] < x) {
+        cnt++;
+    }
+    
+    return cnt <= k;
 }
 
 void solve() {
-	cin >> lim >> n >> k;
-	for (int i = 1; i <= n; i++)
-		cin >> a[i];
-	
-	int l = 1, r = lim;
-	while (l < r) {
-		int mid = (l + r + 1) >> 1;
-		if (ok(mid)) l = mid;
-		else r = mid - 1;
-	}
-	
-	cout << r << "\n";
+    cin >> lim >> n >> k;
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
+    
+    int l = 1, r = lim;
+    while (l < r) {
+        int mid = (l + r + 1) >> 1;
+        if (ok(mid)) l = mid;
+        else r = mid - 1;
+    }
+    
+    cout << r << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();	
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();    
+    return 0;
 }
 ```
 
-### 5. 路标设置
+### 【二分答案】路标设置
 
 https://www.luogu.com.cn/problem/P3853
 
@@ -287,43 +283,43 @@ int lim, n, k;
 int a[N];
 
 bool chk(int x) {
-	int cnt = 0;
-	for (int i = 1; i < n; i++) {
-		int gap = a[i] - a[i - 1];
-		if (gap > x) {
-			cnt += (gap + x - 1) / x - 1;
-		}
-	}
-	return cnt > k;
+    int cnt = 0;
+    for (int i = 1; i < n; i++) {
+        int gap = a[i] - a[i - 1];
+        if (gap > x) {
+            cnt += (gap + x - 1) / x - 1;
+        }
+    }
+    return cnt > k;
 }
 
 void solve() {
-	cin >> lim >> n >> k;
-	for (int i = 0; i < n; i++) {
-		cin >> a[i];
-	}
-	
-	int l = 1, r = lim;
-	while (l < r) {
-		int mid = (l + r) >> 1;
-		if (chk(mid)) l = mid + 1;
-		else r = mid;
-	}
-	
-	cout << r << "\n";
+    cin >> lim >> n >> k;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    
+    int l = 1, r = lim;
+    while (l < r) {
+        int mid = (l + r) >> 1;
+        if (chk(mid)) l = mid + 1;
+        else r = mid;
+    }
+    
+    cout << r << "\n";
 } 
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();	
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();    
+    return 0;
 }
 ```
 
-### 6. 数列分段 Section II
+### 【二分答案】数列分段 Section II
 
 https://www.luogu.com.cn/problem/P1182
 
@@ -345,48 +341,48 @@ int a[N];
 
 // 当前分组时最大子段和为 x 
 bool chk(int x) {
-	int cnt = 0;
-	for (int i = 0, s = 0; i < n; i++) {
-		if (a[i] > x) return true;
-		
-		if (s + a[i] <= x) s += a[i];
-		else {
-			cnt++;
-			s = a[i];
-		}
-	}
-	cnt += 1;
-	
-	return cnt > k;
+    int cnt = 0;
+    for (int i = 0, s = 0; i < n; i++) {
+        if (a[i] > x) return true;
+        
+        if (s + a[i] <= x) s += a[i];
+        else {
+            cnt++;
+            s = a[i];
+        }
+    }
+    cnt += 1;
+    
+    return cnt > k;
 }
 
 void solve() {
-	cin >> n >> k;
-	for (int i = 0; i < n; i++) {
-		cin >> a[i];
-	}
-	
-	int l = 0, r = 1e9;
-	while (l < r) {
-		int mid = (l + r) >> 1;
-		if (chk(mid)) l = mid + 1;
-		else r = mid;
-	}
-	
-	cout << r << "\n";
+    cin >> n >> k;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    
+    int l = 0, r = 1e9;
+    while (l < r) {
+        int mid = (l + r) >> 1;
+        if (chk(mid)) l = mid + 1;
+        else r = mid;
+    }
+    
+    cout << r << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();	
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();    
+    return 0;
 }
 ```
 
-### 7. kotori的设备
+### 【二分答案】kotori的设备
 
 https://www.luogu.com.cn/problem/P3743
 
@@ -407,56 +403,60 @@ int n;
 double p, v[N], s[N];
 
 bool chk(double x) {
-	// x 为当前状态期望使用的时间 
-	double need = 0;
-	for (int i = 1; i <= n; i++)
-		if (v[i] * x > s[i])
-			need += v[i] * x - s[i];
-	return need <= x * p;
+    // x 为当前状态期望使用的时间 
+    double need = 0;
+    for (int i = 1; i <= n; i++)
+        if (v[i] * x > s[i])
+            need += v[i] * x - s[i];
+    return need <= x * p;
 }
 
 void solve() {
-	cin >> n >> p;
-	for (int i = 1; i <= n; i++) {
-		cin >> v[i] >> s[i];
-	}
-	
-	double l = 0, r = 1e10 + 10;
-	while (r - l > 1e-6) {
-		double mid = (l + r) / 2; 
-		if (chk(mid)) l = mid;
-		else r = mid;
-	}
-	
-	if (r > 1e10) cout << -1 << "\n";
-	else cout << r << "\n";
+    cin >> n >> p;
+    for (int i = 1; i <= n; i++) {
+        cin >> v[i] >> s[i];
+    }
+    
+    double l = 0, r = 1e10 + 10;
+    while (r - l > 1e-6) {
+        double mid = (l + r) / 2; 
+        if (chk(mid)) l = mid;
+        else r = mid;
+    }
+    
+    if (r > 1e10) cout << -1 << "\n";
+    else cout << r << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 8. [NOIP2010 提高组] 关押罪犯 TODO
+### 【二分答案/并查集】关押罪犯 :fire:
 
 https://www.luogu.com.cn/problem/P1525
 
 > 题意：给定一个无向图，没有重边和自环，边权为正。现在需要将图中所有的顶点分为两部分，使得两部分中最大的边权尽可能小，问该最小边权是多少
 >
-> - 思路一：二分答案。本题一眼二分图问题，但是有些变化的是左右部并非散点图，其中是有连边的。如何求出最小边权呢？我们可以这么想，首先答案一定出自左右部的连边中（除非左右部全是散点，那答案就是 0），之所以可以采用二分图将点集分为两部分，是因为我们在某种规则下忽略了其中奇数环（二分图定理）的一些边。当规则定义为 **忽略边权不超过 x** 的边时，该图若可以二分，那么忽略边权比 x 值更大的边时，该图同样一定也可以二分，反之则不一定可以二分（特性图如下）。具备单调性，于是我们可以通过 **二分阈值、检查图是否可二分** 的方法来计算出答案
+> 思路一：二分答案。
 >
->     <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402230117928.png" alt="image-20240223011704197" style="zoom:50%;" />
+> - 思路：本题一眼二分图问题，但是有些变化的是左右部并非散点图，其中是有连边的。如何求出最小边权呢？我们可以这么想，首先答案一定出自左右部的连边中（除非左右部全是散点，那答案就是 0），之所以可以采用二分图将点集分为两部分，是因为我们在某种规则下忽略了其中奇数环（二分图定理）的一些边。当规则定义为 **忽略边权不超过 x** 的边时，该图若可以二分，那么忽略边权比 x 值更大的边时，该图同样一定也可以二分，反之则不一定可以二分（特性图如下）。具备单调性，于是我们可以通过 **二分阈值、检查图是否可二分** 的方法来计算出答案
 >
->     时间复杂度：$O(\log C_{max} \times (n+e))$
+> ![image-20240223011704197](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402230117928.png)
 >
-> - 思路二：
+> 时间复杂度：$\Theta(\log C_{max} \times (n+e))$
 >
->     时间复杂度：
+> 思路二：并查集。
+>
+> - 思路：
+>
+> - 时间复杂度：
 
 二分判定二分图代码：
 
@@ -468,7 +468,7 @@ https://www.luogu.com.cn/problem/P1525
 ```cpp
 ```
 
-### 9. 摆放棋子
+### 【二分答案】摆放棋子
 
 https://www.acwing.com/problem/content/5562/
 
@@ -499,52 +499,52 @@ int n, k;
 int a[N], s[N];
 
 bool chk(int x) {
-	for (int i = x; i <= n; i++) {
-		if (x - (s[i] - s[i - x]) <= k) {
-			return true;
-		}
-	}
-	return false;
+    for (int i = x; i <= n; i++) {
+        if (x - (s[i] - s[i - x]) <= k) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void solve() {
-	cin >> n >> k;
-	for (int i = 1; i <= n; i++) {
-		cin >> a[i];
-		s[i] = s[i - 1] + a[i];
-	}
+    cin >> n >> k;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+        s[i] = s[i - 1] + a[i];
+    }
 
-	int l = 0, r = n;
-	while (l < r) {
-		int mid = (l + r + 1) >> 1;
-		if (chk(mid)) l = mid;
-		else r = mid - 1;
-	}
+    int l = 0, r = n;
+    while (l < r) {
+        int mid = (l + r + 1) >> 1;
+        if (chk(mid)) l = mid;
+        else r = mid - 1;
+    }
 
-	for (int i = r; i <= n; i++) {
-		if (r - (s[i] - s[i - r]) <= k) {
-			for (int j = i - r + 1; j <= i; j++) {
-				a[j] = 1;
-			}
-			break;
-		}
-	}
+    for (int i = r; i <= n; i++) {
+        if (r - (s[i] - s[i - r]) <= k) {
+            for (int j = i - r + 1; j <= i; j++) {
+                a[j] = 1;
+            }
+            break;
+        }
+    }
 
-	cout << r << "\n";
-	for (int i = 1; i <= n; i++) cout << a[i] << " ";
+    cout << r << "\n";
+    for (int i = 1; i <= n; i++) cout << a[i] << " ";
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 10. 盖楼
+### 【二分答案】盖楼
 
 https://www.acwing.com/problem/content/description/5569/
 
@@ -560,7 +560,7 @@ https://www.acwing.com/problem/content/description/5569/
 >
 >     其中 h-p-q+a 的部分两个人都可以获得。最策略是，p-a 与 q-a 的都给另外的人，如果不够，从 h-p-q+a 中拿，如果还不够那就说明当前 h 无法满足，需要增大 h，反之说明 h 可以满足，继续寻找答案的左边界。
 >
-> 时间复杂度：$O(\log (N+M))$
+> 时间复杂度：$\Theta(\log (N+M))$
 
 ```cpp
 #include <iostream>
@@ -570,31 +570,31 @@ typedef long long ll;
 ll n, m, x, y;
 
 bool chk(ll h) {
-	ll p = h / x, q = h / y, a = h / (x * y);
+    ll p = h / x, q = h / y, a = h / (x * y);
 
-	return max(0ll, n - (q - a)) + max(0ll, m - (p - a)) <= h - p - q + a;
+    return max(0ll, n - (q - a)) + max(0ll, m - (p - a)) <= h - p - q + a;
 }
 
 void solve() {
-	cin >> n >> m >> x >> y;
+    cin >> n >> m >> x >> y;
 
-	ll l = 1, r = 1e15;
-	while (l < r) {
-		ll mid = (l + r) >> 1;
-		if (chk(mid)) r = mid;
-		else l = mid + 1;
-	}
+    ll l = 1, r = 1e15;
+    while (l < r) {
+        ll mid = (l + r) >> 1;
+        if (chk(mid)) r = mid;
+        else l = mid + 1;
+    }
 
-	cout << r << "\n";
+    cout << r << "\n";
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
@@ -636,7 +636,7 @@ bool chk(ll h) {
 
 小结：过多的分支语句不如一个 max 来的更加清晰，也可以避免一定的逻辑错误。
 
-### 11. 找出叠涂元素
+### 【二分答案】找出叠涂元素
 
 https://leetcode.cn/problems/first-completely-painted-row-or-column/description/
 

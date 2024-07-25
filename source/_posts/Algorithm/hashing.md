@@ -4,15 +4,18 @@ categories: Algorithm
 category_bar: true
 ---
 
-## hashing
+### 哈希
 
-### 1. 分组
+### 【哈希】分组
 
 https://www.acwing.com/problem/content/5182/
 
 > 存储不想同组和想同组的人员信息：存入数组，数据类型为一对字符串
+>
 > 存储所有的组队信息：存入哈希表，数据类型为“键:字符串”“值:一对字符串”
+>
 > 想要知道最终的分组情况，只需要查询数组中的队员情况与想同组 or 不想同组的成员名字是否一致即可
+>
 > 时间复杂度 $O(n)$，空间复杂度 $O(n\ len(name))_{max}$
 
 ```cpp
@@ -23,61 +26,61 @@ using namespace std;
 
 int main()
 {
-	int x;
-	cin >> x;
-	
-	vector<pair<string, string>> X(x);
-	
-	for (int i = 0; i < x; i ++)
-		cin >> X[i].first >> X[i].second;
-	
-	int y;
-	cin >> y;
-	
-	vector<pair<string, string>> Y(y);
-	
-	for (int i = 0; i < y; i ++)
-		cin >> Y[i].first >> Y[i].second;
-		
-	int sum;
-	cin >> sum;
-	
-	unordered_map<string, pair<string, string>> a;
-	
-	for (int i = 0; i < sum; i ++)
-	{
-		string s, t, p;
-		cin >> s >> t >> p;
-		a[s] = {t, p};
-		a[t] = {s, p};
-		a[p] = {s, t};
-	}
-	
-	int res = 0;
-	
-	// 想同组 
-	for (int i = 0; i < x; i ++)
-	{
-		string s = X[i].first, t = X[i].second;
-		if (a[s].first != t && a[s].second != t)
-			res ++;
-	}
-	
-	// 不想同组 
-	for (int i = 0; i < y; i ++)
-	{
-		string s = Y[i].first, t = Y[i].second;
-		if (a[s].first == t || a[s].second == t)
-			res ++; 
-	}
-	
-	cout << res << endl; 
-	
-	return 0;
+    int x;
+    cin >> x;
+    
+    vector<pair<string, string>> X(x);
+    
+    for (int i = 0; i < x; i ++)
+        cin >> X[i].first >> X[i].second;
+    
+    int y;
+    cin >> y;
+    
+    vector<pair<string, string>> Y(y);
+    
+    for (int i = 0; i < y; i ++)
+        cin >> Y[i].first >> Y[i].second;
+        
+    int sum;
+    cin >> sum;
+    
+    unordered_map<string, pair<string, string>> a;
+    
+    for (int i = 0; i < sum; i ++)
+    {
+        string s, t, p;
+        cin >> s >> t >> p;
+        a[s] = {t, p};
+        a[t] = {s, p};
+        a[p] = {s, t};
+    }
+    
+    int res = 0;
+    
+    // 想同组 
+    for (int i = 0; i < x; i ++)
+    {
+        string s = X[i].first, t = X[i].second;
+        if (a[s].first != t && a[s].second != t)
+            res ++;
+    }
+    
+    // 不想同组 
+    for (int i = 0; i < y; i ++)
+    {
+        string s = Y[i].first, t = Y[i].second;
+        if (a[s].first == t || a[s].second == t)
+            res ++; 
+    }
+    
+    cout << res << endl; 
+    
+    return 0;
 }
 ```
 
-### 2. [NOIP2016 普及组] 海港
+### 【哈希】海港
 
 https://www.luogu.com.cn/problem/P2058
 
@@ -106,56 +109,58 @@ unordered_map<int, int> cnt;
 int kind;
 
 void solve() {
-	cin >> n;
+    cin >> n;
 
-	for (int i = 1; i <= n; i++) {
-		int t, num;
-		cin >> t >> num;
-		
-		q.push({i, t});
-		
-		// 哈希
-		while (num--) {
-			int id;
-			cin >> id;
-			
-			if (!cnt[id]) kind++;
-			cnt[id]++;
-			G[i].push_back(id);
-		}
-		
-		// 去哈希
-		Ship h = q.front();
-		while (t - h.t >= 86400) {
-			for (auto& id: G[h.idx]) {
-				cnt[id]--;
-				if (!cnt[id]) kind--;
-			}
-			q.pop();
-			h = q.front();
-		}
-		
-		cout << kind << "\n";
-	}
+    for (int i = 1; i <= n; i++) {
+        int t, num;
+        cin >> t >> num;
+        
+        q.push({i, t});
+        
+        // 哈希
+        while (num--) {
+            int id;
+            cin >> id;
+            
+            if (!cnt[id]) kind++;
+            cnt[id]++;
+            G[i].push_back(id);
+        }
+        
+        // 去哈希
+        Ship h = q.front();
+        while (t - h.t >= 86400) {
+            for (auto& id: G[h.idx]) {
+                cnt[id]--;
+                if (!cnt[id]) kind--;
+            }
+            q.pop();
+            h = q.front();
+        }
+        
+        cout << kind << "\n";
+    }
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 3. [USACO16DEC] Cities and States S
+### 【哈希】Cities and States S
 
 https://www.luogu.com.cn/problem/P3405
 
-> - 题意：给定 n 个字符串，每一个字符串归属一个集合，现在需要统计字符串与集合名相反相等的对数
-> - 思路：很显然的哈希计数。难点有两个，如何哈希？如何计数？哈希可以采用扩展字符的方法进行，即第一个字符乘某一个较大的质数再加上第二个字符。此处采用一种较为巧妙的方法，直接将两个字符串与集合名加起来进行唯一性哈希，降低编码难度。计数有两种方式，第一种就是全部哈希结束之后，再遍历哈希表进行统计，最后将结果除二即可。第二种就是边哈希边计数，遇到相反相等的就直接计数，这样就不会重复计数了，也很巧妙
-> - 时间复杂度：$O(n)$
+> 题意：给定 n 个字符串，每一个字符串归属一个集合，现在需要统计字符串与集合名相反相等的对数
+>
+> 思路：很显然的哈希计数。难点有两个，如何哈希？如何计数？哈希可以采用扩展字符的方法进行，即第一个字符乘某一个较大的质数再加上第二个字符。此处采用一种较为巧妙的方法，直接将两个字符串与集合名加起来进行唯一性哈希，降低编码难度。计数有两种方式，第一种就是全部哈希结束之后，再遍历哈希表进行统计，最后将结果除二即可。第二种就是边哈希边计数，遇到相反相等的就直接计数，这样就不会重复计数了，也很巧妙
+>
+> 时间复杂度：$O(n)$
 
 ```cpp
 #include <iostream>
@@ -170,27 +175,27 @@ int n;
 unordered_map<string, int> a;
 
 void solve() {
-	cin >> n;
-	
-	int res = 0;
-	
-	while (n--) {
-		string s, t;
-		cin >> s >> t;
-		s = s.substr(0, 2);
-		res += a[t + " " + s] * (s != t);
-		a[s + " " + t]++;
-	}
-	
-	cout << res << "\n";
+    cin >> n;
+    
+    int res = 0;
+    
+    while (n--) {
+        string s, t;
+        cin >> s >> t;
+        s = s.substr(0, 2);
+        res += a[t + " " + s] * (s != t);
+        a[s + " " + t]++;
+    }
+    
+    cout << res << "\n";
 }
 
 signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```

@@ -4,17 +4,19 @@ categories: Algorithm
 category_bar: true
 ---
 
-## 思维题
+### 思维题
 
-### 1. 最长严格递增子序列
+多角度切入。
+
+### 【思维/哈希/排序】最长严格递增子序列
 
 https://www.acwing.com/problem/content/5273/
 
-> 题意：给定长度为n的序列，问将这个序列拼接n次后，最长严格递增子序列的长度为多少？
+> 题意：给定长度为 n 的序列，问将这个序列拼接 n 次后，最长严格递增子序列的长度为多少？
 >
-> 思路：其实最终的思路很简单，讲题目转化为在每个序列中选一个数，一共可以选出多少个不同的数。但是在产生这样的想法之前，先讲一下我的思考过程。我将序列脑补出一幅散点折线图，然后将这些点投影到y轴上，最终投影点的个数就是答案的数量，但是投影会有重合，因此答案最多就是n个数，最少1个数，从而想到就是在n个序列中选数，选的数依次增大即可，相信的就是一个求序列不重复数的个数的过程。去重即可。
+> 思路：其实最终的思路很简单，将题目转化为在每个序列中选一个数，一共可以选出多少个不同的数。但是在产生这样的想法之前，先讲一下我的思考过程。我将序列脑补出一幅散点折线图，然后将这些点投影到y轴上，最终投影点的个数就是答案的数量，但是投影会有重合，因此答案最多就是 n 个数，最少 1 个数，从而想到就是在 n 个序列中选数，选的数依次增大即可，相应的就是一个求序列不重复数的个数的过程。去重即可。
 >
-> 注意点：由于C++的STL的unique函数的前提是一个有序的序列，因此在unique之前需要将序列进行排序。
+> 注意点：由于 C++ 的 STL 的 unique 函数的前提是一个有序的序列，因此在unique之前需要将序列进行排序。
 >
 > 时间复杂度：$O(n)$
 
@@ -40,7 +42,6 @@ int main()
             a.emplace_back(x);
         }
 
-        // 去重老套路，string也可以用
         sort(a.begin(), a.end());
         a.erase(unique(a.begin(), a.end()), a.end());
 
@@ -51,7 +52,7 @@ int main()
 }
 ```
 
-### 2. 三元组
+### 【分讨/组合数学】三元组
 
 https://www.acwing.com/problem/content/5280/
 
@@ -115,13 +116,13 @@ int main() {
 }
 ```
 
-### 3. 删除元素
+### 【分讨】删除元素
 
 https://www.acwing.com/problem/content/5281/
 
 > 题意：给定一个排列为1~n，定义一个数“有价值”为当前数的前面没有数比当前的数大。现在需要删除一个数，使得序列中增加尽可能多的“有价值”的数，如果这个数有多个，则删除最小的那个数
 >
-> ==最开始想到的思路==：枚举每一个数，如果删除，则序列中会增加多少个“有价值”的数，算法设计如下：
+> 最开始想到的思路：枚举每一个数，如果删除，则序列中会增加多少个“有价值”的数，算法设计如下：
 >
 > 1. 首先判断每一个数是否是有价值的数
 >     - 创建一个变量来记录当前数的前面序列的最大值
@@ -132,9 +133,7 @@ https://www.acwing.com/problem/content/5281/
 > 3. 最终根据维护的损失值数组cnt即可求解
 > 4. 时间复杂度 $O(n^2)$
 >
-> ---
->
-> ==优化的思路==：
+> 优化的思路：
 >
 > 1. 同样是枚举每一个数，如果当前数字是有价值的数，那么cnt[a[i]]就 -1
 >
@@ -143,8 +142,8 @@ https://www.acwing.com/problem/content/5281/
 > 2. 接下来我们不需要遍历j=i+1到j=n-1，而是讨论当前数a[i]不是有价值数时的所有情况。现在我们想要维护cnt数组。不难发现，对于某个位置上的数a[k]，能否成为有价值的数只取决于前排序列是否有比他大的数以及大的数的个数。那么理论上我们在枚举a[i]的时候维护cnt[1~i-1]就可以确保cnt数组的正确性了。
 >
 >     - 假设a[k]的前排有一个比它大的数d：那么把d去掉之后，a[k]就会从无价值变为有价值
->     - 假设a[k]的前排有至少两个比它大的数d1,d2,...dj...：那么不管去掉哪一个 $d_j$，我们都没法让a[k]变得有价值
->
+>    - 假设a[k]的前排有至少两个比它大的数d1,d2,...dj...：那么不管去掉哪一个 $d_j$，我们都没法让a[k]变得有价值
+> 
 >     如此一来，cnt数组就可以正确维护了
 >
 > 3. 最终根据维护的损失值数组cnt即可求解
@@ -158,74 +157,74 @@ https://www.acwing.com/problem/content/5281/
 using namespace std;
 
 int main() {
-	int n;
-	cin >> n;
-	
-	vector<int> a(n);
-	for (int i = 0; i < n; i++) {
-		cin >> a[i];
-	}
-	
-	// 判断每个数是否是有价值的数
-	int d = 0; // 前方序列中的最大值
-	vector<bool> is_val(n + 1);
-	for (int i = 0; i < n; i++) {
-		if (a[i] > d) {
-			is_val[a[i]] = true;
-			d = a[i];
-		}
-	}
-	
-	// 枚举每一个数，计算删除该数之后会增加的有价值的数的个数 
-	d = 0; // 同上
-	vector<int> cnt(n + 1); // cnt[x]表示删除数x之后可以增加的有价值的数的个数
-	for (int i = 0; i < n; i++) {
-		if (is_val[a[i]]) {
-			cnt[a[i]]--;
-		}
-		
-		int newd = d; // 去掉a[i]后的前方序列的最大值 newd
-		for (int j = i + 1; j < n; j++) {
-			if (is_val[a[j]]) {
-				if (a[j] < newd) {
-					cnt[a[i]]--;
-				}
-			} else {
-				if (a[j] > newd) {
-					cnt[a[i]]++;
-				}
-			}
-			if (a[j] > newd) {
-			    newd = a[j];
-			}
-		}
-		
-		// 更新前方序列的最大值 d
-		if (a[i] > d) {
-			d = a[i];
-		}
-	}
+    int n;
+    cin >> n;
+    
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    
+    // 判断每个数是否是有价值的数
+    int d = 0; // 前方序列中的最大值
+    vector<bool> is_val(n + 1);
+    for (int i = 0; i < n; i++) {
+        if (a[i] > d) {
+            is_val[a[i]] = true;
+            d = a[i];
+        }
+    }
+    
+    // 枚举每一个数，计算删除该数之后会增加的有价值的数的个数 
+    d = 0; // 同上
+    vector<int> cnt(n + 1); // cnt[x]表示删除数x之后可以增加的有价值的数的个数
+    for (int i = 0; i < n; i++) {
+        if (is_val[a[i]]) {
+            cnt[a[i]]--;
+        }
+        
+        int newd = d; // 去掉a[i]后的前方序列的最大值 newd
+        for (int j = i + 1; j < n; j++) {
+            if (is_val[a[j]]) {
+                if (a[j] < newd) {
+                    cnt[a[i]]--;
+                }
+            } else {
+                if (a[j] > newd) {
+                    cnt[a[i]]++;
+                }
+            }
+            if (a[j] > newd) {
+                newd = a[j];
+            }
+        }
+        
+        // 更新前方序列的最大值 d
+        if (a[i] > d) {
+            d = a[i];
+        }
+    }
 
-	// 找出可以增加的有价值的数的最大个数 ma
-	int ma = -n - 1;
-	for (int i = 0; i < n; i++) {
-		if (cnt[a[i]] > ma) {
-			ma = max(ma, cnt[a[i]]);
-		}
-	}
+    // 找出可以增加的有价值的数的最大个数 ma
+    int ma = -n - 1;
+    for (int i = 0; i < n; i++) {
+        if (cnt[a[i]] > ma) {
+            ma = max(ma, cnt[a[i]]);
+        }
+    }
 
-	// 答案是满足个数的最小的数字
-	int res = 0;
-	for (int i = 1; i <= n; i++) {
-		if (cnt[i] == ma) {
-			res = i;
-			break;
-		}
-	}
-	
-	cout << res << "\n";
-	
-	return 0;
+    // 答案是满足个数的最小的数字
+    int res = 0;
+    for (int i = 1; i <= n; i++) {
+        if (cnt[i] == ma) {
+            res = i;
+            break;
+        }
+    }
+    
+    cout << res << "\n";
+    
+    return 0;
 }
 ```
 
@@ -283,7 +282,7 @@ int main() {
 }
 ```
 
-### 4. Sorting with Twos
+### 【构造】Sorting with Twos
 
 https://codeforces.com/contest/1891/problem/A
 
@@ -299,38 +298,38 @@ https://codeforces.com/contest/1891/problem/A
 
 ```cpp
 void judge(vector<int>& a, int l, int r, bool& ok, int n) {
-	for (int i = l + 1; i <= r && i <= n; i++) {
-		if (a[i] < a[i - 1]) {
-			ok = false;
-			return;
-		}
-	}
+    for (int i = l + 1; i <= r && i <= n; i++) {
+        if (a[i] < a[i - 1]) {
+            ok = false;
+            return;
+        }
+    }
 }
  
 void solve() {
-	int n;
-	cin >> n;
+    int n;
+    cin >> n;
  
-	vector<int> a(n + 1);
-	for (int i = 1; i <= n; i++) {
-		cin >> a[i];
-	}
+    vector<int> a(n + 1);
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+    }
  
-	bool ok = true;
-	judge(a, 3, 4, ok, n);
-	judge(a, 5, 8, ok, n);
-	judge(a, 9, 16, ok, n);
-	judge(a, 17, 20, ok, n);
+    bool ok = true;
+    judge(a, 3, 4, ok, n);
+    judge(a, 5, 8, ok, n);
+    judge(a, 9, 16, ok, n);
+    judge(a, 17, 20, ok, n);
  
-	if (ok) {
-		cout << "YES\n";
-	} else {
-		cout << "NO\n";
-	}
+    if (ok) {
+        cout << "YES\n";
+    } else {
+        cout << "NO\n";
+    }
 }
 ```
 
-### 5. 指针运动​ :fire:
+### 【模拟】指针运动​ :fire:
 
 https://www.acwing.com/problem/content/description/5468/
 
@@ -345,7 +344,7 @@ https://www.acwing.com/problem/content/description/5468/
 
 ```
 
-### 6. 套餐设计
+### 【哈希】套餐设计
 
 https://www.acwing.com/problem/content/5480/
 
@@ -367,41 +366,41 @@ int n, k, a[N];
 unordered_map<int, int> v;
 
 void solve() {
-	cin >> k >> n;
-	for (int i = 1; i <= n; i++) {
-		cin >> a[i];
-		v[a[i]]++;
-	}
-	
-	int res = 0;
-	
-	int i; // 当前需要生产的套餐数
-	for (i = n / k; i >= 1; i--) {
+    cin >> k >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+        v[a[i]]++;
+    }
+    
+    int res = 0;
+    
+    int i; // 当前需要生产的套餐数
+    for (i = n / k; i >= 1; i--) {
         // 所有食物对于当前套餐需要的食物数量可以贡献的最大食物数量
-		int cnt = 0; 
-		for (auto& x: v) {
+        int cnt = 0; 
+        for (auto& x: v) {
             // 每种食物对于当前套餐需要的食物数量可以贡献的最大食物数量
-			cnt += x.second / i;
-		}
-		if (cnt >= k) {
-			res = i;
-			break;
-		}
-	}
-	
-	cout << res << "\n";
+            cnt += x.second / i;
+        }
+        if (cnt >= k) {
+            res = i;
+            break;
+        }
+    }
+    
+    cout << res << "\n";
 }
 
 int main() {
-	ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-	int T = 1;
-//	cin >> T;
-	while(T--) solve();
-	return 0;
+    ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+    int T = 1;
+//    cin >> T;
+    while(T--) solve();
+    return 0;
 }
 ```
 
-### 7. 分班
+### 【贪心/分讨】分班
 
 https://www.acwing.com/problem/content/5481/
 
@@ -429,52 +428,52 @@ const int N = 1e5 + 10;
 ll n, k, lim, a[N];
 
 void solve() {
-	cin >> n >> k >> lim;
+    cin >> n >> k >> lim;
 
-	int num = n * k;
+    int num = n * k;
 
-	for (int i = 1; i <= num; i++) cin >> a[i];
+    for (int i = 1; i <= num; i++) cin >> a[i];
 
-	sort(a + 1, a + num + 1);
+    sort(a + 1, a + num + 1);
 
     // 找到最大的满足 lim 限制的人的下标 r - 线性或二分均可
-	int l = 1, r = num;
-	while (l < r) {
-		int mid = (l + r + 1) >> 1;
-  		if (a[mid] <= a[1] + lim) l = mid;
-  		else r = mid - 1;
-	}
+    int l = 1, r = num;
+    while (l < r) {
+        int mid = (l + r + 1) >> 1;
+          if (a[mid] <= a[1] + lim) l = mid;
+          else r = mid - 1;
+    }
 
-	ll res = 0;
+    ll res = 0;
 
-	if (r < n) res = 0;
-	else {
-		res += a[1];
-		int idx = 2;   // 指针
-		int in = 1;    // 已安排作为组内最小值的人员数
-		int team = 1;  // 当前组内的人员数
-		while (r - idx + 1 > n - in) { // 当可选择人数多于组数时
-			if (team < k) team++, idx++; // 塞得下就继续塞
-			else team = 1, res += a[idx], idx++, in++; // 塞不下就重开一组
-		}
-		for (int i = idx; i <= r; i++) {
-		    res += a[i];
-		}
-	}
+    if (r < n) res = 0;
+    else {
+        res += a[1];
+        int idx = 2;   // 指针
+        int in = 1;    // 已安排作为组内最小值的人员数
+        int team = 1;  // 当前组内的人员数
+        while (r - idx + 1 > n - in) { // 当可选择人数多于组数时
+            if (team < k) team++, idx++; // 塞得下就继续塞
+            else team = 1, res += a[idx], idx++, in++; // 塞不下就重开一组
+        }
+        for (int i = idx; i <= r; i++) {
+            res += a[i];
+        }
+    }
 
-	cout << res << "\n";
+    cout << res << "\n";
 }
 
 int main() {
-	ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-	int T = 1;
-//	cin >> T;
-	while(T--) solve();
-	return 0;
+    ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+    int T = 1;
+//    cin >> T;
+    while(T--) solve();
+    return 0;
 }
 ```
 
-### 8. 双端队列
+### 【贪心/分讨】双端队列
 
 https://www.acwing.com/problem/content/5484/
 
@@ -499,67 +498,67 @@ const int N = 200010;
 int n, a[N];
 
 void solve() {
-	cin >> n;
-	for (int i = 1; i <= n; i++) cin >> a[i];
-	
-	int res = 0, top = -1, l = 1, r = n;
-	while (l <= r) {
+    cin >> n;
+    for (int i = 1; i <= n; i++) cin >> a[i];
+    
+    int res = 0, top = -1, l = 1, r = n;
+    while (l <= r) {
         // 左端是较小值
-		if (a[l] < a[r]) {
-			if (a[l] > top) {
-				res++;
-				top = a[l++];
-			} else if (a[r] > top) {
-				res++;
-				top = a[r--];
-			} else {
-				break;
-			}
+        if (a[l] < a[r]) {
+            if (a[l] > top) {
+                res++;
+                top = a[l++];
+            } else if (a[r] > top) {
+                res++;
+                top = a[r--];
+            } else {
+                break;
+            }
         // 右端是较小值
-		} else if (a[l] > a[r]) {
-			if (a[r] > top) {
-				res++;
-				top = a[r--];
-			} else if (a[l] > top) {
-				res++;
-				top = a[l++];
-			} else {
-				break;
-			}
+        } else if (a[l] > a[r]) {
+            if (a[r] > top) {
+                res++;
+                top = a[r--];
+            } else if (a[l] > top) {
+                res++;
+                top = a[l++];
+            } else {
+                break;
+            }
         // 两端数值相等
-		} else { // a[l] == a[r]
-			if (a[l] > top) {
-				int lcnt = 1, rcnt = 1;
-				for (int i = l + 1; i <= r; i++) {
-					if (a[i] > a[i - 1]) lcnt++;
-					else break;
-				}
-				for (int i = r - 1; i >= l; i--) {
-					if (a[i] > a[i + 1]) rcnt++;
-					else break;
-				}
-				res += max(lcnt, rcnt);
-				break;
-			} else {
-				break;
-			}
-		}
-	}
+        } else { // a[l] == a[r]
+            if (a[l] > top) {
+                int lcnt = 1, rcnt = 1;
+                for (int i = l + 1; i <= r; i++) {
+                    if (a[i] > a[i - 1]) lcnt++;
+                    else break;
+                }
+                for (int i = r - 1; i >= l; i--) {
+                    if (a[i] > a[i + 1]) rcnt++;
+                    else break;
+                }
+                res += max(lcnt, rcnt);
+                break;
+            } else {
+                break;
+            }
+        }
+    }
 
-	cout << res;
+    cout << res;
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 9. 你说的对，但是这是签到 I
+### 【思维】你说的对，但是这是签到 I
 
 https://hydro.ac/d/nnu_contest/p/P1201
 
@@ -570,7 +569,7 @@ https://hydro.ac/d/nnu_contest/p/P1201
 > - 一眼 dp？错误的，那时间复杂度就是 $O(n^2)$，显然不可能。可以发现与常规的最长公共子串的题目不同，本题中两个字符串是单调的，这个性质一定很有用。事实的确如此。
 > - 对于单调的两个字符串而言，如果**连续的**字符数量之和相等，即对于 $c_i,c_j$ 之间的所有的字符对应的数量都相等 $a[c_k]=b[c_k],(k=i+1,i+1, \cdots,j-1)$，则该段字符串就一定是公共子串。答案就是 $\displaystyle  \sum_{k=i+1}^{j-1}a[c_k]$ 或 $\displaystyle  \sum_{k=i+1}^{j-1}b[c_k]$。在枚举字符时，需要特判一下只有一种字符的情况。
 >
-> 时间复杂度：$O(n + 26^3)$
+> 时间复杂度：$\Theta(n + 26^3)$
 
 ```cpp
 #include <iostream>
@@ -589,45 +588,45 @@ string s, t;
 int a[N], b[N];
 
 void solve() {
-	cin >> s >> t;
-	
-	for (auto c: s) a[c - 'a']++;
-	for (auto c: t) b[c - 'a']++;
-	
-	int res = -1;
-	
-	for (int i = 0; i < N; i++) {
-		for (int j = i; j < N; j++) {
-			if (j == i) res = max(res, min(a[i], b[j]));
-			else {
-				bool ok = true;
-				int mid = 0;
-				for (int k = i + 1; k <= j - 1; k++) {
-					if (a[k] != b[k]) ok = false;
-					mid += a[k];
-				}
-				
-				if (ok) {
-					res = max(res, min(a[i], b[i]) + mid + min(a[j], b[j]));
-				}
-			}
-		}
-	}
-	
-	cout << res << "\n";
+    cin >> s >> t;
+    
+    for (auto c: s) a[c - 'a']++;
+    for (auto c: t) b[c - 'a']++;
+    
+    int res = -1;
+    
+    for (int i = 0; i < N; i++) {
+        for (int j = i; j < N; j++) {
+            if (j == i) res = max(res, min(a[i], b[j]));
+            else {
+                bool ok = true;
+                int mid = 0;
+                for (int k = i + 1; k <= j - 1; k++) {
+                    if (a[k] != b[k]) ok = false;
+                    mid += a[k];
+                }
+                
+                if (ok) {
+                    res = max(res, min(a[i], b[i]) + mid + min(a[j], b[j]));
+                }
+            }
+        }
+    }
+    
+    cout << res << "\n";
 }
 
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
 }
 ```
 
-### 10. 从双倍数组中还原原数组
+### 【贪心】从双倍数组中还原原数组
 
 https://leetcode.cn/problems/find-original-array-from-doubled-array/description/
 
@@ -669,7 +668,7 @@ public:
 };
 ```
 
-### 11. 可获得的最大点数
+### 【前缀和/双指针】可获得的最大点数
 
 https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/description/
 
@@ -701,7 +700,7 @@ public:
 };
 ```
 
-### 12. 确定两个字符串是否接近
+### 【思维】确定两个字符串是否接近
 
 https://leetcode.cn/problems/determine-if-two-strings-are-close/description/
 
@@ -754,13 +753,13 @@ public:
 };
 ```
 
-### 13. 同位字符串连接的最小长度
+### 【模拟】同位字符串连接的最小长度
 
 https://leetcode.cn/problems/minimum-length-of-anagram-concatenation/
 
 > 题意：给定一个由若干个同位字符串 t 组成的字符串 s，问这个同位字符串最短是什么？定义同位字符串为字符数量相等且每种字符的数量相等的字符串
 >
-> ~~错误思路：很显然的一个分配问题。我们预统计每一种字符的数量，假设答案同位字符串长度为 len，则显然就需要将所有的字符等分为 `s.size() / len` 份，每一份的每一种字符数量均相等。也就是每一种字符都需要分为 `s.size() / len` 份。为了最小化 len，就需要分出尽可能多的同位字符串。每一种字符可以分出的份数是其因数，取所有字符可分出份数的最大值就是求解每一种字符数量的最大公因数！于是问题就转化为了求解每一种字符数量的最大公因数~~
+> 错误思路：很显然的一个分配问题。我们预统计每一种字符的数量，假设答案同位字符串长度为 len，则显然就需要将所有的字符等分为 `s.size() / len` 份，每一份的每一种字符数量均相等。也就是每一种字符都需要分为 `s.size() / len` 份。为了最小化 len，就需要分出尽可能多的同位字符串。每一种字符可以分出的份数是其因数，取所有字符可分出份数的最大值就是求解每一种字符数量的最大公因数！于是问题就转化为了求解每一种字符数量的最大公因数
 >
 > 时间复杂度：$O(n)$
 >

@@ -4,9 +4,9 @@ categories: Algorithm
 category_bar: true
 ---
 
-## 《图论》
+### 图论
 
-### 1. 有向图的拓扑序列
+### 【拓扑】有向图的拓扑序列
 
 https://www.acwing.com/problem/content/850/
 
@@ -74,7 +74,7 @@ int main() {
 }
 ```
 
-### 2. Mad City:fire:
+### 【基环树/拓扑】Mad City:fire:
 
 https://codeforces.com/contest/1873/problem/H
 
@@ -189,7 +189,7 @@ int main() {
 }
 ```
 
-### 3. 染色法判定二分图
+### 【二分图】染色法判定二分图
 
 https://www.acwing.com/problem/content/862/
 
@@ -256,7 +256,7 @@ void solve() {
 }
 ```
 
-### 4. Kruskal算法求最小生成树
+### 【最小生成树】Kruskal算法求最小生成树
 
 https://www.acwing.com/problem/content/861/
 
@@ -457,7 +457,7 @@ function kurskal(n, m, edges) {
 }
 ```
 
-### 5. Prim算法求最小生成树
+### 【最小生成树】Prim算法求最小生成树
 
 https://www.acwing.com/problem/content/860/
 
@@ -556,105 +556,174 @@ signed main() {
 }
 ```
 
-### 6. Dijkstra求最短路 I
+### 【最短路】Dijkstra求最短路 :fire:
 
-https://www.acwing.com/problem/content/851/
+朴素版 - https://www.acwing.com/problem/content/851/
 
-> 题意：给定一个无向图，可能存在重边与自环，问1号点到n号点的最短路径长度是多少，1到n没有通路就输出-1
+堆优化 - https://www.acwing.com/problem/content/852/
+
+> 题意：给定一个正边权的有向图，可能存在重边与自环，问 $1$ 号点到 $n$ 号点的最短路径长度是多少，如果不可达就输出 $-1$。
 >
-> 思路：
+> 思路一：朴素版。点数 $1\le n \le 500$，边数 $1 \le m\le 10^5$
 >
-> - 存储：根据数据量，即点少边多的稠密图，我们采用邻接矩阵的方式存储图
-> - 求解：我们定义 d[i] 数组表示源点到 i 号点的最短距离。先将源点放入 SPT 集合，然后更新所有 V-SPT 中的点到 SPT 集合的最短路径长度。接着循环 n-1 次迭代更新剩余的 n-1 个点，最终的 d[end] 就是答案。
-> - 总结：算法整体采用贪心与动态规划的思路，与 Prim 算法仔细比对可知，其中的贪心过程几乎一致，而动态规划的过程体现在在求解出集合 V-SPT 中到集合 STP 最短距离的点 vex 之后，利用该点对其余在 V-SPT 中的点更新 d[j] 的过程。更新前的状态都是在之前的子结构下的最优解，因此更新就是基于动态规划进行的。（此处仔细体悟）
+> - 思路：根据数据量，我们采用邻接矩阵的方式存储「点少边多」的稠密图。我们定义 `d[i]` 数组表示起点到 `i` 号点的最短距离。先将起点放入 `SPT (Shortest Path Tree)` 集合，然后更新所有 `V-SPT` 中的点到 `SPT` 集合的最短路径长度。接着循环 `n-1` 次迭代更新剩余的 `n-1` 个点，每次迭代的过程中，首先选择距离起点最近的点 `vex`，然后将该点加入 `SPT` 集合，最后利用该点更新 `V-SPT` 集合中和该点有连边的点到起点的最短距离。最终的 `d[end]` 就是起点 `start` 到终点 `end` 的最短距离。
+> - 总结：算法整体采用贪心与动态规划的思路。与 $\text{Prim}$ 算法仔细比对可知，其中的贪心过程几乎一致，即每次选择加入 SPT 集合的点均为当前局面 `V-SPT` 集合中距离起点最近的点。而动态规划的过程体现在，在求解出集合 `V-SPT` 中到集合 `STP` 最短距离的点 `vex` 之后，利用该点对「在 `V-SPT` 集合且和 vex 点有连边的点 `i`」更新 `d[i]` 的过程。更新前的状态都是在之前的子结构下的最优解。
 >
-> 时间复杂度：$O(n^2)$
+> - 时间复杂度：$O(n^2)$
+>
+> 思路二：堆优化。点数 $1\le n \le 1.5 \times 10^5$，边数 $1 \le m \le 1.5 \times 10^5$
+>
+> - 思路：根据数据量，我们采用邻接表的方式存储「点多边少」的稀疏图。如果采用上述朴素 Dijkstra 算法进行求解必然会因为点数过多而超时，因此我们利用数据结构「堆」进行时间开销上的优化。不难发现朴素 Dijkstra 算法在迭代过程中主要有三部分：
+>
+>     1. 选择距离起点最近的点 `vex`。因为需要枚举所有的顶点，因此总的时间复杂度为 $O(n^2)$
+>     2. 将该点加入 `SPT` 集合。因为只是简单的打个标记，因此总的时间复杂度为 $O(n)$
+>     3. 利用该点更新 `V-SPT` 集合中和该点相连的点到起点的最短距离。因为此时枚举的是该点所有的连边，而邻接表的图存储方式无法进行重边的删除，因此最坏情况下会枚举所有的边，时间复杂度为 $O(m)$
+>- 时间复杂度：
+>     
+
+朴素版C++：
 
 ```cpp
 #include <bits/stdc++.h>
 
+using ll = long long;
 using namespace std;
 
-const int N = 510, INF = 0x3f3f3f3f;
-
-int n, m;
-int g[N][N];
-
-int dijkstra(int start, int end) {
-    vector<int> d(n + 1, INF);
-    vector<bool> SPT(n + 1, false);
-
+int dijkstra_ori(std::vector<std::vector<int>>& g, int start, int end) {
+    int n = g.size() - 1;
+    std::vector<int> d(n + 1, INT_MAX >> 1);
+    std::vector<bool> SPT(n + 1, false);
+    
+    // update start vex
     d[start] = 0;
-
-    /* 1. 将起点加入SPT集合 */
     SPT[start] = true;
-    for (int j = 1; j <= n; j++)
-        if (!SPT[j])
-            d[j] = min(d[j], d[start] + g[start][j]);
-
-    /* 2. 选择到起点最近的点(greedy)，更新到起点最近的点(dp) */
-    for (int i = 1; i <= n - 1; i++) {
-        // 找到V-SPT中到起点最近的点vex
-        int vex = -1;
-        for (int j = 1; j <= n; j++)
-            if (!SPT[j] && (vex == -1 || d[j] < d[vex]))
-                vex = j;
-
-        // 将vex加入SPT
-        SPT[vex] = true;
-
-        // 更新所有V-SPT中的点到起点的最短距离
-        for (int j = 1; j <= n; j++)
-            if (!SPT[j])
-                d[j] = min(d[j], d[vex] + g[vex][j]);
+    for (int i = 1; i <= n; i++) {
+        if (!SPT[i] && g[start][i] != INT_MAX >> 1) {
+            d[i] = std::min(d[i], d[start] + g[start][i]);
+        }
     }
-
-    return d[end] == INF ? -1 : d[end];
+    
+    // update remain n-1 vex
+    for (int k = 0; k < n - 1; k++) {
+        int vex = -1;
+        for (int i = 1; i <= n; i++) {
+            if (!SPT[i] && (vex == -1 || d[i] < d[vex])) {
+                vex = i;
+            }
+        }
+        SPT[vex] = true;
+        for (int i = 1; i <= n; i++) {
+            if (!SPT[i] && g[vex][i] != INT_MAX >> 1) {
+                d[i] = std::min(d[i], d[vex] + g[vex][i]);
+            }
+        }
+    }
+    
+    return d[end] == INT_MAX >> 1 ? -1 : d[end];
 }
 
 void solve() {
+    int n, m;
     cin >> n >> m;
-
-    for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= n; j++)
-            g[i][j] = i == j ? 0 : INF;
-
+    
+    vector<vector<int>> g(n + 1, vector<int>(n + 1, INT_MAX >> 1));
+    
     while (m--) {
         int u, v, w;
         cin >> u >> v >> w;
         g[u][v] = min(g[u][v], w);
-//        g[v][u] = min(g[v][u], w);
     }
-
-    cout << dijkstra(1, n) << "\n";
+    
+    cout << dijkstra_ori(g, 1, n) << "\n";
 }
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
     int T = 1;
-//    cin >> T;
+//    std::cin >> T;
     while (T--) solve();
     return 0;
 }
 ```
 
-### 7. Floyd求最短路
+朴素版Python：
+
+```python []
+import heapq
+from collections import defaultdict
+from typing import List, Tuple
+import math
+from itertools import combinations
+
+II = lambda: int(input())
+FI = lambda: float(input())
+MII = lambda: tuple(map(int, input().split()))
+LII = lambda: list(map(int, input().split()))
+
+
+def dijkstra_ori(g: List[List[int]], start: int, end: int) -> int:
+    n = len(g) - 1
+    d = [10 ** 5] * (n + 1)
+    SPT = [False] * (n + 1)
+    
+    d[start] = 0
+    SPT[start] = True
+    for i in range(1, n + 1):
+        if not SPT[i] and g[start][i] != 10 ** 5:
+            d[i] = min(d[i], d[start] + g[start][i])
+    
+    for _ in range(n - 1):
+        vex = -1
+        for i in range(1, n + 1):
+            if not SPT[i] and (vex == -1 or d[i] < d[vex]):
+                vex = i
+        SPT[vex] = True
+        for i in range(1, n + 1):
+            if not SPT[i] and g[vex][i] != 10 ** 5:
+                d[i] = min(d[i], d[vex] + g[vex][i])
+    
+    return -1 if d[end] == 10 ** 5 else d[end]
+
+
+def solve() -> None:
+    n, m = MII()
+    g = [[10 ** 5] * (n + 1) for _ in range(n + 1)]
+    for _ in range(m):
+        u, v, w = MII()
+        g[u][v] = min(g[u][v], w)
+    print(dijkstra_ori(g, 1, n))
+
+
+if __name__ == '__main__':
+    T = 1
+    # T = II()
+    while T: solve(); T -= 1
+```
+
+堆优化版C++：
+
+```cpp
+```
+
+堆优化版Python：
+
+```python
+
+```
+
+### 【最短路】Floyd求最短路
 
 https://www.acwing.com/problem/content/856/
 
-> ==题意：==
+> 题意：给定一个稠密有向图，可能存在重边与自环，给出多个询问，需要给出每一个询问的两个点之前的最短路径长度
 >
-> 给定一个稠密有向图，可能存在重边与自环，给出多个询问，需要给出每一个询问的两个点之前的最短路径长度
->
-> ==思路：==
->
-> 我们采用动态规划的思路。在此使用多阶段决策的方法，即每一个路径状态为选择 $1\to k$ 个点的情况下的最短路径长度
+> 思路：我们采用动态规划的思路。在此使用多阶段决策的方法，即每一个路径状态为选择 $1\to k$ 个点的情况下的最短路径长度
 >
 > - 状态表示：`f[k][i][j]` 表示在前 $k$ 个顶点中进行选择（中转），$i$ 号点到 $j$ 号点的最短路径长度
-> - 状态转移：对于第 $k$ 个顶点，我们可以选择中转，也可以不中转。
+>- 状态转移：对于第 $k$ 个顶点，我们可以选择中转，也可以不中转。
 >     - 对于不选择中转的情况：`f[k][i][j] = f[k-1][i][j]`
->     - 对于可选择中转的情况：`f[k][i][j] = f[k-1][i][k] + f[k-1][k][j]`
+>    - 对于可选择中转的情况：`f[k][i][j] = f[k-1][i][k] + f[k-1][k][j]`
 >     - 在其中取最小值即可，但是有一个注意点：对于第二种情况，选择是有一个约束的：即如果选择了 $k$ 号点进行转移的话，那么 $i$ 号点到 $k$ 号点以及 $k$ 号点到 $j$ 号点都是需要有路径可达的，从而可以选择最小距离
 > - 初始化：即选择 0 个站点进行中转时，即 `f[0][i][j]` 的情况中，
 >     - 如果 $i$ 号点与 $j$ 号点自环，则取 $0$
@@ -663,29 +732,27 @@ https://www.acwing.com/problem/content/856/
 > - 答案状态：对于 $a$ 号点到 $b$ 号点之间的最小路径长度，就是 `f[n][a][b]`
 > - 时间复杂度：$O(n^3)$
 > - 空间复杂度：$O(n^3)$
->
-> ==空间优化推导：==
->
-> - 我们尝试优化掉记忆数组的第一维度
->
+> 
+> 空间优化推导：我们尝试优化掉记忆数组的第一维度
+> 
 > - 对于不选择的情况：由于决策局面 $k$ 是从前往后枚举，故当前状态 `f[k][i][j]` 可以**直接依赖于已经更新出来且不会被当前状态之后的状态再次覆盖的最优子结构 `f[i][j]`**。即上一个局面的选择情况，就是不选择第 $k$ 个顶点的情况
 >
 > - 对于选择的情况：如果删除第一维度，我们担心的是当前状态 `f[k][i][j]` 依赖的两个状态 `f[i][k]` 与 `f[k][j]` 会不会被后续覆盖掉，即**我们不确定 `f[i][k]` 与 `f[k][j]` 是否是当前第 k 个局面的最优子结构**。尝试推导：
 >
 >     > 为了确定 `f[i][k]` 与 `f[k][j]` 是否是当前第 $k$ 个局面的最优子结构，其实就是确定对于当前第 $k$ 个局面，这两个状态会不会在当前状态 `f[i][j]` 之后被更新覆盖，那么我们就看这两个状态是从哪里转移过来进行更新的。如果 `f[i][k]` 与 `f[k][j]` 这两个状态的转移会依赖于当前状态之后的状态，那么删除第一维度就是错误的，反之就是成立的。
->     >
+>    >
 >     > 尝试推导 `f[i][k]` 与 `f[k][j]` 从何转移更新：利用我们未删除维度时正确的状态转移方程进行推演
->     >
+>    >
 >     > 我们知道：`f[k][i][k] = min(f[k-1][i][k], f[k-1][i][k] + f[k-1][k][k])`，其中的 `f[k-1][k][k]` 就是一个自环的路径长度，由于 $floyd$ 算法的约束条件是没有负环，因此 `f[k-1][k][k]` 一定大于零，故 `f[k][i][k]` 一定取前者，即 `f[k][i][k] = f[k-1][i][k]`
->     >
+>    >
 >     > 同理可知：
 >     >
 >     > `f[k][k][j] = f[k-1][k][j]`
->
+> 
 >     基于上述推导我们可以知道，当前第 $k$ 个决策局面中的 `f[k][i][k]` 与 `f[k][k][j]` 是依赖于上一个决策局面 $k-1$ 的，也就是说这**两个状态一定是早于当前状态 `f[i][j]` 被更新覆盖的**，故 `f[i][k]` 与 `f[k][j]` 就是当前第 $k$ 个局面的最优子结构，证毕，可以进行维度的删除
->
+> 
 > - 时间复杂度：$O(n^3)$
->
+> 
 > - 空间复杂度：$O(n^2)$
 
 不优化空间
@@ -792,7 +859,135 @@ int main() {
 }
 ```
 
-### 8. 图的遍历
+### 【最短路】关闭分部的可行集合数目
+
+https://leetcode.cn/problems/number-of-possible-sets-of-closing-branches/
+
+> 标签：二进制枚举、最短路
+>
+> 题意：给定一个含有 $n$ 个顶点的无向图，如何删点可以使得剩余的图中顶点两两可达且最大距离不超过 maxDistance？返回所有删点的方案数。
+>
+> 思路：由于 $n$ 的数据范围只有 $1 \to 10$，我们可以直接枚举所有的删点方案。那么如何检查一个方案的合法性呢？直接使用最短路算法检查「所有顶点到每一个顶点」的最远距离即可。这里我们采用朴素 dijkstra 算法。
+>
+> 时间复杂度：$O(2^n \times n^3)$ - 其中枚举需要 $O(2^n)$、计算所有顶点到某个顶点的最远距离需要 $O(n^2)$、检查所有顶点需要 $O(n)$
+
+```cpp []
+class Solution {
+public:
+    int numberOfSets(int n, int maxDistance, vector<vector<int>>& roads) {
+        vector<vector<int>> g(n, vector<int>(n, INT_MAX >> 1));
+        for (auto& r: roads) {
+            int u = r[0], v = r[1], w = r[2];
+            g[u][v] = g[v][u] = min(g[u][v], w);
+        }
+
+        auto get_max_dist = [&](int mask, int v) {
+            vector<bool> SPT(n);
+            vector<int> d(n, INT_MAX);
+            
+            d[v] = 0;
+            SPT[v] = true;
+            
+            int cnt = 0;
+            for (int i = 0; i < n; i++) {
+                if (mask & (1 << i) && !SPT[i]) {
+                    cnt++;
+                    d[i] = min(d[i], d[v] + g[v][i]);
+                }
+            }
+
+            for (int k = 1; k <= cnt - 1; k++) {
+                int vex = -1;
+                for (int i = 0; i < n; i++) {
+                    if (mask & (1 << i) && !SPT[i] && (vex == -1 || d[i] < d[vex])) {
+                        vex = i;
+                    }
+                }
+                SPT[vex] = true;
+                for (int i = 0; i < n; i++) {
+                    if (mask & (1 << i) && !SPT[i]) {
+                        d[i] = min(d[i], d[vex] + g[vex][i]);
+                    }
+                }
+            }
+            
+            int max_dist = -1;
+            for (int i = 0; i < n; i++) {
+                if (mask & (1 << i)) {
+                    max_dist = max(max_dist, d[i]);
+                }
+            }
+            
+            return max_dist;
+        };
+
+        int res = 0;
+        for (int mask = 0; mask < 1 << n; mask++) {
+            bool ok = true;
+            for (int i = 0; i < n; i++) {
+                if (mask & (1 << i) && get_max_dist(mask, i) > maxDistance) {
+                    ok = false;
+                    break;
+                }
+            }
+            res += ok;
+        }
+
+        return res;
+    }
+};
+```
+
+```python []
+class Solution:
+    def numberOfSets(self, n: int, maxDistance: int, roads: List[List[int]]) -> int:
+        g = [[10 ** 6 for _ in range(n)] for _ in range(n)]
+        for u, v, w in roads:
+            g[u][v] = g[v][u] = min(g[u][v], w)
+        
+        def get_max_dist(mask: int, v: int):
+            SPT = [False for _ in range(n)]
+            d = [10 ** 6 for _ in range(n)]
+
+            SPT[v] = True
+            d[v] = 0
+
+            cnt = 0
+            for i in range(n):
+                if mask & (1 << i) and not SPT[i]:
+                    cnt += 1
+                    d[i] = min(d[i], d[v] + g[v][i])
+            
+            for _ in range(cnt - 1):
+                vex = -1
+                for i in range(n):
+                    if mask & (1 << i) and not SPT[i] and (vex == -1 or d[i] < d[vex]):
+                        vex = i
+                SPT[vex] = True
+                for i in range(n):
+                    if mask & (1 << i) and not SPT[i]:
+                        d[i] = min(d[i], d[vex] + g[vex][i])
+                
+            max_dist = -1
+            for i in range(n):
+                if mask & (1 << i):
+                    max_dist = max(max_dist, d[i])
+            
+            return max_dist
+
+        res = 0
+        for mask in range(1 << n):
+            ok = True
+            for i in range(n):
+                if mask & (1 << i) and get_max_dist(mask, i) > maxDistance:
+                    ok = False
+                    break
+            res += ok
+
+        return res
+```
+
+### 【思维/遍历】图的遍历
 
 https://www.luogu.com.cn/problem/P3916
 
@@ -916,7 +1111,7 @@ int main() {
 }
 ```
 
-### 9. 孤立点数量
+### 【遍历/并查集】孤立点数量
 
 https://www.acwing.com/problem/content/5560/
 
@@ -1127,15 +1322,17 @@ function solve() {
 }
 ```
 
-### 10. 树的直径
+### 【LCA】树的直径
 
 https://www.acwing.com/problem/content/5563/
 
 > 题意：给定一棵树，初始时含有 4 个结点分别为 1 到 4，其中 1 号为根结点，2 到 4 均为根结点的叶子结点。现在进行 Q 次操作，每次指定一个已经存在的结点向其插入两个新结点作为叶节点。现在需要在每次操作以后输出这棵树的直径。我们定义**树的直径**为：树中距离最远的两个点之间的距离。
 >
-> 思路一：暴力搜索。我们将树重构为无向图，对于每一个状态的无向图，首先从任意一个已存在的结点 A 开始搜索到距离他最远的点 B，然后从 B 点出发搜索到离他最远的点 C，则 B 与 C 之间的距离就是当前状态的树的直径。由于每一个状态的树都要遍历两遍树，于是时间复杂度就是平方阶
+> 思路一：暴力搜索。
 >
-> 时间复杂度：$O(qn)$
+> - 我们将树重构为无向图，对于每一个状态的无向图，首先从任意一个已存在的结点 A 开始搜索到距离他最远的点 B，然后从 B 点出发搜索到离他最远的点 C，则 B 与 C 之间的距离就是当前状态的树的直径。由于每一个状态的树都要遍历两遍树，于是时间复杂度就是平方阶
+>
+> - 时间复杂度：$O(qn)$
 >
 > 思路二：最近公共祖先 LCA。
 >
@@ -1156,7 +1353,7 @@ https://www.acwing.com/problem/content/5563/
 >     \text{dist}(x,y) = \text{dist}(x,root) + \text{dist}(y,root) - 2 \times \text{dist}(\text{lca}(x,y),root)
 >     $$
 >
-> 时间复杂度：$O(q \log n)$
+> - 时间复杂度：$O(q \log n)$
 
 暴力搜索代码
 
@@ -1333,132 +1530,4 @@ int main() {
     while (T--) solve();
     return 0;
 }
-```
-
-### 11. 关闭分部的可行集合数目
-
-https://leetcode.cn/problems/number-of-possible-sets-of-closing-branches/
-
-> 标签：二进制枚举、最短路
->
-> 题意：给定一个含有 $n$ 个顶点的无向图，如何删点可以使得剩余的图中顶点两两可达且最大距离不超过 maxDistance？返回所有删点的方案数。
->
-> 思路：由于 $n$ 的数据范围只有 $1 \to 10$，我们可以直接枚举所有的删点方案。那么如何检查一个方案的合法性呢？直接使用最短路算法检查「所有顶点到每一个顶点」的最远距离即可。这里我们采用朴素 dijkstra 算法。
->
-> 时间复杂度：$O(2^n \times n^3)$ - 其中枚举需要 $O(2^n)$、计算所有顶点到某个顶点的最远距离需要 $O(n^2)$、检查所有顶点需要 $O(n)$
-
-```cpp []
-class Solution {
-public:
-    int numberOfSets(int n, int maxDistance, vector<vector<int>>& roads) {
-        vector<vector<int>> g(n, vector<int>(n, INT_MAX >> 1));
-        for (auto& r: roads) {
-            int u = r[0], v = r[1], w = r[2];
-            g[u][v] = g[v][u] = min(g[u][v], w);
-        }
-
-        auto get_max_dist = [&](int mask, int v) {
-            vector<bool> SPT(n);
-            vector<int> d(n, INT_MAX);
-            
-            d[v] = 0;
-            SPT[v] = true;
-            
-            int cnt = 0;
-            for (int i = 0; i < n; i++) {
-                if (mask & (1 << i) && !SPT[i]) {
-                    cnt++;
-                    d[i] = min(d[i], d[v] + g[v][i]);
-                }
-            }
-
-            for (int k = 1; k <= cnt - 1; k++) {
-                int vex = -1;
-                for (int i = 0; i < n; i++) {
-                    if (mask & (1 << i) && !SPT[i] && (vex == -1 || d[i] < d[vex])) {
-                        vex = i;
-                    }
-                }
-                SPT[vex] = true;
-                for (int i = 0; i < n; i++) {
-                    if (mask & (1 << i) && !SPT[i]) {
-                        d[i] = min(d[i], d[vex] + g[vex][i]);
-                    }
-                }
-            }
-            
-            int max_dist = -1;
-            for (int i = 0; i < n; i++) {
-                if (mask & (1 << i)) {
-                    max_dist = max(max_dist, d[i]);
-                }
-            }
-            
-            return max_dist;
-        };
-
-        int res = 0;
-        for (int mask = 0; mask < 1 << n; mask++) {
-            bool ok = true;
-            for (int i = 0; i < n; i++) {
-                if (mask & (1 << i) && get_max_dist(mask, i) > maxDistance) {
-                    ok = false;
-                    break;
-                }
-            }
-            res += ok;
-        }
-
-        return res;
-    }
-};
-```
-
-```python []
-class Solution:
-    def numberOfSets(self, n: int, maxDistance: int, roads: List[List[int]]) -> int:
-        g = [[10 ** 6 for _ in range(n)] for _ in range(n)]
-        for u, v, w in roads:
-            g[u][v] = g[v][u] = min(g[u][v], w)
-        
-        def get_max_dist(mask: int, v: int):
-            SPT = [False for _ in range(n)]
-            d = [10 ** 6 for _ in range(n)]
-
-            SPT[v] = True
-            d[v] = 0
-
-            cnt = 0
-            for i in range(n):
-                if mask & (1 << i) and not SPT[i]:
-                    cnt += 1
-                    d[i] = min(d[i], d[v] + g[v][i])
-            
-            for _ in range(cnt - 1):
-                vex = -1
-                for i in range(n):
-                    if mask & (1 << i) and not SPT[i] and (vex == -1 or d[i] < d[vex]):
-                        vex = i
-                SPT[vex] = True
-                for i in range(n):
-                    if mask & (1 << i) and not SPT[i]:
-                        d[i] = min(d[i], d[vex] + g[vex][i])
-                
-            max_dist = -1
-            for i in range(n):
-                if mask & (1 << i):
-                    max_dist = max(max_dist, d[i])
-            
-            return max_dist
-
-        res = 0
-        for mask in range(1 << n):
-            ok = True
-            for i in range(n):
-                if mask & (1 << i) and get_max_dist(mask, i) > maxDistance:
-                    ok = False
-                    break
-            res += ok
-
-        return res
 ```

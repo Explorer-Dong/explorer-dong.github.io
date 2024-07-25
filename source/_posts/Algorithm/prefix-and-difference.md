@@ -1,5 +1,5 @@
 ---
-title: prefix and difference
+title: prefix-and-difference
 categories: Algorithm
 category_bar: true
 ---

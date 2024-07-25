@@ -16,19 +16,19 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="搜索              搜索专题。无论是深搜还是宽搜，都逃不掉图的思维。我们将搜索图建立起来之后，剩余的编码过程就会跃然纸上。            【dfs】机器人的运动范围 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;22&#x2F; 1234567891011121314151617181920212223242526272829303132333435cla">
+    <meta name="description" content="搜索 无论是深搜还是宽搜，都逃不掉图的思维。我们将搜索图建立起来之后，剩余的编码过程就会跃然纸上。 【dfs】机器人的运动范围 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;22&#x2F; 1234567891011121314151617181920212223242526272829303132333435class Solution {public:    int r">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dfs-and-similar">
 <meta property="og:url" content="https://blog.dwj601.cn/Algorithm/dfs-and-similar/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="搜索              搜索专题。无论是深搜还是宽搜，都逃不掉图的思维。我们将搜索图建立起来之后，剩余的编码过程就会跃然纸上。            【dfs】机器人的运动范围 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;22&#x2F; 1234567891011121314151617181920212223242526272829303132333435cla">
+<meta property="og:description" content="搜索 无论是深搜还是宽搜，都逃不掉图的思维。我们将搜索图建立起来之后，剩余的编码过程就会跃然纸上。 【dfs】机器人的运动范围 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;22&#x2F; 1234567891011121314151617181920212223242526272829303132333435class Solution {public:    int r">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407250146195.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407250147150.png">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png?v8">
 <meta property="article:published_time" content="2024-03-21T05:55:02.037Z">
-<meta property="article:modified_time" content="2024-07-24T18:27:52.616Z">
+<meta property="article:modified_time" content="2024-07-25T03:09:59.050Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -325,7 +325,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年7月25日 凌晨
+                    本文最后更新于 2024年7月25日 上午
                   
                 
               </p>
@@ -334,9 +334,7 @@
               <div class="markdown-body">
                 
                 <h3 id="搜索">搜索</h3>
-<div class="note note-light">
-            <p>搜索专题。无论是深搜还是宽搜，都逃不掉图的思维。我们将搜索图建立起来之后，剩余的编码过程就会跃然纸上。</p>
-          </div>
+<p>无论是深搜还是宽搜，都逃不掉图的思维。我们将搜索图建立起来之后，剩余的编码过程就会跃然纸上。</p>
 <h3 id="【dfs】机器人的运动范围">【dfs】机器人的运动范围</h3>
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/22/">https://www.acwing.com/problem/content/22/</a></p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>    <br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">movingCount</span><span class="hljs-params">(<span class="hljs-type">int</span> threshold, <span class="hljs-type">int</span> rows, <span class="hljs-type">int</span> cols)</span></span><br><span class="hljs-function">    </span>{<br>        <span class="hljs-keyword">if</span> (!rows || !cols) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">g</span>(rows, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(cols, <span class="hljs-number">0</span>));<br>        vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt; <span class="hljs-built_in">vis</span>(rows, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(cols, <span class="hljs-literal">false</span>));<br>        <span class="hljs-built_in">dfs</span>(g, vis, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, threshold);<br>        <span class="hljs-keyword">return</span> res;<br>    }<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; g, vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt;&amp; vis, <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y, <span class="hljs-type">int</span> threshold)</span></span><br><span class="hljs-function">    </span>{<br>        vis[x][y] = <span class="hljs-literal">true</span>;<br>        res ++;<br>        <br>        <span class="hljs-type">int</span> dx[] = {<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>}, dy[] = {<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>};<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = <span class="hljs-number">0</span>; k &lt; <span class="hljs-number">4</span>; k ++)<br>        {<br>            <span class="hljs-type">int</span> i = x + dx[k], j = y + dy[k];<br>            <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">0</span> || i &gt;= <span class="hljs-built_in">int</span>(g.<span class="hljs-built_in">size</span>()) || j &lt; <span class="hljs-number">0</span> || j &gt;= <span class="hljs-built_in">int</span>(g[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>()) || vis[i][j] || <span class="hljs-built_in">cnt</span>(i, j) &gt; threshold) <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-built_in">dfs</span>(g, vis, i, j, threshold);<br>        }<br>    }<br>    <br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">cnt</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span><br><span class="hljs-function">    </span>{<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (x) sum += x % <span class="hljs-number">10</span>, x /= <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">while</span> (y) sum += y % <span class="hljs-number">10</span>, y /= <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">return</span> sum;<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
@@ -859,9 +857,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Algorithm/divide%20and%20conquer/" title="divide and conquer">
+                      <a href="/Algorithm/binary-search/" title="binary-search">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">divide and conquer</span>
+                        <span class="hidden-mobile">binary-search</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -993,10 +991,10 @@
     
       
       
-        <a href="/Algorithm/divide%20and%20conquer/" title="divide and conquer"
+        <a href="/Algorithm/divide-and-conquer/" title="divide-and-conquer"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">divide and conquer</span>
+          <span class="category-post">divide-and-conquer</span>
         </a>
       
     

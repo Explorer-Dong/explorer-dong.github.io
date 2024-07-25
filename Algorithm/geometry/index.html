@@ -16,16 +16,16 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="geometry 1. Minimum Manhattan Distance https:&#x2F;&#x2F;codeforces.com&#x2F;gym&#x2F;104639&#x2F;problem&#x2F;J  题意：给定两个圆的直径的两个点坐标，其中约束条件是两个圆一定是处在相离的两个角上。问如何在C2圆上或圆内找到一点p，使得点p到C1圆的所有点的曼哈顿距离的期望值最小 思路：   看似需要积分，其实我们可以发现，对于点p到C1中某个点">
+    <meta name="description" content="计算几何 【二维&#x2F;数学】Minimum Manhattan Distance https:&#x2F;&#x2F;codeforces.com&#x2F;gym&#x2F;104639&#x2F;problem&#x2F;J  题意：给定两个圆的直径的两个点坐标，其中约束条件是两个圆一定是处在相离的两个角上。问如何在C2圆上或圆内找到一点p，使得点p到C1圆的所有点的曼哈顿距离的期望值最小 思路：   看似需要积分，其实我们可以发现，对于点p到C1中某个点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="geometry">
 <meta property="og:url" content="https://blog.dwj601.cn/Algorithm/geometry/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="geometry 1. Minimum Manhattan Distance https:&#x2F;&#x2F;codeforces.com&#x2F;gym&#x2F;104639&#x2F;problem&#x2F;J  题意：给定两个圆的直径的两个点坐标，其中约束条件是两个圆一定是处在相离的两个角上。问如何在C2圆上或圆内找到一点p，使得点p到C1圆的所有点的曼哈顿距离的期望值最小 思路：   看似需要积分，其实我们可以发现，对于点p到C1中某个点">
+<meta property="og:description" content="计算几何 【二维&#x2F;数学】Minimum Manhattan Distance https:&#x2F;&#x2F;codeforces.com&#x2F;gym&#x2F;104639&#x2F;problem&#x2F;J  题意：给定两个圆的直径的两个点坐标，其中约束条件是两个圆一定是处在相离的两个角上。问如何在C2圆上或圆内找到一点p，使得点p到C1圆的所有点的曼哈顿距离的期望值最小 思路：   看似需要积分，其实我们可以发现，对于点p到C1中某个点">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402252321057.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.055Z">
-<meta property="article:modified_time" content="2024-04-23T15:39:00.802Z">
+<meta property="article:modified_time" content="2024-07-25T03:30:02.973Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -322,7 +322,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年4月23日 晚上
+                    本文最后更新于 2024年7月25日 中午
                   
                 
               </p>
@@ -330,26 +330,26 @@
             
               <div class="markdown-body">
                 
-                <h2 id="geometry">geometry</h2>
-<h3 id="1-Minimum-Manhattan-Distance">1. Minimum Manhattan Distance</h3>
+                <h3 id="计算几何">计算几何</h3>
+<h3 id="【二维-数学】Minimum-Manhattan-Distance">【二维/数学】Minimum Manhattan Distance</h3>
 <p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/104639/problem/J">https://codeforces.com/gym/104639/problem/J</a></p>
 <blockquote>
 <p>题意：给定两个圆的直径的两个点坐标，其中约束条件是两个圆一定是处在相离的两个角上。问如何在C2圆上或圆内找到一点p，使得点p到C1圆的所有点的曼哈顿距离的期望值最小</p>
 <p>思路：</p>
-<ol>
+<ul>
 <li>
 <p>看似需要积分，其实我们可以发现，对于点p到C1中某个点q1的曼哈顿距离，我们一定可以找到q1关于C1对称的点q2，那么点p到q1和q2的曼哈顿距离之和就是点p到C1的曼哈顿距离的两倍（证明就是中线定理）那么期望的最小值就是点p到C1的曼哈顿距离的最小值。目标转化后，我们开始思考如何计算此目标的最小值，思路如下图</p>
- <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402252321057.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="image-20240116175917260" style="zoom:50%;">
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402252321057.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="image-20240116175917260"></p>
 </li>
-</ol>
+</ul>
 <p>注意点：</p>
-<ol>
+<ul>
 <li>double的读取速度很慢，可以用 <code>int</code> or <code>long long</code> 读入，后续强制类型转换（显示 or 和浮点数计算）</li>
 <li>注意输出答案的精度控制  <code>cout &lt;&lt; fixed &lt;&lt; setprecision(10) &lt;&lt; res &lt;&lt; "\n";</code></li>
-</ol>
+</ul>
 </blockquote>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>{<br>	<span class="hljs-type">double</span> x1, y1, x2, y2;<br>	<span class="hljs-type">long</span> <span class="hljs-type">long</span> a, b, c, d;<br><br>	cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;<br>	x1 = (a + c) / <span class="hljs-number">2.0</span>;<br>	y1 = (b + d) / <span class="hljs-number">2.0</span>;<br><br>	cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;<br>	x2 = (a + c) / <span class="hljs-number">2.0</span>;<br>	y2 = (b + d) / <span class="hljs-number">2.0</span>;<br><br>	<span class="hljs-type">double</span> r2 = <span class="hljs-built_in">sqrt</span>((a - c) * (a - c) + (b - d) * (b - d)) / <span class="hljs-number">2</span>;<br><br>	cout &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>(<span class="hljs-number">10</span>) &lt;&lt;  <span class="hljs-built_in">abs</span>(x1 - x2) + <span class="hljs-built_in">abs</span>(y1 - y2) - <span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>) * r2 &lt;&lt; <span class="hljs-string">"\n"</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
-<h3 id="2-三角形">2. 三角形</h3>
+<h3 id="【枚举】三角形">【枚举】三角形</h3>
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/5383/">https://www.acwing.com/problem/content/5383/</a></p>
 <blockquote>
 <p>题意：给定两个直角三角形的两条直角边的长度 a, b，问能不能在坐标轴上找到三个整数点使得三点满足该直角三角形且三遍均不与坐标轴垂直</p>
@@ -357,7 +357,7 @@
 <p>时间复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>a</mi><mn>2</mn></msup><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(a^2b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal">b</span><span class="mclose">)</span></span></span></span></p>
 </blockquote>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><br><span class="hljs-type">int</span> a, b;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span> </span>{<br>	cin &gt;&gt; a &gt;&gt; b;<br><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= a; i++) {<br>		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= a; j++) {<br>			<span class="hljs-keyword">if</span> (i * i + j * j == a * a &amp;&amp; i &amp;&amp; j) {<br>				<span class="hljs-type">int</span> gcd = __gcd(i, j);<br>				<span class="hljs-type">int</span> p = -i / gcd, q = j / gcd;<br>				<span class="hljs-type">int</span> y = p, x = q;<br>				<span class="hljs-keyword">while</span> (x * x + y * y &lt; b * b) {<br>					x += q, y += p;<br>				}<br>				<span class="hljs-keyword">if</span> (x * x + y * y == b * b &amp;&amp; x != i &amp;&amp; y != j) {<br>					cout &lt;&lt; <span class="hljs-string">"YES\n"</span>;<br>					cout &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; <span class="hljs-string">' '</span> &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; <span class="hljs-string">"\n"</span>;<br>					cout &lt;&lt; i &lt;&lt; <span class="hljs-string">' '</span> &lt;&lt; j &lt;&lt; <span class="hljs-string">"\n"</span>;<br>					cout &lt;&lt; x &lt;&lt; <span class="hljs-string">' '</span> &lt;&lt; y &lt;&lt; <span class="hljs-string">"\n"</span>;<br>					<span class="hljs-keyword">return</span>;<br>				}<br>			}<br>		}<br>	}<br><br>	cout &lt;&lt; <span class="hljs-string">"NO\n"</span>;<br>}<br><br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>	cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>), cout.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>	<span class="hljs-type">int</span> T = <span class="hljs-number">1</span>;<br><span class="hljs-comment">//	cin &gt;&gt; T;</span><br>	<span class="hljs-keyword">while</span> (T--) <span class="hljs-built_in">solve</span>();<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
-<h3 id="3-奶牛过马路">3. 奶牛过马路</h3>
+<h3 id="【凸包】奶牛过马路">【凸包】奶牛过马路</h3>
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/5572/">https://www.acwing.com/problem/content/5572/</a></p>
 <blockquote>
 <p>题意：给定一个二维坐标系，现在有两个东西可以进行平移。</p>
@@ -441,7 +441,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年4月23日</div>
+          <div>2024年7月25日</div>
         </div>
       
       
@@ -472,9 +472,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Algorithm/games/" title="games">
+                      <a href="/Algorithm/hashing/" title="hashing">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">games</span>
+                        <span class="hidden-mobile">hashing</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -606,10 +606,10 @@
     
       
       
-        <a href="/Algorithm/divide%20and%20conquer/" title="divide and conquer"
+        <a href="/Algorithm/divide-and-conquer/" title="divide-and-conquer"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">divide and conquer</span>
+          <span class="category-post">divide-and-conquer</span>
         </a>
       
     

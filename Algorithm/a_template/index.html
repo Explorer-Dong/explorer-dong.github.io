@@ -24,7 +24,7 @@
 <meta property="og:description" content="板子 你渴望力量吗？那就把板子理解背过吧！ 基础算法 高精度 参考：https:&#x2F;&#x2F;github.com&#x2F;Baobaobear&#x2F;MiniBigInteger&#x2F;blob&#x2F;main&#x2F;bigint_tiny.h 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-21T05:55:02.037Z">
-<meta property="article:modified_time" content="2024-07-25T03:02:19.302Z">
+<meta property="article:modified_time" content="2024-07-26T12:53:07.197Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -246,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          3.1k 字
         
       </span>
     
@@ -257,7 +257,7 @@
         
         
         
-          19 分钟
+          20 分钟
         
       </span>
     
@@ -320,7 +320,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年7月25日 上午
+                    本文最后更新于 2024年7月26日 晚上
                   
                 
               </p>
@@ -339,6 +339,9 @@
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">findLeft</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = n - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r) {<br>        <span class="hljs-type">int</span> mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) l = mid + <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// if (a[mid] &lt; x) l = mid + 1;</span><br>        <span class="hljs-keyword">else</span> r = mid;<br>    }<br>    <span class="hljs-keyword">return</span> a[r] == x;<br>}<br></code></pre></td></tr></tbody></table></figure>
 <p>寻找右边界</p>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">findRight</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = n - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r) {<br>        <span class="hljs-type">int</span> mid = (l + r + <span class="hljs-number">1</span>) &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) l = mid;<br>        <span class="hljs-comment">// if (a[mid] &lt;= x) l = mid;</span><br>        <span class="hljs-keyword">else</span> r = mid - <span class="hljs-number">1</span>;<br>    }<br>    <span class="hljs-keyword">return</span> a[r] == x;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="哈希">哈希</h3>
+<p>使用 <code>std::unordered_map</code> 时可能会因为哈希冲突导致查询、插入操作降低到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>，此时可以使用 <code>std::map</code> 进行替代，或者自定义一个哈希函数，如：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">CustomHash</span> {<br>    <span class="hljs-function"><span class="hljs-type">size_t</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(T x)</span> <span class="hljs-type">const</span> </span>{<br>        <span class="hljs-type">static</span> <span class="hljs-type">const</span> <span class="hljs-type">size_t</span> _prime = <span class="hljs-number">0x9e3779b97f4a7c15</span>;<br>        <span class="hljs-type">size_t</span> _hash_value = std::<span class="hljs-built_in">hash</span>&lt;T&gt;()(x);<br>        <span class="hljs-keyword">return</span> _hash_value ^ (_hash_value &gt;&gt; <span class="hljs-number">30</span>) ^ _prime;<br>    }<br>};<br><br><span class="hljs-comment">// usage</span><br>std::unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>, CustomHash&lt;<span class="hljs-type">int</span>&gt;&gt; f1;<br>std::unordered_map&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>, <span class="hljs-type">int</span>, CustomHash&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt;&gt; f2;<br>std::unordered_map&lt;std::string, <span class="hljs-type">int</span>, CustomHash&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt;&gt; f3;<br></code></pre></td></tr></tbody></table></figure>
 <h2 id="数据结构">数据结构</h2>
 <h3 id="并查集">并查集</h3>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">dsu</span> {<br>    <span class="hljs-type">int</span> n;<br>    std::vector&lt;<span class="hljs-type">int</span>&gt; p;<br>    <span class="hljs-built_in">dsu</span>(<span class="hljs-type">int</span> _n) { n = _n; p.<span class="hljs-built_in">resize</span>(n + <span class="hljs-number">1</span>); <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) p[i] = i; }<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{ <span class="hljs-keyword">return</span> (p[x] == x ? p[x] : p[x] = <span class="hljs-built_in">find</span>(p[x])); }<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>{ p[<span class="hljs-built_in">find</span>(a)] = <span class="hljs-built_in">find</span>(b); }<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(a) == <span class="hljs-built_in">find</span>(b); }<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">block</span><span class="hljs-params">()</span> </span>{ <span class="hljs-type">int</span> ret = <span class="hljs-number">0</span>; <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) ret += p[i] == i; <span class="hljs-keyword">return</span> ret; }<br>};<br></code></pre></td></tr></tbody></table></figure>
@@ -492,7 +495,7 @@ i^{-1} &amp;= i^{mod-2}
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年7月25日</div>
+          <div>2024年7月26日</div>
         </div>
       
       
@@ -523,9 +526,9 @@ i^{-1} &amp;= i^{mod-2}
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Algorithm/binary-search/" title="binary-search">
+                      <a href="/README/" title="README">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">binary-search</span>
+                        <span class="hidden-mobile">README</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -533,8 +536,8 @@ i^{-1} &amp;= i^{mod-2}
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Algorithm/dfs-and-similar/" title="dfs-and-similar">
-                        <span class="hidden-mobile">dfs-and-similar</span>
+                      <a href="/Algorithm/data-structure/" title="data-structure">
+                        <span class="hidden-mobile">data-structure</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

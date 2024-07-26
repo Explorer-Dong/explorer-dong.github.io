@@ -265,6 +265,26 @@ bool findRight(int x) {
 }
 ```
 
+### 哈希
+
+使用 `std::unordered_map` 时可能会因为哈希冲突导致查询、插入操作降低到 $O(n)$，此时可以使用 `std::map` 进行替代，或者自定义一个哈希函数，如：
+
+```cpp
+template<class T>
+struct CustomHash {
+    size_t operator()(T x) const {
+        static const size_t _prime = 0x9e3779b97f4a7c15;
+        size_t _hash_value = std::hash<T>()(x);
+        return _hash_value ^ (_hash_value >> 30) ^ _prime;
+    }
+};
+
+// usage
+std::unordered_map<int, int, CustomHash<int>> f1;
+std::unordered_map<long long, int, CustomHash<long long>> f2;
+std::unordered_map<std::string, int, CustomHash<long long>> f3;
+```
+
 ## 数据结构
 
 ### 并查集

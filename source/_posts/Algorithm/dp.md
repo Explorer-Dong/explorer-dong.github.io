@@ -232,6 +232,104 @@ signed main() {
 }
 ```
 
+### 【递推/数学】Squaring
+
+https://codeforces.com/contest/1995/problem/C
+
+> 题意：给定一个序列，可以对其中任何一个数进行任意次平方操作，即 $a_i \to a_i^2$，问最少需要执行多少次操作可以使得序列不减。
+>
+> 思路：
+>
+> - 首先显然的我们不希望第一个数 $a_0$ 变大，因此我们应该从第二个数开始和前一个数进行比较，从而进行可能的平方操作并计数。但是由于数字可能会很大，使用高精度显然会超时，而这些数字本身的意义是用来和前一个数进行大小比较的，并且变化的形式也仅仅是平方操作。我们不妨维护其指数，这样既可以进行大小比较，也不用存储数字本身而造成溢出。当然变为使用指数存储以后如何进行大小比较以及如何维护指数序列有所不同，我们先从一般的角度出发，进而从表达式本身的数学角度讨论特殊情况的处理。
+>
+> - 对于当前数字 $a_i$ 和前一个数字 $a_{i-1}$ 及其指数 $z_{i-1}$，如果想要当前数字经过可能的 k 次平方操作后不小于前一个数，即 $\displaystyle a_{i-1}^{2^{z_{i-1}}}\le a_i^{2^{k}}$，则易得下面的表达式：
+>     $$
+>     k:= z_{i-1}+ \left\lceil \log_2(\frac{\log_2 {a_{i-1}}}{\log_2{a_i}}) \right \rceil
+>     $$
+>     由于 $a_j \in [1, 10^6],z_j\ge 0,k \ge 0$，因此我们有必要：
+>
+>     1. 讨论 $a_i$ 和 $a_{i-1}$ 和 $1$ 的大小关系。因为它们的对数计算结果在真数部分。
+>     2. 讨论 $k$ 和 $0$ 的大小关系。因为一旦 $a_{i-1} < a_i$，则有可能出现计算结果为负的情况，这种情况表明需要对当前数 $a_i$ 进行开根的操作。又由于 $a_i\ge1$，因此开根操作就表明减小当前的数，也就表明当前数在不进行平方操作的情况下就已经满足不减的条件了，也就不需要操作了。此时对应的指数 $z_i$ 就是 $0$，对于答案的贡献也是 $0$。
+>
+> 时间复杂度：$O(n)$
+
+```cpp
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+void solve() {
+    int n;
+    cin >> n;
+    
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    
+    vector<ll> z(n, 0);
+    ll res = 0;
+    for (int i = 1; i < n; i++) {
+        if (a[i] == 1 && a[i - 1] > 1) {
+            cout << -1 << "\n";
+            return;
+        } else if (a[i] == 1 && a[i - 1] == 1 || a[i - 1] == 1) {
+            continue;
+        }
+        ll t = z[i - 1] + ceil(log2(log2(a[i - 1]) / log2(a[i])));
+        z[i] = max(0ll, t);
+        res += z[i];
+    }
+    
+    cout << res << "\n";
+}
+
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int T = 1;
+    std::cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+```python
+from typing import List, Tuple
+from collections import defaultdict, deque
+from itertools import combinations, permutations
+import math, heapq, queue
+
+II = lambda: int(input())
+FI = lambda: float(input())
+MII = lambda: tuple(map(int, input().split()))
+LII = lambda: list(map(int, input().split()))
+
+
+def solve() -> None:
+    n = II()
+    a = LII()
+    
+    z = [0] * n
+    for i in range(1, n):
+        if a[i] == 1 and a[i - 1] > 1:
+            print(-1)
+            return
+        elif a[i] == 1 and a[i - 1] == 1 or a[i - 1] == 1:
+            continue
+        t = z[i - 1] + math.ceil(math.log2(math.log2(a[i - 1]) / math.log2(a[i])))
+        z[i] = max(0, t)
+        
+    print(sum(z))
+
+
+if __name__ == '__main__':
+    T = 1
+    T = II()
+    while T: solve(); T -= 1
+```
+
 ### 【线性dp】最小化网络并发线程分配
 
 https://vijos.org/d/nnu_contest/p/1492

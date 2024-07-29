@@ -232,6 +232,62 @@ signed main() {
 }
 ```
 
+### 【递推/线性dp/哈希】Decode
+
+https://codeforces.com/contest/1996/problem/E
+
+> 题意：给定一个01字符串，问所有区间中01数量相等的子串总共有多少个。
+>
+> 思路：
+>
+> - 我们可以最直接的想到 $O(n^5)$ 的暴力做法，即 $O(n^2)$ 枚举区间的左右端点，$O(n^2)$ 枚举区间中子串的左右端点，最后 $O(n)$ 进行检查计数。当然可以用前缀和优化掉 $O(n)$ 的检查计数。但这样做显然无法通过 $10^5$ 的数据量。考虑别的思路。
+> - 容易想到动态规划的思路。我们定义 `dp[i]` 表示右端点是 `s[i]` 的所有区间中，合法01子串的数量，那么显然 `dp[0] = s[i] == '1'`。现在考虑 `dp[i]` 如何转移。不难发现以 `s[i]` 为右端点的所有区间一定包含以 `s[i - 1]` 为右端点的所有区间，多出来的合法子串进存在于以 `s[i]` 结尾的子串中，我们假设以 `s[i]` 结尾的合法子串数量为 `t`，则状态转移方程为：`dp[i] = dp[i - 1] + t`。显然我们可以用一个滚动变量来代替 dp 数组，记作now，每次维护完 now 以后，将其累加到答案即可。现在我们将枚举区间从 $O(n^2)$ 通过递推的思路优化到了 $O(n)$。那么如何求解递推式中的 `t` 呢？
+> - 通过一个小 trick 求解「以 `s[i]` 结尾的合法子串」的数量。显然可以通过前缀和枚举 $j \in [1,i]$ 统计使得 `i - j + 1 == 2 * (pre[i] - pre[j - 1])` 的数量。但是这样就是 $O(n^2)$ 的了，仍然无法通过本题。引入 trick：我们稍微修改一下前缀和的维护逻辑，即当 `s[i] == '0'` 时，将其记作 `-1`，当 `s[i] == '1'` 时，保持不变仍然记作 `1`。这样我们在向前枚举 `j` 寻找合法区间时，本质上就是在寻找 `pre[i] - pre[j - 1] == 0`，即 `pre[j - 1] == pre[i]` 的个数。假设下标从 0 开始，则每找到一个合法的 `j`，都会对答案贡献 `j + 1`。因此我们只需要哈希存储每一个前缀和对应的下标累计值即可。
+>
+> 时间复杂度：$O(n)$
+
+```cpp
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+void solve() {
+    string s;
+    cin >> s;
+    
+    int n = s.size();
+    vector<ll> pre(n + 1);
+    for (int i = 0; i < n; i++) {
+        pre[i + 1] = pre[i] + (s[i] == '0' ? -1 : 1);
+    }
+    
+    auto add = [&](ll x, ll y) {
+        ll mod = 1e9 + 7;
+        return ((x % mod) + (y % mod)) % mod;
+    };
+    
+    ll res = 0, now = 0;
+    unordered_map<ll, ll> f;
+    for (ll i = 0; i <= n; i++) {
+        now = add(now, f[pre[i]]);
+        res = add(res, now);
+        f[pre[i]] += i + 1;
+    }
+    
+    cout << res << "\n";
+}
+
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int T = 1;
+    std::cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
 ### 【递推/数学】Squaring
 
 https://codeforces.com/contest/1995/problem/C

@@ -687,3 +687,69 @@ public:
     }
 };
 ```
+
+### 【二分查找】Bomb
+
+https://codeforces.com/contest/1996/problem/F
+
+> 题意：给定两个序列 $a$ 和 $b$ 以及最大操作次数 $k$，问在不超过最大操作次数的情况下，最多可以获得多少收益？收益的计算方法为：每次选择 $a$ 中一个数 `a[i]` 加入收益，并将该数减去 `b[i]` 直到为 $0$。
+>
+> 思路：
+>
+> - 暴力抬手：最暴力的做法是我们每次操作时选择 $a$ 中的最大值进行计数并对其修改，但是显然 $O(nk)$ 会超时，我们考虑加速这个过程。
+> - 加速进程：由于最终结果中每次操作都是最优的，因此操作次数越多获得的收益就越大，具备单调性。如何利用这个单调性呢？关键在于全体数据的操作次数，我们记作 $k'$。假设我们对 $a$ 中全体数据可取的范围设置一个下限 $lower$，那么显然的 $lower$ 越高，$k'$ 越小，$lower$ 越低，$k'$ 越大。于是根据单调的传递性可知 $lower$ 也和最终的收益具备单调性，$lower$ 越高，收益越小，$lower$ 越低，收益越大。因此我们二分 $lower$，使得 $k'$ 左逼近 $k$。
+> - 细节处理：二分的边界是什么？这需要从计算最终结果的角度来思考。对于二分出的下界 $lower$，即 $r$，此时扫描一遍计算出来的操作次数 $k'$ 一定是 $k'\le k$。也就是说我们还需要操作 $k-k'$ 次，显然我们可以将每个数操作后维护到最终的结果，然后执行上述的暴力思路，但是这样仍然会超时，因为 $k-k'$ 的计算结果最大是 $n$，此时进行暴力仍然会达到 $O(n^2)$。正难则反，我们不妨将上述二分出的 $lower$ 减一进行最终答案的计算，这样对应的操作次数 $k'$ 一定会超过 $k$，并且对于超过 $k$ 的操作，累加到答案的数值一定都是 $lower-1$，这一步也是本题最精妙的一步。从上述分析不难发现，二分的下界需要设定为 $1$，因为后续累加答案时会对 $lower$ 进行减一操作；二分的上界需要设定为严格大于 $10^9$ 的数，比如 $10^9+1$，因为我们需要保证 $lower-1$ 后对应的操作次数 $k'$ 严格大于 $k$。
+>
+> 时间复杂度：$O(n\log k)$
+
+```cpp
+#include <bits/stdc++.h>
+
+using ll = long long;
+
+void solve() {
+    int n, k;
+    std::cin >> n >> k;
+    
+    std::vector<int> a(n), b(n);
+    for (int i = 0; i < n; i++) std::cin >> a[i];
+    for (int i = 0; i < n; i++) std::cin >> b[i];
+    
+    auto chk = [&](int x) {
+        ll cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if (a[i] < x) continue;
+            cnt += (a[i] - x) / b[i] + 1;
+        }
+        return cnt;
+    };
+    
+    int l = 1, r = 1e9 + 10;
+    while (l < r) {
+        int mid = (l + r) >> 1;
+        if (chk(mid) <= k) r = mid;
+        else l = mid + 1;
+    }
+    
+    int best = r - 1;
+    ll res = 0, cnt = 0;
+    for (int i = 0; i < n; i++) {
+        if (a[i] < best) continue;
+        ll t = (a[i] - best) / b[i] + 1;
+        cnt += t;
+        res += t * a[i] - t * (t - 1) / 2 * b[i];
+    }
+    res -= (cnt - k) * best;
+    
+    std::cout << res << "\n";
+}
+
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int T = 1;
+    std::cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```

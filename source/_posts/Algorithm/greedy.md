@@ -1456,3 +1456,73 @@ class Solution:
 
         return res
 ```
+
+### 【按位贪心/分类讨论】
+
+https://www.acwing.com/problem/content/1000/
+
+> 题意：给定 $n$ 个运算数和对应的 $n$ 个操作，仅有 `&, |, ^` 三种。现在需要选择一个数 $num \in [0,m]$ 使得 $num$ 经过这 $n$ 个二元运算后得到的结果 $res$ 最大。给出最终的 $res$。
+>
+> 思路：首先不难发现这些运算操作在二进制位上是相互独立的，没有进位或结尾的情况，因此我们可以「按二进制位」单独考虑。由于运算数和 $m$ 均 $\le 10^9$，因此我们枚举 $[0,30]$ 对应的二进制位。接下来我们单独考虑第 $i$ 位的情况，显然的 $num$ 的第 $i$ 位可以取 $1$ 也可以取 $0$，对应的 $res$ 的第 $i$ 位可以取 $1$ 也可以取 $0$。有以下 $2^2$ 种运算情况：
+>
+> |        | $\text{num 的第 i 位填 1 $\to$ res 第 i 位的情况}$ | $\text{num 的第 i 位填 0 $\to$ res 第 i 位的情况}$ |      选择方案      |
+> | :----: | :------------------------------------------------: | :------------------------------------------------: | :----------------: |
+> | 情况一 |                     $1 \to 0$                      |                     $0 \to 0$                      | num 填 0，res 填 0 |
+> | 情况二 |                     $1 \to 0$                      |                     $0 \to 1$                      | num 填 0，res 填 1 |
+> | 情况三 |                     $1 \to 1$                      |                     $0 \to 0$                      |        待定        |
+> | 情况四 |                     $1 \to 1$                      |                     $0 \to 1$                      | num 填 0，res 填 1 |
+>
+> 选择方案时我们需要考虑两个约束，$num$ 不能超过 $m$，$res$ 尽可能大，因此有了上述表格第四列的贪心选择结果。之所以情况三待定是因为其对两种约束的相互矛盾的，并且其余情况没有增加 $num$，即对 $num$ 上限的约束仅存在于情况三。假设有 $k$ 位是上述情况三，那么显然的其余位枚举顺序是随意的，因为答案是固定的。对于 $k$ 个情况三，从贪心的角度考虑，我们希望 $res$ 尽可能大，那么就有「高位能出 $1$ 就出 $1$」的结论。因此我们需要从高位到低位逆序枚举这 $k$ 个情况三，由于其他位枚举顺序随意，因此总体就是从高位到低位枚举。
+>
+> 时间复杂度：$O(n \log m)$
+
+```cpp
+#include <bits/stdc++.h>
+
+using ll = long long;
+using namespace std;
+
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    
+    vector<pair<string, int>> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i].first >> a[i].second;
+    }
+    
+    int res = 0, num = 0;
+    for (int i = 30; i >= 0; i--) {
+        int x = 1 << i, y = 0;
+        for (int j = 0; j < n; j++) {
+            string op = a[j].first;
+            int t = a[j].second & (1 << i);
+            if (op == "AND") {
+                x &= t, y &= t;
+            } else if (op == "OR") {
+                x |= t, y |= t;
+            } else {
+                x ^= t, y ^= t;
+            }
+        }
+        if ((num | (1 << i)) <= m && x > y) {
+            num |= 1 << i;
+            res |= 1 << i;
+        } else {
+            res += y;
+        }
+    }
+    
+    cout << res << "\n";
+}
+
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int T = 1;
+//    std::cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+

@@ -153,11 +153,13 @@ class Solution:
 
 https://www.acwing.com/problem/content/97/
 
-> - 题意：给定 n 个 `5*5` 的矩阵，代表当前局面。矩阵中每一个元素要么是 0 要么是 1，现在需要计算从当前状态操作到全 1 状态最少需要几次操作？操作描述为改变当前状态为相反状态后，四周的四个元素也需要改变为相反的状态
-> - 思路：我们采用递推的思路。为了尽可能少的进行按灯操作，我们从第二行开始考虑，若前一行的某一元素为 0，则下一行的同一列位置就需要按一下，以此类推将 $2 \to 5$ 行全部按完。现在考虑两点，当前按下状态是否合法？当前按下状态是是否最优？
->     1. 对于第一个问题：从上述思路可以看出，$1 \to n-1$ 行一定全部都是 1 的状态，但是第 $n-1$ 行不一定全 1，因此不合法状态就是第 $n-1$ 行不全为 1。此时局面的总操作数不能更新最小操作次数
->     2. 对于第二个问题：可以发现，上述算法思路中，对于第一行是没有任何操作的（可以将第一行看做递推的初始化条件），第一行的状态影响全局的总操作数，我们不能确定不对第一行进行任何操作得到的总操作数就是最优的，故我们需要对第一行 5 个灯进行**枚举**按下。我们采用 5 位二进制的方法对第一行的 5 个灯进行枚举按下操作，然后对于当前第一行的按下局面（递推初始化状态）进行 $2 \to n$ 行的按下递推操作。对于每一种合法状态更新最小的操作数即可
-> - 时间复杂度：$O(T \times 2^5 \times 25 \times 5)$
+> 题意：给定 n 个 `5*5` 的矩阵，代表当前局面。矩阵中每一个元素要么是 0 要么是 1，现在需要计算从当前状态操作到全 1 状态最少需要几次操作？操作描述为改变当前状态为相反状态后，四周的四个元素也需要改变为相反的状态
+>
+> 思路：我们采用递推的思路。为了尽可能少的进行按灯操作，我们从第二行开始考虑，若前一行的某一元素为 0，则下一行的同一列位置就需要按一下，以此类推将 $2 \to 5$ 行全部按完。现在考虑两点，当前按下状态是否合法？当前按下状态是是否最优？
+> 1. 对于第一个问题：从上述思路可以看出，$1 \to n-1$ 行一定全部都是 1 的状态，但是第 $n-1$ 行不一定全 1，因此不合法状态就是第 $n-1$ 行不全为 1
+> 2. 对于第二个问题：可以发现，上述算法思路中，对于第一行是没有任何操作的（可以将第一行看做递推的初始化条件），第一行的状态影响全局的总操作数，我们不能确定不对第一行进行任何操作得到的总操作数就是最优的，故我们需要对第一行 5 个灯进行**枚举**按下。我们采用 5 位二进制的方法对第一行的 5 个灯进行枚举按下操作，然后对于当前第一行的按下局面（递推初始化状态）进行 $2 \to n$ 行的按下递推操作。对于每一种合法状态更新最小的操作数即可
+>
+> 时间复杂度：$O(T \times 2^5 \times 25 \times 5)$
 
 ```cpp
 #include <bits/stdc++.h>
@@ -386,6 +388,141 @@ if __name__ == '__main__':
     while T: solve(); T -= 1
 ```
 
+### 【递推/dfs】牛的语言学
+
+https://www.acwing.com/problem/content/description/5559/
+
+> 题意：已知一个字符串由前段的一个词根和后段的多个词缀组成。词根的要求是长度至少为 5，词缀的要求是长度要么是 2, 要么是 3，以及不允许连续的相同词缀组成后段。现在给定最终的字符串，问一共有多少种词缀？按照字典序输出所有可能的词缀
+>
+> - 思路一：**搜索**。很显然我们应该从字符串的最后开始枚举词缀进行搜索，因为词缀前面的所有字符全部都可以作为词根合法存在，我们只需要考虑当前划分出来的词缀是否合法即可。约束只有一个，不能与后面划分出来的词缀相同即可，由于我们是从后往前搜索，因此我们在搜索时保留后一个词缀即可。如果当前词缀和上一个词缀相同则返回，反之如果合法则加入 set 自动进行字典序排序。
+>
+>     时间复杂度：$O(2^{\frac{n}{2}})$
+>
+> - 思路二：**动态规划（递推）**。动规其实就是 **dfs 的逆过程**，我们从已知结果判断当前局面是否合法。很显然词根是包罗万象的，只要长度合法，不管什么样的都是可行的，故我们在判断当前局面是否合法时，只需要判断当前词缀是否合法即可。于是便可知当前状态是从后面的字符串转移过来的。我们定义状态转移记忆数组 `f[i]` 表示字符串 `s[1,i]` 是否可以组成词根。如果 `f[i]` 为真，则表示 `s[1,i]` 为一个合法的词根，`s[i+1,n]` 为一个合法的词缀串，那么词根后面紧跟着的一定是一个长度为 2 或 3 的合法词缀。
+>
+>     - 我们以紧跟着长度为 2 的合法词缀为例。如果 `s[i+1,i+2]` 为一个合法的词缀，则必须要满足以下两个条件之一
+>         1. `s[i+1,i+2]` 与 `s[i+3,i+4]` 不相等，即后面的后面是一个长度也为 **2** 且合法的词缀
+>         2. `s[1,i+5]` 是一个合法的词根，即 `f[i+5]` 标记为真，即后面的后面是一个长度为 **3** 且合法的词缀
+>
+>     - 以紧跟着长度为 3 的哈法词缀同理。如果 `s[i+1,i+3]` 为一个合法的词缀，则必须要满足以下两个条件之一
+>         1. `s[i+1,i+3]` 与 `s[i+4,i+6]` 不相等，即后面的后面是一个长度也为 **3** 且合法的词缀
+>         2. `s[1,i+5]` 是一个合法的词根，即 `f[i+5]` 标记为真，即后面的后面是一个长度为 **2** 且合法的词缀
+>
+>     时间复杂度：$O(n \log n)$ - `dp` 的过程是线性的，主要时间开销在 `set` 的自动排序上
+
+dfs 代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
+using namespace std;
+
+string s;
+set<string> res;
+
+// 当前词缀起始下标 idx，当前词缀长度 length，后方相邻的词缀 post
+void dfs(int idx, int length, string post) {
+    if (idx <= 5) return;
+    
+    string now = s.substr(idx, length);
+
+    if (now == post) {
+        // 不合法直接返回
+        return;
+    } else {
+        // 合法则将当前词缀加入集合自动排序，并继续搜索接下来可能的词缀
+        res.insert(now);
+        dfs(idx - 2, 2, now);
+        dfs(idx - 3, 3, now);
+    }
+}
+
+void solve() {
+    cin >> s;
+    s = "$" + s;
+    
+    int tail_point = s.size();
+
+    dfs(tail_point - 2, 2, "");
+    dfs(tail_point - 3, 3, "");
+    
+    cout << res.size() << "\n";
+    for (auto& str: res) cout << str << "\n";
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+dp 代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
+using namespace std;
+
+const int N = 50010;
+
+string s;
+set<string> res;
+bool f[N]; // f[i] 表示 s[1,i] 是否可以作为词根存在
+
+void solve() {
+    cin >> s;
+    s = "$" + s;
+    
+    // 字符串定义在 [1,n] 上
+    int n = s.size() - 1;
+    
+    // 长度为 n 的字符串一定可以作为词根
+    f[n] = true;
+    
+    for (int i = n; i >= 5; i--) {
+        for (int len = 2; len <= 3; len++) {
+            if (f[i + len]) {
+                string a = s.substr(i + 1, len);
+                string b = s.substr(i + 1 + len, len);
+                if (a != b || f[i + 5]) {
+                    res.insert(a);
+                    f[i] = true;
+                }
+            }
+        }
+    }
+    
+    cout << res.size() << "\n";
+    
+    for (auto& x: res) cout << x << "\n";
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
 ### 【线性dp】最小化网络并发线程分配
 
 https://vijos.org/d/nnu_contest/p/1492
@@ -578,353 +715,66 @@ class Solution:
         return f[m]
 ```
 
-### 【网格图dp】摘花生
+### 【线性dp】
 
-https://www.acwing.com/problem/content/1017/
-
-> 题意：给定一个二维矩阵，每一个位置有一个价值，问：从左上角（1,1）走到右下角（r,c）能获得的最大价值是多少
+> 题意：四塔汉诺塔问题。求在给定 $n$ 个圆盘的情况下的最少移动方案数。
 >
-> 思路：我们不妨从结果位置出发，对于（r,c）这个位置而言，能走到这里的只有两个位置，即上面的位置（r-1,c）和左边（r,c-1）的位置，那么答案就是（r-1,c）和（r,c-1）中的最大价值 +（r,c）处的价值。那么对于（r-1,c）和（r,c-1）中的最大价值，同样**需要其相应位置的左方和上方的价值最优计算而来**，因此就很容易想到动态规划的思路。我们需要初始化`dp[1][j]`和`dp[i][1]`的答案，然后从`dp[2][2]`开始计算。
+> 思路：
 >
-> 代码优化：不难发现，直接从`dp[1][1]`开始迭代也是可以的。因为`dp[0][j]`均为0，同样的`dp[1][0]`也均为0。
-
-优化前代码：
-
-```cpp
-void solve() {
-    int r, c;
-    cin >> r >> c;
-    vector<vector<int>> w(r + 1, vector<int>(c + 1)), dp(r + 1, vector<int>(c + 1, 0));
-
-    for (int i = 1; i <= r; i++) {
-        for (int j = 1; j <= c; j++) {
-            cin >> w[i][j];
-        }
-    }
-
-    dp[1][1] = w[1][1];
-
-    for (int j = 2; j <= c; j++) {
-        dp[1][j] = dp[1][j - 1] + w[1][j];
-    }
-
-    for (int i = 2; i <= r; i++) {
-        dp[i][1] = dp[i - 1][1] + w[i][1];
-    }
-
-    for (int i = 2; i <= r; i++) {
-        for (int j = 2; j <= c; j++) {
-            dp[i][j] = w[i][j] + max(dp[i - 1][j], dp[i][j - 1]);
-        }
-    }
-
-    cout << dp[r][c] << "\n";
-}
-```
-
-优化后代码：
-
-```cpp
-void solve() {
-    int r, c;
-    cin >> r >> c;
-    vector<vector<int>> w(r + 1, vector<int>(c + 1)), dp(r + 1, vector<int>(c + 1, 0));
-
-    for (int i = 1; i <= r; i++) {
-        for (int j = 1; j <= c; j++) {
-            cin >> w[i][j];
-        }
-    }
-
-    for (int i = 1; i <= r; i++) {
-        for (int j = 1; j <= c; j++) {
-            dp[i][j] = w[i][j] + max(dp[i - 1][j], dp[i][j - 1]);
-        }
-    }
-
-    cout << dp[r][c] << "\n";
-}
-```
-
-### 【树形dp】最大社交深度和
-
-https://vijos.org/d/nnu_contest/p/1534
-
-> 算法：树形dp、BFS
+> - 我们定义「最小完成单元」为：在满足游戏规则的情况下，将一座塔的所有圆盘移动到另一座塔所需的最少塔数。那么显然的最小完成单元为 3 座塔。定义 `d[i]` 表示三塔模式下 $i$ 个盘的最少移动次数，`f[i]` 表示四塔模式下 $i$ 个盘的最少移动次数。
 >
-> 题意：给定一棵树，现在需要选择其中的一个结点为根节点，使得深度和最大。深度的定义是以每个结点到树根所经历的结点数
+> - 对于 4 座塔的情况，相当于最小完成单元又多了 1 座塔。那么显然多出来的这座塔有两个处置方案：
 >
-> 思路一：暴力
+>     - 如果我们**不利用**这座塔。那么还剩 3 座塔，也就是最小完成单元，此时的最少移动次数是唯一的，也就是 `f[i] = d[i]`
 >
-> - 显然可以直接遍历每一个结点，计算每个结点的深度和，然后取最大值即可
+>     - 如果我们**要利用**这座塔。那么我们**只能在这一座塔上**按规则放圆盘。因为要确保最小完成单元来让剩余的圆盘移动到另一座塔。如果还在别的塔上放置了圆盘，那么将不符合最小完成单元的定义，游戏无法结束。当然我们不能将所有的圆盘都先放到这座塔上，因为这种情况下是不可能成立的，我们不可能让一个「我们正在求解的问题」作为我们的答案。也就是说 $j<i$
 >
-> - 时间复杂度：$O(n^2)$
 >
-> 思路二：树形dp
+> - 至此四塔模式下 $i$ 个圆盘游戏方案的组成集合已全部确定，如下图所示，即：在四塔模式下移动 $j \in [0,i-1]$ 个圆盘到其中一座空塔上，方案数为 $f[j]$；剩余的 $i-j$ 个圆盘处于最小完成单元的局面，方案数是唯一的 $d[i-j]$；最后再将一开始移动的 $j$ 个圆盘在四塔模式下移动到刚才剩余圆盘移动到的塔上，方案数为 $f[j]$。
 >
-> ![树形dp图解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214257.png)
+> ![集合划分](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408011452431.png)
 >
-> - 我们可以发现，对于当前的根结点 `fa`，我们选择其中的一个子结点 `ch`，将 `ch` 作为新的根结点（如右图）。那么对于当前的 `ch` 的深度和，我们可以借助 `fa` 的深度和进行求解。我们假设以 `ch` 为子树的结点总数为 `x`，那么这 `x` 个结点在换根之后，相对于 `ch` 的深度和，贡献了 `-x` 的深度；而对于 `fa` 的剩下来的 `n-x` 个结点，相对于 `ch` 的深度和，贡献了 `n-x` 的深度。于是 `ch` 的深度和就是 `fa的深度和` `-x+n-x`，即：
->     $$
->     dep[ch] = dep[fa]-x+n-x = dep[fa]+n-2\times x
->     $$
->     于是我们很快就能想到利用前后层的递推关系，$O(1)$ 的计算出所有子结点的深度和。
->
->     代码实现：我们可以先计算出 `base` 的情况，即任选一个结点作为根结点，然后基于此进行迭代计算。在迭代计算的时候需要注意的点就是在一遍 `dfs` 计算某个结点的深度和 `dep[root]` 时，如果希望同时计算出每一个结点作为子树时，子树的结点数，显然需要分治计算一波。关于分治的计算我熟练度不够高，~~特此标注一下debug了3h的点~~：即在递归到最底层，进行回溯计算的时候，需要注意不能统计父结点的结点值（因为建的是双向图，所以一定会有从父结点回溯的情况），那么为了避开这个点，就需要在 $O(1)$ 的时间复杂度内获得当前结点的父结点的编号，从而进行特判，采用的方式就是增加递归参数 `fa`。
->
-> - 没有考虑从父结点回溯的情况的dfs代码
->
->     ```cpp
->     void dfs(int now, int depth) {
->         if (!st[now]) {
->             st[now] = true;
->             dep[root] += depth;
->             for (auto& ch: G[now]) {
->                 dfs(ch, depth + 1);
->                 cnt[now] += cnt[ch];
->             }
->         }
->     }
->     ```
->
-> - 考虑了从父结点回溯的情况的dfs代码
->
->     ```cpp
->     void dfs(int now, int fa, int depth) {
->         if (!st[now]) {
->             st[now] = true;
->             dep[root] += depth;
->             for (auto& ch: G[now]) {
->                 dfs(ch, now, depth + 1);
->                 if (ch != fa) {
->                     cnt[now] += cnt[ch];
->                 }
->             }
->         }
->     }
->     ```
->
-> - 时间复杂度：$\Theta(2n)$
-
-暴力代码：
-
-```cpp
-const int N = 500010;
-
-int n;
-vector<int> G[N];
-int st[N], dep[N];
-
-void dfs(int id, int now, int depth) {
-    if (!st[now]) {
-        st[now] = 1;
-        dep[id] += depth;
-        for (auto& node: G[now]) {
-            dfs(id, node, depth + 1);
-        }
-    }
-}
-
-void solve() {
-    cin >> n;
-    for (int i = 1; i <= n - 1; i++) {
-        int a, b;
-        cin >> a >> b;
-        G[a].push_back(b);
-        G[b].push_back(a);
-    }
-
-    int res = 0;
-
-    for (int i = 1; i <= n; i++) {
-        memset(st, 0, sizeof st);
-        dfs(i, i, 1);
-        res = max(res, dep[i]);
-    }
-
-    cout << res << "\n";
-}
-```
-
-优化代码：
-
-```cpp
-const int N = 500010;
-
-int n, dep[N], root = 1;
-vector<int> G[N], cnt(N, 1);;
-bool st[N];
-
-// 当前结点编号 now，当前结点的父结点 fa，当前结点深度 depth
-void dfs(int now, int fa, int depth) {
-    if (!st[now]) {
-        st[now] = true;
-        dep[root] += depth;
-        for (auto& ch: G[now]) {
-            dfs(ch, now, depth + 1);
-            if (ch != fa) {
-                cnt[now] += cnt[ch];
-            }
-        }
-    }
-}
-
-void bfs() {
-    memset(st, 0, sizeof st);
-    queue<int> q;
-    q.push(root);
-    st[root] = true;
-
-    while (q.size()) {
-        int fa = q.front(); // 父结点编号 fa
-        q.pop();
-        for (auto& ch: G[fa]) {
-            if (!st[ch]) {
-                st[ch] = true;
-                dep[ch] = dep[fa] + n - 2 * cnt[ch];
-                q.push(ch);
-            }
-        }
-    }
-}
-
-void solve() {
-    cin >> n;
-    for (int i = 1; i <= n - 1; i++) {
-        int a, b;
-        cin >> a >> b;
-        G[a].push_back(b);
-        G[b].push_back(a);
-    }
-
-    dfs(root, -1, 1);
-    bfs();
-
-    cout << *max_element(dep, dep + n + 1) << "\n";
-}
-```
-
-### 【dfs/网格图dp】过河卒
-
-https://www.luogu.com.cn/problem/P1002
-
-> 题意：给定一个矩阵，现在需要从左上角走到右下角，问一共有多少种走法？有一个特殊限制是，对于图中的9个点是无法通过的。
->
-> 思路一：dfs
->
-> - 我们可以采用深搜的方法。但是会超时，我们可以这样估算时间复杂度：对于每一个点，我们都需要计算当前点的右下角的矩阵中的每一个点，那么总运算次数就近似为阶乘级别。当然实际的时间复杂度不会这么大，但是这种做法 $n*m$ 一旦超过100就很容易tle
->
-> - 时间复杂度：$O(nm!)$
->
-> 思路二：dp
->
-> - 我们可以考虑，对于当前的点，可以从哪些点走过来，很显然就是上面一个点和左边一个点，而对于走到当前这个点的路线就是走到上面的点和左边的点的路线之和，base状态就是 `dp[1][1] = 1`，即起点的路线数为1
->
-> - 时间复杂度：$O(nm)$
-
-dfs代码
+> 于是最终的状态转移方程为：
+> $$
+> f_i = \min{ \{ f_j+d_{i-j}+f_j \} },\quad i \in [1,n],\quad j \in [0,i-1]
+> $$
+> 时间复杂度：$O(n^2)$
 
 ```cpp
 #include <bits/stdc++.h>
+
+using ll = long long;
 using namespace std;
-typedef long long ll;
-
-const int N = 30;
-
-int n, m, a, b;
-int res;
-bool notsafe[N][N];
-
-void init() {
-    int px[9] = {0, -1, -2, -2, -1, 1, 2, 2, 1};
-    int py[9] = {0, 2, 1, -1, -2, -2, -1, 1, 2};
-    for (int i = 0; i < 9; i++) {
-        int na = a + px[i], nb = b + py[i];
-        if (na < 0 || nb < 0) continue;
-        notsafe[na][nb] = true;
-    }
-}
-
-void dfs(int x, int y) {
-    if (x > n || y > m || notsafe[x][y]) {
-        return;
-    }
-
-    if (x == n && y == m) {
-        res++;
-        return;
-    }
-
-    dfs(x, y + 1);
-    dfs(x + 1, y);
-}
 
 void solve() {
-    cin >> n >> m >> a >> b;
-    init();
-    dfs(0, 0);
-    cout << res << "\n";
+    int n = 12;
+    vector<int> d(n + 1);       // d[i] means move i pans to another tower with 3 towers
+    vector<int> f(n + 1, 1e9);  // f[i] means move i pans to another tower with 4 towers
+    
+    d[1] = 1;
+    for (int i = 1; i <= n; i++) {
+        d[i] = 1 + 2 * d[i - 1];
+    }
+    f[1] = 1;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 0; j <= i - 1; j++) {
+            f[i] = min(f[i], f[j] + d[i - j] + f[j]);
+        }
+        cout << f[i] << "\n";
+    }
 }
 
 signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
     int T = 1;
-//    cin >> T;
+//    std::cin >> T;
     while (T--) solve();
     return 0;
 }
 ```
 
-dp代码
-
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-
-const int N = 30;
-
-int n, m, a, b;
-bool notsafe[N][N];
-ll dp[N][N];
-
-void solve() {
-    cin >> n >> m >> a >> b;
-
-    // 初始化
-    ++n, ++m, ++a, ++b;
-    int px[9] = {0, -1, -2, -2, -1, 1, 2, 2, 1};
-    int py[9] = {0, 2, 1, -1, -2, -2, -1, 1, 2};
-    for (int i = 0; i < 9; i++) {
-        int na = a + px[i], nb = b + py[i];
-        if (na < 0 || nb < 0) continue;
-        notsafe[na][nb] = true;
-    }
-
-    // dp求解
-    dp[1][1] = 1;
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            if (!notsafe[i - 1][j]) dp[i][j] += dp[i - 1][j];
-            if (!notsafe[i][j - 1]) dp[i][j] += dp[i][j - 1];
-        }
-    }
-
-    cout << dp[n][m] << "\n";
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-### 【dfs/线性dp】数的计算
+### 【线性dp/dfs】数的计算
 
 https://www.luogu.com.cn/problem/P1028
 
@@ -1008,325 +858,7 @@ signed main() {
 }
 ```
 
-### 【dfs/二维dp】栈
-
-https://www.luogu.com.cn/problem/P1044
-
-> 题意：n个数依次进栈，随机出栈，问一共有多少种出栈序列？
->
-> **思路一：dfs**
->
-> - 我们可以这么构造搜索树：已知对于当前的栈，一共有两种状态
->     - 入栈 - 如果当前还有数没有入栈
->     - 出栈 - 如果当前栈内还有元素
-> - 搜索参数：`i,j` 表示入栈数为 `i` 出栈数为 `j` 的状态
-> - 搜索终止条件
->     - 入栈数 < 出栈数 - $i<j$
->     - 入栈数 > 总数 $n$ - $i = n$
-> - 答案状态：入栈数为n，出栈数也为n
-> - 时间复杂度：$O(\text{方案数})$
->
-> **思路二：dp**
->
-> - 采用上述dfs时的状态表示方法，`i,j` 表示入栈数为 `i` 出栈数为 `j` 的状态。
->
-> - 我们在搜索的时候，考虑的是接下来可以搜索的状态
->
->     1. 即出栈一个数的状态 - `i+1,j`
->
->     2. 和入栈一个数的状态 - `i,j+1`
->
->     如图：
->
->     ![图解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214793.png)
->
->     而我们在dp的时候，需要考虑的是子结构的解来得出当前状态的答案，就需要考虑之前的状态。即当前状态是从之前的哪些状态转移过来的。和上述dfs思路是相反的。我们需要考虑的是
->
->     1. 上一个状态入栈一个数到当前状态 - `i-1,j` $\to$ `i,j`
->     2. 上一个状态出栈一个数到当前状态 - `i,j-1` $\to$ `i,j`
->
->     - 特例：$i=j$ 时，只能是上述第二种状态转移而来，因为要始终保证入栈数大于等于出栈数，即 $i \ge j$
->
->     如图：
->
->     ![图解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403191805594.png)
->
-> - 我们知道，入栈数一定是大于等于出栈数的，即 $i\ge j$。于是我们在枚举 $j$ 的时候，枚举的范围是 $[1,i]$
->
-> - $base$ 状态的构建取决于 $j=0$ 时的所有状态，我们知道没有任何数出栈也是一种状态，于是
->     $$
->     dp[i][0]=0,(i=1,2,3,...,n)
->     $$
->
-> - 时间复杂度：$O(n^2)$
-
-dfs代码
-
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-
-int n, res;
-
-// 入栈i个数，出栈j个数
-void dfs(int i, int j) {
-    if (i < j || i > n) return;
-
-    if (i == n && j == n) res++;
-
-    dfs(i + 1, j);
-    dfs(i, j + 1);
-}
-
-void solve() {
-    cin >> n;
-    dfs(0, 0);
-    cout << res << "\n";
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-dp代码
-
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-
-const int N = 20;
-
-int n;
-ll dp[N][N]; // dp[i][j] 表示入栈数为i，出栈数为j的方案总数
-
-void solve() {
-    cin >> n;
-
-    // base状态：没有数出栈也是一种状态
-    for (int i = 1; i <= n; i++) dp[i][0] = 1;
-
-    // dp转移
-    for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= i; j++)
-            if (i == j) dp[i][j] = dp[i][j - 1];
-            else dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
-
-    cout << dp[n][n] << "\n";
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-### 【dfs/递推】数楼梯
-
-https://www.luogu.com.cn/problem/P1255
-
-> 题意：给定楼梯的台阶数，每次可以走1步或者2步，问走到第n层台阶可以走的方案数
->
-> 思路一：dfs
->
-> - 我们可以从前往后思考，即正向思维。对于剩余的台阶，我们可以走1步或者走2步，最终走到第n层就算一种
-> - 时间复杂度：指数级别
->
-> 思路二：递推（dp）
->
-> - 对于递推的思路，我们从后往前考虑，即逆向思维。对于当前的层数，是从之前的哪几个台阶走过来的（即对于当前的状态，是之前哪几个状态转移过来的）。
->
-> - 我们定义 `f[i]` 为走到第 `i` 层台阶的方案数
->
-> - 则很显然第 `i` 层台阶是从前1个或者前2个台阶走过来的，于是状态转移方程就是
->     $$
->     f[i] = f[i - 1] + f[i - 2]
->     $$
->
-> - 时间复杂度：$O(n)$
->
-> 注意：采用高精度加法
-
-dfs代码：
-
-```cpp
-int n, res;
-
-void dfs(int x) {
-    if (x < 0) return;
-
-    if (x == 0) res++;
-
-    dfs(x - 1);
-    dfs(x - 2);
-}
-```
-
-递推（dp）代码：
-
-```cpp
-int n;
-Int dp[N];
-
-void solve() {
-    cin >> n;
-
-    dp[1] = 1, dp[2] = 2;
-    for (int i = 3; i <= n; i++) {
-        dp[i] = dp[i - 1] + dp[i - 2];
-    }
-
-    cout << dp[n] << "\n";
-}
-```
-
-### 【dfs/递推】牛的语言学
-
-https://www.acwing.com/problem/content/description/5559/
-
-> 题意：已知一个字符串由前段的一个词根和后段的多个词缀组成。词根的要求是长度至少为 5，词缀的要求是长度要么是 2, 要么是 3，以及不允许连续的相同词缀组成后段。现在给定最终的字符串，问一共有多少种词缀？按照字典序输出所有可能的词缀
->
-> - 思路一：**搜索**。很显然我们应该从字符串的最后开始枚举词缀进行搜索，因为词缀前面的所有字符全部都可以作为词根合法存在，我们只需要考虑当前划分出来的词缀是否合法即可。约束只有一个，不能与后面划分出来的词缀相同即可，由于我们是从后往前搜索，因此我们在搜索时保留后一个词缀即可。如果当前词缀和上一个词缀相同则返回，反之如果合法则加入 set 自动进行字典序排序。
->
->     时间复杂度：$O(2^{\frac{n}{2}})$
->
-> - 思路二：**动态规划（递推）**。动规其实就是 **dfs 的逆过程**，我们从已知结果判断当前局面是否合法。很显然词根是包罗万象的，只要长度合法，不管什么样的都是可行的，故我们在判断当前局面是否合法时，只需要判断当前词缀是否合法即可。于是便可知当前状态是从后面的字符串转移过来的。我们定义状态转移记忆数组 `f[i]` 表示字符串 `s[1,i]` 是否可以组成词根。如果 `f[i]` 为真，则表示 `s[1,i]` 为一个合法的词根，`s[i+1,n]` 为一个合法的词缀串，那么词根后面紧跟着的一定是一个长度为 2 或 3 的合法词缀。
->
->     - 我们以紧跟着长度为 2 的合法词缀为例。如果 `s[i+1,i+2]` 为一个合法的词缀，则必须要满足以下两个条件之一
->         1. `s[i+1,i+2]` 与 `s[i+3,i+4]` 不相等，即后面的后面是一个长度也为 **2** 且合法的词缀
->         2. `s[1,i+5]` 是一个合法的词根，即 `f[i+5]` 标记为真，即后面的后面是一个长度为 **3** 且合法的词缀
->     
->     - 以紧跟着长度为 3 的哈法词缀同理。如果 `s[i+1,i+3]` 为一个合法的词缀，则必须要满足以下两个条件之一
->         1. `s[i+1,i+3]` 与 `s[i+4,i+6]` 不相等，即后面的后面是一个长度也为 **3** 且合法的词缀
->         2. `s[1,i+5]` 是一个合法的词根，即 `f[i+5]` 标记为真，即后面的后面是一个长度为 **2** 且合法的词缀
->     
->     时间复杂度：$O(n \log n)$ - `dp` 的过程是线性的，主要时间开销在 `set` 的自动排序上
-
-dfs 代码
-
-```cpp
-#include <iostream>
-#include <cstring>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <set>
-using namespace std;
-
-string s;
-set<string> res;
-
-// 当前词缀起始下标 idx，当前词缀长度 length，后方相邻的词缀 post
-void dfs(int idx, int length, string post) {
-    if (idx <= 5) return;
-    
-    string now = s.substr(idx, length);
-
-    if (now == post) {
-        // 不合法直接返回
-        return;
-    } else {
-        // 合法则将当前词缀加入集合自动排序，并继续搜索接下来可能的词缀
-        res.insert(now);
-        dfs(idx - 2, 2, now);
-        dfs(idx - 3, 3, now);
-    }
-}
-
-void solve() {
-    cin >> s;
-    s = "$" + s;
-    
-    int tail_point = s.size();
-
-    dfs(tail_point - 2, 2, "");
-    dfs(tail_point - 3, 3, "");
-    
-    cout << res.size() << "\n";
-    for (auto& str: res) cout << str << "\n";
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-dp 代码
-
-```cpp
-#include <iostream>
-#include <cstring>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <set>
-using namespace std;
-
-const int N = 50010;
-
-string s;
-set<string> res;
-bool f[N]; // f[i] 表示 s[1,i] 是否可以作为词根存在
-
-void solve() {
-    cin >> s;
-    s = "$" + s;
-    
-    // 字符串定义在 [1,n] 上
-    int n = s.size() - 1;
-    
-    // 长度为 n 的字符串一定可以作为词根
-    f[n] = true;
-    
-    for (int i = n; i >= 5; i--) {
-        for (int len = 2; len <= 3; len++) {
-            if (f[i + len]) {
-                string a = s.substr(i + 1, len);
-                string b = s.substr(i + 1 + len, len);
-                if (a != b || f[i + 5]) {
-                    res.insert(a);
-                    f[i] = true;
-                }
-            }
-        }
-    }
-    
-    cout << res.size() << "\n";
-    
-    for (auto& x: res) cout << x << "\n";
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-### 【二分答案/线性dp】规划兼职工作
+### 【线性dp/二分答案】规划兼职工作
 
 https://leetcode.cn/problems/maximum-profit-in-job-scheduling/description/
 
@@ -1374,7 +906,7 @@ public:
 };
 ```
 
-### 【二分查找/线性dp】最长上升子序列
+### 【线性dp/二分查找】最长上升子序列
 
 https://www.luogu.com.cn/problem/B3637
 
@@ -1600,6 +1132,476 @@ signed main() {
 }
 ```
 
+### 【网格图dp】摘花生
+
+https://www.acwing.com/problem/content/1017/
+
+> 题意：给定一个二维矩阵，每一个位置有一个价值，问：从左上角（1,1）走到右下角（r,c）能获得的最大价值是多少
+>
+> 思路：我们不妨从结果位置出发，对于（r,c）这个位置而言，能走到这里的只有两个位置，即上面的位置（r-1,c）和左边（r,c-1）的位置，那么答案就是（r-1,c）和（r,c-1）中的最大价值 +（r,c）处的价值。那么对于（r-1,c）和（r,c-1）中的最大价值，同样**需要其相应位置的左方和上方的价值最优计算而来**，因此就很容易想到动态规划的思路。我们需要初始化`dp[1][j]`和`dp[i][1]`的答案，然后从`dp[2][2]`开始计算。
+>
+> 代码优化：不难发现，直接从`dp[1][1]`开始迭代也是可以的。因为`dp[0][j]`均为0，同样的`dp[1][0]`也均为0。
+
+优化前代码：
+
+```cpp
+void solve() {
+    int r, c;
+    cin >> r >> c;
+    vector<vector<int>> w(r + 1, vector<int>(c + 1)), dp(r + 1, vector<int>(c + 1, 0));
+
+    for (int i = 1; i <= r; i++) {
+        for (int j = 1; j <= c; j++) {
+            cin >> w[i][j];
+        }
+    }
+
+    dp[1][1] = w[1][1];
+
+    for (int j = 2; j <= c; j++) {
+        dp[1][j] = dp[1][j - 1] + w[1][j];
+    }
+
+    for (int i = 2; i <= r; i++) {
+        dp[i][1] = dp[i - 1][1] + w[i][1];
+    }
+
+    for (int i = 2; i <= r; i++) {
+        for (int j = 2; j <= c; j++) {
+            dp[i][j] = w[i][j] + max(dp[i - 1][j], dp[i][j - 1]);
+        }
+    }
+
+    cout << dp[r][c] << "\n";
+}
+```
+
+优化后代码：
+
+```cpp
+void solve() {
+    int r, c;
+    cin >> r >> c;
+    vector<vector<int>> w(r + 1, vector<int>(c + 1)), dp(r + 1, vector<int>(c + 1, 0));
+
+    for (int i = 1; i <= r; i++) {
+        for (int j = 1; j <= c; j++) {
+            cin >> w[i][j];
+        }
+    }
+
+    for (int i = 1; i <= r; i++) {
+        for (int j = 1; j <= c; j++) {
+            dp[i][j] = w[i][j] + max(dp[i - 1][j], dp[i][j - 1]);
+        }
+    }
+
+    cout << dp[r][c] << "\n";
+}
+```
+
+### 【网格图dp/dfs】过河卒
+
+https://www.luogu.com.cn/problem/P1002
+
+> 题意：给定一个矩阵，现在需要从左上角走到右下角，问一共有多少种走法？有一个特殊限制是，对于图中的9个点是无法通过的。
+>
+> 思路一：dfs
+>
+> - 我们可以采用深搜的方法。但是会超时，我们可以这样估算时间复杂度：对于每一个点，我们都需要计算当前点的右下角的矩阵中的每一个点，那么总运算次数就近似为阶乘级别。当然实际的时间复杂度不会这么大，但是这种做法 $n*m$ 一旦超过100就很容易tle
+>
+> - 时间复杂度：$O(nm!)$
+>
+> 思路二：dp
+>
+> - 我们可以考虑，对于当前的点，可以从哪些点走过来，很显然就是上面一个点和左边一个点，而对于走到当前这个点的路线就是走到上面的点和左边的点的路线之和，base状态就是 `dp[1][1] = 1`，即起点的路线数为1
+>
+> - 时间复杂度：$O(nm)$
+
+dfs代码
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+const int N = 30;
+
+int n, m, a, b;
+int res;
+bool notsafe[N][N];
+
+void init() {
+    int px[9] = {0, -1, -2, -2, -1, 1, 2, 2, 1};
+    int py[9] = {0, 2, 1, -1, -2, -2, -1, 1, 2};
+    for (int i = 0; i < 9; i++) {
+        int na = a + px[i], nb = b + py[i];
+        if (na < 0 || nb < 0) continue;
+        notsafe[na][nb] = true;
+    }
+}
+
+void dfs(int x, int y) {
+    if (x > n || y > m || notsafe[x][y]) {
+        return;
+    }
+
+    if (x == n && y == m) {
+        res++;
+        return;
+    }
+
+    dfs(x, y + 1);
+    dfs(x + 1, y);
+}
+
+void solve() {
+    cin >> n >> m >> a >> b;
+    init();
+    dfs(0, 0);
+    cout << res << "\n";
+}
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+dp代码
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+const int N = 30;
+
+int n, m, a, b;
+bool notsafe[N][N];
+ll dp[N][N];
+
+void solve() {
+    cin >> n >> m >> a >> b;
+
+    // 初始化
+    ++n, ++m, ++a, ++b;
+    int px[9] = {0, -1, -2, -2, -1, 1, 2, 2, 1};
+    int py[9] = {0, 2, 1, -1, -2, -2, -1, 1, 2};
+    for (int i = 0; i < 9; i++) {
+        int na = a + px[i], nb = b + py[i];
+        if (na < 0 || nb < 0) continue;
+        notsafe[na][nb] = true;
+    }
+
+    // dp求解
+    dp[1][1] = 1;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            if (!notsafe[i - 1][j]) dp[i][j] += dp[i - 1][j];
+            if (!notsafe[i][j - 1]) dp[i][j] += dp[i][j - 1];
+        }
+    }
+
+    cout << dp[n][m] << "\n";
+}
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+### 【树形dp】最大社交深度和
+
+https://vijos.org/d/nnu_contest/p/1534
+
+> 算法：树形dp、BFS
+>
+> 题意：给定一棵树，现在需要选择其中的一个结点为根节点，使得深度和最大。深度的定义是以每个结点到树根所经历的结点数
+>
+> 思路一：暴力
+>
+> - 显然可以直接遍历每一个结点，计算每个结点的深度和，然后取最大值即可
+>
+> - 时间复杂度：$O(n^2)$
+>
+> 思路二：树形dp
+>
+> ![树形dp图解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214257.png)
+>
+> - 我们可以发现，对于当前的根结点 `fa`，我们选择其中的一个子结点 `ch`，将 `ch` 作为新的根结点（如右图）。那么对于当前的 `ch` 的深度和，我们可以借助 `fa` 的深度和进行求解。我们假设以 `ch` 为子树的结点总数为 `x`，那么这 `x` 个结点在换根之后，相对于 `ch` 的深度和，贡献了 `-x` 的深度；而对于 `fa` 的剩下来的 `n-x` 个结点，相对于 `ch` 的深度和，贡献了 `n-x` 的深度。于是 `ch` 的深度和就是 `fa的深度和` `-x+n-x`，即：
+>     $$
+>     dep[ch] = dep[fa]-x+n-x = dep[fa]+n-2\times x
+>     $$
+>     于是我们很快就能想到利用前后层的递推关系，$O(1)$ 的计算出所有子结点的深度和。
+>
+>     代码实现：我们可以先计算出 `base` 的情况，即任选一个结点作为根结点，然后基于此进行迭代计算。在迭代计算的时候需要注意的点就是在一遍 `dfs` 计算某个结点的深度和 `dep[root]` 时，如果希望同时计算出每一个结点作为子树时，子树的结点数，显然需要分治计算一波。关于分治的计算我熟练度不够高，~~特此标注一下debug了3h的点~~：即在递归到最底层，进行回溯计算的时候，需要注意不能统计父结点的结点值（因为建的是双向图，所以一定会有从父结点回溯的情况），那么为了避开这个点，就需要在 $O(1)$ 的时间复杂度内获得当前结点的父结点的编号，从而进行特判，采用的方式就是增加递归参数 `fa`。
+>
+> - 没有考虑从父结点回溯的情况的dfs代码
+>
+>     ```cpp
+>     void dfs(int now, int depth) {
+>         if (!st[now]) {
+>             st[now] = true;
+>             dep[root] += depth;
+>             for (auto& ch: G[now]) {
+>                 dfs(ch, depth + 1);
+>                 cnt[now] += cnt[ch];
+>             }
+>         }
+>     }
+>     ```
+>
+> - 考虑了从父结点回溯的情况的dfs代码
+>
+>     ```cpp
+>     void dfs(int now, int fa, int depth) {
+>         if (!st[now]) {
+>             st[now] = true;
+>             dep[root] += depth;
+>             for (auto& ch: G[now]) {
+>                 dfs(ch, now, depth + 1);
+>                 if (ch != fa) {
+>                     cnt[now] += cnt[ch];
+>                 }
+>             }
+>         }
+>     }
+>     ```
+>
+> - 时间复杂度：$\Theta(2n)$
+
+暴力代码：
+
+```cpp
+const int N = 500010;
+
+int n;
+vector<int> G[N];
+int st[N], dep[N];
+
+void dfs(int id, int now, int depth) {
+    if (!st[now]) {
+        st[now] = 1;
+        dep[id] += depth;
+        for (auto& node: G[now]) {
+            dfs(id, node, depth + 1);
+        }
+    }
+}
+
+void solve() {
+    cin >> n;
+    for (int i = 1; i <= n - 1; i++) {
+        int a, b;
+        cin >> a >> b;
+        G[a].push_back(b);
+        G[b].push_back(a);
+    }
+
+    int res = 0;
+
+    for (int i = 1; i <= n; i++) {
+        memset(st, 0, sizeof st);
+        dfs(i, i, 1);
+        res = max(res, dep[i]);
+    }
+
+    cout << res << "\n";
+}
+```
+
+优化代码：
+
+```cpp
+const int N = 500010;
+
+int n, dep[N], root = 1;
+vector<int> G[N], cnt(N, 1);;
+bool st[N];
+
+// 当前结点编号 now，当前结点的父结点 fa，当前结点深度 depth
+void dfs(int now, int fa, int depth) {
+    if (!st[now]) {
+        st[now] = true;
+        dep[root] += depth;
+        for (auto& ch: G[now]) {
+            dfs(ch, now, depth + 1);
+            if (ch != fa) {
+                cnt[now] += cnt[ch];
+            }
+        }
+    }
+}
+
+void bfs() {
+    memset(st, 0, sizeof st);
+    queue<int> q;
+    q.push(root);
+    st[root] = true;
+
+    while (q.size()) {
+        int fa = q.front(); // 父结点编号 fa
+        q.pop();
+        for (auto& ch: G[fa]) {
+            if (!st[ch]) {
+                st[ch] = true;
+                dep[ch] = dep[fa] + n - 2 * cnt[ch];
+                q.push(ch);
+            }
+        }
+    }
+}
+
+void solve() {
+    cin >> n;
+    for (int i = 1; i <= n - 1; i++) {
+        int a, b;
+        cin >> a >> b;
+        G[a].push_back(b);
+        G[b].push_back(a);
+    }
+
+    dfs(root, -1, 1);
+    bfs();
+
+    cout << *max_element(dep, dep + n + 1) << "\n";
+}
+```
+
+### 【二维dp/dfs】栈
+
+https://www.luogu.com.cn/problem/P1044
+
+> 题意：n个数依次进栈，随机出栈，问一共有多少种出栈序列？
+>
+> **思路一：dfs**
+>
+> - 我们可以这么构造搜索树：已知对于当前的栈，一共有两种状态
+>     - 入栈 - 如果当前还有数没有入栈
+>     - 出栈 - 如果当前栈内还有元素
+> - 搜索参数：`i,j` 表示入栈数为 `i` 出栈数为 `j` 的状态
+> - 搜索终止条件
+>     - 入栈数 < 出栈数 - $i<j$
+>     - 入栈数 > 总数 $n$ - $i = n$
+> - 答案状态：入栈数为n，出栈数也为n
+> - 时间复杂度：$O(\text{方案数})$
+>
+> **思路二：dp**
+>
+> - 采用上述dfs时的状态表示方法，`i,j` 表示入栈数为 `i` 出栈数为 `j` 的状态。
+>
+> - 我们在搜索的时候，考虑的是接下来可以搜索的状态
+>
+>     1. 即出栈一个数的状态 - `i+1,j`
+>
+>     2. 和入栈一个数的状态 - `i,j+1`
+>
+>     如图：
+>
+>     ![图解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214793.png)
+>
+>     而我们在dp的时候，需要考虑的是子结构的解来得出当前状态的答案，就需要考虑之前的状态。即当前状态是从之前的哪些状态转移过来的。和上述dfs思路是相反的。我们需要考虑的是
+>
+>     1. 上一个状态入栈一个数到当前状态 - `i-1,j` $\to$ `i,j`
+>     2. 上一个状态出栈一个数到当前状态 - `i,j-1` $\to$ `i,j`
+>
+>     - 特例：$i=j$ 时，只能是上述第二种状态转移而来，因为要始终保证入栈数大于等于出栈数，即 $i \ge j$
+>
+>     如图：
+>
+>     ![图解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403191805594.png)
+>
+> - 我们知道，入栈数一定是大于等于出栈数的，即 $i\ge j$。于是我们在枚举 $j$ 的时候，枚举的范围是 $[1,i]$
+>
+> - $base$ 状态的构建取决于 $j=0$ 时的所有状态，我们知道没有任何数出栈也是一种状态，于是
+>     $$
+>     dp[i][0]=0,(i=1,2,3,...,n)
+>     $$
+>
+> - 时间复杂度：$O(n^2)$
+
+dfs代码
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int n, res;
+
+// 入栈i个数，出栈j个数
+void dfs(int i, int j) {
+    if (i < j || i > n) return;
+
+    if (i == n && j == n) res++;
+
+    dfs(i + 1, j);
+    dfs(i, j + 1);
+}
+
+void solve() {
+    cin >> n;
+    dfs(0, 0);
+    cout << res << "\n";
+}
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+dp代码
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+const int N = 20;
+
+int n;
+ll dp[N][N]; // dp[i][j] 表示入栈数为i，出栈数为j的方案总数
+
+void solve() {
+    cin >> n;
+
+    // base状态：没有数出栈也是一种状态
+    for (int i = 1; i <= n; i++) dp[i][0] = 1;
+
+    // dp转移
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= i; j++)
+            if (i == j) dp[i][j] = dp[i][j - 1];
+            else dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+
+    cout << dp[n][n] << "\n";
+}
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
 ### 【区间dp】对称山脉
 
 https://www.acwing.com/problem/content/5169/
@@ -1617,33 +1619,29 @@ const int N = 5010;
 int n;
 int a[N];
 
-int main()
-{
+int main() {
     cin >> n;
     
-    for (int i = 1; i <= n; i ++)
+    for (int i = 1; i <= n; i++)
         cin >> a[i];
-        
+    
     // 枚举区间长度
-    for (int len = 1; len <= n; len ++)
-    {
+    for (int len = 1; len <= n; len++) {
         int res = 2e9;
         // 枚举相应长度的所有区间
-        for (int i = 1, j = i + len - 1; j <= n; i ++, j ++)
-        {
+        for (int i = 1, j = i + len - 1; j <= n; i++, j++) {
             // 计算区间的不对称值
             int l = i, r = j;
             int sum = 0;
-            while (l < r)
-            {
+            while (l < r) {
                 sum += abs(a[l] - a[r]);
-                l ++ , r --;
+                l++, r--;
             }
             res = min(res, sum);
         }
         cout << res << ' ';
     }
-        
+    
     return 0;
 }
 ```
@@ -1665,36 +1663,32 @@ int a[N];
 int dp[N][N]; // dp[i][j] 表示第 i 到 j 的不对称值
 int res[N];   // res[len] 表示长度为 len 的山脉的最小不对称值 
 
-int main()
-{
+int main() {
     cin >> n;
     
-    for (int i = 1; i <= n; i ++)
+    for (int i = 1; i <= n; i++)
         cin >> a[i];
-        
+    
     memset(res, 0x3f, sizeof res);
     
     // 长度为 1 的情况
-    res[1] = 0; 
+    res[1] = 0;
     
     // 长度为 2 的情况
-    for (int i = 1, j = i + 1; j <= n; i ++, j ++)
-    {
+    for (int i = 1, j = i + 1; j <= n; i++, j++) {
         dp[i][j] = abs(a[i] - a[j]);
         res[2] = min(res[2], dp[i][j]);
     }
     
     // 长度 >= 3 的情况 
-    for (int len = 3; len <= n; len ++)
-    {
-        for (int i = 1, j = i + len - 1; j <= n; i ++, j ++)
-        {
+    for (int len = 3; len <= n; len++) {
+        for (int i = 1, j = i + len - 1; j <= n; i++, j++) {
             dp[i][j] = dp[i + 1][j - 1] + abs(a[i] - a[j]);
             res[len] = min(res[len], dp[i][j]);
         }
     }
     
-    for (int i = 1; i <= n; i ++)
+    for (int i = 1; i <= n; i++)
         cout << res[i] << ' ';
     
     return 0;

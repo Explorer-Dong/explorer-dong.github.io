@@ -12,8 +12,6 @@ category_bar: true
 
 ### 高精度
 
-参考：https://github.com/Baobaobear/MiniBigInteger/blob/main/bigint_tiny.h
-
 ```cpp
 class Int {
 private:
@@ -230,14 +228,15 @@ bool f3 = a > b;
 bool f4 = a >= b;
 bool f5 = a == b;
 bool f6 = a != b;
+
+// 参考
+https://github.com/Baobaobear/MiniBigInteger/blob/main/bigint_tiny.h
 */
 ```
 
 ### 二分
 
-寻找左边界
-
-```c++
+```cpp
 bool findLeft(int x) {
     int l = 0, r = n - 1;
     while (l < r) {
@@ -250,9 +249,7 @@ bool findLeft(int x) {
 }
 ```
 
-寻找右边界
-
-```c++
+```cpp
 bool findRight(int x) {
     int l = 0, r = n - 1;
     while (l < r) {
@@ -296,7 +293,7 @@ struct dsu {
     dsu(int _n) { n = _n; p.resize(n + 1); for (int i = 1; i <= n; i++) p[i] = i; }
     int find(int x) { return (p[x] == x ? p[x] : p[x] = find(p[x])); }
     void merge(int a, int b) { p[find(a)] = find(b); }
-    bool query(int a, int b) { return find(a) == find(b); }
+    bool same(int a, int b) { return find(a) == find(b); }
     int block() { int ret = 0; for (int i = 1; i <= n; i++) ret += p[i] == i; return ret; }
 };
 ```
@@ -320,24 +317,20 @@ class dsu:
 ### 树状数组
 
 ```cpp
-template <class T> class BinaryIndexedTree {
-public:
+template<class T>
+struct BinaryIndexedTree {
     std::vector<T> arr;
     int n;
-    
-    BinaryIndexedTree(int n) : n(n) { arr.resize(n + 1, 0); }
-
+    BinaryIndexedTree(int n) : n(n), arr(n + 1) {}
     int lowbit(int x) {
         return x & (-x);
     }
-
     void add(int pos, T x) {
         while (pos <= n) {
             arr[pos] += x;
             pos += lowbit(pos);
         }
     }
-
     T sum(int pos) {
         T ret = 0;
         while (pos) {
@@ -354,15 +347,12 @@ class BinaryIndexedTree:
     def __init__(self, n: int):
         self.n = n
         self.arr = [0] * (n + 1)
-    
     def lowbit(self, x: int) -> int:
         return x & (-x)
-    
     def add(self, pos: int, x: int) -> None:
         while pos <= self.n:
             self.arr[pos] += x
             pos += self.lowbit(pos)
-    
     def sum(self, pos: int) -> int:
         ret = 0
         while pos:
@@ -637,16 +627,33 @@ class SortedList:
 
 ### 快速幂
 
-基本思想就是将指数进行二进制拆分，如果指数对应的第 $i$ 个二进制位为 $1$，则答案应当乘上 $a^i$
-
 ```cpp
-// a^b % p
-ll qmi(ll a, ll b, ll p) {
-    ll res = 1 % p; // 防止 p=1
-    while (b) {
-        if (b & 1) res = res * a % p;
-        a = a * a % p;
-        b >>= 1;
+template<class T>
+T modPower(T a, T b, T p) {
+    // return: a^b % p
+    T res = 1 % p;
+    for (; b; b >>= 1, a = (a * a) % p) {
+        if (b & 1) {
+            res = (res * a) % p;
+        }
+    }
+    return res;
+}
+
+template<class T>
+T modAdd(T a, T b, T p) {
+    // return: a+b % p
+    return ((a % p) + (b % p)) % p;
+}
+
+template<class T>
+T modMul(T a, T b, T p) {
+    // return: a*b % p
+    T res = 0;
+    for (; b; b >>= 1, a = modAdd(a, a, p)) {
+        if (b & 1) {
+            res = modAdd(res, a, p);
+        }
     }
     return res;
 }

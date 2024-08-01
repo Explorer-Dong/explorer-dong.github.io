@@ -28,7 +28,7 @@ category_bar: true
 
 看到 CMakeLists.txt 文件中就新增了一个 `add_executable` 栏，而不是继续在原来的 `main.cpp` 下面添加可执行文件目录。
 
-![新增了一个 add_executable 栏](D:\华为云盘\_images\typora-user-images\image-20240731120829115.png)
+![新增了一个 add_executable 栏](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407312357483.png)
 
 ### 配置代理服务
 

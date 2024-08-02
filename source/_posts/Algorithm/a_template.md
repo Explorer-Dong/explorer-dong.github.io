@@ -202,7 +202,7 @@ public:
     }
 };
 
-/* 用法
+/* usage
 Int a, b;
 
 // 赋值
@@ -625,7 +625,7 @@ class SortedList:
 
 ## 数学
 
-### 快速幂
+### 模运算
 
 ```cpp
 template<class T>
@@ -657,6 +657,79 @@ T modMul(T a, T b, T p) {
     }
     return res;
 }
+
+template<class T>
+T modSumOfEqualRatioArray(T q, T k, T p) {
+    // return: (q^0 + q^1 + ... + q^k) % p
+    if (k == 0) {
+        return 1;
+    }
+    if (k % 2 == 0) {
+        return modAdd<T>((T) 1, modMul(q, modSumOfEqualRatioArray(q, k - 1, p), p), p);
+    }
+    return modMul(((T) 1 + modPower(q, k / 2 + (T) 1, p)), modSumOfEqualRatioArray(q, k / 2, p), p);
+}
+```
+
+### 质数筛
+
+```cpp
+struct PrimesCount {
+    int n;
+    vector<int> pre, vis;
+    PrimesCount(int n) : n(n), pre(n + 1), vis(n + 1) {
+        eulerFilter();
+    }
+    void eulerFilter() {
+        // O(n)
+        vector<int> primes;
+        for (int i = 2; i <= n; i++) {
+            if (!vis[i]) {
+                primes.push_back(i);
+                pre[i] = pre[i - 1] + 1;
+            } else {
+                pre[i] = pre[i - 1];
+            }
+            for (int j = 0; primes[j] <= n / i; j++) {
+                vis[primes[j] * i] = true;
+                if (i % primes[j] == 0) {
+                    break;
+                }
+            }
+        }
+    }
+    void eratosthenesFilter() {
+        // O(nloglogn)
+        for (int i = 2; i <= n; i++) {
+            if (!vis[i]) {
+                pre[i] = pre[i - 1] + 1;
+                for (int j = i; j <= n; j += i) {
+                    vis[j] = true;
+                }
+            } else {
+                pre[i] = pre[i - 1];
+            }
+        }
+    }
+    void simpleFilter() {
+        // O(nlogn)
+        for (int i = 2; i <= n; i++) {
+            if (!vis[i]) {
+                pre[i] = pre[i - 1] + 1;
+            } else {
+                pre[i] = pre[i - 1];
+            }
+            for (int j = i; j <= n; j += i) {
+                vis[j] = true;
+            }
+        }
+    }
+};
+
+/* usage
+PrimesCount obj(n);         // construct an object
+cout << obj.pre[n] << "\n"; // pre[i] means prime numbers in range of [1, i]
+*/
 ```
 
 ### 乘法逆元

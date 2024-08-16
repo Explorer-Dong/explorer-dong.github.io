@@ -136,7 +136,7 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1">
+<meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -346,7 +346,7 @@
 <h3 id="二、调整鉴权信息">二、调整鉴权信息</h3>
 <h4 id="2-1-更改所有用户的密码">2.1 更改所有用户的密码</h4>
 <p>一共就创建了 root 超级用户和 git 普通用户。root 用户就没改了，把 git 用户的改了：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo passwd git<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> passwd git<br></code></pre></td></tr></tbody></table></figure>
 <h4 id="2-2-重新配置-ssh-密钥对">2.2 重新配置 ssh 密钥对</h4>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen<br></code></pre></td></tr></tbody></table></figure>
 <p>然后在 <code>/home/git/.ssh/</code> 路径下重新创建了 <code>authorized_keys</code> 文本文件用来存储公钥信息。本地测试连接：</p>
@@ -357,7 +357,7 @@
 <p>（一）编辑 ssh 配置文件。编辑 <code>/etc/ssh/sshd_config</code> 文件，在末尾添加：</p>
 <figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile">Match User git<br>PasswordAuthentication no<br></code></pre></td></tr></tbody></table></figure>
 <p>（二）重启 ssh 服务。保存上述修改文件后运行：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl restart sshd<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> systemctl restart sshd<br></code></pre></td></tr></tbody></table></figure>
 <p>（三）测试密码连接。禁用后换一台机子尝试进行 ssh 连接，连接失败说明设置成功：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152152670.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="连接失败说明禁用密码登录设置成功"></p>
 <h3 id="三、问题溯源">三、问题溯源</h3>

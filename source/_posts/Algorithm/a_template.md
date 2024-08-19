@@ -6,7 +6,7 @@ category_bar: true
 
 ## 板子
 
-你渴望力量吗？那就把板子~~理解~~背过吧！
+优雅的解法，少不了优雅的板子。目前仅仅编写 C++ 和 Python 语言对应的板子。前者用于备赛 Xcpc，后者用于备赛蓝桥杯。
 
 ## 基础算法
 
@@ -262,7 +262,7 @@ bool findRight(int x) {
 }
 ```
 
-### 哈希
+## 哈希
 
 使用 `std::unordered_map` 时可能会因为哈希冲突导致查询、插入操作降低到 $O(n)$，此时可以使用 `std::map` 进行替代，或者自定义一个哈希函数，如：
 
@@ -287,14 +287,40 @@ std::unordered_map<std::string, int, CustomHash<long long>> f3;
 ### 并查集
 
 ```cpp
-struct dsu {
-    int n;
-    std::vector<int> p;
-    dsu(int _n) { n = _n; p.resize(n + 1); for (int i = 1; i <= n; i++) p[i] = i; }
-    int find(int x) { return (p[x] == x ? p[x] : p[x] = find(p[x])); }
-    void merge(int a, int b) { p[find(a)] = find(b); }
-    bool same(int a, int b) { return find(a) == find(b); }
-    int block() { int ret = 0; for (int i = 1; i <= n; i++) ret += p[i] == i; return ret; }
+struct DisjointSetUnion {
+    int sz;
+    std::vector<int> p, cnt;
+    
+    DisjointSetUnion(int n) : p(n), cnt(n, 1) {
+        for (int i = 0; i < n; i++) {
+            p[i] = i;
+        }
+        sz = n;
+    }
+    int find(int x) {
+        if (p[x] != x) {
+            p[x] = find(p[x]);
+        }
+        return p[x];
+    }
+    void merge(int a, int b) {
+        int pa = find(a), pb = find(b);
+        if (pa != pb) {
+            p[pa] = pb;
+            cnt[pb] += cnt[pa];
+            sz--;
+        }
+    }
+    bool same(int a, int b) {
+        return find(a) == find(b);
+    }
+    int size() {
+        return sz;
+    }
+    int size(int a) {
+        int pa = find(a);
+        return cnt[pa];
+    }
 };
 ```
 

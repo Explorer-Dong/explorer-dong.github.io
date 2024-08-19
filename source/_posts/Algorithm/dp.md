@@ -6,7 +6,9 @@ category_bar: true
 
 ### 动态规划
 
-动态规划的根本在于状态表示，如何不重不漏的表示所有的状态，以及如何划分子集从而进行状态更新。
+动态规划分为被动转移和主动转移，而其根本在于状态表示和状态转移。如何**完整表示**所有状态？如何**不重不漏**划分子集从而进行状态转移？
+
+![被动转移 vs 主动转移](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408191443939.webp)
 
 ### 【递推】反转字符串
 
@@ -1478,7 +1480,7 @@ void solve() {
 }
 ```
 
-### 【二维dp/dfs】栈
+### 【高维dp/dfs】栈
 
 https://www.luogu.com.cn/problem/P1044
 
@@ -1602,6 +1604,149 @@ signed main() {
 }
 ```
 
+### 【高维dp】找出所有稳定的二进制数组 II
+
+https://leetcode.cn/problems/find-all-possible-stable-binary-arrays-ii/
+
+> 题意：构造一个仅含有 $n$ 个 $0$，$m$ 个 $1$ 的数组，且长度超过 $k$ 的子数组必须同时含有 $0$ 和 $1$。给出构造的总方案数对 $10^9+7$ 取余后的结果。
+>
+> 思路：
+>
+> - 定义状态表。我们从左到右确定每一位的数字时，需要确定这么三个信息：当前是哪一位？还剩几个 $0$ 和 $1$？这一位填 $0$ 还是 $1$？对于这三个信息，我们可以定义状态数组 $f[i][j][k]$ 表示当前已经选了 $i$ 个 $0$，$j$ 个 $1$，且第 $i+j$ 位填 $k$ 时的方案数。这样最终答案就是 $f[n][m][0]+f[n][m][1]$。
+>
+> - 定义子问题。以当前第 $i+j$ 位填 $0$ 为例，填 $1$ 同理，即当前需要维护的是 $f[i][j][0]$。显然的如果前一位是和当前位不同，即 $1$ 时，可以直接转移过来；如果前一位和当前位相同，即 $0$ 时，有可能会出现长度超过 $k$ 的连续 $0$ 子数组，即前段数组刚好是以「一个 $1$ 和 $k$ 个 $0$ 结尾的」合法数组，此时再拼接一个 $0$ 就不合法了。
+>
+> - 状态转移方程。综上所述，可以得到以下两个状态转移方程：
+>     $$
+>     \begin{aligned}
+>     f[i][j][0] = f[i - 1][j][1] + f[i - 1][j][0] - f[i - k - 1][j][1] \\
+>     f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
+>     \end{aligned}
+>     $$
+>
+> 时间复杂度：$O(nm)$
+
+```cpp
+class Solution {
+public:
+    int numberOfStableArrays(int n, int m, int k) {
+        const int mod = 1e9 + 7;
+        vector<vector<array<int, 2>>> f(n + 1, vector<array<int, 2>>(m + 1));
+
+        for (int i = 0; i <= min(n, k); i++) {
+            f[i][0][0] = 1;
+        }
+        for (int j = 0; j <= min(m, k); j++) {
+            f[0][j][1] = 1;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                f[i][j][0] = (f[i - 1][j][1] + f[i - 1][j][0]) % mod;
+                if (i - k - 1 >= 0) {
+                    f[i][j][0] = (f[i][j][0] - f[i - k - 1][j][1] + mod) % mod;
+                }
+                f[i][j][1] = (f[i][j - 1][0] + f[i][j - 1][1]) % mod;
+                if (j - k - 1 >= 0) {
+                    f[i][j][1] = (f[i][j][1] - f[i][j - k - 1][0] + mod) % mod;
+                }
+            }
+        }
+
+        return (f[n][m][0] + f[n][m][1]) % mod;
+    }
+};
+```
+
+### 【高维dp】学生出勤记录 II
+
+https://leetcode.cn/problems/student-attendance-record-ii/description/
+
+> 题意：构造一个仅含有 $P,A,L$ 三种字符的字符串，使得 $A$ 最多出现 $1$ 次，同时 $L$ 最多连续出现 $2$ 次。问一共有多少种构造方案？对 $10^9+7$ 取模。
+>
+> 思路：
+>
+> - 模拟分析问题。我们从前往后构造。对于当前第 $i$ 个字符 $s[i]$，有 $3$ 种可能的选项，其中 $P$ 是一定合法的选项，$A$ 是否合法取决于 $s[0:i-1]$ 中的 $A$ 的数量，$L$ 是否合法取决于 $s[0:i-1]$ 的末尾连续 $L$ 的数量。因此我们可以通过**被动转移**的动态规划求解。
+> - 状态定义。从上述分析不难发现需要 $3$ 种状态来表示所有情况，因此我们定义 $f[i][j][k]$ 表示构造第 $i$ 位时，$s[0:i]$ 中含有 $j$ 个 $A$ 且末尾含有连续 $k$ 个 $L$ 时的方案数。
+> - 初始化。每一位填什么取决于前缀 $s[0:i-1]$ 的情况，因此我们需要初始化 $f[0][][]$ 即第 $0$ 位的情况。显然的第 $0$ 位 $P,A,L$ 三种都可以填，对应的就是 $f[0][0][0] = f[0][1][0] = f[0][0][1] = 1$，其余初始化为 $0$ 即可。
+> - 状态转移。考虑第 $i$ 位的三种情况：
+>     1. 填 $P$：可以用前缀的所有状态来更新 $f[i][j][0]$
+>     2. 填 $A$：可以用前缀中不含 $A$ 的所有状态来更新 $f[i][1][0]$
+>     3. 填 $L$：可以用前缀中末尾不超过 $1$ 位 $L$ 的所有状态来更新 $f[i][j][k]$
+> - 最终答案。为 $\displaystyle \sum_{j=0}^{1}\sum_{k=0}^{2}f[n-1][j][k]$。
+>
+> 时间复杂度：$\Theta (6n)$
+
+```cpp []
+class Solution {
+public:
+    int checkRecord(int n) {
+        const int mod = 1e9 + 7;
+
+        // f[i][j][k]表示从左往右构造第i位时，s[0:i]中含有j个A且尾部含有连续k个L时的方案数
+        int f[n][2][3];
+        memset(f, 0, sizeof f);
+
+        // 初始化
+        f[0][0][0] = f[0][1][0] = f[0][0][1] = 1;
+
+        // 转移
+        for (int i = 1; i < n; i++) {
+            // s[i]填P
+            for (int j = 0; j <= 1; j++) {
+                for (int k = 0; k <= 2; k++) {
+                    f[i][j][0] = (f[i][j][0] + f[i - 1][j][k]) % mod;
+                }
+            }
+            // s[i]填A
+            for (int k = 0; k <= 2; k++) {
+                f[i][1][0] = (f[i][1][0] + f[i - 1][0][k]) % mod;
+            }
+            // s[i]填L
+            for (int j = 0; j <= 1; j++) {
+                for (int k = 1; k <= 2; k++) {
+                    f[i][j][k] = (f[i][j][k] + f[i - 1][j][k - 1]) % mod;
+                }
+            }
+        }
+
+        // 计算答案
+        int res = 0;
+        for (int j = 0; j <= 1; j++) {
+            for (int k = 0; k <= 2; k++) {
+                res = (res + f[n - 1][j][k]) % mod;
+            }
+        }
+        return res;
+    }
+};
+```
+
+```python []
+class Solution:
+    def checkRecord(self, n: int) -> int:
+        mod = int(1e9 + 7)
+        f = [[[0, 0, 0] for _ in range(2)] for _ in range(n)]
+        f[0][0][0] = f[0][1][0] = f[0][0][1] = 1
+        for i in range(1, n):
+            # P
+            for j in range(2):
+                for k in range(3):
+                    f[i][j][0] = (f[i][j][0] + f[i - 1][j][k]) % mod
+            # A
+            for k in range(3):
+                f[i][1][0] = (f[i][1][0] + f[i - 1][0][k]) % mod
+            # L
+            for j in range(2):
+                for k in range(1, 3):
+                    f[i][j][k] = (f[i][j][k] + f[i - 1][j][k - 1]) % mod
+        res = 0
+        for j in range(2):
+            for k in range(3):
+                res = (res + f[n - 1][j][k]) % mod
+        return res
+```
+
 ### 【区间dp】对称山脉
 
 https://www.acwing.com/problem/content/5169/
@@ -1693,4 +1838,18 @@ int main() {
     
     return 0;
 }
+```
+
+### 【状压dp】Avoid K Palindrome :fire:
+
+https://atcoder.jp/contests/abc359/tasks/abc359_d
+
+> 题意：给定一个长度为 $n\le 1000$ 的字符串 $s$ 和一个整数 $k\le10$，其中含有若干个 `'A'`,`'B'` 和 `'?'`。其中 `'?'` 可以转化为 `'A'` 或 `'B'`，假设有 $q$ 和 `'?'`，则一共可以转化出 $2^q$ 个不同的 $s$。问所有转化出的 $s$ 中，有多少是不含有长度为 $k$ 的回文子串的。
+>
+> 思路：最暴力的做法就是 2^q 枚举所有可能的字符串，然后再 O(n) 的检查，这样时间复杂度为 $O(n2^n)$，只能通过 20 以内的数据。一般字符串回文问题可以考虑 dp。
+>
+> 时间复杂度：
+
+```cpp
+
 ```

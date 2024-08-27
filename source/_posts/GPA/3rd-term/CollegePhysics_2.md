@@ -1,5 +1,5 @@
 ---
-title: CollegePhysicsⅡ
+title: CollegePhysics_2
 categories: 
   - GPA
   - 3rd-term

@@ -2,7 +2,7 @@
 title: MachineLearningClassDesign
 categories: 
   - GPA
-  - 4rd-term
+  - 4th-term
 category_bar: true
 ---
 

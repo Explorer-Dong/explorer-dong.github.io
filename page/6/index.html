@@ -248,24 +248,18 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/Operation/Nginx/nginx-command/" target="_self">
-          <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/nginx.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="nginx-command">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Operation/Nginx/nginx-command/" target="_self">
-          nginx-command
+        <a href="/Operation/Safe/solve-server-invade/" target="_self">
+          solve-server-invade
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/Operation/Nginx/nginx-command/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/Operation/Safe/solve-server-invade/" target="_self">
         <div>
-          Nginx 常用命令合集 在 Ubuntu22.04 操作系统上，我们使用 nginx 需要不断使用其相关命令，下面介绍一下常用的几个命令 nginx -?,-h 我们用 nginx -h 或 nginx -? 来查看当前 nginx 的版本和全部的指令简介： 123456789101112131415root@dwj2:~# nginx -hnginx version: nginx/1.18.0
+          解决服务器入侵攻击 刚想登录阿里云看看云 GPU 怎么租的，结果给我报了个安全问题。平时都是直接忽略，今天有兴致看了一眼，不看不知道一看吓一跳，尼玛被一个从没去过且没有挂 VPN 的 IP 登陆了。虽然不是 root 用户登的并且机子上也没啥机密文件，但是还是有一种被人看光的感觉。他爹的，我也不知道该怎么报复，记录一下修复的过程 一、确认被入侵 本来的公钥文件 authorized_keys 没了
         </div>
       </a>
 
@@ -273,8 +267,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-02 23:19" pubdate>
-              2024-04-02
+            <time datetime="2024-06-15 20:40" pubdate>
+              2024-06-15
             </time>
           </div>
         
@@ -294,7 +288,7 @@
   
     <span>></span>
     
-  <a href="/categories/Operation/Nginx/" class="category-chain-item">Nginx</a>
+  <a href="/categories/Operation/Safe/" class="category-chain-item">Safe</a>
   
   
 
@@ -318,15 +312,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Operation/Ubuntu/apt-command/" target="_self">
-          apt-command
+        <a href="/DevTools/Git/git-pull-request/" target="_self">
+          git-pull-request
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Operation/Ubuntu/apt-command/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/Git/git-pull-request/" target="_self">
         <div>
-          Ubuntu 包管理工具 APT 的使用 前言 首先说明一下，包管理工具在 Linux 操作系统中的存在，就类似于应用商店在手机上的存在。我们可以利用包管理工具 安装、卸载、更新   我们的软件。在 Linux 的 Ubuntu 发行版中，使用 apt 包管理工具进行软件管理。接下来介绍一下其基本命令。 命令 1. 更新软件包列表 其实是更新每一个软件包对应的版本号，而非真正更新了软件。原理大概类
+          Git Pull Request 前言 发现了本博客站点的配置文件中一个失效的链接，就想着对原项目进行修改。早闻 git 的 pr 功能，趁着端午放假在家便来实战一波，做个小小的记录 😎 原理 首先聊聊 pr 名字的由来。pr 即 pull request，顾名思义是「拉取请求」的意思。pr 根本逻辑是将原项目 fork 到自己的仓库后进行修改，然后向原项目作者发起 pull request 请
         </div>
       </a>
 
@@ -334,8 +328,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-29 22:10" pubdate>
-              2024-03-29
+            <time datetime="2024-06-09 15:24" pubdate>
+              2024-06-09
             </time>
           </div>
         
@@ -350,12 +344,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Operation/" class="category-chain-item">Operation</a>
+  <a href="/categories/DevTools/" class="category-chain-item">DevTools</a>
   
   
     <span>></span>
     
-  <a href="/categories/Operation/Ubuntu/" class="category-chain-item">Ubuntu</a>
+  <a href="/categories/DevTools/Git/" class="category-chain-item">Git</a>
   
   
 
@@ -379,15 +373,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Operation/shellBasic/kill-windows-process/" target="_self">
-          kill-windows-process
+        <a href="/DevTools/IDLE/idle-self-config/" target="_self">
+          idle-self-config
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Operation/shellBasic/kill-windows-process/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/IDLE/idle-self-config/" target="_self">
         <div>
-          在 Windows OS 上杀死指定端口的进程 指令 用 netstat 命令行工具查找指定端口的进程 PID（进程提示符） 1netstat -ano | findstr &lt;port&gt; 终止查找到的进程   手动终止：用 tasklist 命令行工具查找 PID 背后的运行应用，然后在 Windows 的终端管理器中手动关闭   1tasklist | findstr &lt;PID
+          IDLE 偏好配置 由于连续两届篮球杯都是 CA 省二，迫于加分压力不得不转 PA 组（其实是摸鱼不刷题导致的）。阅读篮球杯 py 组手册后发现只能使用 3.8.6 版本且编辑器只能用自带的 IDLE，故特此记录一下相关配置，顺便说点题外话 编写文件 在双击快捷方式后会弹出一个 shell 窗口，支持简单的交互式编码：  我们点击左上角的 File 即可进行新建或打开 .py 文件的操作：  修改
         </div>
       </a>
 
@@ -395,8 +389,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-27 10:22" pubdate>
-              2024-03-27
+            <time datetime="2024-06-05 22:56" pubdate>
+              2024-06-05
             </time>
           </div>
         
@@ -411,12 +405,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Operation/" class="category-chain-item">Operation</a>
+  <a href="/categories/DevTools/" class="category-chain-item">DevTools</a>
   
   
     <span>></span>
     
-  <a href="/categories/Operation/shellBasic/" class="category-chain-item">shellBasic</a>
+  <a href="/categories/DevTools/IDLE/" class="category-chain-item">IDLE</a>
   
   
 
@@ -438,7 +432,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/#board">23</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/#board">25</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

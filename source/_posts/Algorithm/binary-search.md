@@ -6,7 +6,7 @@ category_bar: true
 
 ### 二分
 
-二分理论上还是一个线性的算法思维，只是比一般的线性思维更进一步的是，二分思维需要提炼出题面中两个线性相关的变量，即单调变化的两个变量，从而采用二分加速检索。
+二分本质上是一个线性的算法思维，只是比线性思维更进一步的是，二分思维需要提炼出题面中两个线性相关的变量，即单调变化的两个变量，从而采用二分加速检索。
 
 ### 【二分答案】Building an Aquarium
 
@@ -686,6 +686,91 @@ public:
         return r;
     }
 };
+```
+
+### 【二分答案/双指针】找出唯一性数组的中位数
+
+https://leetcode.cn/problems/find-the-median-of-the-uniqueness-array/
+
+> 题意：给定一个数组，返回其「唯一性数组」的中位数。如果唯一性数组有奇数个元素，则返回中间元素，如果有偶数个元素，则返回两个中间元素中较小的那个，即左边那个中间元素。唯一性数组定义为：原数组的所有非空子数组中不同元素的个数组成的序列。
+>
+> 思路：
+>
+> - 首先根据题意可以明确的计算出这个唯一性数组的元素个数 $tot$。假设原数组有 $n$ 个元素，则其唯一性数组一定有 $\displaystyle tot=\frac{(1+n) \times n}{2}$ 个元素，且最小值一定是 $1$，最大值 $\le n$。最暴力的做法就是 $O(n^2)$ 的维护出这个唯一性数组然后返回其中位数，但这对于 $10^5$ 级别的数据显然是不合适的。观察其他性质。
+> - 不难发现，对于「不同元素的个数 $x$」而言，$x$ 越大，满足条件的子数组数量就越多，反之 $x$ 越小，则满足条件的子数组数量就越少，具备单调性，考虑二分。
+> - 问题就是在 $[1,n]$ 内找到一个尽可能小的 $upper$ 使得满足「不同元素的个数 $\le upper$ 的子数组」的数量 $\displaystyle \ge \lceil \frac{tot}{2} \rceil$。
+> - 我们能否在指定不同元素个数上限为 $upper$ 的情况下，快速计算合法子数组的个数呢？答案是可以的，我们引入双指针算法进行 $O(n)$ 的 $check$。我们枚举子数组的右边界并利用哈希表维护子数组的左边界进行统计即可。
+>
+> 时间复杂度：$O(n\log n)$
+
+```cpp []
+class Solution {
+public:
+    int medianOfUniquenessArray(vector<int>& nums) {
+        using ll = long long;
+        int n = nums.size();
+        
+        ll tot = 1ll * (1 + n) * n / 2;
+        int ma = *max_element(nums.begin(), nums.end());
+        int f[ma + 1];
+        memset(f, 0, sizeof f);
+
+        // 双指针 check
+        auto chk = [&](int upper) -> bool {
+            ll cnt = 0;
+            int size = 0; // 哈希表大小
+            for (int l = 0, r = 0; r < n; r++) {
+                size += f[nums[r]] == 0;
+                f[nums[r]]++;
+                while (size > upper) {
+                    --f[nums[l]];
+                    size -= f[nums[l]] == 0;
+                    l++;
+                }
+                // 此时以 nums[r] 结尾且 l 为左边界的所有子数组的不同元素的数量均 <= upper
+                cnt += r - l + 1;
+            }
+            memset(f, 0, sizeof f);
+            return cnt >= (tot + 1) / 2; // 上取整写法
+        };
+
+        int l = 1, r = n;
+        while (l < r) {
+            int mid = (l + r) >> 1;
+            if (chk(mid)) r = mid;
+            else l = mid + 1;
+        }
+        return r;
+    }
+};
+```
+
+```python3 []
+class Solution:
+    def medianOfUniquenessArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        ma = max(nums)
+        tot = (1 + n) * n >> 1
+
+        def chk(upper: int) -> int:
+            f = [0] * (ma + 1)
+            cnt, l, size = 0, 0, 0
+            for r in range(n):
+                size += f[nums[r]] == 0
+                f[nums[r]] += 1
+                while size > upper:
+                    f[nums[l]] -= 1
+                    size -= f[nums[l]] == 0
+                    l += 1
+                cnt += r - l + 1
+            return cnt >= (tot + 1) >> 1
+
+        l, r = 1, n
+        while l < r:
+            mid = (l + r) >> 1
+            if chk(mid): r = mid
+            else: l = mid + 1
+        return r
 ```
 
 ### 【二分查找】Bomb

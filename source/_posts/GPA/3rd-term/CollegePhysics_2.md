@@ -6,6 +6,8 @@ categories:
 category_bar: true
 ---
 
+## 大学物理下
+
 ## 第九章 振动
 
 ### 9.1 简谐振动 振幅 周期和频率 相位

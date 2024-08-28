@@ -6,35 +6,21 @@ categories:
 category_bar: true
 ---
 
-## Bg
+## 面向对象课程设计
 
-本项目是大一下学期的面向对象（Object Oriented）课程设计作品，成果展示如下
+## 效果展示
+
+本项目是大一下学期的面向对象课程设计作品，成果展示如下：
 
 ![演示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402180130011.gif)
 
-## Intro
+## 项目介绍
 
-本项目基于 PythonWeb 的 C/S 微架构（Flask），实现了教务管理系统（Management System）
+本项目基于 Python Flask 的 C/S Web 微架构，实现了教务管理系统（Management System）
 
 - 涉及到的知识点有：面向对象程序设计、文件调用关系等
 - 涉及到的技术栈有：Flask、Html、Css、JavaScrip、MySQL
 
-## File
-
-|     文件（夹）     |     功能介绍     |
-| :----------------: | :--------------: |
-|   `/blueprints`    |     后端接口     |
-|     `/static`      |     前端样式     |
-|    `/templates`    |     前端内容     |
-|    `.gitignore`    |   git忽略文件    |
-|    `DevLog.md`     |     开发日志     |
-|    `README.md`     |     说明文件     |
-|      `app.py`      |      主接口      |
-|    `config.py`     | 数据库等配置信息 |
-|     `exts.py`      |     扩展对象     |
-|    `models.py`     |   ORM映射模型    |
-| `requirements.txt` |   第三方依赖包   |
-
-## Repo
+## 代码仓库
 
 https://github.com/Explorer-Dong/ObjectOrientedClassDesign

@@ -1,5 +1,5 @@
 ---
-title: dp
+title: DynamicProgramming
 categories: Algorithm
 category_bar: true
 ---
@@ -8,7 +8,7 @@ category_bar: true
 
 动态规划分为被动转移和主动转移，而其根本在于状态表示和状态转移。如何**完整表示**所有状态？如何**不重不漏**划分子集从而进行状态转移？
 
-![被动转移 vs 主动转移](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408191443939.webp)
+![被动转移 vs 主动转移](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408291538900.png)
 
 ### 【递推】反转字符串
 
@@ -1134,74 +1134,6 @@ signed main() {
 }
 ```
 
-### 【网格图dp】摘花生
-
-https://www.acwing.com/problem/content/1017/
-
-> 题意：给定一个二维矩阵，每一个位置有一个价值，问：从左上角（1,1）走到右下角（r,c）能获得的最大价值是多少
->
-> 思路：我们不妨从结果位置出发，对于（r,c）这个位置而言，能走到这里的只有两个位置，即上面的位置（r-1,c）和左边（r,c-1）的位置，那么答案就是（r-1,c）和（r,c-1）中的最大价值 +（r,c）处的价值。那么对于（r-1,c）和（r,c-1）中的最大价值，同样**需要其相应位置的左方和上方的价值最优计算而来**，因此就很容易想到动态规划的思路。我们需要初始化`dp[1][j]`和`dp[i][1]`的答案，然后从`dp[2][2]`开始计算。
->
-> 代码优化：不难发现，直接从`dp[1][1]`开始迭代也是可以的。因为`dp[0][j]`均为0，同样的`dp[1][0]`也均为0。
-
-优化前代码：
-
-```cpp
-void solve() {
-    int r, c;
-    cin >> r >> c;
-    vector<vector<int>> w(r + 1, vector<int>(c + 1)), dp(r + 1, vector<int>(c + 1, 0));
-
-    for (int i = 1; i <= r; i++) {
-        for (int j = 1; j <= c; j++) {
-            cin >> w[i][j];
-        }
-    }
-
-    dp[1][1] = w[1][1];
-
-    for (int j = 2; j <= c; j++) {
-        dp[1][j] = dp[1][j - 1] + w[1][j];
-    }
-
-    for (int i = 2; i <= r; i++) {
-        dp[i][1] = dp[i - 1][1] + w[i][1];
-    }
-
-    for (int i = 2; i <= r; i++) {
-        for (int j = 2; j <= c; j++) {
-            dp[i][j] = w[i][j] + max(dp[i - 1][j], dp[i][j - 1]);
-        }
-    }
-
-    cout << dp[r][c] << "\n";
-}
-```
-
-优化后代码：
-
-```cpp
-void solve() {
-    int r, c;
-    cin >> r >> c;
-    vector<vector<int>> w(r + 1, vector<int>(c + 1)), dp(r + 1, vector<int>(c + 1, 0));
-
-    for (int i = 1; i <= r; i++) {
-        for (int j = 1; j <= c; j++) {
-            cin >> w[i][j];
-        }
-    }
-
-    for (int i = 1; i <= r; i++) {
-        for (int j = 1; j <= c; j++) {
-            dp[i][j] = w[i][j] + max(dp[i - 1][j], dp[i][j - 1]);
-        }
-    }
-
-    cout << dp[r][c] << "\n";
-}
-```
-
 ### 【网格图dp/dfs】过河卒
 
 https://www.luogu.com.cn/problem/P1002
@@ -1320,6 +1252,156 @@ signed main() {
     while (T--) solve();
     return 0;
 }
+```
+
+### 【网格图dp】摘樱桃 II
+
+https://leetcode.cn/problems/cherry-pickup-ii/
+
+> 题意：给定一个 $n$ 行 $m$ 列的网格图，每个格子拥有一个价值。现在有两个人分别从左上角和右上角开始移动，移动方式为「左下、下、右下」三个方向，问两人最终最多一共可以获得多少价值？如果两人同时经过一个位置，则只能算一次价值。
+>
+> 思路：
+>
+> - 状态定义。最终状态一定是两人都在最后一行的任意两列，我们如何定义状态可以不重不漏的表示两人的运动状态呢？可以发现两人始终在同一行，但是列数不一定相同，我们定义状态 $f[i][j][k]$ 表示两人走到第 $i$ 行时，一人在第 $j$ 列，另一人在第 $k$ 列时的总价值。则答案就是：
+>     $$
+>     \max{(f[n-1][j][k])},j,k\in[0,m]
+>     $$
+>
+> - 状态转移。本题难点在于状态定义，一旦定义好了以后状态转移就不困难了。对于当前状态 $f[i][j][k]$，根据乘法原理，两人均有 3 种走法，因此当前状态可以从 $3\times 3=9$ 种合法状态转移过来。取最大值即可。
+>
+> 时间复杂度：$O(nm^2)$
+
+```python
+class Solution:
+    def cherryPickup(self, g: List[List[int]]) -> int:
+        n, m = len(g), len(g[0])
+        f = [[[-1] * m for _ in range(m)] for _ in range(n)]
+        f[0][0][m - 1] = g[0][0] + g[0][m - 1]
+        for i in range(1, n):
+            for j in range(m):
+                for k in range(m):
+                    # 枚举 9 个子问题
+                    for p in range(j - 1, j + 2):
+                        for q in range(k - 1, k + 2):
+                            if 0 <= p < m and 0 <= q < m and f[i - 1][p][q] != -1:
+                                f[i][j][k] = max(f[i][j][k], f[i - 1][p][q] + g[i][j] + (0 if j == k else g[i][k]))
+        
+        res = 0
+        for j in range(m):
+            for k in range(j, m):
+                res = max(res, f[n - 1][j][k])
+        
+        return res
+```
+
+### 【网格图dp】摘樱桃
+
+弱化版 $(n\le 50)$ ：https://leetcode.cn/problems/cherry-pickup/
+
+强化版 $(n\le300)$ ：https://codeforces.com/problemset/problem/213/C
+
+> 题意：给定一个 n 行 n 列的网格图，问从左上走到右下，再从右下走到左上最多可以获得多少价值？一个单元格只能被计算一次价值。
+>
+> 注：弱化版中 -1 表示不可达，强化版没有不可达的约束。[强化版 AC 代码](https://codeforces.com/contest/213/submission/278617557)
+>
+> 思路一：暴力dp
+>
+> - 首先对于来回问题可以转化为两次去的问题，即问题等价于求解「两个人从左上角走到右下角」的最大收益。
+> - 显然我们可以定义四维的状态，其中 $f[i][j][p][q]$ 表示第一个人走到 $(i,j)$ 且第二个人走到 $(p,q)$ 时的最大收益。直接枚举这四个维度，然后从 4 个合法的子问题转移过来即可。
+> - 时间复杂度：$O(n^4)$
+>
+> 思路二：优化dp
+>
+> - 注意到问题可以进一步等价于「两个人**同时**从左上角走到右下角」的最大收益。也就是两个人到起点 $(0,0)$ 的曼哈顿距离应该是一样的，即 $i+j=p+q$，也就是说如果其中一个人 $(i,j)$ 的位置确定了，则另一个人只需要枚举一个下标，另一个下标就可以 $O(1)$ 的确定了。可以将时间复杂度降低一个维度。
+> - 状态定义。我们定义 $f[k][i_1][i_2]$ 表示第一个人走到 $(i_1,k-i_1)$ 且第二个人走到 $(i_2,k-i_2)$ 时的最大收益。则最终答案就是 $f[2n-2][n-1][n-1]$。状态转移同理，从 4 个合法子问题转移过来即可。
+> - 时间复杂度：$O(n^3)$
+
+暴力dp：
+
+```cpp
+template<class T>
+void chmax(T& a, T b) {
+    a = max(a, b);
+}
+
+int di[4] = {-1, -1, 0, 0};
+int dj[4] = {0, 0, -1, -1};
+int dp[4] = {-1, 0, -1, 0};
+int dq[4] = {0, -1, 0, -1};
+
+class Solution {
+public:
+    int cherryPickup(vector<vector<int>>& g) {
+        int n = g.size();
+        int f[n][n][n][n];
+        memset(f, -1, sizeof f);
+        f[0][0][0][0] = g[0][0] == -1 ? -1 : g[0][0];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (g[i][j] == -1) {
+                    continue;
+                }
+                for (int p = 0; p < n; p++) {
+                    for (int q = 0; q < n; q++) {
+                        if (g[p][q] == -1) {
+                            continue;
+                        }
+                        // 枚举 4 个子问题
+                        for (int k = 0; k < 4; k++) {
+                            int ni = i + di[k], nj = j + dj[k];
+                            int np = p + dp[k], nq = q + dq[k];
+                            if (ni >= 0 && nj >= 0 && np >= 0 && nq >= 0 && f[ni][nj][np][nq] != -1) {
+                                chmax(f[i][j][p][q], f[ni][nj][np][nq] + g[i][j] + (i == p && j == q ? 0 : g[p][q]));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return f[n - 1][n - 1][n - 1][n - 1] == -1 ? 0 : f[n - 1][n - 1][n - 1][n - 1];
+    }
+};
+```
+
+优化dp：
+
+```cpp
+template<class T>
+void chmax(T& a, T b) {
+    a = max(a, b);
+}
+
+int dx[] = {0, 0, -1, -1};
+int dy[] = {0, -1, 0, -1};
+
+class Solution {
+public:
+    int cherryPickup(vector<vector<int>>& g) {
+        int n = g.size();
+        int f[2 * n - 1][n][n];
+        memset(f, -1, sizeof f);
+        f[0][0][0] = g[0][0] == -1 ? -1 : g[0][0];
+        for (int k = 1; k <= 2 * n - 2; k++) {
+            for (int i1 = 0; i1 < n; i1++) {
+                for (int i2 = 0; i2 < n; i2++) {
+                    int j1 = k - i1, j2 = k - i2;
+                    if (j1 < 0 || j1 >= n || j2 < 0 || j2 >= n || g[i1][j1] == -1 || g[i2][j2] == -1) {
+                        continue;
+                    }
+                    // 枚举 4 个子问题
+                    for (int t = 0; t < 4; t++) {
+                        int ni1 = i1 + dx[t], nj1 = k - ni1;
+                        int ni2 = i2 + dy[t], nj2 = k - ni2;
+                        if (ni1 >= 0 && nj1 >= 0 && ni2 >= 0 && nj2 >= 0 && f[k - 1][ni1][ni2] != -1) {
+                            chmax(f[k][i1][i2], f[k - 1][ni1][ni2] + g[i1][j1] + (i1 == i2 && j1 == j2 ? 0 : g[i2][j2]));
+                        }
+                    }
+                }
+            }
+        }
+        return f[2 * n - 2][n - 1][n - 1] == -1 ? 0 : f[2 * n - 2][n - 1][n - 1];
+    }
+};
 ```
 
 ### 【树形dp】最大社交深度和

@@ -251,15 +251,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Operation/Ubuntu/apt-command/" target="_self">
-          apt-command
+        <a href="/BackEnd/Python/numpy/" target="_self">
+          numpy
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Operation/Ubuntu/apt-command/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/Python/numpy/" target="_self">
         <div>
-          Ubuntu 包管理工具 APT 的使用 前言 首先说明一下，包管理工具在 Linux 操作系统中的存在，就类似于应用商店在手机上的存在。我们可以利用包管理工具 安装、卸载、更新   我们的软件。在 Linux 的 Ubuntu 发行版中，使用 apt 包管理工具进行软件管理。接下来介绍一下其基本命令。 命令 1. 更新软件包列表 其实是更新每一个软件包对应的版本号，而非真正更新了软件。原理大概类
+          numpy 学习记录 一、矩阵运算 numpy 的矩阵运算没有 matlab 来的那么显然，因为有一些隐式的规则，因此记录一下相关用法。首先需要注意的是所有的容器类型全都是 np.ndarray。共分为以下几种数据结构：  标量（Scalar）：一个单独的数字，没有维度 向量（Vector）：一维数组 矩阵（Matrix）：二维数组 张量（Tensor）：三维或更多维度的数组  1.1 元素级运算
         </div>
       </a>
 
@@ -267,8 +267,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-29 22:10" pubdate>
-              2024-03-29
+            <time datetime="2024-06-16 10:05" pubdate>
+              2024-06-16
             </time>
           </div>
         
@@ -283,12 +283,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Operation/" class="category-chain-item">Operation</a>
+  <a href="/categories/BackEnd/" class="category-chain-item">BackEnd</a>
   
   
     <span>></span>
     
-  <a href="/categories/Operation/Ubuntu/" class="category-chain-item">Ubuntu</a>
+  <a href="/categories/BackEnd/Python/" class="category-chain-item">Python</a>
   
   
 
@@ -312,15 +312,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Operation/shellBasic/kill-windows-process/" target="_self">
-          kill-windows-process
+        <a href="/Operation/Safe/solve-server-invade/" target="_self">
+          solve-server-invade
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Operation/shellBasic/kill-windows-process/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/Operation/Safe/solve-server-invade/" target="_self">
         <div>
-          在 Windows OS 上杀死指定端口的进程 指令 用 netstat 命令行工具查找指定端口的进程 PID（进程提示符） 1netstat -ano | findstr &lt;port&gt; 终止查找到的进程   手动终止：用 tasklist 命令行工具查找 PID 背后的运行应用，然后在 Windows 的终端管理器中手动关闭   1tasklist | findstr &lt;PID
+          解决服务器入侵攻击 刚想登录阿里云看看云 GPU 怎么租的，结果给我报了个安全问题。平时都是直接忽略，今天有兴致看了一眼，不看不知道一看吓一跳，尼玛被一个从没去过且没有挂 VPN 的 IP 登陆了。虽然不是 root 用户登的并且机子上也没啥机密文件，但是还是有一种被人看光的感觉。他爹的，我也不知道该怎么报复，记录一下修复的过程 一、确认被入侵 本来的公钥文件 authorized_keys 没了
         </div>
       </a>
 
@@ -328,8 +328,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-27 10:22" pubdate>
-              2024-03-27
+            <time datetime="2024-06-15 20:40" pubdate>
+              2024-06-15
             </time>
           </div>
         
@@ -349,7 +349,7 @@
   
     <span>></span>
     
-  <a href="/categories/Operation/shellBasic/" class="category-chain-item">shellBasic</a>
+  <a href="/categories/Operation/Safe/" class="category-chain-item">Safe</a>
   
   
 
@@ -373,15 +373,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Operation/Ubuntu/ubuntu-modify-sys-language/" target="_self">
-          ubuntu-modify-sys-language
+        <a href="/DevTools/Git/git-pull-request/" target="_self">
+          git-pull-request
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Operation/Ubuntu/ubuntu-modify-sys-language/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/Git/git-pull-request/" target="_self">
         <div>
-          Ubuntu 修改终端语言 前言 报错英文看不懂？提示英文看不懂？搜索查询太费事？直接解决终端语言！接下来将介绍在 Linux 的 Ubuntu 22.04 上修改终端语言的操作。 命令 1. 安装中文语言包 1apt install language-pack-zh-hans 2. 添加中文语言支持 1locale-gen zh_CN.UTF-8 3. 修改 locale 文件配置地域 1234
+          Git Pull Request 前言 发现了本博客站点的配置文件中一个失效的链接，就想着对原项目进行修改。早闻 git 的 pr 功能，趁着端午放假在家便来实战一波，做个小小的记录 😎 原理 首先聊聊 pr 名字的由来。pr 即 pull request，顾名思义是「拉取请求」的意思。pr 根本逻辑是将原项目 fork 到自己的仓库后进行修改，然后向原项目作者发起 pull request 请
         </div>
       </a>
 
@@ -389,8 +389,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-26 18:38" pubdate>
-              2024-03-26
+            <time datetime="2024-06-09 15:24" pubdate>
+              2024-06-09
             </time>
           </div>
         
@@ -405,12 +405,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Operation/" class="category-chain-item">Operation</a>
+  <a href="/categories/DevTools/" class="category-chain-item">DevTools</a>
   
   
     <span>></span>
     
-  <a href="/categories/Operation/Ubuntu/" class="category-chain-item">Ubuntu</a>
+  <a href="/categories/DevTools/Git/" class="category-chain-item">Git</a>
   
   
 
@@ -432,7 +432,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/8/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/#board">10</a><a class="page-number" href="/page/11/#board">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/#board">25</a><a class="extend next" rel="next" href="/page/10/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/8/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/#board">10</a><a class="page-number" href="/page/11/#board">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/#board">27</a><a class="extend next" rel="next" href="/page/10/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

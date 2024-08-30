@@ -1,0 +1,1086 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/logo.png">
+  <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Mr_Dwj">
+  <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
+  
+    <meta name="description" content="CSS 为样式文件，简单的来说就是对 Html 中各个标签的内容进行定义，使得展示出各种不同的颜色、形状、布局等等，宗旨还是为了提升美观程度，从而提升用户浏览体验。速查手册 CSS3 教程，以下为常用 or 易遗忘 or 基本概念速查清单：  [!note]  引用：在 html 文件中使用 Css 进行样式渲染一共有三个方法  内联样式（不推荐）：在 html 中的每一个想要润色的标签中添加 s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css-basic">
+<meta property="og:url" content="https://blog.dwj601.cn/FrontEnd/CSS/css-basic/index.html">
+<meta property="og:site_name" content="Dwj の Blog">
+<meta property="og:description" content="CSS 为样式文件，简单的来说就是对 Html 中各个标签的内容进行定义，使得展示出各种不同的颜色、形状、布局等等，宗旨还是为了提升美观程度，从而提升用户浏览体验。速查手册 CSS3 教程，以下为常用 or 易遗忘 or 基本概念速查清单：  [!note]  引用：在 html 文件中使用 Css 进行样式渲染一共有三个方法  内联样式（不推荐）：在 html 中的每一个想要润色的标签中添加 s">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-30T03:21:36.607Z">
+<meta property="article:modified_time" content="2024-08-30T03:28:53.539Z">
+<meta property="article:author" content="Mr_Dwj">
+<meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>css-basic | Dwj の Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?d08d23389220ad9b8f711cfb85757f4b";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dwj&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="css-basic"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-30 11:21" pubdate>
+          2024年8月30日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          725 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          5 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">css-basic</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2024年8月30日 上午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>CSS 为样式文件，简单的来说就是对 Html 中各个标签的内容进行定义，使得展示出各种不同的颜色、形状、布局等等，宗旨还是为了提升美观程度，从而提升用户浏览体验。速查手册 <a target="_blank" rel="noopener" href="https://www.runoob.com/css3/css3-tutorial.html">CSS3 教程</a>，以下为常用 or 易遗忘 or 基本概念速查清单：</p>
+<blockquote>
+<p>[!note]</p>
+<ul>
+<li>引用：在 html 文件中使用 Css 进行样式渲染一共有三个方法
+<ol>
+<li>内联样式（不推荐）：在 html 中的每一个想要润色的标签中添加 style 属性进行渲染</li>
+<li>内部样式表（不推荐）：在 html 的 head 中编写 style 标签进行全局 Css 进行渲染</li>
+<li>外部样式表（最推荐）：在 .css 为后缀的文件中进行编写相应的样式内容，最后在 html 的 head 标签中通过 link 引用该样式文件即可</li>
+</ol>
+</li>
+<li>选择器
+<ol>
+<li>标签选择器。顾名思义就是根据已有的标签进行样式书写，格式示例为 <code>p { color: red; }</code></li>
+<li>类选择器。根据自定义的类名进行样式书写，格式示例为 <code>.ClassName { color: red; }</code></li>
+<li>id 选择器。根据页面中某一个元素唯一的 id 进行样式书写，格式示例为 <code>#OnlyId { color: red; }</code></li>
+</ol>
+</li>
+<li>渲染优先级：内联样式 &gt; ID 选择器 &gt; 样式表</li>
+<li>背景：背景颜色（rgb 赋值、hex 赋值、name 赋值），背景图片（定位、滚动样式）</li>
+<li>文本：文字颜色、文字对齐</li>
+<li>字体：字体系列、字体大小</li>
+<li>链接：链接样式（link、visited、hover、active 顺序记忆为 <strong>l</strong> o <strong>v</strong> e &amp; <strong>ha</strong> te）</li>
+<li></li>
+<li></li>
+<li>盒子模型：每一个标签都是一个盒子，分为行级标签、块级标签等。对于每一个盒子，分为内边距（元素与边框的距离）、边框和外边距（各个盒子之间的距离）。其中：
+<ol>
+<li>内边距通过 margin 进行控制。属性值含有四个参数，分别代表上右下左的距离值，如果只含有三个，则其中第一个为上，第二个为左右，第三个为下；如果只含有两个，则其中第一个为上下，第二个为左右；如果只含有一个，则表示上右下左均为该值</li>
+<li>外边框通过 padding 进行控制。属性值同 margin 的属性值</li>
+</ol>
+</li>
+<li>浮动布局。即 float 属性，可以理解为元素环绕属性，有 left 与 right 两个属性值。设定浮动属性后，元素将脱离文档流，上面的元素布局不变，下面的元素向上浮动调整</li>
+<li>定位布局。即 position 属性，是为了实现透视覆盖的视觉效果而诞生的。即设定一个元素的 position 值为 relative，即设定其为相对元素，接着在此相对元素的位置基础之上，设定其余元素的 position 值为 absolute 以及相应的位置参数大小，即可相对相对参照元素进行布局</li>
+</ul>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/FrontEnd/" class="category-chain-item">FrontEnd</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/FrontEnd/CSS/" class="category-chain-item">CSS</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>css-basic</div>
+      <div>https://blog.dwj601.cn/FrontEnd/CSS/css-basic/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Mr_Dwj</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月30日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年8月30日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/FrontEnd/CSS/bootstrap/" title="bootstrap">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">bootstrap</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/FrontEnd/JavaScript/javascript-basic/" title="javascript-basic">
+                        <span class="hidden-mobile">javascript-basic</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Explorer-Dong/BlogComment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="FrontEnd"
+        id="heading-d9340b0bafdac107e90b55ab622d6207" role="tab" data-toggle="collapse" href="#collapse-d9340b0bafdac107e90b55ab622d6207"
+        aria-expanded="true"
+      >
+        FrontEnd
+        <span class="list-group-count">(13)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-d9340b0bafdac107e90b55ab622d6207"
+           role="tabpanel" aria-labelledby="heading-d9340b0bafdac107e90b55ab622d6207">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/FrontEnd/front-end-guide/" title="front-end-guide"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">front-end-guide</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="CSS"
+        id="heading-2c56c360580420d293172f42d85dfbed" role="tab" data-toggle="collapse" href="#collapse-2c56c360580420d293172f42d85dfbed"
+        aria-expanded="true"
+      >
+        CSS
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-2c56c360580420d293172f42d85dfbed"
+           role="tabpanel" aria-labelledby="heading-2c56c360580420d293172f42d85dfbed">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/FrontEnd/CSS/bootstrap/" title="bootstrap"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">bootstrap</span>
+        </a>
+      
+    
+      
+      
+        <a href="/FrontEnd/CSS/css-basic/" title="css-basic"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">css-basic</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="HTML"
+        id="heading-4c4ad5fca2e7a3f74dbb1ced00381aa4" role="tab" data-toggle="collapse" href="#collapse-4c4ad5fca2e7a3f74dbb1ced00381aa4"
+        aria-expanded="false"
+      >
+        HTML
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4c4ad5fca2e7a3f74dbb1ced00381aa4"
+           role="tabpanel" aria-labelledby="heading-4c4ad5fca2e7a3f74dbb1ced00381aa4">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/FrontEnd/HTML/html-basic/" title="html-basic"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">html-basic</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Hexo"
+        id="heading-c00d1eb68b529768ba98c975c76a9b66" role="tab" data-toggle="collapse" href="#collapse-c00d1eb68b529768ba98c975c76a9b66"
+        aria-expanded="false"
+      >
+        Hexo
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c00d1eb68b529768ba98c975c76a9b66"
+           role="tabpanel" aria-labelledby="heading-c00d1eb68b529768ba98c975c76a9b66">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/FrontEnd/Hexo/hexo-auto-deploy-to-server/" title="hexo-auto-deploy-to-server"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">hexo-auto-deploy-to-server</span>
+        </a>
+      
+    
+      
+      
+        <a href="/FrontEnd/Hexo/hexo-githubpages-domain/" title="hexo-githubpages-domain"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">hexo-githubpages-domain</span>
+        </a>
+      
+    
+      
+      
+        <a href="/FrontEnd/Hexo/hexo-learning-record/" title="hexo-learning-record"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">hexo-learning-record</span>
+        </a>
+      
+    
+      
+      
+        <a href="/FrontEnd/Hexo/hexo-migrate/" title="hexo-migrate"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">hexo-migrate</span>
+        </a>
+      
+    
+      
+      
+        <a href="/FrontEnd/Hexo/why-hexo/" title="why-hexo"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">why-hexo</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="JavaScript"
+        id="heading-686155af75a60a0f6e9d80c1f7edd3e9" role="tab" data-toggle="collapse" href="#collapse-686155af75a60a0f6e9d80c1f7edd3e9"
+        aria-expanded="false"
+      >
+        JavaScript
+        <span class="list-group-count">(4)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-686155af75a60a0f6e9d80c1f7edd3e9"
+           role="tabpanel" aria-labelledby="heading-686155af75a60a0f6e9d80c1f7edd3e9">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/FrontEnd/JavaScript/javascript-basic/" title="javascript-basic"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">javascript-basic</span>
+        </a>
+      
+    
+      
+      
+        <a href="/FrontEnd/JavaScript/jquery/" title="jquery"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">jquery</span>
+        </a>
+      
+    
+      
+      
+        <a href="/FrontEnd/JavaScript/react/" title="react"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">react</span>
+        </a>
+      
+    
+      
+      
+        <a href="/FrontEnd/JavaScript/vue/" title="vue"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      苏ICP备2024087610号-1
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/custom.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

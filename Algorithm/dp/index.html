@@ -18,7 +18,7 @@
   
     <meta name="description" content="动态规划 动态规划分为被动转移和主动转移，而其根本在于状态表示和状态转移。如何完整表示所有状态？如何不重不漏划分子集从而进行状态转移？  【递推】反转字符串 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;5574&#x2F;  题意：给定 n 个字符串，每一个字符串对应一个代价 wiw_iwi​，现在需要对这 n 个字符串进行可能的翻转操作使得最终的 n 个字符串呈现字典序上">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DynamicProgramming">
+<meta property="og:title" content="dp">
 <meta property="og:url" content="https://blog.dwj601.cn/Algorithm/dp/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
 <meta property="og:description" content="动态规划 动态规划分为被动转移和主动转移，而其根本在于状态表示和状态转移。如何完整表示所有状态？如何不重不漏划分子集从而进行状态转移？  【递推】反转字符串 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;5574&#x2F;  题意：给定 n 个字符串，每一个字符串对应一个代价 wiw_iwi​，现在需要对这 n 个字符串进行可能的翻转操作使得最终的 n 个字符串呈现字典序上">
@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403191805594.png">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png?v8">
 <meta property="article:published_time" content="2024-03-21T05:55:02.037Z">
-<meta property="article:modified_time" content="2024-08-29T10:03:01.314Z">
+<meta property="article:modified_time" content="2024-08-30T02:02:49.753Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -47,7 +47,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>DynamicProgramming | Dwj の Blog</title>
+  <title>dp | Dwj の Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -237,7 +237,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="DynamicProgramming"></span>
+            <span id="subtitle" data-typed-text="dp"></span>
           
         </div>
 
@@ -329,12 +329,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">DynamicProgramming</h1>
+            <h1 id="seo-header">dp</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年8月29日 晚上
+                    本文最后更新于 2024年8月30日 上午
                   
                 
               </p>
@@ -930,7 +930,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>DynamicProgramming</div>
+      <div>dp</div>
       <div>https://blog.dwj601.cn/Algorithm/dp/</div>
     </div>
     <div class="license-meta">
@@ -949,7 +949,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月29日</div>
+          <div>2024年8月30日</div>
         </div>
       
       
@@ -980,15 +980,21 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Algorithm/dfs-and-similar/" title="dfs-and-similar">
+                      <a href="/Algorithm/data-structure/" title="data-structure">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">dfs-and-similar</span>
+                        <span class="hidden-mobile">data-structure</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/Algorithm/dfs-and-similar/" title="dfs-and-similar">
+                        <span class="hidden-mobile">dfs-and-similar</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
@@ -1072,15 +1078,6 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
     
       
       
-        <a href="/Algorithm/dp/" title="DynamicProgramming"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">DynamicProgramming</span>
-        </a>
-      
-    
-      
-      
         <a href="/Algorithm/a_template/" title="a_template"
            class="list-group-item list-group-item-action
            ">
@@ -1121,6 +1118,15 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">divide-and-conquer</span>
+        </a>
+      
+    
+      
+      
+        <a href="/Algorithm/dp/" title="dp"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">dp</span>
         </a>
       
     

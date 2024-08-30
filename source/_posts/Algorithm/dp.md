@@ -1,5 +1,5 @@
 ---
-title: DynamicProgramming
+title: dp
 categories: Algorithm
 category_bar: true
 ---

@@ -1,5 +1,5 @@
 ---
-title: JetbrainsLicense
+title: jetbrains-license
 categories: 
   - DevTools
 category_bar: true

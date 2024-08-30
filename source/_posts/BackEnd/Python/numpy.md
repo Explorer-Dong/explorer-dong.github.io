@@ -1,8 +1,8 @@
 ---
 title: numpy
 categories:
-- BackEnd
-- pyBasic
+  - BackEnd
+  - Python
 category_bar: true
 ---
 

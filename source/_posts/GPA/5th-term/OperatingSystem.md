@@ -38,7 +38,11 @@ category_bar: true
 
 学习资源：
 
-- 
+[合集·[完结] 2024 南京大学 “操作系统：设计与实现” (蒋炎岩)](https://space.bilibili.com/202224425/channel/collectiondetail?sid=2237004)
+
+[蒋炎岩课程配套讲义](https://jyywiki.cn/OS/2024/)
+
+![最难崩的一集](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408301623261.png)
 
 ## 第1章 绪论
 

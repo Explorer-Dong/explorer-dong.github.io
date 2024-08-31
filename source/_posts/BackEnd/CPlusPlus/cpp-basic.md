@@ -8,11 +8,13 @@ category_bar: true
 
 ## C++ 基础
 
-## 文件 I/O
+本文收集一些 C++ 相关的语法知识，推荐借助目录阅读或者 Ctrl+F 检索自己需要的内容阅读。$\text{C++std}\ge\text{C++11}$
+
+## 文件 I/O *
 
 C++ 封装了三个类用来进行文件 IO 操作，分别为 `ifstream`、`ofstream` 和 `fstream`。其中 `ifstream` 负责读文件，`ofstream` 负责写文件，`fstream` 读写都可以，三个类都需要依赖 `iostream` 和 `fstream` 头文件。下面分三个部分大致介绍一下，后续遇到了继续补充：
 
-### 一、ifstream 只读
+### ifstream 只读
 
 ```cpp
 #include <iostream>
@@ -34,7 +36,7 @@ int main() {
 }
 ```
 
-### 二、ofstream 只写
+### ofstream 只写
 
 ```cpp
 #include <iostream>
@@ -55,23 +57,23 @@ int main() {
 }
 ```
 
-### 三、fstream 读写
+### fstream 读写
 
 ```cpp
 
 ```
 
-### 更多参考
+### 参考
 
 [C++ 文件和流](https://www.runoob.com/cplusplus/cpp-files-streams.html)
 
 ## 命名空间 namespace
 
-### Ques
+### 疑问产生
 
 用久了 `using namespace std` 后，不禁产生疑问，这是什么意思？为什么去掉了这行代码以后，一些常用的类、输入输出等等都需要加上 `std::` 之后才能继续使用（比如 `std::vector`、`std::cout`、`std::endl` 等等）？
 
-### Answ
+### 问题解答
 
 先做一个形象的类比。我们知道在一个文件夹下不允许出现两个相同名称的文件，但是不同的文件夹下可以出现相同名称的文件。现在我需要区别的指定某一个文件，就需要显示的声明该文件属于哪一个文件夹下。放在 C++ 的库引用中也是如此。下面继续介绍一个前置知识，C++ 标准库。
 
@@ -215,7 +217,7 @@ int main() {
 
 上述程序中，std 命名空间被显式的在 `fun` 函数作用域中标出了，所以可以直接使用 `vector` 而不用写成 `std::vector`。但是在 `main` 函数作用域中没有显式的标出 std 故还是需要使用 `std::` 才能使用该命名空间中定义的类或方法，此处为输入输出类的 `std::cout` 与 `std::endl`
 
-### Refe
+### 参考
 
 <https://www.runoob.com/cplusplus/cpp-namespaces.html>
 
@@ -223,7 +225,7 @@ int main() {
 
 ## 多文件调用规范
 
-### 一、常规认知
+### 常规认知
 
 `.h` 后缀文件编写类的声明文件，`.cpp` 后缀文件编写类的定义文件，示例如下：
 
@@ -267,7 +269,7 @@ int main() {
 
 ![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403012308775.png)
 
-### 二、产生想法
+### 产生想法
 
 我们知道在 python 中，导入一个模块后除了可以使用模块的类，还可以直接调用模块文件中的函数，那么在 C++ 文件中也可以这样吗？答案是可以的，下面开始实操。
 
@@ -294,7 +296,7 @@ void globalFun() {
 1. 将该 `.h` 文件的函数定义写在 `.cpp` 文件中，`.h` 文件只包含函数声明
 2. 将该 `.h` 文件的函数写成内联函数的形式，即直接在函数返回值前面加上 `inline` 关键字即可
 
-### 三、产生疑问
+### QA
 
 1. 问：在 `.cpp` 源文件中对函数定义时，`.cpp` 文件的名字必须是：`函数声明文件名.cpp` 吗？
 

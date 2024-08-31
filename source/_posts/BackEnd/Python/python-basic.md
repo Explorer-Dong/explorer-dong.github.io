@@ -8,6 +8,8 @@ category_bar: true
 
 ## Python 基础
 
+本文记录 Python3 语法相关的内容。
+
 ## 浅析 py 中的数据类型
 
 ### 前言
@@ -303,7 +305,7 @@ TypeError: 'str' object does not support item assignment
 
 由于本地安装了多个 python 解释器，所以想要打印某个版本的解释器下载的「包或模块」的路径，整理一下大约有两种方法
 
-### 一、使用模块内置方法
+### 方法1：使用模块内置方法
 
 如果模块内置了 `__file__` 方法，则可以直接打印出来：
 
@@ -315,7 +317,7 @@ print(np.__file__)
 
 ![直接打印](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406052305698.png)
 
-### 二、基于 pip 方法
+### 方法二：基于 pip 方法
 
 有些库没有内置上述 `__file__` 方法，可以使用 pip 指令进行打印：
 

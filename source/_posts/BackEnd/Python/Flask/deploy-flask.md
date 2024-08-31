@@ -7,7 +7,7 @@ categories:
 category_bar: true
 ---
 
-# 部署 Flask
+## 部署 Flask
 
 Flask 是使用 Python 作为后端语言的 Web 微框，旨在帮助开发者快速开发出一个小型网站。个人示例项目就采用了 Flask 框架，前端直接使用 Flask 自带的 Jinja2 进行渲染，数据库采用 MySQL。项目地址 [YunJinWeb](https://github.com/Explorer-Dong/YunJinWeb)，下面为以此项目为 demo 进行云服务器部署的过程
 
@@ -239,14 +239,33 @@ source ~/.bashrc
 
 {% endfold %}
 
-## 项目相关
+## 运行项目
+
+以实际项目为例：https://github.com/Explorer-Dong/YunJinWeb
+
+首先有一个整体的服务逻辑：
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Nginx
+    participant uWSGI
+    participant App as Python应用
+    
+    User->>Nginx: 发送HTTP请求
+    Nginx->>uWSGI: 转发请求
+    uWSGI->>App: 处理请求
+    App-->>uWSGI: 返回响应
+    uWSGI-->>Nginx: 返回响应
+    Nginx-->>User: 返回HTTP响应
+```
 
 ### (1) 创建 py 虚拟环境
 
 创建虚拟 py 环境
 
 ```bash
-mkvirtualenv --python=/usr/bin/python311 <EnvName>
+mkvirtualenv --python=/usr/bin/python3.10 <EnvName>
 ```
 
 启动虚拟环境
@@ -268,7 +287,7 @@ deactivate
 - 初次部署：拉取远程源文件
 
     ```bash
-    git clone https://github.com/Explorer-Dong/YunJinWeb.git
+    git clone https://gitee.com/idwj/YunJinWeb.git
     ```
 
 - 后续更新：覆盖原始代码并重新运行应用
@@ -285,39 +304,19 @@ deactivate
 pip install -r requirements.txt
 ```
 
-### (4) 更改项目配置文件 `config.py`
-
-修改项目中 `config.py` 中的配置信息
-
-```python
-'''
-配置文件：(模板文件，自定义)
-	1. 数据库配置信息
-	2. ...
-'''
-
-# 数据库的配置信息
-HOSTNAME = '127.0.0.1'      # 数据库 ip 地址
-PORT = '3306'               # 数据库端口，默认 3306
-DATABASE = ''               # 数据库名
-USERNAME = ''               # 数据库用户名
-PASSWORD = ''               # 数据库密码
-
-DB_URI = 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8mb4'.format(USERNAME, PASSWORD, HOSTNAME, PORT, DATABASE)
-SQLALCHEMY_DATABASE_URI = DB_URI
-```
+### (4) 导入 .env 环境变量配置文件
 
 ### (5) 运行 Flask 应用
 
-**内测阶段**：使用 Flask 自带的服务器运行
+{% fold light @内测阶段 %}
+
+**内测阶段**：使用 Flask 内置服务器运行应用
 
 运行 Flask 主接口文件 `app.py`，之后就可以通过 ip 地址 + 端口号的方式进行访问了
 
 ```bash
 python app.py
 ```
-
-{% fold info @解决：Flask 的 5000 端口被占用的问题 %}
 
 > 解决：Flask 的 5000 端口被占用的问题
 >
@@ -336,82 +335,76 @@ python app.py
 
 {% endfold %}
 
-**公测阶段**：使用 uwsgi 应用服务器运行
+**公测阶段**：使用 uwsgi 应用服务器运行应用
 
-安装配置 uwsgi 应用服务器后运行，之后就可以通过 ip 地址 + 端口号的方式进行访问了
+（一）安装 uwsgi 包
 
-- 安装 uwsgi 包
+```bash
+pip install uwsgi
+```
 
-    ```bash
-    pip install uwsgi
-    ```
+（二）创建 uwsgi.ini 文件并编辑
 
-- 创建 uwsgi.ini 文件并编辑
+```bash
+touch uwsgi.ini
+```
 
-    ```bash
-    touch uwsgi.ini
-    ```
+```bash
+[uwsgi]
 
-    ```bash
-    [uwsgi]
-    
-    # -------------------- 路径相关的设置 --------------------
-    
-    # 项目的路径
-    chdir           = /root/.virtualenvs/<VirtualEnvName>/<ProjectName>/
-    
-    # Flask的uwsgi文件配对的应用
-    wsgi-file       = /root/.virtualenvs/<VirtualEnvName>/<ProjectName>/app.py
-    
-    # 回调的app对象
-    callable        = app
-    
-    # Python虚拟环境的路径
-    home            = /root/.virtualenvs/<VirtualEnvName>
-    
-    # -------------------- 进程相关的设置 --------------------
-    
-    # 主进程
-    master          = true
-    
-    # 最大数量的工作进程
-    processes       = 10
-    
-    # 监听5000端口（或监听socket文件，与nginx配合）
-    http            = :5000 
-    
-    # socket监听
-    # socket        = /srv/[项目名称]/[项目名称].sock
-    
-    # 设置socket的权限
-    # chmod-socket    = 666
-    
-    # 退出的时候是否清理环境
-    vacuum          = true
-    ```
+# -------------------- 路径相关的设置 --------------------
 
-- 通过 uwsgi 应用服务器运行 Flask 应用
+# python 虚拟环境的路径
+home      = /root/.virtualenvs/py310
 
-    [uwsgi 启动 Flask 项目(venv 虚拟环境)](https://www.cnblogs.com/pengpengdeyuan/p/14742090.html)
+# 虚拟环境下 当前项目的路径
+chdir     = /root/.virtualenvs/py310/YunJinWeb
 
-    ```bash
-    # 初始启动uwsgi指令
-    uwsgi --ini uwsgi.ini
-    ```
+# 指定 WSGI 应用程序的入口文件
+wsgi-file = /root/.virtualenvs/py310/YunJinWeb/app.py
 
-- [退出 uwsgi 但是不停止服务的操作](https://blog.csdn.net/wjwj1203/article/details/105336943)
+# WSGI 应用实例对象的名称
+callable  = app
 
-    ```bash
-    # 退出uwsgi但是不停止服务的操作
-    uwsgi -d --ini uwsgi.ini
-    ```
-    
-    此时想要停止就需要找到uwsgi的进程并全部杀死
-    
-    ```bash
-    # 找到所有uwsgi进程
-    ps -ef|grep uwsgi
-    
-    # 杀死所有进程
-    kill -9 <进程号>
-    ```
+# -------------------- 进程相关的设置 --------------------
+
+# 启用 uWSGI 主进程模式。主进程负责管理子进程，监控它们的状态，并在必要时重新启动它们。
+master    = true
+
+# 指定要启动的并发子进程的工作进程数量
+processes = 10
+
+# 指定 uWSGI 的 HTTP 监听端口
+http      = :5000
+
+# 在关闭 uWSGI 时自动清理 Unix socket 和 PID 文件。确保在服务器停止时不会留下遗留文件
+vacuum    = true
+```
+
+（三）启动 uwsgi 服务器
+
+[单次启动 uwsgi 服务器并运行 Flask 应用](https://www.cnblogs.com/pengpengdeyuan/p/14742090.html)
+
+```bash
+uwsgi --ini uwsgi.ini
+```
+
+[退出 uwsgi 服务器但不终止服务](https://blog.csdn.net/wjwj1203/article/details/105336943)
+
+```bash
+uwsgi -d --ini uwsgi.ini
+```
+
+（四）终止或重启 uwsgi 服务器
+
+如果想要终止 uwsgi 服务器，逻辑就是找到该服务器的所有进程并全部终止即可。如果因为项目更新等原因需要重启应用，需要先终止 uwsgi 服务器后再重新启动 uwsgi 服务器。
+
+```bash
+# 查看 uwsgi 的所有进程
+pgrep uwsgi
+
+# 终止 uwsgi 的所有进程
+pkill -9 uwsgi
+```
+
+之后就可以通过 ip 地址 + 端口号的方式进行访问了，如果配置了域名和 Nginx 的端口代理，则可以直接用域名访问 Python 应用啦。

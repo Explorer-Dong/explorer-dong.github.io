@@ -251,7 +251,7 @@ $$
 
 计算技巧一：直接代入
 
-![直接代入](https://s2.loli.net/2023/12/26/5cNFKJSY79kzxIw.png)
+![直接代入](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408311004505.png)
 
 计算技巧二：对角阵幂运算
 

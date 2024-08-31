@@ -16,19 +16,19 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="C++ 基础 文件 I&#x2F;O C++ 封装了三个类用来进行文件 IO 操作，分别为 ifstream、ofstream 和 fstream。其中 ifstream 负责读文件，ofstream 负责写文件，fstream 读写都可以，三个类都需要依赖 iostream 和 fstream 头文件。下面分三个部分大致介绍一下，后续遇到了继续补充： 一、ifstream 只读 1234567891011">
+    <meta name="description" content="C++ 基础 本文收集一些 C++ 相关的语法知识，推荐借助目录阅读或者 Ctrl+F 检索自己需要的内容阅读。C++std≥C++11\text{C++std}\ge\text{C++11}C++std≥C++11 文件 I&#x2F;O * C++ 封装了三个类用来进行文件 IO 操作，分别为 ifstream、ofstream 和 fstream。其中 ifstream 负责读文件，ofstream">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cpp-basic">
 <meta property="og:url" content="https://blog.dwj601.cn/BackEnd/CPlusPlus/cpp-basic/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="C++ 基础 文件 I&#x2F;O C++ 封装了三个类用来进行文件 IO 操作，分别为 ifstream、ofstream 和 fstream。其中 ifstream 负责读文件，ofstream 负责写文件，fstream 读写都可以，三个类都需要依赖 iostream 和 fstream 头文件。下面分三个部分大致介绍一下，后续遇到了继续补充： 一、ifstream 只读 1234567891011">
+<meta property="og:description" content="C++ 基础 本文收集一些 C++ 相关的语法知识，推荐借助目录阅读或者 Ctrl+F 检索自己需要的内容阅读。C++std≥C++11\text{C++std}\ge\text{C++11}C++std≥C++11 文件 I&#x2F;O * C++ 封装了三个类用来进行文件 IO 操作，分别为 ifstream、ofstream 和 fstream。其中 ifstream 负责读文件，ofstream">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403012308775.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403012308973.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428426.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428507.png">
 <meta property="article:published_time" content="2024-08-30T03:41:56.094Z">
-<meta property="article:modified_time" content="2024-08-30T03:51:32.006Z">
+<meta property="article:modified_time" content="2024-08-31T02:15:15.465Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          2.3k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          14 分钟
+          15 分钟
         
       </span>
     
@@ -325,7 +325,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年8月30日 中午
+                    本文最后更新于 2024年8月31日 上午
                   
                 
               </p>
@@ -334,20 +334,21 @@
               <div class="markdown-body">
                 
                 <h2 id="C-基础">C++ 基础</h2>
-<h2 id="文件-I-O">文件 I/O</h2>
+<p>本文收集一些 C++ 相关的语法知识，推荐借助目录阅读或者 Ctrl+F 检索自己需要的内容阅读。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>C++std</mtext><mo>≥</mo><mtext>C++11</mtext></mrow><annotation encoding="application/x-tex">\text{C++std}\ge\text{C++11}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord text"><span class="mord">C++std</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">C++11</span></span></span></span></span></p>
+<h2 id="文件-I-O">文件 I/O *</h2>
 <p>C++ 封装了三个类用来进行文件 IO 操作，分别为 <code>ifstream</code>、<code>ofstream</code> 和 <code>fstream</code>。其中 <code>ifstream</code> 负责读文件，<code>ofstream</code> 负责写文件，<code>fstream</code> 读写都可以，三个类都需要依赖 <code>iostream</code> 和 <code>fstream</code> 头文件。下面分三个部分大致介绍一下，后续遇到了继续补充：</p>
-<h3 id="一、ifstream-只读">一、ifstream 只读</h3>
+<h3 id="ifstream-只读">ifstream 只读</h3>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fstream&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>	std::ifstream fin;<br><br>	fin.<span class="hljs-built_in">open</span>(<span class="hljs-string">"../test.txt"</span>, std::ios::in);<br><br>	std::string word;<br>	<span class="hljs-keyword">while</span> (fin &gt;&gt; word) {<br>		std::cout &lt;&lt; word &lt;&lt; <span class="hljs-string">" "</span>;<br>	}<br><br>	fin.<span class="hljs-built_in">close</span>();<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
-<h3 id="二、ofstream-只写">二、ofstream 只写</h3>
+<h3 id="ofstream-只写">ofstream 只写</h3>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fstream&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>    std::ofstream fout;<br>    <br>    fout.<span class="hljs-built_in">open</span>(<span class="hljs-string">"../test.txt"</span>, std::ios::out);<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++) {<br>        fout &lt;&lt; i &lt;&lt; <span class="hljs-string">" "</span>;<br>    }<br>    <br>    fout.<span class="hljs-built_in">close</span>();<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
-<h3 id="三、fstream-读写">三、fstream 读写</h3>
+<h3 id="fstream-读写">fstream 读写</h3>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br></code></pre></td></tr></tbody></table></figure>
-<h3 id="更多参考">更多参考</h3>
+<h3 id="参考">参考</h3>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/cpp-files-streams.html">C++ 文件和流</a></p>
 <h2 id="命名空间-namespace">命名空间 namespace</h2>
-<h3 id="Ques">Ques</h3>
+<h3 id="疑问产生">疑问产生</h3>
 <p>用久了 <code>using namespace std</code> 后，不禁产生疑问，这是什么意思？为什么去掉了这行代码以后，一些常用的类、输入输出等等都需要加上 <code>std::</code> 之后才能继续使用（比如 <code>std::vector</code>、<code>std::cout</code>、<code>std::endl</code> 等等）？</p>
-<h3 id="Answ">Answ</h3>
+<h3 id="问题解答">问题解答</h3>
 <p>先做一个形象的类比。我们知道在一个文件夹下不允许出现两个相同名称的文件，但是不同的文件夹下可以出现相同名称的文件。现在我需要区别的指定某一个文件，就需要显示的声明该文件属于哪一个文件夹下。放在 C++ 的库引用中也是如此。下面继续介绍一个前置知识，C++ 标准库。</p>
 <p>关于 C++ 标准库 Standard Library。我们使用 <code>using namespace std</code> 就是为了使用这个库的一些内容，这些内容包括 <strong>标准函数库</strong> 和 <strong>面向对象类库</strong>，前者继承自 C 语言函数库并为了支持类型安全做了一定修改；后者则定义了大量常见操作的类。关于 C++ 标准库的详细说明将会在下一篇文章中深入解析。</p>
 <h4 id="1-规范举例">1. 规范举例</h4>
@@ -367,11 +368,11 @@
 <p>我们也可以通过 using 来显式的指定 <strong>当前作用域</strong> 中使用的命名空间，而不需要每次使用某个命名空间下的类或方法时，显式的标出空间名，比如：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>{<br>	<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br>	<br>	<span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">a</span><span class="hljs-params">(num + <span class="hljs-number">1</span>)</span></span>;<br>	<span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= num; i++) a[i] = i;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= num; i++) sum += a[i];<br>	<br>	<span class="hljs-keyword">return</span> sum;<br>}<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>	std::cout &lt;&lt; <span class="hljs-built_in">fun</span>(<span class="hljs-number">10</span>) &lt;&lt; std::endl;<br>	<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
 <p>上述程序中，std 命名空间被显式的在 <code>fun</code> 函数作用域中标出了，所以可以直接使用 <code>vector</code> 而不用写成 <code>std::vector</code>。但是在 <code>main</code> 函数作用域中没有显式的标出 std 故还是需要使用 <code>std::</code> 才能使用该命名空间中定义的类或方法，此处为输入输出类的 <code>std::cout</code> 与 <code>std::endl</code></p>
-<h3 id="Refe">Refe</h3>
+<h3 id="参考-2">参考</h3>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/cpp-namespaces.html">https://www.runoob.com/cplusplus/cpp-namespaces.html</a></p>
 <p><a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/header">https://en.cppreference.com/w/cpp/header</a></p>
 <h2 id="多文件调用规范">多文件调用规范</h2>
-<h3 id="一、常规认知">一、常规认知</h3>
+<h3 id="常规认知">常规认知</h3>
 <p><code>.h</code> 后缀文件编写类的声明文件，<code>.cpp</code> 后缀文件编写类的定义文件，示例如下：</p>
 <p><strong>.h 文件</strong></p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestClassFunction</span> {<br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-type">int</span> classVar;<br><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">classFun</span><span class="hljs-params">()</span></span>;<br>};<br></code></pre></td></tr></tbody></table></figure>
@@ -380,7 +381,7 @@
 <p><strong>main 函数文件</strong></p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"TestClassFunction.h"</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>	TestClassFunction obj;<br>	obj.<span class="hljs-built_in">classFun</span>();<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403012308775.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="输出"></p>
-<h3 id="二、产生想法">二、产生想法</h3>
+<h3 id="产生想法">产生想法</h3>
 <p>我们知道在 python 中，导入一个模块后除了可以使用模块的类，还可以直接调用模块文件中的函数，那么在 C++ 文件中也可以这样吗？答案是可以的，下面开始实操。</p>
 <p>我们在上述 TestClassFunction 类的下面继续添加函数：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestClassFunction</span> {<br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-type">int</span> classVar;<br><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">classFun</span><span class="hljs-params">()</span></span>;<br>};<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">globalFun</span><span class="hljs-params">()</span> </span>{<br>	std::cout &lt;&lt; <span class="hljs-string">"globalFunction"</span> &lt;&lt; std::endl;<br>}<br></code></pre></td></tr></tbody></table></figure>
@@ -389,7 +390,7 @@
 <li>将该 <code>.h</code> 文件的函数定义写在 <code>.cpp</code> 文件中，<code>.h</code> 文件只包含函数声明</li>
 <li>将该 <code>.h</code> 文件的函数写成内联函数的形式，即直接在函数返回值前面加上 <code>inline</code> 关键字即可</li>
 </ol>
-<h3 id="三、产生疑问">三、产生疑问</h3>
+<h3 id="QA">QA</h3>
 <ol>
 <li>
 <p>问：在 <code>.cpp</code> 源文件中对函数定义时，<code>.cpp</code> 文件的名字必须是：<code>函数声明文件名.cpp</code> 吗？</p>
@@ -418,7 +419,7 @@
 <p>无论是非内联函数（全局函数）还是内联函数（成员函数），缺省参数都只能定义在函数声明的参数列表中，而不能只在函数声明中重复定义或者只在函数定义中定义缺省参数值</p>
 <h2 id="编译过程">编译过程 *</h2>
 <p>TODO</p>
-<h3 id="参考">参考</h3>
+<h3 id="参考-3">参考</h3>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/333560253/answer/2282723843">https://www.zhihu.com/question/333560253/answer/2282723843</a></p>
 <h2 id="宏定义">宏定义 *</h2>
 <p>TODO</p>
@@ -488,7 +489,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月30日</div>
+          <div>2024年8月31日</div>
         </div>
       
       
@@ -793,6 +794,21 @@
   
 
 
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
 
 
 

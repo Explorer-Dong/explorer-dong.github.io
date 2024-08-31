@@ -472,9 +472,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/BackEnd/back-end-guide/" title="back-end-guide">
+                      <a href="/Algorithm/games/" title="games">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">back-end-guide</span>
+                        <span class="hidden-mobile">games</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -482,8 +482,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Algorithm/games/" title="games">
-                        <span class="hidden-mobile">games</span>
+                      <a href="/Algorithm/hashing/" title="hashing">
+                        <span class="hidden-mobile">hashing</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -746,6 +746,21 @@
   
 
 
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
 
 
 

@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126617.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126618.png">
 <meta property="article:published_time" content="2024-03-26T05:48:15.465Z">
-<meta property="article:modified_time" content="2024-08-30T03:37:22.594Z">
+<meta property="article:modified_time" content="2024-08-31T08:43:49.757Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          1.8k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          11 分钟
+          12 分钟
         
       </span>
     
@@ -327,7 +327,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年8月30日 中午
+                    本文最后更新于 2024年8月31日 下午
                   
                 
               </p>
@@ -335,7 +335,7 @@
             
               <div class="markdown-body">
                 
-                <h1>部署 Flask</h1>
+                <h2 id="部署-Flask">部署 Flask</h2>
 <p>Flask 是使用 Python 作为后端语言的 Web 微框，旨在帮助开发者快速开发出一个小型网站。个人示例项目就采用了 Flask 框架，前端直接使用 Flask 自带的 Jinja2 进行渲染，数据库采用 MySQL。项目地址 <a target="_blank" rel="noopener" href="https://github.com/Explorer-Dong/YunJinWeb">YunJinWeb</a>，下面为以此项目为 demo 进行云服务器部署的过程</p>
 <h2 id="远程连接服务器">远程连接服务器</h2>
 <p>服务器信息</p>
@@ -437,10 +437,25 @@
         </div>
       </div>
     </div>
-<h2 id="项目相关">项目相关</h2>
+<h2 id="运行项目">运行项目</h2>
+<p>以实际项目为例：<a target="_blank" rel="noopener" href="https://github.com/Explorer-Dong/YunJinWeb">https://github.com/Explorer-Dong/YunJinWeb</a></p>
+<p>首先有一个整体的服务逻辑：</p>
+<pre><code class=" mermaid">sequenceDiagram
+    participant User
+    participant Nginx
+    participant uWSGI
+    participant App as Python应用
+    
+    User-&gt;&gt;Nginx: 发送HTTP请求
+    Nginx-&gt;&gt;uWSGI: 转发请求
+    uWSGI-&gt;&gt;App: 处理请求
+    App--&gt;&gt;uWSGI: 返回响应
+    uWSGI--&gt;&gt;Nginx: 返回响应
+    Nginx--&gt;&gt;User: 返回HTTP响应
+</code></pre>
 <h3 id="1-创建-py-虚拟环境">(1) 创建 py 虚拟环境</h3>
 <p>创建虚拟 py 环境</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkvirtualenv --python=/usr/bin/python311 &lt;EnvName&gt;<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkvirtualenv --python=/usr/bin/python3.10 &lt;EnvName&gt;<br></code></pre></td></tr></tbody></table></figure>
 <p>启动虚拟环境</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">workon &lt;EnvName&gt;<br></code></pre></td></tr></tbody></table></figure>
 <p>退出虚拟环境</p>
@@ -450,7 +465,7 @@
 <ul>
 <li>
 <p>初次部署：拉取远程源文件</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/Explorer-Dong/YunJinWeb.git<br></code></pre></td></tr></tbody></table></figure>
+  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://gitee.com/idwj/YunJinWeb.git<br></code></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>后续更新：覆盖原始代码并重新运行应用</p>
@@ -460,48 +475,34 @@
 <h3 id="3-配置-Flask-运行环境">(3) 配置 Flask 运行环境</h3>
 <p>安装所需 py 模块</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install -r requirements.txt<br></code></pre></td></tr></tbody></table></figure>
-<h3 id="4-更改项目配置文件-config-py">(4) 更改项目配置文件 <code>config.py</code></h3>
-<p>修改项目中 <code>config.py</code> 中的配置信息</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">'''</span><br><span class="hljs-string">配置文件：(模板文件，自定义)</span><br><span class="hljs-string">	1. 数据库配置信息</span><br><span class="hljs-string">	2. ...</span><br><span class="hljs-string">'''</span><br><br><span class="hljs-comment"># 数据库的配置信息</span><br>HOSTNAME = <span class="hljs-string">'127.0.0.1'</span>      <span class="hljs-comment"># 数据库 ip 地址</span><br>PORT = <span class="hljs-string">'3306'</span>               <span class="hljs-comment"># 数据库端口，默认 3306</span><br>DATABASE = <span class="hljs-string">''</span>               <span class="hljs-comment"># 数据库名</span><br>USERNAME = <span class="hljs-string">''</span>               <span class="hljs-comment"># 数据库用户名</span><br>PASSWORD = <span class="hljs-string">''</span>               <span class="hljs-comment"># 数据库密码</span><br><br>DB_URI = <span class="hljs-string">'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8mb4'</span>.<span class="hljs-built_in">format</span>(USERNAME, PASSWORD, HOSTNAME, PORT, DATABASE)<br>SQLALCHEMY_DATABASE_URI = DB_URI<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="4-导入-env-环境变量配置文件">(4) 导入 .env 环境变量配置文件</h3>
 <h3 id="5-运行-Flask-应用">(5) 运行 Flask 应用</h3>
-<p><strong>内测阶段</strong>：使用 Flask 自带的服务器运行</p>
-<p>运行 Flask 主接口文件 <code>app.py</code>，之后就可以通过 ip 地址 + 端口号的方式进行访问了</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python app.py<br></code></pre></td></tr></tbody></table></figure>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-d0415820" role="button" aria-expanded="false" aria-controls="collapse-d0415820">
-        <div class="fold-arrow">▶</div>解决：Flask 的 5000 端口被占用的问题
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-1f8876f9" role="button" aria-expanded="false" aria-controls="collapse-1f8876f9">
+        <div class="fold-arrow">▶</div>内测阶段
       </div>
-      <div class="fold-collapse collapse" id="collapse-d0415820">
+      <div class="fold-collapse collapse" id="collapse-1f8876f9">
         <div class="fold-content">
-          <blockquote><p>解决：Flask 的 5000 端口被占用的问题</p><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45753080/article/details/124114096">杀死其余的端口占用进程，重启应用</a></p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;# 检测端口占用<br>netstat -npl | grep <span class="hljs-string">"5000"</span><br><br><span class="hljs-comment"># 查找占用端口的进程的PID</span><br>   <span class="hljs-built_in">sudo</span> lsof -i:<span class="hljs-string">"端口"</span><br><br><span class="hljs-comment"># 根据PID杀死该进程</span><br>   <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">kill</span> -9 &lt;PID&gt;<br></code></pre></td></tr></tbody></table></figure></blockquote>
+          <p><strong>内测阶段</strong>：使用 Flask 内置服务器运行应用</p><p>运行 Flask 主接口文件 <code>app.py</code>，之后就可以通过 ip 地址 + 端口号的方式进行访问了</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python app.py<br></code></pre></td></tr></tbody></table></figure><blockquote><p>解决：Flask 的 5000 端口被占用的问题</p><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45753080/article/details/124114096">杀死其余的端口占用进程，重启应用</a></p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;# 检测端口占用<br>netstat -npl | grep <span class="hljs-string">"5000"</span><br><br><span class="hljs-comment"># 查找占用端口的进程的PID</span><br>   <span class="hljs-built_in">sudo</span> lsof -i:<span class="hljs-string">"端口"</span><br><br><span class="hljs-comment"># 根据PID杀死该进程</span><br>   <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">kill</span> -9 &lt;PID&gt;<br></code></pre></td></tr></tbody></table></figure></blockquote>
         </div>
       </div>
     </div>
-<p><strong>公测阶段</strong>：使用 uwsgi 应用服务器运行</p>
-<p>安装配置 uwsgi 应用服务器后运行，之后就可以通过 ip 地址 + 端口号的方式进行访问了</p>
-<ul>
-<li>
-<p>安装 uwsgi 包</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install uwsgi<br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>创建 uwsgi.ini 文件并编辑</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> uwsgi.ini<br></code></pre></td></tr></tbody></table></figure>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs bash">[uwsgi]<br><br><span class="hljs-comment"># -------------------- 路径相关的设置 --------------------</span><br><br><span class="hljs-comment"># 项目的路径</span><br><span class="hljs-built_in">chdir</span>           = /root/.virtualenvs/&lt;VirtualEnvName&gt;/&lt;ProjectName&gt;/<br><br><span class="hljs-comment"># Flask的uwsgi文件配对的应用</span><br>wsgi-file       = /root/.virtualenvs/&lt;VirtualEnvName&gt;/&lt;ProjectName&gt;/app.py<br><br><span class="hljs-comment"># 回调的app对象</span><br>callable        = app<br><br><span class="hljs-comment"># Python虚拟环境的路径</span><br>home            = /root/.virtualenvs/&lt;VirtualEnvName&gt;<br><br><span class="hljs-comment"># -------------------- 进程相关的设置 --------------------</span><br><br><span class="hljs-comment"># 主进程</span><br>master          = <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># 最大数量的工作进程</span><br>processes       = 10<br><br><span class="hljs-comment"># 监听5000端口（或监听socket文件，与nginx配合）</span><br>http            = :5000 <br><br><span class="hljs-comment"># socket监听</span><br><span class="hljs-comment"># socket        = /srv/[项目名称]/[项目名称].sock</span><br><br><span class="hljs-comment"># 设置socket的权限</span><br><span class="hljs-comment"># chmod-socket    = 666</span><br><br><span class="hljs-comment"># 退出的时候是否清理环境</span><br>vacuum          = <span class="hljs-literal">true</span><br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>通过 uwsgi 应用服务器运行 Flask 应用</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pengpengdeyuan/p/14742090.html">uwsgi 启动 Flask 项目(venv 虚拟环境)</a></p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 初始启动uwsgi指令</span><br>uwsgi --ini uwsgi.ini<br></code></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wjwj1203/article/details/105336943">退出 uwsgi 但是不停止服务的操作</a></p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 退出uwsgi但是不停止服务的操作</span><br>uwsgi -d --ini uwsgi.ini<br></code></pre></td></tr></tbody></table></figure>
-<p>此时想要停止就需要找到uwsgi的进程并全部杀死</p>
-  <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 找到所有uwsgi进程</span><br>ps -ef|grep uwsgi<br><br><span class="hljs-comment"># 杀死所有进程</span><br><span class="hljs-built_in">kill</span> -9 &lt;进程号&gt;<br></code></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
+<p><strong>公测阶段</strong>：使用 uwsgi 应用服务器运行应用</p>
+<p>（一）安装 uwsgi 包</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install uwsgi<br></code></pre></td></tr></tbody></table></figure>
+<p>（二）创建 uwsgi.ini 文件并编辑</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> uwsgi.ini<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs bash">[uwsgi]<br><br><span class="hljs-comment"># -------------------- 路径相关的设置 --------------------</span><br><br><span class="hljs-comment"># python 虚拟环境的路径</span><br>home      = /root/.virtualenvs/py310<br><br><span class="hljs-comment"># 虚拟环境下 当前项目的路径</span><br><span class="hljs-built_in">chdir</span>     = /root/.virtualenvs/py310/YunJinWeb<br><br><span class="hljs-comment"># 指定 WSGI 应用程序的入口文件</span><br>wsgi-file = /root/.virtualenvs/py310/YunJinWeb/app.py<br><br><span class="hljs-comment"># WSGI 应用实例对象的名称</span><br>callable  = app<br><br><span class="hljs-comment"># -------------------- 进程相关的设置 --------------------</span><br><br><span class="hljs-comment"># 启用 uWSGI 主进程模式。主进程负责管理子进程，监控它们的状态，并在必要时重新启动它们。</span><br>master    = <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># 指定要启动的并发子进程的工作进程数量</span><br>processes = 10<br><br><span class="hljs-comment"># 指定 uWSGI 的 HTTP 监听端口</span><br>http      = :5000<br><br><span class="hljs-comment"># 在关闭 uWSGI 时自动清理 Unix socket 和 PID 文件。确保在服务器停止时不会留下遗留文件</span><br>vacuum    = <span class="hljs-literal">true</span><br></code></pre></td></tr></tbody></table></figure>
+<p>（三）启动 uwsgi 服务器</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pengpengdeyuan/p/14742090.html">单次启动 uwsgi 服务器并运行 Flask 应用</a></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">uwsgi --ini uwsgi.ini<br></code></pre></td></tr></tbody></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wjwj1203/article/details/105336943">退出 uwsgi 服务器但不终止服务</a></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">uwsgi -d --ini uwsgi.ini<br></code></pre></td></tr></tbody></table></figure>
+<p>（四）终止或重启 uwsgi 服务器</p>
+<p>如果想要终止 uwsgi 服务器，逻辑就是找到该服务器的所有进程并全部终止即可。如果因为项目更新等原因需要重启应用，需要先终止 uwsgi 服务器后再重新启动 uwsgi 服务器。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 uwsgi 的所有进程</span><br>pgrep uwsgi<br><br><span class="hljs-comment"># 终止 uwsgi 的所有进程</span><br>pkill -9 uwsgi<br></code></pre></td></tr></tbody></table></figure>
+<p>之后就可以通过 ip 地址 + 端口号的方式进行访问了，如果配置了域名和 Nginx 的端口代理，则可以直接用域名访问 Python 应用啦。</p>
 
                 
               </div>
@@ -573,7 +574,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月30日</div>
+          <div>2024年8月31日</div>
         </div>
       
       
@@ -878,6 +879,21 @@
   
 
 
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
 
 
 

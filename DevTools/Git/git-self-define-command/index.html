@@ -16,15 +16,15 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="Git 自定义命令 前言 在使用 hexo 搭建个人博客时，共两种部署的方法。分别为：  本地利用 hexo 的插件 hexo-deployer-git 来实现部署，缺点是需要多敲几个命令行且不方便对源码进行云端备份 使用 Github Action 的 workflow 自动化部署，优势就是可以在 push 备份源码的同时自动检测行为并自动构建部署代码  看似十分方便但是问题也出在这，我发现使用">
+    <meta name="description" content="Git 自定义命令 前言 在使用 hexo 搭建个人博客时, 共两种部署的方法. 分别为:  本地利用 hexo 的插件 hexo-deployer-git 来实现部署, 缺点是需要多敲几个命令行且不方便对源码进行云端备份 使用 Github Action 的 workflow 自动化部署, 优势就是可以在 push 备份源码的同时自动检测行为并自动构建部署代码  看似十分方便但是问题也出在这,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git-self-define-command">
 <meta property="og:url" content="https://blog.dwj601.cn/DevTools/Git/git-self-define-command/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="Git 自定义命令 前言 在使用 hexo 搭建个人博客时，共两种部署的方法。分别为：  本地利用 hexo 的插件 hexo-deployer-git 来实现部署，缺点是需要多敲几个命令行且不方便对源码进行云端备份 使用 Github Action 的 workflow 自动化部署，优势就是可以在 push 备份源码的同时自动检测行为并自动构建部署代码  看似十分方便但是问题也出在这，我发现使用">
+<meta property="og:description" content="Git 自定义命令 前言 在使用 hexo 搭建个人博客时, 共两种部署的方法. 分别为:  本地利用 hexo 的插件 hexo-deployer-git 来实现部署, 缺点是需要多敲几个命令行且不方便对源码进行云端备份 使用 Github Action 的 workflow 自动化部署, 优势就是可以在 push 备份源码的同时自动检测行为并自动构建部署代码  看似十分方便但是问题也出在这,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-21T05:55:02.131Z">
-<meta property="article:modified_time" content="2024-03-21T02:08:56.809Z">
+<meta property="article:modified_time" content="2024-09-01T05:03:57.000Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -246,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          439 字
+          438 字
         
       </span>
     
@@ -320,7 +320,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月21日 上午
+                    本文最后更新于 2024年9月1日 下午
                   
                 
               </p>
@@ -328,23 +328,22 @@
             
               <div class="markdown-body">
                 
-                <h1>Git 自定义命令</h1>
+                <h2 id="Git-自定义命令">Git 自定义命令</h2>
 <h2 id="前言">前言</h2>
-<p>在使用 hexo 搭建个人博客时，共两种部署的方法。分别为：</p>
+<p>在使用 hexo 搭建个人博客时, 共两种部署的方法. 分别为:</p>
 <ul>
-<li>本地利用 hexo 的插件 hexo-deployer-git 来实现部署，缺点是需要多敲几个命令行且不方便对源码进行云端备份</li>
-<li>使用 Github Action 的 workflow 自动化部署，优势就是可以在 push 备份源码的同时自动检测行为并自动构建部署代码</li>
+<li>本地利用 hexo 的插件 hexo-deployer-git 来实现部署, 缺点是需要多敲几个命令行且不方便对源码进行云端备份</li>
+<li>使用 Github Action 的 workflow 自动化部署, 优势就是可以在 push 备份源码的同时自动检测行为并自动构建部署代码</li>
 </ul>
-<p>看似十分方便但是问题也出在这，我发现使用 Github Action 的 workflow 自动化部署 的站点内容与使用 hexo 插件部署的内容不一致。由于不懂 yml 的构建语法与逻辑以及关于 git 用户授权等知识，以至于我始终无法 debug 问题到底出在哪。最终决定放弃使用 Github Action，还是老老实实敲 hexo 的命令行，但是我还需要进行笔记的源码备份，故还需要在 push 到云端。</p>
-<p>为了尽可能的简化命令行，我尝试进行 git 命令的宏定义。查询一番后发现确实可以，故有了本篇博客，下面开始介绍如何进行 git 的命令的宏定义：</p>
+<p>看似十分方便但是问题也出在这, 我发现使用 Github Action 的 workflow 自动化部署 的站点内容与使用 hexo 插件部署的内容不一致. 由于不懂 yml 的构建语法与逻辑以及关于 git 用户授权等知识, 以至于我始终无法 debug 问题到底出在哪. 最终决定放弃使用 Github Action, 还是老老实实敲 hexo 的命令行, 但是我还需要进行笔记的源码备份, 故还需要在 push 到云端.</p>
+<p>为了尽可能的简化命令行, 我尝试进行 git 命令的宏定义. 查询一番后发现确实可以, 故有了本篇博客, 下面开始介绍如何进行 git 的命令的宏定义：</p>
 <h2 id="宏定义">宏定义</h2>
 <blockquote>
 <p>操作系统为 Windows OS 11</p>
 </blockquote>
-<p>我们进入 Git 软件的安装目录，我的是 <code>D:\installation_package\Git</code>，然后进入 <code>etc\profile.d</code> 并编辑 <code>aliases.sh</code> 文件，默认内容为：</p>
+<p>我们进入 Git 软件的安装目录, 我的是 <code>D:\installation_package\Git</code>, 然后进入 <code>etc\profile.d</code> 并编辑 <code>aliases.sh</code> 文件, 默认内容为：</p>
 <figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># Some good standards, which are not used if the user</span><br><span class="hljs-comment"># creates his/her own .bashrc/.bash_profile</span><br><br><span class="hljs-comment"># --show-control-chars: help showing Korean or accented characters</span><br><span class="hljs-built_in">alias</span> <span class="hljs-built_in">ls</span>=<span class="hljs-string">'ls -F --color=auto --show-control-chars'</span><br><span class="hljs-built_in">alias</span> ll=<span class="hljs-string">'ls -l'</span><br><br><span class="hljs-keyword">case</span> <span class="hljs-string">"<span class="hljs-variable">$TERM</span>"</span> <span class="hljs-keyword">in</span><br>xterm*)<br>	<span class="hljs-comment"># The following programs are known to require a Win32 Console</span><br>	<span class="hljs-comment"># for interactive usage, therefore let's launch them through winpty</span><br>	<span class="hljs-comment"># when run inside `mintty`.</span><br>	<span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> node ipython php php5 psql python2.7 winget<br>	<span class="hljs-keyword">do</span><br>		<span class="hljs-keyword">case</span> <span class="hljs-string">"<span class="hljs-subst">$(type -p <span class="hljs-string">"<span class="hljs-variable">$name</span>"</span>.exe 2&gt;/dev/null)</span>"</span> <span class="hljs-keyword">in</span><br>		<span class="hljs-string">''</span>|/usr/bin/*) <span class="hljs-built_in">continue</span>;;<br>		<span class="hljs-keyword">esac</span><br>		<span class="hljs-built_in">alias</span> <span class="hljs-variable">$name</span>=<span class="hljs-string">"winpty <span class="hljs-variable">$name</span>.exe"</span><br>	<span class="hljs-keyword">done</span><br>	;;<br><span class="hljs-keyword">esac</span><br></code></pre></td></tr></tbody></table></figure>
-<p>我们向 alias 中添加一行自定义的宏定义：<code>alias gph='git push &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d'</code>，就可以实现在 push 的同时使用 hexo 的部署插件进行部署了！</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>N</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">END</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">EN</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></p>
+<p>我们向 alias 中添加一行自定义的宏定义: <code>alias gph='git push &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo d'</code>, 就可以实现在 push 的同时使用 hexo 的部署插件进行部署了!</p>
 
                 
               </div>
@@ -409,7 +408,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年3月21日</div>
+          <div>2024年9月1日</div>
         </div>
       
       
@@ -440,9 +439,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/DevTools/Git/git-learning-record/" title="git-learning-record">
+                      <a href="/DevTools/Git/git-basic/" title="git-basic">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">git-learning-record</span>
+                        <span class="hidden-mobile">git-basic</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -524,7 +523,7 @@
         aria-expanded="true"
       >
         DevTools
-        <span class="list-group-count">(9)</span>
+        <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -652,7 +651,7 @@
         aria-expanded="true"
       >
         Git
-        <span class="list-group-count">(3)</span>
+        <span class="list-group-count">(4)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -666,10 +665,10 @@
     
       
       
-        <a href="/DevTools/Git/git-learning-record/" title="git-learning-record"
+        <a href="/DevTools/Git/git-basic/" title="git-basic"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">git-learning-record</span>
+          <span class="category-post">git-basic</span>
         </a>
       
     
@@ -688,6 +687,15 @@
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">git-self-define-command</span>
+        </a>
+      
+    
+      
+      
+        <a href="/DevTools/Git/solve-git-problems/" title="solve-git-problems"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">solve-git-problems</span>
         </a>
       
     

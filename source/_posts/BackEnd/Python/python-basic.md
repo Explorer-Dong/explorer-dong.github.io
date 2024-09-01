@@ -301,7 +301,7 @@ TypeError: 'str' object does not support item assignment
 
 [Python 对象引用、可变性和垃圾回收](https://www.cnblogs.com/demon89/p/7400234.html)
 
-## 查看本地库的安装位置
+## 查看库的安装位置
 
 由于本地安装了多个 python 解释器，所以想要打印某个版本的解释器下载的「包或模块」的路径，整理一下大约有两种方法
 

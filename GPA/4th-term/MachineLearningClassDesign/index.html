@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409050938138.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409050938971.png">
 <meta property="article:published_time" content="2024-08-27T15:32:48.866Z">
-<meta property="article:modified_time" content="2024-09-05T01:38:23.362Z">
+<meta property="article:modified_time" content="2024-09-06T15:33:03.194Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -250,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          2.6k 字
         
       </span>
     
@@ -261,7 +261,7 @@
         
         
         
-          16 分钟
+          17 分钟
         
       </span>
     
@@ -324,7 +324,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月5日 上午
+                    本文最后更新于 2024年9月6日 晚上
                   
                 
               </p>
@@ -532,7 +532,7 @@ c-10,0,-16.667,5,-20,15z M188 15 H145 v585 v1800 v585 h43z"></path></svg></span>
 <h3 id="3-1-正负样本平衡">3.1 正负样本平衡</h3>
 <p>由于高糖阶段相对于非高糖阶段极少, 因此有必要调整正负样本的比例. 我们定义高糖阶段为正样本, 非高糖阶段为负样本. 引入 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>SMOTE</mtext></mrow><annotation encoding="application/x-tex">\text{SMOTE}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">SMOTE</span></span></span></span></span> 过采样方法来提升正例样本的数量. 具体的, 对于每个用户的 1436 条样本数据, 如果高糖概率超过了临界值, 则定义为高糖阶段, 反之为非高糖阶段, 我们提升高糖阶段的样本量. 其中临界值为超参数.</p>
 <h3 id="3-2-模型1-XGBoost">3.2 模型1 XGBoost</h3>
-<p>我们首先使用机器学习算法中的串行式集成学习模型 XGBoost 进行训练与测试. 具体的, 我们在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16</mn></mrow><annotation encoding="application/x-tex">16</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">16</span></span></span></span> 个用户的数据集中选择 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span> 人的数据作为训练集, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 人的数据作为验证集, 训练得到最佳超参数组合. 剩余 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> 人的数据作为测试集, 得到 <strong>统计高糖发生次数</strong> 的准确率 (Accuracy) 和召回率 (Recall) 的预测结果如下:</p>
+<p>我们首先使用机器学习算法中的串行式集成学习模型 XGBoost 进行训练与测试. 具体的, 我们在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16</mn></mrow><annotation encoding="application/x-tex">16</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">16</span></span></span></span> 个用户的数据集中选择 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span> 人的数据作为训练集, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 人的数据作为验证集, 训练得到最佳超参数组合. 剩余 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> 人的数据作为测试集, 得到 <strong>统计高糖发生次数</strong> 的准确率 (Accuracy), 召回率 (Recall), 均方误差 (RMSE) 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> 分数的结果如下:</p>
 <table>
 <thead>
 <tr>
@@ -544,21 +544,33 @@ c-10,0,-16.667,5,-20,15z M188 15 H145 v585 v1800 v585 h43z"></path></svg></span>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">Accuracy</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Accuracy</mtext></mrow><annotation encoding="application/x-tex">\text{Accuracy}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Accuracy</span></span></span></span></span></td>
 <td style="text-align:center">0.7704</td>
 <td style="text-align:center">0.7211</td>
 <td style="text-align:center">0.8152</td>
 </tr>
 <tr>
-<td style="text-align:center">Recall</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Recall</mtext></mrow><annotation encoding="application/x-tex">\text{Recall}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Recall</span></span></span></span></span></td>
 <td style="text-align:center">0.6391</td>
 <td style="text-align:center">0.5689</td>
 <td style="text-align:center">0.7624</td>
 </tr>
+<tr>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>RMSE</mtext></mrow><annotation encoding="application/x-tex">\text{RMSE}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">RMSE</span></span></span></span></span></td>
+<td style="text-align:center">38.7937</td>
+<td style="text-align:center">29.3371</td>
+<td style="text-align:center">47.3028</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mtext>R</mtext><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\text{R}^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8873em;"></span><span class="mord"><span class="mord text"><span class="mord">R</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8873em;"><span style="top:-3.1362em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></td>
+<td style="text-align:center">-4.2223</td>
+<td style="text-align:center">-8.1471</td>
+<td style="text-align:center">-2.1911</td>
+</tr>
 </tbody>
 </table>
 <h3 id="3-3-模型2-MLP">3.3 模型2 MLP</h3>
-<p>接着我们使用深度学习算法中的多层感知机模型 MLP 进行训练与测试. 同样的, 我们在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16</mn></mrow><annotation encoding="application/x-tex">16</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">16</span></span></span></span> 个用户的数据集中选择 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span> 人的数据作为训练集, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 人的数据作为验证集, 训练得到最佳超参数组合. 剩余 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> 人的数据作为测试集, 得到 <strong>统计高糖发生次数</strong> 的准确率 (Accuracy) 和召回率 (Recall) 的预测结果如下:</p>
+<p>接着我们使用深度学习算法中的多层感知机模型 MLP 进行训练与测试. 同样的, 我们在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>16</mn></mrow><annotation encoding="application/x-tex">16</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">16</span></span></span></span> 个用户的数据集中选择 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span> 人的数据作为训练集, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 人的数据作为验证集, 训练得到最佳超参数组合. 剩余 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> 人的数据作为测试集, 得到 <strong>统计高糖发生次数</strong> 的准确率 (Accuracy), 召回率 (Recall), 均方误差 (RMSE) 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> 分数的结果如下:</p>
 <table>
 <thead>
 <tr>
@@ -570,16 +582,28 @@ c-10,0,-16.667,5,-20,15z M188 15 H145 v585 v1800 v585 h43z"></path></svg></span>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">Accuracy</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Accuracy</mtext></mrow><annotation encoding="application/x-tex">\text{Accuracy}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Accuracy</span></span></span></span></span></td>
 <td style="text-align:center">0.7703</td>
 <td style="text-align:center">0.7201</td>
 <td style="text-align:center">0.8152</td>
 </tr>
 <tr>
-<td style="text-align:center">Recall</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Recall</mtext></mrow><annotation encoding="application/x-tex">\text{Recall}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Recall</span></span></span></span></span></td>
 <td style="text-align:center">0.6414</td>
 <td style="text-align:center">0.5759</td>
 <td style="text-align:center">0.7624</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>RMSE</mtext></mrow><annotation encoding="application/x-tex">\text{RMSE}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">RMSE</span></span></span></span></span></td>
+<td style="text-align:center">38.7937</td>
+<td style="text-align:center">29.3371</td>
+<td style="text-align:center">47.3028</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mtext>R</mtext><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\text{R}^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8873em;"></span><span class="mord"><span class="mord text"><span class="mord">R</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8873em;"><span style="top:-3.1362em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></td>
+<td style="text-align:center">-4.2094</td>
+<td style="text-align:center">-8.1471</td>
+<td style="text-align:center">-2.7533</td>
 </tr>
 </tbody>
 </table>
@@ -654,7 +678,7 @@ c-10,0,-16.667,5,-20,15z M188 15 H145 v585 v1800 v585 h43z"></path></svg></span>
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月5日</div>
+          <div>2024年9月6日</div>
         </div>
       
       

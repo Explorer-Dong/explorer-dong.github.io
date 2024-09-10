@@ -199,3 +199,76 @@ signed main() {
     return 0;
 }
 ```
+
+### 【哈希/枚举/思维】Torn Lucky Ticket
+
+https://codeforces.com/contest/1895/problem/C
+
+> 题意: 给定一个长度为 n 的字符串数组 nums, 数组的每一个元素长度不超过 5 且仅由数字组成. 问能找到多少对 $(i,j)$ 可以使得拼接后的 $nums[i]+nums[j]$ 长度为偶数且左半部分的数字之和与右半部分的数字之和相等.
+>
+> 思路: 
+>
+> - 首先最暴力的做法就是 $O(n^2)$ 枚举,所有的 $(i,j)$ 然后 check 合法性.
+>
+> - 尝试优化掉第二层的枚举循环. 对于第二层循环, 我们就是要寻找合适的 $nums[j]$ 并和当前的 $nums[i]$ 拼接. 显然我们可以通过扫描当前的 $nums[i]$ 并 $O(1)$ 的计算出所有 $len(nums[j])\le len(nums[i])$ 且可以和 $nums[i]$ 匹配的字符串的 `[长度][数字和]` 信息, 只需要一个二维数组预存储每一个字符串的 **长度** **数字和** 信息即可.
+>
+> - 那么对于 $len(nums[j])> len(nums[i])$ 的情况如何统计呢. 显然此时我们没法 $O(1)$ 的检查 $nums[i]+nums[j]$ 的合法性. 不妨换一个角度, 当我们枚举 $nums[i]$ 时:
+>     $$
+>     \text{统计右侧拼接长度更大的 nums[j] 的合法情况数} \iff \text{统计左侧拼接长度更小的 nums[j] 的合法情况数}
+>     $$
+>     于是合法情况数就可以表示为 $\displaystyle \sum_{i=0}^{n-1}\big[\text{cond}_1(nums[i])+\text{cond}_2(nums[i])\big]$, 其中第一种情况 $\text{cond}_1$ 就是统计右侧拼接长度更小的字符串数量, 第二种情况 $\text{cond}_1$ 就是统计左侧拼接长度更小的字符串数量. 这两步可以同时计算.
+>
+> 时间复杂度: $O(n)$
+
+```python
+from typing import List, Tuple, Dict, Optional
+from collections import defaultdict, deque
+from itertools import combinations, permutations
+import math, heapq, queue
+
+II = lambda: int(input())
+FI = lambda: float(input())
+MII = lambda: tuple(map(int, input().split()))
+LII = lambda: list(map(int, input().split()))
+LSI = lambda: list(map(str, input().split()))
+
+def solve() -> Optional:
+    n, nums = II(), LSI()
+    
+    f = [[0 for _ in range(46)] for _ in range(6)]
+    for num in nums:
+        m = len(num)
+        s = sum([int(c) for c in num])
+        f[m][s] += 1
+    
+    res = 0
+    for num in nums:
+        m = len(num)
+        s = [0] * (m + 1)
+        for i in range(m - 1, -1, -1):
+            s[i] = s[i + 1] + int(num[i])
+        
+        # cond1: now + right -> len(now) >= len(right)
+        for i in range(m - 1, -1, -1):
+            now_len, now_sum = i + 1, s[0] - s[i + 1]
+            r_len, r_sum = now_len - (m - 1 - i), now_sum - s[i + 1]
+            if 1 <= r_len <= now_len and r_sum >= 0:
+                res += f[r_len][r_sum]
+        
+        # cond2: left + now -> len(left) < len(now)
+        for i in range(m):
+            now_len, now_sum = m - i, s[i]
+            l_len, l_sum = now_len - i, now_sum - (s[0] - s[i])
+            if 1 <= l_len < now_len and l_sum >= 0:
+                res += f[l_len][l_sum]
+    
+    return res
+
+if __name__ == '__main__':
+    OUTs = []
+    N = 1
+    # N = II()
+    for _ in range(N):
+        OUTs.append(solve())
+    print('\n'.join(map(str, OUTs)))
+```

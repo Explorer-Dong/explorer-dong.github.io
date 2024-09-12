@@ -16,21 +16,22 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="Hexo 配置 mermaid 问题复现 本地 typora 正常渲染，但是服务器渲染异常。发现是服务器的渲染脚本版本过低。 尝试解决 修改 _config_fluid.yml 中的 mermaid CDN 信息。由于原来的 CDN 貌似挂了，所以直接用官方的。  注：官网给出的链接无法在 hexo 的 fluid 主题中正常渲染，因为多了一个文件名 mermaid.min.js，显然 fluid">
+    <meta name="description" content="Hexo 配置 mermaid 问题复现 本地 typora 正常渲染，但是服务器渲染异常。发现是服务器的渲染脚本版本过低，无法渲染最新的 mermaid 版本内容。  尝试解决 修改 _config_fluid.yml 中的 mermaid CDN 信息。由于原来的 CDN 貌似挂了，所以直接用官方的。  注：官网给出的链接无法在 hexo 的 fluid 主题中正常渲染，因为多了一个文件名 m">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo-config-mermaid">
 <meta property="og:url" content="https://blog.dwj601.cn/FrontEnd/Hexo/hexo-config-mermaid/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="Hexo 配置 mermaid 问题复现 本地 typora 正常渲染，但是服务器渲染异常。发现是服务器的渲染脚本版本过低。 尝试解决 修改 _config_fluid.yml 中的 mermaid CDN 信息。由于原来的 CDN 貌似挂了，所以直接用官方的。  注：官网给出的链接无法在 hexo 的 fluid 主题中正常渲染，因为多了一个文件名 mermaid.min.js，显然 fluid">
+<meta property="og:description" content="Hexo 配置 mermaid 问题复现 本地 typora 正常渲染，但是服务器渲染异常。发现是服务器的渲染脚本版本过低，无法渲染最新的 mermaid 版本内容。  尝试解决 修改 _config_fluid.yml 中的 mermaid CDN 信息。由于原来的 CDN 貌似挂了，所以直接用官方的。  注：官网给出的链接无法在 hexo 的 fluid 主题中正常渲染，因为多了一个文件名 m">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409120854588.png">
 <meta property="og:image" content="d:%5C%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9B%98_images%5Ctypora-user-images%5Cimage-20240912084559272.png">
-<meta property="og:image" content="d:%5C%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9B%98_images%5Ctypora-user-images%5Cimage-20240912084951170.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409120850752.png">
 <meta property="article:published_time" content="2024-09-12T00:41:50.570Z">
-<meta property="article:modified_time" content="2024-09-12T00:49:59.654Z">
+<meta property="article:modified_time" content="2024-09-12T00:54:20.104Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="d:%5C%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9B%98_images%5Ctypora-user-images%5Cimage-20240912084559272.png">
+<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409120854588.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -249,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          139 字
+          151 字
         
       </span>
     
@@ -333,14 +334,15 @@
                 
                 <h2 id="Hexo-配置-mermaid">Hexo 配置 mermaid</h2>
 <h3 id="问题复现">问题复现</h3>
-<p>本地 typora 正常渲染，但是服务器渲染异常。发现是服务器的渲染脚本版本过低。</p>
+<p>本地 typora 正常渲染，但是服务器渲染异常。发现是服务器的渲染脚本版本过低，无法渲染最新的 mermaid 版本内容。</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409120854588.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="本地 typora 支持的 mermaid 版本"></p>
 <h3 id="尝试解决">尝试解决</h3>
 <p>修改 _config_fluid.yml 中的 mermaid CDN 信息。由于原来的 CDN 貌似挂了，所以直接用官方的。</p>
 <p><img src="D:%5C%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9B%98_images%5Ctypora-user-images%5Cimage-20240912084559272.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="image-20240912084559272"></p>
 <p>注：<a target="_blank" rel="noopener" href="https://www.jsdelivr.com/package/npm/mermaid?version=10.9.1">官网</a>给出的链接无法在 hexo 的 fluid 主题中正常渲染，因为多了一个文件名 <code>mermaid.min.js</code>，显然 fluid 的 cdn 配置会在根目录自动寻找 <code>.js</code> 文件进行渲染。</p>
 <h3 id="问题解决">问题解决</h3>
 <p>最后服务器可以正常渲染 mermaid 图标。</p>
-<p><img src="D:%5C%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9B%98_images%5Ctypora-user-images%5Cimage-20240912084951170.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="正常渲染"></p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409120850752.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="正常渲染"></p>
 
                 
               </div>
@@ -813,7 +815,7 @@
 
 
   <script>
-  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/mermaid@8.4.1/dist/mermaid.min.js', function() {
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js', function() {
     mermaid.initialize({"theme":"default"});
 
     Fluid.utils.listenDOMLoaded(function() {

@@ -16,18 +16,20 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="神经网络与深度学习 前言 学科地位：    主讲教师 学分配额 学科类别     宋歌 3 自发课    成绩组成：    平时 期中 期末     ？% ？% ？%    教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN号     神经网络与深度学习 《神经网络与深度学习》 1 邱锡鹏 机械工业出版社 978-7-111-64968-7    学习资源：  课程官网：https">
+    <meta name="description" content="神经网络与深度学习 前言 学科地位：    主讲教师 学分配额 学科类别     宋歌 3 自发课    成绩组成：    小组作业 个人大作业     40% 60%    教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN号     神经网络与深度学习 《神经网络与深度学习》 1 邱锡鹏 机械工业出版社 978-7-111-64968-7    学习资源：  课程官网：http">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NeuralNetworkAndDeepLearning">
 <meta property="og:url" content="https://blog.dwj601.cn/GPA/5th-term/NeuralNetworkAndDeepLearning/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="神经网络与深度学习 前言 学科地位：    主讲教师 学分配额 学科类别     宋歌 3 自发课    成绩组成：    平时 期中 期末     ？% ？% ？%    教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN号     神经网络与深度学习 《神经网络与深度学习》 1 邱锡鹏 机械工业出版社 978-7-111-64968-7    学习资源：  课程官网：https">
+<meta property="og:description" content="神经网络与深度学习 前言 学科地位：    主讲教师 学分配额 学科类别     宋歌 3 自发课    成绩组成：    小组作业 个人大作业     40% 60%    教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN号     神经网络与深度学习 《神经网络与深度学习》 1 邱锡鹏 机械工业出版社 978-7-111-64968-7    学习资源：  课程官网：http">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409121508150.png">
 <meta property="article:published_time" content="2024-08-27T11:56:39.488Z">
-<meta property="article:modified_time" content="2024-08-27T15:31:42.084Z">
+<meta property="article:modified_time" content="2024-09-12T13:04:14.631Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409121508150.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -246,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          114 字
+          725 字
         
       </span>
     
@@ -257,7 +259,7 @@
         
         
         
-          1 分钟
+          5 分钟
         
       </span>
     
@@ -320,7 +322,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年8月27日 晚上
+                    本文最后更新于 2024年9月12日 晚上
                   
                 
               </p>
@@ -351,16 +353,14 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:center">平时</th>
-<th style="text-align:center">期中</th>
-<th style="text-align:center">期末</th>
+<th style="text-align:center">小组作业</th>
+<th style="text-align:center">个人大作业</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">？%</td>
-<td style="text-align:center">？%</td>
-<td style="text-align:center">？%</td>
+<td style="text-align:center">40%</td>
+<td style="text-align:center">60%</td>
 </tr>
 </tbody>
 </table>
@@ -391,7 +391,39 @@
 <ul>
 <li>课程官网：<a target="_blank" rel="noopener" href="https://nndl.github.io/">https://nndl.github.io/</a></li>
 </ul>
-<h2 id="第1章-绪论">第1章 绪论</h2>
+<p>为什么要学这门课？</p>
+<blockquote></blockquote>
+<p>会收获什么？</p>
+<blockquote></blockquote>
+<h2 id="概述">概述</h2>
+<h3 id="一、绪论">一、绪论</h3>
+<p><strong>表示学习是什么</strong>？与传统的特征工程目的一致，为了得到数据中的更好的特征。不同的是，特征工程中的策略都是可控的方式，而表示学习就是利用深度学习从数据中学习高层的有效特征。</p>
+<p><strong>深度学习是什么</strong>？我们知道机器学习就是在手动处理完特征后，构建对应的模型 <strong>预测输出</strong>。而深度学习就是将机器学习的手动特征工程也用模型进行 <strong>表示学习</strong> 来学习出有效特征，然后继续构建模型 <strong>预测输出</strong>。如下图所示：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409121508150.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="深度学习的数据处理流程"></p>
+<p><strong>为什么会有深度学习</strong>？最简单的一点就是，很多特征我们根本没法定义一种表示规则来表示特征，比如说对于图像，怎么定义复杂的图像的特征呢？比如说对于音频，又怎么定义复杂的音频的特征呢？没办法，我们直接学特征！</p>
+<p><strong>神经网络是什么</strong>？就是万千模型中的一种，仅此而已。</p>
+<p><strong>为什么用神经网络进行深度学习</strong>？有了上面对深度学习定义的理解，可以发现其中最具有挑战性的特点就是，模型怎么知道什么才是好特征？什么是不好的特征？神经网络可以很好的解决这个问题。通过由浅到深层层神经元的特征提取，越深的神经元就可以学习更高语义的特征。说的高大上一点就是，神经网络可以很好的解决深度学习中的「贡献度分配」问题。</p>
+<h3 id="二、机器学习概述">二、机器学习概述</h3>
+<h3 id="三、线性模型">三、线性模型</h3>
+<h2 id="有监督学习">有监督学习</h2>
+<h3 id="四、基础神经网络模型">四、基础神经网络模型</h3>
+<h4 id="前馈神经网络">前馈神经网络</h4>
+<h4 id="卷积神经网络">卷积神经网络</h4>
+<h4 id="循环神经网络">循环神经网络</h4>
+<h3 id="五、记忆与注意力机制">五、记忆与注意力机制</h3>
+<h3 id="六、网络优化与正则化">六、网络优化与正则化</h3>
+<h2 id="无监督学习">无监督学习</h2>
+<h3 id="七、概率图模型">七、概率图模型</h3>
+<h3 id="八、深度生成模型">八、深度生成模型</h3>
+<h2 id="强化学习">强化学习</h2>
+<h3 id="九、深度强化学习">九、深度强化学习</h3>
+<h2 id="个人大作业">个人大作业</h2>
+<ol>
+<li>背景介绍：做好国内外研究现状的调研</li>
+<li>项目理解：深入对模型与代码的理解</li>
+<li>充分实验：对比实验、验证实验（消融实验）、参数实验（验证模型对不同的参数的敏感性）</li>
+<li>项目总结</li>
+</ol>
 
                 
               </div>
@@ -456,7 +488,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月27日</div>
+          <div>2024年9月12日</div>
         </div>
       
       

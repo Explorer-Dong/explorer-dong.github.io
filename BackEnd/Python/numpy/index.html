@@ -16,15 +16,15 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="numpy 学习记录 一、矩阵运算 numpy 的矩阵运算没有 matlab 来的那么显然，因为有一些隐式的规则，因此记录一下相关用法。首先需要注意的是所有的容器类型全都是 np.ndarray。共分为以下几种数据结构：  标量（Scalar）：一个单独的数字，没有维度 向量（Vector）：一维数组 矩阵（Matrix）：二维数组 张量（Tensor）：三维或更多维度的数组  1.1 元素级运算">
+    <meta name="description" content="numpy 学习记录 本文记录零碎时间学习 numpy 的笔记。 np.array 用法 使用 np.array() 方法可以使用列表或元组用来初始化一个 numpy 数组，数据类型为 np.ndarray，当然可以通过 dtype 指定元素类型。对于数据类型为 ndarray 的对象 arr，常用的方法包括但不限于以下几种： 创建和初始化  np.array(object, dtype&#x3D;None">
 <meta property="og:type" content="article">
 <meta property="og:title" content="numpy">
 <meta property="og:url" content="https://blog.dwj601.cn/BackEnd/Python/numpy/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="numpy 学习记录 一、矩阵运算 numpy 的矩阵运算没有 matlab 来的那么显然，因为有一些隐式的规则，因此记录一下相关用法。首先需要注意的是所有的容器类型全都是 np.ndarray。共分为以下几种数据结构：  标量（Scalar）：一个单独的数字，没有维度 向量（Vector）：一维数组 矩阵（Matrix）：二维数组 张量（Tensor）：三维或更多维度的数组  1.1 元素级运算">
+<meta property="og:description" content="numpy 学习记录 本文记录零碎时间学习 numpy 的笔记。 np.array 用法 使用 np.array() 方法可以使用列表或元组用来初始化一个 numpy 数组，数据类型为 np.ndarray，当然可以通过 dtype 指定元素类型。对于数据类型为 ndarray 的对象 arr，常用的方法包括但不限于以下几种： 创建和初始化  np.array(object, dtype&#x3D;None">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-16T02:05:22.270Z">
-<meta property="article:modified_time" content="2024-08-30T03:39:15.635Z">
+<meta property="article:modified_time" content="2024-09-13T10:58:57.112Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -246,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.6k 字
         
       </span>
     
@@ -257,7 +257,7 @@
         
         
         
-          8 分钟
+          10 分钟
         
       </span>
     
@@ -320,7 +320,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年8月30日 中午
+                    本文最后更新于 2024年9月13日 晚上
                   
                 
               </p>
@@ -329,76 +329,101 @@
               <div class="markdown-body">
                 
                 <h2 id="numpy-学习记录">numpy 学习记录</h2>
-<h2 id="一、矩阵运算">一、矩阵运算</h2>
-<p>numpy 的矩阵运算没有 matlab 来的那么显然，因为有一些隐式的规则，因此记录一下相关用法。首先需要注意的是所有的容器类型全都是 <code>np.ndarray</code>。共分为以下几种数据结构：</p>
+<p>本文记录零碎时间学习 numpy 的笔记。</p>
+<h2 id="np-array-用法">np.array 用法</h2>
+<p>使用 <code>np.array()</code> 方法可以使用列表或元组用来初始化一个 numpy 数组，数据类型为 <code>np.ndarray</code>，当然可以通过 <code>dtype</code> 指定元素类型。对于数据类型为 <code>ndarray</code> 的对象 <code>arr</code>，常用的方法包括但不限于以下几种：</p>
+<h3 id="创建和初始化">创建和初始化</h3>
+<ul>
+<li><code>np.array(object, dtype=None)</code>：从列表、元组等对象创建一个 <code>ndarray</code>。</li>
+<li><code>np.zeros(shape, dtype=float)</code>：创建一个全零的数组。</li>
+<li><code>np.ones(shape, dtype=float)</code>：创建一个全一的数组。</li>
+<li><code>np.empty(shape, dtype=float)</code>：创建一个未初始化的数组。</li>
+<li><code>np.random.rand(shape)</code>：返回一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[0,1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 取值范围的数组。</li>
+<li><code>np.arange(start, stop, step, dtype=None)</code>：创建一个等差数列的数组。</li>
+<li><code>np.linspace(start, stop, num=50, dtype=None)</code>：创建一个等间隔的数组。</li>
+</ul>
+<h3 id="形状操作">形状操作</h3>
+<ul>
+<li><code>arr.shape</code>：返回数组的形状维度。</li>
+<li><code>arr.reshape(newshape)</code>：返回改变形状后的数组（注：新形状的元素个数与原来的元素个数必须相等）。</li>
+<li><code>arr.flatten()</code>：返回将原数组展平后的一维数组。</li>
+<li><code>arr.transpose()</code> 或 <code>arr.T</code>：返回转置后的数组。</li>
+</ul>
+<h3 id="索引和切片">索引和切片</h3>
+<ul>
+<li><code>arr[index]</code>：通过索引访问数组元素。</li>
+<li><code>arr[start:stop:step]</code>：通过切片访问数组元素。</li>
+<li><code>arr[x, y]</code>：高维元素可以用逗号分隔符访问（注：其中的 x 可以是数字、切片或数组）。</li>
+</ul>
+<h3 id="数学运算">数学运算</h3>
+<p><code>axis</code> 是轴的意思，numpy 中 <code>axis=0</code> 表示按列，<code>axis=1</code> 表示按行。</p>
+<ul>
+<li><code>arr.sum(axis=None)</code>：计算数组元素的和。</li>
+<li><code>arr.mean(axis=None)</code>：计算数组元素的平均值。</li>
+<li><code>arr.std(axis=None)</code>：计算数组元素的标准差。</li>
+<li><code>arr.var(axis=None)</code>：计算数组元素的方差。</li>
+<li><code>arr.max(axis=None)</code>：返回数组的最大值。</li>
+<li><code>arr.min(axis=None)</code>：返回数组的最小值。</li>
+<li><code>arr.cumsum(axis=None)</code>：返回数组的前缀和。</li>
+<li><code>arr.cumprod(axis=None)</code>：返回数组的前缀积。</li>
+</ul>
+<h3 id="逻辑运算">逻辑运算</h3>
+<ul>
+<li><code>arr.all()</code>：检查数组中所有元素是否为真。</li>
+<li><code>arr.any()</code>：检查数组中是否有任何元素为真。</li>
+</ul>
+<h3 id="排序和搜索">排序和搜索</h3>
+<ul>
+<li><code>np.sort(arr)</code>：返回对数组进行排序的新数组。</li>
+<li><code>np.argsort(arr)</code>：返回排序后每个位置在原数组中的位置索引。</li>
+<li><code>np.argmax(arr)</code>：返回数组中最大值的索引。</li>
+<li><code>np.argmin(arr)</code>：返回数组中最小值的索引。</li>
+</ul>
+<h3 id="其他常用方法">其他常用方法</h3>
+<ul>
+<li><code>arr.astype(dtype)</code>：将数组转换为指定数据类型。</li>
+<li><code>arr.copy()</code>：创建数组的副本。</li>
+<li><code>arr.tolist()</code>：将数组转换为列表。</li>
+</ul>
+<h2 id="矩阵运算">矩阵运算</h2>
+<p>numpy 的矩阵运算没有 matlab 来的那么显然，因为有一些隐式的规则。需要注意的是所有的容器类型全都是 <code>np.ndarray</code>。共分为以下几种数据结构：</p>
 <ul>
 <li>标量（Scalar）：一个单独的数字，没有维度</li>
 <li>向量（Vector）：一维数组</li>
 <li>矩阵（Matrix）：二维数组</li>
 <li>张量（Tensor）：三维或更多维度的数组</li>
 </ul>
-<h3 id="1-1-元素级运算">1.1 元素级运算</h3>
-<p>正确示例</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">a = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],<br>              [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])<br><br>b = np.array([[<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>],<br>              [<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>]])<br><br><span class="hljs-built_in">print</span>(a + <span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(a - <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(a * b)<br><span class="hljs-built_in">print</span>(a / b)<br></code></pre></td></tr></tbody></table></figure>
-<p>结果：</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs makefile">[[2 3 4]<br> [5 6 7]]<br>[[-1  0  1]<br> [ 2  3  4]]<br>[[ 7 16 27]<br> [40 55 72]]<br>[[0.14285714 0.25       0.33333333]<br> [0.4        0.45454545 0.5       ]]<br></code></pre></td></tr></tbody></table></figure>
-<p>错误示例：两矩阵形状必须完全一致，否则报错</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">a = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],<br>              [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])<br><br>b = np.array([[<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>],<br>              [<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>],<br>              [<span class="hljs-number">13</span>, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>]])<br><br><span class="hljs-built_in">print</span>(a + <span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(a - <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(a * b)<br><span class="hljs-built_in">print</span>(a / b)<br></code></pre></td></tr></tbody></table></figure>
-<p>结果：</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs makefile">[[2 3 4]<br> [5 6 7]]<br>[[-1  0  1]<br> [ 2  3  4]]<br> <br>---------------------------------------------------------------------------<br>ValueError                                Traceback (most recent call last)<br>Cell In[11], line 10<br>      8 print(a + 1)<br>      9 print(a - 2)<br>---&gt; 10 print(a * b)<br>     11 print(a / b)<br><br><span class="hljs-section">ValueError: operands could not be broadcast together with shapes (2,3) (3,3) </span><br></code></pre></td></tr></tbody></table></figure>
-<h3 id="1-2-向量级运算">1.2 向量级运算</h3>
+<h3 id="元素级运算">元素级运算</h3>
+<p><code>+, -, *, /, ^, sqrt</code> 等和 <strong>标量</strong> 进行运算时都是元素级运算。和 <strong>形状相同</strong> 的数组进行运算时也都是元素级运算。例如：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 输入</span><br>a = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],<br>              [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])<br>b = np.array([[<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>],<br>              [<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>]])<br><br><span class="hljs-built_in">print</span>(a + <span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(a - <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(a * b)<br><span class="hljs-built_in">print</span>(a / b)<br><br><span class="hljs-string">""" 输出</span><br><span class="hljs-string">[[2 3 4]</span><br><span class="hljs-string"> [5 6 7]]</span><br><span class="hljs-string">[[-1  0  1]</span><br><span class="hljs-string"> [ 2  3  4]]</span><br><span class="hljs-string">[[ 7 16 27]</span><br><span class="hljs-string"> [40 55 72]]</span><br><span class="hljs-string">[[0.14285714 0.25       0.33333333]</span><br><span class="hljs-string"> [0.4        0.45454545 0.5       ]]</span><br><span class="hljs-string">"""</span><br></code></pre></td></tr></tbody></table></figure>
+<p>若形状不同，则会报错：</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">ValueError: operands could not be broadcast together with shapes (2,3) (3,3)</span><br></code></pre></td></tr></tbody></table></figure>
+<h3 id="向量级运算">向量级运算</h3>
 <p>分为两类：内积（点积）和外积（叉积）</p>
 <ul>
 <li>内积相当于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mn>1</mn><mo>×</mo><mi>n</mi></mrow></msub><mo>×</mo><msub><mi>B</mi><mrow><mi>n</mi><mo>×</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">A_{1\times n}\times B_{n\times 1}=x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">×</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></li>
 <li>外积相当于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>n</mi><mo>×</mo><mn>1</mn></mrow></msub><mo>×</mo><msub><mi>B</mi><mrow><mn>1</mn><mo>×</mo><mi>m</mi></mrow></msub><mo>=</mo><msub><mi>C</mi><mrow><mi>n</mi><mo>×</mo><mi>m</mi></mrow></msub></mrow><annotation encoding="application/x-tex">A_{n\times 1} \times B_{1\times m}=C_{n\times m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">×</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2583em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span></li>
 </ul>
 <h4 id="内积（点积）">内积（点积）</h4>
-<p>常用 <code>@</code> 运算符、<code>np.dot(a, b)</code> 方法。运算结果为标量。此时可以理解为矩阵运算，但是由于 numpy 的广播机制，我们并不需要保证对齐为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>×</mo><mi>n</mi><mo separator="true">,</mo><mi>n</mi><mo>×</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1\times n,n\times 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，即可自动进行正确运算。</p>
-<p>正确示例</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br>b = np.array([<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])<br><br>c1 = a @ b<br>c2 = np.dot(a, b)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(c1), c1)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(c2), c2)<br></code></pre></td></tr></tbody></table></figure>
-<p>结果：</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile">&lt;class 'numpy.int32'&gt; 50<br>&lt;class 'numpy.int32'&gt; 50<br></code></pre></td></tr></tbody></table></figure>
-<p>错误示例：两向量长度必须完全一致，否则报错</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>])<br>b = np.array([<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])<br><br>c1 = a @ b<br>c2 = np.dot(a, b)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(c1), c1)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(c2), c2)<br></code></pre></td></tr></tbody></table></figure>
-<p>结果：报「矩阵没有对齐」的错误</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs makefile">---------------------------------------------------------------------------<br>ValueError                                Traceback (most recent call last)<br>Cell In[17], line 4<br>      1 a = np.array([1, 2, 3, 3])<br>      2 b = np.array([7, 8, 9])<br>----&gt; 4 c1 = a @ b<br>      5 c2 = np.dot(a, b)<br>      7 print(type(c1), c1)<br><br><span class="hljs-section">ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)-&gt;(n?,m?) (size 3 is different from 4)</span><br></code></pre></td></tr></tbody></table></figure>
+<p>常用 <code>@</code> 运算符、<code>np.dot(a, b)</code> 和 <code>a.dot(b)</code> 方法。运算结果为标量。此时可以理解为矩阵运算，但是由于 numpy 的广播机制，我们并不需要保证对齐为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>×</mo><mi>n</mi><mo separator="true">,</mo><mi>n</mi><mo>×</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1\times n,n\times 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 即可自动进行正确运算。例如：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 输入</span><br>a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br>b = np.array([<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])<br><br>c1 = a @ b<br>c2 = np.dot(a, b)<br>c3 = a.dot(b)<br><br><span class="hljs-built_in">print</span>(c1, <span class="hljs-built_in">type</span>(c1))<br><span class="hljs-built_in">print</span>(c2, <span class="hljs-built_in">type</span>(c2))<br><span class="hljs-built_in">print</span>(c3, <span class="hljs-built_in">type</span>(c3))<br><br><span class="hljs-string">""" 输出</span><br><span class="hljs-string">50 &lt;class 'numpy.int64'&gt;</span><br><span class="hljs-string">50 &lt;class 'numpy.int64'&gt;</span><br><span class="hljs-string">50 &lt;class 'numpy.int64'&gt;</span><br><span class="hljs-string">"""</span><br></code></pre></td></tr></tbody></table></figure>
+<p>注：两向量长度必须完全一致，否则报「矩阵没有对齐」的错误：</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)-&gt;(n?,m?) (size 3 is different from 4)</span><br></code></pre></td></tr></tbody></table></figure>
 <h4 id="外积（叉积）">外积（叉积）</h4>
-<p>常用 <code>np.outer(a, b)</code> 方法。运算结果为矩阵。</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>])<br>b = np.array([<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])<br><br>c = np.outer(a, b)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(c))<br><span class="hljs-built_in">print</span>(c)<br></code></pre></td></tr></tbody></table></figure>
-<p>结果：</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs makefile">&lt;class 'numpy.ndarray'&gt;<br>[[ 7  8  9]<br> [14 16 18]<br> [21 24 27]<br> [21 24 27]]<br></code></pre></td></tr></tbody></table></figure>
-<p><strong>进阶</strong>。如果参与运算的不是向量，而是二维矩阵甚至高维张量，该方法会将非向量数据<strong>展开成向量</strong>进行运算</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">a = np.array([[[[[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]]], [[[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]]], [[[<span class="hljs-number">5</span>, <span class="hljs-number">6</span>]]]], [[[[<span class="hljs-number">7</span>, <span class="hljs-number">8</span>]]], [[[<span class="hljs-number">9</span>, <span class="hljs-number">1</span>]]], [[[<span class="hljs-number">2</span>, <span class="hljs-number">3</span>]]]]])<br>b = np.array([[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]])<br><br>c = np.outer(a, b)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(c))<br><span class="hljs-built_in">print</span>(a.shape)<br><span class="hljs-built_in">print</span>(b.shape)<br><span class="hljs-built_in">print</span>(c.shape)<br><span class="hljs-built_in">print</span>(c)<br></code></pre></td></tr></tbody></table></figure>
-<p>结果：</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs makefile">&lt;class 'numpy.ndarray'&gt;<br>(2, 3, 1, 1, 2)<br>(2, 3)<br>(12, 6)<br>[[ 3  4  5  1  1  1]<br> [ 6  8 10  2  2  2]<br> [ 9 12 15  3  3  3]<br> [12 16 20  4  4  4]<br> [15 20 25  5  5  5]<br> [18 24 30  6  6  6]<br> [21 28 35  7  7  7]<br> [24 32 40  8  8  8]<br> [27 36 45  9  9  9]<br> [ 3  4  5  1  1  1]<br> [ 6  8 10  2  2  2]<br> [ 9 12 15  3  3  3]]<br></code></pre></td></tr></tbody></table></figure>
-<h3 id="1-3-矩阵级运算">1.3 矩阵级运算</h3>
-<p>常用 <code>@</code> 运算符、<code>np.dot(a, b)</code> 方法。运算结果为矩阵。</p>
-<p>正确示例</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">a = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],<br>              [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])<br><br>b = np.array([[<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>],<br>              [<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>]])<br><br>c1 = a @ b.T<br>c2 = np.dot(a, b.T)<br><br><span class="hljs-built_in">print</span>(a.shape, b.shape, c1.shape, c2.shape)<br><span class="hljs-built_in">print</span>(c1)<br><span class="hljs-built_in">print</span>(c2)<br></code></pre></td></tr></tbody></table></figure>
-<p>结果：</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs makefile">(2, 3) (2, 3) (2, 2) (2, 2)<br>[[ 50  68]<br> [122 167]]<br>[[ 50  68]<br> [122 167]]<br></code></pre></td></tr></tbody></table></figure>
-<p>错误示例1：全都是矩阵。此时与向量自动对齐不同，矩阵运算需要我们手动进行对齐</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">a = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],<br>              [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])<br><br>b = np.array([[<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>],<br>              [<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>]])<br><br>c1 = a @ b<br>c2 = np.dot(a, b.T)<br><br><span class="hljs-built_in">print</span>(a.shape, b.shape, c1.shape, c2.shape)<br><span class="hljs-built_in">print</span>(c1)<br><span class="hljs-built_in">print</span>(c2)<br></code></pre></td></tr></tbody></table></figure>
-<p>结果：报「矩阵没有对齐」的错误</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs makefile">---------------------------------------------------------------------------<br>ValueError                                Traceback (most recent call last)<br>Cell In[49], line 7<br>      1 a = np.array([[1, 2, 3],<br>      2               [4, 5, 6]])<br>      4 b = np.array([[7, 8, 9],<br>      5               [10, 11, 12]])<br>----&gt; 7 c1 = a @ b<br>      8 c2 = np.dot(a, b.T)<br>     10 print(a.shape, b.shape, c1.shape, c2.shape)<br><br><span class="hljs-section">ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)-&gt;(n?,m?) (size 2 is different from 3)</span><br></code></pre></td></tr></tbody></table></figure>
-<p>错误示例2：既有矩阵也有向量。此时同样需要我们手动对齐，否则报错</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br><br>b = np.array([[<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>],<br>              [<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>]])<br><br>c = a @ b<br><br><span class="hljs-built_in">print</span>(a.shape, b.shape, c.shape)<br><span class="hljs-built_in">print</span>(c)<br></code></pre></td></tr></tbody></table></figure>
-<p>结果：报「矩阵没有对齐」的错误</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs makefile">---------------------------------------------------------------------------<br>ValueError                                Traceback (most recent call last)<br>Cell In[52], line 6<br>      1 a = np.array([1, 2, 3])<br>      3 b = np.array([[7, 8, 9],<br>      4               [10, 11, 12]])<br>----&gt; 6 c = a @ b<br>      8 print(a.shape, b.shape, c.shape)<br>      9 print(c)<br><br><span class="hljs-section">ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)-&gt;(n?,m?) (size 2 is different from 3)</span><br></code></pre></td></tr></tbody></table></figure>
+<p>常用 <code>np.outer(a, b)</code> 方法。运算结果为矩阵。例如：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 输入</span><br>a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>])<br>b = np.array([<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])<br><br>c = np.outer(a, b)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(c))<br><span class="hljs-built_in">print</span>(c)<br><br><span class="hljs-string">""" 输出</span><br><span class="hljs-string">&lt;class 'numpy.ndarray'&gt;</span><br><span class="hljs-string">[[ 7  8  9]</span><br><span class="hljs-string"> [14 16 18]</span><br><span class="hljs-string"> [21 24 27]</span><br><span class="hljs-string"> [21 24 27]]</span><br><span class="hljs-string">"""</span><br></code></pre></td></tr></tbody></table></figure>
+<p><strong>进阶</strong>。如果参与运算的不是向量，而是二维矩阵甚至高维张量，该方法会将非向量数据 <strong>展开成向量</strong> 进行运算。例如：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 输入</span><br>a = np.array([[[[[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]]], [[[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]]], [[[<span class="hljs-number">5</span>, <span class="hljs-number">6</span>]]]], [[[[<span class="hljs-number">7</span>, <span class="hljs-number">8</span>]]], [[[<span class="hljs-number">9</span>, <span class="hljs-number">1</span>]]], [[[<span class="hljs-number">2</span>, <span class="hljs-number">3</span>]]]]])<br>b = np.array([[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]])<br><br>c = np.outer(a, b)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(c))<br><span class="hljs-built_in">print</span>(a.shape)<br><span class="hljs-built_in">print</span>(b.shape)<br><span class="hljs-built_in">print</span>(c.shape)<br><span class="hljs-built_in">print</span>(c)<br><br><span class="hljs-string">"""输出</span><br><span class="hljs-string">&lt;class 'numpy.ndarray'&gt;</span><br><span class="hljs-string">(2, 3, 1, 1, 2)</span><br><span class="hljs-string">(2, 3)</span><br><span class="hljs-string">(12, 6)</span><br><span class="hljs-string">[[ 3  4  5  1  1  1]</span><br><span class="hljs-string"> [ 6  8 10  2  2  2]</span><br><span class="hljs-string"> [ 9 12 15  3  3  3]</span><br><span class="hljs-string"> [12 16 20  4  4  4]</span><br><span class="hljs-string"> [15 20 25  5  5  5]</span><br><span class="hljs-string"> [18 24 30  6  6  6]</span><br><span class="hljs-string"> [21 28 35  7  7  7]</span><br><span class="hljs-string"> [24 32 40  8  8  8]</span><br><span class="hljs-string"> [27 36 45  9  9  9]</span><br><span class="hljs-string"> [ 3  4  5  1  1  1]</span><br><span class="hljs-string"> [ 6  8 10  2  2  2]</span><br><span class="hljs-string"> [ 9 12 15  3  3  3]]</span><br><span class="hljs-string">"""</span><br></code></pre></td></tr></tbody></table></figure>
+<h3 id="矩阵级运算">矩阵级运算</h3>
+<p>常用 <code>@</code> 运算符、<code>np.dot(a, b)</code> 和 <code>a.dot(b)</code> 方法。运算结果为矩阵。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 输入</span><br>a = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],<br>              [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])<br><br>b = np.array([[<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>],<br>              [<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>]])<br><br>c1 = a @ b.T<br>c2 = np.dot(a, b.T)<br><br><span class="hljs-built_in">print</span>(a.shape, b.shape, c1.shape, c2.shape)<br><span class="hljs-built_in">print</span>(c1)<br><span class="hljs-built_in">print</span>(c2)<br><br><span class="hljs-string">"""输出</span><br><span class="hljs-string">(2, 3) (2, 3) (2, 2) (2, 2)</span><br><span class="hljs-string">[[ 50  68]</span><br><span class="hljs-string"> [122 167]]</span><br><span class="hljs-string">[[ 50  68]</span><br><span class="hljs-string"> [122 167]]</span><br><span class="hljs-string">"""</span><br></code></pre></td></tr></tbody></table></figure>
+<p>注 1：全都是矩阵。此时与向量自动对齐不同，矩阵运算需要我们手动进行对齐，否则报「矩阵没有对齐」的错误。</p>
+<p>注 2：既有矩阵也有向量。此时同样需要我们手动对齐，否则报「矩阵没有对齐」的错误。</p>
 <h3 id="小结">小结</h3>
 <p>我们可以将上述总结为「元素级」运算和「矩阵级」运算。向量和矩阵统称为矩阵。张量运算机制暂时不予讨论</p>
 <ul>
-<li>对于元素级运算。如果矩阵直接和标量运算就没有约束；如果和另外一个矩阵进行标量运算就需要保证两个矩阵的<strong>形状完全一致</strong>；</li>
-<li>对于矩阵级运算。如果参与运算的<strong>只有向量</strong>则无需对齐；如果参与运算的<strong>存在矩阵</strong>则必须手动对齐。并且此时 <code>@</code> 运算符和 <code>np.dot(a, b)</code> 完全相同。</li>
+<li>对于元素级运算。如果矩阵直接和标量运算就没有约束；如果和另外一个矩阵进行标量运算就需要保证两个矩阵的 <strong>形状完全一致</strong>；</li>
+<li>对于矩阵级运算。如果 <strong>只有向量</strong> 参与运算则无需对齐；如果 <strong>存在矩阵</strong> 参与运算则必须手动对齐。并且此时 <code>@</code> 运算符和 <code>np.dot(a, b)</code> 以及 <code>a.dot(b)</code> 完全相同。</li>
 </ul>
 
                 
@@ -464,7 +489,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月30日</div>
+          <div>2024年9月13日</div>
         </div>
       
       
@@ -809,21 +834,6 @@
   
 
 
-
-
-  <script>
-  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js', function() {
-    mermaid.initialize({"theme":"default"});
-
-    Fluid.utils.listenDOMLoaded(function() {
-      Fluid.events.registerRefreshCallback(function() {
-        if ('mermaid' in window) {
-          mermaid.init();
-        }
-      });
-    });
-  });
-</script>
 
 
 

@@ -16,30 +16,29 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="解决服务器入侵攻击 刚想登录阿里云看看云 GPU 怎么租的，结果给我报了个安全问题。平时都是直接忽略，今天有兴致看了一眼，不看不知道一看吓一跳，尼玛被一个从没去过且没有挂 VPN 的 IP 登陆了。虽然不是 root 用户登的并且机子上也没啥机密文件，但是还是有一种被人看光的感觉。他爹的，我也不知道该怎么报复，记录一下修复的过程 一、确认被入侵 本来的公钥文件 authorized_keys 没了">
+    <meta name="description" content="Nginx 基础 基本概念 在正式开始介绍 nginx 时，有必要了解一下 代理系统 这个概念。所谓代理，简单来说就是连接用户与服务器的中间媒介。有正向代理、反向代理等实际应用。与以往传统的用户与服务器直连的方式不同，通过代理系统可以完成很多前者无法完成的任务，同时也有性能上质的飞跃，下面从理论的角度介绍代理系统的实际应用示例以及优势。例如： 正向代理：所谓的正向代理其实就是 面向用户 进行运作。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="solve-server-invade">
-<meta property="og:url" content="https://blog.dwj601.cn/Operation/Safe/solve-server-invade/index.html">
+<meta property="og:title" content="nginx-basic">
+<meta property="og:url" content="https://blog.dwj601.cn/Operation/Nginx/nginx-basic/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="解决服务器入侵攻击 刚想登录阿里云看看云 GPU 怎么租的，结果给我报了个安全问题。平时都是直接忽略，今天有兴致看了一眼，不看不知道一看吓一跳，尼玛被一个从没去过且没有挂 VPN 的 IP 登陆了。虽然不是 root 用户登的并且机子上也没啥机密文件，但是还是有一种被人看光的感觉。他爹的，我也不知道该怎么报复，记录一下修复的过程 一、确认被入侵 本来的公钥文件 authorized_keys 没了">
+<meta property="og:description" content="Nginx 基础 基本概念 在正式开始介绍 nginx 时，有必要了解一下 代理系统 这个概念。所谓代理，简单来说就是连接用户与服务器的中间媒介。有正向代理、反向代理等实际应用。与以往传统的用户与服务器直连的方式不同，通过代理系统可以完成很多前者无法完成的任务，同时也有性能上质的飞跃，下面从理论的角度介绍代理系统的实际应用示例以及优势。例如： 正向代理：所谓的正向代理其实就是 面向用户 进行运作。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152117426.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121682.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121637.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152152670.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152158086.png">
-<meta property="article:published_time" content="2024-06-15T12:40:50.514Z">
-<meta property="article:modified_time" content="2024-06-28T15:25:27.712Z">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120927.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120846.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126611.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126612.png">
+<meta property="article:published_time" content="2024-09-13T11:35:43.663Z">
+<meta property="article:modified_time" content="2024-09-13T12:01:12.442Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152117426.png">
+<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120927.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>solve-server-invade | Dwj の Blog</title>
+  <title>nginx-basic | Dwj の Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -229,7 +228,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="solve-server-invade"></span>
+            <span id="subtitle" data-typed-text="nginx-basic"></span>
           
         </div>
 
@@ -240,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-15 20:40" pubdate>
-          2024年6月15日 晚上
+        <time datetime="2024-09-13 19:35" pubdate>
+          2024年9月13日 晚上
         </time>
       </span>
     
@@ -252,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          518 字
+          934 字
         
       </span>
     
@@ -263,7 +262,7 @@
         
         
         
-          4 分钟
+          6 分钟
         
       </span>
     
@@ -321,12 +320,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">solve-server-invade</h1>
+            <h1 id="seo-header">nginx-basic</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月28日 晚上
+                    本文最后更新于 2024年9月13日 晚上
                   
                 
               </p>
@@ -334,37 +333,26 @@
             
               <div class="markdown-body">
                 
-                <h2 id="解决服务器入侵攻击">解决服务器入侵攻击</h2>
-<p>刚想登录阿里云看看云 GPU 怎么租的，结果给我报了个安全问题。平时都是直接忽略，今天有兴致看了一眼，不看不知道一看吓一跳，尼玛被一个从没去过且没有挂 VPN 的 IP 登陆了。虽然不是 root 用户登的并且机子上也没啥机密文件，但是还是有一种被人看光的感觉。他爹的，我也不知道该怎么报复，记录一下修复的过程</p>
-<h3 id="一、确认被入侵">一、确认被入侵</h3>
-<p>本来的公钥文件 <code>authorized_keys</code> 没了：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152117426.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="本来的公钥文件 authorized_keys 没了"></p>
-<p>本地进行 ssh 免密传输就失效了：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121682.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="需要输入密码说明 ssh 免密传输失效"></p>
-<p>查看系统日志 <code>/var/log/auth.log</code> 发现被腾讯云的上海 ip 爆破了：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152121637.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="发现真凶！"></p>
-<h3 id="二、调整鉴权信息">二、调整鉴权信息</h3>
-<h4 id="2-1-更改所有用户的密码">2.1 更改所有用户的密码</h4>
-<p>一共就创建了 root 超级用户和 git 普通用户。root 用户就没改了，把 git 用户的改了：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> passwd git<br></code></pre></td></tr></tbody></table></figure>
-<h4 id="2-2-重新配置-ssh-密钥对">2.2 重新配置 ssh 密钥对</h4>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen<br></code></pre></td></tr></tbody></table></figure>
-<p>然后在 <code>/home/git/.ssh/</code> 路径下重新创建了 <code>authorized_keys</code> 文本文件用来存储公钥信息。本地测试连接：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh git@xxx.xxx.xxx.xxx<br></code></pre></td></tr></tbody></table></figure>
-<p>不需要输入密码即连接成功，表明 ssh 通信建立成功。接下来使用 hexo 的部署就不需要输入密码了。</p>
-<h4 id="2-3-禁用密码登录">2.3 禁用密码登录</h4>
-<p>由于 root 用户我还需要使用密码登录，因此我仅仅禁用 git 用户的密码登录，只能通过 ssh 进行主机连接。</p>
-<p>（一）编辑 ssh 配置文件。编辑 <code>/etc/ssh/sshd_config</code> 文件，在末尾添加：</p>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile">Match User git<br>PasswordAuthentication no<br></code></pre></td></tr></tbody></table></figure>
-<p>（二）重启 ssh 服务。保存上述修改文件后运行：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> systemctl restart sshd<br></code></pre></td></tr></tbody></table></figure>
-<p>（三）测试密码连接。禁用后换一台机子尝试进行 ssh 连接，连接失败说明设置成功：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152152670.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="连接失败说明禁用密码登录设置成功"></p>
-<h3 id="三、问题溯源">三、问题溯源</h3>
-<p>曾经在新建 git 用户时没有设置登录密码？曾经在创建这个 git 用户时，没有注意到密码是怎么设置的，可能设置的太简单了？或者没有设置密码？当时还记录了，如下：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406152158086.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="翻车原罪"></p>
-<h3 id="四、参考">四、参考</h3>
-<p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/troubleshooting-ssh/error-permission-denied-publickey?platform=linux">Error: Permission denied (publickey)</a></p>
+                <h2 id="Nginx-基础">Nginx 基础</h2>
+<h2 id="基本概念">基本概念</h2>
+<p>在正式开始介绍 nginx 时，有必要了解一下 <strong>代理系统</strong> 这个概念。所谓代理，简单来说就是连接用户与服务器的中间媒介。有正向代理、反向代理等实际应用。与以往传统的用户与服务器直连的方式不同，通过代理系统可以完成很多前者无法完成的任务，同时也有性能上质的飞跃，下面从理论的角度介绍代理系统的实际应用示例以及优势。例如：</p>
+<p><strong>正向代理</strong>：所谓的正向代理其实就是 <strong>面向用户</strong> 进行运作。常见的正向代理应用比如 VPN 服务就是很典型的一种。</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120927.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="正向代理"></p>
+<p><strong>反向代理</strong>：所谓的反向代理的与上述正向代理对应，就是 <strong>面向服务器</strong> 进行运作。常见的反向代理应用比如 Nginx 与 Apache 服务器就是典型的应用。通过选择性的配置性的从服务器获取数据返回给前端渲染给用户，来实现负载均衡、加速优化等效果</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120846.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="反向代理"></p>
+<h2 id="反向代理实战">反向代理实战</h2>
+<p>我们以 <strong>单服务器+单顶级域名 = 多网站</strong> 为目标驱动，简单实现一下 nginx 反向代理的功能。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38431321/article/details/123018259">通过 Nginx 在一台服务器部署多个 Web 应用</a></p>
+<h3 id="1-创建多个二级域名">(1) 创建多个二级域名</h3>
+<p>多个网站可以通过 <strong>二级域名</strong> 的形式只依赖一个 <strong>顶级域名</strong> 实现。例如顶级域名为 <code>baidu.com</code>，二级域名为 <code>mcn.baidu.com</code>、<code>career.baidu.com</code> 等等。</p>
+<h3 id="2-解析二级域名绑定到服务器上">(2) 解析二级域名绑定到服务器上</h3>
+<p>每一个 <strong>二级域名</strong> 都需要指向我们自己的服务器，这需要我们将二级域名解析到服务器对应的 <strong>IP 地址</strong> 上才能进行后续的「域名访问网站」的操作。例如，我们将 docs 二级域名绑定到服务器 <code>47.113.205.127</code> 上，已达到后续可以访问 <code>dwj601.lova</code>、<code>www.dwj601.lova</code> 和 <code>docs.dwj601.lova</code> 指向的不同网站的目的。</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126611.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="将二级域名绑定到服务器"></p>
+<h3 id="3-不同域名访问不同网站">(3) 不同域名访问不同网站</h3>
+<p>现在所有的二级域名都指向了同一台服务器，那又怎么做到访问不同的网站呢？由于一台电脑理论上可以运行多个网站程序，而每一个网站程序本质上就是一个资源文件夹，即：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126612.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="不同的网站对应不同的资源文件夹"></p>
+<p>那如何根据二级域名区分访问哪一个资源文件夹呢？这时 nginx 代理功能就发挥作用了。我们进行 nginx 代理服务器的配置。配置文件为 <code>/etc/nginx/nginx.conf</code>。按照上述需求，假如此时我们需要 <code>docs.example.com</code> 访问文档网站，<code>www.example.com</code> 与 <code>example.com</code> 都访问主站，我们可以这样进行 nginx 的配置：</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment">#----- docs.example.com 访问文档网站 -----#</span><br><span class="hljs-section">server</span> {<br>    <span class="hljs-attribute">listen</span>       <span class="hljs-number">443</span> ssl;             <span class="hljs-comment"># 监听的端口</span><br>    <span class="hljs-attribute">server_name</span>  docs.example.com;    <span class="hljs-comment"># 监听的域名</span><br><br>    <span class="hljs-comment"># ssl证书的相关文件路径</span><br>    <span class="hljs-attribute">ssl_certificate</span>      /usr/local/nginx/ssl/test.cn_bundle.pem;<br>    <span class="hljs-attribute">ssl_certificate_key</span>  /usr/local/nginx/ssl/test.cn.key;<br><br>    <span class="hljs-comment"># ssl相关配置</span><br>    <span class="hljs-attribute">ssl_session_cache</span>    shared:SSL:<span class="hljs-number">1m</span>;<br>    <span class="hljs-attribute">ssl_session_timeout</span>  <span class="hljs-number">5m</span>;<br>    <span class="hljs-attribute">ssl_ciphers</span>  HIGH:!aNULL:!MD5;<br>    <span class="hljs-attribute">ssl_prefer_server_ciphers</span>  <span class="hljs-literal">on</span>;<br><br>    <span class="hljs-comment"># 项目路径 - 以静态资源为例</span><br>    <span class="hljs-section">location</span> / {<br>        <span class="hljs-attribute">root</span> /usr/web/docs;           <span class="hljs-comment"># 网站根目录</span><br>    }<br>}<br><br><span class="hljs-comment">#----- www.example.com 访问主站 -----#</span><br><span class="hljs-section">server</span> {<br>    <span class="hljs-attribute">listen</span>       <span class="hljs-number">443</span> ssl;             <span class="hljs-comment"># 监听的端口</span><br>    <span class="hljs-attribute">server_name</span>  www.example.com;     <span class="hljs-comment"># 监听的网址</span><br><br>    <span class="hljs-comment"># ssl证书的相关文件路径</span><br>    <span class="hljs-attribute">ssl_certificate</span>      /usr/local/nginx/ssl/b.test.cn_bundle.pem;<br>    <span class="hljs-attribute">ssl_certificate_key</span>  /usr/local/nginx/ssl/b.test.cn.key;<br><br>    <span class="hljs-attribute">ssl_session_cache</span>    shared:SSL:<span class="hljs-number">1m</span>;<br>    <span class="hljs-attribute">ssl_session_timeout</span>  <span class="hljs-number">5m</span>;<br><br>    <span class="hljs-attribute">ssl_ciphers</span>  HIGH:!aNULL:!MD5;<br>    <span class="hljs-attribute">ssl_prefer_server_ciphers</span>  <span class="hljs-literal">on</span>;<br><br>    <span class="hljs-section">location</span> / {<br>        <span class="hljs-attribute">root</span> /usr/web/www;            <span class="hljs-comment"># 根目录</span><br>    }<br>}<br><br><span class="hljs-comment">#----- example.com 通过重定向的方式也访问主站 -----#</span><br><span class="hljs-section">server</span> {<br>    <span class="hljs-attribute">listen</span>       <span class="hljs-number">443</span> ssl;             <span class="hljs-comment"># 监听的端口</span><br>    <span class="hljs-attribute">server_name</span>  example.com;         <span class="hljs-comment"># 监听的网址</span><br><br>    <span class="hljs-comment"># ssl证书的相关文件路径</span><br>    <span class="hljs-attribute">ssl_certificate</span>      /usr/local/nginx/ssl/b.test.cn_bundle.pem;<br>    <span class="hljs-attribute">ssl_certificate_key</span>  /usr/local/nginx/ssl/b.test.cn.key;<br><br>    <span class="hljs-comment"># ssl相关配置</span><br>    <span class="hljs-attribute">ssl_session_cache</span>    shared:SSL:<span class="hljs-number">1m</span>;<br>    <span class="hljs-attribute">ssl_session_timeout</span>  <span class="hljs-number">5m</span>;<br>    <span class="hljs-attribute">ssl_ciphers</span>  HIGH:!aNULL:!MD5;<br>    <span class="hljs-attribute">ssl_prefer_server_ciphers</span>  <span class="hljs-literal">on</span>;<br><br>    <span class="hljs-section">location</span> / {<br>        <span class="hljs-attribute">proxy_pass</span>  https://www.example.com  <span class="hljs-comment"># 重定向到 example.com</span><br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
 
                 
               </div>
@@ -388,7 +376,7 @@
   
     <span>></span>
     
-  <a href="/categories/Operation/Safe/" class="category-chain-item">Safe</a>
+  <a href="/categories/Operation/Nginx/" class="category-chain-item">Nginx</a>
   
   
 
@@ -410,8 +398,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>solve-server-invade</div>
-      <div>https://blog.dwj601.cn/Operation/Safe/solve-server-invade/</div>
+      <div>nginx-basic</div>
+      <div>https://blog.dwj601.cn/Operation/Nginx/nginx-basic/</div>
     </div>
     <div class="license-meta">
       
@@ -423,13 +411,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月15日</div>
+          <div>2024年9月13日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年6月28日</div>
+          <div>2024年9月13日</div>
         </div>
       
       
@@ -460,18 +448,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/BackEnd/Python/numpy/" title="numpy">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">numpy</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/DevTools/Git/git-pull-request/" title="git-pull-request">
-                        <span class="hidden-mobile">git-pull-request</span>
+                      <a href="/FrontEnd/Hexo/hexo-config-mermaid/" title="hexo-config-mermaid">
+                        <span class="hidden-mobile">hexo-config-mermaid</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -574,17 +556,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Nginx"
         id="heading-62e0b5b350c9e3d2c19aa801d9442ba9" role="tab" data-toggle="collapse" href="#collapse-62e0b5b350c9e3d2c19aa801d9442ba9"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         Nginx
         <span class="list-group-count">(4)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-62e0b5b350c9e3d2c19aa801d9442ba9"
+      <div class="category-collapse collapse show" id="collapse-62e0b5b350c9e3d2c19aa801d9442ba9"
            role="tabpanel" aria-labelledby="heading-62e0b5b350c9e3d2c19aa801d9442ba9">
         
         
@@ -596,7 +578,7 @@
       
         <a href="/Operation/Nginx/nginx-basic/" title="nginx-basic"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">nginx-basic</span>
         </a>
       
@@ -638,17 +620,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Safe"
         id="heading-c6eea0560cd6f377e78dff2c85cc9122" role="tab" data-toggle="collapse" href="#collapse-c6eea0560cd6f377e78dff2c85cc9122"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         Safe
         <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-c6eea0560cd6f377e78dff2c85cc9122"
+      <div class="category-collapse collapse " id="collapse-c6eea0560cd6f377e78dff2c85cc9122"
            role="tabpanel" aria-labelledby="heading-c6eea0560cd6f377e78dff2c85cc9122">
         
         
@@ -660,7 +642,7 @@
       
         <a href="/Operation/Safe/solve-server-invade/" title="solve-server-invade"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">solve-server-invade</span>
         </a>
       

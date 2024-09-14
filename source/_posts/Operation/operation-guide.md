@@ -19,15 +19,11 @@ category_bar: true
 
 ## Linux 基础
 
-以 Ubuntu22.04 为例。
-
-### 目录结构
-
-以我的 Ubuntu22.04 的目录结构为例：
+以 Ubuntu22.04 为例。下面是我的文件目录：
 
 ![Ubuntu22.04 目录结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409132006698.png)
 
-下面是 AI 生成的解释：
+下面是 gpt-4o 生成的解释：
 
 > **/boot**: 存放启动加载程序和内核相关的文件，例如 `vmlinuz` 和 `initrd.img`，是系统启动时加载的内容。
 >
@@ -74,78 +70,6 @@ category_bar: true
 > **/libx32**: x32 ABI（应用二进制接口）的库文件目录，提供与 `x86-64` 兼容的 32 位地址空间。
 >
 > **/sbin**: 包含系统管理员使用的二进制文件，如 `fdisk`、`ifconfig` 等，这些工具主要用于系统管理和维护。
-
-### 基本操作命令
-
-在开始讲解基本的操作命令之前，有必要了解一下输入的命令是如何被系统理解并执行的。与应用程序直接调用系统资源接口 API 不同，人与系统进行交互时，需要 GUI 或 CLI 的辅助才能继续，但是系统并不认识人类通过 GUI 或 CLI 的输入，这就需要有一个从人类输入 $\to$ 系统调用语言的转换。以 CLI 为例，这样的转换有一个专门的工具叫做 **命令解释器 (Shell)**。常见的 Linux 上的命令解释器有：Sh (Bourne Shell)、Bash (Bourne Again Shell)、Zsh (Z Shell) 等。
-
-#### 查看当前 Shell
-
-```bash
-echo $SHELL
-```
-
-#### 改变目录
-
-```bash
-cd ../
-```
-
-`../` 表示上一级，`./` 表示当前一级（也可以不写），`/` 表示从根目录开始。
-
-#### 列出目录内容
-
-```bash
-ls
-```
-
-#### 显示当前路径
-
-```bash
-pwd
-```
-
-#### 创建文件夹
-
-```bash
-mkdir <FolderName>
-```
-
-#### 创建文件
-
-```bash
-touch <FileName>
-```
-
-#### 复制
-
-```bash
-cp [option] <source> <target>
-```
-
-- option 中：-r 表示递归复制，-i 用来当出现重名文件时进行提示。
-- source 表示被拷贝的资源
-- target 表示拷贝后的资源名称或者路径
-
-#### 移动
-
-```bash
-mv [option] <source> <target>
-```
-
-- option 中：-i 用来当出现重名文件时进行提示。
-- source 表示被移动的资源
-- target 表示移动后的资源名称或者路径（可以以此进行重命名）
-
-#### 删除
-
-```bash
-rm [option] <source>
-```
-
-- option 中：-i 需要一个一个确认，-f 表示强制删除，-r 表示递归删除
-
-
 
 ## 网络基础
 

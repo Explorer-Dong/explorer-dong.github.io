@@ -320,17 +320,44 @@ python app.py
 
 > 解决：Flask 的 5000 端口被占用的问题
 >
-> [杀死其余的端口占用进程，重启应用](https://blog.csdn.net/weixin_45753080/article/details/124114096)
+> **windows 使用 git bash**
+>
+> 查找占用指定端口的进程 PID：
 >
 > ```bash
-># 检测端口占用
-> netstat -npl | grep "5000"
-> 
-> # 查找占用端口的进程的PID
->    sudo lsof -i:"端口"
-> 
-> # 根据PID杀死该进程
->    sudo kill -9 <PID>
+> netstat -ano | grep :<port>
+> ```
+>
+> 根据 PID 杀死所有的进程：
+>
+> ```bash
+> taskkill /PID <PID> /F
+> ```
+>
+> 一行解决：
+>
+> ```bash
+> taskkill /PID $(netstat -ano | grep :<port> | awk '{print $5}') /F
+> ```
+>
+> **ubuntu 使用 bash**
+>
+> 查找占用指定端口的进程 PID：
+>
+> ```bash
+> sudo lsof -i :<port>
+> ```
+>
+> 根据 PID 杀死所有的进程：
+>
+> ```bash
+> sudo kill -9 <PID>
+> ```
+>
+> 一行解决：
+>
+> ```bash
+> sudo kill -9 $(sudo lsof -t -i :<port>)
 > ```
 
 {% endfold %}

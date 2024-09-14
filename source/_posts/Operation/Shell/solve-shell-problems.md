@@ -8,45 +8,55 @@ category_bar: true
 
 ## 解决 shell 相关问题
 
-## 在 Windows OS 上杀死指定端口的进程
+本文记录一些 bash shell 的使用问题。
 
-### 指令
+## 终止占用指定端口的进程
 
-用 `netstat` 命令行工具查找指定端口的进程 PID（进程提示符）
+### windows 使用 git bash
 
-```shell
-netstat -ano | findstr <port>
+查找占用指定端口的进程 PID：
+
+```bash
+netstat -ano | grep :<port>
 ```
 
-终止查找到的进程
+根据 PID 杀死所有的进程：
 
-- 手动终止：用 `tasklist` 命令行工具查找 PID 背后的运行应用，然后在 Windows 的终端管理器中手动关闭
+```bash
+taskkill /PID <PID> /F
+```
 
-    ```shell
-    tasklist | findstr <PID>
-    ```
+一行解决：
 
-- 命令终止：用 `taskkill` 命令行工具强制终止指定的进程
+```bash
+taskkill /PID $(netstat -ano | grep :<port> | awk '{print $5}') /F
+```
 
-    ```shell
-    # 写法一
-    taskkill -PID <PID> -F
-    
-    # 写法二
-    taskkill /F /PID <PID>
-    ```
+### ubuntu 使用 bash
 
-### 演示
+查找占用指定端口的进程 PID：
 
-![windows 上杀死进程的指令](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403271023326.png)
+```bash
+sudo lsof -i :<port>
+```
 
-## 解决 windows powershell 编码错误
+根据 PID 杀死所有的进程：
 
-进来使用 windows powershell 时发现会出现奇怪的中文编码错误。有些语句可以正常显示中文，有些则不行，查阅后发现了一个好方法可以解决这个问题，如图：
+```bash
+sudo kill -9 <PID>
+```
 
-进入 `> 控制面板 > 时钟和区域` 目录，并将复选框选中：
+一行解决：
 
-![详细操作顺序如图所示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406282333554.png)
+```bash
+sudo kill -9 $(sudo lsof -t -i :<port>)
+```
+
+## 解决 PowerShell 编码错误的问题
+
+近来使用 windows powershell 时出现了中文编码错误的问题。有些中文可以正常显示，有些则不行，查阅后发现了一个好方法可以解决这个问题，如图：进入 `> 控制面板 > 时钟和区域` 目录，并将复选框选中：
+
+![操作顺序](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406282333554.png)
 
 操作完成后重启即可正常显示中文！
 

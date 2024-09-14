@@ -4,6 +4,7 @@ categories:
   - GPA
   - 5th-term
 category_bar: true
+mermaid: true
 ---
 
 ## 数据库
@@ -32,7 +33,13 @@ category_bar: true
 
 - 课程官网：[数据库系统概论 (ruc.edu.cn)](http://chinadb.ruc.edu.cn/home)
 
-![Outline](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409121012467.png)
+为什么要学这门课？
+
+> 感觉没什么意义，毕竟只讲关系型数据库，而这个是再简单不过的数据模型了，哪怕加上了外键也不会很复杂。但我深知 db 的奥妙于深度绝不止于此，但是就目前上课情况来看应该是达不到这种程度了，毕竟最核心的数据库编程是不做要求的。
+
+会收获什么？
+
+> 熟悉一下关系型数据库的理论吧，顺便准备好被国产的 OpenGuass ex 一把。其余的数据库类型以及拓展知识就靠自学吧。
 
 ## 基础篇
 

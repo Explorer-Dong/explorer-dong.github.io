@@ -24,7 +24,7 @@
 <meta property="og:description" content="数据挖掘 前言 学科地位：    主讲教师 学分配额 学科类别     郑智超 3+1 专业课    成绩组成：    理论课  实验课      考勤 5% 考勤 10%   作业 (书面) 20% 作业 (编程) 30%   期末 (闭卷) 75% 大作业 60%    教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN号     数据挖掘 《数据挖掘：原理与应用》 1 丁兆云">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-27T12:36:31.348Z">
-<meta property="article:modified_time" content="2024-09-10T03:28:45.063Z">
+<meta property="article:modified_time" content="2024-09-14T00:43:32.058Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -246,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          603 字
+          635 字
         
       </span>
     
@@ -320,7 +320,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月10日 上午
+                    本文最后更新于 2024年9月14日 早上
                   
                 
               </p>
@@ -401,25 +401,26 @@
 </tr>
 </tbody>
 </table>
-<p>为什么要学这门课?</p>
+<p>为什么要学这门课？</p>
 <blockquote>
 <p>数据量在进入信息化时代后指数级增长, 显然这些数据一定具有某种价值. 之前看到过这样的说法 “你能想到和做到的, 前人都已经想到和做到了”, 虽然这样的说法不具有绝对性, 但是个人认为对于大多数人都是适用的. 也就是说, 人类的行为甚至是万物的变迁都是符合统计学规律的, 而这些规律都藏在浩瀚的数据之中. 因此个人认为这门课对于研究统计学规律会有一些入门的帮助.</p>
 </blockquote>
-<p>会收获什么?</p>
+<p>会收获什么？</p>
 <blockquote>
 <p>其实, 预测模型已经有相当完善的体系了, 各种框架, 模型, 网络, 都已经经过了大量的使用与验证并且使用门槛极低. 因此这门课可能带来的收获就是「数据预处理」的本事. 如果不谈数据收集的过程, 只谈数据处理的方法和策略, 那么大概会有这样的几个过程:</p>
 <ol>
-<li>数据清洗: 缺失值处理, 重复值处理, 异常值处理</li>
-<li>数据集成: 将零散的数据集成为一个完整的数据集</li>
-<li>数据转换: 非数值型数据编码, 标准化/归一化, 离散化/连续化</li>
-<li>特征工程: 提取特征, 筛选特征</li>
-<li>数据采样: 过采样/欠采样</li>
+<li>数据清洗： 缺失值处理, 重复值处理, 异常值处理</li>
+<li>数据集成： 将零散的数据集成为一个完整的数据集</li>
+<li>数据转换： 非数值型数据编码, 标准化/归一化, 离散化/连续化</li>
+<li>特征工程： 提取特征, 筛选特征</li>
+<li>数据采样： 过采样/欠采样</li>
 </ol>
 <p>上述每一个方法与过程的背后都有很大的学问, 且学且珍惜.</p>
 <p>当然, 如何选择模型进行参数炼丹, 也许也会收获一些策略上的经验. 等在后续学习体验的过程中再进行补充.</p>
 </blockquote>
 <h2 id="绪论">绪论</h2>
-<p>科学发展范式: 实验 (经验) 科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 理论科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 计算科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 数据科学</p>
+<p>科学发展范式：实验 (经验) 科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 理论科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 计算科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 数据科学。</p>
+<p>属性分类：定量、定性。其中定性属性可以分为三类（二元属性、标称属性、序数属性）。</p>
 <h2 id="数据预处理">数据预处理</h2>
 <h2 id="分类问题">分类问题</h2>
 <h2 id="聚类问题">聚类问题</h2>
@@ -489,7 +490,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月10日</div>
+          <div>2024年9月14日</div>
         </div>
       
       

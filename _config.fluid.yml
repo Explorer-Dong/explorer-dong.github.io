@@ -1089,7 +1089,7 @@ static_prefix:
 
   clipboard: https://lib.baomitu.com/clipboard.js/2.0.11/
 
-  mermaid: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/static/mermaid.min.js
+  mermaid: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/mermaid/
 
   valine: https://lib.baomitu.com/valine/1.5.1/
 

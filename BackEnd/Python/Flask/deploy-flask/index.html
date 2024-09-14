@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126617.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126618.png">
 <meta property="article:published_time" content="2024-03-26T05:48:15.465Z">
-<meta property="article:modified_time" content="2024-08-31T08:43:49.757Z">
+<meta property="article:modified_time" content="2024-09-14T08:25:02.037Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -327,7 +327,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年8月31日 下午
+                    本文最后更新于 2024年9月14日 下午
                   
                 
               </p>
@@ -479,12 +479,12 @@
 <h3 id="5-运行-Flask-应用">(5) 运行 Flask 应用</h3>
 
     <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-1f8876f9" role="button" aria-expanded="false" aria-controls="collapse-1f8876f9">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-61258aae" role="button" aria-expanded="false" aria-controls="collapse-61258aae">
         <div class="fold-arrow">▶</div>内测阶段
       </div>
-      <div class="fold-collapse collapse" id="collapse-1f8876f9">
+      <div class="fold-collapse collapse" id="collapse-61258aae">
         <div class="fold-content">
-          <p><strong>内测阶段</strong>：使用 Flask 内置服务器运行应用</p><p>运行 Flask 主接口文件 <code>app.py</code>，之后就可以通过 ip 地址 + 端口号的方式进行访问了</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python app.py<br></code></pre></td></tr></tbody></table></figure><blockquote><p>解决：Flask 的 5000 端口被占用的问题</p><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45753080/article/details/124114096">杀死其余的端口占用进程，重启应用</a></p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;# 检测端口占用<br>netstat -npl | grep <span class="hljs-string">"5000"</span><br><br><span class="hljs-comment"># 查找占用端口的进程的PID</span><br>   <span class="hljs-built_in">sudo</span> lsof -i:<span class="hljs-string">"端口"</span><br><br><span class="hljs-comment"># 根据PID杀死该进程</span><br>   <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">kill</span> -9 &lt;PID&gt;<br></code></pre></td></tr></tbody></table></figure></blockquote>
+          <p><strong>内测阶段</strong>：使用 Flask 内置服务器运行应用</p><p>运行 Flask 主接口文件 <code>app.py</code>，之后就可以通过 ip 地址 + 端口号的方式进行访问了</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python app.py<br></code></pre></td></tr></tbody></table></figure><blockquote><p>解决：Flask 的 5000 端口被占用的问题</p><p><strong>windows 使用 git bash</strong></p><p>查找占用指定端口的进程 PID：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">netstat -ano | grep :&lt;port&gt;<br></code></pre></td></tr></tbody></table></figure><p>根据 PID 杀死所有的进程：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">taskkill /PID &lt;PID&gt; /F<br></code></pre></td></tr></tbody></table></figure><p>一行解决：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">taskkill /PID $(netstat -ano | grep :&lt;port&gt; | awk <span class="hljs-string">'{print $5}'</span>) /F<br></code></pre></td></tr></tbody></table></figure><p><strong>ubuntu 使用 bash</strong></p><p>查找占用指定端口的进程 PID：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> lsof -i :&lt;port&gt;<br></code></pre></td></tr></tbody></table></figure><p>根据 PID 杀死所有的进程：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">kill</span> -9 &lt;PID&gt;<br></code></pre></td></tr></tbody></table></figure><p>一行解决：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">kill</span> -9 $(<span class="hljs-built_in">sudo</span> lsof -t -i :&lt;port&gt;)<br></code></pre></td></tr></tbody></table></figure></blockquote>
         </div>
       </div>
     </div>
@@ -574,7 +574,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月31日</div>
+          <div>2024年9月14日</div>
         </div>
       
       

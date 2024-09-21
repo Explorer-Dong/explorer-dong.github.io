@@ -5,6 +5,7 @@ categories:
   - Python
   - Flask
 category_bar: true
+mermaid: true
 ---
 
 ## 部署 Flask

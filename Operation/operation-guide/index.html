@@ -23,13 +23,11 @@
 <meta property="og:site_name" content="Dwj の Blog">
 <meta property="og:description" content="运维指南 前言 本文旨在介绍运维的基本理念和路径规划。正在不断完善中。 云计算运维的相关知识包括但不限于：  Linux 基础：常用命令、文件及用户管理、文本处理、Vim 工具使用。 网络基础：网络基础知识、TCP&#x2F;IP 协议、七层网络模型、Linux 网络管理与配置。 服务器运维：SSH 远程连接、文件上传下载、Nginx 和 MySQL 服务器搭建、LVS 负载均衡配置以及服务器优化经验。 自">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409132006698.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.242Z">
-<meta property="article:modified_time" content="2024-09-14T02:39:51.482Z">
+<meta property="article:modified_time" content="2024-09-21T10:27:05.471Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409132006698.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -248,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          966 字
         
       </span>
     
@@ -259,7 +257,7 @@
         
         
         
-          11 分钟
+          7 分钟
         
       </span>
     
@@ -322,7 +320,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月14日 上午
+                    本文最后更新于 2024年9月21日 晚上
                   
                 
               </p>
@@ -341,34 +339,6 @@
 <li>自动化运维：Shell 脚本编写、自动化运维工具 Ansible 的使用。</li>
 </ol>
 <h2 id="Linux-基础">Linux 基础</h2>
-<p>以 Ubuntu22.04 为例。下面是我的文件目录：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409132006698.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="Ubuntu22.04 目录结构"></p>
-<p>下面是 gpt-4o 生成的解释：</p>
-<blockquote>
-<p><strong>/boot</strong>: 存放启动加载程序和内核相关的文件，例如 <code>vmlinuz</code> 和 <code>initrd.img</code>，是系统启动时加载的内容。</p>
-<p><strong>/dev</strong>: 包含系统中的设备文件。Linux 将所有设备（如硬盘、CD-ROM、键盘）视为文件，放在这个目录下。</p>
-<p><strong>/etc</strong>: 存储系统配置文件和启动脚本。几乎所有的系统级配置文件都位于此处。</p>
-<p><strong>/home</strong>: 每个用户的主目录都在这个目录下。用户的个人数据、配置文件、下载等内容存放于此。</p>
-<p><strong>/lost+found</strong>: 存放系统崩溃或磁盘故障后恢复的文件碎片。通常这个目录只有在使用 ext 文件系统时才存在。</p>
-<p><strong>/media</strong>: 用于自动挂载的可移动媒体设备的挂载点，如 CD-ROM、USB 驱动器等。</p>
-<p><strong>/mnt</strong>: 用于临时挂载的文件系统。例如，系统管理员可能会使用这个目录挂载临时文件系统。</p>
-<p><strong>/opt</strong>: 为第三方应用程序提供存储位置，通常是独立于默认包管理系统的程序。</p>
-<p><strong>/proc</strong>: 一个虚拟文件系统，提供系统内核和运行进程的信息。比如，<code>/proc/cpuinfo</code> 包含 CPU 的信息。</p>
-<p><strong>/root</strong>: 超级用户（root）的主目录。与普通用户的主目录在 <code>/home</code> 不同，root 用户的主目录在根目录下。</p>
-<p><strong>/run</strong>: 存储应用程序和服务的运行时数据，如进程 ID 文件（PID）、锁文件等。</p>
-<p><strong>/snap</strong>: 包含 Snap 包管理系统的应用程序安装目录。</p>
-<p><strong>/srv</strong>: 存放为服务（service）提供的数据。比如，Web 服务器可能会在这里存放网站文件。</p>
-<p><strong>/sys</strong>: 和 <code>/proc</code> 类似，提供系统硬件信息的接口，是一个虚拟文件系统。</p>
-<p><strong>/tmp</strong>: 用于存储临时文件，系统重启后这些文件通常会被删除。</p>
-<p><strong>/usr</strong>: 包含用户的二进制文件、库文件、文档等资源。<code>/usr/bin</code>、<code>/usr/lib</code>、<code>/usr/share</code> 等都在这个目录下。</p>
-<p><strong>/var</strong>: 存储经常发生变化的文件，比如日志文件、邮件队列、临时文件等。</p>
-<p><strong>/bin</strong>: 包含基本的用户命令的二进制文件，例如 <code>ls</code>、<code>cp</code> 等。通常系统启动时所需的命令都在此目录下。</p>
-<p><strong>/lib</strong>: 包含基本的共享库文件和内核模块。系统启动时所需的库文件通常在此目录下。</p>
-<p><strong>/lib32</strong>: 32 位系统的库文件目录，用于兼容 32 位程序。</p>
-<p><strong>/lib64</strong>: 64 位系统的库文件目录，用于 64 位程序。</p>
-<p><strong>/libx32</strong>: x32 ABI（应用二进制接口）的库文件目录，提供与 <code>x86-64</code> 兼容的 32 位地址空间。</p>
-<p><strong>/sbin</strong>: 包含系统管理员使用的二进制文件，如 <code>fdisk</code>、<code>ifconfig</code> 等，这些工具主要用于系统管理和维护。</p>
-</blockquote>
 <h2 id="网络基础">网络基础</h2>
 <h2 id="服务器运维">服务器运维</h2>
 
@@ -444,7 +414,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月14日</div>
+          <div>2024年9月21日</div>
         </div>
       
       
@@ -475,9 +445,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/RoadMap/road-map-guide/" title="road-map-guide">
+                      <a href="/BackEnd/Python/Flask/deploy-flask/" title="deploy-flask">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">road-map-guide</span>
+                        <span class="hidden-mobile">deploy-flask</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -485,8 +455,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/4th-term/PyApply/" title="PyApply">
-                        <span class="hidden-mobile">PyApply</span>
+                      <a href="/RoadMap/road-map-guide/" title="road-map-guide">
+                        <span class="hidden-mobile">road-map-guide</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -559,7 +529,7 @@
         aria-expanded="true"
       >
         Operation
-        <span class="list-group-count">(10)</span>
+        <span class="list-group-count">(9)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -696,7 +666,7 @@
         aria-expanded="false"
       >
         Shell
-        <span class="list-group-count">(2)</span>
+        <span class="list-group-count">(3)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -726,49 +696,12 @@
         </a>
       
     
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Ubuntu"
-        id="heading-3d945423f8e9496c429a5d8c65b4604f" role="tab" data-toggle="collapse" href="#collapse-3d945423f8e9496c429a5d8c65b4604f"
-        aria-expanded="false"
-      >
-        Ubuntu
-        <span class="list-group-count">(2)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-3d945423f8e9496c429a5d8c65b4604f"
-           role="tabpanel" aria-labelledby="heading-3d945423f8e9496c429a5d8c65b4604f">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
       
       
-        <a href="/Operation/Ubuntu/apt-command/" title="apt-command"
+        <a href="/Operation/Shell/ubuntu-guide/" title="ubuntu-guide"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">apt-command</span>
-        </a>
-      
-    
-      
-      
-        <a href="/Operation/Ubuntu/ubuntu-modify-sys-language/" title="ubuntu-modify-sys-language"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">ubuntu-modify-sys-language</span>
+          <span class="category-post">ubuntu-guide</span>
         </a>
       
     

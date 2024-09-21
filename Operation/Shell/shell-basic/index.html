@@ -16,15 +16,15 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="Shell 基础 尝试在 Windows11 OS 上使用 wget 来下载一个 js 静态文件。但是发现本地 bash 使用 wget 命令报「command not found」错误。于是借 wget 之名展开”古老“的 shell 之旅。 Shell 是什么？我们用 GLM4 总结一下：  Shell 的准确定义是：在操作系统中，Shell 是一个程序，它提供了一个用户界面，允许用户通过命令">
+    <meta name="description" content="Shell 基础 前言 尝试在 Windows11 上使用 wget 通过一个 url 下载一个 js 静态文件。但是发现本地 bash 使用 wget 命令报错：command not found。于是借 wget 之名展开”古老“的 shell 之旅。 Shell 是什么？我们用 GLM4 总结一下：  Shell 的准确定义是：在操作系统中，Shell 是一个程序，它提供了一个用户界面，允许">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell-basic">
 <meta property="og:url" content="https://blog.dwj601.cn/Operation/Shell/shell-basic/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="Shell 基础 尝试在 Windows11 OS 上使用 wget 来下载一个 js 静态文件。但是发现本地 bash 使用 wget 命令报「command not found」错误。于是借 wget 之名展开”古老“的 shell 之旅。 Shell 是什么？我们用 GLM4 总结一下：  Shell 的准确定义是：在操作系统中，Shell 是一个程序，它提供了一个用户界面，允许用户通过命令">
+<meta property="og:description" content="Shell 基础 前言 尝试在 Windows11 上使用 wget 通过一个 url 下载一个 js 静态文件。但是发现本地 bash 使用 wget 命令报错：command not found。于是借 wget 之名展开”古老“的 shell 之旅。 Shell 是什么？我们用 GLM4 总结一下：  Shell 的准确定义是：在操作系统中，Shell 是一个程序，它提供了一个用户界面，允许">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-14T01:42:01.082Z">
-<meta property="article:modified_time" content="2024-09-14T08:00:08.565Z">
+<meta property="article:modified_time" content="2024-09-21T10:35:25.077Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -246,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.6k 字
         
       </span>
     
@@ -257,7 +257,7 @@
         
         
         
-          10 分钟
+          11 分钟
         
       </span>
     
@@ -320,7 +320,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月14日 下午
+                    本文最后更新于 2024年9月21日 晚上
                   
                 
               </p>
@@ -329,12 +329,13 @@
               <div class="markdown-body">
                 
                 <h2 id="Shell-基础">Shell 基础</h2>
-<p>尝试在 Windows11 OS 上使用 wget 来下载一个 js 静态文件。但是发现本地 bash 使用 wget 命令报「command not found」错误。于是借 wget 之名展开”古老“的 shell 之旅。</p>
+<h2 id="前言">前言</h2>
+<p>尝试在 Windows11 上使用 wget 通过一个 url 下载一个 js 静态文件。但是发现本地 bash 使用 wget 命令报错：command not found。于是借 wget 之名展开”古老“的 shell 之旅。</p>
 <p><strong>Shell 是什么</strong>？我们用 GLM4 总结一下：</p>
 <blockquote>
 <p>Shell 的准确定义是：在操作系统中，Shell 是一个程序，它提供了一个用户界面，允许用户通过命令行输入指令来与操作系统交互。它充当用户与操作系统内核之间的中介，处理用户的输入，解释这些输入为操作系统可以理解和执行的操作，并返回执行结果。</p>
 </blockquote>
-<p>也就是说 shell 是一个命令解释器。可以将其理解为人机交互的中间层，通过解析字符串命令与操作系统交互，进而完成系统资源调用与处理。可以将「解析命令并调用系统资源完成任务」这个过程简单理解为：shell 解析输入 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> shell 调用对应的 C 函数向 OS 发起请求 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mtext>API</mtext></mpadded></munderover></mrow><annotation encoding="application/x-tex">\xrightarrow[]{\text{API}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2223em;vertical-align:-0.122em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">API</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+<p>也就是说 shell 是一个命令解释器。可以将其理解为人机交互的中间层，通过解析字符串命令与操作系统交互，进而完成系统资源的调用与处理。可以将「解析命令并调用系统资源完成任务」这个过程简单地理解为：shell 解析输入 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> shell 调用对应的 C 函数向 OS 发起请求 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mtext>API</mtext></mpadded></munderover></mrow><annotation encoding="application/x-tex">\xrightarrow[]{\text{API}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2223em;vertical-align:-0.122em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">API</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
 -16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
  11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
  39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
@@ -342,12 +343,13 @@
 -12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
  151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span></span></span></span> OS 接受请求并执行相关底层操作 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> OS 返回执行结果给 C 函数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> shell 接受 C 函数返回结果并显示提示信息。</p>
 <p><strong>为什么用 Bash Shell</strong>？常见的命令解释器有：Bash (Bourne Again Shell)、Sh (Bourne Shell)、Zsh (Z Shell) 等。其中 Bash 是最流行的跨平台 Shell 之一。虽然它是 Linux 和 macOS 的默认 Shell，但也可以在 Windows 上通过 Windows Subsystem for Linux (WSL) 或第三方工具如 Git Bash 来运行。</p>
-<p>本文基于 Windows11 OS 的 Git Bash 命令解释器配合 Ubuntu22.04 的 Bash 命令解释器展开讲解。两个平台的 Bash 版本如下：</p>
-<p>Git Bash 的版本信息：</p>
+<p><strong>文章标题为什么不叫 Linux 基础</strong>？在我看来，Linux 基础的知识更多应当偏向于讲解  Linux 的理论知识，然而目前主流的讲解 Linux 基础的内容均偏向于指导大家如何使用 shell 与操作系统交互，那这与 python 等解释型编程语言有什么区别？python 是用 python 解释器与操作系统交互，相关的教程默认都叫「Python 基础」，shell 是用 shell 解释器与操作系统交互，那为什么不叫「Shell 基础」呢？</p>
+<p>注：本文基于 Windows11 的 Git Bash 命令解释器配合 Ubuntu22.04 的 Bash 命令解释器展开。两个平台的 Bash 版本信息如下：</p>
+<p>Windows11 <strong>Git Bash</strong> Version Info:</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ bash --version<br>GNU bash, version 5.2.26(1)-release (x86_64-pc-msys)<br>Copyright (C) 2022 Free Software Foundation, Inc.<br>License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;<br><br>This is free software; you are free to change and redistribute it.<br>There is NO WARRANTY, to the extent permitted by law.<br></code></pre></td></tr></tbody></table></figure>
-<p>Linux Bash 的版本信息：</p>
+<p>Linux <strong>Bash</strong> Version Info:</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@dwj2:~# bash --version<br>GNU bash，版本 5.1.16(1)-release (x86_64-pc-linux-gnu)<br>Copyright (C) 2020 Free Software Foundation, Inc.<br>许可证 GPLv3+：GNU GPL 许可证第三版或者更新版本 &lt;http://gnu.org/licenses/gpl.html&gt;<br><br>本软件是自由软件，您可以自由地更改和重新发布。<br>在法律许可的情况下特此明示，本软件不提供任何担保。<br></code></pre></td></tr></tbody></table></figure>
-<h2 id="基本命令">基本命令</h2>
+<h2 id="基本命令（实验1）">基本命令（实验1）</h2>
 <p>在开始之前，我们可以使用 <code>echo $SHELL</code> 命令查看当前的命令解释器是什么。</p>
 <h3 id="改变目录-cd">改变目录 cd</h3>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ../<br></code></pre></td></tr></tbody></table></figure>
@@ -407,30 +409,32 @@
 <h3 id="输出重定向">输出重定向</h3>
 <p>标准输出（stdout）默认是显示器。</p>
 <p><code>&gt;</code> 表示创建或覆盖，<code>&gt;&gt;</code> 表示追加。</p>
-<h2 id="Shell-编程">Shell 编程</h2>
-<h2 id="软件扩展">软件扩展</h2>
+<h2 id="用户与权限管理（实验2）">用户与权限管理（实验2）</h2>
+<h2 id="进程管理与调试（实验3）">进程管理与调试（实验3）</h2>
+<h2 id="Shell-编程（实验4）">Shell 编程（实验4）</h2>
+<h2 id="工具扩展">工具扩展</h2>
 <h3 id="tree">tree</h3>
+<p>目录可视化工具。</p>
 <p>下载地址：<a href="hhttps://gnuwin32.sourceforge.net/packages/tree.htm">Tree for Windows (sourceforge.net)open in new window</a>，下载 Binaries 的 Zip 文件。解压完成后，将 bin 目录下的 tree.exe 复制到 Git Bash 安装路径下的 usr/bin 文件夹下，即可使用 tree 命令。</p>
-<p>常用命令：</p>
+<p>基本命令格式：<code>tree [-option] [dir]</code></p>
 <ul>
-<li>基本命令格式：<code>tree [-option] [dir]</code>。</li>
-<li>显示中文：<code>-N</code>，如果中文名是中文，不加 -N  有些电脑上是乱码的。</li>
+<li>显示中文：<code>-N</code>。如果中文名是中文，不加 <code>-N</code> 有些电脑上是乱码的。</li>
 <li>选择展示的层级：<code>-L [n]</code>。</li>
-<li>只显示文件夹：<code>-d。</code></li>
-<li>区分文件夹、普通文件、执行文件：<code>-FC</code>，C 是加上颜色。</li>
-<li>起别名：可以起一个别名 <code>alias tree='tree -FCN'</code>。</li>
-<li>输出目录结构到文件：写文档的时候需要展示项目目录就会用到 <code>tree -L 2 -I '*.js|node_modules|*.md|*.json|*.css|*.ht' &gt; tree.txt。</code></li>
+<li>只显示文件夹：<code>-d</code>。</li>
+<li>区分文件夹、普通文件、可执行文件：<code>-FC</code>。<code>C</code> 是加上颜色。</li>
+<li>起别名：<code>alias tree='tree -FCN'</code>。</li>
+<li>输出目录结构到文件： <code>tree -L 2 -I '*.js|node_modules|*.md|*.json|*.css|*.ht' &gt; tree.txt</code>。</li>
 </ul>
 <h3 id="wget">wget</h3>
-<p>下载 wget 二进制安装包，地址：<a target="_blank" rel="noopener" href="https://eternallybored.org/misc/wget/">Windows binaries of GNU Wget)</a>，选择合适的版本和架构包进行下载。将 wget.exe 移动到 Git Bash 安装路径下的 usr/bin 文件夹下，即可使用 wget 命令。</p>
-<p>常用命令：</p>
+<p>url 下载工具。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://eternallybored.org/misc/wget/">Windows binaries of GNU Wget</a>，选择合适的版本和架构包进行下载。将 wget.exe 移动到 Git Bash 安装路径下的 usr/bin 文件夹下，即可使用 wget 命令。</p>
+<p>基本命令格式：<code>wget [url]</code></p>
 <ul>
-<li>最直接的下载命令：<code>wget [url]</code>。</li>
 <li>指定文件名：<code>-O</code>。</li>
 <li>指定目录：<code>-P</code>。</li>
 <li>下载多个文件：<code>wget -i [url.txt]</code>。</li>
-<li>断点续传：<code>wget -c -t [n] [url]</code>，n 代表尝试的次数，0 代表一直尝试。</li>
-<li>后台执行：<code>wget -b [url]</code>，可以添加 <code>-b</code> 选项，这时执行该命令的回显信息都会自动存储在 <code>wget.log</code> 文件中。</li>
+<li>断点续传：<code>wget -c -t [n] [url]</code>。<code>n</code> 代表尝试的次数，<code>0</code> 代表一直尝试。</li>
+<li>后台执行：<code>wget -b [url]</code>。执行该命令的回显信息都会自动存储在 <code>wget.log</code> 文件中。</li>
 <li>下载一个网站的所有图片、视频和 pdf 文件：<code>wget -r -A.pdf url</code>。</li>
 </ul>
 <h2 id="参考引用">参考引用</h2>
@@ -499,7 +503,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月14日</div>
+          <div>2024年9月21日</div>
         </div>
       
       
@@ -614,7 +618,7 @@
         aria-expanded="true"
       >
         Operation
-        <span class="list-group-count">(10)</span>
+        <span class="list-group-count">(9)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -751,7 +755,7 @@
         aria-expanded="true"
       >
         Shell
-        <span class="list-group-count">(2)</span>
+        <span class="list-group-count">(3)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -781,49 +785,12 @@
         </a>
       
     
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Ubuntu"
-        id="heading-3d945423f8e9496c429a5d8c65b4604f" role="tab" data-toggle="collapse" href="#collapse-3d945423f8e9496c429a5d8c65b4604f"
-        aria-expanded="false"
-      >
-        Ubuntu
-        <span class="list-group-count">(2)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-3d945423f8e9496c429a5d8c65b4604f"
-           role="tabpanel" aria-labelledby="heading-3d945423f8e9496c429a5d8c65b4604f">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
       
       
-        <a href="/Operation/Ubuntu/apt-command/" title="apt-command"
+        <a href="/Operation/Shell/ubuntu-guide/" title="ubuntu-guide"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">apt-command</span>
-        </a>
-      
-    
-      
-      
-        <a href="/Operation/Ubuntu/ubuntu-modify-sys-language/" title="ubuntu-modify-sys-language"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">ubuntu-modify-sys-language</span>
+          <span class="category-post">ubuntu-guide</span>
         </a>
       
     

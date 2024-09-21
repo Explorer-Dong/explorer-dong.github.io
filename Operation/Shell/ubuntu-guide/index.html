@@ -16,24 +16,26 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="Ubuntu 包管理工具 APT 的使用 前言 首先说明一下，包管理工具在 Linux 操作系统中的存在，就类似于应用商店在手机上的存在。我们可以利用包管理工具 安装、卸载、更新   我们的软件。在 Linux 的 Ubuntu 发行版中，使用 apt 包管理工具进行软件管理。接下来介绍一下其基本命令。 命令 1. 更新软件包列表 其实是更新每一个软件包对应的版本号，而非真正更新了软件。原理大概类">
+    <meta name="description" content="Ubuntu 使用指南 文件系统 以 Ubuntu22.04 为例。下面是我的文件目录：  下面是 gpt-4o 生成的解释：  &#x2F;boot: 存放启动加载程序和内核相关的文件，例如 vmlinuz 和 initrd.img，是系统启动时加载的内容。 &#x2F;dev: 包含系统中的设备文件。Linux 将所有设备（如硬盘、CD-ROM、键盘）视为文件，放在这个目录下。 &#x2F;etc: 存储系统配置文件和启动">
 <meta property="og:type" content="article">
-<meta property="og:title" content="apt-command">
-<meta property="og:url" content="https://blog.dwj601.cn/Operation/Ubuntu/apt-command/index.html">
+<meta property="og:title" content="ubuntu-guide">
+<meta property="og:url" content="https://blog.dwj601.cn/Operation/Shell/ubuntu-guide/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="Ubuntu 包管理工具 APT 的使用 前言 首先说明一下，包管理工具在 Linux 操作系统中的存在，就类似于应用商店在手机上的存在。我们可以利用包管理工具 安装、卸载、更新   我们的软件。在 Linux 的 Ubuntu 发行版中，使用 apt 包管理工具进行软件管理。接下来介绍一下其基本命令。 命令 1. 更新软件包列表 其实是更新每一个软件包对应的版本号，而非真正更新了软件。原理大概类">
+<meta property="og:description" content="Ubuntu 使用指南 文件系统 以 Ubuntu22.04 为例。下面是我的文件目录：  下面是 gpt-4o 生成的解释：  &#x2F;boot: 存放启动加载程序和内核相关的文件，例如 vmlinuz 和 initrd.img，是系统启动时加载的内容。 &#x2F;dev: 包含系统中的设备文件。Linux 将所有设备（如硬盘、CD-ROM、键盘）视为文件，放在这个目录下。 &#x2F;etc: 存储系统配置文件和启动">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409132006698.png">
 <meta property="article:published_time" content="2024-03-29T14:10:02.327Z">
-<meta property="article:modified_time" content="2024-03-30T02:04:23.588Z">
+<meta property="article:modified_time" content="2024-09-21T10:27:10.084Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409132006698.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>apt-command | Dwj の Blog</title>
+  <title>ubuntu-guide | Dwj の Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -223,7 +225,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="apt-command"></span>
+            <span id="subtitle" data-typed-text="ubuntu-guide"></span>
           
         </div>
 
@@ -246,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          400 字
+          1.3k 字
         
       </span>
     
@@ -257,7 +259,7 @@
         
         
         
-          3 分钟
+          8 分钟
         
       </span>
     
@@ -315,12 +317,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">apt-command</h1>
+            <h1 id="seo-header">ubuntu-guide</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月30日 上午
+                    本文最后更新于 2024年9月21日 晚上
                   
                 
               </p>
@@ -328,28 +330,70 @@
             
               <div class="markdown-body">
                 
-                <h1>Ubuntu 包管理工具 APT 的使用</h1>
-<h2 id="前言">前言</h2>
+                <h2 id="Ubuntu-使用指南">Ubuntu 使用指南</h2>
+<h2 id="文件系统">文件系统</h2>
+<p>以 Ubuntu22.04 为例。下面是我的文件目录：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409132006698.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="Ubuntu22.04 目录结构"></p>
+<p>下面是 gpt-4o 生成的解释：</p>
+<blockquote>
+<p><strong>/boot</strong>: 存放启动加载程序和内核相关的文件，例如 <code>vmlinuz</code> 和 <code>initrd.img</code>，是系统启动时加载的内容。</p>
+<p><strong>/dev</strong>: 包含系统中的设备文件。Linux 将所有设备（如硬盘、CD-ROM、键盘）视为文件，放在这个目录下。</p>
+<p><strong>/etc</strong>: 存储系统配置文件和启动脚本。几乎所有的系统级配置文件都位于此处。</p>
+<p><strong>/home</strong>: 每个用户的主目录都在这个目录下。用户的个人数据、配置文件、下载等内容存放于此。</p>
+<p><strong>/lost+found</strong>: 存放系统崩溃或磁盘故障后恢复的文件碎片。通常这个目录只有在使用 ext 文件系统时才存在。</p>
+<p><strong>/media</strong>: 用于自动挂载的可移动媒体设备的挂载点，如 CD-ROM、USB 驱动器等。</p>
+<p><strong>/mnt</strong>: 用于临时挂载的文件系统。例如，系统管理员可能会使用这个目录挂载临时文件系统。</p>
+<p><strong>/opt</strong>: 为第三方应用程序提供存储位置，通常是独立于默认包管理系统的程序。</p>
+<p><strong>/proc</strong>: 一个虚拟文件系统，提供系统内核和运行进程的信息。比如，<code>/proc/cpuinfo</code> 包含 CPU 的信息。</p>
+<p><strong>/root</strong>: 超级用户（root）的主目录。与普通用户的主目录在 <code>/home</code> 不同，root 用户的主目录在根目录下。</p>
+<p><strong>/run</strong>: 存储应用程序和服务的运行时数据，如进程 ID 文件（PID）、锁文件等。</p>
+<p><strong>/snap</strong>: 包含 Snap 包管理系统的应用程序安装目录。</p>
+<p><strong>/srv</strong>: 存放为服务（service）提供的数据。比如，Web 服务器可能会在这里存放网站文件。</p>
+<p><strong>/sys</strong>: 和 <code>/proc</code> 类似，提供系统硬件信息的接口，是一个虚拟文件系统。</p>
+<p><strong>/tmp</strong>: 用于存储临时文件，系统重启后这些文件通常会被删除。</p>
+<p><strong>/usr</strong>: 包含用户的二进制文件、库文件、文档等资源。<code>/usr/bin</code>、<code>/usr/lib</code>、<code>/usr/share</code> 等都在这个目录下。</p>
+<p><strong>/var</strong>: 存储经常发生变化的文件，比如日志文件、邮件队列、临时文件等。</p>
+<p><strong>/bin</strong>: 包含基本的用户命令的二进制文件，例如 <code>ls</code>、<code>cp</code> 等。通常系统启动时所需的命令都在此目录下。</p>
+<p><strong>/lib</strong>: 包含基本的共享库文件和内核模块。系统启动时所需的库文件通常在此目录下。</p>
+<p><strong>/lib32</strong>: 32 位系统的库文件目录，用于兼容 32 位程序。</p>
+<p><strong>/lib64</strong>: 64 位系统的库文件目录，用于 64 位程序。</p>
+<p><strong>/libx32</strong>: x32 ABI（应用二进制接口）的库文件目录，提供与 <code>x86-64</code> 兼容的 32 位地址空间。</p>
+<p><strong>/sbin</strong>: 包含系统管理员使用的二进制文件，如 <code>fdisk</code>、<code>ifconfig</code> 等，这些工具主要用于系统管理和维护。</p>
+</blockquote>
+<h2 id="包管理工具-apt-的使用">包管理工具 apt 的使用</h2>
 <p>首先说明一下，包管理工具在 Linux 操作系统中的存在，就类似于应用商店在手机上的存在。我们可以利用包管理工具 安装、卸载、更新   我们的软件。在 Linux 的 Ubuntu 发行版中，使用 apt 包管理工具进行软件管理。接下来介绍一下其基本命令。</p>
-<h2 id="命令">命令</h2>
-<h3 id="1-更新软件包列表">1. 更新软件包列表</h3>
+<h3 id="命令">命令</h3>
+<h4 id="更新软件包列表">更新软件包列表</h4>
 <p>其实是更新每一个软件包对应的版本号，而非真正更新了软件。原理大概类比于手机端提示更新（一定是最新版），但是服务器不会实时更新软件的最新版编号（因为没有实时联网），因此需要我们手动更新获取所有软件的最新版本编号，从而可以后续真正意义上的软件更新。</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt update<br></code></pre></td></tr></tbody></table></figure>
-<h3 id="2-更新软件包">2. 更新软件包</h3>
+<h4 id="更新软件包">更新软件包</h4>
 <p>更新全局软件包到最新版本</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt upgrade<br></code></pre></td></tr></tbody></table></figure>
-<h3 id="3-安装软件包">3. 安装软件包</h3>
+<h4 id="安装软件包">安装软件包</h4>
 <p>安装指定的软件包</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt install &lt;PackageName&gt;<br></code></pre></td></tr></tbody></table></figure>
-<h3 id="4-删除软件包">4. 删除软件包</h3>
+<h4 id="删除软件包">删除软件包</h4>
 <p>删除指定的软件包</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt remove &lt;PackageName&gt;<br></code></pre></td></tr></tbody></table></figure>
-<h2 id="补充">补充</h2>
-<h3 id="1-sudo-命令前缀">1. sudo 命令前缀</h3>
+<h3 id="补充">补充</h3>
+<h4 id="sudo-命令前缀">sudo 命令前缀</h4>
 <p>sudo 的全称是 superuser do，即<strong>超级用户执行</strong>。命令之前加上 <code>sudo</code> 的意思是普通用户以管理员身份执行指令，从而以管理员权限执行比如：安装软件、系统设置和文件系统等安全操作。可以避免不必要的安全风险。</p>
-<h2 id="参考">参考</h2>
+<h3 id="参考">参考</h3>
 <p><a target="_blank" rel="noopener" href="https://runkodo.com/post/%E5%A6%82%E4%BD%95%E5%9C%A8linux%E4%B8%AD%E5%AE%89%E8%A3%85%E5%92%8C%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%AE%8C%E5%85%A8%E7%9A%84%E5%88%9D%E5%AD%A6%E8%80%85">https://runkodo.com/post/如何在linux中安装和管理软件包：一个完全的初学者</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-apt.html">https://www.runoob.com/linux/linux-comm-apt.html</a></p>
+<h2 id="修改终端语言">修改终端语言</h2>
+<p>报错英文看不懂？提示英文看不懂？搜索查询太费事？直接解决终端语言！接下来将介绍在 Linux 的 Ubuntu 22.04 上修改终端语言的操作。</p>
+<h3 id="命令-2">命令</h3>
+<h3 id="安装中文语言包">安装中文语言包</h3>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt install language-pack-zh-hans<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="添加中文语言支持">添加中文语言支持</h3>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">locale-gen zh_CN.UTF-8<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="修改-locale-文件配置地域">修改 locale 文件配置地域</h3>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/default/locale<br><br>LANG=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LANGUAGE=<span class="hljs-string">"zh_CN:zh:en_US:en"</span><br>LC_NUMERIC=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_TIME=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_MONETARY=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_PAPER=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_IDENTIFICATION=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_NAME=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_ADDRESS=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_TELEPHONE=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_MEASUREMENT=<span class="hljs-string">"zh_CN.UTF-8"</span><br>LC_ALL=zh_CN.UTF-8<br></code></pre></td></tr></tbody></table></figure>
+<p>重启</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">reboot<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="参考-2">参考</h3>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/BobYuan888/article/details/88662779">https://blog.csdn.net/BobYuan888/article/details/88662779</a></p>
 
                 
               </div>
@@ -373,7 +417,7 @@
   
     <span>></span>
     
-  <a href="/categories/Operation/Ubuntu/" class="category-chain-item">Ubuntu</a>
+  <a href="/categories/Operation/Shell/" class="category-chain-item">Shell</a>
   
   
 
@@ -395,8 +439,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>apt-command</div>
-      <div>https://blog.dwj601.cn/Operation/Ubuntu/apt-command/</div>
+      <div>ubuntu-guide</div>
+      <div>https://blog.dwj601.cn/Operation/Shell/ubuntu-guide/</div>
     </div>
     <div class="license-meta">
       
@@ -414,7 +458,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年3月30日</div>
+          <div>2024年9月21日</div>
         </div>
       
       
@@ -529,7 +573,7 @@
         aria-expanded="true"
       >
         Operation
-        <span class="list-group-count">(10)</span>
+        <span class="list-group-count">(9)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -660,17 +704,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Shell"
         id="heading-ea89b68c34ce4a63c0f77e17413c6e30" role="tab" data-toggle="collapse" href="#collapse-ea89b68c34ce4a63c0f77e17413c6e30"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         Shell
-        <span class="list-group-count">(2)</span>
+        <span class="list-group-count">(3)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-ea89b68c34ce4a63c0f77e17413c6e30"
+      <div class="category-collapse collapse show" id="collapse-ea89b68c34ce4a63c0f77e17413c6e30"
            role="tabpanel" aria-labelledby="heading-ea89b68c34ce4a63c0f77e17413c6e30">
         
         
@@ -696,49 +740,12 @@
         </a>
       
     
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Ubuntu"
-        id="heading-3d945423f8e9496c429a5d8c65b4604f" role="tab" data-toggle="collapse" href="#collapse-3d945423f8e9496c429a5d8c65b4604f"
-        aria-expanded="true"
-      >
-        Ubuntu
-        <span class="list-group-count">(2)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse show" id="collapse-3d945423f8e9496c429a5d8c65b4604f"
-           role="tabpanel" aria-labelledby="heading-3d945423f8e9496c429a5d8c65b4604f">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
       
       
-        <a href="/Operation/Ubuntu/apt-command/" title="apt-command"
+        <a href="/Operation/Shell/ubuntu-guide/" title="ubuntu-guide"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">apt-command</span>
-        </a>
-      
-    
-      
-      
-        <a href="/Operation/Ubuntu/ubuntu-modify-sys-language/" title="ubuntu-modify-sys-language"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">ubuntu-modify-sys-language</span>
+          <span class="category-post">ubuntu-guide</span>
         </a>
       
     

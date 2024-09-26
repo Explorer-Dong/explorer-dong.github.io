@@ -23,11 +23,13 @@
 <meta property="og:site_name" content="Dwj の Blog">
 <meta property="og:description" content="数据库 前言 学科地位：    主讲教师 学分配额 学科类别     孔力 3.5 自发课    成绩组成：    平时 作业+实验 期末（闭卷 or 开卷）     10% 40% 50%    教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN 号     数据库原理与应用 《数据库系统概论》 6 王珊等 高等教育出版社 978-7-04-059125-5    学习资源：">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409262120291.png">
 <meta property="article:published_time" content="2024-08-27T11:13:43.468Z">
-<meta property="article:modified_time" content="2024-09-19T02:10:33.153Z">
+<meta property="article:modified_time" content="2024-09-26T13:23:28.722Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409262120291.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -246,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          834 字
+          2k 字
         
       </span>
     
@@ -257,7 +259,7 @@
         
         
         
-          6 分钟
+          13 分钟
         
       </span>
     
@@ -320,7 +322,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月19日 上午
+                    本文最后更新于 2024年9月26日 晚上
                   
                 
               </p>
@@ -393,14 +395,14 @@
 </ul>
 <p>为什么要学这门课？</p>
 <blockquote>
-<p>感觉没什么意义，毕竟只讲关系型数据库，而这个是再简单不过的数据模型了，哪怕加上了外键也不会很复杂。但我深知 db 的奥妙于深度绝不止于此，但是就目前上课情况来看应该是达不到这种程度了，毕竟最核心的数据库编程是不做要求的。</p>
+<p>感觉没什么意义，毕竟只讲关系型数据库，而这个是再简单不过的数据模型了，哪怕加上了外键也不会很复杂。但我深知 db 的奥妙与深度绝不止于此，但是就目前上课情况来看应该是达不到这种程度了，毕竟连最基本的数据库编程都是不做要求的。</p>
 </blockquote>
 <p>会收获什么？</p>
 <blockquote>
-<p>熟悉一下关系型数据库的理论吧，顺便准备好被国产的 OpenGuass ex 一把。其余的数据库类型以及拓展知识就靠自学吧。</p>
+<p>熟悉一下关系型数据库的理论吧，顺便准备好被国产的 openGuass ex 一把。其余的数据库类型以及拓展知识就靠自学吧。</p>
 </blockquote>
 <h2 id="基础篇">基础篇</h2>
-<h3 id="一、绪论">一、绪论</h3>
+<h3 id="绪论">绪论</h3>
 <p>数据库发展范式：人工系统 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 文件系统 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 数据库系统</p>
 <p>数据库系统概念图：</p>
 <pre><code class=" mermaid">---
@@ -439,21 +441,55 @@ graph TB
 <p>名词对照：关系（一张表）、元组（一行数据）、属性（一个字段）和码（主键）。</p>
 </li>
 </ul>
-<h3 id="二、关系模型">二、关系模型</h3>
-<h3 id="三、SQL">三、SQL</h3>
-<h3 id="四、安全性">四、安全性</h3>
-<h3 id="五、完整性">五、完整性</h3>
+<h3 id="关系模型">关系模型</h3>
+<p>基本概念：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409262120291.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="基本概念图"></p>
+<p><strong>关系操作的最小单位是什么</strong>？所有的增删改查都是以集合为最小单位。</p>
+<p><strong>外键是什么？有什么用</strong>？一张表的外键必须是另一张表的主键以确保数据的完整性，因为主键是必须全部存在的。当然，外键也可以引用本表的主键。有了外键就可以实现表与表之间一对多或多对多的关系。</p>
+<ul>
+<li>
+<p>关于一对多。例如，一个客户可以购买很多商品，而一个被购买的商品只能隶属于一个客户；</p>
+  
+    <div class="fold">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-d233e298" role="button" aria-expanded="false" aria-controls="collapse-d233e298">
+        <div class="fold-arrow">▶</div>实例
+      </div>
+      <div class="fold-collapse collapse" id="collapse-d233e298">
+        <div class="fold-content">
+          <p>假设有两个表：<code>customers</code> 和 <code>orders</code>。<code>customers</code> 表保存客户的信息，<code>orders</code> 表保存订单信息。每个订单都应该对应一个客户，所以可以使用外键将这两个表关联起来。</p><p><strong>创建表</strong></p><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建 customers 表</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> customers (<br>    customer_id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,<br>    customer_name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>)<br>);<br><br><span class="hljs-comment">-- 创建 orders 表，order_id 是主键，customer_id 是外键，引用 customers 表中的 customer_id</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> orders (<br>    order_id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,<br>    order_date <span class="hljs-type">DATE</span>,<br>    customer_id <span class="hljs-type">INT</span>,<br>    <span class="hljs-keyword">FOREIGN</span> KEY (customer_id) <span class="hljs-keyword">REFERENCES</span> customers(customer_id)<br>);<br></code></pre></td></tr></tbody></table></figure><p>在上述示例中，<code>orders</code> 表中的 <code>customer_id</code> 是一个外键，它引用了 <code>customers</code> 表中的 <code>customer_id</code> 列。这样一来，只有在 <code>customers</code> 表中存在的 <code>customer_id</code> 才能在 <code>orders</code> 表中作为合法的 <code>customer_id</code>。这确保了每个订单都有有效的客户。</p><p><strong>插入数据（增）</strong>：当向 <code>orders</code> 表中插入一条新记录时，数据库会检查 <code>customer_id</code> 是否在 <code>customers</code> 表中存在。如果不存在，插入操作会失败。</p><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 插入一条合法记录</span><br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> customers (customer_id, customer_name) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>, <span class="hljs-string">'Alice'</span>);<br><br><span class="hljs-comment">-- 插入订单记录，外键 customer_id 存在于 customers 表中</span><br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> orders (order_id, order_date, customer_id) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">101</span>, <span class="hljs-string">'2024-09-26'</span>, <span class="hljs-number">1</span>);<br><br><span class="hljs-comment">-- 尝试插入一个无效的订单记录（客户ID为2在 customers 表中不存在）</span><br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> orders (order_id, order_date, customer_id) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">102</span>, <span class="hljs-string">'2024-09-26'</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">-- 会失败</span><br></code></pre></td></tr></tbody></table></figure><p><strong>删除或更新时（删 | 改）</strong>：如果试图删除 <code>customers</code> 表中的某个 <code>customer_id</code>，而该 ID 在 <code>orders</code> 表中被引用，会引发外键约束错误。可以通过设置外键的级联操作（如 <code>ON DELETE CASCADE</code> 或 <code>ON UPDATE CASCADE</code>）来控制这种行为，使删除或更新操作可以自动级联到相关表。</p><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 定义外键时使用级联删除</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> orders (<br>    order_id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,<br>    order_date <span class="hljs-type">DATE</span>,<br>    customer_id <span class="hljs-type">INT</span>,<br>    <span class="hljs-keyword">FOREIGN</span> KEY (customer_id) <span class="hljs-keyword">REFERENCES</span> customers(customer_id) <span class="hljs-keyword">ON</span> <span class="hljs-keyword">DELETE</span> CASCADE<br>);<br><br><span class="hljs-comment">-- 删除客户1时，orders 表中所有引用 customer_id = 1 的订单都会自动被删除</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> customers <span class="hljs-keyword">WHERE</span> customer_id <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br></code></pre></td></tr></tbody></table></figure>
+        </div>
+      </div>
+    </div>
+</li>
+<li>
+<p>关于多对多。例如，一门课程需要多门先修课，而一门课程也可以成为很多课程的选修课。</p>
+  
+    <div class="fold">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-f46a4915" role="button" aria-expanded="false" aria-controls="collapse-f46a4915">
+        <div class="fold-arrow">▶</div>实例
+      </div>
+      <div class="fold-collapse collapse" id="collapse-f46a4915">
+        <div class="fold-content">
+          <p>这里课程与先修课之间的实体对象是相同的，并且一门课程可以有许多门先修课，而一门课程也可能成为很多课程的先修课，如果还是像一对多那样进行存储，即课程表中增加一列先修课，就会导致先修课列中可能出现多个信息的情况，这也就不符合关系型数据库中的第一范式：原子性。因此我们不得不创建一个新表，也就是<strong>中间表</strong>，来存储课程和先修课之间的关系。</p><p><strong>创建表</strong></p><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建 courses 表</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> courses (<br>    course_id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,<br>    course_name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>)<br>);<br><br><span class="hljs-comment">-- 创建 prerequisites 表，其中 course_id 和 prerequisite_id 都是外键</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> prerequisites (<br>    course_id <span class="hljs-type">INT</span>,  <span class="hljs-comment">-- 课程ID</span><br>    prerequisite_id <span class="hljs-type">INT</span>,  <span class="hljs-comment">-- 先修课ID</span><br>    <span class="hljs-keyword">PRIMARY</span> KEY (course_id, prerequisite_id),  <span class="hljs-comment">-- 组合主键</span><br>    <span class="hljs-keyword">FOREIGN</span> KEY (course_id) <span class="hljs-keyword">REFERENCES</span> courses(course_id) <span class="hljs-keyword">ON</span> <span class="hljs-keyword">DELETE</span> CASCADE,  <span class="hljs-comment">-- 课程ID外键</span><br>    <span class="hljs-keyword">FOREIGN</span> KEY (prerequisite_id) <span class="hljs-keyword">REFERENCES</span> courses(course_id) <span class="hljs-keyword">ON</span> <span class="hljs-keyword">DELETE</span> CASCADE  <span class="hljs-comment">-- 先修课ID外键</span><br>);<br></code></pre></td></tr></tbody></table></figure><p>在这个设计中：</p><ul><li><code>courses</code> 表保存所有课程的基本信息，每门课程都有唯一的 <code>course_id</code>。</li><li><code>prerequisites</code> 表用于表示多对多的先修课关系，其中 <code>course_id</code> 是当前课程的 ID，<code>prerequisite_id</code> 是该课程的先修课程的 ID。两者都引用了 <code>courses</code> 表中的 <code>course_id</code> 列，构成多对多的关系。</li></ul><p><strong>插入数据（增）</strong></p><p>插入课程记录：</p><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 插入一些课程记录</span><br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> courses (course_id, course_name) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>, <span class="hljs-string">'Mathematics'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> courses (course_id, course_name) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">2</span>, <span class="hljs-string">'Physics'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> courses (course_id, course_name) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">3</span>, <span class="hljs-string">'Computer Science'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> courses (course_id, course_name) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">4</span>, <span class="hljs-string">'Linear Algebra'</span>);<br></code></pre></td></tr></tbody></table></figure><p>插入先修课关系记录：</p><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 课程 Computer Science 需要 Mathematics 和 Physics 作为先修课</span><br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> prerequisites (course_id, prerequisite_id) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">3</span>, <span class="hljs-number">1</span>);  <span class="hljs-comment">-- Computer Science -&gt; Mathematics</span><br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> prerequisites (course_id, prerequisite_id) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">3</span>, <span class="hljs-number">2</span>);  <span class="hljs-comment">-- Computer Science -&gt; Physics</span><br><br><span class="hljs-comment">-- 课程 Physics 需要 Linear Algebra 作为先修课</span><br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> prerequisites (course_id, prerequisite_id) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);  <span class="hljs-comment">-- Physics -&gt; Linear Algebra</span><br></code></pre></td></tr></tbody></table></figure><p>在上述例子中：</p><ul><li><code>prerequisites</code> 表表示课程之间的先修关系。例如，<code>Computer Science</code> 课程的 <code>course_id</code> 是 3，它的先修课是 <code>Mathematics</code>（<code>prerequisite_id</code> 为 1）和 <code>Physics</code>（<code>prerequisite_id</code> 为 2）。</li><li>通过这种方式，可以表示一门课程有多门先修课，同时一门课程也可以作为多门课程的先修课。</li><li>插入的 <code>course_id</code> 和 <code>prerequisite_id</code> 必须都是 <code>courses</code> 表中已有的课程，否则会插入失败。</li></ul><p><strong>删除数据（删）</strong></p><p>由于在创建表时设置了级联操作 <code>ON DELETE CASCADE</code>，因此当我们删除任何一个存在的课程时，与该课程相关的所有先修课信息也都会被级联删除。无论该课程是其他课程的先修课，还是它自身有先修课。</p>
+        </div>
+      </div>
+    </div>
+</li>
+</ul>
+<h3 id="SQL">SQL</h3>
+<h3 id="安全性">安全性</h3>
+<h3 id="完整性">完整性</h3>
 <h2 id="开发篇">开发篇</h2>
-<h3 id="六、关系数据理论">六、关系数据理论</h3>
-<h3 id="七、数据库设计">七、数据库设计</h3>
-<h3 id="八、数据库编程">八、数据库编程 *</h3>
+<h3 id="关系数据理论">关系数据理论</h3>
+<h3 id="数据库设计">数据库设计</h3>
+<h3 id="数据库编程">数据库编程 *</h3>
 <p>这一章不作考试要求。樂。</p>
 <h2 id="进阶篇">进阶篇</h2>
-<h3 id="九、关系数据库存储管理">九、关系数据库存储管理</h3>
-<h3 id="十、关系查询">十、关系查询</h3>
+<h3 id="关系数据库存储管理">关系数据库存储管理</h3>
+<h3 id="关系查询">关系查询</h3>
 <p>怎么查询关系的？又可以怎么优化查询策略呢？</p>
-<h3 id="十一、数据库恢复技术">十一、数据库恢复技术</h3>
-<h3 id="十二、并发">十二、并发</h3>
+<h3 id="数据库恢复技术">数据库恢复技术</h3>
+<h3 id="并发">并发</h3>
 
                 
               </div>
@@ -518,7 +554,7 @@ graph TB
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月19日</div>
+          <div>2024年9月26日</div>
         </div>
       
       

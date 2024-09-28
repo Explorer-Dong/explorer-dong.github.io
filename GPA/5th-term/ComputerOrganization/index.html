@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409261337035.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409180822743.png">
 <meta property="article:published_time" content="2024-08-27T12:14:48.819Z">
-<meta property="article:modified_time" content="2024-09-26T05:37:04.559Z">
+<meta property="article:modified_time" content="2024-09-28T13:01:39.656Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          4.7k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          26 分钟
+          30 分钟
         
       </span>
     
@@ -335,7 +335,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月26日 下午
+                    本文最后更新于 2024年9月28日 晚上
                   
                 
               </p>
@@ -425,16 +425,16 @@
 <p>注：</p>
 <blockquote>
 <p><strong>本书 ISA 采用 MIPS 指令系统</strong>。之前学习的 <a href="https://blog.dwj601.cn/GPA/4th-term/SysBasic/#3-2-IA-32-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0">《计算机系统基础》</a> 中 ISA 采用的是 IA-32 指令系统，也就是大名鼎鼎的 x86-64 指令系统的前身。</p>
-<p>为了形式化地描述 CPU 的运行逻辑，需要使用寄存器传送级 (register transfer level,RTL) 语言。<strong>本书 RTL 语言规定有以下规定</strong>。R[r] 表示通用寄存器 r 的内容，M[addr] 表示存储单元 addr 的内容；M[R[r]] 表示寄存器 r 的内容所指存储单元的内容；PC 表示 PC 的内容，M[PC] 表示 PC 所指存储单元的内容；SEXT[imm] 表示对 imm 进行符号扩展，ZEXT[imm] 表示对 imm 进行零扩展；传送方向用 ← 表示，即传送源在右，传送目的在左。</p>
+<p>为了形式化地描述 CPU 的运行逻辑，需要使用寄存器传送级 (register transfer level, 简称 RTL) 语言。<strong>本书 RTL 语言有以下规定</strong>：R[r] 表示通用寄存器 r 的内容，M[addr] 表示存储单元 addr 的内容；M[R[r]] 表示寄存器 r 的内容所指存储单元的内容；PC 表示 PC 的内容，M[PC] 表示 PC 所指存储单元的内容；SEXT[imm] 表示对 imm 进行符号扩展，ZEXT[imm] 表示对 imm 进行零扩展；传送方向用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">←</span></span></span></span> 表示，即传送源在右，传送目的在左。</p>
 </blockquote>
-<h2 id="第-1-章-计算机系统概述">第 1 章 计算机系统概述</h2>
+<h2 id="一、计算机系统概述">一、计算机系统概述</h2>
 <p>注：本章与《计算机系统基础》的第 1 章重复，详见 <a href="https://blog.dwj601.cn/GPA/4th-term/SysBasic/#%E7%AC%AC1%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0">https://blog.dwj601.cn/GPA/4th-term/SysBasic/#第1章-计算机系统概述</a></p>
 <p>主要掌握 <strong>冯诺依曼状态机</strong> 和 <strong>计算机性能度量</strong> 两个知识点。</p>
-<h2 id="第-2-章-数据的机器级表示">第 2 章 数据的机器级表示</h2>
+<h2 id="二、数据的机器级表示">二、数据的机器级表示</h2>
 <p>注：本章与《计算机系统基础》的第 2 章重复，详见 <a href="https://blog.dwj601.cn/GPA/4th-term/SysBasic/#%E7%AC%AC2%E7%AB%A0-%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86">https://blog.dwj601.cn/GPA/4th-term/SysBasic/#第2章-数据的机器级表示与处理</a></p>
 <p>主要掌握 <strong>数值/非数值数据的表示</strong>、<strong>数据宽度</strong>、<strong>存储对齐</strong> 和 <strong>纠/检错</strong> 四个知识点。</p>
 <p>数据的纠错/检错见 7.4 节。</p>
-<h2 id="第-3-章-运算方法和运算部件">第 3 章 运算方法和运算部件</h2>
+<h2 id="三、运算方法和运算部件">三、运算方法和运算部件</h2>
 <p>本章我们讲讲 CPU 中的 <strong>算数逻辑单元（Arithmetic and Logic Unit，简称 ALU）</strong>。ALU 在计算机中的地位大致如下图所示：</p>
 <pre><code class=" mermaid">graph RL
     实现功能
@@ -457,29 +457,49 @@
 </code></pre>
 <p>也就有了这样的学习路线：涉及运算的机器指令（MIPS 指令系统） <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 运算部件支持（逻辑电路图） <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 算数运算逻辑（算法设计）</p>
 <h3 id="3-1-涉及运算的机器指令">3.1 涉及运算的机器指令</h3>
-<p><strong>都有哪些涉及运算的机器指令</strong>？机器指令的种类有很多，我们在计算机系统基础中已经学习到了比如：数据传输指令、控制指令、跳转指令等等。由于本章讲解的是算数运算，因此我们主要学习涉及到运算的机器指令。我们将所有涉及到运算的机器指令抽丝剥茧，最后凝练出了以下共 11 条指令。</p>
+<p><strong>都有哪些涉及运算的机器指令</strong>？机器指令的种类有很多，我们在计算机系统基础中已经学习到了比如：数据传输指令、控制指令、跳转指令等等。由于本章讲解的是算数运算，因此我们主要学习涉及到运算的机器指令。我们将所有涉及到运算的机器指令抽丝剥茧，凝练出了以下共 11 条指令：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409252041301.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="11 条涉及运算指令的 RTL 描述"></p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409252041551.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="11 条涉及运算指令的 RTL 描述 - 续"></p>
-<p>不难发现，上述 11 种除了最后一个跳转指令，其余的 10 条运算指令只有 3 大类：加减法、按位或、比大小。</p>
+<p>不难发现，上述 11 种除了最后一个跳转指令，其余的 10 条运算指令只有 3 大类：加减法、按位或、小于置 1。</p>
 <h3 id="3-2-运算部件支持">3.2 运算部件支持</h3>
-<p><strong>有了上述的程序运算需求，如何设计出对应的硬件来支持呢</strong>？如下图所示的 ALU 所示：其输入是 ALUctr，输出有 4 个控制信号：① SUBctr用来控制 ALU 执行加法还是减法运算，当 SUBctr=1 时，做减法，当 SUBctr=0 时，做加法；② OPctr 用来控制选择哪种运算的结果作为 Result 输出，因为所实现的11条指令中只可能有加/减、按位或、小于置 1 这 3 种运算，所以OPctr 有两位；③ OVctr 用来控制是否要进行溢出判断，当 OVctr=1 时，进行溢出判断，此时，若结果发生溢出，则溢出标志 Overflow 为 1，当 OVctr=0 时，无须溢出判断，此时，即使结果发生溢出，溢出标志 Overflow 也不为 1；④ SIGctr 信号控制 ALU 是执行“带符号整数比较小于置 1”还是“无符号数比较小于置 1”功能，当 SIGctr=0，则执行“无符号数比较小于置 1”，当 SIGctr=1 时，则执行“带符号整数比较小于置 1”。完美实现了所需的 3 大类运算逻辑：</p>
+<p><strong>有了上述的程序运算需求，如何设计出对应的硬件来支持呢？CPU 中的 ALU 单元就是负责运算的部件</strong>。ALU 内部的逻辑结构如下图所示，其输入有两个运算数 A 和 B 以及一个控制输入 ALUctr：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409250813229.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="ALU 实现"></p>
-<p><strong>ALU 是如何控制以精准实现上述 11 条指令的</strong>？本质上就是通过 ALUctr 来实现运算控制的。除了最后一个跳转，难道 10 个指令就一定需要 4 位进行信号选择控制吗？并不是，其中一些虽然功能不同，但是运算逻辑相同：指令 addiu、lw、sw 和 beq 转移目标地址计算的 ALU 控制信号取值一样，都是进行加法运算并不判溢出，记为 addu 操作；指令 subu 和 beq 判 0 操作的 ALU 控制信号可看成一样，都做减法运算并不判溢出，记为 subu 操作。下表详细解释了每一条指令的运算逻辑与运算部件之间的关系：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409261336957.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="运算逻辑"></p>
-<p>因此，这 11 条指令可以归纳为 7 种操作：addu、add、or、subu、sub、sltu、slt，也就是说 ALUctr 只需要 3 个选择控制位！如下表所示，列出了 ALUctr 的控制逻辑：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409261337035.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="控制逻辑"></p>
-<p><strong>为什么可以这样控制</strong>？==TODO==</p>
-<ol>
-<li>加减运算控制（SUBctr）：加法（SUBctr=0）减法（SUBctr=1）</li>
-<li>输出结构控制（OPctr）：</li>
-<li>溢出判断控制（OVctr）：</li>
-<li>小于置一控制（SIGctr）：本质上还是使用加法器做减法，如上图所示，也是基于加法器实现的判断逻辑：
+<p>ALUctr 有 4 个控制信号，下面借书中原文分别解释 4 个控制信号对应的逻辑：</p>
+<blockquote>
+<p>SUBctr 用来控制 ALU 执行加法还是减法运算。当 SUBctr=1 时，做减法；当 SUBctr=0 时，做加法。</p>
+<p>OPctr 用来控制选择哪种运算的结果作为 Result 输出。因为所实现的 11 条指令中只可能有加/减、按位或、小于置 1 这 3 大类运算，所以 OPctr 有两位。</p>
+<p>OVctr 用来控制是否要进行溢出判断。当 OVctr=1 时，进行溢出判断，此时，若结果发生溢出，则溢出标志 Overflow 为 1，当 OVctr=0 时，无须溢出判断，此时，即使结果发生溢出，溢出标志 Overflow 也不为 1。</p>
+<p>SIGctr 信号控制 ALU 是执行「带符号整数比较小于置 1」还是执行「无符号数比较小于置 1」的功能。当 SIGctr=0，执行「无符号数比较小于置 1」的功能；当 SIGctr=1 时，执行「带符号整数比较小于置 1」的功能。</p>
+</blockquote>
+<p>完美实现了所需的 3 大类运算逻辑。</p>
+<p><strong>ALU 是如何控制以精准实现上述 11 条指令的？本质上就是通过 ALUctr 来实现运算控制的</strong>。除了最后一个跳转，难道 10 个指令就一定需要 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">⌈</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo><mo stretchy="false">⌉</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\lceil \log_2(10) \rceil =4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">10</span><span class="mclose">)⌉</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> 位进行信号选择控制吗？并不是，其中一些虽然功能不同，但是运算逻辑相同：</p>
 <ul>
-<li>无符号型（SIGctr=0）：<code>Less = Carry ^ SUBctr</code></li>
-<li>有符号型（SIGctr=1）：<code>Less = Sign ^ Overflow</code></li>
+<li>指令 addiu、lw、sw 和 beq 转移目标地址计算的 ALU 控制信号取值一样，都是进行加法运算并不判溢出，记为 addu 操作.</li>
+<li>指令 subu 和 beq 判 0 操作的 ALU 控制信号可看成一样，都做减法运算并不判溢出，记为 subu 操作。</li>
+</ul>
+<p>下表详细解释了每一条指令的运算类型与 ALUctr 取值之间的关系：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409261336957.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="运算类型与 ALUctr 取值之间的关系"></p>
+<p>因此，这 11 条指令可以归纳为 7 种操作：addu、add、or、subu、sub、sltu、slt，也就是说 ALUctr 只需要 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">⌈</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mo stretchy="false">(</mo><mn>7</mn><mo stretchy="false">)</mo><mo stretchy="false">⌉</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\lceil \log_2(7) \rceil =3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">7</span><span class="mclose">)⌉</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span> 个选择控制位！如下表所示，列出了 ALUctr 的选择控制逻辑：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409261337035.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="ALUctr 的选择控制逻辑"></p>
+<p><strong>为什么可以这样控制</strong>？</p>
+<p>加减运算控制（SUBctr）：很显然，加法（SUBctr=0），减法（SUBctr=1）。</p>
+<p>输出内容控制（OPctr）：很显然， 3 大类运算就对应 3 个取值。</p>
+<p>溢出判断控制（OVctr）：很显然，有符号运算需要溢出判断，其他运算都不需要。</p>
+<p>小于置一控制（SIGctr）：这个逻辑比较有意思。为什么无符号数比大小时 <code>Less = Carry ^ SUBctr</code>；有符号数比大小时 <code>Less = Sign ^ Overflow</code> 呢？首先我们知道，比大小的本质是使用加法器做减法运算，那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>−</mo><mi>B</mi><mo>=</mo><mi>A</mi><mo>+</mo><msub><mi>B</mi><mtext>补</mtext></msub><mo>=</mo><mi>A</mi><mo>+</mo><mo stretchy="false">(</mo><mo>∼</mo><mi>B</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A-B=A+B_{\text{补}}=A+(\sim B +1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord cjk_fallback mtight">补</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+<ul>
+<li>对于无符号数的比大小逻辑。由于是减法，SUBctr 一定是 1，因此此时的输出其实可以进一步归纳为 <code>Less = Carry ^ 1 = !Carry</code>。也就是说我们只需要分析加法运算的进位结果即可，而这就是之前学过的无符号整数加减运算逻辑了。如果 A 严格小于 B，则 B 的补码与 A 相加后不会产生进位，此时 <code>!Carry = !0 = 1</code> 表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>&lt;</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A&lt;B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>；如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≥</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\ge B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>，则 B 的补码与 A 相加后就会超过无符号整数表示的范围产生进位，此时 <code>!Carry = !1 = 0</code> 表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≥</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A \ge B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>。很巧妙的逻辑。</li>
+<li>对于有符号数的比大小逻辑。
+<ul>
+<li>如果运算没有溢出，即 <code>Overflow=0</code>，此时 A 与 B 的正负一定相同。A 与 B 的比大小结果可以直接根据加法器运算结果的符号位来确定。如果运算结果是负的，即 <code>Sign=1</code>，那么显然 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>&lt;</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A&lt;B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>；反之如果运算结果是正的，即 <code>Sign=0</code>，那么显然 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≥</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\ge B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>。</li>
+<li>如果运算发生溢出，即 <code>Overflow=1</code>，此时 A 与 B 的正负一定不同。但我们不知道谁正谁负，根据有符号整数加减运算的溢出符号判定逻辑可知：
+<ul>
+<li>若 A 为正数 B 为负数。溢出发生时运算结果一定是负数（正溢出），即 <code>Sign=1</code>，此时 <code>Less = Sign ^ OverFlow = 0</code>，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≥</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A \ge B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>。</li>
+<li>若 A 为负数 B 为正数，溢出发生时运算结果一定是正数（负溢出），即 <code>Sign=0</code>，此时 <code>Less = Sign ^ OverFlow = 1</code>，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>&lt;</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A&lt; B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>。</li>
 </ul>
 </li>
-</ol>
+</ul>
+</li>
+</ul>
 <h3 id="3-3-算数运算逻辑">3.3 算数运算逻辑</h3>
 <p>程序的运算需求有了（算数运算），能进行基本运算的硬件也设计出来了（ALU）。如何利用已有的运算部件来巧妙地设计算法以高效地实现我们常见的数学运算呢？让我们一探究竟！</p>
 <h4 id="整数加减运算">整数加减运算</h4>
@@ -521,10 +541,10 @@
 <p><strong>可以优化吗</strong>？同样是可以的。与原码乘法的优化方案类似。</p>
 <h4 id="整数除法运算">整数除法运算</h4>
 <p>==TODO==</p>
-<h2 id="第-4-章-指令系统">第 4 章 指令系统</h2>
-<h2 id="第-5-章-中央处理器">第 5 章 中央处理器</h2>
-<h2 id="第-6-章-指令流水线">第 6 章 指令流水线</h2>
-<h2 id="第-7-章-存储器层次结构">第 7 章 存储器层次结构</h2>
+<h2 id="四、指令系统">四、指令系统</h2>
+<h2 id="五、中央处理器">五、中央处理器</h2>
+<h2 id="六、指令流水线">六、指令流水线</h2>
+<h2 id="七、存储器层次结构">七、存储器层次结构</h2>
 <h3 id="7-4-存储器的数据校验">7.4 存储器的数据校验</h3>
 <p>数据在信道传送的过程中，可能会因为各种噪声或者硬件原因出现错误，我们有必要进行数据的检错与纠错。本目我们主要介绍「<strong>数据检错中的奇偶校验法</strong>」策略。其实逻辑很简单，先看数据校验的流程图：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409180822743.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="数据校验流程图"></p>
@@ -540,8 +560,8 @@
 </ol>
 <p><strong>码距是什么</strong>？所谓码距就是两个二进制代码（码字）中不同位的个数。在奇偶校验的码制下，两个合法码字的最小距离显然是 2。</p>
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Dontla/article/details/103627008">什么是奇偶校验原理？奇校验、偶校验、校验位（单比特奇偶校验、两维奇偶校验（矩阵校验或交叉奇偶校验））</a></p>
-<h2 id="第-8-章-系统互连及输入输出组织">第 8 章 系统互连及输入输出组织</h2>
-<h2 id="第-9-章-并行处理系统">第 9 章 并行处理系统 *</h2>
+<h2 id="八、系统互连及输入输出组织">八、系统互连及输入输出组织</h2>
+<h2 id="九、并行处理系统">九、并行处理系统 *</h2>
 <p>不做要求，略。</p>
 
                 
@@ -607,7 +627,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月26日</div>
+          <div>2024年9月28日</div>
         </div>
       
       

@@ -6,11 +6,13 @@ category_bar: true
 
 ## 板子
 
-优雅的解法，少不了优雅的板子。目前仅仅编写 C++ 和 Python 语言对应的板子。前者用于备赛 Xcpc，后者用于备赛蓝桥杯。
+优雅的解法，少不了优雅的板子。目前仅编写 C++ 和 Python 语言对应的板子。前者用于备赛 Xcpc，后者用于备赛蓝桥杯。
 
 ## 基础算法
 
 ### 高精度
+
+{% fold light @C++ %}
 
 ```cpp
 class Int {
@@ -202,7 +204,7 @@ public:
     }
 };
 
-/* usage
+/* 使用说明
 Int a, b;
 
 // 赋值
@@ -234,7 +236,13 @@ https://github.com/Baobaobear/MiniBigInteger/blob/main/bigint_tiny.h
 */
 ```
 
+{% endfold %}
+
 ### 二分
+
+闭区间寻找左边界：
+
+{% fold light @C++ %}
 
 ```cpp
 bool findLeft(int x) {
@@ -249,6 +257,12 @@ bool findLeft(int x) {
 }
 ```
 
+{% endfold %}
+
+闭区间寻找右边界：
+
+{% fold light @C++ %}
+
 ```cpp
 bool findRight(int x) {
     int l = 0, r = n - 1;
@@ -262,9 +276,13 @@ bool findRight(int x) {
 }
 ```
 
+{% endfold %}
+
 ## 哈希
 
-使用 `std::unordered_map` 时可能会因为哈希冲突导致查询、插入操作降低到 $O(n)$，此时可以使用 `std::map` 进行替代，或者自定义一个哈希函数，如：
+使用 `std::unordered_map` 时可能会因为哈希冲突导致查询、插入操作降低到 $O(n)$，此时可以使用 `std::map` 进行替代，或者自定义一个哈希函数。
+
+{% fold light @C++ %}
 
 ```cpp
 template<class T>
@@ -276,15 +294,19 @@ struct CustomHash {
     }
 };
 
-// usage
+// 示例
 std::unordered_map<int, int, CustomHash<int>> f1;
 std::unordered_map<long long, int, CustomHash<long long>> f2;
 std::unordered_map<std::string, int, CustomHash<long long>> f3;
 ```
 
+{% endfold %}
+
 ## 数据结构
 
 ### 并查集
+
+{% fold light @C++ %}
 
 ```cpp
 struct DisjointSetUnion {
@@ -324,23 +346,35 @@ struct DisjointSetUnion {
 };
 ```
 
+{% endfold %}
+
+{% fold light @Python %}
+
 ```python
-class dsu:
+class DSU:
     def __init__(self, n: int) -> None:
         self.n = n
         self.p = [i for i in range(n + 1)]
+    
     def find(self, x: int) -> int:
         if self.p[x] != x: self.p[x] = self.find(self.p[x])
         return self.p[x]
+    
     def merge(self, a: int, b: int) -> None:
         self.p[self.find(a)] = self.find(b)
-    def query(self, a: int, b: int) -> bool:
+    
+    def same(self, a: int, b: int) -> bool:
         return self.find(a) == self.find(b)
+    
     def block(self) -> int:
         return sum([1 for i in range(1, self.n + 1) if self.p[i] == i])
 ```
 
+{% endfold %}
+
 ### 树状数组
+
+{% fold light @C++ %}
 
 ```cpp
 template<class T>
@@ -368,17 +402,24 @@ struct BinaryIndexedTree {
 };
 ```
 
+{% endfold %}
+
+{% fold light @Python %}
+
 ```python
 class BinaryIndexedTree:
     def __init__(self, n: int):
         self.n = n
         self.arr = [0] * (n + 1)
+    
     def lowbit(self, x: int) -> int:
         return x & (-x)
+    
     def add(self, pos: int, x: int) -> None:
         while pos <= self.n:
             self.arr[pos] += x
             pos += self.lowbit(pos)
+    
     def sum(self, pos: int) -> int:
         ret = 0
         while pos:
@@ -386,6 +427,8 @@ class BinaryIndexedTree:
             pos -= self.lowbit(pos)
         return ret
 ```
+
+{% endfold %}
 
 ### SortedList
 
@@ -408,6 +451,8 @@ class BinaryIndexedTree:
     6. `__iter__()`: 返回列表的迭代器
     7. `__reversed__()`: 返回列表的反向迭代器
     8. `__repr__()`: 返回列表的字符串表示形式
+
+{% fold light @Python %}
 
 ```python
 class SortedList:
@@ -648,6 +693,8 @@ class SortedList:
 > 引自：https://www.acwing.com/activity/content/code/content/8475415/
 >
 > 官方：https://github.com/grantjenks/python-sortedcontainers/blob/master/src/sortedcontainers/sortedlist.py
+
+{% endfold %}
 
 ## 数学
 

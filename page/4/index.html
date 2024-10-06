@@ -60,14 +60,14 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/icon-self/iconfont.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -177,9 +177,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/inner/" target="_self">
+                <i class="iconfont icon-taoxin"></i>
+                <span>心语</span>
               </a>
             </li>
           
@@ -251,13 +263,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/DataBase/ElasticSearch/elastic-search-basic/" target="_self">
+        <a href="/DataBase/ElasticSearch/elastic-search-basic/" target="_blank">
           elastic-search-basic
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/DataBase/ElasticSearch/elastic-search-basic/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/DataBase/ElasticSearch/elastic-search-basic/" target="_blank">
         <div>
           ElasticSearch 基础 ELK 组件  正向索引与倒排索引  正向索引   存储结构：按照每一个信息段，整条存储为一个文档   搜索形式：根据用户输入的词条在存储的每一个文档中进行匹配，记录符合的 id 信息   倒排索引  存储结构：首先将每一个信息段进行语义分割（中文按照词义，英文按照空格），然后将每一个分割的单元创建唯一的文档，同时记录原始文档的 ID（数据量小可以用哈希表，数据量
         </div>
@@ -312,13 +324,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/BackEnd/Python/python-basic/" target="_self">
+        <a href="/BackEnd/Python/python-basic/" target="_blank">
           python-basic
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/Python/python-basic/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/Python/python-basic/" target="_blank">
         <div>
           Python 基础 本文记录 Python3 语法相关的内容。 浅析 py 中的数据类型 前言 在写 py 的函数时，想要实现下述 C++ 的语法： 1void f(int&amp; x) {} 但是忽然想起来 python 传参时虽然都是引用但是门道有所不同。概念模糊已久，故写此博客权当强化记忆。 数据类型 在 python 中，可以按照 数据的可变性 将所有的数据类型分为两大类：  不可变数据
         </div>
@@ -373,13 +385,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/BackEnd/CPlusPlus/cpp-basic/" target="_self">
+        <a href="/BackEnd/CPlusPlus/cpp-basic/" target="_blank">
           cpp-basic
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/CPlusPlus/cpp-basic/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/BackEnd/CPlusPlus/cpp-basic/" target="_blank">
         <div>
           C++ 基础 本文收集一些 C++ 相关的语法知识，推荐借助目录阅读或者 Ctrl+F 检索自己需要的内容阅读。C++std≥C++11\text{C++std}\ge\text{C++11}C++std≥C++11 文件 I/O * C++ 封装了三个类用来进行文件 IO 操作，分别为 ifstream、ofstream 和 fstream。其中 ifstream 负责读文件，ofstream
         </div>
@@ -580,10 +592,6 @@
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
-
-
-  
-<script src="/js/custom.js"></script>
 
 
 

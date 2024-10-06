@@ -60,14 +60,14 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/icon-self/iconfont.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -177,9 +177,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/inner/" target="_self">
+                <i class="iconfont icon-taoxin"></i>
+                <span>心语</span>
               </a>
             </li>
           
@@ -249,7 +261,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/README/" target="_self">
+        <a href="/README/" target="_blank">
           <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/hello.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="README">
         </a>
       </div>
@@ -259,15 +271,15 @@
         
           <i class="index-pin iconfont icon-top" title="Pin on top"></i>
         
-        <a href="/README/" target="_self">
+        <a href="/README/" target="_blank">
           README
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/README/" target="_self">
+      <a class="index-excerpt " href="/README/" target="_blank">
         <div>
-          Pre 本（网站）仓库收录了个人本科期间学习相关 课程 或相关 技术 时做的电子笔记相关源码，内容采用 Markdown 格式记录可供下载自我修改补充，也欢迎 PR。若还不了解 Markdown，可以移步 Markdown 官方教程。 源码地址：https://github.com/Explorer-Dong/explorer-dong.github.io 镜像地址：https://gitee.c
+          项目背景 本（网站）仓库收录了个人本科期间学习相关 课程 或相关 技术 时做的电子笔记相关源码，内容采用 Markdown 格式记录可供下载自我修改补充，也欢迎 PR。若还不了解 Markdown，可以移步 Markdown 官方教程。 源码地址：https://github.com/Explorer-Dong/explorer-dong.github.io 镜像地址：https://gitee.
         </div>
       </a>
 
@@ -292,13 +304,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/DataBase/openGauss/opengauss-basic/" target="_self">
+        <a href="/DataBase/openGauss/opengauss-basic/" target="_blank">
           opengauss-basic
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/DataBase/openGauss/opengauss-basic/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/DataBase/openGauss/opengauss-basic/" target="_blank">
         <div>
           openGauss 基础 前言 起因是学校的数据库课程需要使用关系型数据库 openGauss 进行教学，那便研究研究，顺便做个笔记。 官方网站：openGauss 官方网站 | openGauss 主页 | openGauss 社区官网 安装与配置 硬件支持  虚拟机：腾讯云 2 核 2 G 3Mbps 轻量应用服务器（提前放通 5432 安全组便于后期的 SSH 连接） 操作系统：CentOS
         </div>
@@ -353,13 +365,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Operation/Shell/shell-basic/" target="_self">
+        <a href="/Operation/Shell/shell-basic/" target="_blank">
           shell-basic
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Operation/Shell/shell-basic/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/Operation/Shell/shell-basic/" target="_blank">
         <div>
           Shell 基础 前言 尝试在 Windows11 上使用 wget 通过一个 url 下载一个 js 静态文件。但是发现本地 bash 使用 wget 命令报错：command not found。于是借 wget 之名展开”古老“的 shell 之旅。 Shell 是什么？我们用 GLM4 总结一下：  Shell 的准确定义是：在操作系统中，Shell 是一个程序，它提供了一个用户界面，允许
         </div>
@@ -560,10 +572,6 @@
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
-
-
-  
-<script src="/js/custom.js"></script>
 
 
 

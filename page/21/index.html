@@ -60,14 +60,14 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/icon-self/iconfont.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -177,9 +177,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/inner/" target="_self">
+                <i class="iconfont icon-taoxin"></i>
+                <span>心语</span>
               </a>
             </li>
           
@@ -251,13 +263,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/FrontEnd/front-end-guide/" target="_self">
+        <a href="/FrontEnd/front-end-guide/" target="_blank">
           front-end-guide
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/front-end-guide/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/front-end-guide/" target="_blank">
         <div>
           前端开发指南 前言 本文旨在介绍前端开发的基本理念和路径规划。正在不断完善中。 什么是前端？最基本的一个概念就是，无论是原生前端语言，如三件套，还是广为流行的前端框架，前端的根本还是为了按照用户的意愿，将用户想要的内容美观地、迅速地呈现出来。一切的一切，都是为了提升用户体验，这是最基本的前端理念。 最基本的前端学习标准大抵是这样的：  熟悉 标准三件套和 Vue。做到能看懂代码、通过复制粘贴 +
         </div>
@@ -305,15 +317,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/DevTools/Git/git-self-define-command/" target="_self">
-          git-self-define-command
+        <a href="/DevTools/Git/git-basic/" target="_blank">
+          git-basic
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/Git/git-self-define-command/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/Git/git-basic/" target="_blank">
         <div>
-          Git 自定义命令 前言 在使用 hexo 搭建个人博客时, 共两种部署的方法. 分别为:  本地利用 hexo 的插件 hexo-deployer-git 来实现部署, 缺点是需要多敲几个命令行且不方便对源码进行云端备份 使用 Github Action 的 workflow 自动化部署, 优势就是可以在 push 备份源码的同时自动检测行为并自动构建部署代码  看似十分方便但是问题也出在这,
+          Git 基础 前言 Git 是一款版本管理软件, 适用目前绝大多数操作系统; Github 是一个代码托管平台, 与 Git 没有任何关系. 只不过 Git 可以基于 Github 进行分布式云存储与交互, 因此往往需要结合二者从而达到相对良好的 Teamwork 状态. 本文是我基于 Git 的版本管理学习记录, 涉及到的指令只是冰山一角, 但是使用频率较高. 详细的指令请跳转至官方教学: ht
         </div>
       </a>
 
@@ -366,15 +378,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/DevTools/Git/git-basic/" target="_self">
-          git-basic
+        <a href="/DevTools/Git/git-self-define-command/" target="_blank">
+          git-self-define-command
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/Git/git-basic/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/Git/git-self-define-command/" target="_blank">
         <div>
-          Git 基础 前言 Git 是一款版本管理软件, 适用目前绝大多数操作系统; Github 是一个代码托管平台, 与 Git 没有任何关系. 只不过 Git 可以基于 Github 进行分布式云存储与交互, 因此往往需要结合二者从而达到相对良好的 Teamwork 状态. 本文是我基于 Git 的版本管理学习记录, 涉及到的指令只是冰山一角, 但是使用频率较高. 详细的指令请跳转至官方教学: ht
+          Git 自定义命令 前言 在使用 hexo 搭建个人博客时, 共两种部署的方法. 分别为:  本地利用 hexo 的插件 hexo-deployer-git 来实现部署, 缺点是需要多敲几个命令行且不方便对源码进行云端备份 使用 Github Action 的 workflow 自动化部署, 优势就是可以在 push 备份源码的同时自动检测行为并自动构建部署代码  看似十分方便但是问题也出在这,
         </div>
       </a>
 
@@ -573,10 +585,6 @@
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
-
-
-  
-<script src="/js/custom.js"></script>
 
 
 

@@ -24,7 +24,7 @@
 <meta property="og:description" content="数字图像处理 前言 学科地位：    主讲教师 学分配额 学科类别     李峻 3 专业课    成绩组成：    作业 实验 期中 期末     10% 10% 30% 50%    教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN 号     数字图像处理 《数字图像处理 使用 MATLAB 分析与实现》 2 蔡利梅 王利娟 清华大学出版社 9787302654100">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-27T12:17:29.191Z">
-<meta property="article:modified_time" content="2024-09-23T06:24:30.179Z">
+<meta property="article:modified_time" content="2024-09-30T08:08:47.940Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -70,14 +70,14 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/icon-self/iconfont.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -187,9 +187,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/inner/" target="_self">
+                <i class="iconfont icon-taoxin"></i>
+                <span>心语</span>
               </a>
             </li>
           
@@ -246,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.1k 字
         
       </span>
     
@@ -257,7 +269,7 @@
         
         
         
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -320,7 +332,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月23日 下午
+                    本文最后更新于 2024年9月30日 下午
                   
                 
               </p>
@@ -406,13 +418,14 @@
 <p><strong>先从编程说起</strong>。终于有机会可以正式的任务驱动式的学习 MATLAB 编程和 OpenCV (Python) 编程了。</p>
 <p><strong>当然，没有理论何谈编程</strong>？图像处理的数学理论和算法策略，也会是一个全新且不小的收获，且学且更新。目前看来与炼丹并不是一回事，与传统的数据结构也没有很大的交集。更多的是一种矩阵论、线性代数论。</p>
 </blockquote>
-<h2 id="第-1-章-绪论">第 1 章 绪论</h2>
+<h2 id="图像获取">图像获取</h2>
+<p>TODO</p>
+<h2 id="图像处理">图像处理</h2>
 <p>图像是数据存储和表达的一种方式。然而模拟图像无法进行更深入的研究，于是乎，数字图像应运而生。数字图像处理技术也就有了更多的研究意义与应用价值。</p>
-<h2 id="第-2-章-数字图像处理基础">第 2 章 数字图像处理基础</h2>
 <p><strong>像素是什么</strong>？一张模拟图像被离散化后的 <strong>最小单元</strong>。</p>
 <p><strong>分辨率是什么</strong>？一张模拟图像被离散化后的 <strong>像素数量</strong>。例如，如果一张模拟图像被划分为由 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2560</mn><mo>×</mo><mn>1920</mn></mrow><annotation encoding="application/x-tex">2560\times1920</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2560</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1920</span></span></span></span> 个像素点组成的数字图像，那么这张数字图像的分辨率就是像素点的数量，约 500 万。</p>
 <p><strong>在单一变量原则的情况下，分辨率越高，数字图像就越清晰吗</strong>？显然不是。由分辨率的定义，一张图像的分辨率表示图像中像素点的个数。如果 A, B 两张图的分辨率一致，但是 A 图的面积远超过 B，那么显然的 B 比 A 更清晰。因为 A 的一像素对应的信息量太多了，不够精细，也就导致 A 更模糊。因此我们引出了图像清晰度的度量理念。</p>
-<p><strong>如何定义图像的清晰度</strong>？从上面的分析可知，图像的清晰度不是由像素的数量决定的，而是由像素的密度决定的。于是引出了 PPI （Pixels Per Inch，每英寸像素数）和 DPI（Dots Per Inch，每英寸点数） 的度量方式：</p>
+<p><strong>如何定义图像的清晰度</strong>？从上面的分析可知，图像的清晰度不是由像素的数量决定的，而是由 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/146713168">像素的密度</a> 决定的。于是引出了以下两种像素密度度量方式：</p>
 <ul>
 <li>
 <p>PPI 用于描述显示设备（如显示器、手机屏幕等）的分辨率（注：下面的屏幕尺寸是指屏幕对角线的长度）：</p>
@@ -435,18 +448,33 @@ M1001 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlis
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">DPI</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">每英寸的距离</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">打印的点数</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
 </li>
 </ul>
-<h2 id="第-3-章-图像基本运算">第 3 章 图像基本运算</h2>
-<p>几何、代数、邻域模版</p>
-<h2 id="第-4-章-图像的正交变换">第 4 章 图像的正交变换</h2>
+<h3 id="图像运算">图像运算</h3>
+<p>首先需要掌握一些最基本的概念：齐次坐标表示、变换矩阵 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>、图像插值策略。</p>
+<h4 id="几何变换">几何变换</h4>
+<p>图像的几何变换基本步骤我们称之为 <strong>后向映射法</strong>。逻辑很简单，根据原图像的四个顶点计算出新图像的尺寸后，逐个填充新图像的像素值即可。那么问题来了：如何计算新图像的尺寸？如何填充新图像的像素值？</p>
+<ul>
+<li>平移</li>
+<li>镜像</li>
+<li>旋转</li>
+<li>缩放</li>
+<li>错切</li>
+</ul>
+<h4 id="代数运算">代数运算</h4>
+<h4 id="领域及模版运算">领域及模版运算</h4>
+<h3 id="图像正交变换">图像正交变换</h3>
 <p>本章我们重点学习傅里叶变换。</p>
-<h2 id="第-5-章-图像增强">第 5 章 图像增强</h2>
-<h2 id="第-6-章-图像平滑">第 6 章 图像平滑</h2>
-<h2 id="第-7-章-图像锐化">第 7 章 图像锐化</h2>
-<h2 id="第-8-章-图像复原">第 8 章 图像复原</h2>
-<h2 id="第-9-章-图像的数学形态学处理">第 9 章 图像的数学形态学处理</h2>
-<h2 id="第-10-章-图像分割">第 10 章 图像分割</h2>
-<h2 id="第-11-章-图像描述与分析">第 11 章 图像描述与分析</h2>
-<h2 id="第-12-章-图像编码">第 12 章 图像编码</h2>
+<h3 id="图像增强">图像增强</h3>
+<h3 id="图像平滑">图像平滑</h3>
+<h3 id="图像锐化">图像锐化</h3>
+<h3 id="图像复原">图像复原</h3>
+<h3 id="图像的数学形态学处理">图像的数学形态学处理</h3>
+<h2 id="图像编码">图像编码</h2>
+<h2 id="图像分析">图像分析</h2>
+<h3 id="图像分割">图像分割</h3>
+<h3 id="图像描述与分析">图像描述与分析</h3>
+<h2 id="综合应用">综合应用</h2>
+<h3 id="图像分类">图像分类</h3>
+<h3 id="图像检索">图像检索</h3>
 
                 
               </div>
@@ -511,7 +539,7 @@ M1001 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlis
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月23日</div>
+          <div>2024年9月30日</div>
         </div>
       
       
@@ -1249,10 +1277,6 @@ M1001 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlis
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
-
-
-  
-<script src="/js/custom.js"></script>
 
 
 

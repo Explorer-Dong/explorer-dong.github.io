@@ -60,14 +60,14 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/icon-self/iconfont.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -177,9 +177,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/inner/" target="_self">
+                <i class="iconfont icon-taoxin"></i>
+                <span>心语</span>
               </a>
             </li>
           
@@ -251,13 +263,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/FrontEnd/Hexo/hexo-auto-deploy-to-server/" target="_self">
+        <a href="/FrontEnd/Hexo/hexo-auto-deploy-to-server/" target="_blank">
           hexo-auto-deploy-to-server
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/Hexo/hexo-auto-deploy-to-server/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/Hexo/hexo-auto-deploy-to-server/" target="_blank">
         <div>
           将 Hexo 项目部署到自己的云服务器并持续集成 前言 由于使用 Github Pages 服务访问速度过慢（因为托管的服务器在国外），使用 Gitee Pages 又不能自定义域名。故综合考虑还是部署到自己的国内服务器上。加上网上相关内容不是时间长远，就是环境不一，而且感觉都是一个人写完以后大家照着抄的，几乎都长一样。所以决定自己也整理一下（也抄一篇），并且补充相关原理。本篇博客将以阿里云 Ub
         </div>
@@ -310,7 +322,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/Operation/Nginx/whereis-nginx/" target="_self">
+        <a href="/Operation/Nginx/whereis-nginx/" target="_blank">
           <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/nginx.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="whereis-nginx">
         </a>
       </div>
@@ -318,13 +330,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Operation/Nginx/whereis-nginx/" target="_self">
+        <a href="/Operation/Nginx/whereis-nginx/" target="_blank">
           whereis-nginx
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/Operation/Nginx/whereis-nginx/" target="_self">
+      <a class="index-excerpt " href="/Operation/Nginx/whereis-nginx/" target="_blank">
         <div>
           使用 apt 安装 Nginx 后的软件包是如何布局的 在 Ubuntu22.04 操作系统上，我们使用以下命令安装 Nginx 以后： 1root@dwj2:~# sudo apt update &amp;&amp; sudo apt install nginx 使用命令 whereis nginx 查看安装路径： 12root@dwj2:/home# whereis nginxnginx: /
         </div>
@@ -377,7 +389,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/Operation/Nginx/nginx-command/" target="_self">
+        <a href="/Operation/Nginx/nginx-command/" target="_blank">
           <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/nginx.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="nginx-command">
         </a>
       </div>
@@ -385,13 +397,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Operation/Nginx/nginx-command/" target="_self">
+        <a href="/Operation/Nginx/nginx-command/" target="_blank">
           nginx-command
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/Operation/Nginx/nginx-command/" target="_self">
+      <a class="index-excerpt " href="/Operation/Nginx/nginx-command/" target="_blank">
         <div>
           Nginx 常用命令合集 在 Ubuntu22.04 操作系统上，我们使用 nginx 需要不断使用其相关命令，下面介绍一下常用的几个命令 nginx -?,-h 我们用 nginx -h 或 nginx -? 来查看当前 nginx 的版本和全部的指令简介： 123456789101112131415root@dwj2:~# nginx -hnginx version: nginx/1.18.0
         </div>
@@ -592,10 +604,6 @@
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
-
-
-  
-<script src="/js/custom.js"></script>
 
 
 

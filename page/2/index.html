@@ -60,14 +60,14 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/icon-self/iconfont.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -177,9 +177,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/inner/" target="_self">
+                <i class="iconfont icon-taoxin"></i>
+                <span>心语</span>
               </a>
             </li>
           
@@ -251,13 +263,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/Operation/Nginx/nginx-basic/" target="_self">
+        <a href="/Operation/Nginx/nginx-basic/" target="_blank">
           nginx-basic
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Operation/Nginx/nginx-basic/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/Operation/Nginx/nginx-basic/" target="_blank">
         <div>
           Nginx 基础 基本概念 在正式开始介绍 nginx 时，有必要了解一下 代理系统 这个概念。所谓代理，简单来说就是连接用户与服务器的中间媒介。有正向代理、反向代理等实际应用。与以往传统的用户与服务器直连的方式不同，通过代理系统可以完成很多前者无法完成的任务，同时也有性能上质的飞跃，下面从理论的角度介绍代理系统的实际应用示例以及优势。例如： 正向代理：所谓的正向代理其实就是 面向用户 进行运作。
         </div>
@@ -312,13 +324,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/FrontEnd/Hexo/hexo-config-mermaid/" target="_self">
+        <a href="/FrontEnd/Hexo/hexo-config-mermaid/" target="_blank">
           hexo-config-mermaid
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/Hexo/hexo-config-mermaid/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/Hexo/hexo-config-mermaid/" target="_blank">
         <div>
           Hexo 配置 mermaid 问题复现 本地 typora 正常渲染，但是服务器渲染异常。发现是服务器的渲染脚本版本过低，无法渲染最新的 mermaid 版本内容。 本地 typora 支持的 mermaid 版本：  网站支持的 mermaid 版本  尝试解决 修改 _config_fluid.yml 中的 mermaid CDN 信息。由于原来的 CDN 不支持更高版本的 mermaid
         </div>
@@ -373,13 +385,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/DevTools/Git/solve-git-problems/" target="_self">
+        <a href="/DevTools/Git/solve-git-problems/" target="_blank">
           solve-git-problems
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/Git/solve-git-problems/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/Git/solve-git-problems/" target="_blank">
         <div>
           解决 Git 相关问题 解决 git 分支冲突 一、前言 一直习惯于 add commit push 的三步走，偶然间看到了一个评论说在 push 之前还有一个 pull，小小的疑问就埋在了我的心里。于是我就先了解了 pull 的工作原理，就是先拉取代码（fetch）再合并分支（merge）的过程，简而言之就是在本地进行项目编写时，他人也在其他地方进行项目编写并且提前进行了 push 操作，使得当
         </div>
@@ -580,10 +592,6 @@
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
-
-
-  
-<script src="/js/custom.js"></script>
 
 
 

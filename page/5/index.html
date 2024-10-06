@@ -60,14 +60,14 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/icon-self/iconfont.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -177,9 +177,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/inner/" target="_self">
+                <i class="iconfont icon-taoxin"></i>
+                <span>心语</span>
               </a>
             </li>
           
@@ -251,13 +263,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/FrontEnd/CSS/bootstrap/" target="_self">
+        <a href="/FrontEnd/CSS/bootstrap/" target="_blank">
           bootstrap
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/CSS/bootstrap/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/CSS/bootstrap/" target="_blank">
         <div>
           
         </div>
@@ -312,13 +324,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/FrontEnd/CSS/css-basic/" target="_self">
+        <a href="/FrontEnd/CSS/css-basic/" target="_blank">
           css-basic
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/CSS/css-basic/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/CSS/css-basic/" target="_blank">
         <div>
           CSS 为样式文件，简单的来说就是对 Html 中各个标签的内容进行定义，使得展示出各种不同的颜色、形状、布局等等，宗旨还是为了提升美观程度，从而提升用户浏览体验。速查手册 CSS3 教程，以下为常用 or 易遗忘 or 基本概念速查清单：  [!note]  引用：在 html 文件中使用 Css 进行样式渲染一共有三个方法  内联样式（不推荐）：在 html 中的每一个想要润色的标签中添加 s
         </div>
@@ -373,13 +385,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/FrontEnd/JavaScript/javascript-basic/" target="_self">
+        <a href="/FrontEnd/JavaScript/javascript-basic/" target="_blank">
           javascript-basic
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/JavaScript/javascript-basic/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/JavaScript/javascript-basic/" target="_blank">
         <div>
           JavaScript 脚本引用为什么不放在 head 而放在 body 的最后？  因为浏览器在加载网页（其实就是解析 Html 文件）时，会按照行优先的顺序进行解析，如果将 JS 文件放在 head 中优先加载，会导致页面内容加载延迟，从而影响用户体验。因此将 JS 文件放在 body 的最后进行加载。毕竟加载页面的内容与 JS 是没有关系的。  JavaScript 为高级解释性语言，可面向对
         </div>
@@ -580,10 +592,6 @@
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
-
-
-  
-<script src="/js/custom.js"></script>
 
 
 

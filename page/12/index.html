@@ -60,14 +60,14 @@
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/icon-self/iconfont.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.dwj601.cn","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d08d23389220ad9b8f711cfb85757f4b","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -177,9 +177,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/inner/" target="_self">
+                <i class="iconfont icon-taoxin"></i>
+                <span>心语</span>
               </a>
             </li>
           
@@ -251,13 +263,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/DevTools/IDLE/idle-self-config/" target="_self">
+        <a href="/DevTools/IDLE/idle-self-config/" target="_blank">
           idle-self-config
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/IDLE/idle-self-config/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/IDLE/idle-self-config/" target="_blank">
         <div>
           IDLE 偏好配置 由于连续两届篮球杯都是 CA 省二，迫于加分压力不得不转 PA 组（其实是摸鱼不刷题导致的）。阅读篮球杯 py 组手册后发现只能使用 3.8.6 版本且编辑器只能用自带的 IDLE，故特此记录一下相关配置，顺便说点题外话 编写文件 在双击快捷方式后会弹出一个 shell 窗口，支持简单的交互式编码：  我们点击左上角的 File 即可进行新建或打开 .py 文件的操作：  修改
         </div>
@@ -312,13 +324,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/FrontEnd/Hexo/why-hexo/" target="_self">
+        <a href="/FrontEnd/Hexo/why-hexo/" target="_blank">
           why-hexo
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/Hexo/why-hexo/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/FrontEnd/Hexo/why-hexo/" target="_blank">
         <div>
           为什么选择 Hexo 搭建个人博客 🤔 市面上主流的一些博客网站广告繁杂，一些交互逻辑不太合理，自定义程度不高。根本动机：搭建独属于自己的知识库。 如何实现？现在市面上主要有两个模式：  有后端：WordPress（类似于学生管理系统，在后端写文章，在前端渲染） 无后端：纯静态页面渲染（纯 html 渲染）：Hexo、VuePress、Gatsby  无后端的逻辑：在本地编写 markdown
         </div>
@@ -373,13 +385,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/DevTools/jetbrains-license/" target="_self">
+        <a href="/DevTools/jetbrains-license/" target="_blank">
           jetbrains-license
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/jetbrains-license/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/DevTools/jetbrains-license/" target="_blank">
         <div>
           更新 Jetbrains 学生许可证的流程 马上证书要过期了，记录一下更新许可证的流程。继续白嫖！ 一、学信网 进入学信档案，下载教育部学籍在线验证报告：https://my.chsi.com.cn/archive/bab/index.action  二、JB 官网 进入 Jetbrains 官网，选择更新许可证：  三、填写官方文件 点击上述链接后，进入如下页面。我选择的是填写官方文件，因为初次
         </div>
@@ -573,10 +585,6 @@
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
-
-
-  
-<script src="/js/custom.js"></script>
 
 
 

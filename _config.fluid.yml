@@ -91,7 +91,7 @@ fun_features:
 
     # 游标字符
     # Cursor character
-    cursorChar: "_"
+    cursorChar: ""
 
     # 是否循环播放效果
     # If true, loop animation
@@ -232,13 +232,12 @@ font:
 
 # 指定自定义 .js 文件路径，支持列表；路径是相对 source 目录，如 /js/custom.js 对应存放目录 source/js/custom.js
 custom_js:
-  - /js/custom.js
   # - ///cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js # 动态彩带
 
 
 # 指定自定义 .css 文件路径，用法和 custom_js 相同
 custom_css:
-  - /css/custom.css
+  - /css/icon-self/iconfont.css  # 自定义的图标
   # - ///cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css # 鼠标指针
 
 
@@ -312,7 +311,7 @@ lazyload:
   # The factor of viewport height that triggers loading
   offset_factor: 2
 
-# 图标库，包含了大量社交类图标，主题依赖的不包含在内，因此可自行修改，详见 https://hexo.fluid-dev.com/docs/icon/
+# 图标库，包含了大量社交类图标，主题依赖的不包含在内，因此可自行修改，详见 https://fluid-dev.github.io/hexo-fluid-docs/icon/
 # Icon library, which includes many social icons, does not include those theme dependent, so your can modify link by yourself. See: https://hexo.fluid-dev.com/docs/en/icon/
 iconfont: //at.alicdn.com/t/font_1736178_lbnruvf0jn.css
 
@@ -350,8 +349,9 @@ navbar:
     # - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     # - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
-    # - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
-    - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
+    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
+    # - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
+    - { key: "心语", link: "/inner/", icon: "iconfont icon-taoxin" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
@@ -957,15 +957,15 @@ about:
   banner_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/default.png
   banner_img_height: 60
   banner_mask_alpha: 0.3
-  avatar: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/avatar.png
-  name: "Fluid"
-  intro: "An elegant theme for Hexo"
-  # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
+  avatar: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/avatar.jpg
+  name: "Explorer-Dong"
+  intro: "Know what I want. Do what I like."
+  # 更多图标可从 https://fluid-dev.github.io/hexo-fluid-docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
   # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code
   icons:
-    - { class: "iconfont icon-github-fill", link: "https://github.com", tip: "GitHub" }
-    - { class: "iconfont icon-douban-fill", link: "https://douban.com", tip: "豆瓣" }
-    - { class: "iconfont icon-wechat-fill", qrcode: "https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/favicon.png" }
+    - { class: "iconfont icon-github-fill", link: "https://github.com/Explorer-Dong", tip: "GitHub" }
+    - { class: "iconfont icon-csdn", link: "https://blog.csdn.net/qq_73408594", tip: "CSDN" }
+    - { class: "iconfont icon-gitee-fill", link: "https://gitee.com/idwj", tip: "Gitee" }
 
 
 #---------------------------

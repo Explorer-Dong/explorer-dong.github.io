@@ -5,7 +5,7 @@ category_bar: true
 index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/hello.png
 ---
 
-## Pre
+## 项目背景
 
 本（网站）仓库收录了个人本科期间学习相关 **课程** 或相关 **技术** 时做的电子笔记相关源码，内容采用 Markdown 格式记录可供下载自我修改补充，也欢迎 PR。若还不了解 Markdown，可以移步 [Markdown 官方教程](https://markdown.com.cn/)。
 
@@ -13,7 +13,7 @@ index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/hell
 
 镜像地址：<https://gitee.com/idwj/idwj>
 
-## Intro
+## 项目简介
 
 详情请跳转至 [分类界面](https://blog.dwj601.cn/categories/) 阅读，目前共含有以下几个板块：
 
@@ -25,7 +25,7 @@ index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/hell
 - `GPA`：本科课程相关笔记
 - `Operation`：运维笔记
 
-## Update
+## 更新日志
 
 24.02.27
 
@@ -73,6 +73,10 @@ index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/hell
 
 :sparkles: 新增：全站检索速度慢的问题 - 放弃修改，保持全局搜索功能。提升信息检索准确度
 
-## Expect
+24.10.06
+
+:sparkles: 新增：站长和心语信息 - 新增关于页面 | 删除友链页面 | 正确使用个人网站引导 | 新增心语页面。提升网站信息完整度
+
+## 未来展望
 
 :thinking: 未来将会继续更新 ~

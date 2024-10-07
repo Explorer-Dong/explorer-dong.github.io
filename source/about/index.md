@@ -28,10 +28,10 @@ $$
 </a>
 
 ## 技术栈
-![技术栈](https://skillicons.dev/icons?i=flask,qt)
+<img src="https://skillicons.dev/icons?i=flask,qt" alt="技术栈" />
 
 ## 编程语言
-![编程语言](https://skillicons.dev/icons?i=c,cpp,python,js,matlab,v)
+<img src="https://skillicons.dev/icons?i=c,cpp,python,js,matlab,v" alt="编程语言" />
 
 ## 开发工具
-![开发工具](https://skillicons.dev/icons?i=md,git,clion,pycharm,webstorm,vscode)
+<img src="https://skillicons.dev/icons?i=md,git,clion,pycharm,webstorm,vscode" alt="开发工具" />

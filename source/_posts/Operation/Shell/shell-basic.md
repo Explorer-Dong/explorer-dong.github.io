@@ -49,7 +49,7 @@ Copyright (C) 2020 Free Software Foundation, Inc.
 在法律许可的情况下特此明示，本软件不提供任何担保。
 ```
 
-## 基本命令（实验1）
+## Shell 基本命令（实验1）
 
 在开始之前，我们可以使用 `echo $SHELL` 命令查看当前的命令解释器是什么。
 
@@ -236,7 +236,7 @@ graph TB
 
 ### 相关命令
 
-打 $*$ 表示重要命令。
+下面罗列一些用户与权限管理相关的命令，打 $*$ 表示重要命令。
 
 #### 提升权限 sudo
 
@@ -278,7 +278,7 @@ userdel <username>
 usermod
 ```
 
-使用 -h 参数查看所有用法。
+使用 `-h` 参数查看所有用法。
 
 #### 修改用户密码 passwd
 
@@ -292,7 +292,7 @@ passwd <username>
 su <username>
 ```
 
-添加 `-` 参数直接进入 `/home/username/` 目录（如果有的话）。
+添加 `-` 参数则直接进入 `/home/<username>/` 目录（如果有的话）。
 
 #### 查看当前用户所属组 groups
 
@@ -360,7 +360,7 @@ umask
 
 {% fold light @练习 %}
 
-一、添加 4 个用户：alice、bob、john、mike
+**一、添加 4 个用户：alice、bob、john、mike**
 
 首先需要确保当前是 root 用户，使用 `su root` 切换到 root 用户。然后在创建用户时同时创建该用户对应的目录：
 
@@ -373,7 +373,7 @@ useradd -d /home/mike -m mike
 
 ![添加 4 个用户](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409272339074.png)
 
-二、为 alice 设置密码
+**二、为 alice 设置密码**
 
 ```bash
 passwd alice
@@ -381,7 +381,7 @@ passwd alice
 
 ![为 alice 设置密码](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409272340323.png)
 
-三、创建用户组 workgroup 并将 alice、bob、john 加入
+**三、创建用户组 workgroup 并将 alice、bob、john 加入**
 
 - 创建用户组：
 
@@ -412,7 +412,7 @@ passwd alice
 
 ![创建用户组 workgroup 并将 alice、bob、john 加入](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409272341900.png)
 
-四、创建 `/home/work` 目录并将其属主改为 alice，属组改为 workgroup
+**四、创建 `/home/work` 目录并将其属主改为 alice，属组改为 workgroup**
 
 ```bash
 # 创建目录
@@ -427,7 +427,7 @@ chown alice.workgroup work
 
 ![创建 /home/work 目录并将其属主改为 alice，属组改为 workgroup](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409272343315.png)
 
-五、修改 work 目录的权限
+**五、修改 work 目录的权限**
 
 使得属组内的用户对该目录具有所有权限，属组外的用户对该目录没有任何权限。
 
@@ -441,7 +441,7 @@ chmod 770 work
 
 ![修改 work 目录的权限](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409272345642.png)
 
-六、权限功能测试
+**六、权限功能测试**
 
 以 bob 用户身份在 work 目录下创建 `bob.txt` 文件。可以看到符合默认创建文件的权限格式 $644$：
 
@@ -452,13 +452,194 @@ chmod 770 work
 - 关于 $770$ 目录。由于 work 目录被 bob 创建时权限设置为了 $770$，bob 用户与 john 用户属于同一个组 workgroup，因此 john 因为 $g=7$ 可以进入 work 目录进行操作，而 bob 用户与 mike 用户不属于同一个组，因此 mike 因为 $o=0$ 无法进入 work 目录，更不用说查看或者修改 work 目录中的文件了。
 - 关于 $644$ 文件。现在 john 由于 $770$ 中的第二个 $7$ 进入了 work 目录。由文件默认的 $644$ 权限可以知道：john 因为第一个 $4$ 可以读文件，但是不可以写文件，因此如下图所示，可以执行 `cat` 查看文件内容，但是不可以执行 `echo` 编辑文件内容。至于 mike，可以看到无论起始是否在 work 目录，都没有权限 `cd` 到 work 目录或者 `ls` 查看 work 目录中的内容。
 
-![image-20240928000703810](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409280007514.png)
+![权限测试](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409280007514.png)
 
 {% endfold %}
 
 ## 进程管理与调试（实验3）
 
-## Shell 编程（实验4）
+在熟悉了 bash shell 的基本命令以及 Linux 中用户与权限管理的基本概念后，我们就可以开始尝试管理 Linux 中的程序了。当然每一个程序在开始运行后都会成为一个或多个进程，因此接下来简单介绍一下 Linux 的进程管理。最后再通过调试一个 C 程序来熟悉 GNU 调试工具 gdb (GNU Debugger) 的使用。
+
+### 进程管理
+
+查看进程状态 ps
+
+```bash
+ps
+```
+
+动态查看进程状态 top
+
+```bash
+top
+```
+
+杀死某个进程 kill
+
+```bash
+kill -9 <PID>
+```
+
+{% fold light @练习 %}
+
+**一、编写一个 shell 程序 `badproc.sh` 使其不断循环**
+
+```bash
+#! /bin/bash
+while echo "I'm making files!"
+do
+    mkdir adir
+    cd adir
+    touch afile
+    sleep 10s
+done
+```
+
+![编写 sh 文件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081735300.png)
+
+**二、为 `badproc.sh` 增加可执行权限**
+
+```bash
+chmod u+x badproc.sh
+```
+
+![增加可执行权限](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081736525.png)
+
+**三、在后台执行 `badproc.sh`**
+
+```bash
+./badproc.sh &
+```
+
+- `&` 表示后台执行
+
+![后台执行](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081737564.png)
+
+**四、利用 `ps` 命令查看其进程号**
+
+```bash
+ps aux | grep badproc
+```
+
+- 
+
+![查看进程号](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081739971.png)
+
+**五、利用 `kill` 命令杀死该进程**
+
+```bash
+kill -9 <PID>
+```
+
+![杀死该进程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081748528.png)
+
+**六、删除 `badproc.sh` 程序运行时创建的目录和文件**
+
+![删除目录和文件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081748818.png)
+
+{% endfold %}
+
+### gdb 调试
+
+基本命令参考 [gdb调试的基本使用](https://www.cnblogs.com/HKUI/p/8955443.html)。常用的如下：
+
+开始运行
+
+```bash
+r
+```
+
+- r 即 run
+
+设置断点
+
+```bash
+break <line>
+```
+
+- line 即行号
+
+运行到下一个断点
+
+```bash
+c
+```
+
+- c 即 continue
+
+{% fold light @练习 %}
+
+**一、创建 `fork.c` 文件**
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+int main() {
+    /* fork another process */
+    pid_t  pid;
+    pid = fork();
+
+    if (pid < 0) {
+        /* error occurred */
+        fprintf(stderr, "Fork Failed");
+        exit(-1);
+    } else if (pid == 0) {
+        /* child process */
+        printf("This is child process, pid=%d\n", getpid());
+        execlp("/bin/ls", "ls", NULL);
+        printf("Child process finished\n"); /*这句话不会被打印，除非execlp调用未成功*/
+    } else {
+        /* parent process */
+        /* parent will wait for the child to complete */
+        printf("This is parent process, pid=%d\n", getpid());
+        wait (NULL);
+        printf ("Child Complete\n");
+        exit(0);
+    }
+}
+```
+
+![创建文件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081813738.png)
+
+这段程序首先通过调用 `fork()` 函数创建一个子进程，并通过 `pid` 信息来判断当前进程是父进程还是子进程。在并发的逻辑下，执行哪一个进程的逻辑是未知的。
+
+**二、编译运行 `fork.c` 文件**
+
+![编译运行](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081807870.png)
+
+从上述运行结果可以看出：并发时，首先执行父进程的逻辑，然后才执行子进程的逻辑。
+
+**三、gdb 调试**
+
+在 fork 创建子进程后追踪子进程：
+
+```bash
+gdb fork
+set follow-fork-mode child
+catch exec
+```
+
+![追踪子进程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081947476.png)
+
+运行到第一个断点时分别观察父进程 1510168 和子进程 1510171：
+
+![父进程 1510168](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081948301.png)
+
+![子进程 1510171](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081949586.png)
+
+运行到第二个断点时观察子进程 1510171：
+
+![运行到第二个断点时观察子进程 1510171](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081951803.png)
+
+从上述子进程的追踪结果可以看出，在父进程结束之后，子进程成功执行了 `pid==0` 的逻辑并调用 `ls` 工具。
+
+{% endfold %}
+
+## Linux 编程（实验4）
 
 ## 工具扩展
 
@@ -497,3 +678,5 @@ url 下载工具。
 [在 Windows 中使用 Bash shell](https://northword.cn/code/bash-for-windows/)
 
 [Linux 用户权限信息](https://chatgpt.com/share/66f61785-7ed0-800c-bdf3-fbbfc84a56ae)
+
+[gdb调试的基本使用](https://www.cnblogs.com/HKUI/p/8955443.html)

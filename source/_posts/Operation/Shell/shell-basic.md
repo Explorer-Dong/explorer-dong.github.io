@@ -521,8 +521,6 @@ chmod u+x badproc.sh
 ps aux | grep badproc
 ```
 
-- 
-
 ![查看进程号](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081739971.png)
 
 **五、利用 `kill` 命令杀死该进程**

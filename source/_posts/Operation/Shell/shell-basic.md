@@ -19,9 +19,9 @@ mermaid: true
 
 也就是说 shell 是一个命令解释器。可以将其理解为人机交互的中间层，通过解析字符串命令与操作系统交互，进而完成系统资源的调用与处理。可以将「解析命令并调用系统资源完成任务」这个过程简单地理解为：shell 解析输入 $\to$ shell 调用对应的 C 函数向 OS 发起请求 $\xrightarrow[]{\text{API}}$ OS 接受请求并执行相关底层操作 $\to$ OS 返回执行结果给 C 函数 $\to$ shell 接受 C 函数返回结果并显示提示信息。
 
-**为什么用 Bash Shell**？常见的命令解释器有：Bash (Bourne Again Shell)、Sh (Bourne Shell)、Zsh (Z Shell) 等。其中 Bash 是最流行的跨平台 Shell 之一。虽然它是 Linux 和 macOS 的默认 Shell，但也可以在 Windows 上通过 Windows Subsystem for Linux (WSL) 或第三方工具如 Git Bash 来运行。
+**为什么用 Bash Shell**？常见的命令解释器有：Bash (Bourne Again Shell)、Sh (Bourne Shell)、Zsh (Z Shell) 等。其中 Bash 是最流行的跨平台 Shell 之一。虽然它是 GNU/Linux 和 macOS 的默认 Shell，但也可以在 Windows 上通过 Windows Subsystem for Linux (WSL) 或第三方工具如 Git Bash 来运行。
 
-**文章标题为什么不叫 Linux 基础**？在我看来，Linux 基础的内容更多应当偏向于讲解  Linux 的理论知识，然而目前主流的讲解 Linux 基础的内容均偏向于指导大家如何使用 shell 与操作系统交互，那这与 python 等解释型编程语言有什么区别？python 是用 python 解释器与操作系统交互，相关的教程默认都叫「Python 基础」，shell 是用 shell 解释器与操作系统交互，那为什么不叫「Shell 基础」呢？
+**文章标题为什么不叫 GNU/Linux 基础**？在我看来，GNU/Linux 基础的内容更多应当偏向于讲解  GNU/Linux 的理论知识，然而目前主流的讲解 GNU/Linux 基础的内容均偏向于指导大家如何使用 shell 与操作系统交互，那这与 python 等解释型编程语言有什么区别？python 是用 python 解释器与操作系统交互，相关的教程默认都叫「Python 基础」，shell 是用 shell 解释器与操作系统交互，那为什么不叫「Shell 基础」呢？
 
 注：本文基于 Windows11 的 Git Bash 命令解释器配合 Ubuntu22.04 的 Bash 命令解释器展开。两个平台的 Bash 版本信息如下：
 
@@ -37,7 +37,7 @@ This is free software; you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 ```
 
-Linux **Bash** Version Info:
+GNU/Linux **Bash** Version Info:
 
 ```bash
 root@dwj2:~# bash --version
@@ -49,9 +49,14 @@ Copyright (C) 2020 Free Software Foundation, Inc.
 在法律许可的情况下特此明示，本软件不提供任何担保。
 ```
 
-## Shell 基本命令（实验1）
+## Shell 基本命令
 
-在开始之前，我们可以使用 `echo $SHELL` 命令查看当前的命令解释器是什么。
+在开始之前，我们可以使用 `echo $SHELL` 命令查看当前的命令解释器是什么：
+
+```bash
+root@dwj2:~# echo $SHELL
+/bin/bash
+```
 
 ### 常用命令
 
@@ -69,7 +74,8 @@ cd ../
 ls
 ```
 
-- 添加 `-l` 参数打印详细信息。
+- `-l` 参数即 long listing format，表示打印详细信息。
+- `-h` 参数即 human-readable，会使得结果更加可读，例如占用存储空间加上单位等等。
 
 #### 打印当前路径 pwd
 
@@ -101,7 +107,7 @@ touch <FileName>
 cp [option] <source> <target>
 ```
 
-- option 中：`-r` 表示递归复制，`-i` 用来当出现重名文件时进行提示。
+- `-r` 表示递归复制，`-i` 用来当出现重名文件时进行提示。
 - source 表示被拷贝的资源。
 - target 表示拷贝后的资源名称或者路径。
 
@@ -111,7 +117,7 @@ cp [option] <source> <target>
 mv [option] <source> <target>
 ```
 
-- option 中：`-i` 用来当出现重名文件时进行提示。
+- `-i` 用来当出现重名文件时进行提示。
 - source 表示被移动的资源。
 - target 表示移动后的资源名称或者路径（可以以此进行重命名）。
 
@@ -121,7 +127,7 @@ mv [option] <source> <target>
 rm [option] <source>
 ```
 
-- option 中：`-i` 需要一个一个确认，`-f` 表示强制删除，`-r` 表示递归删除。
+- `-i` 需要一个一个确认，`-f` 表示强制删除，`-r` 表示递归删除。
 
 #### 打印 echo
 
@@ -129,9 +135,9 @@ rm [option] <source>
 echo "hello"
 ```
 
-将 echo 后面紧跟着的内容打印到命令行解释器中。可以用来查看环境变量的具体值。
+- 将 echo 后面紧跟着的内容打印到命令行解释器中。可以用来查看环境变量的具体值。
 
-也可以配合输出重定向符号 `>` 将信息打印到文件中实现创建新文件的作用。例如 `echo "hello" > file.txt` 用于创建 file.txt 文件并且在其中写下 `hello` 信息。
+- 也可以配合输出重定向符号 `>` 将信息打印到文件中实现创建新文件的作用。例如 `echo "hello" > file.txt` 用于创建 file.txt 文件并且在其中写下 `hello` 信息。
 
 #### 查看 cat
 
@@ -139,7 +145,7 @@ echo "hello"
 cat [option] <source>
 ```
 
-- option: -n 或 --number 表示将 source 中的内容打印出来的同时带上行号。
+- `-n` 或 `--number` 表示将 source 中的内容打印出来的同时带上行号。
 - 也可以配合输出重定位符号 `>` 将信息输出到文件中。例如 `cat -n a.txt > b.txt` 表示将 a.txt 文件中的内容带上行号输出到 b.txt 文件中。
 
 #### 分页查看 more
@@ -148,9 +154,9 @@ cat [option] <source>
 more <source>
 ```
 
-与 cat 类似，只不过可以分页展示。按空格键下一页，b 键上一页，q 键退出。
+与 `cat` 类似，只不过可以分页展示。按空格键下一页，`b` 键上一页，`q` 键退出。
 
-可以配合管道符 `|` 与别的命令组合从而实现分页展示，例如 `tree | more` 表示分页打印文件目录。
+可以配合管道符 `|` (将左边的输出作为右边的输入) 与别的命令组合从而实现分页展示，例如 `tree | more` 表示分页打印文件目录。
 
 #### 输出重定向
 
@@ -166,7 +172,7 @@ more <source>
 find <path> <expression>
 ```
 
-- -maxdepth LEVELS, -mindepth LEVELS: 最大、最小搜索深度
+- `-maxdepth <num>`, `-mindepth <num>`: 最大、最小搜索深度。
 
 #### 匹配 grep *
 
@@ -176,11 +182,11 @@ grep [option] <pattern> <source>
 
 使用正则表达式在指定文件中进行模式匹配。
 
-- option: `-n` 显示行号，`-i` 忽略大小写，`-r` 递归搜索，`-c` 打印匹配数量。
+- `-n` 显示行号，`-i` 忽略大小写，`-r` 递归搜索，`-c` 打印匹配数量。
 
-## 用户与权限管理（实验2）
+## 用户与权限管理
 
-在 Windows 中，我们对用户和权限的概念接触的并不多，因为很多东西都默认设置好了；但是在 Linux 中，很多文件的权限都需要自己配置和定义，因此「用户与权限管理」的操作方法十分重要。我们从现象入手逐个进行讲解。
+在 Windows 中，我们对用户和权限的概念接触的并不多，因为很多东西都默认设置好了。但是在 GNU/Linux 中，很多文件的权限都需要自己配置和定义，因此「用户与权限管理」的操作方法十分重要。我们从现象入手逐个进行讲解。
 
 首先以 root 用户身份登录并进入 `/opt/OS/task2/` 目录，然后创建一个测试文件 `root_file.txt` 和一个测试文件夹 `root_folder`。使用 `ls -l` 命令列出当前目录下所有文件的详细信息：
 
@@ -244,7 +250,7 @@ graph TB
 sudo ...
 ```
 
-使用 sudo 前缀可以使得当前用户的权限提升到 root 权限，如果是 root 用户则无需添加。当然使用 sudo 的前提是将当前用户添加到
+使用 sudo 前缀可以使得当前用户的权限提升到 root 权限，如果是 root 用户则无需添加。
 
 #### 查看当前用户 whoami
 
@@ -278,7 +284,7 @@ userdel <username>
 usermod
 ```
 
-使用 `-h` 参数查看所有用法。
+- 使用 `-h` 参数查看所有用法。
 
 #### 修改用户密码 passwd
 
@@ -334,7 +340,7 @@ chgrp <group> <filename>
 chmod <option> <filename>
 ```
 
-将文件 filename 更改所有用户对应的权限。举个例子就知道了：让 demo.py 文件只能让所有者拥有可读、可写和可执行权限，其余任何用户都只有可读和可写权限。
+将文件 filename 更改所有用户对应的权限。举个例子就知道了：让 `demo.py` 文件只能让所有者拥有可读、可写和可执行权限，其余任何用户都只有可读和可写权限。
 
 ```bash
 # 写法一
@@ -456,11 +462,11 @@ chmod 770 work
 
 {% endfold %}
 
-## 进程管理与调试（实验3）
+## 进程管理与调试
 
-在熟悉了 bash shell 的基本命令以及 Linux 中用户与权限管理的基本概念后，我们就可以开始尝试管理 Linux 中的程序了。当然每一个程序在开始运行后都会成为一个或多个进程，因此接下来简单介绍一下 Linux 的进程管理。最后再通过调试一个 C 程序来熟悉 GNU 调试工具 gdb (GNU Debugger) 的使用。
+在熟悉了 bash shell 的基本命令以及 GNU/Linux 中用户与权限管理的基本概念后，我们就可以开始尝试管理 GNU/Linux 中的程序了。当然每一个程序在开始运行后都会成为一个或多个进程，因此接下来简单介绍一下 GNU/Linux 的进程管理。最后再通过调试一个 C 程序来熟悉 GNU 调试工具 gdb (GNU Debugger) 的使用。
 
-### 进程管理
+### 进程管理相关命令
 
 查看进程状态 ps
 
@@ -537,9 +543,9 @@ kill -9 <PID>
 
 {% endfold %}
 
-### gdb 调试
+### gdb 调试相关命令
 
-基本命令参考 [gdb调试的基本使用](https://www.cnblogs.com/HKUI/p/8955443.html)。常用的如下：
+基本命令参考 GNU OF GDB 官网：<https://www.gnu.org/software/gdb/>。常用的如下：
 
 开始运行
 
@@ -633,11 +639,149 @@ catch exec
 
 ![运行到第二个断点时观察子进程 1510171](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081951803.png)
 
-从上述子进程的追踪结果可以看出，在父进程结束之后，子进程成功执行了 `pid==0` 的逻辑并调用 `ls` 工具。
+从上述子进程的追踪结果可以看出，在父进程结束之后，子进程成功执行了 `pid == 0` 的逻辑并开始调用 `ls` 工具。
 
 {% endfold %}
 
-## Linux 编程（实验4）
+## GNU/Linux 编程
+
+这里的 GNU/Linux 编程对应的高级语言是 C/C++ 编程语言。本部分主要是为了熟悉 C/C++ 编程中的 **静态链接** 与 **动态链接** 逻辑。
+
+### GCC 基础
+
+相比于在 Windows 进行 C/C++ 编程时需要自己额外安装编译器集合 MSVC (Microsoft Visual C++) 或 MinGW (Minimalist GNU for Windows)，GNU/Linux 发行版 Ubuntu22.04 已经默认配置好了编译器集合 GCC (GNU Compiler Collection)，我们可以利用 GCC 提供的前端工具 gcc 等快捷地使用编译器集合中的所有工具。具体命令可以参考 GCC 官方在线文档：<https://gcc.gnu.org/onlinedocs/>。
+
+我们可以使用 `gcc --version` 命令查看当前的 GCC 版本：
+
+```bash
+root@dwj2:/opt/OS/task4# gcc --version
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+```
+
+因此我们选择版本最相近的手册 [gcc-11.5.0](https://gcc.gnu.org/onlinedocs/gcc-11.5.0/gcc/) 进行阅读。对于最基本的编译操作和理论，已经在 [计算机系统基础](https://blog.dwj601.cn/GPA/4th-term/SysBasic/#3-1-程序转换概述) 课程中有所学习，就不重复造轮子了，常见的指令直接跳转阅读即可。
+
+#### 环境变量
+
+对于当前路径下链接出来的可执行文件 demo，为什么 `demo` 无法正常执行，`./demo` 就可以正常执行？如下图所示：
+
+![demo 无法正常执行 VS ./demo 可以正常执行](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410091759777.png)
+
+根本原因是 bash 默认执行 PATH 环境变量下的可执行文件，显然上述的 demo 可执行文件并不在 PATH 对应的路径下，那么 PATH 路径都有哪些呢？我们使用 `echo $PATH | tr ':' '\n'` 打印出来：
+
+```bash
+root@dwj2:/opt/OS/task4# echo $PATH | tr ':' '\n'
+/usr/local/sbin
+/usr/local/bin
+/usr/sbin
+/usr/bin
+/usr/games
+/usr/local/games
+/snap/bin
+```
+
+能不能使用 demo 运行呢？有很多解决办法，但根本逻辑都是将当前路径加入到 PATH 环境变量。下面补充几个 gcc 和 g++ (编译 C++ 用) 相关的环境变量：
+
+- 头文件搜索路径
+    - `C_INCLUDE_PATH`: gcc 找头文件的路径。
+    - `CPLUS_INCLUDE_PATH`: g++ 找头文件的路径。
+- 库文件搜索路径
+    - `LD_LIBRARY_PATH`: 找动态链接库的路径。
+    - `LIBRARY_PATH`: 找静态链接库的路径。
+
+#### gcc 选项
+
+在计算机系统基础中已经学习到了，C/C++ 最基本的编译链就是 `-E`、`-S`、`-c`、`-o`，每一个参数都包含前面所有的参数。下面主要讲讲 `-I<dir>`，`-L<dir>` 和 `-l<name>` 三个参数：
+
+- `-I<dir>` 顾名思义就是「头文件导入」的搜索目录。例如下面的编译语句：
+
+    ```bash
+    gcc –I/opt/OS/task4/include demo.c
+    ```
+
+    注意：当我们不使用 -o 参数指定 outfile 的名称时，默认是 `a.out`，如下图所示，其中 demo 可执行文件是之前用来输出 `'hello'` 的：
+
+    ![-I<dir>](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410091835107.png)
+
+- `-L<dir>` 顾名思义就是「库文件连接」搜索目录。例如下面的编译语句：
+
+    ```bash
+    gcc -o x11fred -L/usr/openwin/lib x11fred.c
+    ```
+
+- `-l<name>` 比较有意思，就是直接制定了库文件是哪一个。正因为有了这样的用法，我们在给库文件 (`.a` 表示静态库文件，`.so` 表示动态库文件) 起名时，就只能起 `lib<name>.a` 或 `lib<name>.so`。例如下面的编译语句：
+
+    ```bash
+    gcc -o fred -lm fred.c
+    # 等价于
+    gcc –o fred /usr/lib/libm.a fred.c
+    ```
+
+### 静态链接 | 动态链接
+
+对于下面的函数库与调用示例：
+
+```c
+// addvec.c
+void addvec(int* x, int* y, int* z, int n) {
+    for(int i = 0; i < n ; i++) {
+        z[i] = x[i] + y[i];
+    }
+}
+
+// multvec.c
+void multvec(int* x, int* y, int* z, int n) {
+    for(int i = 0; i < n ; i++) {
+        z[i] = x[i] * y[i];
+    }
+}
+
+// vector.h
+void addvec(int* x, int* y, int* z, int n);
+void multvec(int* x, int* y, int* z, int n);
+
+// main.c
+#include <stdio.h>
+#include "vector.h"
+int x[2] = {1, 2}, y[2] = {3, 4}, z[2];
+int main() {
+    addvec(x, y, z, 2);
+    printf("z = [%d, %d]\n", z[0], z[1]);
+    return 0;
+}
+```
+
+生成静态库文件 `libvector.a` 并链接至可执行文件 p1 中：
+
+```bash
+# 将两个自定义库函数编译为可重定位目标文件 addvec.o 和 multvec.o
+gcc -c addvec.c multvec.c
+
+# 将两个可重定位目标文件打包成静态库文件 libvector.a
+ar crv libvector.a addvec.o multvec.o
+
+# 生成静态链接的可执行文件 p1
+gcc -static -o p1 main.c -L. -lvector
+```
+
+生成动态库文件 `libvector.so` 并链接至可执行文件 p2 中：
+
+```bash
+# 将两个自定义库函数编译为动态库文件 libvector.so
+gcc -shared -o libvector.so addvec.c multvec.c
+
+# 生成动态链接的可执行文件 p2
+gcc -o p2 main.c -L. -lvector
+
+# 使用 ./p2 执行之前需要明确一下动态库文件的链接搜索路径，否则会找不到动态库文件
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
+```
+
+最后我们查看一下 p1 和 p2 详细信息，如下图所示。显然静态链接的可执行文件 p1 占用的存储空间远大于动态连接的可执行文件 p2。
+
+![p1 和 p2 详细信息](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410091956946.png)
 
 ## 工具扩展
 
@@ -677,4 +821,5 @@ url 下载工具。
 
 [Linux 用户权限信息](https://chatgpt.com/share/66f61785-7ed0-800c-bdf3-fbbfc84a56ae)
 
-[gdb调试的基本使用](https://www.cnblogs.com/HKUI/p/8955443.html)
+[gdb 调试的基本使用](https://www.cnblogs.com/HKUI/p/8955443.html)
+

@@ -912,7 +912,7 @@ $$
 $$
 \begin{aligned}
 w_i \leftarrow w_i + \Delta w_i \\
-\Delta_i = \eta (y - \hat y) x_i
+\Delta w_i = \eta (y - \hat y) x_i
 \end{aligned}
 $$
 {% fold light @使用多层感知机实现异或逻辑运算 %}

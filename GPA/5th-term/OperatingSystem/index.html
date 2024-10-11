@@ -32,8 +32,16 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409270845459.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409270937298.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081443847.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110832017.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110833532.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110847220.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110923854.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110852352.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110852510.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410111023261.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410111037255.png">
 <meta property="article:published_time" content="2024-08-27T12:02:23.289Z">
-<meta property="article:modified_time" content="2024-10-08T08:43:07.175Z">
+<meta property="article:modified_time" content="2024-10-11T03:02:03.528Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -252,7 +260,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          4.6k 字
         
       </span>
     
@@ -263,7 +271,7 @@
         
         
         
-          23 分钟
+          29 分钟
         
       </span>
     
@@ -327,7 +335,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年10月8日 下午
+                    本文最后更新于 2024年10月11日 上午
                   
                 
               </p>
@@ -426,7 +434,7 @@
 <p>记得多想想：是什么？为什么？会怎么样？当然也可以想想：可以比它更优吗？比如：什么是【操作系统】？为什么会有【操作系统】？有了【操作系统】会怎么样吗？可以用别的策略代替吗？上述的【操作系统】可以替换为任意一个名词或短语。</p>
 </blockquote>
 <h2 id="绪论">绪论</h2>
-<p>本文的行文大纲是基于硬件进行的。毕竟操作系统并非实体，本质是一个运行在硬件之上的软件，只不过这个软件的权限比较高可以直接调用分配硬件资源而已。全文围绕以下 4 个硬件模块的 <strong>各自功能</strong> 以及 <strong>之间的交互</strong> 展开：</p>
+<p>硬件视角下 OS 的功能。</p>
 <pre><code class=" mermaid">---
 title: What can Operating System do?
 ---
@@ -458,19 +466,26 @@ graph LR
     CPU --&gt; SSD
     CPU -.-&gt; NIC
 </code></pre>
-<p><strong>操作系统的定义是什么</strong>？对于硬件。操作系统封装所有的硬件资源；对于用户和软件。操作系统将封装好的硬件资源分配给软件调用，同时为用户提供可视化界面。</p>
-<p><strong>操作系统是怎么管理资源的</strong>？主要有三个技术。资源复用、资源虚拟化和资源抽象。后两个技术都是从第一个资源复用衍生而来，个人认为很多东西的解释都被复杂化了。</p>
+<p><strong>操作系统的定义是什么</strong>？</p>
 <ul>
-<li>比如，资源复用。其实根本没有复用，这只是相对于一开始的时候，一台计算机只能一次运行一个程序而言的。现在一台计算机需要同时运行很多程序，怎么办呢？既然程序运行需要计算资源，那我直接把计算机中的资源划分成很多份不就好了。当然了，除了内存进行空间上的划分，时间上也可以划分，比如 CPU，于是就有了资源复用中「空分复用」和「时分复用」两个理念。</li>
-<li>资源虚拟化听着玄乎，其实就是名词学术化的资源复用。比如，我将物理世界中的硬件，通过操作系统的划分与调度，将其转化为逻辑世界中的多个资源，也就是所谓的将「单一物理资源」虚拟化为「多个逻辑资源」的理念。</li>
-<li>资源抽象也很好理解，就是一种底层封装，顶层调用的思想。比如，对于每一个进程而言，都获得了操作系统为 ta 单独分配的 CPU 状态集和内存空间，而无需关心这些硬件资源是怎么分配给 ta 的。比如，对于每一个文件而言，都是对物理存储空间的抽象。</li>
+<li>对于硬件。操作系统封装所有的硬件资源，并抽象出系统调用接口供外部调用。</li>
+<li>对于用户和软件。操作系统通过提供抽象好的 API 给软件和用户提供运行和计算服务。</li>
 </ul>
-<p><strong>操作系统有什么特点</strong>？并发性、共享性和异步性，都很好理解。并发就是多个进程任务同时进行，但其实是操作系统的一个小把戏，让 CPU 在极短的时间间隔内频繁地切换执行不同的进程；共享是并发的衍生，我们知道程序执行是需要消耗资源的，而资源有限，因此我们可以让所有的进程共享同一块资源；而异步就是指一个任务在等待其他任务执行时，不会阻塞整个系统，等到其他任务执行结束或者切换到当前任务时，可以继续 ta 的执行。<strong>所以这么折腾到底是为了啥</strong>？可以从两个角度出发：</p>
+<p><strong>操作系统是怎么管理资源的</strong>？</p>
+<p>主要有三个技术。资源复用、资源虚拟化和资源抽象。后两个技术都是从第一个技术衍生而来，个人认为很多东西的解释都被复杂化了。</p>
+<ul>
+<li>资源复用。其实根本没有复用，这只是相对于一开始的时候，一台计算机只能一次运行一个程序而言的。现在一台计算机需要同时运行很多程序，怎么办呢？既然程序运行需要计算资源，那我直接把计算机中的资源划分成很多份不就好了。当然了，除了内存进行空间上的划分，时间上也可以划分，比如 CPU，于是就有了资源复用中「空分复用」和「时分复用」两个理念。</li>
+<li>资源虚拟。其实就是名词学术化的资源复用。比如，我将物理世界中的硬件，通过操作系统的划分与调度，将其转化为逻辑世界中的多个资源，也就是所谓的将「单一物理资源」虚拟化为「多个逻辑资源」的理念。</li>
+<li>资源抽象。就是一种底层封装，顶层调用的思想。比如，对于每一个进程而言，都获得了操作系统为 ta 单独分配的 CPU 状态集和内存空间，而无需关心这些硬件资源是怎么分配给 ta 的。比如，对于每一个文件而言，都是对物理存储空间的抽象。</li>
+</ul>
+<p><strong>操作系统有什么特点</strong>？</p>
+<p>并发性、共享性和异步性。都很好理解。并发就是多个进程任务同时进行，但其实是操作系统的一个小把戏，让 CPU 在极短的时间间隔内频繁地切换执行不同的进程；共享是并发的衍生，我们知道程序执行是需要消耗资源的，而资源有限，因此我们可以让所有的进程共享同一块资源；而异步就是指一个任务在等待其他任务执行时，不会阻塞整个系统，等到其他任务执行结束或者切换到当前任务时，可以继续 ta 的执行。<strong>所以这么折腾到底是为了啥</strong>？可以从两个角度出发：</p>
 <ol>
 <li>对于一个任务而言：这样做可以 <strong>提升资源利用率</strong>。因为一个进程在执行时，任务会有很多，不仅仅需要 CPU 的状态计算，可能还需要和别的设备进行数据交互，我们知道 CPU 的计算效率远高于诸如 I/O 之类的设备，这就会让系统停下来等待进程执行其他的任务。我们就可以利用系统停下来等待的这段时间，把这个进程的其他任务给执行了。同时，如果一个任务可以被划分为多个子任务，也可以并发以提升资源利用率。</li>
 <li>对于多个任务而言：可以 <strong>提升系统响应效率</strong>。多个用户同时提交请求？是一个一个响应，最快的极快，最慢的很慢。还是牺牲一点速度，大家都慢一点但是都没那么慢，同时响应？显然是后者。</li>
 </ol>
-<p><strong>操作系统是怎么对上层提供服务的</strong>？一句话概括就是，操作系统将封装好的应用程序接口 (Application Program Interface, 简称 API) 给用户或应用程序调用。例如下面的两个流程图：</p>
+<p><strong>操作系统是怎么对上层提供服务的</strong>？</p>
+<p>一句话概括就是，操作系统将封装好的应用程序接口 (Application Program Interface, 简称 API) 给用户或应用程序调用。例如下面的两个流程图：</p>
 <pre><code class=" mermaid">---
 title: 用户调用系统资源
 ---
@@ -512,7 +527,8 @@ graph RL
     Source --&gt;|反馈| OS
     OS --&gt;|反馈| User
 </code></pre>
-<p><strong>为什么让操作系统对下层抽象进而为上层提供服务</strong>？因为下层的硬件十分繁杂，并且不同厂商生产的硬件可能会有使用上的不同，通过操作系统对下层硬件的封装，不仅可以隐藏复杂的硬件资源调度，可以统一出一种普适性更高的规则供上层服务使用。</p>
+<p><strong>为什么让操作系统对下层抽象进而为上层提供服务</strong>？</p>
+<p>因为下层的硬件电路十分繁杂，并且不同厂商生产的硬件可能会有使用上的不同。通过操作系统对下层硬件的封装，不仅可以隐藏复杂的硬件资源调度，还可以统一出一种普适性更高的接口规则供上层服务使用。</p>
 <p><strong>操作系统的内核是什么？操作系统的其他部分是什么？为什么要这样区分？</strong></p>
 <ul>
 <li>首先我们有必要了解「用户态」和「内核态」的概念。这两种状态定义了应用程序的指令执行权限，当程序运行在用户态时，不可以执行一些关键的指令，例如中断、网络通信等；但当程序运行在核心态时，可以执行所有指令。不难发现隔离化的运行模式相比于所有应用程序都有最高指令执行权限来说，可以进一步提升程序运行时系统的安全性。于是乎，操作系统的内核概念应运而生。</li>
@@ -589,15 +605,123 @@ graph RL
 <h2 id="内核">内核</h2>
 <h3 id="中断-系统调用-上下文切换">中断 | 系统调用 | 上下文切换</h3>
 <h3 id="处理器调度">处理器调度</h3>
-<p><strong>处理器调度的三级模式</strong>。分为高级调度、中级调度和低级调度。其中：</p>
+<h4 id="三级模式">三级模式</h4>
+<p>分为高级调度、中级调度和低级调度。其中：</p>
 <ul>
-<li>高级调度是决定哪些进程从外存对换到内存中，也就是分配内存资源。</li>
-<li>中级调度是决定哪些进程从内存对换到外存中。</li>
-<li>低级调度是决定哪些内存中的进程可以获得合适的 CPU 计算资源。</li>
+<li><strong>高级调度</strong> 是决定哪些进程从外存对换到内存中，也就是 <strong>分配内存</strong> 资源。</li>
+<li><strong>中级调度</strong> 是决定哪些进程从内存对换到外存中，也就是 <strong>取消分配内存</strong> 资源。</li>
+<li><strong>低级调度</strong> 是决定哪些内存中的进程可以获得合适的 CPU 计算资源，也就是 <strong>分配计算</strong> 资源。</li>
 </ul>
-<p><strong>处理器调度的评价指标</strong>。</p>
+<h4 id="评价指标">评价指标</h4>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081443847.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="处理器调度的评价指标"></p>
-<p><strong>处理器调度的七种算法</strong>。</p>
+<p>显然周转时间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\iff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 运行时间+等待时间，因此上述「带权」的含义可以理解为作业处理效率，取值范围为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo separator="true">,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1,\infty]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∞</span><span class="mclose">]</span></span></span></span>。</p>
+<h4 id="七种调度算法">七种调度算法</h4>
+<h5 id="先来先服务">先来先服务</h5>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110832017.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="先来先服务"></p>
+<ul>
+<li>先来先服务 (First Come First Serverd, FCFS)。</li>
+<li>非抢占式。</li>
+<li>按照进程进入就绪队列的时间顺序分配进程的计算资源。</li>
+</ul>
+<h5 id="最短作业优先">最短作业优先</h5>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110833532.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="最短作业优先"></p>
+<ul>
+<li>最短作业优先 (Shortest Job First, SJF)。</li>
+<li>非抢占式。</li>
+<li>经典排队打水贪心算法的应用。根据就绪队列中所有进程的预估运行时间进行排序，每次给最小运行时间的进程分配计算资源。</li>
+<li>显然如果一直有很小的运行时间的进程进入就绪队列，就会造成已经存在于就绪队列中但是运行时间较长的进程“饿死”。</li>
+</ul>
+<h5 id="最短剩余时间优先">最短剩余时间优先</h5>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110847220.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="最短剩余时间优先"></p>
+<ul>
+<li>最短剩余时间优先 (Shortest Remaining Time First, SRTF)。</li>
+<li>抢占式。</li>
+</ul>
+<h5 id="最高响应比优先">最高响应比优先</h5>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110923854.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="最高响应比优先"></p>
+<ul>
+<li>最高响应比优先 (Highest Response Ratio First, HRRF)。</li>
+<li>非抢占式。</li>
+<li>每次给响应比最小的进程分配计算资源。</li>
+</ul>
+<h5 id="优先级调度算法">优先级调度算法</h5>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110852352.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="优先级调度算法 - 非抢占式"></p>
+<ul>
+<li>非抢占式。注意优先数和优先级的对应关系。</li>
+</ul>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110852510.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="优先级调度算法 - 抢占式"></p>
+<ul>
+<li>抢占式。</li>
+</ul>
+<h5 id="轮转调度">轮转调度</h5>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410111023261.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="轮转调度"></p>
+<ul>
+<li>轮转调度 (Round Robin, RR)。</li>
+<li>非抢占式。</li>
+<li>每次从就绪队列中拿出最近的进程，然后执行最多时间片长度。如果还没执行结束则重新入队。</li>
+</ul>
+<h5 id="多级反馈队列调度">多级反馈队列调度</h5>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410111037255.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="多级反馈队列调度 - 非抢占式"></p>
+<ul>
+<li>多级反馈队列调度 (Multi-Level Feedback Queue, MLFQ)。</li>
+<li>非抢占式与抢占式都有。</li>
+<li>新到达的进程首先进入最高优先级的就绪队列，每个就绪队列的调度策略为轮转调度。如果进程在该就绪队列的时间片内未能完成，则被转移到下一级就绪队列等待运行。每个就绪队列的时间片通常比上一级就绪队列的时间片长，可以定义第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 层就绪队列的时间片长度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">2^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span>。</li>
+</ul>
+<h5 id="小结">小结 *</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:left">算法</th>
+<th style="text-align:left">算法思想</th>
+<th style="text-align:left">特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:left">先来先服务</td>
+<td style="text-align:left">按照作业/进程到达的先后顺序进行服务</td>
+<td style="text-align:left">非抢占式；有利于长作业不利于短作业；不会饥饿；可用于作业/进程调度</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:left">最短作业优先</td>
+<td style="text-align:left">当前进程停止执行时，选择预计所需的 CPU 运行时间最小的进程执行</td>
+<td style="text-align:left">非抢占式；对长作业不利；会饥饿；可用于作业/进程调度</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:left">最短剩余时间优先</td>
+<td style="text-align:left">当一个新进程加入就绪队列时，它可能具有比当前运行进程更短的剩余运行时间，此时调度器将让该就绪进程抢占当前运行的进程</td>
+<td style="text-align:left">抢占式（算法 2 的抢占式版本）；对长作业不利；会饥饿；可用于作业/进程调度。</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:left">最高响应比优先</td>
+<td style="text-align:left">当前运行的进程结束或阻塞时，选择响应比最大的进程执行</td>
+<td style="text-align:left">非抢占式；结合算法 1,2(3) 的优势；不会饥饿；可用于作业/进程调度。</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:left">优先级调度算法</td>
+<td style="text-align:left">优先级调度算法根据确定的优先级来选择进程/线程，总是选择就绪队列中优先级最高者投入运行。</td>
+<td style="text-align:left">非抢占式和抢占式两种版本；适用于实时操作系统；静态优先级可能会导致饥饿；可用于作业/进程调度。</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:left">轮转调度</td>
+<td style="text-align:left">将时间切分成定长的时间片，当时间片用完后，产生时钟中断。</td>
+<td style="text-align:left">抢占式；有利于多用户、多交互式进程；时间片太大，算法会退化为先来先服务；时间片太小，进程切换频繁，开销大。不会饥饿；用于进程调度。</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:left">多级反馈队列调度</td>
+<td style="text-align:left">对各种调度算法的权衡。设置多级就绪队列，各级队列优先级从高到低，时间片从小到大。</td>
+<td style="text-align:left">长进程可能会饿死；用于进程调度。</td>
+</tr>
+</tbody>
+</table>
 <h2 id="持久化">持久化</h2>
 
                 
@@ -663,7 +787,7 @@ graph RL
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月8日</div>
+          <div>2024年10月11日</div>
         </div>
       
       

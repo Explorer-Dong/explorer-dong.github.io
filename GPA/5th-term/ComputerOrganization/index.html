@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112041997.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409180822743.png">
 <meta property="article:published_time" content="2024-08-27T12:14:48.819Z">
-<meta property="article:modified_time" content="2024-10-11T12:43:35.722Z">
+<meta property="article:modified_time" content="2024-10-12T02:42:24.692Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -265,7 +265,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.8k 字
+          6.2k 字
         
       </span>
     
@@ -276,7 +276,7 @@
         
         
         
-          37 分钟
+          39 分钟
         
       </span>
     
@@ -340,7 +340,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年10月11日 晚上
+                    本文最后更新于 2024年10月12日 上午
                   
                 
               </p>
@@ -548,19 +548,28 @@
 <h2 id="6-指令流水线">6 指令流水线</h2>
 <h2 id="7-存储器">7 存储器</h2>
 <p>当机器有了记忆，就可以不用人为干预而自动运行，从而真正意义上实现了自动化的流程。本章主要学习计算机中的存储器件、存储策略以及数据交互逻辑。</p>
-<p>现代计算机中有很多类型的存储器，核心功能都是存储数据，那为什么不统一成一种存储器呢？根本原因是 CPU 的计算速度远大于从内存中访存数据的速度，因此我们不得不设计出可以匹配 CPU 计算速度的存储器结构。但这样的存储器造价极高并且存储量很小，因此我们只能退而求其次，从而诞生了现代计算机中的层次存储结构。从 CPU 开始依次为：<strong>寄存器 (Register)</strong>、<strong>缓存 (Cache)</strong>、<strong>内存 (Main Memory)</strong> 和 <strong>外存 (Secondary Memory)</strong>。这些存储器的访存速度逐渐降低。本章也将按照这样的顺序分别讲解相应的概念。最后会补充介绍一下存储器中的 <strong>虚拟存储</strong> 理念以及 <strong>数据校验</strong> 策略。</p>
+<p>现代计算机中有很多类型的存储器，核心功能都是存储数据，那为什么不统一成一种存储器呢？根本原因是 CPU 的计算速度远大于从存储器中访存数据的速度，因此我们不得不设计出可以匹配 CPU 计算速度的存储器结构。但这样的存储器造价极高并且存储量很小，因此我们只能退而求其次，从而诞生了现代计算机中的层次存储结构。从 CPU 开始依次为：<strong>寄存器 (Register)</strong>、<strong>缓存 (Cache)</strong>、<strong>内存 (Main Memory)</strong> 和 <strong>外存 (Secondary Memory)</strong>。这些存储器的访存速度逐渐降低。本章也将按照这样的顺序分别讲解相应的概念。最后会补充介绍一下存储器中的 <strong>虚拟存储</strong> 理念以及 <strong>数据校验</strong> 策略。</p>
 <h3 id="7-1-缓存">7.1 缓存</h3>
+<p>缓存采用的随机存取存储器是 SRAM，即静态随机存取存储器。由于其速度快容量小且造价很高，因此适合做 cache 工作。SRAM 存储高低电平的方式是触发器。</p>
 <h3 id="7-2-内存">7.2 内存</h3>
-<p><strong>CPU 与内存进行数据交互的逻辑</strong>。</p>
+<p>内存采用的随机存取存储器是 DRAM，即动态随机存取存储器。相比于 SRAM，DRAM 速度较慢但容量更大，因此适合做内存工作。DRAM 存储高低电平的方式是电平，即通过电容的高低电平状态来存储 01 状态。由于 DRAM 的读操作会对高电平进行放电，因此需要定时对 DRAM 的电容进行充电工作，也就是所谓的刷新。</p>
+<h5 id="7-2-1-CPU-与内存进行数据交互的逻辑">7.2.1 CPU 与内存进行数据交互的逻辑</h5>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112007235.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="基本框图"></p>
 <p>CPU 首先通过「控制线」将读/写信号送到内存，然后分读写两种情况：</p>
 <ol>
 <li>CPU 需要读数据时。就将需要读取数据的地址通过「地址线」送到内存寻找相应的数据，内存通过「数据线」将数据返回给 CPU。</li>
 <li>CPU 需要写数据时。就将需要写入数据的地址通过「地址线」送到内存寻找待写入的内存，同时将需要写入的数据通过「数据线」送到内存并写入指定的内存中。</li>
 </ol>
-<p><strong>地址译码器的工作逻辑</strong>。</p>
+<p>CPU 与 内存的数据的通信分为异步和同步两种：</p>
+<ol>
+<li>异步。CPU 从 数据线取数时需要收到内存已经准备好数据的信号。</li>
+<li>同步。CPU 从数据线取数无须内存的信号，而是在向内存发出取数信号后，经过确定的时间后就从数据线取数。</li>
+</ol>
+<h5 id="7-2-2-地址译码器的工作逻辑">7.2.2 地址译码器的工作逻辑</h5>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112041997.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="一维单译码器 VS 二维双译码器"></p>
 <p>如果有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 位地址位，就决定了寻址范围为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,2^n-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>。不难发现如果是一维单译码，就需要译码器有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> 个寻址线。如果是二维双译码，就需要译码器有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><msup><mn>2</mn><mrow><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2 \times 2^{n/2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.888em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mord mtight">/2</span></span></span></span></span></span></span></span></span></span></span></span> 个寻址线。显然当地址位较多时，二维双译码器是更优的。</p>
+<h5 id="7-2-3-字-位扩展">7.2.3 字/位扩展</h5>
+<p>扩展分为字扩展、位扩展和字位同时扩展。扩展逻辑已经在数电中学习过了，具体见 <a href="https://blog.dwj601.cn/GPA/3rd-term/DigitalLogicCircuit/#4-4-2-%E8%AF%91%E7%A0%81%E5%99%A8-%E6%95%B0%E6%8D%AE%E5%88%86%E9%85%8D%E5%99%A8">https://blog.dwj601.cn/GPA/3rd-term/DigitalLogicCircuit/#4-4-2-译码器-数据分配器</a></p>
 <h3 id="7-3-外存">7.3 外存</h3>
 <h3 id="7-4-虚存">7.4 虚存</h3>
 <h3 id="7-5-存储器的数据校验">7.5 存储器的数据校验</h3>
@@ -645,7 +654,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月11日</div>
+          <div>2024年10月12日</div>
         </div>
       
       

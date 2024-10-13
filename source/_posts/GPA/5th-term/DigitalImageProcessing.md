@@ -37,6 +37,13 @@ category_bar: true
 
 > 图像简单来说就是一个矩阵。如何在这种数据结构上进行理论研究与算法应用显得十分有学习意义。本课程也将使用 MATLAB 和 OpenCV-Python 进行编码实现。
 
+注：
+
+>本课程的代码分为 MATLAB 和 OpenCV-Python。其中：
+>
+>- MATLAB 版本为 R2023a。
+>- OpenCV-Python 版本为 4.10.0。官方文档 <https://docs.opencv.org/4.10.0/d2/d96/tutorial_py_table_of_contents_imgproc.html>
+
 ## 图像获取
 
 **如何从现实世界中的模拟图像转化为计算机世界的数字图像**？由于现实世界中的模拟图像是连续的，而计算机无法处理连续数据，因此我们只能对模拟图像进行离散化采样。进而引出了下面的一些概念。
@@ -146,46 +153,39 @@ y'\\
 1
 \end{bmatrix}
 $$
+
 {% fold light @代码实现 %}
 
 MATLAB：
 
 ```matlab
-clear;
-clc;
+function newImage = translateImage(imagePath, del_x, del_y)
+	image = imread(imagePath);
+	[h, w, c] = size(image);
 
-% 加载图像
-image = imread("lotus.JPG");
-[h, w, c] = size(image);
-
-% 反向映射法
-del_x = 50;
-del_y = 50;
-new_image = uint8(zeros(h, w, c));
-for new_y = 1:h
-	for new_x = 1:w
-		% 方法1. 直接算老点
-		% [old_x, old_y] = deal(new_x - del_x, new_y - del_y);
-		
-		% 方法2. 用变换矩阵 T 算老点
-		T = [1, 0, -del_x;
-			 0, 1, -del_y;
-			 0, 0, 1];
-		new_point = [new_x; new_y; 1];
-		old_point = T * new_point;  % p = T * p'
-		[old_x, old_y] = deal(old_point(1), old_point(2));
-
-		% 找到对应的点就赋值，否则rgb就默认[0,0,0]，即黑色
-		if old_y >= 1 && old_y <= h && old_x >= 1 && old_x <= w
-			new_image(new_y, new_x, :) = image(old_y, old_x, :);
+	new_image = uint8(zeros(h, w, c));
+	for new_y = 1:h
+		for new_x = 1:w
+			% 方法1. 直接算老点
+			% [old_x, old_y] = deal(new_x - del_x, new_y - del_y);
+			
+			% 方法2. 用变换矩阵 T 算老点
+			T = [1, 0, -del_x;
+			 	0, 1, -del_y;
+			 	0, 0, 1];
+			new_point = [new_x; new_y; 1];
+			old_point = T * new_point;  % p = T * p'
+			[old_x, old_y] = deal(old_point(1), old_point(2));
+	
+			% 找到对应的点就赋值，否则rgb就默认[0,0,0]，即黑色
+			if old_y >= 1 && old_y <= h && old_x >= 1 && old_x <= w
+				new_image(new_y, new_x, :) = image(old_y, old_x, :);
+			end
 		end
 	end
+	
+	newImage = new_image;
 end
-
-% 绘制结果
-figure;
-subplot(1, 2, 1), imshow(image), title("原始图像");
-subplot(1, 2, 2), imshow(new_image), title("平移图像");
 ```
 
 两个方法的计算结果是一样的：
@@ -197,49 +197,38 @@ Python：
 ```python
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
 
-plt.rcParams['font.sans-serif'] = ['SimHei']
-plt.rcParams['axes.unicode_minus'] = False
+def translateImage(imagePath: str, del_x: float, del_y: float) -> np.ndarray:
+    # 加载图像
+    image = cv2.imread(imagePath)
+    h, w, c = image.shape
 
-# 加载图像
-image = cv2.imread("./Homework_1/lotus.JPG")
-h, w, c = image.shape
+    # 反向映射法
+    new_image = np.zeros((h, w, c), dtype=np.uint8)
+    for new_y in range(h):
+        for new_x in range(w):
+            # 方法1. 直接算老点
+            # old_x, old_y = new_x - del_x, new_y - del_y
 
-# 反向映射法
-del_x, del_y = 50, 50
-new_image = np.zeros((h, w, c), dtype=np.uint8)
-for new_y in range(h):
-    for new_x in range(w):
-        # 方法1. 直接算老点
-        old_x, old_y = new_x - del_x, new_y - del_y
+            # 方法2. 用变换矩阵 T 算老点
+            T = np.array([
+                [1, 0, -del_x],
+                [0, 1, -del_y],
+                [0, 0, 1]
+            ])
+            new_point = np.array([
+                [new_x],
+                [new_y],
+                [1]
+            ])
+            old_point = T @ new_point
+            old_x, old_y = old_point[:2]
 
-        # 方法2. 用变换矩阵 T 算老点
-        T = np.array([
-            [1, 0, -del_x],
-            [0, 1, -del_y],
-            [0, 0, 1]
-        ])
-        new_point = np.array([
-            [new_x],
-            [new_y],
-            [1]
-        ])
-        old_point = T @ new_point
-        old_x, old_y = old_point[:2]
-
-        # 找到对应的点就赋值，否则rgb就默认[0,0,0]，即黑色
-        if 0 <= old_y < h and 0 <= old_x < w:
-            new_image[new_y, new_x, :] = image[old_y, old_x, :]
-
-# 绘制结果
-_, axs = plt.subplots(1, 2, figsize=(12, 8))
-axs[0].imshow(image)
-axs[0].set_title("原始图像")
-axs[1].imshow(new_image)
-axs[1].set_title("平移图像")
-plt.tight_layout()
-plt.show()
+            # 找到对应的点就赋值，否则rgb就默认[0,0,0]，即黑色
+            if 0 <= old_y < h and 0 <= old_x < w:
+                new_image[new_y, new_x, :] = image[old_y, old_x, :]
+        
+    return new_image
 ```
 
 两个方法的计算结果同样是一样的：
@@ -249,6 +238,255 @@ plt.show()
 {% endfold %}
 
 ##### 1.1.2 镜像
+
+假设图像有 N 行 M 列像素。则有以下镜像变换公式。
+
+注：python 下标从 0 开始，因此下面的 -1 都是正确的。但 matlab 下标从 1 开始，下面所有公式的 -1 都要换成 +1。
+
+变换公式（在老点的坐标系下，已知老点算新点）：
+$$
+\begin{cases}
+\begin{cases}
+x' = M - 1 - x \\
+y' = y
+\end{cases}
+&\text{（水平镜像）}
+\to
+\begin{bmatrix}
+x'\\
+y'\\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 & 0 & M - 1\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+1
+\end{bmatrix}
+\\
+\begin{cases}
+x' = x \\
+y' = N - 1 - y
+\end{cases}
+&\text{（垂直镜像）}
+\to
+\begin{bmatrix}
+x'\\
+y'\\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & -1 & N - 1\\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+1
+\end{bmatrix}
+\\
+\begin{cases}
+x' = M - 1 - x \\
+y' = N - 1 - y
+\end{cases}
+&\text{（对角镜像）}
+\to
+\begin{bmatrix}
+x'\\
+y'\\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 & 0 & M - 1\\
+0 & -1 & N - 1\\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+1
+\end{bmatrix}
+\end{cases}
+$$
+逆变换公式（在新点的坐标系下，已知新点算老点）：
+$$
+\begin{cases}
+\begin{cases}
+x = M - 1 - x' \\
+y = y'
+\end{cases}
+&\text{（水平镜像）}
+\to
+\begin{bmatrix}
+x\\
+y\\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 & 0 & M - 1\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x'\\
+y'\\
+1
+\end{bmatrix}
+\\
+\begin{cases}
+x = x' \\
+y = N - 1 - y'
+\end{cases}
+&\text{（垂直镜像）}
+\to
+\begin{bmatrix}
+x\\
+y\\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & -1 & N - 1\\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x'\\
+y'\\
+1
+\end{bmatrix}
+\\
+\begin{cases}
+x = M - 1 - x' \\
+y = N - 1 - y'
+\end{cases}
+&\text{（对角镜像）}
+\to
+\begin{bmatrix}
+x\\
+y\\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 & 0 & M - 1\\
+0 & -1 & N - 1\\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x'\\
+y'\\
+1
+\end{bmatrix}
+\end{cases}
+$$
+
+{% fold light @代码实现 %}
+
+MATLAB：
+
+```matlab
+function newImage = mirrowImage(imagePath, dim)
+	image = imread(imagePath);
+
+	% 直接调用内置函数 flipdim
+	% new_image = flipdim(image, dim);
+
+	% 后向映射法
+	[h, w, c] = size(image);
+	new_image = uint8(zeros(h, w, c));
+	disp([h, w, c]);
+	for new_y = 1:h
+		for new_x = 1:w
+			if dim == 1
+				% 垂直镜像
+				T = [1, 0, 0;
+					 0, -1, h + 1;
+					 0, 0, 1];
+			else
+				% 水平镜像
+				T = [-1, 0, w + 1;
+					 0, 1, 0;
+					 0, 0, 1];
+			end
+
+			new_point = [new_x; new_y; 1];
+			old_point = T * new_point;  % p = T * p'
+			[old_x, old_y] = deal(old_point(1), old_point(2));
+
+			disp([new_y, new_x, old_y, old_x]);
+			new_image(new_y, new_x, :) = image(old_y, old_x, :);
+		end
+	end
+	
+	newImage = new_image;
+end
+```
+
+两个方法的计算结果是一样的：
+
+![镜像图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410131207600.png)
+
+Python：
+
+```python
+import cv2
+import numpy as np
+
+def mirrowImage(imagePath: str, dim: int) -> np.ndarray:
+    # 加载图像
+    image = cv2.imread(imagePath)
+    h, w, c = image.shape
+
+    # 方法1. 使用内置函数 注意这里的dim不是维度，官方标准为：0表示垂直镜像，正数表示水平镜像，负数表示对角镜像
+    # return cv2.flip(image, dim)
+
+    # 方法2. 反向映射法
+    new_image = np.zeros((h, w, c), dtype=np.uint8)
+    for new_y in range(h):
+        for new_x in range(w):
+            if dim == 1:
+                # 垂直镜像
+                T = np.array([
+                    [1, 0, 0],
+                    [0, -1, h - 1],
+                    [0, 0, 1]
+                ])
+            else:
+                # 水平镜像
+                T = np.array([
+                    [-1, 0, w - 1],
+                    [0, 1, 0],
+                    [0, 0, 1]
+                ])
+
+            new_point = np.array([
+                [new_x],
+                [new_y],
+                [1]
+            ])
+            old_point = T @ new_point
+            old_x, old_y = old_point[:2]
+
+            new_image[new_y, new_x, :] = image[old_y, old_x, :]
+    
+    return new_image
+```
+
+注意 OpenCV 内置函数的逻辑与 MATLAB 是不一样的。
+
+![镜像图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410131224054.png)
+
+{% endfold %}
 
 ##### 1.1.3 旋转
 

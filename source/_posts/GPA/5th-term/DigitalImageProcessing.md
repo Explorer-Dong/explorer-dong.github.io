@@ -80,7 +80,7 @@ category_bar: true
 
 ### 1. 图像基本运算
 
-首先需要掌握一些最基本的概念：齐次坐标表示与变换矩阵 $T$、图像插值策略、图像映射策略。
+首先需要掌握一些最基本的概念：齐次坐标表示与变换矩阵 $T$、图像插值策略、图像映射策略。以及关于坐标系的注意点。
 
 **关于齐次坐标表示和变换矩阵**。就是将图像中的点 $(x,y)^T$ 用 $(x,y,1)^T$ 来表示。之所以要这样表示，从 [这篇博客](https://blog.csdn.net/wangmj_hdu/article/details/119143771) 可以看出是为了「统一图像变换的运算形式」，但应该没这么简单，可能还有很多别的意义。至于所谓的变换矩阵，其实就是利用矩阵乘法对图像的像素点转换进行格式上的统一运算，所有的变换操作都可以统一为对像素点进行矩阵乘法，例如：对于当前的一个像素点 $p=(x,y,1)^T$ 和一个变换矩阵 $\displaystyle \begin{bmatrix} k_x & b & \Delta x \\ c & k_y &\Delta y \\ p & q & s \end{bmatrix}$。新像素点 $p'=(x',y',1)^T$ 可以通过矩阵乘法 $p'_{3\times 1}=T_{3\times 3} \times p_{3\times 1}$ 得到，即：
 $$
@@ -96,6 +96,11 @@ $$
 2. 新图像在原图像的对应点没超过原图像的范围。说明这个像素点一定是有实际意义的，此时又有两种情况：
     1. 对应点存在的。说明找到了「最佳配对」，这是最完美的对应情况，直接赋原图的像素值即可；
     2. 对应点不存在。说明没有最佳配对，此时我们只能退而求其次给这个像素点生成一个配对的像素值，怎么生成呢？就可以用到上面介绍的插值策略了。
+
+**关于坐标系**。理论计算和编程实现是不同的：
+
+- 理论计算时。采用的是 **像素坐标系**，左上角为原点。$A(x,y)$ 中，$x$ 表示在 $\rightarrow$ 方向的投影，$y$ 表示在 $\downarrow$ 方向的投影。
+- 编程实现时。采用的是 **矩阵坐标系**，左上角为原点。$A(x,y)$ 中，$x$ 表示在 $\downarrow$ 方向的投影，$y$ 表示在 $\rightarrow$ 方向的投影。
 
 #### 1.1 几何变换
 
@@ -398,10 +403,10 @@ MATLAB：
 function newImage = mirrowImage(imagePath, dim)
 	image = imread(imagePath);
 
-	% 直接调用内置函数 flipdim
+	% 方法1. 直接调用内置函数 flipdim
 	% new_image = flipdim(image, dim);
 
-	% 后向映射法
+	% 方法2. 后向映射法
 	[h, w, c] = size(image);
 	new_image = uint8(zeros(h, w, c));
 	disp([h, w, c]);
@@ -490,13 +495,105 @@ def mirrowImage(imagePath: str, dim: int) -> np.ndarray:
 
 ##### 1.1.3 旋转
 
+我们以图像的左上角即原点作为旋转点，逆时针方向为正方向。对于原图中的任意点 $(x, y)$，我们将其表示为 $(r\cdot \cos \alpha,r\cdot \sin \alpha)$，逆时针旋转 $\theta$ 度后，就有下面的变换公式和逆变换公式。
+
+变换公式（在老点的坐标系下，已知老点算新点）：
+$$
+\begin{cases}
+x' = r\cdot \cos (\alpha - \theta) = r\cdot \cos \alpha \cdot \cos \theta + r\cdot \sin \alpha \cdot \sin \theta = x \cdot \cos \theta + y \cdot \sin \theta \\
+y' = r\cdot \sin (\alpha - \theta) = r\cdot \sin \alpha \cdot \cos \theta - r\cdot \cos \alpha \cdot \sin \theta = -x \cdot \sin \theta + y \cdot \cos \theta
+\end{cases}
+\to
+\begin{bmatrix}
+x'\\
+y'\\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos \theta & \sin \theta & 0\\
+-\sin \theta & \cos \theta & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+1
+\end{bmatrix}
+$$
+逆变换公式（在新点的坐标系下，已知新点算老点）：
+$$
+\begin{cases}
+x = x' \cdot \cos \theta - y' \cdot \sin \theta \\
+y = x' \cdot \sin \theta + y' \cdot \cos \theta
+\end{cases}
+\to
+\begin{bmatrix}
+x\\
+y\\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos \theta & -\sin \theta & 0\\
+\sin \theta & \cos \theta & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x'\\
+y'\\
+1
+\end{bmatrix}
+$$
+**确定新图尺寸**。我们可以利用上述变换公式，首先「在原图的坐标系下」计算出 4 个顶点变换后的坐标 $P_1(x_1,y_1),P_2(x_2,y_2),P_3(x_3,y_3),P_4(x_4,y_4)$ 来确定新图的尺寸：
+$$
+\begin{aligned}
+M =& \lceil \max(x_1,x_2,x_3,x_4) - \min(x_1,x_2,x_3,x_4) + 1 \rceil\\
+N =& \lceil \max(y_1,y_2,y_3,y_4) - \min(y_1,y_2,y_3,y_4) + 1 \rceil
+\end{aligned}
+$$
+**坐标系转换**。与上述平移/镜像时可以直接使用逆变换找老点时不同，旋转时的坐标系会发生变化（其实就是新原点相对于老原点在 $x$ 和 $y$ 方向上有了一定的偏移量），因此我们需要 **先将新点逆偏移到老点的坐标系中**，再根据逆变换寻找到对应的老点。逆偏移的逻辑很简单，对于新图中的任意一点 $(x', y')$，逆偏移的计算方法如下：
+$$
+\begin{cases}
+x' \xrightarrow []{\text{逆偏移为}} x' + \min(x_1,x_2,x_3,x_4)\\
+y' \xrightarrow []{\text{逆偏移为}} y' + \min(y_1,y_2,y_3,y_4)\\
+\end{cases}
+$$
+
+**坐标逆变换**。最后我们进行坐标逆变换辅以合理的插值策略即可实现后向映射法。
+
+{% fold light @代码实现 %}
+
+MATLAB：
+
+```matlab
+```
+
+
+
+Python：
+
+```python
+```
+
+
+
+{% endfold %}
+
 ##### 1.1.4 缩放
 
 ##### 1.1.5 错切
 
 #### 1.2 代数运算
 
+- 加法：添加内容。
+- 减法：去除噪声。
+- 乘法：提取内容。
+- 逻辑与、逻辑或、逻辑非、逻辑异或。
+
 #### 1.3 模版运算
+
+就是卷积运算。
 
 ### 2. 图像正交变换
 

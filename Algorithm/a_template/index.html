@@ -27,7 +27,7 @@
 <meta property="og:description" content="板子 优雅的解法，少不了优雅的板子。目前仅编写 C++ 和 Python 语言对应的板子。前者用于备赛 Xcpc，后者用于备赛蓝桥杯。 基础算法 高精度                      ▶C++                                  1234567891011121314151617181920212223242526272829303132333435363">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-21T05:55:02.037Z">
-<meta property="article:modified_time" content="2024-09-28T09:09:37.383Z">
+<meta property="article:modified_time" content="2024-10-15T02:29:35.556Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -320,7 +320,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月28日 下午
+                    本文最后更新于 2024年10月15日 上午
                   
                 
               </p>
@@ -352,7 +352,7 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-28ab9646">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">findLeft</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = n - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r) {<br>        <span class="hljs-type">int</span> mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) l = mid + <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// if (a[mid] &lt; x) l = mid + 1;</span><br>        <span class="hljs-keyword">else</span> r = mid;<br>    }<br>    <span class="hljs-keyword">return</span> a[r] == x;<br>}<br></code></pre></td></tr></tbody></table></figure>
+          <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">findLeft</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = n - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r) {<br>        <span class="hljs-type">int</span> mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// if (a[mid] &lt; x) l = mid + 1;</span><br>        <span class="hljs-keyword">if</span> (缺了) {<br>            l = mid + <span class="hljs-number">1</span>;<br>        } <span class="hljs-keyword">else</span> (刚好 | 超了) {<br>            r = mid;<br>        }<br>    }<br>    <span class="hljs-keyword">return</span> a[r] == x;<br>}<br></code></pre></td></tr></tbody></table></figure>
         </div>
       </div>
     </div>
@@ -364,7 +364,7 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-e064c6af">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">findRight</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = n - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r) {<br>        <span class="hljs-type">int</span> mid = (l + r + <span class="hljs-number">1</span>) &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) l = mid;<br>        <span class="hljs-comment">// if (a[mid] &lt;= x) l = mid;</span><br>        <span class="hljs-keyword">else</span> r = mid - <span class="hljs-number">1</span>;<br>    }<br>    <span class="hljs-keyword">return</span> a[r] == x;<br>}<br></code></pre></td></tr></tbody></table></figure>
+          <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">findRight</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = n - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r) {<br>        <span class="hljs-type">int</span> mid = (l + r + <span class="hljs-number">1</span>) &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// if (a[mid] &lt;= x) l = mid;</span><br>        <span class="hljs-keyword">if</span> (缺了 | 刚好) {<br>            l = mid;<br>        } <span class="hljs-keyword">else</span> (超了) {<br>            r = mid - <span class="hljs-number">1</span>;<br>        }<br>    }<br>    <span class="hljs-keyword">return</span> a[r] == x;<br>}<br></code></pre></td></tr></tbody></table></figure>
         </div>
       </div>
     </div>
@@ -581,7 +581,7 @@ i^{-1} &amp;= i^{mod-2}
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月28日</div>
+          <div>2024年10月15日</div>
         </div>
       
       

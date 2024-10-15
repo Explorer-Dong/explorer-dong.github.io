@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406052305698.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406052310960.png">
 <meta property="article:published_time" content="2024-08-30T03:47:31.483Z">
-<meta property="article:modified_time" content="2024-09-01T05:06:19.929Z">
+<meta property="article:modified_time" content="2024-10-15T10:59:20.618Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -261,7 +261,7 @@
         
         
         
-          16 分钟
+          17 分钟
         
       </span>
     
@@ -325,7 +325,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月1日 下午
+                    本文最后更新于 2024年10月15日 晚上
                   
                 
               </p>
@@ -359,7 +359,7 @@
 <p>上述所有的示例都可以用下面一张图来表示：C++ 中的变量相当于盒子，简单的赋值语句就相当于重新拿一个盒子装原来的数据；而 Python 中的变量相当于标签，简单的赋值语句就相当于所有标签都贴到了同一块数据上：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407031133477.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="C++盒子模型 vs Python 标签模型"></p>
 <p>当然了，不可变数据是无法进行上述的「单点修改」的，只有重新构造一个对象，比如重新赋值、拼接、截取等操作。但此时无论是可变数据类型还是不可变数据类型，重新构造一个对象并进行赋值其实就相当于「重新开辟一块内存并贴上标签」了，和引用的关系不大，如下面的程序段：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">my_list = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br><span class="hljs-built_in">list</span> = my_list<br><span class="hljs-built_in">list</span> = [<span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-number">6</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">id</span>(my_list))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">id</span>(<span class="hljs-built_in">list</span>))<br><br><span class="hljs-built_in">print</span>(my_list)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>)<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">my_list = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br><span class="hljs-built_in">list</span> = my_list<br><span class="hljs-built_in">list</span> = [<span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-number">6</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">id</span>(my_list))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">id</span>(<span class="hljs-built_in">list</span>))<br><br><span class="hljs-built_in">print</span>(my_list)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>)<br><br><span class="hljs-string">""" 程序输出</span><br><span class="hljs-string">2454192202816</span><br><span class="hljs-string">2454190413376</span><br><span class="hljs-string">[1, 2, 3]</span><br><span class="hljs-string">[6, 6, 6]</span><br><span class="hljs-string">"""</span><br></code></pre></td></tr></tbody></table></figure>
 <p>此时就相当于这样的图例：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407031146252.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="重新开辟一块内存并贴上标签"></p>
 <p>有了上述的知识储备后，理解接下来的知识简直就是易如反掌。</p>
@@ -468,7 +468,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月1日</div>
+          <div>2024年10月15日</div>
         </div>
       
       

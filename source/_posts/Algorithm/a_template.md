@@ -249,9 +249,12 @@ bool findLeft(int x) {
     int l = 0, r = n - 1;
     while (l < r) {
         int mid = (l + r) >> 1;
-        if (check(mid)) l = mid + 1;
         // if (a[mid] < x) l = mid + 1;
-        else r = mid;
+        if (缺了) {
+            l = mid + 1;
+        } else (刚好 | 超了) {
+            r = mid;
+        }
     }
     return a[r] == x;
 }
@@ -268,9 +271,12 @@ bool findRight(int x) {
     int l = 0, r = n - 1;
     while (l < r) {
         int mid = (l + r + 1) >> 1;
-        if (check(mid)) l = mid;
         // if (a[mid] <= x) l = mid;
-        else r = mid - 1;
+        if (缺了 | 刚好) {
+            l = mid;
+        } else (超了) {
+            r = mid - 1;
+        }
     }
     return a[r] == x;
 }

@@ -184,7 +184,7 @@ block-beta
 
 ## 并发
 
-### 1 进程控制与管理
+### 1 进程管理
 
 CPU 的核心关键是并发程序，为此每一个硬件设计与相应 OS 的运行逻辑，都和 **进程管理、资源调度、并发** 息息相关。
 
@@ -249,13 +249,15 @@ CPU 的核心关键是并发程序，为此每一个硬件设计与相应 OS 的
 
 ### 2 处理器调度
 
+本章我们介绍处理器关于进程调度的基本理念和常见算法。
+
 #### 2.1 三级模式
 
 分为高级调度、中级调度和低级调度。其中：
 
-- **高级调度（作业调度）** 是决定哪些进程从外存对换到内存中，也就是 **分配内存** 资源。
-- **中级调度** 是决定哪些进程从内存对换到外存中，也就是 **取消分配内存** 资源。
-- **低级调度（进程调度）** 是决定哪些内存中的进程可以获得合适的 CPU 计算资源，也就是 **分配计算** 资源。
+- **高级调度（作业调度）** 是决定哪些进程从外存对换到内存中，也就是 **分配内存** 资源，即七态模型中「挂起就绪态 $\rightarrow$ 就绪态」的转换。
+- **中级调度** 是决定哪些进程从内存对换到外存中，也就是 **取消分配内存** 资源，即七态模型中「挂起就绪态 $\leftarrow$ 就绪态」的转换。
+- **低级调度（进程调度）** 是决定哪些内存中的进程可以获得合适的 CPU 计算资源，也就是 **分配计算** 资源，即五态模型中「就绪态 $\rightleftharpoons$ 运行态」之间的转换。
 
 #### 2.2 评价指标
 
@@ -263,9 +265,9 @@ CPU 的核心关键是并发程序，为此每一个硬件设计与相应 OS 的
 
 显然周转时间 $\iff$ 运行时间+等待时间，因此上述「带权」的含义可以理解为作业处理效率，取值范围为 $[1,\infty]$。
 
-#### 2.3 七种调度算法
+#### 2.3 调度算法
 
-##### 先来先服务
+##### 先来先服务 FCFS
 
 ![先来先服务](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110832017.png)
 
@@ -273,24 +275,24 @@ CPU 的核心关键是并发程序，为此每一个硬件设计与相应 OS 的
 - 非抢占式。
 - 按照进程进入就绪队列的时间顺序分配进程的计算资源。
 
-##### 最短作业优先
+##### 短作业优先 SJF
 
-![最短作业优先](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110833532.png)
+![短作业优先](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110833532.png)
 
 - 最短作业优先 (Shortest Job First, SJF)。
 - 非抢占式。
 - 经典排队打水贪心算法的应用。根据就绪队列中所有进程的预估运行时间进行排序，每次给最小运行时间的进程分配计算资源。
 - 显然如果一直有很小的运行时间的进程进入就绪队列，就会造成已经存在于就绪队列中但是运行时间较长的进程“饿死”。
 
-##### 最短剩余时间优先
+##### 最短剩余时间优先 SRTF
 
 ![最短剩余时间优先](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110847220.png)
 
 - 最短剩余时间优先 (Shortest Remaining Time First, SRTF)。
-- 就是最短作业优先 (Shortest Job First, SJF) 的抢占式版本。
+- 短作业优先 (Shortest Job First, SJF) 的抢占式版本。
 - 抢占式。
 
-##### 最高响应比优先
+##### 最高响应比优先 HRRF
 
 ![最高响应比优先](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110923854.png)
 
@@ -299,7 +301,10 @@ CPU 的核心关键是并发程序，为此每一个硬件设计与相应 OS 的
 - 每次给响应比最大的进程分配计算资源。
 - 响应比定义为 $\displaystyle \frac{\text{当前已经等待的时间}+\text{服务时间}}{\text{服务时间}}$。
 
-##### 优先级调度算法
+##### 优先级调度 Pr
+
+- 优先级调度 (Priority Scheduling, Pr)
+- 分为抢占式和非抢占式。
 
 ![优先级调度算法 - 非抢占式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410110852352.png)
 
@@ -309,15 +314,15 @@ CPU 的核心关键是并发程序，为此每一个硬件设计与相应 OS 的
 
 - 抢占式。
 
-##### 轮转调度
+##### 轮转调度 RR
 
 ![轮转调度](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410111023261.png)
 
-- 轮转调度 (Round Robin, RR)。
-- 非抢占式。
-- 每次从就绪队列中拿出最近的进程，然后执行最多时间片长度。如果还没执行结束则重新入队。
+- 轮转调度 (Round Robin Scheduling, RR)。
+- 抢占式。一个时间片结束后如果进程没有执行完毕，OS 会产生时钟中断从而切换进程进行服务。
+- 每次从就绪队列中取出进程后，执行最多时间片长度的时间，如果还没执行结束则重新入队。
 
-##### 多级反馈队列调度
+##### 多级反馈队列调度 MLFQ
 
 ![多级反馈队列调度 - 非抢占式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410111037255.png)
 
@@ -325,33 +330,326 @@ CPU 的核心关键是并发程序，为此每一个硬件设计与相应 OS 的
 - 非抢占式与抢占式都有。
 - 新到达的进程首先进入最高优先级的就绪队列，每个就绪队列的调度策略为轮转调度。如果进程在该就绪队列的时间片内未能完成，则被转移到下一级就绪队列等待运行。每个就绪队列的时间片通常比上一级就绪队列的时间片长，可以定义第 $i$ 层就绪队列的时间片长度为 $2^i$。
 
-##### 小结 *
+##### 小结 | 代码实现
 
-| 序号 | 算法             | 算法思想                                                     |    抢占与否     |         饥饿与否         | 调度范围  | 特点                                                         |
-| :--: | :--------------- | :----------------------------------------------------------- | :-------------: | :----------------------: | :-------: | :----------------------------------------------------------- |
-|  1   | 先来先服务       | 按照作业/进程到达的先后顺序进行服务                          |    非抢占式     |         不会饥饿         | 作业/进程 | 有利于长作业不利于短作业                                     |
-|  2   | 最短作业优先     | 当前进程停止执行时，选择预计所需的 CPU 运行时间最小的进程执行 |    非抢占式     |          会饥饿          | 作业/进程 | 对长作业不利                                                 |
-|  3   | 最短剩余时间优先 | 当一个新进程加入就绪队列时，它可能具有比当前运行进程更短的剩余运行时间，此时调度器将让该就绪进程抢占当前运行的进程 |     抢占式      |          会饥饿          | 作业/进程 | 算法 2 的抢占式版本；对长作业不利                            |
-|  4   | 最高响应比优先   | 当前运行的进程结束或阻塞时，选择响应比最大的进程执行         |    非抢占式     |         不会饥饿         | 作业/进程 | 结合算法 1,2,3 的优势                                        |
-|  5   | 最高优先级调度   | 优先级调度算法根据确定的优先级来选择进程/线程，总是选择就绪队列中优先级最高者投入运行。 | 非抢占式/抢占式 | 静态优先级可能会导致饥饿 | 作业/进程 | 适用于实时操作系统                                           |
-|  6   | 轮转调度         | 将时间切分成定长的时间片，当时间片用完后，产生时钟中断。     |     抢占式      |         不会饥饿         | 进程调度  | 有利于多用户、多交互式进程；时间片太大，算法会退化为先来先服务；时间片太小，进程切换频繁，开销大 |
-|  7   | 多级反馈队列调度 | 对各种调度算法的权衡。设置多级就绪队列，各级队列优先级从高到低，时间片从小到大。 | 非抢占式/抢占式 |     长进程可能会饿死     | 进程调度  |                                                              |
+对上述 7 种处理器调度算法进行总结，如下表所示。
+
+| 序号 | 算法             | 算法思想                                                   |    抢占与否     |         饥饿与否         | 调度范围  | 特点                                                         |
+| :--: | :--------------- | :--------------------------------------------------------- | :-------------: | :----------------------: | :-------: | :----------------------------------------------------------- |
+|  1   | 先来先服务       | 按照到达的先后顺序进行服务                                 |    非抢占式     |         不会饥饿         | 作业/进程 | 有利于长作业不利于短作业                                     |
+|  2   | 最短作业优先     | 选择运行时间最小的进行服务                                 |    非抢占式     |          会饥饿          | 作业/进程 | 对长作业不利                                                 |
+|  3   | 最短剩余时间优先 | 选择剩余运行时间最小的进行服务                             |     抢占式      |          会饥饿          | 作业/进程 | 算法 2 的抢占式版本；对长作业不利                            |
+|  4   | 最高响应比优先   | 选择响应比最高的进行服务                                   |    非抢占式     |         不会饥饿         | 作业/进程 | 结合算法 1,2,3 的优势                                        |
+|  5   | 最高优先级调度   | 选择优先级最高的进行服务                                   | 非抢占式/抢占式 | 静态优先级可能会导致饥饿 | 作业/进程 | 适用于实时操作系统                                           |
+|  6   | 轮转调度         | 按照时间片进行服务                                         |     抢占式      |         不会饥饿         |   进程    | 有利于多用户、多交互式进程；时间片太大，算法会退化为先来先服务；时间片太小，进程切换频繁，开销大 |
+|  7   | 多级反馈队列调度 | 设置多级就绪队列。各级队列优先级从高到低，时间片从小到大。 | 非抢占式/抢占式 |     长进程可能会饿死     |   进程    | 各种调度算法的权衡                                           |
+
+我们从「逻辑上」对上述 7 种调度算法进行模拟，如下所示：
+
+{% fold light @Python 模拟实现 %}
+
+对于调度算法的模拟实现，我们有以下输入输出定义：
+
+- 输入：n 行进程数据，每行数据分别为：进程名称、进程到达时间、进程预估服务时间、进程优先级（越小越高）
+- 输出：n 行进程数据，每行数据分别为：进程名称、进程到达时间、进程开始运行时间、进程运行完毕时间
+
+我们首先定义基本的代码框架以及主函数的结果：
+
+```python
+from collections import deque
+import heapq
+
+class Process:
+    def __init__(self, pid: str,
+                 arrival_time: float, service_time: float,
+                 priority: int) -> None:
+        self.pid = pid
+        self.arrival_time = arrival_time  # 进程到达时刻
+        self.service_time = service_time  # 预估运行时间
+        self.priority = priority  # 进程优先级 (越小越高)
+        self.start_time = None    # 运行开始时刻
+        self.running_time = 0     # 已运行时间
+        self.finish_time = None   # 运行结束时刻
+
+def load_process(path: str) -> list[Process]:
+    processes = []
+    with open(path, 'r') as file:
+        for line in file:
+            pid, arrival_time, service_time, priority = line.split()
+            process = Process(pid, int(arrival_time), int(service_time), int(priority))
+            processes.append(process)
+    return processes
+
+def write_process(path: str, results: list[Process]) -> None:
+    with open(path, 'w') as file:
+        for pro in results:
+            line = f'{pro.pid} {pro.arrival_time} {pro.start_time} {pro.finish_time}'
+            file.write(line + '\n')
+
+def display_menu() -> None:
+    print("1 先到先服务 FCFS")
+    print("2 短作业优先 SJF")
+    print("3 最短剩余时间优先 SRTF")
+    print("4 最高响应比优先 HRRF")
+    print("5 轮转调度 RR")
+    print("6 优先级调度 Pr")
+    print("7 多级反馈队列调度 MLFQ")
+    print("0 退出")
+    print("请输入调度算法编号：")
+
+def checker(outPath: str, stdPath: str) -> None:
+    with open(outPath, 'r') as outFile, open(stdPath, 'r') as stdFile:
+        outLines = outFile.readlines()
+        stdLines = stdFile.readlines()
+        answer = {}
+        output_answer = {}
+        for line in stdLines:
+            line = line.split()
+            # line: (pid, arrival_time, start_time, finish_time)
+            answer.update({line[0]: [line[1], line[2], line[3]]})
+        for line in outLines:
+            line = line.split()
+            output_answer.update({line[0]: [line[1], line[2], line[3]]})
+        for pid, info in answer.items():
+            if pid not in output_answer or output_answer[pid] != info:
+                print(f"process '{pid}' ×")
+            else:
+                print(f"process '{pid}' √")
+
+"""
+这中间定义 7 个调度算法函数
+"""
+
+if __name__ == '__main__':
+    test_size = 2
+    while True:
+        display_menu()
+        choose = input()
+        switch = {
+            '1': FCFS,
+            '2': SJF,
+            '3': SRTF,
+            '4': HRRF,
+            '5': RR,
+            '6': Pr,
+            '7': MLFQ,
+            '0': None
+        }
+        if choose not in switch:
+            print("输入错误，请重新输入！")
+            continue
+        elif choose == '0':
+            break
+        for id in range(1, test_size + 1):
+            processes = load_process(f'./{id}.in')
+            results = switch[choose](processes)
+            write_process(f'./{id}.out', results)
+            print(f"test{id}:")
+            checker(f'./{id}.out', f'./{id}-{switch[choose].__name__}.std')
+```
+
+接下来以此实现 7 种调度算法。
+
+一、先来先服务 FCFS
+
+```python
+def FCFS(processes: list[Process]) -> list[Process]:
+    """
+    先来先服务调度
+    """
+    processes = sorted(processes, key=lambda pro: pro.arrival_time)
+    time = 0
+    for now_pro in processes:
+        time = max(time, now_pro.arrival_time)
+        now_pro.start_time = time
+        time += now_pro.service_time
+        now_pro.finish_time = time
+    return processes
+```
+
+二、短作业优先 SJF
+
+```python
+def SJF(processes: list[Process]) -> list[Process]:
+    """
+    短时间优先调度
+    """
+    # 新建态进程队列
+    newPCB = deque(sorted(processes, key=lambda p: (p.arrival_time, p.service_time)))
+    # 就绪态进程队列
+    readyPCB = []
+
+    res = []
+    time = 0
+    while len(res) < len(processes):
+        # 取出就绪队列的队头进程
+        if len(readyPCB) == 0:
+            pro = newPCB.popleft()
+            heapq.heappush(readyPCB, (pro.service_time, pro.arrival_time, pro))
+        now_pro: Process = heapq.heappop(readyPCB)[-1]
+
+        # 维护时钟和进程信息
+        time = max(time, now_pro.arrival_time)
+        now_pro.start_time = time
+        time += now_pro.service_time
+        now_pro.finish_time = time
+        res.append(now_pro)
+    
+        # 更新就绪队列信息
+        while len(newPCB) and newPCB[0].arrival_time <= time:
+            pro = newPCB.popleft()
+            heapq.heappush(readyPCB, (pro.service_time, pro.arrival_time, pro))
+    
+    return res
+```
+
+三、最短剩余时间优先 SRTF
+
+```python
+def SRTF(processes: list[Process]) -> list[Process]:
+    """
+    最短剩余时间优先调度
+    """
+    # 新建态进程队列
+    newPCB = deque(sorted(processes, key=lambda p: (p.arrival_time, p.service_time)))
+    # 就绪态进程队列
+    readyPCB = []
+
+    res = []
+    time = 0
+    while len(res) < len(processes):
+        # 取出就绪队列的队头进程
+        if len(readyPCB) == 0:
+            pro = newPCB.popleft()
+            heapq.heappush(readyPCB, (pro.service_time - pro.running_time, pro.arrival_time, pro))
+        now_pro: Process = heapq.heappop(readyPCB)[-1]
+
+        # 维护时钟和进程信息 & 更新就绪队列信息
+        time = max(time, now_pro.arrival_time)
+        seized = False
+        while len(newPCB):
+            pro = newPCB[0]
+            if pro.arrival_time >= time + (now_pro.service_time - now_pro.running_time):
+                break
+            elif pro.service_time >= now_pro.service_time - now_pro.running_time - (pro.arrival_time - time):
+                newPCB.popleft()
+                heapq.heappush(readyPCB, (pro.service_time - pro.running_time, pro.arrival_time, pro))
+            else:
+                seized = True
+                now_pro.running_time += pro.arrival_time - time
+                if now_pro.running_time and now_pro.start_time == None:
+                    now_pro.start_time = time
+                time += pro.arrival_time - time
+                heapq.heappush(readyPCB, (now_pro.service_time - now_pro.running_time, now_pro.arrival_time, now_pro))
+                newPCB.popleft()
+                heapq.heappush(readyPCB, (pro.service_time - pro.running_time, pro.arrival_time, pro))
+                break
+        if not seized:
+            if now_pro.start_time == None:
+                now_pro.start_time = time
+            now_pro.finish_time = time + (now_pro.service_time - now_pro.running_time)
+            time = now_pro.finish_time
+            res.append(now_pro)
+    
+    return res
+```
+
+四、最高响应比优先 HRRF
+
+```python
+def HRRF(processes: list[Process]) -> list[Process]:
+    """
+    最高响应比优先调度
+    """
+    # 新建态进程队列
+    newPCB = deque(sorted(processes, key=lambda p: p.arrival_time))
+    # 就绪态进程队列
+    readyPCB = []
+
+    res = []
+    time = 0
+    while len(res) < len(processes):
+        # 取出就绪队列的队头进程
+        if len(readyPCB) == 0:
+            pro = newPCB.popleft()
+            heapq.heappush(readyPCB, (-1, pro))  # -1 是用来占位的
+        now_pro: Process = heapq.heappop(readyPCB)[-1]
+
+        # 维护时钟和进程信息
+        time = max(time, now_pro.arrival_time)
+        now_pro.start_time = time
+        time += now_pro.service_time
+        now_pro.finish_time = time
+        res.append(now_pro)
+    
+        # 更新就绪队列信息
+        temp = []
+        while len(readyPCB):
+            _, pro = readyPCB.pop()
+            temp.append((-(time - pro.arrival_time) / pro.service_time, pro))
+        for new_neg_respinse, pro in temp:
+            heapq.heappush(readyPCB, (new_neg_respinse, pro))
+        while len(newPCB) and newPCB[0].arrival_time <= time:
+            pro = newPCB.popleft()
+            heapq.heappush(readyPCB, (-(time - pro.arrival_time) / pro.service_time, pro))
+    
+    return res
+```
+
+五、优先级调度 Pr
+
+六、轮转调度 RR
+
+七、多级反馈队列调度 MLFQ
+
+{% endfold %}
 
 ### 3 互斥与同步
 
-#### 3.1 并发进程
+本章我们介绍计算机史上“最伟大”的发明之一：并发。
 
-**两个进程什么时候可以并发执行**？引入 Brenstein 条件：对于两个进程对变量的引用集 $R_1,R_2$ 和改变集 $W_1,W_2$，如果 $R_1\bigcap W_2,R_2\bigcap W_1,W_1\bigcap W_2$ 均为空集，则可以并发执行。
+#### 3.1 并发何时会发生
 
-#### 3.2 临界区管理
+为什么会有并发？一开始人们写的都是顺序程序，但是由于 CPU 的计算速度远高于其他设备的数据传输速度，这就导致了 CPU 计算资源的闲置浪费，不断进取的人类想出了并发程序，走向了并发编程的道路。
+
+什么时候可以并发？引入 Brenstein 条件：对于两个进程对变量的引用集 $R_1,R_2$ 和改变集 $W_1,W_2$，如果 $R_1\bigcap W_2,R_2\bigcap W_1,W_1\bigcap W_2$ 均为空集，则可以并发执行。这似乎非常的显然。
+
+#### 3.2 并发会有何特征
 
 注：由于所有的进程逻辑都取决于指令，指令又对应高级语言，因此我们以高级语言的逻辑代表进程的逻辑。
 
-**如何避免进程的并发错误**？我们引入 **临界区** 的概念。显然的，并发程序的错误一定源于对变量「同时但错误」的引用与改变（资源分配错误的本质还是高级语言在并发逻辑上的错误），因此我们对于并发程序中同时引用或修改的变量需要格外注意。我们定义并发程序中与共享变量有关的程序段叫做「临界区」，共享变量对应的资源就叫做「临界资源」。而并发程序为了确保正确性和安全性，需要做的就是需要避免并发程序对「临界资源」的同时使用。于是就有了临界区管理的策略。
+并发编程随之带来了很多问题，正如上面所说的对共享变量的引用和修改操作，如果不加以管理就会很容易出现因为计算顺序错误导致的意想不到的错误计算结果。主要有「进程对资源的竞争」引起的 **互斥** 错误以及「进程之间相互协调」引起的 **同步** 错误。
 
-Perterson 算法。
+那如何避免上述两种进程并发错误呢？我们引入 **临界区** 的概念。显然的，并发程序的错误一定源于程序对变量「同时但错误」的引用与改变（资源分配错误的本质还是高级语言在并发逻辑上的错误），因此我们对于并发程序中同时引用或修改的变量需要格外注意。我们定义并发程序中与共享变量有关的程序段叫做「临界区」，共享变量对应的资源就叫做「临界资源」。而并发程序为了确保正确性和安全性，需要做的就是需要避免并发程序对「临界资源」的同时使用。而接下来要介绍的并发管理，本质上就是针对程序对于临界区的引用和修改，设计出来的一系列算法策略。
 
-#### 3.3 信号量与 PV 操作
+#### 3.3 并发应如何管理
+
+我们介绍一些并发管理算法策略。常见的策略有：Perterson 算法、信号量与 PV 操作、管程机制、进程通信机制等等。
+
+##### Perterson 算法
+
+TODO
+
+##### 信号量与 PV 操作
+
+信号量与 PV 操作是 Dijkstra 老爷子在上世纪七十年代设计出来的用来解决并发问题的策略，非常的巧妙。信号量 semaphore 表示某种资源的「容量与使用情况」。每一种信号量都会用一个类似于下面的数据类型进行表示：
+
+```python
+class Semaphore:
+    def __init__(self, ini_value: int) -> None:
+        self.value = ini_value   # 资源容量
+        self.wait_que = deque()  # 等待队列
+```
+
+当各进程在并发执行时全部都处于运行态，表示不缺任何资源。但是也有可能会因为某种资源的缺少而无法运行，从而转变到等待态。上述从「运行态 $\to$ 等待态」的转变就是通过「信号量与 PV 操作」的逻辑实现的。P 操作即 Proberen，荷兰语表示申请资源，现在常用 semWait 表示；V 操作即 Verhogen，荷兰语表示释放资源，现在常用 semSignal 表示。注意 P, V 操作是原语操作。
+
+对于互斥问题。我们一般设定初始信号量为 `ini_value = 1`。每一个进程在申请资源时，首先执行 P 操作检查当前资源申请的资源是否可用，然后执行临界区的关键代码，最后执行 V 操作释放资源。即每一个进程中同时含有 P 原语和 V 原语。
+
+![信号量与 PV 操作解决互斥问题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410181036336.png)
+
+对于同步问题。我们一般设定初始信号量为 `ini_value = 0`。对于一个 DAG 式的同步逻辑，起点释放资源后，终点才能申请到资源并执行代码逻辑。
+
+![信号量与 PV 操作解决同步问题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410181037990.png)
 
 ### 4 死锁
 

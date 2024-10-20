@@ -330,7 +330,7 @@ CPU 的核心关键是并发程序，为此每一个硬件设计与相应 OS 的
 - 非抢占式与抢占式都有。
 - 新到达的进程首先进入最高优先级的就绪队列，每个就绪队列的调度策略为轮转调度。如果进程在该就绪队列的时间片内未能完成，则被转移到下一级就绪队列等待运行。每个就绪队列的时间片通常比上一级就绪队列的时间片长，可以定义第 $i$ 层就绪队列的时间片长度为 $2^i$。
 
-##### 小结 | 代码实现
+##### 小结
 
 对上述 7 种处理器调度算法进行总结，如下表所示。
 
@@ -344,21 +344,15 @@ CPU 的核心关键是并发程序，为此每一个硬件设计与相应 OS 的
 |  6   | 轮转调度         | 按照时间片进行服务                                         |     抢占式      |         不会饥饿         |   进程    | 有利于多用户、多交互式进程；时间片太大，算法会退化为先来先服务；时间片太小，进程切换频繁，开销大 |
 |  7   | 多级反馈队列调度 | 设置多级就绪队列。各级队列优先级从高到低，时间片从小到大。 | 非抢占式/抢占式 |     长进程可能会饿死     |   进程    | 各种调度算法的权衡                                           |
 
-我们从「逻辑上」对上述 7 种调度算法进行模拟，如下所示：
+##### 代码实现
 
-{% fold light @Python 模拟实现 %}
+为了更好的理解上述 7 种 CPU 调度算法，我们从「逻辑上」进行模拟。不难发现所有的调度逻辑都只有 3 步：(1) 取出就绪队列的队头进程、(2) 维护时钟和进程信息、(3) 更新就绪队列信息。值得注意的是，非抢占式调度算法的 2 和 3 是顺序进行的，而抢占式调度算法的 2 和 3 是同时进行的。具体代码如下：
 
-对于调度算法的模拟实现，我们有以下输入输出定义：
+我们首先定义进程 PCB 的结构体以及 I/O 相关的函数，如下：
 
-- 输入：n 行进程数据，每行数据分别为：进程名称、进程到达时间、进程预估服务时间、进程优先级（越小越高）
-- 输出：n 行进程数据，每行数据分别为：进程名称、进程到达时间、进程开始运行时间、进程运行完毕时间
-
-我们首先定义基本的代码框架以及主函数的结果：
+{% fold light @Python %}
 
 ```python
-from collections import deque
-import heapq
-
 class Process:
     def __init__(self, pid: str,
                  arrival_time: float, service_time: float,
@@ -367,6 +361,7 @@ class Process:
         self.arrival_time = arrival_time  # 进程到达时刻
         self.service_time = service_time  # 预估运行时间
         self.priority = priority  # 进程优先级 (越小越高)
+        self.level = 0            # 就绪队列等级
         self.start_time = None    # 运行开始时刻
         self.running_time = 0     # 已运行时间
         self.finish_time = None   # 运行结束时刻
@@ -391,8 +386,8 @@ def display_menu() -> None:
     print("2 短作业优先 SJF")
     print("3 最短剩余时间优先 SRTF")
     print("4 最高响应比优先 HRRF")
-    print("5 轮转调度 RR")
-    print("6 优先级调度 Pr")
+    print("5 优先级调度 Pr")
+    print("6 轮转调度 RR")
     print("7 多级反馈队列调度 MLFQ")
     print("0 退出")
     print("请输入调度算法编号：")
@@ -415,65 +410,53 @@ def checker(outPath: str, stdPath: str) -> None:
                 print(f"process '{pid}' ×")
             else:
                 print(f"process '{pid}' √")
-
-"""
-这中间定义 7 个调度算法函数
-"""
-
-if __name__ == '__main__':
-    test_size = 2
-    while True:
-        display_menu()
-        choose = input()
-        switch = {
-            '1': FCFS,
-            '2': SJF,
-            '3': SRTF,
-            '4': HRRF,
-            '5': RR,
-            '6': Pr,
-            '7': MLFQ,
-            '0': None
-        }
-        if choose not in switch:
-            print("输入错误，请重新输入！")
-            continue
-        elif choose == '0':
-            break
-        for id in range(1, test_size + 1):
-            processes = load_process(f'./{id}.in')
-            results = switch[choose](processes)
-            write_process(f'./{id}.out', results)
-            print(f"test{id}:")
-            checker(f'./{id}.out', f'./{id}-{switch[choose].__name__}.std')
 ```
 
-接下来以此实现 7 种调度算法。
+{% endfold %}
 
-一、先来先服务 FCFS
+然后定义 7 个调度算法相关的函数，如下：
+
+{% fold light @Python %}
 
 ```python
+from pre import Process
+import heapq
+from collections import deque
+
 def FCFS(processes: list[Process]) -> list[Process]:
-    """
-    先来先服务调度
-    """
-    processes = sorted(processes, key=lambda pro: pro.arrival_time)
+    """ 先来先服务调度 (非抢占式) """
+
+    # 新建态进程队列
+    newPCB = deque(sorted(processes, key=lambda p: p.arrival_time))
+    # 就绪态进程队列
+    readyPCB = deque()
+
+    res = []
     time = 0
-    for now_pro in processes:
+    while len(res) < len(processes):
+        # 取出就绪队列的队头进程
+        if len(readyPCB) == 0:
+            pro = newPCB.popleft()
+            readyPCB.append(pro)
+        now_pro = readyPCB.popleft()
+    
+        # 维护时钟和进程信息
         time = max(time, now_pro.arrival_time)
         now_pro.start_time = time
         time += now_pro.service_time
         now_pro.finish_time = time
-    return processes
-```
+        res.append(now_pro)
+    
+        # 更新就绪队列信息
+        while len(newPCB) and newPCB[0].arrival_time <= time:
+            pro = newPCB.popleft()
+            readyPCB.append(pro)
+    
+    return res
 
-二、短作业优先 SJF
-
-```python
 def SJF(processes: list[Process]) -> list[Process]:
-    """
-    短时间优先调度
-    """
+    """ 短时间优先调度 (非抢占式) """
+    
     # 新建态进程队列
     newPCB = deque(sorted(processes, key=lambda p: (p.arrival_time, p.service_time)))
     # 就绪态进程队列
@@ -501,15 +484,10 @@ def SJF(processes: list[Process]) -> list[Process]:
             heapq.heappush(readyPCB, (pro.service_time, pro.arrival_time, pro))
     
     return res
-```
 
-三、最短剩余时间优先 SRTF
-
-```python
 def SRTF(processes: list[Process]) -> list[Process]:
-    """
-    最短剩余时间优先调度
-    """
+    """ 最短剩余时间优先调度 (抢占式) """
+
     # 新建态进程队列
     newPCB = deque(sorted(processes, key=lambda p: (p.arrival_time, p.service_time)))
     # 就绪态进程队列
@@ -552,15 +530,10 @@ def SRTF(processes: list[Process]) -> list[Process]:
             res.append(now_pro)
     
     return res
-```
 
-四、最高响应比优先 HRRF
-
-```python
 def HRRF(processes: list[Process]) -> list[Process]:
-    """
-    最高响应比优先调度
-    """
+    """ 最高响应比优先调度 (非抢占式) """
+
     # 新建态进程队列
     newPCB = deque(sorted(processes, key=lambda p: p.arrival_time))
     # 就绪态进程队列
@@ -594,15 +567,174 @@ def HRRF(processes: list[Process]) -> list[Process]:
             heapq.heappush(readyPCB, (-(time - pro.arrival_time) / pro.service_time, pro))
     
     return res
+
+def Pr(processes: list[Process]) -> list[Process]:
+    """ 优先级调度 (非抢占式) """
+
+    # 新建态进程队列
+    newPCB = deque(sorted(processes, key=lambda p: p.arrival_time))
+    # 就绪态进程队列
+    readyPCB = []
+
+    res = []
+    time = 0
+    while len(res) < len(processes):
+        # 取出就绪队列的队头进程
+        if len(readyPCB) == 0:
+            pro = newPCB.popleft()
+            heapq.heappush(readyPCB, (-1, pro))  # -1 是用来占位的
+        now_pro: Process = heapq.heappop(readyPCB)[-1]
+
+        # 维护时钟和进程信息
+        time = max(time, now_pro.arrival_time)
+        now_pro.start_time = time
+        time += now_pro.service_time
+        now_pro.finish_time = time
+        res.append(now_pro)
+    
+        # 更新就绪队列信息
+        while len(newPCB) and newPCB[0].arrival_time <= time:
+            pro = newPCB.popleft()
+            heapq.heappush(readyPCB, (pro.priority, pro))
+    
+    return res
+
+def RR(processes: list[Process], step: int=4) -> list[Process]:
+    """ 轮转调度 (抢占式) """
+
+    # 新建态进程队列
+    newPCB = deque(sorted(processes, key=lambda p: p.arrival_time))
+    # 就绪态进程队列
+    readyPCB = deque()
+
+    res = []
+    time = 0
+    while len(res) < len(processes):
+        # 取出就绪队列的队头进程
+        if len(readyPCB) == 0:
+            pro = newPCB.popleft()
+            readyPCB.append(pro)
+        now_pro: Process = readyPCB.popleft()
+
+        # 维护时钟和进程信息 & 更新就绪队列信息
+        time = max(time, now_pro.arrival_time)
+        now_pro.start_time = time if now_pro.start_time == None else now_pro.start_time
+        if now_pro.running_time + step >= now_pro.service_time:
+            now_pro.finish_time = time + (now_pro.service_time - now_pro.running_time)
+            time += now_pro.service_time - now_pro.running_time
+            res.append(now_pro)
+        else:
+            now_pro.running_time += step
+            time += step
+            while len(newPCB) and newPCB[0].arrival_time <= time:
+                readyPCB.append(newPCB.popleft())
+            readyPCB.append(now_pro)
+
+    return res
+
+def MLFQ(processes: list[Process], level: int=3) -> list[Process]:
+    """ 多级反馈队列调度 (抢占式)
+    共 level 个等级的就绪队列，每一个就绪队列的时间片长度为 2^i
+    """
+
+    # 新建态进程队列
+    newPCB = deque(sorted(processes, key=lambda p: p.arrival_time))
+    # 就绪态进程队列
+    readyPCB = [deque() for _ in range(level)]
+
+    res = []
+    time = 0
+    while len(res) < len(processes):
+        # 取出就绪队列的队头进程
+        now_pro, now_level = None, None
+        for i in range(level):
+            if len(readyPCB[i]):
+                now_pro, now_level = readyPCB[i].popleft(), i
+                break
+        if now_pro == None:
+            now_pro, now_level = newPCB.popleft(), 0
+
+        # 维护时钟和进程信息 & 更新就绪队列信息
+        time = max(time, now_pro.arrival_time)
+        now_pro.start_time = time if now_pro.start_time == None else now_pro.start_time
+        if now_pro.running_time + (1 << now_level) >= now_pro.service_time:
+            # 可以执行完毕
+            now_pro.finish_time = time + (now_pro.service_time - now_pro.running_time)
+            time += now_pro.service_time - now_pro.running_time
+            res.append(now_pro)
+        else:
+            # 无法执行完毕
+            now_pro.running_time += (1 << now_level)
+            time += 1 << now_level
+            while len(newPCB) and newPCB[0].arrival_time <= time:
+                readyPCB[0].append(newPCB.popleft())
+            now_level = min(now_level + 1, level - 1)
+            readyPCB[now_level].append(now_pro)
+
+    return res
 ```
 
-五、优先级调度 Pr
+{% endfold %}
 
-六、轮转调度 RR
+最后通过主函数进行调用与运行，如下：
 
-七、多级反馈队列调度 MLFQ
+{% fold light @Python %}
+
+```python
+from pre import *
+from schedules import *
+
+""" 进程调度算法程序说明
+
+依赖结构如下：
+├── ./in
+├── ./out
+├── ./std
+├── main.py
+├── pre.py
+├── schedules.py
+
+其中 `./in` 是输入文件夹 `./out` 是输出文件夹 `./std` 是标答文件夹。
+
+`main.py` 是程序的入口部分，负责人机交互选择合适的算法测试数据；
+`pre.py` 是程序的框架部分，负责构造进程类、I/O 逻辑和测试逻辑；
+`schedules.py` 是程序的算法部分，负责 7 个调度算法的逻辑。
+
+"""
+
+def main(test_size: int=2) -> None:
+    while True:
+        display_menu()
+        choose = input()
+        switch = {
+            '1': FCFS,
+            '2': SJF,
+            '3': SRTF,
+            '4': HRRF,
+            '5': Pr,
+            '6': RR,
+            '7': MLFQ,
+            '0': None
+        }
+        if choose not in switch:
+            print("输入错误，请重新输入！")
+            continue
+        elif choose == '0':
+            break
+        for id in range(1, test_size + 1):
+            processes = load_process(f'./in/{id}.in')
+            results = switch[choose](processes)
+            write_process(f'./out/{id}.out', results)
+            print(f"test{id}:")
+            checker(f'./out/{id}.out', f'./std/{id}-{switch[choose].__name__}.std')
+
+if __name__ == '__main__':
+    main(test_size=2)
+```
 
 {% endfold %}
+
+相关的测试数据见下载链接：<https://explorer-dong.lanzouv.com/i5EPL2czbd0j>
 
 ### 3 互斥与同步
 

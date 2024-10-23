@@ -27,7 +27,7 @@
 <meta property="og:description" content="板子 优雅的解法，少不了优雅的板子。目前仅编写 C++ 和 Python 语言对应的板子。前者用于备赛 Xcpc，后者用于备赛蓝桥杯。 基础算法 高精度                      ▶C++                                  1234567891011121314151617181920212223242526272829303132333435363">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-21T05:55:02.037Z">
-<meta property="article:modified_time" content="2024-10-15T02:29:35.556Z">
+<meta property="article:modified_time" content="2024-10-22T12:23:43.963Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -320,7 +320,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年10月15日 上午
+                    本文最后更新于 2024年10月22日 晚上
                   
                 
               </p>
@@ -424,7 +424,7 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-d7c7f3a4">
         <div class="fold-content">
-          <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BinaryIndexedTree</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>):<br>        <span class="hljs-variable language_">self</span>.n = n<br>        <span class="hljs-variable language_">self</span>.arr = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">lowbit</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">return</span> x &amp; (-x)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">self, pos: <span class="hljs-built_in">int</span>, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">while</span> pos &lt;= <span class="hljs-variable language_">self</span>.n:<br>            <span class="hljs-variable language_">self</span>.arr[pos] += x<br>            pos += <span class="hljs-variable language_">self</span>.lowbit(pos)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sum</span>(<span class="hljs-params">self, pos: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        ret = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span> pos:<br>            ret += <span class="hljs-variable language_">self</span>.arr[pos]<br>            pos -= <span class="hljs-variable language_">self</span>.lowbit(pos)<br>        <span class="hljs-keyword">return</span> ret<br></code></pre></td></tr></tbody></table></figure>
+          <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BinaryIndexedTree</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>):<br>        <span class="hljs-string">"""</span><br><span class="hljs-string">        初始化序列 O(n)。下标从 1 开始，初始化维护序列区间为 [1,n]。</span><br><span class="hljs-string">        """</span><br>        <span class="hljs-variable language_">self</span>.n = n<br>        <span class="hljs-variable language_">self</span>.arr = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">self, pos: <span class="hljs-built_in">int</span>, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-string">"""</span><br><span class="hljs-string">        单点修改 O(log n)。在 pos 这个位置加上 x。</span><br><span class="hljs-string">        """</span><br>        <span class="hljs-keyword">while</span> pos &lt;= <span class="hljs-variable language_">self</span>.n:<br>            <span class="hljs-variable language_">self</span>.arr[pos] += x<br>            pos += <span class="hljs-variable language_">self</span>._lowbit(pos)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">query_sum</span>(<span class="hljs-params">self, pos: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-string">"""</span><br><span class="hljs-string">        区间求和 O(log n)。返回 [1,pos] 的区间和。</span><br><span class="hljs-string">        """</span><br>        ret = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span> pos:<br>            ret += <span class="hljs-variable language_">self</span>.arr[pos]<br>            pos -= <span class="hljs-variable language_">self</span>._lowbit(pos)<br>        <span class="hljs-keyword">return</span> ret<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_lowbit</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">return</span> x &amp; (-x)<br></code></pre></td></tr></tbody></table></figure>
         </div>
       </div>
     </div>
@@ -581,7 +581,7 @@ i^{-1} &amp;= i^{mod-2}
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月15日</div>
+          <div>2024年10月22日</div>
         </div>
       
       
@@ -612,9 +612,9 @@ i^{-1} &amp;= i^{mod-2}
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Algorithm/number-theory/" title="number-theory">
+                      <a href="/Algorithm/binary-search/" title="binary-search">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">number-theory</span>
+                        <span class="hidden-mobile">binary-search</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -622,8 +622,8 @@ i^{-1} &amp;= i^{mod-2}
                   <article class="post-next col-6">
                     
                     
-                      <a href="/README/" title="README">
-                        <span class="hidden-mobile">README</span>
+                      <a href="/Algorithm/data-structure/" title="data-structure">
+                        <span class="hidden-mobile">data-structure</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -19,16 +19,16 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="解决 shell 相关问题 本文记录一些 bash shell 的使用问题。 终止占用指定端口的进程 windows 使用 git bash 查找占用指定端口的进程 PID： 1netstat -ano | grep :&lt;port&gt; 根据 PID 杀死所有的进程： 1taskkill &#x2F;PID &lt;PID&gt; &#x2F;F 一行解决： 1taskkill &#x2F;PID $(netstat">
+    <meta name="description" content="解决 shell 相关问题 本文记录一些 bash shell 的使用问题。 终止占用指定端口的进程 windows 使用 git bash 查找占用指定端口的进程 PID： 1netstat -ano | grep :&lt;port&gt; 根据 PID 杀死所有的进程： 1taskkill -PID &lt;PID&gt; -F ubuntu 使用 bash 查找占用指定端口的进程 PID：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="solve-shell-problems">
 <meta property="og:url" content="https://blog.dwj601.cn/Operation/Shell/solve-shell-problems/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="解决 shell 相关问题 本文记录一些 bash shell 的使用问题。 终止占用指定端口的进程 windows 使用 git bash 查找占用指定端口的进程 PID： 1netstat -ano | grep :&lt;port&gt; 根据 PID 杀死所有的进程： 1taskkill &#x2F;PID &lt;PID&gt; &#x2F;F 一行解决： 1taskkill &#x2F;PID $(netstat">
+<meta property="og:description" content="解决 shell 相关问题 本文记录一些 bash shell 的使用问题。 终止占用指定端口的进程 windows 使用 git bash 查找占用指定端口的进程 PID： 1netstat -ano | grep :&lt;port&gt; 根据 PID 杀死所有的进程： 1taskkill -PID &lt;PID&gt; -F ubuntu 使用 bash 查找占用指定端口的进程 PID：">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406282333554.png">
 <meta property="article:published_time" content="2024-03-27T02:22:33.391Z">
-<meta property="article:modified_time" content="2024-09-14T08:23:47.567Z">
+<meta property="article:modified_time" content="2024-10-26T08:13:15.876Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -247,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          233 字
+          217 字
         
       </span>
     
@@ -322,7 +322,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月14日 下午
+                    本文最后更新于 2024年10月26日 下午
                   
                 
               </p>
@@ -337,9 +337,7 @@
 <p>查找占用指定端口的进程 PID：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">netstat -ano | grep :&lt;port&gt;<br></code></pre></td></tr></tbody></table></figure>
 <p>根据 PID 杀死所有的进程：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">taskkill /PID &lt;PID&gt; /F<br></code></pre></td></tr></tbody></table></figure>
-<p>一行解决：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">taskkill /PID $(netstat -ano | grep :&lt;port&gt; | awk <span class="hljs-string">'{print $5}'</span>) /F<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">taskkill -PID &lt;PID&gt; -F<br></code></pre></td></tr></tbody></table></figure>
 <h3 id="ubuntu-使用-bash">ubuntu 使用 bash</h3>
 <p>查找占用指定端口的进程 PID：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> lsof -i :&lt;port&gt;<br></code></pre></td></tr></tbody></table></figure>
@@ -416,7 +414,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月14日</div>
+          <div>2024年10月26日</div>
         </div>
       
       

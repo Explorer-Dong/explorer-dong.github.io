@@ -23,13 +23,7 @@ netstat -ano | grep :<port>
 根据 PID 杀死所有的进程：
 
 ```bash
-taskkill /PID <PID> /F
-```
-
-一行解决：
-
-```bash
-taskkill /PID $(netstat -ano | grep :<port> | awk '{print $5}') /F
+taskkill -PID <PID> -F
 ```
 
 ### ubuntu 使用 bash

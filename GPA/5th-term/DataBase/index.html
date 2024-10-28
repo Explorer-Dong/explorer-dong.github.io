@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410162126209.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410162127996.png">
 <meta property="article:published_time" content="2024-08-27T11:13:43.468Z">
-<meta property="article:modified_time" content="2024-10-24T02:30:54.558Z">
+<meta property="article:modified_time" content="2024-10-28T09:06:13.349Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.8k 字
+          3.9k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          24 分钟
+          25 分钟
         
       </span>
     
@@ -328,7 +328,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年10月24日 上午
+                    本文最后更新于 2024年10月28日 下午
                   
                 
               </p>
@@ -534,9 +534,9 @@ graph TB
 <p>在此之前，有必要知道 DMBS 的层次结构。从最开始的一个机器（例如服务器），机器中下载安装了 DBMS（例如 openGauss），DBMS 中创建了很多的数据库（例如 postgres、experiment 等等），每一个数据库中会有很多的 schema（例如默认的 public 等等），每一个 schema 中可以创建很多的表（例如 student 等等）。</p>
 <p>练习网站：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problemset/database/?difficulty=EASY">https://leetcode.cn/problemset/database/?difficulty=EASY</a></li>
-<li><a target="_blank" rel="noopener" href="http://xuesql.cn/">http://xuesql.cn/</a></li>
-<li><a target="_blank" rel="noopener" href="http://sqlmother.yupi.icu/#/learn">http://sqlmother.yupi.icu/#/learn</a></li>
+<li>相对容易但是后续需要付费：<a target="_blank" rel="noopener" href="http://xuesql.cn/">http://xuesql.cn/</a></li>
+<li>相对困难但是全部免费：<a target="_blank" rel="noopener" href="http://sqlmother.yupi.icu/#/learn">http://sqlmother.yupi.icu/#/learn</a></li>
+<li>相对最困难但是更加综合：<a target="_blank" rel="noopener" href="https://leetcode.cn/problemset/database/?difficulty=EASY">https://leetcode.cn/problemset/database/?difficulty=EASY</a></li>
 </ul>
 <h4 id="3-1-数据定义">3.1 数据定义</h4>
 <p>我们首先需要使用 <code>create database &lt;db_name&gt;</code> 创建一个数据库。</p>
@@ -607,6 +607,7 @@ graph TB
 <p>关于数据查询，命令格式如下：</p>
 <figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 选择最终表中需要展示的列。all(默认) 表示不去重，distinct 表示去重。</span><br><span class="hljs-keyword">select</span> [<span class="hljs-keyword">all</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">distinct</span>] <span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span> [别名] ...<br><br><span class="hljs-comment">-- 确定关系数据的来源具体是哪些表。</span><br><span class="hljs-keyword">from</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">/</span>视图名<span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">as</span>] [别名] ...<br><br><span class="hljs-comment">-- 约束元组需要满足的条件。</span><br>[ <span class="hljs-keyword">where</span> <span class="hljs-operator">&lt;</span>条件表达式<span class="hljs-operator">&gt;</span> ]<br><br><span class="hljs-comment">-- 按照指定的列进行聚合。having 等价于 where 语句，在聚合的条件下进行约束。</span><br>[ <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">1</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">having</span> <span class="hljs-operator">&lt;</span>条件表达式<span class="hljs-operator">&gt;</span>] ]<br><br><span class="hljs-comment">-- 按照指定的列进行排序。asc(默认) 表示升序，desc 表示降序。</span><br>[ <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">asc</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">desc</span>] ]<br><br><span class="hljs-comment">-- limit 表示限制返回的总行数。offset 表示跳过的行号。</span><br>[ limit <span class="hljs-operator">&lt;</span>行数<span class="hljs-number">1</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">offset</span> <span class="hljs-operator">&lt;</span>行数<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span>] ];<br></code></pre></td></tr></tbody></table></figure>
 <p><strong>单表查询</strong></p>
+<p>我们在查询数据时，可以从最终需要什么样的数据这个角度来理解查询命令的意义。比如 <code>select</code> 是用来 <strong>筛选列数据</strong> 的，而 <code>where</code> 以及其他的条件限定语句都是根据元组在每一个字段上具体的取值来 <strong>筛选行数据</strong> 的。</p>
 <p><strong>连接查询</strong></p>
 <p><strong>嵌套查询</strong></p>
 <p>子查询不能加 <code>order by</code> 语句，因为这只能用在最外一层。</p>
@@ -697,7 +698,7 @@ graph TB
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月24日</div>
+          <div>2024年10月28日</div>
         </div>
       
       

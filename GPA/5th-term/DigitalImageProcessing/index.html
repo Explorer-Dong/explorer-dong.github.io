@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410131207600.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410131224054.png">
 <meta property="article:published_time" content="2024-08-27T12:17:29.191Z">
-<meta property="article:modified_time" content="2024-10-21T08:23:30.641Z">
+<meta property="article:modified_time" content="2024-10-28T07:54:28.250Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -250,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.8k 字
+          5.2k 字
         
       </span>
     
@@ -261,7 +261,7 @@
         
         
         
-          30 分钟
+          33 分钟
         
       </span>
     
@@ -325,7 +325,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年10月21日 下午
+                    本文最后更新于 2024年10月28日 下午
                   
                 
               </p>
@@ -858,20 +858,21 @@ y' \xrightarrow []{\text{逆偏移为}} y' + \min(y_1,y_2,y_3,y_4)\\
 <h4 id="1-3-模版运算">1.3 模版运算</h4>
 <p>就是卷积运算。</p>
 <h3 id="2-图像正交变换">2 图像正交变换</h3>
-<p>本章主要学习傅里叶变换。上述对于图像的基本运算都是在「空间域」上进行的，现在我们对图像进行变换得到「频域」的信息，从而可以获得频域上的信息甚至大幅简化运算。</p>
-<p>由于图像中可以被人类识别的数据在频域上都是低频，而一些例如噪声、边缘信息在频域上都是高频，因此通过「高通」或「低通」等滤波器可以对图像从频域上进行过滤操作。</p>
-
-    <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-e1c06d85" role="button" aria-expanded="false" aria-controls="collapse-e1c06d85">
-        <div class="fold-arrow">▶</div>滤波器实现
-      </div>
-      <div class="fold-collapse collapse" id="collapse-e1c06d85">
-        <div class="fold-content">
-          
-        </div>
-      </div>
-    </div>
+<p>本章主要学习傅里叶变换。上面学习的内容都是对图像在「空间域」上进行的运算，现在我们对图像进行变换得到「频域」信息，从而可以在频域上的对图像进行变换与分析。</p>
+<p>图像中可以被人类识别的数据在频域上都是低频，而一些例如噪声、边缘信息在频域上都是高频。因此通过「高通」或「低通」等滤波器可以对图像从频域上进行过滤操作。</p>
+<p>傅里叶变换原本是连续函数的变换方法，在计算机处理时需要进行离散化处理。因此我们需要掌握离散傅里叶变换。对于一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 维向量，离散傅里叶变换的时间复杂度是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，为了加速这个变换过程，基于分治的快速傅里叶变换被设计了出来，使得变换的时间复杂度优化到了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>。</p>
 <h3 id="3-图像增强">3 图像增强</h3>
+<p>值得一提的是，下面介绍的技术几乎都可以被 DL 方法秒杀。</p>
+<p><strong>基于映射的灰度变换</strong>。从映射的角度通过变换对灰度图像进行增强。</p>
+<ul>
+<li>
+<p>一些名词的提示：1）提升对比度就是让灰度图中暗的地方更暗、亮的地方更亮。2）在灰度图像中，亮度取决于灰度值，例如在 8 级灰度的灰度图像中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>255</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,255]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">255</span><span class="mclose">]</span></span></span></span> 就对应从黑到白。</p>
+</li>
+<li>
+<p>常见的映射策略分为线性和非线性。</p>
+</li>
+</ul>
+<p><strong>基于直方图的灰度变换</strong>。从灰度值频率的角度通过变换对灰度图像进行增强。为了增加图像的信息量，我们需要找到一种变换使得原图在每一个灰度级上的像素点数量接近。因此，对于原图的灰度概率密度分布 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 和新图的灰度概率密度分布 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span>，基于直方图的灰度变换本质上还是找到一个合适的映射 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mo>⋅</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T(\cdot)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord">⋅</span><span class="mclose">)</span></span></span></span> 使得 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mi>T</mi><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">s=T(r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span></span> 能够尽可能符合均匀分布。</p>
 <h3 id="4-图像平滑">4 图像平滑</h3>
 <h3 id="5-图像锐化">5 图像锐化</h3>
 <h3 id="6-图像复原">6 图像复原</h3>
@@ -947,7 +948,7 @@ y' \xrightarrow []{\text{逆偏移为}} y' + \min(y_1,y_2,y_3,y_4)\\
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月21日</div>
+          <div>2024年10月28日</div>
         </div>
       
       

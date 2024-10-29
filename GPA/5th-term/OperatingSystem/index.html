@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410181036336.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410221600543.png">
 <meta property="article:published_time" content="2024-08-27T12:02:23.289Z">
-<meta property="article:modified_time" content="2024-10-22T08:15:00.810Z">
+<meta property="article:modified_time" content="2024-10-29T07:11:34.376Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -262,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.5k 字
+          7.7k 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
         
-          48 分钟
+          49 分钟
         
       </span>
     
@@ -337,7 +337,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年10月22日 下午
+                    本文最后更新于 2024年10月29日 下午
                   
                 
               </p>
@@ -804,8 +804,8 @@ graph RL
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Semaphore</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, ini_value: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-variable language_">self</span>.value = ini_value   <span class="hljs-comment"># 资源容量</span><br>        <span class="hljs-variable language_">self</span>.wait_que = deque()  <span class="hljs-comment"># 等待队列</span><br></code></pre></td></tr></tbody></table></figure>
 <p>当各进程在并发执行时全部都处于运行态，表示不缺任何资源。但是也有可能会因为某种资源的缺少而无法运行，从而转变到等待态。上述从「运行态 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 等待态」的转变就是通过「信号量与 PV 操作」的逻辑实现的。所谓的 PV 操作如下（注意 P, V 操作是原语操作）：</p>
 <ul>
-<li><strong>P (Proberen) 操作</strong> 表示申请资源，现在常用 semWait 表示；</li>
-<li><strong>V (Verhogen) 操作</strong> 表示释放资源，现在常用 semSignal 表示。</li>
+<li><strong>P (Proberen) 操作</strong> 表示 <strong>申请</strong> 资源，现在常用 <strong>semWait</strong> 表示；</li>
+<li><strong>V (Verhogen) 操作</strong> 表示 <strong>释放</strong> 资源，现在常用 <strong>semSignal</strong> 表示。</li>
 </ul>
 <p>对于 <strong>互斥</strong> 问题。我们一般设定初始信号量为 <code>ini_value = m</code>，其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 表示临界区允许并发的最大进程量，一般都是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>。每一个进程在申请资源时，首先执行 P 操作检查当前资源申请的资源是否可用，然后执行临界区的关键代码，最后执行 V 操作释放资源。即每一个进程中同时含有 P 原语和 V 原语。</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410181036336.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="信号量与 PV 操作解决互斥问题"></p>
@@ -813,12 +813,12 @@ graph RL
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410221600543.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="信号量与 PV 操作解决同步问题"></p>
 
     <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-68e64151" role="button" aria-expanded="false" aria-controls="collapse-68e64151">
-        <div class="fold-arrow">▶</div>考题分析
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-4cfcb9db" role="button" aria-expanded="false" aria-controls="collapse-4cfcb9db">
+        <div class="fold-arrow">▶</div>例题分析
       </div>
-      <div class="fold-collapse collapse" id="collapse-68e64151">
+      <div class="fold-collapse collapse" id="collapse-4cfcb9db">
         <div class="fold-content">
-          <p>一、5 位哲学家就餐问题</p><p>二、生产者-消费者问题</p><p>三、读者-写者问题</p><p>四、睡眠理发师问题</p>
+          <p>给出四个涉及到互斥和同步的问题：1）5 位哲学家就餐问题；2）生产者-消费者问题；3）读者-写者问题；4）睡眠理发师问题</p><p>综合来看，何时使用互斥信号，何时使用同步信号，从逻辑上可以有如下解释：</p><ul><li>对于一个原语操作，即只允许一个进程对某个资源操作时，就是一个典型的互斥操作。此时需要在该原语操作的前面添加 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> 操作，后面添加 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> 操作；</li><li>对于一个先后关系，即需要某个进程执行完后才能执行另一个进程，就是一个典型的同步操作。此时需要在先执行进程的代码逻辑段后添加 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> 操作，在后执行进程的代码逻辑段前添加 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> 操作。</li></ul>
         </div>
       </div>
     </div>
@@ -892,7 +892,7 @@ graph RL
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月22日</div>
+          <div>2024年10月29日</div>
         </div>
       
       

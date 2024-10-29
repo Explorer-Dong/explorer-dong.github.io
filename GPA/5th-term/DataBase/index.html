@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410162126209.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410162127996.png">
 <meta property="article:published_time" content="2024-08-27T11:13:43.468Z">
-<meta property="article:modified_time" content="2024-10-28T09:06:13.349Z">
+<meta property="article:modified_time" content="2024-10-29T08:06:50.460Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.9k 字
+          4.2k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          25 分钟
+          27 分钟
         
       </span>
     
@@ -328,7 +328,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年10月28日 下午
+                    本文最后更新于 2024年10月29日 下午
                   
                 
               </p>
@@ -608,6 +608,16 @@ graph TB
 <figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 选择最终表中需要展示的列。all(默认) 表示不去重，distinct 表示去重。</span><br><span class="hljs-keyword">select</span> [<span class="hljs-keyword">all</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">distinct</span>] <span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span> [别名] ...<br><br><span class="hljs-comment">-- 确定关系数据的来源具体是哪些表。</span><br><span class="hljs-keyword">from</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">/</span>视图名<span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">as</span>] [别名] ...<br><br><span class="hljs-comment">-- 约束元组需要满足的条件。</span><br>[ <span class="hljs-keyword">where</span> <span class="hljs-operator">&lt;</span>条件表达式<span class="hljs-operator">&gt;</span> ]<br><br><span class="hljs-comment">-- 按照指定的列进行聚合。having 等价于 where 语句，在聚合的条件下进行约束。</span><br>[ <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">1</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">having</span> <span class="hljs-operator">&lt;</span>条件表达式<span class="hljs-operator">&gt;</span>] ]<br><br><span class="hljs-comment">-- 按照指定的列进行排序。asc(默认) 表示升序，desc 表示降序。</span><br>[ <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">asc</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">desc</span>] ]<br><br><span class="hljs-comment">-- limit 表示限制返回的总行数。offset 表示跳过的行号。</span><br>[ limit <span class="hljs-operator">&lt;</span>行数<span class="hljs-number">1</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">offset</span> <span class="hljs-operator">&lt;</span>行数<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span>] ];<br></code></pre></td></tr></tbody></table></figure>
 <p><strong>单表查询</strong></p>
 <p>我们在查询数据时，可以从最终需要什么样的数据这个角度来理解查询命令的意义。比如 <code>select</code> 是用来 <strong>筛选列数据</strong> 的，而 <code>where</code> 以及其他的条件限定语句都是根据元组在每一个字段上具体的取值来 <strong>筛选行数据</strong> 的。</p>
+<p><code>select</code>。后面都是跟的列名。1）可以对列名取别名，用 <code>as</code> 即可；2）可以在列名前加上 <code>all</code> 或 <code>distinct</code> 关键字，前者是默认的表示不对这一列执行去重操作，后者需要显式的指明表示对这一列进行去重操作。例如：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> title, <span class="hljs-keyword">distinct</span> name, <span class="hljs-keyword">all</span> <span class="hljs-type">time</span> <span class="hljs-keyword">as</span> t<br>...<br></code></pre></td></tr></tbody></table></figure>
+<p><code>from</code>。后面跟的是表名或视图名。可以对表名或视图名取别名，用 <code>as</code> 即可。例如：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">...<br><span class="hljs-keyword">from</span> movie <span class="hljs-keyword">as</span> mv, people<br>...<br></code></pre></td></tr></tbody></table></figure>
+<p><code>where</code>。后面跟的是条件表达式。可以简单的理解为高级语言中的 if 或 while 后面跟的内容，于是多个表达式之间就可以利用 <code>and</code> 或 <code>or</code> 进行连接。而既然是表达式，就是那些二元比较运算，如果是字符型还增加了诸如 <code>like</code> 的运算符（其中 <code>%</code> 表示模糊匹配，<code>_</code> 表示精确占位匹配，如果本身就有 <code>_</code> 或 <code>%</code> 符号，可以用 <code>\</code> 进行转义。例如：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">...<br><span class="hljs-keyword">where</span> <span class="hljs-keyword">year</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">1990</span> <span class="hljs-keyword">and</span> title <span class="hljs-keyword">like</span> "%girl_\_and%"<br>...<br></code></pre></td></tr></tbody></table></figure>
+<p><code>order by</code>。后面跟列名。表示按照某一列进行排序，如果是字符就按照字符对应的数字编码进行排序；例如：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">...<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-keyword">year</span> <span class="hljs-keyword">desc</span><br>...<br></code></pre></td></tr></tbody></table></figure>
+<p><code>limit</code>。后面跟数字 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>。表示限定输出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 行。<code>offset</code> 是可选的但是只能跟在 <code>limit</code> 的后面，后跟数字 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 表示忽略前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 行。例如：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql">...<br><span class="hljs-comment">-- 若首行为第1行，下面的语句表示输出 [6,15] 行</span><br>limit <span class="hljs-number">10</span> <span class="hljs-keyword">offset</span> <span class="hljs-number">5</span><br>...<br></code></pre></td></tr></tbody></table></figure>
 <p><strong>连接查询</strong></p>
 <p><strong>嵌套查询</strong></p>
 <p>子查询不能加 <code>order by</code> 语句，因为这只能用在最外一层。</p>
@@ -698,7 +708,7 @@ graph TB
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月28日</div>
+          <div>2024年10月29日</div>
         </div>
       
       

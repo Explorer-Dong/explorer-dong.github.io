@@ -48,9 +48,10 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231131574.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112007235.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112041997.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410301119466.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409180822743.png">
 <meta property="article:published_time" content="2024-08-27T12:14:48.819Z">
-<meta property="article:modified_time" content="2024-10-23T12:36:44.407Z">
+<meta property="article:modified_time" content="2024-10-30T08:44:21.503Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +270,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.5k 字
+          9.7k 字
         
       </span>
     
@@ -280,7 +281,7 @@
         
         
         
-          54 分钟
+          61 分钟
         
       </span>
     
@@ -344,7 +345,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年10月23日 晚上
+                    本文最后更新于 2024年10月30日 下午
                   
                 
               </p>
@@ -554,7 +555,7 @@
 <h2 id="存储">存储</h2>
 <h3 id="7-存储器">7 存储器</h3>
 <p>当机器有了记忆，就可以不用人为干预而自动运行，从而真正意义上实现了自动化的流程。本章主要学习计算机中的存储器件、存储策略以及数据交互逻辑。</p>
-<p>现代计算机中有很多类型的存储器，核心功能都是存储数据，那为什么不统一成一种存储器呢？根本原因是 CPU 的计算速度远大于从存储器中访存数据的速度，因此我们不得不设计出可以匹配 CPU 计算速度的存储器结构。但这样的存储器造价极高并且存储量很小，因此我们只能退而求其次，从而诞生了现代计算机中的层次存储结构。从 CPU 开始依次为：<strong>寄存器 (Register)</strong>、<strong>缓存 (Cache)</strong>、<strong>内存 (Main Memory)</strong> 和 <strong>外存 (Secondary Memory)</strong>。这些存储器的访存速度逐渐降低。本章也将按照这样的顺序分别讲解相应的概念。最后会补充介绍一下存储器中的 <strong>虚拟存储</strong> 理念以及 <strong>数据校验</strong> 策略。</p>
+<p>现代计算机中有很多类型的存储器，核心功能都是存储数据，那为什么不统一成一种存储器呢？根本原因是 CPU 的计算速度远大于从存储器中访存数据的速度，因此我们不得不设计出可以匹配 CPU 计算速度的存储器结构。但这样的存储器造价极高并且存储量很小，因此我们只能退而求其次，从而诞生了现代计算机中的层次存储结构。从 CPU 开始依次为：<strong>寄存器 (Register)</strong>、<strong>缓存 (Cache)</strong>、<strong>内存 (Main Memory)</strong> 和 <strong>外存 (Secondary Memory)</strong>。这些存储器的访存速度逐渐降低。本章也将按照这样的顺序分别讲解相应的概念，然后从上帝视角并结合上面所有的存储层次，宏观地讲解 <strong>虚拟化</strong> 技术。最后补充介绍一下存储器中的 <strong>数据校验</strong> 策略。</p>
 <h4 id="7-1-缓存">7.1 缓存</h4>
 <p>缓存采用的随机存取存储器是 SRAM，即静态随机存取存储器。由于其速度快容量小且造价很高，因此适合做 cache 工作。SRAM 存储高低电平的方式是触发器。</p>
 <h5 id="7-1-1-为什么会有缓存">7.1.1 为什么会有缓存</h5>
@@ -604,9 +605,16 @@
         </div>
       </div>
     </div>
+<h5 id="7-1-5-缓存和内存的一致性">7.1.5 缓存和内存的一致性</h5>
+<p>CPU 在写 cache 时，有以下两种策略来确保 cache 和内存的一致性：</p>
+<ul>
+<li>white through。如果写命中，就同时写 cache 和内存；如果写不命中，要么只写内存，要么写完内存后将更新过的内存块添加到 cache 中；</li>
+<li>white back。如果写命中，就只写 cache；如果写不命中，就从内存中调入对应的内存块然后在 cache 中进行写入。</li>
+</ul>
+<p>可以发现上述 white through 策略可以绝对确保 cache 和内存的一致性，但是由于写如内存操作的开销很大，因此这种方法带来的性能损失也很大。相反 white back 策略就只会写入 cache，对应的开销就小很多，但是显然会出现 cache 和内存的不一致问题，这种策略需要结合别的策略来确保 cache 和内存的一致性。</p>
 <h4 id="7-2-内存">7.2 内存</h4>
 <p>内存采用的随机存取存储器是 DRAM，即动态随机存取存储器。相比于 SRAM，DRAM 速度较慢但容量更大，因此适合做内存工作。DRAM 存储高低电平的方式是电平，即通过电容的高低电平状态来存储 01 状态。由于 DRAM 的读操作会对高电平进行放电，因此需要定时对 DRAM 的电容进行充电工作，也就是所谓的刷新。</p>
-<h5 id="7-2-1-CPU-与内存交互数据的逻辑">7.2.1 CPU 与内存交互数据的逻辑</h5>
+<h5 id="7-2-1-CPU-与内存的数据交互逻辑">7.2.1 CPU 与内存的数据交互逻辑</h5>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112007235.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="基本框图"></p>
 <p>CPU 首先通过「控制线」将读/写信号送到内存，然后分读写两种情况：</p>
 <ol>
@@ -618,15 +626,26 @@
 <li>异步。CPU 从 数据线取数时需要收到内存已经准备好数据的信号。</li>
 <li>同步。CPU 从数据线取数无须内存的信号，而是在向内存发出取数信号后，经过确定的时间后就从数据线取数。</li>
 </ol>
-<h5 id="7-2-2-地址译码器的工作逻辑">7.2.2 地址译码器的工作逻辑</h5>
+<h5 id="7-2-2-地址译码器">7.2.2 地址译码器</h5>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112041997.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="一维单译码器 VS 二维双译码器"></p>
 <p>如果有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 位地址位，就决定了寻址范围为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,2^n-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>。不难发现如果是一维单译码，就需要译码器有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> 个寻址线。如果是二维双译码，就需要译码器有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><msup><mn>2</mn><mrow><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2 \times 2^{n/2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.888em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mord mtight">/2</span></span></span></span></span></span></span></span></span></span></span></span> 个寻址线。显然当地址位较多时，二维双译码器是更优的。</p>
 <h5 id="7-2-3-字-位扩展">7.2.3 字/位扩展</h5>
 <p>扩展分为「字扩展、位扩展和字位同时扩展」三种。扩展逻辑已经在数电中学习过了，具体见 <a href="https://blog.dwj601.cn/GPA/3rd-term/DigitalLogicCircuit/#4-4-2-%E8%AF%91%E7%A0%81%E5%99%A8-%E6%95%B0%E6%8D%AE%E5%88%86%E9%85%8D%E5%99%A8">https://blog.dwj601.cn/GPA/3rd-term/DigitalLogicCircuit/#4-4-2-译码器-数据分配器</a></p>
 <h5 id="7-2-4-提速策略">7.2.4 提速策略</h5>
-<p>多模块存储器、cache (ch7.1)。</p>
+<p>多模块存储器、cache (见 ch7.1)。</p>
 <h4 id="7-3-外存">7.3 外存</h4>
 <h4 id="7-4-虚存">7.4 虚存</h4>
+<p>本目我们介绍虚存技术，分别从「虚存的诞生背景」、「虚存的工作逻辑」和「虚存的实现策略」三个方面进行讲解。</p>
+<h5 id="7-4-1-为什么会有虚存">7.4.1 为什么会有虚存</h5>
+<p>在内存的空间大小远远小于现代程序的空间需求，以及现代 OS 都支持并发程序的背景下，「虚拟存储空间」技术应运而生。需要注意的是，虚拟存储空间并不对应计算机中的实际物理器件，而是一种 <strong>设计理念</strong>。通过虚拟化技术，1）不仅仅提升了程序的可使用空间大小，2）虚存中的虚拟地址也可以让开发者不用关心程序在内存中运行时对应的物理地址，只需要关心每一个程序对应的运行逻辑，3）更进一步的，虚拟化技术也可以保护进程的数据安全，确保并发执行程序时不会出现访问异常地址等错误。</p>
+<h5 id="7-4-2-工作逻辑">7.4.2 工作逻辑</h5>
+<p>既然叫做虚存，那么每一个进程中的每一条指令对应的地址就都是虚拟地址，然而 CPU 访问数据时需要能够直接对应到实际存储单元的物理地址，因此虚拟化技术一个最重要的部分就是如何将虚拟地址（逻辑地址）转化为物理地址（实际地址）。如下图所示，展示了使用虚拟化技术的 CPU 工作逻辑：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410301119466.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="使用虚拟化技术的 CPU 的访存逻辑"></p>
+<p>如上图所示。CPU 在拿到内存中某个进程的某条指令中的虚拟地址 VA 后，首先需要通过存储器管理部件 (memory management unit, 简称 MMU) 将其转化为物理地址 PA，再根据物理地址进行诸如 cache <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 内存 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 外存的数据访存逻辑。而接下来的虚存实现部分，本质上就是在讲解 MMU 的实现策略。</p>
+<p>这里再插一嘴。虚拟化技术对于程序空间要求高，但是计算速度要求不是很严格的应用场景下（例如服务器、台式机、笔记本），可谓是神来之笔，大大提升了程序存储开销的上限。但通过上面介绍的虚存工作逻辑也不难发现，为了实现虚拟化技术，我们不得不设计一个 MMU 来满足需求，这就会导致一定的时间开销以及设计架构的复杂化。没有一种技术可以一以贯之，虚拟化技术也是如此。对于程序空间要求不大，但是运算速度和延迟要求很严格的场景下（例如嵌入式），虚拟化技术就不能使用了，此时 CPU 访问的指令就直接对应了 cache 或内存中的实际物理地址。</p>
+<h5 id="7-4-3-虚存实现">7.4.3 虚存实现</h5>
+<p>在虚拟化的背景下，每一个程序/进程都对应了一个统一大小的虚拟存储空间。但对于运行在内存中的进程而言，由于机器的内存空间大小 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≪</mo></mrow><annotation encoding="application/x-tex">\ll</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">≪</span></span></span></span> 进程的虚存空间大小。设计者将虚存中多出来的空间分配到外存中，内存中仅仅保存虚存中的活跃部分，而内存中保存的活跃部分中又有更活跃的部分，于是设计者就将这段更活跃的部分放到缓存中。具体的内存与虚存的对应关系有三种：分页式、分段式、段页式。在下面的「虚存实现」中将会详细讲解。</p>
+<p>在知道了。进程的虚拟空间中存储的数据/指令都对应一个地址，这个地址叫做虚拟地址（逻辑地址），CPU 需要的是实际地址（物理地址）</p>
 <h4 id="7-5-数据校验">7.5 数据校验</h4>
 <p>数据在信道传送的过程中，可能会因为各种噪声或者硬件原因出现错误，我们有必要进行数据的检错与纠错。本目我们主要介绍数据检错中的「奇偶校验法」策略。其实逻辑很简单，先看数据校验的流程图：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409180822743.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="数据校验流程图"></p>
@@ -711,7 +730,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月23日</div>
+          <div>2024年10月30日</div>
         </div>
       
       

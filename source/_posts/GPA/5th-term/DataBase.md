@@ -258,7 +258,7 @@ INSERT INTO prerequisites (course_id, prerequisite_id) VALUES (2, 4);  -- Physic
 
 ![连接](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410100937483.png)
 
-- 一般连接。筛选出两个关系 R, S 的笛卡尔积 $R\times S$ 中「R 的属性 A 和 S 的属性 B」符合条件 $\theta$ 的行。当关系为取等时，被称为 **等值连接**；当关系为取等并且需要在连接结果中删除这两个相同属性中的一个时，就叫做 **自然连接**；
+- 一般连接。筛选出两个关系 R, S 的笛卡尔积 $R\times S$ 中「R 的属性组 A 和 S 的属性组 B」符合条件 $\theta$ 的行（即笛卡尔积的子集）。当关系为取等时，被称为 **等值连接**；当关系为取等并且需要在连接结果中删除这两个相同属性中的一个时，就叫做 **自然连接**；
 - 左外连接。当 R 的属性 A 的取值不在 S 的 B 中时，在结果中保留 R 的结果，S 对应的值填 NULL；
 - 右外连接。当 S 的属性 B 的取值不在 R 的 A 中时，在结果中保留 S 的结果，R 对应的值填 NULL；
 - 外连接。R 与 S 的都保留，另外一个不存在的都填 NULL。
@@ -389,11 +389,18 @@ from <表名/视图名> [as] [别名] ...
 
 我们在查询数据时，可以从最终需要什么样的数据这个角度来理解查询命令的意义。比如 `select` 是用来 **筛选列数据** 的，而 `where` 以及其他的条件限定语句都是根据元组在每一个字段上具体的取值来 **筛选行数据** 的。
 
-`select`。后面都是跟的列名。1）可以对列名取别名，用 `as` 即可；2）可以在列名前加上 `all` 或 `distinct` 关键字，前者是默认的表示不对这一列执行去重操作，后者需要显式的指明表示对这一列进行去重操作。例如：
+`select`。后面都是跟的列名。1）可以对列名取别名，用 `as` 即可；2）可以在 select 的后面紧跟着 `all` 或 `distinct` 关键字，前者是默认的，表示不对结果去重，后者需要显式的指明表示对结果去重。例如：
 
 ```sql
-select title, distinct name, all time as t
+-- 表示对最终结果进行去重
+select distinct title, name, time as t
 ...
+
+-- 表示不对最终结果去重
+select title, name, time as t
+
+-- 等价于
+select all title, name, time as t
 ```
 
 `from`。后面跟的是表名或视图名。可以对表名或视图名取别名，用 `as` 即可。例如：
@@ -431,22 +438,88 @@ limit 10 offset 5
 
 **连接查询**
 
+当某个对象的属性散落在多个表时，单表查询已经无法满足我们的需求了，此时就需要使用连接关键字 `join` 操作来实现多表查询。共有 4 种连接方式，与 ch2.4 关系代数中介绍的连接逻辑完全一致，分别为内连接 `[inner] join`、左外连接 `left [outer] join`、右外连接 `right [outer] join` 和外连接 `full [outer] join`。
+
+注：中括号表示对应的关键字是可选的；内连接其实可以不用写 `join` 关键字的。
+
+现在我们进行一个小练习。对于下面的两张表结构，查询 SC 表中 SC='c1' 的课程成绩最高的学生学号、姓名和成绩。
+
+![学生表和课程表](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410301531215.png)
+
+仅用「内连接」的实现方法如下：
+
+```sql
+-- 方法一：倒序取首个
+select student.ssno, sname, grade
+from student, sc
+where student.sno = sc.sno and cno = 'c1'
+order by grade desc
+limit 1;
+```
+
 **嵌套查询**
 
-子查询不能加 `order by` 语句，因为这只能用在最外一层。
+现在我们需要在某个子查询的基础之上继续进行查询，就需要用到嵌套查询，具体分为以下四类：
 
 - 带有 `in` 谓词的子查询；
-- 带有 比较运算符 的子查询；
+- 带有 `比较运算符` 的子查询；
 - 带有 `any(some)/all` 谓词的子查询；
-- 带有 `exists` 谓词的子查询。实现逻辑表达：$(\forall y)p\to q \iff \lnot \exist y (p \land \lnot q)$
+- 带有 `exists` 谓词的子查询。实现逻辑表达：$(\forall y)p\to q \iff \lnot \exist y (p \land \lnot q)$。
+
+值得注意的是：子查询不能加 `order by` 语句，因为根据 DBMS 的执行顺序，排序只能在查询出全部结果后对 `select` 中的内容进行排序。
+
+现在让我们使用「内连接+嵌套查询」的方法完成上述例题：
+
+```sql
+-- 方法二：查询一个学生，其成绩是对应课程的最高分
+select student.ssno, sname, grade
+from student, sc
+where student.sno = sc.sno and cno = 'c1' and grade = (
+    select max(grade)
+    from sc
+    where cno = 'c1'
+);
+
+-- 方法三：查询一个学生，其成绩是 >= 对应课程的最高分
+select student.ssno, sname, grade
+from student, sc
+where student.sno = sc.sno and cno = 'c1' and grade >= all(
+    select grade
+    from sc
+    where cno = 'c1'
+);
+```
 
 **集合查询**
 
-对多个查询结果进行并 `union`、交 `intersect`、差 `except` 操作。
+对多个查询结果进行并 `union`、交 `intersect`、差 `except` 操作。显然的，集合查询需要参与查询的表之间具有完全相同的属性组以及属性值域。例如下面的集合查询语句：
+
+```sql
+-- 并集：查询CS系年龄不大于19岁的学生
+select * from student where sdept = 'CS'
+union
+select * from student where age <= 19;
+
+-- 交集：查询既选了1号课又选了2号课的学生
+select sno from sc where cno = '1'
+intersect
+select sno from sc where cno = '2';
+
+-- 差集：查询CS系年龄不大于19岁的学生
+select * from student where sdept = 'CS'
+except
+select * from student where age > 19;
+```
 
 **基于派生表的查询**
 
-嵌套在 `from` 中的派生表，属于一个临时表。
+如果我们想要在一次查询中扩大数据源，就可以在 `from` 中嵌套一个派生表。注意，嵌套的表属于一个临时表，在查询结束后就会自动销毁。例如下面的基于派生表的查询语句：
+
+```sql
+select name
+from student, (select grade from sc)
+where ...;
+```
 
 ### 4 安全性
 

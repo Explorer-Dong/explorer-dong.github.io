@@ -19,12 +19,12 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="最优化方法 前言 学科地位：    主讲教师 学分配额 学科类别     王启春 4 专业课    成绩组成：    平时（作业+考勤） 期中（大作业） 期末（闭卷）     20% 30% 50%    教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN号     最优化算法 《最优化方法》 2 孙文瑜 高等教育出版社 978-7-04-029763-8    第一章 基本概念">
+    <meta name="description" content="最优化方法 前言    课程名称 选用教材 版次 作者 出版社 ISBN号     最优化算法 《最优化方法》 2 孙文瑜 高等教育出版社 978-7-04-029763-8    第一章 基本概念 1.1 最优化问题简介 本目主要讲解最优化问题的一些分类，下附脑图（由 Xmind 软件制作）：                      ▶分类脑图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OptMethod">
 <meta property="og:url" content="https://blog.dwj601.cn/GPA/4th-term/OptMethod/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="最优化方法 前言 学科地位：    主讲教师 学分配额 学科类别     王启春 4 专业课    成绩组成：    平时（作业+考勤） 期中（大作业） 期末（闭卷）     20% 30% 50%    教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN号     最优化算法 《最优化方法》 2 孙文瑜 高等教育出版社 978-7-04-029763-8    第一章 基本概念">
+<meta property="og:description" content="最优化方法 前言    课程名称 选用教材 版次 作者 出版社 ISBN号     最优化算法 《最优化方法》 2 孙文瑜 高等教育出版社 978-7-04-029763-8    第一章 基本概念 1.1 最优化问题简介 本目主要讲解最优化问题的一些分类，下附脑图（由 Xmind 软件制作）：                      ▶分类脑图">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403091214182.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101941905.png">
@@ -80,7 +80,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407081507550.jpg">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407081608997.jpg">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-08-28T03:42:09.327Z">
+<meta property="article:modified_time" content="2024-10-31T01:43:47.549Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -374,7 +374,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年8月28日 中午
+                    本文最后更新于 2024年10月31日 上午
                   
                 
               </p>
@@ -384,41 +384,6 @@
                 
                 <h2 id="最优化方法">最优化方法</h2>
 <h2 id="前言">前言</h2>
-<p>学科地位：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">主讲教师</th>
-<th style="text-align:center">学分配额</th>
-<th style="text-align:center">学科类别</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">王启春</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">专业课</td>
-</tr>
-</tbody>
-</table>
-<p>成绩组成：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">平时（作业+考勤）</th>
-<th style="text-align:center">期中（大作业）</th>
-<th style="text-align:center">期末（闭卷）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">20%</td>
-<td style="text-align:center">30%</td>
-<td style="text-align:center">50%</td>
-</tr>
-</tbody>
-</table>
-<p>教材情况：</p>
 <table>
 <thead>
 <tr>
@@ -446,10 +411,10 @@
 <p>本目主要讲解最优化问题的一些分类，下附脑图（由 Xmind 软件制作）：</p>
 
     <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-cb469c68" role="button" aria-expanded="false" aria-controls="collapse-cb469c68">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-fb65058b" role="button" aria-expanded="false" aria-controls="collapse-fb65058b">
         <div class="fold-arrow">▶</div>分类脑图
       </div>
-      <div class="fold-collapse collapse" id="collapse-cb469c68">
+      <div class="fold-collapse collapse" id="collapse-fb65058b">
         <div class="fold-content">
           <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403091214182.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="分类脑图"></p>
         </div>
@@ -554,10 +519,10 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
 </ol>
 
     <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-dcc9b38c" role="button" aria-expanded="false" aria-controls="collapse-dcc9b38c">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-ee58f68a" role="button" aria-expanded="false" aria-controls="collapse-ee58f68a">
         <div class="fold-arrow">▶</div>凸函数的性质证明
       </div>
-      <div class="fold-collapse collapse" id="collapse-dcc9b38c">
+      <div class="fold-collapse collapse" id="collapse-ee58f68a">
         <div class="fold-content">
           <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="第1、2条"></p><p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="第4条"></p>
         </div>
@@ -569,10 +534,10 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
 <p>函数值角度：函数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> 是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">R^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> 上的凸函数的充分必要条件是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∀</mi><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>∈</mo><msup><mi>R</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\forall x,y \in R^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">∀</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span>，单变量函数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>α</mi><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\phi(\alpha)=f(x + \alpha y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ϕ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span> 是关于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> 的凸函数</p>
  
     <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-d7d004d8" role="button" aria-expanded="false" aria-controls="collapse-d7d004d8">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-917484aa" role="button" aria-expanded="false" aria-controls="collapse-917484aa">
         <div class="fold-arrow">▶</div>凸函数的判别定理证明：函数值角度
       </div>
-      <div class="fold-collapse collapse" id="collapse-d7d004d8">
+      <div class="fold-collapse collapse" id="collapse-917484aa">
         <div class="fold-content">
           <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131019868.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="凸函数的判别定理证明 - 函数值角度"></p>
         </div>
@@ -587,12 +552,12 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
 </ul>
  
     <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-9d403b87" role="button" aria-expanded="false" aria-controls="collapse-9d403b87">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-39e1009c" role="button" aria-expanded="false" aria-controls="collapse-39e1009c">
         <div class="fold-arrow">▶</div>凸函数的判别定理证明：一阶导数角度
       </div>
-      <div class="fold-collapse collapse" id="collapse-9d403b87">
+      <div class="fold-collapse collapse" id="collapse-39e1009c">
         <div class="fold-content">
-          <p>无需掌握证明，但是为了便于理解性记忆，可以从<strong>二次凸函数</strong>进行辅助理解记忆。<br><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131018032.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="凸函数的判别定理证明 - 一阶导数角度"></p>
+          <p>无需掌握证明，但是为了便于理解性记忆，可以从<strong>二次凸函数</strong>进行辅助理解记忆。</p><p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131018032.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="凸函数的判别定理证明 - 一阶导数角度"></p>
         </div>
       </div>
     </div>
@@ -613,10 +578,10 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
 <p>定理：在可行域是凸集，目标函数非严格凸的情况下，局部最优解 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">x^*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6887em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span></span></span></span>​ 也是全局最优解</p>
  
     <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-01c9e6ee" role="button" aria-expanded="false" aria-controls="collapse-01c9e6ee">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-de1c70e9" role="button" aria-expanded="false" aria-controls="collapse-de1c70e9">
         <div class="fold-arrow">▶</div>证明（反证法）
       </div>
-      <div class="fold-collapse collapse" id="collapse-01c9e6ee">
+      <div class="fold-collapse collapse" id="collapse-de1c70e9">
         <div class="fold-content">
           <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122016285.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="证明（反证法）"></p>
         </div>
@@ -627,10 +592,10 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
 <p>定理：在可行域是凸集，目标函数是严格凸的情况下，局部最优解 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">x^*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6887em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span></span></span></span> 也是唯一的全局最优解</p>
  
     <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-858dd40d" role="button" aria-expanded="false" aria-controls="collapse-858dd40d">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-60745583" role="button" aria-expanded="false" aria-controls="collapse-60745583">
         <div class="fold-arrow">▶</div>证明（反证法）
       </div>
-      <div class="fold-collapse collapse" id="collapse-858dd40d">
+      <div class="fold-collapse collapse" id="collapse-60745583">
         <div class="fold-content">
           <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122017101.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="证明（反证法）"></p>
         </div>
@@ -644,10 +609,10 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
 <p>定理：若约束条件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c_i(x) \ge 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 中每一个约束函数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">c_i(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> 都是凹函数，则可行域 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span> 是凸集</p>
  
     <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-4ecb9cd4" role="button" aria-expanded="false" aria-controls="collapse-4ecb9cd4">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-891b34df" role="button" aria-expanded="false" aria-controls="collapse-891b34df">
         <div class="fold-arrow">▶</div>证明
       </div>
-      <div class="fold-collapse collapse" id="collapse-4ecb9cd4">
+      <div class="fold-collapse collapse" id="collapse-891b34df">
         <div class="fold-content">
           <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019899.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="证明"></p>
         </div>
@@ -658,10 +623,10 @@ D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
 <p>定理：若约束条件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c_i(x) \le 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 中每一个约束函数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">c_i(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> 都是凸函数，则可行域 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span> 是凸集</p>
  
     <div class="fold">
-      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-8354fb68" role="button" aria-expanded="false" aria-controls="collapse-8354fb68">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-68390e8f" role="button" aria-expanded="false" aria-controls="collapse-68390e8f">
         <div class="fold-arrow">▶</div>证明
       </div>
-      <div class="fold-collapse collapse" id="collapse-8354fb68">
+      <div class="fold-collapse collapse" id="collapse-68390e8f">
         <div class="fold-content">
           <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019572.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="证明"></p>
         </div>
@@ -1812,7 +1777,7 @@ b
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月28日</div>
+          <div>2024年10月31日</div>
         </div>
       
       
@@ -1843,9 +1808,9 @@ b
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/GPA/4th-term/MachineLearning/" title="MachineLearning">
+                      <a href="/GPA/4th-term/PyApply/" title="PyApply">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MachineLearning</span>
+                        <span class="hidden-mobile">PyApply</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1853,8 +1818,8 @@ b
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/4th-term/PyAlgo/" title="PyAlgo">
-                        <span class="hidden-mobile">PyAlgo</span>
+                      <a href="/GPA/4th-term/MachineLearning/" title="MachineLearning">
+                        <span class="hidden-mobile">MachineLearning</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -2242,19 +2207,19 @@ b
     
       
       
-        <a href="/GPA/5th-term/DigitalImageProcessing/" title="DigitalImageProcessing"
+        <a href="/GPA/5th-term/DeepLearning/" title="DeepLearning"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">DigitalImageProcessing</span>
+          <span class="category-post">DeepLearning</span>
         </a>
       
     
       
       
-        <a href="/GPA/5th-term/NeuralNetworkAndDeepLearning/" title="NeuralNetworkAndDeepLearning"
+        <a href="/GPA/5th-term/DigitalImageProcessing/" title="DigitalImageProcessing"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">NeuralNetworkAndDeepLearning</span>
+          <span class="category-post">DigitalImageProcessing</span>
         </a>
       
     

@@ -10,20 +10,6 @@ category_bar: true
 
 ## 前言
 
-学科地位：
-
-| 主讲教师 | 学分配额 | 学科类别 |
-| :------: | :------: | :------: |
-|  王启春  |    4     |  专业课  |
-
-成绩组成：
-
-| 平时（作业+考勤） | 期中（大作业） | 期末（闭卷） |
-| :---------------: | :------------: | :----------: |
-|        20%        |      30%       |     50%      |
-
-教材情况：
-
 |  课程名称  |    选用教材    | 版次 |  作者  |     出版社     |      ISBN号       |
 | :--------: | :------------: | :--: | :----: | :------------: | :---------------: |
 | 最优化算法 | 《最优化方法》 |  2   | 孙文瑜 | 高等教育出版社 | 978-7-04-029763-8 |
@@ -35,7 +21,9 @@ category_bar: true
 本目主要讲解最优化问题的一些分类，下附脑图（由 Xmind 软件制作）：
 
 {% fold light @分类脑图 %}
+
 ![分类脑图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403091214182.png)
+
 {% endfold %}
 
 ### 1.2 凸集和凸函数
@@ -128,6 +116,7 @@ $$
 ![第1、2条](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png)
 
 ![第4条](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png)
+
 {% endfold %}
 
 **凸函数的判定定理**：
@@ -135,7 +124,9 @@ $$
 1. 函数值角度：函数 $f(x)$ 是 $R^n$ 上的凸函数的充分必要条件是 $\forall x,y \in R^n$，单变量函数 $\phi(\alpha)=f(x + \alpha y)$ 是关于 $\alpha$ 的凸函数
 
     {% fold light @凸函数的判别定理证明：函数值角度 %}
+
     ![凸函数的判别定理证明 - 函数值角度](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131019868.png)
+
     {% endfold %}
 
 2. 一阶梯度角度：设 $f(x)$ 是定义在非空开凸集 $D$ 上的可微函数，则：
@@ -145,7 +136,9 @@ $$
 
     {% fold light @凸函数的判别定理证明：一阶导数角度 %}
     无需掌握证明，但是为了便于理解性记忆，可以从**二次凸函数**进行辅助理解记忆。
+
     ![凸函数的判别定理证明 - 一阶导数角度](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131018032.png)
+
     {% endfold %}
 
 3. 二阶梯度角度：设 $f(x)$ 是定义在非空开凸集 $D$ 上的二阶可微函数，则：
@@ -163,12 +156,14 @@ $$
 
     {% fold light @证明（反证法） %}
     ![证明（反证法）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122016285.png)
+
     {% endfold %}
 
 2. 定理：在可行域是凸集，目标函数是严格凸的情况下，局部最优解 $x^*$ 也是唯一的全局最优解
 
     {% fold light @证明（反证法） %}
     ![证明（反证法）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122017101.png)
+    
     {% endfold %}
 
 **确定可行域是否为凸集**
@@ -176,13 +171,17 @@ $$
 1. 定理：若约束条件 $c_i(x) \ge 0$ 中每一个约束函数 $c_i(x)$ 都是凹函数，则可行域 $F$ 是凸集
 
     {% fold light @证明 %}
+
     ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019899.png)
+
     {% endfold %}
 
 2. 定理：若约束条件 $c_i(x) \le 0$ 中每一个约束函数 $c_i(x)$ 都是凸函数，则可行域 $F$ 是凸集
 
     {% fold light @证明 %}
+
     ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019572.png)
+
     {% endfold %}
 
 3. 定理：若约束条件中每一个约束函数 $c_i(x)$ 都恒等于零，则可行域 $F$ 是凸集

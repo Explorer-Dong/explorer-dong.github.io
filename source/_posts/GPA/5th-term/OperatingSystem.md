@@ -345,395 +345,7 @@ CPU 的核心关键是并发程序，为此每一个硬件设计与相应 OS 的
 
 ##### 代码实现
 
-为了更好的理解上述 7 种 CPU 调度算法，我们从「逻辑上」进行模拟。不难发现所有的调度逻辑都只有 3 步：(1) 取出就绪队列的队头进程、(2) 维护时钟和进程信息、(3) 更新就绪队列信息。值得注意的是，非抢占式调度算法的 2 和 3 是顺序进行的，而抢占式调度算法的 2 和 3 是同时进行的。具体代码如下：
-
-我们首先定义进程 PCB 的结构体以及 I/O 相关的函数，如下：
-
-{% fold light @Python %}
-
-```python
-class Process:
-    def __init__(self, pid: str,
-                 arrival_time: float, service_time: float,
-                 priority: int) -> None:
-        self.pid = pid
-        self.arrival_time = arrival_time  # 进程到达时刻
-        self.service_time = service_time  # 预估运行时间
-        self.priority = priority  # 进程优先级 (越小越高)
-        self.level = 0            # 就绪队列等级
-        self.start_time = None    # 运行开始时刻
-        self.running_time = 0     # 已运行时间
-        self.finish_time = None   # 运行结束时刻
-
-def load_process(path: str) -> list[Process]:
-    processes = []
-    with open(path, 'r') as file:
-        for line in file:
-            pid, arrival_time, service_time, priority = line.split()
-            process = Process(pid, int(arrival_time), int(service_time), int(priority))
-            processes.append(process)
-    return processes
-
-def write_process(path: str, results: list[Process]) -> None:
-    with open(path, 'w') as file:
-        for pro in results:
-            line = f'{pro.pid} {pro.arrival_time} {pro.start_time} {pro.finish_time}'
-            file.write(line + '\n')
-
-def display_menu() -> None:
-    print("1 先到先服务 FCFS")
-    print("2 短作业优先 SJF")
-    print("3 最短剩余时间优先 SRTF")
-    print("4 最高响应比优先 HRRF")
-    print("5 优先级调度 Pr")
-    print("6 轮转调度 RR")
-    print("7 多级反馈队列调度 MLFQ")
-    print("0 退出")
-    print("请输入调度算法编号：")
-
-def checker(outPath: str, stdPath: str) -> None:
-    with open(outPath, 'r') as outFile, open(stdPath, 'r') as stdFile:
-        outLines = outFile.readlines()
-        stdLines = stdFile.readlines()
-        answer = {}
-        output_answer = {}
-        for line in stdLines:
-            line = line.split()
-            # line: (pid, arrival_time, start_time, finish_time)
-            answer.update({line[0]: [line[1], line[2], line[3]]})
-        for line in outLines:
-            line = line.split()
-            output_answer.update({line[0]: [line[1], line[2], line[3]]})
-        for pid, info in answer.items():
-            if pid not in output_answer or output_answer[pid] != info:
-                print(f"process '{pid}' ×")
-            else:
-                print(f"process '{pid}' √")
-```
-
-{% endfold %}
-
-然后定义 7 个调度算法相关的函数，如下：
-
-{% fold light @Python %}
-
-```python
-from pre import Process
-import heapq
-from collections import deque
-
-def FCFS(processes: list[Process]) -> list[Process]:
-    """ 先来先服务调度 (非抢占式) """
-
-    # 新建态进程队列
-    newPCB = deque(sorted(processes, key=lambda p: p.arrival_time))
-    # 就绪态进程队列
-    readyPCB = deque()
-
-    res = []
-    time = 0
-    while len(res) < len(processes):
-        # 取出就绪队列的队头进程
-        if len(readyPCB) == 0:
-            pro = newPCB.popleft()
-            readyPCB.append(pro)
-        now_pro = readyPCB.popleft()
-    
-        # 维护时钟和进程信息
-        time = max(time, now_pro.arrival_time)
-        now_pro.start_time = time
-        time += now_pro.service_time
-        now_pro.finish_time = time
-        res.append(now_pro)
-    
-        # 更新就绪队列信息
-        while len(newPCB) and newPCB[0].arrival_time <= time:
-            pro = newPCB.popleft()
-            readyPCB.append(pro)
-    
-    return res
-
-def SJF(processes: list[Process]) -> list[Process]:
-    """ 短时间优先调度 (非抢占式) """
-    
-    # 新建态进程队列
-    newPCB = deque(sorted(processes, key=lambda p: (p.arrival_time, p.service_time)))
-    # 就绪态进程队列
-    readyPCB = []
-
-    res = []
-    time = 0
-    while len(res) < len(processes):
-        # 取出就绪队列的队头进程
-        if len(readyPCB) == 0:
-            pro = newPCB.popleft()
-            heapq.heappush(readyPCB, (pro.service_time, pro.arrival_time, pro))
-        now_pro: Process = heapq.heappop(readyPCB)[-1]
-
-        # 维护时钟和进程信息
-        time = max(time, now_pro.arrival_time)
-        now_pro.start_time = time
-        time += now_pro.service_time
-        now_pro.finish_time = time
-        res.append(now_pro)
-    
-        # 更新就绪队列信息
-        while len(newPCB) and newPCB[0].arrival_time <= time:
-            pro = newPCB.popleft()
-            heapq.heappush(readyPCB, (pro.service_time, pro.arrival_time, pro))
-    
-    return res
-
-def SRTF(processes: list[Process]) -> list[Process]:
-    """ 最短剩余时间优先调度 (抢占式) """
-
-    # 新建态进程队列
-    newPCB = deque(sorted(processes, key=lambda p: (p.arrival_time, p.service_time)))
-    # 就绪态进程队列
-    readyPCB = []
-
-    res = []
-    time = 0
-    while len(res) < len(processes):
-        # 取出就绪队列的队头进程
-        if len(readyPCB) == 0:
-            pro = newPCB.popleft()
-            heapq.heappush(readyPCB, (pro.service_time - pro.running_time, pro.arrival_time, pro))
-        now_pro: Process = heapq.heappop(readyPCB)[-1]
-
-        # 维护时钟和进程信息 & 更新就绪队列信息
-        time = max(time, now_pro.arrival_time)
-        seized = False
-        while len(newPCB):
-            pro = newPCB[0]
-            if pro.arrival_time >= time + (now_pro.service_time - now_pro.running_time):
-                break
-            elif pro.service_time >= now_pro.service_time - now_pro.running_time - (pro.arrival_time - time):
-                newPCB.popleft()
-                heapq.heappush(readyPCB, (pro.service_time - pro.running_time, pro.arrival_time, pro))
-            else:
-                seized = True
-                now_pro.running_time += pro.arrival_time - time
-                if now_pro.running_time and now_pro.start_time == None:
-                    now_pro.start_time = time
-                time += pro.arrival_time - time
-                heapq.heappush(readyPCB, (now_pro.service_time - now_pro.running_time, now_pro.arrival_time, now_pro))
-                newPCB.popleft()
-                heapq.heappush(readyPCB, (pro.service_time - pro.running_time, pro.arrival_time, pro))
-                break
-        if not seized:
-            if now_pro.start_time == None:
-                now_pro.start_time = time
-            now_pro.finish_time = time + (now_pro.service_time - now_pro.running_time)
-            time = now_pro.finish_time
-            res.append(now_pro)
-    
-    return res
-
-def HRRF(processes: list[Process]) -> list[Process]:
-    """ 最高响应比优先调度 (非抢占式) """
-
-    # 新建态进程队列
-    newPCB = deque(sorted(processes, key=lambda p: p.arrival_time))
-    # 就绪态进程队列
-    readyPCB = []
-
-    res = []
-    time = 0
-    while len(res) < len(processes):
-        # 取出就绪队列的队头进程
-        if len(readyPCB) == 0:
-            pro = newPCB.popleft()
-            heapq.heappush(readyPCB, (-1, pro))  # -1 是用来占位的
-        now_pro: Process = heapq.heappop(readyPCB)[-1]
-
-        # 维护时钟和进程信息
-        time = max(time, now_pro.arrival_time)
-        now_pro.start_time = time
-        time += now_pro.service_time
-        now_pro.finish_time = time
-        res.append(now_pro)
-    
-        # 更新就绪队列信息
-        temp = []
-        while len(readyPCB):
-            _, pro = readyPCB.pop()
-            temp.append((-(time - pro.arrival_time) / pro.service_time, pro))
-        for new_neg_respinse, pro in temp:
-            heapq.heappush(readyPCB, (new_neg_respinse, pro))
-        while len(newPCB) and newPCB[0].arrival_time <= time:
-            pro = newPCB.popleft()
-            heapq.heappush(readyPCB, (-(time - pro.arrival_time) / pro.service_time, pro))
-    
-    return res
-
-def Pr(processes: list[Process]) -> list[Process]:
-    """ 优先级调度 (非抢占式) """
-
-    # 新建态进程队列
-    newPCB = deque(sorted(processes, key=lambda p: p.arrival_time))
-    # 就绪态进程队列
-    readyPCB = []
-
-    res = []
-    time = 0
-    while len(res) < len(processes):
-        # 取出就绪队列的队头进程
-        if len(readyPCB) == 0:
-            pro = newPCB.popleft()
-            heapq.heappush(readyPCB, (-1, pro))  # -1 是用来占位的
-        now_pro: Process = heapq.heappop(readyPCB)[-1]
-
-        # 维护时钟和进程信息
-        time = max(time, now_pro.arrival_time)
-        now_pro.start_time = time
-        time += now_pro.service_time
-        now_pro.finish_time = time
-        res.append(now_pro)
-    
-        # 更新就绪队列信息
-        while len(newPCB) and newPCB[0].arrival_time <= time:
-            pro = newPCB.popleft()
-            heapq.heappush(readyPCB, (pro.priority, pro))
-    
-    return res
-
-def RR(processes: list[Process], step: int=4) -> list[Process]:
-    """ 轮转调度 (抢占式) """
-
-    # 新建态进程队列
-    newPCB = deque(sorted(processes, key=lambda p: p.arrival_time))
-    # 就绪态进程队列
-    readyPCB = deque()
-
-    res = []
-    time = 0
-    while len(res) < len(processes):
-        # 取出就绪队列的队头进程
-        if len(readyPCB) == 0:
-            pro = newPCB.popleft()
-            readyPCB.append(pro)
-        now_pro: Process = readyPCB.popleft()
-
-        # 维护时钟和进程信息 & 更新就绪队列信息
-        time = max(time, now_pro.arrival_time)
-        now_pro.start_time = time if now_pro.start_time == None else now_pro.start_time
-        if now_pro.running_time + step >= now_pro.service_time:
-            now_pro.finish_time = time + (now_pro.service_time - now_pro.running_time)
-            time += now_pro.service_time - now_pro.running_time
-            res.append(now_pro)
-        else:
-            now_pro.running_time += step
-            time += step
-            while len(newPCB) and newPCB[0].arrival_time <= time:
-                readyPCB.append(newPCB.popleft())
-            readyPCB.append(now_pro)
-
-    return res
-
-def MLFQ(processes: list[Process], level: int=3) -> list[Process]:
-    """ 多级反馈队列调度 (抢占式)
-    共 level 个等级的就绪队列，每一个就绪队列的时间片长度为 2^i
-    """
-
-    # 新建态进程队列
-    newPCB = deque(sorted(processes, key=lambda p: p.arrival_time))
-    # 就绪态进程队列
-    readyPCB = [deque() for _ in range(level)]
-
-    res = []
-    time = 0
-    while len(res) < len(processes):
-        # 取出就绪队列的队头进程
-        now_pro, now_level = None, None
-        for i in range(level):
-            if len(readyPCB[i]):
-                now_pro, now_level = readyPCB[i].popleft(), i
-                break
-        if now_pro == None:
-            now_pro, now_level = newPCB.popleft(), 0
-
-        # 维护时钟和进程信息 & 更新就绪队列信息
-        time = max(time, now_pro.arrival_time)
-        now_pro.start_time = time if now_pro.start_time == None else now_pro.start_time
-        if now_pro.running_time + (1 << now_level) >= now_pro.service_time:
-            # 可以执行完毕
-            now_pro.finish_time = time + (now_pro.service_time - now_pro.running_time)
-            time += now_pro.service_time - now_pro.running_time
-            res.append(now_pro)
-        else:
-            # 无法执行完毕
-            now_pro.running_time += (1 << now_level)
-            time += 1 << now_level
-            while len(newPCB) and newPCB[0].arrival_time <= time:
-                readyPCB[0].append(newPCB.popleft())
-            now_level = min(now_level + 1, level - 1)
-            readyPCB[now_level].append(now_pro)
-
-    return res
-```
-
-{% endfold %}
-
-最后通过主函数进行调用与运行，如下：
-
-{% fold light @Python %}
-
-```python
-from pre import *
-from schedules import *
-
-""" 进程调度算法程序说明
-
-依赖结构如下：
-├── ./in
-├── ./out
-├── ./std
-├── main.py
-├── pre.py
-├── schedules.py
-
-其中 `./in` 是输入文件夹 `./out` 是输出文件夹 `./std` 是标答文件夹。
-
-`main.py` 是程序的入口部分，负责人机交互选择合适的算法测试数据；
-`pre.py` 是程序的框架部分，负责构造进程类、I/O 逻辑和测试逻辑；
-`schedules.py` 是程序的算法部分，负责 7 个调度算法的逻辑。
-
-"""
-
-def main(test_size: int=2) -> None:
-    while True:
-        display_menu()
-        choose = input()
-        switch = {
-            '1': FCFS,
-            '2': SJF,
-            '3': SRTF,
-            '4': HRRF,
-            '5': Pr,
-            '6': RR,
-            '7': MLFQ,
-            '0': None
-        }
-        if choose not in switch:
-            print("输入错误，请重新输入！")
-            continue
-        elif choose == '0':
-            break
-        for id in range(1, test_size + 1):
-            processes = load_process(f'./in/{id}.in')
-            results = switch[choose](processes)
-            write_process(f'./out/{id}.out', results)
-            print(f"test{id}:")
-            checker(f'./out/{id}.out', f'./std/{id}-{switch[choose].__name__}.std')
-
-if __name__ == '__main__':
-    main(test_size=2)
-```
-
-{% endfold %}
-
-相关的测试数据见下载链接：<https://explorer-dong.lanzouv.com/i5EPL2czbd0j>
+为了更好的理解上述 7 种 CPU 调度算法，我们从「逻辑上」进行模拟。不难发现所有的调度逻辑都只有 3 步：(1) 取出就绪队列的队头进程、(2) 维护时钟和进程信息、(3) 更新就绪队列信息。值得注意的是，非抢占式调度算法的 2 和 3 是顺序进行的，而抢占式调度算法的 2 和 3 是同时进行的。具体代码见：https://github.com/Explorer-Dong/OS_Simulate/tree/main/Experiment5
 
 ### 3 互斥与同步
 
@@ -753,11 +365,11 @@ if __name__ == '__main__':
 
 那如何避免上述两种进程并发错误呢？我们引入 **临界区** 的概念。显然的，并发程序的错误一定源于程序对变量「同时但错误」的引用与改变（资源分配错误的本质还是高级语言在并发逻辑上的错误），因此我们对于并发程序中同时引用或修改的变量需要格外注意。我们定义并发程序中与共享变量有关的程序段叫做「临界区」，共享变量对应的资源就叫做「临界资源」。而并发程序为了确保正确性和安全性，需要做的就是需要避免并发程序对「临界资源」的同时使用。而接下来要介绍的并发管理，本质上就是针对程序对于临界区的引用和修改，设计出来的一系列算法策略。
 
-#### 3.3 并发应如何管理
+#### 3.3 并发应如何管理 *
 
 我们介绍一些并发管理算法策略。常见的策略有：Perterson 算法、信号量与 PV 操作、管程机制、进程通信机制等等。
 
-##### 信号量与 PV 操作
+##### 3.3.1 信号量与 PV 操作
 
 信号量与 PV 操作是 Dijkstra 老爷子在上世纪七十年代设计出来的用来解决并发问题的策略，非常的巧妙。信号量 semaphore 表示某种资源的「容量与使用情况」。每一种信号量都会用一个类似于下面的数据类型进行表示：
 
@@ -770,8 +382,8 @@ class Semaphore:
 
 当各进程在并发执行时全部都处于运行态，表示不缺任何资源。但是也有可能会因为某种资源的缺少而无法运行，从而转变到等待态。上述从「运行态 $\to$ 等待态」的转变就是通过「信号量与 PV 操作」的逻辑实现的。所谓的 PV 操作如下（注意 P, V 操作是原语操作）：
 
-- **P (Proberen) 操作** 表示申请资源，现在常用 semWait 表示；
-- **V (Verhogen) 操作** 表示释放资源，现在常用 semSignal 表示。
+- **P (Proberen) 操作** 表示 **申请** 资源，现在常用 **semWait** 表示；
+- **V (Verhogen) 操作** 表示 **释放** 资源，现在常用 **semSignal** 表示。
 
 对于 **互斥** 问题。我们一般设定初始信号量为 `ini_value = m`，其中 $m$ 表示临界区允许并发的最大进程量，一般都是 $1$。每一个进程在申请资源时，首先执行 P 操作检查当前资源申请的资源是否可用，然后执行临界区的关键代码，最后执行 V 操作释放资源。即每一个进程中同时含有 P 原语和 V 原语。
 
@@ -781,19 +393,64 @@ class Semaphore:
 
 ![信号量与 PV 操作解决同步问题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410221600543.png)
 
-{% fold light @考题分析 %}
+{% fold light @例题分析 %}
 
-一、5 位哲学家就餐问题
+给出四个涉及到互斥和同步的问题：1）5 位哲学家就餐问题；2）生产者-消费者问题；3）读者-写者问题；4）睡眠理发师问题
 
-二、生产者-消费者问题
+综合来看，何时使用互斥信号，何时使用同步信号，从逻辑上可以有如下解释：
 
-三、读者-写者问题
-
-四、睡眠理发师问题
+- 对于一个原语操作，即只允许一个进程对某个资源操作时，就是一个典型的互斥操作。此时需要在该原语操作的前面添加 $P$ 操作，后面添加 $V$ 操作；
+- 对于一个先后关系，即需要某个进程执行完后才能执行另一个进程，就是一个典型的同步操作。此时需要在先执行进程的代码逻辑段后添加 $V$ 操作，在后执行进程的代码逻辑段前添加 $P$ 操作。
 
 {% endfold %}
 
+##### 3.3.2 管程
+
+##### 3.3.3 进程通信
+
 ### 4 死锁
+
+死锁是并发程序中相对常见的一种错误，因此单独拿出来进行讲解。我们将先认识死锁以及死锁产生的原因，然后介绍 3 种越来越宽松的策略来解决并发死锁问题。
+
+#### 4.1 产生原因
+
+死锁的定义。1）一个进程集合中的每个进程都在等待，2）且只能由此集合中的其他进程才能激活，而无限期陷入僵持的局面称为死锁。
+
+知道了死锁的定义后，结合哲学家就餐问题中的死锁情况，介绍 4 个能够产生死锁的原因。1）互斥访问；2）占有和等待；3）不可被剥夺；4）循环等待。
+
+#### 4.2 解决策略
+
+##### 策略一
+
+**破坏上述死锁产生原因中的任意一个**
+
+- 破坏互斥访问。让资源不再共享，而是每个进程独享；
+- 破坏占有和等待。让进程同时拿到所有资源、同时释放所有资源；
+- 破坏不可被剥夺。不允许进程持有某种资源而不释放；
+- 破坏循环等待。让进程按照某种顺序执行。
+
+##### 策略二
+
+**允许前三种错误发生通过设计算法来避免第四种错误发生**
+
+我们以 Dijkstra 在上世纪六十年代设计出来的银行家算法为例。（没错又是他）
+
+![银行家算法 - 数据类型示例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411010855566.png)
+
+假设有 $d$ 种资源 (source)，$m$ 个并发进程 (process)。如上图示例，银行家算法一共有以下 4 个数据类型：
+
+- 资源总数向量 $[s_1,s_2,\cdots,s_d]^T$
+- 可用资源向量 $[r_1,r_2,\cdots,r_d]^T$
+- 资源需求矩阵 $\displaystyle \begin{bmatrix} p_1 &  \\ p_2 \\ \vdots \\ p_m \end{bmatrix}$
+- 已分配资源矩阵
+
+值得注意的是。该算法只适合用来教学，没有什么实际意义（至少在当下已经完全没有意义了）。从上述对算法的解析不难看出，银行家算法需要提前知道每一个进程所需的资源开销，就光凭这一点就很不切实际了，因为这很难提前预知（就和调度算法中提前知道进程的服务时间一样不切实际）。其次不难发现，银行家算法的计算复杂度极高，这种试探性算法会有很多重复计算，并且随着资源种类的增加，计算复杂度会快速上升。因此现代往往都采用即将介绍的策略三。
+
+##### 策略三
+
+**允许死锁发生但是通过检测来解除死锁**
+
+
 
 ## 虚拟化
 

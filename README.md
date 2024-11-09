@@ -2,10 +2,6 @@
 
 欢迎访问我的博客网站！本网站记录个人进入本科以后学习 **AI/CS 课程** 和 **开发技术** 时做的电子笔记并将持续更新与维护。内容采用 Markdown 格式记录，通过 Hexo 框架编译与渲染，欢迎 Issue 和 Pr！
 
-源码地址：<https://github.com/Explorer-Dong/explorer-dong.github.io>
-
-镜像地址：<https://gitee.com/idwj/idwj>
-
 ## 内容简介
 
 博客详细内容请跳转至 [分类界面](https://blog.dwj601.cn/categories/) 阅读，目前共含有以下几个板块：

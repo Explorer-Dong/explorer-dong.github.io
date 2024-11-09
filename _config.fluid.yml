@@ -352,6 +352,8 @@ navbar:
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
     # - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
     - { key: "心语", link: "/inner/", icon: "iconfont icon-taoxin" }
+    - { key: "", link: "https://github.com/Explorer-Dong/explorer-dong.github.io", icon: "iconfont icon-github-fill" }
+    - { key: "", link: "https://gitee.com/idwj/idwj", icon: "iconfont icon-gitee-fill" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files

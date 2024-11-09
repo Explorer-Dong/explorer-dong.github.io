@@ -23,4 +23,16 @@ comment: true
 
 当某件事情做出了肌肉记忆，我就知道我已经被困在舒适圈里了。
 
+2024.11.08
+
+> Q: Do you think humans should live forever?
+>
+> A: I don't think it's right. People's minds do not change when they get old, and if this really happens, how can human minds progress? *by Elon Reeve Musk*
+
+Well, it's pretty cool!
+
+2024.11.09
+
+微风、微凉、清新的空气、对生活的规律支配，没有什么比这更让人心旷神怡的了。
+
 </div>

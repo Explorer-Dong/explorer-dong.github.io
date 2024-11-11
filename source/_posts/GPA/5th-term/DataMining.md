@@ -151,6 +151,10 @@ category_bar: true
 
 需要注意的是，由于计算置信度时需要使用之前计算过的支持度信息，当频繁项集很多时，这会造成很大的存储消耗，为了减少这种存储消耗，我们需要减少频繁项集的数量，为此引入「极大频繁项集」和「闭频繁项集」来压缩频繁项集的数量从而在保留重要信息的前提下减少存储消耗。其中极大频繁项集定义为「某个频繁项集的直接超集都不是频繁项集」，而闭频繁项集定义为「某个频繁项集的直接超集与它的支持度计数都不一样」。
 
+这里再补充一个 Apriori 算法的变种，叫做 Eclat 算法。其算法逻辑是将项集编号和项集进行「反拉链」存储，后续在统计频繁项集时只需要取交集即可，如下图所示：
+
+![Eclat 算法示例 假设最小支持度阈值为 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411110820401.png)
+
 但是即使上面这么折腾进行优化，Apriori 的计算复杂度仍然很高。因为连接步产生的候选项集仍然可能有有很多，并且对于每一个候选项集，即使使用哈希树也几乎需要遍历一遍事务集。下面介绍 FP-Growth 算法。
 
 #### 3.2.2 FP-Growth 算法
@@ -159,7 +163,7 @@ category_bar: true
 
 从上面的算法描述可以看出，我们需要对事务集扫描两边来维护出必要的信息。举例说明：假设最小支持度阈值为 22.2%。
 
-一）首先扫描一遍事务集并按照频率降序排序
+一）首先扫描一遍事务集并将项集按照某种规则排序（一般是按照频率降序排序）
 
 ![按照频率降序排序](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411041037092.png)
 
@@ -167,7 +171,78 @@ category_bar: true
 
 ![构造 FP 树](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411041037337.png)
 
-构造完 FP 树后，如何寻找频繁项集呢？从候选一项集（叶子结点）开始向上搜索合适的路径，将合适的结点排列组合即可得到频繁项集。
+构造完 FP 树后，如何寻找频繁项集呢？从候选一项集（叶子结点）开始向上搜索合适的路径，将合适的结点排列组合即可得到频繁项集。示例代码如下：
+
+{% fold light @FP-Growth 实现 %}
+
+上述事务集对应输入：
+
+```
+Member_number,itemDescription
+1,b
+1,a
+1,e
+2,b
+2,d
+3,b
+3,c
+4,b
+4,a
+4,d
+5,a
+5,c
+6,b
+6,c
+7,a
+7,c
+8,b
+8,a
+8,c
+8,e
+9,b
+9,a
+9,c
+```
+
+代码：
+
+```python
+ori_data = pd.read_csv('./ppt_demo_data.txt')
+
+d: {tuple, list} = {}
+for _, row in ori_data.iterrows():
+    key = row['Member_number']
+    value = row['itemDescription']
+    if key in d:
+        d[key].append(value)
+    else:
+        d[key] = [value]
+
+data = []
+for key, value in sorted(d.items()):
+    data.append(value)
+
+te = TransactionEncoder()
+te_ary = te.fit(data).transform(data)
+df = pd.DataFrame(te_ary, columns=te.columns_)
+print(df.shape)
+print(df)
+
+frequent_itemsets: pd.DataFrame = fpgrowth(df, min_support=2/9, use_colnames=True)
+print(frequent_itemsets)
+```
+
+事务集 one-hot 矩阵：
+
+![事务集 one-hot 矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411112028666.png)
+
+满足 2/9 最小支持度阈值的频繁项集：
+
+![满足 2/9 最小支持度阈值的频繁项集](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411112028168.png)
+
+{% endfold %}
+
+当然，如果第一步中的排序规则不合理很容易导致建树的开销很大（几乎是指数级别），这也就会导致在一些情况下 FP-Growth 算法甚至不如 Apriori 算法。
 
 ### 3.3 置信度检测算法
 
@@ -176,6 +251,16 @@ category_bar: true
 不难发现，根据置信度 $c$ 的定义式 $c(X\to Y)=\frac{\sigma(X\bigcup Y)}{\sigma(X)}$，如果一个频繁项集被划分为 $\{X,Y\}$ 后不满足置信度阈值，则 $X$ 的子集对应的划分方法一定都不满足置信度阈值，以此可以对搜索空间进行剪枝来降低时间复杂度。
 
 ### 3.4 度量评估
+
+在得到所有的强关联规则后，如何进行评估呢？下面给出一些度量评估方法。
+
+- 提升度：$\displaystyle\text{lift}(X,Y)=\frac{P(X\cup Y)}{P(X)P(Y)}$
+- 全置信度：$\displaystyle \text{all\_conf}(X, Y) = \min\{P(X|Y), P(Y|X)\}$
+- 最大置信度：$\displaystyle \text{max\_conf}(X, Y) = \max\{P(X|Y), P(Y|X)\}$
+- Kluc 度量：$\displaystyle \text{Kluc}(X, Y) = \frac{P(X|Y)+P(Y|X)}{2}$
+- 余弦度量：$\displaystyle \text{Cosine}(X, Y) = \sqrt{P(X|Y)P(Y|X)}$
+
+提升度的解释。对于两个项集 $X$ 和 $Y$，如果 $\frac{P(X\bigcup Y) }{P(X)P(Y)} >1$ 则说明 $X$ 和 $Y$ 是正相关的，这也是我们进行关联分析所感兴趣的；如果 $\frac{P(X\bigcup Y) }{P(X)P(Y)} = 1$ 则说明 $X$ 和 $Y$ 是相互独立的，没有研究意义；如果 $\frac{P(X\bigcup Y) }{P(X)P(Y)} < 1$ 则说明 $X$ 和 $Y$ 是负相关的，其中一项的出现会抑制另一项的出现，也没有研究意义。
 
 ## 分类问题
 

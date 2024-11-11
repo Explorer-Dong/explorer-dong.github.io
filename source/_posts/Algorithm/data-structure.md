@@ -1759,3 +1759,64 @@ class Solution:
         
         return v1 + v2
 ```
+
+## 【线段树/二分】以组为单位订音乐会的门票 :fire:
+
+https://leetcode.cn/problems/booking-concert-tickets-in-groups/
+
+> 题意：给定一个长为 $n\le 5 \times 10^4$ 且初始值均为 $0$ 的数组 $a$，数组中的每个元素最多增加到 $m$。现在需要以这个数组为基础进行 $q\le 5 \times 10^4$ 次询问，每次询问是以下两者之一：
+>
+> 1. 给定一个 $k$ 和 $lim$，找到最小的 $i \in [0,lim]$ 使得 $m - a_i \ge k$
+> 2. 给定一个 $k$ 和 $lim$，找到最小的 $i \in [0,lim]$ 使得 $\displaystyle m\times (i+1) - \sum_{j=0}^i a_j \ge k$
+>
+> 思路一：**暴力**。
+>
+> - 对于询问 1，我们直接顺序遍历 a 数组直到找到第一个符合条件的即可；对于询问 2，同样直接顺序遍历 a 数组直到找到第一个符合条件的即可；
+> - 时间复杂度 $O(qn)$。
+>
+> 思路二：**线段树上二分**。
+>
+> - TODO
+> - 时间复杂度 $O(q\log n)$。
+
+暴力代码：
+
+```python
+class BookMyShow:
+
+    def __init__(self, n: int, m: int):
+        self.a = [0] * n  # a[i] 表示第 i 行已入座的人数
+        self.n = n
+        self.m = m
+
+    def gather(self, k: int, lim: int) -> List[int]:
+        # 在 [0, lim] 行中找到第一个可以容纳 k 人的行
+        for i in range(lim + 1):
+            if self.m - self.a[i] >= k:
+                l, r = i, self.a[i]
+                self.a[i] += k
+                return [l, r]
+        return []
+
+    def scatter(self, k: int, lim: int) -> bool:
+        # 在 [0, lim] 行中找到最小的 i 使得 [0, i] 行可以容纳 k 人
+        if self.m * (lim + 1) - sum(self.a[:lim+1]) < k:
+            return False
+
+        i = 0
+        while k > 0:
+            if self.m - self.a[i] >= k:
+                self.a[i] += k
+                k = 0
+            else:
+                k -= self.m - self.a[i]
+                self.a[i] = self.m
+            i += 1
+        return True
+```
+
+线段树上二分代码：
+
+```python
+
+```

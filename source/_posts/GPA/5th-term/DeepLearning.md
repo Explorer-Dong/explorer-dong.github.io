@@ -31,7 +31,7 @@ category_bar: true
 学习资源：
 
 - 教材：https://nndl.github.io/nndl-book.pdf
-- 课件：<https://nndl.github.io/ppt/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-3%E5%B0%8F%E6%97%B6.pdf>
+- 课件：<https://nndl.github.io/ppt/神经网络与深度学习-3小时.pdf>
 - 配套代码示例：https://github.com/nndl/practice-in-paddle/
 - TensorFlow 文档：https://tensorflow.google.cn/api_docs/python/tf
 - Pytorch 文档：https://pytorch.org/docs/2.0/
@@ -127,6 +127,12 @@ category_bar: true
 #### 2.3 参数学习
 
 同样是反向传播算法通过梯度下降进行优化。
+
+#### 实际案例
+
+基于卷积神经网络的目标识别算法 - YOLO V3 算法。
+
+需要解决两个问题：1）确定分类区域 2）基于局部区域进行分类。
 
 ### 3 循环神经网络
 

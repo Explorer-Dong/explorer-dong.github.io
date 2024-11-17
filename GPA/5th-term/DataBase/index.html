@@ -34,10 +34,13 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410162126209.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410162127996.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410301531215.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411140924531.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411141045571.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411141045758.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411070937459.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411070940768.png">
 <meta property="article:published_time" content="2024-08-27T11:13:43.468Z">
-<meta property="article:modified_time" content="2024-11-07T02:30:08.069Z">
+<meta property="article:modified_time" content="2024-11-14T03:20:32.527Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -280,7 +283,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.8k 字
+          6.7k 字
         
       </span>
     
@@ -291,7 +294,7 @@
         
         
         
-          37 分钟
+          42 分钟
         
       </span>
     
@@ -355,7 +358,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年11月7日 上午
+                    本文最后更新于 2024年11月14日 上午
                   
                 
               </p>
@@ -428,11 +431,11 @@
 </ul>
 <p>为什么要学这门课？</p>
 <blockquote>
-<p>数据库是时代变迁的产物，掌握数据库对应的知识和技能很有必要。这门课主要学习关系数据库的相关理论并以 openGauss 作为实验平台进行实操。可以借这门课好好熟悉关系数据库的相关技能，如果想要深入 system，db 是需要好好学习甚至深入精通的。</p>
+<p>数据库是时代变迁的产物，掌握数据库对应的知识和技能很有必要。这门课主要学习关系数据库的相关理论并以 openGauss 作为实验平台进行实操。可以借这门课系统地学习关系数据库的理论与实操。</p>
 </blockquote>
 <p>会收获什么？</p>
 <blockquote>
-<p>自顶向下理解关系数据库的架构与设计模式，熟悉数据库编程对应的技能。如果还有精力，就继续深入底层架构。</p>
+<p>自顶向下理解关系数据库的架构与设计模式，熟悉数据库编程对应的技能；同时掌握数据库设计的相关理论，为设计出高效安全的数据库打好基础。如果还有精力，就继续深入底层实现。</p>
 </blockquote>
 <h2 id="基础理论">基础理论</h2>
 <h3 id="1-绪论">1 绪论</h3>
@@ -695,6 +698,33 @@ graph TB
 <p>关于触发器的删除方法。使用 <code>drop trigger &lt;触发器名&gt; on &lt;表名&gt;</code> 即可。</p>
 <h2 id="应用开发">应用开发</h2>
 <h3 id="6-关系数据理论">6 关系数据理论</h3>
+<p>对于一个关系，我们不能量化的判定其好坏程度，仅靠经验是很难保证这样的关系在未来会不会出现问题，因此本章我们将从理论的角度来分析一个关系模式的好坏程序。首先学习关系模式的规范化理论，接着学习「保持函数依赖的模式分解」和「无损连接的模式分解」两种模式分解策略。</p>
+<h4 id="6-1-关系模式的规范化">6.1 关系模式的规范化</h4>
+<p>现在定义一个关系模式为 R(U, F)，U 表示关系属性，F 表示函数依赖。规范化有不同等级的范式，关系模式从低等级的范式 (Normal Form) 到高等级的范式的过程就叫做规范化。</p>
+<p><strong>1NF</strong>：即原子性，每一个属性不可再分；</p>
+<p><strong>2NF</strong>：对于满足 1NF 的关系模式，每一个非主属性都完全函数依赖候选码，就称为满足 2NF。</p>
+
+    <div class="fold">
+      <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-27270e3f" role="button" aria-expanded="false" aria-controls="collapse-27270e3f">
+        <div class="fold-arrow">▶</div>不满足 2NF 的关系模式以及错误情况分析
+      </div>
+      <div class="fold-collapse collapse" id="collapse-27270e3f">
+        <div class="fold-content">
+          <p>对于下面的「学院学生选课」函数依赖关系：</p><p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411140924531.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="函数依赖关系"></p><p>主码为 Sno 和 Cno 用方框框出；非主属性为 Grade，School 和 Sloc；实线表示完全函数决定，虚线表示部分函数决定。下面给出上述关系模式是否满足 2NF 的分析：</p><ul><li>Grade 完全函数依赖候选码，即主码完全决定 Grade，记作 (Sno, Cno <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mi>F</mi></mpadded></munderover></mrow><annotation encoding="application/x-tex">\xrightarrow[]{F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2223em;vertical-align:-0.122em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span></span></span></span> Grade)</li><li>School 不是完全依赖函数候选码，因为候选码的子集 Sno 就可以完全决定 School，即主码部分决定 School，记作 (Sno, Cno <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo stretchy="true" minsize="3.0em">→</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded><mpadded width="+0.6em" lspace="0.3em"><mi>P</mi></mpadded></munderover></mrow><annotation encoding="application/x-tex">\xrightarrow[]{P}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2223em;vertical-align:-0.122em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span></span></span></span> Grade)</li><li>Sloc 与 School 类似，也不是完全函数依赖候选码。</li></ul><p>通过上面对 3 个非主属性的依赖分析可以发现，并不满足 2NF 的规范化约束，因此这个关系模式不满足 2NF。</p><p>一旦不满足 2NF，就会出现下述级联错误：</p><ul><li>插入错误：有学号有学院和住所，但是还没选课，那么这条数据就插不进去；</li><li>删除错误：只选了一门课，退选的时候就连带着学号全删了；</li><li>修改复杂：如果某个学生的学院 School 发生了改变，那么该学生的每一条选课信息都需要修改学院和住所 Sloc。</li></ul>
+        </div>
+      </div>
+    </div>
+<p><strong>3NF</strong>：对于满足 2NF 的关系模式，假设主码为 X，非主码有 Y 和 Z，不允许出现 X 决定 Y，Y 又决定 Z 的传递依赖，否则还是会出现级联错误。例如下表 <span class="katex-error" title="ParseError: KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …text{DemoTable(">\text{DemoTable(</span>\underline{\text{Sno}}<span class="katex-error" title="ParseError: KaTeX parse error: Expected 'EOF', got '}' at position 16: , School, Sloc)}̲">, School, Sloc)}</span> 就不满足 3NF：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411141045571.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="不满足 3NF"></p>
+<p><strong>BCNF</strong>：对于满足 2NF 的关系模式，假设主码为 (X, Y)，非主码为 Z，不允许出现 X 决定 Z，Z 又决定 Y 的传递依赖，否则还是会出现级联错误。例如下表 <span class="katex-error" title="ParseError: KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …text{DemoTable(">\text{DemoTable(</span>\underline{\text{S, J}}<span class="katex-error" title="ParseError: KaTeX parse error: Expected 'EOF', got '}' at position 5: , T)}̲">, T)}</span> 就不满足 BCNF：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411141045758.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="不满足 BCNF"></p>
+<p>至此已经介绍完所有函数依赖相关的范式。理论是枯燥的，但是能够确保数据库的高效与安全。</p>
+<ul>
+<li><strong>如果不满足范式会有什么问题</strong>？1NF 很显然，就不多说；2NF 会出现诸如「增、删、改」的问题；而 3NF 和 BCNF 会出现「改」的问题；</li>
+<li><strong>如何解决不满足范式的关系模式</strong>？对关系模式进行分解。如果出现了 2NF 中的部分函数依赖，那就拆成只有完全函数依赖；如果出现了 3NF 或 BCNF 中的传递依赖，那就拆成没有传递函数依赖。</li>
+</ul>
+<h4 id="6-2-保持函数依赖的模式分解">6.2 保持函数依赖的模式分解</h4>
+<h4 id="6-3-无损连接的模式分解">6.3 无损连接的模式分解</h4>
 <h3 id="7-数据库设计">7 数据库设计</h3>
 <p>现在我们拉到了一个甲方，需要根据甲方的需求设计一个数据库。完整流程共分为六个阶段，如下图所示：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411070937459.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="数据库设计的 6 个阶段与描述"></p>
@@ -780,7 +810,7 @@ graph TB
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年11月7日</div>
+          <div>2024年11月14日</div>
         </div>
       
       

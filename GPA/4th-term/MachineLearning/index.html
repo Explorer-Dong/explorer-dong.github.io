@@ -80,7 +80,6 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405271650826.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405271656290.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407021942941.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406040935086.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406040848342.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406040848390.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406040911195.png">
@@ -92,7 +91,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406110848096.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406110915333.png">
 <meta property="article:published_time" content="2024-03-21T05:55:02.211Z">
-<meta property="article:modified_time" content="2024-10-26T13:42:12.428Z">
+<meta property="article:modified_time" content="2024-11-18T01:59:08.082Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -346,7 +345,7 @@
         
         
         
-          139 分钟
+          140 分钟
         
       </span>
     
@@ -410,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年10月26日 晚上
+                    本文最后更新于 2024年11月18日 上午
                   
                 
               </p>
@@ -1496,9 +1495,12 @@ e^{\alpha_i}&amp;, h_i(x)\ne f(x)
 <li>输出表示扰动</li>
 <li>算法参数扰动</li>
 </ul>
-<h2 id="第-9-章-聚类">第 9 章 聚类</h2>
-<h3 id="9-1-聚类任务">9.1 聚类任务</h3>
-<p>典型的无监督学习方法。即将众多无标签数据进行分类。在开始介绍几类经典的聚类学习方法之前，我们先讨论聚类算法涉及到的两个基本问题：性能度量和距离计算。</p>
+<h2 id="9-聚类">9 聚类</h2>
+<p>本章我们学习一个经典的无监督学习方法：聚类。即通过某种规则将数据集划分为不同的簇。我们将会首先介绍「数据对象的距离计算规则」，接着从结果论的角度介绍「如何评估一个聚类结果的好坏」，最后按照类别介绍几个「具体的聚类算法」。</p>
+<h3 id="9-1-距离计算">9.1 距离计算</h3>
+<p>聚类的本质就是根据样本之间的距离将距离相近的数据对象认定为同一个类别，因此最关键的一步就是如何定义数据对象之间的距离。有以下两种距离计算的标准：</p>
+<p>有序属性：闵可夫斯基距离</p>
+<p>无序属性：VDM 距离</p>
 <h3 id="9-2-性能度量">9.2 性能度量</h3>
 <p>一来是进行聚类的评估，二来也可以作为聚类的优化目标。分为两种，分别是外部指标和内部指标。</p>
 <h4 id="9-2-1-外部指标">9.2.1 外部指标</h4>
@@ -1524,16 +1526,14 @@ h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​
 <h4 id="9-2-2-内部指标">9.2.2 内部指标</h4>
 <p>所谓内部指标就是仅仅考虑当前模型的聚类结果。同样考虑两两样本的聚类结果，定义下面的变量：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405271656290.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="内部指标变量"></p>
-<p>常见的外部指标如下：</p>
+<p>常见的内部指标如下：</p>
 <ul>
 <li>DB 指数</li>
 <li>Dunn 指数</li>
 </ul>
-<h3 id="9-3-距离计算">9.3 距离计算</h3>
-<p>有序属性：闵可夫斯基距离</p>
-<p>无序属性：VDM 距离</p>
-<h3 id="9-4-原型聚类">9.4 原型聚类</h3>
-<h4 id="9-4-1-k-均值算法">9.4.1 k 均值算法</h4>
+<h3 id="9-3-聚类算法">9.3 聚类算法</h3>
+<h4 id="Kmeans">Kmeans</h4>
+<p>也就是所谓的「划分聚类」算法。</p>
 <p>算法流程大体上可以归纳为三步：</p>
 <ol>
 <li>初始化 k 个聚类中心</li>
@@ -1542,19 +1542,18 @@ h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​
 </ol>
 <p>重复上述迭代过程直到聚类中心不再发生变化，当然为了防止迭代时间过久，可以弱化迭代终止条件，比如增设：最大迭代论述或对聚类中心的变化增加一个阈值而非绝对的零变化。k 均值算法伪代码如下：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407021942941.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="k 均值算法伪代码"></p>
-<h4 id="9-4-2-学习向量量化算法">9.4.2 学习向量量化算法</h4>
-<h4 id="9-4-3-高斯混合聚类算法">9.4.3 高斯混合聚类算法</h4>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406040935086.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="高斯混合聚类算法 - 流程图"></p>
-<h3 id="9-5-密度聚类">9.5 密度聚类</h3>
-<h4 id="DBSCAN-算法">DBSCAN 算法</h4>
-<p>适用于簇的大小不定，距离不定的情况。大概就是多源有向 bfs 的过程。定义每一源为“核心对象”，每次以核心对象为起始进行 bfs，将每一个符合“范围约束”的近邻点纳入当前簇，不断寻找知道所有核心对象都访问过为止。</p>
-<h3 id="9-6-层次聚类">9.6 层次聚类</h3>
 <h4 id="AGNES-算法">AGNES 算法</h4>
+<p>也就是所谓的「层次聚类」算法。</p>
 <p>适用于可选簇大小、可选簇数量的情况。</p>
+<h4 id="DBSCAN-算法">DBSCAN 算法</h4>
+<p>也就是所谓的「密度聚类」算法。</p>
+<p>适用于簇的大小不定，距离不定的情况。大概就是多源有向 bfs 的过程。定义每一源为“核心对象”，每次以核心对象为起始进行 bfs，将每一个符合“范围约束”的近邻点纳入当前簇，不断寻找知道所有核心对象都访问过为止。</p>
 <h2 id="第-10-章-降维与度量学习">第 10 章 降维与度量学习</h2>
-<div class="note note-light">
-            <p>本章我们通过 k 近邻监督学习方法引入「降维」和「度量学习」的概念。</p><ul><li>对于 <strong>降维算法</strong>：根本原因是样本往往十分稀疏，需要我们对样本的属性进行降维，从而达到合适的密度进而可以进行基于距离的邻居选择相关算法。我们将重点讨论以下几个降维算法：<strong>MDS 多维缩放</strong>、<strong>PCA 主成分分析</strong>、<strong>等度量映射</strong></li><li>对于 <strong>度量学习</strong>：上述降维的根本目的是选择合适的维度，确保一定可以通过某个距离计算表达式计算得到每一个样本的 k 个邻居。而度量学习直接从目的出发，尝试直接学习样本之间的距离计算公式。我们将重点讨论以下几个度量学习算法：<strong>近邻成分分析</strong>、<strong>LMNN</strong></li></ul>
-          </div>
+<p>本章我们通过 k 近邻监督学习方法引入「降维」和「度量学习」的概念。</p>
+<ul>
+<li>对于 <strong>降维算法</strong>：根本原因是样本往往十分稀疏，需要我们对样本的属性进行降维，从而达到合适的密度进而可以进行基于距离的邻居选择相关算法。我们将重点讨论以下几个降维算法：<strong>MDS 多维缩放</strong>、<strong>PCA 主成分分析</strong>、<strong>等度量映射</strong></li>
+<li>对于 <strong>度量学习</strong>：上述降维的根本目的是选择合适的维度，确保一定可以通过某个距离计算表达式计算得到每一个样本的 k 个邻居。而度量学习直接从目的出发，尝试直接学习样本之间的距离计算公式。我们将重点讨论以下几个度量学习算法：<strong>近邻成分分析</strong>、<strong>LMNN</strong></li>
+</ul>
 <h3 id="10-1-k-近邻学习">10.1 k 近邻学习</h3>
 <p>k 近邻（k-Nearest Neighbor，简称 KNN）是一种监督学习方法。一句话概括就是「近朱者赤近墨者黑」，每一个测试样本的分类或回归结果取决于在某种距离度量下的最近的 k 个邻居的性质。不需要训练，可以根据检测样本实时预测，即懒惰学习。为了实现上述监督学习的效果，我们需要解决以下两个问题：</p>
 <ul>
@@ -1752,7 +1751,7 @@ h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月26日</div>
+          <div>2024年11月18日</div>
         </div>
       
       
@@ -1793,8 +1792,8 @@ h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​
                   <article class="post-next col-6">
                     
                     
-                      <a href="/GPA/4th-term/PyAlgo/" title="PyAlgo">
-                        <span class="hidden-mobile">PyAlgo</span>
+                      <a href="/GPA/4th-term/OptMethod/" title="OptMethod">
+                        <span class="hidden-mobile">OptMethod</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

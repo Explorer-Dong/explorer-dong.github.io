@@ -1,6 +1,7 @@
 ---
 title: deep-learning-tutorial
 categories:
+  - DeepLearning
   - DataScience
 category_bar: true
 ---

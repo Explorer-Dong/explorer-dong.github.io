@@ -1,6 +1,7 @@
 ---
 title: machine-learning-tutorial
 categories:
+  - MachineLearning
   - DataScience
 category_bar: true
 ---

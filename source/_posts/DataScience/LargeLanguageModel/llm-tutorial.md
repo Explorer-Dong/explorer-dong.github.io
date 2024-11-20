@@ -1,6 +1,7 @@
 ---
 title: large-language-model-tutorial
 categories:
+  - LargeLanguageModel
   - DataScience
 category_bar: true
 ---

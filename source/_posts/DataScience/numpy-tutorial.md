@@ -1,14 +1,13 @@
 ---
-title: numpy
+title: numpy-tutorial
 categories:
-  - BackEnd
-  - Python
+  - DataScience
 category_bar: true
 ---
 
-## numpy 学习记录
+## numpy 入门指南
 
-本文记录零碎时间学习 numpy 的笔记。
+本文记录学习 numpy 的笔记。
 
 ## np.array 用法
 

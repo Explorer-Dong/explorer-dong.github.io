@@ -16,12 +16,17 @@ index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/hell
 - `Algorithm`：竞技性编程笔记；
 - `BackEnd`：后端开发笔记；
 - `DataBase`：数据库开发笔记；
+- `DataScience`：数据科学笔记；
 - `DevTools`：开发工具笔记；
 - `FrontEnd`：前端开发笔记；
 - `GPA`：本科课程笔记；
 - `Operation`：运维笔记。
 
 ## 更新日志
+
+24.11.20
+
+:bookmark_tabs: 丰富：创建数据科学 DataScience 专栏。侧重于代码实现。
 
 24.10.06
 

@@ -591,7 +591,7 @@ for each {row | statement}
 
 **1NF**：即原子性，每一个属性不可再分；
 
-**2NF**：对于满足 1NF 的关系模式，每一个非主属性都完全函数依赖候选码，就称为满足 2NF。
+**2NF**：对于满足 1NF 的关系模式，每一个非主属性都完全函数依赖 **候选码（能决定整个元组的属性/属性组）**，就称为满足 2NF。
 
 {% fold light @不满足 2NF 的关系模式以及错误情况分析 %}
 
@@ -615,11 +615,11 @@ for each {row | statement}
 
 {% endfold %}
 
-**3NF**：对于满足 2NF 的关系模式，假设主码为 X，非主码有 Y 和 Z，不允许出现 X 决定 Y，Y 又决定 Z 的传递依赖，否则还是会出现级联错误。例如下表 $\text{DemoTable($\underline{\text{Sno}}$, School, Sloc)}$ 就不满足 3NF：
+**3NF**：对于满足 2NF 的关系模式，假设主码为 X，非主码有 Y 和 Z，不允许出现 X 决定 Y，Y 又决定 Z 的传递依赖，否则还是会出现级联错误。例如下表 $\text{DemoTable}(\underline{Sno}, School, Sloc)$ 就不满足 3NF：
 
 ![不满足 3NF](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411141045571.png)
 
-**BCNF**：对于满足 2NF 的关系模式，假设主码为 (X, Y)，非主码为 Z，不允许出现 X 决定 Z，Z 又决定 Y 的传递依赖，否则还是会出现级联错误。例如下表 $\text{DemoTable($\underline{\text{S, J}}$, T)}$ 就不满足 BCNF：
+**BCNF**：决定集要包含候选码。对于满足 2NF 的关系模式，假设主码为 (X, Y)，非主码为 Z，不允许出现 X 决定 Z，Z 又决定 Y 的传递依赖，否则还是会出现级联错误。例如下表 $\text{DemoTable}(\underline{S, J}, T)$ 就不满足 BCNF：
 
 ![不满足 BCNF](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411141045758.png)
 
@@ -627,6 +627,10 @@ for each {row | statement}
 
 - **如果不满足范式会有什么问题**？1NF 很显然，就不多说；2NF 会出现诸如「增、删、改」的问题；而 3NF 和 BCNF 会出现「改」的问题；
 - **如何解决不满足范式的关系模式**？对关系模式进行分解。如果出现了 2NF 中的部分函数依赖，那就拆成只有完全函数依赖；如果出现了 3NF 或 BCNF 中的传递依赖，那就拆成没有传递函数依赖。
+
+**多值依赖**：现在不会出现错误了，但是仍然会导致「增、删、改」的复杂。当同时存在 $A\to \to B, A\to \to C$ 时，拆成 $R(A, B)$ 和 $R(A, C)$ 即可。
+
+**4NF**：如果有非平凡多值依赖（不存在空值），则该属性（组）必须依赖于候选码。如果多值依赖有空值，则一定满足 4NF。
 
 #### 6.2 保持函数依赖的模式分解
 

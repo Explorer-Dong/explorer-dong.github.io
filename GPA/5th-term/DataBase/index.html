@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411070937459.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411070940768.png">
 <meta property="article:published_time" content="2024-08-27T11:13:43.468Z">
-<meta property="article:modified_time" content="2024-11-14T03:20:32.527Z">
+<meta property="article:modified_time" content="2024-11-26T02:42:26.128Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -283,7 +283,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.7k 字
+          6.8k 字
         
       </span>
     
@@ -294,7 +294,7 @@
         
         
         
-          42 分钟
+          43 分钟
         
       </span>
     
@@ -358,7 +358,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年11月14日 上午
+                    本文最后更新于 2024年11月26日 上午
                   
                 
               </p>
@@ -627,7 +627,7 @@ graph TB
 </ul>
 <h5 id="3-2-3-update">3.2.3 update</h5>
 <p>关于数据修改，命令格式如下：</p>
-<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span><br><span class="hljs-keyword">set</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;=</span><span class="hljs-operator">&lt;</span>表达式<span class="hljs-operator">&gt;</span><br><span class="hljs-keyword">where</span> <span class="hljs-operator">&lt;</span>条件<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span><br><span class="hljs-keyword">set</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;=</span><span class="hljs-operator">&lt;</span>表达式<span class="hljs-operator">&gt;</span><br>[<span class="hljs-keyword">where</span> <span class="hljs-operator">&lt;</span>条件<span class="hljs-operator">&gt;</span>];<br></code></pre></td></tr></tbody></table></figure>
 <ul>
 <li>修改一个；</li>
 <li>修改多个；</li>
@@ -635,7 +635,7 @@ graph TB
 </ul>
 <h5 id="3-2-4-select">3.2.4 select</h5>
 <p>关于数据查询，命令格式如下：</p>
-<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 选择最终表中需要展示的列。all(默认) 表示不去重，distinct 表示去重。</span><br><span class="hljs-keyword">select</span> [<span class="hljs-keyword">all</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">distinct</span>] <span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span> [别名] ...<br><br><span class="hljs-comment">-- 确定关系数据的来源具体是哪些表。</span><br><span class="hljs-keyword">from</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">/</span>视图名<span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">as</span>] [别名] ...<br><br><span class="hljs-comment">-- 约束元组需要满足的条件。</span><br>[ <span class="hljs-keyword">where</span> <span class="hljs-operator">&lt;</span>条件表达式<span class="hljs-operator">&gt;</span> ]<br><br><span class="hljs-comment">-- 按照指定的列进行聚合。having 等价于 where 语句，在聚合的条件下进行约束。</span><br>[ <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">1</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">having</span> <span class="hljs-operator">&lt;</span>条件表达式<span class="hljs-operator">&gt;</span>] ]<br><br><span class="hljs-comment">-- 按照指定的列进行排序。asc(默认) 表示升序，desc 表示降序。</span><br>[ <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">asc</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">desc</span>] ]<br><br><span class="hljs-comment">-- limit 表示限制返回的总行数。offset 表示跳过的行号。</span><br>[ limit <span class="hljs-operator">&lt;</span>行数<span class="hljs-number">1</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">offset</span> <span class="hljs-operator">&lt;</span>行数<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span>] ];<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 选择最终表中需要展示的列。all(默认) 表示不去重，distinct 表示去重。</span><br><span class="hljs-keyword">select</span> [<span class="hljs-keyword">all</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">distinct</span>] <span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span> [[<span class="hljs-keyword">as</span>] 别名] [aggregate_function(列名) [[<span class="hljs-keyword">as</span>] 别名]]...<br><br><span class="hljs-comment">-- 确定关系数据的来源具体是哪些表。</span><br><span class="hljs-keyword">from</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">/</span>视图名<span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">as</span>] [别名] ...<br><br><span class="hljs-comment">-- 约束元组需要满足的条件。</span><br>[ <span class="hljs-keyword">where</span> <span class="hljs-operator">&lt;</span>条件表达式<span class="hljs-operator">&gt;</span> ]<br><br><span class="hljs-comment">-- 按照指定的列进行聚合。having 等价于 where 语句，在聚合的条件下进行约束。</span><br>[ <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">1</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">having</span> <span class="hljs-operator">&lt;</span>条件表达式<span class="hljs-operator">&gt;</span>] ]<br><br><span class="hljs-comment">-- 按照指定的列进行排序。asc(默认) 表示升序，desc 表示降序。</span><br>[ <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">asc</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">desc</span>] ]<br><br><span class="hljs-comment">-- limit 表示限制返回的总行数。offset 表示跳过的行号。</span><br>[ limit <span class="hljs-operator">&lt;</span>行数<span class="hljs-number">1</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">offset</span> <span class="hljs-operator">&lt;</span>行数<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span>] ];<br></code></pre></td></tr></tbody></table></figure>
 <p><strong>单表查询</strong></p>
 <p>我们在查询数据时，可以从最终需要什么样的数据这个角度来理解查询命令的意义。比如 <code>select</code> 是用来 <strong>筛选列数据</strong> 的，而 <code>where</code> 以及其他的条件限定语句都是根据元组在每一个字段上具体的取值来 <strong>筛选行数据</strong> 的。</p>
 <p><code>select</code>。后面都是跟的列名。1）可以对列名取别名，用 <code>as</code> 即可；2）可以在 select 的后面紧跟着 <code>all</code> 或 <code>distinct</code> 关键字，前者是默认的，表示不对结果去重，后者需要显式的指明表示对结果去重。例如：</p>
@@ -702,7 +702,7 @@ graph TB
 <h4 id="6-1-关系模式的规范化">6.1 关系模式的规范化</h4>
 <p>现在定义一个关系模式为 R(U, F)，U 表示关系属性，F 表示函数依赖。规范化有不同等级的范式，关系模式从低等级的范式 (Normal Form) 到高等级的范式的过程就叫做规范化。</p>
 <p><strong>1NF</strong>：即原子性，每一个属性不可再分；</p>
-<p><strong>2NF</strong>：对于满足 1NF 的关系模式，每一个非主属性都完全函数依赖候选码，就称为满足 2NF。</p>
+<p><strong>2NF</strong>：对于满足 1NF 的关系模式，每一个非主属性都完全函数依赖 <strong>候选码（能决定整个元组的属性/属性组）</strong>，就称为满足 2NF。</p>
 
     <div class="fold">
       <div class="fold-title fold-light collapsed" data-toggle="collapse" href="#collapse-27270e3f" role="button" aria-expanded="false" aria-controls="collapse-27270e3f">
@@ -714,15 +714,17 @@ graph TB
         </div>
       </div>
     </div>
-<p><strong>3NF</strong>：对于满足 2NF 的关系模式，假设主码为 X，非主码有 Y 和 Z，不允许出现 X 决定 Y，Y 又决定 Z 的传递依赖，否则还是会出现级联错误。例如下表 <span class="katex-error" title="ParseError: KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …text{DemoTable(">\text{DemoTable(</span>\underline{\text{Sno}}<span class="katex-error" title="ParseError: KaTeX parse error: Expected 'EOF', got '}' at position 16: , School, Sloc)}̲">, School, Sloc)}</span> 就不满足 3NF：</p>
+<p><strong>3NF</strong>：对于满足 2NF 的关系模式，假设主码为 X，非主码有 Y 和 Z，不允许出现 X 决定 Y，Y 又决定 Z 的传递依赖，否则还是会出现级联错误。例如下表 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>DemoTable</mtext><mo stretchy="false">(</mo><munder accentunder="true"><mrow><mi>S</mi><mi>n</mi><mi>o</mi></mrow><mo stretchy="true">‾</mo></munder><mo separator="true">,</mo><mi>S</mi><mi>c</mi><mi>h</mi><mi>o</mi><mi>o</mi><mi>l</mi><mo separator="true">,</mo><mi>S</mi><mi>l</mi><mi>o</mi><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{DemoTable}(\underline{Sno}, School, Sloc)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">DemoTable</span></span><span class="mopen">(</span><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.84em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2em;"><span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mord mathnormal">oo</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">Sl</span><span class="mord mathnormal">oc</span><span class="mclose">)</span></span></span></span> 就不满足 3NF：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411141045571.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="不满足 3NF"></p>
-<p><strong>BCNF</strong>：对于满足 2NF 的关系模式，假设主码为 (X, Y)，非主码为 Z，不允许出现 X 决定 Z，Z 又决定 Y 的传递依赖，否则还是会出现级联错误。例如下表 <span class="katex-error" title="ParseError: KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …text{DemoTable(">\text{DemoTable(</span>\underline{\text{S, J}}<span class="katex-error" title="ParseError: KaTeX parse error: Expected 'EOF', got '}' at position 5: , T)}̲">, T)}</span> 就不满足 BCNF：</p>
+<p><strong>BCNF</strong>：决定集要包含候选码。对于满足 2NF 的关系模式，假设主码为 (X, Y)，非主码为 Z，不允许出现 X 决定 Z，Z 又决定 Y 的传递依赖，否则还是会出现级联错误。例如下表 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>DemoTable</mtext><mo stretchy="false">(</mo><munder accentunder="true"><mrow><mi>S</mi><mo separator="true">,</mo><mi>J</mi></mrow><mo stretchy="true">‾</mo></munder><mo separator="true">,</mo><mi>T</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{DemoTable}(\underline{S, J}, T)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1444em;vertical-align:-0.3944em;"></span><span class="mord text"><span class="mord">DemoTable</span></span><span class="mopen">(</span><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-2.6456em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3944em;"><span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">)</span></span></span></span> 就不满足 BCNF：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411141045758.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="不满足 BCNF"></p>
 <p>至此已经介绍完所有函数依赖相关的范式。理论是枯燥的，但是能够确保数据库的高效与安全。</p>
 <ul>
 <li><strong>如果不满足范式会有什么问题</strong>？1NF 很显然，就不多说；2NF 会出现诸如「增、删、改」的问题；而 3NF 和 BCNF 会出现「改」的问题；</li>
 <li><strong>如何解决不满足范式的关系模式</strong>？对关系模式进行分解。如果出现了 2NF 中的部分函数依赖，那就拆成只有完全函数依赖；如果出现了 3NF 或 BCNF 中的传递依赖，那就拆成没有传递函数依赖。</li>
 </ul>
+<p><strong>多值依赖</strong>：现在不会出现错误了，但是仍然会导致「增、删、改」的复杂。当同时存在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mo>→</mo><mi>B</mi><mo separator="true">,</mo><mi>A</mi><mo>→</mo><mo>→</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">A\to \to B, A\to \to C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span> 时，拆成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>A</mi><mo separator="true">,</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R(A, B)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>A</mi><mo separator="true">,</mo><mi>C</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R(A, C)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mclose">)</span></span></span></span> 即可。</p>
+<p><strong>4NF</strong>：如果有非平凡多值依赖（不存在空值），则该属性（组）必须依赖于候选码。如果多值依赖有空值，则一定满足 4NF。</p>
 <h4 id="6-2-保持函数依赖的模式分解">6.2 保持函数依赖的模式分解</h4>
 <h4 id="6-3-无损连接的模式分解">6.3 无损连接的模式分解</h4>
 <h3 id="7-数据库设计">7 数据库设计</h3>
@@ -810,7 +812,7 @@ graph TB
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年11月14日</div>
+          <div>2024年11月26日</div>
         </div>
       
       

@@ -35,8 +35,6 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291113812.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291137346.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411061010223.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411131009587.png">
-<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411131011559.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411270931225.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410160933739.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231108282.png">
@@ -51,7 +49,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411121533623.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409180822743.png">
 <meta property="article:published_time" content="2024-08-27T12:14:48.819Z">
-<meta property="article:modified_time" content="2024-11-29T00:59:19.030Z">
+<meta property="article:modified_time" content="2024-12-03T09:33:43.182Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -369,7 +367,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年11月29日 早上
+                    本文最后更新于 2024年12月3日 下午
                   
                 
               </p>
@@ -593,22 +591,15 @@
 <p>在《计算机系统基础》这门课程中已经学习了 C 语言与 IA-32 指令系统之间的转换关系，见 <a href="https://blog.dwj601.cn/GPA/4th-term/SysBasic/#%E7%AC%AC3%E7%AB%A0-%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%8F%8A%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA"></a><a href="https://blog.dwj601.cn/GPA/4th-term/SysBasic/#%E7%AC%AC3%E7%AB%A0-%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%8F%8A%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA">https://blog.dwj601.cn/GPA/4th-term/SysBasic/#第3章-程序的转换及机器级表示</a>。很多基础性的概念诸如「程序转换步骤」就不再赘述。本节的学习目标能达到「通过查表将 MIPS 系统的机器代码与 MIPS 系统的汇编代码进行转换」即可。</p>
 <p>MIPS 系统的指令分为三类：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411061010223.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="MIPS 指令格式"></p>
-<p>针对上述三类指令，给出 MIPS 系统下汇编代码和机器代码的对应示例：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411131009587.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="MIPS 汇编代码 - 示例"></p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411131011559.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="MIPS 机器代码 - 示例"></p>
 <h3 id="5-单周期处理器">5 单周期处理器</h3>
-<div class="note note-light">
-            <p>注：处理器的设计方法分为「硬连线设计」和「微程序设计」两种。其中硬连线的设计方法就是根据指令直接设计硬件来支持执行，而微程序的设计方法就是将指令的执行构成抽象为程序设计来支持执行。前者的执行速度更快但是不易维护，适用于精简指令集架构 RISC 的设计，后者的执行速度较慢但是可维护性和可扩展性更好，适合复杂指令集架构 CISC 的设计。下面要介绍的「单周期处理器」和「流水线处理器」都是采用硬连线的设计思路。</p>
+<div class="note note-warning">
+            <p>注：处理器的设计方法分为「硬连线设计」和「微程序设计」两种。其中硬连线的设计方法就是根据指令直接设计硬件来支持执行，而微程序的设计方法就是将指令的执行构成抽象为程序设计来支持执行。前者的执行速度更快但是不易维护，适用于精简指令集架构 RISC 的设计，后者的执行速度较慢但是可维护性和可扩展性更好，适合复杂指令集架构 CISC 的设计。下面要介绍的「单周期处理器」和「流水线处理器」都是采用硬连线的设计思路。</p><p>注：由于一个 ISA 涉及几十上百条指令，因此我们仅仅设计支持最基本的指令的 CPU 部件。仍然采用 chapter3.2 中的 11 条 MIPS 指令。</p><p>考点：给定一条指令，能够知道哪些控制器中会产生哪些控制信号，以及此时指令中的数据在数据通路中是如何流通的。</p>
           </div>
-<p>本章我们学习「<strong>单周期处理器</strong>」的设计。所谓单周期处理器，就是一个周期仅仅执行一条指令。</p>
-<p>注：由于一个 ISA 涉及几十上百条指令，因此我们仅仅设计支持最基本的指令的 CPU 部件。仍然采用 chapter3.2 中的 11 条 MIPS 指令。如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs assembly">// 5 条 R-型指令：<br>add    rd, rs, rt  <br>sub    rd, rs, rt  <br>subu   rd, rs, rt  <br>slt    rd, rs, rt  <br>sltu   rd, rs, rt  <br><br>// 5 条 I-型指令：<br>ori    rt, rs, imm16  <br>addiu  rt, rs, imm16  <br>lw     rt, rs, imm16  <br>sw     rt, rs, imm16  <br>beq    rs, rt, imm16  <br><br>// 1 条 J-型指令：<br>j      target<br></code></pre></td></tr></tbody></table></figure>
+<p>本章我们学习「<strong>单周期处理器</strong>」的设计。所谓单周期处理器，就是一个周期仅仅执行一条指令。11 条指令如下，具体的指令逻辑见 chapter3.1 中的图解：<a href="https://blog.dwj601.cn/GPA/5th-term/ComputerOrganization/#3-1-%E6%B6%89%E5%8F%8A%E8%BF%90%E7%AE%97%E7%9A%84%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4">https://blog.dwj601.cn/GPA/5th-term/ComputerOrganization/#3-1-涉及运算的机器指令</a>：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs assembly">// 5 条 R-型指令：<br>add    rd, rs, rt       // 对应 ALUctr 中的 add 操作<br>sub    rd, rs, rt       // 对应 ALUctr 中的 sub 操作<br>subu   rd, rs, rt       // 对应 ALUctr 中的 subu 操作<br>slt    rd, rs, rt       // 对应 ALUctr 中的 slt 操作<br>sltu   rd, rs, rt       // 对应 ALUctr 中的 sltu 操作<br><br>// 5 条 I-型指令：<br>ori    rt, rs, imm16    // 对应 ALUctr 中的 or 操作<br>addiu  rt, rs, imm16    // 对应 ALUctr 中的 addu 操作<br>lw     rt, rs, imm16    // 对应 ALUctr 中的 addu 操作<br>sw     rt, rs, imm16    // 对应 ALUctr 中的 addu 操作<br>beq    rs, rt, imm16    // 对应 ALUctr 中的 subu 和 addu 操作<br><br>// 1 条 J-型指令：<br>j      target<br></code></pre></td></tr></tbody></table></figure>
 <p>单周期处理器的设计思路可以从指令的执行过程来理解。我们知道：一个 CPU 能够不断的读取内存中的指令，并且可以解析这些指令生成准确的控制信号，基于这些控制信号配合合理的线路，在通电后就可以计算出正确的结果。（显然处理器的时钟周期需要设定为耗时最长的指令执行时间）</p>
 <p>上述数据流通的线路被称为「<strong>数据通路</strong>」；生成控制信号的组件叫做「<strong>控制器</strong>」。下图给出了完整的单周期处理器的指令执行所需的数据通路和控制器部件：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411270931225.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="完整的控制器与数据通路部件"></p>
-<div class="note note-warning">
-            <p>考点：给定一条指令，能够知道哪些控制器中会产生哪些控制信号，以及此时指令中的数据在数据通路中是如何流通的。</p>
-          </div>
 <h3 id="6-流水线处理器">6 流水线处理器</h3>
 <p>本章我们学习「<strong>流水线处理器</strong>」的设计。与上述「单周期处理器」类似，学习 11 条 MIPS 指令的数据通路和控制器的设计方法。</p>
 <p>所谓流水线，其实就是并行执行指令。首先我们需要将指令统一划分为相同的字段，例如（取指、译码、执行、访存、写回）五个字段。接下来就可以并行执行指令了，当然这里的并行并不是很多指令一起执行，这样显然就不能正确运行程序逻辑了，所谓并行指的是指令仍然顺序执行，只不过可以分字段并行，例如：</p>
@@ -716,7 +707,7 @@
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/561501585">深入内存/主存：解剖 DRAM 存储器</a></p>
 <h4 id="7-3-外存">7.3 外存 *</h4>
 <p>不做要求，略。</p>
-<h4 id="7-4-虚存-⭐">7.4 虚存 ⭐</h4>
+<h4 id="7-4-虚存">7.4 虚存</h4>
 <p>本目我们介绍虚存技术，分别从「虚存的诞生背景」、「虚存的工作逻辑」和「虚存的实现策略」三个方面进行讲解。</p>
 <h5 id="7-4-1-为什么会有虚存">7.4.1 为什么会有虚存</h5>
 <p>在「内存的空间大小不一且远小于现代程序的空间需求」以及「现代 OS 都支持并发程序」的背景下，虚拟存储空间技术应运而生。需要注意的是，虚拟存储空间并不对应计算机中的实际物理器件，而是一种 <strong>设计理念</strong>。通过虚拟化技术，1）不仅仅提升了程序的可使用空间大小，2）虚存中的虚拟地址也可以让开发者不用关心程序在内存中运行时对应的物理地址，只需要关心每一个程序对应的运行逻辑，3）更进一步的，虚拟化技术也可以保护进程的数据安全，确保并发执行程序时不会出现访问异常地址等错误。</p>
@@ -838,7 +829,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年11月29日</div>
+          <div>2024年12月3日</div>
         </div>
       
       

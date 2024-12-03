@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409121508150.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410311351161.png">
 <meta property="article:published_time" content="2024-08-27T11:56:39.488Z">
-<meta property="article:modified_time" content="2024-11-25T12:27:31.870Z">
+<meta property="article:modified_time" content="2024-12-03T01:37:33.225Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -272,7 +272,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          2k 字
         
       </span>
     
@@ -283,7 +283,7 @@
         
         
         
-          14 分钟
+          13 分钟
         
       </span>
     
@@ -347,7 +347,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年11月25日 晚上
+                    本文最后更新于 2024年12月3日 上午
                   
                 
               </p>
@@ -421,11 +421,11 @@
 </ul>
 <p>为什么要学这门课？</p>
 <blockquote>
-<p>还记得 NJU 的 jyy 老师在上 OS 时说过的一句话，“我们现在学习的微积分是 300 年前的人类智慧结晶，何不再学学 50 年前的人类智慧结晶呢？”印象深刻。当一切都可以用层层嵌套的简单函数模拟时，人类社会必将发生翻天覆地的变化！</p>
+<p>还记得 NJU 的 jyy 老师在上 OS 课程时说过的一句话，“我们现在学习的微积分是 300 年前的人类智慧结晶，何不再学学 50 年前的人类智慧结晶？”印象深刻。当一切都可以用层层嵌套的简单函数模拟时，人类社会必将发生翻天覆地的变化！</p>
 </blockquote>
 <p>会收获什么？</p>
 <blockquote>
-<p>如何学习特征？如何优化调参？为什么要这样做？背后的原理是什么？</p>
+<p>如何搭建一个网络？如何优化网络结构？背后的原理是什么？</p>
 </blockquote>
 <h2 id="概述">概述</h2>
 <p><strong>表示学习是什么</strong>？与传统的特征工程目的一致，为了得到数据中的更好的特征。不同的是，特征工程中的特征选择、特征映射等策略都是可控的方式，而表示学习就是利用深度学习从数据中学习高层的有效特征。</p>
@@ -433,16 +433,8 @@
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409121508150.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="深度学习的数据处理流程"></p>
 <p><strong>为什么会有深度学习</strong>？最简单的一点就是，很多特征我们根本没法定义一种表示规则来表示特征，比如说对于图像，怎么定义复杂的图像的特征呢？比如说对于音频，又怎么定义复杂的音频的特征呢？没办法，我们直接学特征！</p>
 <p><strong>神经网络是什么</strong>？就是万千模型中的一种，仅此而已。</p>
-<p><strong>为什么用神经网络进行深度学习</strong>？有了上面对深度学习定义的理解，可以发现其中最具有挑战性的特点就是，模型怎么知道什么才是好特征？什么是不好的特征？神经网络可以很好的解决这个问题。通过由浅到深层层神经元的特征提取，越深的神经元就可以学习更高语义的特征。说的高大上一点就是，神经网络可以很好的解决深度学习中的「贡献度分配」问题。</p>
-<p><strong>机器学习流程</strong>。数据 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 模型 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 学习准则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 优化算法。</p>
-<p><strong>线性模型</strong>。学习任务是分类、回归。学习准则有：</p>
-<ul>
-<li>经验风险最小化：通过 <strong>最小化训练集上的损失函数</strong> 来学习模型参数。例如：线性回归中的最小二乘损失。</li>
-<li>结构风险最小化：引入 <strong>正则化</strong> 来控制模型的复杂度，避免过拟合。</li>
-<li>最大似然估计：通过 <strong>最大化模型在给定数据上的似然函数</strong> 来估计模型参数。例如二分类 logistic 和多分类 softmax 中的交叉熵损失。</li>
-<li>最大后验估计：结合了似然函数和 <strong>先验</strong> 分布，在贝叶斯框架下估计模型参数。</li>
-</ul>
-<p><strong>优化算法</strong>。最小二乘法、梯度下降法、拟牛顿法。</p>
+<p><strong>为什么用神经网络进行深度学习</strong>？有了上面对深度学习定义的理解，可以发现其中最具有挑战性的特点就是，模型怎么知道什么才是好特征？什么是不好的特征？神经网络可以很好的解决这个问题。通过由浅到深层层神经元的特征提取，深层的神经元就可以学习更高语义的特征，并且通过这种方式也可以实现「<strong>端到端</strong>」的学习方式，而不用像机器学习的方法那样，先选特征再学习。并且神经网络模型也可以很好的解决深度学习中特征的「<strong>贡献度分配</strong>」问题。</p>
+<p>在机器学习中，我们学习到了诸如线性模型、决策树模型、贝叶斯模型等模型，下面我们将正式开始深度学习中神经网络模型的学习。</p>
 <h2 id="基础网络模型">基础网络模型</h2>
 <h3 id="1-前馈神经网络">1 前馈神经网络</h3>
 <p>前馈神经网络 (Feedforward Neural Network) 就是网络模型中的全连接层。通过向前传递数据，向后更新参数，实现学习和拟合的功能。</p>
@@ -571,7 +563,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年11月25日</div>
+          <div>2024年12月3日</div>
         </div>
       
       

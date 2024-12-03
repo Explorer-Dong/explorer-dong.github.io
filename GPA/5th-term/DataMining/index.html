@@ -26,6 +26,7 @@
 <meta property="og:site_name" content="Dwj の Blog">
 <meta property="og:description" content="数据挖掘 前言 学科地位：    主讲教师 学分配额 学科类别     郑智超 3+1 专业课    成绩组成：    理论课  实验课      考勤 5% 考勤 10%   作业 (书面) 20% 作业 (编程) 30%   期末 (闭卷) 75% 大作业 60%    教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN 号     数据挖掘 《数据挖掘：原理与应用》 1 丁兆">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412031120688.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410210822548.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410210925596.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411110820401.png">
@@ -34,11 +35,11 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411112028666.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411112028168.png">
 <meta property="article:published_time" content="2024-11-27T15:22:21.127Z">
-<meta property="article:modified_time" content="2024-11-27T15:22:21.127Z">
+<meta property="article:modified_time" content="2024-12-03T03:30:03.986Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410210822548.png">
+<meta name="twitter:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412031120688.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -277,7 +278,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.3k 字
+          5.5k 字
         
       </span>
     
@@ -288,7 +289,7 @@
         
         
         
-          27 分钟
+          35 分钟
         
       </span>
     
@@ -348,6 +349,14 @@
         <div id="board">
           <article class="post-content mx-auto">
             <h1 id="seo-header">DataMining</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2024年12月3日 中午
+                  
+                
+              </p>
             
             
               <div class="markdown-body">
@@ -427,46 +436,90 @@
 </table>
 <p>为什么要学这门课？</p>
 <blockquote>
-<p>数据量在进入信息化时代后指数级增长，显然这些数据一定具有某种价值。之前看到过这样的说法 “你能想到和做到的，前人都已经想到和做到了”。虽然这样的说法不具有绝对性，但是个人认为对于大多数人都是适用的。也就是说，人类的行为甚至是万物的变迁都是符合统计学规律的，而这些规律都藏在浩瀚的数据之中，因此个人认为这门课对于研究统计学规律会有一些入门的帮助。</p>
+<p>数据量在进入信息化时代后指数级增长，显然这些数据一定具有某种价值。之前看到过这样的说法 “你能想到和做到的，前人都已经想到和做到了”。虽然这样的说法不具有绝对性，但是个人认为对于大多数人都是适用的。也就是说，人类的行为甚至是万物的变迁都是符合统计学规律的，而这些规律都藏在浩瀚的数据之中。</p>
+<p>至于这门课安排在此的意义，个人认为是对大二时学习机器学习的一个补充。更加详细的介绍了无监督学习的各个算法。</p>
 </blockquote>
 <p>会收获什么？</p>
 <blockquote>
 <p>数据预处理的基本策略和一些无监督学习算法。</p>
 </blockquote>
 <h2 id="1-绪论">1 绪论</h2>
-<p><strong>科学发展范式</strong>。实验 (经验) 科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 理论科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 计算科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 数据科学。</p>
-<p><strong>属性分类</strong>。定性、定量。其中定性属性可以分为三类（二元属性、标称属性、序数属性）；定量属性即数值属性，可以用合适的 <strong>统计量</strong> 进行描述。</p>
-<p><strong>统计量</strong>。分中心趋势度量和离散度度：</p>
+<p><strong>科学发展范式</strong></p>
+<p>实验（经验）科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 理论科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 计算科学 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 数据科学。</p>
+<p><strong>属性分类</strong></p>
+<ul>
+<li>定性。二元属性、标称属性、序数属性；</li>
+<li>定量。即数值属性，可以用合适的 <strong>统计量</strong> 进行描述。</li>
+</ul>
+<p><strong>统计量</strong></p>
 <ul>
 <li>中心趋势度量。用来描述数据集中心位置的统计量，它反映了数据的平均水平或典型值。例如：
 <ol>
-<li>算术平均数（受计算数据的影响大）</li>
-<li>调和平均数（特定场景）</li>
-<li>中位数（适用于序数申诉信，表示位置信息，不受极差影响）</li>
-<li>众数（不受极差影响）</li>
+<li>算术平均数（受计算数据的影响大）；</li>
+<li>调和平均数（特定场景）；</li>
+<li>中位数（适用于序数申诉信，表示位置信息，不受极差影响）；</li>
+<li>众数（不受极差影响）。</li>
 </ol>
 </li>
 <li>离散度度量。用来描述数据分布的广泛程度，即数据值偏离其中心趋势的程度。例如：
 <ol>
-<li>极差（适用于数据极端值较少且分布不复杂的场景）</li>
-<li>标准差（解释性比方差更好，反应数据与均值之间的关系，对极端值敏感）</li>
-<li>四分位数间距（反应数据内部的离散程度，容易忽略极端数据）</li>
+<li>极差（适用于数据极端值较少且分布不复杂的场景）；</li>
+<li>标准差（解释性比方差更好，反应数据与均值之间的关系，对极端值敏感）；</li>
+<li>四分位数间距（反应数据内部的离散程度，容易忽略极端数据）。</li>
 </ol>
 </li>
 </ul>
-<p><strong>可视化策略</strong>。按照数据类型有以下三种策略：</p>
+<p><strong>可视化策略</strong></p>
 <ul>
-<li>箱型图、五数概括、直方图。有助于可视化单个属性的分布情况</li>
-<li>饼图。有助于表示单个属性的数据分布占比情况。</li>
-<li>散点图。有助于可视化两个属性的相关关系。</li>
+<li>箱型图、五数概括、直方图。有助于可视化 <strong>单个属性</strong> 的数据分布；</li>
+<li>饼图。有助于可视化 <strong>单个属性</strong> 的数据占比；</li>
+<li>散点图。有助于可视化 <strong>两个属性</strong> 的相关关系。</li>
 </ul>
-<p><strong>邻近性度量</strong>。当我们在对「两个数据对象」进行邻近性度量计算时，是将所有同一个类别的属性联合起来计算的，例如当我们在计算二院属性的相异性或者相似性时，是将所有的二元属性联合起来一起计算的。下面讲一下不同属性类别的邻近性度量方法：</p>
+<p><strong>邻近性度量</strong></p>
+<p>所谓邻近性度量，可以简单的将其理解为计算任意两个数据对象之间的距离。由于数据对象的属性有很多种类，不同种类的邻近性度量方法不同，因此当我们在对「两个数据对象」进行邻近性度量时，是「根据属性类别分组计算」的。下面讲一下不同属性类别的邻近性度量方法：</p>
 <ul>
-<li>标称属性。我们在实际计算两个对象的标称属性的相似或相异性时，一般为了便于计算，需要进行编码。然后再比较两个数据对象的所有标称属性中相同或相异的编码个数占总标称属性数量的大小。</li>
-<li>二元属性。与标称属性类似，相同性的计算就是计算 0,0 和 1,1 的二元属性取值数量；相异性计算是，如果对称属性，则为 1,0 和 0,1 的数量，如果是非对称属性，则为 1,0 或 0,1 的数量。</li>
-<li>数值属性。闵可夫斯基距离（h = 1 为曼哈顿距离，h = 2 为欧氏距离，h = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span> 为切比雪夫距离）、余弦距离（偏向于语言上描述两个对象的相似性，并不具备三角不等式关系）。</li>
-<li>序数属性。使用排名法对属性的每一个可能的取值进行编码，然后归一化到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 范围内，最后就可以使用上面的数值属性的方法进行两个数据对象的邻近性度量。</li>
-<li>混合属性。如果出现了不止一种上述类别的属性，可以采用加权平均的方式进行邻近性度量。</li>
+<li>
+<p>标称属性。我们在实际计算两个数据对象标称属性的相似性或相异性时，一般为了便于计算需要对其进行编码，然后再比较两个数据对象的所有标称属性中 <strong>相同或相异的编码个数占总标称属性的数量</strong>。常见的标称属性有：籍贯、学历等等；</p>
+</li>
+<li>
+<p>二元属性。与标称属性类似同样需要进行编码，但会取决于二元属性的对称性。对于两个数据对象 x_i 和 x_j，在二元属性上的取值情况为：都取 1 的数量为 m，都取 0 的数量为 q，取 (1,0) 的数量为 n，取 (0,1) 的数量为 p。如下图所示：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412031120688.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="两个数据对象的二元属性取值情况"></p>
+<p>则有：</p>
+<ul>
+<li>
+<p>对称二元属性。相异性为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mfrac><mrow><mi>p</mi><mo>+</mo><mi>n</mi></mrow><mrow><mi>m</mi><mo>+</mo><mi>n</mi><mo>+</mo><mi>p</mi><mo>+</mo><mi>q</mi></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle \frac{p+n}{m+n+p+q}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.1408em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，相似性就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mtext>相异性</mtext></mrow><annotation encoding="application/x-tex">1-\text{相异性}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">相异性</span></span></span></span></span>。常见的对称二元属性有：朋友、配偶；</p>
+</li>
+<li>
+<p>非对称二元属性。相异性为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mfrac><mrow><mi>p</mi><mo>+</mo><mi>n</mi></mrow><mrow><mi>m</mi><mo>+</mo><mi>n</mi><mo>+</mo><mi>p</mi></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle \frac{p+n}{m+n+p}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.1408em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">p</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，相似性就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mtext>相异性</mtext></mrow><annotation encoding="application/x-tex">1-\text{相异性}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">相异性</span></span></span></span></span>。常见的非对称二元属性有：上下级、父母与子女、教师与学生；</p>
+</li>
+</ul>
+</li>
+<li>
+<p>数值属性。对于两个数值型的数据对象 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold-italic">x</mi></mrow><annotation encoding="application/x-tex">\boldsymbol x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4444em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold-italic">y</mi></mrow><annotation encoding="application/x-tex">\boldsymbol y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span></span></span></span>，定义了一下两种邻近性度量指标：</p>
+<ul>
+<li>
+<p>闵可夫斯基距离。取值范围为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mo>+</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,+\infty]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">+</span><span class="mord">∞</span><span class="mclose">]</span></span></span></span>。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 为曼哈顿距离，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">h = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> 为欧氏距离，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">h = \infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span> 为切比雪夫距离。如下式：</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mtext>闵可夫斯基距离：</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>d</mi><mo stretchy="false">(</mo><mi mathvariant="bold-italic">x</mi><mo separator="true">,</mo><mi mathvariant="bold-italic">y</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∥</mi><mi mathvariant="bold-italic">x</mi><mo>−</mo><mi mathvariant="bold-italic">y</mi><msub><mi mathvariant="normal">∥</mi><mi>h</mi></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mtext>曼哈顿距离：</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>d</mi><mo stretchy="false">(</mo><mi mathvariant="bold-italic">x</mi><mo separator="true">,</mo><mi mathvariant="bold-italic">y</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∥</mi><mi mathvariant="bold-italic">x</mi><mo>−</mo><mi mathvariant="bold-italic">y</mi><msub><mi mathvariant="normal">∥</mi><mn>1</mn></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mtext>欧几里得距离：</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>d</mi><mo stretchy="false">(</mo><mi mathvariant="bold-italic">x</mi><mo separator="true">,</mo><mi mathvariant="bold-italic">y</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∥</mi><mi mathvariant="bold-italic">x</mi><mo>−</mo><mi mathvariant="bold-italic">y</mi><msub><mi mathvariant="normal">∥</mi><mn>2</mn></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mtext>切比雪夫距离：</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>d</mi><mo stretchy="false">(</mo><mi mathvariant="bold-italic">x</mi><mo separator="true">,</mo><mi mathvariant="bold-italic">y</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∥</mi><mi mathvariant="bold-italic">x</mi><mo>−</mo><mi mathvariant="bold-italic">y</mi><msub><mi mathvariant="normal">∥</mi><mi mathvariant="normal">∞</mi></msub><mo>=</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi mathvariant="bold-italic">x</mi><mo>−</mo><mi mathvariant="bold-italic">y</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\text{闵可夫斯基距离：}&amp; d(\boldsymbol x,\boldsymbol y) = \| \boldsymbol x - \boldsymbol y \|_h \\
+\text{曼哈顿距离：}&amp; d(\boldsymbol x,\boldsymbol y) = \| \boldsymbol x - \boldsymbol y \|_1 \\
+\text{欧几里得距离：}&amp; d(\boldsymbol x,\boldsymbol y) = \| \boldsymbol x - \boldsymbol y \|_2 \\
+\text{切比雪夫距离：}&amp; d(\boldsymbol x,\boldsymbol y) = \| \boldsymbol x - \boldsymbol y \|_\infty = \max(\boldsymbol x - \boldsymbol y)
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:6em;vertical-align:-2.75em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.25em;"><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">闵可夫斯基距离：</span></span></span></span><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">曼哈顿距离：</span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">欧几里得距离：</span></span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">切比雪夫距离：</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.75em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.25em;"><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">∥</span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">h</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">∥</span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">∥</span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">∥</span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">∞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.75em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+<p>余弦距离。取值范围为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 2]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mclose">]</span></span></span></span>。就是两个数据对象的余弦值的相反数加 1 (这很巧妙的利用了余弦值进行了相似性度量并且还确保了计算结果的非负性)。这个度量方法偏向于语言上描述两个对象的差异性，并不适合进行度量测量 (metric measure)，因为其不具备三角不等式关系。如下式：</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mo stretchy="false">(</mo><mi mathvariant="bold-italic">x</mi><mo separator="true">,</mo><mi mathvariant="bold-italic">y</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mi>cos</mi><mo>⁡</mo><mo>&lt;</mo><mi mathvariant="bold-italic">x</mi><mo separator="true">,</mo><mi mathvariant="bold-italic">y</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">d(\boldsymbol x,\boldsymbol y) = 1 - \cos &lt; \boldsymbol x,\boldsymbol y&gt;
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span></span></span></span></span></p>
+</li>
+</ul>
+</li>
+<li>
+<p>序数属性。使用排名法对属性的每一个可能的取值进行编码，然后归一化到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 范围内，最后就可以使用上面的数值属性的方法进行两个数据对象的邻近性度量。</p>
+</li>
+<li>
+<p>混合属性。如果出现了不止一种上述类别的属性，可以采用 <strong>加权平均</strong> 的方式进行邻近性度量。</p>
+</li>
 </ul>
 <h2 id="2-数据预处理">2 数据预处理</h2>
 <p>数据决定上限，模型和算法只是尽可能逼近这个上限，因此数据的质量是核心所在。数据的质量可以被描述为这几个方面：准确性、完整性、一致性、合时性、可信度、解释性。</p>
@@ -502,7 +555,7 @@
 <h3 id="2-3-数据规约">2.3 数据规约</h3>
 <p>所谓数据规约就是降低数据集的规模。大约有三种策略分别为：降维、降数据、数据压缩。其中：</p>
 <ul>
-<li>降维可以采用对应的机器学习策略。参考之前的笔记 <a href="https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#%E7%AC%AC10%E7%AB%A0-%E9%99%8D%E7%BB%B4%E4%B8%8E%E5%BA%A6%E9%87%8F%E5%AD%A6%E4%B9%A0">https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#第10章-降维与度量学习</a></li>
+<li>降维可以采用对应的机器学习策略。参考之前的笔记 <a href="https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#%E7%89%B9%E5%BE%81%E6%98%A0%E5%B0%84">https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#特征映射</a></li>
 <li>降数据可以采用简单随机抽样或者分层抽样。</li>
 <li>数据压缩就是从编码角度进行数据编码和数据压缩。</li>
 </ul>
@@ -583,9 +636,46 @@ M1001 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlis
 <p>当待分析的内容不是项集时，例如连续数值属性时，有必要进行连续数值离散化。</p>
 <p>更进一步的，如果我们希望分析项集的先后时序关系，可以将频繁项集拓展为频繁序列，例如频繁时序序列分析。</p>
 <h2 id="4-聚类问题">4 聚类问题</h2>
-<p>本章再学一种无监督学习方法。不重复造轮子，详见《机器学习》课程的聚类笔记：<a href="https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#9-%E8%81%9A%E7%B1%BB">https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#9-聚类</a>。</p>
-<h2 id="分类问题">分类问题</h2>
-<h2 id="异常检测">异常检测</h2>
+<p>本章再学一种无监督学习方法。不重复造轮子，详见《机器学习》课程的聚类笔记：<a href="https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#%E8%81%9A%E7%B1%BB">https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#聚类</a>。</p>
+<h2 id="5-异常检测">5 异常检测</h2>
+<p>异常检测也可以称为离群点检测，但是这里的离群点检测与之前使用箱型图进行的异常检测并非一回事。这里的异常检测需要将「离群点」和「噪声」区分开来，而在非异常检测的场景下并不会将这两者区分。下面将会从「异常检测的概念」和「异常检测的算法」两个部分展开。</p>
+<h3 id="5-1-异常检测概念">5.1 异常检测概念</h3>
+<p>由于异常检测时，异常数据的特征没有统一标准，因此很难使用二分类器将正常数据和异常数据进行区分。并且由于异常检测任务很难做到所有的数据对象都有标签（例如实时监测），因此常常使用无监督的方法进行异常检测。</p>
+<h3 id="5-2-异常检测算法">5.2 异常检测算法</h3>
+<h4 id="孤立森林-Isolation-forest">孤立森林 (Isolation forest)</h4>
+<p>这是一个 <strong>无监督</strong> 集成树模型。对于森林中的每一棵树，初始时含有所有的数据对象，每次对树的所有结点进行分裂，分裂规则为选定某一个属性并计算出阈值，然后基于这个阈值将结点中的数据对象划分为两部分，直到一个结点只含有一个数据对象或者达到最大深度时停止分裂。孤立森林中树之间的区别本质上就是划分准则选择的属性顺序不同。这与决策树算法比较类似。</p>
+<p>森林有了，如何确定异常点呢？我们定义第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 个样本 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">x_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的异常分数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span> 为下式：</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo separator="true">,</mo><mi>N</mi><mo stretchy="false">)</mo><mo>=</mo><mi>exp</mi><mo>⁡</mo><mrow><mo fence="true">{</mo><mo>−</mo><mfrac><mrow><mi>E</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><mrow><mi>c</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow></mfrac><mo fence="true">}</mo></mrow></mrow><annotation encoding="application/x-tex">s(x_i,N) = \exp\left\{-\frac{E(h(x_i))}{c(N)}\right\}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="mop">exp</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">{</span></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">))</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">}</span></span></span></span></span></span></span></p>
+<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">c(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">c</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 表示数据集大小为 N 时每一个结点的平均路径长度，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E(h(x_i))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">))</span></span></span></span> 表示样本点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">x_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 在所有树中的平均路径长度。异常分数与接近 1 就表明当前样本点越有可能是异常点，越接近 0 就越不可能是异常点，如果数据集中样本点的异常分数都接近 0.5 就说明当前数据集没有异常点。</p>
+<ul>
+<li>
+<p>优点：计算效率更高；</p>
+</li>
+<li>
+<p>缺点：不适用于高维稀疏的样本分布。</p>
+</li>
+</ul>
+<h4 id="自编码器-Auto-Encoder">自编码器 (Auto Encoder)</h4>
+<p>这是一个 <strong>无监督</strong> 神经网络模型。</p>
+<ul>
+<li>优点：泛化能力更强；</li>
+<li>缺点：由于使用了神经网络模型，因此当数据量较小时容易发生过拟合；当然了如何设计一个良好的网络模型也具有挑战性。</li>
+</ul>
+<h3 id="拓展">拓展</h3>
+<p>基于 Python 的第三方库：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/yzhao062/pyod">PyOD</a></li>
+</ul>
+<p>上述库作者写了一篇论文，测试了 30 种异常检测算法在 57 种基准数据集上的检测性能：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2206.09426">ADBench: Anomaly Detection Benchmark</a></li>
+</ul>
+<p>中文技术博客：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_20144897/article/details/125477691">异常检测算法库PyOD</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_59596937/article/details/128877355">一文详解8种异常检测算法（附Python代码）</a></li>
+</ul>
 
                 
               </div>
@@ -647,6 +737,11 @@ M1001 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlis
           <div>2024年11月27日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年12月3日</div>
+        </div>
       
       
         <div class="license-meta-item">

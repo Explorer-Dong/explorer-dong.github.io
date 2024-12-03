@@ -109,17 +109,17 @@ category_bar: true
 
 正则化范数有以下形式：
 
-1. 一般式：
+1. 一般式（即 p 范数的 k 次方）：
     $$
     ||\boldsymbol{x}||_p^k = \left ( \left ( \sum_{i = 1}^{N}|x_i|^{p} \right)^{\frac{1}{p}}  \right)^k
     $$
 
-2. L1 正则化：
+2. L1 正则化（即 1 范数）：
     $$
     ||\boldsymbol{x}||_1 = \sum_{i = 1}^N |x_i|
     $$
 
-3. L2 正则化：
+3. L2 正则化（即 1 范数的平方）：
     $$
     \begin{aligned}
     ||\boldsymbol{x}||_2^2 &= \left ( \left ( \sum_{i = 1}^{N}|x_i|^{2} \right)^{\frac{1}{2}}  \right)^2 \\
@@ -128,6 +128,12 @@ category_bar: true
     \end{aligned}
     $$
 
+默认的范数是 2 范数，即：
+$$
+\begin{aligned}
+||\boldsymbol{x}|| &= \sqrt[2]{\textstyle \sum_{i = 1}^{N}|x_i|^{2} }
+\end{aligned}
+$$
 {% endfold %} 
 
 #### 性能度量

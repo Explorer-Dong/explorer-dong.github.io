@@ -259,38 +259,34 @@ MIPS 系统的指令分为三类：
 
 ![MIPS 指令格式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411061010223.png)
 
-针对上述三类指令，给出 MIPS 系统下汇编代码和机器代码的对应示例：
-
-![MIPS 汇编代码 - 示例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411131009587.png)
-
-![MIPS 机器代码 - 示例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411131011559.png)
-
 ### 5 单周期处理器
 
-{% note light %}
+{% note warning %}
 
 注：处理器的设计方法分为「硬连线设计」和「微程序设计」两种。其中硬连线的设计方法就是根据指令直接设计硬件来支持执行，而微程序的设计方法就是将指令的执行构成抽象为程序设计来支持执行。前者的执行速度更快但是不易维护，适用于精简指令集架构 RISC 的设计，后者的执行速度较慢但是可维护性和可扩展性更好，适合复杂指令集架构 CISC 的设计。下面要介绍的「单周期处理器」和「流水线处理器」都是采用硬连线的设计思路。
 
+注：由于一个 ISA 涉及几十上百条指令，因此我们仅仅设计支持最基本的指令的 CPU 部件。仍然采用 chapter3.2 中的 11 条 MIPS 指令。
+
+考点：给定一条指令，能够知道哪些控制器中会产生哪些控制信号，以及此时指令中的数据在数据通路中是如何流通的。
+
 {% endnote %}
 
-本章我们学习「**单周期处理器**」的设计。所谓单周期处理器，就是一个周期仅仅执行一条指令。
-
-注：由于一个 ISA 涉及几十上百条指令，因此我们仅仅设计支持最基本的指令的 CPU 部件。仍然采用 chapter3.2 中的 11 条 MIPS 指令。如下：
+本章我们学习「**单周期处理器**」的设计。所谓单周期处理器，就是一个周期仅仅执行一条指令。11 条指令如下，具体的指令逻辑见 chapter3.1 中的图解：<https://blog.dwj601.cn/GPA/5th-term/ComputerOrganization/#3-1-涉及运算的机器指令>：
 
 ```assembly
 // 5 条 R-型指令：
-add    rd, rs, rt  
-sub    rd, rs, rt  
-subu   rd, rs, rt  
-slt    rd, rs, rt  
-sltu   rd, rs, rt  
+add    rd, rs, rt       // 对应 ALUctr 中的 add 操作
+sub    rd, rs, rt       // 对应 ALUctr 中的 sub 操作
+subu   rd, rs, rt       // 对应 ALUctr 中的 subu 操作
+slt    rd, rs, rt       // 对应 ALUctr 中的 slt 操作
+sltu   rd, rs, rt       // 对应 ALUctr 中的 sltu 操作
 
 // 5 条 I-型指令：
-ori    rt, rs, imm16  
-addiu  rt, rs, imm16  
-lw     rt, rs, imm16  
-sw     rt, rs, imm16  
-beq    rs, rt, imm16  
+ori    rt, rs, imm16    // 对应 ALUctr 中的 or 操作
+addiu  rt, rs, imm16    // 对应 ALUctr 中的 addu 操作
+lw     rt, rs, imm16    // 对应 ALUctr 中的 addu 操作
+sw     rt, rs, imm16    // 对应 ALUctr 中的 addu 操作
+beq    rs, rt, imm16    // 对应 ALUctr 中的 subu 和 addu 操作
 
 // 1 条 J-型指令：
 j      target
@@ -301,12 +297,6 @@ j      target
 上述数据流通的线路被称为「**数据通路**」；生成控制信号的组件叫做「**控制器**」。下图给出了完整的单周期处理器的指令执行所需的数据通路和控制器部件：
 
 ![完整的控制器与数据通路部件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411270931225.png)
-
-{% note warning %}
-
-考点：给定一条指令，能够知道哪些控制器中会产生哪些控制信号，以及此时指令中的数据在数据通路中是如何流通的。
-
-{% endnote %}
 
 ### 6 流水线处理器
 
@@ -511,7 +501,7 @@ CPU 与 内存的数据的通信分为异步和同步两种：
 
 不做要求，略。
 
-#### 7.4 虚存 ⭐
+#### 7.4 虚存
 
 本目我们介绍虚存技术，分别从「虚存的诞生背景」、「虚存的工作逻辑」和「虚存的实现策略」三个方面进行讲解。
 

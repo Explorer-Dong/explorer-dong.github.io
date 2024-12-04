@@ -36,6 +36,10 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291137346.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411061010223.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411270931225.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041128119.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412040949539.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041018200.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041143660.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410160933739.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231108282.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231126000.png">
@@ -49,7 +53,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411121533623.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409180822743.png">
 <meta property="article:published_time" content="2024-08-27T12:14:48.819Z">
-<meta property="article:modified_time" content="2024-12-03T09:38:12.154Z">
+<meta property="article:modified_time" content="2024-12-04T03:44:04.819Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -292,7 +296,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          12k 字
+          13k 字
         
       </span>
     
@@ -303,7 +307,7 @@
         
         
         
-          76 分钟
+          80 分钟
         
       </span>
     
@@ -367,7 +371,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年12月3日 下午
+                    本文最后更新于 2024年12月4日 中午
                   
                 
               </p>
@@ -603,11 +607,44 @@
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411270931225.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="完整的控制器与数据通路部件"></p>
 <h3 id="6-流水线处理器">6 流水线处理器</h3>
 <p>本章我们学习「<strong>流水线处理器</strong>」的设计。与上述「单周期处理器」类似，学习 11 条 MIPS 指令的数据通路和控制器的设计方法。</p>
+<h4 id="流水线处理器的设计">流水线处理器的设计</h4>
 <p>所谓流水线，其实就是并行执行指令。首先我们需要将指令统一划分为相同的字段，例如（取指、译码、执行、访存、写回）五个字段。接下来就可以并行执行指令了，当然这里的并行并不是很多指令一起执行，这样显然就不能正确运行程序逻辑了，所谓并行指的是指令仍然顺序执行，只不过可以分字段并行，例如：</p>
 <ul>
-<li><strong>第一条指令</strong>：会先进入取指阶段，然后依次进入译码、执行、访存、写回。</li>
+<li><strong>第一条指令</strong>：会先进入 <strong>取指 (Ifetch)</strong> 阶段，然后依次进入 <strong>译码 (Reg/Dec)</strong>、<strong>执行 (Exec)</strong>、<strong>访存 (Mem)</strong>、<strong>写回 (Write)</strong> 阶段。</li>
 <li><strong>第二条指令</strong>：在第一条指令进入译码阶段时，第二条指令可以开始进入取指阶段，然后依次进入其他阶段。</li>
 </ul>
+<p>具体的，对于上述 11 条指令，都有取指和译码两个阶段，区别就在于根据译码得到控制信号后的运算逻辑以及是否需要从存储器取数或是否需要将数据写入存储器。其中 Load 指令具有所有的阶段，如下「时空图」所示：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041128119.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="lw 指令的功能段划分"></p>
+<p>但并不是所有的指令都像 Load 指令一样具有所有的段，为了能够让所有的指令能够在统一的段划分下并行执行，需要对其余的指令进行空段扩展，使其均成为五段指令。</p>
+<h4 id="冒险情况解决策略">冒险情况解决策略</h4>
+<p><strong>结构冒险 (hardware resource confilicts)</strong></p>
+<p>现象：同一个部件同时被不同的指令所使用。</p>
+<p>解决：有以下三个约束：</p>
+<ol>
+<li>每一个硬件部件在一个时刻只能被一条指令使用；</li>
+<li>将 IM 和 DM 分离。由于流水线策略的并行机制，取指令 (Ifetch) 和写存储器 (Mem) 操作仍然会因为并行而同时访问存储器，因此我们可以将指令存储器 (Instruction Memory, 简称 IM) 和数据存储器 (Data Memory, 简称 DM) 分离；</li>
+<li>将寄存器的读口和写口分离。同样由于流水线策略的并行机制，会导致指令写寄存器 (Write) 和指令读寄存器 (Reg/Dec) 的情况同时发生，为了解决这个问题，可以将寄存器的读口和写口分离。</li>
+</ol>
+<p>示意图如下所示：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412040949539.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="结构冒险解决策略"></p>
+<p><strong>数据冒险 (data dependencies)</strong></p>
+<p>现象：写后读。</p>
+<p>解决：两种技术：</p>
+<ol>
+<li>转发技术 (Forwading)。现在寄存器的值不仅仅取决于指令指向的寄存器的数据，也有可能是之前的指令运算后的结果。在物理实现上就是前者属于从前面的段寄存器传过来的数据，后者属于从后面的段寄存器传过来的数据；</li>
+<li>寄存器写后立刻读。让寄存器能够在一个周期内将数据从写口传递到读口。</li>
+</ol>
+<p>示意图如下所示：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041018200.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="数据冒险解决策略"></p>
+<p>特殊的。上述示意图中首先执行的是算数运算，这样就可以将 ALU 的运算结果直接传递给后续指令的取数结果。但如果首先执行的是 Load 指令，那么运算结果是在 Dm 之后才能从存储器中读出来，由于「后续指令只能依赖已经更新的数据」，因此这里会出现问题。如下图所示：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041143660.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="Load-use 数据冒险"></p>
+<p>解决方法就是在 Load 指令的后面增加一个时钟周期的阻塞。至于怎么增加，可以从硬件、软件、编译三个角度进行：</p>
+<ol>
+<li>硬件角度</li>
+<li>软件角度</li>
+<li>编译角度</li>
+</ol>
+<p><strong>控制冒险 (changes in program flow)</strong></p>
 <h2 id="存储">存储</h2>
 <h3 id="7-存储器">7 存储器</h3>
 <p>当机器有了记忆，就可以不用人为干预而自动运行，从而真正意义上实现了自动化的流程。本章主要学习计算机中的存储器件、存储策略以及数据交互逻辑。</p>
@@ -830,7 +867,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年12月3日</div>
+          <div>2024年12月4日</div>
         </div>
       
       

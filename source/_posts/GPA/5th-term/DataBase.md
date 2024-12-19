@@ -711,7 +711,25 @@ where
 
 ### 11 数据库恢复技术
 
+本章我们主要学习 ACID 中的 ACD，即原子性（Atomicity）、一致性（Consistency）和持久性（Durability）。
+
+在数据库中，类似于操作系统中的原语操作被称为事务（Transaction）。一般而言，在未显式定义事务的情况下，DBMS 默认每一条 SQL 语句都是一个事务，当然，为了防止并发错误，我们可以显式的定义一组 SQL 语句作为一个事务来避免可能的并发错误。例如对于银行转账的场景，我们可以显式的定义如下伪 SQL：
+
+```sql
+begin transaction
+amount = 转账金额
+balace = 甲的余额
+if (balance - amount) < 0
+    rollback
+else
+    甲的余额 - amount
+    乙的余额 + amount
+commit;
+```
+
+对于一个事故故障，我们会对所有的事务进行重做 (ReDo) 和回滚 (UnDo) 操作。具体的，当事故发生时，对于一个已经 commit 的事务，就需要进行重做操作，对于一个还没有 commit 的事务，就需要进行回滚操作，以此来确保数据库恢复时数据的正确性。
+
 ### 12 并发 *
 
-这一章同样不做考试上的要求。
+本章我们主要学习 ACID 中的 I，即隔离性（Isolation）。不做考试上的要求。
 

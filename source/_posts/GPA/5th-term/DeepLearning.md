@@ -110,7 +110,7 @@ category_bar: true
 - AlexNet [2012]。使用了 ReLU 激活函数，使用 GPU 并行计算，使用了数据增强；
 - VGGNet。
 - Inception 网络 [v3, 2016]。将多个等宽卷积的结果进行堆叠；
-- 残差网络。由于恒等模型 $f(x)=x$ 无法学习到，故将线性模型转化为 $f(x) = x + [f(x) - x]$ 并来学习新的模型 $f(x)-x$。
+- 残差网络。由于恒等模型 $f(x)=x$ 无法学习到，故将线性模型转化为 $f(x) = x + [f(x) - x]$ 并来学习新的模型 $f(x)-x$。可以解决梯度消失的问题；
 - GoogleNet。
 - DenseNet。
 
@@ -134,9 +134,54 @@ category_bar: true
 
 视频讲解一些具体的应用：https://www.youtube.com/watch?v=EEtf4kNsk7Q
 
-### 网络优化与正则化
+### 4 注意力机制与外部记忆
 
-### 记忆与注意力机制
+### 5 网络优化
+
+为了能够让一个网络模型「训练速度更快」和「泛化性能更好」，我们可以采用各种网络优化策略。针对一个神经网络，可以有如下五个角度的网路优化策略。
+
+#### 5.1 更好的优化算法
+
+![更好的优化算法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201527036.png)
+
+#### 5.2 更好的参数初始化方法
+
+基于「范数保持性」的参数初始化方法
+
+#### 5.3 更好的数据预处理方法
+
+逐层归一化。
+
+#### 5.4 更好的网络结构
+
+ReLU 激活函数、残差连接。
+
+#### 5.5 更好的超参数优化方法
+
+超参数：
+
+- 层数
+- 每层神经元个数
+- 激活函数
+- 学习率（以及动态调整算法）
+- 正则化系数
+- mini-batch 大小
+
+超参数优化方法：
+
+- 网格搜索
+- 随机搜索
+- 贝叶斯优化
+- 动态资源分配
+- 神经架构搜索
+
+**mini-batch 与学习率的关系**。对于网络中的超参数，如何进行选择呢？最朴素的方法就是网格搜索。对于随机梯度下降的参数优化算法，批大小与学习率一般成正比，即一批训练数据量越多，学习率越高。这是因为一批的训练数据越多，泛化能力就越高，对应的学习率就没必要太低。
+
+**学习率的动态调整算法**。一般来说就是两个阶段，在初期的阶段，学习率线性增长，在之后的阶段中，学习率逐渐衰减。详情见 Facebook 的这篇论文 [Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour [2018]](https://arxiv.org/pdf/1706.02677)。
+
+下图展示了预热学习率调整的学习效果。图源：[Bag of Tricks for Image Classification with Convolutional Neural Networks [2018]](https://arxiv.org/abs/1812.01187v2)。
+
+![Visualization of learning rate schedules with warm-up.  Top:  cosine and step schedules for batch size 1024. Bottom: Top-1 validation accuracy curve with regard to the two schedules.](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201601516.jpg)
 
 ### 无监督学习
 

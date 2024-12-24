@@ -29,6 +29,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408301623261.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409241450175.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409242052428.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411121040792.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409270845459.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409270937298.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081443847.png">
@@ -50,8 +51,9 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411080911787.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412130825688.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201829367.png">
+<meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412241603205.png">
 <meta property="article:published_time" content="2024-08-27T12:02:23.289Z">
-<meta property="article:modified_time" content="2024-12-20T11:38:19.287Z">
+<meta property="article:modified_time" content="2024-12-24T11:44:23.485Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -294,7 +296,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.8k 字
+          9.4k 字
         
       </span>
     
@@ -305,7 +307,7 @@
         
         
         
-          56 分钟
+          59 分钟
         
       </span>
     
@@ -369,7 +371,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年12月20日 晚上
+                    本文最后更新于 2024年12月24日 晚上
                   
                 
               </p>
@@ -590,8 +592,15 @@ graph RL
 <p>七态模型：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409242052428.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="七态模型 - 状态转换"></p>
 <h4 id="1-3-进程的描述">1.3 进程的描述</h4>
-<p><strong>如何准确描述一个进程？通过进程映象</strong>。我们引入进程映象的概念。所谓进程映象就是某一时刻的进程状态，可以描述为以下 4 个部分：</p>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409270845459.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="进程映象"></p>
+<p><strong>如何准确描述一个进程？通过进程映象</strong>。我们引入进程映象的概念。所谓进程映象就是某一时刻的进程状态，左图相对宏观，右图相对微观：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411121040792.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="进程结构"></th>
+<th style="text-align:center"><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409270845459.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="进程映象"></th>
+</tr>
+</thead>
+</table>
 <h4 id="1-4-进程的组织">1.4 进程的组织</h4>
 <p><strong>操作系统如何跟踪每一个进程？通过进程控制块 (Process Control Block, 简称 PCB)</strong>。每一个进程都会有很多信息，OS 设计者将其统一存储在 PCB 中。每一个进程都有自己的 PCB，只要是跟进程管理相关的数据信息一定都存储于 PCB 中。PCB 中存储的内容主要有以下内容：</p>
 <ul>
@@ -870,8 +879,8 @@ graph RL
 <h3 id="7-文件系统">7 文件系统</h3>
 <h4 id="7-1-文件的存在形式">7.1 文件的存在形式</h4>
 <p>一个文件在系统中是以什么样形式存在的呢？</p>
-<p>在类 Unix 操作系统中，文件由「<strong>索引结点</strong>」和「<strong>文件数据</strong>」两部分组成。具体的，索引结点 inode 用来存储「文件的元数据」和「文件数据所在的物理存储块」，而文件数据就是文件的原始信息。可以简单的理解为如下的结构体：</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 直接索引块数目</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> CNT 12</span><br><br><span class="hljs-comment">// 定义文件系统的块</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">char</span> <span class="hljs-type">block_t</span>[<span class="hljs-number">4096</span>];<br><br><span class="hljs-comment">// 定义文件元数据的结构</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> {<br>    <span class="hljs-type">uint32_t</span> mode;   <span class="hljs-comment">// 文件权限</span><br>    <span class="hljs-type">uint32_t</span> size;   <span class="hljs-comment">// 文件大小</span><br>    <span class="hljs-type">uint32_t</span> uid;    <span class="hljs-comment">// 文件拥有者</span><br>    <span class="hljs-type">uint32_t</span> atime;  <span class="hljs-comment">// 最后访问时间</span><br>    <span class="hljs-type">uint32_t</span> mtime;  <span class="hljs-comment">// 最后修改时间</span><br>} <span class="hljs-type">finfo_t</span>;<br><br><span class="hljs-comment">// 定义索引结点的结构</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">inode</span> {<br>    <span class="hljs-type">finfo_t</span> file_info;         <span class="hljs-comment">// 文件元数据</span><br>    <span class="hljs-type">block_t</span>* direct[CNT];      <span class="hljs-comment">// 直接索引（最多 CNT 个）</span><br>    <span class="hljs-type">block_t</span>* single_indirect;  <span class="hljs-comment">// 一次间接索引</span><br>    <span class="hljs-type">block_t</span>* double_indirect;  <span class="hljs-comment">// 二次间接索引</span><br>    <span class="hljs-type">block_t</span>* triple_indirect;  <span class="hljs-comment">// 三次间接索引</span><br>};<br></code></pre></td></tr></tbody></table></figure>
+<p>在类 Unix 操作系统中，文件由「<strong>索引结点</strong>」和「<strong>文件数据</strong>」两部分组成。具体的，索引结点 inode 用来存储「文件的元数据」和「文件的数据所在物理存储块指针」，而文件数据就是文件的原始信息。可以简单的理解为如下的结构体：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 直接索引块数目</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> CNT 12</span><br><br><span class="hljs-comment">// 定义文件系统的块</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">char</span> <span class="hljs-type">block_t</span>[<span class="hljs-number">4096</span>];<br><br><span class="hljs-comment">// 定义文件元数据的结构</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> {<br>    <span class="hljs-type">uint32_t</span> mode;   <span class="hljs-comment">// 文件权限</span><br>    <span class="hljs-type">uint32_t</span> size;   <span class="hljs-comment">// 文件大小</span><br>    <span class="hljs-type">uint32_t</span> uid;    <span class="hljs-comment">// 文件拥有者</span><br>    <span class="hljs-type">uint32_t</span> atime;  <span class="hljs-comment">// 最后访问时间</span><br>    <span class="hljs-type">uint32_t</span> mtime;  <span class="hljs-comment">// 最后修改时间</span><br>} <span class="hljs-type">finfo_t</span>;<br><br><span class="hljs-comment">// 定义索引结点的结构</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">inode</span> {<br>    <span class="hljs-type">finfo_t</span> file_info;         <span class="hljs-comment">// 文件元数据</span><br>    <span class="hljs-type">block_t</span>* direct[CNT];      <span class="hljs-comment">// 直接索引（最多 CNT 个）</span><br>    <span class="hljs-type">block_t</span>* single_indirect;  <span class="hljs-comment">// 一次间接索引</span><br>    <span class="hljs-type">block_t</span>* double_indirect;  <span class="hljs-comment">// 二次间接索引</span><br>    <span class="hljs-type">block_t</span>* triple_indirect;  <span class="hljs-comment">// 三次间接索引</span><br>};<br></code></pre></td></tr></tbody></table></figure>
 <p>其中的索引都是指向具体物理存储块的指针：</p>
 <ul>
 <li>对于直接索引。其指向的物理存储块存储的就是文件数据；</li>
@@ -879,9 +888,30 @@ graph RL
 </ul>
 <p>因此文件系统管理文件的方式，就可以通过管理每一个文件的 inode 来实现。更一般的来说，inode 就是文件控制块 (File Control Block, FCB) 的具体实现。可以发现操作系统中的文件管理系统对于文件的管理并非针对一整个文件，而是将每一个文件抽象为一个 FCB，并基于此进行管理。读到这里其实就和前面的进程管理串上了，操作系统中的进程管理也是将进程抽象为 PCB，并基于此进行管理。两者的区别就在于，文件是在外存中，而进程是在内存中，但是管理的方式都是类似的，均采用相关的软件算法来实现。</p>
 <h4 id="7-2-文件的目录组织">7.2 文件的目录组织</h4>
-<p>大量的文件需要我们进行合理的管理，以树形文件目录为例。为了 <strong>便于管理</strong>，设计者将每一个 inode 进行唯一性编号（记作 inode_id），这样用户打开一个文件时，操作系统会根据 inode_id 快速查询到对应的 inode 并基于此 inode 将对应的文件加载到内存。</p>
-<p>写到这里我不禁疑惑：所以和树形目录结构有什么关系吗？是的，从开发者角度来说，树形目录并没有任何作用，他们只需要关心什么 inode_id，别的都不操心。但是从用户角度来说，树形目录的意义就很大了。具体的，对于用户来说，树形目录可以让我们分级分类管理多而杂的文件，并且在不同的树路径下，我们可以取相同名称的文件。与此同时，不同的子树存储的数据可以被划分到不同的硬件存储器中，这就方便了用户从物理意义上将数据进行迁移。下面展示一个可重名的树形文件目录在不同视角下存储的信息：</p>
+<p>大量的文件需要我们进行合理的管理，以树形文件目录为例。为了 <strong>便于管理</strong>，设计者将每一个 inode 进行唯一性编号（记作 inode_id），这样用户打开一个文件其实是发送一个 inode_id 给操作系统，操作系统会根据 inode_id 查询到对应的 inode 并基于此 inode 将对应的文件加载到内存。</p>
+<p>所以为什么要把目录设置成树形结构？从开发者角度来说，树形目录没有任何作用，他们只需要关心什么 inode_id，别的都不操心。但是从用户角度来说，树形目录的意义就很大了。具体的，对于用户来说，树形目录可以让我们分级分类管理多而杂的文件，并且在不同的树路径下，我们可以取相同名称的文件。与此同时，不同的子树存储的数据可以被划分到不同的硬件存储器中，这就方便了用户从物理意义上将数据进行迁移。下面展示一个可重名的树形文件目录在不同视角下存储的信息：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201829367.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="用户角度的目录结构 VS 系统角度的目录结构"></p>
+<p>为了更进一步的理解文件打开时系统都做了些什么，下面基于类 Unix 系统的设计理念详细介绍：</p>
+<ol>
+<li>发送。用户或程序需要向操作系统发送字符串形式的文件路径。例如 <code>'/home/learn/file.txt'</code>；</li>
+<li>解析。操作系统会将上述的字符串进行解析并从根目录开始向下查找。每一层目录其实就是一个目录文件，目录文件存储了其下所有的目录项以及访问权限，只有当前用户具备访问权限的前提下才能继续访问，查找逻辑就是匹配解析出来的字符串；</li>
+<li>递归。重复 2 中的匹配直到异常终止或者匹配到最终的文件名；</li>
+<li>获取 inode 编号。匹配成功后就可以拿到当前目录文件中对应文件的 inode 编号信息；</li>
+<li>打开文件。操作系统根据第 4 步的 inode 编号加载对应的文件数据到内存中供后续操作。至此一个文件就被成功打开并加载到内存中了。</li>
+</ol>
+<h4 id="7-3-文件的共享">7.3 文件的共享</h4>
+<p>下面介绍两种文件链接以达到共享目的的方式：</p>
+<ul>
+<li><strong>硬链接</strong>。所谓硬链接，可以理解为拷贝文件的 inode 而非拷贝文件。</li>
+<li><strong>软链接</strong>。所谓软链接，也可以称为符号链接，可以理解为创建一个新的文件，只不过这个文件存储的是被链接文件的路径。</li>
+</ul>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412241603205.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="示例"></p>
+<p>对于上图的示例：</p>
+<ul>
+<li>创建了一份名为 origin.txt 的原始文件，占用 4502 个字节，其对应的 inode_id 为 1047884；</li>
+<li>使用两次硬链接分别创建了 file_hard.txt 和 file_hard2.txt，可以看到 inode_id 均为 1047884 并且 inode 的计数变成了 3；</li>
+<li>使用符号链接创建了 file_symbol.txt 文件，其 inode_id 发生了变化（递增为 3 可以表明当前系统可能是增量使用 inode_id 的并且此时没有产生额外的文件）。与此同时，其文件内容变成了一个路径指向。</li>
+</ul>
 
                 
               </div>
@@ -946,7 +976,7 @@ graph RL
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年12月20日</div>
+          <div>2024年12月24日</div>
         </div>
       
       

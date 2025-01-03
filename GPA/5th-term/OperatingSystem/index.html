@@ -19,12 +19,12 @@
   <meta name="author" content="Mr_Dwj">
   <meta name="keywords" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
   
-    <meta name="description" content="操作系统 前言 学科地位：    主讲教师 学分配额 学科类别     段博佳 4+1 专业课    成绩组成：    理论课  实验课      平时 30% 小组作业 100%   期中 10%     期末 60%      教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN 号     操作系统原理 《操作系统教程》 6 骆斌 葛季栋 费翔林 高等教育出版社 978-7-0">
+    <meta name="description" content="操作系统 前言 学科地位：    主讲教师 学分配额 学科类别     段博佳 4+1 专业课    成绩组成：    理论课  实验课      平时 30% 小组作业 100%   期中 10%     期末 60%      简答题：4 计算题：6 编程题：2（信号量与 PV 操作） 教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN 号     操作系统原理 《操作系统教程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OperatingSystem">
 <meta property="og:url" content="https://blog.dwj601.cn/GPA/5th-term/OperatingSystem/index.html">
 <meta property="og:site_name" content="Dwj の Blog">
-<meta property="og:description" content="操作系统 前言 学科地位：    主讲教师 学分配额 学科类别     段博佳 4+1 专业课    成绩组成：    理论课  实验课      平时 30% 小组作业 100%   期中 10%     期末 60%      教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN 号     操作系统原理 《操作系统教程》 6 骆斌 葛季栋 费翔林 高等教育出版社 978-7-0">
+<meta property="og:description" content="操作系统 前言 学科地位：    主讲教师 学分配额 学科类别     段博佳 4+1 专业课    成绩组成：    理论课  实验课      平时 30% 小组作业 100%   期中 10%     期末 60%      简答题：4 计算题：6 编程题：2（信号量与 PV 操作） 教材情况：    课程名称 选用教材 版次 作者 出版社 ISBN 号     操作系统原理 《操作系统教程">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408301623261.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409241450175.png">
@@ -53,7 +53,7 @@
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201829367.png">
 <meta property="og:image" content="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412241603205.png">
 <meta property="article:published_time" content="2024-08-27T12:02:23.289Z">
-<meta property="article:modified_time" content="2024-12-24T11:44:23.485Z">
+<meta property="article:modified_time" content="2025-01-03T01:55:07.111Z">
 <meta property="article:author" content="Mr_Dwj">
 <meta property="article:tag" content="人工智能 机器学习 深度学习 算法 数据结构 计算机科学 编程">
 <meta name="twitter:card" content="summary_large_image">
@@ -296,7 +296,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.4k 字
+          9.9k 字
         
       </span>
     
@@ -307,7 +307,7 @@
         
         
         
-          59 分钟
+          63 分钟
         
       </span>
     
@@ -371,7 +371,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年12月24日 晚上
+                    本文最后更新于 2025年1月3日 上午
                   
                 
               </p>
@@ -429,6 +429,9 @@
 </tr>
 </tbody>
 </table>
+<p>简答题：4</p>
+<p>计算题：6</p>
+<p>编程题：2（信号量与 PV 操作）</p>
 <p>教材情况：</p>
 <table>
 <thead>
@@ -789,7 +792,7 @@ graph RL
 <h5 id="代码实现">代码实现</h5>
 <p>为了更好的理解上述 7 种 CPU 调度算法，我们从「逻辑上」进行模拟。不难发现所有的调度逻辑都只有 3 步：(1) 取出就绪队列的队头进程、(2) 维护时钟和进程信息、(3) 更新就绪队列信息。值得注意的是，非抢占式调度算法的 2 和 3 是顺序进行的，而抢占式调度算法的 2 和 3 是同时进行的。具体代码见：<a target="_blank" rel="noopener" href="https://github.com/Explorer-Dong/OS_Simulate/tree/main/Experiment5">https://github.com/Explorer-Dong/OS_Simulate/tree/main/Experiment5</a></p>
 <h3 id="3-互斥与同步">3 互斥与同步</h3>
-<p>本章我们学习计算机史上“最伟大”的发明之一：并发。从五态模型来看的话，就是「运行态 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇌</mo></mrow><annotation encoding="application/x-tex">\rightleftharpoons</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.682em;vertical-align:-0.011em;"></span><span class="mrel">⇌</span></span></span></span> 等待态」之间的转换策略。</p>
+<p>本章我们学习计算机史上“最伟大”的发明之一：并发。从五态模型来看的话，就是「运行态 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇌</mo></mrow><annotation encoding="application/x-tex">\rightleftharpoons</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.682em;vertical-align:-0.011em;"></span><span class="mrel">⇌</span></span></span></span> 等待态」之间的转换策略。重点介绍信号量与 PV 操作。</p>
 <h4 id="3-1-为什么会有并发">3.1 为什么会有并发</h4>
 <p>为什么会有并发？一开始人们写的都是顺序程序，但是由于 CPU 的计算速度远高于其他设备的数据传输速度，这就导致了 CPU 计算资源的闲置浪费，不断进取的人类想出了并发程序，走向了并发编程的道路。</p>
 <p>什么时候可以并发？引入 <strong>Brenstein 条件</strong>：对于两个进程对变量的引用集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>R</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">R_1,R_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和改变集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>W</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">W_1,W_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>1</mn></msub><mo>⋂</mo><msub><mi>W</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>R</mi><mn>2</mn></msub><mo>⋂</mo><msub><mi>W</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>W</mi><mn>1</mn></msub><mo>⋂</mo><msub><mi>W</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">R_1\bigcap W_2,R_2\bigcap W_1,W_1\bigcap W_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">⋂</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">⋂</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">⋂</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 均为空集，则可以并发执行。这似乎非常的显然。</p>
@@ -867,14 +870,14 @@ graph RL
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411080911787.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="可变分区 | 内存分配策略"></p>
 <p>地址转换和存储保护。同样的用虚拟地址+基地址可以得到绝对地址。同样的绝对地址不要超过对应分区的界限即可。只需要存储每一个分区的起始地址以及分区长度/分区终点地址即可。</p>
 <p>这种策略解决了内存浪费的问题但缺点依然明显：1）同样不支持大作业进程；2）上述的移动/紧凑策略对于时间开销很大，不利于进程的高效执行。</p>
-<h4 id="5-2-分页-分段-段页式存储管理">5.2 分页/分段/段页式存储管理</h4>
+<h4 id="5-2-分页式存储管理">5.2 分页式存储管理</h4>
 <p>详情参见：<a href="https://blog.dwj601.cn/GPA/5th-term/ComputerOrganization/#7-4-%E8%99%9A%E5%AD%98">https://blog.dwj601.cn/GPA/5th-term/ComputerOrganization/#7-4-虚存</a></p>
 <p>代码实现：<a target="_blank" rel="noopener" href="https://github.com/Explorer-Dong/OS_Simulate/tree/main/Experiment_final">https://github.com/Explorer-Dong/OS_Simulate/tree/main/Experiment_final</a></p>
 <h2 id="持久化">持久化</h2>
-<h3 id="6-设备管理">6 设备管理</h3>
-<p>前面学习了很多操作系统调度 CPU、内存等部件进行计算的过程，现在我们更进一步的学习操作系统如何获取需要计算的数据以及如何将数据呈现给人类进行可视化。主要介绍磁盘设备。</p>
-<h4 id="磁盘">磁盘</h4>
-<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412130825688.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="磁盘结构示意图"></p>
+<h3 id="6-设备管理-TODO">6 设备管理 TODO</h3>
+<p>本章开始学习 I/O 设备。I/O 设备顾名思义就是输入输出设备，也被称为外设。具体的可以根据传输方向将 I/O 设备分为三大类，分别为：输入设备（键盘、鼠标、扫描仪）、输出设备（显示器、打印机）和输入输出设备（磁盘、网卡）。重点学习外设中的磁盘模块。</p>
+<p>首先看一下磁盘的结构示意图：</p>
+<p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412130825688.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="磁盘的结构示意图"></p>
 <p>如上图所示，一个磁盘设备主要有三部分组成，分别是：柱面、磁头和扇区。</p>
 <h3 id="7-文件系统">7 文件系统</h3>
 <h4 id="7-1-文件的存在形式">7.1 文件的存在形式</h4>
@@ -891,14 +894,6 @@ graph RL
 <p>大量的文件需要我们进行合理的管理，以树形文件目录为例。为了 <strong>便于管理</strong>，设计者将每一个 inode 进行唯一性编号（记作 inode_id），这样用户打开一个文件其实是发送一个 inode_id 给操作系统，操作系统会根据 inode_id 查询到对应的 inode 并基于此 inode 将对应的文件加载到内存。</p>
 <p>所以为什么要把目录设置成树形结构？从开发者角度来说，树形目录没有任何作用，他们只需要关心什么 inode_id，别的都不操心。但是从用户角度来说，树形目录的意义就很大了。具体的，对于用户来说，树形目录可以让我们分级分类管理多而杂的文件，并且在不同的树路径下，我们可以取相同名称的文件。与此同时，不同的子树存储的数据可以被划分到不同的硬件存储器中，这就方便了用户从物理意义上将数据进行迁移。下面展示一个可重名的树形文件目录在不同视角下存储的信息：</p>
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201829367.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="用户角度的目录结构 VS 系统角度的目录结构"></p>
-<p>为了更进一步的理解文件打开时系统都做了些什么，下面基于类 Unix 系统的设计理念详细介绍：</p>
-<ol>
-<li>发送。用户或程序需要向操作系统发送字符串形式的文件路径。例如 <code>'/home/learn/file.txt'</code>；</li>
-<li>解析。操作系统会将上述的字符串进行解析并从根目录开始向下查找。每一层目录其实就是一个目录文件，目录文件存储了其下所有的目录项以及访问权限，只有当前用户具备访问权限的前提下才能继续访问，查找逻辑就是匹配解析出来的字符串；</li>
-<li>递归。重复 2 中的匹配直到异常终止或者匹配到最终的文件名；</li>
-<li>获取 inode 编号。匹配成功后就可以拿到当前目录文件中对应文件的 inode 编号信息；</li>
-<li>打开文件。操作系统根据第 4 步的 inode 编号加载对应的文件数据到内存中供后续操作。至此一个文件就被成功打开并加载到内存中了。</li>
-</ol>
 <h4 id="7-3-文件的共享">7.3 文件的共享</h4>
 <p>下面介绍两种文件链接以达到共享目的的方式：</p>
 <ul>
@@ -908,10 +903,54 @@ graph RL
 <p><img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412241603205.png" srcset="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/loading.gif" lazyload alt="示例"></p>
 <p>对于上图的示例：</p>
 <ul>
-<li>创建了一份名为 origin.txt 的原始文件，占用 4502 个字节，其对应的 inode_id 为 1047884；</li>
-<li>使用两次硬链接分别创建了 file_hard.txt 和 file_hard2.txt，可以看到 inode_id 均为 1047884 并且 inode 的计数变成了 3；</li>
-<li>使用符号链接创建了 file_symbol.txt 文件，其 inode_id 发生了变化（递增为 3 可以表明当前系统可能是增量使用 inode_id 的并且此时没有产生额外的文件）。与此同时，其文件内容变成了一个路径指向。</li>
+<li>创建了一份名为 <code>origin.txt</code> 的原始文件，占用 4502 个字节，其对应的 inode_id 为 1047884；</li>
+<li>使用两次硬链接分别创建了 <code>file_hard.txt</code> 和 <code>file_hard2.txt</code>，可以看到 inode_id 均为 1047884 并且 inode 的计数变成了 3；</li>
+<li>使用符号链接创建了 <code>file_symbol.txt</code> 文件，其 inode_id 发生了变化（递增为 3 可以表明当前系统可能是增量使用 inode_id 的并且此时没有产生额外的文件）。与此同时，其文件内容变成了一个路径指向。</li>
 </ul>
+<h4 id="7-4-文件的使用-TODO">7.4 文件的使用 TODO</h4>
+<p>下面详细介绍在类 Unix 系统中，关于文件使用的流程逻辑。</p>
+<p>1）打开文件</p>
+<ol>
+<li>发送。用户或程序需要向操作系统发送字符串形式的文件路径。例如 <code>'/home/learn/file.txt'</code>；</li>
+<li>解析。操作系统会将上述的字符串进行解析并从根目录开始向下查找。每一层目录其实就是一个目录文件，目录文件存储了其下所有的目录项以及访问权限，只有当前用户具备访问权限的前提下才能继续访问，查找逻辑就是匹配解析出来的字符串；</li>
+<li>递归。重复 2 中的匹配直到异常终止或者匹配到最终的文件名；</li>
+<li>获取 inode 编号。匹配成功后就可以拿到当前目录文件中对应文件的 inode 编号信息；</li>
+<li>打开文件。操作系统根据第 4 步的 inode 编号加载对应的文件数据到内存中供后续操作。至此一个文件就被成功打开并加载到内存中了。</li>
+</ol>
+<h4 id="7-5-文件系统的实现-TODO">7.5 文件系统的实现 TODO</h4>
+<p>本小节我们重点关注外存空间的分配与释放算法。</p>
+<h2 id="后记">后记</h2>
+<p>全文总结流程图。按照上文编号进行，实线表示期末考试相对重点，但并不表示其他内容就不是重点。<s>个人认为真正重点的反而是期末不考的，灰色幽默了属于是</s>。如下所示：</p>
+<pre><code class=" mermaid">graph LR 
+    %% 第一级
+    %% OS --&gt; 并发
+    %% OS --&gt; 虚拟化
+    %% OS --&gt; 持久化
+    
+    %%==================== 关于并发  ====================%%
+    并发 --&gt; 进程管理(1 进程管理)
+    进程管理 -.-&gt; 进程的存在和组织方式["进程的存在和组织方式。PCB、进程队列"]
+    进程管理 -.-&gt; 进程的状态与切换["进程的状态与切换。五态模型、中断机制、原\n语、进程上下文"]
+    进程管理 -.-&gt; 线程["线程。与进程的区别"]
+    
+    并发 --&gt; 处理器调度(2 处理器调度)
+    处理器调度 -.-&gt; 产生背景["产生背景。多进程并发，CPU计算过快"]
+    处理器调度 -.-&gt; 调度层级["调度层级。三级调度"]
+    处理器调度 --&gt; 调度算法["调度算法。缩写、各种时间、各种调度策略的特性"]
+    
+    并发 --&gt; 互斥与同步(3 互斥与同步)
+    互斥与同步 --&gt; 信号量与PV操作["信号量与PV操作。哪些是临界区的资源（互斥锁），\n哪些进程有先后关系（同步锁）"]
+    
+    并发 --&gt; 死锁(4 死锁)
+    死锁 -.-&gt; 产生原因["产生原因。本质上就是大家都拿了一部分资源，没法继续执行但\n又不释放已经拿到的资源"]
+    死锁 --&gt; 银行家算法["银行家算法。一种死锁避免策略，注意3种矩阵、试探性分配、\n安全序列"]
+    死锁 --&gt; 资源分配图["资源分配图。一种死锁解除策略，注意两类edge的定义以及如\n何通过删边解除死锁的"]
+    
+    %%==================== 关于虚拟 ====================%%
+    虚拟化 --&gt; 分页式虚存
+    
+    %%==================== 关于持久 ====================%%
+</code></pre>
 
                 
               </div>
@@ -976,7 +1015,7 @@ graph RL
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年12月24日</div>
+          <div>2025年1月3日</div>
         </div>
       
       

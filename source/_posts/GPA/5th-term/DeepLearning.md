@@ -118,12 +118,6 @@ category_bar: true
 
 同样是反向传播算法通过梯度下降进行优化。
 
-#### 实际案例
-
-基于卷积神经网络的目标识别算法 - YOLO V3 算法。
-
-需要解决两个问题：1）确定分类区域 2）基于局部区域进行分类。
-
 ### 3 循环神经网络
 
 监督学习任务：
@@ -183,23 +177,22 @@ ReLU 激活函数、残差连接。
 
 ![Visualization of learning rate schedules with warm-up.  Top:  cosine and step schedules for batch size 1024. Bottom: Top-1 validation accuracy curve with regard to the two schedules.](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201601516.jpg)
 
-### 无监督学习
-
 ## 进阶模型
 
-### 概率图模型
+### 6 序列生成模型
 
-### 玻尔兹曼机
+### 7 深度生成模型
 
-### 深度信念网络
+本章我们学习深度生成模型。用一句话概括就是使用深度神经网络训练一个模型使得其输出结果符合某个预定的分布。
 
-### 深度生成模型
+- 变分自编码器 VAE
 
-### 深度强化学习
+- 生成对抗网络 GAN
 
-## 个人大作业 *
+- Stable Diffusion：经典的文生图模型。分为以下三个部分，这三个部分均可以单独训练：
 
-1. 背景介绍：做好国内外研究现状的调研。
-2. 项目理解：深入对模型与代码的理解。
-3. 充分实验：对比实验、验证实验（消融实验）、参数实验（验证模型对不同的参数的敏感性）。
-4. 项目总结。
+    - 编码器
+
+    - 生成模型
+
+    - 解码器

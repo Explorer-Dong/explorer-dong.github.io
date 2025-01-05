@@ -276,11 +276,57 @@ category_bar: true
 
 构造完 FP 树后，如何基于该树寻找频繁项集呢？分为三步：
 
-1. 基于 FP 树构造每一个频繁项的条件模式基 (conditional pattern base)。简而言之就是以频繁项为叶子结点的子树；
-2. 基于条件模式基构造条件 FP 树 (conditional FP tree)。简而言之就是条件模式基去掉叶子结点的子树；
-3. 基于条件 FP 树寻找频繁项集。寻找方法就是对前后缀模式进行排列组合，最终的数量需要取最小值。
+1. 基于 FP 树构造每一个频繁项的条件模式基 (conditional pattern base)。简而言之就是 **以频繁项为叶子结点的子树**；
+2. 基于条件模式基构造条件 FP 树 (conditional FP tree)。简而言之就是 **条件模式基去掉叶子结点的子树**；
+3. 基于条件 FP 树寻找频繁项集。寻找方法就是 **对前后缀模式进行排列组合**，最终项的数量需要取最小值。
 
 当然，第一步中的排序规则并不是一定要按照频率降序排序的，不同的排序方式会导致不同的建树结果同时对于后续寻找频繁项集也是不确定的，这导致了 FP-growth 算法的不稳定性。
+
+{% fold light @例题 %}
+
+假设现在的最小支持度阈值为 40%，按照下面的事务集，使用 FP-growth 算法寻找出所有的频繁项集：
+
+| TID  |   项集    |
+| :--: | :-------: |
+|  1   | {a,b,d,e} |
+|  2   |  {b,c,d}  |
+|  3   | {a,b,d,e} |
+|  4   | {a,c,d,e} |
+|  5   | {b,c,d,e} |
+
+**1）构建 FP 树**
+
+首先扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树：
+
+![扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051012396.png)
+
+**2）寻找频繁项集**
+
+以 c 为频繁项：
+
+![以 c 为频繁项 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018981.png)
+
+![以 c 为频繁项 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018227.png)
+
+以 a 为频繁项：
+
+![以 a 为频繁项 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018675.png)
+
+![以 a 为频繁项 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018151.png)
+
+以 e 作为频繁项：
+
+![以 e 作为频繁项](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018671.png)
+
+以 b 作为频繁项：
+
+![以 b 作为频繁项](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018110.png)
+
+以 d 作为频繁项：
+
+![以 d 作为频繁项](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018098.png)
+
+{% endfold %}
 
 #### Eclat 算法
 
@@ -290,9 +336,9 @@ category_bar: true
 
 ![扫描一遍事务集将水平数据格式转换成垂直数据](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501042123959.png)
 
-后续在统计频繁项集时只需要取交集即可：
+后续在统计频繁项集时只需要取 **TID集** 的交集即可：
 
-![Eclat算法示例 - 假设最小支持度阈值为 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411110820401.png)
+![取TID集的交集 - 假设最小支持度阈值为 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411110820401.png)
 
 ### 3.3 置信度检测
 
@@ -377,27 +423,27 @@ $$
 
 ## 4 聚类问题
 
-本章我们继续学习一个老生常谈的问题：聚类。所有的笔记会基于之前的一篇博客进行补充。重点学习以下三种聚类策略：
+本章我们继续学习一个老生常谈的问题：聚类。笔记会在之前的一篇博客上进行补充。重点学习以下三种聚类策略：
 
-基于 **划分** 的聚类方法：https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#Kmeans
+基于 **划分** 的聚类方法：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#2-基于划分的聚类算法>
 
-基于 **层次** 的聚类方法：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#AGNES-与-DIANA>
+基于 **层次** 的聚类方法：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#3-基于层次的聚类算法>
 
-基于 **密度** 的聚类方法：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#DBSCAN-与-OPTICS>
+基于 **密度** 的聚类方法：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#4-基于密度的聚类算法>
 
 ## 5 异常检测
 
 异常检测也可以称为离群点检测，但是这里的离群点检测与之前使用箱型图进行的异常检测并非一回事。这里的异常检测需要将「离群点」和「噪声」区分开来，而在非异常检测的场景下并不会将这两者区分。下面将会从「异常检测的概念」和「异常检测的算法」两个部分展开。
 
-### 5.1 异常检测概念
+### 5.1 基本概念
 
 由于异常检测时，异常数据的特征没有统一标准，因此很难使用二分类器将正常数据和异常数据进行区分。并且由于异常检测任务很难做到所有的数据对象都有标签（例如实时监测），因此常常使用无监督的方法进行异常检测。
 
 ### 5.2 异常检测算法
 
-#### 孤立森林 (Isolation forest)
+#### 孤立森林
 
-这是一个基于集成树模型的「**无监督**」离群点检测算法。对于森林中的每一棵树，初始时含有所有的数据对象，每次对树的所有结点进行分裂，分裂规则为选定某一个属性并计算出阈值，然后基于这个阈值将结点中的数据对象划分为两部分，直到一个结点只含有一个数据对象或者达到最大深度时停止分裂。孤立森林中树之间的区别本质上就是划分准则选择的属性顺序不同。这与决策树算法比较类似。
+孤立森林 (Isolation forest) 是一个基于集成树模型的「**无监督**」离群点检测算法。对于森林中的每一棵树，初始时含有所有的数据对象，每次对树的所有结点进行分裂，分裂规则为选定某一个属性并计算出阈值，然后基于这个阈值将结点中的数据对象划分为两部分，直到一个结点只含有一个数据对象或者达到最大深度时停止分裂。孤立森林中树之间的区别本质上就是划分准则选择的属性顺序不同。这与决策树算法比较类似。
 
 森林有了，如何确定异常点呢？我们定义第 $i$ 个样本 $x_i$ 的异常分数 $s$ 为下式：
 $$
@@ -409,13 +455,11 @@ $$
 
 - 缺点：不适用于高维稀疏的样本分布。
 
-#### 基于邻近度的离群点检测算法
+#### 基于距离的离群点检测
 
-**基于距离**
+#### 基于密度的离群点检测
 
-**基于网格**
-
-**基于密度**。定义数据对象 x 的 k-距离为 $dist_k(x)$ 为全体数据对象中与其相距第 k 大的距离值。定义 $N_k(x)$ 为全体数据对象中距离数据对象 x 的距离小于 k-距离的数据对象个数。于是可以得到以下两个指标：
+定义数据对象 x 的 k-距离为 $dist_k(x)$ 为全体数据对象中与其相距第 k 大的距离值。定义 $N_k(x)$ 为全体数据对象中距离数据对象 x 的距离小于 k-距离的数据对象个数。于是可以得到以下两个指标：
 
 - 数据对象 x 的局部可达密度 (local reachable density)：
     $$
@@ -433,21 +477,10 @@ $$
 
 ## 6 分类问题
 
-### 6.1 决策树模型
+本章主要学习分类算法来解决分类问题，这其实都和机器学习的课程内容了，具体的知识点见之前的笔记。重点学习以下内容：
 
-见 <https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#决策树模型>
+决策树模型：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#决策树模型>
 
-### 6.2 邻近性模型
+集成学习：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#集成学习>
 
-见 <https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#k-近邻学习>
-
-### 6.3 时序预测
-
-时序序列的数据集形如 $\{ t_i,\boldsymbol{x}_i, y_i \}$。
-
-- 传统机器学习方法：自回归模型。具体的，模型 $y_i=\beta_0 + \beta_1 y_{i-1} + \beta_2 y_{i-2} + \cdots + \beta_p y_{i-p}$ 被称为 P 阶自回归模型。可以看出这种模型仅仅利用到了标签值并且定义当前标签值与曾经的标签值呈线性关系。
-- 前沿深度学习方法：RNN 模型、LSTM 模型、时序卷积模型、Transformer。具体见 <https://blog.dwj601.cn/GPA/5th-term/DeepLearning/#3-循环神经网络>。
-
-### 6.4 分类结果评价
-
-见 <https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#分类任务>
+分类任务的度量指标（重点关注二分类）：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#分类任务>

@@ -6,8 +6,6 @@ categories:
 category_bar: true
 ---
 
-## 数据挖掘
-
 ## 前言
 
 学科地位：
@@ -523,4 +521,4 @@ $$
 
 集成学习：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#集成学习>
 
-分类任务的度量指标（重点关注二分类）：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#分类任务>
+分类任务的度量指标（重点关注二分类）：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#3-2-分类任务>

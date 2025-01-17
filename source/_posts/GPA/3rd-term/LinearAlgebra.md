@@ -1,12 +1,11 @@
 ---
-title: LinearAlgebra
+title: 线性代数
 categories:
   - GPA
   - 3rd-term
 category_bar: true
+sticky: 94
 ---
-
-## 线性代数
 
 ## 前言
 

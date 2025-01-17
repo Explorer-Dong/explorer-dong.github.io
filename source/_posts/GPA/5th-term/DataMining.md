@@ -1,5 +1,5 @@
 ---
-title: DataMining
+title: 数据挖掘
 categories:
   - GPA
   - 5th-term

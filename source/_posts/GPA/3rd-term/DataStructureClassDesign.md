@@ -1,12 +1,10 @@
 ---
-title: DataStructureClassDesign
+title: 数据结构课程设计
 categories: 
   - GPA
   - 3rd-term
 category_bar: true
 ---
-
-## 数据结构课程设计
 
 ## 效果演示
 

@@ -1,12 +1,10 @@
 ---
-title: OptMethod
+title: 最优化方法
 categories:
   - GPA
   - 4th-term
 category_bar: true
 ---
-
-## 最优化方法
 
 ## 前言
 

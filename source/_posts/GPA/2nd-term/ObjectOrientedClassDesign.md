@@ -1,12 +1,10 @@
 ---
-title: ObjectOrientedClassDesign
+title: 面向对象课程设计
 categories:
   - GPA
   - 2nd-term
 category_bar: true
 ---
-
-## 面向对象课程设计
 
 ## 效果展示
 

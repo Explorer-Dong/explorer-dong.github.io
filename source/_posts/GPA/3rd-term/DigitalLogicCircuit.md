@@ -1,12 +1,10 @@
 ---
-title: DigitalLogicCircuit
+title: 数字逻辑电路
 categories:
   - GPA
   - 3rd-term
 category_bar: true
 ---
-
-## 数字逻辑电路
 
 ## 1 概论
 

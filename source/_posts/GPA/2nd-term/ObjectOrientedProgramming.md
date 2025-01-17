@@ -1,12 +1,10 @@
 ---
-title: ObjectOrientedProgramming
+title: 面向对象程序设计
 categories:
   - GPA
   - 2nd-term
 category_bar: true
 ---
-
-## 面向对象程序设计
 
 ## 前言
 本文记录个人学习 OOP 编程时的笔记，编程语言为 C++11，参考科学出版社的《C++面向对象程序设计》 。后续会在此基础之上不断补充 OOP 编程的设计理念与编程范式。不同的语言可能会有一些语法上的出入，但是 OOP 的核心思想是一致的，那就是封装、继承和多态。

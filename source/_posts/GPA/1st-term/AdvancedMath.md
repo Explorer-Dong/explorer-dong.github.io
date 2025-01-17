@@ -1,12 +1,12 @@
 ---
-title: AdvancedMath
+title: 高等数学 - 竞赛向
 categories:
   - GPA
   - 1st-term
 category_bar: true
 ---
 
-## 高等数学 - 竞赛向
+## 前言
 
 参考资料：
 

@@ -1,12 +1,10 @@
 ---
-title: CollegePhysics_2
+title: 大学物理下
 categories: 
   - GPA
   - 3rd-term
 category_bar: true
 ---
-
-## 大学物理下
 
 ## 第九章 振动
 

@@ -1,12 +1,10 @@
 ---
-title: MachineLearningClassDesign
+title: 机器学习课程设计
 categories: 
   - GPA
   - 4th-term
 category_bar: true
 ---
-
-## 机器学习课程设计
 
 ## 前言
 

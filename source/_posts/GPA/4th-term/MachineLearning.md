@@ -1,9 +1,10 @@
 ---
-title: MachineLearning
+title: 机器学习
 categories:
   - GPA
   - 4th-term
 category_bar: true
+sticky: 98.5
 ---
 
 ## 前言

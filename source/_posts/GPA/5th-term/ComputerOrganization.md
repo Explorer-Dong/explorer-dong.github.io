@@ -1,27 +1,14 @@
 ---
-title: ComputerOrganization
+title: 计算机组成原理
 categories:
   - GPA
   - 5th-term
 category_bar: true
 mermaid: true
+sticky: 96
 ---
 
-## 计算机组成原理
-
 ## 前言
-
-学科地位：
-
-| 主讲教师 | 学分配额 | 学科类别 |
-| :------: | :------: | :------: |
-|  闫文珠  |   3.5    |  自发课  |
-
-成绩组成：
-
-| 作业 | 实验 | 期末 |
-| :--: | :--: | :--: |
-| 30%  | 20%  | 50%  |
 
 教材情况：
 

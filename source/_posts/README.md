@@ -7,7 +7,7 @@ index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/hell
 
 ## 项目背景
 
-欢迎访问我的博客网站！本网站记录个人进入本科以后学习 **AI/CS 课程** 和 **开发技术** 时做的电子笔记并将持续更新与维护。内容采用 Markdown 格式记录，通过 Hexo 框架编译与渲染，欢迎 Issue 和 Pr！
+欢迎访问我的博客网站！本网站记录个人进入本科以后学习 **AI/CS 课程** 和 **开发技术** 时做的电子笔记并将持续更新与维护。内容采用 Markdown 格式记录，通过 Hexo 框架编译与渲染，欢迎 Issue 和 PR！
 
 ## 内容简介
 
@@ -20,17 +20,14 @@ index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/hell
 - `DevTools`：开发工具笔记；
 - `FrontEnd`：前端开发笔记；
 - `GPA`：本科课程笔记；
-- `Operation`：运维笔记。
+- `Operation`：运维笔记；
+- `Others`：其他。
 
 ## 更新日志
 
 25.01.04
 
 :gear: **配置：取消页面图片懒加载** - 便于通过大纲精准定位。提升用户阅读体验。
-
-24.11.20
-
-:bookmark_tabs: **丰富：数据科学 DataScience 专栏** - 侧重于代码实现。
 
 24.10.06
 

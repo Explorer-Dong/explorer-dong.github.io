@@ -14,9 +14,13 @@
 - `FrontEnd`：前端开发笔记；
 - `GPA`：本科课程笔记；
 - `Operation`：运维笔记；
-- `Others`：其他。
+- `Others`：其他内容。
 
 ## 更新日志
+
+25.01.19
+
+:fire: **增强：全站检索功能** - 放弃静态加载检索文件，使用阿里云 OSS 存储服务。提升网站全文检索体验。
 
 25.01.04
 
@@ -28,7 +32,7 @@
 
 24.04.07
 
-:sparkles: **新增：将网站部署至国内云服务器** - 解决访问速度慢的问题。提升用户体验。
+:fire: **增强：将网站部署至国内云服务器** - 解决国内访问速度慢的问题。提升用户体验。
 
 24.04.02
 
@@ -36,11 +40,11 @@
 
 24.03.28
 
-:sparkles: **新增：国内图床服务** - 放弃静态资源加载，使用阿里云 OSS 服务。提升网站浏览与文章阅读体验。
+:fire: **增强：图片加载效率** - 放弃静态加载图片资源，使用阿里云 OSS 图床服务。提升网站浏览与文章阅读体验。
 
 24.03.27
 
-:sparkles: **新增：emojis 表情渲染服务** - 通过 hexo 的 [hexo-filter-github-emojis](https://github.com/crimx/hexo-filter-github-emojis) 插件实现 :sunglasses:。提升文章阅读体验。
+:sparkles: **新增：emojis 功能** - 通过 hexo 的 [hexo-filter-github-emojis](https://github.com/crimx/hexo-filter-github-emojis) 插件实现 emojis 渲染功能 :sunglasses:。提升文章阅读体验。
 
 :sparkles: **新增：评论功能** - 使用 [utterances](https://utteranc.es/) 的第三方评论服务，基于 GitHub Issue 实现。提升文章可信度。
 
@@ -70,4 +74,4 @@
 
 ## 未来展望
 
-:thinking: 由于当前网站检索文件体积较大，导致搜索前的加载极慢，有待解决。
+:thinking: 增强 SEO 优化，提升网站曝光量。

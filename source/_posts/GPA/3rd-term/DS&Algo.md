@@ -5,16 +5,16 @@ categories:
   - 3rd-term
 category_bar: true
 sticky: 99
-index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/DS%26Algo.jpeg
+index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/DataStructure.png
 ---
 
 ## 前言
 
-个人认为，数据结构与算法是程序的灵魂。当然这不仅仅局限于计算机程序，其实生活中的很多东西都可以用数据结构与算法的思想来抽象从而加速。
+个人认为，数据结构与算法是程序的灵魂。当然这不仅仅局限于计算机程序，其实生活中的很多东西都可以用数据结构与算法的思想来抽象从而加速。本篇博客初稿定稿于 2024.01，即大二上学期数据结构课程的期末。我打算在此基础之上进行修缮，并将算法的内容也补充进来。主要以原理为主，代码为辅，可能的话会在最后附上一些个人认为比较有教学意义的 OJ 例题。
 
-本篇博客初稿定稿于 2024.01，即大二上学期数据结构课程的期末。我打算在此基础之上进行修缮，并将算法的内容也补充进来。主要以原理为主，辅以代码展示，可能的话会在最后附上一些个人认为比较有教学意义的 OJ 例题。
+完整代码实现。我用 C++17 实现了笔记中提到的大部分数据结构：<https://github.com/Explorer-Dong/DataStructure>。
 
-我用 C++17 实现了笔记中提到的大部分数据结构：<https://github.com/Explorer-Dong/DataStructure>。
+数据结构课设。我用 Qt6 写了个窗口程序，比较了「不同的排序算法」以及「不同的查找算法」的计算差异：<https://github.com/Explorer-Dong/DataStructureClassDesign>。
 
 ## 数据结构
 

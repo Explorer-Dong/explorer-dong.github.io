@@ -6,6 +6,7 @@ categories:
 category_bar: true
 mermaid: true
 sticky: 96
+index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/computer%20organization.png
 ---
 
 ## 前言

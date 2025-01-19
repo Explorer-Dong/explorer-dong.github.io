@@ -5,6 +5,7 @@ categories:
   - 4th-term
 category_bar: true
 sticky: 98.5
+index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/机器学习.png
 ---
 
 ## 前言
@@ -1569,3 +1570,9 @@ explain: [【LMNN】浅析 "从距离测量到基于 Margin 的邻近分类问�
 马尔科夫随机场 $\text{(Markov Random Field, 简称 MRF)}$ 是典型的马尔科夫网。同样是为了研究变量之间的关系而存在的，因此也是生成式方法。
 
 联合概率计算逻辑按照 **势函数** 和 **团** 展开。其中团可以理解为 **完全子图**；极大团就是结点最多的完全子图，即在当前的完全子图中继续添加子图之外的点就无法构成新的完全子图；势函数就是一个关于团的函数。
+
+## 课设
+
+使用 XGBoost 和 MLP 实现高糖预测。
+
+代码仓库：https://github.com/Mr-LUHAOYU/MachineLearningClassDesign

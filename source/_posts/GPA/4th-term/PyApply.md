@@ -1,5 +1,5 @@
 ---
-title: Python 高级应用
+title: Python高级应用
 categories:
   - GPA
   - 4th-term

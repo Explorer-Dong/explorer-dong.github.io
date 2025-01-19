@@ -6,5 +6,6 @@ categories:
 category_bar: true
 mermaid: true
 sticky: 97
+index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/computer%20network.jpg
 ---
 

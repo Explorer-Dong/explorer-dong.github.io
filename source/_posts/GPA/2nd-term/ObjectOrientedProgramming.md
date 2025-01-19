@@ -659,3 +659,12 @@ public:
     virtual void h() = 0;
 };
 ```
+
+## 课设
+
+基于 Python Flask 的 C/S Web 微架构实现的教务管理系统（Management System）
+
+- 涉及到的知识点有：面向对象程序设计、文件调用关系等
+- 涉及到的技术栈有：Flask、HTML、CSS、JavaScrip、MySQL
+
+代码仓库：https://github.com/Explorer-Dong/ObjectOrientedClassDesign

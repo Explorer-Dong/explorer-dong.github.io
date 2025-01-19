@@ -5,6 +5,7 @@ categories:
   - 3rd-term
 category_bar: true
 sticky: 94
+index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/linear%20algebra.png
 ---
 
 ## 前言

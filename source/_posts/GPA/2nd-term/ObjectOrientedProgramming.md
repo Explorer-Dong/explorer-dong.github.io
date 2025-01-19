@@ -9,10 +9,17 @@ category_bar: true
 ## 前言
 本文记录个人学习 OOP 编程时的笔记，编程语言为 C++11，参考科学出版社的《C++面向对象程序设计》 。后续会在此基础之上不断补充 OOP 编程的设计理念与编程范式。不同的语言可能会有一些语法上的出入，但是 OOP 的核心思想是一致的，那就是封装、继承和多态。
 
-为了应试，我详细分析了学院历年的考试题目，内容托管在 CSDN 网站上：
+机试与笔试。为了应试，我详细分析了学院历年的考试题目，内容托管在 CSDN 网站上：
 
-- [C++面向对象程序设计_期中机考试题](https://blog.csdn.net/qq_73408594/article/details/130540895)
-- [C++面向对象程序设计_期末考试真题分析](https://blog.csdn.net/qq_73408594/article/details/131066498)
+- [【GPA】C++面向对象程序设计_机试详解](https://blog.csdn.net/qq_73408594/article/details/130540895)
+- [【GPA】C++面向对象程序设计_笔试详解](https://blog.csdn.net/qq_73408594/article/details/131066498)
+
+课程设计。我基于 Python Flask 的 C/S Web 微架构实现了一个教务管理系统（Management System），内容托管在 GitHub 网站上：
+
+- 代码仓库：https://github.com/Explorer-Dong/ObjectOrientedClassDesign
+
+- 涉及到的知识点有：面向对象程序设计、文件调用关系等
+- 涉及到的技术栈有：Flask、HTML、CSS、JavaScrip、MySQL
 
 ## 1 封装
 以封装二叉搜索树 (Binary Search Tree, 简称 BST) 为例讲解 C++ 中 OOP 编程时封装的规范。
@@ -659,12 +666,3 @@ public:
     virtual void h() = 0;
 };
 ```
-
-## 课设
-
-基于 Python Flask 的 C/S Web 微架构实现的教务管理系统（Management System）
-
-- 涉及到的知识点有：面向对象程序设计、文件调用关系等
-- 涉及到的技术栈有：Flask、HTML、CSS、JavaScrip、MySQL
-
-代码仓库：https://github.com/Explorer-Dong/ObjectOrientedClassDesign

@@ -1,5 +1,5 @@
 ---
-title: 高等数学 - 竞赛向
+title: 高等数学（竞赛向）
 categories:
   - GPA
   - 1st-term

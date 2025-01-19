@@ -362,7 +362,7 @@ search:
 
   # 搜索索引文件的路径，可以是相对路径或外站的绝对路径
   # Path for search index file, it can be a relative path or an absolute path
-  search_path: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/search-files/local-search.xml
+  path: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/search-files/local-search.xml
 
   # 文件生成在本地的位置，必须是相对路径
   # The location where the index file is generated locally, it must be a relative location

@@ -1,12 +1,10 @@
 ---
-title: opengauss-basic
+title: openGauss 基础
 categories: 
-  - DataBase
+  - 数据库
   - openGauss
 category_bar: true
 ---
-
-## openGauss 基础
 
 ## 前言
 

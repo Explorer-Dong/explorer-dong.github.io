@@ -1,13 +1,11 @@
 ---
-title: solve-nginx-reload-error
+title: 解决 Nginx 重启报错
 categories: 
-  - Operation
+  - 运维
   - Nginx
 category_bar: true
 index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/nginx.png
 ---
-
-# 解决 Nginx 重启报错
 
 ## 前言
 

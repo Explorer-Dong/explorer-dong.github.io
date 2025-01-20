@@ -1,13 +1,13 @@
 ---
-title: nginx-command
+title: Nginx 常用命令合集
 categories: 
-  - Operation
+  - 运维
   - Nginx
 category_bar: true
 index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/nginx.png
 ---
 
-# Nginx 常用命令合集
+## 前言
 
 在 Ubuntu22.04 操作系统上，我们使用 nginx 需要不断使用其相关命令，下面介绍一下常用的几个命令
 

@@ -1,12 +1,10 @@
 ---
-title: hexo-config-mermaid
+title: Hexo 配置 mermaid
 categories:
-  - FrontEnd
+  - 前端
   - Hexo
 category_bar: true
 ---
-
-## Hexo 配置 mermaid
 
 ### 问题复现
 

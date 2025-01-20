@@ -1,11 +1,10 @@
 ---
-title: numpy-tutorial
-categories:
-  - DataScience
+title: numpy 入门指南
+categories: 数据科学
 category_bar: true
 ---
 
-## numpy 入门指南
+## 前言
 
 本文记录学习 numpy 的笔记。
 

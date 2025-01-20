@@ -1,12 +1,10 @@
 ---
-title: hexo-learning-record
+title: 使用 Hexo 搭建属于自己的博客网站
 categories:
-  - FrontEnd
+  - 前端
   - Hexo
 category_bar: true
 ---
-
-# Hexo 学习记录
 
 ## 前言
 

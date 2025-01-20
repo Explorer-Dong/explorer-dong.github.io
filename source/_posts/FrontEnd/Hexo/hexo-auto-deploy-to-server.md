@@ -1,12 +1,10 @@
 ---
-title: hexo-auto-deploy-to-server
+title: 将 Hexo 项目部署到自己的云服务器并持续集成
 categories:
-  - FrontEnd
+  - 前端
   - Hexo
 category_bar: true
 ---
-
-# 将 Hexo 项目部署到自己的云服务器并持续集成
 
 ## 前言
 

@@ -1,12 +1,12 @@
 ---
-title: z_logic
-categories: Algorithm
+title: 其他
+categories: 数据结构与算法
 category_bar: true
 ---
 
-### 思维题
+### 前言
 
-多角度切入。
+主要以思维题为主，注意多角度切入。
 
 ### 【思维/哈希/排序】最长严格递增子序列
 

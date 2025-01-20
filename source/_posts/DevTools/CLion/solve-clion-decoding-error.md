@@ -1,12 +1,10 @@
 ---
-title: solve-clion-decoding-error
+title: CLion 解决中文输出乱码的问题
 categories: 
-  - DevTools
+  - 开发工具
   - CLion
 category_bar: true
 ---
-
-# CLion 解决中文输出乱码的问题
 
 ## 问题介绍
 

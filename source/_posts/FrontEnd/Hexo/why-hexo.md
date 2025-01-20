@@ -1,12 +1,10 @@
 ---
-title: why-hexo
+title: 为什么选择 Hexo
 categories:
-  - FrontEnd
+  - 前端
   - Hexo
 category_bar: true
 ---
-
-# 为什么选择 Hexo
 
 ## 搭建个人博客 :thinking:
 

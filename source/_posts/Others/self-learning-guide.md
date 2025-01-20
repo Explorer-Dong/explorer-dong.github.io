@@ -1,6 +1,6 @@
 ---
 title: 自学指南
-categories: Others
+categories: 其他
 category_bar: true
 ---
 

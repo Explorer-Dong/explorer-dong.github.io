@@ -1,7 +1,7 @@
 ---
-title: css-basic
+title: CSS 基础
 categories: 
-  - FrontEnd
+  - 前端
   - CSS
 category_bar: true
 ---

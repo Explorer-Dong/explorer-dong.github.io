@@ -1,12 +1,10 @@
 ---
-title: git-self-define-command
+title: Git 自定义命令
 categories:
-  - DevTools
+  - 开发工具
   - Git
 category_bar: true
 ---
-
-## Git 自定义命令
 
 ## 前言
 

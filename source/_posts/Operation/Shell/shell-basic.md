@@ -1,13 +1,11 @@
 ---
-title: shell-basic
+title: Shell 基础
 categories:
-  - Operation
+  - 运维
   - Shell
 category_bar: true
 mermaid: true
 ---
-
-## Shell 基础
 
 ## 前言
 

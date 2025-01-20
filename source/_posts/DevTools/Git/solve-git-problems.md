@@ -1,12 +1,14 @@
 ---
-title: solve-git-problems
+title: 解决 Git 相关问题
 categories:
-  - DevTools
+  - 开发工具
   - Git
 category_bar: true
 ---
 
-## 解决 Git 相关问题
+## 前言
+
+本文记录使用 git 的过程中遇到的一些问题以及对应的解决方法。
 
 ## 解决 git 分支冲突
 

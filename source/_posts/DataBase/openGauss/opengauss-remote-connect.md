@@ -1,12 +1,10 @@
 ---
-title: opengauss-remote-connect
-categories: 
-  - DataBase
+title: openGauss 远程连接
+categories:
+  - 数据库
   - openGauss
 category_bar: true
 ---
-
-## openGauss 远程连接
 
 ## 问题阐述
 

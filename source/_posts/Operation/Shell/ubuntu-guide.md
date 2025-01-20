@@ -1,12 +1,10 @@
 ---
-title: ubuntu-guide
+title: Ubuntu 使用指南
 categories:
-  - Operation
+  - 运维
   - Shell
 category_bar: true
 ---
-
-## Ubuntu 使用指南
 
 ## 文件系统
 

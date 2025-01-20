@@ -1,7 +1,7 @@
 ---
-title: html-basic
+title: HTML 基础
 categories: 
-  - FrontEnd
+  - 前端
   - HTML
 category_bar: true
 ---

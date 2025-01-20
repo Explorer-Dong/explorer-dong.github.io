@@ -14,9 +14,7 @@ index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/机�
 
 课程设计。我与团队成员一起，使用 XGBoost 和 MLP 实现了高糖预测：<https://github.com/Mr-LUHAOYU/MachineLearningClassDesign>。
 
-注意事项。如果内容标上了小节号，表明其已经经过了绝对的考量，可以放心参考；反之，请谨慎参考并根据下列引用资料积极寻找原作进行校对。
-
-部分参考引用资料如下：
+注意事项。如果内容标上了小节号，表明其已经经过了绝对的考量，可以放心参考；反之，请谨慎参考并根据下列引用资料积极寻找原作进行校对。部分参考引用资料如下：
 
 [1] [周志华，机器学习与模式识别，清华大学出版社，2016.](<https://github.com/jingyuexing/Ebook/blob/master/Machine_Learning/机器学习_周志华.pdf>)
 

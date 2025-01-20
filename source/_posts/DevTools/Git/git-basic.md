@@ -1,12 +1,10 @@
 ﻿---
-title: git-basic
+title: Git 指南大全
 categories:
-  - DevTools
+  - 开发工具
   - Git
 category_bar: true
 ---
-
-## Git 基础
 
 ## 前言
 

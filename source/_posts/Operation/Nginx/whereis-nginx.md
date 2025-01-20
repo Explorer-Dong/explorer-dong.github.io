@@ -1,13 +1,13 @@
 ---
-title: whereis-nginx
+title: 使用 apt 安装 Nginx 后的软件包是如何布局的
 categories: 
-  - Operation
+  - 运维
   - Nginx
 category_bar: true
 index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/nginx.png
 ---
 
-# 使用 apt 安装 Nginx 后的软件包是如何布局的
+## 前言
 
 在 Ubuntu22.04 操作系统上，我们使用以下命令安装 Nginx 以后：
 

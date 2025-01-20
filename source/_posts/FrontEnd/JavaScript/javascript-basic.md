@@ -1,7 +1,7 @@
 ---
-title: javascript-basic
+title: JavaScrip 基础
 categories: 
-  - FrontEnd
+  - 前端
   - JavaScript
 category_bar: true
 ---

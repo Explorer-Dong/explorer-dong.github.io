@@ -1,22 +1,22 @@
 ---
-title: config-clion
+title: CLion 配置指南
 categories: 
-  - DevTools
+  - 开发工具
   - CLion
 category_bar: true
 ---
 
-## CLion 配置指南
+## 前言
 
 记录零散的 CLion 配置信息。
 
-### 自动加载 CMake 更改
+## 自动加载 CMake 更改
 
 > 适用于文件更新频繁的场景。
 
 ![勾选自动加载CMake更改](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407311200790.png)
 
-### 单文件编译运行
+## 单文件编译运行
 
 > 为了保存算法竞赛时每一场比赛的每一道题目代码，需要单文件编译运行。下载 C/C++ Single File Execution 插件使用即可。
 
@@ -30,7 +30,7 @@ category_bar: true
 
 ![新增了一个 add_executable 栏](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407312357483.png)
 
-### 配置代理服务
+## 配置代理服务
 
 > 加速插件更新、全局更新等操作。
 

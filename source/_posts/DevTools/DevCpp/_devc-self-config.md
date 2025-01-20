@@ -1,12 +1,10 @@
 ---
-title: self-config
+title: DevCpp 偏好配置
 categories: 
-  - DevTools
+  - 开发工具
   - DevCpp
 category_bar: true
 ---
-
-# DevCpp 偏好配置
 
 ## 前言
 

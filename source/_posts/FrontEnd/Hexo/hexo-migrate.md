@@ -1,12 +1,10 @@
 ---
-title: hexo-migrate
+title: Hexo 迁移指南
 categories:
-  - FrontEnd
+  - 前端
   - Hexo
 category_bar: true
 ---
-
-# Hexo 迁移指南
 
 ## 前言
 

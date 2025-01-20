@@ -1,14 +1,14 @@
 ---
-title: deploy-flask
+title: 部署 Flask 应用
 categories:
-  - BackEnd
+  - 后端
   - Python
   - Flask
 category_bar: true
 mermaid: true
 ---
 
-## 部署 Flask
+## 前言
 
 Flask 是使用 Python 作为后端语言的 Web 微框，旨在帮助开发者快速开发出一个小型网站。个人示例项目就采用了 Flask 框架，前端直接使用 Flask 自带的 Jinja2 进行渲染，数据库采用 MySQL。项目地址 [YunJinWeb](https://github.com/Explorer-Dong/YunJinWeb)，下面为以此项目为 demo 进行云服务器部署的过程
 

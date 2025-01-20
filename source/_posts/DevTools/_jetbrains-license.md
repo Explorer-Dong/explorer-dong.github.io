@@ -1,11 +1,10 @@
 ---
-title: jetbrains-license
-categories: 
-  - DevTools
+title: 更新 Jetbrains 学生许可证的流程
+categories: 开发工具
 category_bar: true
 ---
 
-## 更新 Jetbrains 学生许可证的流程
+## 前言
 
 马上证书要过期了，记录一下更新许可证的流程。继续白嫖！
 

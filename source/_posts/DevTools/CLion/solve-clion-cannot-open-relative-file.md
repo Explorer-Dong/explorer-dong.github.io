@@ -1,12 +1,10 @@
 ---
-title: solve-clion-cannot-open-relative-file
+title: CLion 解决无法打开文件的问题
 categories: 
-  - DevTools
+  - 开发工具
   - CLion
 category_bar: true
 ---
-
-# CLion 解决无法打开文件的问题
 
 ## 问题描述
 

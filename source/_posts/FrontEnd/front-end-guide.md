@@ -1,10 +1,8 @@
 ---
-title: front-end-guide
-categories: FrontEnd
+title: 前端开发指南
+categories: 前端
 category_bar: true
 ---
-
-## 前端开发指南
 
 ## 前言
 

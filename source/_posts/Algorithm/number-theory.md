@@ -1,10 +1,10 @@
 ---
-title: number-theory
-categories: Algorithm
+title: 数论
+categories: 数据结构与算法
 category_bar: true
 ---
 
-### 数论
+### 前言
 
 整数问题。
 

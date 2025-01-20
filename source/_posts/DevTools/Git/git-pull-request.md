@@ -1,12 +1,10 @@
 ---
-title: git-pull-request
+title: Git 的 Pull Request 是什么
 categories:
-  - DevTools
+  - 开发工具
   - Git
 category_bar: true
 ---
-
-## Git 的 Pull Request 是什么
 
 ## 前言
 

@@ -1,18 +1,18 @@
 ---
-title: elastic-search-basic
+title: ElasticSearch 基础
 categories:
-  - DataBase
+  - 数据库
   - ElasticSearch
 category_bar: true
 ---
 
-## ElasticSearch 基础
+## 前言
 
-### ELK 组件
+## ELK 组件
 
 ![ELK 组件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402140034845.png)
 
-### 正向索引与倒排索引
+## 正向索引与倒排索引
 
 ![正向索引与倒排索引](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402140034124.png)
 
@@ -32,6 +32,6 @@ category_bar: true
 1. 感觉正向索引就相当于朴素遍历，而倒排索引就是舍弃存储空间建立一个哈希表，最后根据哈希值进行用户展示
 2. 最终未能选择 es 作为数据，转而使用 mysql
 
-### ElasticSearch 与 MySQL 的协同关系
+## ElasticSearch 与 MySQL 的协同关系
 
 ![ElasticSearch 与 MySQL 的协同关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402140034125.png)

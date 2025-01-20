@@ -1,12 +1,12 @@
 ---
-title: python-basic
+title: Python 基础
 categories:
-  - BackEnd
+  - 后端
   - Python
 category_bar: true
 ---
 
-## Python 基础
+## 前言
 
 本文记录 Python3 语法相关的内容。
 

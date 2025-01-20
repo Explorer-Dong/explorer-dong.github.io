@@ -1,10 +1,10 @@
 ---
-title: geometry
-categories: Algorithm
+title: 计算几何
+categories: 数据结构与算法
 category_bar: true
 ---
 
-### 计算几何
+### 前言
 
 ### 【二维/数学】Minimum Manhattan Distance
 

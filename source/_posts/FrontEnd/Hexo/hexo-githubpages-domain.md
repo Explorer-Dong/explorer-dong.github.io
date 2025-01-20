@@ -1,12 +1,12 @@
 ---
-title: hexo-githubpages-domain
+title: 在 GitHub Pages 中使用自己的域名
 categories:
-  - FrontEnd
+  - 前端
   - Hexo
 category_bar: true
 ---
 
-# 在 GitHub Pages 中使用自己的域名
+## 前言
 
 如果你觉得使用 [username].github.io 域名过于 ~~ugly~~，你可以使用自己的域名！
 

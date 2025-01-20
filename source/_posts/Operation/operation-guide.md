@@ -1,10 +1,8 @@
 ---
-title: operation-guide
-categories: Operation
+title: 运维指南
+categories: 运维
 category_bar: true
 ---
-
-## 运维指南
 
 ## 前言
 

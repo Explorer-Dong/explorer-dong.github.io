@@ -1,16 +1,16 @@
 ---
-title: idle-self-config
+title: IDLE 偏好配置
 categories: 
-  - DevTools
+  - 开发工具
   - IDLE
 category_bar: true
 ---
 
-## IDLE 偏好配置
+## 前言
 
 由于连续两届篮球杯都是 CA 省二，迫于加分压力不得不转 PA 组（其实是摸鱼不刷题导致的）。阅读篮球杯 py 组手册后发现只能使用 3.8.6 版本且编辑器只能用自带的 IDLE，故特此记录一下相关配置，顺便说点题外话
 
-### 编写文件
+## 编写文件
 
 在双击快捷方式后会弹出一个 shell 窗口，支持简单的交互式编码：
 
@@ -20,7 +20,7 @@ category_bar: true
 
 ![新建 or 打开](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091647404.png)
 
-### 修改样式
+## 修改样式
 
 在 shell 或编辑界面中均有 Options 选项，点击后进行个性化定制：
 
@@ -38,11 +38,11 @@ category_bar: true
 
 ![修改运行模块快捷键为 Ctrl+F5 从而和 CLion 对应](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091651415.png)
 
-### 题外话
+## 题外话
 
 为什么直接点击 `pythonw.exe` 无法打开 IDLE？说实在的困扰好久了，因为这个原因就没打开过所谓的 python 自带的编辑器，惭愧。搜遍 Google 和 Baidu 都未能找到准确的答案，比较多的是：因为 pythonw.exe 就没打算让你双击打开它，所以只能通过快捷方式打开？？？
 
-### upd
+## upd
 
 正如底部评论所言，`pythonw` 可以理解为一个命令行工具，那显然就不是用来双击打开的。与 `python demo.py` 表示运行 `demo.py` 文件逻辑类似，`pythonw demo.pyw` 表示运行 `demo.pyw` 文件。比如这个目录下的 `.pyw` 文件：`D:\Program Files\Python38\Lib\idlelib\idle.pyw`，我们在任意位置运行下方命令：
 

@@ -1,10 +1,10 @@
 ---
-title: graphs
-categories: Algorithm
+title: 图论
+categories: 数据结构与算法
 category_bar: true
 ---
 
-### 图论
+### 前言
 
 ### 【拓扑】有向图的拓扑序列
 

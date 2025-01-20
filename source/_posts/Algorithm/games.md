@@ -1,10 +1,10 @@
 ---
-title: games
-categories: Algorithm
+title: 博弈论
+categories: 数据结构与算法
 category_bar: true
 ---
 
-### 博弈论
+### 前言
 
 思考如何必胜态和必败态是什么以及如何构造这样的局面。
 

@@ -1,12 +1,12 @@
 ---
-title: solve-mysql-problems
+title: 解决 MySQL 相关问题
 categories: 
-  - DataBase
+  - 数据库
   - MySQL
 category_bar: true
 ---
 
-## 解决 MySQL 相关问题
+## 前言
 
 ## 解决 Connection refused: connect 的问题
 

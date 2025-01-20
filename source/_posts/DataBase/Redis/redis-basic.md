@@ -1,9 +1,9 @@
 ---
-title: redis-basic
+title: Redis 基础
 categories:
-  - DataBase
+  - 数据库
   - Redis
 category_bar: true
 ---
 
-## Redis 基础
+## 前言

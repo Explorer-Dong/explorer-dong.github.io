@@ -1,12 +1,12 @@
 ---
-title: solve-shell-problems
+title: 解决 shell 相关问题
 categories:
-  - Operation
+  - 运维
   - Shell
 category_bar: true
 ---
 
-## 解决 shell 相关问题
+## 前言
 
 本文记录一些 bash shell 的使用问题。
 

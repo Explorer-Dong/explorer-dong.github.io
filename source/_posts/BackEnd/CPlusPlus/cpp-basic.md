@@ -1,7 +1,7 @@
 ---
-title: cpp-basic
+title: C++ 基础
 categories: 
-  - BackEnd
+  - 后端
   - CPlusPlus
 category_bar: true
 ---

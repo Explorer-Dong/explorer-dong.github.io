@@ -1,12 +1,12 @@
 ---
-title: mysql-basic
-categories: 
-  - DataBase
+title: MySQL 基础
+categories:
+  - 数据库
   - MySQL
 category_bar: true
 ---
 
-## MySQL 基础
+## 前言
 
 MySQL是一款目前较为流行的关系型数据库
 

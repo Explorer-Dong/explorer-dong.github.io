@@ -1,7 +1,7 @@
 ---
-title: 用OSS增强Hexo的搜索功能
+title: 用 OSS 增强 Hexo 的搜索功能
 categories:
-  - FrontEnd
+  - 前端
   - Hexo
 category_bar: true
 ---

@@ -1,12 +1,12 @@
 ---
-title: opengauss-import-data
-categories: 
-  - DataBase
+title: openGauss 导入数据
+categories:
+  - 数据库
   - openGauss
 category_bar: true
 ---
 
-## openGauss 导入数据
+## 前言
 
 本文简单介绍一下如何利用 gsql 将数据批量导入 openGauss。
 

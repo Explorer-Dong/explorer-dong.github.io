@@ -1,10 +1,10 @@
 ---
-title: a_template
-categories: Algorithm
+title: 板子
+categories: 数据结构与算法
 category_bar: true
 ---
 
-## 板子
+## 前言
 
 优雅的解法，少不了优雅的板子。
 

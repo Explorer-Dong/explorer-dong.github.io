@@ -1,10 +1,8 @@
 ---
-title: data-base-guide
-categories: DataBase
+title: 数据库开发指南
+categories: 数据库
 category_bar: true
 ---
-
-## 数据库开发指南
 
 ## 前言
 

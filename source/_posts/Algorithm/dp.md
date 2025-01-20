@@ -1,10 +1,10 @@
 ---
-title: dp
-categories: Algorithm
+title: 动态规划
+categories: 数据结构与算法
 category_bar: true
 ---
 
-### 动态规划
+### 前言
 
 动态规划分为被动转移和主动转移，而其根本在于状态表示和状态转移。如何**完整表示**所有状态？如何**不重不漏**划分子集从而进行状态转移？
 

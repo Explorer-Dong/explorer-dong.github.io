@@ -1,12 +1,112 @@
 ---
-title: 将 Hexo 项目部署到自己的云服务器并持续集成
+title: Hexo 部署指南
 categories:
   - 前端
   - Hexo
 category_bar: true
+mermaid: true
 ---
 
 ## 前言
+
+```mermaid
+graph LR
+  A(部署 Hexo)
+  S1(基于 GitHub Pages)
+  S2(基于自己的云服务器)
+  m1(基于 hexo-deploy-git)
+  m2(基于 GitHub Actions)
+  m3(基于 Git Hooks)
+  A --> S1
+  A --> S2
+  S1 --> m1
+  S1 --> m2
+  S2 --> m3
+```
+
+## 基于 hexo-deploy-git
+
+该方法在「Hexo 建站指南」中已详细介绍，不再赘述，见：<https://blog.dwj601.cn/FrontEnd/Hexo/build-your-own-website-with-hexo/#部署云端>。
+
+## 基于 GitHub Actions
+
+该方法可以利用 GitHub Actions 的 CI/CD 功能，省去「本地构建」与「手动部署」的操作，让 GitHub 平台帮助我们完成这两步操作，从而让我们只需要像维护项目代码一样专注于内容创作与版本管理，而无需关心其他任何事情。下面以「源码和站点同属一个仓库」的情景为例介绍具体地操作与工作流配置。
+
+1）创建一个空 GitHub 仓库、创建一个鉴权 token（该 token 可以让 GitHub Actions 以你的身份操作你的仓库）、赋予 GitHub Actions 读写权限
+
+创建一个鉴权 token：`头像 >> Settings >> Developer settings >> Personal access tokens >> Tokens (classic)`
+
+![创建一个鉴权 token：头像 >> Settings >> Developer settings >> Personal access tokens >> Tokens (classic)](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501230044185.png)
+
+赋予 GitHub Actions 读写权限：`Settings >> Actions >> General >> Workflow permissions`
+
+![赋予 GitHub Actions 读写权限：Settings >> Actions >> General >> Workflow permissions](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501230055064.png)
+
+2）初始化一个博客项目
+
+```bash
+hexo init
+```
+
+3）编辑 _config.yml 文件中的 url 字段
+
+```yaml
+url: https://explorer-dong.github.io/demo-github-actions
+```
+
+4）创建工作流文件 .github/workflows/bot.yml 并编辑如下内容
+
+```yaml
+name: Build and Deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 相当于 git clone 到服务器
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      # 安装依赖并生成页面
+      - name: Install and Build 🔧
+        run: |
+          npm install -g hexo-cli --save
+          npm install
+          hexo generate
+
+      # 部署
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages   # 存储站点的分支
+          folder: public     # 构建出来的待部署的站点文件夹名称
+```
+
+5）初始化 Git 版本管理并连接到远程仓库
+
+```bash
+# 初始化
+git init
+git add .
+git commit -m 'init'
+
+# 连接远程仓库
+git remote add origin https://github.com/Explorer-Dong/demo-github-actions.git
+
+# 首次推送
+git push -u origin main
+```
+
+6）在 GitHub Pages 上配置站点托管分支 `Settings >> Pages >> Build and deployment`
+
+![在 GitHub Pages 上配置站点托管分支：Settings >> Pages >> Build and deployment](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501230103361.png)
+
+GitHub Pages 按照上述工作流的指令，检测到 push 后开始执行，即 checkout、generate 和 deploy。等待所有流程结束后，重新加载 `https://<username>.github.io/<project>/` 就可以发现站点已经托管成功了！
+
+## 基于 Git Hooks
 
 由于使用 Github Pages 服务访问速度过慢（因为托管的服务器在国外），使用 Gitee Pages 又不能自定义域名。故综合考虑还是部署到自己的国内服务器上。加上网上相关内容不是时间长远，就是环境不一，而且感觉都是一个人写完以后大家照着抄的，几乎都长一样。所以决定自己也整理一下（也抄一篇），并且补充相关原理。本篇博客将以阿里云 Ubuntu22.04 为例，介绍如何将自己的 hexo 静态博客项目部署到属于自己的服务器上并持续集成。
 
@@ -18,8 +118,6 @@ category_bar: true
 - 基本的 [git](https://blog.dwj601.cn/DevTools/Git/git-learning-record/) 指令
 
 其实具备了上面的条件以后，就可以将我们的 hexo 静态博客项目部署并公开访问了。即直接通过 shell 连接工具（以 Mobaxterm 为例），连接上自己的服务器之后，上传本地 hexo 项目的 public 文件夹到服务器的指定目录下，最后通过 nginx 代理一下即可。但是这样做有一个问题就是，不够便捷~~装13~~，尤其是当文章内容较多、文章改动频繁并且想要实时与用户共享的时候，这样的手动操作挺麻烦的并且都是重复工作。那么有什么方法可以解决吗？有的！我们可以利用 hexo 的 deploy 命令，结合 Git 的 hooks 工作流进行自动部署！只需要本地执行 hexo 的部署三步曲，即可实现实时更新部署并公开访问。那么接下来我们就开始操作吧！
-
-## 部署
 
 ### 1. 服务器厂商端：域名解析
 
@@ -168,11 +266,11 @@ server {
 
 ![查看文件是否存在](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071837567.png)
 
-## 原理
+### 原理
 
 ![hexo 持续集成原理图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081614614.jpg)
 
-### Git Hooks 是什么？工作原理是什么？
+#### Git Hooks 是什么？工作原理是什么？
 
 可以将其类比 github workflows，可以在我们做出某些行为的前后自动执行一些我们预设定的任务。此处使用到的就是 post-receive 任务，[原文](https://git-scm.com/docs/githooks#post-receive)是这样解释的：
 
@@ -180,7 +278,7 @@ server {
 
 即当其接收到 push 任务并且存储库的索引被更新后，该钩子就会执行其中的内容。我们利用其特点，在将我们的 hexo 项目 push 到服务器后，执行其中的部署指令，即可实现自动部署、持续集成的功能。
 
-### SSH 是什么，工作原理是什么？
+#### SSH 是什么，工作原理是什么？
 
 可以简单的将其理解为一种用来连接本地客户端与远程服务器的通信隧道。下面是[较为官方](https://info.support.huawei.com/info-finder/encyclopedia/zh/SSH.html)的解释：
 
@@ -190,7 +288,7 @@ server {
 
 ![SSH常用场景](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081642038.png)
 
-## 参考
+### 参考
 
 [基于Hexo的静态博客网站搭建并部署至云服务器](https://www.glimound.com/build-hexo-blog/)
 

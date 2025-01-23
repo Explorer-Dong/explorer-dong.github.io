@@ -8,84 +8,75 @@ category_bar: true
 
 ## 前言
 
-本博客介绍一些关于「Hexo 功能增强」的内容。
+本文在 [Hexo 建站指南](https://blog.dwj601.cn/FrontEnd/Hexo/build-your-own-website-with-hexo/) 的基础之上，对 Hexo 生成的网站做进一步个性化的功能增强定制。
 
 ## 自定义域名
 
-在 GitHub Pages 中使用自己的域名
+如果将网站托管在 GitHub Pages 上并且觉得 xxx.github.io 不能凸显出你的内容，GitHub Actions 提供了自定义域名的服务。当然，前提是你得有一个 [域名](https://wanwang.aliyun.com/domain/)。相比于域名指向自己的云服务器，指向 GitHub 的服务器是不需要备案的，懂的都懂。下面以阿里云家的域名为例展开介绍。
 
-如果你觉得使用 [username].github.io 域名过于 ~~ugly~~，你可以使用自己的域名！
+### 云平台端
 
-前置条件：
+进入云平台，将自己购买的域名绑定到 GitHub Pages 对应的路由地址。
 
-- 购买一个自己的域名：可以在阿里云、腾讯云等大云服务厂商购买域名。价位高低均有，适合自己的即可
-- 使用 GitHub Pages 部署静态站点
+1）进入域名控制台并点击「解析」按钮：
 
-我们知道，对于域名绑定的服务，如果被绑定的主机位于国内，则需要备案且步骤较为繁琐，但是 GitHub Pages 的主机显然都在米国，那就不需要备案了。我们以阿里云购买的域名为例进行操作。
+![进入域名控制台并点击解析按钮](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101115508.png)
 
-### 第一步
+2）填写表单，注意此处的解析请求来源一定要填 **默认** ！不要选择境外，否则无法解析成功：
 
-将自己购买的域名绑定到 [username].github.io，这一步是为了在别人访问 [username].github.io 重定向到 自己购买的域名。
+![填写表单](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101120914.png)
 
-进入域名控制台并进入解析界面：
+由于此处我解析的是顶级域名，希望通过 `www.example.cn` 和 `example.cn` 同时访问到博客站点，因此添加了两条解析记录：
 
-![进入域名控制台并进入解析界面](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101115508.png)
+![](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101117553.png)
 
-配置以下两条解析记录：其中 www.[domain].[xxx] 可以实现自动重定向到 [domain].[xxx]，也可以不解析该记录。
-
-![配置解析记录](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101117553.png)
-
-注意此处的解析请求来源一定要填 **默认** ！不要选择境外，否则无法解析成功
-
-![此处的解析请求来源一定要填默认](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101120914.png)
-
-### 第二步
+### GitHub Pages 端
 
 在 GitHub Pages 界面绑定刚才购买的域名。
 
-进入仓库中的 setting > pages 页面，在 Custom domain 中填入 [domain].[xxx] 顶级域名并勾选强制 https 访问服务
+进入仓库的 `Setting >> Pages` 页面，在 Custom domain 中填入 \<domain>.xxx 域名并勾选强制 https 服务：
 
-![在 Custom domain 中填入顶级域名](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101124296.png)
+![在 Custom domain 中填入域名](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101124296.png)
 
-等待几分钟 DNS 解析即可使用 `[domain].[xxx]` or `www.[domain].[xxx]` or `[username].github.io` 访问自己的静态网站啦！
+等待几分钟 DNS 解析即可使用 `<domain>.xxx` 或 `www.<domain>.xxx` 或 `<username>.github.io` 访问自己的静态网站啦！在使用了 CNAME 的情况下，如果使用 `<username>.github.io` 访问站点，一般会做重定向，即重定向为你自己的域名。
 
-### 第三步
+### 本地机端
 
-这一步其实是为了解决一个 bug，如果你在操作完上述两步以后，会发现静态页面仓库内多了一个 CNAME 文件。这是因为自定义域名以后，GitHub Pages 服务需要知道将请求路由到哪个域名上，而这需要从 CNAME 文件中获取信息
+这一步其实是为了解决一个 bug。
+
+如果你在操作完上述两步以后，会发现静态页面仓库内多了一个 CNAME 文件。这是因为自定义域名以后，GitHub Pages 服务需要知道将请求路由到哪个域名上，而这需要从 CNAME 文件中获取信息：
 
 ![仓库内多了一个 CNAME 文件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101223383.png)
 
-但是如果后期更新站点时，由于 Hexo 强制覆盖分支的特性，会自动覆盖掉这个 CNAME 文件，从而无法正确的路由请求，也就会出现 404 的错误。解决方案就是在 hexo 的 `source/` 文件夹下添加一个 CNAME 文件。这样该 CNAME 文件就会被 hexo 识别为自己的内容，从而每次都可以部署到相应的分支上了
+但是如果后期更新站点时，由于 Hexo 强制覆盖分支的特性，会自动覆盖掉这个 CNAME 文件，从而无法正确的路由请求，也就会出现 404 的错误。解决方案就是在 hexo 的 `source/` 文件夹下添加一个 CNAME 文件。这样该 CNAME 文件就会被 hexo 识别为自己的内容，从而每次都可以部署到相应的分支上了：
 
 ![在 hexo 的 source/ 文件夹下添加一个 CNAME 文件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101140516.png)
 
-## 配置 mermaid
+## 更换 mermaid 的 CDN 源
 
-Hexo 配置 mermaid
+Fuild 主题使用的 mermaid 版本较低，本文介绍更换 Fluid 主题的 mermaid.js 源，其他主题逻辑类似。
 
 ### 问题复现
 
-本地 typora 正常渲染，但是服务器渲染异常。发现是服务器的渲染脚本版本过低，无法渲染最新的 mermaid 版本内容。
+本地 typora 可以正常渲染 mermaid 内容，但是服务器渲染异常。在 mermaid 中输入 info 后发现是 Fluid 使用的 mermaid CND 版本过低，无法渲染语法较新的 mermaid 内容。如下所示：
 
 本地 typora 支持的 mermaid 版本：
 
 ![本地 typora 支持的 mermaid 版本](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409120854588.png)
 
-网站支持的 mermaid 版本
+站点 CDN 支持的 mermaid 版本：
 
 ![网站支持的 mermaid 版本](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409120858955.png)
 
-### 尝试解决
-
-修改 `_config_fluid.yml` 中的 mermaid CDN 信息。由于原来的 CDN 不支持更高版本的 mermaid CDN，所以直接用官方的。
-
-![修改 hexo-fluid 配置的 mermaid CDN 版本](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409120902191.png)
-
-注：[官网](https://www.jsdelivr.com/package/npm/mermaid?version=10.9.1)给出的链接无法在 hexo 的 fluid 主题中正常渲染，因为多了一个文件名 `mermaid.min.js`，显然 fluid 的 cdn 配置会在根目录自动寻找 `.js` 文件进行渲染。
-
 ### 问题解决
 
-最后服务器可以正常渲染 mermaid 图标。
+修改 `_config_fluid.yml` 中的 mermaid CDN 信息。由于原来的 CDN 不支持更高版本的 mermaid.js，所以直接用官方的：
+
+![修改 hexo-fluid 配置的 mermaid CDN 源](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409120902191.png)
+
+注：[官网](https://www.jsdelivr.com/package/npm/mermaid?version=10.9.1)给出的链接无法在 Hexo 的 Fluid 主题中正常渲染，因为多了一个文件名 `mermaid.min.js`，由于 Fluid 会在配置的 CDN 路由下遍历 `.js` 文件，因此直接删除文件名即可。
+
+最后 mermaid 内容可以正常渲染。
 
 ![正常渲染](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409120850752.png)
 
@@ -93,7 +84,7 @@ Hexo 配置 mermaid
 
 考虑到某著名云服务商提供的云服务器在两年的 99 计划后续费价格高达四位数，遂研究一下降配续费。结果在将带宽从 3Mbps 降低到 1Mbps 并退给我三十几元后，发现不能撤回这一步操作，重新恢复至 3Mbps 需要我掏五百多元，绝。
 
-考虑到目前只用那台机器托管了一个 Hexo 静态网站，最大的带宽开销是搜索时加载的约 8.5MB 的 local-search.xml 文件，在 3Mbps 带宽的情况下，需要加载约 $\frac{8.5\times 8}{3}\approx 23$ 秒，我已经难以忍受，现在直接给干到一分钟了。不得以，开始研究将该索引文件丢到这家云服务商的 OSS 上，悲。
+考虑到目前只用那台机器托管了一个 Hexo 静态网站，最大的带宽开销是搜索时加载的约 8.5MB 的 local-search.xml 文件，在 3Mbps 带宽的情况下，需要加载约 $\frac{8.5\times 8}{3}\approx 23$ 秒，我已经难以忍受，现在直接给干到一分钟了。不得以，开始研究将该索引文件丢到这家云服务商的 [OSS](https://www.aliyun.com/product/oss?userCode=jpec1z57) 上，悲。
 
 ### 配置 `_config.fluid.yml`
 

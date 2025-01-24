@@ -62,4 +62,6 @@
 
 ## 未来展望
 
+:thinking: 更换评论系统。评测后发现 [https://twikoo.js.org](https://twikoo.js.org) 较为合适，特点有：大陆加载速度较快、可以让用户自定义输入私人信息、支持回复后邮箱实时提醒。
+
 :thinking: 增强 SEO 优化，提升网站曝光量。

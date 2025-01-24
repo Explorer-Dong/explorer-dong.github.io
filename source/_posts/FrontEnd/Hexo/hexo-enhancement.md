@@ -12,7 +12,7 @@ category_bar: true
 
 ## 自定义域名
 
-如果将网站托管在 GitHub Pages 上并且觉得 xxx.github.io 不能凸显出你的内容，GitHub Actions 提供了自定义域名的服务。当然，前提是你得有一个 [域名](https://wanwang.aliyun.com/domain/)。相比于域名指向自己的云服务器，指向 GitHub 的服务器是不需要备案的，懂的都懂。下面以阿里云家的域名为例展开介绍。
+如果将网站托管在 GitHub Pages 上并且觉得 `xxx.github.io` 不能凸显出你的内容，GitHub Pages 提供了自定义域名的服务。当然，前提是你得有一个 [域名](https://wanwang.aliyun.com/domain/)。相比于域名指向自己的云服务器，指向 GitHub 的服务器是不需要备案的，懂的都懂。下面以阿里云家的域名为例展开介绍。
 
 ### 云平台端
 
@@ -34,7 +34,7 @@ category_bar: true
 
 在 GitHub Pages 界面绑定刚才购买的域名。
 
-进入仓库的 `Setting >> Pages` 页面，在 Custom domain 中填入 \<domain>.xxx 域名并勾选强制 https 服务：
+进入仓库的 `Setting >> Pages` 页面，在 Custom domain 中填入 `<domain>.xxx` 域名并勾选强制 https 服务：
 
 ![在 Custom domain 中填入域名](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403101124296.png)
 
@@ -74,7 +74,7 @@ Fuild 主题使用的 mermaid 版本较低，本文介绍更换 Fluid 主题的 
 
 ![修改 hexo-fluid 配置的 mermaid CDN 源](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409120902191.png)
 
-注：[官网](https://www.jsdelivr.com/package/npm/mermaid?version=10.9.1)给出的链接无法在 Hexo 的 Fluid 主题中正常渲染，因为多了一个文件名 `mermaid.min.js`，由于 Fluid 会在配置的 CDN 路由下遍历 `.js` 文件，因此直接删除文件名即可。
+注：[官网](https://www.jsdelivr.com/package/npm/mermaid?version=10.9.1) 给出的链接无法在 Hexo 的 Fluid 主题中正常渲染，因为多了一个文件名 `mermaid.min.js`，由于 Fluid 会在配置的 CDN 路由下遍历 `.js` 文件，因此直接删除文件名即可。
 
 最后 mermaid 内容可以正常渲染。
 
@@ -84,11 +84,11 @@ Fuild 主题使用的 mermaid 版本较低，本文介绍更换 Fluid 主题的 
 
 考虑到某著名云服务商提供的云服务器在两年的 99 计划后续费价格高达四位数，遂研究一下降配续费。结果在将带宽从 3Mbps 降低到 1Mbps 并退给我三十几元后，发现不能撤回这一步操作，重新恢复至 3Mbps 需要我掏五百多元，绝。
 
-考虑到目前只用那台机器托管了一个 Hexo 静态网站，最大的带宽开销是搜索时加载的约 8.5MB 的 local-search.xml 文件，在 3Mbps 带宽的情况下，需要加载约 $\frac{8.5\times 8}{3}\approx 23$ 秒，我已经难以忍受，现在直接给干到一分钟了。不得以，开始研究将该索引文件丢到这家云服务商的 [OSS](https://www.aliyun.com/product/oss?userCode=jpec1z57) 上，悲。
+考虑到目前只用那台机器托管了一个 Hexo 静态网站，最大的带宽开销是搜索时加载的约 8.5MB 的 `local-search.xml` 文件，在 3Mbps 带宽的情况下，需要加载约 $\frac{8.5\times 8}{3}\approx 23$ 秒，我已经难以忍受，现在直接给干到一分钟了。不得以，开始研究将该索引文件丢到这家云服务商的 [OSS](https://www.aliyun.com/product/oss?userCode=jpec1z57) 上，悲。
 
 ### 配置 `_config.fluid.yml`
 
-从 Fluid 的配置文件 _config.fluid.yml 中很容易找到 search.path 字段，其明确说明可以将索引文件的路径配置为外链地址，那么直接将 generate 出来的 local-search.xml 文件丢到 OSS 中，然后链接到对应的「公共读」文件即可。
+从 Fluid 的配置文件 `_config.fluid.yml` 中很容易找到 `search.path` 字段，其明确说明可以将索引文件的路径配置为外链地址，那么直接将 generate 出来的 `local-search.xml` 文件丢到 OSS 中，然后链接到对应的「公共读」文件即可。
 
 当然这么干的前提是 OSS 的流出带宽要比 3Mbps 大。一搜 [OSS 的流出带宽](https://help.aliyun.com/zh/oss/product-overview/limits)，没绷住：
 
@@ -98,7 +98,7 @@ Fuild 主题使用的 mermaid 版本较低，本文介绍更换 Fluid 主题的 
 
 ### 云端实时更新 `local-search.xml`
 
-由于我会频繁更新博客内容，为了让搜索到的结果可以完美的匹配我的博客，就需要确保索引文件也是同步更新的。那我每次都要打开阿里云 OSS 控制台然后上传 local-search.xml 文件吗？必然不可能。阿里云 OSS 提供了诸多的第三方工具，例如 GUI 工具 oss browser、CLI 工具 ossutil、各语言的 SDK 等，这里用到 CLI 即可。自定义 git bash 中的命令后就得到了下面的语句：
+由于我会频繁更新博客内容，为了让搜索到的结果可以完美的匹配我的博客，就需要确保索引文件也是同步更新的。那我每次都要打开阿里云 OSS 控制台然后上传 `local-search.xml` 文件吗？必然不可能。阿里云 OSS 提供了诸多的第三方工具，例如 GUI 工具 oss browser、CLI 工具 ossutil、各语言的 SDK 等，这里用到 CLI 即可。自定义 git bash 中的命令后就得到了下面的语句：
 
 ```bash
 alias gpho='git push && hexo clean && hexo generate && hexo deploy && ossutil cp </path/to/local-search.xml> oss://dwj-oss/search-files/'
@@ -113,7 +113,7 @@ alias gpho='git push && hexo clean && hexo generate && hexo deploy && ossutil cp
 
 ### 解决 `OSS.Bucket` 的跨域问题
 
-但是还没完。由于 Hexo-Fuild 的搜索逻辑代码中使用到了 Ajax 请求，对于云服务器，其需要向 OSS 对应的主机发起请求，这就会引发浏览器的跨域问题从而导致 local-search.xml 文件无法正常被加载到用户的浏览器中。去阿里云 OSS 的控制台配置对应 Bucket 的 [跨域规则](https://help.aliyun.com/zh/oss/user-guide/cors-12/) 即可。例如我的配置：
+但是还没完。由于 Hexo Fuild 的搜索逻辑代码中使用到了 Ajax 请求，对于云服务器，其需要向 OSS 对应的主机发起请求，这就会引发浏览器的跨域问题从而导致 `local-search.xml` 文件无法正常被加载到用户的浏览器中。去阿里云 OSS 的控制台配置对应 Bucket 的 [跨域规则](https://help.aliyun.com/zh/oss/user-guide/cors-12/) 即可。例如我的配置：
 
 ![配置对应 Bucket 的跨域规则即可](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501192333282.png)
 

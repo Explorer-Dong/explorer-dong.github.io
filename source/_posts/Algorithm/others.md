@@ -4,11 +4,13 @@ categories: 数据结构与算法
 category_bar: true
 ---
 
-### 前言
+## 前言
+
+其他的「例题解析」。
 
 主要以思维题为主，注意多角度切入。
 
-### 【思维/哈希/排序】最长严格递增子序列
+## 【思维/哈希/排序】最长严格递增子序列
 
 https://www.acwing.com/problem/content/5273/
 
@@ -52,7 +54,7 @@ int main()
 }
 ```
 
-### 【分讨/组合数学】三元组
+## 【分讨/组合数学】三元组
 
 https://www.acwing.com/problem/content/5280/
 
@@ -116,7 +118,7 @@ int main() {
 }
 ```
 
-### 【分讨】删除元素
+## 【分讨】删除元素
 
 https://www.acwing.com/problem/content/5281/
 
@@ -282,7 +284,7 @@ int main() {
 }
 ```
 
-### 【构造】Sorting with Twos
+## 【构造】Sorting with Twos
 
 https://codeforces.com/contest/1891/problem/A
 
@@ -329,7 +331,7 @@ void solve() {
 }
 ```
 
-### 【模拟】指针运动​ :fire:
+## 【模拟】指针运动​ :fire:
 
 https://www.acwing.com/problem/content/description/5468/
 
@@ -344,7 +346,7 @@ https://www.acwing.com/problem/content/description/5468/
 
 ```
 
-### 【哈希】套餐设计
+## 【哈希】套餐设计
 
 https://www.acwing.com/problem/content/5480/
 
@@ -400,7 +402,7 @@ int main() {
 }
 ```
 
-### 【贪心/分讨】分班
+## 【贪心/分讨】分班
 
 https://www.acwing.com/problem/content/5481/
 
@@ -473,7 +475,7 @@ int main() {
 }
 ```
 
-### 【贪心/分讨】双端队列
+## 【贪心/分讨】双端队列
 
 https://www.acwing.com/problem/content/5484/
 
@@ -558,7 +560,7 @@ int main() {
 }
 ```
 
-### 【思维】你说的对，但是这是签到 I
+## 【思维】你说的对，但是这是签到 I
 
 https://hydro.ac/d/nnu_contest/p/P1201
 
@@ -626,7 +628,7 @@ int main() {
 }
 ```
 
-### 【贪心】从双倍数组中还原原数组
+## 【贪心】从双倍数组中还原原数组
 
 https://leetcode.cn/problems/find-original-array-from-doubled-array/description/
 
@@ -668,7 +670,7 @@ public:
 };
 ```
 
-### 【前缀和/双指针】可获得的最大点数
+## 【前缀和/双指针】可获得的最大点数
 
 https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/description/
 
@@ -700,7 +702,7 @@ public:
 };
 ```
 
-### 【思维】确定两个字符串是否接近
+## 【思维】确定两个字符串是否接近
 
 https://leetcode.cn/problems/determine-if-two-strings-are-close/description/
 
@@ -753,7 +755,7 @@ public:
 };
 ```
 
-### 【模拟】同位字符串连接的最小长度
+## 【模拟】同位字符串连接的最小长度
 
 https://leetcode.cn/problems/minimum-length-of-anagram-concatenation/
 

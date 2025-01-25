@@ -4,11 +4,13 @@ categories: 数据结构与算法
 category_bar: true
 ---
 
-### 前言
+## 前言
+
+数论的「例题解析」。
 
 整数问题。
 
-### 【质数】Divide and Equalize
+## 【质数】Divide and Equalize
 
 > 题意：给定 $n$ 个数，问能否找到一个数 $num$，使得 $num^n = \prod_{i=1}^{n}a_i$
 >
@@ -53,7 +55,7 @@ void solve() {
 }
 ```
 
-### 【整除】Deja Vu
+## 【整除】Deja Vu
 
 https://codeforces.com/contest/1891/problem/B
 
@@ -134,7 +136,7 @@ void solve() {
 }
 ```
 
-### 【组合数学】序列数量
+## 【组合数学】序列数量
 
 https://www.acwing.com/problem/content/5571/
 

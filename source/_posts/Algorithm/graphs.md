@@ -4,9 +4,11 @@ categories: 数据结构与算法
 category_bar: true
 ---
 
-### 前言
+## 前言
 
-### 【拓扑】有向图的拓扑序列
+图论的「例题解析」。
+
+## 【拓扑】有向图的拓扑序列
 
 https://www.acwing.com/problem/content/850/
 
@@ -74,7 +76,7 @@ int main() {
 }
 ```
 
-### 【基环树/拓扑】Mad City:fire:
+## 【基环树/拓扑】Mad City:fire:
 
 https://codeforces.com/contest/1873/problem/H
 
@@ -189,7 +191,7 @@ int main() {
 }
 ```
 
-### 【二分图】染色法判定二分图
+## 【二分图】染色法判定二分图
 
 https://www.acwing.com/problem/content/862/
 
@@ -256,7 +258,7 @@ void solve() {
 }
 ```
 
-### 【最小生成树】Kruskal算法求最小生成树
+## 【最小生成树】Kruskal算法求最小生成树
 
 https://www.acwing.com/problem/content/861/
 
@@ -457,7 +459,7 @@ function kurskal(n, m, edges) {
 }
 ```
 
-### 【最小生成树】Prim算法求最小生成树
+## 【最小生成树】Prim算法求最小生成树
 
 https://www.acwing.com/problem/content/860/
 
@@ -556,7 +558,7 @@ signed main() {
 }
 ```
 
-### 【最短路】Dijkstra求最短路 :fire:
+## 【最短路】Dijkstra求最短路 :fire:
 
 朴素版 - https://www.acwing.com/problem/content/851/
 
@@ -712,7 +714,7 @@ if __name__ == '__main__':
 
 ```
 
-### 【最短路】Floyd求最短路
+## 【最短路】Floyd求最短路
 
 https://www.acwing.com/problem/content/856/
 
@@ -859,7 +861,7 @@ int main() {
 }
 ```
 
-### 【最短路】关闭分部的可行集合数目
+## 【最短路】关闭分部的可行集合数目
 
 https://leetcode.cn/problems/number-of-possible-sets-of-closing-branches/
 
@@ -987,7 +989,7 @@ class Solution:
         return res
 ```
 
-### 【思维/遍历】图的遍历
+## 【思维/遍历】图的遍历
 
 https://www.luogu.com.cn/problem/P3916
 
@@ -1111,7 +1113,7 @@ int main() {
 }
 ```
 
-### 【遍历/并查集】孤立点数量
+## 【遍历/并查集】孤立点数量
 
 https://www.acwing.com/problem/content/5560/
 
@@ -1322,7 +1324,7 @@ function solve() {
 }
 ```
 
-### 【LCA】树的直径
+## 【LCA】树的直径
 
 https://www.acwing.com/problem/content/5563/
 

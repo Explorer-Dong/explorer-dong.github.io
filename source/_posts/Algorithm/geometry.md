@@ -4,9 +4,11 @@ categories: 数据结构与算法
 category_bar: true
 ---
 
-### 前言
+## 前言
 
-### 【二维/数学】Minimum Manhattan Distance
+计算几何的「例题解析」。
+
+## 【二维/数学】Minimum Manhattan Distance
 
 https://codeforces.com/gym/104639/problem/J
 
@@ -42,7 +44,7 @@ void solve() {
 }
 ```
 
-### 【枚举】三角形
+## 【枚举】三角形
 
 https://www.acwing.com/problem/content/5383/
 
@@ -96,7 +98,7 @@ signed main() {
 }
 ```
 
-### 【凸包】奶牛过马路
+## 【凸包】奶牛过马路
 
 https://www.acwing.com/problem/content/5572/
 

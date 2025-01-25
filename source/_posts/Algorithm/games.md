@@ -4,11 +4,13 @@ categories: 数据结构与算法
 category_bar: true
 ---
 
-### 前言
+## 前言
+
+博弈论的「例题解析」。
 
 思考如何必胜态和必败态是什么以及如何构造这样的局面。
 
-### 【博弈/贪心/交互】Salyg1n and the MEX Game
+## 【博弈/贪心/交互】Salyg1n and the MEX Game
 
 https://codeforces.com/contest/1867/problem/C
 

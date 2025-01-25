@@ -6,6 +6,8 @@ category_bar: true
 
 ## 前言
 
+基础数据结构的「例题解析」。
+
 ## 【模板】双链表
 
 https://www.acwing.com/problem/content/829/
@@ -481,7 +483,9 @@ void solve() {
 }    
 ```
 
-## 【栈】验证栈序列
+## 栈
+
+#### 验证栈序列
 
 https://www.luogu.com.cn/problem/P4387
 
@@ -1225,7 +1229,9 @@ int main() {
 }
 ```
 
-## 【并查集】Milk Visits S
+## 并查集
+
+### Milk Visits S
 
 https://www.luogu.com.cn/problem/P5836
 
@@ -1287,7 +1293,7 @@ void solve() {
 }
 ```
 
-## 【并查集】尽量减少恶意软件的传播
+### 尽量减少恶意软件的传播
 
 https://leetcode.cn/problems/minimize-malware-spread/description/
 
@@ -1365,7 +1371,7 @@ public:
 };
 ```
 
-## 【并查集】账户合并
+### 账户合并
 
 https://leetcode.cn/problems/accounts-merge/
 
@@ -1488,7 +1494,9 @@ class Solution:
         return res
 ```
 
-## 【树状数组】将元素分配到两个数组中 II
+## 树状数组
+
+### 将元素分配到两个数组中 II
 
 https://leetcode.cn/problems/distribute-elements-into-two-arrays-ii/description/
 
@@ -1677,7 +1685,9 @@ class Solution:
         return v1 + v2
 ```
 
-## 【线段树/二分】以组为单位订音乐会的门票 :fire:
+## 线段树
+
+### 以组为单位订音乐会的门票 :fire:
 
 https://leetcode.cn/problems/booking-concert-tickets-in-groups/
 
@@ -1740,7 +1750,7 @@ class BookMyShow:
 
 ## 哈希
 
-### 【哈希】分组
+### 分组
 
 https://www.acwing.com/problem/content/5182/
 
@@ -1814,7 +1824,7 @@ int main()
 }
 ```
 
-### 【哈希】海港
+### 海港
 
 https://www.luogu.com.cn/problem/P2058
 
@@ -1886,7 +1896,7 @@ signed main() {
 }
 ```
 
-### 【哈希】Cities and States S
+### Cities and States S
 
 https://www.luogu.com.cn/problem/P3405
 
@@ -1934,7 +1944,7 @@ signed main() {
 }
 ```
 
-### 【哈希/枚举/思维】Torn Lucky Ticket
+### Torn Lucky Ticket
 
 https://codeforces.com/contest/1895/problem/C
 

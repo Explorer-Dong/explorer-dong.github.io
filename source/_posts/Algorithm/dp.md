@@ -4,13 +4,17 @@ categories: 数据结构与算法
 category_bar: true
 ---
 
-### 前言
+## 前言
+
+动态规划的「例题解析」。
 
 动态规划分为被动转移和主动转移，而其根本在于状态表示和状态转移。如何**完整表示**所有状态？如何**不重不漏**划分子集从而进行状态转移？
 
 ![被动转移 vs 主动转移](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408291538900.png)
 
-### 【递推】反转字符串
+## 递推
+
+## 反转字符串
 
 https://www.acwing.com/problem/content/5574/
 
@@ -74,7 +78,7 @@ int main() {
 }
 ```
 
-### 【递推】最大化子数组的总成本
+## 最大化子数组的总成本
 
 https://leetcode.cn/problems/maximize-total-cost-of-alternating-subarrays/
 
@@ -151,7 +155,7 @@ class Solution:
         return max(f[n-1][0], f[n-1][1])
 ```
 
-### 【递推】费解的开关
+## 【递推】费解的开关
 
 https://www.acwing.com/problem/content/97/
 
@@ -236,7 +240,7 @@ signed main() {
 }
 ```
 
-### 【递推/线性dp/哈希】Decode
+## 【递推/线性dp/哈希】Decode
 
 https://codeforces.com/contest/1996/problem/E
 
@@ -292,7 +296,7 @@ signed main() {
 }
 ```
 
-### 【递推/数学】Squaring
+## 【递推/数学】Squaring
 
 https://codeforces.com/contest/1995/problem/C
 
@@ -390,7 +394,7 @@ if __name__ == '__main__':
     while T: solve(); T -= 1
 ```
 
-### 【递推/dfs】牛的语言学
+## 【递推/dfs】牛的语言学
 
 https://www.acwing.com/problem/content/description/5559/
 
@@ -525,7 +529,7 @@ int main() {
 }
 ```
 
-### 【线性dp】最小化网络并发线程分配
+## 【线性dp】最小化网络并发线程分配
 
 https://vijos.org/d/nnu_contest/p/1492
 
@@ -556,7 +560,7 @@ void solve() {
 }
 ```
 
-### 【线性dp】Block Sequence
+## 【线性dp】Block Sequence
 
 https://codeforces.com/contest/1881/problem/E
 
@@ -582,7 +586,7 @@ def solve() -> Optional:
     return f[0]
 ```
 
-### 【线性dp】覆盖墙壁
+## 【线性dp】覆盖墙壁
 
 https://www.luogu.com.cn/problem/P1990
 
@@ -638,7 +642,7 @@ int main() {
 }
 ```
 
-### 【线性dp】施咒的最大总伤害
+## 【线性dp】施咒的最大总伤害
 
 https://leetcode.cn/problems/maximum-total-damage-with-spell-casting/
 
@@ -728,7 +732,7 @@ class Solution:
         return f[m]
 ```
 
-### 【线性dp】奇怪的汉诺塔
+## 【线性dp】奇怪的汉诺塔
 
 https://www.acwing.com/problem/content/98/
 
@@ -789,7 +793,7 @@ signed main() {
 }
 ```
 
-### 【线性dp/dfs】数的计算
+## 【线性dp/dfs】数的计算
 
 https://www.luogu.com.cn/problem/P1028
 
@@ -873,7 +877,7 @@ signed main() {
 }
 ```
 
-### 【线性dp/二分答案】规划兼职工作
+## 【线性dp/二分答案】规划兼职工作
 
 https://leetcode.cn/problems/maximum-profit-in-job-scheduling/description/
 
@@ -921,7 +925,7 @@ public:
 };
 ```
 
-### 【线性dp/二分查找】最长上升子序列
+## 【线性dp/二分查找】最长上升子序列
 
 https://www.luogu.com.cn/problem/B3637
 
@@ -1097,7 +1101,7 @@ signed main() {
 }
 ```
 
-### 【网格图dp/dfs】过河卒
+## 【网格图dp/dfs】过河卒
 
 https://www.luogu.com.cn/problem/P1002
 
@@ -1217,7 +1221,7 @@ signed main() {
 }
 ```
 
-### 【网格图dp】摘樱桃 II
+## 【网格图dp】摘樱桃 II
 
 https://leetcode.cn/problems/cherry-pickup-ii/
 
@@ -1257,7 +1261,7 @@ class Solution:
         return res
 ```
 
-### 【网格图dp】摘樱桃
+## 【网格图dp】摘樱桃
 
 弱化版 $(n\le 50)$ ：https://leetcode.cn/problems/cherry-pickup/
 
@@ -1367,7 +1371,7 @@ public:
 };
 ```
 
-### 【树形dp】最大社交深度和
+## 【树形dp】最大社交深度和
 
 https://vijos.org/d/nnu_contest/p/1534
 
@@ -1525,7 +1529,7 @@ void solve() {
 }
 ```
 
-### 【高维dp/dfs】栈
+## 【高维dp/dfs】栈
 
 https://www.luogu.com.cn/problem/P1044
 
@@ -1649,7 +1653,7 @@ signed main() {
 }
 ```
 
-### 【高维dp】找出所有稳定的二进制数组 II
+## 【高维dp】找出所有稳定的二进制数组 II
 
 https://leetcode.cn/problems/find-all-possible-stable-binary-arrays-ii/
 
@@ -1703,7 +1707,7 @@ public:
 };
 ```
 
-### 【高维dp】学生出勤记录 II
+## 【高维dp】学生出勤记录 II
 
 https://leetcode.cn/problems/student-attendance-record-ii/description/
 
@@ -1792,7 +1796,7 @@ class Solution:
         return res
 ```
 
-### 【区间dp】对称山脉
+## 【区间dp】对称山脉
 
 https://www.acwing.com/problem/content/5169/
 
@@ -1885,7 +1889,7 @@ int main() {
 }
 ```
 
-### 【状压dp】Avoid K Palindrome :fire:
+## 【状压dp】Avoid K Palindrome :fire:
 
 https://atcoder.jp/contests/abc359/tasks/abc359_d
 

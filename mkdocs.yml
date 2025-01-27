@@ -1,0 +1,101 @@
+# 站点配置
+site_name: DWJ's Blog
+
+# 主题配置
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky  # 固定导航栏
+    # - navigation.path         # 显示当前页面路径（有问题）
+    # - navigation.sections     # 分类页默认展开
+    - navigation.top          # 顶部导航栏
+    - content.code.copy       # 代码块复制按钮
+    - content.code.select     # 代码块选中行
+
+
+# 扩展
+markdown_extensions:
+  # 目录
+  - toc:
+      permalink: true  # 显示标题链接
+      toc_depth: 3     # 显示目录深度
+  # 数学公式
+  - pymdownx.arithmatex:
+      generic: true
+  # 表情符号
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji 
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  # mermaid
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  # 图片标题（需要引入额外的语法）
+  # - pymdownx.blocks.caption
+  # 代码高亮
+  - pymdownx.highlight:
+      # auto_title: true
+      linenums: true
+      anchor_linenums: true
+      line_spans: __span
+  # 并列嵌套（需要配合 superfences 一起使用）
+  - pymdownx.tabbed:
+      alternate_style: true
+
+# 静态文件
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+
+# 个性化定制
+repo_url: https://github.com/Explorer-Dong/demo-mkdocs.git
+repo_name: demo-mkdocs
+edit_uri: blob/main/docs/
+
+# 页面导航
+nav:
+  - GPA: 
+    - GPA/index.md
+    - 1st-term:
+      - GPA/1st-term/AdvancedMath.md
+    - 2nd-term:
+      - GPA/2nd-term/ObjectOrientedProgramming.md
+    - 3rd-term:
+      - GPA/3rd-term/CollegePhysics_2.md
+      - GPA/3rd-term/DS&Algo.md
+      - GPA/3rd-term/DigitalLogicCircuit.md
+      - GPA/3rd-term/LinearAlgebra.md
+    - 4th-term:
+      - GPA/4th-term/MachineLearning.md
+      - GPA/4th-term/OptMethod.md
+      - GPA/4th-term/ProbAndStat.md
+      - GPA/4th-term/PyAlgo.md
+      - GPA/4th-term/PyApply.md
+      - GPA/4th-term/SysBasic.md
+    - 5th-term:
+      - GPA/5th-term/ComputerOrganization.md
+      - GPA/5th-term/DataBase.md
+      - GPA/5th-term/DataMining.md
+      - GPA/5th-term/DeepLearning.md
+      - GPA/5th-term/DigitalImageProcessing.md
+      - GPA/5th-term/OperatingSystem.md
+    - 6th-term:
+      - GPA/6th-term/ComputerNetwork.md
+      - GPA/6th-term/ComputerVision.md
+      - GPA/6th-term/NaturalLanguageProcessing.md
+      - GPA/6th-term/SmartEducation.md
+      - GPA/6th-term/SpeechRecognition.md
+  - 数据科学: DataScience/numpy-tutorial.md
+  - 数据结构与算法: 
+    - Algorithm/templates.md
+  - 前端: FrontEnd/front-end-guide.md
+  - 后端: BackEnd/back-end-guide.md
+  - 数据库: DataBase/data-base-guide.md
+  - 运维: Operation/operation-guide.md
+  - 开发工具: DevTools/_jetbrains-license.md
+  - 其他: Others/self-learning-guide.md

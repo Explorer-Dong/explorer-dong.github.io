@@ -1,13 +1,10 @@
 ---
-title: 陌生人，你好 :D
-sticky: 100
-category_bar: true
-index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/hello.png
+comments: true
 ---
 
 ## 内容简介
 
-欢迎访问我的博客网站！本网站托管了个人从本科开始记录的电子笔记，内容主要有 **AI/CS 课程笔记**、**开发技术文章**、**算法竞赛题解**。笔记采用 Markdown 格式记录，Hexo 框架编译与部署，欢迎 Issue 和 PR！
+欢迎访问我的博客网站！本网站托管了个人从本科开始记录的电子笔记，内容主要有 **AI/CS 课程笔记**、**开发技术文章**、**算法竞赛题解**。笔记采用 Markdown 格式记录，MkDocs 框架编译与部署，欢迎 Issue 和 PR！
 
 如果您闲来无事，可以阅读网站主页「置顶」的文章；如果您有备而来，可以「搜索」全站内容或按照文章「分类」查找。
 

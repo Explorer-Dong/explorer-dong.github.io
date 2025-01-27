@@ -1,21 +1,70 @@
 # 站点配置
-site_name: DWJ's Blog
+site_name: Dwj's Blog
+site_url: https://blog.dwj601.cn/
+repo_url: https://github.com/Explorer-Dong/explorer-dong.github.io
+repo_name: explorer-dong.github.io
+edit_uri: blob/main/docs/
+
 
 # 主题配置
 theme:
   name: material
   language: zh
+  custom_dir: overrides
+  # 图标
+  logo: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/avatar.jpg
+  favicon: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/logo.png
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil 
+    view: material/eye
+  #   previous: fontawesome/solid/angle-left
+  #   next: fontawesome/solid/angle-right
+  # 颜色
+  palette:
+    # primary: indigo  # 控件颜色
+    # accent: indigo  # 强调颜色（悬停、链接、滚动条）
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7 
+        name: 黑暗模式
+
+    - scheme: slate
+      primary: black  # 控件颜色
+      toggle:
+        
+        icon: material/brightness-4
+        name: 亮色模式
   features:
     - navigation.tabs
-    - navigation.tabs.sticky  # 固定导航栏
+    # - navigation.tabs.sticky  # 固定导航栏
     # - navigation.path         # 显示当前页面路径（有问题）
-    # - navigation.sections     # 分类页默认展开
+    - navigation.sections     # 分类页默认展开
     - navigation.top          # 顶部导航栏
+    - navigation.instant      # 导航栏即时更新
+    - navigation.instant.prefetch  # 预加载
+    - navigation.instant.progress  # 进度条
+    - navigation.footer       # 页脚
     - content.code.copy       # 代码块复制按钮
     - content.code.select     # 代码块选中行
+    - search.highlight        # 搜索结果高亮
+    - search.share            # 社交分享按钮
+    - search.suggest          # 搜索建议
+    - content.action.edit     # 编辑源文件按钮
+    - content.action.view     # 查看源文件按钮
 
 
-# 扩展
+# 插件配置
+plugins:
+  # 基于 git 的时间戳显示文章创建和修改时间
+  # - git-revision-date-localized:
+  #     enable_creation_date: true
+  #     type: date
+  # 显示文章的作者
+  # - git-authors
+
+# 语法扩展
 markdown_extensions:
   # 目录
   - toc:
@@ -46,16 +95,12 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 
+
 # 静态文件
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
-
-# 个性化定制
-repo_url: https://github.com/Explorer-Dong/demo-mkdocs.git
-repo_name: demo-mkdocs
-edit_uri: blob/main/docs/
 
 # 页面导航
 nav:
@@ -99,3 +144,20 @@ nav:
   - 运维: Operation/operation-guide.md
   - 开发工具: DevTools/_jetbrains-license.md
   - 其他: Others/self-learning-guide.md
+
+
+# 社交链接
+extra:
+  analytics:
+    provider: google
+    property: G-56NDVC0D5B
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Explorer-Dong
+      name: Github
+    - icon: fontawesome/solid/c
+      link: https://blog.csdn.net/qq_73408594
+      name: CSDN
+
+# 页脚 Copyright
+copyright: Copyright &copy; 2024 - 2025 Wenjie

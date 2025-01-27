@@ -4,6 +4,7 @@ categories:
   - GPA
   - 4th-term
 category_bar: true
+comments: true
 ---
 
 ## 前言

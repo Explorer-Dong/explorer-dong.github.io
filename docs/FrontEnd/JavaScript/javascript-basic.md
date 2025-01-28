@@ -18,7 +18,7 @@ category_bar: true
 
 JavaScrip 曾经是一款解释型语言，但是在引入 V8 引擎后，官方就说已经成为一款编译型语言了。但无论怎样，就是一个将高级语言转换到低级语言的工具罢了。这里介绍常见的一款转换工具 Node。
 
-强烈建议使用 [NVM](#NVM) 来下载并管理 Node，因为直接下载 Node 并安装的话，权限会不够，等到全局运行 Node 时会出现权限错误。这是官网 [原话](https://docs.npmjs.com/cli/v11/configuring-npm/install#description)：
+强烈建议使用 NVM 来下载并管理 Node（下文会详细介绍）。因为直接下载 Node 并安装的话，权限会不够，等到全局运行 Node 时会出现权限错误。这是官网 [原话](https://docs.npmjs.com/cli/v11/configuring-npm/install#description)：
 
 > To publish and install packages to and from the public npm registry, you must install Node.js and the npm command line interface using either a Node version manager or a Node installer. **We strongly recommend using a Node version manager to install Node.js and npm.** We do not recommend using a Node installer, since the Node installation process installs npm in a directory with local permissions and can cause permissions errors when you run npm packages globally.
 

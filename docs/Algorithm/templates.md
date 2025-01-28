@@ -56,23 +56,21 @@ category_bar: true
 
 在 Python3 中，同理。但是 Python 不允许自定义哈希函数，此时可以尝试桶哈希。
 
-=== "C++"
+```c++ title="C++"
+template<class T>
+struct CustomHash {
+    size_t operator()(T x) const {
+        static const size_t _prime = 0x9e3779b97f4a7c15;
+        size_t _hash_value = std::hash<T>()(x);
+        return _hash_value ^ (_hash_value >> 30) ^ _prime;
+    }
+};
 
-    ```c++
-    template<class T>
-    struct CustomHash {
-        size_t operator()(T x) const {
-            static const size_t _prime = 0x9e3779b97f4a7c15;
-            size_t _hash_value = std::hash<T>()(x);
-            return _hash_value ^ (_hash_value >> 30) ^ _prime;
-        }
-    };
-    
-    // 示例
-    std::unordered_map<int, int, CustomHash<int>> f1;
-    std::unordered_map<long long, int, CustomHash<long long>> f2;
-    std::unordered_map<std::string, int, CustomHash<long long>> f3;
-    ```
+// 示例
+std::unordered_map<int, int, CustomHash<int>> f1;
+std::unordered_map<long long, int, CustomHash<long long>> f2;
+std::unordered_map<std::string, int, CustomHash<long long>> f3;
+```
 
 ## 数据结构
 

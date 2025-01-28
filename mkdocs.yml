@@ -1,6 +1,6 @@
 # 站点配置
-site_name: Dwj's Blog
-site_url: https://blog.dwj601.cn/
+site_name: Dwj's Wiki
+site_url: https://wiki.dwj601.cn/
 repo_url: https://github.com/Explorer-Dong/explorer-dong.github.io
 repo_name: explorer-dong.github.io
 edit_uri: blob/main/docs/
@@ -12,64 +12,66 @@ theme:
   language: zh
   custom_dir: overrides
   # 图标
-  logo: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/avatar.jpg
-  favicon: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/logo.png
+  logo: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg
+  favicon: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil 
     view: material/eye
-  #   previous: fontawesome/solid/angle-left
-  #   next: fontawesome/solid/angle-right
   # 颜色
   palette:
-    # primary: indigo  # 控件颜色
-    # accent: indigo  # 强调颜色（悬停、链接、滚动条）
     - scheme: default
       primary: indigo
       toggle:
         icon: material/brightness-7 
-        name: 黑暗模式
-
+        name: 暗色模式
     - scheme: slate
       primary: black  # 控件颜色
       toggle:
-        
         icon: material/brightness-4
         name: 亮色模式
   features:
     - navigation.tabs
-    # - navigation.tabs.sticky  # 固定导航栏
-    # - navigation.path         # 显示当前页面路径（有问题）
-    - navigation.sections     # 分类页默认展开
-    - navigation.top          # 顶部导航栏
-    - navigation.instant      # 导航栏即时更新
+    # - navigation.tabs.sticky       # 固定导航栏
+    # - navigation.path              # 显示当前页面路径（有问题）
+    # - navigation.sections          # 分类页小标题
+    # - navigation.expand            # 分类页默认展开（一般与 navigation.sections 一起使用）
+    - navigation.indexes           # 不显示分类索引首页
+    - navigation.top               # 顶部导航栏
+    - navigation.instant           # 导航栏即时更新
     - navigation.instant.prefetch  # 预加载
     - navigation.instant.progress  # 进度条
-    - navigation.footer       # 页脚
-    - content.code.copy       # 代码块复制按钮
-    - content.code.select     # 代码块选中行
-    - search.highlight        # 搜索结果高亮
-    - search.share            # 社交分享按钮
-    - search.suggest          # 搜索建议
-    - content.action.edit     # 编辑源文件按钮
-    - content.action.view     # 查看源文件按钮
+    - navigation.footer            # 页脚
+    - content.code.copy            # 代码块复制按钮
+    - content.code.select          # 代码块选中行
+    - content.tooltips             # 内容悬浮提示
+    - content.action.edit          # 编辑源文件按钮
+    - content.action.view          # 查看源文件按钮
+    - search.highlight             # 搜索结果高亮
+    - search.share                 # 社交分享按钮
+    - search.suggest               # 搜索建议
+    - toc.follow                   # 目录跟随滚动（需要 markdown_extensions.toc.permalink 开启）
+    - header.autohide              # 自动隐藏顶部导航栏
+    - announce.dismiss             # 支持手动关闭公告
 
 
-# 插件配置
-plugins:
-  # 基于 git 的时间戳显示文章创建和修改时间
-  # - git-revision-date-localized:
-  #     enable_creation_date: true
-  #     type: date
-  # 显示文章的作者
-  # - git-authors
-
-# 语法扩展
+# md 语法扩展
 markdown_extensions:
+  # 并列嵌套（需要和 superfences 一起使用）
+  - pymdownx.tabbed:
+      alternate_style: true
+  # 悬浮提示
+  - abbr
+  - attr_list
+  - pymdownx.snippets
+  # 折叠块
+  - pymdownx.details
   # 目录
   - toc:
-      permalink: true  # 显示标题链接
-      toc_depth: 3     # 显示目录深度
+      permalink: true             # 显示标题链接
+      toc_depth: 4                # 显示目录深度
+      title: 文章目录             # 目录标题
+      permalink_title: 页面定位   # 链接标题
   # 数学公式
   - pymdownx.arithmatex:
       generic: true
@@ -84,27 +86,54 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   # 图片标题（需要引入额外的语法）
-  # - pymdownx.blocks.caption
+  - pymdownx.blocks.caption
   # 代码高亮
   - pymdownx.highlight:
-      # auto_title: true
-      linenums: true
-      anchor_linenums: true
-      line_spans: __span
-  # 并列嵌套（需要配合 superfences 一起使用）
-  - pymdownx.tabbed:
-      alternate_style: true
+      # auto_title: true           # 自动标题
+      use_pygments: true         # 第三方库增强
+      pygments_lang_class: true  # 语言定制化高亮
+      linenums: true             # 显示行号
+      anchor_linenums: true      # 行号锚点
+      line_spans: __span         # 行号容器（移动端适配）
+  # 任务列表
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 
-# 静态文件
+# 注入
 extra_javascript:
-  - javascripts/mathjax.js
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  # 数学公式（KaTeX）
+  - injects/javascripts/katex.js
+  # - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/math/katex.min.js
+  # - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/math/auto-render.min.js
+  # 数学公式（MathJax）
+  # - injects/javascripts/mathjax.js
+  # - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/math/tex-mml-chtml.js
+extra_css:
+  - injects/stylesheets/extra.css
+  # - https://unpkg.com/katex@0/dist/katex.min.css
+  - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-css/math/katex.min.css
+
+
+# 插件配置
+plugins:
+  # 显示文章创建和修改时间
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+  # 显示文章作者
+  - git-authors
+  # 图片可点击放大
+  - glightbox
 
 
 # 页面导航
 nav:
-  - GPA: 
+  - index.md
+  - 绩点: 
     - GPA/index.md
     - 1st-term:
       - GPA/1st-term/AdvancedMath.md
@@ -135,15 +164,82 @@ nav:
       - GPA/6th-term/NaturalLanguageProcessing.md
       - GPA/6th-term/SmartEducation.md
       - GPA/6th-term/SpeechRecognition.md
-  - 数据科学: DataScience/numpy-tutorial.md
-  - 数据结构与算法: 
+  - 炼丹:
+    - DataScience/index.md
+    - DataScience/matplotlib-tutorial.md
+    - DataScience/numpy-tutorial.md
+  - 算法:
+    - Algorithm/index.md
     - Algorithm/templates.md
-  - 前端: FrontEnd/front-end-guide.md
-  - 后端: BackEnd/back-end-guide.md
-  - 数据库: DataBase/data-base-guide.md
-  - 运维: Operation/operation-guide.md
-  - 开发工具: DevTools/_jetbrains-license.md
-  - 其他: Others/self-learning-guide.md
+    - Algorithm/basic-algo.md
+    - Algorithm/basic-ds.md
+    - Algorithm/advanced-algo.md
+    - Algorithm/advanced-ds.md
+  - 前端:
+    - FrontEnd/index.md
+    - HTML:
+      - FrontEnd/HTML/html-basic.md
+    - CSS:
+      - FrontEnd/CSS/css-basic.md
+    - JavaScript:
+      - FrontEnd/JavaScript/javascript-basic.md
+    - Hexo:
+      - FrontEnd/Hexo/build-your-own-website-with-hexo.md
+      - FrontEnd/Hexo/hexo-deployment.md
+      - FrontEnd/Hexo/hexo-enhancement.md
+  - 后端:
+    - BackEnd/index.md
+    - C++:
+      - BackEnd/CPlusPlus/cpp-basic.md
+      - Crow:
+        - BackEnd/CPlusPlus/Crow/crow-tutorial.md
+    - Python:
+      - BackEnd/Python/python-basic.md
+      - Flask:
+        - BackEnd/Python/Flask/deploy-flask.md
+  - 数据库:
+    - DataBase/index.md
+    - ElasticSearch:
+      - DataBase/ElasticSearch/elastic-search-basic.md
+    - MySQL:
+      - DataBase/MySQL/mysql-basic.md
+      - DataBase/MySQL/solve-mysql-problems.md
+    - Redis:
+      - DataBase/Redis/redis-basic.md
+    - openGauss:
+      - DataBase/openGauss/opengauss-basic.md
+      - DataBase/openGauss/opengauss-import-data.md
+      - DataBase/openGauss/opengauss-remote-connect.md
+  - 运维:
+    - Operation/index.md
+    - Nginx:
+      - Operation/Nginx/nginx-basic.md
+      - Operation/Nginx/nginx-command.md
+      - Operation/Nginx/solve-nginx-reload-error.md
+      - Operation/Nginx/whereis-nginx.md
+    - Safe:
+      - Operation/Safe/solve-server-invade.md
+    - Shell:
+      - Operation/Shell/shell-basic.md
+      - Operation/Shell/solve-shell-problems.md
+      - Operation/Shell/ubuntu-guide.md
+  - 工具:
+    - DevTools/index.md
+    - DevTools/jetbrains-license.md
+    - CLion:
+      - DevTools/CLion/config-clion.md
+      - DevTools/CLion/solve-clion-cannot-open-relative-file.md
+      - DevTools/CLion/solve-clion-decoding-error.md
+    - DevCpp:
+      - DevTools/DevCpp/devc-self-config.md
+    - Git:
+      - DevTools/Git/git-basic.md
+      - DevTools/Git/git-pull-request.md
+      - DevTools/Git/git-self-define-command.md
+      - DevTools/Git/solve-git-problems.md
+    - IDLE:
+      - DevTools/IDLE/idle-self-config.md
+  - 博客: https://blog.dwj601.cn/
 
 
 # 社交链接
@@ -158,6 +254,7 @@ extra:
     - icon: fontawesome/solid/c
       link: https://blog.csdn.net/qq_73408594
       name: CSDN
+
 
 # 页脚 Copyright
 copyright: Copyright &copy; 2024 - 2025 Wenjie

@@ -3,7 +3,7 @@ site_name: Dwj's Wiki
 site_url: https://wiki.dwj601.cn/
 repo_url: https://github.com/Explorer-Dong/explorer-dong.github.io
 repo_name: explorer-dong.github.io
-edit_uri: blob/main/docs/
+edit_uri: edit/main/docs/
 
 
 # 主题配置
@@ -103,23 +103,25 @@ markdown_extensions:
 # 注入
 extra_javascript:
   # 数学公式（KaTeX）
-  - injects/javascripts/katex.js
+  # - injects/javascripts/katex.js
   # - https://unpkg.com/katex@0/dist/katex.min.js
-  - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/math/katex.min.js
+  # - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/math/katex.min.js
   # - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
-  - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/math/auto-render.min.js
+  # - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/math/auto-render.min.js
   # 数学公式（MathJax）
-  # - injects/javascripts/mathjax.js
-  # - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/math/tex-mml-chtml.js
+  - injects/javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  # - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/math/tex-mml-chtml.js
 extra_css:
   - injects/stylesheets/extra.css
   # - https://unpkg.com/katex@0/dist/katex.min.css
-  - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-css/math/katex.min.css
+  # - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-css/math/katex.min.css
 
 
 # 插件配置
 plugins:
+  # 搜索功能
+  - search
   # 显示文章创建和修改时间
   - git-revision-date-localized:
       enable_creation_date: true
@@ -250,7 +252,7 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Explorer-Dong
-      name: Github
+      name: GitHub
     - icon: fontawesome/solid/c
       link: https://blog.csdn.net/qq_73408594
       name: CSDN

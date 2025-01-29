@@ -1,10 +1,5 @@
 ---
 title: 最优化方法
-categories:
-  - GPA
-  - 4th-term
-category_bar: true
-comments: true
 ---
 
 ## 前言
@@ -73,8 +68,9 @@ $$
         \sum_{i=1}^m \alpha_ix_i \in D\left( \alpha_i \ge 0(i=1,2,\cdots,m),\sum_{i=1}^m \alpha_i = 1 \right)
         $$
     
-      ??? note "凸组合定理证明"
-          ![凸组合定理证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403102025159.png)
+        ??? note "凸组合定理证明"
+
+            ![凸组合定理证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403102025159.png)
 
 2. 分析最优解的最优性条件
     - 超平面定义（凸集分离定理）：设 $D_1,D_2 \subset R^n$ 为两非空凸集，若存在非零向量 $\alpha \in R^n$ 和实数 $\beta$，使得

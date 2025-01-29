@@ -107,22 +107,27 @@ extra_javascript:
   # 数学公式（MathJax）
   - injects/javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  # 数学公式（KaTeX）
+  # - injects/javascripts/katex.js
+  # - https://unpkg.com/katex@0/dist/katex.min.js
+  # - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 extra_css:
-  - injects/stylesheets/extra.css
+  # 数学公式（KaTeX）
+  # - https://unpkg.com/katex@0/dist/katex.min.css
 
 
 # 插件配置
 plugins:
-  # 搜索功能
-  - search
-  # 显示文章创建和修改时间
-  - git-revision-date-localized:
-      enable_creation_date: true
-      type: date
-  # 显示文章作者
-  - git-authors
-  # 图片可点击放大
-  - glightbox
+#   # 搜索功能
+#   - search
+#   # 显示文章创建和修改时间
+#   - git-revision-date-localized:
+#       enable_creation_date: true
+#       type: date
+#   # 显示文章作者
+#   - git-authors
+#   # 图片可点击放大
+#   - glightbox
 
 
 # 页面导航

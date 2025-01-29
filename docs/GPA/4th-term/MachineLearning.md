@@ -171,16 +171,19 @@ $$
 基于上述分类结果的混淆矩阵 (confusion matrix)，我们有以下度量指标的定义：
 
 - 准确率 (Accuracy)：错误率就是 1 减去准确率
+
     $$
     \text{Accuracy}=\frac{TP+TN}{TP+FN+FP+TN}
     $$
 
 - 查准率/精度 (Precision)：适用于商品搜索推荐，需要尽可能推荐出适当的商品即可，至于商品数量无所谓
+
     $$
     P = \frac{TP}{TP+FP}
     $$
 
 - 查全率/召回率 (Recall)：适用于逃犯、病例检测，需要尽可能将正例检测出来，至于查准率无所谓
+
     $$
     R = \frac{TP}{TP+FN}
     $$
@@ -188,19 +191,23 @@ $$
 当数据的 **类别不平衡** 时，有如下两个度量指标：
 
 - 敏感性 (Sensitivity)：
+
     $$
     \text{Sensitivity} = \frac{TP}{TP + FN}
     $$
 
 - 特异性 (Specificity)：
+
     $$
     \text{Specificity} = \frac{TN}{FP + TN}
     $$
 
 由于实际场景中需要 **兼顾查准率和查全率**，为此我们引入 $F_{\beta}$ 分数 ($F_{\beta}$-score) 进行度量。当 $\beta=1$ 时就是标准的 F1-score，当 $\beta>1$ 时对查全率有偏好，当 $\beta<1$ 时对查准率有偏好。如下式：
+
 $$
 F_{\beta} = \frac{(1+\beta^2)\times P \times R}{(\beta^2\times P) + R}
 $$
+
 上述指标都是针对一个混淆矩阵展开，如果需要 **度量二分类模型的泛化能力** 这是远远不够的。为此我们引入 P-R 曲线和 ROC 曲线。两者的产生方式相同，都是：根据二分类模型对测试数据类别的预测概率划分一个阈值，并将预测概率超过阈值的认为是正例，低于阈值的认为是反例，将阈值依次选择为每个样本（假设为 N 个测试样本）的概率值进行二分类即可得到 N 个混淆矩阵，进而得到曲线中的 N 个数据点。两者的区别就在于横纵坐标的数学表达式不同。
 
 对于 **P-R 曲线**，横坐标为查全率（Recall），纵坐标为查准率（Precision）。
@@ -257,15 +264,14 @@ $$
 - 噪声：$\epsilon ^2 = \mathbb{E}_D[(y_D - y)^2]$
 
 最终可以得到偏差-方差分解的结论，即模型的泛化误差 $E(f; D)$ 由以下三个部分组成：
+
 $$
 E(f; D) = bias^2(x) + var(x) + \epsilon^2
 $$
 
-{% fold light @推导 %}
+??? note "推导"
 
-![偏差-方差分解结论推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403231651554.jpg)
-
-{% endfold %}
+    ![偏差-方差分解结论推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403231651554.jpg)
 
 解释说明。模型的泛化性能是由学习算法的能力（偏差）、数据的充分性（方差）以及学习任务本身的难度（噪声）共同决定的。因此给定一个学习任务，我们可以从偏差、方差和噪声三个角度优化模型：使偏差尽可能小（选择合适的学习算法充分拟合数据）、使方差尽可能小（提升模型的抗干扰能力来减小数据扰动产生的影响）、使噪声尽可能小（选择合适的数据增强方法来减小因为数据本身带来的误差）。
 
@@ -282,13 +288,17 @@ $$
 #### 阈值移动
 
 **常规而言**，对于二分类任务。我们假设 $y$ 为样本属于正例的概率，则 $p=\frac{y}{1-y}$ 就是正确划分类别的概率。在假定类别数量相近时，我们用下式表示预测为正例的情况：
+
 $$
 \frac{y}{1-y}> 1
 $$
+
 但是显然，**上述假设不总是成立**，我们令 $m^+$ 为样本正例数量，$m^-$ 为样本反例数量。我们用下式表示预测为正例的情况：
+
 $$
 \frac{y}{1-y} > \frac{m^+}{m^-}
 $$
+
 **根本初衷** 是为了让 $\frac{m^+}{m^-}$ 表示数据类别的真实比例。但是由于训练数据往往不能遵循独立分布同分布原则，也就导致我们观测的 $\frac{m^+}{m^-}$ 其实不能准确代表数据的真实比例。那还有别的解决类别不平衡问题的策略吗？答案是有的！
 
 #### 欠采样
@@ -313,12 +323,14 @@ $$
 ### 线性模型
 
 本章介绍机器学习模型中的线性模型。基本形式如下：
+
 $$
 \begin{aligned}
 &f(\boldsymbol {x}) = \boldsymbol {w}^T \boldsymbol {x}  \\
 &\boldsymbol {w} \in R^{D+1}, \boldsymbol {x} \in R^{D+1}
 \end{aligned}
 $$
+
 其中 $\boldsymbol {w} = [w_1,w_2,\cdots,w_D,b]^T, \boldsymbol {x} = [x_1,x_2,\cdots,x_D,1]^T$ 均为增广向量。样本的特征个数为 $D$，样本的总个数为 $N$，模型为 $f(\cdot)$。基于此模型，我们就可以通过机器学习来进行分类与回归任务。值得注意的是，尽管线性模型无法解决线性不可分的问题，但其强就强在形式简单、易于建模以及高可解释性，同时也是很多非线性模型的基础。
 
 下面我将根据学习任务，从回归与分类两个角度展开。
@@ -328,6 +340,7 @@ $$
 借着讲解线性回归算法，系统的介绍 4 种参数的 **学习策略**：经验风险最小化、结构风险最小化、最大似然估计、最大后验估计。
 
 注：输入的样本增广特征矩阵 $\boldsymbol{X}_{(D+1)\times N}$ 为：
+
 $$
 \boldsymbol{X}=\begin{bmatrix}
 x_{11} & x_{12} & \cdots & x_{1N} \\
@@ -349,6 +362,7 @@ $$
 ![闭式解推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403301607772.jpg)
 
 若 $X^T X$ 可逆，则参数 $\hat w ^* = (X^TX)^{-1}X^Ty$，令样本 $\hat x_i = (x_i,1)$，则线性回归模型为：
+
 $$
 f(x_i) = \hat x_i ^T \hat w^*
 $$
@@ -360,10 +374,13 @@ $$
 若上式中 $X^T X$ 不可逆，我们引入 $L_2$ 正则化项 $\alpha || \hat w ||^2$，此时就是所谓的「岭回归」算法：
 
 现在的损失函数就定义为：
+
 $$
 E_{\hat w} = (y - X \hat w) ^T (y - X \hat w) + \alpha || \hat w ||^2
 $$
+
 同样将损失函数对参数向量 $\hat w$ 求偏导，得：
+
 $$
 \begin{aligned}
 \frac{\partial E_{\hat w}}{\partial \hat w} &= \cdots \\
@@ -371,7 +388,9 @@ $$
 &= 2 X ^T(X \hat w - y) + 2 \alpha \hat w
 \end{aligned}
 $$
+
 我们令其为零，得参数向量 $\hat w$ 为：
+
 $$
 \hat w = (X^T X + \alpha I)^{-1} X^T y
 $$
@@ -381,25 +400,23 @@ $$
 ##### 最大后验概率
 
 
-{% fold light @其他线性回归案例 %}
+??? note "其他线性回归案例"
 
-- 支持向量机回归
+    - 支持向量机回归
 
-- 决策树回归
+    - 决策树回归
 
-- 随机森林回归
+    - 随机森林回归
 
-- [LASSO 回归](https://scikit-learn.org.cn/view/411.html)：增加 $L_1$ 正则化项
+    - [LASSO 回归](https://scikit-learn.org.cn/view/411.html)：增加 $L_1$ 正则化项
 
-    ![LASSO 回归](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403260936320.png)
+        ![LASSO 回归](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403260936320.png)
 
-- [ElasticNet 回归](https://scikit-learn.org.cn/view/404.html)：增加 $L_1$ 和 $L_2$ 正则化项
+    - [ElasticNet 回归](https://scikit-learn.org.cn/view/404.html)：增加 $L_1$ 和 $L_2$ 正则化项
 
-    ![ElasticNet 回归](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403260936147.png)
+        ![ElasticNet 回归](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403260936147.png)
 
-- XGBoost 回归
-
-{% endfold %}
+    - XGBoost 回归
 
 #### logistic二分类
 
@@ -419,87 +436,98 @@ g(x) =
 1, & x > 0
 \end{cases}
 $$
+
 但由于单位阶跃函数并不单调可微，这导致我们后续无法对参数进行「基于梯度」的迭代优化。常用的一种数学性质良好、具备单调可微性质的阈值函数是对数几率函数，也叫 **逻辑函数** (logistic function)。映射关系如下：
+
 $$
 g(x) =  \frac{1}{1+e^{-x}}
 $$
+
 于是基于 logistic 函数的二分类模型就定义为：
+
 $$
 g(\boldsymbol{w}^T\boldsymbol{x}) =  \frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x}}}
 $$
+
 模型有一个可学习参数「权重向量 $\boldsymbol {w}$」和一个不可学习的超参数「分类映射阈值」。其中权重向量 $\boldsymbol{w}$ 已经包含了偏执项 $b$，因此参数个数为 $D+1$；分类映射阈值表示：对于模型输出的一个介于 $0$ 到 $1$ 之间的概率值，需要人为的定义一个超参数 $lim$，当概率超过 $lim$ 时就将样本判定为正例，反之则判定为负例。
 
-{% note warning %}
+???+ note "「对数几率回归」名称的由来"
 
-注：「对数几率回归」名称的由来。
+    由于逻辑函数可以将实数域压缩到 $(0,1)$ 之间，因此当我们对线性函数套一层逻辑函数后，就可以将映射的结果视为「**样本属于正例的后验概率**」，记作 $P(y=1 \ |\ \boldsymbol {x})$。因此有：
 
-由于逻辑函数可以将实数域压缩到 $(0,1)$ 之间，因此当我们对线性函数套一层逻辑函数后，就可以将映射的结果视为「**样本属于正例的后验概率**」，记作 $P(y=1 \ |\ \boldsymbol {x})$。因此有：
-$$
-\begin{aligned}
-P(y=1 \ |\ \boldsymbol {x}) = \frac{1}{1 + e^{-\boldsymbol{w}^T\boldsymbol{x}}}
-\end{aligned}
-$$
-那么样本属于负例的后验概率 $P(y=0 \ |\ \boldsymbol {x})$ 就为：
-$$
-\begin{aligned}
-P(y=0 \ |\ \boldsymbol {x}) &= 1 - P(y=1 \ |\ \boldsymbol {x}) \\
-&= \frac{e^{-\boldsymbol{w}^T\boldsymbol{x}}}{1 + e^{-\boldsymbol{w}^T\boldsymbol{x}}}
-\end{aligned}
-$$
-经过简单变形可以得到：
-$$
-\begin{aligned}
-\boldsymbol{w}^T\boldsymbol{x} = \ln{\frac{P(y=1 \ |\ \boldsymbol {x})}{P(y=0 \ |\ \boldsymbol {x})}}
-\end{aligned}
-$$
-其中，正例后验概率 $P(y=1 \ |\ \boldsymbol {x})$ 与负例后验概率 $P(y=0 \ |\ \boldsymbol {x})$ 的比值 $\frac{P(y=1 \ |\ \boldsymbol {x})}{P(y=0 \ |\ \boldsymbol {x})}$ 被称作几率，取对数 $\ln{\frac{P(y=1 \ |\ \boldsymbol {x})}{P(y=0 \ |\ \boldsymbol {x})}}$ 就是对数几率。因此逻辑回归可以看作预测值为“标签的对数几率”的线性回归模型。也就有了「对数几率回归」这个别名。
+    $$
+    \begin{aligned}
+    P(y=1 \ |\ \boldsymbol {x}) = \frac{1}{1 + e^{-\boldsymbol{w}^T\boldsymbol{x}}}
+    \end{aligned}
+    $$
 
-{% endnote %}
+    那么样本属于负例的后验概率 $P(y=0 \ |\ \boldsymbol {x})$ 就为：
+
+    $$
+    \begin{aligned}
+    P(y=0 \ |\ \boldsymbol {x}) &= 1 - P(y=1 \ |\ \boldsymbol {x}) \\
+    &= \frac{e^{-\boldsymbol{w}^T\boldsymbol{x}}}{1 + e^{-\boldsymbol{w}^T\boldsymbol{x}}}
+    \end{aligned}
+    $$
+
+    经过简单变形可以得到：
+
+    $$
+    \begin{aligned}
+    \boldsymbol{w}^T\boldsymbol{x} = \ln{\frac{P(y=1 \ |\ \boldsymbol {x})}{P(y=0 \ |\ \boldsymbol {x})}}
+    \end{aligned}
+    $$
+
+    其中，正例后验概率 $P(y=1 \ |\ \boldsymbol {x})$ 与负例后验概率 $P(y=0 \ |\ \boldsymbol {x})$ 的比值 $\frac{P(y=1 \ |\ \boldsymbol {x})}{P(y=0 \ |\ \boldsymbol {x})}$ 被称作几率，取对数 $\ln{\frac{P(y=1 \ |\ \boldsymbol {x})}{P(y=0 \ |\ \boldsymbol {x})}}$ 就是对数几率。因此逻辑回归可以看作预测值为“标签的对数几率”的线性回归模型。也就有了「对数几率回归」这个别名。
 
 ##### 学习准则
 
 我们采用最大似然估计。
 
 若我们将 $y$ 视作类后验概率 $p(y=1 \ | \ x)$，则有
+
 $$
 \ln \frac{p(y = 1 \ | \ x)}{p(y = 0 \ | \ x)} = w^Tx+b
 $$
+
 同时，显然有
+
 $$
 \begin{aligned}
 p(y = 1 \ | \ x) = \frac{1}{1 + e^{-(w^Tx+b)}} = \frac{e^{w^Tx+b}}{1 + e^{w^Tx+b}} \\
 p(y = 0 \ | \ x) = \frac{e^{-(w^Tx+b)}}{1 + e^{-(w^Tx+b)}} = \frac{1}{1 + e^{w^Tx+b}}
 \end{aligned}
 $$
+
 于是我们可以确定学习准则了。我们取学习准则为 **对数似然函数**，于是参数的学习就是需要求解下式：
+
 $$
 \arg \max_{w, b} l(w, b) = \sum_{i = 1}^m \ln p(y_i\ | \ x_i; w, b)
 $$
+
 而所谓的对数似然函数，就是 **最大化类后验概率** 使得样本属于真实标记的概率尽可能大。
 
 我们将变量进行一定的变形：
+
 $$
 \begin{aligned}
 \begin{cases}
 \beta = (w; b) \\
 \hat x = (x; 1) \\
 \end{cases}
-
 &\to w^Tx + b = \beta^T\hat x \\
-
 \begin{cases}
 p_1(\hat x; \beta) = p(y = 1 \ | \ \hat x; \beta) \\
 p_0(\hat x; \beta) = p(y = 0 \ | \ \hat x; \beta) \\
 \end{cases}
-
 &\to p(y_i\ | \ x_i; w, b) = y_i p_1(\hat x; \beta) + (1 - y_i) p_0(\hat x; \beta)
-
 \end{aligned}
 $$
+
 于是上述对数似然函数就可以进行以下转化：
+
 $$
 \begin{aligned}
-
 l(w, b) &= l(\beta) \\
 &= \sum_{i = 1}^m \ln \left [y_i p_1(\hat x; \beta) + (1 - y_i) p_0(\hat x; \beta) \right ] \\
 &= \sum_{i = 1}^m \ln \left [y_i p(y = 1 \ | \ \hat x; \beta) + (1 - y_i) p(y = 0 \ | \ \hat x; \beta) \right ] \\
@@ -514,23 +542,30 @@ l(w, b) &= l(\beta) \\
 &= \sum_{i = 1}^m \left( y_i e^{\beta^T\hat x} - \ln({1 + e^{\beta^T\hat x}})\right )
 \end{aligned}
 $$
+
 进而从 **极大似然估计** 转化为：求解「极小化负的上述目标函数时」参数 $\beta$ 的值：
+
 $$
 \arg \min_{\beta} l(\beta) = \sum_{i = 1}^m \left(- y_i e^{\beta^T\hat x} + \ln({1 + e^{\beta^T\hat x}})\right )
 $$
+
 ##### 优化方法
 
 由于上式是关于 $\beta$ 的高阶可导连续凸函数，因此我们有很多数值优化算法可以求得最优解时的参数值，比如梯度下降法、牛顿法、拟牛顿法等。我们以牛顿法（Newton Method）为例：
 
 最优解 $\beta ^*$ 为：
+
 $$
 \beta ^* = \arg \min_{\beta} l(\beta)
 $$
+
 第 $t+1$ 轮迭代解的更新公式：
+
 $$
 \beta ^{t+1} = \beta^t - \left( \frac{\partial^2{l(\beta)}}{\partial{\beta} \partial{\beta^T}} \right)^{-1} \frac{\partial{l(\beta)}}{\partial{\beta}}
 $$
- 其中 $l(\beta)$ 关于 $\beta$ 的一阶导、二阶导的推导过程如下：
+
+其中 $l(\beta)$ 关于 $\beta$ 的一阶导、二阶导的推导过程如下：
 
 ![一阶导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404012206774.jpg)
 
@@ -552,11 +587,7 @@ $$
 
 ##### 感知机与多层网络
 
-{% note light %}
-
 本目从 **无隐藏层的感知机** 出发，介绍神经网络在简单的线性可分问题上的应用；接着介绍 **含有一层隐藏层的多层感知机**，及其对于简单的非线性可分问题上的应用；最后引入多层前馈神经网络模型的概念。
-
-{% endnote %}
 
 ###### 感知机
 
@@ -566,17 +597,15 @@ $$
 
 通过单层的感知机，我们可以实现简单的线性可分的分类任务，比如逻辑运算中的 **与、或、非** 运算，下面演示一下如何使用单层感知机实现上述三种逻辑运算：
 
-{% fold light @使用单层感知机实现线性可分任务：与、或、非三种逻辑运算 %}
+??? note "使用单层感知机实现线性可分任务：与、或、非三种逻辑运算"
 
-与运算、或运算是二维线性可分任务，一定可以找到一条直线将其划分为两个类别：
+    与运算、或运算是二维线性可分任务，一定可以找到一条直线将其划分为两个类别：
 
-![二维线性可分任务](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091955554.png)
+    ![二维线性可分任务](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091955554.png)
 
-非运算是一维线性可分任务，同样也可以找到一条直线将其划分为两个类别：
+    非运算是一维线性可分任务，同样也可以找到一条直线将其划分为两个类别：
 
-![一维线性可分任务](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091959633.png)
-
-{% endfold %}
+    ![一维线性可分任务](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091959633.png)
 
 ###### 多层感知机
 
@@ -585,17 +614,17 @@ $$
 所谓的多层感知机其实就是增加了一个隐藏层，则神经网络模型就变为三层，含有一个输入层，一个隐藏层，和一个输出层，更准确的说应该是“单隐层网络”。其中隐藏层和输出层中的所有神经元均为功能神经元。
 
 为了学习出网络中的连接权 $w_i$ 以及所有功能神经元中的阈值 $\theta_j$，我们需要通过每一次迭代的结果进行参数的修正，对于连接权 $w_i$ 而言，我们假设当前感知机的输出为 $\hat y$，则连接权 $w_i$ 应做以下调整。其中 $\eta$ 为学习率。
+
 $$
 \begin{aligned}
 w_i \leftarrow w_i + \Delta w_i \\
 \Delta w_i = \eta (y - \hat y) x_i
 \end{aligned}
 $$
-{% fold light @使用多层感知机实现异或逻辑运算 %}
 
-![使用多层感知机实现异或逻辑运算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092000730.png)
+??? note "使用多层感知机实现异或逻辑运算"
 
-{% endfold %}
+    ![使用多层感知机实现异或逻辑运算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092000730.png)
 
 ###### 多层前馈神经网络
 
@@ -608,11 +637,7 @@ $$
 
 ##### 误差逆传播算法
 
-{% note light %}
-
 多层网络的学习能力比感知机的学习能力强很多。想要训练一个多层网络模型，仅仅通过感知机的参数学习规则是不够的，我们需要一个全新的、更强大的学习规则。这其中最优秀的就是误差逆传播算法（errorBackPropagation，简称 BP），往往用它来训练多层前馈神经网络。下面我们来了解一下 BP 算法的内容、参数推导与算法流程。
-
-{% endnote %}
 
 ###### 模型参数
 
@@ -645,9 +670,11 @@ $$
 $$
 E_k = \frac{1}{2} \sum _{j = 1}^l (\hat y_j^k - y_j^k)^2
 $$
+
 确定迭代修正量。
 
 - 假定当前学习率为 $\eta$，对于上述 4 种参数的迭代公式为：
+
     $$
     \begin{aligned}
     w_{hj} &\leftarrow w_{hj}+\Delta w_{hj} \\
@@ -658,6 +685,7 @@ $$
     $$
     
 - 其中，修正量分别为：
+
     $$
     \begin{aligned}
     \Delta w_{hj} &= \eta g_j b_h \\
@@ -667,21 +695,19 @@ $$
     \end{aligned}
     $$
 
-{% fold light @修正量推导 - 链式法则 %}
+??? note "修正量推导 - 链式法则"
 
-公式表示：
+    公式表示：
 
-![公式表示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092222942.jpg)
+    ![公式表示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092222942.jpg)
 
-隐层到输出层的权重、输出神经元的阈值：
+    隐层到输出层的权重、输出神经元的阈值：
 
-![隐层到输出层的权重、输出神经元的阈值](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092222625.jpg)
+    ![隐层到输出层的权重、输出神经元的阈值](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092222625.jpg)
 
-输入层到隐层的权重、隐层神经元的阈值：
+    输入层到隐层的权重、隐层神经元的阈值：
 
-![输入层到隐层的权重、隐层神经元的阈值](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092223804.jpg)
-
-{% endfold %}
+    ![输入层到隐层的权重、隐层神经元的阈值](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092223804.jpg)
 
 ###### 算法流程
 
@@ -693,15 +719,11 @@ $$
 
 #### 支持向量机二分类
 
-{% note light %}
-
 依然是分类学习任务。我们希望找到一个超平面将训练集中样本划分开来，那么如何寻找这个超平面呢？下面开始介绍。
 
 本章知识点逻辑链：
 
 ![支持向量机知识点关系图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404160810540.png)
-
-{% endnote %}
 
 ##### 间隔与支持向量
 
@@ -710,68 +732,82 @@ $$
 ![间隔与支持向量](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404152019991.png)
 
 我们定义超平面为：
+
 $$
 w^Tx+b = 0
 $$
+
 定义支持向量机为满足下式的样例：
+
 $$
 \begin{aligned}
 w^T+b&= 1 \\
 w^T+b&=-1
 \end{aligned}
 $$
+
 很显然，为了求得这“最中间”的超平面，就是让异类支持向量机之间的距离尽可能的大，根据两条平行线距离的计算公式，可知间隔为：
+
 $$
 \gamma = \frac{2}{|| w ||}
 $$
+
 于是最优化目标函数就是：
+
 $$
 \max_{w, b} \frac{2}{||w||}
 $$
+
 可以等价转化为：
+
 $$
 \begin{aligned}
 &\min_{w, b} \frac{1}{2} ||w||^2 \\
 &s.t. \quad y_i(w^Tx_i+b) \ge 1 \quad(i = 1,2,\cdots, m)
 \end{aligned}
 $$
+
 这就是 SVM（support vector machine）的基本型
 
 ##### 对偶问题
 
 将上述 SVM 基本型转化为对偶问题，从而可以更高效的求解该最优化问题。
 
-{% fold light @对偶转化推导 %}
+??? note "对偶转化推导"
 
-![对偶转化推导 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404152113847.jpg)
+    ![对偶转化推导 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404152113847.jpg)
 
-![对偶转化推导 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404152113969.jpg)
+    ![对偶转化推导 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404152113969.jpg)
 
-于是模型 $f(x)$ 就是：
-$$
-\begin{aligned}
-f(x) &= w^Tx+b \\
-&= \sum_{i = 1}^m\alpha_iy_ix_i^Tx+b
-\end{aligned}
-$$
-其中参数 b 的求解可通过支持向量得到：
-$$
-y_if(x_i) = 1 \to y_i\left(\sum_{i = 1}^m\alpha_iy_ix_i^Tx+b \right)= 1
-$$
-由于原问题含有不等式约束，因此还需要满足 KKT 条件：
-$$
-\begin{cases}
-\alpha_i \ge 0&,\text{对偶可行性} \\
-y_if(x_i) \ge 1&,\text{原始可行性} \\
-\alpha_i(y_if(x_i)-1) = 0&,\text{互补松弛性}
-\end{cases}
-$$
-对于上述互补松弛性：
+    于是模型 $f(x)$ 就是：
 
-- 若 $\alpha_i > 0$，则 $y_if(x_i)=1$，表示支持向量，需要保留
-- 若 $y_if(x_i)>1$，则 $\alpha_i = 0$，表示非支持向量，不用保留
+    $$
+    \begin{aligned}
+    f(x) &= w^Tx+b \\
+    &= \sum_{i = 1}^m\alpha_iy_ix_i^Tx+b
+    \end{aligned}
+    $$
 
-{% endfold %}
+    其中参数 b 的求解可通过支持向量得到：
+
+    $$
+    y_if(x_i) = 1 \to y_i\left(\sum_{i = 1}^m\alpha_iy_ix_i^Tx+b \right)= 1
+    $$
+
+    由于原问题含有不等式约束，因此还需要满足 KKT 条件：
+
+    $$
+    \begin{cases}
+    \alpha_i \ge 0&,\text{对偶可行性} \\
+    y_if(x_i) \ge 1&,\text{原始可行性} \\
+    \alpha_i(y_if(x_i)-1) = 0&,\text{互补松弛性}
+    \end{cases}
+    $$
+
+    对于上述互补松弛性：
+
+    - 若 $\alpha_i > 0$，则 $y_if(x_i)=1$，表示支持向量，需要保留
+    - 若 $y_if(x_i)>1$，则 $\alpha_i = 0$，表示非支持向量，不用保留
 
 现在得到的对偶问题其实是一个二次规划问题，我们可以采用 SMO（Sequential Minimal Optimization） 算法求解。具体略。
 
@@ -782,6 +818,7 @@ $$
 ![常用核函数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404160949464.png)
 
 表格中的高斯核也就是所谓的径向基函数核 $\text{(Radial Basis Function Kernel, 简称 RBF 核)}$，其中的参数 $\gamma=\frac{1}{2\sigma^2}$，因此 RBF 核的表达式也可以写成：
+
 $$
 \kappa(x_i, x_j) = \exp(-\gamma \|x_i - x_j\|^2)
 $$
@@ -794,14 +831,17 @@ $$
 对于超平面的选择，其实并不是那么容易，并且即使训练出了一个超平面，我们也不知道是不是过拟合产生的，因此我们需要稍微减轻约束条件的强度，因此引入软间隔的概念。
 
 我们定义软间隔为：某些样本可以不严格满足约束条件 $y_i(w^Tx+b) \ge 1$ 从而需要尽可能减少不满足的样本个数，因此引入新的优化项：替代损失函数
+
 $$
 l_{\text{option}}
 $$
+
 常见的平滑连续的替代损失函数为：
 
 ![常见的平滑连续的替代损失函数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404161016727.png)
 
 我们引入松弛变量 $\xi_i$ 得到原始问题的最终形式：
+
 $$
 \min_{w, b,\xi_i} \quad \frac{1}{2}||w||^2+C\sum_{i = 1}^m \xi_i
 $$
@@ -831,6 +871,7 @@ KKT 条件：
 ##### 核方法
 
 通过上述：支持向量基本型、支持向量软间隔化、支持向量回归，三个模型的学习，可以发现最终的预测模型都是关于核函数与拉格朗日乘子的线性组合，那么这是巧合吗？并不是巧合，这其中其实有一个表示定理：
+
 $$
 h^*(x) = \sum_{i = 1}^m\alpha_i \kappa(x, x_i)
 $$
@@ -841,11 +882,7 @@ $$
 
 ##### 一对一
 
-{% fold light @图例 %}
-
 ![一对一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404020850504.png)
-
-{% endfold %}
 
 - 名称：One vs. One，简称 OvO
 - 训练：需要对 N 个类别进行 $\frac{N(N-1)}{2}$ 次训练，得到 $\frac{N(N-1)}{2}$ 个二分类学习器
@@ -854,11 +891,7 @@ $$
 
 ##### 一对其余
 
-{% fold light @图例 %}
-
 ![一对其余](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404020852608.png)
-
-{% endfold %}
 
 - 名称：One vs. Rest，简称 OvR
 - 训练：需要对 N 个类别进行 $N$ 次训练，得到 $N$ 个二分类学习器。每次将目标类别作为正例，其余所有类别均为反例
@@ -866,11 +899,7 @@ $$
 
 ##### 多对多
 
-{% fold light @图例 %}
-
 ![多对多](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404020853931.png)
-
-{% endfold %}
 
 - 名称：Many vs. Many，简称 MvM
 - 训练（编码）：对于 N 个类别数据，我们自定义 M 次划分。每次选择若干个类别作为正类，其余类作为反类。每一个样本在 M 个二分类学习器中都有一个分类结果，也就可以看做一个 M 维的向量。m 个样本也就构成了 m 个在 M 维空间的点阵。
@@ -879,6 +908,7 @@ $$
 ##### softmax 函数
 
 将当前测试样本属于各个类别的概率之和约束为 $1$。若共有 $n$ 个输出，则将第 $i$ 个输出 $x_i$ 转化为 $[0,1]$ 取值范围的公式为：
+
 $$
 P_i =\frac{e^{x_i}}{\sum_{j = 1}^n e^{x_j}}
 $$
@@ -925,25 +955,33 @@ Iterative dichotomiser 3 (ID3) 算法首次在机器学习中引入了信息的�
 而 ID3 算法选择最优属性的核心思路就是选择划分后使得信息增益 (Information gain) 最大的属性。
 
 我们记训练集为 $D$，可供选择的属性列表为 $a,b,\cdots,\gamma$，随机事件定义为当前训练集中每一个类别的占比。假设当前样本集合中含有 $t$ 个类别，第 $k$ 个类别所占样本集合比例为 $P_k$，则当前训练集的信息熵 $\text{Ent}(D)$ 为：
+
 $$
 \text{Ent}(D) = -\sum _{k = 1}^t P_k \log_2(P_k)
 $$
+
 属性 $a$ 共有 $V$ 个属性取值，即 $a=\{a^1,a^2,\cdots.a^V\}$，于是便可以将当前结点对应的训练数据集 $D$ 划分为 $V$ 个子结点的训练数据 $D=\{D^1,D^2,\cdots.D^V\}$，由于每一个子结点划到的训练数据量不同，引入权重，则以 a 作为划分属性时得到的信息增益为：
+
 $$
 \text{Ent\_Gain}(D, a)=\text{Ent}(D) - \sum_{i = 1}^V \frac{|D^i|}{|D|} \text{Ent}(D^i)
 $$
+
 ##### 3.2 信息增益率
 
 由于 ID3 算法使用信息增益选择最优属性进行划分时，会在属性的取值较多时有偏好，C4.5 算法对其进行了改进。同时 C4.5 算法考虑了连续的数值属性离散化、缺失值处理和剪枝技术，这都会在接下来的小节中具体展开。
 
 不过所谓的属性选择策略的优化，其实就是在 ID3 的基础上增加了一个规范化，信息增益率的定义式如下：
+
 $$
 \text{Ent\_Gain}\_\text{ratio}(D, a) = \frac{\text{Ent\_Gain}(D, a)}{\text{IV}(D, a)}
 $$
+
 其中 $\text{IV}(D, a)$ 为：
+
 $$
 \text{IV}(D, a) = -\sum_{i = 1}^V \frac{|D^i|}{|D|} \log_2 \frac{|D^i|}{|D|}
 $$
+
 可以看出 $\text{IV}(D, a)$ 其实就是数据集 $D$ 在属性 $a$ 所以可能取值上的信息熵。一般而言，属性的属性取值越多，信息增益越大，对应的 $\text{IV}$ 值也越大，这样就可以规范化信息增益，避免在选择最优划分属性时模型偏好于更多属性取值的属性了。
 
 ##### 3.3 基尼指数增益
@@ -951,13 +989,17 @@ $$
 分类与回归树 (Classification And Regression Tree, CART) 算法在决策树模型中引入了基尼指数 (Gini index) 来进行最优划分属性的选择。基尼指数是用来衡量一个国家或地区的收益差距的指标，基尼指数越小则表明收入差距越小。
 
 假设当前结点对应的样本集合为 D，其中含有 $t$ 个类别并且第 $k$ 个类别所占样本集合比例为 $P_k$，则当前结点的基尼指数为：
+
 $$
 \text{Gini(D)} = 1 - \sum_{k = 1}^{t}P_k^2
 $$
+
 于是选择属性 $a$ 作为划分属性的的基尼指数增益 $\text{Gini\_Gain}(D,a)$ 为：
+
 $$
 \text{Gini\_Gain}(D,a) = \text{Gini(D)} - \sum_{i = 1}^V \frac{|D^i|}{|D|} \text{Gini}(D^i)
 $$
+
 #### 4 剪枝处理
 
 为了防止模型过拟合并且降低计算复杂度，我们需要使用验证集对决策树进行剪枝。一共有两种剪枝方法：
@@ -1010,6 +1052,7 @@ LL(\theta_c) &= \log P(D_c\ |\ \theta_c) \\
 $$
 
 此时参数 $\hat \theta$ 的极大似然估计就是：
+
 $$
 \hat \theta_c = \arg \max_{\theta_c} LL(\theta_c)
 $$
@@ -1017,13 +1060,17 @@ $$
 #### 朴素贝叶斯分类器
 
 我们定义当前类别为 $c$，则 $P(c)$ 称为类先验概率，$P(x\ |\ c)$ 称为类条件概率。最终的贝叶斯判定准则为：
+
 $$
 P(c\ |\ x) = \frac{P(c)P(x\ |\ c)}{P(x)}
 $$
+
 现在假设 **各属性之间相互独立**，则对于拥有 d 个属性的训练集，在利用贝叶斯定理时，可以通过连乘的形式计算类条件概率 $P(x \ | \ c)$，于是上式变为：
+
 $$
 P(c\ |\ x) = \frac{P(c)}{P(x)} \prod_{i = 1}^d P(x_i\ |\ c)
 $$
+
 注意点：
 
 - 对于离散数据。上述类条件概率的计算方法很好计算，直接统计即可
@@ -1033,9 +1080,11 @@ $$
 #### 半朴素贝叶斯分类器
 
 朴素贝叶斯的问题是假设过于强，现实不可能所有的属性都相互独立。半朴素贝叶斯弱化了朴素贝叶斯的假设。现在假设每一个属性最多只依赖一个其他属性。即独依赖估计 $(\text{One-Dependent Estimator, 简称 ODE})$，于是就有了下面的贝叶斯判定准测：
+
 $$
 P(c\ |\ x) \propto P(c) \prod _{i = 1}^d P(x_i\ |\ c, pa_i)
 $$
+
 如何寻找依赖关系？我们从属性依赖图出发
 
 ![属性依赖图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405210830260.png)
@@ -1094,6 +1143,7 @@ Boosting 算法族的逻辑：
 以 AdaBoost 算法为例，问题式逐步深入算法实现：
 
 1. **如何计算最终集成的结果**？利用加性模型 (additive model)，假定第 $i$ 个学习器的输出为 $h(x)$，第 $i$ 个学习器的权重为 $\alpha_i$，则集成输出 $H(x)$ 为：
+
     $$
     H(x) = \text{sign} \left(\sum_{i = 1}^T \alpha_i h_i(x)\right)
     $$
@@ -1101,6 +1151,7 @@ Boosting 算法族的逻辑：
 2. **如何确定每一个学习器的权重** $\alpha_i$ ？我们定义 $\displaystyle \alpha_i=\frac{1}{2}\ln (\frac{1-\epsilon_i}{\epsilon_i})$
 
 3. **如何调整样本分布**？我们对样本进行赋权。学习第一个学习器时，所有的样本权重相等，后续学习时的样本权重变化规则取决于上一个学习器的分类情况。上一个分类正确的样本权重减小，上一个分类错误的样本权重增加，即：
+
     $$
     D_{i+1}(x) = \frac{D_i(x)}{Z_i} \times 
     \begin{cases}
@@ -1151,9 +1202,11 @@ Boosting 算法族的逻辑：
 ##### 学习法
 
 其实就是将所有基学习器的输出作为训练数据，重新训练一个模型对输出结果进行预测。其中，基学习器称为“初级学习器”，输出映射学习器称为“次级学习器”或”元学习器” $\text{(meta-learner)}$。对于当前样本 $(x,y)$，$n$ 个基学习器的输出为 $y_1 = h_1(x),y_2 = h_2(x),\cdots,y_n = h_n(x)$，则最终输出 $H(x)$ 为：
+
 $$
 H(x) = G(y_1, y_2, \cdots, y_n)
 $$
+
 其中 $G$ 就是次级学习器。关于次级学习器的学习算法，大约有以下几种：
 
 1. Stacking
@@ -1209,6 +1262,7 @@ KNN 变种：最近邻子空间分类器 (Nearest Subspace Classifier, NS)。同
 **性能度量**。一来是进行聚类算法的评估，二来也可以作为聚类算法的优化目标。分为两种，分别是外部指标和内部指标：
 
 1. 外部指标。所谓外部指标就是已经有一个“参考模型”存在了，将当前模型与参考模型的比对结果作为指标。我们考虑两两样本的聚类结果，定义下面的变量：
+
     $$
     \begin{gathered}
     a=|SS|,SS=\{(\boldsymbol{x}_{i},\boldsymbol{x}_{j})\mid\lambda_{i}=\lambda_{j},\lambda_{i}^{*}=\lambda_{j}^{*},i<j)\},\\
@@ -1217,6 +1271,7 @@ KNN 变种：最近邻子空间分类器 (Nearest Subspace Classifier, NS)。同
     d=|DD|,DD=\{(\boldsymbol{x}_i,\boldsymbol{x}_j)\mid\lambda_i\neq\lambda_j,\lambda_i^*\neq\lambda_j^*,i<j)\},
     \end{gathered}
     $$
+
     显然 $a+b+c+d=m(m-1)/2$，常见的外部指标如下：
 
     - JC 指数：$\displaystyle JC = \frac{a}{a+b+c}$
@@ -1226,6 +1281,7 @@ KNN 变种：最近邻子空间分类器 (Nearest Subspace Classifier, NS)。同
     上述指数取值均在 $[0,1]$ 之间，且越大越好。
 
 2. 内部指标。所谓内部指标就是仅仅考虑当前模型的聚类结果。同样考虑两两样本的聚类结果，定义下面的变量：
+
     $$
     \begin{aligned}
     \mathrm{avg}(C)&=\frac{2}{|C|(|C|-1)}\sum_{1\leqslant i<j\leqslant|C|}\operatorname{dist}(\boldsymbol{x}_{i},\boldsymbol{x}_{j}),\\
@@ -1234,6 +1290,7 @@ KNN 变种：最近邻子空间分类器 (Nearest Subspace Classifier, NS)。同
     d_{\mathrm{cen}}(C_i,C_j)&=\mathrm{dist}(\boldsymbol{\mu}_i,\boldsymbol{\mu}_j),
     \end{aligned}
     $$
+
     常见的内部指标比如：轮廓系数。
 
 
@@ -1244,9 +1301,11 @@ Kmeans 及其变种都只适用于 **凸形状** 的样本分布。
 ##### K-means
 
 目标函数（损失函数）定义为：
+
 $$
 \text{loss}=\sum_i^K\sum_{x\in c_i}\|x-c_i\|_2^2
 $$
+
 Kmeans 算法流程大体上可以归纳为三步：
 
 1. 随机选择 k 个数据对象作为 $k$ 个聚类中心（K 均值算法需要提前给出超参数，即簇的数量 $k$）；
@@ -1271,9 +1330,11 @@ Kmeans 算法流程大体上可以归纳为三步：
 ##### K-mediods
 
 目标函数定义为：
+
 $$
 \text{loss}=\sum_i^K\sum_{x\in o_i}\lvert x-o_i\rvert
 $$
+
 即 K 中心点算法。例如 PAM 算法，其使用实际的数据对象作为簇中心而不是用均值众数等新点作为簇中心。具体的，对于每一个簇中心 $O_i$，随机选择一个非簇中心的数据对象 $O_{\text{random}}$，如果用 $O_{\text{random}}$ 替换 $O_i$ 之后损失减小，则替换，否则继续迭代直到算法收敛。
 
 #### 3 基于层次的聚类算法
@@ -1357,13 +1418,17 @@ $$
 基于此思想，可以得到以下降维流程：我们定义 $b_{ij}$ 为降维后任意两个样本之间的内积，$dist_{ij}$ 表示任意两个样本的原始距离，$Z \in R^{d'\times m},d' \le d$ 为降维后数据集的属性值矩阵。
 
 内积计算：
+
 $$
 b_{ij}=-\frac{1}{2}(dist_{ij}^{2}-dist_{i\cdot}^{2}-dist_{\cdot j}^{2}+dist_{\cdot\cdot}^{2})
 $$
+
 新属性值计算：特征值分解法。其中 $B = V \Lambda V^T$
+
 $$
 \mathbf{Z}=\mathbf{\Lambda}_*^{1/2}\mathbf{V}_*^\mathrm{T}\in\mathbb{R}^{d^*\times m}
 $$
+
 2）主成分分析 (Principal Component Analysis, PCA)
 
 「**主成分分析降维算法**」的两个原则：
@@ -1375,71 +1440,69 @@ $$
 
 ![PCA 算法流程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406040911195.png)
 
-{% fold light @3 个样本 2 个特征降维到 1 个特征的算例 %}
+??? note "3 个样本 2 个特征降维到 1 个特征的算例"
 
-假设我们有一个简单的数据集 $D$，包括以下三个样本点：
+    假设我们有一个简单的数据集 $D$，包括以下三个样本点：
 
-$$
-x_1 = \begin{pmatrix} 2 \\ 3 \end{pmatrix}, \quad x_2 = \begin{pmatrix} 3 \\ 4 \end{pmatrix}, \quad x_3 = \begin{pmatrix} 4 \\ 5 \end{pmatrix}
-$$
+    $$
+    x_1 = \begin{pmatrix} 2 \\ 3 \end{pmatrix}, \quad x_2 = \begin{pmatrix} 3 \\ 4 \end{pmatrix}, \quad x_3 = \begin{pmatrix} 4 \\ 5 \end{pmatrix}
+    $$
 
-我们希望将这些样本从二维空间降维到一维空间（即 $d' = 1$ ）。
+    我们希望将这些样本从二维空间降维到一维空间（即 $d' = 1$ ）。
 
-步骤 1: **样本中心化**
+    步骤 1: **样本中心化**
 
-首先计算样本的均值向量：
+    首先计算样本的均值向量：
 
-$$
-\mu = \frac{1}{3} (x_1 + x_2 + x_3) = \frac{1}{3} \begin{pmatrix} 2 \\ 3 \end{pmatrix} + \frac{1}{3} \begin{pmatrix} 3 \\ 4 \end{pmatrix} + \frac{1}{3} \begin{pmatrix} 4 \\ 5 \end{pmatrix} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}
-$$
+    $$
+    \mu = \frac{1}{3} (x_1 + x_2 + x_3) = \frac{1}{3} \begin{pmatrix} 2 \\ 3 \end{pmatrix} + \frac{1}{3} \begin{pmatrix} 3 \\ 4 \end{pmatrix} + \frac{1}{3} \begin{pmatrix} 4 \\ 5 \end{pmatrix} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}
+    $$
 
-然后对所有样本进行中心化：
+    然后对所有样本进行中心化：
 
-$$
-\tilde{x}_1 = x_1 - \mu = \begin{pmatrix} 2 \\ 3 \end{pmatrix} - \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} -1 \\ -1 \end{pmatrix}
-$$
+    $$
+    \tilde{x}_1 = x_1 - \mu = \begin{pmatrix} 2 \\ 3 \end{pmatrix} - \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} -1 \\ -1 \end{pmatrix}
+    $$
 
-$$
-\tilde{x}_2 = x_2 - \mu = \begin{pmatrix} 3 \\ 4 \end{pmatrix} - \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
-$$
+    $$
+    \tilde{x}_2 = x_2 - \mu = \begin{pmatrix} 3 \\ 4 \end{pmatrix} - \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+    $$
 
-$$
-\tilde{x}_3 = x_3 - \mu = \begin{pmatrix} 4 \\ 5 \end{pmatrix} - \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
-$$
+    $$
+    \tilde{x}_3 = x_3 - \mu = \begin{pmatrix} 4 \\ 5 \end{pmatrix} - \begin{pmatrix} 3 \\ 4 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+    $$
 
-步骤 2: **计算协方差矩阵**
+    步骤 2: **计算协方差矩阵**
 
-样本的协方差矩阵为：
+    样本的协方差矩阵为：
 
-$$
-\begin{aligned}
-XX^T &= \frac{1}{m} \sum_{i = 1}^m \tilde{x}_i \tilde{x}_i^T \\
-&= \frac{1}{3} \left( \begin{pmatrix} -1 \\ -1 \end{pmatrix} \begin{pmatrix} -1 & -1 \end{pmatrix} + \begin{pmatrix} 0 \\ 0 \end{pmatrix} \begin{pmatrix} 0 & 0 \end{pmatrix} + \begin{pmatrix} 1 \\ 1 \end{pmatrix} \begin{pmatrix} 1 & 1 \end{pmatrix} \right)\\
-&= \frac{1}{3} \left( \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} + \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} + \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \right) \\
-&= \frac{1}{3} \begin{pmatrix} 2 & 2 \\ 2 & 2 \end{pmatrix} \\
-&= \begin{pmatrix} \frac{2}{3} & \frac{2}{3} \\ \frac{2}{3} & \frac{2}{3} \end{pmatrix}
-\end{aligned}
-$$
+    $$
+    \begin{aligned}
+    XX^T &= \frac{1}{m} \sum_{i = 1}^m \tilde{x}_i \tilde{x}_i^T \\
+    &= \frac{1}{3} \left( \begin{pmatrix} -1 \\ -1 \end{pmatrix} \begin{pmatrix} -1 & -1 \end{pmatrix} + \begin{pmatrix} 0 \\ 0 \end{pmatrix} \begin{pmatrix} 0 & 0 \end{pmatrix} + \begin{pmatrix} 1 \\ 1 \end{pmatrix} \begin{pmatrix} 1 & 1 \end{pmatrix} \right)\\
+    &= \frac{1}{3} \left( \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} + \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} + \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \right) \\
+    &= \frac{1}{3} \begin{pmatrix} 2 & 2 \\ 2 & 2 \end{pmatrix} \\
+    &= \begin{pmatrix} \frac{2}{3} & \frac{2}{3} \\ \frac{2}{3} & \frac{2}{3} \end{pmatrix}
+    \end{aligned}
+    $$
 
-步骤 3: **对协方差矩阵进行特征值分解**
+    步骤 3: **对协方差矩阵进行特征值分解**
 
-协方差矩阵的特征值分解：
+    协方差矩阵的特征值分解：
 
-$$
-\begin{pmatrix} \frac{2}{3} & \frac{2}{3} \\ \frac{2}{3} & \frac{2}{3} \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ -1 & 1 \end{pmatrix} \begin{pmatrix} \frac{4}{3} & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix}
-$$
+    $$
+    \begin{pmatrix} \frac{2}{3} & \frac{2}{3} \\ \frac{2}{3} & \frac{2}{3} \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ -1 & 1 \end{pmatrix} \begin{pmatrix} \frac{4}{3} & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix}
+    $$
 
-特征值为 $\lambda_1 = \frac{4}{3}$ 和 $\lambda_2 = 0$，对应的特征向量分别为：
+    特征值为 $\lambda_1 = \frac{4}{3}$ 和 $\lambda_2 = 0$，对应的特征向量分别为：
 
-$$
-w_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad w_2 = \begin{pmatrix} -1 \\ 1 \end{pmatrix}
-$$
+    $$
+    w_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad w_2 = \begin{pmatrix} -1 \\ 1 \end{pmatrix}
+    $$
 
-步骤 4: **取最大的 $d'$ 个特征值对应的特征向量**
+    步骤 4: **取最大的 $d'$ 个特征值对应的特征向量**
 
-我们选择最大的特征值对应的特征向量 $w_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ 作为最终的投影矩阵。
-
-{% endfold %}
+    我们选择最大的特征值对应的特征向量 $w_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ 作为最终的投影矩阵。
 
 3）核化线性降维
 

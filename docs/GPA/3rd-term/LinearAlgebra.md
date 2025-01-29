@@ -1,10 +1,5 @@
 ---
 title: 线性代数
-categories:
-  - GPA
-  - 3rd-term
-category_bar: true
-sticky: 94
 index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/linear%20algebra.png
 ---
 
@@ -38,6 +33,7 @@ index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/linea
 ### 1.2 定义 *
 
 我们以 n 阶行列式为例。$n$ 阶行列式的值为 $n!$ 个项之和，每一项的组成方式为：每行选一个元素，每列选一个元素，这些元素之积，符号为
+
 $$
 (-1)^{N(row)+N(col)}
 $$
@@ -66,38 +62,41 @@ $$
 本目简单介绍一下行列式求值的另一个策略：按行/列展开。我们用 D 表示行列式 (Determinant)。用 $M_{ij}$ 表示余子式，即行列式去掉 $D_{ij}$ 元素所在的行和列后剩余元素拼接起来的行列式。用 $A_{ij}$ 表示代数余子式，其中 $A_{ij}=(-1)^{i+j}M_{ij}$。
 
 若行列式的某一行/列只有一个元素不为零，则有：
+
 $$
 D=a_{ij}A_{ij}
 $$
-{% fold light @证明 %}
 
-对于特殊情况。即不为零的元素在左上角，则根据上述分块矩阵，可知
-$$
-D =(-1)^{1+1}a_{ij}M_{ij}= a_{ij}A_{ij}
-$$
-对于一般情况。即某行/列唯一不为零的元素在任意位置，则经过 $i+j-2$ 次对换后，就是上述特殊情况，可知：
-$$
-D =(-1)^{i+j-2}a_{ij}M_{ij}=(-1)^{i+j}a_{ij}M_{ij}= a_{ij}A_{ij}
-$$
-{% endfold %}
+??? note "证明"
+
+    对于特殊情况。即不为零的元素在左上角，则根据上述分块矩阵，可知
+
+    $$
+    D =(-1)^{1+1}a_{ij}M_{ij}= a_{ij}A_{ij}
+    $$
+
+    对于一般情况。即某行/列唯一不为零的元素在任意位置，则经过 $i+j-2$ 次对换后，就是上述特殊情况，可知：
+
+    $$
+    D =(-1)^{i+j-2}a_{ij}M_{ij}=(-1)^{i+j}a_{ij}M_{ij}= a_{ij}A_{ij}
+    $$
+
 
 若行列式的某一行/列有多个元素不为零，则有：
+
 $$
 D =\sum_{i = 1}^n a_{xi}A_{xi}
 $$
-{% fold light @证明 %}
 
-将展开的那一行/列通过加法原理进行拆分，然后利用上述只有一个元素不为零时的一般情况进行证明即可。
+??? note "证明"
 
-{% endfold %}
+    将展开的那一行/列通过加法原理进行拆分，然后利用上述只有一个元素不为零时的一般情况进行证明即可。
 
-{% fold light @例题 %}
+??? note "例题"
 
-已知 n 阶行列式 D，按第 $x$ 行展开后有 $D=\sum_{i=1}^n a_{xi}A_{xi}$，现在将 $a_{xi}$ 替换为 $a_{yi}$ 且 $x\ne y$，则 $\sum_{i=1}^n a_{yi}A_{xi}=0$。道理很简单，现在求解的值其实也是一个行列式，并且这个行列式有两行/列的元素完全相等，那么显然的行列式的值就是 0。例如下面这道题：显然 (1) 的结果为 0，(2) 只需要配凑一下即可。
+    已知 n 阶行列式 D，按第 $x$ 行展开后有 $D=\sum_{i=1}^n a_{xi}A_{xi}$，现在将 $a_{xi}$ 替换为 $a_{yi}$ 且 $x\ne y$，则 $\sum_{i=1}^n a_{yi}A_{xi}=0$。道理很简单，现在求解的值其实也是一个行列式，并且这个行列式有两行/列的元素完全相等，那么显然的行列式的值就是 0。例如下面这道题：显然 (1) 的结果为 0，(2) 只需要配凑一下即可。
 
-![例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140938343.png)
-
-{% endfold %}
+    ![例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140938343.png)
 
 ### 特殊的行列式
 
@@ -179,11 +178,11 @@ $$
 
 (5) 幂运算。由于有结合律存在，因此当 A、B 两个方阵可交换时，有幂运算规律。
 
-注意：
+??? tip
 
-- 矩阵乘法的基本规则。$AB=C$ 中 $c_{ij}$ 是 $A$ 的第 $i$ 行与 $B$ 的第 $j$ 列元素依次相乘并求和的结果。
+    - 矩阵乘法的基本规则。$AB=C$ 中 $c_{ij}$ 是 $A$ 的第 $i$ 行与 $B$ 的第 $j$ 列元素依次相乘并求和的结果。
 
-- 矩阵乘法没有交换律。$AB$ 称为 $A$ 左乘 $B$。交换成立的前提是 $A$ 和 $B$ 左乘和右乘合法相等才可以。
+    - 矩阵乘法没有交换律。$AB$ 称为 $A$ 左乘 $B$。交换成立的前提是 $A$ 和 $B$ 左乘和右乘合法相等才可以。
 
 
 #### 2.2.4 矩阵的转置
@@ -205,9 +204,11 @@ $$
 ![行列式算律](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140940619.png)
 
 伴随矩阵：
+
 $$
 AA^* = A^* A = \left | A \right |E
 $$
+
 ![伴随矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140940481.png)
 
 ### 2.3 逆矩阵
@@ -229,6 +230,7 @@ $$
 - 若 $|A| \ne 0$ ，则矩阵 A 可逆，且 $A^{-1} = \frac{1}{|A|}A^*$
 
 逆矩阵算律：
+
 $$
 \begin{aligned}
 {(A^{-1})}^{-1} &= A \\
@@ -288,55 +290,55 @@ $$
 
 首先需要知道的是，在对矩阵进行分块计算的时候，前提有两个：**一个是两个矩阵一开始的规格要相同，另一个是两个矩阵分块之后的规格也要相同**。
 
-按位加：
+=== "按位加"
 
-若
+    若
 
-![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946427.png)
+    ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946427.png)
 
-则
+    则
 
-![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946428.png)
+    ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946428.png)
 
-按位数乘：
+=== "按位数乘"
 
-若
+    若
 
-![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946429.png)
+    ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946429.png)
 
-则
+    则
 
-![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946430.png)
+    ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946430.png)
 
-矩阵乘法：
+=== "矩阵乘法"
 
-若
+    若
 
-![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946431.png)
+    ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946431.png)
 
-则
+    则
 
-![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946432.png)
+    ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946432.png)
 
-其中
+    其中
 
-![其中](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946433.png)
+    ![其中](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946433.png)
 
-按位转置：
+=== "按位转置"
 
-若
+    若
 
-![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946434.png)
+    ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946434.png)
 
-则
+    则
 
-![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946435.png)
+    ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946435.png)
 
-对角分块矩阵：
+=== "对角分块矩阵"
 
-![对角分块矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946436.png)
+    ![对角分块矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946436.png)
 
-其中 $A_1,A_2,...,A_s$ 都是方阵，则称 $A$ 为对角分块矩阵
+    其中 $A_1,A_2,...,A_s$ 都是方阵，则称 $A$ 为对角分块矩阵
 
 #### 2.5.2 运算性质
 
@@ -390,8 +392,8 @@ $$
 **符号表示**。为了更方便的表示和书写，我们定义以下矩阵初等变换的符号，对于矩阵 A 和矩阵 B 而言：
 
 1. $A$ 经过有限次「初等行变换」转化为矩阵 $B$，就称 $A$ 与 $B$ 行等价，记作 $A \stackrel{r}{\sim} B$
-1. $A$ 经过有限次「初等列变换」转化为矩阵 $B$，就称 $A$ 与 $B$ 列等价，记作 $A \stackrel{c}{\sim} B$
-1. $A$ 经过有限次「初等变换」转化为矩阵 $B$，就称 $A$ 与 $B$ 等价，记作 $A \sim B$
+2. $A$ 经过有限次「初等列变换」转化为矩阵 $B$，就称 $A$ 与 $B$ 列等价，记作 $A \stackrel{c}{\sim} B$
+3. $A$ 经过有限次「初等变换」转化为矩阵 $B$，就称 $A$ 与 $B$ 等价，记作 $A \sim B$
 
 **初等变换的数学意义**。所有的变换都等价于在原始矩阵上左乘或右乘一个初等矩阵 E(Elementary Matrix)。注意初等矩阵表示对单位阵进行上述三种变换后的结果。例如：
 
@@ -408,6 +410,7 @@ $$
 **三种形式的矩阵**。
 
 1. 行阶梯形矩阵。可划出一条阶梯线，线下方全为零；每个台阶高度只有一行，台阶数即是非零行的行数，阶梯线的竖线后面的第一个元素为非零元。例如：
+
     $$
     \begin{pmatrix} 
     \underline{2} & 4 & -1 & 0 & 4 \\
@@ -418,14 +421,17 @@ $$
     $$
 
 2. 行最简形矩阵。是行阶梯形矩阵，且非零行的第一个非零元为1，它所在列的其他元素都为零。例如：
+
     $$
     \begin{pmatrix} 1 & 0 & -1 & 0 & 4 \\ 0 & 1 & -1 & 0 & 3 \\ 0 & 0 & 0 & 1 & -3 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix}
     $$
 
 3. 标准形。左上角是一个单位矩阵，其余元素全是零。$m \times n$ 的矩阵 $A$ 总可经过初等变换化为标准形。例如：
+
     $$
     F = \begin{pmatrix} E_r & O \\ O & O \end{pmatrix}_{m \times n}
     $$
+
     此标准形由 $m, n, r$ 三个数唯一确定，其中 $r$ 就是行阶梯形矩阵中非零行的行数。
 
 #### 3.1.2 与逆矩阵的关系
@@ -437,6 +443,7 @@ $$
 3. $A \sim B \iff$ 存在 m 阶可逆阵 P 及 n 阶可逆阵 Q 使得 PAQ=B
 
 **如何求解变换矩阵呢**？由于 (2) 中的 Q 可以通过转置转化为求解 (1) 中的 P，因此我们以求解上述 (1) 中的 P 为例：
+
 $$
 PA=B \iff
 \begin{cases}
@@ -445,9 +452,11 @@ PE=P
 \end{cases} \iff
 (A\quad E) \stackrel{r}{\sim} (B \quad P)
 $$
+
 即对 $(A \quad E)$ 作初等行变换，当把 $A$ 变为 $B$ 时，$E$ 就变为了需要求解的可逆阵 $P$。
 
 **方阵可逆的等价推导**。方阵 A 可逆 $\iff$ $A \stackrel{r}{\sim} E$。于是证明方阵 $A$ 可逆就又多了一个策略，即将 $A$ 经过有限次的初等行变换之后变成了单位阵，就可以说明 A 是可逆矩阵。求解过程如下：
+
 $$
 A\text{ 为可逆方阵} \iff
 \begin{cases}
@@ -456,6 +465,7 @@ A^{-1}E=A^{-1}
 \end{cases} \iff
 (A\quad E) \stackrel{r}{\sim} (E \quad A^{-1})
 $$
+
 即对 $(A \quad E)$ 作初等行变换，当把 $A$ 变为 $E$ 时，$E$ 就变为了 $A^{-1}$。显然此法不仅可以用来证明一个可逆阵，也可以顺带计算出其逆矩阵。
 
 #### 3.1.3 让我们解个线性方程组吧
@@ -477,7 +487,7 @@ $$
 
 1. 转置不变性：$R(A^T)=R(A)$
 
-2. 相似不变性：若 $A \sim B $，则 $R(A)=R(B)$
+2. 相似不变性：若 $A \sim B$，则 $R(A)=R(B)$
 
 3. 初等变换不变性：若 $P,Q$ 可逆，则 $R(PAQ)=R(A)$
 
@@ -488,6 +498,7 @@ $$
     ![加法性质](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946453.png)
 
 6. 压缩性：若 $A_{m\times n}$ 的秩为 $r$，则 $A$ 一定可以转化为
+    
     $$
     \begin{bmatrix}
     E_r & O \\
@@ -554,6 +565,7 @@ $$
 ![注意](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946462.png)
 
 判定：
+
 - 定理一：
 
     ![定理一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946463.png)
@@ -570,6 +582,7 @@ $$
     - 仅有零解 $\Leftrightarrow$ 唯一解，$R(A)=R(A,0)=m$
 
 结论：
+
 - 结论一：
 
     ![结论一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946465.png)
@@ -641,9 +654,11 @@ $$
 **考点一：求解空间中的某向量 x 在基 A 下的坐标**
 
 其实就是求解向量 x 在基 A 的各个“轴”上的投影。我们定义列向量 $\lambda$ 为向量 x 在基 A 下的坐标，那么就有如下的表述：
+
 $$
 x = A \  \lambda
 $$
+
 **考点二：求解过度矩阵 P**
 
 我们已知一个向量空间中的两个基分别为 A 和 B，若有矩阵 P 满足基变换公式：$B = AP$，我们就称 P 为从基 A 到基 B 的过渡矩阵
@@ -657,20 +672,18 @@ $$
 本目其实就是 3.3 目的一个知识补充，具体的线性方程组求解方法与 3.3 目几乎完全一致，只不过通过解的结构将解的结构进行了划分从而看似有些不同。但是殊途同归，都是一个东西。下面介绍本目与 3.3 目不同的地方：
 
 我们从 3.3 目可以知道，无论是齐次线性方程组还是非齐次线性方程组，求解步骤都是：将系数矩阵（非齐次就是增广矩阵）进行行等价变换，然后对得到的方程组进行相对应未知变量的赋值即可。区别在于：
+
 $$
 \text{非齐次线性方程组的通解}=\text{非齐次线性方程组的一个特解}+\text{齐次线性方程组的通解}
 $$
+
 解释：我们将
 
 - 齐次线性方程组记为 $Ax=0$，解为 $\eta$，则有 $A \eta = 0$
 - 非齐次线性方程组记为 $Ax=b$，假如其中的一个特解为 $\eta^*$，则 $A\eta^*=b$，假如此时我们又计算出了该方程组的其次线性解 $\eta$，则有 $A\eta=0$。那么显然有 $A(\eta^*+\eta)=b$，此时 $\eta^* + \eta$ 就是该非齐次线性方程组的通解
 
-也就是说本目对 3.3 目的线性方程组的求解给出了进一步的结构上的解释，即非齐次线性方程组的解的结构是基于本身的一个特解与齐次的通解之上的，仅此而已。当然了，本目在介绍齐次线性方程组解的结构时还引入了一个新的定理：
-$$
-\begin{aligned}
-\text{若矩阵 $A_{m\times n}$ 的秩为 $r$, 则该矩阵的解空间的维度(基础解系中线性无关向量的个数)就是 $n-r$, 即:}
-\end{aligned}
-$$
+也就是说本目对 3.3 目的线性方程组的求解给出了进一步的结构上的解释，即非齐次线性方程组的解的结构是基于本身的一个特解与齐次的通解之上的，仅此而已。当然了，本目在介绍齐次线性方程组解的结构时还引入了一个新的定理：若矩阵 $A_{m\times n}$ 的秩为 $r$, 则该矩阵的解空间的维度(基础解系中线性无关向量的个数)就是 $n-r$。即：
+
 $$
 dimS = n-r
 $$
@@ -694,19 +707,17 @@ $$
 
 - 求解方法：施密特正交化求解标准正交基。
 
-{% fold light @施密特正交化求标准正交基 %}
+??? note "施密特正交化求标准正交基 - 详细过程"
 
-一、正交化
+    一、正交化
 
-![正交化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946478.png)
+    ![正交化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946478.png)
 
-![正交化 - 续](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946479.png)
+    ![正交化 - 续](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946479.png)
 
-二、单位化
+    二、单位化
 
-![单位化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946480.png)
-
-{% endfold %}
+    ![单位化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946480.png)
 
 正交矩阵。
 
@@ -725,6 +736,7 @@ $$
 **特征值的性质**。
 
 - $n$ 阶矩阵 $A$ 在复数范围内含有 $n$ 个特征值，且：
+    
     $$
     \begin{aligned}
     \sum_{i = 1}^{n} \lambda _i =& \sum_{i = 1}^{n} a_{ii} \\
@@ -741,9 +753,11 @@ $$
 #### 5.3.1 定义
 
 对于两个 n 阶方阵 A, B 而言，若存在可逆矩阵 P 使得
+
 $$
 PAP^{-1}= B
 $$
+
 则称 B 为 A 的相似矩阵，A 与 B 相似，也称对 A 进行相似变换，P 为相似变换矩阵
 
 #### 5.3.2 性质

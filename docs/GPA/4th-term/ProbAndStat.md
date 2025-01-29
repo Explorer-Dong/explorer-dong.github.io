@@ -1,9 +1,5 @@
 ---
 title: 概率论与数理统计
-categories:
-  - GPA
-  - 4th-term
-category_bar: true
 ---
 
 ## 前言
@@ -87,10 +83,6 @@ category_bar: true
     - 二维几何图形：会面问题、蒲丰（Buffon）投针问题
 3. 几何概率的基本性质
 
-#### 1.2.4 概率的性质
-
-pass
-
 ### 1.3 常用概型公式
 
 #### 1.3.1 条件概率计算公式
@@ -98,14 +90,17 @@ pass
 $$
 P(B|A) = \frac{P(AB)}{P(A)}
 $$
+
 #### 1.3.2 乘法原理计算公式
 
 - $\text{基本}:\text{前提}:P(A)>0$
+
     $$
     P(AB) = P(A)P(B|A)
     $$
 
 - $\text{推广}:\text{前提}:P(A_1A_2,...,A_n)>0$
+
     $$
     P(A_1A_2...A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1A_2) \cdots P(A_n|A_1A_2...A_{n-1})
     $$
@@ -113,6 +108,7 @@ $$
 #### 1.3.3 全概公式
 
 我们将样本空间 $\Omega$ 完全划分为 $n$ 个互斥的区域，即 $\Omega = \displaystyle \sum_{i=1}^{n} A_i$ ，则在样本空间中事件 $B$ 发生的概率 $P(B)$ 就是在各子样本空间中概率之和，经过上述乘法公式变形，计算公式如下：
+
 $$
 \begin{equation*}
 \begin{aligned}
@@ -123,17 +119,16 @@ $$
 \end{aligned}
 \end{equation*}
 $$
+
 #### 1.3.4 贝叶斯公式
 
 在上述全概公式的背景之下，现在希望求解事件 $B$ 在第 $j$ 个子样本空间 $A_j$ 中发生的概率，或者说第 $j$ 个子样本空间对于事件 $B$ 的发生贡献了多少概率，记作 $P(A_j|B)$ ，计算公式如下：
+
 $$
 P(A_j|B) = \frac{P(A_j)P(B|A_j)}{\displaystyle \sum_{i=1}^n P(A_i)P(B|A_i)}
 $$
-{% note light %}
 
 可以发现全概公式是计算事件发生的所有子样本空间的概率贡献，而贝叶斯公式是计算事件发生的总概率中某些子样本空间的概率贡献，前者是正向思维，后者是逆向思维
-
-{% endnote %}
 
 ### 1.4 事件的独立性及伯努利概型
 
@@ -142,11 +137,13 @@ $$
 **定义**
 
 - 基本：若 $A,B$ 相互独立，则满足：
+
     $$
     P(AB)=P(A)P(B)
     $$
 
 - 推广：若 $A_1,A_2,...,A_n$ 相互独立，则满足：
+
     $$
     \begin{aligned}
     \forall \quad 1 \le i_1<i_2<\cdots<i_k \le n\ (k=2,3,\cdots,n) \\
@@ -159,6 +156,7 @@ $$
 - 基本：若 $A,B$ 相互独立，则 $A,\overline{B}$ 相互独立；$\overline{A},B$ 相互独立；$\overline{A},\overline{B}$ 相互独立
 
 - 推广：若 $A_1,A_2,...,A_n$ 相互独立，则其中任意 $k(2 \le k \le n)$ 个也相互独立，且满足：
+
     $$
     \begin{aligned}
     P(\hat{A_{i_1}}\hat{A_{i_2}}\cdots \hat{A_{i_k}}) = P(\hat{A_{i_1}})P(\hat{A_{i_2}})\cdots P(\hat{A_{i_k}}) \\
@@ -173,6 +171,7 @@ $$
 - 相互独立：对于 $n$ 个事件，$2 \to n$ 个事件的独立关系都需要考虑。
 
 - 总结：对于 $n$ 个事件，满足两两独立需要 $C_n^2$ 个等式关系，对于相互独立需要 $2^n-(n+1)$ 个等式关系，因此：
+
     $$
     \text{两两独立} \subset \text{相互独立}
     $$
@@ -187,18 +186,18 @@ $$
 模型：
 
 - 二项概率公式：n 次独立重复试验发生 k 次的概率：
+
     $$
     C_n^k p^k (1-p)^{n-k}
     $$
 
 - 几何概率公式：在第 n 次试验首次成功的概率：
+
     $$
     (1-p)^{n-1}p
     $$
 
 ## 第2章 随机事件及其分布
-
-{% note light %}
 
 我们知道，解决事件发生概率的问题，除了事件表示以外，我们还关心每一个事件发生的概率 $P(X=k)$，以及某些事件发生的概率 $P(X=[range))$。接下来我们将：
 
@@ -206,13 +205,12 @@ $$
 - 接着介绍随机变量对应的概率发生情况组成的集合。离散型的叫**分布列**，连续型的叫**概率密度函数**，并在其中贯穿分布函数的应用
 - 最后介绍**分布函数的复合**。从离散型和连续型随机变量两个方向展开
 
-{% endnote %}
-
 ### 2.1 随机变量及其概率分布
 
 #### 2.1.1 随机变量的概念
 
 总的来说，随机变量就是一个样本空间与实数集的映射。我们定义样本空间 $\Omega=\{ \omega \}$，其中 $\omega$ 表示所有可能的事件，实数集 $R$，随机变量 $X$，则随机变量满足以下映射关系
+
 $$
 X(\omega)=R
 $$
@@ -233,11 +231,13 @@ $$
 随机变量的取值都是整数，有以下三种表示方法
 
 1. 公式法
+
     $$
     p_k = P(X=x_k),\quad k = 1,2,\cdots,
     $$
 
 2. 服从法
+
     $$
     X \sim 
     \begin{pmatrix}
@@ -247,18 +247,19 @@ $$
     $$
 
 3. 表格法
+
     $$
     \begin{array}{c|cccc}
     X & x_1 & x_2 & x_3 & \cdots \\
     \hline
     P & p_1 & p_2 & p_3 & \cdots
     \end{array}
-    $$
-    
+    $$    
 
 #### 2.2.2 常用离散性随机变量及其分布列
 
 - 0-1分布：即一个事件只有两面性，我们称这样的随机变量服从0-1分布或者两点分布，记作
+
     $$
     X \sim 
     \begin{pmatrix}
@@ -268,35 +269,38 @@ $$
     $$
 
 - 二项分布：其实就是 n 重伯努利试验，我们称这样的随机变量服从二项分布，分布列为 $P(X=k) = C_n^kp^k(1-p)^{n-k}$，记作
+
     $$
     X \sim B(n,p)
     $$
 
 - 几何分布：同样是伯努利事件，现在需要求解第 $k$ 次事件首次发生的概率，此时分布列为 $P(X=k)=(1-p)^{k-1}p$，记作
+
     $$
     X \sim G(p)
     $$
 
 - 超几何分布：就是在 N 件含有 M 件次品的样品中无放回的抽取 n 件，问其中含有次品数量的分布列，为 $\displaystyle P(X=k)=\frac{C_M^k C_{N-M}^{n-k}}{C_N^n}, \quad k=0,1,2,\cdots,\min{(n, M)}$，记作
+
     $$
     X \sim \text{超几何分布}(n,N,M)
     $$
 
 - 泊松分布：当二项分布中，试验次数很大或者概率很小时，可以近似为泊松分布，即 $\displaystyle P(X=k)=C_n^k p^k(1-p)^{n-k} \to \frac{\lambda^k}{k!}e^{-\lambda}$，其中常数 $\lambda > 0$，记作
+
     $$
     X \sim P(\lambda)
     $$
+
     显然，泊松分布含有下面两个性质
 
     1. $P(X=k) > 0,k=0,1,\cdots$
 
     2. $\displaystyle \sum_{k=0}^\infty P(X=k)=1$
 
-        {% fold light @泊松分布正规性证明 %}
+        ??? note "泊松分布正规性证明"
         
-        ![泊松分布正规性证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403151012817.png)
-        
-        {% endfold %}
+            ![泊松分布正规性证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403151012817.png)
 
 ### 2.3 连续型随机变量及其概率密度函数
 
@@ -307,6 +311,7 @@ $$
 概率密度函数，简称：密度函数 or 概率密度
 
 - 定义：设随机变量 $X$ 的分布函数为 $F(x)$，如果存在非负可积函数 $p(x)$，使下式成立，则称 $X$ 为连续型随机变量，$p(x)$ 为 $X$ 的概率密度函数
+
     $$
     \forall x \in R,F(x) = \int_{-\infty}^{x} p(t)dt
     $$
@@ -328,6 +333,7 @@ $$
         - 对于连续型随机变量 $X$ 有：$P(x_1 < X < X_2)=P(x_1 < X \le X_2)=P(x_1 \le X < X_2)=P(x_1 \le X \le X_2)$
 
     6. 实际描述性：密度函数的数值反映了随机变量 $X$ 取 $x$ 的临近值的概率的大小，因为
+
         $$
         p(x)\Delta x \approx \int_{x}^{x+\Delta x} p(t)dt = F(x+\Delta x) - F(x) = P(x \le X \le x+\Delta x)
         $$
@@ -345,9 +351,11 @@ $$
 - 指数分布：其中参数 $\lambda >0$
 
 - 正态分布：一般正态函数 $F(x)$ **转化为标准正态函数** $\Phi(x)$ 公式：
+
     $$
     F(x) = \Phi(\frac{x - \mu}{\sigma})
     $$
+
     于是对于计算一般正态函数的函数值，就可以通过下式将其转化为标准正态函数，最后查表即可：
 
 $$
@@ -356,11 +364,7 @@ $$
 
 ### 2.4 随机变量函数的分布
 
-{% note light %}
-
 本目主要介绍给定一个随机变量 $X$ 的分布情况，通过一个关系式 $y=g(x)$ 来求解随机变量 $Y$​ 的分布情况
-
-{% endnote %}
 
 #### 2.4.1 离散型随机变量函数的分布
 
@@ -377,6 +381,7 @@ $$
     再对 $F_Y(y)$ 求导得 $\displaystyle p_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} F_X(f(y)) = F_X'(f(y)) \cdot f'(y) = p_X(f(y)) \cdot f'(y)$
 
 - **方法二**：如果关系式 $y=g(x)$ 单调且反函数 $x=h(y)$ 连续可导，则可以直接得出随机变量 $Y$ 的概率密度函数 $p_Y(y)$ 为下式。其中 $\alpha$ 和 $\beta$ 为 $Y=g(X)$ 的取值范围（$x$ 应该怎么取值，$h(y)$ 就应该怎么取值，从而计算出 $y$ 的取值范围）
+
     $$
     p_Y(y) = 
     \begin{cases}
@@ -387,31 +392,23 @@ $$
 
 ## 第3章 随机向量及其分布
 
-{% note light %}
-
 实际生活中，只采用一个随机变量描述事件往往是不够的。本章引入多维的随机变量概念，构成随机向量，从二维开始，推广到 $n$​ 维。
-
-{% endnote %}
 
 ### 3.1 二维随机向量的联合分布
 
-{% note light %}
-
 现在我们讨论二维随机向量的联合分布。所谓的联合分布，其实就是一个曲面的概率密度（离散型就是点集），而分布函数就是对其积分得到的三维几何体的体积（散点和）而已。
-
-{% endnote %}
 
 #### 3.1.1 联合分布函数
 
 定义：我们定义满足下式的二元函数 $F(x,y)$ 为二维随机向量 $(X,Y)$ 的联合分布函数
+
 $$
 F(x,y) = P((X \le x) \cap (Y \le y)) = P(X \le x, Y \le y)
 $$
-{% fold light @几何意义：F(x,y) 即左下方无界矩形的面积 %}
 
-![联合分布函数的几何意义](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403271717479.png)
+??? note "几何意义：F(x,y) 即左下方无界矩形的面积"
 
-{% endfold %}
+    ![联合分布函数的几何意义](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403271717479.png)
 
 性质：其实配合几何意义理解就会很容易了
 
@@ -426,18 +423,17 @@ $$
 
 表示：有两种表示二维随机向量分布列的方法，如下
 
-{% fold light @二维随机向量分布列的表示方法 %}
+??? note "二维随机向量分布列的表示方法"
 
-1. 公式法
-    $$
-    p_{ij} = P(X=x_i,Y = y_i), \quad i,j=1,2,\cdots
-    $$
+    1. 公式法
 
-2. 表格法：
+        $$
+        p_{ij} = P(X=x_i,Y = y_i), \quad i,j=1,2,\cdots
+        $$
 
-    ![二维联合分布列](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403271728248.png)
+    2. 表格法：
 
-{% endfold %}
+        ![二维联合分布列](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403271728248.png)
 
 性质：
 
@@ -447,9 +443,11 @@ $$
 #### 3.1.3 联合密度函数
 
 定义：
+
 $$
 F(x,y) = \int_{-\infty}^x \int_{-\infty}^y p(u,v)dudv
 $$
+
 性质：
 
 1. 非负性：$\forall x,y \in R,p(x,y) \ge 0$
@@ -463,6 +461,7 @@ $$
 常见的连续型二维分布：
 
 1. 二维均匀分布：假设该曲面与 $xOy$ 面的投影面积为 $S$，则分布函数其实就是一个高为定值 $\frac{1}{S}$ 的柱体，密度函数为：
+
     $$
     p(x,y) = 
     \begin{cases}
@@ -473,11 +472,9 @@ $$
 
 2. 二元正态分布：不要求掌握密度函数，可以感受一下密度函数的图像：
 
-    {% fold light @二元正态分布 - 密度函数的图像%}
+    ??? note "二元正态分布 - 密度函数的图像"
 
-    ![二元正态分布 - 密度函数的图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403290948792.png)
-
-    {% endfold %}
+        ![二元正态分布 - 密度函数的图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403290948792.png)
 
 计算题：往往给出一个二元密度函数，然后让我们求解（1）密度函数中的参数、（2）分布函数、（3）联合事件某个区域下的概率
 
@@ -489,15 +486,12 @@ $$
 
 ### 3.2 二维随机向量的边缘分布
 
-{% note light %}
-
 对于二元分布函数，我们也可以研究其中任意一个随机变量的分布情况，而不需要考虑另一个随机变量的取值情况。举一个实例就是，假如当前的随机向量是身高和体重，所谓的只研究其中一个随机变量，即边缘分布函数的情形就是，我们不考虑身高只考虑体重的分布情况；或者我们不考虑体重，只考虑身高的分布情况。接下来，我们将从边缘分布函数入手，逐渐学习离散型的分布列与连续型的分布函数。
-
-{% endnote %}
 
 #### 3.2.1 边缘分布函数
 
 我们称 $F_X(x),F_Y(y$) 分别为 $(X,Y)$ 关于 $X,Y$ 的边缘分布函数，定义式为：
+
 $$
 \begin{aligned}
 F_X(x) = P(X \le x) = P(X \le x,Y < +\infty) = \lim_{y \to +\infty} F(x,y) = F(x,+\infty) \\
@@ -508,12 +502,14 @@ $$
 #### 3.2.2 边缘分布列
 
 所谓的边缘分布列，就是固定一个随机变量，另外的随机变量取遍，组成的分布列。即：
+
 $$
 \begin{aligned}
 P(X=x_i) = p_{i\cdot}=\sum_{j=1}^{+\infty} p_{ij}, \quad i=1,2,\cdots \\
 P(Y=y_j) = p_{\cdot j}=\sum_{i=1}^{+\infty} p_{ij}, \quad j=1,2,\cdots
 \end{aligned}
 $$
+
 我们称：
 
 - $P(X=x_i)$ 为随机向量 $(X,Y)$ 关于 $X$ 的边缘分布列
@@ -523,6 +519,7 @@ $$
 #### 3.2.3 边缘密度函数
 
 所谓的的边缘密度函数，可以与边缘分布列进行类比，也就是固定一个随机变量，另外的随机变量取遍。只不过连续型的取遍就是无数个点，而离散型的取遍是可列个点，仅此而已。即：
+
 $$
 \begin{aligned}
 P(X=x) &= p_X(x) \\
@@ -552,24 +549,22 @@ $$
 
 ### 3.3 随机向量的条件分布
 
-{% note light %}
-
 本目主要介绍的是条件分布。所谓的条件分布，其实就是在约束一个随机变量为定值的情况下，另外一个随机变量的取值情况。与上述联合分布、边缘分布的区别在于：
 
 - 联合分布、边缘分布的分布函数是一个体积（散点和），概率密度（分布列）是一个曲面（点集）
 - 条件分布的分布函数是一个面积（散点和），概率密度（分布列）是一个曲线（点集）
 
-{% endnote %}
-
 #### 3.3.1 离散型随机向量的条件分布列和条件分布函数
 
 条件分布列，即散点情况：
+
 $$
 \begin{aligned}
 p_{i|j} = P(X=x_i\ |\ Y=y_j) = \frac{P(X=x_i,Y=y_i)}{P(Y=y_i)} = \frac{p_{ij}}{p_{\cdot j}}, \quad i=1,2,\cdots \\
 p_{j|i} = P(Y=y_j\ |\ X=x_i) = \frac{P(X=x_i,Y=y_i)}{P(X=x_i)} = \frac{p_{ij}}{p_{i\cdot }}, \quad j=1,2,\cdots
 \end{aligned}
 $$
+
 我们称：
 
 - $p_{i|j}$ 为在给定 $Y=y_j$ 的条件下 $X$ 的条件分布列
@@ -577,12 +572,14 @@ $$
 - $p_{j|i}$ 为在给定 $X=x_i$ 的条件下 $Y$ 的条件分布列
 
 条件分布函数，即点集情况：
+
 $$
 \begin{aligned}
 F(x|y_j) = P(X \le x\ | \ Y=y_j) = \sum _{x_i\le x} \frac{p_{ij}}{p_{\cdot j}} \\
 F(y|x_i) = P(Y \le y\ | \ X=x_i) = \sum _{y_j\le y} \frac{p_{ij}}{p_{i \cdot}}
 \end{aligned}
 $$
+
 我们称：
 
 - $F(x|y_j)$ 为在给定 $Y=y_j$ 的条件下 $X$ 的条件分布函数
@@ -591,24 +588,28 @@ $$
 #### 3.3.2 连续型随机向量的条件密度函数和条件分布函数
 
 条件密度函数，即联合分布的概率密度曲面上，约束了某一维度的随机变量为定值，于是条件密度函数的图像就是一个空间曲线：
+
 $$
 \begin{aligned}
 p(x|y) = \frac{p(x,y)}{p_Y(y)}, \quad -\infty < x < +\infty \\
 p(y|x) = \frac{p(x,y)}{p_X(x)}, \quad -\infty < y < +\infty
 \end{aligned}
 $$
+
 我们称：
 
 - $p(x|y)$ 为在给定 $Y=y$ 的条件下 $X$ 的条件密度函数
 - $p(y|x)$ 为在给定 $X=x$ 的条件下 $Y$ 的条件密度函数
 
 条件分布函数，即上述曲线的分段积分结果：
+
 $$
 \begin{aligned}
 F(x|y) = P(X \le x \ | \ Y=y) = \int_{-\infty}^x \frac{p(u,y)}{p_Y(y)} du,\quad -\infty < x < +\infty \\
 F(y|x) = P(Y \le y \ | \ X=x) = \int_{-\infty}^y \frac{p(x,v)}{p_X(x)} dv, \quad -\infty < y < +\infty
 \end{aligned}
 $$
+
 我们称：
 
 - $F(x|y)$ 为在给定 $Y=y$ 的条件下 $X$ 的条件分布函数
@@ -616,13 +617,10 @@ $$
 
 ### 3.4 随机变量的独立性
 
-{% note light %}
-
 本目主要介绍随机变量的独立性。我们知道随机事件之间是有独立性的，即满足 $P(AB)=P(A)P(B)$ 的事件，那么随机变量之间也有独立性吗？答案是有的，以生活中的例子为实例，比如我和某个同学进教室，就是独立的两个随机变量。下面开始介绍。
 
-{% endnote %}
-
 - 定义：我们定义如果两个随机变量的分布函数满足下式，则两个随机变量相互独立：
+
     $$
     F(x,y)=F_X(x)F_Y(y)
     $$
@@ -641,11 +639,7 @@ $$
 
 ### 3.5 随机向量函数的分布
 
-{% note light %}
-
 在 2.4 目中我们了解到了随机变量函数的分布，现在我们讨论随机向量函数的分布。在生活中，假设我们已经知道了一个人群中所有人的身高和体重的分布情况，现在想要血糖根据身高和体重的分布情况，就需要用到本目的理念。我们从离散型和连续型随机向量 $(X,Y)$ 出发，讨论 $g(X,Y)$ 的分布情况。
-
-{% endnote %}
 
 #### 3.5.1 离散型随机向量函数的分布
 
@@ -658,25 +652,26 @@ $$
 **(1) 和的分布：**
 
 - 先求分布函数 $F_Z(z)$：
+    
     $$
     \begin{aligned}
     F_Z(z) &= P(X+Y \le z) \\
     &= \iint\limits_{x+y \le z} p(x,y) dxdy \\
-    
     &\begin{align}
     &= \int _{-\infty}^z \left [ \int_{-\infty}^{+\infty} p(x,t-x)dx \right ] dt \\
     &= \int _{-\infty}^z \left [ \int_{-\infty}^{+\infty} p(t-y,y)dy \right ] dt
     \end{align}
-    
     \end{aligned}
     $$
     
 - 由分布函数定义：
+    
     $$
     F_X(x) = \int_{-\infty}^xp(u)du
     $$
     
 - 所以可得 $Z=X+Y$ 的密度函数 $p_Z(z)$ 为：
+    
     $$
     \begin{aligned}
     p_Z(z) = \int_{-\infty}^{+\infty} p(x,z-x)dx \quad &(1) \\
@@ -685,6 +680,7 @@ $$
     $$
     
 - 若 X 和 Y 相互独立，还可得卷积式：
+    
     $$
     \begin{aligned}
     p_Z(z) &= \int_{-\infty}^{+\infty} p(x,z-x)dx \\
@@ -697,6 +693,7 @@ $$
 **(2) 次序统计量的分布（对于两个相互独立的随机变量 X 和 Y）：**
 
 - 对于 $M=\max{(X,Y)}$ 的分布函数，有：
+
     $$
     \begin{aligned}
     F_M(z) &= P(M \le z) \\
@@ -708,6 +705,7 @@ $$
     $$
 
 - 对于 $N=\min{(X,Y)}$ 的分布函数，有：
+
     $$
     \begin{aligned}
     F_N(z) &= P(N \le z) \\
@@ -720,6 +718,7 @@ $$
     $$
 
 - 若拓展到 $n$ 个相互独立且同分布的随机变量，则有：
+
     $$
     \begin{aligned}
     F_M(z) &= [F(z)]^n \\
@@ -736,28 +735,22 @@ $$
 
 ## 第4章 随机变量的数字特征
 
-{% note light %}
-
 本章我们将学习随机变量的一些数字特征。所谓的数字特征其实就是随机变量分布的一些内在属性，比如均值、方差、协方差等等，有些分布特性甚至可以通过某个数字特征而直接觉得。其中**期望**和**方差**往往用来衡量单个随机变量的特征，而**协方差**与**相关系数**则是用来衡量随机变量之间的数字特征。接下来开始介绍。
-
-{% endnote %}
 
 ### 4.1 数学期望
 
-{% note light %}
-
 **加权平均**概念的严格数学定义。
-
-{% endnote %}
 
 #### 4.1.1 随机变量的数学期望
 
 - 离散型
+
     $$
     EX = \sum_{i=1}^{\infty} x_i p_i
     $$
     
 - 连续型
+
     $$
     \begin{aligned}
     &EX = \int_{-\infty}^{+\infty} xp(x)dx
@@ -769,11 +762,13 @@ $$
 - 离散型
 
     - 一元
+
         $$
         Eg(X) = \sum_{i=1}^{\infty}g(x_i)p_i
         $$
 
     - 二元
+
         $$
         Eg(X,Y) = \sum_{i=1}^{\infty}\sum_{j=1}^{\infty}g(x_i,y_i)p_{ij}
         $$
@@ -781,11 +776,13 @@ $$
 - 连续型
 
     - 一元
+
         $$
         Eg(X) = \int_{-\infty}^{+\infty}g(x)p(x)dx
         $$
 
     - 二元
+
         $$
         Eg(X,Y) = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}g(x_i,y_i)p(x,y)dxdy
         $$
@@ -799,15 +796,12 @@ $$
 
 ### 4.2 方差
 
-{% note light %}
-
 随机变量的取值与均值之间的**离散程度**。
-
-{% endnote %}
 
 #### 4.2.1 方差的定义
 
 我们定义随机变量 $X$ 的方差 $D(X)$ 为：（全部可由期望的性质推导而来）
+
 $$
 \begin{aligned}
 D(X) &= E\left[(X-EX)^2\right ] \\
@@ -825,7 +819,8 @@ $$
 
 3. $E\left[ (X-EX)^2 \right] \le E \left [ (X-C)^2 \right ]$​
 
-4. 切比雪夫不等式 ~~（本以为不要求掌握的，但是被小测拷打了，补一下）~~：
+4. 切比雪夫不等式：
+
     $$
     \forall \epsilon >0, P(|X - EX| < \epsilon) \ge 1 - \frac{DX}{\epsilon^2}
     $$
@@ -842,45 +837,39 @@ $$
 |  ---   | 指数分布  |                   $X \sim e(\lambda)$                   | $\displaystyle \frac{1}{\lambda}$ | $\displaystyle \frac{1}{\lambda^2}$ |
 |  ---   | *正态分布 |                $X \sim N(\mu,\sigma^2)$                 |               $\mu$               |             $\sigma^2$              |
 
-{% note warning %}
-
 注：打星号表示在两个随机变量 $X,Y$ 相互独立时，具备可加性。具体的：
 
 1. $X \sim N(\mu_1,\sigma_1^2), Y \sim N(\mu_2,\sigma_2^2) \to X\pm Y\sim N(\mu_1\pm\mu_2,\sigma_1^2+\sigma_2^2)$
 2. $X \sim B(n_1,p), Y \sim B(n_2,p) \to X+Y\sim B(n_1+n_2,p)$
 3. $X \sim P(\lambda_1),Y\sim P(\lambda_2) \to X+Y \sim P(\lambda_1+\lambda_2)$
 
-{% endnote %}
+???+note "公式推导"
 
-{% fold light @推导 %}
+    推导的根本方式还是从定义出发。当然为了省事也可以从性质出发。
 
-推导的根本方式还是从定义出发。当然为了省事也可以从性质出发。
+    === "0-1 分布"
 
-0-1 分布
+        ![0-1 分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313030.jpg)
 
-![0-1 分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313030.jpg)
+    === "二项分布"
 
-二项分布
+        ![二项分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313503.jpg)
 
-![二项分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313503.jpg)
+    === "几何分布"
 
-几何分布
+        ![几何分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313329.jpg)
 
-![几何分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313329.jpg)
+    === "泊松分布"
 
-泊松分布
+        ![泊松分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313316.jpg)
 
-![泊松分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313316.jpg)
+    === "均匀分布"
 
-均匀分布
+        ![均匀分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313239.jpg)
 
-![均匀分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313239.jpg)
+    === "指数分布"
 
-指数分布
-
-![指数分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313832.jpg)
-
-{% endfold %}
+        ![指数分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313832.jpg)
 
 
 ### 4.4 协方差与相关系数
@@ -888,16 +877,20 @@ $$
 #### 4.4.1 协方差
 
 定义：随机变量 X 与 Y 的协方差 $Cov(X,Y)$ 为：
+
 $$
 \begin{aligned}
 Cov(X,Y)&= E[(X-EX)(Y-EY)] \\
 &= E(XY) - EXEY
 \end{aligned}
 $$
+
 特别的：
+
 $$
 Cov(X,X) = DX
 $$
+
 性质：
 
 1. 交换律：$Cov(X,Y)=Cov(Y,X)$
@@ -909,9 +902,11 @@ $$
 #### 4.4.2 相关系数
 
 定义：相关系数 $\rho$ 是用来刻画两个随机变量之间**线性**相关关系强弱的一个数字特征，注意是线性关系。$|\rho|$ 越接近 0，则说明两个随机变量越不线性相关；$|\rho|$ 越接近 1，则说明两个随机变量越线性相关，定义式为
+
 $$
 \rho_{X,Y} = \frac{Cov(X,Y)}{\sqrt{DX}\sqrt{DY}}
 $$
+
 特别的：
 
 1. 若 $0 < \rho < 1$，则称 X 与 Y 正相关
@@ -935,40 +930,32 @@ $$
 - $X$ 和 $Y$ 相互独立 $\rightarrow$ $X$ 和 $Y$ 线性无关
 - $X$ 和 $Y$ 相互独立 $\leftarrow$ $X$ 和 $Y$​ 线性无关
 
-{% fold light @证明 - 二维正态分布的两个随机变量：相互独立 等价于 线性无关 %}
+???+note "证明 - 二维正态分布的两个随机变量：相互独立 $\iff$ 线性无关"
 
-![二维正态分布的两个随机变量：相互独立 等价于 线性无关](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404261112302.jpg)
+    ![二维正态分布的两个随机变量：相互独立 等价于 线性无关](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404261112302.jpg)
 
-参考：https://www.zhihu.com/question/29641138
-
-{% endfold %}
+    参考：https://www.zhihu.com/question/29641138
 
 ## 第5章 大数定律与中心极限定理
 
-{% note light %}
-
 本章只需要知道一个**独立同分布中心极限定理**即可，至于**棣莫弗-拉普拉斯中心极限定理**其实就是前者的 $\{X_i\}_{i=1}^{\infty}$ 服从伯努利 $n$ 重分布罢了。
-
-{% endnote %}
 
 ### 独立同分布中心极限定理
 
 定义：$\{X_i\}_{i=1}^{\infty}$ 独立同分布且非零方差，其中 $EX_i=\mu,DX_i=\sigma^2$，则有：
+
 $$
 \begin{aligned}
 \sum_{i=1}^n X_i &\sim N(\sum_{i=1}^n(EX_i),\sum_{i=1}^n(DX_i)) \\
 &\sim N(n\mu,n\sigma^2)
 \end{aligned}
 $$
+
 解释：其实就是对于独立同分布的随机事件 $X_i$，在事件数 $n$ 足够大时，就近似为正态分布（术语叫做**依分布**）。这样就可以很方便利用正态分布的性质计算当前事件的概率。至于**棣莫弗-拉普拉斯中心极限定理**就是上述 $\mu=p,\sigma^2=p(1-p)$ 的特殊情况罢了
 
 ## 第6章 数理统计的基本概念
 
-{% note light %}
-
 开始统计学之旅。
-
-{% endnote %}
 
 ### 6.1 总体与样本
 
@@ -982,11 +969,13 @@ $$
 同样的，我们研究总体 $X$ 的分布与概率密度，一般概率密度会直接给，需要我们在此基础之上研究所有样本的联合密度：
 
 - 分布：由于样本相互独立，故：
+
     $$
     F(x_1,x_2,...,x_n)=F(x_1)F(x_2) \cdots F(x_n)
     $$
 
 - 联合密度：同样由于样本相互独立，故：
+
     $$
     p(x_1,x_2,...,x_n)=p(x_1)p(x_2) \cdots p(x_n)
     $$
@@ -1010,23 +999,21 @@ $$
 - 样本标准差：$\displaystyle S_0 = \sqrt{S_0^2}$
 - 修正样本方差：$\displaystyle S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2$
 - 修正样本标准差：$\displaystyle S = \sqrt{S^2}$
-  {% fold light @推导 %}
+  ??? note "推导"
 
-  设总体 $X$ 的数学期望和方差分别为 $\mu$ 和 $\sigma^2$，$(X_1,X_2,...,X_n)$ 是简单随机样本，则：
+    设总体 $X$ 的数学期望和方差分别为 $\mu$ 和 $\sigma^2$，$(X_1,X_2,...,X_n)$ 是简单随机样本，则：
 
-  ![样本均值的数学期望与总体的数学期望相等](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101145088.png)
+    ![样本均值的数学期望与总体的数学期望相等](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101145088.png)
 
-  即：样本均值的数学期望 $=$ 总体的数学期望
+    即：样本均值的数学期望 $=$ 总体的数学期望
 
-  ![样本方差的数学期望与总体的数学期望 不相等](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101148690.png)
+    ![样本方差的数学期望与总体的数学期望 不相等](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101148690.png)
 
-  即：样本方差的数学期望 $\ne$ 总体的数学期望
+    即：样本方差的数学期望 $\ne$ 总体的数学期望
 
-  ![修正样本方差推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101148126.png)
+    ![修正样本方差推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101148126.png)
 
-  上图即：修正样本方差推导
-  
-  {% endfold %}
+    上图即：修正样本方差推导
   
 - 样本 $k$ 阶原点矩：$\displaystyle A_k = \frac{1}{n} \sum_{i=1}^n X_i^k,\quad k=1,2,\cdots$
 
@@ -1040,11 +1027,7 @@ $$
 
 ### 6.4 正态总体抽样分布定理
 
-{% note light %}
-
 时刻牢记一句话：构造性定义！
-
-{% endnote %}
 
 #### 6.4.1 卡方分布、t 分布、F 分布
 
@@ -1055,11 +1038,9 @@ $$
 
 **$\chi^2$ 分布**
 
-{% fold light @密度函数图像 %}
+密度函数图像：
 
 ![密度函数图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405171013305.webp)
-
-{% endfold %}
 
 定义：
 
@@ -1072,24 +1053,21 @@ $$
 
 - 统计性：对于 $Y \sim \chi^2(n)$，有 $EY = n, DY = 2n$
 
-  {% fold light @推导 %}
-  EY 的推导利用：$EX^2 = DX - (EX)^2$
-  
-  ![EY 的推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405211524059.png)
-  
-  DY 的推导利用：方差计算公式、随机变量函数的数学期望进行计算
-  
-  ![DY 的推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405211524574.png)
-  
-  {% endfold %}
+??? note "推导"
+
+    EY 的推导利用：$EX^2 = DX - (EX)^2$
+    
+    ![EY 的推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405211524059.png)
+    
+    DY 的推导利用：方差计算公式、随机变量函数的数学期望进行计算
+    
+    ![DY 的推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405211524574.png)
 
 **$t$ 分布**
 
-{% fold light @密度函数图像 %}
+密度函数图像：
 
 ![密度函数图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405171014091.webp)
-
-{% endfold %}
 
 定义：
 
@@ -1102,11 +1080,9 @@ $$
 
 **$F$ 分布**
 
-{% fold light @密度函数图像 %}
+密度函数图像：
 
 ![密度函数图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405171015933.webp)
-
-{% endfold %}
 
 定义：
 
@@ -1134,23 +1110,16 @@ $$
 
 ## 第7章 参数估计
 
-{% note light %}
-
 有些时候我们知道数据的分布类型，但是不清楚表达式中的某些参数，这就需要我们利用「已有的样本」对分布表达式中的参数进行估计。本章我们将从点估计、估计评价、区间估计三部分出发进行介绍。
-
-{% endnote %}
 
 ### 7.1 点估计
 
-{% note light %}
-
 所谓点估计策略，就是直接给出参数的一个估计值。本目我们介绍点估计策略中的两个方法：矩估计法、极大似然估计法。
-
-{% endnote %}
 
 #### 7.1.1 矩估计法
 
 其实就一句话：我们用样本的原点矩 $A_k$ 来代替总体 $E(X^k)$，$k$ 个未知参数就需要用到 $k$ 个原点矩：
+
 $$
 E(X^k) = A_k =  \frac{1}{n}\sum_{i=1}^nX_i^k
 $$
@@ -1158,9 +1127,11 @@ $$
 #### 7.1.2 极大似然估计法
 
 基本原理是：在当前样本数据的局面下，我们希望**找到合适的参数使得当前的样本分布情况发生的概率最大**。由于各样本相互独立，因此我们可以用连乘的概率公式来计算当前局面的概率值：
+
 $$
 L(\theta;x_1,x_2,\cdots,x_n)
 $$
+
 上述 $L(\theta;x_1,x_2,\cdots,x_n)$ 即似然函数，目标就是选择适当的参数 $\theta$ 来最大化似然函数。无论是离散性还是连续型，都可以采用下面的方式来计算极大似然估计：
 
 1. 写出似然函数 $L(\theta)$
@@ -1169,26 +1140,27 @@ $$
 4. 解出参数关于样本统计量的表达式
 
 离散型随机变量的似然函数表达式
+
 $$
 L(\theta) = \prod_{i=1}^n p(x_i;\theta) = \prod_{i=1}^n P(X_i = x_i)
 $$
+
 连续型随机变量的似然函数表达式
+
 $$
 L(\theta) = \prod_{i=1}^n p(x_i;\theta)
 $$
+
 可以看出极大似然估计本质上就是一个多元函数求极值的问题。特别地，当我们没法得到参数关于样本统计量的表达式 $L(\theta)$ 时，可以直接从定义域、原函数恒增或恒减等角度出发求解这个多元函数的极值。
 
 ### 7.2 估计量的评价标准
 
-{% note light %}
-
 如何衡量不同的点估计方法好坏？我们引入三种点估计量的评价指标：无偏性、有效性、一致性。其中一致性一笔带过，不做详细讨论。补充一点，参数的估计量 $\theta$ 是关于样本的统计量，因此可以对其进行求期望、方差等操作。
-
-{% endnote %}
 
 #### 7.2.1 无偏性
 
 顾名思义，就是希望估计出来的参数量尽可能不偏离真实值。我们定义满足下式的估计量 $\hat \theta$ 为真实参数的无偏估计：
+
 $$
 E\hat \theta =\theta
 $$
@@ -1196,6 +1168,7 @@ $$
 #### 7.2.2 有效性
 
 有效性是基于比较的定义方法。对于两个无偏估计 $\hat\theta_1,\hat\theta_2$，谁的方差越小谁就越有效。即若 $D(\hat\theta_1),D(\hat\theta_2)$ 满足下式，则称 $\hat\theta_1$ 更有效
+
 $$
 D(\hat\theta_1) < D(\hat\theta_2)
 $$
@@ -1206,11 +1179,7 @@ $$
 
 ### 7.3 区间估计
 
-{% note light %}
-
 由于点估计只能进行比较，无法对单一估计进行性能度量。因此引入「主元法」的概念与「区间估计」策略
-
-{% endnote %}
 
 #### 7.3.1 基本概念
 
@@ -1235,10 +1204,13 @@ $$
 **(一) 求 $\mu$ 的置信区间，$\sigma^2$ 已知**
 
 构造主元 $Z(X,\theta)$：
+
 $$
 Z = \frac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)
 $$
+
 利用置信度 $1-\alpha$ 计算主元 $Z$ 的取值范围：
+
 $$
 \begin{aligned}
 P(|Z| \le \lambda) &= 1-\alpha \\
@@ -1246,17 +1218,23 @@ P(|Z| \le \lambda) &= 1-\alpha \\
 Z \in [-\lambda,\lambda] &= [-u_{\frac{\alpha}{2}},u_\frac{\alpha}{2}]
 \end{aligned}
 $$
+
 对主元 $Z$ 的取值范围移项得到参数 $\theta$ 的取值范围：
+
 $$
 \overline{X} - \frac{\sigma}{\sqrt{n}} u_\frac{\alpha}{2} \le \mu \le \overline{X} + \frac{\sigma}{\sqrt{n}} u_\frac{\alpha}{2}
 $$
+
 **(二) 求 $\mu$ 的置信区间，$\sigma^2$ 未知**
 
 构造主元 $Z(X,\theta)$：
+
 $$
 Z = \frac{\overline{X} - \mu}{S / \sqrt{n}} \sim t(n-1)
 $$
+
 利用置信度 $1-\alpha$ 计算主元 $Z$ 的取值范围：
+
 $$
 \begin{aligned}
 P(|Z| \le \lambda) &= 1-\alpha \\
@@ -1264,17 +1242,23 @@ P(|Z| \le \lambda) &= 1-\alpha \\
 Z \in [-\lambda,\lambda] &= [-t_{\frac{\alpha}{2}}(n-1),t_\frac{\alpha}{2}(n-1)]
 \end{aligned}
 $$
+
 对主元 $Z$ 的取值范围移项得到参数 $\theta$ 的取值范围：
+
 $$
 \overline{X} - \frac{S}{\sqrt{n}} t_\frac{\alpha}{2}(n-1) \le \mu \le \overline{X} + \frac{S}{\sqrt{n}} t_\frac{\alpha}{2}(n-1)
 $$
+
 **(三) 求 $\sigma^2$ 的置信区间，构造的主元与总体均值无关，因此不需要考虑 $\mu$ 的情况：**
 
 构造主元 $Z(X,\theta)$：
+
 $$
 Z = \frac{(n-1)S^2}{\sigma^2}\sim \chi^2(n-1)
 $$
+
 利用置信度 $1-\alpha$ 计算主元 $Z$ 的取值范围：
+
 $$
 \begin{aligned}
 P(\lambda_1 \le Z \le \lambda_2) &= 1-\alpha \\
@@ -1282,14 +1266,14 @@ P(\lambda_1 \le Z \le \lambda_2) &= 1-\alpha \\
 Z \in [\lambda_1,\lambda_2] &= [\chi^2_{1-\frac{\alpha}{2}}(n-1),\chi^2_\frac{\alpha}{2}(n-1)]
 \end{aligned}
 $$
+
 对主元 $Z$ 的取值范围移项得到参数 $\theta$ 的取值范围：
+
 $$
 \frac{(n-1)S^2}{\chi^2_\frac{\alpha}{2}(n-1)} \le \sigma^2 \le \frac{(n-1)S^2}{\chi^2_{1-\frac{\alpha}{2}}(n-1)}
 $$
 
 ## 第8章 假设检验
-
-{% note light %}
 
 第 7 章的参数估计是在总体分布已知且未知分布表达式中某些参数的情况下，基于「抽取的少量样本」进行的参数估计。
 
@@ -1297,8 +1281,6 @@ $$
 
 - 假设均值满足某种趋势，利用已知数据判断假设是否成立
 - 假设方差满足某种趋势，利用已知数据判断假设是否成立
-
-{% endnote %}
 
 ### 8.1 假设检验的基本概念
 
@@ -1316,6 +1298,7 @@ $$
 设 $X_1,X_2,\cdots ,X_n$ 是来自正态总体 $N(\mu, \sigma^2)$ 的简单随机样本。后续进行假设判定计算统计量 $Z$ 的真实值时，若总体均值 $\mu$ 已知就直接代入，若未知题目也一定会给一个阈值，代这个阈值即可。
 
 当总体方差 $\sigma^2$ 已知时，我们构造样本统计量 $Z$ 为正态分布：
+
 $$
 Z = \frac{\overline{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)
 $$
@@ -1324,14 +1307,14 @@ $$
 - 检验单边则求解单侧 $\alpha$ 分位数
 
 当总体方差 $\sigma^2$ 未知时，我们构造样本统计量 $Z$ 为 $t$ 分布：
+
 $$
 Z = \frac{\overline{X} - \mu}{S / \sqrt{n}} \sim t(n-1)
 $$
-{% note warning %}
 
-注：之所以这样构造是因为当总体 $\sigma$ 未知时，上一个方法构造的主元已经不再是统计量，我们需要找到能够代替未知参数 $\sigma$ 的变量，这里就采用其无偏估计「修正样本方差 $S^2$」来代替 $\sigma^2$。也是说直接拿样本的修正方差来代替总体的方差了。
+???+ warning
 
-{% endnote %}
+    之所以这样构造是因为当总体 $\sigma$ 未知时，上一个方法构造的主元已经不再是统计量，我们需要找到能够代替未知参数 $\sigma$ 的变量，这里就采用其无偏估计「修正样本方差 $S^2$」来代替 $\sigma^2$。也是说直接拿样本的修正方差来代替总体的方差了。
 
 - 检验是否则求解双侧 $\alpha$ 分位数
 - 检验单边则求解单侧 $\alpha$ 分位数
@@ -1341,6 +1324,7 @@ $$
 设 $X_1,X_2,\cdots ,X_n$ 是来自正态总体 $N(\mu, \sigma^2)$ 的简单随机样本。后续进行假设判定计算统计量 $Z$ 的真实值时，若总体方差 $\sigma^2$ 已知就直接代入，若未知题目也一定会给一个阈值，代这个阈值即可。
 
 我们直接构造样本统计量 $Z$ 为 $\chi^2$ 分布：
+
 $$
 Z = \frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1)
 $$

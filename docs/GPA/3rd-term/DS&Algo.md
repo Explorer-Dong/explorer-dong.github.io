@@ -1,9 +1,5 @@
 ---
 title: 数据结构与算法
-categories:
-  - [GPA, 3rd-term]
-category_bar: true
-sticky: 99
 index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/DataStructure.png
 ---
 
@@ -41,29 +37,25 @@ index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/DataS
 
 常见操作。对于链表而言，其最大的特点就是删除或添加结点的开销很小，至于查询或修改直接链式遍历即可。因此我们应熟练掌握链表结点的删除与添加操作。
 
-{% fold light @双向链表结点的添加与删除 %}
+=== "双向链表结点添加"
 
-添加结点：
+    ![添加结点](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218514.png)
 
-![添加结点](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218514.png)
+    ```c++
+    s->prior = p;
+    s->next = p->next;
+    p->next->prior = s;
+    p->next = s;
+    ```
 
-```c++
-s->prior = p;
-s->next = p->next;
-p->next->prior = s;
-p->next = s;
-```
+=== "双向链表结点删除"
 
-删除结点：
+    ![删除结点](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218515.png)
 
-![删除结点](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218515.png)
-
-```c++
-p->next->prior = p->prior;
-p->prior->next = p->next;
-```
-
-{% endfold %}
+    ```c++
+    p->next->prior = p->prior;
+    p->prior->next = p->next;
+    ```
 
 ### 栈
 
@@ -72,6 +64,7 @@ p->prior->next = p->next;
 **卡特兰数**。其实是一种动态规划的算法思想。常见的释义为：当有 $n$ 个元素按照某种顺序压入栈中，且可在任意时刻弹出时，所获得可能的出栈序列个数可用卡特兰数计算，即 $\frac{1}{n+1} C_{2n}^{n}$。
 
 定义 $f(k)$ 表示在第 $k$ 个数是最后一个出栈的情况下出栈序列的总个数，则 $f(k)=f(k-1)f(n-k)$，其中 $f(0)=1$。那么卡特兰数的推导公式就是：
+
 $$
 \sum_{k = 1}^{n} f(k) = \sum_{k = 1}^{n} f(k-1) f(n-k)=\frac{1}{n+1} C_{2n}^{n}
 $$
@@ -124,45 +117,43 @@ $$
 - 模式串预处理。为了不浪费已经匹配过的子串，我们对模式串 $t$ 维护出一个右移位数表，记作 `next`，其中 `next[j]` 表示 $t$ 的第 $j$ 位可以右移的位数。显然 `next` 数表只需要根据 $t$ 即可维护出来；
 - 匹配逻辑。接下来就可以像暴力匹配那样进行匹配了，只不过现在每次失配时，模式串 $t$ 右移的位数从原来的 $1$ 变成了 `next[j]` 了（假设当前模式串匹配到第 $j$ 位）。
 
-{% fold light @KMP 算法示例代码（下标从 1 开始） %}
+??? note "KMP 算法示例代码（下标从 1 开始）"
 
-维护 next 数表：
+    === "维护 next 数表"
 
-```c++
-for (int i = 2, j = 0; i <= m; i++) {
-    while (j && t[i] != t[j + 1])
-        // 未匹配上则不断回溯
-        j = ne[j];
-    
-    if (t[i] == t[j + 1])
-        // 匹配上了则j指针后移一位
-        j++;
-    
-    ne[i] = j;
-}
-```
+        ```c++
+        for (int i = 2, j = 0; i <= m; i++) {
+            while (j && t[i] != t[j + 1])
+                // 未匹配上则不断回溯
+                j = ne[j];
+            
+            if (t[i] == t[j + 1])
+                // 匹配上了则j指针后移一位
+                j++;
+            
+            ne[i] = j;
+        }
+        ```
 
-匹配逻辑：
+    === "匹配逻辑"
 
-```c++
-for (int i = 1, j = 0; i <= n; i++) {
-    while (j && news[i] != newt[j + 1])
-        // 未匹配上则不断回溯
-        j = ne[j];
-    
-    if (news[i] == newt[j + 1])
-        // 匹配上了则j指针后移一位
-        j++;
+        ```c++
+        for (int i = 1, j = 0; i <= n; i++) {
+            while (j && news[i] != newt[j + 1])
+                // 未匹配上则不断回溯
+                j = ne[j];
+            
+            if (news[i] == newt[j + 1])
+                // 匹配上了则j指针后移一位
+                j++;
 
-    if (j == m) {
-        // 匹配完全，则统计并且回溯
-        cnt++;
-        j = ne[j];
-    }
-}
-```
-
-{% endfold %}
+            if (j == m) {
+                // 匹配完全，则统计并且回溯
+                cnt++;
+                j = ne[j];
+            }
+        }
+        ```
 
 ### 特殊矩阵
 
@@ -219,11 +210,9 @@ struct GListNode {
 
 广义表数据结构可以应用在存储空间的分配策略上，对应的算法叫做「成组拉链法」。
 
-{% fold light @一些广义表的结构示例图 %}
+=== "一些广义表的结构示例图"
 
-![广义表的结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218531.png)
-
-{% endfold %}
+    ![广义表的结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218531.png)
 
 ### 树
 
@@ -246,13 +235,12 @@ struct GListNode {
 - 用一个含有空指针标记的遍历序列构造二叉树。有如下三种情况：
 
     1. 先序序列进行构造。按照遍历的思路来，对于先序序列而言，第一个元素一定是根元素，因此首先根据“当前局面”的第一个元素创建根结点，接着递归创建左子树和右子树即可，递归终点就是空指针标记。
-
-    2. 中序序列进行构造。 不可以，因为不能确定根节点以及左子树和右子树的部分；
+    2. 中序序列进行构造。 不可以，因为不能确定根节点以及左子树和右子树的部分。
     3. 后序序列进行构造。与上述先序序列进行构建的逻辑类似，我们从后序序列的最后一个元素开始构建，第一个元素就是根结点，然后再分别递归构建右子树和左子树，递归终点同样也是空指针标记。
 
 - 用两个不含空指针标记的遍历序列构造二叉树。有如下两种情况：
 
-    1. 先序序列 + 中序序列。现在我们没有空指针标记了，那么如何确定递归终点呢？可以根据先序序列的首个元素在中序序列查询，查询结果的左半部分就是左子树，右半部分就是右子树，基于此进行构造即可；
+    1. 先序序列 + 中序序列。现在我们没有空指针标记了，那么如何确定递归终点呢？可以根据先序序列的首个元素在中序序列查询，查询结果的左半部分就是左子树，右半部分就是右子树，基于此进行构造即可。
     2. 后序序列 + 中序序列。与上述一致，不再赘述。
 
 **线索二叉树**。二叉树的扩展版，将二叉树中所有结点的空指针指向其前驱或后继结点。
@@ -445,31 +433,29 @@ struct GListNode {
 
 在计算时间复杂度时，我们可以将分治的逻辑想象成一棵二叉树，对于二叉树的每一层都会有 $O(n)$ 的遍历开销，而二叉树的层数平均有 $O(\log n)$ 层，因此排序的时间复杂度就是 $O(n\log n)$。当然如果每次选择的基准刚好是所在序列的最值，就会导致二叉树的层数退化到 $O(n)$，但一般来说不会这么极端。
 
-{% fold light @快速排序 C++ 示例代码 %}
+??? note "快速排序 C++ 示例代码"
 
-```c++
-vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
+    ```c++
+    vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
 
-void quick_sort(int l, int r) {
-    if (l >= r) return;
+    void quick_sort(int l, int r) {
+        if (l >= r) return;
 
-    // conquer
-    int i = l - 1, j = r + 1, x = a[(l + r) >> 1];
-    while (i < j) {
-        while (a[++i] < x);
-        while (a[--j] > x);
-        if (i < j) swap(a[i], a[j]);
+        // conquer
+        int i = l - 1, j = r + 1, x = a[(l + r) >> 1];
+        while (i < j) {
+            while (a[++i] < x);
+            while (a[--j] > x);
+            if (i < j) swap(a[i], a[j]);
+        }
+
+        // divide
+        quick_sort(l, j);
+        quick_sort(j + 1, r);
     }
 
-    // divide
-    quick_sort(l, j);
-    quick_sort(j + 1, r);
-}
-
-quick_sort(0, a.size() - 1);  // 调用示例
-```
-
-{% endfold %}
+    quick_sort(0, a.size() - 1);  // 调用示例
+    ```
 
 **归并排序**。这是一种稳定的排序算法，核心思想同样是分治且符合标准的三步分治策略。同样以升序为例，如果两个有序序列都是升序或都是降序，那么可以双指针扫描一遍从而 $O(n)$ 地合并这两个序列为一个有序序列。基于该先验，我们就有了归并排序算法：
 
@@ -479,38 +465,36 @@ quick_sort(0, a.size() - 1);  // 调用示例
 
 时间复杂度的计算与快速排序类似，只不过这里的分治递归二叉树一定是 $O(\log n)$ 层，那么时间复杂度就是稳定的 $O(n \log n)$。
 
-{% fold light @归并排序 C++ 示例代码 %}
+??? note "归并排序 C++ 示例代码"
 
-```c++
-vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
-vector<int> t(a.size(), 0);       // 临时数组
+    ```c++
+    vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
+    vector<int> t(a.size(), 0);       // 临时数组
 
-void merge_sort(int l, int r) {
-    if (l >= r) return;
+    void merge_sort(int l, int r) {
+        if (l >= r) return;
 
-    // divide
-    int mid = (l + r) >> 1;
+        // divide
+        int mid = (l + r) >> 1;
 
-    // conquer
-    merge_sort(l, mid), merge_sort(mid + 1, r);
+        // conquer
+        merge_sort(l, mid), merge_sort(mid + 1, r);
 
-    // combine
-    int i = l, j = mid + 1, k = 0;
-    while (i <= mid && j <= r) {
-        if (a[i] < a[j]) t[k++] = a[i++];
-        else t[k++] = a[j++];
-        cnt++;
-    }
-    while (i <= mid) t[k++] = a[i++];
-    while (j <= r) t[k++] = a[j++];
+        // combine
+        int i = l, j = mid + 1, k = 0;
+        while (i <= mid && j <= r) {
+            if (a[i] < a[j]) t[k++] = a[i++];
+            else t[k++] = a[j++];
+            cnt++;
+        }
+        while (i <= mid) t[k++] = a[i++];
+        while (j <= r) t[k++] = a[j++];
 
-    for (i = l, j = 0; i <= r; i++) a[i] = t[j++];
-};
+        for (i = l, j = 0; i <= r; i++) a[i] = t[j++];
+    };
 
-merge_sort(0, a.size() - 1);  // 调用示例
-```
-
-{% endfold %}
+    merge_sort(0, a.size() - 1);  // 调用示例
+    ```
 
 **堆排序**。这是一种不稳定的排序算法。其实就是利用了堆结构及其支持的操作，每次输出堆顶然后维护堆结构即可实现堆排序。因此如果掌握了  这一数据结构，堆排序算法就跃然纸上了：
 
@@ -524,154 +508,154 @@ merge_sort(0, a.size() - 1);  // 调用示例
 
 最终的时间复杂度就是 $O(n\log n)$。
 
-{% fold light @堆排序 C++ 示例代码（下标从 0 开始） %}
+??? note "堆排序 C++ 示例代码（下标从 0 开始）"
 
-非递归：
+    === "非递归"
 
-```c++
-void down(int u) {
-    int l = 2 * u + 1;
-    int r = 2 * u + 2;
-    int t = u;
-    
-    while (true) {
-        if (l <= last && heap[u] > heap[l]) {
-            t = l;
+        ```c++
+        void down(int u) {
+            int l = 2 * u + 1;
+            int r = 2 * u + 2;
+            int t = u;
+            
+            while (true) {
+                if (l <= last && heap[u] > heap[l]) {
+                    t = l;
+                }
+                if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
+                    t = r;
+                }
+                
+                if (t != u) {
+                    swap(heap[t], heap[u]);
+                    down(t);
+                    u = t;
+                    l = 2 * u + 1;
+                    r = 2 * u + 2;
+                } else {
+                    break;
+                }
+            }
         }
-        if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
-            t = r;
+
+        void up(int u) {
+            int fa = (u - 1) / 2;
+            
+            while (fa >= 0 && heap[fa] > heap[u]) {
+                swap(heap[fa], heap[u]);
+                u = fa;
+                fa = (u - 1) / 2;
+            }
         }
-        
-        if (t != u) {
-            swap(heap[t], heap[u]);
-            down(t);
-            u = t;
-            l = 2 * u + 1;
-            r = 2 * u + 2;
-        } else {
-            break;
+        ```
+
+    === "递归"
+
+        ```c++
+        void down(int u) {
+            int l = 2 * u + 1;
+            int r = 2 * u + 2;
+            
+            int t = u;
+            if (l <= last && heap[u] > heap[l]) {
+                t = l;
+            }
+            if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
+                t = r;
+            }
+            
+            if (t != u) {
+                swap(heap[t], heap[u]);
+                down(t);
+            }
         }
-    }
-}
 
-void up(int u) {
-    int fa = (u - 1) / 2;
-    
-    while (fa >= 0 && heap[fa] > heap[u]) {
-        swap(heap[fa], heap[u]);
-        u = fa;
-        fa = (u - 1) / 2;
-    }
-}
-```
+        void up(int u) {
+            int fa = (u - 1) / 2;
+            
+            if (fa >= 0 && heap[fa] > heap[u]) {
+                swap(heap[fa], heap[u]);
+                up(fa);
+            }
+        }
+        ```
 
-递归：
+    === "两种初始化"
 
-```c++
-void down(int u) {
-    int l = 2 * u + 1;
-    int r = 2 * u + 2;
-    
-    int t = u;
-    if (l <= last && heap[u] > heap[l]) {
-        t = l;
-    }
-    if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
-        t = r;
-    }
-    
-    if (t != u) {
-        swap(heap[t], heap[u]);
-        down(t);
-    }
-}
+        ```c++
+        // 从下往上
+        for (int i = n / 2; i >= 0; i--) {
+            down(i);
+        }
+        ```
 
-void up(int u) {
-    int fa = (u - 1) / 2;
-    
-    if (fa >= 0 && heap[fa] > heap[u]) {
-        swap(heap[fa], heap[u]);
-        up(fa);
-    }
-}
-```
+        ```c++
+        // 从上往下
+        for (int i = 1; i < n; i++) {
+            up(i);
+        }
+        ```
 
-两种初始化：
+    === "完整代码"
 
-```c++
-for (int i = n / 2; i >= 0; i--) {
-    down(i);
-}
-```
+        ```c++
+        #include <iostream>
 
-```c++
-for (int i = 1; i < n; i++) {
-    up(i);
-}
-```
+        using namespace std;
 
-完整代码：
+        int n, m;
+        int heap[100010];
+        int last;
 
-```c++
-#include <iostream>
+        void down(int u) {
+            int l = 2 * u + 1;
+            int r = 2 * u + 2;
+            
+            int t = u;
+            if (l <= last && heap[u] > heap[l]) {
+                t = l;
+            }
+            if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
+                t = r;
+            }
+            
+            if (t != u) {
+                swap(heap[t], heap[u]);
+                down(t);
+            }
+        }
 
-using namespace std;
+        void up(int u) {
+            int fa = (u - 1) / 2;
+            
+            if (fa >= 0 && heap[fa] > heap[u]) {
+                swap(heap[fa], heap[u]);
+                up(fa);
+            }
+        }
 
-int n, m;
-int heap[100010];
-int last;
-
-void down(int u) {
-    int l = 2 * u + 1;
-    int r = 2 * u + 2;
-    
-    int t = u;
-    if (l <= last && heap[u] > heap[l]) {
-        t = l;
-    }
-    if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
-        t = r;
-    }
-    
-    if (t != u) {
-        swap(heap[t], heap[u]);
-        down(t);
-    }
-}
-
-void up(int u) {
-    int fa = (u - 1) / 2;
-    
-    if (fa >= 0 && heap[fa] > heap[u]) {
-        swap(heap[fa], heap[u]);
-        up(fa);
-    }
-}
-
-int main() {
-    cin >> n >> m;
-    for (int i = 0; i < n; i++) {
-        cin >> heap[i];
-    }
-    last = n - 1;
-    
-    // 初始化堆结构
-    for (int i = n / 2; i >= 0; i--) {
-        down(i);
-    }
-    
-    // 输出堆顶 + 重新维护堆结构
-    for (int i = 0; i < m; i++) {
-        cout << heap[0] << " ";
-        heap[0] = heap[last--];
-        down(0);
-    }
-    
-    return 0;
-}
-```
-
-{% endfold %}
+        int main() {
+            cin >> n >> m;
+            for (int i = 0; i < n; i++) {
+                cin >> heap[i];
+            }
+            last = n - 1;
+            
+            // 初始化堆结构
+            for (int i = n / 2; i >= 0; i--) {
+                down(i);
+            }
+            
+            // 输出堆顶 + 重新维护堆结构
+            for (int i = 0; i < m; i++) {
+                cout << heap[0] << " ";
+                heap[0] = heap[last--];
+                down(0);
+            }
+            
+            return 0;
+        }
+        ```
 
 ## 进阶算法
 

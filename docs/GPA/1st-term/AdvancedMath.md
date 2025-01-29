@@ -154,9 +154,9 @@ $$
 \int \cot x \, \text{d}x = \ln |\sin x| + C
 $$
 
-$$
-\int \sec x \, \text{d}x = \ln |\sec x + \tan x| + C = \ln \left| \tan \frac{x}{2} + \frac{\pi}{4} \right| + C
-$$
+测试 MathJax 在移动端的适配情况
+
+$\int \sec x \, \text{d}x = \ln |\sec x + \tan x| + C = \ln \left| \tan \frac{x}{2} + \frac{\pi}{4} \right| + C$
 
 $$
 \int \csc x \, \text{d}x = \ln |\csc x - \cot x| + C = \ln \left| \tan \frac{x}{2} + \frac{\pi}{4} \right| + C

@@ -1,9 +1,5 @@
 ---
 title: 大学物理下
-categories: 
-  - GPA
-  - 3rd-term
-category_bar: true
 ---
 
 ## 第九章 振动
@@ -17,13 +13,13 @@ category_bar: true
 恢复力 $F$：
 
 $$
-F=-kx
+F =-kx
 $$
 
 加速度 $a$：
 
 $$
-a=\frac{F}{m}=-\frac{k}{m}x
+a =\frac{F}{m}=-\frac{k}{m}x
 $$
 
 将 $\frac{k}{m}$ 代换为 $\omega^2$，得到 $a$ :
@@ -35,19 +31,19 @@ $$
 解得 $x$ 为：
 
 $$
-x=A\cos{(\omega t+\phi)}
+x = A\cos{(\omega t+\phi)}
 $$
 
 对 $x$ 求导得 $v$ 为：
 
 $$
-v=-\omega A\sin{(\omega t+\phi)}
+v =-\omega A\sin{(\omega t+\phi)}
 $$
 
 对 $v$ 求导得 $a$ 为：
 
 $$
-a=-\omega^2A\cos{(\omega t+\phi)}
+a =-\omega^2A\cos{(\omega t+\phi)}
 $$
 
 #### 9.1.2 振幅
@@ -61,27 +57,31 @@ $$
 正余弦振动周期为：
 
 $$
-T=\frac{2\pi}{\omega}
+T =\frac{2\pi}{\omega}
 $$
+
 由于弹簧振子的 $\omega$ 为
 
 $$
-\omega=\sqrt{\frac{k}{m}}
+\omega =\sqrt{\frac{k}{m}}
 $$
+
 故弹簧振子的周期为
 
 $$
-T=2\pi\sqrt{\frac{m}{k}}
+T = 2\pi\sqrt{\frac{m}{k}}
 $$
+
 频率的定义：单位时间内完全振动的次数（周期的倒数），为
 
 $$
-\nu=\frac{1}{T}=\frac{\omega}{2\pi}
+\nu =\frac{1}{T}=\frac{\omega}{2\pi}
 $$
+
 从而推导出角频率（圆频率）$\omega$ 为
 
 $$
-\omega=2\pi\nu
+\omega = 2\pi\nu
 $$
 
 #### 9.1.4 相位
@@ -91,28 +91,31 @@ $$
 #### 9.1.5 常量 $A$ 和 $\phi$ 的确定
 
 结合 $x,v,a$ 的方程组
+
 $$
 \begin{cases}
-x=A\cos{(\omega t+\phi)} \\
-v=-\omega A\sin{(\omega t+\phi)} \\
-a=-\omega^2A\cos{(\omega t+\phi)}
+x = A\cos{(\omega t+\phi)} \\
+v =-\omega A\sin{(\omega t+\phi)} \\
+a =-\omega^2A\cos{(\omega t+\phi)}
 \end{cases}
 $$
-
 
 与初值
+
 $$
 \begin{cases}
-t=0 \\
-x=x_0 \\
-v=v_0
+t = 0 \\
+x = x_0 \\
+v = v_0
 \end{cases}
 $$
+
 可解得 $A,\phi$
+
 $$
 \begin{cases}
-A=\sqrt{x_{0}^2+\frac{v_{0}^2}{\omega^2}} \\
-\tan \phi= \frac{-v_0}{\omega x_0}
+A =\sqrt{x_{0}^2+\frac{v_{0}^2}{\omega^2}} \\
+\tan \phi = \frac{-v_0}{\omega x_0}
 \end{cases}
 $$
 
@@ -139,38 +142,45 @@ $$
 #### 9.3.1 单摆
 
 $$
-\omega=\sqrt{\frac{g}{l}}, \ T=2\pi \sqrt{\frac{l}{g}}
+\omega =\sqrt{\frac{g}{l}}, \ T = 2\pi \sqrt{\frac{l}{g}}
 $$
 
 #### 9.3.2 复摆
 
 $$
-\omega=\sqrt{\frac{mgl}{J}}, T=2\pi\sqrt{\frac{J}{mgl}}
+\omega =\sqrt{\frac{mgl}{J}}, T = 2\pi\sqrt{\frac{J}{mgl}}
 $$
 
 ### 9.4 简谐振动的能量
 
 1. 系统动能
+
     $$
-    E_k=\frac{1}{2}mv^2 = \frac{1}{2}m\omega^2A^2\sin^2{(\omega t+\phi)}
+    E_k =\frac{1}{2}mv^2 = \frac{1}{2}m\omega^2A^2\sin^2{(\omega t+\phi)}
     $$
 
 2. 系统势能
+
     $$
     E_p = \frac{1}{2}kx^2 = \frac{1}{2}kA^2\cos^2{(\omega t+\phi)}
     $$
 
 3. 系统总能量
+
     $$
     E = E_k+E_p =\frac{1}{2}m\omega^2A^2\sin^2{(\omega t+\phi)} + \frac{1}{2}kA^2\cos^2{(\omega t+\phi)}
     $$
+
     因为
+
     $$
-    \omega^2=\frac{k}{m}
+    \omega^2 =\frac{k}{m}
     $$
+
     所以
+
     $$
-    E=\frac{1}{2}kA^2 = \frac{1}{2}m\omega^2A^2
+    E =\frac{1}{2}kA^2 = \frac{1}{2}m\omega^2A^2
     $$
 
 
@@ -179,6 +189,7 @@ $$
 #### 9.5.1 两个同方向同频率
 
 根据「旋转矢量法」合成一个最终的矢量，根据三角函数可以计算出一般情况下的 $\tan{\phi}$，但是一般只考虑相位差为 $2k\pi$ 和 $(2k+1)\pi$ 的情况，最终得到 **合振幅 $Combine$** 的取值范围为：
+
 $$
 \left | A_1-A_2 \right | \le Combine \le A_1+A_2
 $$
@@ -191,16 +202,17 @@ $$
 
 - 只讨论：两个频率值很大，但是差值很小的情况
 
-- **拍**的定义：由频率很大但频率之差很小的两个同方向简谐振动合成时，其合振动的振幅时而加强时而减弱的现象就叫做拍
+- **拍** 的定义：由频率很大但频率之差很小的两个同方向简谐振动合成时，其合振动的振幅时而加强时而减弱的现象就叫做拍
 
 - 对于被合成的两个频率和一个最终合成的频率，可以通过旋转矢量法进行计算
   
 - 拍的周期 $T$ :
+
     $$
-    T=\frac{2\pi}{\omega_2 - \omega_1}=\frac{1}{\frac{\omega_2}{2\pi}-\frac{\omega_1}{2\pi}}=\frac{1}{\nu_2-\nu_1}
+    T =\frac{2\pi}{\omega_2 - \omega_1}=\frac{1}{\frac{\omega_2}{2\pi}-\frac{\omega_1}{2\pi}}=\frac{1}{\nu_2-\nu_1}
     $$
 
-- **拍频**就是 $\frac{1}{T} = \nu_2-\nu_1$
+- **拍频** 就是 $\frac{1}{T} = \nu_2-\nu_1$
 
 ### 【选学】9.7 电磁振荡
 
@@ -213,14 +225,19 @@ $$
 #### 9.7.2 无阻尼电磁振荡的方程
 
 某一时刻电路中的电荷量 $q$ :
+
 $$
 q = Q_0 \cos {(\omega t + \phi)}
 $$
+
 某一时刻电路中的电流 $i = \frac{dq}{dt}$ :
+
 $$
 i = -\omega Q_0 \sin{(\omega t + \phi)}
 $$
+
 电路中的振荡角频率 $\omega$ :
+
 $$
 \omega = \frac{1}{\sqrt{LC}}
 $$
@@ -228,14 +245,19 @@ $$
 #### 9.7.3 无阻尼电磁振荡的能量
 
 电场能量 $W_e$ :
+
 $$
 W_e = \frac{q^2}{2C} = \frac{Q_0^2}{2C} \cos^2{(\omega t + \phi)}
 $$
+
 磁场能量 $W_m$ :
+
 $$
 W_m = \frac{1}{2}Li^2 = \frac{1}{2}L\omega ^2 Q_0^2 \sin^2{(\omega t + \phi)} = \frac{Q_0^2}{2C} \sin^2{(\omega t + \phi)}
 $$
-LC振荡电路总能量 $W$ :
+
+LC 振荡电路总能量 $W$ :
+
 $$
 W = W_e + W_m = \frac{Q_0^2}{2C}
 $$
@@ -254,9 +276,9 @@ $$
 
 纵波：波的传播方向与振动方向平行的波
 
-**横波**可以在**固体**中传播
+**横波** 可以在 **固体** 中传播
 
-**纵波**可以在**固体、液体、气体**中传播
+**纵波** 可以在 **固体、液体、气体** 中传播
 
 #### 10.1.3 波长 波的周期和频率 波速
 
@@ -292,13 +314,16 @@ $$
 \text{波函数} = \text{波动方程}
 $$
 
-假设一个波沿着x轴正方向传播，
+假设一个波沿着 x 轴正方向传播，
 
-距离原点O距离为$x_0$的点的振动方程为：
+距离原点 O 距离为 $x_0$ 的点的振动方程为：
+
 $$
-y_Q =A\cos{(\omega t+ \phi)}
+y_Q = A\cos{(\omega t+ \phi)}
 $$
-则距原点O距离为$x$的点的波函数（波动方程）为：
+
+则距原点 O 距离为 $x$ 的点的波函数（波动方程）为：
+
 $$
 y = A\cos{ \left [\omega(t - \frac{x-x_0}{u})+\phi \right ]}
 $$
@@ -315,16 +340,18 @@ $$
 
 针对求解波动方程与振动（运动）方程展开。
 
-对于波动方程 $y=y(x,t)$，假如给了一点A的振动方程 $y=y(t)=A \cos (\omega t + \phi)$，我们需要求B，C两个点的振动方程，其中B点在A点传播方向的正方向距A点为b，C点在A点传播方向的负方向距A点为c，波速为u，则
+对于波动方程 $y=y(x,t)$，假如给了一点 A 的振动方程 $y=y(t)=A \cos (\omega t + \phi)$，我们需要求 B，C 两个点的振动方程，其中 B 点在 A 点传播方向的正方向距 A 点为 b，C 点在 A 点传播方向的负方向距 A 点为 c，波速为 u，则
 
-- 对于B点：在B点开始振动的时候A点已经开始振动了，因此当 $t=0$ 时，B点对应的时刻应该 $<0$，则 $B$ 点的波动方程为：
+- 对于 B 点：在 B 点开始振动的时候 A 点已经开始振动了，因此当 $t=0$ 时，B 点对应的时刻应该 $<0$，则 $B$ 点的波动方程为：
+
     $$
-    y_b=A \cos \left[ \omega(t - \frac{b}{u}) \right]
+    y_b = A \cos \left [ \omega(t - \frac{b}{u}) \right]
     $$
 
-- 对于C点：在C点开始振动的时候A点还未开始振动，因此当 $t=0$ 时，C点对应的时刻应该 $>0$，则 $C$ 点的波动方程为：
+- 对于 C 点：在 C 点开始振动的时候 A 点还未开始振动，因此当 $t=0$ 时，C 点对应的时刻应该 $>0$，则 $C$ 点的波动方程为：
+
     $$
-    y_c=A \cos \left[ \omega(t + \frac{c}{u}) \right]
+    y_c = A \cos \left [ \omega(t + \frac{c}{u}) \right]
     $$
 
 如果需要求解某点的波动方程，则在求解出该点振动方程 $y=A \cos (\omega t + \phi)$ 后，将 $\omega t$ 扩展为 $\omega\left(t\mp\frac{x}{u}\right)$ 即可。加还是取决于波的传播方向，遵循左加右减的原则
@@ -333,38 +360,48 @@ $$
 
 #### 10.3.1 波动能量的传播
 
-在振动的过程中，介质除了具有**动能**，还有因为发生形变而具有的**势能**
+在振动的过程中，介质除了具有 **动能**，还有因为发生形变而具有的 **势能**
 
 经过推导，体积元的 `动能 = 势能`，于是
 
 体积元的总能量 $dW$ 就为：
+
 $$
 dW = (\rho d V)A^2 \omega ^2 \sin ^2 \omega \left (t - \frac{x}{u} \right )
 $$
+
 能量密度 $w$ 就为：
+
 $$
 w = \frac{dW}{dV} = \rho A^2 \omega ^2 \sin ^2 \omega \left (t - \frac{x}{u} \right )
 $$
+
 平均能量密度 $\overline w$ 取一个周期就为：
+
 $$
 \overline w = \frac{1}{2} \rho A^2 \omega ^2
 $$
 
 #### 10.3.2 能流和能流密度
 
-能流：单位时间内垂直经过某一面积的**能量**
+能流：单位时间内垂直经过某一面积的 **能量**
 
 能流 $P$ 就为：
+
 $$
-P=wuS
+P = wuS
 $$
+
 平均能流 $\overline P$ 取一个周期就为：
+
 $$
 \overline P = \overline w uS
 $$
+
 能流密度 $I$（垂直通过单位面积的平均能流，也称波的强度）就为：
+
 $$
-I=\frac{\overline P}{S} = \overline w u = \frac{1}{2} \rho A^2 \omega ^2u
+I =\frac{\overline P}{S} = \overline w u = \frac{1}{2} \rho A^2 \omega ^2u
 $$
 
 ### 10.4 惠更斯原理 波的衍射和干涉
@@ -386,10 +423,10 @@ $$
     - 相遇处的质点的位移为矢量和
 2. 波的干涉：
     - 定义：相干波（频率相同，振动方向平行，相位差恒定）相遇时，某些地方始终加强 or 减弱的现象
-    - 对于**相位差恒定（不为零）**的两列波：
+    - 对于 **相位差恒定（不为零）** 的两列波：
         - 加强点：相位差为 $\pi$ 的偶数倍
         - 减弱点：相位差为 $\pi$ 的奇数倍
-    - 对于**相位差恒定（为零）**的两列波，简化为波程差的比较：
+    - 对于 **相位差恒定（为零）** 的两列波，简化为波程差的比较：
         1. 加强点：波程差为半波长的偶数倍
         2. 减弱点：波程差为半波长的奇数倍
 
@@ -402,6 +439,7 @@ $$
 #### 10.5.2 驻波方程
 
 对于上述的两列波的波动方程：
+
 $$
 y_1 = A \cos 2\pi \left ( {\nu t - \frac{x}{\lambda}} \right )
 $$
@@ -411,6 +449,7 @@ y_2 = A \cos 2\pi \left ( {\nu t + \frac{x}{\lambda}} \right )
 $$
 
 合成的驻波方程为（余弦展开，有时需要配凑）：
+
 $$
 y(t) = y_1 + y_2 = (2A \cos {2 \pi \frac{x}{\lambda}}) \cos 2 \pi \nu t
 $$
@@ -432,14 +471,14 @@ $$
 
 **简述一下能量在驻波中的传播形式：**
 
-首先要意识到波节处的振幅始终为0
+首先要意识到波节处的振幅始终为 0
 
 - 当波腹处的振幅最大时，能量全部集中在波节处的势能中
 - 当波腹处的振幅最小时，能量全部集中在波腹处的动能中
 
 #### 10.5.5 振动的简正模式
 
-对于两端固定的弦线来说，为了形成驻波，弦长 $l$ 应该为半波长的整数倍。而这些波的频率的集合称为弦振动的**本征频率**，最低频率称为**基频**，其余基频的整数倍n称为**n次谐频**
+对于两端固定的弦线来说，为了形成驻波，弦长 $l$ 应该为半波长的整数倍。而这些波的频率的集合称为弦振动的 **本征频率**，最低频率称为 **基频**，其余基频的整数倍 n 称为 **n 次谐频**
 
 某个端口封闭的时候。形成的驻波在端口就是波节，因为空气相对于端口处的介质是波疏对波密介质
 
@@ -448,6 +487,7 @@ $$
 简化为两句话
 
 - 无论是波源靠近接收器还是接收器靠近波源还是两者相对运动，归根结底是波在单位时间传播的距离发生了变化，我们只需要考虑单位时间内波的传播情况即可，最终得出的规律是
+
     $$
     \nu' = \frac{u \pm v_0}{u \mp v_s} \nu
     $$
@@ -468,9 +508,11 @@ $$
 #### 11.2.1 杨氏双缝干涉
 
 就一个公式
+
 $$
 \Delta x = \frac{l}{d}\lambda
 $$
+
 式中，$\Delta x$ 为相邻两个明条纹之间的距离，$l$ 为相干光源距光频之间的距离，$d$ 为相干光源之间的距离，$\lambda$ 为光波长
 
 中央明纹两侧的明条纹分别为第一级，第二级，...，第 k 级明条纹
@@ -478,15 +520,19 @@ $$
 #### 11.2.3 光程和光程差
 
 - 速度：
+
     $$
     \frac{u}{v} = \frac{1}{n}
     $$
+
     式中：$u$ 为光在介质中的传播速度，$v$ 为光在真空中传播的速度，$n$ 为折射率
 
 - 路程：
+
     $$
     L' = nL
     $$
+
     式中：$L'$ 为光程，$n$ 为折射率，$L$ 为光在介质中传播的路程
 
 - 光程差
@@ -512,7 +558,7 @@ $$
 补充：
 
 1. 使用透镜并不引起附加的光程差
-2. 应用在**增透膜**和**增反膜**上
+2. 应用在 **增透膜** 和 **增反膜** 上
 
 ### 11.4 劈尖 牛顿环 迈克尔孙干涉仪
 
@@ -521,12 +567,15 @@ $$
 #### 11.4.1 劈尖
 
 干涉增强点：
+
 $$
-2nd+\frac{\lambda}{2} = 2k\lambda(k=1,2,3,...)
+2nd+\frac{\lambda}{2} = 2k\lambda(k = 1,2,3,...)
 $$
+
 干涉减弱点：
+
 $$
-2nd+\frac{\lambda}{2} = (2k+1)\lambda(k=0,1,2,...)
+2nd+\frac{\lambda}{2} = (2k+1)\lambda(k = 0,1,2,...)
 $$
 
 其中，$n$ 为劈尖中空气的折射率，$nd$ 为光程。由于劈尖玻璃的折射率 > 劈尖中空气的折射率，因此会有一个相位跃变
@@ -580,8 +629,8 @@ $$
     b\sin \theta = 
     \begin{cases}
     0,& \text{中央亮纹} \\
-    \pm 2k  \frac{\lambda}{2}= \pm k\lambda, (k=1,2,\cdots) & \text{暗纹}\\
-    \pm (2k+1)  \frac{\lambda}{2}, (k=1,2,\cdots) & \text{亮纹}\\
+    \pm 2k  \frac{\lambda}{2}= \pm k\lambda, (k = 1,2,\cdots) & \text{暗纹}\\
+    \pm (2k+1)  \frac{\lambda}{2}, (k = 1,2,\cdots) & \text{亮纹}\\
     \text{其余情况}, & \text{调和亮度}
     \end{cases}
     $$
@@ -597,25 +646,28 @@ $$
 
 - 求解相邻亮纹（暗纹）之间的距离：
 
-    同上，只是不用乘2，那么按照上面的计算方法，相邻两个之间的距离就是 $\frac{\lambda f}{b}$
+    同上，只是不用乘 2，那么按照上面的计算方法，相邻两个之间的距离就是 $\frac{\lambda f}{b}$
 
 ### 11.7 夫琅禾费圆孔衍射 光学仪器的分辨本领
 
 ![夫琅禾费圆孔衍射](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307857.png)
 
 - 艾里斑满足的关系：
+
     $$
-    2\theta=\frac{d}{f} = 2.44\frac{\lambda}{D}
+    2\theta =\frac{d}{f} = 2.44\frac{\lambda}{D}
     $$
 
     其中：透镜光心张角 $2\theta$，艾里斑直径 $d$，透镜焦距 $f$，光波波长 $\lambda$，圆孔直径 $D$
 
 - 最小分辨角 $\theta_0$ ：
+
     $$
-    \theta_0=1.22 \frac{\lambda}{D}
+    \theta_0 = 1.22 \frac{\lambda}{D}
     $$
 
 - 分辨本领：
+
     $$
     \frac{1}{\theta_0}
     $$
@@ -626,7 +678,7 @@ $$
 
 - 瑞利判据示例：
 
-    左1能分辨（$\gamma> \theta_0$），左2恰好能分辨（$\gamma=\theta_0$），左3无法分辨（$\gamma<\theta_0$）
+    左 1 能分辨（$\gamma> \theta_0$），左 2 恰好能分辨（$\gamma=\theta_0$），左 3 无法分辨（$\gamma<\theta_0$）
 
     ![瑞利判据示例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307858.png)
 
@@ -639,9 +691,11 @@ $$
 #### 11.8.2 光栅衍射条纹的形成
 
 明纹产生的位置公式
+
 $$
-(b+b')\sin \theta= \pm k \lambda, k=0,1,2,...
+(b+b')\sin \theta = \pm k \lambda, k = 0,1,2,...
 $$
+
 其中：$(b+b')\sin \theta$ 为光栅上相邻两束光的光程差。
 
 可以证明：光栅中狭缝条数越多，明纹就越亮越窄。
@@ -669,8 +723,9 @@ $$
 定义：就是定量计算上述第三种情况的穿过的光强
 
 推导：由于穿过之后的光的振幅分量 $E$ 变成了 $E=E_0\cos \alpha$，且 $\frac{I}{I_0}=\frac{E^2}{E_0^2}$，则（其中 $\alpha$ 为起偏器与检偏器的夹角）
+
 $$
-I=I_0\cos \alpha ^2
+I = I_0\cos \alpha ^2
 $$
 
 ### 11.10 反射光和折射光的偏振
@@ -678,6 +733,7 @@ $$
 ![反射光和折射光的偏振](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307860.png)
 
 已知入射光线为自然光，入射角为 $\theta$，入射区域的折射率为 $n_1$，折射区域的折射率为 $n_2$。当上述入射角满足下式时：
+
 $$
 \tan \theta = \frac{n_2}{n_1}
 $$
@@ -685,20 +741,22 @@ $$
 - 反射光线为完全偏振光
 - 反射光线与折射光线垂直
 
-此时的入射角 $\theta$ 称为**布儒斯特角**
+此时的入射角 $\theta$ 称为 **布儒斯特角**
 
 ## 第十二章 气体动理论
 
 ### 12.1 平衡态 理想气体物态方程 热力学第零定律
 
 - 理想气体物态方程：
+
     $$
     \begin{aligned}
-    pV&=NkT\\
+    pV&= NkT\\
     pV&=\nu RT\\
-    p&=nkT
+    p&= nkT
     \end{aligned}
     $$
+
     其中 $p$ 为气压，$V$ 为全部气体所占的体积
 
     $N$ 为全部体积下的气体分子数，$\nu$ 为气体的物质的量
@@ -721,28 +779,31 @@ p&=\frac{2}{3}n\overline{\varepsilon_k} \\
 p&=\frac{1}{3}\rho\overline{v^2}
 \end{aligned}
 $$
+
 其中 $\overline{\varepsilon_k}$ 为气体分子的平均平动动能，$\rho$ 为气体密度，$m$ 为单个气体分子的质量
 
 ### 12.4 理想气体分子的平均平动动能与温度的关系
 
 - 理想气体分子的平均平动动能 $\overline{\varepsilon}_k$ 与温度 $T$ 的关系：
+
     $$
     \begin{cases}
-    p=nkT \\
-    p=\frac{1}{3} nm \overline{v^2}
+    p = nkT \\
+    p =\frac{1}{3} nm \overline{v^2}
     \end{cases}
     \Longrightarrow \overline{\varepsilon}_k = \frac{1}{2}m\overline{v^2}=\frac{3}{2}kT
     $$
 
 - 方均根速率 $v_{rms}$：
+
     $$
     \frac{1}{2}m\overline{v^2}=\frac{3}{2}kT \Longrightarrow v_{rms}=\sqrt{\frac{3kT}{m}}
     $$
 
     $$
     \begin{cases}
-    pV=NkT \\
-    pV=\nu RT
+    pV = NkT \\
+    pV =\nu RT
     \end{cases}
     \Longrightarrow v_{rms}=\sqrt{\frac{3RT}{M}}
     $$
@@ -762,7 +823,7 @@ $$
 #### 12.5.2 能量均分定理
 
 $$
-\overline{\varepsilon}=(t+r+v)\frac{1}{2}kT=\frac{i}{2}kT
+\overline{\varepsilon}=(t+r+v)\frac{1}{2}kT =\frac{i}{2}kT
 $$
 
 其中 $\overline{\varepsilon}$ 为分子的平均能量，$i$ 为分子的自由度，$t,r,v$ 分别为平动、转动和振动中速度和坐标的二次方项数
@@ -770,48 +831,54 @@ $$
 #### 12.5.3 理想气体的内能
 
 $$
-E=\nu N_A \frac{i}{2}kT
+E =\nu N_A \frac{i}{2}kT
 $$
 
 其中 $E$ 为 $\nu\ \text{mol}$ 气体分子所含有的平均能量（**内能**），$i$ 为该气体的自由度。又
+
 $$
 \begin{aligned}
-pV=NkT\\
-pV=\nu RT
+pV = NkT\\
+pV =\nu RT
 \end{aligned}
 $$
 
 可得
 
 $$
-N_Ak=R
+N_Ak = R
 $$
 
 于是
 
 $$
-E=\nu\frac{i}{2}RT
+E =\nu\frac{i}{2}RT
 $$
 
 ### 【选学】12.6 麦克斯韦气体分子速率分布律
 
 数学形式：
+
 $$
-f(v)=4\pi \left( \frac{m}{2\pi kT} \right)^{\frac{3}{2}} e^{\frac{-\varepsilon_k}{kT}}v^2
+f(v)= 4\pi \left( \frac{m}{2\pi kT} \right)^{\frac{3}{2}} e^{\frac{-\varepsilon_k}{kT}}v^2
 $$
+
 三种统计速率：
 
 1. 最概然速率 $v_p$
+
     $$
-    v_p=\sqrt{\frac{2kT}{m}}=\sqrt{\frac{2RT}{M}}
+    v_p =\sqrt{\frac{2kT}{m}}=\sqrt{\frac{2RT}{M}}
     $$
 
 2. 平均速率 $\overline{v}$
+
     $$
     \overline{v}=\sqrt{\frac{8kT}{\pi m}}=\sqrt{\frac{8RT}{\pi M}}
     $$
 
 3. 方均根速率 $v_{rms}$
+
     $$
     v_{rms}=\sqrt{\frac{3kT}{m}}=\sqrt{\frac{3RT}{M}}
     $$
@@ -837,11 +904,12 @@ $$
 
 #### 13.3.1 等容过程 摩尔定容热容
 
-定义：系统吸收（放出）的热量**全部**用来增加（减少）系统的内能
+定义：系统吸收（放出）的热量 **全部** 用来增加（减少）系统的内能
 
 计算 $\nu\ \text{mol气体}$ 内能变化的公式利用 $\text{摩尔定容热容} C_{V,m}$ 就很显然了
+
 $$
-\Delta Q=\nu C_{V,m} \Delta T=\Delta E
+\Delta Q =\nu C_{V, m} \Delta T =\Delta E
 $$
 
 #### 13.3.2 等压过程 摩尔定压热容
@@ -849,16 +917,19 @@ $$
 定义：系统吸收（放出）的热量一部分用来增加（减少）系统的内能，一部分用来对外做功（外界对系统做功）
 
 计算 $\nu\ \text{mol气体}$ 内能变化的公式利用 $\text{摩尔定压热容} C_{V,m}$ 就很显然了
+
 $$
-\Delta Q=\nu C_{p,m} \Delta T=\Delta E+\Delta W
+\Delta Q =\nu C_{p, m} \Delta T =\Delta E+\Delta W
 $$
 
 #### * 摩尔定容热容与摩尔定压热容的关系
 
 结合上面两式与 $1mol$ 的理想气体满足的式子 $pV=RT$，可得
+
 $$
-C_{p,m}-C_{V,m}=R
+C_{p, m}-C_{V, m}= R
 $$
+
 这也就解释了，对于 1mol 的气体，吸收的热量，一部分用来增加内能，一部分用来对外做功。而这对外做功的热量就是 $R\Delta T$
 
 #### 13.3.3 比热容
@@ -879,6 +950,7 @@ $$
 定义：系统与外界没有热交换
 
 绝热方程：
+
 $$
 \begin{aligned}
 pV^{\gamma} &= const_1 \\
@@ -886,9 +958,11 @@ V^{\gamma - 1}T &= const_2 \\
 p^{\gamma - 1}T^{-\gamma} &= const_3
 \end{aligned}
 $$
+
 其中
+
 $$
-\gamma = \frac{C_{p, m}}{C_{V,m}}(\gamma > 1)
+\gamma = \frac{C_{p, m}}{C_{V, m}}(\gamma > 1)
 $$
 
 
@@ -915,14 +989,17 @@ $$
 正循环：做正循环的系统一般叫热机，主要代表将热量转化为功的机器。$\eta$ 为热机效率
 
 ![正循环](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307865.png)
+
 $$
 \eta = \frac{W}{Q_1} = \frac{Q_1-Q_2}{Q_1} = 1-\frac{Q_2}{Q_1}
 $$
+
 负循环：做负循环的系统一般叫制冷机，主要代表利用外界做功使热量由低处流向高处，从而获得低温的机器。$e$ 为制冷系数
 
 ![负循环](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307866.png)
+
 $$
-e=\frac{Q_2}{W} = \frac{Q_2}{Q_1-Q_2}
+e =\frac{Q_2}{W} = \frac{Q_2}{Q_1-Q_2}
 $$
 
 #### 13.5.3 卡诺循环
@@ -930,12 +1007,15 @@ $$
 理想循环状态
 
 正循环：
+
 $$
 \eta = \frac{W}{Q_1} = \frac{Q_1-Q_2}{Q_1} = 1-\frac{Q_2}{Q_1} = 1-\frac{T_2}{T_1}
 $$
+
 负循环：
+
 $$
-e=\frac{Q_2}{W} = \frac{Q_2}{Q_1-Q_2} = \frac{T_2}{T_1-T_2}
+e =\frac{Q_2}{W} = \frac{Q_2}{Q_1-Q_2} = \frac{T_2}{T_1-T_2}
 $$
 
 ### 13.6 热力学第二定律的表述 卡诺定理
@@ -968,6 +1048,7 @@ $$
 #### 13.6.3 卡诺定理
 
 其实卡诺基于热力学第二定律给出了一个世界物理法则，即所有的热循环理想的效率都不会超过卡诺循环。以理想气体的热循环为例，所有的热机进行热循环时，循环效率 $\eta'$ 都不会超过卡诺热机循环效率 $\eta$，即
+
 $$
 \eta ' \le \eta = 1-\frac{T_{cool}}{T_{hoot}}
 $$

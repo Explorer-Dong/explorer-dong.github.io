@@ -1,25 +1,22 @@
 ---
 title: 算法设计与分析
-categories:
-  - GPA
-  - 4th-term
-category_bar: true
 ---
 
-## 一、贪心
+## 1 贪心
 
 Dijkstra、Prim、Kruskal、Huffman
 
-## 二、分治
+## 2 分治
 
 二分、归并、快排（第 k 个数）
-## 三、动规
+
+## 3 动规
 
 - 区间dp：矩阵连乘
 - 网格图dp：LCS
 - 背包：完全背包、多重背包
 
-## 四、深搜
+## 4 深搜
 
 - 排列树：TSP、图染色、调度、n 皇后
 - 子集树：01背包

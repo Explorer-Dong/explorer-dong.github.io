@@ -31,9 +31,9 @@ theme:
         icon: material/brightness-4
         name: 亮色模式
   features:
-    - navigation.tabs
-    # - navigation.tabs.sticky       # 固定导航栏
-    # - navigation.path              # 显示当前页面路径（有问题）
+    # - header.autohide              # 自动隐藏页面头部
+    - navigation.tabs                # 顶部一级分类导航栏
+    - navigation.tabs.sticky         # 固定顶部一级分类导航栏
     # - navigation.sections          # 分类页小标题
     # - navigation.expand            # 分类页默认展开（一般与 navigation.sections 一起使用）
     - navigation.indexes           # 不显示分类索引首页
@@ -51,7 +51,6 @@ theme:
     - search.share                 # 社交分享按钮
     - search.suggest               # 搜索建议
     - toc.follow                   # 目录跟随滚动（需要 markdown_extensions.toc.permalink 开启）
-    - header.autohide              # 自动隐藏顶部导航栏
     - announce.dismiss             # 支持手动关闭公告
 
 
@@ -66,6 +65,8 @@ markdown_extensions:
   - pymdownx.snippets
   # 折叠块
   - pymdownx.details
+  # 内容框
+  - admonition
   # 脚注
   - footnotes
   # 目录
@@ -74,6 +75,7 @@ markdown_extensions:
       toc_depth: 4                # 显示目录深度
       title: 文章目录             # 目录标题
       permalink_title: 页面定位   # 链接标题
+      slugify: !!python/name:pymdownx.slugs.uslugify  # 禁止重写标题，借鉴 oi-wiki 的配置
   # 数学公式
   - pymdownx.arithmatex:
       generic: true
@@ -104,30 +106,29 @@ markdown_extensions:
 
 # 注入
 extra_javascript:
-  # 数学公式（MathJax）
-  # - injects/javascripts/mathjax.js
-  # - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  # 数学公式（KaTeX）
+  # KaTeX
   - injects/javascripts/katex.js
   - https://unpkg.com/katex@0/dist/katex.min.js
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 extra_css:
-  # 数学公式（KaTeX）
+  # KaTeX
   - https://unpkg.com/katex@0/dist/katex.min.css
 
 
 # 插件配置
 plugins:
-#   # 搜索功能
-#   - search
-#   # 显示文章创建和修改时间
-#   - git-revision-date-localized:
-#       enable_creation_date: true
-#       type: date
-#   # 显示文章作者
-#   - git-authors
-#   # 图片可点击放大
-#   - glightbox
+  # 搜索功能
+  - search
+  # 显示文章创建和修改时间
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+  # 显示文章作者（头像与 GitHub Profile 链接）
+  - git-committers:
+      repository: Explorer-Dong/explorer-dong.github.io
+      branch: main
+  # 图片可点击放大
+  - glightbox
 
 
 # 页面导航

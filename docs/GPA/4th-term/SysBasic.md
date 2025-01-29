@@ -713,11 +713,7 @@ IA-32 支持的数据类型及格式与 C 语言之间的对应关系：
 
 ### 3.4 C 语言程序的机器级表示​
 
-{% note light %}
-
 用任何汇编语言或高级语言编写的 **源程序** 都必须 **翻译**（汇编、解释或编译）成以指令形式表示的 **机器语言**，才能在计算机上运行。本节高级语言选用 **C 语言**，机器语言选用 **IA-32 指令系统**，简单介绍高级语言转化为机器语言的过程。
-
-{% endnote %}
 
 #### 3.4.1 过程调用的机器级表示​
 
@@ -765,43 +761,26 @@ RET 返回指令：在返回调用过程之前从栈中取出返回地址
 
 对于 32 位 OS 而言，存储器一行存储 32 位共 4 个字节，计算机系统一次访问存储空间只能读写固定长度的位。假定最多可以读写 64 位，则称为 8 字节宽的存储器机制。一般采用 **按边界对齐** 的对齐策略，尽管这样会浪费一些存储空间，但是有利于数据的快速访问。
 
-{% fold light @举两个例子%}
+???+ note "举个例子"
 
-一、对齐实例。对于 5 个变量 `int a; short b; double c; char d; short e;`
+    ```c
+    struct {
+        int a;
+        short b;
+        double c;
+        char d;
+        short e;
+    }
+    ```
 
-按边界对齐：
+    === "按边界对齐"
 
-![按边界对齐](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131154702.png)
+        ![按边界对齐](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131154702.png)
 
-边界不对齐
+    === "边界不对齐"
 
-![边界不对齐](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131154636.png)
+        ![边界不对齐](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131154636.png)
 
-二、结构体实例。全部按 4 字节对齐，末尾可能有插空
-
-```cpp
-struct A {
-    int    i;
-    short si;
-    char   c;
-    double d;
-};
-```
-
-![1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131238885.png)
-
-```cpp
-struct B {
-    int    i;
-    short si;
-    double d;
-    char   c;
-};
-```
-
-![2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131239595.png)
-
-{% endfold %}
 
 ### 3.6 越界访问和缓冲区溢出
 

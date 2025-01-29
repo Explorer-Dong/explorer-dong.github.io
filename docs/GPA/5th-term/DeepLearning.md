@@ -1,9 +1,5 @@
 ---
 title: 深度学习
-categories:
-  - GPA
-  - 5th-term
-category_bar: true
 ---
 
 ## 前言

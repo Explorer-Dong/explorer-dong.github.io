@@ -105,15 +105,15 @@ markdown_extensions:
 # 注入
 extra_javascript:
   # 数学公式（MathJax）
-  - injects/javascripts/mathjax.js
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  # - injects/javascripts/mathjax.js
+  # - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
   # 数学公式（KaTeX）
-  # - injects/javascripts/katex.js
-  # - https://unpkg.com/katex@0/dist/katex.min.js
-  # - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - injects/javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 extra_css:
   # 数学公式（KaTeX）
-  # - https://unpkg.com/katex@0/dist/katex.min.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
 
 
 # 插件配置

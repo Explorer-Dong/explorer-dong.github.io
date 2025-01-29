@@ -1,9 +1,5 @@
 ---
 title: 高等数学（竞赛向）
-categories:
-  - GPA
-  - 1st-term
-category_bar: true
 ---
 
 ## 前言
@@ -23,7 +19,8 @@ category_bar: true
 3. 泰勒展开
 4. 夹逼准则
 
-给出 [泰勒展开](https://blog.csdn.net/Infinity_07/article/details/113830088) 的常用公式：
+给出泰勒展开的常用公式[^民间资料]：
+
 $$
 \begin{aligned}
 e^{x}&=\sum_{n=0}^{\infty} \frac{1}{n !} x^{n}=1+x+\frac{1}{2 !} x^{2}+\cdots \in(-\infty,+\infty) \\
@@ -109,3 +106,7 @@ $$
 ## 6 证明题
 
 ## 7 无穷级数
+
+## 参考资料与注释
+
+[^民间资料]: [常见函数泰勒公式展开（清晰）](https://blog.csdn.net/Infinity_07/article/details/113830088)

@@ -141,34 +141,34 @@ nav:
     - 2nd-term:
       - GPA/2nd-term/ObjectOrientedProgramming.md
     - 3rd-term:
-      - GPA/3rd-term/CollegePhysics_2.md
       - GPA/3rd-term/DS&Algo.md
-      - GPA/3rd-term/DigitalLogicCircuit.md
       - GPA/3rd-term/LinearAlgebra.md
+      - GPA/3rd-term/DigitalLogicCircuit.md
+      - GPA/3rd-term/CollegePhysics_2.md
     - 4th-term:
+      - GPA/4th-term/SysBasic.md
       - GPA/4th-term/MachineLearning.md
       - GPA/4th-term/OptMethod.md
       - GPA/4th-term/ProbAndStat.md
       - GPA/4th-term/PyAlgo.md
       - GPA/4th-term/PyApply.md
-      - GPA/4th-term/SysBasic.md
     - 5th-term:
+      - GPA/5th-term/OperatingSystem.md
       - GPA/5th-term/ComputerOrganization.md
-      - GPA/5th-term/DataBase.md
       - GPA/5th-term/DataMining.md
       - GPA/5th-term/DeepLearning.md
       - GPA/5th-term/DigitalImageProcessing.md
-      - GPA/5th-term/OperatingSystem.md
+      - GPA/5th-term/DataBase.md
     - 6th-term:
       - GPA/6th-term/ComputerNetwork.md
       - GPA/6th-term/ComputerVision.md
       - GPA/6th-term/NaturalLanguageProcessing.md
-      - GPA/6th-term/SmartEducation.md
       - GPA/6th-term/SpeechRecognition.md
+      - GPA/6th-term/SmartEducation.md
   - 炼丹:
     - DataScience/index.md
-    - DataScience/matplotlib-tutorial.md
-    - DataScience/numpy-tutorial.md
+    - DataScience/matplotlib-basic.md
+    - DataScience/numpy-basic.md
   - 算法:
     - Algorithm/index.md
     - Algorithm/templates.md
@@ -193,24 +193,20 @@ nav:
     - C++:
       - BackEnd/CPlusPlus/cpp-basic.md
       - Crow:
-        - BackEnd/CPlusPlus/Crow/crow-tutorial.md
+        - BackEnd/CPlusPlus/Crow/crow-basic.md
     - Python:
       - BackEnd/Python/python-basic.md
       - Flask:
         - BackEnd/Python/Flask/deploy-flask.md
-  - 数据库:
-    - DataBase/index.md
-    - ElasticSearch:
-      - DataBase/ElasticSearch/elastic-search-basic.md
-    - MySQL:
-      - DataBase/MySQL/mysql-basic.md
-      - DataBase/MySQL/solve-mysql-problems.md
-    - Redis:
-      - DataBase/Redis/redis-basic.md
-    - openGauss:
-      - DataBase/openGauss/opengauss-basic.md
-      - DataBase/openGauss/opengauss-import-data.md
-      - DataBase/openGauss/opengauss-remote-connect.md
+    - 数据库:
+      - BackEnd/DataBase/database-basic.md
+      - MySQL:
+        - BackEnd/DataBase/MySQL/mysql-basic.md
+        - BackEnd/DataBase/MySQL/solve-mysql-problems.md
+      - openGauss:
+        - BackEnd/DataBase/openGauss/opengauss-basic.md
+        - BackEnd/DataBase/openGauss/opengauss-remote-connect.md
+        - BackEnd/DataBase/openGauss/opengauss-import-data.md
   - 运维:
     - Operation/index.md
     - Nginx:

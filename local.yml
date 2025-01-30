@@ -1,0 +1,19 @@
+# MkDocs 提供 yaml 文件的继承功能
+# 启动命令：
+#   1. mkdocs build -f ./local.yml
+#   2. mkdocs serve -q -f ./local.yml
+# 本文件的意义是：
+#   1. 本地热启动时不加载耗时过多的插件
+#   2. 自定义一些试验中的额外样式和脚本
+
+INHERIT: ./mkdocs.yml
+
+extra_javascript:
+  # 外链跳转
+  - injects/javascripts/link_blank.js
+  # 百度统计
+  - injects/javascripts/baidu_tongji.js
+extra_css:
+  - injects/stylesheets/extra.css
+
+plugins:

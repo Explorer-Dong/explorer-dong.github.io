@@ -1,5 +1,6 @@
 ---
 title: 概率论与数理统计
+comments: true
 ---
 
 ## 前言
@@ -12,10 +13,8 @@ title: 概率论与数理统计
 
 学习资源：
 
-- :tv: 视频资源：[《概率论与数理统计》教学视频全集（宋浩）](https://www.bilibili.com/video/BV1ot411y7mU)
-- :book:  教材答案：
-    - 本地路径（自用）：[概率论答案.pdf](D:\华为云盘\2. Score\4. 概率论与数理统计\概率论答案.pdf)
-    - 网盘资源（共享）：[提取码：448w](https://pan.baidu.com/s/1yeC0rxatHaLeNHQaW85Kpw?pwd=448w)
+- :tv: 视频资源：[《概率论与数理统计》教学视频全集（宋浩）](https://www.bilibili.com/video/BV1ot411y7mU){ target="_blank"}
+- :book:  教材答案：[百度网盘 - 提取码：448w](https://pan.baidu.com/s/1yeC0rxatHaLeNHQaW85Kpw?pwd=448w){ target="_blank"}
 
 ## 第1章 事件与概率
 
@@ -254,7 +253,7 @@ $$
     \hline
     P & p_1 & p_2 & p_3 & \cdots
     \end{array}
-    $$    
+    $$
 
 #### 2.2.2 常用离散性随机变量及其分布列
 
@@ -426,13 +425,13 @@ $$
 ??? note "二维随机向量分布列的表示方法"
 
     1. 公式法
-
+    
         $$
         p_{ij} = P(X=x_i,Y = y_i), \quad i,j=1,2,\cdots
         $$
-
+    
     2. 表格法：
-
+    
         ![二维联合分布列](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403271728248.png)
 
 性质：
@@ -617,27 +616,20 @@ $$
 
 ### 3.4 随机变量的独立性
 
-本目主要介绍随机变量的独立性。我们知道随机事件之间是有独立性的，即满足 $P(AB)=P(A)P(B)$ 的事件，那么随机变量之间也有独立性吗？答案是有的，以生活中的例子为实例，比如我和某个同学进教室，就是独立的两个随机变量。下面开始介绍。
+本目主要介绍随机变量的独立性。我们知道随机事件之间是有独立性的，即满足 $P(AB)=P(A)P(B)$ 的事件，那么随机变量之间也有独立性吗？答案是有的，以生活中的例子为实例，比如我和某个同学进教室，就是独立的两个随机变量。
 
-- 定义：我们定义如果两个随机变量的分布函数满足下式，则两个随机变量相互独立：
+定义。我们定义如果两个随机变量的分布函数满足下式，则两个随机变量相互独立：
 
-    $$
-    F(x,y)=F_X(x)F_Y(y)
-    $$
+$$
+F(x,y)=F_X(x)F_Y(y)
+$$
 
-- 性质：对于随机向量 $(X,Y)$
+性质。对于随机向量 $(X,Y)$：
 
-    1. 随机变量 $X$ 和 $Y$ 相互独立的充分必要条件是：
-  
-        $$
-        \begin{aligned}
-        \text{离散型:}& P(X=x_i,Y=y_j) = P(X=x_i)P(Y=y_j) \\
-        \text{连续型:}& p(x,y) = p_X(x)p_Y(y)
-        \end{aligned}
-        $$
-
-    2. 若随机变量 $X$ 和 $Y$ 相互独立，且 $h(\cdot)$ 和 $g(\cdot)$ 连续，则 $h(X),g(Y)$ 也相互独立
-
+1. 随机变量 $X$ 和 $Y$ 相互独立的充分必要条件是：
+    - 离散型：$P(X=x_i,Y=y_j) = P(X=x_i)P(Y=y_j)$
+    - 连续型：$p(x,y) = p_X(x)p_Y(y)$
+2. 若随机变量 $X$ 和 $Y$ 相互独立，且 $h(\cdot)$ 和 $g(\cdot)$ 连续，则 $h(X),g(Y)$ 也相互独立。
 ### 3.5 随机向量函数的分布
 
 在 2.4 目中我们了解到了随机变量函数的分布，现在我们讨论随机向量函数的分布。在生活中，假设我们已经知道了一个人群中所有人的身高和体重的分布情况，现在想要血糖根据身高和体重的分布情况，就需要用到本目的理念。我们从离散型和连续型随机向量 $(X,Y)$ 出发，讨论 $g(X,Y)$ 的分布情况。
@@ -653,7 +645,7 @@ $$
 **(1) 和的分布：**
 
 - 先求分布函数 $F_Z(z)$：
-    
+  
     $$
     \begin{aligned}
     F_Z(z) &= P(X+Y \le z) \\
@@ -666,13 +658,13 @@ $$
     $$
     
 - 由分布函数定义：
-    
+  
     $$
     F_X(x) = \int_{-\infty}^xp(u)du
     $$
     
 - 所以可得 $Z=X+Y$ 的密度函数 $p_Z(z)$ 为：
-    
+  
     $$
     \begin{aligned}
     p_Z(z) = \int_{-\infty}^{+\infty} p(x,z-x)dx \quad &(1) \\
@@ -681,7 +673,7 @@ $$
     $$
     
 - 若 X 和 Y 相互独立，还可得卷积式：
-    
+  
     $$
     \begin{aligned}
     p_Z(z) &= \int_{-\infty}^{+\infty} p(x,z-x)dx \\
@@ -847,29 +839,29 @@ $$
 ???+note "公式推导"
 
     推导的根本方式还是从定义出发。当然为了省事也可以从性质出发。
-
+    
     === "0-1 分布"
-
+    
         ![0-1 分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313030.jpg)
-
+    
     === "二项分布"
-
+    
         ![二项分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313503.jpg)
-
+    
     === "几何分布"
-
+    
         ![几何分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313329.jpg)
-
+    
     === "泊松分布"
-
+    
         ![泊松分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313316.jpg)
-
+    
     === "均匀分布"
-
+    
         ![均匀分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313239.jpg)
-
+    
     === "指数分布"
-
+    
         ![指数分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313832.jpg)
 
 
@@ -934,7 +926,7 @@ $$
 ???+note "证明 - 二维正态分布的两个随机变量：相互独立 $\iff$ 线性无关"
 
     ![二维正态分布的两个随机变量：相互独立 等价于 线性无关](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404261112302.jpg)
-
+    
     参考：https://www.zhihu.com/question/29641138
 
 ## 第5章 大数定律与中心极限定理

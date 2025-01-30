@@ -1,17 +1,18 @@
 ---
-title: 后端开发指南
-categories: 后端
-category_bar: true
+title: 后端专栏简介
+comments: true
 ---
 
-## 前言
+本栏目文章以「后端开发」笔记为主。欢迎评论与补充。
 
-本文旨在介绍后端开发的基本理念和路径规划。正在不断完善中。
+!!! tip
 
-对于后端开发来说，语言只是一个工具和基础。除了**语言本身**和对应的**开发框架**外，其他要学的技术在后端开发中往往是通用的，比如：数据库、缓存、消息队列、搜索引擎、Linux、分布式、高并发、设计模式、架构设计等等。
+    对于后端开发来说，语言只是一个工具和基础。除了语言本身和对应的开发框架外，其他要学的技术在后端开发中往往是通用的，比如：[数据库](../GPA/5th-term/DataBase.md/)、缓存、消息队列、搜索引擎、Linux、分布式、高并发、设计模式、架构设计等等。
 
-## 参考
+![后端开发学习路线](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501302221609.png)
 
-[Backend Beginner Roadmap](https://roadmap.sh/backend?r=backend-beginner)
+/// caption
+后端开发学习路线 [^1]
+///
 
-[Backend Roadmap](https://roadmap.sh/backend)
+[^1]: [Backend Beginner Roadmap](https://roadmap.sh/backend?r=backend-beginner){ target="_blank"}

@@ -1,61 +1,18 @@
 ---
-title: 运维指南
-categories: 运维
-category_bar: true
+title: 运维专栏简介
+comments: true
 ---
 
-## 前言
+本栏目文章以「运维开发」笔记为主。欢迎评论与补充。
 
-本文旨在介绍运维的基本理念和路径规划。正在不断完善中。
+!!! tip
 
-云计算运维的相关知识包括但不限于：
+    在计算机领域，运维就是运营并维护网络服务，使其可以长久稳定地为用户提供服务。需要掌握 [Linux 基础](https://www.runoob.com/linux/linux-tutorial.html){ target="_blank"}、[计算机网络](../GPA/6th-term/ComputerNetwork.md/)、云服务、自动化等知识。
 
-1. Linux 基础：常用命令、文件及用户管理、文本处理、Vim 工具使用。
-2. 网络基础：网络基础知识、TCP/IP 协议、七层网络模型、Linux 网络管理与配置。
-3. 服务器运维：SSH 远程连接、文件上传下载、Nginx 和 MySQL 服务器搭建、LVS 负载均衡配置以及服务器优化经验。
-4. 自动化运维：Shell 脚本编写、自动化运维工具 Ansible 的使用。
+![运维学习路线](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501302249152.png)
 
-## Linux 基础
+/// caption
+运维学习路线 [^1]
+///
 
-## 网络基础
-
-## 服务器运维
-
-{% fold light @基本概念 %}
-
-服务器 server 就是类似于一台台电脑，量产后在全球各地通过网络为用户提供高质量的便捷服务。在学习服务器相关知识之前，有必要先了解计算机网络相关的概念，有助于后续理解代理系统等的运作逻辑与开发逻辑。在正式开始之前，首先罗列一下最基本的概念：
-
-- 云服务器：
-  - 实例：一个云服务器相当于一个抽象的类，在其中购买配置了指定的实例后相当于实例化一个类，从而一个云服务器对应一个实例
-  - ip 地址：一台云服务器对应唯一的一个 ip 地址
-  - 备案：所谓的网站备案其实是对云服务器进行备案。当前的形式是，对于指向中国大陆 ip 的云服务器需要备案，如果指向的是非中国大陆的 ip，就不需要备案了。一般而言，中文的指向 HK，英文的指向 UK
-  - 端口：一台电脑能做的肯定不止一种，ip 地址端口的概念就好比一台电脑可以有不同的功能模块，不同的端口对应服务器不同的数据通道，开发者可以通过不同的端口开发不同的功能，用户可以通过不同的端口使用一台服务器上的不同服务
-  - [宝塔面板](https://www.bt.cn/new/download.html)：由于 linux 操作系统的命令行操作方式与 windows 的图形化界面操作方式差别较大，对于习惯图形化操作的用户不友好，故有一系列 **图形化管理** linux 操作系统的工具，宝塔面板就是其中的一个代表
-
-- 域名：
-  - 概念：代替 ip 地址访问的一种更加容易记忆与推广的媒介，通过 DNS 服务器将域名与 ip 地址进行绑定后，用户通过域名 domain 即可访问相应的服务器的资源
-  - 顶级域名：即 **域名+后缀** 的组合
-  - 二级域名：即 **主机名+域名+后缀** 的组合
-
-- 协议：
-  - 概念：服务器与用户进行数据传输的一种约定规则
-  - http：传统的数据传输协议，默认服务器 80 端口进行访问
-  - https：即 http + ssl，传统协议 + ssl 加密证书，默认服务器 443 端口访问
-  - ssl：即 Secret Sockets Layer 安全套件层，用于加密服务器与用户之间传输的数据。其中证书文件为 pem 文件，密钥文件为 key 文件
-
-- 网站框架：
-  - 目前两款主流的网站框架分别为 LNMP 与 LAMP，都是用于搭建 Web 服务器环境的 **软件堆栈**
-  - LNMP：表示使用 Linux 操作系统、Nginx 作为 Web 服务器、MySQL 作为数据库、PHP 作为服务器端脚本语言的技术堆栈
-  - LAMP：表示使用 Linux 操作系统、Apache 作为 Web 服务器、MySQL 作为数据库、PHP 作为服务器端脚本语言的技术堆栈
-
-{% endfold %}
-
-## 自动化运维
-
-## 参考
-
-[Linux 运维学习路线 - 阿里云](https://developer.aliyun.com/learning/roadmap/linux)
-
-[菜鸟 Linux 教程](https://www.runoob.com/linux/linux-tutorial.html)
-
-[搭建一个自己的网站？看这个就够了！](https://www.bilibili.com/video/BV16A4y1X7vg/)
+[^1]: [DevOps Beginner Roadmap](https://roadmap.sh/devops?r=devops-beginner){ target="_blank"}

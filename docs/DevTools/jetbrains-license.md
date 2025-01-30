@@ -1,16 +1,18 @@
 ---
-title: 更新 Jetbrains 学生许可证的流程
-categories: 开发工具
-category_bar: true
+title: 更新 Jetbrains 学生许可证
 ---
+
+!!! warning
+
+    只有在学生许可证即将到期的两周内才可以进行下面的操作。具体原因见 [Jetbrains 社区计划](https://www.jetbrains.com/zh-cn/community/education/#students){target="_blank"} 的详细说明。
 
 ## 前言
 
-马上证书要过期了，记录一下更新许可证的流程。继续白嫖！
+Jetbrains 的学生许可证书马上要过期了，记录一下更新许可证的流程。继续白嫖！
 
 ### 一、学信网
 
-进入[学信档案](https://my.chsi.com.cn/archive/index.jsp)，下载**教育部学籍在线验证报告**：https://my.chsi.com.cn/archive/bab/index.action
+进入 [学信档案](https://my.chsi.com.cn/archive/index.jsp)，下载 [教育部学籍在线验证报告](https://my.chsi.com.cn/archive/bab/index.action)。
 
 ![教育部学籍在线验证报告](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405081324328.png)
 

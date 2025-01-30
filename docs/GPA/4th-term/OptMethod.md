@@ -1,5 +1,6 @@
 ---
 title: 最优化方法
+comments: true
 ---
 
 ## 前言
@@ -110,7 +111,7 @@ $$
 ??? note "凸函数的性质证明"
 
     ![第1、2条](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030190.png)
-
+    
     ![第4条](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403112030160.png)
 
 **凸函数的判定定理**：
@@ -324,7 +325,7 @@ $$
             ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201425856.jpg)
 
     2. 方案二：利用**函数值序列**进行替代。即以下式作为迭代的终止条件
-        
+       
         $$
         || f(x^{(k+1)}) - f(x^{(k)}) || \le \epsilon
         $$
@@ -439,23 +440,23 @@ $$
 ??? note "符号说明"
 
     一、当前局面：已经计算出一个基本可行解
-
+    
     1.1 确定线性规划的目标
-
+    
     ![确定线性规划的目标](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403281940243.png)
-
+    
     1.2 添加松弛变量
-
+    
     ![添加松弛变量](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403281942808.png)
-
+    
     1.3 用非基变量线性表示基变量
-
+    
     ![用非基变量线性表示基变量](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403281937210.png)
-
+    
     ![向量表示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403281939336.png)
-
+    
     二、最优性检验
-
+    
     ![最优性检验](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403282010283.jpg)
 
 1. **唯一最优解**判别定理：对于**目标函数求解最大值**的情形。若 $\forall j \in [m+1, n]$ 有 $\sigma_j \le 0$ 则当前基本可行解 $x^{(k)}$ 为最优解。
@@ -505,7 +506,7 @@ $$
 ??? note "实战演练"
 
     ![单纯形法的求解步骤 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056146.jpg)
-
+    
     ![单纯形法的求解步骤 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056440.jpg)
 
 单纯形表法：
@@ -513,7 +514,7 @@ $$
 ??? note "实战演练"
 
     ![实战演练](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171407440.jpg)
-
+    
     ![代码验算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171410846.jpg)
 
 ### 2.3 对偶与对偶单纯形法
@@ -553,11 +554,11 @@ $$
 ??? note "实战演练"
 
     ![问题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407081259988.png)
-
+    
     对于上述问题，我们可以先写出其对偶问题：
-
+    
     ![对偶问题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407081300732.png)
-
+    
     显然的对于 $y^*=(\frac{4}{5},\frac{3}{5})^T$，上述 2,3,4 是取不到等号的，对应的 $x^*=(-,0,0,0,-)^T$。还剩两个变量 $x_1,x_5$ 通过 1,5 两个不等式取等进行计算：
     
     $$
@@ -566,7 +567,7 @@ $$
     2x_1+x_2=3
     \end{aligned}
     $$
-
+    
     计算可得 $x_1=1,x_5=1$，于是原问题的最优解 $x^*=(1, 0, 0, 0, 1)^T$
 
 #### 2.3.3 对偶单纯形法
@@ -574,7 +575,7 @@ $$
 ??? note "实战演练"
 
     ![实战演练](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171409291.jpg)
-
+    
     ![代码验算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171411832.jpg)
 
 ## 第三章 线性搜索
@@ -601,27 +602,27 @@ $$
 ??? note "预备知识：单峰函数定理"
 
     在正式开始介绍之前，我们先了解**单峰函数定理**：
-
+    
     - 定理：对于在区间 $[a,b]$ 上的一个单峰函数 $f(x)$，$x^* \in [a,b]$ 是其极小点，$x_1$ 和 $x_2$ 是 $[a,b]$ 上的任意两点，且 $a<x_1<x_2<b$，可以通过比较 $f(x_1),f(x_2)$ 的值来确定点的保留和舍弃
-
+    
     - 迭代：
-
+    
         1. 若 $f(x_1) \ge f(x_2)$ 则 $x^* \in [x_1,b]$
-
+    
             ![保留右区间](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404121125038.png)
-
+    
         2. 若 $f(x_1) < f(x_2)$ 则 $x^* \in [a,x_2]$​
-
+    
             ![保留左区间](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404121125961.png)
-
+    
         3. 若 $f(x_1) = f(x_2)$ 则 $x^* \in [x_1,x_2]$
-
+    
     于是迭代的关键就在于如何取点 $x_1$ 和 $x_2$，下面开始介绍三种取点方法。
 
 ??? note "基于 python 实现：0.618 法、斐波那契法、二分法"
 
     === "Python"
-
+    
         ```python
         class ExactLinearSearch:
             def __init__(self, 
@@ -641,7 +642,7 @@ $$
                     new_a, new_b, x_star, count = self._f_fibo()
                 else: # criterion == "binary"
                     new_a, new_b, x_star, count = self._f_binary()
-
+    
                 fixed = lambda x, acc: round(x, acc)
                 print(f"算法为：“{criterion}” 法")
                 print(f"共迭代：{count} 次")
@@ -649,19 +650,20 @@ $$
                 print(f"右边界: {fixed(new_b, 4)}")
                 print(f"最优解: {fixed(x_star, 4)}")
                 print(f"最优值: {fixed(f(x_star), 6)}\n")
-                
-            
+
+
+​            
             def _f_goad(self) -> Tuple[float, float, float, int]:
                 a, b, delta, f = self.a, self.b, self.delta, self.f
                 count = 0
-
+    
                 lam = a + 0.382 * (b - a)
                 mu = b - 0.382 * (b - a)
-
+    
                 while count <= self.max_iter:
                     phi_lam = f(lam)
                     phi_mu = f(mu)
-
+    
                     if phi_lam <= phi_mu:
                         b = mu
                     else:
@@ -669,7 +671,7 @@ $$
                     
                     lam = a + 0.382 * (b - a)
                     mu = b - 0.382 * (b - a)
-
+    
                     if b - lam <= delta:
                         return a, b, lam, count
                     if mu - a <= delta:
@@ -678,11 +680,11 @@ $$
                     count += 1
                 
                 return a, b, lam if f(lam) <= f(mu) else mu, count
-
+    
             def _f_fibo(self) -> Tuple[float, float, float, int]:
                 a, b, delta, f, max_iter = self.a, self.b, self.delta, self.f, self.max_iter
                 count = None
-
+    
                 F = [0.0] * max_iter
                 F[1] = F[2] = 1
                 for i in range(3, max_iter):
@@ -693,18 +695,18 @@ $$
                 
                 if count == None:
                     ValueError("区间过大或精度过高导致，找不到合适的迭代次数")
-
+    
                 lam, mu = a, b
                 for i in range(3, count + 1):
-
+    
                     lam = a + (1 - F[i - 1] / F[i]) * (b - a)
                     mu = b - (1 - F[i - 1] / F[i]) * (b - a)
-
+    
                     if f(lam) <= f(mu):
                         b = mu
                     else:
                         a = lam
-
+    
                 return a, b, lam if f(lam) <= f(mu) else mu, count
             
             def _f_binary(self) -> Tuple[float, float, float, int]:
@@ -712,7 +714,7 @@ $$
                 count = None
                 
                 count = np.ceil(np.log2((b - a) / delta)).astype(int)
-
+    
                 if count > max_iter:
                     ValueError("区间过大或精度过高导致迭代次数过高")
             
@@ -722,25 +724,25 @@ $$
                         b = c
                     else:
                         a = c
-
+    
                 return a, b, c, count
         ```
-
+    
     === "调用"
-
+    
         ```python
         a, b, delta = -1, 1, 0.01
         f = lambda x: np.exp(-x) + np.exp(x)  # 原函数
         calc_goad = ExactLinearSearch(a, b, delta, f, criterion="0.618")
         calc_fibo = ExactLinearSearch(a, b, delta, f, criterion="fibonacci")
-
+    
         a, b, delta = -3, 6, 0.1
         f = lambda x: 2 * x + 2               # 导函数
         calc_bina = ExactLinearSearch(a, b, delta, f, criterion="binary")
         ```
-
+    
     === "结果"
-
+    
         ```text
         算法为：“0.618” 法
         共迭代：10 次
@@ -748,14 +750,14 @@ $$
         右边界: 0.0069
         最优解: 0.0007
         最优值: 2.000001
-
+    
         算法为：“fibonacci” 法
         共迭代：11 次
         左边界: -0.0225
         右边界: 0.0
         最优解: -0.0139
         最优值: 2.000193
-
+    
         算法为：“binary” 法
         共迭代：7 次
         左边界: -1.0312
@@ -874,7 +876,7 @@ $$
         grad_x = -2 * (1 - x[0]) - 400 * x[0] * (x[1] - x[0]**2)
         grad_y = 200 * (x[1] - x[0]**2)
         return np.array([grad_x, grad_y])
-
+    
     # 二阶梯度
     def G(x: np.ndarray) -> np.ndarray:
         grad_xx = 2 - 400 * x[1] + 1200 * x[0]**2
@@ -885,46 +887,46 @@ $$
             [grad_xx, grad_xy],
             [grad_yx, grad_yy]
         ])
-
+    
     # 初始点
     initial_point = [-1.2, 1]
     ```
-
+    
     已知最优点为 $x^*=(1, 1)^T$，最优解 $f(x^*)=0$，以书中例题初始点 $(-1.2,1)^T$ 为例开始迭代。
-
+    
     === "最速下降法"
-
+    
         ```python
         def gradient_descent(initial_point, max_iter=5, eps=1e-6):
             x = np.array(initial_point)
             points = [x]
             gradients = [g(x)]
             alphas = []
-
+    
             for _ in range(max_iter):
                 grad = gradients[-1]
-
+    
                 # 搜索方向
                 direction = -grad
-
+    
                 # 步长因子：无法确定准确的步长最小化函数，因此此处采用二分法搜索最优步长
                 alpha = 1
                 while f(x + alpha * direction) > f(x):
                     alpha /= 2
-
+    
                 x = x + alpha * direction
                 points.append(x)
                 gradients.append(g(x))
                 alphas.append(alpha)
-
+    
                 if np.linalg.norm(grad) < eps:
                     break
-
+    
             return points, gradients, alphas
 
 
         points, gradients, alphas = gradient_descent(initial_point, max_iter=100, eps=1e-6)
-
+    
         for i, (point, grad, alpha) in enumerate(zip(points, gradients, [1] + alphas)):
             print(f"Iteration {i}:")
             print(f"  Point       = {point}")
@@ -933,9 +935,9 @@ $$
             print(f"  Direction   = {-grad}")
             print(f"  Function Val= {f(point)}\n")
         ```
-
+    
         迭代100次后输出为：
-
+    
         ```text
         Iteration 98:
         Point       = [0.93432802 0.87236513]
@@ -943,14 +945,14 @@ $$
         Step Size   = 0.00390625
         Direction   = [-0.0942865   0.12074477]
         Function Val= 0.004349256784446673
-
+    
         Iteration 99:
         Point       = [0.93414387 0.87260096]
         Gradient    = [-0.12281587 -0.00476179]
         Step Size   = 0.001953125
         Direction   = [0.12281587 0.00476179]
         Function Val= 0.004337086557103718
-
+    
         Iteration 100:
         Point       = [0.93438374 0.87261026]
         Gradient    = [ 0.04171114 -0.09254423]
@@ -958,39 +960,39 @@ $$
         Direction   = [-0.04171114  0.09254423]
         Function Val= 0.004326904052586884
         ```
-
+    
     === "牛顿法"
-
+    
         ```python
         def newton_method(initial_point, max_iter=5, eps=1e-6):
             x = np.array(initial_point)
             points = [x]
             gradients = [g(x)]
             Hessians = [G(x)]
-
+    
             for _ in range(max_iter):
                 grad = gradients[-1]
                 Hessian = Hessians[-1]
-
+    
                 # 搜索方向
                 direction = np.linalg.inv(Hessian) @ grad
-
+    
                 # 步长因子：假定使用固定步长的牛顿法
                 alpha = 1
-
+    
                 x = x - alpha * direction
                 points.append(x)
                 gradients.append(g(x))
                 Hessians.append(G(x))
-
+    
                 if np.linalg.norm(grad) < eps:
                     break
-
+    
             return points, gradients, Hessians
 
 
         points, gradients, Hessians = newton_method(initial_point, max_iter=50, eps=1e-6)
-
+    
         for i, (point, grad, Hessian) in enumerate(zip(points, gradients, Hessians)):
             print(f"Iteration {i}:")
             print(f"  Point       = {point}")
@@ -998,9 +1000,9 @@ $$
             print(f"  Hessian     = {Hessian}")
             print(f"  Function Val= {f(point)}\n")
         ```
-
+    
         迭代7次即收敛：
-
+    
         ```makefile
         Iteration 5:
         Point       = [0.9999957  0.99999139]
@@ -1008,14 +1010,14 @@ $$
         Hessian     = [[ 801.99311306 -399.99827826]
         [-399.99827826  200.        ]]
         Function Val= 1.8527397192178054e-11
-
+    
         Iteration 6:
         Point       = [1. 1.]
         Gradient    = [ 7.41096051e-09 -3.70548037e-09]
         Hessian     = [[ 802.00000001 -400.        ]
         [-400.          200.        ]]
         Function Val= 3.4326461875363225e-20
-
+    
         Iteration 7:
         Point       = [1. 1.]
         Gradient    = [-0.  0.]
@@ -1023,9 +1025,9 @@ $$
         [-400.  200.]]
         Function Val= 0.0
         ```
-
+    
     === "共轭梯度法"
-
+    
         ```python
         def conjugate_gradient(initial_point, max_iter=5, eps=1e-6):
             x = np.array(initial_point)
@@ -1033,36 +1035,36 @@ $$
             gradients = [g(x)]
             directions = [-g(x)]
             alphas = []
-
+    
             for i in range(max_iter):
                 grad = gradients[-1]
-
+    
                 # 搜索方向：FR公式
                 if i == 0:
                     direction = -grad
                 else:
                     beta = np.dot(g(x), g(x)) / np.dot(g(points[-2]), g(points[-2]))
                     direction = -g(x) + beta * direction
-
+    
                 # 步长因子：精确线搜索直接得到闭式解
                 alpha = -np.dot(grad, direction) / np.dot(direction, G(x) @ direction)
-                
+
 
                 x = x + alpha * direction
-
+    
                 directions.append(direction)
                 alphas.append(alpha)
                 points.append(x)
                 gradients.append(g(x))
-
+    
                 if np.linalg.norm(grad) < eps:
                     break
-
+    
             return points, gradients, alphas
 
 
         points, gradients, alphas = conjugate_gradient(initial_point, max_iter=1000, eps=1e-6)
-
+    
         for i, (point, grad, alpha) in enumerate(zip(points, gradients, alphas)):
             print(f"Iteration {i}:")
             print(f"  Point       = {point}")
@@ -1071,9 +1073,9 @@ $$
             print(f"  Direction   = {-grad}")
             print(f"  Function Val= {f(point)}\n")
         ```
-
+    
         迭代1000次后输出为：
-
+    
         ```makefile
         Iteration 997:
         Point       = [0.9999994  0.99999875]
@@ -1081,14 +1083,14 @@ $$
         Step Size   = 0.0005161468619784313
         Direction   = [-1.90794906e-05  1.01414007e-05]
         Function Val= 6.191018745155016e-13
-
+    
         Iteration 998:
         Point       = [0.99999931 0.99999861]
         Gradient    = [ 5.43686111e-06 -3.40374227e-06]
         Step Size   = 0.0005078748917694624
         Direction   = [-5.43686111e-06  3.40374227e-06]
         Function Val= 4.986125950068217e-13
-
+    
         Iteration 999:
         Point       = [0.9999993 0.9999986]
         Gradient    = [ 1.34784246e-06 -1.36924747e-06]
@@ -1096,58 +1098,58 @@ $$
         Direction   = [-1.34784246e-06  1.36924747e-06]
         Function Val= 4.881643528976312e-13
         ```
-
+    
     === "拟牛顿法"
-
+    
         ```python
         def bfgs(initial_point, max_iter=5, eps=1e-6):
             x = np.array(initial_point)
             points = [x]
             gradients = [g(x)]
             B = G(x)
-
+    
             for _ in range(max_iter):
                 grad = gradients[-1]
-
+    
                 # 迭代公式
                 x = x - np.linalg.inv(B) @ grad
-
+    
                 # 更新 B 矩阵
                 s = x - points[-1]
                 y = g(x) - gradients[-1]
                 B = B + np.outer(y, y) / (s @ y) - (B @ np.outer(s, s) @ B) / (s @ B @ s)
-
+    
                 points.append(x)
                 gradients.append(g(x))
-
+    
                 if np.linalg.norm(grad) < eps:
                     break
-
+    
             return points, gradients
 
 
         points, gradients = bfgs(initial_point, max_iter=1000, eps=1e-6)
-
+    
         for i, (point, grad) in enumerate(zip(points, gradients)):
             print(f"Iteration {i}:")
             print(f"  Point       = {point}")
             print(f"  Gradient    = {grad}")
             print(f"  Function Val= {f(point)}\n")
         ```
-
+    
         迭代 78 次收敛：
-
+    
         ```makefile
         Iteration 76:
         Point       = [1.00000075 0.99999921]
         Gradient    = [ 0.000918   -0.00045825]
         Function Val= 5.255482679080297e-10
-
+    
         Iteration 77:
         Point       = [1.00000006 1.00000012]
         Gradient    = [ 6.46055099e-07 -2.63592925e-07]
         Function Val= 3.7061757712619374e-15
-
+    
         Iteration 78:
         Point       = [1. 1.]
         Gradient    = [6.75185684e-10 4.68913797e-10]

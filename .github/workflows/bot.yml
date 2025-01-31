@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with: fetch-depth: 0  # 拉取全部历史记录
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]

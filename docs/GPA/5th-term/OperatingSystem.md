@@ -1,7 +1,8 @@
 ---
 title: 操作系统
-index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/OS.png
 ---
+
+![](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/OS.png)
 
 ## 前言
 

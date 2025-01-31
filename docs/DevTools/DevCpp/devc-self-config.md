@@ -1,9 +1,5 @@
 ---
 title: DevCpp 偏好配置
-categories: 
-  - 开发工具
-  - DevCpp
-category_bar: true
 ---
 
 ## 前言

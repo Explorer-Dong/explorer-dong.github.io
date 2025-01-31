@@ -1,7 +1,8 @@
 ---
 title: 计算机组成原理
-index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/computer%20organization.png
 ---
+
+![](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/computer%20organization.png)
 
 ## 前言
 

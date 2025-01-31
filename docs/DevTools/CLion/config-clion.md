@@ -1,9 +1,5 @@
 ---
 title: CLion 配置指南
-categories: 
-  - 开发工具
-  - CLion
-category_bar: true
 ---
 
 ## 前言

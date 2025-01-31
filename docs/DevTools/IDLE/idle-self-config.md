@@ -1,9 +1,5 @@
 ---
 title: IDLE 偏好配置
-categories: 
-  - 开发工具
-  - IDLE
-category_bar: true
 ---
 
 ## 前言

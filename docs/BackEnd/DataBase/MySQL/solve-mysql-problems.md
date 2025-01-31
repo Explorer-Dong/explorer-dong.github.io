@@ -1,9 +1,5 @@
 ---
 title: 解决 MySQL 相关问题
-categories: 
-  - 数据库
-  - MySQL
-category_bar: true
 ---
 
 ## 前言
@@ -30,4 +26,4 @@ bind-address		= 127.0.0.1
 
 ### 参考
 
-https://zhuanlan.zhihu.com/p/601584675
+<https://zhuanlan.zhihu.com/p/601584675>

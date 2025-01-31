@@ -1,9 +1,5 @@
 ---
 title: 解决 shell 相关问题
-categories:
-  - 运维
-  - Shell
-category_bar: true
 ---
 
 ## 前言

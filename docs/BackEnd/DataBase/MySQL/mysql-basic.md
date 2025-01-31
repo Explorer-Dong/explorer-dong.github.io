@@ -1,9 +1,5 @@
 ---
 title: MySQL 基础
-categories:
-  - 数据库
-  - MySQL
-category_bar: true
 ---
 
 ## 前言

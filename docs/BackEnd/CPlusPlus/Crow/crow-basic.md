@@ -1,10 +1,5 @@
 ---
 title: Crow 基础
-categories:
-  - 后端
-  - CPlusPlus
-  - Crow
-category_bar: true
 ---
 
 ## 前言

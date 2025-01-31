@@ -1,9 +1,5 @@
 ---
 title: Ubuntu 使用指南
-categories:
-  - 运维
-  - Shell
-category_bar: true
 ---
 
 ## 文件系统
@@ -155,4 +151,4 @@ reboot
 
 ### 参考
 
-https://blog.csdn.net/BobYuan888/article/details/88662779
+<https://blog.csdn.net/BobYuan888/article/details/88662779>

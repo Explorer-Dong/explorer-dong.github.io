@@ -1,7 +1,5 @@
 ---
-title: matplotlib 入门指南
-categories: 数据科学
-category_bar: true
+title: matplotlib 基础
 ---
 
 ## 前言
@@ -10,4 +8,4 @@ category_bar: true
 
 ## 经典中文显示异常问题
 
-参考：https://blog.csdn.net/lemonbit/article/details/121433603
+[Matplotlib中正确显示中文的四种方式 - CSND](https://blog.csdn.net/lemonbit/article/details/121433603)

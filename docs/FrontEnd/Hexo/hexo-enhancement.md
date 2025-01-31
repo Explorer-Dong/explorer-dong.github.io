@@ -1,9 +1,5 @@
 ---
 title: Hexo 功能增强
-categories:
-  - 前端
-  - Hexo
-category_bar: true
 ---
 
 ## 前言

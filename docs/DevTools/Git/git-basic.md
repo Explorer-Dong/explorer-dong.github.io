@@ -1,9 +1,5 @@
 ﻿---
-title: Git 指南大全
-categories:
-  - 开发工具
-  - Git
-category_bar: true
+title: Git 基础
 ---
 
 ## 前言

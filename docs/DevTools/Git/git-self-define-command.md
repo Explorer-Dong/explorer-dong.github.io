@@ -1,9 +1,5 @@
 ---
 title: Git 自定义命令
-categories:
-  - 开发工具
-  - Git
-category_bar: true
 ---
 
 ## 前言

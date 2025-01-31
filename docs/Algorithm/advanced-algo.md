@@ -1,7 +1,5 @@
 ---
 title: 进阶算法
-categories: 数据结构与算法
-category_bar: true
 ---
 
 ## 前言
@@ -18,7 +16,7 @@ category_bar: true
 
 ### 递推
 
-反转字符串：https://www.acwing.com/problem/content/5574/
+反转字符串：<https://www.acwing.com/problem/content/5574/>
 
 > 题意：给定 n 个字符串，每一个字符串对应一个代价 $w_i$，现在需要对这 n 个字符串进行可能的翻转操作使得最终的 n 个字符串呈现字典序上升的状态，给出最小翻转代价。
 >
@@ -80,7 +78,7 @@ int main() {
 }
 ```
 
-最大化子数组的总成本：https://leetcode.cn/problems/maximize-total-cost-of-alternating-subarrays/
+最大化子数组的总成本：<https://leetcode.cn/problems/maximize-total-cost-of-alternating-subarrays/>
 
 > 题意：给定长度为 n 的序列，现在需要将其分割为子数组，并定义每一个子数组的价值为「奇数位置为原数值，偶数位置为相反数」，返回最大分割价值
 >
@@ -112,7 +110,7 @@ int main() {
 >
 > 时间复杂度：$O(n)$
 
-```cpp []
+```cpp
 class Solution {
 public:
     long long maximumTotalCost(vector<int>& nums) {
@@ -137,7 +135,7 @@ public:
 };
 ```
 
-```python []
+```python
 class Solution:
     def maximumTotalCost(self, nums: List[int]) -> int:
         n = len(nums)
@@ -157,7 +155,7 @@ class Solution:
 
 费解的开关
 
-https://www.acwing.com/problem/content/97/
+<https://www.acwing.com/problem/content/97/>
 
 > 题意：给定 n 个 `5*5` 的矩阵，代表当前局面。矩阵中每一个元素要么是 0 要么是 1，现在需要计算从当前状态操作到全 1 状态最少需要几次操作？操作描述为改变当前状态为相反状态后，四周的四个元素也需要改变为相反的状态
 >
@@ -242,7 +240,7 @@ signed main() {
 
 Decode
 
-https://codeforces.com/contest/1996/problem/E
+<https://codeforces.com/contest/1996/problem/E>
 
 > 标签：递推/线性dp/哈希
 >
@@ -300,7 +298,7 @@ signed main() {
 
 Squaring
 
-https://codeforces.com/contest/1995/problem/C
+<https://codeforces.com/contest/1995/problem/C>
 
 > 标签：递推、数学
 >
@@ -311,9 +309,11 @@ https://codeforces.com/contest/1995/problem/C
 > - 首先显然的我们不希望第一个数 $a_0$ 变大，因此我们应该从第二个数开始和前一个数进行比较，从而进行可能的平方操作并计数。但是由于数字可能会很大，使用高精度显然会超时，而这些数字本身的意义是用来和前一个数进行大小比较的，并且变化的形式也仅仅是平方操作。我们不妨维护其指数，这样既可以进行大小比较，也不用存储数字本身而造成溢出。当然变为使用指数存储以后如何进行大小比较以及如何维护指数序列有所不同，我们先从一般的角度出发，进而从表达式本身的数学角度讨论特殊情况的处理。
 >
 > - 对于当前数字 $a_i$ 和前一个数字 $a_{i-1}$ 及其指数 $z_{i-1}$，如果想要当前数字经过可能的 k 次平方操作后不小于前一个数，即 $\displaystyle a_{i-1}^{2^{z_{i-1}}}\le a_i^{2^{k}}$，则易得下面的表达式：
+>
 >     $$
 >     k:= z_{i-1}+ \left\lceil \log_2(\frac{\log_2 {a_{i-1}}}{\log_2{a_i}}) \right \rceil
 >     $$
+>
 >     由于 $a_j \in [1, 10^6],z_j\ge 0,k \ge 0$，因此我们有必要：
 >
 >     1. 讨论 $a_i$ 和 $a_{i-1}$ 和 $1$ 的大小关系。因为它们的对数计算结果在真数部分。
@@ -400,7 +400,7 @@ if __name__ == '__main__':
 
 牛的语言学
 
-https://www.acwing.com/problem/content/description/5559/
+<https://www.acwing.com/problem/content/description/5559/>
 
 > 标签：递推、dfs
 >
@@ -539,7 +539,7 @@ int main() {
 
 最小化网络并发线程分配
 
-https://vijos.org/d/nnu_contest/p/1492
+<https://vijos.org/d/nnu_contest/p/1492>
 
 > 题意：现在有一个线性网络需要分配并发线程，每一个网络有一个权重，现在有一个线程分配规则。对于当前网络，如果权重比相邻的网络大，则线程就必须比相邻的网络大。
 >
@@ -570,7 +570,7 @@ void solve() {
 
 Block Sequence
 
-https://codeforces.com/contest/1881/problem/E
+<https://codeforces.com/contest/1881/problem/E>
 
 > 题意：给定一个长为 $n\le 2\times 10^5$ 的数组 a，问最少可以删除其中的几个元素，使得最终的数组可以被划分为连续的子数组且每一个子数组的元素个数均为「子数组首元素数值 $-1$」的形式。
 >
@@ -596,7 +596,7 @@ def solve() -> Optional:
 
 覆盖墙壁
 
-https://www.luogu.com.cn/problem/P1990
+<https://www.luogu.com.cn/problem/P1990>
 
 > 题意：给定两种砖块，分别为日字型与L型，问铺满 $2*n$ 的地板一共有多少种铺法
 >
@@ -652,7 +652,7 @@ int main() {
 
 施咒的最大总伤害
 
-https://leetcode.cn/problems/maximum-total-damage-with-spell-casting/
+<https://leetcode.cn/problems/maximum-total-damage-with-spell-casting/>
 
 > 标签：线性 dp
 >
@@ -670,7 +670,7 @@ https://leetcode.cn/problems/maximum-total-damage-with-spell-casting/
 >
 > 空间复杂度：$O(n)$
 
-```cpp []
+```cpp
 class Solution {
 public:
     long long maximumTotalDamage(vector<int>& power) {
@@ -705,7 +705,7 @@ public:
 };
 ```
 
-```python []
+```python
 class Solution:
     def maximumTotalDamage(self, power: List[int]) -> int:
         from collections import defaultdict
@@ -742,7 +742,7 @@ class Solution:
 
 奇怪的汉诺塔
 
-https://www.acwing.com/problem/content/98/
+<https://www.acwing.com/problem/content/98/>
 
 > 题意：四塔汉诺塔问题。求在给定 $n$ 个圆盘的情况下的最少移动方案数。
 >
@@ -762,9 +762,11 @@ https://www.acwing.com/problem/content/98/
 > ![集合划分](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408011452431.png)
 >
 > 于是最终的状态转移方程为：
+>
 > $$
 > f_i = \min{ \{ f_j+d_{i-j}+f_j \} },\quad i \in [1,n],\quad j \in [0,i-1]
 > $$
+>
 > 时间复杂度：$O(n^2)$
 
 ```cpp
@@ -803,7 +805,7 @@ signed main() {
 
 数的计算
 
-https://www.luogu.com.cn/problem/P1028
+<https://www.luogu.com.cn/problem/P1028>
 
 > 题意：给定一个数和一种构造方法，即对于当前的数，可以在其后面添加一个最大为当前一半大的数，以此类推构造成一个数列。问一共可以构造出多少个这种数列
 >
@@ -815,6 +817,7 @@ https://www.luogu.com.cn/problem/P1028
 > 思路二：dp
 >
 > - 非常显然的一个dp，我们定义一个dp记忆数组。其中 `dp[i]` 表示数字 `i` 的构造方案总数，那么状态转移方程就是
+>
 >     $$
 >     dp[i]=\sum_{j=1}^{\left\lfloor i/2 \right\rfloor}dp[j]+1
 >     $$
@@ -887,7 +890,7 @@ signed main() {
 
 规划兼职工作
 
-https://leetcode.cn/problems/maximum-profit-in-job-scheduling/description/
+<https://leetcode.cn/problems/maximum-profit-in-job-scheduling/description/>
 
 > 标签：线性dp、二分答案
 >
@@ -937,7 +940,7 @@ public:
 
 最长上升子序列
 
-https://www.luogu.com.cn/problem/B3637
+<https://www.luogu.com.cn/problem/B3637>
 
 > 标签：线性dp、二分查找
 >
@@ -1117,7 +1120,7 @@ signed main() {
 
 过河卒
 
-https://www.luogu.com.cn/problem/P1002
+<https://www.luogu.com.cn/problem/P1002>
 
 > 标签：网格图dp、dfs
 >
@@ -1239,13 +1242,14 @@ signed main() {
 
 摘樱桃 II
 
-https://leetcode.cn/problems/cherry-pickup-ii/
+<https://leetcode.cn/problems/cherry-pickup-ii/>
 
 > 题意：给定一个 $n$ 行 $m$ 列的网格图，每个格子拥有一个价值。现在有两个人分别从左上角和右上角开始移动，移动方式为「左下、下、右下」三个方向，问两人最终最多一共可以获得多少价值？如果两人同时经过一个位置，则只能算一次价值。
 >
 > 思路：
 >
 > - 状态定义。最终状态一定是两人都在最后一行的任意两列，我们如何定义状态可以不重不漏的表示两人的运动状态呢？可以发现两人始终在同一行，但是列数不一定相同，我们定义状态 $f[i][j][k]$ 表示两人走到第 $i$ 行时，一人在第 $j$ 列，另一人在第 $k$ 列时的总价值。则答案就是：
+>
 >     $$
 >     \max{(f[n-1][j][k])},j,k\in[0,m]
 >     $$
@@ -1279,9 +1283,9 @@ class Solution:
 
 摘樱桃
 
-弱化版 $(n\le 50)$ ：https://leetcode.cn/problems/cherry-pickup/
+弱化版 $(n\le 50)$ ：<https://leetcode.cn/problems/cherry-pickup/>
 
-强化版 $(n\le300)$ ：https://codeforces.com/problemset/problem/213/C
+强化版 $(n\le300)$ ：<https://codeforces.com/problemset/problem/213/C>
 
 > 题意：给定一个 n 行 n 列的网格图，问从左上走到右下，再从右下走到左上最多可以获得多少价值？一个单元格只能被计算一次价值。
 >
@@ -1391,7 +1395,7 @@ public:
 
 最大社交深度和
 
-https://vijos.org/d/nnu_contest/p/1534
+<https://vijos.org/d/nnu_contest/p/1534>
 
 > 算法：树形dp、BFS
 >
@@ -1408,9 +1412,11 @@ https://vijos.org/d/nnu_contest/p/1534
 > ![树形dp图解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403182214257.png)
 >
 > - 我们可以发现，对于当前的根结点 `fa`，我们选择其中的一个子结点 `ch`，将 `ch` 作为新的根结点（如右图）。那么对于当前的 `ch` 的深度和，我们可以借助 `fa` 的深度和进行求解。我们假设以 `ch` 为子树的结点总数为 `x`，那么这 `x` 个结点在换根之后，相对于 `ch` 的深度和，贡献了 `-x` 的深度；而对于 `fa` 的剩下来的 `n-x` 个结点，相对于 `ch` 的深度和，贡献了 `n-x` 的深度。于是 `ch` 的深度和就是 `fa的深度和` `-x+n-x`，即：
+>
 >     $$
 >     dep[ch] = dep[fa]-x+n-x = dep[fa]+n-2\times x
 >     $$
+>
 >     于是我们很快就能想到利用前后层的递推关系，$O(1)$ 的计算出所有子结点的深度和。
 >
 >     代码实现：我们可以先计算出 `base` 的情况，即任选一个结点作为根结点，然后基于此进行迭代计算。在迭代计算的时候需要注意的点就是在一遍 `dfs` 计算某个结点的深度和 `dep[root]` 时，如果希望同时计算出每一个结点作为子树时，子树的结点数，显然需要分治计算一波。关于分治的计算我熟练度不够高，~~特此标注一下debug了3h的点~~：即在递归到最底层，进行回溯计算的时候，需要注意不能统计父结点的结点值（因为建的是双向图，所以一定会有从父结点回溯的情况），那么为了避开这个点，就需要在 $O(1)$ 的时间复杂度内获得当前结点的父结点的编号，从而进行特判，采用的方式就是增加递归参数 `fa`。
@@ -1551,7 +1557,7 @@ void solve() {
 
 栈
 
-https://www.luogu.com.cn/problem/P1044
+<https://www.luogu.com.cn/problem/P1044>
 
 > 题意：n个数依次进栈，随机出栈，问一共有多少种出栈序列？
 >
@@ -1595,6 +1601,7 @@ https://www.luogu.com.cn/problem/P1044
 > - 我们知道，入栈数一定是大于等于出栈数的，即 $i\ge j$。于是我们在枚举 $j$ 的时候，枚举的范围是 $[1,i]$
 >
 > - $base$ 状态的构建取决于 $j=0$ 时的所有状态，我们知道没有任何数出栈也是一种状态，于是
+> 
 >     $$
 >     dp[i][0]=0,(i=1,2,3,...,n)
 >     $$
@@ -1675,7 +1682,7 @@ signed main() {
 
 找出所有稳定的二进制数组 II
 
-https://leetcode.cn/problems/find-all-possible-stable-binary-arrays-ii/
+<https://leetcode.cn/problems/find-all-possible-stable-binary-arrays-ii/>
 
 > 题意：构造一个仅含有 $n$ 个 $0$，$m$ 个 $1$ 的数组，且长度超过 $k$ 的子数组必须同时含有 $0$ 和 $1$。给出构造的总方案数对 $10^9+7$ 取余后的结果。
 >
@@ -1686,6 +1693,7 @@ https://leetcode.cn/problems/find-all-possible-stable-binary-arrays-ii/
 > - 定义子问题。以当前第 $i+j$ 位填 $0$ 为例，填 $1$ 同理，即当前需要维护的是 $f[i][j][0]$。显然的如果前一位是和当前位不同，即 $1$ 时，可以直接转移过来；如果前一位和当前位相同，即 $0$ 时，有可能会出现长度超过 $k$ 的连续 $0$ 子数组，即前段数组刚好是以「一个 $1$ 和 $k$ 个 $0$ 结尾的」合法数组，此时再拼接一个 $0$ 就不合法了。
 >
 > - 状态转移方程。综上所述，可以得到以下两个状态转移方程：
+>
 >     $$
 >     \begin{aligned}
 >     f[i][j][0] = f[i - 1][j][1] + f[i - 1][j][0] - f[i - k - 1][j][1] \\
@@ -1729,7 +1737,7 @@ public:
 
 学生出勤记录 II
 
-https://leetcode.cn/problems/student-attendance-record-ii/description/
+<https://leetcode.cn/problems/student-attendance-record-ii/description/>
 
 > 题意：构造一个仅含有 $P,A,L$ 三种字符的字符串，使得 $A$ 最多出现 $1$ 次，同时 $L$ 最多连续出现 $2$ 次。问一共有多少种构造方案？对 $10^9+7$ 取模。
 >
@@ -1746,7 +1754,7 @@ https://leetcode.cn/problems/student-attendance-record-ii/description/
 >
 > 时间复杂度：$\Theta (6n)$
 
-```cpp []
+```cpp
 class Solution {
 public:
     int checkRecord(int n) {
@@ -1791,7 +1799,7 @@ public:
 };
 ```
 
-```python []
+```python
 class Solution:
     def checkRecord(self, n: int) -> int:
         mod = int(1e9 + 7)
@@ -1820,7 +1828,7 @@ class Solution:
 
 对称山脉
 
-https://www.acwing.com/problem/content/5169/
+<https://www.acwing.com/problem/content/5169/>
 
 模拟，时间复杂度 $O(n^3)$
 
@@ -1915,7 +1923,7 @@ int main() {
 
 Avoid K Palindrome
 
-https://atcoder.jp/contests/abc359/tasks/abc359_d
+<https://atcoder.jp/contests/abc359/tasks/abc359_d>
 
 > 题意：给定一个长度为 $n\le 1000$ 的字符串 $s$ 和一个整数 $k\le10$，其中含有若干个 `'A'`,`'B'` 和 `'?'`。其中 `'?'` 可以转化为 `'A'` 或 `'B'`，假设有 $q$ 和 `'?'`，则一共可以转化出 $2^q$ 个不同的 $s$。问所有转化出的 $s$ 中，有多少是不含有长度为 $k$ 的回文子串的。
 >
@@ -1930,7 +1938,7 @@ https://atcoder.jp/contests/abc359/tasks/abc359_d
 
 有向图的拓扑序列
 
-https://www.acwing.com/problem/content/850/
+<https://www.acwing.com/problem/content/850/>
 
 > 题意：输出一个图的拓扑序，不存在则输出-1
 >
@@ -1998,7 +2006,7 @@ int main() {
 
 Mad City
 
-https://codeforces.com/contest/1873/problem/H
+<https://codeforces.com/contest/1873/problem/H>
 
 > 标签：基环树、拓扑排序
 >
@@ -2115,7 +2123,7 @@ int main() {
 
 染色法判定二分图
 
-https://www.acwing.com/problem/content/862/
+<https://www.acwing.com/problem/content/862/>
 
 > 题意：给定一个无向图，可能有重边和自环。问是否可以构成二分图。
 >
@@ -2184,7 +2192,7 @@ void solve() {
 
 Kruskal算法求最小生成树
 
-https://www.acwing.com/problem/content/861/
+<https://www.acwing.com/problem/content/861/>
 
 > 题意：给定一个无向图，可能含有重边和自环。试判断能否求解其中的最小生成树，如果可以给出最小生成树的权值
 >
@@ -2385,7 +2393,7 @@ function kurskal(n, m, edges) {
 
 Prim算法求最小生成树
 
-https://www.acwing.com/problem/content/860/
+<https://www.acwing.com/problem/content/860/>
 
 > 题意：给定一个稠密无向图，有重边和自环。求出最小生成树
 >
@@ -2486,9 +2494,9 @@ signed main() {
 
 Dijkstra求最短路
 
-朴素版 - https://www.acwing.com/problem/content/851/
+朴素版 - <https://www.acwing.com/problem/content/851/>
 
-堆优化 - https://www.acwing.com/problem/content/852/
+堆优化 - <https://www.acwing.com/problem/content/852/>
 
 > 题意：给定一个正边权的有向图，可能存在重边与自环，问 $1$ 号点到 $n$ 号点的最短路径长度是多少，如果不可达就输出 $-1$。
 >
@@ -2577,7 +2585,7 @@ signed main() {
 
 朴素版Python：
 
-```python []
+```python
 import heapq
 from collections import defaultdict
 from typing import List, Tuple
@@ -2642,7 +2650,7 @@ if __name__ == '__main__':
 
 Floyd求最短路
 
-https://www.acwing.com/problem/content/856/
+<https://www.acwing.com/problem/content/856/>
 
 > 题意：给定一个稠密有向图，可能存在重边与自环，给出多个询问，需要给出每一个询问的两个点之前的最短路径长度
 >
@@ -2789,7 +2797,7 @@ int main() {
 
 关闭分部的可行集合数目
 
-https://leetcode.cn/problems/number-of-possible-sets-of-closing-branches/
+<https://leetcode.cn/problems/number-of-possible-sets-of-closing-branches/>
 
 > 标签：二进制枚举、最短路
 >
@@ -2799,7 +2807,7 @@ https://leetcode.cn/problems/number-of-possible-sets-of-closing-branches/
 >
 > 时间复杂度：$O(2^n \times n^3)$ - 其中枚举需要 $O(2^n)$、计算所有顶点到某个顶点的最远距离需要 $O(n^2)$、检查所有顶点需要 $O(n)$
 
-```cpp []
+```cpp
 class Solution {
 public:
     int numberOfSets(int n, int maxDistance, vector<vector<int>>& roads) {
@@ -2866,7 +2874,7 @@ public:
 };
 ```
 
-```python []
+```python
 class Solution:
     def numberOfSets(self, n: int, maxDistance: int, roads: List[List[int]]) -> int:
         g = [[10 ** 6 for _ in range(n)] for _ in range(n)]
@@ -2920,7 +2928,7 @@ class Solution:
 
 树的直径
 
-https://www.acwing.com/problem/content/5563/
+<https://www.acwing.com/problem/content/5563/>
 
 > 题意：给定一棵树，初始时含有 4 个结点分别为 1 到 4，其中 1 号为根结点，2 到 4 均为根结点的叶子结点。现在进行 Q 次操作，每次指定一个已经存在的结点向其插入两个新结点作为叶节点。现在需要在每次操作以后输出这棵树的直径。我们定义**树的直径**为：树中距离最远的两个点之间的距离。
 >
@@ -2945,6 +2953,7 @@ https://www.acwing.com/problem/content/5563/
 >     ![六种情况](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403282344777.jpg)
 >
 > - **如何快速计算树上任意两个点之间的距离**？我们可以使用最近公共祖先 LCA 算法。则树上任意两点 $x,y$ 之间的距离 $\text{dist}(x,y)$ 为：
+> 
 >     $$
 >     \text{dist}(x,y) = \text{dist}(x,root) + \text{dist}(y,root) - 2 \times \text{dist}(\text{lca}(x,y),root)
 >     $$
@@ -3134,7 +3143,7 @@ int main() {
 
 Salyg1n and the MEX Game
 
-https://codeforces.com/contest/1867/problem/C
+<https://codeforces.com/contest/1867/problem/C>
 
 > 标签：博弈、贪心、交互
 >
@@ -3192,7 +3201,7 @@ int main()
 
 Minimum Manhattan Distance
 
-https://codeforces.com/gym/104639/problem/J
+<https://codeforces.com/gym/104639/problem/J>
 
 > 标签：二维、数学
 >
@@ -3230,7 +3239,7 @@ void solve() {
 
 三角形
 
-https://www.acwing.com/problem/content/5383/
+<https://www.acwing.com/problem/content/5383/>
 
 > 标签：枚举
 >
@@ -3286,7 +3295,7 @@ signed main() {
 
 奶牛过马路
 
-https://www.acwing.com/problem/content/5572/
+<https://www.acwing.com/problem/content/5572/>
 
 > 标签：凸包
 >
@@ -3426,7 +3435,7 @@ void solve() {
 
 Deja Vu
 
-https://codeforces.com/contest/1891/problem/B
+<https://codeforces.com/contest/1891/problem/B>
 
 > 题意：给点序列 a 和 b，对于 b 中的每一个元素 $b_i$，如果 a 中的元素 $a_j$ 能够整除 $2^{b_i}$，则将 $a_j$ 加上 $2^{b_i - 1}$。给出最后的 a 序列
 >
@@ -3509,13 +3518,14 @@ void solve() {
 
 序列数量
 
-https://www.acwing.com/problem/content/5571/
+<https://www.acwing.com/problem/content/5571/>
 
 > 题意：给定 $i(i=1,2,\cdots,n)$ 个苹果，将其分给 $m$ 个人，问一共有多少种分配方案，给出结果对 $10^6+3$ 取模的结果
 >
-> 思路：整数分配问题。我们采用隔板法，隔板法相关例题见这篇博客：https://www.acwing.com/solution/content/241669/。下面开始讲解
+> 思路：整数分配问题。我们采用隔板法，隔板法相关例题见这篇博客：<https://www.acwing.com/solution/content/241669/>。下面开始讲解
 >
 > - 利用**隔板法**推导结果。首先我们考虑当前局面，即只有 i 个苹果的情况下的方案数。于是题目就是 i 个苹果分给 m 个人，允许分到 0 个。于是借鉴上述链接中“少分型”的思路，先借 m 个苹果，那么此时局面中就有 i+m 个苹果，现在就等价于将 i+m 个苹果分给 m 个人，每人至少分得 1 个苹果。（分完以后每个人都还回去就行了），此时的隔板操作就是”标准型”，即 i+m 个苹果产生 i+m-1 个间隔，在其中插 m-1 块板，从而将划分出来的 m 个部分分给 m 个人。此时的划分方案就是 $C_{i+m-1}^{m-1}$，那么对于所有的 i，结果就是
+>
 >     $$
 >     \begin{aligned}
 >     \sum_{i=1}^n C_{i+m-1}^{m-1} &= C_{m}^{m-1} + C_{m+1}^{m-1} + \cdots + C_{n+m-1}^{m-1} \\
@@ -3578,7 +3588,7 @@ int main() {
 
 图的遍历
 
-https://www.luogu.com.cn/problem/P3916
+<https://www.luogu.com.cn/problem/P3916>
 
 > 题意：给定一个有向图，求解每一个点可以到达的编号最大的点
 >
@@ -3702,7 +3712,7 @@ int main() {
 
 最长严格递增子序列
 
-https://www.acwing.com/problem/content/5273/
+<https://www.acwing.com/problem/content/5273/>
 
 > 标签：思维、哈希、排序
 >
@@ -3748,7 +3758,7 @@ int main()
 
 三元组
 
-https://www.acwing.com/problem/content/5280/
+<https://www.acwing.com/problem/content/5280/>
 
 > 标签：分讨、组合数学
 >
@@ -3814,7 +3824,7 @@ int main() {
 
 删除元素
 
-https://www.acwing.com/problem/content/5281/
+<https://www.acwing.com/problem/content/5281/>
 
 > 标签：分讨
 >
@@ -3982,7 +3992,7 @@ int main() {
 
 Sorting with Twos
 
-https://codeforces.com/contest/1891/problem/A
+<https://codeforces.com/contest/1891/problem/A>
 
 > 标签：构造
 >
@@ -4031,7 +4041,7 @@ void solve() {
 
 指针运动​
 
-https://www.acwing.com/problem/content/description/5468
+<https://www.acwing.com/problem/content/description/5468>
 
 > 标签：模拟
 >
@@ -4044,7 +4054,7 @@ https://www.acwing.com/problem/content/description/5468
 
 套餐设计
 
-https://www.acwing.com/problem/content/5480/
+<https://www.acwing.com/problem/content/5480/>
 
 > 标签：哈希
 >
@@ -4102,7 +4112,7 @@ int main() {
 
 分班
 
-https://www.acwing.com/problem/content/5481/
+<https://www.acwing.com/problem/content/5481/>
 
 > 标签：贪心、分讨
 >
@@ -4177,7 +4187,7 @@ int main() {
 
 双端队列
 
-https://www.acwing.com/problem/content/5484/
+<https://www.acwing.com/problem/content/5484/>
 
 > 标签：贪心、分讨
 >
@@ -4264,7 +4274,7 @@ int main() {
 
 你说的对，但是这是签到 I
 
-https://hydro.ac/d/nnu_contest/p/P1201
+<https://hydro.ac/d/nnu_contest/p/P1201>
 
 > 题意：给定两个单调不减且只含有小写字母的字符串，求解其中最长公共子串长度
 >
@@ -4332,7 +4342,7 @@ int main() {
 
 从双倍数组中还原原数组
 
-https://leetcode.cn/problems/find-original-array-from-doubled-array/description/
+<https://leetcode.cn/problems/find-original-array-from-doubled-array/description/>
 
 > 标签：贪心
 >
@@ -4376,7 +4386,7 @@ public:
 
 可获得的最大点数
 
-https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/description/
+<https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/description/>
 
 > 题意：给定一个序列，每次可以从头或尾取一个元素并弹出该元素，问如何取数可以使得取到的数总和最大
 >
@@ -4408,7 +4418,7 @@ public:
 
 确定两个字符串是否接近
 
-https://leetcode.cn/problems/determine-if-two-strings-are-close/description/
+<https://leetcode.cn/problems/determine-if-two-strings-are-close/description/>
 
 > 题意：给定两个字符串，可以对两个字符串进行任意次下面的操作：问在操作后使得两个字符串完全相等
 >
@@ -4461,7 +4471,7 @@ public:
 
 同位字符串连接的最小长度
 
-https://leetcode.cn/problems/minimum-length-of-anagram-concatenation/
+<https://leetcode.cn/problems/minimum-length-of-anagram-concatenation/>
 
 > 题意：给定一个由若干个同位字符串 t 组成的字符串 s，问这个同位字符串最短是什么？定义同位字符串为字符数量相等且每种字符的数量相等的字符串
 >

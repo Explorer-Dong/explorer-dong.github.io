@@ -1,9 +1,5 @@
 ---
 title: C++ 基础
-categories: 
-  - 后端
-  - CPlusPlus
-category_bar: true
 ---
 
 ## C++ 基础
@@ -362,7 +358,7 @@ TODO
 
 ### 参考
 
-https://www.zhihu.com/question/333560253/answer/2282723843
+<https://www.zhihu.com/question/333560253/answer/2282723843>
 
 ## 宏定义 *
 

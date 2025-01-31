@@ -12,10 +12,10 @@ title: 深度学习
 
 学习资源：
 
-- 教材官网：https://nndl.github.io/
-- 配套内容：https://github.com/nndl/
-- TensorFlow 文档：https://tensorflow.google.cn/api_docs/python/tf
-- Pytorch 文档：https://pytorch.org/docs/2.0/
+- [教材官网](https://nndl.github.io/)
+- [配套内容](https://github.com/nndl/)
+- [TensorFlow 文档](https://tensorflow.google.cn/api_docs/python/tf)
+- [Pytorch 文档](https://pytorch.org/docs/2.0/)
 
 为什么要学这门课？
 

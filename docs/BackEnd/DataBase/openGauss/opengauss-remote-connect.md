@@ -1,9 +1,5 @@
 ---
 title: openGauss 远程连接
-categories:
-  - 数据库
-  - openGauss
-category_bar: true
 ---
 
 ## 问题阐述
@@ -24,4 +20,4 @@ alter user <user_name> with SYSADMIN;
 
 <https://docs.opengauss.org/zh/docs/5.0.0-lite/docs/DatabaseAdministrationGuide/管理员.html>
 
-https://chatgpt.com/share/673031aa-b46c-8002-88b6-9ab1d80afa5c
+<https://chatgpt.com/share/673031aa-b46c-8002-88b6-9ab1d80afa5c>

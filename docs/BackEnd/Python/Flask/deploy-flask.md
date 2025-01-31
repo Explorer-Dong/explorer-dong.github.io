@@ -1,11 +1,5 @@
 ---
 title: 部署 Flask 应用
-categories:
-  - 后端
-  - Python
-  - Flask
-category_bar: true
-mermaid: true
 ---
 
 ## 前言

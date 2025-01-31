@@ -1,9 +1,5 @@
 ---
 title: 解决服务器入侵攻击
-categories:
-  - 运维
-  - Safe
-category_bar: true
 ---
 
 ## 前言

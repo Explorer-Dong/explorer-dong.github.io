@@ -1,7 +1,8 @@
 ---
 title: 数据结构与算法
-index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/DataStructure.png
 ---
+
+![](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/DataStructure.png)
 
 ## 前言
 

@@ -1,9 +1,5 @@
 ---
 title: Hexo 建站指南
-categories:
-  - 前端
-  - Hexo
-category_bar: true
 ---
 
 ## 前言

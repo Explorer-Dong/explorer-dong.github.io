@@ -1,7 +1,5 @@
 ---
 title: 基础算法
-categories: 数据结构与算法
-category_bar: true
 ---
 
 ## 前言
@@ -12,7 +10,7 @@ category_bar: true
 
 ### 1. green_gold_dog, array and permutation
 
-https://codeforces.com/contest/1867/problem/A
+<https://codeforces.com/contest/1867/problem/A>
 
 > 题意：给定n个数a[i]，其中可能有重复数，请构造一个n个数的排列b[i]，使得c[i]=a[i]-b[i]中，c[i]的不同数字的个数最多
 >
@@ -92,7 +90,7 @@ int main()
 
 ### 2. Good Kid
 
-https://codeforces.com/contest/1873/problem/B
+<https://codeforces.com/contest/1873/problem/B>
 
 > 题意：对于一个数列，现在可以选择其中的一个数使其+1，问如何选择这个数，可以使得修改后的数列中的所有数之积的值最大
 >
@@ -130,7 +128,7 @@ int main()
 
 ### 3. 1D Eraser
 
-https://codeforces.com/contest/1873/problem/D
+<https://codeforces.com/contest/1873/problem/D>
 
 > 题意：给定一个只有B和W两种字符的字符串，现在有一种操作可以将一个指定大小的区间（大小为k）中所有的字符全部变为W，问对于这个字符串，至少需要几次上述操作才可以将字符串全部变为W字符
 >
@@ -173,7 +171,7 @@ int main()
 
 ### 4. ABBC or BACB
 
-https://codeforces.com/contest/1873/problem/G
+<https://codeforces.com/contest/1873/problem/G>
 
 > 题意：现在有一个只有A和B两种字符的字符串，有如下两种操作：第一种，可以将AB转化为BC，第二种，可以将BA转化为CB。问最多可以执行上述操作几次
 >
@@ -228,7 +226,7 @@ int main()
 
 ### 5. Smilo and Monsters
 
-https://codeforces.com/contest/1891/problem/C
+<https://codeforces.com/contest/1891/problem/C>
 
 > 题意：给定一个序列，其中每一个元素代表一个怪物群中的怪物的数量。现在有两种操作：
 >
@@ -284,7 +282,7 @@ void solve() {
 
 ### 6. 通关
 
-https://www.lanqiao.cn/problems/5889/learning/?contest_id=145
+<https://www.lanqiao.cn/problems/5889/learning/?contest_id=145>
 
 > 声明：谨以此题记录我的第一道正式图论题（存图技巧抛弃了y总的纯数组，转而使用动态数组`vector`进行建图）e.g.
 >
@@ -354,7 +352,7 @@ void solve() {
 
 ### 7. 串门
 
-https://www.lanqiao.cn/problems/5890/learning/?contest_id=145
+<https://www.lanqiao.cn/problems/5890/learning/?contest_id=145>
 
 > 题意：给定一棵无向树，边权为正。现在询问在访问到每一个结点的情况下最小化行走的路径长度
 >
@@ -436,32 +434,42 @@ void solve() {
 
 ### 8. Codeforces rating
 
-https://vijos.org/d/nnu_contest/p/1532
+<https://vijos.org/d/nnu_contest/p/1532>
 
 > 题意：现在已知一个初始值R，现在给定了n个P值，选择其中的合适的值，使得最终的 $R'=3/4 R + 1/4 P$ 最大
 >
 > 思路：首先一点就是我们一定要选择P比当前R大的值，接下来就是选择合适的P使得最终迭代出来的R'最大。首先我们知道，对于筛选出来的比当前R大的P集合，任意选择其中的一个P，都会让R增大，但是不管增加多少都是不会超过选择的P。那么显然，如果筛选出来的P集合是一个递增序列，那么就可以让R不断的增加。但是这一定是最大的吗？我们不妨反证一下，现在我们有两个P，分别为x，y，其中 $x<y$。
 >
 > 那么按照上述思路，首先就是 
+>
 > $$
 > R'=\frac{3}{4}R+\frac{1}{4}x(R'<x)
 > $$
+>
 > 接着就是 
+>
 > $$
 > R''_1=\frac{3}{4}R'+\frac{1}{4}y(R''_1<y)=\frac{9}{16}R+\frac{3}{16}x+\frac{1}{4}y
 > $$
+>
 > **反之**，首先选择一个较大的P=y，再选择一个较小的P=x，即首先就是
+>
 > $$
 > R'=\frac{3}{4}R+\frac{1}{4}y(R'<y)
 > $$
+>
 > 此时我们还不一点可以继续选择x，因为此时的R'可能已经超过了x的值，那么我们按照最优的情况计算，可以选择x，那么就是
+>
 > $$
 > R''_2=\frac{3}{4}R'+\frac{1}{4}x(R''_2<x)=\frac{9}{16}R+\frac{3}{16}y+\frac{1}{4}x
 > $$
+>
 > 可以发现
+>
 > $$
 > R''_2-R''_1=\frac{1}{16}(x-y)<0
 > $$
+>
 > 即会使得最终的答案变小。因此最优的策略就是按照增序进行叠加计算
 >
 > ==注意点：==
@@ -500,7 +508,7 @@ void solve() {
 
 ### 9. 货运公司
 
-https://www.acwing.com/problem/content/5380/
+<https://www.acwing.com/problem/content/5380/>
 
 > 题意：给定 $n$ 个运货订单，每个订单需要运送一定量的货物，同时给予一定量的报酬。现在有 $k$ 个卡车进行运送，每个卡车有运送容量。需要合理规划卡车的装配，使得最终获得的总报酬最大。有以下约束条件：
 >
@@ -598,7 +606,7 @@ int main() {
 
 ### 10. 部分背包问题
 
-https://www.luogu.com.cn/problem/P2240
+<https://www.luogu.com.cn/problem/P2240>
 
 > - 题意：给定一组物品，每一个物品有一定的重量与价值，现在给定一个背包总承重，需要从中选择合适的物品进行装载，使得最终装载的物品的总价值最大。现在规定每一个物品可以进行随意分割，按照单位重量计算价值
 > - 思路：**考虑一般情况**。很显然，如果不说可以随意分割，那就是一个 01 背包，既然说了可以随意分割，那就直接贪心选择即可，按照单位重量的价值降序进行选择
@@ -655,7 +663,7 @@ signed main() {
 
 ### 11. 排队接水
 
-https://www.luogu.com.cn/problem/P1223
+<https://www.luogu.com.cn/problem/P1223>
 
 > - 题意：贪心经典，排队接水，每一个人都有一个打水时间，现在询问如何排队能够使得平均等待时间最短
 >
@@ -714,7 +722,7 @@ signed main() {
 
 ### 12. 线段覆盖
 
-https://www.luogu.com.cn/problem/P1803
+<https://www.luogu.com.cn/problem/P1803>
 
 > - 题意：给定一个数轴和数轴上的 n 个线段，现在需要从中选出尽可能多的 k 个线段，使得线段之间两两不相交，问 k 最大是多少
 > - 思路：绞尽脑汁想着各种情况进行分类讨论，什么包含、相交、相离，但是都忽视了最重要的一点，那就是一开始应该选择线段。即**考虑边界**，对于最左侧我们应该选择哪一条线段呢？答案是最左侧的右端点最靠左的那一条线段，这样子后续的线段才能有更多的摆放空间
@@ -766,7 +774,7 @@ signed main() {
 
 ### 13. 小A的糖果
 
-https://www.luogu.com.cn/problem/P3817
+<https://www.luogu.com.cn/problem/P3817>
 
 >- 题意：给定一个序列，现在每次可以选择序列中的某个数进行减一操作，问最少需要减多少可以使得序列中相邻两个元素之和不超过规定的数值 x
 >- 思路：同 T12 的思路展开，**考虑边界**，我们直接从任意的一个边界开始思考，假设从左边界开始考虑。为了让左边界满足，那么 a[1] 与 a[2] 之和就需要满足条件，为了后续可以尽可能少的进行减一操作，很显然我们最好从两个数的右边的数开始下手，于是贪心的结果就有了
@@ -811,7 +819,7 @@ signed main() {
 
 ### 15. 陶陶摘苹果（升级版）
 
-https://www.luogu.com.cn/problem/P1478
+<https://www.luogu.com.cn/problem/P1478>
 
 > - 题意：现在有 n 个苹果，含有高度和消耗体力值两个属性，现在你有一个最大高度以及总体力值，每次只能摘高度值不超过最大高度的苹果且会消耗相应的体力值。问最多可以摘多少个苹果
 > - 思路：既然是想要摘的苹果尽可能多，那么高度都是浮云，体力值才是关键。为了摘得尽可能多的苹果，自然是消耗体力越少越优先摘。于是按照消耗体力值升序排序后，扫描一遍即可计数
@@ -865,7 +873,7 @@ signed main() {
 
 ### 16. [NOIP2018 提高组] 铺设道路
 
-https://www.luogu.com.cn/problem/P5019
+<https://www.luogu.com.cn/problem/P5019>
 
 >- 题意：给定一个序列，每次可以选择一个连续的区间使得其中的所有数 -1，前提是区间中的数都要 > 1，问最少选择几次区间可以将所有的数全部都减到 0
 >
@@ -912,7 +920,7 @@ signed main() {
 
 ### 17. [USACO1.3] 混合牛奶 Mixing Milk
 
-https://www.luogu.com.cn/problem/P1208
+<https://www.luogu.com.cn/problem/P1208>
 
 > - 题意：现在需要收集 need 容量的牛奶，同时有 n 个农户提供奶源，每一个商户的奶源有一定的数量与单价，问如何采购可以在满足需求 need 的情况下成本最低化
 > - 思路：很显然单价越低越优先采购
@@ -967,7 +975,7 @@ signed main() {
 
 ### 18. [NOIP2007 普及组] 纪念品分组
 
-https://www.luogu.com.cn/problem/P1094
+<https://www.luogu.com.cn/problem/P1094>
 
 
 > - 题意：给定 n 个数，问如何分组可以使得在每一组之和不超过定值 lim 且每一组最多两个数的情况下，分得的组数最少
@@ -1016,7 +1024,7 @@ signed main() {
 
 ### 19. 跳跳！
 
-https://www.luogu.com.cn/problem/P4995
+<https://www.luogu.com.cn/problem/P4995>
 
 > - 题意：给定 n 个数，每一个数代表一个高度，现在有一只青蛙从地面（高度为 0）开始起跳，每一个数字只能被跳上去一次。问如何设定跳数顺序 h[]，可以使得下式尽可能的大
 >     $$
@@ -1070,7 +1078,7 @@ signed main() {
 
 ### 20. 安排时间
 
-https://www.acwing.com/problem/content/5466/
+<https://www.acwing.com/problem/content/5466/>
 
 > - 题意：给定 n 个时间段处理餐厅事务，m 个用餐预定信息，含有三个信息分别为订单发起时间，订单需要准备的时间，客人来用餐时间。问如何安排每一个时间段，可以让所有的用户得到正常的服务。如果不能全部满足则输出 -1
 > - 思路：玄学贪心，先到的用户先做它的菜
@@ -1134,7 +1142,7 @@ signed main() {
 
 ### 21. [NOIP2004 提高组] 合并果子
 
-https://www.luogu.com.cn/problem/P1090
+<https://www.luogu.com.cn/problem/P1090>
 
 > - 题意：给定 n 个数，现在需要将其两两合并为最终的一个数，每次合并的代价是两个数之和，问如何对这些数进行合并可以使得总代价最小
 > - 思路：很显然一共需要合并 n-1 次。那么我们从三个物品开始考虑，然后使用数学归纳法推导到 n 个数。对于三个物品，很显然先将两个物品进行合并，再将这个结果与最大的数进行合并方案时最优的。那么推广到 n 个数，我们只需要每次合并当前局面中最小的两个数即可
@@ -1183,7 +1191,7 @@ signed main() {
 
 ### 22. 删数问题
 
-https://www.luogu.com.cn/problem/P1106
+<https://www.luogu.com.cn/problem/P1106>
 
 > - 题意：给定一个数字字符串长度为 n，现在需要选择其中的 m 位数，使得这 m 位组成的数最小是多少 (m=n-k)
 > - 思路：**我们从一端考虑问题**。为了组成的数尽可能的小，我们希望从首位开始就尽可能的小，同时如果有重复的数字，就选择最左侧的，剩余的数字留给后续的位数继续选择。有一个需要注意的点就是选择每一位的数字时，范围的约束，我们假设需要从 10 位的数字串中选择 3 位，那么我们第一次选择时需要在 0-7位中选择一位，第二次选择在 上次选择的下一个位置到第8位中选择一位，以此类推进行贪心选择
@@ -1244,7 +1252,7 @@ signed main() {
 
 ### 23. 截断数组
 
-https://www.acwing.com/problem/content/5483/
+<https://www.acwing.com/problem/content/5483/>
 
 > 题意：定义平衡数组为奇偶数数量相同的数组，现在给定一个平衡数组，和一个总成本数，最多可以将原数组截成多少截子平衡数组，且截断代价总和不超过总成本，截断代价计算公式为 $|a_i-a_{i+1}|$
 >
@@ -1311,7 +1319,7 @@ int main() {
 
 ### 24. 修改后的最大二进制字符串
 
-https://leetcode.cn/problems/maximum-binary-string-after-change/description/
+<https://leetcode.cn/problems/maximum-binary-string-after-change/description/>
 
 > 题意：给定一个仅由01组成的字符串，现在可以执行下面两种操作任意次，使得最终的字符串对应的十进制数值最大，给出最终的字符串
 >
@@ -1360,7 +1368,7 @@ public:
 
 ### 25. 子序列最大优雅度
 
-https://leetcode.cn/problems/maximum-elegance-of-a-k-length-subsequence/
+<https://leetcode.cn/problems/maximum-elegance-of-a-k-length-subsequence/>
 
 > 标签：反悔贪心
 >
@@ -1457,7 +1465,7 @@ class Solution:
 
 ### 起床困难综合症
 
-https://www.acwing.com/problem/content/1000/
+<https://www.acwing.com/problem/content/1000/>
 
 > 标签：按位贪心、分类讨论。
 >
@@ -1532,7 +1540,7 @@ signed main() {
 
 ### 【差分/排序】充能计划
 
-https://www.lanqiao.cn/problems/8732/learning/?contest_id=147
+<https://www.lanqiao.cn/problems/8732/learning/?contest_id=147>
 
 > 题意：给定 $n$ 个数初始化为 $0$，现在给定 $q$ 个位置，每个位置给定两个参数 $p,k$，表示从第 $k$ 个数开始连续 $s[p]$ 个数 $+1$，返回最终每一个位置的数值。+1 操作有以下两种约束：
 >
@@ -1620,7 +1628,7 @@ signed main() {
 
 ### 【前缀和/二分答案】或值至少为 K 的最短子数组 II
 
-https://leetcode.cn/problems/shortest-subarray-with-or-at-least-k-ii/description/
+<https://leetcode.cn/problems/shortest-subarray-with-or-at-least-k-ii/description/>
 
 > 题意：给定一个序列，问其中所有连续的序列中，所有元素或值的结果超过 k 的序列长度最短是多少
 >
@@ -1697,7 +1705,7 @@ public:
 
 ### 【差分/贪心】增减序列
 
-https://www.acwing.com/problem/content/description/102/
+<https://www.acwing.com/problem/content/description/102/>
 
 > 标签：差分、贪心
 >
@@ -1779,7 +1787,7 @@ if __name__ == '__main__':
 
 ### 【二分答案】Building an Aquarium
 
-https://codeforces.com/contest/1873/problem/E
+<https://codeforces.com/contest/1873/problem/E>
 
 > 题意：想象有一个二维平面，现在有一个数列，每一个数表示平面对应列的高度，现在要给这个平面在两边加上护栏，问护栏最高可以设置为多高，可以使得在完全填满的情况下，使用的水量不会超过给定的用水量。已知最大用水量为k
 >
@@ -1829,7 +1837,7 @@ int main()
 
 ### 【二分答案】分组
 
-https://www.lanqiao.cn/problems/5129/learning/
+<https://www.lanqiao.cn/problems/5129/learning/>
 
 > 题意：给定一个序列，现在需要将这个数列分为k组，如何分组可以使得每一组的极差中，最大值最小
 >
@@ -1905,7 +1913,7 @@ int main() {
 
 ### 【二分答案】木材加工
 
-https://www.luogu.com.cn/problem/P2440
+<https://www.luogu.com.cn/problem/P2440>
 
 > 题意：给定一个序列，现在需要将这个序列切分为等长的 k 段，长度必须为整数且尽可能的长，如果无法切分可以将多余的长度丢弃，问最长的长度是多少
 >
@@ -1962,7 +1970,7 @@ signed main() {
 
 ### 【二分答案】跳石头
 
-https://www.luogu.com.cn/problem/P2678
+<https://www.luogu.com.cn/problem/P2678>
 
 > 题意：给定 n 个递增的不重复数，现在可以从其中拿掉 k 个数，使得相邻数字之间的最小差值最大，问最大的最小差值是多少
 >
@@ -2031,7 +2039,7 @@ signed main() {
 
 ### 【二分答案】路标设置
 
-https://www.luogu.com.cn/problem/P3853
+<https://www.luogu.com.cn/problem/P3853>
 
 > 题意：与第四题题面几乎一致，只是现在不是从序列中拿走 k 数个，而是往序列中插入 k 个数（插入数字后要保证序列仍然没有重复数且递增），问在插入一定数量数字的情况下，最小的最大差值是多少
 >
@@ -2090,7 +2098,7 @@ signed main() {
 
 ### 【二分答案】数列分段 Section II
 
-https://www.luogu.com.cn/problem/P1182
+<https://www.luogu.com.cn/problem/P1182>
 
 > 题意：给定一个无序的序列，现在需要将这个序列进行分段（连续的），分成指定的段数。问应该如何分段可以使得所有段的分段和的最大值最小，输出这个最小的最大值
 >
@@ -2153,7 +2161,7 @@ signed main() {
 
 ### 【二分答案】kotori的设备
 
-https://www.luogu.com.cn/problem/P3743
+<https://www.luogu.com.cn/problem/P3743>
 
 > 题意：现在有一批电子设备，每一个电子设备有一个电量消耗速度与当前剩余电量，现在有一个充电器有一个确定的充电速度。问这批设备最久可以运作多久？当可以无限运作时输出 -1
 >
@@ -2209,7 +2217,7 @@ signed main() {
 
 ### 【二分答案/并查集】关押罪犯 :fire:
 
-https://www.luogu.com.cn/problem/P1525
+<https://www.luogu.com.cn/problem/P1525>
 
 > 题意：给定一个无向图，没有重边和自环，边权为正。现在需要将图中所有的顶点分为两部分，使得两部分中最大的边权尽可能小，问该最小边权是多少
 >
@@ -2239,7 +2247,7 @@ https://www.luogu.com.cn/problem/P1525
 
 ### 【二分答案】摆放棋子
 
-https://www.acwing.com/problem/content/5562/
+<https://www.acwing.com/problem/content/5562/>
 
 > 题意：给定一个 01 序列表示一个 $1\times n$ 的棋子序列，其中 1 表示有棋子，0 表示没有棋子。现在给定 k 个棋子，如何放置可以使得棋盘上连续的棋子长度尽可能长？给出一个合法的最长的序列
 >
@@ -2315,7 +2323,7 @@ int main() {
 
 ### 【二分答案】盖楼
 
-https://www.acwing.com/problem/content/description/5569/
+<https://www.acwing.com/problem/content/description/5569/>
 
 > 题意：给定 H 个正整数分别为 1 到 H。现在要将这 H 个正整数分给两个人，其中一个人希望获得可以不被 x 整除的数，另一个人希望可以获得不被 y 整除的数。其中 x 和 y 均为质数，问最小的 H 是多少？
 >
@@ -2407,7 +2415,7 @@ bool chk(ll h) {
 
 ### 【二分答案】找出叠涂元素
 
-https://leetcode.cn/problems/first-completely-painted-row-or-column/description/
+<https://leetcode.cn/problems/first-completely-painted-row-or-column/description/>
 
 > 题意：给定一个 $m\times n$ 的矩阵，以及一个存储矩阵中所有元素值的数组，现在从左往右将数组中的元素在对应矩阵中涂色，问序列中最左边使得矩阵中某一行或列全部涂色的下标是什么
 >
@@ -2459,7 +2467,7 @@ public:
 
 ### 【二分答案/双指针】找出唯一性数组的中位数
 
-https://leetcode.cn/problems/find-the-median-of-the-uniqueness-array/
+<https://leetcode.cn/problems/find-the-median-of-the-uniqueness-array/>
 
 > 题意：给定一个数组，返回其「唯一性数组」的中位数。如果唯一性数组有奇数个元素，则返回中间元素，如果有偶数个元素，则返回两个中间元素中较小的那个，即左边那个中间元素。唯一性数组定义为：原数组的所有非空子数组中不同元素的个数组成的序列。
 >
@@ -2544,7 +2552,7 @@ class Solution:
 
 ### 【二分查找】Bomb
 
-https://codeforces.com/contest/1996/problem/F
+<https://codeforces.com/contest/1996/problem/F>
 
 > 题意：给定两个序列 $a$ 和 $b$ 以及最大操作次数 $k$，问在不超过最大操作次数的情况下，最多可以获得多少收益？收益的计算方法为：每次选择 $a$ 中一个数 `a[i]` 加入收益，并将该数减去 `b[i]` 直到为 $0$。
 >
@@ -2614,7 +2622,7 @@ signed main() {
 
 ### 【dfs】机器人的运动范围
 
-https://www.acwing.com/problem/content/22/
+<https://www.acwing.com/problem/content/22/>
 
 ```cpp
 class Solution {
@@ -2656,7 +2664,7 @@ public:
 
 ### 【dfs】CCC单词搜索
 
-https://www.acwing.com/problem/content/5168/
+<https://www.acwing.com/problem/content/5168/>
 
 > 搜索逻辑：分为正十字与斜十字
 >
@@ -2756,7 +2764,7 @@ int main()
 
 ### 【dfs/二进制枚举】数量
 
-https://www.acwing.com/problem/content/5150/
+<https://www.acwing.com/problem/content/5150/>
 
 > 题意：给定一个数n，问[1, n]中有多少个数只含有4或7
 >
@@ -2852,7 +2860,7 @@ int main() {
 
 ### 【dfs】组合总和
 
-https://leetcode.cn/problems/combination-sum/
+<https://leetcode.cn/problems/combination-sum/>
 
 > 题意：给定一个序列，其中的元素没有重复，问如何选取其中的元素，使得选出的数字总和为指定的数字target，选取的数字可以重复
 >
@@ -2893,7 +2901,7 @@ public:
 
 ### 【递归】扩展字符串
 
-https://www.acwing.com/problem/content/5284/
+<https://www.acwing.com/problem/content/5284/>
 
 > 题意：给定一种字符串的构造方式，问构造n次以后的字符串中的第k个字符是什么
 >
@@ -2987,7 +2995,7 @@ signed main() {
 
 ### 【dfs】让我们异或吧
 
-https://www.luogu.com.cn/problem/P2420
+<https://www.luogu.com.cn/problem/P2420>
 
 > 题意：给定一棵树，树上每一条边都有一个权值，现在有Q次询问，对于每次询问会给出两个结点编号u，v，需要输出结点u到结点v所经过的路径的所有边权的异或之和
 >
@@ -3041,7 +3049,7 @@ void solve() {
 
 ### 【记忆化搜索】Function
 
-https://www.luogu.com.cn/problem/P1464
+<https://www.luogu.com.cn/problem/P1464>
 
 > 题意：
 >
@@ -3143,7 +3151,7 @@ signed main() {
 
 ### 【递归】外星密码
 
-https://www.luogu.com.cn/problem/P1928
+<https://www.luogu.com.cn/problem/P1928>
 
 > 线性递归
 >
@@ -3252,7 +3260,7 @@ signed main() {
 
 ### 【dfs+剪枝/二进制枚举】选数
 
-https://www.luogu.com.cn/problem/P1036
+<https://www.luogu.com.cn/problem/P1036>
 
 > 题意：给定n个数，从中选出k个数，问一共有多少种方案可以使得选出来的k个数之和为质数
 >
@@ -3378,7 +3386,7 @@ signed main() {
 
 ### 【dfs/bfs】01迷宫
 
-https://www.luogu.com.cn/problem/P1141
+<https://www.luogu.com.cn/problem/P1141>
 
 > 题意：给定一个01矩阵，行走规则为“可以走到相邻的数字不同的位置”，现在给定m次询问 `(u,v)`，输出从 `(u,v)` 开始最多可以走多少个位置？
 >
@@ -3533,7 +3541,7 @@ int main() {
 
 ### 【dfs/二进制枚举】kkksc03考前临时抱佛脚
 
-https://www.luogu.com.cn/problem/P2392
+<https://www.luogu.com.cn/problem/P2392>
 
 > 题意：给定四组数据，每组数据由 n 个数字组成，对于每一组数字需要分为两组使得两组之和相差尽可能小，问最终四组数据分组后，每一组之和的最大值之和是多少
 >
@@ -3654,7 +3662,7 @@ signed main() {
 
 ### 【dfs/二进制枚举】PERKET
 
-https://www.luogu.com.cn/problem/P2036
+<https://www.luogu.com.cn/problem/P2036>
 
 > 题意：给定一个二元组序列，每一个二元组中，一个表示酸度，一个表示苦度，现在在至少需要选择一个二元组的情况下，希望酸度之积与苦度之和的差值最小
 >
@@ -3776,7 +3784,7 @@ signed main() {
 
 ### 【dfs】迷宫
 
-https://www.luogu.com.cn/problem/P1605
+<https://www.luogu.com.cn/problem/P1605>
 
 > 题意：矩阵寻路，有障碍物，每一个点只能走一次，找到起点到终点可达路径数
 >
@@ -3841,7 +3849,7 @@ signed main() {
 
 ### 【dfs】单词方阵
 
-https://www.luogu.com.cn/problem/P1101
+<https://www.luogu.com.cn/problem/P1101>
 
 > - 题意：给定一个字符串方阵，问对于其中的 8 个方向，是否存在一个指定的字符串
 > - 思路：很显然的暴力枚举，只不过采用 dfs 进行优化，我们可以发现搜索的逻辑非常的简单，只需要在约束方向的情况下每次遍历八个方向即可。本题的关键在于如何快速正确的编码。对于八个角度判断是否与原始方向一致，我们采用**增量的思路**，只需要通过传递父结点的位置坐标即可唯一确定，因为两点确定一条了一条射线，方向也就确定了。其次就是如何构造答案矩阵，思路与两点确定射线的逻辑类似，我们在抵达搜索的终点时，只需要通过当前点的坐标与父结点的坐标唯一确定来的路径的方向，进行构造即可
@@ -3911,7 +3919,7 @@ signed main() {
 
 ### 【dfs】自然数的拆分问题
 
-https://www.luogu.com.cn/problem/P2404
+<https://www.luogu.com.cn/problem/P2404>
 
 > - 题意：给定一个自然数 n，问有多少种拆分方法能将该数拆分为一定数量的升序自然数之和
 > - 思路：**树形搜索的例题**。我们采用递增凑数的思路，对于每一个结点值，我们从其父结点的值开始深度搜索，从而确保了和数递增。递归终点就是和值为自然数 n 的值。剪枝就是和值超过了自然数 n 的值
@@ -3964,7 +3972,7 @@ signed main() {
 
 ### 【dfs】Lake Counting S
 
-https://www.luogu.com.cn/problem/P1596
+<https://www.luogu.com.cn/problem/P1596>
 
 > - 题意：给定一个矩阵，计算其中连通块的数量
 > - 思路：直接逐个元素遍历即可，对于每一个元素，我们采用 dfs 或者 bfs 的方式进行打标签从而将整个连通块都标记出来即可
@@ -4080,7 +4088,7 @@ signed main() {
 
 ### 【dfs】填涂颜色
 
-https://www.luogu.com.cn/problem/P1162
+<https://www.luogu.com.cn/problem/P1162>
 
 > - 题意：给定一个方阵，其中只有 0 和 1，其中的 1 将部分的 0 围成了一个圈，现在需要将被围住的 0 转为 2 后，将转化后的方阵输出
 > - 思路：题意很简单，思路也很显然，我们要做的就是区分开圈内与圈外的 0，如何区分呢？我们采用搜索打标记的方式将外圈的 0 全部打标记之后，遇到的没有打标记的 0 显然就是圈内的了。为了满足所有情况下圈内的 0，我们从方阵的四条边进行探测式打标签即可
@@ -4139,7 +4147,7 @@ signed main() {
 
 ### 【bfs】马的遍历
 
-https://www.luogu.com.cn/problem/P1443
+<https://www.luogu.com.cn/problem/P1443>
 
 > - 题意：给定一个矩阵棋盘范围与一个马的位置坐标，现在问棋盘中每一个点的最小到达距离是多少
 > - 思路：很显然的一个 bfs 宽搜模型，我们只需要从该颗马的起始位置开始宽搜，对于每一个第一个搜索到的此前没有到达的点，计算此时到起点的步长距离就是最小到达距离
@@ -4204,7 +4212,7 @@ signed main() {
 
 ### 【bfs】奇怪的电梯
 
-https://www.luogu.com.cn/problem/P1135
+<https://www.luogu.com.cn/problem/P1135>
 
 > - 题意：给定一个电梯，第 `i` 层只能上升或者下降 `a[i]` 层，问从起点开始到终点最少需要乘坐几次电梯
 > - 思路：很显然的一个宽搜，关键在于需要对打标记避免重复访问结点造成死循环
@@ -4350,7 +4358,7 @@ signed main() {
 
 ### 【dfs】递归实现指数型枚举
 
-https://www.acwing.com/problem/content/94/
+<https://www.acwing.com/problem/content/94/>
 
 > - 题意：给定 n 个数，从其中选择 0-n 个数，将所有的选择方案打印出来，每一个方案中数字按照升序排列
 > - 思路：很显然的一个二叉树问题。每一个数只有两种状态，选择 or 不选择，于是可以采用二进制枚举 or 二叉树 dfs 的方法进行。为了满足升序，二进制枚举时从低位到高位判断是否为 1 即可；搜索时从低位开始搜索，通过一个动态数组存储搜索路径上的数字即可
@@ -4436,7 +4444,7 @@ signed main() {
 
 ### 【dfs】递归实现排列型枚举
 
-https://www.acwing.com/problem/content/96/
+<https://www.acwing.com/problem/content/96/>
 
 > - 题意：按照字典序升序，打印 n 个数的所有全排列情况
 > - 思路：从第一位开始枚举每一位可以选择的数，显然每一位可选择数的数量逐渐减少，直到只有一种选择结束搜索
@@ -4493,13 +4501,13 @@ signed main() {
 
 树的路径问题，考虑回溯。如何更新值？如何返回值？
 
-参考：https://www.bilibili.com/video/BV17o4y187h1/
+参考：<https://www.bilibili.com/video/BV17o4y187h1/>
 
 
 
 ### 【dfs】在带权树网络中统计可连接服务器对数目
 
-https://leetcode.cn/problems/count-pairs-of-connectable-servers-in-a-weighted-tree-network/description/
+<https://leetcode.cn/problems/count-pairs-of-connectable-servers-in-a-weighted-tree-network/description/>
 
 > 题意：给定一棵带权无根树，定义「中转结点」为以当前结点为根，能够寻找到两个不同分支下的结点，使得这两个结点到当前结点的简单路径长度可以被给定值 k 整除，问树中每一个结点的「中转结点」的有效对数是多少
 >
@@ -4588,7 +4596,7 @@ class Solution:
 
 ### 【dfs】将石头分散到网格图的最少移动次数
 
-https://leetcode.cn/problems/minimum-moves-to-spread-stones-over-grid/
+<https://leetcode.cn/problems/minimum-moves-to-spread-stones-over-grid/>
 
 > 标签：搜索、全排列、库函数
 >
@@ -4746,7 +4754,7 @@ class Solution:
 
 ### 【分治】随机排列
 
-https://www.acwing.com/problem/content/5469/
+<https://www.acwing.com/problem/content/5469/>
 
 > 题意：给定一个 n 个数的全排列序列，并将其进行一定的对换，问是对换了 3n 次还是 7n+1 次
 >

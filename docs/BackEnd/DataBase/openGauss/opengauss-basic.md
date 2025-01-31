@@ -1,9 +1,5 @@
 ---
 title: openGauss 基础
-categories: 
-  - 数据库
-  - openGauss
-category_bar: true
 ---
 
 ## 前言

@@ -1,7 +1,5 @@
 ---
 title: 进阶数据结构
-categories: 数据结构与算法
-category_bar: true
 ---
 
 ## 前言
@@ -12,7 +10,7 @@ category_bar: true
 
 孤立点数量
 
-https://www.acwing.com/problem/content/5560/
+<https://www.acwing.com/problem/content/5560/>
 
 > 题意：给定一个无向图，可能不连通，没有重边和自环。现在需要给图中的每一条无向边定向，要求所有的边定完向以后 0 入度的点尽可能的少，给出最少的 0 入度点的数量
 >

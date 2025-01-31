@@ -1,9 +1,5 @@
 ---
 title: CSS 基础
-categories: 
-  - 前端
-  - CSS
-category_bar: true
 ---
 
 CSS 为样式文件，简单的来说就是对 Html 中各个标签的内容进行定义，使得展示出各种不同的颜色、形状、布局等等，宗旨还是为了提升美观程度，从而提升用户浏览体验。速查手册 [CSS3 教程](https://www.runoob.com/css3/css3-tutorial.html)，以下为常用 or 易遗忘 or 基本概念速查清单：

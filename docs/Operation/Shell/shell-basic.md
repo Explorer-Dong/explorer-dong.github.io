@@ -1,10 +1,5 @@
 ---
 title: Shell 基础
-categories:
-  - 运维
-  - Shell
-category_bar: true
-mermaid: true
 ---
 
 ## 前言

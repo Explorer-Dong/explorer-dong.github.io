@@ -1,9 +1,5 @@
 ---
 title: Python 基础
-categories:
-  - 后端
-  - Python
-category_bar: true
 ---
 
 ## 前言

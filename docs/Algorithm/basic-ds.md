@@ -1,7 +1,5 @@
 ---
 title: 基础数据结构
-categories: 数据结构与算法
-category_bar: true
 ---
 
 ## 前言
@@ -10,7 +8,7 @@ category_bar: true
 
 ## 【模板】双链表
 
-https://www.acwing.com/problem/content/829/
+<https://www.acwing.com/problem/content/829/>
 
 > 思路：用两个空结点作为起始状态的边界，避免所有边界讨论。
 >
@@ -193,7 +191,7 @@ if __name__ == '__main__':
 
 ## 【模板】单调栈
 
-https://www.acwing.com/problem/content/832/
+<https://www.acwing.com/problem/content/832/>
 
 > 题意：对于一个序列中的每一个元素，寻找每一个元素左侧最近的比其小的元素。
 >
@@ -404,7 +402,7 @@ if __name__ == '__main__':
 
 ## 【模板】最近公共祖先
 
-https://www.luogu.com.cn/problem/P3379
+<https://www.luogu.com.cn/problem/P3379>
 
 > 题意：寻找树中指定两个结点的最近公共祖先 $\text{(Lowest Common Ancestor, 简称 LCA)}$。
 >
@@ -487,7 +485,7 @@ void solve() {
 
 #### 验证栈序列
 
-https://www.luogu.com.cn/problem/P4387
+<https://www.luogu.com.cn/problem/P4387>
 
 > - 题意：给定入栈序列与出栈序列，问出栈序列是否合法
 >
@@ -545,7 +543,7 @@ signed main() {
 
 ## 【二叉树】美国血统
 
-https://www.luogu.com.cn/problem/P1827
+<https://www.luogu.com.cn/problem/P1827>
 
 > 题意：给定二叉树的中序和先序序列，输出后序序列
 >
@@ -656,7 +654,7 @@ signed main() {
 
 ## 【二叉树】新二叉树
 
-https://www.luogu.com.cn/problem/P1305
+<https://www.luogu.com.cn/problem/P1305>
 
 > 题意：给定一棵二叉树的 n 个结点信息，分别为当前结点的数据信息、左孩子结点信息和右结点信息，输出这棵二叉树的前序序列
 >
@@ -709,7 +707,7 @@ signed main() {
 
 ## 【二叉树】遍历问题
 
-https://www.luogu.com.cn/problem/P1229
+<https://www.luogu.com.cn/problem/P1229>
 
 > 题意：给定一棵二叉树的前序序列与后序序列，问中序序列的可能情况有多少种
 >
@@ -753,7 +751,7 @@ signed main() {
 
 ## 【二叉树】医院设置 :fire:
 
-https://www.luogu.com.cn/problem/P1364
+<https://www.luogu.com.cn/problem/P1364>
 
 > 题意：给定一棵二叉树，树中每一个结点存储了一个数值表示一个医院的人数，现在需要在所有的结点中将一个结点设置为医院使得其余结点中的所有人到达该医院走的路总和最小。路程为结点到医院的最短路，边权均为 1。给出最终的最短路径总和
 >
@@ -855,7 +853,7 @@ signed main() {
 
 ## 【二叉树】二叉树深度
 
-https://www.luogu.com.cn/problem/P4913
+<https://www.luogu.com.cn/problem/P4913>
 
 > 题意：给定一棵二叉树，求解这棵二叉树的深度
 >
@@ -904,7 +902,7 @@ signed main() {
 
 ## 【完全二叉树】淘汰赛
 
-https://www.luogu.com.cn/problem/P1364
+<https://www.luogu.com.cn/problem/P1364>
 
 > 题意：给定 $2^n$ 支球队的编号与能力值，进行淘汰赛，能力值者晋级下一轮直到赛出冠军。输出亚军编号
 >
@@ -955,7 +953,7 @@ signed main() {
 
 ## 【二叉树/LCA】二叉树问题
 
-https://www.luogu.com.cn/problem/P3884
+<https://www.luogu.com.cn/problem/P3884>
 
 > 题意：给定一棵二叉树的结点关系信息，求出这棵二叉树的深度、宽度和两个指定结点之间的最短路径长度
 >
@@ -1043,7 +1041,7 @@ signed main() {
 
 ## 【set】营业额统计
 
-https://www.luogu.com.cn/problem/P2234
+<https://www.luogu.com.cn/problem/P2234>
 
 > 题意：给定一个序列 a，需要计算 $a_1 + \displaystyle \sum_{i=2,1 \le j <i}^{n} \min {|a_i - a_j|}$ ，即计算每一个数与序列中当前数之前的数的最小差值之和
 >
@@ -1163,7 +1161,7 @@ signed main() {
 
 ## 【multiset】切蛋糕
 
-https://www.acwing.com/problem/content/description/5581/
+<https://www.acwing.com/problem/content/description/5581/>
 
 > 题意：给定一个矩形，由左下角和右上角的坐标确定。现在对这个矩形进行切割操作，要么竖着切，要么横着切。现在需要给出每次切割后最大子矩形的面积
 >
@@ -1233,7 +1231,7 @@ int main() {
 
 ### Milk Visits S
 
-https://www.luogu.com.cn/problem/P5836
+<https://www.luogu.com.cn/problem/P5836>
 
 > 题意：给定一棵树，结点被标记成两种，一种是 H，一种是 G，在每一次查询中，需要知道指定的两个结点之间是否含有某一种标记
 >
@@ -1295,7 +1293,7 @@ void solve() {
 
 ### 尽量减少恶意软件的传播
 
-https://leetcode.cn/problems/minimize-malware-spread/description/
+<https://leetcode.cn/problems/minimize-malware-spread/description/>
 
 >题意：给定一个由邻接矩阵存储的无向图，其中某些结点具备感染能力，可以感染相连的所有结点，问消除哪一个结点的感染能力可以使得最终不被感染的结点数量尽可能少，给出消除的有感染能力的最小结点编号
 >
@@ -1373,7 +1371,7 @@ public:
 
 ### 账户合并
 
-https://leetcode.cn/problems/accounts-merge/
+<https://leetcode.cn/problems/accounts-merge/>
 
 > 题意：给定 n 个账户，每一个账户含有一个用户名和最多 m 个绑定的邮箱。由于一个用户可能注册多个账户，因此我们需要对所有的账户进行合并使得一个用户对应一个账户。合并的规则是将所有「含有相同邮箱的账户」视作同一个用户注册的账户。返回合并后的账户列表。
 >
@@ -1384,7 +1382,7 @@ https://leetcode.cn/problems/accounts-merge/
 >
 > 时间复杂度：$O(n\log n)$
 
-```cpp []
+```cpp
 struct dsu {
     int n;
     std::vector<int> p;
@@ -1444,7 +1442,7 @@ public:
 };
 ```
 
-```python []
+```python
 class dsu:
     def __init__(self, n: int) -> None:
         self.n = n
@@ -1498,7 +1496,7 @@ class Solution:
 
 ### 将元素分配到两个数组中 II
 
-https://leetcode.cn/problems/distribute-elements-into-two-arrays-ii/description/
+<https://leetcode.cn/problems/distribute-elements-into-two-arrays-ii/description/>
 
 > 题意：给定 $n$ 个数，现在需要将这些数按照某种规则分配到两个数组 $A$ 和 $B$ 中。初始化分配 `nums[0]` 到 $A$ 中，`nums[1]` 到 $B$ 中，接下来对于剩余的每个元素 `nums[i]`，分配取决于 $A$ 和 $B$ 中比当前元素 `nums[i]` 大的个数，最终返回两个分配好的数组
 >
@@ -1509,11 +1507,11 @@ https://leetcode.cn/problems/distribute-elements-into-two-arrays-ii/description/
 >     - 法二：树状数组。很容易想到利用前缀和统计比当前数大的数字个数，但是由于此处需要对前缀和进行单点修改，因此时间复杂度肯定会寄。有什么数据结构支持「单点修改，区间更新」呢？我们引入树状数组。我们将数组元素哈希到 `[1, len(set(nums))]` 区间，定义哈希后的当前元素 `nums[i]` 为 `x`，对于当前哈希后的 `x` 而言想要知道两个数组中有多少数比当前数严格大，只需要计算前缀和数组 `arr` 中 `arr[n] - arr[x]` 的结果即可
 > - Python
 >     - `SortedList`。python 有一个 `sortedcontainers` 包其中有 `SortedList` 模块，可以实现 `std::multiset<int>` 所有 $\log$ 操作并且可以进行随机下标访问，于是就可以进行下标访问 $O(1)$ 计算比当前数大的元素个数
->     - 题外话。LeetCode 可以进行第三方库导入的操作，某些比赛不允许，需要手搓 `SortedList` 模块，~~当然可以用树状数组 or 线段树解决~~，板子链接：https://blog.dwj601.cn/Algorithm/a_template/#SortedList
+>     - 题外话。LeetCode 可以进行第三方库导入的操作，某些比赛不允许，需要手搓 `SortedList` 模块，~~当然可以用树状数组 or 线段树解决~~，[板子链接](./templates.md/#sortedlist)
 >
 > 时间复杂度：$O(n \log n)$
 
-```cpp []
+```cpp
 template<class T>
 class BinaryIndexedTree {
 private:
@@ -1597,7 +1595,7 @@ public:
 };
 ```
 
-```python []
+```python
 class BinaryIndexedTree:
     def __init__(self, n: int):
         self._n = n
@@ -1655,7 +1653,7 @@ class Solution:
         return v1 + v2
 ```
 
-```python []
+```python
 class Solution:
     def resultArray(self, nums: List[int]) -> List[int]:
         from sortedcontainers import SortedList
@@ -1689,7 +1687,7 @@ class Solution:
 
 ### 以组为单位订音乐会的门票 :fire:
 
-https://leetcode.cn/problems/booking-concert-tickets-in-groups/
+<https://leetcode.cn/problems/booking-concert-tickets-in-groups/>
 
 > 题意：给定一个长为 $n\le 5 \times 10^4$ 且初始值均为 $0$ 的数组 $a$，数组中的每个元素最多增加到 $m$。现在需要以这个数组为基础进行 $q\le 5 \times 10^4$ 次询问，每次询问是以下两者之一：
 >
@@ -1752,7 +1750,7 @@ class BookMyShow:
 
 ### 分组
 
-https://www.acwing.com/problem/content/5182/
+<https://www.acwing.com/problem/content/5182/>
 
 > 存储不想同组和想同组的人员信息：存入数组，数据类型为一对字符串
 >
@@ -1826,7 +1824,7 @@ int main()
 
 ### 海港
 
-https://www.luogu.com.cn/problem/P2058
+<https://www.luogu.com.cn/problem/P2058>
 
 > - 题意：给定 n 艘船只的到达时间、载客信息（载客人数和每一个客人的国籍），现在需要知道对于每一艘抵达的船只，前 24 小时中抵达的客人的国籍总数
 > - 思路：本题思路很简单，就是一个队列的应用以及哈希客人国籍的过程。由于船只抵达的时间是顺序增加的，故每抵达一艘船只，就对新来的客人国籍进行哈希，为了计算前 24 小时的情况，需要对船只抵达队列进行删减，即只保留 24 小时以内的船只抵达信息。对于删除的船只信息，需要将这些船只上的客人国籍信息从哈希表中删除，故每一艘船只的访问次数为 2。
@@ -1898,7 +1896,7 @@ signed main() {
 
 ### Cities and States S
 
-https://www.luogu.com.cn/problem/P3405
+<https://www.luogu.com.cn/problem/P3405>
 
 > 题意：给定 n 个字符串，每一个字符串归属一个集合，现在需要统计字符串与集合名相反相等的对数
 >
@@ -1946,7 +1944,7 @@ signed main() {
 
 ### Torn Lucky Ticket
 
-https://codeforces.com/contest/1895/problem/C
+<https://codeforces.com/contest/1895/problem/C>
 
 > 题意: 给定一个长度为 n 的字符串数组 nums, 数组的每一个元素长度不超过 5 且仅由数字组成. 问能找到多少对 $(i,j)$ 可以使得拼接后的 $nums[i]+nums[j]$ 长度为偶数且左半部分的数字之和与右半部分的数字之和相等.
 >
@@ -1957,10 +1955,18 @@ https://codeforces.com/contest/1895/problem/C
 > - 尝试优化掉第二层的枚举循环. 对于第二层循环, 我们就是要寻找合适的 $nums[j]$ 并和当前的 $nums[i]$ 拼接. 显然我们可以通过扫描当前的 $nums[i]$ 并 $O(1)$ 的计算出所有 $len(nums[j])\le len(nums[i])$ 且可以和 $nums[i]$ 匹配的字符串的 `[长度][数字和]` 信息, 只需要一个二维数组预存储每一个字符串的 **长度** **数字和** 信息即可.
 >
 > - 那么对于 $len(nums[j])> len(nums[i])$ 的情况如何统计呢. 显然此时我们没法 $O(1)$ 的检查 $nums[i]+nums[j]$ 的合法性. 不妨换一个角度, 当我们枚举 $nums[i]$ 时:
+>
 >     $$
 >     \text{统计右侧拼接长度更大的 nums[j] 的合法情况数} \iff \text{统计左侧拼接长度更小的 nums[j] 的合法情况数}
 >     $$
->     于是合法情况数就可以表示为 $\displaystyle \sum_{i=0}^{n-1}\big[\text{cond}_1(nums[i])+\text{cond}_2(nums[i])\big]$, 其中第一种情况 $\text{cond}_1$ 就是统计右侧拼接长度更小的字符串数量, 第二种情况 $\text{cond}_1$ 就是统计左侧拼接长度更小的字符串数量. 这两步可以同时计算.
+>
+>     于是合法情况数就可以表示为
+>     
+>     $$
+>     \sum_{i=0}^{n-1}\big[\text{cond}_1(nums[i])+\text{cond}_2(nums[i])\big]
+>     $$
+>     
+>     其中第一种情况 $\text{cond}_1$ 就是统计右侧拼接长度更小的字符串数量, 第二种情况 $\text{cond}_1$ 就是统计左侧拼接长度更小的字符串数量. 这两步可以同时计算.
 >
 > 时间复杂度: $O(n)$
 

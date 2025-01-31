@@ -1,9 +1,5 @@
 ---
 title: CLion 解决无法打开文件的问题
-categories: 
-  - 开发工具
-  - CLion
-category_bar: true
 ---
 
 ## 问题描述

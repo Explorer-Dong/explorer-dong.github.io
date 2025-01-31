@@ -1,10 +1,5 @@
 ---
 title: Hexo 部署指南
-categories:
-  - 前端
-  - Hexo
-category_bar: true
-mermaid: true
 ---
 
 ## 前言

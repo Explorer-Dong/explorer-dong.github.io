@@ -1,7 +1,5 @@
 ---
 title: 板子
-categories: 数据结构与算法
-category_bar: true
 ---
 
 ## 前言
@@ -238,11 +236,11 @@ std::unordered_map<std::string, int, CustomHash<long long>> f3;
             return x & (-x)
     ```
 
-### SortedList *
+### SortedList
 
-> 例程：https://www.acwing.com/activity/content/code/content/8475415/
+> 例程：[AcWing 5578. 切蛋糕](https://www.acwing.com/activity/content/code/content/8475415/)
 >
-> 官方：https://github.com/grantjenks/python-sortedcontainers/blob/master/src/sortedcontainers/sortedlist.py
+> 官方：[grantjenks python-sortedcontainers](https://github.com/grantjenks/python-sortedcontainers/blob/master/src/sortedcontainers/sortedlist.py)
 
 有序列表类。导入方法 `from sortedcontainers import SortedList`。可以类比 C++ 中的 `map` 类。共有以下内容，全部都是 $O(\log n)$ 的时间复杂度：
 
@@ -371,15 +369,18 @@ cout << obj.pre[n] << "\n"; // pre[i] means prime numbers in range of [1, i]
 ### 乘法逆元
 
 假设当前需要在 $\% \ p$ 的情况下除以 $a$，则可以转化为乘以 $a$ 的乘法逆元 $a^{-1}$，即：
+
 $$
 \begin{aligned}
 &\frac{\text{num}}{a} \equiv \text{num} \times a^{-1} (\text{mod } p)\\
 &\text{其中 } a^{-1} = a^{p-2} \text{ 当且仅当 $a$ 与 $p$ 互质}
 \end{aligned}
 $$
+
 {% fold light @乘法逆元推导 %}
 
 对于任意 $a$ 的整数倍 $t$，一定有下式成立：其中的 $x$ 就是整数 $a$ 的乘法逆元，记作 $a^{-1}$
+
 $$
 \begin{aligned}
 \frac{t}{a} \equiv t \times x\quad (\mod p) \\
@@ -387,18 +388,25 @@ $$
 1 \equiv a \times x\quad (\mod p) \\
 \end{aligned}
 $$
+
 由 [费马小定理](<https://baike.baidu.com/item/费马小定理/4776158>)：对于两个互质的整数 $g,h$ 而言，一定有下式成立：
+
 $$
 g^{h-1} \equiv 1\quad (\mod h)
 $$
+
 于是本题的推导就可以得到，当 $a$ 与 $p$ 互质时，有：
+
 $$
 a^{p-1} \equiv 1 \quad (\mod p)
 $$
+
 于是 $a$ 的乘法逆元就是：
+
 $$
 a^{-1} = a^{p-2}
 $$
+
 时间复杂度 $O(\log p)$
 
 {% endfold %}

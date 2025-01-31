@@ -1,9 +1,5 @@
 ---
 title: 解决 Git 相关问题
-categories:
-  - 开发工具
-  - Git
-category_bar: true
 ---
 
 ## 前言

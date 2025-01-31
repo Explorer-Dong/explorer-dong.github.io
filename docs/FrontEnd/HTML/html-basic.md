@@ -1,9 +1,5 @@
 ---
 title: HTML 基础
-categories: 
-  - 前端
-  - HTML
-category_bar: true
 ---
 
 HTML 全称超文本标记语言，可以和 Markdown 进行类比，即不同的内容用对应不同的标签进行渲染。内容繁多，初学难以彻底记忆，故放置速查手册进行快速查询 [HTML 教程](https://www.runoob.com/html/html5-intro.html)，以下是个人容易遗忘的 or 经常用到的标签、属性等用于快速查询：

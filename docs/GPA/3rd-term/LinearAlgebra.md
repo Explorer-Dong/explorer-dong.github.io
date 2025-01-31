@@ -1,7 +1,8 @@
 ---
 title: 线性代数
-index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/linear%20algebra.png
 ---
+
+![](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/linear%20algebra.png)
 
 ## 前言
 

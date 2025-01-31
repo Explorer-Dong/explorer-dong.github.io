@@ -1,9 +1,5 @@
 ---
 title: Git 的 Pull Request 是什么
-categories:
-  - 开发工具
-  - Git
-category_bar: true
 ---
 
 ## 前言

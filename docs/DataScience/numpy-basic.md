@@ -1,7 +1,5 @@
 ---
-title: numpy 入门指南
-categories: 数据科学
-category_bar: true
+title: numpy 基础
 ---
 
 ## 前言

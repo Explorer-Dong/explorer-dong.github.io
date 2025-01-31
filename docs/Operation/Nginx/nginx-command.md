@@ -1,10 +1,5 @@
 ---
 title: Nginx 常用命令合集
-categories: 
-  - 运维
-  - Nginx
-category_bar: true
-index_img: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/nginx.png
 ---
 
 ## 前言

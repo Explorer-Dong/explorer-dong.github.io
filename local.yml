@@ -8,12 +8,19 @@
 
 INHERIT: ./mkdocs.yml
 
+
 extra_javascript:
   # 外链跳转
   - injects/javascripts/link_blank.js
   # 百度统计
   - injects/javascripts/baidu_tongji.js
+  # KaTeX
+  - injects/javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 extra_css:
   - injects/stylesheets/extra.css
+  # KaTeX
+  - https://unpkg.com/katex@0/dist/katex.min.css
 
 plugins:

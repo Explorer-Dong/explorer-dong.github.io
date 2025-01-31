@@ -86,8 +86,15 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  # 图片标题（需要引入额外的语法）
-  - pymdownx.blocks.caption
+  # 图表标题
+  - pymdownx.blocks.caption:
+      types:
+        - c                   # caption
+        # 自动编号
+        - name: fc            # figure caption
+          prefix: '图 {}. '
+        - name: tc            # table caption
+          prefix: '表 {}. '
   # 代码高亮
   - pymdownx.highlight:
       # auto_title: true           # 自动标题
@@ -121,7 +128,8 @@ extra_css:
 # 插件配置
 plugins:
   # 搜索功能
-  - search
+  - search:
+      lang: zh
   # 显示文章创建和修改时间
   - git-revision-date-localized:
       enable_creation_date: true
@@ -131,7 +139,8 @@ plugins:
       repository: Explorer-Dong/explorer-dong.github.io
       branch: main
   # 图片可点击放大
-  - glightbox
+  - glightbox:
+      auto_caption: true
 
 
 # 页面导航

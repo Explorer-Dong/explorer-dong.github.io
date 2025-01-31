@@ -24,3 +24,8 @@ extra_css:
   - https://unpkg.com/katex@0/dist/katex.min.css
 
 plugins:
+  # 搜索功能
+  - search:
+      lang: zh
+  - glightbox:
+      auto_caption: true

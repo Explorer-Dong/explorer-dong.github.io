@@ -89,7 +89,7 @@ markdown_extensions:
   # 图表标题
   - pymdownx.blocks.caption:
       types:
-        - c                   # caption
+        - caption
         # 自动编号
         - name: fc            # figure caption
           prefix: '图 {}. '

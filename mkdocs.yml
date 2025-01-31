@@ -38,9 +38,6 @@ theme:
     # - navigation.expand            # 分类页默认展开（一般与 navigation.sections 一起使用）
     - navigation.indexes           # 不显示分类索引首页
     - navigation.top               # 顶部导航栏
-    - navigation.instant           # 导航栏即时更新
-    - navigation.instant.prefetch  # 预加载
-    - navigation.instant.progress  # 进度条
     - navigation.footer            # 页脚
     - content.code.copy            # 代码块复制按钮
     - content.code.select          # 代码块选中行
@@ -110,9 +107,13 @@ extra_javascript:
   - injects/javascripts/katex.js
   - https://unpkg.com/katex@0/dist/katex.min.js
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  # 外链跳转
+  - injects/javascripts/link_blank.js
 extra_css:
   # KaTeX
   - https://unpkg.com/katex@0/dist/katex.min.css
+  # 自定义样式
+  - injects/stylesheets/extra.css
 
 
 # 插件配置

@@ -109,6 +109,8 @@ extra_javascript:
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
   # 外链跳转
   - injects/javascripts/link_blank.js
+  # 百度统计
+  - injects/javascripts/baidu_tongji.js
 extra_css:
   # KaTeX
   - https://unpkg.com/katex@0/dist/katex.min.css

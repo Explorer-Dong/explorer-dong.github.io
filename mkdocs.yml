@@ -141,6 +141,8 @@ plugins:
   # 图片可点击放大
   - glightbox:
       auto_caption: true
+  # meta 配置
+  - meta
 
 
 # 页面导航

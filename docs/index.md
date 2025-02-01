@@ -1,6 +1,5 @@
 ---
 title: 首页
-comments: true
 ---
 
 ## 站点简介

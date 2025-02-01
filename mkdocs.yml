@@ -20,16 +20,22 @@ theme:
     view: material/eye
   # 颜色
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: 切换到亮色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
       toggle:
-        icon: material/brightness-7 
-        name: 暗色模式
-    - scheme: slate
+        icon: material/brightness-7
+        name: 切换到暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: black  # 控件颜色
       toggle:
         icon: material/brightness-4
-        name: 亮色模式
+        name: 切换到自动模式
   features:
     # - header.autohide              # 自动隐藏页面头部
     - navigation.tabs                # 顶部一级分类导航栏

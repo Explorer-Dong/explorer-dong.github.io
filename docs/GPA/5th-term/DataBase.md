@@ -12,7 +12,7 @@ title: 数据库原理与应用
 
 学习资源：
 
-- 课程官网：[数据库系统概论 (ruc.edu.cn)](http://chinadb.ruc.edu.cn/home){ target="_blank" }
+- 课程官网：[数据库系统概论 (ruc.edu.cn)](http://chinadb.ruc.edu.cn/home)
 
 为什么要学这门课？
 
@@ -262,9 +262,9 @@ graph TB
 
 练习网站：
 
-- 相对容易但是后续需要付费：[自学 SQL 网](http://xuesql.cn/){ target="_blank"}
-- 相对困难但是全部免费：[SQL 之母](http://sqlmother.yupi.icu/#/learn){ target="_blank"}
-- 相对最困难但是更加综合：[数据库题库 - LeetCode](https://leetcode.cn/problemset/database/?difficulty=EASY){ target="_blank"}
+- 相对容易但是后续需要付费：[自学 SQL 网](http://xuesql.cn/)
+- 相对困难但是全部免费：[SQL 之母](http://sqlmother.yupi.icu/#/learn)
+- 相对最困难但是更加综合：[数据库题库 - LeetCode](https://leetcode.cn/problemset/database/?difficulty=EASY)
 
 #### 3.1 数据定义
 
@@ -628,7 +628,7 @@ for each {row | statement}
 
 #### 7.2 索引结构
 
-最常见的是 B+ 树的索引结构，具体见 [OI-Wiki](https://oiwiki.org/ds/bplus-tree/){ target="_blank"} 上的讲解。当然还有诸如哈希索引、位图索引等索引结构。通过索引结构，可以让索引长期保持在内存中，减少系统的 I/O 次数从而加速查询操作。
+最常见的是 B+ 树的索引结构，具体见 [OI-Wiki](https://oiwiki.org/ds/bplus-tree/) 上的讲解。当然还有诸如哈希索引、位图索引等索引结构。通过索引结构，可以让索引长期保持在内存中，减少系统的 I/O 次数从而加速查询操作。
 
 ### 8 查询优化
 

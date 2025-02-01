@@ -1,6 +1,5 @@
 ---
 title: 概率论与数理统计
-comments: true
 ---
 
 ## 前言
@@ -13,8 +12,8 @@ comments: true
 
 学习资源：
 
-- :tv: 视频资源：[《概率论与数理统计》教学视频全集（宋浩）](https://www.bilibili.com/video/BV1ot411y7mU){ target="_blank"}
-- :book:  教材答案：[百度网盘 - 提取码：448w](https://pan.baidu.com/s/1yeC0rxatHaLeNHQaW85Kpw?pwd=448w){ target="_blank"}
+- :tv: 视频资源：[《概率论与数理统计》教学视频全集（宋浩）](https://www.bilibili.com/video/BV1ot411y7mU)
+- :book: 教材答案：[百度网盘 - 提取码：448w](https://pan.baidu.com/s/1yeC0rxatHaLeNHQaW85Kpw?pwd=448w)
 
 ## 第1章 事件与概率
 
@@ -92,17 +91,23 @@ $$
 
 #### 1.3.2 乘法原理计算公式
 
-- $\text{基本}:\text{前提}:P(A)>0$
+特殊的：
 
-    $$
-    P(AB) = P(A)P(B|A)
-    $$
+$$
+\begin{aligned}
+P(AB) &= P(A)P(B|A)\\
+P(A)&>0
+\end{aligned}
+$$
 
-- $\text{推广}:\text{前提}:P(A_1A_2,...,A_n)>0$
+一般的：
 
-    $$
-    P(A_1A_2...A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1A_2) \cdots P(A_n|A_1A_2...A_{n-1})
-    $$
+$$
+\begin{aligned}
+P(A_1A_2...A_n) &= P(A_1)P(A_2|A_1)P(A_3|A_1A_2) \cdots P(A_n|A_1A_2...A_{n-1})\\
+P(A_1A_2,...,A_n)&>0
+\end{aligned}
+$$
 
 #### 1.3.3 全概公式
 
@@ -135,45 +140,45 @@ $$
 
 **定义**
 
-- 基本：若 $A,B$ 相互独立，则满足：
+基本：若 $A,B$ 相互独立，则满足：
 
-    $$
-    P(AB)=P(A)P(B)
-    $$
+$$
+P(AB)=P(A)P(B)
+$$
 
-- 推广：若 $A_1,A_2,...,A_n$ 相互独立，则满足：
+推广：若 $A_1,A_2,...,A_n$ 相互独立，则满足：
 
-    $$
-    \begin{aligned}
-    \forall \quad 1 \le i_1<i_2<\cdots<i_k \le n\ (k=2,3,\cdots,n) \\
-    s.t. \quad P(A_{i_1}A_{i_2}\cdots A_{i_k}) = P(A_{i_1})P(A_{i_2})\cdots P(A_{i_k})
-    \end{aligned}
-    $$
+$$
+\begin{aligned}
+\forall \quad 1 \le i_1<i_2<\cdots<i_k \le n\ (k=2,3,\cdots,n) \\
+s.t. \quad P(A_{i_1}A_{i_2}\cdots A_{i_k}) = P(A_{i_1})P(A_{i_2})\cdots P(A_{i_k})
+\end{aligned}
+$$
 
 **定理**
 
-- 基本：若 $A,B$ 相互独立，则 $A,\overline{B}$ 相互独立；$\overline{A},B$ 相互独立；$\overline{A},\overline{B}$ 相互独立
+基本：若 $A,B$ 相互独立，则 $A,\overline{B}$ 相互独立；$\overline{A},B$ 相互独立；$\overline{A},\overline{B}$ 相互独立。
 
-- 推广：若 $A_1,A_2,...,A_n$ 相互独立，则其中任意 $k(2 \le k \le n)$ 个也相互独立，且满足：
+推广：若 $A_1,A_2,...,A_n$ 相互独立，则其中任意 $k(2 \le k \le n)$ 个也相互独立，且满足：
 
-    $$
-    \begin{aligned}
-    P(\hat{A_{i_1}}\hat{A_{i_2}}\cdots \hat{A_{i_k}}) = P(\hat{A_{i_1}})P(\hat{A_{i_2}})\cdots P(\hat{A_{i_k}}) \\
-    s.t. \quad \hat{A_{i_j}} = A \ or \ \overline{A}\ (j=1,2,\cdots,k)
-    \end{aligned}
-    $$
+$$
+\begin{aligned}
+P(\hat{A_{i_1}}\hat{A_{i_2}}\cdots \hat{A_{i_k}}) = P(\hat{A_{i_1}})P(\hat{A_{i_2}})\cdots P(\hat{A_{i_k}}) \\
+s.t. \quad \hat{A_{i_j}} = A \ or \ \overline{A}\ (j=1,2,\cdots,k)
+\end{aligned}
+$$
 
 **概念辨析**
 
-- 两两独立：对于 $n$ 个事件，两两独立，而不考虑三个及以上的关系。
+两两独立：对于 $n$ 个事件，两两独立，而不考虑三个及以上的关系。
 
-- 相互独立：对于 $n$ 个事件，$2 \to n$ 个事件的独立关系都需要考虑。
+相互独立：对于 $n$ 个事件，$2 \to n$ 个事件的独立关系都需要考虑。
 
-- 总结：对于 $n$ 个事件，满足两两独立需要 $C_n^2$ 个等式关系，对于相互独立需要 $2^n-(n+1)$ 个等式关系，因此：
+总结：对于 $n$ 个事件，满足两两独立需要 $C_n^2$ 个等式关系，对于相互独立需要 $2^n-(n+1)$ 个等式关系，因此：
 
-    $$
-    \text{两两独立} \subset \text{相互独立}
-    $$
+$$
+\text{两两独立} \subset \text{相互独立}
+$$
 
 #### 1.4.2 伯努利概型
 
@@ -184,17 +189,17 @@ $$
 
 模型：
 
-- 二项概率公式：n 次独立重复试验发生 k 次的概率：
+二项概率公式：n 次独立重复试验发生 k 次的概率：
 
-    $$
-    C_n^k p^k (1-p)^{n-k}
-    $$
+$$
+C_n^k p^k (1-p)^{n-k}
+$$
 
-- 几何概率公式：在第 n 次试验首次成功的概率：
+几何概率公式：在第 n 次试验首次成功的概率：
 
-    $$
-    (1-p)^{n-1}p
-    $$
+$$
+(1-p)^{n-1}p
+$$
 
 ## 第2章 随机事件及其分布
 
@@ -216,12 +221,14 @@ $$
 
 #### 2.1.2 随机变量的分布函数
 
-1. 分布函数的定义：$F(x)=P(X \le x)$
-2. 分布函数的性质：
-    - 非负有界性：$0 \le F(x) \le 1$
-    - 单调不减性：若 $x_1 < x_2$，则 $F(x_1) \le F(x_2)$
-    - $\displaystyle F(-\infty) = \lim_{x \to -\infty} F(x) = 0$，$\displaystyle F(+\infty) = \lim_{x \to +\infty} F(x) = 1$
-    - 右连续性：$\displaystyle \lim_{x\to x_0^+}F(x) = F(x_0)\quad(-\infty < x_0 < +\infty)$
+分布函数的定义：$F(x)=P(X \le x)$
+
+分布函数的性质：
+
+- 非负有界性：$0 \le F(x) \le 1$
+- 单调不减性：若 $x_1 < x_2$，则 $F(x_1) \le F(x_2)$
+- $\displaystyle F(-\infty) = \lim_{x \to -\infty} F(x) = 0$，$\displaystyle F(+\infty) = \lim_{x \to +\infty} F(x) = 1$
+- 右连续性：$\displaystyle \lim_{x\to x_0^+}F(x) = F(x_0)\quad(-\infty < x_0 < +\infty)$
 
 ### 2.2 离散型随机变量及其分布列
 
@@ -229,77 +236,77 @@ $$
 
 随机变量的取值都是整数，有以下三种表示方法
 
-1. 公式法
+公式法
 
-    $$
-    p_k = P(X=x_k),\quad k = 1,2,\cdots,
-    $$
+$$
+p_k = P(X=x_k),\quad k = 1,2,\cdots,
+$$
 
-2. 服从法
+服从法
 
-    $$
-    X \sim 
-    \begin{pmatrix}
-    x_1 & x_2 & x_3 & \cdots \\
-    p_1 & p_2 & p_3 & \cdots
-    \end{pmatrix}
-    $$
+$$
+X \sim 
+\begin{pmatrix}
+x_1 & x_2 & x_3 & \cdots \\
+p_1 & p_2 & p_3 & \cdots
+\end{pmatrix}
+$$
 
-3. 表格法
+表格法
 
-    $$
-    \begin{array}{c|cccc}
-    X & x_1 & x_2 & x_3 & \cdots \\
-    \hline
-    P & p_1 & p_2 & p_3 & \cdots
-    \end{array}
-    $$
+$$
+\begin{array}{c|cccc}
+X & x_1 & x_2 & x_3 & \cdots \\
+\hline
+P & p_1 & p_2 & p_3 & \cdots
+\end{array}
+$$
 
 #### 2.2.2 常用离散性随机变量及其分布列
 
-- 0-1分布：即一个事件只有两面性，我们称这样的随机变量服从0-1分布或者两点分布，记作
+0-1分布：即一个事件只有两面性，我们称这样的随机变量服从0-1分布或者两点分布，记作
 
-    $$
-    X \sim 
-    \begin{pmatrix}
-    0 & 1 \\
-    1-p & p
-    \end{pmatrix}
-    $$
+$$
+X \sim 
+\begin{pmatrix}
+0 & 1 \\
+1-p & p
+\end{pmatrix}
+$$
 
-- 二项分布：其实就是 n 重伯努利试验，我们称这样的随机变量服从二项分布，分布列为 $P(X=k) = C_n^kp^k(1-p)^{n-k}$，记作
+二项分布：其实就是 n 重伯努利试验，我们称这样的随机变量服从二项分布，分布列为 $P(X=k) = C_n^kp^k(1-p)^{n-k}$，记作
 
-    $$
-    X \sim B(n,p)
-    $$
+$$
+X \sim B(n,p)
+$$
 
-- 几何分布：同样是伯努利事件，现在需要求解第 $k$ 次事件首次发生的概率，此时分布列为 $P(X=k)=(1-p)^{k-1}p$，记作
+几何分布：同样是伯努利事件，现在需要求解第 $k$ 次事件首次发生的概率，此时分布列为 $P(X=k)=(1-p)^{k-1}p$，记作
 
-    $$
-    X \sim G(p)
-    $$
+$$
+X \sim G(p)
+$$
 
-- 超几何分布：就是在 N 件含有 M 件次品的样品中无放回的抽取 n 件，问其中含有次品数量的分布列，为 $\displaystyle P(X=k)=\frac{C_M^k C_{N-M}^{n-k}}{C_N^n}, \quad k=0,1,2,\cdots,\min{(n, M)}$，记作
+超几何分布：就是在 N 件含有 M 件次品的样品中无放回的抽取 n 件，问其中含有次品数量的分布列，为 $\displaystyle P(X=k)=\frac{C_M^k C_{N-M}^{n-k}}{C_N^n}, \quad k=0,1,2,\cdots,\min{(n, M)}$，记作
 
-    $$
-    X \sim \text{超几何分布}(n,N,M)
-    $$
+$$
+X \sim \text{超几何分布}(n,N,M)
+$$
 
-- 泊松分布：当二项分布中，试验次数很大或者概率很小时，可以近似为泊松分布，即 $\displaystyle P(X=k)=C_n^k p^k(1-p)^{n-k} \to \frac{\lambda^k}{k!}e^{-\lambda}$，其中常数 $\lambda > 0$，记作
+泊松分布：当二项分布中，试验次数很大或者概率很小时，可以近似为泊松分布，即 $\displaystyle P(X=k)=C_n^k p^k(1-p)^{n-k} \to \frac{\lambda^k}{k!}e^{-\lambda}$，其中常数 $\lambda > 0$，记作
 
-    $$
-    X \sim P(\lambda)
-    $$
+$$
+X \sim P(\lambda)
+$$
 
-    显然，泊松分布含有下面两个性质
+显然，泊松分布含有下面两个性质
 
-    1. $P(X=k) > 0,k=0,1,\cdots$
+1. $P(X=k) > 0,k=0,1,\cdots$
 
-    2. $\displaystyle \sum_{k=0}^\infty P(X=k)=1$
+2. $\displaystyle \sum_{k=0}^\infty P(X=k)=1$
 
-        ??? note "泊松分布正规性证明"
-        
-            ![泊松分布正规性证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403151012817.png)
+    ??? note "泊松分布正规性证明"
+    
+        ![泊松分布正规性证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403151012817.png)
 
 ### 2.3 连续型随机变量及其概率密度函数
 
@@ -309,33 +316,37 @@ $$
 
 概率密度函数，简称：密度函数 or 概率密度
 
-- 定义：设随机变量 $X$ 的分布函数为 $F(x)$，如果存在非负可积函数 $p(x)$，使下式成立，则称 $X$ 为连续型随机变量，$p(x)$ 为 $X$ 的概率密度函数
+定义：设随机变量 $X$ 的分布函数为 $F(x)$，如果存在非负可积函数 $p(x)$，使下式成立，则称 $X$ 为连续型随机变量，$p(x)$ 为 $X$ 的概率密度函数
 
-    $$
-    \forall x \in R,F(x) = \int_{-\infty}^{x} p(t)dt
-    $$
+$$
+\forall x \in R,F(x) = \int_{-\infty}^{x} p(t)dt
+$$
 
-- 性质：
+性质：
 
-    1. 非负性：$p(x) \ge 0$
+1. 非负性：$p(x) \ge 0$
 
-    2. 正规性：$\int_{-\infty}^{+\infty} p(x)dx = 1$
+2. 正规性：$\int_{-\infty}^{+\infty} p(x)dx = 1$
 
-    3. 可积性：$\forall x_1 \le x_2,P(x_1 \le X \le x_2) = F(x_2) - F(x_1) = \int_{x_1}^{x_2}p(x)dx$
+3. 可积性：$\forall x_1 \le x_2,P(x_1 \le X \le x_2) = F(x_2) - F(x_1) = \int_{x_1}^{x_2}p(x)dx$
 
-    4. 分布函数可导性：若 $p(x)$ 在点 $x$ 处连续，则 $F'(x) = p(x)$
+4. 分布函数可导性：若 $p(x)$ 在点 $x$ 处连续，则 $F'(x) = p(x)$
 
-    5. 已知事件但无意义性：$\forall x \in R, P(X=x) = F(x) - F(x) = 0$
+5. 已知事件但无意义性：$\forall x \in R, P(X=x) = F(x) - F(x) = 0$
 
-        - 离散型变量可以通过列举随机变量 $X$ 的取值来计算概率，但连续型随机变量这么做是无意义的
-        - $P(A) = 0$ 不能推出 $A$ 是不可能事件，$P(A)=1$ 不能推出 $A$ 是必然事件
-        - 对于连续型随机变量 $X$ 有：$P(x_1 < X < X_2)=P(x_1 < X \le X_2)=P(x_1 \le X < X_2)=P(x_1 \le X \le X_2)$
-
-    6. 实际描述性：密度函数的数值反映了随机变量 $X$ 取 $x$ 的临近值的概率的大小，因为
+    - 离散型变量可以通过列举随机变量 $X$ 的取值来计算概率，但连续型随机变量这么做是无意义的
+    - $P(A) = 0$ 不能推出 $A$ 是不可能事件，$P(A)=1$ 不能推出 $A$ 是必然事件
+    - 对于连续型随机变量 $X$ 有：
 
         $$
-        p(x)\Delta x \approx \int_{x}^{x+\Delta x} p(t)dt = F(x+\Delta x) - F(x) = P(x \le X \le x+\Delta x)
+        P(x_1 < X < X_2)=P(x_1 < X \le X_2)=P(x_1 \le X < X_2)=P(x_1 \le X \le X_2)
         $$
+
+6. 实际描述性：密度函数的数值反映了随机变量 $X$ 取 $x$ 的临近值的概率的大小，因为：
+
+    $$
+    p(x)\Delta x \approx \int_{x}^{x+\Delta x} p(t)dt = F(x+\Delta x) - F(x) = P(x \le X \le x+\Delta x)
+    $$
 
 #### 2.3.2 常用连续型随机变量及其密度函数
 
@@ -650,10 +661,8 @@ $$
     \begin{aligned}
     F_Z(z) &= P(X+Y \le z) \\
     &= \iint\limits_{x+y \le z} p(x,y) dxdy \\
-    &\begin{align}
-    &= \int _{-\infty}^z \left [ \int_{-\infty}^{+\infty} p(x,t-x)dx \right ] dt \\
-    &= \int _{-\infty}^z \left [ \int_{-\infty}^{+\infty} p(t-y,y)dy \right ] dt
-    \end{align}
+    &= \int _{-\infty}^z \left [ \int_{-\infty}^{+\infty} p(x,t-x)dx \right ] dt \quad (1) \\
+    &= \int _{-\infty}^z \left [ \int_{-\infty}^{+\infty} p(t-y,y)dy \right ] dt \quad (2)
     \end{aligned}
     $$
     
@@ -832,9 +841,13 @@ $$
 
 注：打星号表示在两个随机变量 $X,Y$ 相互独立时，具备可加性。具体的：
 
-1. $X \sim N(\mu_1,\sigma_1^2), Y \sim N(\mu_2,\sigma_2^2) \to X\pm Y\sim N(\mu_1\pm\mu_2,\sigma_1^2+\sigma_2^2)$
-2. $X \sim B(n_1,p), Y \sim B(n_2,p) \to X+Y\sim B(n_1+n_2,p)$
-3. $X \sim P(\lambda_1),Y\sim P(\lambda_2) \to X+Y \sim P(\lambda_1+\lambda_2)$
+$$
+\begin{aligned}
+X \sim N(\mu_1,\sigma_1^2), Y \sim N(\mu_2,\sigma_2^2) &\to X\pm Y\sim N(\mu_1\pm\mu_2,\sigma_1^2+\sigma_2^2)\\
+X \sim B(n_1,p), Y \sim B(n_2,p) &\to X+Y\sim B(n_1+n_2,p)\\
+X \sim P(\lambda_1),Y\sim P(\lambda_2) &\to X+Y \sim P(\lambda_1+\lambda_2)
+\end{aligned}
+$$
 
 ???+note "公式推导"
 

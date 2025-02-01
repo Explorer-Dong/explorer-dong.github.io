@@ -8,8 +8,8 @@ title: 操作系统
 
 学习资源：
 
-- 🖥 [合集·[完结] 2024 南京大学 “操作系统：设计与实现” (蒋炎岩)](<https://space.bilibili.com/202224425/channel/collectiondetail?sid=2237004>){ target="_blank"}
-- 📑 [蒋炎岩课程配套讲义](https://jyywiki.cn/OS/2024/){ target="_blank"}
+- 🖥 [合集·[完结] 2024 南京大学 “操作系统：设计与实现” (蒋炎岩)](<https://space.bilibili.com/202224425/channel/collectiondetail?sid=2237004>)
+- 📑 [蒋炎岩课程配套讲义](https://jyywiki.cn/OS/2024/)
 
 最难崩的一集：
 
@@ -271,7 +271,7 @@ block-beta
 | 轮转调度         | 按照时间片长度分配 CPU                 |     抢占式      |         不会饥饿         |   进程    | 有利于多用户、多交互式进程；时间片太大，算法会退化为先来先服务；时间片太小，进程切换频繁，开销大 |
 | 多级反馈队列调度 | 在多级就绪队列上按照时间片长度分配 CPU | 非抢占式/抢占式 |     长进程可能会饿死     |   进程    | 各种调度算法的权衡                                           |
 
-**代码实现**。为了更好的理解上述 $7$ 种进程调度算法，尝试从「逻辑上」进行模拟。具体代码见：[Explorer-Dong/OS_Simulate](https://github.com/Explorer-Dong/OS_Simulate/tree/main/Experiment5){ target="_blank"}。不难发现所有的调度逻辑都只有 3 步，括号内容表示代码没有模拟的部分，如下：
+**代码实现**。为了更好的理解上述 $7$ 种进程调度算法，尝试从「逻辑上」进行模拟。具体代码见：[Explorer-Dong/OS_Simulate](https://github.com/Explorer-Dong/OS_Simulate/tree/main/Experiment5)。不难发现所有的调度逻辑都只有 3 步，括号内容表示代码没有模拟的部分，如下：
 
 1. 取出就绪队列的队头进程（进入运行态并获得 CPU 的计算资源执行相关指令）；
 2. 维护时钟信息和当前进程信息；
@@ -357,7 +357,7 @@ block-beta
 
 ### 2 页式存储
 
-页式存储的 Python 模拟：[Explorer-Dong/OS_Simulate](https://github.com/Explorer-Dong/OS_Simulate/tree/main/Experiment_final){ target="_blank"}
+页式存储的 Python 模拟：[Explorer-Dong/OS_Simulate](https://github.com/Explorer-Dong/OS_Simulate/tree/main/Experiment_final)
 
 下面详细展开页式存储的实现细节。
 

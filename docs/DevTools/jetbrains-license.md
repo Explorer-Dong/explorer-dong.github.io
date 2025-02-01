@@ -4,7 +4,7 @@ title: 更新 Jetbrains 学生许可证
 
 !!! warning
 
-    只有在学生许可证即将到期的两周内才可以进行下面的操作。具体原因见 [Jetbrains 社区计划](https://www.jetbrains.com/zh-cn/community/education/#students){target="_blank"} 的详细说明。
+    只有在学生许可证即将到期的两周内才可以进行下面的操作。具体原因见 [Jetbrains 社区计划](https://www.jetbrains.com/zh-cn/community/education/#students) 的详细说明。
 
 ## 前言
 

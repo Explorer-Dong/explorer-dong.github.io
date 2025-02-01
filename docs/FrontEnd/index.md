@@ -10,4 +10,4 @@ title: 前端专栏简介
 前端开发学习路线 [^1]
 ///
 
-[^1]: [Frontend Beginner Roadmap](https://roadmap.sh/frontend?r=frontend-beginner){ target="_blank"}
+[^1]: [Frontend Beginner Roadmap](https://roadmap.sh/frontend?r=frontend-beginner)

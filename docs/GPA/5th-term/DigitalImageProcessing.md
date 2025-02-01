@@ -23,8 +23,8 @@ title: 数字图像处理
 
 >本课程的代码分为 MATLAB 和 OpenCV-Python。其中：
 >
->- MATLAB 版本为 R2023a。[官方文档](https://ww2.mathworks.cn/help/images/index.html){ target="_blank"}
->- OpenCV-Python 版本为 4.10.0。[官方文档](https://docs.opencv.org/4.10.0/d2/d96/tutorial_py_table_of_contents_imgproc.html){ target="_blank"}
+>- MATLAB 版本为 R2023a。[官方文档](https://ww2.mathworks.cn/help/images/index.html)
+>- OpenCV-Python 版本为 4.10.0。[官方文档](https://docs.opencv.org/4.10.0/d2/d96/tutorial_py_table_of_contents_imgproc.html)
 
 ## 图像获取
 
@@ -261,7 +261,7 @@ $$
 
     === "MATLAB API"
 
-        参考：[几何变换的矩阵表示 - MathWorks](https://ww2.mathworks.cn/help/images/matrix-representation-of-geometric-transformations.html){ target="_blank"}
+        参考：[几何变换的矩阵表示 - MathWorks](https://ww2.mathworks.cn/help/images/matrix-representation-of-geometric-transformations.html)
 
         !!! warning
 
@@ -449,11 +449,11 @@ $$
 
 下列代码参考：
 
-[1] [MATLAB fspecial 函数](https://ww2.mathworks.cn/help/images/ref/fspecial.html?searchHighlight=fspecial&s_tid=srchtitle_support_results_1_fspecial){ target="_blank"}
+[1] [MATLAB fspecial 函数](https://ww2.mathworks.cn/help/images/ref/fspecial.html?searchHighlight=fspecial&s_tid=srchtitle_support_results_1_fspecial)
 
-[2] [MATLAB imfilter 函数](https://ww2.mathworks.cn/help/images/ref/imfilter.html?searchHighlight=imfilter&s_tid=srchtitle_support_results_1_imfilter){ target="_blank"}
+[2] [MATLAB imfilter 函数](https://ww2.mathworks.cn/help/images/ref/imfilter.html?searchHighlight=imfilter&s_tid=srchtitle_support_results_1_imfilter)
 
-[3] [OpenCV-Python 所有图像平滑函数](https://docs.opencv.org/4.10.0/d4/d13/tutorial_py_filtering.html){ target="_blank"}
+[3] [OpenCV-Python 所有图像平滑函数](https://docs.opencv.org/4.10.0/d4/d13/tutorial_py_filtering.html)
 
 !!! note ""
 
@@ -1080,7 +1080,7 @@ lines = houghlines(bw, thetas, rhos, peaks);
 
 #### 5.3 聚类分割
 
-将每一个像素点用一个向量表示特征后，就可以套上各种聚类算法。最简单的，K-means。对于 MATLAB 中的 [K-means API](https://ww2.mathworks.cn/help/images/ref/imsegkmeans.html){ target="_blank"}：
+将每一个像素点用一个向量表示特征后，就可以套上各种聚类算法。最简单的，K-means。对于 MATLAB 中的 [K-means API](https://ww2.mathworks.cn/help/images/ref/imsegkmeans.html)：
 
 ```matlab
 % 假设 data 表示 N 个像素点的 N×D 维特征向量

@@ -14,4 +14,4 @@ title: 后端专栏简介
 后端开发学习路线 [^1]
 ///
 
-[^1]: [Backend Beginner Roadmap](https://roadmap.sh/backend?r=backend-beginner){ target="_blank"}
+[^1]: [Backend Beginner Roadmap](https://roadmap.sh/backend?r=backend-beginner)

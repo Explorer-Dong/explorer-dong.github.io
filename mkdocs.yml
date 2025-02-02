@@ -198,10 +198,8 @@ nav:
     - Algorithm/advanced-ds.md
   - 前端:
     - FrontEnd/index.md
-    - HTML:
-      - FrontEnd/HTML/html-basic.md
-    - CSS:
-      - FrontEnd/CSS/css-basic.md
+    - FrontEnd/html-basic.md
+    - FrontEnd/css-basic.md
     - JavaScript:
       - FrontEnd/JavaScript/javascript-basic.md
     - Hexo:

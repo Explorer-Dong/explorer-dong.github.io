@@ -282,7 +282,7 @@ title: 数据挖掘
 ??? note "例题"
 
     假设现在的最小支持度阈值为 40%，按照下面的事务集，使用 FP-growth 算法寻找出所有的频繁项集：
-
+    
     | TID  |   项集    |
     | :--: | :-------: |
     |  1   | {a,b,d,e} |
@@ -290,37 +290,37 @@ title: 数据挖掘
     |  3   | {a,b,d,e} |
     |  4   | {a,c,d,e} |
     |  5   | {b,c,d,e} |
-
+    
     **1）构建 FP 树**
-
+    
     首先扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树：
-
+    
     ![扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051012396.png)
-
+    
     **2）寻找频繁项集**
-
+    
     以 c 为频繁项：
-
+    
     ![以 c 为频繁项 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018981.png)
-
+    
     ![以 c 为频繁项 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018227.png)
-
+    
     以 a 为频繁项：
-
+    
     ![以 a 为频繁项 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018675.png)
-
+    
     ![以 a 为频繁项 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018151.png)
-
+    
     以 e 作为频繁项：
-
+    
     ![以 e 作为频繁项](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018671.png)
-
+    
     以 b 作为频繁项：
-
+    
     ![以 b 作为频繁项](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018110.png)
-
+    
     以 d 作为频繁项：
-
+    
     ![以 d 作为频繁项](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018098.png)
 
 #### Eclat 算法
@@ -433,11 +433,9 @@ $$
 
 本章我们继续学习一个老生常谈的问题：聚类。笔记会在之前的一篇博客上进行补充。重点学习以下三种聚类策略：
 
-基于 **划分** 的聚类方法：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#2-基于划分的聚类算法>
-
-基于 **层次** 的聚类方法：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#3-基于层次的聚类算法>
-
-基于 **密度** 的聚类方法：<https://blog.dwj601.cn/GPA/4th-term/MachineLearning/#4-基于密度的聚类算法>
+1. [基于 **划分** 的聚类方法](../4th-term/MachineLearning.md/#2-基于划分的聚类算法)
+2. [基于 **层次** 的聚类方法](../4th-term/MachineLearning.md/#3-基于层次的聚类算法)
+3. [基于 **密度** 的聚类方法](../4th-term/MachineLearning.md/#4-基于密度的聚类算法)
 
 ## 5 异常检测
 
@@ -522,6 +520,7 @@ $$
     $$
     
   其中：
+
   - 当 LOF 接近 1 时说明当前点和邻近点的密度相似，可能是正常点；
   - 当 LOF 小于 1 时说明当前点的密度比邻近点更大，可能是簇中心；
   - 当 LOF 远大于 1 时说明当前点的密度远小于邻近点的密度，可能是离群点。

@@ -2,10 +2,6 @@
 title: CLion 配置指南
 ---
 
-## 前言
-
-记录零散的 CLion 配置信息。
-
 ## 自动加载 CMake 更改
 
 > 适用于文件更新频繁的场景。
@@ -30,7 +26,7 @@ title: CLion 配置指南
 
 > 加速插件更新、全局更新等操作。
 
-进入 `Settings > Appearance & Behavior > System Settings > HTTP Proxy`，如下：
+进入 `Settings >> Appearance & Behavior >> System Settings >> HTTP Proxy`，如下：
 
 ![进入代理设置界面](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403032127859.png)
 

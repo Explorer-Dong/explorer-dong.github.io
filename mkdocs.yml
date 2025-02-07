@@ -198,26 +198,25 @@ nav:
     - Algorithm/advanced-ds.md
   - 前端:
     - FrontEnd/index.md
-    - FrontEnd/html-basic.md
-    - FrontEnd/css-basic.md
     - JavaScript:
       - FrontEnd/JavaScript/javascript-basic.md
     - Hexo:
       - FrontEnd/Hexo/build-your-own-website-with-hexo.md
       - FrontEnd/Hexo/hexo-deployment.md
       - FrontEnd/Hexo/hexo-enhancement.md
+    - FrontEnd/html-basic.md
+    - FrontEnd/css-basic.md
   - 后端:
     - BackEnd/index.md
     - C++:
-      - BackEnd/CPlusPlus/cpp-basic.md
       - Crow:
         - BackEnd/CPlusPlus/Crow/crow-basic.md
+      - BackEnd/CPlusPlus/cpp-basic.md
     - Python:
-      - BackEnd/Python/python-basic.md
       - Flask:
         - BackEnd/Python/Flask/deploy-flask.md
+      - BackEnd/Python/python-basic.md
     - 数据库:
-      - BackEnd/DataBase/database-basic.md
       - MySQL:
         - BackEnd/DataBase/MySQL/mysql-basic.md
         - BackEnd/DataBase/MySQL/solve-mysql-problems.md
@@ -225,6 +224,7 @@ nav:
         - BackEnd/DataBase/openGauss/opengauss-basic.md
         - BackEnd/DataBase/openGauss/opengauss-remote-connect.md
         - BackEnd/DataBase/openGauss/opengauss-import-data.md
+      - BackEnd/DataBase/database-basic.md
   - 运维:
     - Operation/index.md
     - Nginx:
@@ -240,20 +240,17 @@ nav:
       - Operation/Shell/ubuntu-guide.md
   - 工具:
     - DevTools/index.md
-    - DevTools/jetbrains-license.md
     - CLion:
-      - DevTools/CLion/config-clion.md
-      - DevTools/CLion/solve-clion-cannot-open-relative-file.md
-      - DevTools/CLion/solve-clion-decoding-error.md
-    - DevCpp:
-      - DevTools/DevCpp/devc-self-config.md
+      - DevTools/CLion/clion-config.md
+      - DevTools/CLion/solve-clion-problems.md
     - Git:
       - DevTools/Git/git-basic.md
       - DevTools/Git/git-pull-request.md
       - DevTools/Git/git-self-define-command.md
       - DevTools/Git/solve-git-problems.md
-    - IDLE:
-      - DevTools/IDLE/idle-self-config.md
+    - DevTools/jetbrains-license.md
+    - DevTools/devcpp-lqb-config.md
+    - DevTools/idle-lqb-config.md
   - 博客: https://blog.dwj601.cn/
 
 

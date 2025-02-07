@@ -6,15 +6,17 @@ title: 解决 Git 相关问题
 
 本文记录使用 git 的过程中遇到的一些问题以及对应的解决方法。
 
-## 解决 git 分支冲突
+## 解决 Git 分支冲突问题
 
-### 一、前言
+一直习惯于 add commit push 的三步走，偶然间看到了一个评论说在 push 之前还应该有一个 pull，小小的疑问就埋在了我的心里。
 
-一直习惯于 add commit push 的三步走，偶然间看到了一个评论说在 push 之前还有一个 pull，小小的疑问就埋在了我的心里。于是我就先了解了 pull 的工作原理，就是先拉取代码（fetch）再合并分支（merge）的过程，简而言之就是在本地进行项目编写时，他人也在其他地方进行项目编写并且提前进行了 push 操作，使得当前的云端文件比我克隆下来的文件版本更加新，那么进行合并就会因为冲突被拒绝（rejected）。因此才需要先更新项目（pull），再进行我的 push。那么问题来了，如果别人编写的内容与我编写的内容在源文件的同一个地方，那不就出问题了吗？！于是有了这篇文章
+于是我就先了解了 pull 的工作原理，就是先拉取代码（fetch）再合并分支（merge）的过程，简而言之就是将「别人在原项目的基础上更新的代码」与「我在原项目的基础上更新的代码」进行合并。
 
-### 二、项目演示
+那么问题来了，如果别人更新的内容与我更新的内容在源文件的同一个地方，那不就出问题了吗？！于是有了下面的内容。
 
-我们通过 github 上的 Network 进行可视化讲解。假设现在我们有一个本地项目、github 空仓库、本地仓库提交记录，如下
+### 演示
+
+我们通过 github 上的 Network 进行可视化讲解。假设现在我们有一个本地项目、github 空仓库、本地仓库提交记录，如下：
 
 ![github 空仓库](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402270029674.png)
 
@@ -30,7 +32,7 @@ title: 解决 Git 相关问题
 
 ![test.md 文件中内容](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402270029678.png)
 
-#### 2.1 没有冲突时
+#### 无冲突时
 
 现在我们在本地对 test.md 文件进行编辑，编辑后如下：
 
@@ -62,7 +64,7 @@ title: 解决 Git 相关问题
 
 ![现在的 Network 图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402270029687.png)
 
-#### 2.2 有冲突时
+#### 有冲突时
 
 为了更加直观的展示，我们在原有的基础上多增加几个正常结点，当前 Network 如下：
 
@@ -104,7 +106,7 @@ title: 解决 Git 相关问题
 
 ![最终 Network 图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402270029697.png)
 
-### 三、总结
+### 总结
 
 总的来说，就两句话
 
@@ -113,15 +115,17 @@ title: 解决 Git 相关问题
     - `git commit -a -m '<comment>'` 
     - `git push` 
 
-## 解决 git bash 自动对中文的转义
+## 解决 git bash 自动对中文转义问题
 
-#### 问题重述
+参考：[解决 VS Code 终端使用 git bash 时中文乱码](https://lifeislife.cn/posts/解决vs-code终端使用git-bash时中文乱码)
 
-在使用 git bash 命令行工具时，会自动对中文进行转义，其他的，命令行工具则不会，如下图：
+### 问题复现
+
+在使用 git bash 命令行工具时，会自动对中文进行转义，其他的命令行工具则不会，如下图：
 
 ![git bash VS other bash](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409010902437.png)
 
-#### 解决方案
+### 解决方案
 
 在 git bash 终端输入：
 
@@ -129,6 +133,6 @@ title: 解决 Git 相关问题
 git config --global core.quotepath false
 ```
 
-#### 原理参考
+### 最终效果
 
-<https://lifeislife.cn/posts/解决vs-code终端使用git-bash时中文乱码/>
+![不会自动转义中文了](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202502071715678.png)

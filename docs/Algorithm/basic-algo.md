@@ -1,130 +1,207 @@
 ---
-title: 基础算法
+title: 基础算法例题解析
 ---
 
 ## 前言
 
-基础算法的「例题解析」。
+本文精选一些基础算法例题并进行详细讲解。下表导读了本文的所有例题，便于快速检索：
 
-## 贪心
+| 标签 |                      链接                       |  难度  |     锚点     | 备注 |
+| :--: | :---------------------------------------------: | :----: | :----------: | :--: |
+| 贪心 | [CF](https://codeforces.com/contest/1873/problem/B) | CF 800 | [:link:](#good-kid) | / |
 
-### 1. green_gold_dog, array and permutation
+## 题解
 
-<https://codeforces.com/contest/1867/problem/A>
+### Good Kid
 
-> 题意：给定n个数a[i]，其中可能有重复数，请构造一个n个数的排列b[i]，使得c[i]=a[i]-b[i]中，c[i]的不同数字的个数最多
->
-> 思路：思路比较好想，就是最大的数匹配最小的数，次大的数匹配次小的数，以此类推。起初我想通过将原数列的拷贝数列降序排序后，创建一个哈希表来记录每一个数的排位，最终通过原数列的数作为键，通过哈希表直接输出排位，但是问题是原数列中的数可能会有重复的，那么在哈希的时候如果有重复的数，那么后来再次出现的数就会顶替掉原来的数的排位，故错误。
->
-> 正确思路：为了**保证原数列中每个数的唯一性**，我们可以给原数列每一个数赋一个下标，排序后以下标进行唯一的一一对应的索引。那么就是：首先赋下标，接着以第一关键词进行排序，然后最大的数（其实是下标）匹配最小的结果以此类推
->
-> 模拟一个样例：
-> 5
-> 8 7 4 5 5 9
->
-> 最终的答案应该是
-> 2 3 6 4 5 1
->
-> 首先对每一个数赋予一个下标作为为唯一性索引
-> 8 7 4 5 5 9
-> 1 2 3 4 5 6（替身）
->
-> 接着将上述数列按照第一关键词进行排序
-> 9 8 7 5 5 4
-> 6 1 2 4 5 3（替身）
->
-> 对每一个数进行赋值匹配
-> 9 8 7 5 5 4
-> 6 1 2 4 5 3（替身）
-> 1 2 3 4 5 6（想要输出的结果）
->
-> 按照替身进行排序
-> 8 7 4 5 5 9
-> 1 2 3 4 5 6（替身）（排序后）
-> 2 3 6 4 5 1（想要输出的结果）
+题意：给定一个数列，现在可以选择其中的任意一个数使其 +1。问如何选择这个数，可以使得修改后的数列中的所有数之积的值最大。输出这个最大值。
 
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
+思路：无论选择哪个数 +1，其实就是选择 n-1 个数的乘积增加一倍。为了最大化结果，那自然就是选择最大的 n-1 个数使其乘积翻倍，那么就是选择数列中的最小值使其 +1 即可。
 
-void solve()
-{
-    int n; cin >> n;
+时间复杂度：$O(n)$。
+
+=== "C"
+
+    ```c
+    #include <stdio.h>
+    #include <stdlib.h>
     
-    // 第一关键词是原数列，第二关键词是赋予的唯一下标
-    vector<pair<int, int>> a(n + 1);
-    for (int i = 1; i <= n; i ++)
-    {
-        cin >> a[i].first;
-        a[i].second = i;
+    void solve() {
+        int n;
+        scanf("%d", &n);
+    
+        int *a = (int*)malloc(n * sizeof(int));
+        for (int i = 0; i < n; i++) {
+            scanf("%d", &a[i]);
+        }
+    
+        int min_index = 0;
+        for (int i = 1; i < n; i++) {
+            if (a[i] < a[min_index]) {
+                min_index = i;
+            }
+        }
+    
+        a[min_index] += 1;
+        
+        int ans = 1;
+        for (int i = 0; i < n; i++) {
+            ans *= a[i];
+        }
+    
+        printf("%d\n", ans);
+    
+        free(a);
     }
     
-    // 按照第一关键词排序
-    sort(a.begin() + 1, a.end(), [&](pair<int, int> x, pair<int, int> y) {
-        return x.first > y.first;
+    int main() {
+        int T;
+        scanf("%d", &T);
+        while (T--) {
+            solve();
+        }
+    }
+    ```
+
+=== "C++"
+
+    ```c++
+    #include <iostream>
+    #include <vector>
+    
+    void solve() {
+        int n;
+        std::cin >> n;
+        std::vector<int> a(n);
+        for (int i = 0; i < n; i++) {
+            std::cin >> a[i];
+        }
+    
+        int min_index = 0;
+        for (int i = 1; i < n; i++) {
+            if (a[i] < a[min_index]) {
+                min_index = i;
+            }
+        }
+    
+        a[min_index] += 1;
+    
+        int ans = 1;
+        for (int i = 0; i < n; i++) {
+            ans *= a[i];
+        }
+        
+        std::cout << ans << "\n";
+    }
+    
+    int main() {
+        std::ios::sync_with_stdio(0);
+        std::cin.tie(0);
+    
+        int T;
+        std::cin >> T;
+        while (T--) {
+            solve();
+        }
+    }
+    ```
+
+=== "Java"
+
+    ```java
+    import java.util.Scanner;
+    import java.util.ArrayList;
+    
+    public class Main {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            int T = sc.nextInt();
+            while (T-- > 0) {
+                solve(sc);
+            }
+            sc.close();
+        }
+    
+        public static void solve(Scanner sc) {
+            int n = sc.nextInt();
+            ArrayList<Integer> a = new ArrayList<>(n);
+            for (int i = 0; i < n; i++) {
+                a.add(sc.nextInt());
+            }
+    
+            int min_index = 0;
+            for (int i = 1; i < n; i++) {
+                if (a.get(i) < a.get(min_index)) {
+                    min_index = i;
+                }
+            }
+    
+            a.set(min_index, a.get(min_index) + 1);
+    
+            int ans = 1;
+            for (int i = 0; i < n; i++) {
+                ans *= a.get(i);
+            }
+    
+            System.out.println(ans);
+        }
+    }
+    ```
+
+=== "Python"
+
+    ```python
+    T = int(input())
+    for _ in range(T):
+        n = int(input())
+        a = list(map(int, input().split()))
+    
+        a[a.index(min(a))] += 1
+    
+        ans = 1
+        for num in a:
+            ans *= num
+        print(ans)
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    const readline = require('readline');
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
     });
     
-    // 以下标作为原数列的替身，每一个替身对应一个升序的最终排名
-    vector<pair<int, int>> res(n + 1);
-    for (int i = 1; i <= n; i ++)
-    {
-        res[i].first = a[i].second;
-        res[i].second = i;
+    let inputs = []
+    let idx = 0;
+    
+    rl.on('line', (line_data) => {
+        inputs.push(line_data);
+    });
+    
+    rl.on('close', () => {
+        let T = inputs[idx++];
+        while (T--) {
+            solve();
+        }
+    });
+    
+    function solve() {
+        let n = inputs[idx++];
+        let a = inputs[idx++].split(' ').map(Number);
+    
+        const min_index = a.indexOf(Math.min(...a));
+        a[min_index] += 1;
+    
+        let ans = 1;
+        for (const num of a) {
+            ans *= num;
+        }
+    
+        console.log('%d', ans);
     }
-    
-    // 通过下标，还原原数列的排序
-    sort(res.begin() + 1, res.end());
-    
-    // 输出第二关键词
-    for (int i = 1; i <= n; i ++)
-        cout << res[i].second << " \n"[i == n];
-}
-
-int main()
-{
-    int T; cin >> T;
-    while (T --) solve();
-    return 0;
-}
-```
-
-### 2. Good Kid
-
-<https://codeforces.com/contest/1873/problem/B>
-
-> 题意：对于一个数列，现在可以选择其中的一个数使其+1，问如何选择这个数，可以使得修改后的数列中的所有数之积的值最大
->
-> 思路：其实就是选择n-1个数的乘积值加一倍，关键在于选哪一个n-1个数的乘积值，逆向思维就是对于n个数，去掉那个最小值，那么剩下来的n-1个数之积就会最大了，于是就是选择最小的数+1，最终数列之积就是答案了。
-
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
-
-typedef long long ll;
-
-void solve()
-{
-    int n; cin >> n;
-    vector<int> a(n);
-    
-    for (int i = 0; i < n; i ++)
-        cin >> a[i];
-    
-    sort(a.begin(), a.end());
-    
-    ll res = a[0] + 1;
-    for (int i = 1; i < n; i ++)
-        res *= a[i];
-    cout << res << endl; 
-}
-
-int main()
-{
-    int T; cin >> T;
-    while (T --) solve();
-    return 0;
-}
-```
+    ```
 
 ### 3. 1D Eraser
 

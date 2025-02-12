@@ -4,21 +4,27 @@ title: 基础算法例题解析
 
 ## 前言
 
-本文精选一些基础算法例题并进行详细讲解。下表导读了本文的所有例题，便于快速检索：
+本文精选一些基础算法例题并进行详细讲解。下表导读了本文的所有例题，便于快速检索。
 
-| 标签 |                      链接                       |  难度  |     锚点     | 备注 |
+| 算法标签 |                     OJ 链接                     |  难度  |     本文锚点     | 备注 |
 | :--: | :---------------------------------------------: | :----: | :----------: | :--: |
-| 贪心 | [CF](https://codeforces.com/contest/1873/problem/B) | CF 800 | [:link:](#good-kid) | / |
+| 贪心 | [CF](https://codeforces.com/contest/1873/problem/B) | CF 800 | [⚓](#good-kid) | / |
+| 贪心、分讨 | [CF](https://codeforces.com/contest/1873/problem/G) | CF 1500 | [⚓](#abbc-or-bacb) | / |
+| 贪心、堆 | [蓝桥](https://www.lanqiao.cn/problems/5889/learning/?contest_id=145) | CF 1200 * | [⚓](#通关) | / |
+
+/// tc
+基础算法例题导读表（打星表示自己预估的难度）
+///
 
 ## 题解
 
 ### Good Kid
 
-题意：给定一个数列，现在可以选择其中的任意一个数使其 +1。问如何选择这个数，可以使得修改后的数列中的所有数之积的值最大。输出这个最大值。
+题意：给定一个含有 $n\ (1\le n \le 9)$ 个数的数列，现在可以选择其中的任意一个数使其 +1。问如何选择这个数，可以使得修改后的数列中的所有数之积的值最大。输出这个最大值。
 
 思路：无论选择哪个数 +1，其实就是选择 n-1 个数的乘积增加一倍。为了最大化结果，那自然就是选择最大的 n-1 个数使其乘积翻倍，那么就是选择数列中的最小值使其 +1 即可。
 
-时间复杂度：$O(n)$。
+时间复杂度：$O(n)$
 
 === "C"
 
@@ -203,229 +209,77 @@ title: 基础算法例题解析
     }
     ```
 
-### 3. 1D Eraser
+### ABBC or BACB
 
-<https://codeforces.com/contest/1873/problem/D>
+题意：现在有一个由 A 和 B 两种字符组成的字符串 $s\ (1\le|s|\le2\cdot 10^5)$。操作一，可以将 AB 转化为 BC；操作二，可以将 BA 转化为 CB。问最多可以执行上述操作多少次。给出最多操作次数。
 
-> 题意：给定一个只有B和W两种字符的字符串，现在有一种操作可以将一个指定大小的区间（大小为k）中所有的字符全部变为W，问对于这个字符串，至少需要几次上述操作才可以将字符串全部变为W字符
->
-> 思路：我们直接遍历一边字符串即可，在遍历到B字符的时候，指针向后移动k位，如果是W字符，指针向后移动1位即可，最终统计一下遇到B字符的次数即可。
+思路：
 
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
+- 从题面可以看出，本题的两种操作都可以看做是对 B 字符的移动，操作一是向左移动，操作二是向右移动，并且只能单方向移动。有了这个性质，题目就转化为了怎么选择每一个 B 字符的移动方向可以尽可能多的经过 A 字符；
+- 不难发现，如果字符串的边缘有 B 字符或者有至少两个连续的 B 字符，就一定可以将所有的 A 字符都经过。反之，就是单独的 B 字符将一个完整的 A 串切割开来的情景（特判没有 B 字符切割 A 字符的情况），此时就是小学学到的线段模型。由于线段一定比端点多一份，为了最大化经过的 A 字符数量，选择长度最短的 A 子串不经过即可。
 
-typedef long long ll;
+时间复杂度：$O(n)$
 
-void solve()
-{
-    int n, k;
-    cin >> n >> k;
-    string s;
-    cin >> s;
+=== "Python"
+
+    ```python
+    T = int(input())
+    for _ in range(T):
+        s = input()
+        if s.count('BB') or s[0] == 'B' or s[-1] == 'B':
+            print(s.count('A'))
+        elif s.count('A') == len(s):
+            print(0)
+        else:
+            ans = s.count('A')
+            sub_length = len(s)  # 最短 A 串长度
+            i = 0
+            while i < len(s):
+                if s[i] == 'A':
+                    j = i
+                    while j < len(s) and s[j] == 'A':
+                        j += 1
+                    sub_length = min(sub_length, j - i)
+                    i = j
+                else:
+                    i += 1
+            ans -= sub_length
+            print(ans)
+    ```
+
+### 通关
+
+题意：给定一棵含有 $n$ 个结点的树和一个初始价值，树中每个结点代表一个关卡，每个关卡有「通过最低需求价值」和「通过奖励价值」两个属性。只有通过了父结点关卡才能继续挑战子结点关卡。现在从根结点开始尝试通关，问应该如何选择通关顺序使得通过的关卡数最多？给出最多通关的关卡数。
+
+思路：我们每次贪心地选择需求价值最小的关卡进行闯关即可。可以通过二叉堆数据结构来实现。
+
+时间复杂度：$O(n \log n)$
+
+=== "Python"
+
+    ```python
+    from heapq import *
     
-    int res = 0;
+    n, have = tuple(map(int, input().split()))
+    g = [[] for _ in range(n + 1)]
     
-    for (int i = 0; i < n;)
-    {
-        if (s[i] == 'B')
-        {
-            res ++;
-            i += k;
-        }
-        else i++;
-    }
-    cout << res << endl;
-}
-
-int main()
-{
-    int T; cin >> T;
-    while (T --) solve();
-    return 0;
-}
-```
-
-### 4. ABBC or BACB
-
-<https://codeforces.com/contest/1873/problem/G>
-
-> 题意：现在有一个只有A和B两种字符的字符串，有如下两种操作：第一种，可以将AB转化为BC，第二种，可以将BA转化为CB。问最多可以执行上述操作几次
->
-> 思路：其实一开始想到了之前做过的翻转数字为-1，最后的逻辑是将数字向左右移动，于是这道题就有了突破口了。上述两种操作就可以看做将A和B两种字符交换位置，并且B保持不变，A变为另一种字符C。由于C是无法执行上述操作得到，因此就可以理解为B走过的路就不可以再走了，那么就是说对于一个字符串，最终都会变成B走过的路C。并且只要有B，那么一个方向上所有的A都会被利用转化为C（直到遇到下一个B停止），那么我们就可以将B看做一个独立的个体，他可以选择一个方向上的所有的A并且执行操作将该方向的A全部转化为C，那么在左和右的抉择中，就是要选择A数量最多的方向进行操作，但是如果B的足够多，那就不需要考虑哪个方向了，所有的A都可以获得一次操作机会。现在就转向考虑B需要多少呢，
->
-> 答案是两种：如果B的数量小于A“块”的数量，其实就是有一块A无法被转化，那么为了让被转化的A数量尽可能的多，就选择A块数量最少的那一块不被转化。如果B的数量>=A块的数量，那么可以保证所有的A都可以被转化为C块，从而最终的答案就是A字符的数量
-
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
-
-typedef long long ll;
-
-void solve()
-{
-    string s; cin >> s;
-    int cntb = 0, blocka = 0, cnta = 0; // B字符的数量，A连续区间的数量，A字符的个数 
+    for i in range(1, n + 1):
+        fa, get, need = tuple(map(int, input().split()))
+        g[fa].append((need, -get, i))
     
-    vector<int> a; // 每一个A连续区间中A字符的数量 
+    ans = 0
+    h = [g[0][0]]
+    while len(h):
+        need, neg_get, now = heappop(h)
+        if have < need:
+            break
+        have += -neg_get
+        ans += 1
+        for ch in g[now]:
+            heappush(h, ch)
     
-    for (int i = 0; i < s.size();)
-    {
-        if (s[i] == 'A')
-        {
-            int sum = 0;
-            while (s[i] == 'A') cnta ++, sum ++, i ++;
-            a.emplace_back(sum);
-            blocka ++;
-        }
-        else
-        {
-            cntb ++;
-            i ++;
-        }
-    }
-    
-    if (cntb >= blocka) cout << cnta << endl;
-    else
-    {
-        sort(a.begin(), a.end());
-        cout << cnta - a[0] << endl;
-    }
-}
-
-int main()
-{
-    int T; cin >> T;
-    while (T --) solve();
-    return 0;
-}
-```
-
-### 5. Smilo and Monsters
-
-<https://codeforces.com/contest/1891/problem/C>
-
-> 题意：给定一个序列，其中每一个元素代表一个怪物群中的怪物的数量。现在有两种操作：
->
-> 1. 选择一个怪物群，杀死其中的一只怪物。同时累加值 $x+=1$
-> 2. 选择一个怪物群，通过之前积累的累加值，一次性杀死当前怪物群中的 $x$ 只怪物，同时累加值 $x$ 归零
->
-> 现在询问杀死所有怪物的最小操作次数
->
-> 思路：一开始我是分奇偶进行判断的，但是那只是局部最优解，全局最优解的计算需要我们“纵观全局”。
->
-> 我们可以先做一个假设：假设当前只有一个怪物群，为了最小化操作次数，最优解肯定是先杀死一半的怪物（假设数量为n，则获得累计值x=n），然后无论剩余n个还是n+1个，我们都使用累计值x一次性杀死n个怪物。
->
-> 现在我们回到原题，有很多个怪物群，易证，最终的最优解也一点是最大化利用操作2，和特殊情况类似，能够利用的一次性杀死的次数就是怪物总数的一半。区别在于：此时不止一个怪物群。那么我们就要考虑累加值如何使用。很容易想到先将怪物群按照数量大小进行排序，关键就在于将累加值从小到大进行使用还是从大到小进行使用。可以发现，对于一个确定的累加值，由于操作2的次数也会算在答案中。那么如果从最小的怪物群开始使用，就会导致操作2的次数变多。因此我们需要从最大值开始进行操作2。
->
-> 那么最终的答案就是：
->
-> - 首先根据怪物数量的总和计算出最终的累加值s（s=sum/2）
-> - 接着我们将怪物群按照数量进行升序排序
-> - 然后我们从怪物数量最大的开始进行操作2，即一次性杀死当前怪物群，没进行一次，答案数量+1
-> - 最后将答案累加上无法一次性杀死的怪物群中怪物的总数
->
-> 时间复杂度：$O(n \log n)$
-
-```cpp
-void solve() {
-    n = read(); s = 0; res = 0;
-    for (int i = 1; i <= n; i++) {
-        a[i] = read();
-        s += a[i];
-    }
- 
-    s >>= 1;
- 
-    sort(a + 1, a + n + 1);
- 
-    for (int i = n; i >= 1; i--) {
-        if (s >= a[i]) {
-            s -= a[i], a[i] = 0, res++;
-        } else if (s) {
-            a[i] -= s;
-            s = 0;
-            res++;
-        }
-    }
- 
-    for (int i = 1; i <= n; i++) {
-        res += a[i];
-    }
- 
-    printf("%lld\n", res);
-}
-```
-
-### 6. 通关
-
-<https://www.lanqiao.cn/problems/5889/learning/?contest_id=145>
-
-> 声明：谨以此题记录我的第一道正式图论题（存图技巧抛弃了y总的纯数组，转而使用动态数组`vector`进行建图）e.g.
->
-> ```cpp
-> struct Node {
-> int id;        // 当前结点的编号
-> int a;    // 属性1
-> int b;    // 属性2
-> };
-> vector<Node> G[N];
-> ```
->
-> 题意：给定一棵树，每个结点代表一个关卡，每个关卡拥有两个属性：通关奖励值`val`和可通关的最低价值`cost`。现在从根节点开始尝试通关，每一个结点下面的关卡必须要当前结点通过了之后才能继续闯关。问应该如何选择通关规划使得通过的关卡数最多？
->
-> 思路：一开始想到的是直接莽bfs，对每一层结点按照cost升序排序进行闯关，然后wa麻了。最后一看正解原来是还不够贪。正确的闯关思路应该是始终选择当前可以闯过的cost最小的关卡，而非限定在了一层上。因此我们最终的闯关顺序是：对于所有解锁的关卡，选择cost最小的关卡进行通关，如果连cost最小的关卡都无法通过就直接结束闯关。那么我们应该如何进行代码的编写呢？分析可得，解锁的关卡都是当前可通过的关卡的所有子结点，而快速获得当前cost最小值的操作可以通过一个堆来维护。
->
-> 时间复杂度：$O(n \log n)$
-
-```cpp
-const int N = 100010;
-typedef long long ll;
-
-struct Node {
-    int id;
-    int val;
-    int cost;
-    // 有趣的重载
-    bool operator< (const Node& t) const {
-        return this->cost > t.cost;
-    }
-};
-
-int n, p;
-ll res;
-vector<Node> G[N];
-priority_queue<Node> q;
-
-void bfs() {
-    q.push(G[0][0]);
-
-    while (q.size()) {
-        Node now = q.top();
-        q.pop();
-        if (p >= now.cost) {
-            res++;
-            p += now.val;
-            for (auto& child: G[now.id]) {
-                q.push(child);
-            }
-        } else {
-            break;
-        }
-    }
-}
-
-void solve() {
-    cin >> n >> p;
-    for (int i = 1; i <= n; i++) {
-        int fa, v, c;
-        cin >> fa >> v >> c;
-        G[fa].push_back({i, v, c});
-    }
-    bfs();
-    cout << res << "\n";
-}
-```
+    print(ans)
+    ```
 
 ### 7. 串门
 

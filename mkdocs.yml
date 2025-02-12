@@ -124,6 +124,9 @@ extra_javascript:
   - injects/javascripts/link_blank.js
   # 百度统计
   - injects/javascripts/baidu_tongji.js
+  # 表格排序（暂时不用）
+  # - injects/javascripts/table_sort.js
+  # - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
 extra_css:
   # KaTeX
   - https://unpkg.com/katex@0/dist/katex.min.css
@@ -154,7 +157,7 @@ plugins:
 # 页面导航
 nav:
   - index.md
-  - 绩点: 
+  - 基础: 
     - GPA/index.md
     - 1st-term:
       - GPA/1st-term/AdvancedMath.md

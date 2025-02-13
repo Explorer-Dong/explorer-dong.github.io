@@ -40,9 +40,9 @@ theme:
     # - header.autohide              # 自动隐藏页面头部
     - navigation.tabs                # 顶部一级分类导航栏
     - navigation.tabs.sticky         # 固定顶部一级分类导航栏
-    # - navigation.sections          # 分类页小标题
-    # - navigation.expand            # 分类页默认展开（一般与 navigation.sections 一起使用）
-    - navigation.indexes           # 不显示分类索引首页
+    - navigation.sections          # 分类页小标题
+    # - navigation.expand            # 分类页默认展开
+    # - navigation.indexes           # 不显示分类索引首页
     - navigation.top               # 顶部导航栏
     - navigation.footer            # 页脚
     - content.code.copy            # 代码块复制按钮
@@ -195,10 +195,11 @@ nav:
   - 算法:
     - Algorithm/index.md
     - Algorithm/templates.md
-    - Algorithm/basic-algo.md
-    - Algorithm/basic-ds.md
-    - Algorithm/advanced-algo.md
-    - Algorithm/advanced-ds.md
+    - 例题解析:
+      - Algorithm/basic-algo.md
+      - Algorithm/basic-ds.md
+      - Algorithm/advanced-algo.md
+      - Algorithm/advanced-ds.md
   - 前端:
     - FrontEnd/index.md
     - JavaScript:

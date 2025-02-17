@@ -4,7 +4,9 @@ title: 基础算法
 
 ## 前言
 
-本文精选一些「基础算法」的例题并进行详细的原理讲解与代码实现。题目来源主要是 Codeforces、洛谷、LeetCode 等。
+本文精选一些「基础算法」的例题并进行详细的原理讲解与代码实现。
+
+算法标签主要是「贪心、前缀和与差分、二分、搜索、分治」。题目来源主要是 Codeforces、洛谷、LeetCode。
 
 ## 导读
 
@@ -18,6 +20,10 @@ title: 基础算法
 | 贪心、树、最短路 | [蓝桥](https://www.lanqiao.cn/problems/5890/learning/?contest_id=145) | CF 1400 * | [串门](#串门) | 树的直径 |
 | 贪心 | [Vijos](https://vijos.org/d/nnu_contest/p/1532) | CF 1200 * | [Codeforces rating](#codeforces-rating) | 相邻交换验证最优 |
 | 贪心、递推 | [洛谷](https://www.luogu.com.cn/problem/P5019) | 洛谷 黄 | [铺设道路](#铺设道路) | 从边界开始考虑 |
+| 贪心、枚举 | [AcWing](https://www.acwing.com/problem/content/5483/) | CF 1300 * | [截断数组](#截断数组) | 前缀和性质推广 |
+| 贪心、构造 | [力扣](https://leetcode.cn/problems/maximum-binary-string-after-change/description/) | CF 1300 * | [修改后的最大二进制字符串](#修改后的最大二进制字符串) | / |
+| 贪心 | [力扣](https://leetcode.cn/problems/maximum-elegance-of-a-k-length-subsequence/) | CF 1800 * | [子序列最大优雅度](#子序列最大优雅度) | 反悔贪心 |
+| 贪心、位运算、分讨 | [洛谷](https://www.luogu.com.cn/problem/P2114) | 洛谷 绿 | [起床困难综合症](#起床困难综合症) | 按位贪心 |
 
 /// caption | <
 基础算法例题导读表（打 * 表示自己预估的难度）
@@ -424,289 +430,199 @@ $$
     print(ans)
     ```
 
-### 23. 截断数组
+### 截断数组
 
-<https://www.acwing.com/problem/content/5483/>
+题意：定义「平衡数组」为奇偶元素数量相同的数组。给定一个含有 $n\ (1 \le n \le 100)$ 个数的平衡数组 $a$ 和截断总成本，现在需要将该数组截断为尽可能多的子平衡数组，定义截断代价为 $|a_i-a_{i+1}|$。给出最多截断操作次数。
 
-> 题意：定义平衡数组为奇偶数数量相同的数组，现在给定一个平衡数组，和一个总成本数，最多可以将原数组截成多少截子平衡数组，且截断代价总和不超过总成本，截断代价计算公式为 $|a_i-a_{i+1}|$
->
-> 思路：我们直接枚举所有的可以被截断的位置，统计所有的代价值，然后根据成本总数按降序枚举代价值即可
->
-> 时间复杂度：$O(n \log n)$
+思路：本题最关键的性质就是，假设都是平衡数组，那么也一定是平衡数组，即截断点之间也一定是平衡数组（这与前缀和性质类似）。那么我们就可以直接枚举所有的可截断位置，然后按照代价贪心地升序枚举即可。
 
-```cpp
-#include <iostream>
-#include <queue>
-#include <cstring>
-#include <vector>
-#include <unordered_map>
-#include <algorithm>
-using namespace std;
+时间复杂度：$O(n \log n)$
 
-const int N = 110;
+=== "Python"
 
-int n, b;
-int a[N], odd[N], even[N];
-
-void solve() {
-    cin >> n >> b;
+    ```python
+    n, B = tuple(map(int, input().split()))
+    a = list(map(int, input().split()))
     
-    for (int i = 1; i <= n; i++) {
-        cin >> a[i];
-        if (a[i] % 2 == 0) {
-            even[i] = even[i - 1] + 1;
-            odd[i] = odd[i - 1];
-        } else {
-            even[i] = even[i - 1];
-            odd[i] = odd[i - 1] + 1;
-        }
-    }
+    odd_cnt, even_cnt = 0, 0
+    cuts = []
+    for i in range(n):
+        if a[i] & 1:
+            odd_cnt += 1
+        else:
+            even_cnt += 1
+        if i < n - 1 and odd_cnt == even_cnt:
+            cuts.append(abs(a[i + 1] - a[i]))
     
-    vector<int> c;
-    for (int i = 2; i <= n - 2; i += 2) {
-        if (odd[i] == even[i]) {
-            c.push_back(abs(a[i] - a[i + 1]));
-        }
-    }
+    cuts.sort()
+    ans = 0
+    for cut in cuts:
+        if cut > B:
+            break
+        B -= cut
+        ans += 1
     
-    int res = 0;
-    sort(c.begin(), c.end());
-    for (auto& x: c) {
-        if (b >= x) {
-            b -= x;
-            res++;
-        }
-    }
+    print(ans)
+    ```
+
+### 修改后的最大二进制字符串
+
+题意：给定一个 01 字符串 $s\ (1 \le |s| \le 10^5)$，给出任意次下列操作后最大值对应的字符串。
+
+1. $00 \to 10$
+2. $10 \to 01$
+
+思路：
+
+- 操作二可以看做将 1 向右移动，这对最终数值大小无益。操作一可以提升数值大小，这是我们希望干的；
+- 考虑贪心。显然对于前缀连续的 1 我们没法操作，保留即可。对于从第一个 0 开始的尾串，最佳贪心策略是利用操作二将所有的 0 移动到尾串的最前面，然后再用操作一得到最大尾串。
+
+时间复杂度：$O(n)$
+
+=== "C++"
+
+    ```cpp
+    class Solution {
+    public:
+        string maximumBinaryString(string binary) {
+            int n = binary.size();
     
-    cout << res;
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-### 24. 修改后的最大二进制字符串
-
-<https://leetcode.cn/problems/maximum-binary-string-after-change/description/>
-
-> 题意：给定一个仅由01组成的字符串，现在可以执行下面两种操作任意次，使得最终的字符串对应的十进制数值最大，给出最终的字符串
->
-> 1. $00 \to 10$
-> 2. $10 \to 01$
->
-> 思路：
->
-> - 有点像之前做的翻转转化为平移的问题，事实确实如此。首先需要确定一点就是：如果字符串起始有连续的1，则保留，因为两种操作都是针对0的。接着就是对从第一个0开始的尾串处理的思路
-> - 对于尾串而言，我们自然希望1越多、越靠前越好，但是第二种操作只能将1向后移，第一种操作又必须要连续的两个0，因此我们就产生了这样的贪心思路：将所有的1通过操作二移动到串尾，接着对尾串的开头连续的0串执行第二种操作，这样就可以得到最大数值的二进制串
->
-> 时间复杂度：$O(n)$
-
-```cpp
-class Solution {
-public:
-    string maximumBinaryString(string binary) {
-        int n = binary.size();
-
-        string res;
-
-        // 前缀1全部加入答案
-        int i = 0;
-        for (i = 0; i < n; i++) {
-            if (binary[i] == '0') {
-                break;
-            }
-            else {
-                res += '1';
-            }
-        }
-
-        // 非前缀1的部分一定可以操作为 00...011..1，进而转化为 11...11011...1
-        int zero = count(binary.begin() + i, binary.end(), '0');
-        if (zero > 0) {
-            for (int j = 0; j < zero - 1; j++) res += '1';
-            res += '0';
-        }
-
-        while (res.size() < n) res += '1';
-
-        return res;
-    }
-};
-```
-
-### 25. 子序列最大优雅度
-
-<https://leetcode.cn/problems/maximum-elegance-of-a-k-length-subsequence/>
-
-> 标签：反悔贪心
->
-> 题意：给定长度为 n 的物品序列，现在需要从中寻找一个长度为 k 的子序列使得子序列的总价值最大，给出最终的最大价值。一个序列的价值定义为每个物品的 **本身价值之和** + **物品种类数的平方**
->
-> 思路：我们采用反悔贪心的思路。首先按照物品本身价值进行降序排序并选择前 k 个物品作为集合 S，然后按顺序枚举剩下的物品进行替换决策。我们记每个物品有一个「本身价值」，集合 S 有一个「种类价值」。那么就会遇到下面两种情况：
->
-> - 第 i 个物品对应的种类**存在**集合 S 中。此时该物品「一定不选」，因为无论当前物品替代集合中的 S 哪一个物品，本身价值的贡献会下降、种类价值的贡献保持不变。
-> - 第 i 个物品对应的种类**不在**集合 S 中。此时该物品一定选择吗？不一定。有两种情况：
->     - 集合 S 没有重复种类的物品。此时该物品「一定不选」，同样的，无论当前物品替代集合中的 S 哪一个物品，本身价值的贡献会下降、种类价值的贡献保持不变。
->     - 集合 S 存在重复种类的物品。此时该物品「一定选」，因为一定可以提升种类价值的贡献，至于减去本身价值的损失后是否使得总贡献增加，并不具备可能的性质，只能每次替换物品时**更新全局答案**进行记录。
->
-> 时间复杂度：$O(n \log n)$
-
-```cpp []
-class Solution {
-public:
-    long long findMaximumElegance(std::vector<std::vector<int>>& items, int k) {
-        using ll = long long;
-
-        std::sort(items.rbegin(), items.rend());
-
-        ll t = 0, cat = 0, res = 0;
-        std::unordered_map<int, int> cnt;
-        std::stack<ll> stk;
-
-        for (int i = 0; i < items.size(); i++) {
-            ll v = items[i][0], c = items[i][1];
-            if (i < k) {
-                // 前 k 个物品
-                t += v;
-                cnt[c]++;
-                cat += cnt[c] == 1;
-                if (cnt[c] > 1) {
-                    stk.push(v);
-                }
-            } else {
-                // 后 n-k 个物品
-                if (cnt[c]) {
-                    // 已经出现过的物品种类
-                    continue;
+            string res;
+    
+            // 前缀1全部加入答案
+            int i = 0;
+            for (i = 0; i < n; i++) {
+                if (binary[i] == '0') {
+                    break;
                 } else {
-                    // 没有出现过的物品种类
-                    if (stk.size()) {
-                        cat++;
-                        t -= stk.top();
-                        t += v;
-
-                        stk.pop();
-                        cnt[c]++;
-                    }
+                    res += '1';
                 }
             }
-            // 更新全局答案
-            res = max(res, t + cat * cat);
+    
+            // 非前缀1的部分一定可以操作为 00...011..1，进而转化为 11...11011...1
+            int zero = count(binary.begin() + i, binary.end(), '0');
+            if (zero > 0) {
+                for (int j = 0; j < zero - 1; j++) res += '1';
+                res += '0';
+            }
+    
+            while (res.size() < n) res += '1';
+    
+            return res;
         }
+    };
+    ```
 
-        return res;
-    }
-};
-```
+=== "Python"
 
-```python []
-class Solution:
-    def findMaximumElegance(self, items: List[List[int]], k: int) -> int:
-        from collections import defaultdict
-        items.sort(reverse=True)
+    ```python
+    class Solution:
+        def maximumBinaryString(self, binary: str) -> str:
+            ans = ""
+    
+            # 前缀
+            for c in binary:
+                if c == '0':
+                    break
+                ans += '1'
+    
+            # 尾串
+            cnt0 = binary.count('0')
+            if cnt0 in [0, 1]:
+                return binary
+            ans += '1' * (cnt0 - 1) + '0'
+            while len(ans) < len(binary):
+                ans += '1'
+    
+            return ans
+    ```
 
-        t, cat, res = 0, 0, 0
-        cnt, stk = defaultdict(int), []
+### 子序列最大优雅度
 
-        for i in range(len(items)):
-            v, c = items[i][0], items[i][1]
-            if i < k:
-                t += v
+题意：给定长度为 $n \ (1\le n \le 10^5)$ 的二元组序列，二元组表示每一个元素的价值与种类。现在需要从中寻找一个长度为 $k$ 的子序列使得该序列「所有物品价值之和 + 物品种类数的平方」的值最大。返回该最大值。
+
+思路：我们采用反悔贪心的思路。首先按照物品本身价值进行降序排序并选择前 $k$ 个物品作为集合 $S$，然后按顺序枚举剩下的物品进行替换决策。当且仅当集合 S 有物品的类别重复且剩下物品的类别不存在于集合 S 中才有可能让答案更大。
+
+时间复杂度：$O(n \log n)$
+
+=== "Python"
+
+    ```python
+    class Solution:
+        def findMaximumElegance(self, items: List[List[int]], k: int) -> int:
+            n = len(items)
+            items.sort(key=lambda x: -x[0])
+    
+            # 贪心
+            val, cat = 0, 0
+            cnt = [0] * (n + 1)
+            rep = []
+            for i in range(k):
+                v, c = items[i]
+                val += v
+                cat += cnt[c] == 0
                 cnt[c] += 1
-                cat += cnt[c] == 1
                 if cnt[c] > 1:
-                    stk.append(v)
-            else:
-                if cnt[c]:
-                    continue
-                else:
-                    if len(stk):
-                        t -= stk[-1]
-                        t += v
-                        cat += 1
-                        stk.pop()
-                        cnt[c] += 1
-            res = max(res, t + cat**2)
-
-        return res
-```
+                    rep.append(v)
+    
+            # 反悔
+            ans = val + cat ** 2
+            for i in range(k, n):
+                v, c = items[i]
+                if cnt[c] == 0 and len(rep):
+                    val -= rep.pop()
+                    val += v
+                    cat += 1
+                    cnt[c] += 1
+                    ans = max(ans, val + cat ** 2)
+    
+            return ans
+    ```
 
 ### 起床困难综合症
 
-<https://www.acwing.com/problem/content/1000/>
+题意：给定 $n\ (2 \le n \le 10^5)$ 个操作（只可能是「按位与、按位或、按位异或」三种之一）与操作数 $t\ (0 \le t \le 10^9)$，再给定一个范围上界 $m\ (2 \le m \le  10^9)$。现在需要选择一个 $[0,m]$ 的初始值，使得初始值经过这 $n$ 次二元运算后得到的结果最大。输出最大运算结果。
 
-> 标签：按位贪心、分类讨论。
->
-> 题意：给定 $n$ 个运算数和对应的 $n$ 个操作，仅有 `&, |, ^` 三种。现在需要选择一个数 $num \in [0,m]$ 使得 $num$ 经过这 $n$ 个二元运算后得到的结果 $res$ 最大。给出最终的 $res$。
->
-> 思路：首先不难发现这些运算操作在二进制位上是相互独立的，没有进位或结尾的情况，因此我们可以「按二进制位」单独考虑。由于运算数和 $m$ 均 $\le 10^9$，因此我们枚举 $[0,30]$ 对应的二进制位。接下来我们单独考虑第 $i$ 位的情况，显然的 $num$ 的第 $i$ 位可以取 $1$ 也可以取 $0$，对应的 $res$ 的第 $i$ 位可以取 $1$ 也可以取 $0$。有以下 $2^2$ 种运算情况：
->
-> |        | $\text{num 的第 i 位填 1 $\to$ res 第 i 位的情况}$ | $\text{num 的第 i 位填 0 $\to$ res 第 i 位的情况}$ |      选择方案      |
-> | :----: | :------------------------------------------------: | :------------------------------------------------: | :----------------: |
-> | 情况一 |                     $1 \to 0$                      |                     $0 \to 0$                      | num 填 0，res 填 0 |
-> | 情况二 |                     $1 \to 0$                      |                     $0 \to 1$                      | num 填 0，res 填 1 |
-> | 情况三 |                     $1 \to 1$                      |                     $0 \to 0$                      |        待定        |
-> | 情况四 |                     $1 \to 1$                      |                     $0 \to 1$                      | num 填 0，res 填 1 |
->
-> 选择方案时我们需要考虑两个约束，$num$ 不能超过 $m$，$res$ 尽可能大，因此有了上述表格第四列的贪心选择结果。之所以情况三待定是因为其对两种约束的相互矛盾的，并且其余情况没有增加 $num$，即对 $num$ 上限的约束仅存在于情况三。假设有 $k$ 位是上述情况三，那么显然的其余位枚举顺序是随意的，因为答案是固定的。对于 $k$ 个情况三，从贪心的角度考虑，我们希望 $res$ 尽可能大，那么就有「高位能出 $1$ 就出 $1$」的结论。因此我们需要从高位到低位逆序枚举这 $k$ 个情况三，由于其他位枚举顺序随意，因此总体就是从高位到低位枚举。
->
-> 时间复杂度：$O(n \log m)$
+思路：由于三种操作是相邻无关的，因此我们可以按位单独考虑。对于第 $i$ 位，初始值为 $0$ 或 $1$ 在经过 $n$ 次运算后均有可能得到 $0$ 和 $1$，因此我们有 $4$ 种情况需要讨论，每种情况贪心地选择最优即可。而为了让结果最大，我们需要从高位开始枚举，因为当初始值填 $1$ 更优时，如果先填低位，可能会导致高位填不了 $1$ 从而得不到最大的答案值。
 
-```cpp
-#include <bits/stdc++.h>
+时间复杂度：$O(n)$
 
-using ll = long long;
-using namespace std;
+=== "Python"
 
-void solve() {
-    int n, m;
-    cin >> n >> m;
+    ```python
+    n, m = map(int, input().strip().split())
     
-    vector<pair<string, int>> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i].first >> a[i].second;
-    }
+    x, y = 0, -1
+    for _ in range(n):
+        inp = input().strip().split()
+        op, t = inp[0], int(inp[1])
+        if op == "AND":
+            x &= t
+            y &= t
+        elif op == "OR":
+            x |= t
+            y |= t
+        else:
+            x ^= t
+            y ^= t
     
-    int res = 0, num = 0;
-    for (int i = 30; i >= 0; i--) {
-        int x = 1 << i, y = 0;
-        for (int j = 0; j < n; j++) {
-            string op = a[j].first;
-            int t = a[j].second & (1 << i);
-            if (op == "AND") {
-                x &= t, y &= t;
-            } else if (op == "OR") {
-                x |= t, y |= t;
-            } else {
-                x ^= t, y ^= t;
-            }
-        }
-        if ((num | (1 << i)) <= m && x > y) {
-            num |= 1 << i;
-            res |= 1 << i;
-        } else {
-            res += y;
-        }
-    }
+    ans, num = 0, 0
+    for i in range(30, -1, -1):
+        a, b = (x >> i) & 1, (y >> i) & 1
+        # 下列四种情况可以简化，为了逻辑清晰性就不简化了
+        if a and b:
+            ans |= 1 << i
+        elif a and not b:
+            ans |= 1 << i
+        elif not a and b:
+            if num | (1 << i) <= m:
+                num |= 1 << i
+                ans |= 1 << i
+        else:
+            pass
     
-    cout << res << "\n";
-}
-
-signed main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    int T = 1;
-//    std::cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
+    print(ans)
+    ```
 
 ## 前缀和与差分
 
@@ -3998,3 +3914,17 @@ signed main() {
 	return 0;
 }
 ```
+
+## 后记
+
+数学题：没思路就打表找规律
+
+网格图：不能DP的考虑哈希（注意网格图的截距用法）
+
+多关键字排序：使用元组作为 lambda 的参数
+
+未知行数的数据读入：用 try except EOFError
+
+DP：初始化要考虑周全
+
+贪心：善用枚举，可以从一两个元素开始考虑

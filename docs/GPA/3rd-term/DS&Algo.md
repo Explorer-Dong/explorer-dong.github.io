@@ -10,7 +10,7 @@ title: 数据结构与算法
 
 一些衍生内容如下：
 
-- 例题解析。相应知识点对应的例题与解析请查看：<https://blog.dwj601.cn/categories/数据结构与算法/>；
+- 例题解析。相应知识点对应的例题与解析请查看：[算法专栏简介](../../Algorithm/index.md)；
 - 代码实现。我用 C++17 实现了笔记中提到的大部分数据结构：<https://github.com/Explorer-Dong/DataStructure>；
 - 课程设计。我用 Qt6 写了个窗口程序以比较「不同排序算法」和「不同查找算法」的计算差异：<https://github.com/Explorer-Dong/DataStructureClassDesign>。
 

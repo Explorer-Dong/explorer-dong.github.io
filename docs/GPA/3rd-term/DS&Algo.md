@@ -2,7 +2,13 @@
 title: 数据结构与算法
 ---
 
-![](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/DataStructure.png)
+![演示图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/DataStructure.png)
+
+/// caption
+
+数据结构具象化
+
+///
 
 ## 前言
 
@@ -19,6 +25,12 @@ title: 数据结构与算法
 数据结构由「数据」和「结构」两部分组成。我们主要讨论的是后者，即结构部分。按照逻辑结构可以将各种数据结果分类为「线性结构」和「非线性结构」。如下图所示：
 
 ![线性数据结构 vs 非线性数据结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408301527018.png)
+
+/// caption
+
+线性数据结构 vs 非线性数据结构
+
+///
 
 在面对一个实际问题时，我们往往需要考虑两个问题：需要存储什么信息？以及信息之间的组织方式是什么？一般而言，存储的都是数值数据或者数据之间的关系，组织方式有线性结构、树形结构、图结构共三种（有些教材会单独把集合拿出来，但由于集合的逻辑一般都通过树或图来实现，因此这里不单独罗列）。
 
@@ -41,7 +53,9 @@ title: 数据结构与算法
 === "双向链表结点添加"
 
     ![添加结点](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218514.png)
-
+    /// caption
+    ///
+    
     ```c++
     s->prior = p;
     s->next = p->next;
@@ -52,7 +66,9 @@ title: 数据结构与算法
 === "双向链表结点删除"
 
     ![删除结点](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218515.png)
-
+    /// caption
+    ///
+    
     ```c++
     p->next->prior = p->prior;
     p->prior->next = p->next;
@@ -121,7 +137,7 @@ $$
 ??? note "KMP 算法示例代码（下标从 1 开始）"
 
     === "维护 next 数表"
-
+    
         ```c++
         for (int i = 2, j = 0; i <= m; i++) {
             while (j && t[i] != t[j + 1])
@@ -135,9 +151,9 @@ $$
             ne[i] = j;
         }
         ```
-
+    
     === "匹配逻辑"
-
+    
         ```c++
         for (int i = 1, j = 0; i <= n; i++) {
             while (j && news[i] != newt[j + 1])
@@ -147,7 +163,7 @@ $$
             if (news[i] == newt[j + 1])
                 // 匹配上了则j指针后移一位
                 j++;
-
+    
             if (j == m) {
                 // 匹配完全，则统计并且回溯
                 cnt++;
@@ -171,8 +187,8 @@ $$
 
 > In terms of Standard containers the hashtable is like the aggregation of:
 >
-> *  std:: forward_list \<_Node \> containing the elements
-> *  std:: vector \< std:: forward_list \<_Node \>:: iterator > representing the buckets
+> *  std:: forward_list <_Node \> containing the elements
+> *  std:: vector < std:: forward_list <_Node \>:: iterator > representing the buckets
 
 从上述的描述不难看出，哈希表的关键就是哈希函数的设计，其需要确保哈希码的计算结果尽可能均摊到哈希数组中，减少哈希冲突。
 
@@ -195,6 +211,12 @@ $$
 
 ![广义表结点结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218530.png)
 
+/// caption
+
+广义表结点结构示意图
+
+///
+
 广义表结点的 C++ 定义如下代码所示：
 
 ```c++
@@ -214,6 +236,9 @@ struct GListNode {
 === "一些广义表的结构示例图"
 
     ![广义表的结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218531.png)
+    /// caption
+    广义表的结构示意图
+    ///
 
 ### 树
 
@@ -309,9 +334,7 @@ struct GListNode {
 
 ### 平衡二叉搜索树
 
-#### Treap
-
-二叉搜索树和堆的结合体。它通过维护两种性质来保持平衡：
+**Treap**。二叉搜索树和堆的结合体。它通过维护两种性质来保持平衡：
 
 >- **二叉搜索树性质**：每个节点的左子树的所有节点值小于该节点的值，右子树的所有节点值大于该节点的值。
 >- **堆性质**：每个节点的优先级（通常随机生成）要大于或等于其子节点的优先级。
@@ -331,9 +354,7 @@ struct GListNode {
 >
 >- 最坏情况下，树的高度可能退化为 $O(n)$（例如所有优先级相同或顺序生成的优先级），尽管发生概率很低。
 
-#### AVL 树
-
-是最早被发明出来的的自平衡二叉搜索树，1962 年由 Adelson-Velsky 和 Landis 发明。
+**AVL 树**。是最早被发明出来的的自平衡二叉搜索树，1962 年由 Adelson-Velsky 和 Landis 发明。
 
 
 定义：平衡因子为左子树的高度 - 右子树的高度，平衡二叉树的平衡因子绝对值 <= 1
@@ -342,13 +363,37 @@ struct GListNode {
 
 ![旋转 - LL、LR](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218546.png)
 
+/// caption
+
+旋转 - LL、LR
+
+///
+
 ![旋转 - LR](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218547.png)
 
+/// caption
+
+旋转 - LR
+
+///
+
 ![旋转 - RL](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218548.png)
+
+/// caption
+
+旋转 - RL
+
+///
 
 尝试模拟一遍下列序列的构造过程就可以理解了：
 
 ![例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218549.png)
+
+/// caption
+
+例题
+
+///
 
 >- **平衡因子**：每个节点的左右子树高度差不能超过 $1$，且需要记录每个节点的高度。
 >
@@ -365,9 +410,7 @@ struct GListNode {
 >
 >- 由于平衡条件严格，每次插入和删除后可能需要较多的旋转操作，从而导致实现较复杂，插入和删除操作的常数时间开销较大。
 
-#### 红黑树
-
-一种较为宽松的自平衡二叉搜索树，由 Rudolf Bayer 于 1972 年发明。
+**红黑树**。一种较为宽松的自平衡二叉搜索树，由 Rudolf Bayer 于 1972 年发明。
 
 > - **颜色属性**：每个节点都有红色或黑色两种颜色，通过这些颜色约束树的平衡性。
 >
@@ -395,7 +438,7 @@ struct GListNode {
 
 基础因人而异，下面罗列的是个人认为相对基础的知识点。只有熟练掌握了以下基础算法，才有可能理解更复杂的算法从而解出更高难度的问题。
 
-### 贪心 *
+### 贪心
 
 贪心算法其实并不简单，很多时候需要敢想敢猜并且证明往往并不容易，但因为这种方法套路不多，就放在第一个基础算法部分展开。
 
@@ -406,7 +449,46 @@ struct GListNode {
 - 反证法：假设取一种方案比贪心方案更好，得出相反的结论；
 - 边界法：从边界开始考虑，因为满足边界条件更加容易枚举，从而进行后续的贪心。
 
-### 前缀和与差分 *
+### 前缀和与差分
+
+前缀和与差分是两类算法，但由于是相辅相成的关系，故将其列在一起。两种算法的适用场景如下：
+
+- 前缀和算法适用于「频繁求子数组之和、不频繁修改数组元素」的场景；
+- 差分算法适用于「频繁增减子数组元素值、不频繁求数组元素」的场景。
+
+更精简地说：
+
+- 前缀和算法适用于「频繁区间查询、不频繁单点修改」的场景；
+- 差分算法适用于「频繁区间修改、不频繁单点查询」的场景。
+
+!!! tip
+
+    如果需要同时频繁地「区间修改、区间查询」，可以使用进阶数据结构诸如 [树状数组](#树状数组) 或 [线段树](#线段树) 来实现。
+
+**前缀和算法**。为了学习差分算法，我们有必要先学习前缀和算法。具体地，对于一个长度为 $n$ 的数组 $a$，我们定义 $s_i$ 表示：
+
+$$
+s_i=\sum_{j=0}^{i}a_j
+$$
+
+那么当进行区间查询求解数组中下标在闭区间 $[p,q]$ 中的元素和时，只需要 $s_q-s_{p-1}$ 地 $O(1)$ 计算出来即可。我们称 $s$ 为数组 $a$ 的前缀和数组。为了维护出 $s$，我们采用 [递推](#动态规划) 算法。即：
+
+$$
+s_i=
+\begin{cases}
+a_0,&i=0\\
+s_{i-1}+a_i,&i\ge1
+\end{cases}
+$$
+
+**差分算法**。为了实现给数组中下标在闭区间 $[i,j]$ 中的元素 $s_{i\sim j}$ 同时增加 $x$，我们可以借助前缀和算法的思路来实现。具体地，仍然记原始数组为 $a$，前缀和数组为 $s$，如果将 $a_i+x$ 同时 $a_{j+1}-x$，那么在维护前缀和数组 $s$ 时，$s_{i\sim j}$ 中的每一个元素就都增加了 $x$。
+
+利用上述思路，我们可以将待操作的数组看做已经维护好的前缀和数组 $s$，并利用 $a_i=s_i-s_{i-1}$ 计算出差分数组 $a$，后续如果需要频繁地给待操作数组进行区间修改，只需要 $O(1)$ 地修改差分数组的两个边界即可。
+
+综上所述：
+
+- 前缀和算法高效的前提是数组元素尽可能保持不变，如果需要频繁变动数组元素，利用前缀和算法进行区间求和就不合适了；
+- 差分算法高效的前提是不需要频繁的索引数组元素，如果需要频繁索引数组元素，利用差分算法进行区间修改就不合适了。
 
 ### 二分 *
 
@@ -438,10 +520,10 @@ struct GListNode {
 
     ```c++
     vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
-
+    
     void quick_sort(int l, int r) {
         if (l >= r) return;
-
+    
         // conquer
         int i = l - 1, j = r + 1, x = a[(l + r) >> 1];
         while (i < j) {
@@ -449,12 +531,12 @@ struct GListNode {
             while (a[--j] > x);
             if (i < j) swap(a[i], a[j]);
         }
-
+    
         // divide
         quick_sort(l, j);
         quick_sort(j + 1, r);
     }
-
+    
     quick_sort(0, a.size() - 1);  // 调用示例
     ```
 
@@ -471,16 +553,16 @@ struct GListNode {
     ```c++
     vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
     vector<int> t(a.size(), 0);       // 临时数组
-
+    
     void merge_sort(int l, int r) {
         if (l >= r) return;
-
+    
         // divide
         int mid = (l + r) >> 1;
-
+    
         // conquer
         merge_sort(l, mid), merge_sort(mid + 1, r);
-
+    
         // combine
         int i = l, j = mid + 1, k = 0;
         while (i <= mid && j <= r) {
@@ -490,10 +572,10 @@ struct GListNode {
         }
         while (i <= mid) t[k++] = a[i++];
         while (j <= r) t[k++] = a[j++];
-
+    
         for (i = l, j = 0; i <= r; i++) a[i] = t[j++];
     };
-
+    
     merge_sort(0, a.size() - 1);  // 调用示例
     ```
 
@@ -512,7 +594,7 @@ struct GListNode {
 ??? note "堆排序 C++ 示例代码（下标从 0 开始）"
 
     === "非递归"
-
+    
         ```c++
         void down(int u) {
             int l = 2 * u + 1;
@@ -538,7 +620,7 @@ struct GListNode {
                 }
             }
         }
-
+    
         void up(int u) {
             int fa = (u - 1) / 2;
             
@@ -549,9 +631,9 @@ struct GListNode {
             }
         }
         ```
-
+    
     === "递归"
-
+    
         ```c++
         void down(int u) {
             int l = 2 * u + 1;
@@ -570,7 +652,7 @@ struct GListNode {
                 down(t);
             }
         }
-
+    
         void up(int u) {
             int fa = (u - 1) / 2;
             
@@ -580,34 +662,34 @@ struct GListNode {
             }
         }
         ```
-
+    
     === "两种初始化"
-
+    
         ```c++
         // 从下往上
         for (int i = n / 2; i >= 0; i--) {
             down(i);
         }
         ```
-
+    
         ```c++
         // 从上往下
         for (int i = 1; i < n; i++) {
             up(i);
         }
         ```
-
+    
     === "完整代码"
-
+    
         ```c++
         #include <iostream>
-
+    
         using namespace std;
-
+    
         int n, m;
         int heap[100010];
         int last;
-
+    
         void down(int u) {
             int l = 2 * u + 1;
             int r = 2 * u + 2;
@@ -625,7 +707,7 @@ struct GListNode {
                 down(t);
             }
         }
-
+    
         void up(int u) {
             int fa = (u - 1) / 2;
             
@@ -634,7 +716,7 @@ struct GListNode {
                 up(fa);
             }
         }
-
+    
         int main() {
             cin >> n >> m;
             for (int i = 0; i < n; i++) {

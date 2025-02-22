@@ -4,7 +4,7 @@ title: 首页
 
 ## 站点简介
 
-欢迎访问我的知识（Wiki）网站！本网站托管了个人从本科开始记录的 **课程笔记** 与 **技术博客**。文章按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun Server 双平台部署。
+欢迎访问我的知识（Wiki）网站！本网站托管了个人从本科开始记录的 **课程笔记** 与 **技术文章**。文章按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun Server 双平台部署。
 
 *[Wiki]: 一种允许一群用户用简单的描述来创建和连接一组网页的社会计算系统。
 

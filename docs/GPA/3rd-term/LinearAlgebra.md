@@ -2,8 +2,6 @@
 title: 线性代数
 ---
 
-![](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/linear%20algebra.png)
-
 ## 前言
 
 本篇博客初稿完成于 2024.01.06，即大二上学期期末。参考《工程数学 线性代数》同济第七版。
@@ -71,13 +69,13 @@ $$
 ??? note "证明"
 
     对于特殊情况。即不为零的元素在左上角，则根据上述分块矩阵，可知
-
+    
     $$
     D =(-1)^{1+1}a_{ij}M_{ij}= a_{ij}A_{ij}
     $$
-
+    
     对于一般情况。即某行/列唯一不为零的元素在任意位置，则经过 $i+j-2$ 次对换后，就是上述特殊情况，可知：
-
+    
     $$
     D =(-1)^{i+j-2}a_{ij}M_{ij}=(-1)^{i+j}a_{ij}M_{ij}= a_{ij}A_{ij}
     $$
@@ -96,7 +94,7 @@ $$
 ??? note "例题"
 
     已知 n 阶行列式 D，按第 $x$ 行展开后有 $D=\sum_{i=1}^n a_{xi}A_{xi}$，现在将 $a_{xi}$ 替换为 $a_{yi}$ 且 $x\ne y$，则 $\sum_{i=1}^n a_{yi}A_{xi}=0$。道理很简单，现在求解的值其实也是一个行列式，并且这个行列式有两行/列的元素完全相等，那么显然的行列式的值就是 0。例如下面这道题：显然 (1) 的结果为 0，(2) 只需要配凑一下即可。
-
+    
     ![例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140938343.png)
 
 ### 特殊的行列式
@@ -182,7 +180,7 @@ $$
 ??? tip
 
     - 矩阵乘法的基本规则。$AB=C$ 中 $c_{ij}$ 是 $A$ 的第 $i$ 行与 $B$ 的第 $j$ 列元素依次相乘并求和的结果。
-
+    
     - 矩阵乘法没有交换律。$AB$ 称为 $A$ 左乘 $B$。交换成立的前提是 $A$ 和 $B$ 左乘和右乘合法相等才可以。
 
 
@@ -294,51 +292,51 @@ $$
 === "按位加"
 
     若
-
+    
     ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946427.png)
-
+    
     则
-
+    
     ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946428.png)
 
 === "按位数乘"
 
     若
-
+    
     ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946429.png)
-
+    
     则
-
+    
     ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946430.png)
 
 === "矩阵乘法"
 
     若
-
+    
     ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946431.png)
-
+    
     则
-
+    
     ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946432.png)
-
+    
     其中
-
+    
     ![其中](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946433.png)
 
 === "按位转置"
 
     若
-
+    
     ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946434.png)
-
+    
     则
-
+    
     ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946435.png)
 
 === "对角分块矩阵"
 
     ![对角分块矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946436.png)
-
+    
     其中 $A_1,A_2,...,A_s$ 都是方阵，则称 $A$ 为对角分块矩阵
 
 #### 2.5.2 运算性质
@@ -499,7 +497,7 @@ $$
     ![加法性质](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946453.png)
 
 6. 压缩性：若 $A_{m\times n}$ 的秩为 $r$，则 $A$ 一定可以转化为
-    
+   
     $$
     \begin{bmatrix}
     E_r & O \\
@@ -711,13 +709,13 @@ $$
 ??? note "施密特正交化求标准正交基 - 详细过程"
 
     一、正交化
-
+    
     ![正交化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946478.png)
-
+    
     ![正交化 - 续](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946479.png)
-
+    
     二、单位化
-
+    
     ![单位化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946480.png)
 
 正交矩阵。
@@ -737,7 +735,7 @@ $$
 **特征值的性质**。
 
 - $n$ 阶矩阵 $A$ 在复数范围内含有 $n$ 个特征值，且：
-    
+  
     $$
     \begin{aligned}
     \sum_{i = 1}^{n} \lambda _i =& \sum_{i = 1}^{n} a_{ii} \\

@@ -13,3 +13,9 @@ title: 基础专栏简介
 /// caption
 :heart: NNU
 ///
+
+![按照学习类型进行的领域分类，图源 <https://zhuanlan.zhihu.com/p/279642231>](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250224083517762.png)
+
+/// caption
+按照学习类型进行的人工智能领域分类，图片改编自：<https://zhuanlan.zhihu.com/p/279642231>
+///

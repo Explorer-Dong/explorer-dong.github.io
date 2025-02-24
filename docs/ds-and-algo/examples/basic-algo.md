@@ -26,6 +26,7 @@ title: 基础算法
 | 贪心、位运算、分讨 | 洛谷 绿 | [洛谷](https://www.luogu.com.cn/problem/P2114) | [起床困难综合症](#起床困难综合症) | 按位贪心 |
 | 差分 | CF 1500 * | [AcWing](https://www.acwing.com/problem/content/description/102/) | [增减序列](#增减序列) | / |
 | 二分 | 洛谷 黄 | [洛谷](https://www.luogu.com.cn/problem/P2440) | [木材加工](#木材加工) | / |
+| 二分、前缀和、双指针 | CF 1300 * | [AcWing](https://www.acwing.com/problem/content/5562/) | [摆放棋子](#摆放棋子) | / |
 
 /// caption | <
 基础算法例题导读表（打 * 表示自己预估的难度）
@@ -685,184 +686,6 @@ $$
     print(l)
     ```
 
-### 【二分答案】路标设置
-
-<https://www.luogu.com.cn/problem/P3853>
-
-> 题意：与第四题题面几乎一致，只是现在不是从序列中拿走 k 数个，而是往序列中插入 k 个数（插入数字后要保证序列仍然没有重复数且递增），问在插入一定数量数字的情况下，最小的最大差值是多少
->
-> 思路：**二分答案。将答案看做 y 轴，拿掉的数的数量看做 x 轴，就是二分 y 值。**同样可以发现，插入的数字越多，最大差值就越小，具有单调性，可以二分。我们依然直接二分答案，即直接二分最大差值的具体数值，通过判断当前的最大差值需要插入多少个数来检查当前状态是否合理。需要插入的数字的个数为：
-> $$
-> \left \lceil \frac{a[i]-a[i-1]}{dist_{max}}\right \rceil - 1
-> $$
-> 时间复杂度：$O(n\log n)$
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long 
-using namespace std;
-
-const int N = 1e6;
-
-int lim, n, k;
-int a[N];
-
-bool chk(int x) {
-    int cnt = 0;
-    for (int i = 1; i < n; i++) {
-        int gap = a[i] - a[i - 1];
-        if (gap > x) {
-            cnt += (gap + x - 1) / x - 1;
-        }
-    }
-    return cnt > k;
-}
-
-void solve() {
-    cin >> lim >> n >> k;
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
-    
-    int l = 1, r = lim;
-    while (l < r) {
-        int mid = (l + r) >> 1;
-        if (chk(mid)) l = mid + 1;
-        else r = mid;
-    }
-    
-    cout << r << "\n";
-} 
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();    
-    return 0;
-}
-```
-
-### 【二分答案】数列分段 Section II
-
-<https://www.luogu.com.cn/problem/P1182>
-
-> 题意：给定一个无序的序列，现在需要将这个序列进行分段（连续的），分成指定的段数。问应该如何分段可以使得所有段的分段和的最大值最小，输出这个最小的最大值
->
-> 思路：**二分答案，将答案看做 y 轴，拿掉的数的数量看做 x 轴，就是二分 y 值。**可以发现，分的段数越多，所有分段和的最大值就越小，具有单调性，可以二分。我们直接二分答案，即直接二分分段最大值，通过判断当前最大值的约束条件下可以分的组数进行判断。至于如何计算当前最大值条件下可分得的组数，直接线性扫描进行局部求和即可
->
-> 时间复杂度：$O(n \log n)$
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long 
-using namespace std;
-
-const int N = 1e5 + 10;
-
-int n, k;
-int a[N];
-
-// 当前分组时最大子段和为 x 
-bool chk(int x) {
-    int cnt = 0;
-    for (int i = 0, s = 0; i < n; i++) {
-        if (a[i] > x) return true;
-        
-        if (s + a[i] <= x) s += a[i];
-        else {
-            cnt++;
-            s = a[i];
-        }
-    }
-    cnt += 1;
-    
-    return cnt > k;
-}
-
-void solve() {
-    cin >> n >> k;
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
-    
-    int l = 0, r = 1e9;
-    while (l < r) {
-        int mid = (l + r) >> 1;
-        if (chk(mid)) l = mid + 1;
-        else r = mid;
-    }
-    
-    cout << r << "\n";
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();    
-    return 0;
-}
-```
-
-### 【二分答案】kotori的设备
-
-<https://www.luogu.com.cn/problem/P3743>
-
-> 题意：现在有一批电子设备，每一个电子设备有一个电量消耗速度与当前剩余电量，现在有一个充电器有一个确定的充电速度。问这批设备最久可以运作多久？当可以无限运作时输出 -1
->
-> 思路：可以发现，想要运行的越久，需要补充的电量就越多，具有单调性，可以直接二分答案。很显然我们可以根据期望运行的时间进行 check 操作，通过比对当前期望时间可以充的电量与需要补充的电量进行比对来修改边界值。**需要注意的是**边界的选择，最长可运行时间为 1e10，具体 [推导](https://www.luogu.com.cn/discuss/468555) 待定
->
-> 时间复杂度：$O(n(\log{10^{10})})$
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-const int N = 100010;
-
-int n;
-double p, v[N], s[N];
-
-bool chk(double x) {
-    // x 为当前状态期望使用的时间 
-    double need = 0;
-    for (int i = 1; i <= n; i++)
-        if (v[i] * x > s[i])
-            need += v[i] * x - s[i];
-    return need <= x * p;
-}
-
-void solve() {
-    cin >> n >> p;
-    for (int i = 1; i <= n; i++) {
-        cin >> v[i] >> s[i];
-    }
-    
-    double l = 0, r = 1e10 + 10;
-    while (r - l > 1e-6) {
-        double mid = (l + r) / 2; 
-        if (chk(mid)) l = mid;
-        else r = mid;
-    }
-    
-    if (r > 1e10) cout << -1 << "\n";
-    else cout << r << "\n";
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
 ### 【二分答案/并查集】关押罪犯 :fire:
 
 <https://www.luogu.com.cn/problem/P1525>
@@ -893,81 +716,50 @@ signed main() {
 ```cpp
 ```
 
-### 【二分答案】摆放棋子
+### 摆放棋子
 
-<https://www.acwing.com/problem/content/5562/>
+题意：给定一个长度为 $n\ (1\le n \le 3\cdot 10^5)$ 的二进制序列，现在可以将序列中 $0$ 转成 $1$。问在转换次数不超过 $k\ (0\le k\le n)$ 的情况下，最长连续 $1$ 序列的长度与对应的序列是什么。
 
-> 题意：给定一个 01 序列表示一个 $1\times n$ 的棋子序列，其中 1 表示有棋子，0 表示没有棋子。现在给定 k 个棋子，如何放置可以使得棋盘上连续的棋子长度尽可能长？给出一个合法的最长的序列
->
-> 思路：可以发现，想要序列尽可能的长，那么需要放置的棋子就要尽可能的多，具备单调性，可以二分。我们二分答案，即最长序列长度。对于已知的 k 个可放置棋子，我们需要找到最大的序列长度，于是我们套用**寻找右边界**模板。检查方法就是判断对于当前的长度，通过前缀和与滑动窗口的形式计算当前窗口内需要放置多少颗棋子才能连为一体：
->
-> - 若需要的棋子数 < k，说明可以继续增大长度
-> - 若需要的棋子数 > k，说明当前长度无法满足，要缩小长度
-> - 若需要的棋子数 = k，归属在 < k 的类比中即可。
->
-> 时间复杂度：$O(n \log n)$
+思路：首先不难发现，连续 1 序列越长需要的转换次数就越多，因此可以二分答案。在 check 时，如果想要线性判定一个长度是否合法，可以借助前缀和与滑动窗口来实现。
 
-```cpp
-#include <iostream>
-#include <cstring>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <set>
-using namespace std;
+时间复杂度：$O(n \log n)$
 
-const int N = 300010;
+=== "Python"
 
-int n, k;
-int a[N], s[N];
-
-bool chk(int x) {
-    for (int i = x; i <= n; i++) {
-        if (x - (s[i] - s[i - x]) <= k) {
-            return true;
-        }
-    }
-    return false;
-}
-
-void solve() {
-    cin >> n >> k;
-    for (int i = 1; i <= n; i++) {
-        cin >> a[i];
-        s[i] = s[i - 1] + a[i];
-    }
-
-    int l = 0, r = n;
-    while (l < r) {
-        int mid = (l + r + 1) >> 1;
-        if (chk(mid)) l = mid;
-        else r = mid - 1;
-    }
-
-    for (int i = r; i <= n; i++) {
-        if (r - (s[i] - s[i - r]) <= k) {
-            for (int j = i - r + 1; j <= i; j++) {
-                a[j] = 1;
-            }
-            break;
-        }
-    }
-
-    cout << r << "\n";
-    for (int i = 1; i <= n; i++) cout << a[i] << " ";
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
+    ```python
+    n, k = map(int, input().strip().split())
+    a = list(map(int, input().strip().split()))
+    
+    s = [a[0]] + [0] * (n - 1)
+    for i in range(1, n):
+        s[i] = s[i - 1] + a[i]
+    
+    def chk(v: int) -> tuple[bool, int, int]:
+        i, j = 0, v - 1
+        while j < n:
+            need = (j - i + 1) - (s[j] - (s[i - 1] if i else 0))
+            if need <= k:
+                return True, i, j
+            i += 1
+            j += 1
+        return False, -1, -1
+    
+    l, r = 0, n
+    while l < r:
+        mid = (l + r + 1) >> 1
+        if chk(mid)[0]:
+            l = mid
+        else:
+            r = mid - 1
+    
+    cond, i, j = chk(r)
+    if cond:
+        for p in range(i, j + 1):
+            a[p] = 1
+    
+    print(r)
+    print(' '.join(map(str, a)))
+    ```
 
 ### 【二分答案】盖楼
 

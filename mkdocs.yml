@@ -26,20 +26,19 @@ theme:
         name: 切换到亮色模式
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
+      primary: white
       toggle:
         icon: material/brightness-7
         name: 切换到暗色模式
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black  # 控件颜色
       toggle:
         icon: material/brightness-4
         name: 切换到自动模式
   features:
     # - header.autohide              # 自动隐藏页面头部
     - navigation.tabs                # 顶部一级分类导航栏
-    - navigation.tabs.sticky         # 固定顶部一级分类导航栏
+    # - navigation.tabs.sticky         # 固定顶部一级分类导航栏
     - navigation.sections          # 分类页小标题
     # - navigation.expand            # 分类页默认展开
     # - navigation.indexes           # 不显示分类索引首页
@@ -118,8 +117,8 @@ markdown_extensions:
 extra_javascript:
   # KaTeX
   - injects/javascripts/katex.js
-  - https://unpkg.com/katex@0/dist/katex.min.js
-  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.js
+  - https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js
   # 外链跳转
   - injects/javascripts/link_blank.js
   # 百度统计
@@ -129,7 +128,7 @@ extra_javascript:
   # - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
 extra_css:
   # KaTeX
-  - https://unpkg.com/katex@0/dist/katex.min.css
+  - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.css
   # 自定义样式
   - injects/stylesheets/extra.css
 
@@ -174,30 +173,30 @@ nav:
       - GPA/5th-term/DataBase.md
       - GPA/5th-term/OperatingSystem.md
       - GPA/5th-term/ComputerOrganization.md
-      - GPA/6th-term/ComputerNetwork.md
+      - GPA/6th-term/computer-network.md
     - 人工智能基础:
       - GPA/4th-term/PyApply.md
       - GPA/5th-term/DigitalImageProcessing.md
-      - GPA/4th-term/MachineLearning.md
+      - GPA/4th-term/machine-learning.md
       - GPA/5th-term/DeepLearning.md
-      - GPA/5th-term/DataMining.md
-      - GPA/6th-term/ComputerVision.md
-      - GPA/6th-term/NaturalLanguageProcessing.md
-      - GPA/6th-term/SpeechRecognition.md
-      - GPA/6th-term/SmartEducation.md
+      - GPA/5th-term/data-mining.md
+      - GPA/6th-term/computer-vision.md
+      - GPA/6th-term/natural-language-processing.md
+      - GPA/6th-term/speech-recognition.md
+      - GPA/6th-term/smart-education.md
   - 炼丹:
     - data-science/index.md
     - data-science/numpy-basic.md
     - data-science/pandas-basic.md
     - data-science/matplotlib-basic.md
   - 算法:
-    - Algorithm/index.md
-    - Algorithm/templates.md
-    - 例题解析:
-      - Algorithm/basic-algo.md
-      - Algorithm/basic-ds.md
-      - Algorithm/advanced-algo.md
-      - Algorithm/advanced-ds.md
+    - ds-and-algo/index.md
+    - ds-and-algo/templates.md
+    - 精选例题:
+      - ds-and-algo/examples/basic-algo.md
+      - ds-and-algo/examples/advanced-algo.md
+      - ds-and-algo/examples/basic-ds.md
+      - ds-and-algo/examples/advanced-ds.md
   - 前端:
     - FrontEnd/index.md
     - JavaScript:
@@ -228,18 +227,18 @@ nav:
         - BackEnd/DataBase/openGauss/opengauss-import-data.md
       - BackEnd/DataBase/database-basic.md
   - 运维:
-    - Operation/index.md
+    - operation/index.md
     - Nginx:
-      - Operation/Nginx/nginx-basic.md
-      - Operation/Nginx/nginx-command.md
-      - Operation/Nginx/solve-nginx-reload-error.md
-      - Operation/Nginx/whereis-nginx.md
-    - Safe:
-      - Operation/Safe/solve-server-invade.md
-    - Shell:
-      - Operation/Shell/shell-basic.md
-      - Operation/Shell/solve-shell-problems.md
-      - Operation/Shell/ubuntu-guide.md
+      - operation/nginx/nginx-basic.md
+      - operation/nginx/nginx-command.md
+      - operation/nginx/solve-nginx-reload-error.md
+      - operation/nginx/whereis-nginx.md
+    - 安全:
+      - operation/safe/solve-server-invade.md
+    - CLI:
+      - operation/shell/shell-basic.md
+      - operation/shell/solve-shell-problems.md
+      - operation/shell/ubuntu-guide.md
   - 工具:
     - DevTools/index.md
     - CLion:

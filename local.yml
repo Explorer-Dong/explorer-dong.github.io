@@ -11,3 +11,6 @@ INHERIT: ./mkdocs.yml
 plugins:
   - meta
   - search
+
+watch:
+  - mkdocs.yml

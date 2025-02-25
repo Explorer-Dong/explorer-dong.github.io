@@ -155,8 +155,10 @@ plugins:
 
 # 页面导航
 nav:
-  - index.md
-  - 基础: 
+  - 简介:
+    - index.md
+    - site-nav.md
+  - 基础:
     - GPA/index.md
     - 数理基础:
       - GPA/1st-term/AdvancedMath.md
@@ -198,34 +200,34 @@ nav:
       - ds-and-algo/examples/basic-ds.md
       - ds-and-algo/examples/advanced-ds.md
   - 前端:
-    - FrontEnd/index.md
+    - front-end/index.md
     - JavaScript:
-      - FrontEnd/JavaScript/javascript-basic.md
+      - front-end/javascript/javascript-basic.md
     - Hexo:
-      - FrontEnd/Hexo/build-your-own-website-with-hexo.md
-      - FrontEnd/Hexo/hexo-deployment.md
-      - FrontEnd/Hexo/hexo-enhancement.md
-    - FrontEnd/html-basic.md
-    - FrontEnd/css-basic.md
+      - front-end/hexo/build-your-own-website-with-hexo.md
+      - front-end/hexo/hexo-deployment.md
+      - front-end/hexo/hexo-enhancement.md
+    - front-end/html-basic.md
+    - front-end/css-basic.md
   - 后端:
-    - BackEnd/index.md
+    - back-end/index.md
     - C++:
-      - Crow:
-        - BackEnd/CPlusPlus/Crow/crow-basic.md
-      - BackEnd/CPlusPlus/cpp-basic.md
+      - crow:
+        - back-end/cplusplus/crow/crow-basic.md
+      - back-end/cplusplus/cpp-basic.md
     - Python:
       - Flask:
-        - BackEnd/Python/Flask/deploy-flask.md
-      - BackEnd/Python/python-basic.md
+        - back-end/python/flask/deploy-flask.md
+      - back-end/python/python-basic.md
     - 数据库:
       - MySQL:
-        - BackEnd/DataBase/MySQL/mysql-basic.md
-        - BackEnd/DataBase/MySQL/solve-mysql-problems.md
+        - back-end/database/mysql/mysql-basic.md
+        - back-end/database/mysql/solve-mysql-problems.md
       - openGauss:
-        - BackEnd/DataBase/openGauss/opengauss-basic.md
-        - BackEnd/DataBase/openGauss/opengauss-remote-connect.md
-        - BackEnd/DataBase/openGauss/opengauss-import-data.md
-      - BackEnd/DataBase/database-basic.md
+        - back-end/database/opengauss/opengauss-basic.md
+        - back-end/database/opengauss/opengauss-remote-connect.md
+        - back-end/database/opengauss/opengauss-import-data.md
+      - back-end/database/database-basic.md
   - 运维:
     - operation/index.md
     - Nginx:
@@ -240,18 +242,18 @@ nav:
       - operation/shell/solve-shell-problems.md
       - operation/shell/ubuntu-guide.md
   - 工具:
-    - DevTools/index.md
+    - dev-tools/index.md
     - CLion:
-      - DevTools/CLion/clion-config.md
-      - DevTools/CLion/solve-clion-problems.md
+      - dev-tools/clion/clion-config.md
+      - dev-tools/clion/solve-clion-problems.md
     - Git:
-      - DevTools/Git/git-basic.md
-      - DevTools/Git/git-pull-request.md
-      - DevTools/Git/git-self-define-command.md
-      - DevTools/Git/solve-git-problems.md
-    - DevTools/jetbrains-license.md
-    - DevTools/devcpp-lqb-config.md
-    - DevTools/idle-lqb-config.md
+      - dev-tools/git/git-basic.md
+      - dev-tools/git/git-pull-request.md
+      - dev-tools/git/git-self-define-command.md
+      - dev-tools/git/solve-git-problems.md
+    - dev-tools/jetbrains-license.md
+    - dev-tools/devcpp-lqb-config.md
+    - dev-tools/idle-lqb-config.md
   - 博客: https://blog.dwj601.cn/
 
 

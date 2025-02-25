@@ -155,8 +155,7 @@ plugins:
 
 # 页面导航
 nav:
-  - 首页:
-    - index.md
+  - index.md
   - 基础:
     - GPA/index.md
     - 数理基础:

@@ -4,7 +4,14 @@ title: 自然语言处理
 
 ## 前言
 
-自然语言处理 (Natural Language Processing, NLP) 是一种人工智能技术，主要用于处理人类自然语言「文本数据」从而完成「预测、生成」等下游任务。本文尝试展开 NLP 的入门指南。
+本文记录自然语言处理的入门笔记。部分内容参考 Huggingface NLP Course [^ huggingface nlp course]。
 
-- 课程成绩分布：平时 10%，作业+实验 40%，期末 50%；
-- 学习指南：<https://github.com/PKU-TANGENT/nlp-tutorial>。
+[^ huggingface nlp course]: <https://huggingface.co/learn/nlp-course/chapter1/1>
+
+成绩组成：平时 10%，作业+实验 40%，期末 50%。
+
+## 绪论
+
+自然语言处理 (Natural Language Processing, NLP) 是一个人工智能研究领域，也可以理解为一种技术，主要用于处理人类自然语言「文本数据」从而完成「预测、生成」等下游任务。
+
+## 后记

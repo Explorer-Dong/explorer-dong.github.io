@@ -27,6 +27,9 @@ title: 基础算法
 | 差分 | CF 1500 * | [AcWing](https://www.acwing.com/problem/content/description/102/) | [增减序列](#增减序列) | / |
 | 二分 | 洛谷 黄 | [洛谷](https://www.luogu.com.cn/problem/P2440) | [木材加工](#木材加工) | / |
 | 二分、前缀和、双指针 | CF 1300 * | [AcWing](https://www.acwing.com/problem/content/5562/) | [摆放棋子](#摆放棋子) | / |
+| 二分、贪心 | CF 1400 * | [AcWing](https://www.acwing.com/problem/content/description/5569/) | [盖楼](#盖楼) | 利用集合简化问题 |
+| 二分、双指针、哈希 | CF 1700 * | [力扣](https://leetcode.cn/problems/find-the-median-of-the-uniqueness-array/) | [找出唯一性数组的中位数](#找出唯一性数组的中位数) | 枚举右维护左 |
+|  | CF 1900 | [CF](https://codeforces.com/contest/1996/problem/F) | [bomb](#bomb) |  |
 
 /// caption | <
 基础算法例题导读表（打 * 表示自己预估的难度）
@@ -686,7 +689,7 @@ $$
     print(l)
     ```
 
-### 【二分答案/并查集】关押罪犯 :fire:
+### 【二分答案/并查集】关押罪犯
 
 <https://www.luogu.com.cn/problem/P1525>
 
@@ -761,248 +764,147 @@ $$
     print(' '.join(map(str, a)))
     ```
 
-### 【二分答案】盖楼
+### 盖楼
 
-<https://www.acwing.com/problem/content/description/5569/>
+题意：给定 $n,m,x,y\ (1\le n,m\le10^9,2\le x,y< 30000)$，其中 $x$ 和 $y$ 均为质数。现在有一个排列数数组，需要将数组中的部分数字分配给两个人。其中一个人需要 $n$ 个数且不允许给它能被 $x$ 整除的数，另一个人需要 $m$ 个数且不允许给它能被 $y$ 整除的数。问这个排列数数组的大小最小是多少。
 
-> 题意：给定 H 个正整数分别为 1 到 H。现在要将这 H 个正整数分给两个人，其中一个人希望获得可以不被 x 整除的数，另一个人希望可以获得不被 y 整除的数。其中 x 和 y 均为质数，问最小的 H 是多少？
->
-> 思路：
->
-> - 很显然的一个二分答案。因为 H 越大，越有可能满足这两个人的要求，具备单调性。
->
-> - 那么现在的问题就是检查函数的设计。对于当前的高度 h，即 h 个正整数，很显然可以划分出下面的集合关系
->
->     <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091829325.png" alt="集合关系" style="zoom:50%;" />
->
->     其中 h-p-q+a 的部分两个人都可以获得。最策略是，p-a 与 q-a 的都给另外的人，如果不够，从 h-p-q+a 中拿，如果还不够那就说明当前 h 无法满足，需要增大 h，反之说明 h 可以满足，继续寻找答案的左边界。
->
-> 时间复杂度：$\Theta(\log (N+M))$
+思路：假设排列数共有 h 个，两个人分别叫 A 和 B。由于 x 和 y 均为质数，那么 [1,h] 中能被 x 和 y 整除的数一定呈现下图中有部分交集或没有交集的情况。一种贪心的分配策略就是，优先将 B 不需要的数分配给 A，然后再从 h-p-q+a 中分配，对 B 也是如此。又由于 h 越大，可分配的数字就越多，为了找到最小的 h 我们二分答案即可。
 
-```cpp
-#include <iostream>
-using namespace std;
-typedef long long ll;
+![集合关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250225154154468.png)
 
-ll n, m, x, y;
+/// fc
+集合关系
+///
 
-bool chk(ll h) {
-    ll p = h / x, q = h / y, a = h / (x * y);
+时间复杂度：$O(\log n)$
 
-    return max(0ll, n - (q - a)) + max(0ll, m - (p - a)) <= h - p - q + a;
-}
+=== "Python"
 
-void solve() {
-    cin >> n >> m >> x >> y;
+    ```python
+    n, m, x, y = map(int, input().strip().split())
+    
+    def chk(h: int) -> bool:
+        p = h // x
+        q = h // y
+        a = h // (x * y)
+        return h - p - q + a < max(0, n - (q - a)) + max(0, m - (p - a))
+    
+    l, r = 0, 10**15
+    while l < r:
+        mid = (l + r) >> 1
+        if chk(mid):
+            l = mid + 1
+        else:
+            r = mid
+    
+    print(l)
+    ```
 
-    ll l = 1, r = 1e15;
-    while (l < r) {
-        ll mid = (l + r) >> 1;
-        if (chk(mid)) r = mid;
-        else l = mid + 1;
-    }
+### 找出唯一性数组的中位数
 
-    cout << r << "\n";
-}
+题意：给定一个数组，返回其「唯一性数组」的中位数。如果唯一性数组有奇数个元素，则返回中间元素，如果有偶数个元素，则返回两个中间元素中较小的那个。唯一性数组定义为：原数组的所有非空子数组中「不同元素的个数」组成的序列。
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
+思路：
 
-小插曲。一开始写的检查函数 code 始终只能通过 9/10，检查函数的代码如下：
+- 首先根据题意可以明确的计算出这个唯一性数组的元素个数 $tot$。假设原数组有 $n$ 个元素，则其唯一性数组一定有 $tot=\dfrac{(1+n) \cdot n}{2}$ 个元素，且最小值一定是 $1$，最大值 $\le n$。最暴力的做法就是 $O(n^3)$ 的维护出这个唯一性数组然后返回其中位数，但这对于 $10^5$ 级别的数据显然是不合适的。观察其他性质；
+- 不难发现，如果数组中「不同元素的个数」越多，那么满足条件的子数组数量就越少，具备单调性。又由于最终的答案一定在 $[1,n]$ 区间内，我们直接二分查找即可。对于一个给定的「不同元素的个数」值，记作 $x$，check 条件就是判断是否刚好有 $\lceil \dfrac{tot}{2} \rceil$ 个子数组的不同元素个数 $\le x$ 或者 $\ge x$。为了在线性时间复杂度内 check，我们利用哈希表，采用枚举右维护左的思路统计合法子数组的个数即可；
+- 值得注意的是，由于需要在唯一性数组含有偶数个元素时返回较小的那一个，我们套用闭区间二分找左边界的板子。
 
-```cpp
-bool chk(ll h) {
-    ll p = h / x, q = h / y, a = h / (x * y);
+时间复杂度：$O(n\log n)$
 
-    if (h - p >= n && h - q >= m) {
-        // 如果满足第一人，检查第二人是否满足
-        if (q - a >= n) return true;
-        else if (h - (n - (q - a)) - q >= m) return true;
+=== "C++"
 
-        // 如果满足第二人，检查第一人是否满足
-        if (p - a >= m) return true;
-        else if (h - (n - (p - a)) - p >= n) return true;
-    }
-    return false;
-}
-```
-
-其实是因为有逻辑错误，即对于当前的 h，必须两个人都能满足才行。而上述代码可能会出现第一个人不满足，但是第二个人满足，却返回 true 的情况，而这是错误的。因此上述代码改成两个人同时满足就可以通过了，即如果有一个人不满足，则返回 false：
-
-```cpp
-bool chk(ll h) {
-    ll p = h / x, q = h / y, a = h / (x * y);
-
-    if (h - p >= n && h - q >= m) {
-        // 如果满足第一人，检查第二人是否满足
-        if (q - a >= n) return true;
-        else if (h - (n - (q - a)) - q >= m) return true;
-
-        return false;
-    }
-    return false;
-}
-```
-
-小结：过多的分支语句不如一个 max 来的更加清晰，也可以避免一定的逻辑错误。
-
-### 【二分答案】找出叠涂元素
-
-<https://leetcode.cn/problems/first-completely-painted-row-or-column/description/>
-
-> 题意：给定一个 $m\times n$ 的矩阵，以及一个存储矩阵中所有元素值的数组，现在从左往右将数组中的元素在对应矩阵中涂色，问序列中最左边使得矩阵中某一行或列全部涂色的下标是什么
->
-> 思路：显然，下标越往右越有可能出现矩阵中某一行或列全部涂色，具备单调性，可以二分答案。我们直接二分序列下标，对于 chk 函数我们直接 $O(n\times m)$ 模拟即可
->
-> 时间复杂度：$O(n\times m \log (n\times m))$
-
-```cpp
-class Solution {
-public:
-    int firstCompleteIndex(vector<int>& arr, vector<vector<int>>& mat) {
-        int m = mat.size(), n = mat[0].size();
-
-        auto chk = [&](int idx) {
-            bool vis[100010] {};
-            for (int i = 0; i <= idx; i++) {
-                vis[arr[i]] = true;
-            }
-
-            for (int i = 0; i < m; i++) {
-                int s = 0;
-                for (int j = 0; j < n; j++) {
-                    s += vis[mat[i][j]];
-                }
-                if (s == n) return true;
-            }
-
-            for (int j = 0; j < n; j++) {
-                int s = 0;
-                for (int i = 0; i < m; i++) {
-                    s += vis[mat[i][j]];
-                }
-                if (s == m) return true;
-            }
-
-            return false;
-        };
-
-        int l = 0, r = m * n - 1;
-        while (l < r) {
-            int mid = (l + r) >> 1;
-            if (chk(mid)) r = mid;
-            else l = mid + 1;
-        }
-        return r;
-    }
-};
-```
-
-### 【二分答案/双指针】找出唯一性数组的中位数
-
-<https://leetcode.cn/problems/find-the-median-of-the-uniqueness-array/>
-
-> 题意：给定一个数组，返回其「唯一性数组」的中位数。如果唯一性数组有奇数个元素，则返回中间元素，如果有偶数个元素，则返回两个中间元素中较小的那个，即左边那个中间元素。唯一性数组定义为：原数组的所有非空子数组中不同元素的个数组成的序列。
->
-> 思路：
->
-> - 首先根据题意可以明确的计算出这个唯一性数组的元素个数 $tot$。假设原数组有 $n$ 个元素，则其唯一性数组一定有 $\displaystyle tot=\frac{(1+n) \times n}{2}$ 个元素，且最小值一定是 $1$，最大值 $\le n$。最暴力的做法就是 $O(n^2)$ 的维护出这个唯一性数组然后返回其中位数，但这对于 $10^5$ 级别的数据显然是不合适的。观察其他性质。
-> - 不难发现，对于「不同元素的个数 $x$」而言，$x$ 越大，满足条件的子数组数量就越多，反之 $x$ 越小，则满足条件的子数组数量就越少，具备单调性，考虑二分。
-> - 问题就是在 $[1,n]$ 内找到一个尽可能小的 $upper$ 使得满足「不同元素的个数 $\le upper$ 的子数组」的数量 $\displaystyle \ge \lceil \frac{tot}{2} \rceil$。
-> - 我们能否在指定不同元素个数上限为 $upper$ 的情况下，快速计算合法子数组的个数呢？答案是可以的，我们引入双指针算法进行 $O(n)$ 的 $check$。我们枚举子数组的右边界并利用哈希表维护子数组的左边界进行统计即可。
->
-> 时间复杂度：$O(n\log n)$
-
-```cpp []
-class Solution {
-public:
-    int medianOfUniquenessArray(vector<int>& nums) {
-        using ll = long long;
-        int n = nums.size();
-        
-        ll tot = 1ll * (1 + n) * n / 2;
-        int ma = *max_element(nums.begin(), nums.end());
-        int f[ma + 1];
-        memset(f, 0, sizeof f);
-
-        // 双指针 check
-        auto chk = [&](int upper) -> bool {
-            ll cnt = 0;
-            int size = 0; // 哈希表大小
-            for (int l = 0, r = 0; r < n; r++) {
-                size += f[nums[r]] == 0;
-                f[nums[r]]++;
-                while (size > upper) {
-                    --f[nums[l]];
-                    size -= f[nums[l]] == 0;
-                    l++;
-                }
-                // 此时以 nums[r] 结尾且 l 为左边界的所有子数组的不同元素的数量均 <= upper
-                cnt += r - l + 1;
-            }
+    ```cpp
+    class Solution {
+    public:
+        int medianOfUniquenessArray(vector<int>& nums) {
+            using ll = long long;
+            int n = nums.size();
+    
+            ll tot = 1ll * (1 + n) * n / 2;
+            int ma = *max_element(nums.begin(), nums.end());
+            int f[ma + 1];
             memset(f, 0, sizeof f);
-            return cnt >= (tot + 1) / 2; // 上取整写法
-        };
-
-        int l = 1, r = n;
-        while (l < r) {
-            int mid = (l + r) >> 1;
-            if (chk(mid)) r = mid;
-            else l = mid + 1;
+    
+            // 双指针 check
+            auto chk = [&](int upper) -> bool {
+                ll cnt = 0;
+                int size = 0;  // 哈希表大小
+                for (int l = 0, r = 0; r < n; r++) {
+                    size += f[nums[r]] == 0;
+                    f[nums[r]]++;
+                    while (size > upper) {
+                        --f[nums[l]];
+                        size -= f[nums[l]] == 0;
+                        l++;
+                    }
+                    // 此时以 nums[r] 结尾且 l 为左边界的所有子数组的不同元素的数量均 <= upper
+                    cnt += r - l + 1;
+                }
+                memset(f, 0, sizeof f);
+                return cnt >= (tot + 1) / 2;  // 上取整写法
+            };
+    
+            int l = 1, r = n;
+            while (l < r) {
+                int mid = (l + r) >> 1;
+                if (chk(mid)) r = mid;
+                else l = mid + 1;
+            }
+            return r;
         }
-        return r;
-    }
-};
-```
+    };
+    ```
 
-```python3 []
-class Solution:
-    def medianOfUniquenessArray(self, nums: List[int]) -> int:
-        n = len(nums)
-        ma = max(nums)
-        tot = (1 + n) * n >> 1
+=== "Python"
 
-        def chk(upper: int) -> int:
-            f = [0] * (ma + 1)
-            cnt, l, size = 0, 0, 0
-            for r in range(n):
-                size += f[nums[r]] == 0
-                f[nums[r]] += 1
-                while size > upper:
-                    f[nums[l]] -= 1
-                    size -= f[nums[l]] == 0
-                    l += 1
-                cnt += r - l + 1
-            return cnt >= (tot + 1) >> 1
+    ```python
+    class Solution:
+        def medianOfUniquenessArray(self, nums: List[int]) -> int:
+            n = len(nums)
+            ma = max(nums)
+            tot = (1 + n) * n // 2
+    
+            def chk(v: int) -> bool:
+                f = [0] * (ma + 1)
+                uni = 0  # 子数组中不同元素的个数
+                cnt = 0  # 不同元素的个数 <= v 的子数组个数
+                i = 0
+                for j in range(n):
+                    f[nums[j]] += 1
+                    uni += f[nums[j]] == 1
+                    while uni > v:
+                        f[nums[i]] -= 1
+                        uni -= f[nums[i]] == 0
+                        i += 1
+                    cnt += j - i + 1
+                return cnt >= (tot + 1) >> 1
+    
+            l, r = 1, n
+            while l < r:
+                mid = (l + r) >> 1
+                if chk(mid):
+                    r = mid
+                else:
+                    l = mid + 1
+    
+            return l
+    ```
 
-        l, r = 1, n
-        while l < r:
-            mid = (l + r) >> 1
-            if chk(mid): r = mid
-            else: l = mid + 1
-        return r
-```
+### Bomb
 
-### 【二分查找】Bomb
+题意：给定两个长度为 $n\ (1\le n \le 2\cdot10^5)$ 的序列 $a$ 和 $b$ 以及最大操作次数 $k\ (1\le k\le 10^9)$，问在不超过最大操作次数的情况下，最多可以获得多少收益？收益的计算方法为：每次选择 $a$ 中一个数 $a_i$ 加入收益并将 $a_i$ 减去 $b_i$ 直到为 $0$。
 
-<https://codeforces.com/contest/1996/problem/F>
+思路：
 
-> 题意：给定两个序列 $a$ 和 $b$ 以及最大操作次数 $k$，问在不超过最大操作次数的情况下，最多可以获得多少收益？收益的计算方法为：每次选择 $a$ 中一个数 `a[i]` 加入收益，并将该数减去 `b[i]` 直到为 $0$。
->
-> 思路：
->
-> - 暴力抬手：最暴力的做法是我们每次操作时选择 $a$ 中的最大值进行计数并对其修改，但是显然 $O(nk)$ 会超时，我们考虑加速这个过程。
+- 暴力法。最暴力的做法是我们每次操作时选择 $a$ 中的最大值进行计数并对其修改，但是显然 $O(kn)$ 会超时，采用堆可以优化到 $O(k\log n)$，还是会超时。考虑优化；
+
 > - 加速进程：由于最终结果中每次操作都是最优的，因此操作次数越多获得的收益就越大，具备单调性。如何利用这个单调性呢？关键在于全体数据的操作次数，我们记作 $k'$。假设我们对 $a$ 中全体数据可取的范围设置一个下限 $lower$，那么显然的 $lower$ 越高，$k'$ 越小，$lower$ 越低，$k'$ 越大。于是根据单调的传递性可知 $lower$ 也和最终的收益具备单调性，$lower$ 越高，收益越小，$lower$ 越低，收益越大。因此我们二分 $lower$，使得 $k'$ 左逼近 $k$。
-> - 细节处理：二分的边界是什么？这需要从计算最终结果的角度来思考。对于二分出的下界 $lower$，即 $r$，此时扫描一遍计算出来的操作次数 $k'$ 一定是 $k'\le k$。也就是说我们还需要操作 $k-k'$ 次，显然我们可以将每个数操作后维护到最终的结果，然后执行上述的暴力思路，但是这样仍然会超时，因为 $k-k'$ 的计算结果最大是 $n$，此时进行暴力仍然会达到 $O(n^2)$。正难则反，我们不妨将上述二分出的 $lower$ 减一进行最终答案的计算，这样对应的操作次数 $k'$ 一定会超过 $k$，并且对于超过 $k$ 的操作，累加到答案的数值一定都是 $lower-1$，这一步也是本题最精妙的一步。从上述分析不难发现，二分的下界需要设定为 $1$，因为后续累加答案时会对 $lower$ 进行减一操作；二分的上界需要设定为严格大于 $10^9$ 的数，比如 $10^9+1$，因为我们需要保证 $lower-1$ 后对应的操作次数 $k'$ 严格大于 $k$。
->
-> 时间复杂度：$O(n\log k)$
+>- 细节处理：二分的边界是什么？这需要从计算最终结果的角度来思考。对于二分出的下界 $lower$，即 $r$，此时扫描一遍计算出来的操作次数 $k'$ 一定是 $k'\le k$。也就是说我们还需要操作 $k-k'$ 次，显然我们可以将每个数操作后维护到最终的结果，然后执行上述的暴力思路，但是这样仍然会超时，因为 $k-k'$ 的计算结果最大是 $n$，此时进行暴力仍然会达到 $O(n^2)$。正难则反，我们不妨将上述二分出的 $lower$ 减一进行最终答案的计算，这样对应的操作次数 $k'$ 一定会超过 $k$，并且对于超过 $k$ 的操作，累加到答案的数值一定都是 $lower-1$，这一步也是本题最精妙的一步。从上述分析不难发现，二分的下界需要设定为 $1$，因为后续累加答案时会对 $lower$ 进行减一操作；二分的上界需要设定为严格大于 $10^9$ 的数，比如 $10^9+1$，因为我们需要保证 $lower-1$ 后对应的操作次数 $k'$ 严格大于 $k$。
+> 
+>时间复杂度：$O(n\log k)$
+
+=== "C++"
 
 ```cpp
 #include <bits/stdc++.h>
@@ -1054,6 +956,12 @@ signed main() {
     while (T--) solve();
     return 0;
 }
+```
+
+=== "Python"
+
+```python
+
 ```
 
 ## 搜索
@@ -3271,9 +3179,7 @@ signed main() {
 
 前缀和与差分：遇到区间修改操作时，应该立即想到其等价于对差分数组做端点修改操作。
 
-二分：
-
-- 二分答案：当按照题意进行正面模拟发现难以实现或者复杂度过高时，可以观察变量之间是否有单调性关系。
+二分：当按照题意进行正面模拟发现难以实现或者复杂度过高时，可以观察变量之间是否有单调性关系。
 
 搜索：
 

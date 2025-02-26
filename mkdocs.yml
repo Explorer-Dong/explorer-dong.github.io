@@ -202,7 +202,6 @@ nav:
   - 算法:
     - ds-and-algo/index.md
     - ds-and-algo/templates.md
-    - ds-and-algo/templates-py.md
     - 精选例题:
       - ds-and-algo/examples/basic-algo.md
       - ds-and-algo/examples/advanced-algo.md

@@ -449,8 +449,6 @@ class SortedList:
   
 ```
 
-
-
 # 字符串
 
 ## KMP / 模式匹配
@@ -1260,3 +1258,277 @@ class Solution:
     def longestNiceSubstring(self, s: str) -> str:
         return f(s)
 ```
+
+# 排序
+
+**次最值问题**
+
+[1289. 下降路径最小和 II - 力扣（LeetCode）](https://leetcode.cn/problems/minimum-falling-path-sum-ii/description/?envType=featured-list&envId=DuoJVDZI?envType=featured-list&envId=DuoJVDZI)
+
+其中需要维护上一层的最小值、次小值及其对应的坐标。
+
+```python
+	mn = mn_2 = (inf, -1)
+	if y < mn[0]: mn_2, mn = mn, (y, j)
+    elif y == mn[0]: mn_2 = (y, j)
+    elif y < mn_2[0]: mn_2 = (y, j)       
+```
+
+
+
+## 计数排序
+
+**带修求第 $k$ 小 / 大的数**
+
+使用哈希表维护每个数值出现次数，适用于数值的值域较小的情况。
+
+例如：当 $nums[i] \in [a,~b]$，可以在 $O(b-a)$ 的时间复杂度内，找出第 $k$ 大的数（有时表现会比 SortedList更好）。
+
+```python
+def get_min_k(cnt, k):
+    cur = 0
+    for x in range(a, b):
+        if cnt[x] == 0: continue 
+        cur += cnt[x]
+        if cur >= k: return x
+    return b
+```
+
+
+
+[2653. 滑动子数组的美丽值 - 力扣（LeetCode）](https://leetcode.cn/problems/sliding-subarray-beauty/description/?envType=featured-list&envId=DMKTNBLj?envType=featured-list&envId=DMKTNBLj)
+
+定长滑动窗口 + 哈希维护计数 + 计数排序。时间复杂度：$O(nU),U$ 是值域极差。
+
+```python
+     def getSubarrayBeauty(self, nums: List[int], k: int, x: int) -> List[int]:
+        n = len(nums)
+        cnt = Counter(nums[:k])
+        def get_min_k():
+            cur = 0
+            for y in range(-50, 0):
+                cur += cnt[y]
+                if cur >= x: return y
+            return 0
+        res = [get_min_k()]
+        for r in range(k, n):
+            nl, nr = nums[r - k], nums[r]
+            cnt[nr] += 1
+            cnt[nl] -= 1
+            if cnt[nl] == 0: cnt.pop(nl)
+            res.append(get_min_k())
+        return res 
+```
+
+
+
+# 离散化
+
+二分写法
+
+```python
+sorted_nums = sorted(set(nums))
+nums = [bisect.bisect_left(sorted_nums, x) + 1 for x in nums]
+```
+
+字典写法
+
+```python
+    sorted_nums = sorted(set(nums))
+    mp = {x: i + 1 for i, x in enumerate(sorted_nums)}
+    nums = [mp[x] for x in nums]
+```
+
+二分 + 还原
+
+```python
+tmp = nums.copy()
+sorted_nums = sorted(set(nums))
+nums = [bisect.bisect_left(sorted_nums, x) + 1 for x in nums]
+mp_rev = {i: x for i, x in zip(nums, tmp)}
+```
+
+
+
+# 二分查找
+
+```python
+from bisect import *
+l = [1,1,1,3,3,3,4,4,4,5,5,5,8,9,10,10]
+print(len(l)) # 16
+
+print(bisect(l, 10))     # 相当于upper_bound, 16
+print(bisect_right(l, 10))    
+
+print(bisect_left(l, 10)) # 14
+```
+
+## 多维二分
+
+```python
+a = [(1, 20), (2, 19), (4, 15), (7,12)]
+idx = bisect_left(a, (2, )) # 1
+```
+
+## 二分答案
+
+**正难则反思想**，二分答案一般满足两个条件：
+
+- 当发现问需要的最少/最多时间时
+- 答案具有单调性。例如问最少的时候，你发现取值越大越容易满足条件。
+
+check(x) 函数对单调x 进行检验。
+
+```python
+y = 27
+def check(x):
+    if x > y:
+        return True
+    return False
+left = a
+res = left + bisect.bisect_left(range(left, mx), True, key = check))
+```
+
+[3048. 标记所有下标的最早秒数 I - 力扣（LeetCode）](https://leetcode.cn/problems/earliest-second-to-mark-indices-i/description/)
+
+**求“至少”问题**
+
+```python
+n, m = len(nums), len(changeIndices)
+def check(mx):  # 给mx天是否能顺利考完试
+    last_day = [-1] * n 
+    for i, x in enumerate(changeIndices[:mx]):
+        last_day[x - 1] = i + 1
+    #如果给mx不能完成，等价于有为i遍历到考试日期的考试
+    if -1 in last_day:
+        return False
+    less_day = 0
+    for i, x in enumerate(changeIndices[:mx]):
+        if last_day[x - 1] == i + 1: # 到了考试日期
+            if less_day >= nums[x - 1]:
+                less_day -= nums[x - 1]
+                less_day -= 1   #抵消当天不能复习
+            else:
+                return False   #寄了
+        less_day += 1
+    return True
+left = sum(nums) + n # 至少需要的天数, 也是二分的左边界
+res = left + bisect.bisect_left(range(left, m + 1), True, key = check)
+return -1 if res > m else res
+```
+
+**求“最多”问题**
+
+[1642. 可以到达的最远建筑 - 力扣（LeetCode）](https://leetcode.cn/problems/furthest-building-you-can-reach/)
+
+```python
+    def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
+        n = len(heights)
+        d = [max(0, heights[i + 1] - heights[i]) for i in range(n - 1)]
+        def check(x):
+            t = d[:x]
+            t.sort(reverse = True)
+            return not (ladders >= x or sum(t[ladders: ]) <= bricks)
+        return bisect.bisect_left(range(n), True, key = check) - 1
+```
+
+**中位数转化为第 $k$ 小问题**
+
+对于一个长度为 $n$ 的 由于数组，求中位数等价于求数组中第 $\frac{n-1}{2}$ 小的数问题（广义中位数）。
+
+[3134. 找出唯一性数组的中位数 - 力扣（LeetCode）](https://leetcode.cn/problems/find-the-median-of-the-uniqueness-array/description/)
+
+一共有 $(n + 1) \times  n / 2$ 个子数组，其对应的 $f=len (set(sub))$ 的值按照升序排列后，求其中位数。即转换为求数组中 第 $k$ 小问题。
+
+转换为二分查找：给定一个 $x$ ，能得出所有子数组中 $f$ 值小于等于 $x$ 的个数 $res$；可以发现 $x$ 越大，$res$ 越大；因此找到恰好让$res >k$ 的位置即可。这里需要使用到求**“不同元素个数小于等于 $k$ 的子数组个数”** 问题，这是一共广义上不定长滑动窗口问题。
+
+```python
+def get_set_subarrays_lower_k(nums, k):
+    l = res = 0
+    freq = Counter()
+    for r, x in enumerate(nums):
+        freq[x] += 1
+        while len(freq) > k:
+            freq[nums[l]] -= 1
+            if freq[nums[l]] == 0: freq.pop(nums[l])
+            l += 1
+        res += r - l + 1
+    return res 
+class Solution:
+    def medianOfUniquenessArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        m = ((n + 1) * n // 2 - 1) // 2
+        lo, hi = 0, n // 2 + 10
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if get_set_subarrays_lower_k(nums, mid) > m:
+                hi = mid
+            else:
+                lo = mid + 1 
+        return lo
+
+```
+
+
+
+## 朴素二分
+
+在 闭区间[a, b]上二分
+
+```python
+    lo, hi = a, b 	# [a, b]
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if check(mid):
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
+```
+
+**实现bisect_left**
+
+注意：查找范围为$[lo, hi]$；当 $x>max(nums[lo:hi +1])$  时，结果 $lo$ 值 等于 $hi$ 。
+
+$bisect\_left(nums, x + 1, lo, hi)-1$ 查找闭区间$[lo,hi]$内，恰好大于 $x$ 的首个位置。如果不存在时，$lo = hi$ ，注意需要特判。
+
+当$hi = n$ 时，兼容了存在和不存在两种情况。当不存在时，$lo=n$。
+
+```python
+def bisect_left(nums, x, lo, hi):
+    def check(pos):
+        return nums[pos] >= x
+    while lo < hi:
+        # 查找恰好比x大于等于的位置
+        mid = (lo + hi) >> 1
+        if check(mid):
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
+print(bisect_left(nums, val, 0, len(nums)))
+```
+
+[2563. 统计公平数对的数目 - 力扣（LeetCode）](https://leetcode.cn/problems/count-the-number-of-fair-pairs/description/)同 [Problem - 1538C - Codeforces](https://codeforces.com/problemset/problem/1538/C)
+
+```python
+def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
+        n = len(nums)
+        nums.sort()
+        res = 0
+        L, R = lower, upper
+        def bisect_left1(nums, x, lo, hi):
+            while lo < hi:
+                mid = (lo + hi) >> 1
+                if nums[mid] >= x:
+                    hi = mid
+                else:
+                    lo = mid + 1
+            return lo
+        for i, x in enumerate(nums):
+            res += bisect_left1(nums, R - x + 1, i + 1, n) - 1 -  bisect_left1(nums, L - x, i + 1, n) + 1
+        return res
+```
+
+
+

@@ -75,7 +75,7 @@ markdown_extensions:
   - toc:
       permalink: true             # 显示标题链接
       toc_depth: 4                # 显示目录深度
-      title: 文章目录             # 目录标题
+      title: 目录                 # 目录标题
       permalink_title: 页面定位   # 链接标题
       slugify: !!python/name:pymdownx.slugs.uslugify  # 禁止重写标题，借鉴 oi-wiki 的配置
   # 数学公式
@@ -156,7 +156,7 @@ plugins:
 # 页面导航
 nav:
   - index.md
-  - 基础:
+  - 课程:
     - GPA/index.md
     - 数理基础:
       - GPA/1st-term/AdvancedMath.md
@@ -184,6 +184,16 @@ nav:
       - GPA/6th-term/natural-language-processing.md
       - GPA/6th-term/speech-recognition.md
       - GPA/6th-term/smart-education.md
+  - 基础:
+    - base/index.md
+    - 人工智能基础:
+      - 机器学习:
+        - base/machine-learning/index.md
+        - base/machine-learning/intro.md
+        - base/machine-learning/data.md
+        - base/machine-learning/model.md
+        - base/machine-learning/eval.md
+        - base/machine-learning/afterword.md
   - 炼丹:
     - data-science/index.md
     - data-science/numpy-basic.md
@@ -255,11 +265,17 @@ nav:
   - 博客: https://blog.dwj601.cn/
 
 
-# 社交链接
+# 额外配置
 extra:
+  # 谷歌分析
   analytics:
     provider: google
     property: G-56NDVC0D5B
+  # 文章状态定义
+  status:
+    new: 最近新增
+    deprecated: 即将废弃
+  # 页面底部社交链接
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Explorer-Dong

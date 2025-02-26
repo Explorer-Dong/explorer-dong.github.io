@@ -93,7 +93,7 @@ flowchart LR
     click 智慧教育 "./GPA/6th-term/smart-education/"
 ```
 
-<figcaption>拓扑图1. 课程笔记</figcaption>
+<figcaption>拓扑图1. 学科基础笔记</figcaption>
 
 ```mermaid
 graph LR
@@ -116,6 +116,6 @@ graph LR
   click dev_ops "./operation/"
 ```
 
-<figcaption>拓扑图2. 技术文章</figcaption
+<figcaption>拓扑图2. 开发技术文章</figcaption
 
 </div>

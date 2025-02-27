@@ -29,7 +29,8 @@ title: 基础算法
 | 二分、前缀和、双指针 | CF 1300 * | [AcWing](https://www.acwing.com/problem/content/5562/) | [摆放棋子](#摆放棋子) | / |
 | 二分、贪心 | CF 1400 * | [AcWing](https://www.acwing.com/problem/content/description/5569/) | [盖楼](#盖楼) | 利用集合简化问题 |
 | 二分、双指针、哈希 | CF 1700 * | [力扣](https://leetcode.cn/problems/find-the-median-of-the-uniqueness-array/) | [找出唯一性数组的中位数](#找出唯一性数组的中位数) | 枚举右维护左 |
-|  | CF 1900 | [CF](https://codeforces.com/contest/1996/problem/F) | [bomb](#bomb) |  |
+| 二分 | CF 1900 | [CF](https://codeforces.com/contest/1996/problem/F) | [bomb](#bomb) | 跳脱二分答案思维定势 |
+| 二分、图论 | 洛谷绿 | [洛谷](https://www.luogu.com.cn/problem/P1525) | [关押罪犯](#关押罪犯) | / |
 
 /// caption | <
 基础算法例题导读表（打 * 表示自己预估的难度）
@@ -315,7 +316,7 @@ title: 基础算法
 === "Python"
 
     ```python
-    import queue
+    from collections import deque
     
     n = int(input())
     g = [[] for _ in range(n + 1)]
@@ -330,18 +331,18 @@ title: 基础算法
     def bfs(u: int) -> tuple[int, int]:
         dst = [0] * (n + 1)
         vis = [False] * (n + 1)
-        q = queue.Queue()
+        q = deque()
         dst[u] = 0
         vis[u] = True
-        q.put(u)
-        while q.qsize():
-            u = q.get()
+        q.append(u)
+        while len(q):
+            u = q.popleft()
             for v, w in g[u]:
                 if vis[v]:
                     continue
                 dst[v] = dst[u] + w
                 vis[v] = True
-                q.put(v)
+                q.append(v)
         max_d = max(dst)
         max_i = dst.index(max_d)
         return max_d, max_i
@@ -689,35 +690,74 @@ $$
     print(l)
     ```
 
-### 【二分答案/并查集】关押罪犯
+### 关押罪犯
 
-<https://www.luogu.com.cn/problem/P1525>
+题意：给定一个含有 $n\ (n\le2\cdot 10^4)$ 个顶点 $m\ (m\le10^5)$ 条边的无向图，没有重边和自环，边权 $w\ (1\le w_i\le 10^9)$ 为正。现在需要将图中所有的顶点分为两部分，使得两部分中最大的边权尽可能小，输出该最小边权。
 
-> 题意：给定一个无向图，没有重边和自环，边权为正。现在需要将图中所有的顶点分为两部分，使得两部分中最大的边权尽可能小，问该最小边权是多少
->
-> 思路一：二分答案。
->
-> - 思路：本题一眼二分图问题，但是有些变化的是左右部并非散点图，其中是有连边的。如何求出最小边权呢？我们可以这么想，首先答案一定出自左右部的连边中（除非左右部全是散点，那答案就是 0），之所以可以采用二分图将点集分为两部分，是因为我们在某种规则下忽略了其中奇数环（二分图定理）的一些边。当规则定义为 **忽略边权不超过 x** 的边时，该图若可以二分，那么忽略边权比 x 值更大的边时，该图同样一定也可以二分，反之则不一定可以二分（特性图如下）。具备单调性，于是我们可以通过 **二分阈值、检查图是否可二分** 的方法来计算出答案
->
-> ![image-20240223011704197](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402230117928.png)
->
-> 时间复杂度：$\Theta(\log C_{max} \times (n+e))$
->
-> 思路二：并查集。
->
-> - 思路：
->
-> - 时间复杂度：
+思路：
 
-二分判定二分图代码：
+- 假设答案是 $m$ 条边中某一条的权重 $w_i$，那么所有权重小于 $w_i$ 的边对应的顶点如何分配无关紧要，我们只关注边权大于 $w_i$ 的边对应的顶点能不能被分到两部分。也就是说我们只关心边权大于 $w_i$ 的边对应的顶点组成的图是否可二分。采用染色法即可快速判定一个图是否可二分。注意这里的可二分的图其实不符合「二分图」的严格定义，因为两个部分的顶点之间可能有连边；
+- 由于 $w_i$ 越小需要判断的顶点数就越多，具备二分性。因此我们直接在 $m$ 条边中二分查找最小的符合条件的边即可；
 
-```cpp
-```
+时间复杂度：$O(m\log n)$
 
-并查集代码：
+本题也可以使用「拓展域并查集」来解决，详情见 [进阶数据结构](./advanced-ds.md#关押罪犯)
 
-```cpp
-```
+*[二分图]: 又称二部图 (Bipartite Graph)。定义为：节点由两个集合组成，且两个集合内部没有边的图。
+
+=== "Python"
+
+    ```cpp
+    from collections import deque
+    
+    n, m = map(int, input().strip().split())
+    edges = [(-1, -1, 0)]  # 下标从 1 开始
+    for _ in range(m):
+        u, v, w = map(int, input().strip().split())
+        edges.append((u, v, w))
+    
+    edges.sort(key=lambda x: x[2])
+    
+    # 染色法 check 二分图
+    def chk(idx: int) -> bool:
+        g = [[] for _ in range(n + 1)]
+        for u, v, w in edges[idx + 1:]:
+            g[u].append((v, w))
+            g[v].append((u, w))
+    
+        color = [0] * (n + 1)
+    
+        def bfs(now: int) -> bool:
+            color[now] = 1
+            q = deque()
+            q.append(now)
+            while len(q):
+                fa = q.popleft()
+                for ch, _ in g[fa]:
+                    if color[ch] == 0:
+                        color[ch] = -color[fa]
+                        q.append(ch)
+                    elif color[ch] == color[fa]:
+                        return False
+            return True
+    
+        for i in range(1, n + 1):
+            if color[i] == 0:
+                ok = bfs(i)
+                if not ok:
+                    return False
+        return True
+    
+    l, r = 0, m
+    while l < r:
+        mid = (l + r) >> 1
+        if chk(mid):
+            r = mid
+        else:
+            l = mid + 1
+    
+    print(edges[r][2])
+    ```
 
 ### 摆放棋子
 
@@ -768,7 +808,7 @@ $$
 
 题意：给定 $n,m,x,y\ (1\le n,m\le10^9,2\le x,y< 30000)$，其中 $x$ 和 $y$ 均为质数。现在有一个排列数数组，需要将数组中的部分数字分配给两个人。其中一个人需要 $n$ 个数且不允许给它能被 $x$ 整除的数，另一个人需要 $m$ 个数且不允许给它能被 $y$ 整除的数。问这个排列数数组的大小最小是多少。
 
-思路：假设排列数共有 h 个，两个人分别叫 A 和 B。由于 x 和 y 均为质数，那么 [1,h] 中能被 x 和 y 整除的数一定呈现下图中有部分交集或没有交集的情况。一种贪心的分配策略就是，优先将 B 不需要的数分配给 A，然后再从 h-p-q+a 中分配，对 B 也是如此。又由于 h 越大，可分配的数字就越多，为了找到最小的 h 我们二分答案即可。
+思路：假设排列数共有 $h$ 个，两个人分别叫 $A$ 和 $B$。由于 $x$ 和 $y$ 均为质数，那么 $[1,h]$ 中能被 $x$ 和 $y$ 整除的数一定呈现下图中有部分交集或没有交集的情况。一种贪心的分配策略就是，优先将 $B$ 不需要的数分配给 $A$，然后再从 $h-p-q+a$ 中分配，对 $B$ 也是如此。又由于 $h$ 越大，可分配的数字就越多，为了找到最小的 $h$ 我们二分答案即可。
 
 ![集合关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250225154154468.png)
 
@@ -893,76 +933,50 @@ $$
 
 ### Bomb
 
-题意：给定两个长度为 $n\ (1\le n \le 2\cdot10^5)$ 的序列 $a$ 和 $b$ 以及最大操作次数 $k\ (1\le k\le 10^9)$，问在不超过最大操作次数的情况下，最多可以获得多少收益？收益的计算方法为：每次选择 $a$ 中一个数 $a_i$ 加入收益并将 $a_i$ 减去 $b_i$ 直到为 $0$。
+题意：给定两个长度为 $n\ (1\le n \le 2\cdot10^5)$ 的序列 $a,b\ (1\le a_i,b_i\le 10^9)$ 以及最大操作次数 $k\ (1\le k\le 10^9)$，问在不超过最大操作次数的情况下，最多可以获得多少收益？收益的计算方法为：每次选择 $a$ 中一个数 $a_i$ 加入收益并将 $a_i$ 减去 $b_i$ 直到为 $0$。
 
 思路：
 
-- 暴力法。最暴力的做法是我们每次操作时选择 $a$ 中的最大值进行计数并对其修改，但是显然 $O(kn)$ 会超时，采用堆可以优化到 $O(k\log n)$，还是会超时。考虑优化；
+- 首先显然我们有一个朴素但正确的贪心，就是我们每次操作时选择 $a$ 中的最大值进行计数并对其修改，但是显然 $O(kn)$ 会超时，采用堆可以优化到 $O(k\log n)$，还是会超时，考虑优化；
+- 正难则反，操作次数越多收益一定越大（或不变）具备单调性，可以二分。我们直接二分最大收益值并 check 对应的操作次数是否即可，吗？这也是本题的难点所在。如果我们按照常规的思路直接二分答案，可以发现 check 的逻辑和原题一样，没法做到线性 check；
+- 但是操作次数越多收益一定越大（或不变）这个单调性是一定存在的，我们直接二分最大收益的本质是想要计算一个局面下的操作次数从而判断是否可以获得那么多收益。如果我们能够通过其他局面线性地 check 出操作次数与收益，也就能实现相同的效果。因此我们要 **跳脱出二分答案的思维定势**，二分「元素选择的阈值下界」，我们将这个下界记作 lower。对于当前局面的 lower，我们可以很容易的线性计算出操作次数与收益，并且 lower 越小，操作次数就越多，可以获得的收益也就越大；
+- 本题还有一个注意点就是二分的边界与收益计算问题。为了保证当前 lower 局面下的操作次数不会超过 $k$，需要确保二分右边界比 $a$ 中最大值还要大。同时对于最终的二分出来的 lower 与对应的操作次数 $cnt$，我们还有 $k-cnt$ 次剩余的操作机会，这些剩余的操作机会一定可以选择 $a$ 中值恰好为 $lower-1$ 的元素。
 
-> - 加速进程：由于最终结果中每次操作都是最优的，因此操作次数越多获得的收益就越大，具备单调性。如何利用这个单调性呢？关键在于全体数据的操作次数，我们记作 $k'$。假设我们对 $a$ 中全体数据可取的范围设置一个下限 $lower$，那么显然的 $lower$ 越高，$k'$ 越小，$lower$ 越低，$k'$ 越大。于是根据单调的传递性可知 $lower$ 也和最终的收益具备单调性，$lower$ 越高，收益越小，$lower$ 越低，收益越大。因此我们二分 $lower$，使得 $k'$ 左逼近 $k$。
->- 细节处理：二分的边界是什么？这需要从计算最终结果的角度来思考。对于二分出的下界 $lower$，即 $r$，此时扫描一遍计算出来的操作次数 $k'$ 一定是 $k'\le k$。也就是说我们还需要操作 $k-k'$ 次，显然我们可以将每个数操作后维护到最终的结果，然后执行上述的暴力思路，但是这样仍然会超时，因为 $k-k'$ 的计算结果最大是 $n$，此时进行暴力仍然会达到 $O(n^2)$。正难则反，我们不妨将上述二分出的 $lower$ 减一进行最终答案的计算，这样对应的操作次数 $k'$ 一定会超过 $k$，并且对于超过 $k$ 的操作，累加到答案的数值一定都是 $lower-1$，这一步也是本题最精妙的一步。从上述分析不难发现，二分的下界需要设定为 $1$，因为后续累加答案时会对 $lower$ 进行减一操作；二分的上界需要设定为严格大于 $10^9$ 的数，比如 $10^9+1$，因为我们需要保证 $lower-1$ 后对应的操作次数 $k'$ 严格大于 $k$。
-> 
->时间复杂度：$O(n\log k)$
-
-=== "C++"
-
-```cpp
-#include <bits/stdc++.h>
-
-using ll = long long;
-
-void solve() {
-    int n, k;
-    std::cin >> n >> k;
-    
-    std::vector<int> a(n), b(n);
-    for (int i = 0; i < n; i++) std::cin >> a[i];
-    for (int i = 0; i < n; i++) std::cin >> b[i];
-    
-    auto chk = [&](int x) {
-        ll cnt = 0;
-        for (int i = 0; i < n; i++) {
-            if (a[i] < x) continue;
-            cnt += (a[i] - x) / b[i] + 1;
-        }
-        return cnt;
-    };
-    
-    int l = 1, r = 1e9 + 10;
-    while (l < r) {
-        int mid = (l + r) >> 1;
-        if (chk(mid) <= k) r = mid;
-        else l = mid + 1;
-    }
-    
-    int best = r - 1;
-    ll res = 0, cnt = 0;
-    for (int i = 0; i < n; i++) {
-        if (a[i] < best) continue;
-        ll t = (a[i] - best) / b[i] + 1;
-        cnt += t;
-        res += t * a[i] - t * (t - 1) / 2 * b[i];
-    }
-    res -= (cnt - k) * best;
-    
-    std::cout << res << "\n";
-}
-
-signed main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    int T = 1;
-    std::cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
+时间复杂度：$O(n\log 10^9)$
 
 === "Python"
 
-```python
-
-```
+    ```python
+    T = int(input())
+    OUTs = []
+    for _ in range(T):
+        n, k = map(int, input().strip().split())
+        a = list(map(int, input().strip().split()))
+        b = list(map(int, input().strip().split()))
+    
+        def chk(v: int):
+            cnt = val = 0
+            for i in range(n):
+                if a[i] < v:
+                    continue
+                x = (a[i] - v) // b[i] + 1  # 操作次数
+                cnt += x
+                val += x * a[i] + x * (x - 1) // 2 * (-b[i])
+            val += max(0, k - cnt) * (v - 1)
+            return cnt > k, val
+    
+        l, r = 1, 10**9 + 1
+        while l < r:
+            mid = (l + r) >> 1
+            if chk(mid)[0]:
+                l = mid + 1
+            else:
+                r = mid
+    
+        OUTs.append(chk(l)[1])
+    
+    print("\n".join(map(str, OUTs)))
+    ```
 
 ## 搜索
 

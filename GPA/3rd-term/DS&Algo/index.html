@@ -974,15 +974,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#并查集-" class="md-nav__link">
-    <span class="md-ellipsis">
-      并查集 *
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#图" class="md-nav__link">
     <span class="md-ellipsis">
       图
@@ -1005,6 +996,24 @@
   
     <nav class="md-nav" aria-label="进阶数据结构">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#并查集" class="md-nav__link">
+    <span class="md-ellipsis">
+      并查集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#拓展域并查集" class="md-nav__link">
+    <span class="md-ellipsis">
+      拓展域并查集
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#树状数组" class="md-nav__link">
@@ -4148,15 +4157,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#并查集-" class="md-nav__link">
-    <span class="md-ellipsis">
-      并查集 *
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#图" class="md-nav__link">
     <span class="md-ellipsis">
       图
@@ -4179,6 +4179,24 @@
   
     <nav class="md-nav" aria-label="进阶数据结构">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#并查集" class="md-nav__link">
+    <span class="md-ellipsis">
+      并查集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#拓展域并查集" class="md-nav__link">
+    <span class="md-ellipsis">
+      拓展域并查集
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#树状数组" class="md-nav__link">
@@ -4709,13 +4727,15 @@
 <li>删除任意一个元素。将 <code>heap[last]</code> 从待删除元素的位置开始，如果比原来的数大就往下 <code>down()</code>，反之就往上 <code>up()</code>，如果相等就不用操作；</li>
 <li>修改任意一个元素。与删除元素逻辑类似。</li>
 </ul>
-<h3 id="并查集-">并查集 *<a class="headerlink" href="#并查集-" title="页面定位">&para;</a></h3>
 <h3 id="图">图<a class="headerlink" href="#图" title="页面定位">&para;</a></h3>
 <p>图是一种由顶点和边组成的数据结构。如果边上带有权重，就称该图为网。对于无向图，如果每一个顶点之间都有路径可达，就称该图为「连通图」，极大连通子图被称为「连通分量」；而有向图就全部加一个 "强" 字，其他含义不变，即「强连通图」和「强连通分量」。对于无向图，直接可达的结点数被称为「度」数；对于有向图，指出去的直接可达结点数被称为「出度」数，指进来的的结点数被称为「入度」数。</p>
 <p><strong>图的存储</strong>。与树类似，图也可以用链表来存储，图中一般将其称为邻接表（一般都是存储出边，如果存储入边就叫做逆邻接表），也可以用邻接矩阵来存储。</p>
 <p><strong>图的遍历</strong>。由于图可能含有环，因此相较于树的遍历，图的遍历需要有一个访问标记数组。一般的遍历方法就是深度优先和广度优先，对于求解两点之间的简单路径问题，深度优先遍历可以很好的解决；对于染色法求二部图问题，广度有点遍历可以很好的解决。</p>
 <p>考虑到此处是对数据结构的初步介绍，为了简明扼要，图的相关算法就在 <strong>图论</strong> 部分中再详细介绍。</p>
 <h2 id="进阶数据结构">进阶数据结构<a class="headerlink" href="#进阶数据结构" title="页面定位">&para;</a></h2>
+<h3 id="并查集">并查集<a class="headerlink" href="#并查集" title="页面定位">&para;</a></h3>
+<h3 id="拓展域并查集">拓展域并查集<a class="headerlink" href="#拓展域并查集" title="页面定位">&para;</a></h3>
+<p>参考：<a href="https://www.luogu.com.cn/article/kx2if31n">https://www.luogu.com.cn/article/kx2if31n</a></p>
 <h3 id="树状数组">树状数组<a class="headerlink" href="#树状数组" title="页面定位">&para;</a></h3>
 <h3 id="线段树">线段树<a class="headerlink" href="#线段树" title="页面定位">&para;</a></h3>
 <h3 id="二叉搜索树">二叉搜索树<a class="headerlink" href="#二叉搜索树" title="页面定位">&para;</a></h3>
@@ -5322,7 +5342,7 @@ s_{i-1}+a_i,&amp;i\ge1
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年2月24日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年2月27日</span>
   </span>
 
     

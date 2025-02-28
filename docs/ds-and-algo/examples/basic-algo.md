@@ -2,8 +2,6 @@
 title: 基础算法
 ---
 
-## 前言
-
 本文精选一些「基础算法」的例题并进行详细的原理讲解与代码实现。
 
 算法标签主要是「贪心、前缀和与差分、二分、搜索、分治」。题目来源主要是 Codeforces、洛谷、LeetCode。
@@ -701,7 +699,7 @@ $$
 
 时间复杂度：$O(m\log n)$
 
-本题也可以使用「拓展域并查集」来解决，详情见 [进阶数据结构](./advanced-ds.md#关押罪犯)
+本题也可以使用「拓展域并查集」来解决，详情见 [进阶数据结构](../advanced-ds.md#关押罪犯)
 
 *[二分图]: 又称二部图 (Bipartite Graph)。定义为：节点由两个集合组成，且两个集合内部没有边的图。
 
@@ -977,52 +975,6 @@ $$
     
     print("\n".join(map(str, OUTs)))
     ```
-
-## 搜索
-
-无论是深搜还是宽搜，都逃不掉图的思维。我们将搜索图建立起来之后，剩余的编码过程就会跃然纸上。
-
-### 【dfs】机器人的运动范围
-
-<https://www.acwing.com/problem/content/22/>
-
-```cpp
-class Solution {
-public:
-    int res = 0;
-    
-    int movingCount(int threshold, int rows, int cols)
-    {
-        if (!rows || !cols) return 0;
-        vector<vector<int>> g(rows, vector<int>(cols, 0));
-        vector<vector<bool>> vis(rows, vector<bool>(cols, false));
-        dfs(g, vis, 0, 0, threshold);
-        return res;
-    }
-    
-    void dfs(vector<vector<int>>& g, vector<vector<bool>>& vis, int x, int y, int threshold)
-    {
-        vis[x][y] = true;
-        res ++;
-        
-        int dx[] = {-1, 0, 1, 0}, dy[] = {0, 1, 0, -1};
-        for (int k = 0; k < 4; k ++)
-        {
-            int i = x + dx[k], j = y + dy[k];
-            if (i < 0 || i >= int(g.size()) || j < 0 || j >= int(g[0].size()) || vis[i][j] || cnt(i, j) > threshold) continue;
-            dfs(g, vis, i, j, threshold);
-        }
-    }
-    
-    int cnt(int x, int y)
-    {
-        int sum = 0;
-        while (x) sum += x % 10, x /= 10;
-        while (y) sum += y % 10, y /= 10;
-        return sum;
-    }
-};
-```
 
 ### 【dfs】CCC单词搜索
 
@@ -3109,10 +3061,6 @@ class Solution:
 
         return res
 ```
-
-## 分治
-
-将大问题转化为等价小问题进行求解。
 
 ### 【分治】随机排列
 

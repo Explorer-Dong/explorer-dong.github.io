@@ -2,4 +2,4 @@
 title: 计算机网络
 ---
 
-![](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/computer%20network.jpg)
+详情见 [基础专栏 - 计算机网络](../../base/computer-network/index.md)。

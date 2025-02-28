@@ -7,7 +7,7 @@ hide:
 
 <h2 align="center">本站定位</h2>
 
-欢迎访问我的知识（Wiki）网站！本网站托管了个人从本科开始记录的 **学科基础笔记** 与 **开发技术文章**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun Server 双平台部署。
+欢迎访问我的知识（Wiki）网站！本网站以个人从本科开始记录的 **学科基础笔记** 与 **开发技术文章** 为基础，旨在构建一个 **开源知识社群**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun Server 双平台部署。
 
 *[Wiki]: 一种允许一群用户用简单的描述来创建和连接一组网页的社会计算系统。
 
@@ -73,20 +73,20 @@ flowchart LR
     click 最优化方法 "./GPA/4th-term/OptMethod/"
 
     click 面向对象程序设计 "./GPA/2nd-term/ObjectOrientedProgramming/"
-    click 数据结构与算法 "./GPA/3rd-term/DS&Algo/"
+    click 数据结构与算法 "./base/ds-and-algo/"
     click 数字逻辑电路 "./GPA/3rd-term/DigitalLogicCircuit/"
     click 算法设计与分析 "./GPA/4th-term/PyAlgo/"
     click 计算机系统基础 "./GPA/4th-term/SysBasic/"
     click 数据库 "./GPA/5th-term/DataBase/"
     click 操作系统 "./GPA/5th-term/OperatingSystem/"
     click 计算机组成 "./GPA/5th-term/ComputerOrganization/"
-    click 计算机网络 "./GPA/6th-term/computer-network/"
+    click 计算机网络 "./base/computer-network/"
 
     click Python高级应用 "./GPA/4th-term/PyApply/"
     click 数字图像处理 "./GPA/5th-term/DigitalImageProcessing/"
     click 机器学习 "./base/machine-learning/"
     click 深度学习 "./GPA/5th-term/DeepLearning/"
-    click 数据挖掘 "./GPA/5th-term/data-mining/"
+    click 数据挖掘 "./base/data-mining/"
     click 自然语言处理 "./GPA/6th-term/natural-language-processing/"
     click 计算机视觉 "./GPA/6th-term/computer-vision/"
     click 语音识别 "./GPA/6th-term/speech-recognition/"

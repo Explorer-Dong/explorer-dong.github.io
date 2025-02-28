@@ -186,6 +186,16 @@ nav:
       - GPA/6th-term/smart-education.md
   - 基础:
     - base/index.md
+    - 计算机基础:
+      - 数据结构与算法:
+        - base/ds-and-algo/index.md
+        - base/ds-and-algo/basic-algo.md
+        - base/ds-and-algo/advanced-algo.md
+        - base/ds-and-algo/basic-ds.md
+        - base/ds-and-algo/advanced-ds.md
+      - 计算机网络:
+        - base/computer-network/index.md
+        - base/computer-network/intro.md
     - 人工智能基础:
       - 机器学习:
         - base/machine-learning/index.md
@@ -194,6 +204,12 @@ nav:
         - base/machine-learning/model.md
         - base/machine-learning/eval.md
         - base/machine-learning/afterword.md
+      - 数据挖掘:
+        - base/data-mining/index.md
+        - base/data-mining/intro.md
+        - base/data-mining/data-preprocess.md
+        - base/data-mining/association-analysis.md
+        - base/data-mining/anomaly-detection.md
   - 炼丹:
     - data-science/index.md
     - data-science/numpy-basic.md

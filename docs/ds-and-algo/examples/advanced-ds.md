@@ -237,7 +237,7 @@ function solve() {
 
 - 拓展域并查集。
 
-另一种解法见 [基础算法](./basic-algo/part1.md#关押罪犯)
+另一种解法见 [基础算法](./basic-algo.md/#关押罪犯)
 
 ### The Door Problem
 

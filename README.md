@@ -50,7 +50,7 @@ flowchart LR
     面向对象程序设计 --> Python高级应用
 ```
 
-<caption> 拓扑图 1. AI 学科笔记 </caption>
+<caption> 拓扑图 1. AI / CS 学科笔记 </caption>
 
 ```mermaid
 graph LR

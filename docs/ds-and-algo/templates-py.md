@@ -2947,27 +2947,25 @@ $$
 \phi(N) = N \cdot \prod_{i = 1}^{k} \left( 1 - \frac{1}{p_i} \right)
 $$
 
-证明方法：
+证明方法：容斥原理。
 
-- 容斥原理。
+减去 $p_1, p_2, \cdots, p_k $ 的所有倍数的个数，这一步会多筛一些数。例如 一个数既是 $p_1$, 又是 $p_2$ 的倍数，会删去两次。
 
-- 减去 $p_1, p_2, \cdots, p_k $ 的所有倍数的个数，这一步会多筛一些数。例如 一个数既是 $p_1$, 又是 $p_2$ 的倍数，会删去两次。
+$$
+N - \sum_{i = 1}^{k} \frac{N}{p_i}
+$$
 
-  $$
-  N - \sum_{i = 1}^{k} \frac{N}{p_i}
-  $$
+加上所有 $p_i \cdot p_j$ 的倍数
 
-- 加上所有 $p_i \cdot p_j$ 的倍数
+$$
+N - \sum_{i = 1}^{k} \frac{N}{p_i} + \sum_{i, j \in [0, k] 且 i < j} \frac{N}{p_i \cdot p_j}
+$$
 
-  $$
-  N - \sum_{i = 1}^{k} \frac{N}{p_i} + \sum_{i, j \in [0, k] 且 i < j} \frac{N}{p_i \cdot p_j}
-  $$
+减去所有 $p_i \cdot p_j \cdot p_u$ 的倍数，以此类推。
 
-- 减去所有 $p_i \cdot p_j \cdot p_u$ 的倍数，以此类推。
-
-  $$
-  N - \sum_{i = 1}^{k} \frac{N}{p_i} + \sum_{i, j \in [0, k] 且 i < j} \frac{N}{p_i \cdot p_j} - \sum_{i, j, u \in [0, k] 且 i < j < u} \frac{N}{p_i \cdot p_j \cdot p_u} + \cdots =  N \cdot \prod_{i = 1}^{k} \left( 1 - \frac{1}{p_i} \right)
-  $$
+$$
+N - \sum_{i = 1}^{k} \frac{N}{p_i} + \sum_{i, j \in [0, k] \text{ 且 } i < j} \frac{N}{p_i \cdot p_j} - \sum_{i, j, u \in [0, k] \text{ 且 } i < j < u} \frac{N}{p_i \cdot p_j \cdot p_u} + \cdots =  N \cdot \prod_{i = 1}^{k} \left( 1 - \frac{1}{p_i} \right)
+$$
 
 最后一步，可以通过观察系数的角度来证明。例如 $\frac{1}{p_i} $ 项的系数是 -1。
 
@@ -3325,9 +3323,9 @@ for i in range(2, n + 1):
 
 条件：整数 $m_1,m_2,\ldots,m_n$ **两两互质**
 
-> $引理：\text{寻找整数 }y_1\text{ 满足 }y_1\text{ 除以3余1、除以5余0、除以7余}0;$
+> 引理：寻找整数 $y_1$ 满足 $y_1$ 除以 $3$ 余 $1$、除以 $5$ 余 $0$、除以 $7$ 余 $0$。
 >
-> $y1$ 一定是 $5 \times 7 = 35$ 的倍数，设 $y1 = 35k$ ，则有 $35k \equiv 1 (\bmod 3)$，此时 $k$ 是 $35$ 模 3 的逆元
+> $y_1$ 一定是 $5 \times 7 = 35$ 的倍数，设 $y_1 = 35k$ ，则有 $35k \equiv 1 (\bmod 3)$，此时 $k$ 是 $35$ 模 $3$ 的逆元
 
 对于任意的整数 $a_1,a_2,\ldots,a_n$ , 方程组
 
@@ -7096,7 +7094,7 @@ $$
         return f[n][target] if f[n][target] >= 0 else -1
 ```
 
-优化：$j的上界可以优化为 \min(重量前缀, ~ target)$
+优化：$j$ 的上界可以优化为 \min(\text{重量前缀}, target)$
 
 ```python
     def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
@@ -7411,7 +7409,7 @@ for i in range(1, N + 1):
 
 #### 最长上升子序列
 
-$O(n^2)$ 做法，$f[i] 表示以nums[i] 结尾的所有上升子序列中最长的长度。$
+$O(n^2)$ 做法，$f[i]$ 表示以 $nums[i]$ 结尾的所有上升子序列中最长的长度。
 
 ```python
 for i, x in enumerate(nums):
@@ -7420,7 +7418,7 @@ for i, x in enumerate(nums):
             f[i] = max(f[i], f[j] + 1)
 ```
 
-$O(nlogn)$ 做法，$f[i] 表示长度为i的所有上升子序列中，子序列末尾的最小值$
+$O(nlogn)$ 做法，$f[i]$ 表示长度为 $i$ 的所有上升子序列中，子序列末尾的最小值。
 
 正序遍历 $nums$ 中每一个数 $x$， 二分找出 $x$ 在 $f$ 中的插入位置（恰好大于 $ x$ 的位置）。
 
@@ -8122,7 +8120,7 @@ $0 \rightarrow 1 或者 1 \rightarrow 0$： $ 加上x \oplus k$
 
 [291. 蒙德里安的梦想 - AcWing 题库](https://www.acwing.com/problem/content/293/)
 
-竖方块摆放确定时，横方块摆放一定确定（合法或者恰好填充），所以只需要看竖方块的摆放情况。对于 $N\times M $ 的方格，$f(i, j) 第~i~行形态为~j时，前~i~行合法切割方案数。$ $j$ 是用十进制记录 $M$ 位二进制数，其每位数字为 1 表示放竖方块上半部分，为 0 表示其他情况。（竖方块下半部分 / 横方块）
+竖方块摆放确定时，横方块摆放一定确定（合法或者恰好填充），所以只需要看竖方块的摆放情况。对于 $N\times M $ 的方格，$f(i, j)$ 表示第 $i$ 行形态为 $j$ 时，前 $i$ 行合法切割方案数。 $j$ 是用十进制记录 $M$ 位二进制数，其每位数字为 $1$ 表示放竖方块上半部分，为 $0$ 表示其他情况。（竖方块下半部分 / 横方块）
 
 $f(i,j)$ 能由 $f(i-1, k)$ 状态转移的充要条件：1. $j ~\&~ k =0$ ，保证同列上下两行不会同时放竖方块的上半部分。2. $j ~|~ k$ 的所有连续的 0 的个数必须是偶数。$j ~|~ k$ 为 0 当且仅当上下两行都是横方块，所以必须是偶数个。
 

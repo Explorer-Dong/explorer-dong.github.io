@@ -11989,30 +11989,19 @@ n \mod m = n - m \cdot \left\lfloor \frac{n}{m}\right\rfloor
 <div class="arithmatex">\[
 \phi(N) = N \cdot \prod_{i = 1}^{k} \left( 1 - \frac{1}{p_i} \right)
 \]</div>
-<p>证明方法：</p>
-<ul>
-<li>
-<p>容斥原理。</p>
-</li>
-<li>
+<p>证明方法：容斥原理。</p>
 <p>减去 $p_1, p_2, \cdots, p_k $ 的所有倍数的个数，这一步会多筛一些数。例如 一个数既是 <span class="arithmatex">\(p_1\)</span>, 又是 <span class="arithmatex">\(p_2\)</span> 的倍数，会删去两次。</p>
-</li>
-</ul>
-<p>$$
-  N - \sum_{i = 1}^{k} \frac{N}{p_i}
-  $$</p>
-<ul>
-<li>加上所有 <span class="arithmatex">\(p_i \cdot p_j\)</span> 的倍数</li>
-</ul>
-<p>$$
-  N - \sum_{i = 1}^{k} \frac{N}{p_i} + \sum_{i, j \in [0, k] 且 i &lt; j} \frac{N}{p_i \cdot p_j}
-  $$</p>
-<ul>
-<li>减去所有 <span class="arithmatex">\(p_i \cdot p_j \cdot p_u\)</span> 的倍数，以此类推。</li>
-</ul>
-<p>$$
-  N - \sum_{i = 1}^{k} \frac{N}{p_i} + \sum_{i, j \in [0, k] 且 i &lt; j} \frac{N}{p_i \cdot p_j} - \sum_{i, j, u \in [0, k] 且 i &lt; j &lt; u} \frac{N}{p_i \cdot p_j \cdot p_u} + \cdots =  N \cdot \prod_{i = 1}^{k} \left( 1 - \frac{1}{p_i} \right)
-  $$</p>
+<div class="arithmatex">\[
+N - \sum_{i = 1}^{k} \frac{N}{p_i}
+\]</div>
+<p>加上所有 <span class="arithmatex">\(p_i \cdot p_j\)</span> 的倍数</p>
+<div class="arithmatex">\[
+N - \sum_{i = 1}^{k} \frac{N}{p_i} + \sum_{i, j \in [0, k] 且 i &lt; j} \frac{N}{p_i \cdot p_j}
+\]</div>
+<p>减去所有 <span class="arithmatex">\(p_i \cdot p_j \cdot p_u\)</span> 的倍数，以此类推。</p>
+<div class="arithmatex">\[
+N - \sum_{i = 1}^{k} \frac{N}{p_i} + \sum_{i, j \in [0, k] \text{ 且 } i &lt; j} \frac{N}{p_i \cdot p_j} - \sum_{i, j, u \in [0, k] \text{ 且 } i &lt; j &lt; u} \frac{N}{p_i \cdot p_j \cdot p_u} + \cdots =  N \cdot \prod_{i = 1}^{k} \left( 1 - \frac{1}{p_i} \right)
+\]</div>
 <p>最后一步，可以通过观察系数的角度来证明。例如 $\frac{1}{p_i} $ 项的系数是 -1。</p>
 <p>证明方法二：</p>
 <div class="arithmatex">\[
@@ -12360,8 +12349,8 @@ a\equiv b\quad(\mathrm{mod~}m)\Rightarrow\begin{cases}an\equiv bn&amp;\mathrm{(m
 <h4 id="中国剩余定理">中国剩余定理<a class="headerlink" href="#中国剩余定理" title="页面定位">&para;</a></h4>
 <p>条件：整数 <span class="arithmatex">\(m_1,m_2,\ldots,m_n\)</span> <strong>两两互质</strong></p>
 <blockquote>
-<p><span class="arithmatex">\(引理：\text{寻找整数 }y_1\text{ 满足 }y_1\text{ 除以3余1、除以5余0、除以7余}0;\)</span></p>
-<p><span class="arithmatex">\(y1\)</span> 一定是 <span class="arithmatex">\(5 \times 7 = 35\)</span> 的倍数，设 <span class="arithmatex">\(y1 = 35k\)</span> ，则有 <span class="arithmatex">\(35k \equiv 1 (\bmod 3)\)</span>，此时 <span class="arithmatex">\(k\)</span> 是 <span class="arithmatex">\(35\)</span> 模 3 的逆元</p>
+<p>引理：寻找整数 <span class="arithmatex">\(y_1\)</span> 满足 <span class="arithmatex">\(y_1\)</span> 除以 <span class="arithmatex">\(3\)</span> 余 <span class="arithmatex">\(1\)</span>、除以 <span class="arithmatex">\(5\)</span> 余 <span class="arithmatex">\(0\)</span>、除以 <span class="arithmatex">\(7\)</span> 余 <span class="arithmatex">\(0\)</span>。</p>
+<p><span class="arithmatex">\(y_1\)</span> 一定是 <span class="arithmatex">\(5 \times 7 = 35\)</span> 的倍数，设 <span class="arithmatex">\(y_1 = 35k\)</span> ，则有 <span class="arithmatex">\(35k \equiv 1 (\bmod 3)\)</span>，此时 <span class="arithmatex">\(k\)</span> 是 <span class="arithmatex">\(35\)</span> 模 <span class="arithmatex">\(3\)</span> 的逆元</p>
 </blockquote>
 <p>对于任意的整数 <span class="arithmatex">\(a_1,a_2,\ldots,a_n\)</span> , 方程组</p>
 <div class="arithmatex">\[
@@ -17795,7 +17784,7 @@ f [i - 1][j - w] &gt; 0 \text{ 或者 }  f [i - 1][j - w] = 0 \text{ 且 } ~w = 
 </span><span id="__span-237-13"><a id="__codelineno-237-13" name="__codelineno-237-13"></a>                    <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="n">w</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </span><span id="__span-237-14"><a id="__codelineno-237-14" name="__codelineno-237-14"></a>        <span class="k">return</span> <span class="n">f</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">target</span><span class="p">]</span> <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">target</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
 </span></code></pre></div></td></tr></table></div>
-<p>优化：<span class="arithmatex">\(j的上界可以优化为 \min(重量前缀, ~ target)\)</span></p>
+<p>优化：<span class="arithmatex">\(j\)</span> 的上界可以优化为 \min(\text{重量前缀}, target)$</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-238-1">1</a></span>
 <span class="normal"><a href="#__codelineno-238-2">2</a></span>
 <span class="normal"><a href="#__codelineno-238-3">3</a></span>
@@ -18170,7 +18159,7 @@ f(i, j - w)=\max(   &amp;f(i-1,~ j-w),&amp;  ~\cdots , &amp;~ f(i-1,~ j - c \cdo
 </span></code></pre></div></td></tr></table></div>
 <h3 id="线性-dp">线性 dp<a class="headerlink" href="#线性-dp" title="页面定位">&para;</a></h3>
 <h4 id="最长上升子序列">最长上升子序列<a class="headerlink" href="#最长上升子序列" title="页面定位">&para;</a></h4>
-<p><span class="arithmatex">\(O(n^2)\)</span> 做法，<span class="arithmatex">\(f[i] 表示以nums[i] 结尾的所有上升子序列中最长的长度。\)</span></p>
+<p><span class="arithmatex">\(O(n^2)\)</span> 做法，<span class="arithmatex">\(f[i]\)</span> 表示以 <span class="arithmatex">\(nums[i]\)</span> 结尾的所有上升子序列中最长的长度。</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-252-1">1</a></span>
 <span class="normal"><a href="#__codelineno-252-2">2</a></span>
 <span class="normal"><a href="#__codelineno-252-3">3</a></span>
@@ -18179,7 +18168,7 @@ f(i, j - w)=\max(   &amp;f(i-1,~ j-w),&amp;  ~\cdots , &amp;~ f(i-1,~ j - c \cdo
 </span><span id="__span-252-3"><a id="__codelineno-252-3" name="__codelineno-252-3"></a>        <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
 </span><span id="__span-252-4"><a id="__codelineno-252-4" name="__codelineno-252-4"></a>            <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
-<p><span class="arithmatex">\(O(nlogn)\)</span> 做法，<span class="arithmatex">\(f[i] 表示长度为i的所有上升子序列中，子序列末尾的最小值\)</span></p>
+<p><span class="arithmatex">\(O(nlogn)\)</span> 做法，<span class="arithmatex">\(f[i]\)</span> 表示长度为 <span class="arithmatex">\(i\)</span> 的所有上升子序列中，子序列末尾的最小值。</p>
 <p>正序遍历 <span class="arithmatex">\(nums\)</span> 中每一个数 <span class="arithmatex">\(x\)</span>， 二分找出 <span class="arithmatex">\(x\)</span> 在 <span class="arithmatex">\(f\)</span> 中的插入位置（恰好大于 $ x$ 的位置）。</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-253-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-253-2"> 2</a></span>
@@ -19096,7 +19085,7 @@ $ f(t, i, j)  $ 表示 <span class="arithmatex">\(A, B\)</span> 共同走了 <sp
 </span></code></pre></div></td></tr></table></div>
 <h3 id="状压-dp--状态压缩-dp">状压 dp / 状态压缩 dp<a class="headerlink" href="#状压-dp--状态压缩-dp" title="页面定位">&para;</a></h3>
 <p><a href="https://www.acwing.com/problem/content/293/">291. 蒙德里安的梦想 - AcWing 题库</a></p>
-<p>竖方块摆放确定时，横方块摆放一定确定（合法或者恰好填充），所以只需要看竖方块的摆放情况。对于 $N\times M $ 的方格，<span class="arithmatex">\(f(i, j) 第~i~行形态为~j时，前~i~行合法切割方案数。\)</span> <span class="arithmatex">\(j\)</span> 是用十进制记录 <span class="arithmatex">\(M\)</span> 位二进制数，其每位数字为 1 表示放竖方块上半部分，为 0 表示其他情况。（竖方块下半部分 / 横方块）</p>
+<p>竖方块摆放确定时，横方块摆放一定确定（合法或者恰好填充），所以只需要看竖方块的摆放情况。对于 $N\times M $ 的方格，<span class="arithmatex">\(f(i, j)\)</span> 表示第 <span class="arithmatex">\(i\)</span> 行形态为 <span class="arithmatex">\(j\)</span> 时，前 <span class="arithmatex">\(i\)</span> 行合法切割方案数。 <span class="arithmatex">\(j\)</span> 是用十进制记录 <span class="arithmatex">\(M\)</span> 位二进制数，其每位数字为 <span class="arithmatex">\(1\)</span> 表示放竖方块上半部分，为 <span class="arithmatex">\(0\)</span> 表示其他情况。（竖方块下半部分 / 横方块）</p>
 <p><span class="arithmatex">\(f(i,j)\)</span> 能由 <span class="arithmatex">\(f(i-1, k)\)</span> 状态转移的充要条件：1. <span class="arithmatex">\(j ~\&amp;~ k =0\)</span> ，保证同列上下两行不会同时放竖方块的上半部分。2. <span class="arithmatex">\(j ~|~ k\)</span> 的所有连续的 0 的个数必须是偶数。<span class="arithmatex">\(j ~|~ k\)</span> 为 0 当且仅当上下两行都是横方块，所以必须是偶数个。</p>
 <p>初始状态对于 <span class="arithmatex">\(f(0)\)</span> ，不能对第一行产生影响，所以只有 <span class="arithmatex">\(f(0,~0) = 1\)</span> ，其余为 0。最终目标：<span class="arithmatex">\(f(N, 0)\)</span> ，状态转移方程：<span class="arithmatex">\(f(i,j) = \sum valid(f(i-1,k))\)</span></p>
 <p>对于所有 <span class="arithmatex">\(M\)</span> 位二进制数，预处理其是否满足所有连续 0 的个数是否是偶数。</p>

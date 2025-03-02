@@ -2652,7 +2652,6 @@ $$
 [题目详情 - 数字游戏 - HydroOJ](https://hydro.ac/d/nnu_contest/p/LC2)
 
 **不等式**
-
 $$
 x-1 <\lfloor x\rfloor\leqslant x\leqslant\lceil x\rceil < x+1
 $$
@@ -2830,8 +2829,11 @@ $x$ 在 $b$ 进制下的表示是 $x = \sum d_i b^{i}$，最低非 0 位 $k$ 对
 [Problem - C - Codeforces](https://codeforces.com/contest/1114/problem/C)
 
 ```python
+import sys
+input = lambda: sys.stdin.readline().strip()
+from math import *
 # 统计 n! 中质因子 p 出现的次数
-def fpf(n, p):   # factorial_prime_factor 
+def fpf(n, p):   # factorial_prime_factor
     res = 0
     while n:
         res += n // p
@@ -2851,11 +2853,12 @@ def breakdown(n):
     return res
 def solve():
     n, b = map(int, input().split())
-    pf = breakdown(b)
+    pf = breakdown(b) # 对b进行质因子分解
     res = inf
     for f, c in pf:
         res = min(res, fpf(n, f) // c)
     return res
+print(solve())
 ```
 
 
@@ -3012,7 +3015,7 @@ $$
 
 - $N' \mod p_i \ne 0$ ，则 $N'$ 与 $p_1$ 互质（证明：质数是因子只有 1 和本身，因此最大公约数是 1，互质）。
 
-​由欧拉函数的积性性质，互质的数质因子分解无交集：
+由欧拉函数的积性性质，互质的数质因子分解无交集：
 
 $$
 \phi (N) = \phi(N' \times p_1) = \phi(N') \times \phi(p_1) = \phi(N') \times (p_i - 1)

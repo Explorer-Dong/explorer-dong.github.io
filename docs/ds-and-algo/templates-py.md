@@ -2652,7 +2652,6 @@ $$
 [题目详情 - 数字游戏 - HydroOJ](https://hydro.ac/d/nnu_contest/p/LC2)
 
 **不等式**
-
 $$
 x-1 <\lfloor x\rfloor\leqslant x\leqslant\lceil x\rceil < x+1
 $$
@@ -2825,13 +2824,22 @@ def fpf(n, p):   # factorial_prime_factor
 >
 > $5!=(120)_{10}=1111000_{2}=2^3\times 3^1\times5^1$。
 
-$x$ 在 $b$ 进制下的表示是 $x = \sum d_i b^{i}$，最低非 0 位 $k$ 对应 $d_k\times b^k$, 一定能将 $x$ 表示成 $b^k \times (\sum d_i\times b^{i-k})$，实际上由于 $x$ 可以表示成标准分解式 $x=p_0^{k_0} \times p_1^{k_1}\cdots$，将 $b$ 分解成 $p_0^{k'_0} \times \cdots$，实际上 $k$ 等于 $\min \frac{k_i}{k_i'}$。转换为：$k_i$ 为 $b$ 的质因子在 $n!$ 中出现的次数。
+$x$ 在 $b$ 进制下的表示是 $x = \sum d_i b^{i}$，最低非 0 位 $k$ 对应 $d_k\times b^k$, 一定能将 $x$ 表示成 $b^k \times (\sum d_i\times b^{i-k})$，实际上由于 $x$ 可以表示成标准分解式 $x=p_0^{k_0} \times p_1^{k_1}\cdots$，将 $b$ 分解成 $p_0^{k'_0} \times \cdots$，将 $b$ 代入 $n!$ 的标准分解式，
+
+得，$ n! = p_0^{k_0} \times p_1^{k_1}\cdots=b^k \times (\sum d_i \times b^{i-k})=(p_0 ^{k^{'}_0} \times p_1 ^{k^{'}_1} \times...)^k \times (\sum d_i \times b^{i-k}) = (p_0 ^{k^{'}_{0} \cdot k } \times p_1 ^{k^{'}_{1} \cdot k} \times...) \times (\sum d_i \times b^{i-k})$
+
+即， $p_0^{k_0} \times p_1^{k_1}\cdots = (p_0 ^{k^{'}_{0} \cdot k } \times p_1 ^{k^{'}_{1} \cdot k} \times...) \times (\sum d_i \times b^{i-k}) $
+
+由于 $k_i = k^{'}_{i} \cdot k$，由于 $k$ 是最低位，应取 $k$ 等于 $\min \frac{k_i}{k_i'}$。转换为：$k_i$ 为 $b$ 的质因子在 $n!$ 中出现的次数。
 
 [Problem - C - Codeforces](https://codeforces.com/contest/1114/problem/C)
 
 ```python
+import sys
+input = lambda: sys.stdin.readline().strip()
+from math import *
 # 统计 n! 中质因子 p 出现的次数
-def fpf(n, p):   # factorial_prime_factor 
+def fpf(n, p):   # factorial_prime_factor
     res = 0
     while n:
         res += n // p
@@ -2851,11 +2859,12 @@ def breakdown(n):
     return res
 def solve():
     n, b = map(int, input().split())
-    pf = breakdown(b)
+    pf = breakdown(b) # 对b进行质因子分解
     res = inf
     for f, c in pf:
         res = min(res, fpf(n, f) // c)
     return res
+print(solve())
 ```
 
 
@@ -3012,7 +3021,7 @@ $$
 
 - $N' \mod p_i \ne 0$ ，则 $N'$ 与 $p_1$ 互质（证明：质数是因子只有 1 和本身，因此最大公约数是 1，互质）。
 
-​由欧拉函数的积性性质，互质的数质因子分解无交集：
+由欧拉函数的积性性质，互质的数质因子分解无交集：
 
 $$
 \phi (N) = \phi(N' \times p_1) = \phi(N') \times \phi(p_1) = \phi(N') \times (p_i - 1)
@@ -8658,6 +8667,78 @@ $f[x]$  表示 $ 0 \sim endTime[x] $ 时间段内的最多报酬，一种转移�
                     c -= 1
                     if c == 0: break 
         return sum(sel)
+```
+
+**2024_CA_省C.训练士兵**
+
+[P10387 [蓝桥杯 2024 省 A\] 训练士兵 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P10387)
+
+**语言整理**
+$$
+\begin{aligned}
+
+&共n人，每人需要c_i次训练;
+\\
+&每人单独训练每次花费p_i元;
+\\
+&团购训练花费S元;
+\\
+&求所有人完成训练的最小花费?
+\end{aligned}
+$$
+**思路**
+
+- 团购价不变，有些人训练次数$c_i$少，有些人多；
+
+- 一开始团购价 $S$ 往往比所有人单独训练价格 $tot$ 更小；随着人训练完成后退出，$tot$ 应该动态更新维护；
+
+- 当团购不合适时 $S>tot$，单独操作；
+- ——联想到贪心 + 排序，尽可能贪心的多团购，讨论时按照所有人需要的训练次数从小到大排序；
+
+
+
+**思考**
+
+- $tot$ 初始为 $\sum c_i$
+
+- 用$res$记录答案，初始为$0$；用 $cnt$ 记录**已经团购的次数**
+
+- 按照训练次数升序遍历， 如果 $tot \ge S$，团购合适；$res ← res + (c_i - cnt) \times S$；$cnt ← c_i$
+
+- 否则团购不合适，$res ← res + (c_i - cnt) \times p_i$
+
+- 每一次遍历完成，代表此人训练完成且退出，需要动态维护$tot$，即 $tot ← tot- p_i$
+
+    
+
+```python
+'''
+P10387 [蓝桥杯 2024 省 A] 训练士兵
+https://www.luogu.com.cn/problem/P10387
+'''
+import sys
+input = lambda:sys.stdin.readline().strip()
+n, S = map(int, input().split())
+nums = [[0, 0]] * n # 用于排序
+p, c = [0] * n, [0] * n
+# 数据预处理
+for i in range(n):
+    nums[i] = list(map(int, input().split()))
+# 排序：根据nums[i][1]即次数排序，默认是由低到高
+nums.sort(key = lambda x: x[1])
+for i in range(n):
+    p[i], c[i] = nums[i][0], nums[i][1]
+res = cnt = 0
+tot = sum(p)
+for i in range(n):
+    if tot >= S:    # 团购合适
+        res += (c[i] - cnt) * S
+        cnt = c[i]
+    else:   # 团购不合适，此人单独训练
+        res += (c[i] - cnt) * p[i]
+    tot -= p[i] # 第i人完成训练，减去他的单独训练成本
+print(res)
+
 ```
 
 

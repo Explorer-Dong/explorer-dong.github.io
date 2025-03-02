@@ -237,7 +237,64 @@ function solve() {
 
 - 拓展域并查集。
 
-另一种解法见 [基础算法](./basic-algo.md/#关押罪犯)
+另一种解法见 [基础算法](./basic-algo.md/#关押罪犯)。
+
+=== "Python"
+
+    ```python
+    class DSU:
+        def __init__(self, n: int) -> None:
+            self.n = n
+            self.sz = n                       # 集合个数
+            self.p = [i for i in range(n)]    # p[i]表示第i个结点的祖宗编号
+            self.cnt = [1 for i in range(n)]  # cnt[i]表示第i个结点所在集合中的结点总数
+    
+        def find(self, x: int) -> int:
+            if self.p[x] != x:
+                self.p[x] = self.find(self.p[x])
+            return self.p[x]
+    
+        def merge(self, a: int, b: int) -> None:
+            pa, pb = self.find(a), self.find(b)
+            if pa != pb:
+                self.p[pa] = pb
+                self.cnt[pb] += self.cnt[pa]
+                self.sz -= 1
+    
+        def same(self, a: int, b: int) -> bool:
+            return self.find(a) == self.find(b)
+    
+        def size(self) -> int:
+            return self.sz
+    
+        def size(self, a: int) -> int:
+            return self.cnt[a]
+    
+    n, m = map(int, input().strip().split())
+    edges = []
+    for _ in range(m):
+        u, v, w = map(int, input().strip().split())
+        edges.append((u, v, w))
+    
+    edges.sort(key=lambda edge: -edge[2])
+    dsu = DSU(n * 2 + 1)
+    for u, v, w in edges:
+        fu = dsu.find(u)
+        fv = dsu.find(v)
+        if fu == fv:
+            print(w)
+            exit()
+        dsu.merge(u, v + n)
+        dsu.merge(u + n, v)
+    print(0)
+    ```
+
+=== "C++"
+
+    ```c++
+    ```
+
+
 
 ### The Door Problem
 

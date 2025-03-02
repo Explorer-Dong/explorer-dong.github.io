@@ -10,7 +10,7 @@ title: 基础算法
 
 为了提升阅读效率，我将题目的重要元信息单独罗列为了一张表格，可以按照自己的实际需求按需跳转阅读。
 
-| 算法标签 🏷 |  难度 🔥  |                     OJ 链接 🔗                     |     本文锚点 ⚓     | 备注 ⭐ |
+| 标签 🏷 |  难度 🔥  |                     链接 🔗                     |     锚点 ⚓     | 备注 ⭐ |
 | :--: | :----: | :---------------------------------------------: | :----------: | :--: |
 | 贪心 | CF 800 | [CF](https://codeforces.com/contest/1873/problem/B) | [Good Kid](#good-kid) | / |
 | 贪心、分讨 | CF 1500 | [CF](https://codeforces.com/contest/1873/problem/G) | [ABBC or BACB](#abbc-or-bacb) | / |
@@ -28,7 +28,7 @@ title: 基础算法
 | 二分、贪心 | CF 1400 * | [AcWing](https://www.acwing.com/problem/content/description/5569/) | [盖楼](#盖楼) | 利用集合简化问题 |
 | 二分、双指针、哈希 | CF 1700 * | [力扣](https://leetcode.cn/problems/find-the-median-of-the-uniqueness-array/) | [找出唯一性数组的中位数](#找出唯一性数组的中位数) | 枚举右维护左 |
 | 二分 | CF 1900 | [CF](https://codeforces.com/contest/1996/problem/F) | [bomb](#bomb) | 跳脱二分答案思维定势 |
-| 二分、图论 | 洛谷绿 | [洛谷](https://www.luogu.com.cn/problem/P1525) | [关押罪犯](#关押罪犯) | / |
+| 二分、图论 | 洛谷 绿 | [洛谷](https://www.luogu.com.cn/problem/P1525) | [关押罪犯](#关押罪犯) | / |
 
 /// caption | <
 基础算法例题导读表（打 * 表示自己预估的难度）

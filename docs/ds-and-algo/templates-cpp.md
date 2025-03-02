@@ -1,50 +1,44 @@
 ---
-title: 代码模板
+title: 代码模板 (C++)
 ---
+
+[TOC]
 
 ## 前言
 
-本文介绍一些数据结构与算法的代码模板，便于在某些场合快速应用。
+本文记录 C++ 语言的代码模板，可编译通过的最低 C++ 标准为 C++11。
 
 ## 基础算法
 
-### 二分
+### 闭区间二分的边界问题
 
-=== "C++ 闭区间寻找左边界"
-
-    ```c++
-    bool binary_left(int x) {
-        int l = 0, r = n - 1;
-        while (l < r) {
-            int mid = (l + r) >> 1;
-            // if (a[mid] < x) l = mid + 1;
-            if (缺了) {
-                l = mid + 1;
-            } else (刚好 | 超了) {
-                r = mid;
-            }
+```c++
+// 闭区间寻找左边界
+void bisect_left(int target) {
+    int l = 左边界, r = 右边界;
+    while (l < r) {
+        int mid = (l + r) >> 1;
+        if (落在了 target 的左边) {
+            l = mid + 1;
+        } else (落在了 target 上或右边) {
+            r = mid;
         }
-        return a[r] == x;
     }
-    ```
+}
 
-=== "C++ 闭区间寻找右边界"
-
-    ```cpp
-    bool binary_right(int x) {
-        int l = 0, r = n - 1;
-        while (l < r) {
-            int mid = (l + r + 1) >> 1;
-            // if (a[mid] <= x) l = mid;
-            if (缺了 | 刚好) {
-                l = mid;
-            } else (超了) {
-                r = mid - 1;
-            }
+// 闭区间寻找右边界
+void bisect_right(int target) {
+    int l = 左边界, r = 右边界;
+    while (l < r) {
+        int mid = (l + r + 1) >> 1;
+        if (落在了 target 的右边) {
+            r = mid - 1;
+        } else (落在了 target 上或左边) {
+            l = mid;
         }
-        return a[r] == x;
     }
-    ```
+}
+```
 
 ## 基础数据结构
 
@@ -58,7 +52,7 @@ title: 代码模板
 
     ```c++
     // C++ 自定义哈希函数 使用示例
-
+    
     template<class T>
     struct CustomHash {
         size_t operator()(T x) const {
@@ -67,7 +61,7 @@ title: 代码模板
             return _hash_value ^ (_hash_value >> 30) ^ _prime;
         }
     };
-
+    
     // 示例
     std::unordered_map<int, int, CustomHash<int>> f1;
     std::unordered_map<long long, int, CustomHash<long long>> f2;
@@ -94,13 +88,13 @@ title: 代码模板
         }
         return res;
     }
-
+    
     template<class T>
     T modAdd(T a, T b, T p) {
         // return: a+b % p
         return ((a % p) + (b % p)) % p;
     }
-
+    
     template<class T>
     T modMul(T a, T b, T p) {
         // return: a*b % p
@@ -112,7 +106,7 @@ title: 代码模板
         }
         return res;
     }
-
+    
     template<class T>
     T modSumOfEqualRatioArray(T q, T k, T p) {
         // return: (q^0 + q^1 + ... + q^k) % p
@@ -182,7 +176,7 @@ title: 代码模板
             }
         }
     };
-
+    
     /* 使用示例
     PrimesCount obj(n);         // construct an object
     cout << obj.pre[n] << "\n"; // pre[i] means prime numbers in range of [1, i]
@@ -257,13 +251,13 @@ $$
     ```cpp
     #include <iostream>
     using namespace std;
-
+    
     const int N = 2000;
     const int K = 2000;
     const int P = 1e9 + 7;
-
+    
     int C[N + 1][K + 1];
-
+    
     int main() {
         // O(nk) 预处理
         for (int a = 0; a <= N; a++) {
@@ -275,7 +269,7 @@ $$
                 }
             }
         }
-
+    
         // O(1) 查询
         int q;
         cin >> q;
@@ -284,7 +278,7 @@ $$
             cin >> n >> k;
             cout << C[n][k] << "\n";
         }
-
+    
         return 0;
     }
     ```
@@ -301,16 +295,16 @@ $$
 
     ```cpp
     #include <iostream>
-
+    
     using namespace std;
     using ll = long long;
-
+    
     const int N = 1e5;
     const int P = 1e9 + 7;
-
+    
     int fact[N + 1];    // fact[i] 表示 i 的阶乘
     int infact[N + 1];  // infact[i] 表示 i 的阶乘的逆元
-
+    
     int qmi(int a, int b, int p) {
         int res = 1 % p;
         while (b) {
@@ -320,7 +314,7 @@ $$
         }
         return res;
     }
-
+    
     int main() {
         // O(n log p) 预处理
         fact[0] = 1, infact[0] = 1;
@@ -328,7 +322,7 @@ $$
             fact[a] = (ll) fact[a - 1] * a % P;
             infact[a] = (ll) infact[a - 1] * qmi(a, P - 2, P) % P;
         }
-
+    
         // O(1) 查询
         int q;
         cin >> q;
@@ -337,7 +331,7 @@ $$
             cin >> n >> k;
             cout << (ll) fact[n] * infact[k] % P * infact[n - k] % P << "\n";
         }
-
+    
         return 0;
     }
     ```
@@ -352,14 +346,14 @@ $$
     #include <iostream>
     #include <iomanip>
     #include <sstream>
-
+    
     using ll = long long;
     using namespace std;
-
+    
     void solve() {
         double x = 1.2345678;
         cout << x << "\n"; // 输出 1.23457
-
+    
         stringstream ss;
         ss << fixed << setprecision(3) << x;
         cout << ss.str() << "\n"; // 输出 1.235
@@ -384,11 +378,11 @@ $$
         /* 并查集类
         集合元素定义为从 0 开始的整数。
         */
-
+    
         int sz;                // 集合个数
         std::vector<int> p;    // p[i]表示第i个结点的祖宗编号
         std::vector<int> cnt;  // cnt[i]表示第i个结点所在集合中的结点总数
-
+    
     public:
         DisjointSetUnion(int n) : p(n), cnt(n, 1) {
             for (int i = 0; i < n; i++) {
@@ -396,14 +390,14 @@ $$
             }
             sz = n;
         }
-
+    
         int find(int x) {
             if (p[x] != x) {
                 p[x] = find(p[x]);
             }
             return p[x];
         }
-
+    
         void merge(int a, int b) {
             int pa = find(a), pb = find(b);
             if (pa != pb) {
@@ -412,15 +406,15 @@ $$
                 sz--;
             }
         }
-
+    
         bool same(int a, int b) {
             return find(a) == find(b);
         }
-
+    
         int size() {
             return sz;
         }
-
+    
         int size(int a) {
             int pa = find(a);
             return cnt[pa];
@@ -437,25 +431,25 @@ $$
             self.sz = n                       # 集合个数
             self.p = [i for i in range(n)]    # p[i]表示第i个结点的祖宗编号
             self.cnt = [1 for i in range(n)]  # cnt[i]表示第i个结点所在集合中的结点总数
-
+    
         def find(self, x: int) -> int:
             if self.p[x] != x:
                 self.p[x] = self.find(self.p[x])
             return self.p[x]
-
+    
         def merge(self, a: int, b: int) -> None:
             pa, pb = self.find(a), self.find(b)
             if pa != pb:
                 self.p[pa] = pb
                 self.cnt[pb] += self.cnt[pa]
                 self.sz -= 1
-
+    
         def same(self, a: int, b: int) -> bool:
             return self.find(a) == self.find(b)
-
+    
         def size(self) -> int:
             return self.sz
-
+    
         def size(self, a: int) -> int:
             return self.cnt[a]
     ```
@@ -479,21 +473,21 @@ $$
     private:
         int n;
         std::vector<T> arr;
-
+    
         int lowbit(int x) {
             return x & (-x);
         }
-
+    
     public:
         BinaryIndexedTree(int n) : n(n), arr(n + 1) {}
-
+    
         void update(int pos, T x) {
             while (pos <= n) {
                 arr[pos] += x;
                 pos += lowbit(pos);
             }
         }
-
+    
         T query_sum(int pos) {
             T ret = 0;
             while (pos) {
@@ -514,7 +508,7 @@ $$
             """
             self.n = n
             self.arr = [0] * (n + 1)
-
+    
         def update(self, pos: int, x: int) -> None:
             """
             单点修改 O(log n)。在 pos 这个位置加上 x。
@@ -522,7 +516,7 @@ $$
             while pos <= self.n:
                 self.arr[pos] += x
                 pos += self._lowbit(pos)
-
+    
         def query_sum(self, pos: int) -> int:
             """
             区间求和 O(log n)。返回 [1,pos] 的区间和。
@@ -532,7 +526,7 @@ $$
                 ret += self.arr[pos]
                 pos -= self._lowbit(pos)
             return ret
-
+    
         def _lowbit(self, x: int) -> int:
             return x & (-x)
     ```

@@ -3012,7 +3012,7 @@ $$
 
 - $N' \mod p_i \ne 0$ ，则 $N'$ 与 $p_1$ 互质（证明：质数是因子只有 1 和本身，因此最大公约数是 1，互质）。
 
-​由欧拉函数的积性性质，互质的数质因子分解无交集：
+由欧拉函数的积性性质，互质的数质因子分解无交集：
 
 $$
 \phi (N) = \phi(N' \times p_1) = \phi(N') \times \phi(p_1) = \phi(N') \times (p_i - 1)
@@ -6893,8 +6893,6 @@ def bin(x):
 
 [1017. 负二进制转换 - 力扣（LeetCode）](https://leetcode.cn/problems/convert-to-base-2/description/?envType=daily-question&envId=2024-04-28)
 
-![image-20240428234840741](C:\Users\TsingPig\AppData\Roaming\Typora\typora-user-images\image-20240428234840741.png)
-
 ```python
     def baseNeg2(self, n: int) -> str:
         if n == 0: return '0'
@@ -6906,8 +6904,6 @@ def bin(x):
             res.append(str(x))
         return ''.join(res[::-1])
 ```
-
-
 
 **最大异或**
 

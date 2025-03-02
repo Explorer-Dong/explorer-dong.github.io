@@ -7,7 +7,7 @@ hide:
 
 <h2 align="center"> 本站定位 </h2>
 
-欢迎访问我的知识网站！ 本网站以「AI 学科笔记」与「开发技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun Server 双平台部署。
+欢迎访问我的知识网站！ 本网站以「AI / CS 学科笔记」与「开发技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun Server 双平台部署。
 
 *[Wiki]: 一种允许一群用户用简单的描述来创建和连接一组网页的社会计算系统。
 
@@ -44,7 +44,7 @@ flowchart LR
     数字逻辑电路 --> 计算机系统基础 --> 数据库 & 操作系统 & 计算机组成
     计算机组成 & 操作系统 --> 计算机网络
 
-    Python高级应用(Python高级应用)
+    Python高级应用(Python 高级应用)
     数字图像处理(数字图像处理)
     机器学习(机器学习)
     深度学习(深度学习)
@@ -73,7 +73,7 @@ flowchart LR
     click 最优化方法 "./GPA/4th-term/OptMethod/"
 
     click 面向对象程序设计 "./GPA/2nd-term/ObjectOrientedProgramming/"
-    click 数据结构与算法 "./base/ds-and-algo/"
+    click 数据结构与算法 "./ds-and-algo/"
     click 数字逻辑电路 "./GPA/3rd-term/DigitalLogicCircuit/"
     click 算法设计与分析 "./GPA/4th-term/PyAlgo/"
     click 计算机系统基础 "./GPA/4th-term/SysBasic/"

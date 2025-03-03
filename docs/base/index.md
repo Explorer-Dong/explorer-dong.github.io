@@ -7,7 +7,7 @@ status: new
 
     博观而约取，厚积而薄发。
 
-本栏目文章以「AI/CS 基础」笔记为主。主要收录计算机科学与技术、智能科学与技术相关笔记。欢迎评论与补充。
+本栏目文章以「AI / CS 学科笔记」为主。主要收录计算机科学与技术、智能科学与技术相关笔记。欢迎评论与补充。
 
 ![I Love NNU](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501301807985.png)
 

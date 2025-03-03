@@ -6902,8 +6902,6 @@ def bin(x):
 
 [1017. 负二进制转换 - 力扣（LeetCode）](https://leetcode.cn/problems/convert-to-base-2/description/?envType=daily-question&envId=2024-04-28)
 
-![image-20240428234840741](C:\Users\TsingPig\AppData\Roaming\Typora\typora-user-images\image-20240428234840741.png)
-
 ```python
     def baseNeg2(self, n: int) -> str:
         if n == 0: return '0'
@@ -6915,8 +6913,6 @@ def bin(x):
             res.append(str(x))
         return ''.join(res[::-1])
 ```
-
-
 
 **最大异或**
 

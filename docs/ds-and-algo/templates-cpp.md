@@ -2,13 +2,11 @@
 title: 代码模板 (C++)
 ---
 
-[TOC]
-
 ## 前言
 
-本文记录 C++ 语言的代码模板，可编译通过的最低 C++ 标准为 C++11。
+本文记录 C++ 语言的代码模板，可编译通过的最低 C++ 标准为 C++11。结构参考：[acm-icpc 算法学习笔记&板子目录 - 知乎 CurryWOE](https://zhuanlan.zhihu.com/p/557770472)
 
-## 基础算法
+## 基础
 
 ### 闭区间二分的边界问题
 
@@ -40,332 +38,69 @@ void bisect_right(int target) {
 }
 ```
 
-## 基础数据结构
+## 数据结构
 
-### 哈希
-
-在 C++ 中，使用哈希表 `std::unordered_map` 时可能会因为哈希冲突导致查询、插入操作降低到 $O(n)$，此时可以使用平衡树 `std::map` 进行替代，或者自定义一个哈希函数。
-
-在 Python3 中同理。但是 Python 不允许自定义哈希函数，此时可以尝试桶哈希。
+### 单调队列
 
 === "C++"
 
     ```c++
-    // C++ 自定义哈希函数 使用示例
-    
+    #include <deque>
+    #include <functional>
+
     template<class T>
-    struct CustomHash {
-        size_t operator()(T x) const {
-            static const size_t _prime = 0x9e3779b97f4a7c15;
-            size_t _hash_value = std::hash<T>()(x);
-            return _hash_value ^ (_hash_value >> 30) ^ _prime;
+    struct MonotonicQueue {
+        std::deque<T> q;
+        std::function<bool(T, T)> compare;
+        MonotonicQueue(bool is_min_queue) {
+            if (is_min_queue) {
+                compare = [](T a, T b) { return a < b; };
+            } else {
+                compare = [](T a, T b) { return a > b; };
+            }
+        }
+        void pushBack(T x) {
+            while (q.size() && compare(x, q.back())) {
+                q.pop_back();
+            }
+            q.push_back(x);
+        }
+        void popFront(T x) {
+            if (q.size() && q.front() == x) {
+                q.pop_front();
+            }
+        }
+        T getExtremeValue() {
+            return q.front();
         }
     };
-    
-    // 示例
-    std::unordered_map<int, int, CustomHash<int>> f1;
-    std::unordered_map<long long, int, CustomHash<long long>> f2;
-    std::unordered_map<std::string, int, CustomHash<long long>> f3;
     ```
 
-## 进阶算法
+=== "Python"
 
-### 数学
+    ```python
+    from collections import deque
 
-#### 模运算
+    class MonotonicQueue:
+        def __init__(self, is_min_queue: bool):
+            self.q = deque()
+            if is_min_queue:
+                self.compare = lambda a, b: a < b
+            else:
+                self.compare = lambda a, b: a > b
 
-=== "C++"
+        def push_back(self, x):
+            while self.q and self.compare(x, self.q[-1]):
+                self.q.pop()
+            self.q.append(x)
 
-    ```cpp
-    template<class T>
-    T modPower(T a, T b, T p) {
-        // return: a^b % p
-        T res = 1 % p;
-        for (; b; b >>= 1, a = (a * a) % p) {
-            if (b & 1) {
-                res = (res * a) % p;
-            }
-        }
-        return res;
-    }
-    
-    template<class T>
-    T modAdd(T a, T b, T p) {
-        // return: a+b % p
-        return ((a % p) + (b % p)) % p;
-    }
-    
-    template<class T>
-    T modMul(T a, T b, T p) {
-        // return: a*b % p
-        T res = 0;
-        for (; b; b >>= 1, a = modAdd(a, a, p)) {
-            if (b & 1) {
-                res = modAdd(res, a, p);
-            }
-        }
-        return res;
-    }
-    
-    template<class T>
-    T modSumOfEqualRatioArray(T q, T k, T p) {
-        // return: (q^0 + q^1 + ... + q^k) % p
-        if (k == 0) {
-            return 1;
-        }
-        if (k % 2 == 0) {
-            return modAdd<T>((T) 1, modMul(q, modSumOfEqualRatioArray(q, k - 1, p), p), p);
-        }
-        return modMul(((T) 1 + modPower(q, k / 2 + (T) 1, p)), modSumOfEqualRatioArray(q, k / 2, p), p);
-    }
+        def pop_front(self, x):
+            if self.q and self.q[0] == x:
+                self.q.popleft()
+
+        def get_extreme_value(self):
+            return self.q[0]
     ```
-
-#### 质数筛
-
-=== "C++"
-
-    ```cpp
-    struct PrimesCount {
-        int n;
-        vector<int> pre, vis;
-        PrimesCount(int n) : n(n), pre(n + 1), vis(n + 1) {
-            eulerFilter();
-        }
-        void eulerFilter() {
-            // O(n)
-            vector<int> primes;
-            for (int i = 2; i <= n; i++) {
-                if (!vis[i]) {
-                    primes.push_back(i);
-                    pre[i] = pre[i - 1] + 1;
-                } else {
-                    pre[i] = pre[i - 1];
-                }
-                for (int j = 0; primes[j] <= n / i; j++) {
-                    vis[primes[j] * i] = true;
-                    if (i % primes[j] == 0) {
-                        break;
-                    }
-                }
-            }
-        }
-        void eratosthenesFilter() {
-            // O(nloglogn)
-            for (int i = 2; i <= n; i++) {
-                if (!vis[i]) {
-                    pre[i] = pre[i - 1] + 1;
-                    for (int j = i; j <= n; j += i) {
-                        vis[j] = true;
-                    }
-                } else {
-                    pre[i] = pre[i - 1];
-                }
-            }
-        }
-        void simpleFilter() {
-            // O(nlogn)
-            for (int i = 2; i <= n; i++) {
-                if (!vis[i]) {
-                    pre[i] = pre[i - 1] + 1;
-                } else {
-                    pre[i] = pre[i - 1];
-                }
-                for (int j = i; j <= n; j += i) {
-                    vis[j] = true;
-                }
-            }
-        }
-    };
-    
-    /* 使用示例
-    PrimesCount obj(n);         // construct an object
-    cout << obj.pre[n] << "\n"; // pre[i] means prime numbers in range of [1, i]
-    */
-    ```
-
-#### 乘法逆元
-
-假设当前需要在 $\% \ p$ 的情况下除以 $a$，则可以转化为乘以 $a$ 的乘法逆元 $a^{-1}$，即：
-
-$$
-\begin{aligned}
-&\frac{\text{num}}{a} \equiv \text{num} \times a^{-1} (\text{mod } p)\\
-&\text{其中 } a^{-1} = a^{p-2} \text{ 当且仅当 $a$ 与 $p$ 互质}
-\end{aligned}
-$$
-
-??? "乘法逆元推导"
-
-    对于任意 $a$ 的整数倍 $t$，一定有下式成立：其中的 $x$ 就是整数 $a$ 的乘法逆元，记作 $a^{-1}$
-    
-    $$
-    \begin{aligned}
-    \frac{t}{a} \equiv t \times x\quad (\mod p) \\
-    \frac{1}{a} \equiv 1 \times x\quad (\mod p) \\
-    1 \equiv a \times x\quad (\mod p) \\
-    \end{aligned}
-    $$
-    
-    由 [费马小定理](<https://baike.baidu.com/item/费马小定理/4776158>)：对于两个互质的整数 $g,h$ 而言，一定有下式成立：
-    
-    $$
-    g^{h-1} \equiv 1\quad (\mod h)
-    $$
-    
-    于是本题的推导就可以得到，当 $a$ 与 $p$ 互质时，有：
-    
-    $$
-    a^{p-1} \equiv 1 \quad (\mod p)
-    $$
-    
-    于是 $a$ 的乘法逆元就是：
-    
-    $$
-    a^{-1} = a^{p-2}
-    $$
-    
-    时间复杂度 $O(\log p)$。
-
-#### 组合数
-
-$$
-C_n^k = C(n, k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}
-$$
-
-1）Python 库函数求解
-
-如果使用 Python3.8 及以上的版本，则可以直接使用 `math.comb(n, k)` [^1] 来计算组合数 $C_n^k$。时间复杂度为 $O(\min(k,n-k))$。
-
-[^1]: <https://docs.python.org/3/library/math.html#math.comb>
-
-2）递推法求解
-
-利用 $C_n^k = C_{n-1}^k + C_{n-1}^{k-1}$ 进行递推求解。
-
-例题：[求组合数 I - AcWing](https://www.acwing.com/problem/content/887)。求解 $q$ 次 $C_{n}^k\ \%\ p$ 的结果，其中 $q\le 10^4,1\le k \le n \le 2\times 10^3$，$p$ 为常数 $10^9+7$。
-
-解答：$O(nk)$ 预处理出所有的组合数，$O(q)$ 查询 $q$ 次组合数。代码如下：
-
-=== "C++"
-
-    ```cpp
-    #include <iostream>
-    using namespace std;
-    
-    const int N = 2000;
-    const int K = 2000;
-    const int P = 1e9 + 7;
-    
-    int C[N + 1][K + 1];
-    
-    int main() {
-        // O(nk) 预处理
-        for (int a = 0; a <= N; a++) {
-            for (int b = 0; b <= a; b++) {
-                if (b == 0) {
-                    C[a][b] = 1;
-                } else {
-                    C[a][b] = (C[a - 1][b] + C[a - 1][b - 1]) % P;
-                }
-            }
-        }
-    
-        // O(1) 查询
-        int q;
-        cin >> q;
-        while (q--) {
-            int n, k;
-            cin >> n >> k;
-            cout << C[n][k] << "\n";
-        }
-    
-        return 0;
-    }
-    ```
-
-3）乘法逆元法求解
-
-如果题目中有取模运算，就可以将组合数公式中的「除法运算」转换为「关于逆元的乘法运算」进行求解。
-
-例题：[求组合数 II - AcWing](https://www.acwing.com/problem/content/888/)。求解 $q$ 次 $C_{n}^k\ \%\ p$ 的结果，其中 $q\le 10^4,1\le k \le n \le 10^5$，$p$ 为常数 $10^9+7$。此题中需要对组合数 $C_n^k$ 的计算结果模上常数 $p$，由于此题的模数 $p$ 与 $n,k$ 一定互质，因此才可以采用将除法转换为乘法逆元的预处理做法来求解。如果仍然采用上述递推法将会超时。
-
-解答：$O(n\log p)$ 预处理出所有的阶乘和乘法逆元，$O(q)$ 查询 $q$。代码如下：
-
-=== "C++"
-
-    ```cpp
-    #include <iostream>
-    
-    using namespace std;
-    using ll = long long;
-    
-    const int N = 1e5;
-    const int P = 1e9 + 7;
-    
-    int fact[N + 1];    // fact[i] 表示 i 的阶乘
-    int infact[N + 1];  // infact[i] 表示 i 的阶乘的逆元
-    
-    int qmi(int a, int b, int p) {
-        int res = 1 % p;
-        while (b) {
-            if (b & 1) res = (ll) res * a % p;
-            a = (ll) a * a % p;
-            b >>= 1;
-        }
-        return res;
-    }
-    
-    int main() {
-        // O(n log p) 预处理
-        fact[0] = 1, infact[0] = 1;
-        for (int a = 1; a <= N; a++) {
-            fact[a] = (ll) fact[a - 1] * a % P;
-            infact[a] = (ll) infact[a - 1] * qmi(a, P - 2, P) % P;
-        }
-    
-        // O(1) 查询
-        int q;
-        cin >> q;
-        while (q--) {
-            int n, k;
-            cin >> n >> k;
-            cout << (ll) fact[n] * infact[k] % P * infact[n - k] % P << "\n";
-        }
-    
-        return 0;
-    }
-    ```
-
-### 字符串
-
-控制中间结果的运算精度。
-
-=== "C++"
-
-    ```cpp
-    #include <iostream>
-    #include <iomanip>
-    #include <sstream>
-    
-    using ll = long long;
-    using namespace std;
-    
-    void solve() {
-        double x = 1.2345678;
-        cout << x << "\n"; // 输出 1.23457
-    
-        stringstream ss;
-        ss << fixed << setprecision(3) << x;
-        cout << ss.str() << "\n"; // 输出 1.235
-    }
-    ```
-
-### 计算几何
-
-浮点数默认输出 6 位，范围内的数据正常打印，最后一位四舍五入，范围外的数据未知。
-
-
-## 进阶数据结构
 
 ### 并查集
 
@@ -548,3 +283,312 @@ C++ 中叫做 `std::map`，Python 中叫做 `SortedList`。
 5. `bisect_left(value)`: 返回插入值的最左索引
 6. `bisect_right(value)`: 返回插入值的最右索引
 7. `count(value)`: 计算值在列表中的出现次数
+
+## 动态规划
+
+## 字符串
+
+控制中间结果的运算精度。
+
+```cpp
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+
+using ll = long long;
+using namespace std;
+
+void solve() {
+    double x = 1.2345678;
+    cout << x << "\n"; // 输出 1.23457
+
+    stringstream ss;
+    ss << fixed << setprecision(3) << x;
+    cout << ss.str() << "\n"; // 输出 1.235
+}
+```
+
+### 哈希
+
+在 C++ 中，使用哈希表 `std::unordered_map` 时可能会因为哈希冲突导致查询、插入操作降低到 $O(n)$，此时可以使用平衡树 `std::map` 进行替代，或者自定义一个哈希函数。
+
+```c++
+// C++ 自定义哈希函数 使用示例
+
+template <class T>
+struct CustomHash {
+    size_t operator()(T x) const {
+        static const size_t _prime = 0x9e3779b97f4a7c15;
+        size_t _hash_value = std::hash<T>()(x);
+        return _hash_value ^ (_hash_value >> 30) ^ _prime;
+    }
+};
+
+// 示例
+std::unordered_map<int, int, CustomHash<int>> f1;
+std::unordered_map<long long, int, CustomHash<long long>> f2;
+std::unordered_map<std::string, int, CustomHash<long long>> f3;
+```
+
+## 计算几何
+
+浮点数默认输出 6 位，范围内的数据正常打印，最后一位四舍五入，范围外的数据未知。
+
+## 图论
+
+## 博弈论
+
+## 数学
+
+### 模运算
+
+```c++
+template<class T>
+T modPower(T a, T b, T p) {
+    // return: a^b % p
+    T res = 1 % p;
+    for (; b; b >>= 1, a = (a * a) % p) {
+        if (b & 1) {
+            res = (res * a) % p;
+        }
+    }
+    return res;
+}
+
+template<class T>
+T modAdd(T a, T b, T p) {
+    // return: a+b % p
+    return ((a % p) + (b % p)) % p;
+}
+
+template<class T>
+T modMul(T a, T b, T p) {
+    // return: a*b % p
+    T res = 0;
+    for (; b; b >>= 1, a = modAdd(a, a, p)) {
+        if (b & 1) {
+            res = modAdd(res, a, p);
+        }
+    }
+    return res;
+}
+
+template<class T>
+T modSumOfEqualRatioArray(T q, T k, T p) {
+    // return: (q^0 + q^1 + ... + q^k) % p
+    if (k == 0) {
+        return 1;
+    }
+    if (k % 2 == 0) {
+        return modAdd<T>((T) 1, modMul(q, modSumOfEqualRatioArray(q, k - 1, p), p), p);
+    }
+    return modMul(((T) 1 + modPower(q, k / 2 + (T) 1, p)), modSumOfEqualRatioArray(q, k / 2, p), p);
+}
+```
+
+### 质数筛
+
+```cpp
+struct PrimesCount {
+    int n;
+    vector<int> pre, vis;
+    PrimesCount(int n) : n(n), pre(n + 1), vis(n + 1) {
+        eulerFilter();
+    }
+    void eulerFilter() {
+        // O(n)
+        vector<int> primes;
+        for (int i = 2; i <= n; i++) {
+            if (!vis[i]) {
+                primes.push_back(i);
+                pre[i] = pre[i - 1] + 1;
+            } else {
+                pre[i] = pre[i - 1];
+            }
+            for (int j = 0; primes[j] <= n / i; j++) {
+                vis[primes[j] * i] = true;
+                if (i % primes[j] == 0) {
+                    break;
+                }
+            }
+        }
+    }
+    void eratosthenesFilter() {
+        // O(nloglogn)
+        for (int i = 2; i <= n; i++) {
+            if (!vis[i]) {
+                pre[i] = pre[i - 1] + 1;
+                for (int j = i; j <= n; j += i) {
+                    vis[j] = true;
+                }
+            } else {
+                pre[i] = pre[i - 1];
+            }
+        }
+    }
+    void simpleFilter() {
+        // O(nlogn)
+        for (int i = 2; i <= n; i++) {
+            if (!vis[i]) {
+                pre[i] = pre[i - 1] + 1;
+            } else {
+                pre[i] = pre[i - 1];
+            }
+            for (int j = i; j <= n; j += i) {
+                vis[j] = true;
+            }
+        }
+    }
+};
+
+/* 使用示例
+PrimesCount obj(n);         // construct an object
+cout << obj.pre[n] << "\n"; // pre[i] means prime numbers in range of [1, i]
+*/
+```
+
+### 乘法逆元
+
+假设当前需要在 $\% \ p$ 的情况下除以 $a$，则可以转化为乘以 $a$ 的乘法逆元 $a^{-1}$，即：
+
+$$
+\begin{aligned}
+&\frac{\text{num}}{a} \equiv \text{num} \times a^{-1} (\text{mod } p)\\
+&\text{其中 } a^{-1} = a^{p-2} \text{ 当且仅当 $a$ 与 $p$ 互质}
+\end{aligned}
+$$
+
+时间复杂度：$O(\log p)$
+
+??? "推导"
+
+    对于任意 $a$ 的整数倍 $t$，一定有下式成立：其中的 $x$ 就是整数 $a$ 的乘法逆元，记作 $a^{-1}$
+
+    $$
+    \begin{aligned}
+    \frac{t}{a} \equiv t \times x\quad (\mod p) \\
+    \frac{1}{a} \equiv 1 \times x\quad (\mod p) \\
+    1 \equiv a \times x\quad (\mod p) \\
+    \end{aligned}
+    $$
+
+    由 [费马小定理](https://baike.baidu.com/item/费马小定理/4776158)，对于两个互质的整数 $g,h$ 而言，一定有下式成立：
+
+    $$
+    g^{h-1} \equiv 1\quad (\mod h)
+    $$
+
+    于是本题的推导就可以得到，当 $a$ 与 $p$ 互质时，有：
+
+    $$
+    a^{p-1} \equiv 1 \quad (\mod p)
+    $$
+
+    于是 $a$ 的乘法逆元就是：
+
+    $$
+    a^{-1} = a^{p-2}
+    $$
+
+### 组合数
+
+$$
+C_n^k = C(n, k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}
+$$
+
+**Python 库函数求解**。如果使用 Python 3.8 及以上的版本，则可以直接使用 [`math.comb(n, k)`](https://docs.python.org/3/library/math.html#math.comb) 来计算组合数 $C_n^k$。
+
+时间复杂度：$O(\min(k,n-k))$
+
+**递推法求解**。利用 $C_n^k = C_{n-1}^k + C_{n-1}^{k-1}$ 进行递推求解。以 [求组合数 I - AcWing](https://www.acwing.com/problem/content/887) 为例。
+
+题意：求解 $q$ 次 $C_{n}^k\ \%\ p$ 的结果，其中 $q\le 10^4,1\le k \le n \le 2\times 10^3$，$p$ 为常数 $10^9+7$。
+
+思路：$O(nk)$ 预处理出所有的组合数，$O(q)$ 查询。
+
+```cpp
+#include <iostream>
+using namespace std;
+
+const int N = 2000;
+const int K = 2000;
+const int P = 1e9 + 7;
+
+int C[N + 1][K + 1];
+
+int main() {
+    // O(nk) 预处理
+    for (int a = 0; a <= N; a++) {
+        for (int b = 0; b <= a; b++) {
+            if (b == 0) {
+                C[a][b] = 1;
+            } else {
+                C[a][b] = (C[a - 1][b] + C[a - 1][b - 1]) % P;
+            }
+        }
+    }
+
+    // O(1) 查询
+    int q;
+    cin >> q;
+    while (q--) {
+        int n, k;
+        cin >> n >> k;
+        cout << C[n][k] << "\n";
+    }
+
+    return 0;
+}
+```
+
+**乘法逆元法求解**。如果题目中有取模运算，就可以将组合数公式中的「除法运算」转换为「关于逆元的乘法运算」进行求解。以 [求组合数 II - AcWing](https://www.acwing.com/problem/content/888/) 为例。
+
+题意：求解 $q$ 次 $C_{n}^k\ \%\ p$ 的结果，其中 $q\le 10^4,1\le k \le n \le 10^5$，$p$ 为常数 $10^9+7$。
+
+思路：
+
+- 此题中需要对组合数 $C_n^k$ 的计算结果模上常数 $p$，由于此题的模数 $p$ 与 $n,k$ 一定互质，因此才可以采用将除法转换为乘法逆元的预处理做法来求解。如果仍然采用上述递推法将会超时；
+- 因此我们 $O(n\log p)$ 预处理出所有的「阶乘」和「乘法逆元」，然后 $O(q)$ 查询。
+
+```c++
+#include <iostream>
+
+using namespace std;
+using ll = long long;
+
+const int N = 1e5;
+const int P = 1e9 + 7;
+
+int fact[N + 1];    // fact[i] 表示 i 的阶乘
+int infact[N + 1];  // infact[i] 表示 i 的阶乘的逆元
+
+int qmi(int a, int b, int p) {
+    int res = 1 % p;
+    while (b) {
+        if (b & 1) res = (ll) res * a % p;
+        a = (ll) a * a % p;
+        b >>= 1;
+    }
+    return res;
+}
+
+int main() {
+    // O(n log p) 预处理
+    fact[0] = 1, infact[0] = 1;
+    for (int a = 1; a <= N; a++) {
+        fact[a] = (ll) fact[a - 1] * a % P;
+        infact[a] = (ll) infact[a - 1] * qmi(a, P - 2, P) % P;
+    }
+
+    // O(1) 查询
+    int q;
+    cin >> q;
+    while (q--) {
+        int n, k;
+        cin >> n >> k;
+        cout << (ll) fact[n] * infact[k] % P * infact[n - k] % P << "\n";
+    }
+
+    return 0;
+}
+```

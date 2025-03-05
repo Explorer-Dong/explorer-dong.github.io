@@ -31,8 +31,9 @@ title: 基础
 
     如果需要同时频繁地「区间修改、区间查询」，可以使用进阶数据结构诸如 [树状数组](./ds.md/#树状数组) 或 [线段树](./ds.md/#线段树) 来实现。
 
-**前缀和算法**。为了学习差分算法，我们有必要先学习前缀和算法。具体地，对于一个长度为 $n$ 的数组 $a$，我们定义 $s_i$ 表示：
+### 前缀和算法
 
+为了学习差分算法，我们有必要先学习前缀和算法。具体地，对于一个长度为 $n$ 的数组 $a$，我们定义 $s_i$ 表示：
 $$
 s_i=\sum_{j=0}^{i}a_j
 $$
@@ -47,7 +48,9 @@ s_{i-1}+a_i,&i\ge1
 \end{cases}
 $$
 
-**差分算法**。为了实现给数组中下标在闭区间 $[i,j]$ 中的元素 $s_{i\sim j}$ 同时增加 $x$，我们可以借助前缀和算法的思路来实现。具体地，仍然记原始数组为 $a$，前缀和数组为 $s$，如果将 $a_i+x$ 同时 $a_{j+1}-x$，那么在维护前缀和数组 $s$ 时，$s_{i\sim j}$ 中的每一个元素就都增加了 $x$。
+### 差分算法
+
+为了实现给数组中下标在闭区间 $[i,j]$ 中的元素 $s_{i\sim j}$ 同时增加 $x$，我们可以借助前缀和算法的思路来实现。具体地，仍然记原始数组为 $a$，前缀和数组为 $s$，如果将 $a_i+x$ 同时 $a_{j+1}-x$，那么在维护前缀和数组 $s$ 时，$s_{i\sim j}$ 中的每一个元素就都增加了 $x$。
 
 利用上述思路，我们可以将待操作的数组看做已经维护好的前缀和数组 $s$，并利用 $a_i=s_i-s_{i-1}$ 计算出差分数组 $a$，后续如果需要频繁地给待操作数组进行区间修改，只需要 $O(1)$ 地修改差分数组的两个边界即可。
 
@@ -80,7 +83,9 @@ $$
 
 首先讲一个排序衍生出的概念：稳定性。如果一个排序算法，在对所有元素排序后，原来相同关键字的顺序保持不变，则称该排序算法是稳定的，反之如果相同关键字的顺序改变了就称该排序算法是不稳定的。
 
-**快速排序**。这是一种不稳定的排序算法，核心思想是 **分治**。具体地，以升序为例，如果一个序列是有序的，那么对于该序列中的每一个元素，其左边所有元素都应该比右边所有元素小。基于该先验，我们就有了快速排序算法：
+### 快速排序
+
+这是一种不稳定的排序算法，核心思想是 **分治**。具体地，以升序为例，如果一个序列是有序的，那么对于该序列中的每一个元素，其左边所有元素都应该比右边所有元素小。基于该先验，我们就有了快速排序算法：
 
 1. 选择序列中任意一个元素作为基准；
 2. 基于该基准，扫描一遍序列将比基准小的元素排在基准的左边，比基准大的元素排在基准的右边；
@@ -88,31 +93,33 @@ $$
 
 在计算时间复杂度时，我们可以将分治的逻辑想象成一棵二叉树，对于二叉树的每一层都会有 $O(n)$ 的遍历开销，而二叉树的层数平均有 $O(\log n)$ 层，因此排序的时间复杂度就是 $O(n\log n)$。当然如果每次选择的基准刚好是所在序列的最值，就会导致二叉树的层数退化到 $O(n)$，但一般来说不会这么极端。
 
-??? note "快速排序 C++ 示例代码"
+快速排序 C++ 示例代码：
 
-    ```c++
-    vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
-    
-    void quick_sort(int l, int r) {
-        if (l >= r) return;
-    
-        // conquer
-        int i = l - 1, j = r + 1, x = a[(l + r) >> 1];
-        while (i < j) {
-            while (a[++i] < x);
-            while (a[--j] > x);
-            if (i < j) swap(a[i], a[j]);
-        }
-    
-        // divide
-        quick_sort(l, j);
-        quick_sort(j + 1, r);
+```c++
+vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
+
+void quick_sort(int l, int r) {
+    if (l >= r) return;
+
+    // conquer
+    int i = l - 1, j = r + 1, x = a[(l + r) >> 1];
+    while (i < j) {
+        while (a[++i] < x);
+        while (a[--j] > x);
+        if (i < j) swap(a[i], a[j]);
     }
-    
-    quick_sort(0, a.size() - 1);  // 调用示例
-    ```
 
-**归并排序**。这是一种稳定的排序算法，核心思想同样是分治且符合标准的三步分治策略。同样以升序为例，如果两个有序序列都是升序或都是降序，那么可以双指针扫描一遍从而 $O(n)$ 地合并这两个序列为一个有序序列。基于该先验，我们就有了归并排序算法：
+    // divide
+    quick_sort(l, j);
+    quick_sort(j + 1, r);
+}
+
+quick_sort(0, a.size() - 1);  // 调用示例
+```
+
+### 归并排序
+
+这是一种稳定的排序算法，核心思想同样是分治且符合标准的三步分治策略。同样以升序为例，如果两个有序序列都是升序或都是降序，那么可以双指针扫描一遍从而 $O(n)$ 地合并这两个序列为一个有序序列。基于该先验，我们就有了归并排序算法：
 
 1. 将序列等分为左右两部分；
 2. 分治左右两部分使得左右两部分都是升序或都是降序；
@@ -120,38 +127,40 @@ $$
 
 时间复杂度的计算与快速排序类似，只不过这里的分治递归二叉树一定是 $O(\log n)$ 层，那么时间复杂度就是稳定的 $O(n \log n)$。
 
-??? note "归并排序 C++ 示例代码"
+归并排序 C++ 示例代码：
 
-    ```c++
-    vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
-    vector<int> t(a.size(), 0);       // 临时数组
-    
-    void merge_sort(int l, int r) {
-        if (l >= r) return;
-    
-        // divide
-        int mid = (l + r) >> 1;
-    
-        // conquer
-        merge_sort(l, mid), merge_sort(mid + 1, r);
-    
-        // combine
-        int i = l, j = mid + 1, k = 0;
-        while (i <= mid && j <= r) {
-            if (a[i] < a[j]) t[k++] = a[i++];
-            else t[k++] = a[j++];
-            cnt++;
-        }
-        while (i <= mid) t[k++] = a[i++];
-        while (j <= r) t[k++] = a[j++];
-    
-        for (i = l, j = 0; i <= r; i++) a[i] = t[j++];
-    };
-    
-    merge_sort(0, a.size() - 1);  // 调用示例
-    ```
+```c++
+vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
+vector<int> t(a.size(), 0);       // 临时数组
 
-**堆排序**。这是一种不稳定的排序算法。其实就是利用了堆结构及其支持的操作，每次输出堆顶然后维护堆结构即可实现堆排序。因此如果掌握了  这一数据结构，堆排序算法就跃然纸上了：
+void merge_sort(int l, int r) {
+    if (l >= r) return;
+
+    // divide
+    int mid = (l + r) >> 1;
+
+    // conquer
+    merge_sort(l, mid), merge_sort(mid + 1, r);
+
+    // combine
+    int i = l, j = mid + 1, k = 0;
+    while (i <= mid && j <= r) {
+        if (a[i] < a[j]) t[k++] = a[i++];
+        else t[k++] = a[j++];
+        cnt++;
+    }
+    while (i <= mid) t[k++] = a[i++];
+    while (j <= r) t[k++] = a[j++];
+
+    for (i = l, j = 0; i <= r; i++) a[i] = t[j++];
+};
+
+merge_sort(0, a.size() - 1);  // 调用示例
+```
+
+### 堆排序
+
+这是一种不稳定的排序算法。其实就是利用了堆结构及其支持的操作，每次输出堆顶然后维护堆结构即可实现堆排序。因此如果掌握了  这一数据结构，堆排序算法就跃然纸上了：
 
 1. 将给定的序列维护成堆结构；
 2. 每次输出堆顶并重新维护堆结构即可。
@@ -163,55 +172,17 @@ $$
 
 最终的时间复杂度就是 $O(n\log n)$。
 
-??? note "堆排序 C++ 示例代码（下标从 0 开始）"
+堆排序 C++ 示例代码（下标从 0 开始）：
 
-    === "非递归"
-    
-        ```c++
-        void down(int u) {
-            int l = 2 * u + 1;
-            int r = 2 * u + 2;
-            int t = u;
-            
-            while (true) {
-                if (l <= last && heap[u] > heap[l]) {
-                    t = l;
-                }
-                if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
-                    t = r;
-                }
-                
-                if (t != u) {
-                    swap(heap[t], heap[u]);
-                    down(t);
-                    u = t;
-                    l = 2 * u + 1;
-                    r = 2 * u + 2;
-                } else {
-                    break;
-                }
-            }
-        }
-    
-        void up(int u) {
-            int fa = (u - 1) / 2;
-            
-            while (fa >= 0 && heap[fa] > heap[u]) {
-                swap(heap[fa], heap[u]);
-                u = fa;
-                fa = (u - 1) / 2;
-            }
-        }
-        ```
-    
-    === "递归"
-    
-        ```c++
-        void down(int u) {
-            int l = 2 * u + 1;
-            int r = 2 * u + 2;
-            
-            int t = u;
+=== "非递归"
+
+    ```c++
+    void down(int u) {
+        int l = 2 * u + 1;
+        int r = 2 * u + 2;
+        int t = u;
+        
+        while (true) {
             if (l <= last && heap[u] > heap[l]) {
                 t = l;
             }
@@ -222,92 +193,130 @@ $$
             if (t != u) {
                 swap(heap[t], heap[u]);
                 down(t);
+                u = t;
+                l = 2 * u + 1;
+                r = 2 * u + 2;
+            } else {
+                break;
             }
         }
+    }
     
-        void up(int u) {
-            int fa = (u - 1) / 2;
-            
-            if (fa >= 0 && heap[fa] > heap[u]) {
-                swap(heap[fa], heap[u]);
-                up(fa);
-            }
+    void up(int u) {
+        int fa = (u - 1) / 2;
+        
+        while (fa >= 0 && heap[fa] > heap[u]) {
+            swap(heap[fa], heap[u]);
+            u = fa;
+            fa = (u - 1) / 2;
         }
-        ```
+    }
+    ```
+
+=== "递归"
+
+    ```c++
+    void down(int u) {
+        int l = 2 * u + 1;
+        int r = 2 * u + 2;
+        
+        int t = u;
+        if (l <= last && heap[u] > heap[l]) {
+            t = l;
+        }
+        if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
+            t = r;
+        }
+        
+        if (t != u) {
+            swap(heap[t], heap[u]);
+            down(t);
+        }
+    }
     
-    === "两种初始化"
+    void up(int u) {
+        int fa = (u - 1) / 2;
+        
+        if (fa >= 0 && heap[fa] > heap[u]) {
+            swap(heap[fa], heap[u]);
+            up(fa);
+        }
+    }
+    ```
+
+=== "两种初始化"
+
+    ```c++
+    // 从下往上
+    for (int i = n / 2; i >= 0; i--) {
+        down(i);
+    }
+    ```
     
-        ```c++
-        // 从下往上
+    ```c++
+    // 从上往下
+    for (int i = 1; i < n; i++) {
+        up(i);
+    }
+    ```
+
+=== "完整代码"
+
+    ```c++
+    #include <iostream>
+    
+    using namespace std;
+    
+    int n, m;
+    int heap[100010];
+    int last;
+    
+    void down(int u) {
+        int l = 2 * u + 1;
+        int r = 2 * u + 2;
+        
+        int t = u;
+        if (l <= last && heap[u] > heap[l]) {
+            t = l;
+        }
+        if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
+            t = r;
+        }
+        
+        if (t != u) {
+            swap(heap[t], heap[u]);
+            down(t);
+        }
+    }
+    
+    void up(int u) {
+        int fa = (u - 1) / 2;
+        
+        if (fa >= 0 && heap[fa] > heap[u]) {
+            swap(heap[fa], heap[u]);
+            up(fa);
+        }
+    }
+    
+    int main() {
+        cin >> n >> m;
+        for (int i = 0; i < n; i++) {
+            cin >> heap[i];
+        }
+        last = n - 1;
+        
+        // 初始化堆结构
         for (int i = n / 2; i >= 0; i--) {
             down(i);
         }
-        ```
-    
-        ```c++
-        // 从上往下
-        for (int i = 1; i < n; i++) {
-            up(i);
+        
+        // 输出堆顶 + 重新维护堆结构
+        for (int i = 0; i < m; i++) {
+            cout << heap[0] << " ";
+            heap[0] = heap[last--];
+            down(0);
         }
-        ```
-    
-    === "完整代码"
-    
-        ```c++
-        #include <iostream>
-    
-        using namespace std;
-    
-        int n, m;
-        int heap[100010];
-        int last;
-    
-        void down(int u) {
-            int l = 2 * u + 1;
-            int r = 2 * u + 2;
-            
-            int t = u;
-            if (l <= last && heap[u] > heap[l]) {
-                t = l;
-            }
-            if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
-                t = r;
-            }
-            
-            if (t != u) {
-                swap(heap[t], heap[u]);
-                down(t);
-            }
-        }
-    
-        void up(int u) {
-            int fa = (u - 1) / 2;
-            
-            if (fa >= 0 && heap[fa] > heap[u]) {
-                swap(heap[fa], heap[u]);
-                up(fa);
-            }
-        }
-    
-        int main() {
-            cin >> n >> m;
-            for (int i = 0; i < n; i++) {
-                cin >> heap[i];
-            }
-            last = n - 1;
-            
-            // 初始化堆结构
-            for (int i = n / 2; i >= 0; i--) {
-                down(i);
-            }
-            
-            // 输出堆顶 + 重新维护堆结构
-            for (int i = 0; i < m; i++) {
-                cout << heap[0] << " ";
-                heap[0] = heap[last--];
-                down(0);
-            }
-            
-            return 0;
-        ```
-        }
+        
+        return 0;
+    }
+    ```

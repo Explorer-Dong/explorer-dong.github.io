@@ -1,5 +1,5 @@
 ---
-title: 算法专栏简介
+title: 数据结构与算法专栏简介
 ---
 
 !!! tip
@@ -9,9 +9,9 @@ title: 算法专栏简介
 
 一些衍生内容。在本科的数据结构课程实践上，我用 C++17 实现了一些基础数据结构 [^ds - github]，用 Qt6 写了个窗口程序 [^qt - github] 以比较「不同排序算法」和「不同查找算法」的计算差异。
 
-[^zhihu - CurryWOE]: https://zhuanlan.zhihu.com/p/557770472
-[^ds - github]: https://github.com/Explorer-Dong/DataStructure
-[^qt - github]: https://github.com/Explorer-Dong/DataStructureClassDesign
+[^zhihu - CurryWOE]: <https://zhuanlan.zhihu.com/p/557770472>
+[^ds - github]: <https://github.com/Explorer-Dong/DataStructure>
+[^qt - github]: <https://github.com/Explorer-Dong/DataStructureClassDesign>
 
 ![JSCPC 铜牌，2024 年 5 月，南京大学](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501302213245.png)
 

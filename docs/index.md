@@ -33,14 +33,13 @@ flowchart LR
     面向对象程序设计(面向对象程序设计)
     数据结构与算法(数据结构与算法)
     数字逻辑电路(数字逻辑电路)
-    算法设计与分析(算法设计与分析)
     计算机系统基础(计算机系统基础)
     数据库(数据库)
     操作系统(操作系统)
     计算机组成(计算机组成)
     计算机网络(计算机网络)
 
-    面向对象程序设计 --> 数据结构与算法 & 算法设计与分析 --> 计算机系统基础
+    面向对象程序设计 --> 数据结构与算法 --> 计算机系统基础
     数字逻辑电路 --> 计算机系统基础 --> 数据库 & 操作系统 & 计算机组成
     计算机组成 & 操作系统 --> 计算机网络
 
@@ -67,23 +66,22 @@ flowchart LR
     面向对象程序设计 --> Python高级应用
 
     %% 跳转链接
-    click 高等数学 "./GPA/1st-term/AdvancedMath/"
-    click 线性代数 "./GPA/3rd-term/LinearAlgebra/"
-    click 概率论 "./GPA/4th-term/ProbAndStat/"
-    click 最优化方法 "./GPA/4th-term/OptMethod/"
+    click 高等数学 "./base/advanced-math/"
+    click 线性代数 "./base/linear-algebra/"
+    click 概率论 "./base/probability-and-statistics/"
+    click 最优化方法 "./base/optimization-method/"
 
-    click 面向对象程序设计 "./GPA/2nd-term/ObjectOrientedProgramming/"
+    click 面向对象程序设计 "./base/object-oriented-programming/"
+    click 数字逻辑电路 "./base/digital-logic-circuit/"
+    click 计算机系统基础 "./base/computer-system-basic/"
+    click 数据库 "./base/database/"
     click 数据结构与算法 "./ds-and-algo/"
-    click 数字逻辑电路 "./GPA/3rd-term/DigitalLogicCircuit/"
-    click 算法设计与分析 "./GPA/4th-term/PyAlgo/"
-    click 计算机系统基础 "./GPA/4th-term/SysBasic/"
-    click 数据库 "./GPA/5th-term/DataBase/"
     click 操作系统 "./base/operating-system/"
-    click 计算机组成 "./GPA/5th-term/ComputerOrganization/"
+    click 计算机组成 "./base/computer-organization/"
     click 计算机网络 "./base/computer-network/"
 
-    click Python高级应用 "./GPA/4th-term/PyApply/"
-    click 数字图像处理 "./GPA/5th-term/DigitalImageProcessing/"
+    click Python高级应用 "./base/python-application/"
+    click 数字图像处理 "./base/digital-image-processing/"
     click 机器学习 "./base/machine-learning/"
     click 深度学习 "./base/deep-learning/"
     click 数据挖掘 "./base/data-mining/"

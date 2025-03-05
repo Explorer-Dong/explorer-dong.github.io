@@ -1,6 +1,5 @@
 ---
 title: 基础专栏简介
-status: new
 ---
 
 !!! quote "宋 · 苏轼《稼说送张琥》"

@@ -73,11 +73,13 @@ list(map(s.index,s))	# 返回字符索引数组，如 "abcba"-> [0,1,2,1,0]
 
 ```python
 d.pop(key)	#返回 key 对应的 value 值，并在字典中删除这个键值对
-d.get(key,default_value)	#获取 key 对应的值，如果不存在返回 default_value
+d.get(key,default_value = None)	#获取 key 对应的值，如果不存在返回 default_value
 d.keys() 	#键构成的可迭代对象
 d.values()	#值构成的可迭代对象
 d.items()	#键值对构成的可迭代对象
 d = defaultdict(list)	# 指定了具有默认值空列表的字典
+d[key] = value
+
 ```
 
 字典推导器：字母表对应下标

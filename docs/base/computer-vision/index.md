@@ -4,9 +4,7 @@ title: 计算机视觉
 
 ## 前言
 
-本文记录计算机视觉的入门笔记。部分内容参考 Huggingface CV Course [^ huggingface cv course]。
-
-[^ huggingface cv course]: <https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome>
+本文记录计算机视觉的入门笔记。部分内容参考 [Huggingface CV Course](https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome)。
 
 成绩组成：考勤 5%，作业 10%，实验 10%，大作业 25%，期末 50%。
 

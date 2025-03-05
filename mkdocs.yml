@@ -167,17 +167,25 @@ nav:
       - GPA/4th-term/PyAlgo.md
       - GPA/4th-term/SysBasic.md
       - GPA/5th-term/DataBase.md
-      - GPA/5th-term/OperatingSystem.md
-      - GPA/5th-term/ComputerOrganization.md
     - 人工智能基础:
       - GPA/4th-term/PyApply.md
       - GPA/5th-term/DigitalImageProcessing.md
   - 基础:
     - base/index.md
     - 计算机基础:
+      - 操作系统:
+        - base/operating-system/index.md
+        - base/operating-system/intro.md
+        - base/operating-system/concurrent.md
+        - base/operating-system/virtualization.md
+        - base/operating-system/persistence.md
+      - 计算机组成:
+        - base/computer-organization/index.md
+        - base/computer-organization/cpu.md
+        - base/computer-organization/memory.md
+        - base/computer-organization/device.md
       - 计算机网络:
         - base/computer-network/index.md
-        - base/computer-network/intro.md
     - 人工智能基础:
       - 机器学习:
         - base/machine-learning/index.md
@@ -212,6 +220,7 @@ nav:
     - ds-and-algo/templates-cpp.md
     - ds-and-algo/templates-py.md
     - 理论剖析:
+      - ds-and-algo/theory/index.md
       - ds-and-algo/theory/base.md
       - ds-and-algo/theory/ds.md
       - ds-and-algo/theory/dp.md
@@ -221,12 +230,13 @@ nav:
       - ds-and-algo/theory/game.md
       - ds-and-algo/theory/math.md
     - 精选例题:
+      - ds-and-algo/examples/index.md
       - ds-and-algo/examples/basic-algo.md
       - ds-and-algo/examples/advanced-algo.md
       - ds-and-algo/examples/basic-ds.md
       - ds-and-algo/examples/advanced-ds.md
     - 蓝桥杯:
-      - ds-and-algo/lan-qiao-cup/guide.md
+      - ds-and-algo/lan-qiao-cup/index.md
       - ds-and-algo/lan-qiao-cup/14th-python-a.md
   - 前端:
     - front-end/index.md

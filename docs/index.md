@@ -85,7 +85,7 @@ flowchart LR
     click Python高级应用 "./GPA/4th-term/PyApply/"
     click 数字图像处理 "./GPA/5th-term/DigitalImageProcessing/"
     click 机器学习 "./base/machine-learning/"
-    click 深度学习 "./GPA/5th-term/DeepLearning/"
+    click 深度学习 "./base/deep-learning/"
     click 数据挖掘 "./base/data-mining/"
     click 自然语言处理 "./base/natural-language-processing/"
     click 计算机视觉 "./base/computer-vision/"

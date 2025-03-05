@@ -5,58 +5,6 @@
          <lastmod>2025-03-05</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/GPA/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/1st-term/AdvancedMath/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/2nd-term/ObjectOrientedProgramming/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/3rd-term/CollegePhysics_2/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/3rd-term/DigitalLogicCircuit/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/3rd-term/LinearAlgebra/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/4th-term/OptMethod/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/4th-term/ProbAndStat/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/4th-term/PyAlgo/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/4th-term/PyApply/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/4th-term/SysBasic/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/5th-term/DataBase/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/GPA/5th-term/DigitalImageProcessing/</loc>
-         <lastmod>2025-03-05</lastmod>
-    </url>
-    <url>
          <loc>https://wiki.dwj601.cn/back-end/</loc>
          <lastmod>2025-03-05</lastmod>
     </url>
@@ -105,6 +53,14 @@
          <lastmod>2025-03-05</lastmod>
     </url>
     <url>
+         <loc>https://wiki.dwj601.cn/base/advanced-math/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/college-physics/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
          <loc>https://wiki.dwj601.cn/base/computer-network/</loc>
          <lastmod>2025-03-05</lastmod>
     </url>
@@ -122,6 +78,10 @@
     </url>
     <url>
          <loc>https://wiki.dwj601.cn/base/computer-organization/memory/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/computer-system-basic/</loc>
          <lastmod>2025-03-05</lastmod>
     </url>
     <url>
@@ -149,11 +109,27 @@
          <lastmod>2025-03-05</lastmod>
     </url>
     <url>
+         <loc>https://wiki.dwj601.cn/base/database/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
          <loc>https://wiki.dwj601.cn/base/deep-learning/</loc>
          <lastmod>2025-03-05</lastmod>
     </url>
     <url>
+         <loc>https://wiki.dwj601.cn/base/digital-image-processing/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/digital-logic-circuit/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
          <loc>https://wiki.dwj601.cn/base/intelligent-education/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/linear-algebra/</loc>
          <lastmod>2025-03-05</lastmod>
     </url>
     <url>
@@ -181,7 +157,43 @@
          <lastmod>2025-03-05</lastmod>
     </url>
     <url>
+         <loc>https://wiki.dwj601.cn/base/machine-learning/model/bayes-model/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/machine-learning/model/cluster-learning/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/machine-learning/model/decision-tree-model/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/machine-learning/model/ensemble-learning/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/machine-learning/model/lazy-learning/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/machine-learning/model/linear-model/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/machine-learning/model/probability-graph-model/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/machine-learning/model/semi-supervised-learning/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
          <loc>https://wiki.dwj601.cn/base/natural-language-processing/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/object-oriented-programming/</loc>
          <lastmod>2025-03-05</lastmod>
     </url>
     <url>
@@ -202,6 +214,18 @@
     </url>
     <url>
          <loc>https://wiki.dwj601.cn/base/operating-system/virtualization/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/optimization-method/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/probability-and-statistics/</loc>
+         <lastmod>2025-03-05</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/base/python-application/</loc>
          <lastmod>2025-03-05</lastmod>
     </url>
     <url>

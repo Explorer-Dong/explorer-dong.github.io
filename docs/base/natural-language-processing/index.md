@@ -4,9 +4,7 @@ title: 自然语言处理
 
 ## 前言
 
-本文记录自然语言处理的入门笔记。部分内容参考 Huggingface NLP Course [^ huggingface nlp course]。
-
-[^ huggingface nlp course]: <https://huggingface.co/learn/nlp-course/chapter1/1>
+本文记录自然语言处理的入门笔记。部分内容参考 [Huggingface NLP Course](https://huggingface.co/learn/nlp-course/chapter1/1)。
 
 成绩组成：平时 10%，作业+实验 40%，期末 50%。
 

@@ -389,6 +389,74 @@ title: 第 14 届 Python A 组（省赛）
 
 ## T7 阶乘的和 20'
 
+题意：给定一个含有 $n$ 个数的数组 $a$，输出最大的 $m$ 使得 $\dfrac{\sum_{i=0}^{n-1}(a_i!)}{m!}$ 为整数。
+
+思路：首先 $m$ 取 $a$ 中最小值上式一定为整数。为了让 $m$ 更大，我们可以贪心地让 $a$ 中小数的阶乘逐渐合并为更大数的阶乘。比如 $(x+1)$ 个 $x!$ 就可以合并为 $1$ 个 $(x+1)!$。根据这样的贪心合并思路，我们将 a 中的元素排序后不断合并直到无法合并就是最终答案。
+
+时间复杂度：排序为 $O(n\log n)$，合并不超过 $O(\log n)$。因此最终复杂度为 $O(n\log n)$。
+
+=== "Python"
+
+    ```python
+    from collections import defaultdict
+    
+    n = int(input())
+    a = list(map(int, input().strip().split()))
+    
+    # 排序并计数
+    a.sort()
+    d = defaultdict(int)
+    for num in a:
+        d[num] += 1
+    
+    # 贪心合并
+    ans = a[0]
+    while True:
+        if d[ans] % (ans + 1) == 0:
+            d[ans + 1] += d[ans] // (ans + 1)
+            ans += 1
+        else:
+            print(ans)
+            break
+    ```
+
+=== "C++"
+
+    ```c++
+    #include <iostream>
+    #include <algorithm>
+    #include <vector>
+    #include <unordered_map>
+    
+    using namespace std;
+    
+    int main() {
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        unordered_map<int, int> d;
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+            d[a[i]]++;
+        }
+    
+        sort(a.begin(), a.end());
+    
+        int ans = a[0];
+        while (true) {
+            if (d[ans] % (ans + 1) == 0) {
+                d[ans + 1] += d[ans] / (ans + 1);
+                ans++;
+            } else {
+                cout << ans << "\n";
+                break;
+            }
+        }
+    
+        return 0;
+    }
+    ```
+
 ## T8 奇怪的数 20'
 
 ## T9 子树的大小 25'

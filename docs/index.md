@@ -78,7 +78,7 @@ flowchart LR
     click 算法设计与分析 "./GPA/4th-term/PyAlgo/"
     click 计算机系统基础 "./GPA/4th-term/SysBasic/"
     click 数据库 "./GPA/5th-term/DataBase/"
-    click 操作系统 "./GPA/5th-term/OperatingSystem/"
+    click 操作系统 "./base/operating-system/"
     click 计算机组成 "./GPA/5th-term/ComputerOrganization/"
     click 计算机网络 "./base/computer-network/"
 

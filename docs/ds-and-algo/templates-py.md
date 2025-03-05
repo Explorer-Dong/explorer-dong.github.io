@@ -2508,12 +2508,14 @@ class Solution:
 ### 一维前缀和
 
 **问题定义**
+
 $$
 \begin{aligned}
 &对于长度为 n的数组a,给定q组区间[l,r], \\
 &对每组区间[l,r]求 \sum_{i=l}^r{a[i]} = a[l] + a[l + 1] + \cdots+a[r],其中 l\le r
 \end{aligned}
 $$
+
 **数据范围**
 
 $n \in [1, 10^5], q \in [1, 10^5] $
@@ -2533,6 +2535,7 @@ $n \in [1, 10^5], q \in [1, 10^5] $
 - 总复杂度为$O(n)$ 预处理 +  $O(q)$ 询问，即 $O(q + n)$；
 
 $\text{定义: }p[i] = \sum(a[:i]), \\$
+
 $$
 \begin{aligned}
 则有:
@@ -2543,6 +2546,7 @@ p[n] = \sum(a[:n]) &= a[0] + ... + a[n - 2] + a[n - 1] = \sum(a) \\
 显然可以发现 p[n] - p[n-1] &= a[n-1] \\
 \end{aligned}
 $$
+
 即 $p[n] = p[n - 1] + a[n-1],$
 
 即 $p[n + 1] = p[n] + a[n],$

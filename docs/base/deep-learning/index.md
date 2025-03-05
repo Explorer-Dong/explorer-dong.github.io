@@ -4,18 +4,14 @@ title: 深度学习
 
 ## 前言
 
-教材情况：
+本文记录深度学习入门笔记。教材主要参考邱锡鹏老师的神经网络与深度学习 [^book][^nndl][^nndl github]，框架以 PyTorch [^PyTorch] 为主，TensorFlow [^TensorFlow] 为辅。比较推荐 Karpathy 的教学视频 [^Karpathy]。
 
-|      课程名称      |        选用教材        | 版次 |  作者  |     出版社     |      ISBN 号       |
-| :----------------: | :--------------------: | :--: | :----: | :------------: | :---------------: |
-| 神经网络与深度学习 | 《神经网络与深度学习》 |  1   | 邱锡鹏 | 机械工业出版社 | 978-7-111-64968-7 |
-
-学习资源：
-
-- [教材官网](https://nndl.github.io/)
-- [配套内容](https://github.com/nndl/)
-- [TensorFlow 文档](https://tensorflow.google.cn/api_docs/python/tf)
-- [Pytorch 文档](https://pytorch.org/docs/2.0/)
+[^book]: 邱锡鹏.《神经网络与深度学习》[M]. 1版. 北京: 机械工业出版社, 2017. ISBN 978-7-111-64968-7.
+[^nndl]: <https://nndl.github.io/>
+[^nndl github]: <https://github.com/nndl/>
+[^PyTorch]: <https://pytorch.org/docs/2.0/>
+[^TensorFlow]: <https://tensorflow.google.cn/api_docs/python/tf>
+[^Karpathy]: <https://space.bilibili.com/3129054/lists/874339>
 
 为什么要学这门课？
 

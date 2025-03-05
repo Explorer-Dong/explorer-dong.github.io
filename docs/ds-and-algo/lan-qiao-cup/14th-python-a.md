@@ -1,8 +1,12 @@
 ---
-title: 第 14 届 Python A 组
+title: 第 14 届 Python A 组（省赛）
 ---
 
-## 三国游戏
+## T1 特殊日期 5'
+
+## T2 分糖果 5'
+
+## T3 三国游戏 10'
 
 题意：给定三个长度为 $n$ 的数组 $a,b,c$。现在有三个累计值 $x,y,z$（初始均为 $0$）分别对应到数组 $a,b,c$。现在可以选择索引在 $[0,n-1]$ 中的任意个索引，使得初始值 $x,y,z$ 加上对应数组索引所在的元素值。问使得三个累计值中的任意一个大于另外两个之和的情况下，最多可以选择多少个索引。返回最多可选择的索引数，如果不存在合法情况输出 $-1$。
 
@@ -81,7 +85,7 @@ title: 第 14 届 Python A 组
     }
     ```
 
-## 平均
+## T4 平均 10'
 
 题意：给定 $n$ 个 $[0,9]$ 范围内的整数（$n$ 是 $10$ 的倍数）和修改每一个数的代价。现在为了让每一个数的数量都相等，即都为 $n/10$ 个，问最小修改代价是多少。
 
@@ -150,7 +154,7 @@ title: 第 14 届 Python A 组
     }
     ```
 
-## 翻转
+## T5 翻转 15'
 
 题意：给定两个等长字符串 $t,s\ (1\le |t|,|s|\le10^6)$，现在需要通过两种操作将 s 转换为 t，返回最小操作次数，如果无法转换返回 -1。两种操作如下：
 
@@ -228,7 +232,7 @@ title: 第 14 届 Python A 组
     }
     ```
 
-## 子矩阵
+## T6 子矩阵 15'
 
 题意：给定一个 $n\times m\ (1\le n,m\le1000)$ 的矩阵，现在需要求出所有大小为 $a\times b\ (1\le a\le n,1\le b \le m)$ 的子矩阵的价值和。一个子矩阵的价值定义为该子矩阵中最大值与最小值的成绩。输出与 $998244353$ 取模后的结果。
 
@@ -240,7 +244,7 @@ title: 第 14 届 Python A 组
 
     ```python
     from collections import deque
-
+    
     class MonotonicQueue:
         def __init__(self, is_min_queue: bool):
             self.q = deque()
@@ -248,24 +252,24 @@ title: 第 14 届 Python A 组
                 self.compare = lambda a, b: a < b
             else:
                 self.compare = lambda a, b: a > b
-
+    
         def push_back(self, x):
             while self.q and self.compare(x, self.q[-1]):
                 self.q.pop()
             self.q.append(x)
-
+    
         def pop_front(self, x):
             if self.q and self.q[0] == x:
                 self.q.popleft()
-
+    
         def get_extreme_value(self):
             return self.q[0]
-
+    
     mod = 998244353
     n, m, a, b = map(int, input().strip().split())
     g = [list(map(int, input().strip().split())) for _ in range(n)]
     f = [[(None, None)] * m for _ in range(n)]
-
+    
     # 维护行最值
     for i in range(n):
         minq, maxq = MonotonicQueue(True), MonotonicQueue(False)
@@ -276,7 +280,7 @@ title: 第 14 届 Python A 组
                 minq.pop_front(g[i][j - b])
                 maxq.pop_front(g[i][j - b])
             f[i][j] = minq.get_extreme_value(), maxq.get_extreme_value()
-
+    
     # 计算列最值 & 求解答案
     ans = 0
     for j in range(m):
@@ -289,7 +293,7 @@ title: 第 14 届 Python A 组
                 maxq.pop_front(f[i - a][j][1])
             if i >= a - 1 and j >= b - 1:
                 ans += minq.get_extreme_value() * maxq.get_extreme_value() % mod
-
+    
     print(ans)
     ```
 
@@ -301,10 +305,10 @@ title: 第 14 届 Python A 组
     #include <vector>
     #include <deque>
     #include <functional>
-
+    
     using namespace std;
     using ll = long long;
-
+    
     template<class T>
     struct MonotonicQueue {
         std::deque<T> q;
@@ -331,14 +335,14 @@ title: 第 14 届 Python A 组
             return q.front();
         }
     };
-
+    
     const int mod = 998244353;
     const int N = 1010;
-
+    
     int n, m, a, b;
     int g[N][N];
     pair<int, int> f[N][N];
-
+    
     int main() {
         cin >> n >> m >> a >> b;
         
@@ -358,7 +362,7 @@ title: 第 14 届 Python A 组
                 f[i][j].second = maxq.getExtremeValue();
             }
         }
-
+    
         // 计算列最值 & 求解答案
         ll ans = 0;
         for (int j = 0; j < m; j++) {
@@ -376,10 +380,17 @@ title: 第 14 届 Python A 组
                 }
             }
         }
-
+    
         cout << ans << "\n";
-
+    
         return 0;
     }
     ```
 
+## T7 阶乘的和 20'
+
+## T8 奇怪的数 20'
+
+## T9 子树的大小 25'
+
+## T10 反异或 01 串 25'

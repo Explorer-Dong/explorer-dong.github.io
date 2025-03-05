@@ -172,7 +172,6 @@ nav:
     - 人工智能基础:
       - GPA/4th-term/PyApply.md
       - GPA/5th-term/DigitalImageProcessing.md
-      - GPA/5th-term/DeepLearning.md
   - 基础:
     - base/index.md
     - 计算机基础:
@@ -187,6 +186,8 @@ nav:
         - base/machine-learning/model.md
         - base/machine-learning/eval.md
         - base/machine-learning/afterword.md
+      - 深度学习:
+        - base/deep-learning/index.md
       - 数据挖掘:
         - base/data-mining/index.md
         - base/data-mining/intro.md

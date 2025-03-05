@@ -7150,6 +7150,7 @@ return f[W]
 **恰好装满型 0 - 1 背包**
 
 [2915. 和为目标值的最长子序列的长度 - 力扣（LeetCode）](https://leetcode.cn/problems/length-of-the-longest-subsequence-that-sums-to-target/description/?envType=featured-list&envId=OZhLbgFT?envType=featured-list&envId=OZhLbgFT)
+
 $$
 f [i][j] = max(f [i - 1][j], ~ f [i - 1][j - w] + v)
 $$

@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://wiki.dwj601.cn/base/computer-network/intro/">
+        <link rel="canonical" href="https://wiki.dwj601.cn/base/operating-system/intro/">
       
       
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../machine-learning/">
+        <link rel="next" href="../concurrent/">
       
       
       <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#计算机网络分类" class="md-skip">
+        <a href="#硬件视角下-os-是什么样的" class="md-skip">
           跳转至
         </a>
       
@@ -792,10 +792,6 @@
       
         
       
-        
-      
-        
-      
     
     
       
@@ -930,50 +926,6 @@
   
   <span class="md-ellipsis">
     数据库原理与应用
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../GPA/5th-term/OperatingSystem/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    操作系统
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../GPA/5th-term/ComputerOrganization/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    计算机组成原理
     
   </span>
   
@@ -1185,6 +1137,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -1239,6 +1195,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
       
@@ -1260,7 +1222,7 @@
               
   
   <span class="md-ellipsis">
-    计算机网络
+    操作系统
     
   </span>
   
@@ -1277,7 +1239,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2_1">
             <span class="md-nav__icon md-icon"></span>
-            计算机网络
+            操作系统
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1336,9 +1298,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#计算机网络分类" class="md-nav__link">
+  <a href="#硬件视角下-os-是什么样的" class="md-nav__link">
     <span class="md-ellipsis">
-      计算机网络分类
+      硬件视角下 OS 是什么样的？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作系统的定义是什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统的定义是什么
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作系统是怎么管理资源的" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统是怎么管理资源的
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作系统有什么特点" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统有什么特点
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作系统是怎么对上层提供服务的" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统是怎么对上层提供服务的
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#为什么让操作系统对下层抽象进而为上层提供服务" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么让操作系统对下层抽象进而为上层提供服务
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作系统的内核是什么操作系统的其他部分是什么为什么要这样区分" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统的内核是什么？操作系统的其他部分是什么？为什么要这样区分？
     </span>
   </a>
   
@@ -1351,6 +1367,269 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concurrent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    并发
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    虚拟化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../persistence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    持久化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../computer-organization/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算机组成
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机组成
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-organization/cpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CPU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-organization/memory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    存储
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-organization/device/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    系统互连与 I/O 设备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../computer-network/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
             
           </ul>
@@ -2347,6 +2626,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -2377,8 +2660,10 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
         
           
-          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ds-and-algo/theory/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     理论剖析
@@ -2386,8 +2671,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_4">
@@ -2395,6 +2686,8 @@
             理论剖析
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -2590,6 +2883,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -2612,8 +2909,10 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
         
           
-          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ds-and-algo/examples/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     精选例题
@@ -2621,8 +2920,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_5">
@@ -2630,6 +2935,8 @@
             精选例题
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -2737,6 +3044,8 @@
     
       
         
+          
+        
       
         
       
@@ -2755,8 +3064,10 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
         
           
-          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ds-and-algo/lan-qiao-cup/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     蓝桥杯
@@ -2764,8 +3075,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_6">
@@ -2774,26 +3091,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../ds-and-algo/lan-qiao-cup/guide/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Python 组备赛指南
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -4671,9 +4968,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#计算机网络分类" class="md-nav__link">
+  <a href="#硬件视角下-os-是什么样的" class="md-nav__link">
     <span class="md-ellipsis">
-      计算机网络分类
+      硬件视角下 OS 是什么样的？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作系统的定义是什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统的定义是什么
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作系统是怎么管理资源的" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统是怎么管理资源的
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作系统有什么特点" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统有什么特点
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作系统是怎么对上层提供服务的" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统是怎么对上层提供服务的
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#为什么让操作系统对下层抽象进而为上层提供服务" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么让操作系统对下层抽象进而为上层提供服务
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作系统的内核是什么操作系统的其他部分是什么为什么要这样区分" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统的内核是什么？操作系统的其他部分是什么？为什么要这样区分？
     </span>
   </a>
   
@@ -4695,7 +5046,7 @@
 
 
   
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/computer-network/intro.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/operating-system/intro.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -4704,7 +5055,7 @@
     
       
     
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/computer-network/intro.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/operating-system/intro.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
@@ -4713,14 +5064,113 @@
 
   <h1>绪论</h1>
 
-<figure id="__fc_1">
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250228112919578.jpg" data-type="image" data-width="auto" data-height="auto" data-title="网络模型" data-desc-position="bottom"><img alt="网络模型" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250228112919578.jpg" /></a></p>
-<figcaption>
-<p><span class="caption-prefix">图 1. </span> 网络模型</p>
-</figcaption>
-</figure>
-<h2 id="计算机网络分类">计算机网络分类<a class="headerlink" href="#计算机网络分类" title="页面定位">&para;</a></h2>
-<p>体域网、个域网、局域网、城域网</p>
+<h2 id="硬件视角下-os-是什么样的">硬件视角下 OS 是什么样的？<a class="headerlink" href="#硬件视角下-os-是什么样的" title="页面定位">&para;</a></h2>
+<pre class="mermaid"><code>---
+title: What can Operating System do?
+---
+graph LR
+    subgraph CPU
+    direction LR
+    进程管理
+    资源调度
+    并发执行
+    end
+    subgraph RAM
+    内存管理
+    虚拟内存
+    end
+    subgraph I/O
+    设备管理
+    中断处理
+    缓存管理
+    end
+    subgraph SSD
+    文件系统
+    存储分配
+    end
+    subgraph NIC
+    网络与通信管理
+    end
+    CPU --&gt; RAM
+    CPU --&gt; I/O
+    CPU --&gt; SSD
+    CPU -.-&gt; NIC</code></pre>
+<h2 id="操作系统的定义是什么">操作系统的定义是什么<a class="headerlink" href="#操作系统的定义是什么" title="页面定位">&para;</a></h2>
+<ul>
+<li>对于硬件。操作系统封装所有的硬件资源，并抽象出系统调用接口供外部调用。</li>
+<li>对于用户和软件。操作系统通过提供抽象好的 API 给软件和用户提供运行和计算服务。</li>
+</ul>
+<h2 id="操作系统是怎么管理资源的">操作系统是怎么管理资源的<a class="headerlink" href="#操作系统是怎么管理资源的" title="页面定位">&para;</a></h2>
+<p>主要有三个技术。资源复用、资源虚拟化和资源抽象。后两个技术都是从第一个技术衍生而来，个人认为很多东西的解释都被复杂化了。</p>
+<ul>
+<li>资源复用。其实根本没有复用，这只是相对于一开始的时候，一台计算机只能一次运行一个程序而言的。现在一台计算机需要同时运行很多程序，怎么办呢？既然程序运行需要计算资源，那我直接把计算机中的资源划分成很多份不就好了。当然了，除了内存进行空间上的划分，时间上也可以划分，比如 CPU，于是就有了资源复用中「空分复用」和「时分复用」两个理念。</li>
+<li>资源虚拟。其实就是名词学术化的资源复用。比如，我将物理世界中的硬件，通过操作系统的划分与调度，将其转化为逻辑世界中的多个资源，也就是所谓的将「单一物理资源」虚拟化为「多个逻辑资源」的理念。</li>
+<li>资源抽象。就是一种底层封装，顶层调用的思想。比如，对于每一个进程而言，都获得了操作系统为 ta 单独分配的 CPU 状态集和内存空间，而无需关心这些硬件资源是怎么分配给 ta 的。比如，对于每一个文件而言，都是对物理存储空间的抽象。</li>
+</ul>
+<h2 id="操作系统有什么特点">操作系统有什么特点<a class="headerlink" href="#操作系统有什么特点" title="页面定位">&para;</a></h2>
+<p>并发性、共享性和异步性。都很好理解。并发就是多个进程任务同时进行，但其实是操作系统的一个小把戏，让 CPU 在极短的时间间隔内频繁地切换执行不同的进程；共享是并发的衍生，我们知道程序执行是需要消耗资源的，而资源有限，因此我们可以让所有的进程共享同一块资源；而异步就是指一个任务在等待其他任务执行时，不会阻塞整个系统，等到其他任务执行结束或者切换到当前任务时，可以继续 ta 的执行。<strong>所以这么折腾到底是为了啥</strong>？可以从两个角度出发：</p>
+<ol>
+<li>对于一个任务而言：这样做可以 <strong>提升资源利用率</strong>。因为一个进程在执行时，任务会有很多，不仅仅需要 CPU 的状态计算，可能还需要和别的设备进行数据交互，我们知道 CPU 的计算效率远高于诸如 I/O 之类的设备，这就会让系统停下来等待进程执行其他的任务。我们就可以利用系统停下来等待的这段时间，把这个进程的其他任务给执行了。同时，如果一个任务可以被划分为多个子任务，也可以并发以提升资源利用率。</li>
+<li>对于多个任务而言：可以 <strong>提升系统响应效率</strong>。多个用户同时提交请求？是一个一个响应，最快的极快，最慢的很慢。还是牺牲一点速度，大家都慢一点但是都没那么慢，同时响应？显然是后者。</li>
+</ol>
+<h2 id="操作系统是怎么对上层提供服务的">操作系统是怎么对上层提供服务的<a class="headerlink" href="#操作系统是怎么对上层提供服务的" title="页面定位">&para;</a></h2>
+<p>一句话概括就是，操作系统将封装好的应用程序接口 (Application Program Interface, API) 给用户或应用程序调用。例如下面的两个流程图：</p>
+<pre class="mermaid"><code>---
+title: 用户调用系统资源
+---
+graph RL
+    subgraph User[调用者]
+    direction LR
+    用户逻辑
+    界面
+    解释器
+    用户逻辑 --&gt; 界面
+    界面 --&gt; 解释器
+    end
+    subgraph OS[OS]
+    内核
+    end
+    subgraph Source[硬件资源]
+    内存
+    end
+    User --&gt;|API| OS
+    OS --&gt;|调用| Source
+    Source --&gt;|反馈| OS
+    OS --&gt;|反馈| User</code></pre>
+<pre class="mermaid"><code>---
+title: 应用程度调用系统资源
+---
+graph RL
+    subgraph User[调用者]
+    应用程度逻辑
+    end
+    subgraph OS[OS]
+    内核
+    end
+    subgraph Source[硬件资源]
+    内存
+    end
+    User --&gt;|API| OS
+    OS --&gt;|调用| Source
+    Source --&gt;|反馈| OS
+    OS --&gt;|反馈| User</code></pre>
+<h2 id="为什么让操作系统对下层抽象进而为上层提供服务">为什么让操作系统对下层抽象进而为上层提供服务<a class="headerlink" href="#为什么让操作系统对下层抽象进而为上层提供服务" title="页面定位">&para;</a></h2>
+<p>因为下层的硬件电路十分繁杂，并且不同厂商生产的硬件可能会有使用上的不同。通过操作系统对下层硬件的封装，不仅可以隐藏复杂的硬件资源调度，还可以统一出一种普适性更高的接口规则供上层服务使用。</p>
+<h2 id="操作系统的内核是什么操作系统的其他部分是什么为什么要这样区分">操作系统的内核是什么？操作系统的其他部分是什么？为什么要这样区分？<a class="headerlink" href="#操作系统的内核是什么操作系统的其他部分是什么为什么要这样区分" title="页面定位">&para;</a></h2>
+<p>首先我们有必要了解「用户态」和「内核态」的概念。这两种状态定义了应用程序的指令执行权限，当程序运行在用户态时，不可以执行一些关键的指令，例如中断、网络通信等；但当程序运行在核心态时，可以执行所有指令。不难发现隔离化的运行模式相比于所有应用程序都有最高指令执行权限来说，可以进一步提升程序运行时系统的安全性。于是乎，操作系统的内核概念应运而生。</p>
+<p>知道了指令执行权限隔离的程序运行理念后，再来理解操作系统的内核就很显然了。我们知道操作系统本质上就是一系列的系统软件，我们将操作系统中直接与硬件交互的软件划分到一起并称为「内核」，代表性内核软件可以实现的功能如「中断处理，进程管理」。操作系统剩余的部分就被划分为「非内核」部分，用于和应用程序直接交互，代表性非内核软件可以实现的功能形如「提供系统调用接口，基本计算」。当程序运行在用户态时，仅可以和操作系统的非内核部分交互；当切换到核心态时，就可以操作系统包括内核的所有部分交互。</p>
+<pre class="mermaid"><code>block-beta
+  columns 2
+
+  %% 上层
+  user["用户"]:1 app["应用程序"]:1
+
+  %% OS
+  nonkernel&lt;["封装调用，基本计算\n「OS 非内核」"]&gt;(up,down):2
+  kernel&lt;["中断处理，进程管理\n「OS 内核」"]&gt;(up,down):2
+
+  %% 底层
+  source["硬件"]:2</code></pre>
 
 
 
@@ -4743,7 +5193,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年2月28日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月5日 02:18:02">2025年3月5日</span>
   </span>
 
     
@@ -4753,7 +5203,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年2月28日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月5日 02:18:02">2025年3月5日</span>
   </span>
 
     
@@ -4868,7 +5318,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 前言">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 操作系统">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4878,20 +5328,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                前言
+                操作系统
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../machine-learning/" class="md-footer__link md-footer__link--next" aria-label="下一页: 前言">
+          <a href="../concurrent/" class="md-footer__link md-footer__link--next" aria-label="下一页: 并发">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                前言
+                并发
               </div>
             </div>
             <div class="md-footer__button md-icon">

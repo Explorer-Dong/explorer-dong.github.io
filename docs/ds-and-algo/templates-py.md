@@ -1376,6 +1376,26 @@ mp_rev = {i: x for i, x in zip(nums, tmp)}
 >
 >     $bisect(a, 200 - 1)$ = 4
 
+
+
+二分查找变形1：给定一个单调不减的数组 $a$ ，返回恰好**小于等于** $x$ 的下标位置
+
+​																	 等价为返回恰好大于$x$ 的下标位置 $-1$ 
+
+即 $bisect(a, x) - 1$
+
+> a = [1, 9, 9, 9, 200, 500]
+>
+> - 恰好小于等于9的位置
+>
+>     $bisect(a, 9) - 1$ = 3
+>
+> - 恰好小于等于500的位置
+>
+>     $bisect(a, 500 )$ = 5
+
+
+
 二分查找变形2：给定一个**单调不增**的数组 $a$, 返回恰好**小于** $x$ 的下标位置
 
 处理方法：$a' = [-x \text{ for } x \text{ in }a]$
@@ -1392,12 +1412,14 @@ mp_rev = {i: x for i, x in zip(nums, tmp)}
 >
 >     $bisect(a', -9)$ = 5
 
+
+
 ### bisect库二分
 
-`bisect(nums, x, lo = 0, hi = len(nums))`
+`bisect(a, x, lo = 0, hi = len(nums))`
 
 - 给定一个单调不减的数组 $a$, 在其 $[lo, hi)$ 区间中, 返回第一个严格大于 $x$ 的下标位置
-- 时间复杂度 $O(n \log n)$
+- 时间复杂度 $O( \log n)$
 
 > bisect.bisect 和 bisect.bisect_right 是完全相同且同时支持的函数，为了方便，我们不写bisect_right；
 >
@@ -1582,36 +1604,9 @@ def bisect(a, x, lo = 0, hi = None, check = lambda y: y):
 # 示例用法
 a = [1, 9, 9, 9, 200, 500]
 # 找到 a[i] ** 3 + a[i] * 2 + 1 恰好大于x的位置
-x = 15
-print(bisect(a, x, check = lambda y: y ** 3 + y * 2 + 1))
+x = 1000
+print(bisect(a, x, check = lambda y: y ** 3 + y * 2 + 1)) #4
 ```
-
-
-
-[2563. 统计公平数对的数目 - 力扣（LeetCode）](https://leetcode.cn/problems/count-the-number-of-fair-pairs/description/) 
-
-```python
-def bisect(a, x, lo = 0, hi = None, check = lambda x: x):
-    if hi is None: hi = len(a)
-    while lo < hi:
-        i = (lo + hi) >> 1
-        if check(a[i]) > x:
-            hi = i 
-        else:
-            lo = i + 1
-    return lo
-class Solution:
-    def countFairPairs(self, a: List[int], lower: int, upper: int) -> int:
-        a.sort()
-        res = 0
-        for i, x in enumerate(a):
-            L = bisect(a, lower - x - 1, i + 1)
-            R = bisect(a, upper - x, i + 1) - 1
-            res += R - L + 1
-        return res
-```
-
-
 
 
 

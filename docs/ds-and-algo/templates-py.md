@@ -1334,73 +1334,74 @@ mp_rev = {i: x for i, x in zip(nums, tmp)}
 
 ## 二分查找 / 二分答案
 
+### 二分查找数学模型
+
+> 无特殊说明，均为整数。
+
+二分查找基本模型：给定一个单调不减的数组 $a$, 返回恰好严格**大于** $x$ 的下标位置。
+
+​									给定一个单调不减的数组 $a$, 返回第一个严格**大于** $x$ 的下标位置。
+
+​									给定一个单调不减的数组 $a$, 返回恰好 $a[i] > x$  的下标位置 $i$ 。									
+
+记为 $bisect(a, x)$
+
+> a = [1, 9, 9, 9, 200, 500]
+>
+> $bisect(a, 3)$ = 1
+>
+> $bisect(a, 1)$ = 1
+>
+> $bisect(a, -99)$ = 0
+>
+> $bisect(a, 9)$ = 4
+>
+> $bisect(a, 7000)$ = 6
 
 
-### 朴素二分
 
-在 闭区间 [a, b] 上二分
+二分查找变形：给定一个单调不减的数组 $a$, 返回恰好**大于等于** $x$ 的下标位置
 
-```python
-    lo, hi = a, b 	# [a, b]
-    while lo < hi:
-        mid = (lo + hi) // 2
-        if check(mid):
-            hi = mid
-        else:
-            lo = mid + 1
-    return lo
-```
+​															   等价为返回恰好**大于** $x-1$ 的下标位置
 
-**实现 bisect_left**
+即 $bisect(a, x - 1)$
 
-注意：查找范围为 $[lo, hi]$；当 $x>max(nums[lo:hi +1])$  时，结果 $lo$ 值 等于 $hi$ 。
+> a = [1, 9, 9, 9, 200, 500]
+>
+> - 恰好大于等于9的位置
+>
+>     $bisect(a, 9 -1)$ = 1
+>
+> - 恰好大于等于200的位置
+>
+>     $bisect(a, 200 - 1)$ = 4
 
-$bisect\_left(nums, x + 1, lo, hi)-1$ 查找闭区间 $[lo,hi]$ 内，恰好大于 $x$ 的首个位置。如果不存在时，$lo = hi$ ，注意需要特判。
+二分查找变形2：给定一个**单调不增**的数组 $a$, 返回恰好**小于** $x$ 的下标位置
 
-当 $hi = n$ 时，兼容了存在和不存在两种情况。当不存在时，$lo=n$。
+处理方法：$a' = [-x \text{ for } x \text{ in }a]$
 
-```python
-def bisect_left(nums, x, lo, hi):
-    def check(pos):
-        return nums[pos] >= x
-    while lo < hi:
-        # 查找恰好比 x 大于等于的位置
-        mid = (lo + hi) >> 1
-        if check(mid):
-            hi = mid
-        else:
-            lo = mid + 1
-    return lo
-print(bisect_left(nums, val, 0, len(nums)))
-```
+​				等价于$bisect(a', -x)$
 
-[2563. 统计公平数对的数目 - 力扣（LeetCode）](https://leetcode.cn/problems/count-the-number-of-fair-pairs/description/) 同 [Problem - 1538C - Codeforces](https://codeforces.com/problemset/problem/1538/C)
+> 也可以用逆序做，更推荐用相反数做；
 
-```python
-def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
-        n = len(nums)
-        nums.sort()
-        res = 0
-        L, R = lower, upper
-        def bisect_left1(nums, x, lo, hi):
-            while lo < hi:
-                mid = (lo + hi) >> 1
-                if nums[mid] >= x:
-                    hi = mid
-                else:
-                    lo = mid + 1
-            return lo
-        for i, x in enumerate(nums):
-            res += bisect_left1(nums, R - x + 1, i + 1, n) - 1 -  bisect_left1(nums, L - x, i + 1, n) + 1
-        return res
-```
+> $a = [500, 200, 9, 9, 9, 1]$
+>
+> $a' = [-500, -200, -9, -9, -9, -1]$
+>
+> - 原数组中恰好小于9 的位置
+>
+>     $bisect(a', -9)$ = 5
 
 ### bisect库二分
 
 `bisect(nums, x, lo = 0, hi = len(nums))`
 
-- 在升序nums的 $[lo, hi)$ 区间中, 返回第一个严格大于x的位置的索引
+- 给定一个单调不减的数组 $a$, 在其 $[lo, hi)$ 区间中, 返回第一个严格大于 $x$ 的下标位置
 - 时间复杂度 $O(n \log n)$
+
+> bisect.bisect 和 bisect.bisect_right 是完全相同且同时支持的函数，为了方便，我们不写bisect_right；
+>
+> 同时为了防止混淆，我们也不提bisect_left，大家需要灵活学习如果用一个bisect实现所有变形；
 
 ```python
 from bisect import *
@@ -1428,10 +1429,6 @@ arr = [500, 200, 9, 9, 9, 1]
 arr = [-x for x in arr]
 print(bisect(arr, -9))  # 输出: 5 (第一个小于 9 的位置索引)
 ```
-
-
-
-
 
 [P2249 【深基13.例1】查找 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P2249)
 
@@ -1488,7 +1485,131 @@ for q in Q:
         print(bisect(nums, q - 1) + 1, end = " ")
 ```
 
-[1.分巧克力 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/99/learning/?page=1&first_category_id=1&tags=二分,省赛&tag_relation=intersection)
+
+
+
+
+[2563. 统计公平数对的数目 - 力扣（LeetCode）](https://leetcode.cn/problems/count-the-number-of-fair-pairs/description/) 同 [Problem - 1538C - Codeforces](https://codeforces.com/problemset/problem/1538/C)
+
+- 由于求符合条件的数对个数，与顺序无关，先排序
+- 对 $  \text{lower} \le x + y \le \text{upper}$，变形为 $  \text{lower} - x \le  y \le \text{upper} - x$
+- 即对一个 $x$， 区间$[i + 1, n)$ 中有多少个数出现在 区间 $[\text{lower} - x, \text{upper} - x]$ 
+- 即求 $L = bisect(a, \text[lower] - x - 1)$，$R = bisect(a, \text{upper} - x) - 1$
+- 答案等于 $R-L + 1$
+
+```python
+from bisect import *
+class Solution:
+    def countFairPairs(self, a: List[int], lower: int, upper: int) -> int:
+        a.sort()
+        res = 0
+        for i, x in enumerate(a):
+            L = bisect(a, lower - x - 1, i + 1)
+            R = bisect(a, upper - x, i + 1) - 1
+            res += R - L + 1
+        return res
+```
+
+
+
+### 朴素二分
+
+内置 $bisect$ 固然好用，当条件从 "恰好 $a[i] > x$ 的下标位置 $i$ "变成更通用的：
+
+- 给定一个单调不减的数组 $a$, 和关于 $a[i]$单调不减函数 $check$， 返回恰好有 $check(a[i]) > x$ 的下标位置 $i$
+- 例如，$check(a[i]) = {(a[i])} ^ 3 + 2 \cdot a[i] + 1$ 希望找到一个位置 $i$，恰好$check(a[i]) > x$；
+
+> 可以发现，前文提及的数学模型，对应的 $check(a[i])$ 即 $a[i]$，是通用表述下的一个特例；
+
+在python3.8版本不支持 bisect传递比较规则，即无法传递 $check$ 函数，于是我们需要自己实现 bisect函数。
+
+
+
+基本模型实现思路：
+
+- 对于区间 $[lo, hi)$ 上二分，将区间划分为左半部 $[lo, \frac{lo + hi}{2})$, 右半部 $[\frac{lo + hi}{2}, hi)$;
+
+- 区间中点 $i = \frac{lo + hi}{2}$, 考虑  $a[i] > x$ 吗？
+
+- 是，区间更新为左半部，$hi ← i$
+
+- 否，则由于 $a[i] \le x$，恰好大于的位置应该不包括 $i$，故 $lo ← i + 1$
+
+- 当 $lo = hi$ 结束，故 while 条件为 $lo < hi$
+
+    > 不会出现 $lo > hi $的情况
+
+```python
+# 【朴素二分】实现 bisect
+def bisect(a, x, lo=0, hi=None):
+    if hi is None: hi = len(a)
+    while lo < hi:
+        i = (lo + hi) >> 1
+        if a[i] > x:
+            hi = i
+        else:
+            lo = i + 1
+    return lo
+
+# 示例用法
+a = [1, 9, 9, 9, 200, 500]
+
+print(bisect(a, 9))  # 输出: 4
+print(bisect(a, 7000))  # 输出: 6
+```
+
+
+
+$check$ 模型思路：
+
+- 对于区间 $[lo, hi)$ 上二分，将区间划分为左半部 $[lo, \frac{lo + hi}{2})$, 右半部 $[\frac{lo + hi}{2}, hi)$;
+- 区间中点 $i = \frac{lo + hi}{2}$, 考虑  $check(a[i]) > x$ 吗？
+- 是，区间更新为左半部，$hi ← i$
+- 否，则由于 $a[i] \le x$，恰好大于的位置应该不包括 $i$，故 $lo ← i + 1$
+- 当 $lo = hi$ 结束，故 while 条件为 $lo < hi$
+
+```python
+# 【朴素二分】实现 bisect，支持传递check函数
+def bisect(a, x, lo = 0, hi = None, check = lambda y: y):
+    if hi is None: hi = len(a)
+    while lo < hi:
+        i = (lo + hi) >> 1
+        if check(a[i]) > x:
+            hi = i
+        else:
+            lo = i + 1
+    return lo
+# 示例用法
+a = [1, 9, 9, 9, 200, 500]
+# 找到 a[i] ** 3 + a[i] * 2 + 1 恰好大于x的位置
+x = 15
+print(bisect(a, x, check = lambda y: y ** 3 + y * 2 + 1))
+```
+
+
+
+[2563. 统计公平数对的数目 - 力扣（LeetCode）](https://leetcode.cn/problems/count-the-number-of-fair-pairs/description/) 
+
+```python
+def bisect(a, x, lo = 0, hi = None, check = lambda x: x):
+    if hi is None: hi = len(a)
+    while lo < hi:
+        i = (lo + hi) >> 1
+        if check(a[i]) > x:
+            hi = i 
+        else:
+            lo = i + 1
+    return lo
+class Solution:
+    def countFairPairs(self, a: List[int], lower: int, upper: int) -> int:
+        a.sort()
+        res = 0
+        for i, x in enumerate(a):
+            L = bisect(a, lower - x - 1, i + 1)
+            R = bisect(a, upper - x, i + 1) - 1
+            res += R - L + 1
+        return res
+```
 
 
 
@@ -1503,22 +1624,102 @@ idx = bisect_left(a, (2, )) # 1
 
 ### 二分答案
 
-**正难则反思想**，二分答案一般满足两个条件：
+二分答案一般满足条件：
 
-- 当发现问需要的最少/最多时间时
-- 答案具有单调性。例如问最少的时候，你发现取值越大越容易满足条件。
+- 求最值 / 最优问题
+- 答案 $res$ 存在一个确定、连续区间 $[lo, hi]$
+- 对确定的 $res = i$，能够求出 $check(i) =False \text{还是 }True$, 即是否满足条件 
 
-check(x) 函数对单调 x 进行检验。
+**基本模型**：**”不满足 → 满足“ 模型**
+
+答案具有单调增性，即 $res$ 是$check(i)$ 条件进行 $False/True$ 切换的临界点；
+
+> 时间复杂度：$O(check(n) \cdot \log(L))$ , 其中 $check(n)$ 表示进行一次遍历检查的复杂度
+
+> 与二分查找区别：
+>
+> 二分查找：在一个已知的有序数据集上进行二分地查找
+> 二分答案：答案有一个连续区间，在这个区间上二分，直到找到最优答案
+
+
+
+举个例子，我们需要找到一个单调增函数 $f(x) = x^3 + x + 1$ 在 区间 $[1, 10^{18}]$ 上恰好满足 $check(x)=f(x) > target $ 为 $True$ 的临界点；
+
+可以通过利用单调性，对 $x$ 在区间上二分，找出恰好满足 $check = True$ 的临界点。	
 
 ```python
-y = 27
-def check(x):
-    if x > y:
-        return True
-    return False
-left = a
-res = left + bisect.bisect_left(range(left, mx), True, key = check))
+def f(x):
+    return x ** 3 + x + 1
+def bisect(lo, hi, target, check):
+    while lo < hi:
+        i = (lo + hi) >> 1
+        if check(i, target):
+            hi = i
+        else:
+            lo = i + 1
+    return lo
+
+
+target = 99999
+res = bisect(1, 10 ** 18, target, lambda x, target: f(x) > target)
+# 找到恰好 f(x) > target的地方
+print(res)  # 47
+print(f(res))  # 103871
+print(f(res - 1))  # 97383
+
 ```
+
+
+
+**求“区间”问题**
+
+[3.冶炼金属 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/3510/learning/?page=1&first_category_id=1&second_category_id=3&tags=二分,省赛&tag_relation=intersection&difficulty=20)
+
+给定 $n$ 组数对 $(a, b)$，要满足对所有数对，都有 $ a // v = b $；求 $v$ 的可取值区间；
+
+$\text{对于 }100\%\text{ 的评测用例,}1\leq n\leq10^4\mathrm{,}1\leq b\leq a\leq10^9$；
+
+**思考**
+
+- 显然 $v$ 有区间 $[1, 10^9]$
+
+- 对于给定的 $v$，可以通过枚举一整遍的方式判断是否符合条件，复杂度为 
+
+- 暴力做法可以达到 $O(nL)$, $L = 10^9$ ，会超时；
+
+    
+
+**思路**
+
+- 拆开来看 $v$ 的上下界
+
+- 对于下界，$check_1(v)$ 表示恰好不存在 $ a// v > b$，即全部满足 $a // v \le b$，随着 $v$ 增大，从**不满足 → 满足。**
+- 对于上界，$check_2(v)$ 表示恰好存在 $ a// v < b$，随着 $v$ 增大，从**不满足 → 满足。**二分得到的是 $M+ 1$，记得减去 1。
+
+```python
+import sys
+input = lambda: sys.stdin.readline().strip()
+
+n = int(input())
+a, b = zip(*[map(int, input().split()) for _ in range(n)])
+
+def bisect(lo, hi, check):
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if check(mid):
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
+
+m = bisect(1, 10**9, lambda v: all(A // v <= B for A, B in zip(a, b)))
+M = bisect(1, 10**9, lambda v: any(A // v < B for A, B in zip(a, b))) - 1
+print(m, M)
+```
+
+时间复杂度： $O(n \log L)$
+
+> 本题还有非二分答案做法。
 
 [3048. 标记所有下标的最早秒数 I - 力扣（LeetCode）](https://leetcode.cn/problems/earliest-second-to-mark-indices-i/description/)
 

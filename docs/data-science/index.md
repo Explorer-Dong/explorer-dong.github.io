@@ -11,5 +11,11 @@ title: 炼丹专栏简介
 ![训练出一个通用人工智能](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501302119120.png)
 
 /// caption
-年轻人不要轻易尝试炼丹
+训练出一个通用人工智能
+///
+
+![动手学深度学习](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250306090820594.svg)
+
+/// caption
+[《动手学深度学习》](https://zh.d2l.ai/index.html) 全书框架
 ///

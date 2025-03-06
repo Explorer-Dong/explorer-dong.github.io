@@ -1332,18 +1332,167 @@ nums = [bisect.bisect_left(sorted_nums, x) + 1 for x in nums]
 mp_rev = {i: x for i, x in zip(nums, tmp)}
 ```
 
-## 二分查找
+## 二分查找 / 二分答案
+
+
+
+### 朴素二分
+
+在 闭区间 [a, b] 上二分
+
+```python
+    lo, hi = a, b 	# [a, b]
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if check(mid):
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
+```
+
+**实现 bisect_left**
+
+注意：查找范围为 $[lo, hi]$；当 $x>max(nums[lo:hi +1])$  时，结果 $lo$ 值 等于 $hi$ 。
+
+$bisect\_left(nums, x + 1, lo, hi)-1$ 查找闭区间 $[lo,hi]$ 内，恰好大于 $x$ 的首个位置。如果不存在时，$lo = hi$ ，注意需要特判。
+
+当 $hi = n$ 时，兼容了存在和不存在两种情况。当不存在时，$lo=n$。
+
+```python
+def bisect_left(nums, x, lo, hi):
+    def check(pos):
+        return nums[pos] >= x
+    while lo < hi:
+        # 查找恰好比 x 大于等于的位置
+        mid = (lo + hi) >> 1
+        if check(mid):
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
+print(bisect_left(nums, val, 0, len(nums)))
+```
+
+[2563. 统计公平数对的数目 - 力扣（LeetCode）](https://leetcode.cn/problems/count-the-number-of-fair-pairs/description/) 同 [Problem - 1538C - Codeforces](https://codeforces.com/problemset/problem/1538/C)
+
+```python
+def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
+        n = len(nums)
+        nums.sort()
+        res = 0
+        L, R = lower, upper
+        def bisect_left1(nums, x, lo, hi):
+            while lo < hi:
+                mid = (lo + hi) >> 1
+                if nums[mid] >= x:
+                    hi = mid
+                else:
+                    lo = mid + 1
+            return lo
+        for i, x in enumerate(nums):
+            res += bisect_left1(nums, R - x + 1, i + 1, n) - 1 -  bisect_left1(nums, L - x, i + 1, n) + 1
+        return res
+```
+
+### bisect库二分
+
+`bisect(nums, x, lo = 0, hi = len(nums))`
+
+- 在升序nums的 $[lo, hi)$ 区间中, 返回第一个严格大于x的位置的索引
+- 时间复杂度 $O(n \log n)$
 
 ```python
 from bisect import *
-l = [1,1,1,3,3,3,4,4,4,5,5,5,8,9,10,10]
-print(len(l)) # 16
+# 示例数组
+#      0  1  2  3  4    5
+arr = [1, 9, 9, 9, 200, 500]
 
-print(bisect(l, 10))     # 相当于 upper_bound, 16
-print(bisect_right(l, 10))    # 16
+# 查找插入位置
+print(bisect(arr, 3))  # 输出: 1 (第一个大于 3 的索引)
+print(bisect(arr, 1))  # 输出: 1 (第一个大于 1 的索引)
+print(bisect(arr, -99))  # 输出: 0 (第一个大于 -99 的索引)
+print(bisect(arr, 9)) # 输出: 4 (第一个大于9 的索引)
+print(bisect(arr, 7000)) # 输出: 6 (第一个大于7000 的索引，此时等于数组长度)
 
-print(bisect_left(l, 10)) # 14
+
+arr = [1, 9, 9, 9, 200, 500]
+# 如果需要找第一个大于等于x的位置索引
+# bisect(nums, x - 1) ？
+print(bisect(arr, 9 - 1))  # 输出: 1 (第一个大于等于 9 的索引)
+print(bisect(arr, 200 - 1))  # 输出: 4 (第一个大于等于 200 的索引)
+
+# 逆序数组，找到第一个小于x的位置索引
+#      0     1   2  3  4  5
+arr = [500, 200, 9, 9, 9, 1]
+arr = [-x for x in arr]
+print(bisect(arr, -9))  # 输出: 5 (第一个小于 9 的位置索引)
 ```
+
+
+
+
+
+[P2249 【深基13.例1】查找 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P2249)
+
+**题目描述**
+
+输入 $n$ 个不超过 $10^9$ 的单调不减的非负整数 $a_1,a_2,\dots,a_{n}$，然后进行 $m$ 次询问。对于每次询问，给出一个整数 $q$，要求输出这个数字在序列中第一次出现的编号，如果没有找到的话输出 $-1$ 。
+
+**输入格式**
+
+第一行 $2$ 个整数 $n$ 和 $m$，表示数字个数和询问次数。
+
+第二行 $n$ 个整数，表示这些待查询的数字。
+
+第三行 $m$ 个整数，表示询问这些数字的编号，从 $1$ 开始编号。
+
+**输出格式**
+
+输出一行，$m$ 个整数，以空格隔开，表示答案。
+
+**输入输出样例 #1**
+
+输入 #1
+
+```
+11 3
+1 3 3 3 5 7 9 11 13 15 15
+1 3 6
+```
+
+输出 #1
+
+```
+1 2 -1
+```
+
+**说明/提示**
+
+数据保证，$1 \leq n \leq 10^6$，$0 \leq a_i,q \leq 10^9$，$1 \leq m \leq 10^5$
+
+本题输入输出量较大，请使用较快的 IO 方式。
+
+```python
+from bisect import *
+import sys
+input = lambda: sys.stdin.readline().strip()
+n, m = map(int, input().split())
+nums = list(map(int, input().split()))
+Q = list(map(int, input().split()))
+
+s = set(nums) # nums构成的集合，如果待查询数组q not in s，直接返回-1
+for q in Q:
+    if q not in s: print(-1, end = " ")
+    else: # q 一定出现在nums中, 利用技巧将“大于等于x”转化成“大于x-1”
+        print(bisect(nums, q - 1) + 1, end = " ")
+```
+
+[1.分巧克力 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/99/learning/?page=1&first_category_id=1&tags=二分,省赛&tag_relation=intersection)
+
+
+
+
 
 ### 多维二分
 
@@ -1449,65 +1598,6 @@ class Solution:
                 lo = mid + 1 
         return lo
 
-```
-
-### 朴素二分
-
-在 闭区间 [a, b] 上二分
-
-```python
-    lo, hi = a, b 	# [a, b]
-    while lo < hi:
-        mid = (lo + hi) // 2
-        if check(mid):
-            hi = mid
-        else:
-            lo = mid + 1
-    return lo
-```
-
-**实现 bisect_left**
-
-注意：查找范围为 $[lo, hi]$；当 $x>max(nums[lo:hi +1])$  时，结果 $lo$ 值 等于 $hi$ 。
-
-$bisect\_left(nums, x + 1, lo, hi)-1$ 查找闭区间 $[lo,hi]$ 内，恰好大于 $x$ 的首个位置。如果不存在时，$lo = hi$ ，注意需要特判。
-
-当 $hi = n$ 时，兼容了存在和不存在两种情况。当不存在时，$lo=n$。
-
-```python
-def bisect_left(nums, x, lo, hi):
-    def check(pos):
-        return nums[pos] >= x
-    while lo < hi:
-        # 查找恰好比 x 大于等于的位置
-        mid = (lo + hi) >> 1
-        if check(mid):
-            hi = mid
-        else:
-            lo = mid + 1
-    return lo
-print(bisect_left(nums, val, 0, len(nums)))
-```
-
-[2563. 统计公平数对的数目 - 力扣（LeetCode）](https://leetcode.cn/problems/count-the-number-of-fair-pairs/description/) 同 [Problem - 1538C - Codeforces](https://codeforces.com/problemset/problem/1538/C)
-
-```python
-def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
-        n = len(nums)
-        nums.sort()
-        res = 0
-        L, R = lower, upper
-        def bisect_left1(nums, x, lo, hi):
-            while lo < hi:
-                mid = (lo + hi) >> 1
-                if nums[mid] >= x:
-                    hi = mid
-                else:
-                    lo = mid + 1
-            return lo
-        for i, x in enumerate(nums):
-            res += bisect_left1(nums, R - x + 1, i + 1, n) - 1 -  bisect_left1(nums, L - x, i + 1, n) + 1
-        return res
 ```
 
 ### 自定义比较规则

@@ -459,6 +459,66 @@ title: 第 14 届 Python A 组（省赛）
 
 ## T8 奇怪的数 20'
 
+题意：给定一个长度为 $n$ 的数，最低位从 $1$ 开始编号。输出满足「长度为 n 且连续 5 位数位之和不超过 m 且奇数位为奇数，偶数位为偶数」的总数字个数。
+
+思路：数位 DP，不会。爆搜能过 3/10。满足了。
+
 ## T9 子树的大小 25'
+
+题意：给定 $Q\ (1\le Q\le 10^5)$ 轮询问，每轮询问给定一棵含有 $n\ (1\le n\le 10^9)$ 个结点的完全 $m\ (2\le m\le 10^9)$ 叉树，输出第 $k\ (1\le k\le n)$ 个结点对应子树的结点数。树中结点按照从上往下，从左往右的顺序从 $1$ 开始编号。
+
+思路：
+
+- 直接模拟也行，就是麻烦了点，需要推导出在完全 $m$ 叉树中，编号为 $k$ 的结点所在的层数。同时，为了解决子树最后一层不满的情况，需要利用第 $k$ 个结点左侧子树占用了最后一层的多少个结点，来倒推出第 $k$ 个结点在最后一层可以分到的结点数。
+- [官解](https://www.lanqiao.cn/questions/573855/)。
+
+时间复杂度：$O(Q\log n)$
+
+=== "Python"
+
+    ```python
+
+    ```
+
+=== "C++"
+
+    ```c++
+
+    ```
+
+=== "Python 纯模拟"
+
+    ```python
+    import math
+
+    Q = int(input().strip())
+    OUTs = []
+    for _ in range(Q):
+        n, m, k = map(int, input().strip().split())
+        x = math.ceil(math.log(n * (m - 1) + 1, m)) - 1  # 最后一层的层号（从0开始）
+        y = math.ceil(math.log(k * (m - 1) + 1, m)) - 1  # 当前结点的层号（从0开始）
+
+        if x == y:
+            OUTs.append(1)
+            continue
+
+        ans = (1 - m ** (x - y)) // (1 - m)
+
+        # 当前结点所在层的结点数
+        now_level_cnt = m ** y
+        # 当前结点左侧结点的数量
+        left_node_cnt = k - ((1 - m ** y) // (1 - m)) - 1
+        # 满m叉数的情况下，左侧所有结点对应子树的最后一层的结点数量
+        left_sub_trees_nodes = left_node_cnt * m ** x // now_level_cnt 
+        # 最后一层的实际数量
+        last = n - (1 - m ** x) // (1 - m)
+
+        if last - left_sub_trees_nodes > 0:
+            ans += min(m ** (x - y), last - left_sub_trees_nodes)
+
+        OUTs.append(ans)
+
+    print("\n".join(map(str, OUTs)))
+    ```
 
 ## T10 反异或 01 串 25'

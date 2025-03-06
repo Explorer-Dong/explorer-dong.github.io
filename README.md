@@ -1,29 +1,28 @@
 ## 开放知识社群 (Open Wiki Community)
 
-欢迎访问我的知识网站！ 本网站以「AI / CS 学科笔记」与「开发技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun Server 双平台部署。
+欢迎访问！本网站以「AI / CS 学科笔记」与「开发技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun Server 双平台部署。
 
 访问链接：
 
-- GitHub Pages（永久链接）：<https://explorer-dong.github.io/>
-- Aliyun Server（高速访问）: <https://wiki.dwj601.cn/>
+- 高速访问: <https://wiki.dwj601.cn/>
+- 永久链接：<https://explorer-dong.github.io/>
 
 下面的两张拓扑图覆盖了本站的全部内容。
 
-<div align='center'>
+<div align="center">
 
 ```mermaid
 flowchart LR
     面向对象程序设计(面向对象程序设计)
     数据结构与算法(数据结构与算法)
     数字逻辑电路(数字逻辑电路)
-    算法设计与分析(算法设计与分析)
     计算机系统基础(计算机系统基础)
     数据库(数据库)
     操作系统(操作系统)
     计算机组成(计算机组成)
     计算机网络(计算机网络)
 
-    面向对象程序设计 --> 数据结构与算法 & 算法设计与分析 --> 计算机系统基础
+    面向对象程序设计 --> 数据结构与算法 --> 计算机系统基础
     数字逻辑电路 --> 计算机系统基础 --> 数据库 & 操作系统 & 计算机组成
     计算机组成 & 操作系统 --> 计算机网络
 

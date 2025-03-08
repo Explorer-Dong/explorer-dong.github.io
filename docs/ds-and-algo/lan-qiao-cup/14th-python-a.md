@@ -6,7 +6,7 @@ title: 第 14 届 Python A 组（省赛）
 
 ## T2 分糖果 5'
 
-## T3 三国游戏 10'
+## T3 三国游戏 (10'/10')
 
 题意：给定三个长度为 $n$ 的数组 $a,b,c$。现在有三个累计值 $x,y,z$（初始均为 $0$）分别对应到数组 $a,b,c$。现在可以选择索引在 $[0,n-1]$ 中的任意个索引，使得初始值 $x,y,z$ 加上对应数组索引所在的元素值。问使得三个累计值中的任意一个大于另外两个之和的情况下，最多可以选择多少个索引。返回最多可选择的索引数，如果不存在合法情况输出 $-1$。
 
@@ -85,7 +85,7 @@ title: 第 14 届 Python A 组（省赛）
     }
     ```
 
-## T4 平均 10'
+## T4 平均 (10'/10')
 
 题意：给定 $n$ 个 $[0,9]$ 范围内的整数（$n$ 是 $10$ 的倍数）和修改每一个数的代价。现在为了让每一个数的数量都相等，即都为 $n/10$ 个，问最小修改代价是多少。
 
@@ -154,7 +154,7 @@ title: 第 14 届 Python A 组（省赛）
     }
     ```
 
-## T5 翻转 15'
+## T5 翻转 (15'/15')
 
 题意：给定两个等长字符串 $t,s\ (1\le |t|,|s|\le10^6)$，现在需要通过两种操作将 s 转换为 t，返回最小操作次数，如果无法转换返回 -1。两种操作如下：
 
@@ -232,7 +232,7 @@ title: 第 14 届 Python A 组（省赛）
     }
     ```
 
-## T6 子矩阵 15'
+## T6 子矩阵 (15'/15')
 
 题意：给定一个 $n\times m\ (1\le n,m\le1000)$ 的矩阵，现在需要求出所有大小为 $a\times b\ (1\le a\le n,1\le b \le m)$ 的子矩阵的价值和。一个子矩阵的价值定义为该子矩阵中最大值与最小值的成绩。输出与 $998244353$ 取模后的结果。
 
@@ -387,7 +387,7 @@ title: 第 14 届 Python A 组（省赛）
     }
     ```
 
-## T7 阶乘的和 20'
+## T7 阶乘的和 (20'/20')
 
 题意：给定一个含有 $n$ 个数的数组 $a$，输出最大的 $m$ 使得 $\dfrac{\sum_{i=0}^{n-1}(a_i!)}{m!}$ 为整数。
 
@@ -457,53 +457,56 @@ title: 第 14 届 Python A 组（省赛）
     }
     ```
 
-## T8 奇怪的数 20'
+## T8 奇怪的数 (6'/20')
 
-题意：给定一个长度为 $n$ 的数，最低位从 $1$ 开始编号。输出满足「长度为 n 且连续 5 位数位之和不超过 m 且奇数位为奇数，偶数位为偶数」的总数字个数。
+题意：输出满足「长度为 $n\ (5\le n \le 2\cdot 10^5)$ 且连续 $5$ 位数位之和不超过 $m\ (0\le m\le 50)$ 且奇数位为奇数、偶数位为偶数」的总数字个数，答案对 $998244353$ 取模。最低位从 $1$ 开始编号。
 
-思路：数位 DP，不会。爆搜能过 3/10。满足了。
+思路：
 
-## T9 子树的大小 25'
+- [最优解](https://www.lanqiao.cn/questions/451856/) 为数位 DP，不会；
+- 爆搜能过 $30\%$，满足了。
+
+=== "Python 爆搜"
+
+    ```python
+    
+    ```
+
+=== "C++ 爆搜"
+
+    ```c++
+    
+    ```
+
+## T9 子树的大小 (25'/25')
 
 题意：给定 $Q\ (1\le Q\le 10^5)$ 轮询问，每轮询问给定一棵含有 $n\ (1\le n\le 10^9)$ 个结点的完全 $m\ (2\le m\le 10^9)$ 叉树，输出第 $k\ (1\le k\le n)$ 个结点对应子树的结点数。树中结点按照从上往下，从左往右的顺序从 $1$ 开始编号。
 
 思路：
 
-- 直接模拟也行，就是麻烦了点，需要推导出在完全 $m$ 叉树中，编号为 $k$ 的结点所在的层数。同时，为了解决子树最后一层不满的情况，需要利用第 $k$ 个结点左侧子树占用了最后一层的多少个结点，来倒推出第 $k$ 个结点在最后一层可以分到的结点数。
-- [官解](https://www.lanqiao.cn/questions/573855/)。
+- 直接模拟也行，就是麻烦了点，需要推导出在完全 $m$ 叉树中，编号为 $k$ 的结点所在的层数。同时，为了解决子树最后一层不满的情况，需要利用第 $k$ 个结点左侧子树占用了最后一层的多少个结点，来倒推出第 $k$ 个结点在最后一层可以分到的结点数；
+- 更优雅的解法：<https://www.lanqiao.cn/questions/573855/>。
 
 时间复杂度：$O(Q\log n)$
 
-=== "Python"
-
-    ```python
-
-    ```
-
-=== "C++"
-
-    ```c++
-
-    ```
-
-=== "Python 纯模拟"
+=== "Python 直接模拟"
 
     ```python
     import math
-
+    
     Q = int(input().strip())
     OUTs = []
     for _ in range(Q):
         n, m, k = map(int, input().strip().split())
-        x = math.ceil(math.log(n * (m - 1) + 1, m)) - 1  # 最后一层的层号（从0开始）
-        y = math.ceil(math.log(k * (m - 1) + 1, m)) - 1  # 当前结点的层号（从0开始）
-
+        x = math.ceil(math.log(n * (m - 1) + 1, m)) - 1  # 最后一层层号（从0开始）
+        y = math.ceil(math.log(k * (m - 1) + 1, m)) - 1  # 当前结点层号（从0开始）
+    
         if x == y:
             OUTs.append(1)
             continue
-
+    
         ans = (1 - m ** (x - y)) // (1 - m)
-
+    
         # 当前结点所在层的结点数
         now_level_cnt = m ** y
         # 当前结点左侧结点的数量
@@ -512,13 +515,92 @@ title: 第 14 届 Python A 组（省赛）
         left_sub_trees_nodes = left_node_cnt * m ** x // now_level_cnt 
         # 最后一层的实际数量
         last = n - (1 - m ** x) // (1 - m)
-
+    
         if last - left_sub_trees_nodes > 0:
             ans += min(m ** (x - y), last - left_sub_trees_nodes)
-
+    
         OUTs.append(ans)
-
+    
     print("\n".join(map(str, OUTs)))
     ```
 
-## T10 反异或 01 串 25'
+## T10 反异或 01 串 (15'/25')
+
+题意：给定一个长度为 $n\ (1\le n\le 10^6)$ 的 01 字符串 $T$，现在可以对一个空串 $S$ 进行操作，要么在 $S$ 的左右侧添加 $0$，要么在 $S$ 的左右侧添加 $1$，可以任意次添加 $0$，给出最少添加 $1$ 的次数使得 $S$ 变成 $T$。期间最多可以使用一次新操作，即将 $S$ 与 $S$ 的翻转字符串按位异或。
+
+思路：本题最少操作次数的突破口就在按位异或。显然的我们就是要找 $T$ 串中含有 $1$ 数量最多的回文子串，注意如果长度是奇数那么中间一个字符不能是 $1$。
+
+- 暴力法。枚举每一个子串中心并统计最长回文子串对应的 $1$ 的数量即可。时间复杂度为 $O(n^2)$，可以通过 $60\%$ 的测试点；
+- [最优解](https://www.lanqiao.cn/questions/551909/) 涉及到字符串算法 [Manacher](https://oi-wiki.org/string/manacher/)。时间复杂度降至 $O(n)$。
+
+=== "Python $O(n^2)$"
+
+    ```python
+    T = input().strip()
+    n = len(T)
+    ans = T.count('1')
+    
+    # 统计最长回文串中 1 的数量
+    def calc(l: int, r: int) -> int:
+        cnt1 = 0
+        while l >= 0 and r < n and T[l] == T[r]:
+            if T[l] == '1':
+                cnt1 += 2
+            l -= 1
+            r += 1
+        return cnt1
+    
+    max_cnt = 0
+    for i in range(n):
+        # 奇数长度的回文串
+        odd_cnt1 = calc(i - 1, i + 1)
+        if T[i] != '1':
+            max_cnt = max(max_cnt, odd_cnt1)
+    
+        # 偶数长度的回文串
+        even_cnt1 = calc(i - 1, i)
+        max_cnt = max(max_cnt, even_cnt1)
+    
+    print(ans - max_cnt // 2)
+    ```
+
+=== "C++ $O(n^2)$"
+
+    ```c++
+    #include <iostream>
+    #include <algorithm>
+    
+    using namespace std;
+    
+    int main() {
+        string T;
+        cin >> T;
+    
+        int n = T.size();
+        int ans = count(T.begin(), T.end(), '1');
+        int max_cnt = 0;
+    
+        auto calc = [&](int l, int r) -> int {
+            int cnt1 = 0;
+            while (l >= 0 && r < n && T[l] == T[r]) {
+                cnt1 += T[l] == '1' ? 2 : 0;
+                l--, r++;
+            }
+            return cnt1;
+        };
+    
+        for (int i = 0; i < n; i++) {
+            int odd_cnt1 = calc(i - 1, i + 1);
+            if (T[i] != '1') {
+                max_cnt = max(max_cnt, odd_cnt1);
+            }
+    
+            int even_cnt1 = calc(i - 1, i);
+            max_cnt = max(max_cnt, even_cnt1);
+        }
+    
+        cout << (ans - (max_cnt >> 1)) << "\n";
+    
+        return 0;
+    }
+    ```

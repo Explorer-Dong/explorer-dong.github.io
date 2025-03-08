@@ -1,13 +1,13 @@
 ## 开放知识社群 (Open Wiki Community)
 
-欢迎访问！本网站以「AI / CS 学科笔记」与「开发技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun Server 双平台部署。
+本网站以「AI / CS 学科笔记」与「开发技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun Server 双平台部署。
 
-访问链接：
+## 访问链接 (Access Link)
 
-- 高速访问: <https://wiki.dwj601.cn/>
+- 高速访问：<https://wiki.dwj601.cn/>
 - 永久链接：<https://explorer-dong.github.io/>
 
-下面的两张拓扑图覆盖了本站的全部内容。
+## 站点预览 (Site Preview)
 
 <div align="center">
 
@@ -51,6 +51,9 @@ flowchart LR
 
 <caption> 拓扑图 1. AI / CS 学科笔记 </caption>
 
+</br>
+</br>
+
 ```mermaid
 graph LR
   %% 实体定义
@@ -67,4 +70,4 @@ graph LR
 
 <caption> 拓扑图 2. 开发技术文章 </caption>
 
-</div>
+</div>  

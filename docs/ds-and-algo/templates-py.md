@@ -98,6 +98,31 @@ for x in s:
 	y = dic.get(x, ord(x) - ord('a') + 1)
 ```
 
+### Counter
+
+```python
+from collections import Counter
+
+list1 = ["a", "a", "a", "b", "c", "c", "f", "g", "g", "g", "f"]
+dic = Counter(list1)
+print(dic)
+#Counter({'a': 3, 'g': 3, 'c': 2, 'f': 2, 'b': 1})
+
+list1 = ["a", "a", "a", "b", "c", "f", "g", "g", "c", "11", "g", "f", "10", "2"]
+print(Counter(list1).most_common(3))
+#结果：[('a', 3), ('g', 3), ('c', 2)]
+
+
+list1 = ["a", "a", "a", "b", "c", "f", "g", "g", "c", "11", "g", "f", "10", "2"]
+print(Counter(list1).most_common(1))
+#结果：[('a', 3)]
+
+```
+
+`most_common(k)` 时间复杂度 $O(n \log k)$
+
+
+
 ### map 映射函数
 
 用法:
@@ -187,20 +212,37 @@ for line in sys.stdin:
 
 ### 二叉堆 / 优先队列
 
+**`heapq.heappush(heap, item)`**
+
+- 将 `item` 添加到 `heap` 中，并保持堆的不变性。
+- 时间复杂度：$O(log n)$
+
+**`heapq.heappop(heap)`**
+
+- 弹出并返回 `heap` 中的最小元素，并保持堆的不变性。
+- 时间复杂度：$O(log n)$
+- 
+
 ```python
-from heapq import heapify, heappop, heappush
-    heapify(nums)
-    score = heappop(nums)
-    heappush(nums, val)
+from heapq import *
+
+heap = []
+heappush(heap, 3)
+heappush(heap, 1)
+heappush(heap, 2)
+print(heap)  # 输出: [1, 3, 2]
+
+heapify(nums)
+score = heappop(nums)
+heappush(nums, val)
+nums = []
+heapq.heappush(nums, val)	#插入
+heapq.heappop(nums)			#弹出顶部
 # 注意：
 # python 中堆默认且只能是小顶堆
 ```
 
-```python
-nums = []
-heapq.heappush(nums, val)	#插入
-heapq.heappop(nums)			#弹出顶部
-```
+
 
 ### 有序列表 / 有序集合
 
@@ -1376,6 +1418,26 @@ mp_rev = {i: x for i, x in zip(nums, tmp)}
 >
 >     $bisect(a, 200 - 1)$ = 4
 
+
+
+二分查找变形1：给定一个单调不减的数组 $a$ ，返回恰好**小于等于** $x$ 的下标位置
+
+​																	 等价为返回恰好大于$x$ 的下标位置 $-1$ 
+
+即 $bisect(a, x) - 1$
+
+> a = [1, 9, 9, 9, 200, 500]
+>
+> - 恰好小于等于9的位置
+>
+>     $bisect(a, 9) - 1$ = 3
+>
+> - 恰好小于等于500的位置
+>
+>     $bisect(a, 500 )$ = 5
+
+
+
 二分查找变形2：给定一个**单调不增**的数组 $a$, 返回恰好**小于** $x$ 的下标位置
 
 处理方法：$a' = [-x \text{ for } x \text{ in }a]$
@@ -1392,12 +1454,14 @@ mp_rev = {i: x for i, x in zip(nums, tmp)}
 >
 >     $bisect(a', -9)$ = 5
 
+
+
 ### bisect库二分
 
-`bisect(nums, x, lo = 0, hi = len(nums))`
+`bisect(a, x, lo = 0, hi = len(nums))`
 
-- 给定一个单调不减的数组 $a$, 在其 $[lo, hi)$ 区间中, 返回第一个严格大于 $x$ 的下标位置
-- 时间复杂度 $O(n \log n)$
+- 给定一个单调不减的数组 $a$, 在其 $[lo, hi]$ 区间中, 返回第一个严格大于 $x$ 的下标位置
+- 时间复杂度 $O( \log n)$
 
 > bisect.bisect 和 bisect.bisect_right 是完全相同且同时支持的函数，为了方便，我们不写bisect_right；
 >
@@ -1527,7 +1591,7 @@ class Solution:
 
 基本模型实现思路：
 
-- 对于区间 $[lo, hi)$ 上二分，将区间划分为左半部 $[lo, \frac{lo + hi}{2})$, 右半部 $[\frac{lo + hi}{2}, hi)$;
+- 对于区间 $[lo, hi]$上二分，将区间划分为左半部 $[lo, \frac{lo + hi}{2})$, 右半部 $[\frac{lo + hi}{2}, hi)$;
 
 - 区间中点 $i = \frac{lo + hi}{2}$, 考虑  $a[i] > x$ 吗？
 
@@ -1562,7 +1626,7 @@ print(bisect(a, 7000))  # 输出: 6
 
 $check$ 模型思路：
 
-- 对于区间 $[lo, hi)$ 上二分，将区间划分为左半部 $[lo, \frac{lo + hi}{2})$, 右半部 $[\frac{lo + hi}{2}, hi)$;
+- 对于区间 $[lo, hi]$ 上二分，将区间划分为左半部 $[lo, \frac{lo + hi}{2})$, 右半部 $[\frac{lo + hi}{2}, hi)$;
 - 区间中点 $i = \frac{lo + hi}{2}$, 考虑  $check(a[i]) > x$ 吗？
 - 是，区间更新为左半部，$hi ← i$
 - 否，则由于 $a[i] \le x$，恰好大于的位置应该不包括 $i$，故 $lo ← i + 1$
@@ -1582,36 +1646,9 @@ def bisect(a, x, lo = 0, hi = None, check = lambda y: y):
 # 示例用法
 a = [1, 9, 9, 9, 200, 500]
 # 找到 a[i] ** 3 + a[i] * 2 + 1 恰好大于x的位置
-x = 15
-print(bisect(a, x, check = lambda y: y ** 3 + y * 2 + 1))
+x = 1000
+print(bisect(a, x, check = lambda y: y ** 3 + y * 2 + 1)) #4
 ```
-
-
-
-[2563. 统计公平数对的数目 - 力扣（LeetCode）](https://leetcode.cn/problems/count-the-number-of-fair-pairs/description/) 
-
-```python
-def bisect(a, x, lo = 0, hi = None, check = lambda x: x):
-    if hi is None: hi = len(a)
-    while lo < hi:
-        i = (lo + hi) >> 1
-        if check(a[i]) > x:
-            hi = i 
-        else:
-            lo = i + 1
-    return lo
-class Solution:
-    def countFairPairs(self, a: List[int], lower: int, upper: int) -> int:
-        a.sort()
-        res = 0
-        for i, x in enumerate(a):
-            L = bisect(a, lower - x - 1, i + 1)
-            R = bisect(a, upper - x, i + 1) - 1
-            res += R - L + 1
-        return res
-```
-
-
 
 
 
@@ -1630,9 +1667,11 @@ idx = bisect_left(a, (2, )) # 1
 - 答案 $res$ 存在一个确定、连续区间 $[lo, hi]$
 - 对确定的 $res = i$，能够求出 $check(i) =False \text{还是 }True$, 即是否满足条件 
 
-**基本模型**：**”不满足 → 满足“ 模型**
+**基本模型**：构造**”False → True“ 模型**
 
-答案具有单调增性，即 $res$ 是$check(i)$ 条件进行 $False/True$ 切换的临界点；
+- 答案具有单调增性，即 $res$ 是$check(i)$ 条件进行 $False/True$ 切换的临界点；
+
+    
 
 > 时间复杂度：$O(check(n) \cdot \log(L))$ , 其中 $check(n)$ 表示进行一次遍历检查的复杂度
 
@@ -1705,11 +1744,11 @@ a, b = zip(*[map(int, input().split()) for _ in range(n)])
 
 def bisect(lo, hi, check):
     while lo < hi:
-        mid = (lo + hi) // 2
-        if check(mid):
-            hi = mid
+        i = (lo + hi) // 2
+        if check(i):
+            hi = i
         else:
-            lo = mid + 1
+            lo = i + 1
     return lo
 
 m = bisect(1, 10**9, lambda v: all(A // v <= B for A, B in zip(a, b)))
@@ -1750,6 +1789,80 @@ return -1 if res > m else res
 ```
 
 **求“最多”问题**
+
+[2226. 每个小孩最多能分到多少糖果 - 力扣（LeetCode）](https://leetcode.cn/problems/maximum-candies-allocated-to-k-children/description/?envType=problem-list-v2&envId=7jzKqlgR)
+
+给你一个 **下标从 0 开始** 的整数数组 `candies` 。数组中的每个元素表示大小为 `candies[i]` 的一堆糖果。你可以将每堆糖果分成任意数量的 **子堆** ，但 **无法** 再将两堆合并到一起。
+
+另给你一个整数 `k` 。你需要将这些糖果分配给 `k` 个小孩，使每个小孩分到 **相同** 数量的糖果。每个小孩可以拿走 **至多一堆** 糖果，有些糖果可能会不被分配。
+
+返回每个小孩可以拿走的 **最大糖果数目** 。
+
+**示例 1：**
+
+```
+输入：candies = [5,8,6], k = 3
+输出：5
+解释：可以将 candies[1] 分成大小分别为 5 和 3 的两堆，然后把 candies[2] 分成大小分别为 5 和 1 的两堆。现在就有五堆大小分别为 5、5、3、5 和 1 的糖果。可以把 3 堆大小为 5 的糖果分给 3 个小孩。可以证明无法让每个小孩得到超过 5 颗糖果。
+```
+
+**示例 2：**
+
+```
+输入：candies = [2,5], k = 11
+输出：0
+解释：总共有 11 个小孩，但只有 7 颗糖果，但如果要分配糖果的话，必须保证每个小孩至少能得到 1 颗糖果。因此，最后每个小孩都没有得到糖果，答案是 0 。
+```
+
+**提示：**
+
+- `1 <= candies.length <= 10 ** 5`
+- `1 <= candies[i] <= 10 ** 7`
+- `1 <= k <= 10 ** 12`
+
+**语言整理**
+
+给定长度为 $n$ 一组数 $\text{a}$，和  $k$ 个人。这组数任意拆分的小子堆，每个人一堆，求可以拿走的最大值 $res$ 。
+
+**思路**
+
+- 显然，答案有界，界于区间 $[0, \max(\text{a})]$
+- 对 $res$ 上界，即 $check$ 表示恰好 $\text {sum(x // res for x in range(1, max(a) + 1))} < k$ 
+- 二分得到的结果 - 1 是答案
+
+写法1
+
+```python
+class Solution:
+    def maximumCandies(self, a: List[int], k: int) -> int:
+        if sum(a) < k: return 0
+        lo, hi = 1, 10 ** 12 + 10
+        def check(res):
+            return sum(x // res for x in a) < k
+        while lo < hi:
+            i = (lo + hi) >> 1
+            if check(i): hi = i 
+            else: lo = i + 1
+        return lo - 1
+```
+
+写法2
+
+```python
+class Solution:
+    def maximumCandies(self, a: List[int], k: int) -> int:
+        if sum(a) < k: return 0
+        lo, hi = 1, max(a) + 1
+        def check(res):
+            return sum(x // res for x in a) < k
+        while lo < hi:
+            i = (lo + hi) >> 1
+            if check(i): hi = i 
+            else: lo = i + 1
+        return lo - 1
+```
+
+
 
 [1642. 可以到达的最远建筑 - 力扣（LeetCode）](https://leetcode.cn/problems/furthest-building-you-can-reach/)
 

@@ -123,6 +123,8 @@ extra_javascript:
   - injects/javascripts/link_blank.js
   # 百度统计
   - injects/javascripts/baidu_tongji.js
+  # 聊天机器人
+  - injects/javascripts/robot.js
 extra_css:
   # KaTeX
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.css

@@ -1246,6 +1246,72 @@ def minimumMoves(self, grid: List[List[int]]) -> int:
         return dfs(0, 0)
 ```
 
+### 图上 DFS
+
+[1.小朋友崇拜圈 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/182/learning/?page=1&first_category_id=1&tags=省赛,DFS&tag_relation=intersection&difficulty=20)
+
+**语言整理**
+
+一个有向图，每个节点 $u$ 有且仅有一条出边 $u→v$。给定 $g$ 数组，$g[u]=v$ 表示这条出边。
+
+求图中最长环的长度。
+
+**思路**
+
+- $dfs(u)$ 表示当前访问节点 $u$，集合 $s$ 表示访问过的节点集
+- 如果 $u$ 在 $s$ 中，说明找到了环
+- 如果 $u$ 不在 $s$ 中，添加到集合中，并且访问后续节点 $dfs(g[u])$
+- 遍历所有节点，确保考虑到所有连通分量。
+
+类似代码：
+
+```python
+s = set
+def dfs(u):
+    if u in s: return # 找到了环
+    s.add(u)
+    dfs(g[u])
+for u in range(1, n + 1):
+    dfs(u)
+```
+
+- 那么怎么求解环的长度？
+
+**思路**
+
+- 时间戳思想，额外记录每次访问节点 $u$ 的序号 $idx$，字典 $d$ 存放 $u:idx$ 键值对
+- 如果 $u$ 在 $d$ 中，说明第二次访问到 $u$ ，构成闭环。两次序号之差 $idx - d[u]$ 即环的长度
+- 如果 $u$ 不在 $d$ 中，添加到字典中，并且访问后续节点 $dfs(g[u], idx + 1)$ 
+- 遍历所有节点，确保考虑所有连通分量
+- 在外层用 $res$ 记录最大环长。
+
+正解代码：
+
+```python
+import sys
+input = lambda: sys.stdin.readline().strip()
+sys.setrecursionlimit(10000)  # 增加递归深度至少大于n，因为 python 默认为 1000
+n = int(input())
+g = [0] + list(map(int, input().split()))
+res = 0
+d = {}
+def dfs(u, idx):
+    global res
+    if d.get(u) is not None:   
+        res = max(res, idx - d[u])   # 找到闭环，序号差就是环长
+        return 
+    d[u] = idx
+    dfs(g[u], idx + 1)
+for u in range(1, n + 1):   # 确保访问所有连通分量
+    dfs(u, 1)
+print(res)
+
+
+
+```
+
+
+
 ### 分治
 
 [395. 至少有 K 个重复字符的最长子串 - 力扣（LeetCode）](https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/description/)
@@ -6036,7 +6102,9 @@ for u, v, w in roads:
     g[u][u] = g[v][v] = 0
 ```
 
-邻接表
+邻接表建图
+
+1. 带权无向图
 
 ```python
 e = [[] for _ in range(n)]
@@ -6044,6 +6112,24 @@ for u, v, w in roads:
     e[u].append((v, w))
     e[v].append((u, w))
 ```
+
+2. 带权有向图
+
+```python
+e = [[] for _ in range(n)]
+for u, v, w in roads:
+    e[u].append((v, w))
+```
+
+3. 不带权有向图
+
+```python
+e = [[] for _ in range(n)]
+for u, v in roads:
+    e[u].append(v)
+```
+
+
 
 去重边建图
 

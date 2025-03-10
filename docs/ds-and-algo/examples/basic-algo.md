@@ -29,6 +29,8 @@ title: 基础算法
 | 二分、双指针、哈希 | CF 1700 * | [力扣](https://leetcode.cn/problems/find-the-median-of-the-uniqueness-array/) | [找出唯一性数组的中位数](#找出唯一性数组的中位数) | 枚举右维护左 |
 | 二分 | CF 1900 | [CF](https://codeforces.com/contest/1996/problem/F) | [bomb](#bomb) | 跳脱二分答案思维定势 |
 | 二分、图论 | 洛谷 绿 | [洛谷](https://www.luogu.com.cn/problem/P1525) | [关押罪犯](#关押罪犯) | / |
+| 搜索 | CF 1000 * | [AcWing](https://www.acwing.com/problem/content/5150/) | [数量](#数量) | / |
+| 搜索、剪枝 | CF 1200 * | [力扣](https://leetcode.cn/problems/combination-sum/) | [组合总和](#组合总和) | 组合型搜索经典例题 |
 
 /// caption | <
 基础算法例题导读表（打 * 表示自己预估的难度）
@@ -976,242 +978,121 @@ $$
     print("\n".join(map(str, OUTs)))
     ```
 
-### 【dfs】CCC单词搜索
+### 数量
 
-<https://www.acwing.com/problem/content/5168/>
+题意：给定一个数 $n$，问 $[1, n]$ 中有多少个数只含有 $4$ 或 $7$。
 
-> 搜索逻辑：分为正十字与斜十字
->
-> 更新答案逻辑：需要进行两个条件的约数，一个是是否匹配到了最后一个字母，一个是转弯次数不超过一次
->
-> 转弯判断逻辑：
->
->  首先不能是起点开始的
->  对于正十字：如果next的行 & 列都与pre的行和列不相等，就算转弯
->  对于斜十字：如果next的行 | 列有和pre相等的，就算转弯
+思路：每一个数位只有可能是 $4$ 或 $7$，我们按照数位搜索即可。
 
-```cpp
-#include <iostream>
-#include <algorithm>
-#include <cstring>
+时间复杂度：$2^{\lg n}$
 
-using namespace std;
+=== "Python"
 
-const int N = 110;
-
-string s;
-int m, n;
-char g[N][N];
-int res;
-
-// 正十字，a，b为之前的位置，x，y为当前的位置，now为当前待匹配的字母位，cnt为转弯次数
-void dfs1(int a, int b, int x, int y, int now, int cnt)
-{
-    if (g[x][y] != s[now]) return;
+    ```python
+    n = int(input().strip())
     
-    if (now == s.size() - 1)
-    {
-        if (cnt <= 1) res++; 
-        return;
-    }
+    def dfs(x: int):
+        if x > n:
+            return 0
+        return dfs(x * 10 + 4) + dfs(x * 10 + 7) + 1
     
-    int dx[] = {-1, 0, 1, 0}, dy[] = {0, 1, 0, -1};
+    print(dfs(4) + dfs(7))
+    ```
+
+=== "C++"
+
+    ```c++
+    #include <iostream>
+    #include <vector>
     
-    for (int k = 0; k < 4; k ++)
-    {
-        int i = x + dx[k], j = y + dy[k];
-        if (x < 0 || x >= m || y < 0 || y >= n) continue;
-        
-        // 判断是否转弯（now不是起点 且 pre和next行列均不相等） 
-        if (a != -1 && b != -1 && a != i && b != j) dfs1(x, y, i, j, now + 1, cnt + 1);
-        else dfs1(x, y, i, j, now + 1, cnt);
-    }
-}
-
-// 斜十字
-void dfs2(int a, int b, int x, int y, int now, int cnt)
-{
-    if (g[x][y] != s[now]) return;
+    using namespace std;
     
-    if (now == s.size() - 1)
-    {
-        if (cnt <= 1) res++; 
-        return;
-    }
+    long long n;
     
-    int dx[] = {-1, -1, 1, 1}, dy[] = {-1, 1, 1, -1};
-    
-    for (int k = 0; k < 4; k ++)
-    {
-        int i = x + dx[k], j = y + dy[k];
-        if (x < 0 || x >= m || y < 0 || y >= n) continue;
-        
-        // 判断是否转弯（now不是起点 且 不在同一对角线） 
-        if (a != -1 && b != -1 && (a == i || b == j)) dfs2(x, y, i, j, now + 1, cnt + 1);
-        else dfs2(x, y, i, j, now + 1, cnt);
-    }
-}
-
-
-int main()
-{
-    cin >> s;
-    cin >> m >> n;
-    
-    for (int i = 0; i < m; i ++)
-        for (int j = 0; j < n; j ++)
-            cin >> g[i][j];
-    
-    for (int i = 0; i < m; i ++)
-        for (int j = 0; j < n; j ++)
-            dfs1(-1, -1, i, j, 0, 0);
-    
-    for (int i = 0; i < m; i ++)
-        for (int j = 0; j < n; j ++)
-            dfs2(-1, -1, i, j, 0, 0);
-    
-    cout << res << "\n";
-    
-    return 0;
-}
-```
-
-### 【dfs/二进制枚举】数量
-
-<https://www.acwing.com/problem/content/5150/>
-
-> 题意：给定一个数n，问[1, n]中有多少个数只含有4或7
->
-> 思路一：dfs
->
-> - 对于一个数，我们可以构造一个二叉搜数进行搜索，因为每一位只有两种可能，那么从最高位开始搜索。如果当前数超过了n就return，否则就算一个答案
-> - 时间复杂度：$\Theta(2^{1 + \lg{(\max(a[i])})})$
->
-> 思路二：二进制枚举
->
-> - 按照数位进行计算。对于一个 x 位的数，1 到 x-1 位的情况下所有的数都符合条件，对于一个 t 位的数，满情况就是 $2^t$ 种，所以 `[1,x-1]` 位就一共有 $2^1 + 2^2 + \cdots + 2^{x - 1} = 2^{x} - 2$ 种情况 。对于第 x 位，采取二进制枚举与原数进行比较，如果小于原数，则答案 +1，反之结束循环输出答案即可
-
-dfs 代码：
-
-```cpp
-#include <iostream>
-using namespace std;
-
-#define int long long
-
-int n, res;
-
-void dfs(int x) {
-    if (x > n) return;
-    
-    res ++;
-    
-    dfs(x * 10 + 4);
-    dfs(x * 10 + 7);
-}
-
-signed main() {
-    cin >> n;
-    dfs(4);
-    dfs(7);
-    cout << res << "\n";
-    return 0;
-}
-```
-
-二进制枚举代码：
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int WS(int x) {
-    int res = 0;
-    while (x) {
-        res++;
-        x /= 10;
-    }
-    return res;
-}
-
-int calc(int a[], int ws) {
-    int res = 0;
-    for (int i = ws - 1; i >= 0; i --) {
-        res = res * 10 + a[i];
-    }
-    return res;
-}
-
-int main() {
-    int n;
-    cin >> n;
-    
-    int ws = WS(n);
-    
-    int ans = (1 << ws) - 2;
-    
-    int a[20] {};
-    for (int i = 0; i < (1 << ws); i ++) {
-        for (int j = 0; j < ws; j ++) {
-            if ((1 << j) & i) {
-                a[j] = 7;
-            } else {
-                a[j] = 4;
-            }
+    int dfs(long long x) {
+        if (x > n) {
+            return 0;
         }
-        if (calc(a, ws) <= n) {
-            ans ++;
-        } else {
-            break;
-        }
+        return dfs(x * 10 + 4) + dfs(x * 10 + 7) + 1;
     }
     
-    cout << ans;
+    int main() {;
+        cin >> n;
+        cout << dfs(4) + dfs(7) << "\n";
     
-    return 0;
-}
-```
-
-### 【dfs】组合总和
-
-<https://leetcode.cn/problems/combination-sum/>
-
-> 题意：给定一个序列，其中的元素没有重复，问如何选取其中的元素，使得选出的数字总和为指定的数字target，选取的数字可以重复
->
-> 思路：思路比较简答，很容易想到用dfs搜索出所有的组合情况，即对于每一个“结点”，我们直接遍历序列中的元素即可。但是由于题目的限制，即不允许合法的序列经过排序后相等。那么为了解决这个约束，我们可以将最终搜索到的序列排序后进行去重，但是这样的时间复杂度会很高，于是我们从搜索的过程切入。观看这一篇题解 [防止出现重复序列的启蒙题解](https://leetcode.cn/problems/combination-sum/solutions/2363929/39-zu-he-zong-he-hui-su-qing-xi-tu-jie-b-9zx7/)，我们提取其中最关键的一个图解
->
-> ![subset_sum_i_pruning.png](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407250146195.png)
->
-> 可见3，4和4，3的剩余选项（其中可能包含了答案序列）全部重复，因此我们直接减去这个枝即可。不难发现，我们根据上述优化思想，剪枝的操作可以为：让当前序列开始枚举的下标 `idx` 从上一层开始的下标 `i` 开始，于是剪枝就可以实现了。
->
-> 时间复杂度：$\Theta \left ( 2^{\frac{n}{\log n}}\right)$
-
-```cpp
-class Solution {
-public:
-    // 答案数组res，目标数组c，目标总和target，答案数组now，当前总和sum，起始下标idx
-    void dfs(vector<vector<int>>& res, vector<int>& c, int target, vector<int>& now, int sum, int idx) {
-        if (sum > target) {
-            return;
-        } else if (sum == target) {
-            res.emplace_back(now);
-            return;
-        }
-        for (int i = idx; i < c.size(); i++) {
-            now.emplace_back(c[i]);
-            dfs(res, c, target, now, sum + c[i], i);
-            now.pop_back();
-        }
+        return 0;
     }
+    ```
 
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        vector<vector<int>> res;
-        vector<int> now;
-        dfs(res, candidates, target, now, 0, 0);
-        return res;
-    }
-};
-```
+### 组合总和
+
+题意：给定一个含有 $n\ (1\le n \le 30)$ 个不重复元素的序列，问如何选取其中的元素（可重复选），能够使得选出的数字总和为 $\text{target}\ (1\le \text{target}\le 40)$。给出所有具体选数方案（不考虑数字的选择顺序）。
+
+思路：组合型搜索经典例题。在枚举序列中的元素时，需要从上一次枚举结束的位置开始，防止方案重复（也可以理解为剪枝操作）。下图对搜索方案进行了清晰地解释。
+
+![组合型搜索 - 剪枝逻辑](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407250146195.png)
+
+/// fc
+组合型搜索 - 剪枝逻辑
+///
+
+时间复杂度：不太会计算时间复杂度，但是在本题的数据量下通过剪枝可以很快的算出方案。具体复杂度推导见 [三种方法：选或不选/枚举选哪个/完全背包预处理+可行性剪枝（Python/Java/C++/Go） - (LeetCode)](https://leetcode.cn/problems/combination-sum/solutions/2747858/liang-chong-fang-fa-xuan-huo-bu-xuan-mei-mhf9/)。
+
+=== "Python"
+
+    ```python
+    class Solution:
+        def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+            n = len(candidates)
+            ans = []
+            path = []
+    
+            def dfs(remain: int, idx: int) -> None:
+                if remain < 0:
+                    return
+                elif remain == 0:
+                    ans.append(path.copy())
+                    return
+                for i in range(idx, n):
+                    path.append(candidates[i])
+                    dfs(remain - candidates[i], i)
+                    path.pop()
+    
+            dfs(target, 0)
+    
+            return ans
+    ```
+
+=== "C++"
+
+    ```c++
+    class Solution {
+    public:
+        vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+            int n = candidates.size();
+            vector<vector<int>> ans;
+            vector<int> path;
+    
+            function<void(int, int)> dfs = [&](int remain, int idx) {
+                if (remain < 0) {
+                    return;
+                } else if (remain == 0) {
+                    ans.push_back(path);
+                    return;
+                }
+                for (int i = idx; i < n; i++) {
+                    path.push_back(candidates[i]);
+                    dfs(remain - candidates[i], i);
+                    path.pop_back();
+                }
+            };
+    
+            dfs(target, 0);
+    
+            return ans;
+        }
+    };
+    ```
 
 ### 【递归】扩展字符串
 

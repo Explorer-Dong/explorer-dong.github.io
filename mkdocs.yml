@@ -123,6 +123,8 @@ extra_javascript:
   - injects/javascripts/link_blank.js
   # 百度统计
   - injects/javascripts/baidu_tongji.js
+  # 聊天机器人
+  - injects/javascripts/robot.js
 extra_css:
   # KaTeX
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.css
@@ -214,6 +216,12 @@ nav:
         - base/computer-organization/device.md
       - 计算机网络:
         - base/computer-network/index.md
+        - base/computer-network/intro.md
+        - base/computer-network/physical-layer.md
+        - base/computer-network/data-link-layer.md
+        - base/computer-network/network-layer.md
+        - base/computer-network/transport-layer.md
+        - base/computer-network/application-layer.md
     - 数理基础:
       - 大学物理:
         - base/college-physics/index.md
@@ -225,6 +233,10 @@ nav:
         - base/probability-and-statistics/index.md
       - 最优化方法:
         - base/optimization-method/index.md
+        - base/optimization-method/intro.md
+        - base/optimization-method/linear-search.md
+        - base/optimization-method/unconstraint-optimization.md
+        - base/optimization-method/constraint-optimization.md
   - 炼丹:
     - data-science/index.md
     - data-science/numpy-basic.md

@@ -2,9 +2,253 @@
 title: 第 14 届 Python A 组（省赛）
 ---
 
-## T1 特殊日期 5'
+## T1 特殊日期 (5'/5')
 
-## T2 分糖果 5'
+题意：统计从 $2000-1-1$ 到 $200000-1-1$ 有多少个日期满足年份是月份的倍数同时也是日的倍数。
+
+思路：由于 Python 的 `datetime.datetime` 中年份范围为 $[1,9999]$，因此没法用，老老实实枚举吧。注意最后一年只有一天，不要多枚举了。
+
+最终答案为：$35813063$
+
+=== "Python"
+
+    ```python
+    ans = 0
+    
+    def get_days(y: int, m: int) -> int:
+        if m == 2:
+            return 28 + (y % 400 == 0 or (y % 4 == 0 and y % 100 != 0))
+        return 31 - (m in (4, 6, 9, 11))
+    
+    for y in range(2000, 2000000):
+        for m in range(1, 13):
+            days = get_days(y, m)
+            for d in range(1, days + 1):
+                if y % m == 0 and y % d == 0:
+                    ans += 1
+    
+    print(ans + 1)
+    ```
+
+=== "C++"
+
+    ```c++
+    #include <iostream>
+    
+    using namespace std;
+    
+    int get_days(int y, int m) {
+        if (m == 2) {
+            return 28 + (y % 400 == 0 or (y % 4 == 0 && y % 100 != 0));
+        }
+        return 31 - (m == 4 || m == 6 || m == 9 || m == 11);
+    }
+    
+    int main() {
+        int ans = 0;
+    
+        for (int y = 2000; y < 2000000; y++) {
+            for (int m = 1; m <= 12; m++) {
+                int days = get_days(y, m);
+                for (int d = 1; d <= days; d++) {
+                    if (y % m == 0 and y % d == 0) {
+                        ans++;
+                    }
+                }
+            }
+        }
+    
+        cout << ans + 1 << "\n";
+    
+        return 0;
+    }
+    ```
+
+## T2 分糖果 (5'/5')
+
+题意：给定 $9$ 个 $A$ 类糖果，$16$ 个 $B$ 类糖果，现在要分给 $7$ 个小朋友。问满足每个小朋友分得至少 $2$ 个糖果至多 $5$ 个糖果的分配方案数（同样的数量但糖果种类数不一样算不同的方案）。
+
+思路：可以糖果选人，也可以人选糖果，考虑到糖果种类不止一种，我们采用「人选糖果」的策略。
+
+1. 记忆化搜索。我们定义 $f_{i,a,b}$ 表示还剩 $a$ 个 $A$ 类糖果 $b$ 个 $B$ 类糖果的情况下给第 $i$ 个人分配的方案数。考虑转移，根据每个人可能分到的糖果数，我们可以很容易的枚举出一个人所有可能的被分配情况，基于此，$f_{i,a,b}$ 就可以通过 $f_{i-1,a-x,b-y}$ 转移过来，其中 $x$ 和 $y$ 分别表示第 $i$ 个人分到的 $A$ 类糖果和 $B$ 类糖果的数量。搜索终点就是 $f_{0,\cdot,\cdot}$；
+2. 递推。上述记忆化搜索的过程可以很容易转换为递推；
+3. 滚动数组优化。由于 $f_{i,\cdot,\cdot}$ 只取决于 $f_{i-1,\cdot,\cdot}$，可以采用滚动数组优化空间复杂度。
+
+假定小朋友数为 $N$，$A$ 类糖果总数为 $A$，$B$ 类糖果总数为 $B$，那么时间复杂度就是 $O(NAB)$。如果出成大题，基本就是最优解了。
+
+最终答案为：$5067671$
+
+=== "记忆化搜索"
+
+    === "Python"
+    
+        ```python
+        from functools import cache
+    
+        @cache
+        def dfs(i: int, a: int, b: int) -> int:
+            # dfs(i, a, b) 表示给第 i 个人分配时还剩 a 个 A 类糖果和 b 个 B 类糖果
+            if i == 0:
+                return a == 0 and b == 0
+            ans = 0
+            for x in range(a + 1):
+                for y in range(b + 1):
+                    if 2 <= x + y <= 5:
+                        ans += dfs(i - 1, a - x, b - y)
+            return ans
+    
+        print(dfs(7, 9, 16))
+        ```
+    
+    === "C++"
+    
+        ```c++
+        #include <iostream>
+    
+        using namespace std;
+    
+        const int N = 7, A = 9, B = 16;
+        int f[N + 1][A + 1][B + 1];
+        bool vis[N + 1][A + 1][B + 1];
+    
+        int dfs(int i, int a, int b) {
+            if (i == 0) {
+                return !a && !b;
+            }
+            if (vis[i][a][b]) {
+                return f[i][a][b];
+            }
+    
+            vis[i][a][b] = true;
+            for (int x = 0; x <= a; x++) {
+                for (int y = 0; y <= b; y++) {
+                    if (x + y >= 2 && x + y <= 5) {
+                        f[i][a][b] += dfs(i - 1, a - x, b - y);
+                    }
+                }
+            }
+            return f[i][a][b];
+        }
+    
+        int main() {
+            cout << dfs(7, 9, 16) << "\n";
+    
+            return 0;
+        }
+        ```
+
+=== "递推"
+
+    === "Python"
+    
+        ```python
+        N, A, B = 7, 9, 16
+    
+        f = [[[0] * (B + 1) for _ in range(A + 1)] for _ in range(N + 1)]
+    
+        f[0][0][0] = 1
+        for i in range(1, N + 1):
+            for a in range(A + 1):
+                for b in range(B + 1):
+                    # 枚举当前第 i 个小朋友还剩 a 个 A 类糖果
+                    # 和 b 个 B 类糖果的情况下，可能分到的糖果数
+                    for x in range(a + 1):
+                        for y in range(b + 1):
+                            if 2 <= x + y <= 5:
+                                f[i][a][b] += f[i - 1][a - x][b - y]
+    
+        print(f[N][A][B])
+        ```
+    
+    === "C++"
+    
+        ```c++
+        #include <iostream>
+    
+        using namespace std;
+    
+        const int N = 7, A = 9, B = 16;
+        int f[N + 1][A + 1][B + 1];
+    
+        int main() {
+            f[0][0][0] = 1;
+            for (int i = 1; i <= 7; i++) {
+                for (int a = 0; a <= A; a++) {
+                    for (int b = 0; b <= B; b++) {
+                        for (int x = 0; x <= a; x++) {
+                            for (int y = 0; y <= b; y++) {
+                                if (x + y >= 2 && x + y <= 5) {
+                                    f[i][a][b] += f[i - 1][a - x][b - y];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    
+            cout << f[N][A][B] << "\n";
+    
+            return 0;
+        }
+        ```
+
+=== "滚动数组优化"
+
+    === "Python"
+    
+        ```python
+        N, A, B = 7, 9, 16
+    
+        f = [[0] * (B + 1) for _ in range(A + 1)]
+        f[0][0] = 1
+    
+        for i in range(1, N + 1):
+            d = [[0] * (B + 1) for _ in range(A + 1)]
+            for a in range(A + 1):
+                for b in range(B + 1):
+                    for x in range(a + 1):
+                        for y in range(b + 1):
+                            if 2 <= x + y <= 5:
+                                d[a][b] += f[a - x][b - y]
+            f = d
+    
+        print(f[A][B])
+        ```
+    
+    === "C++"
+    
+        ```c++
+        #include <iostream>
+        #include <vector>
+    
+        using namespace std;
+    
+        const int N = 7, A = 9, B = 16;
+        vector<vector<int>> f(A + 1, vector<int>(B + 1, 0));
+    
+        int main() {
+            f[0][0] = 1;
+            for (int i = 1; i <= 7; i++) {
+                vector<vector<int>> d(A + 1, vector<int>(B + 1, 0));
+                for (int a = 0; a <= A; a++) {
+                    for (int b = 0; b <= B; b++) {
+                        for (int x = 0; x <= a; x++) {
+                            for (int y = 0; y <= b; y++) {
+                                if (x + y >= 2 && x + y <= 5) {
+                                    d[a][b] += f[a - x][b - y];
+                                }
+                            }
+                        }
+                    }
+                }
+                f = d;
+            }
+    
+            cout << f[A][B] << "\n";
+    
+            return 0;
+        }
+        ```
 
 ## T3 三国游戏 (10'/10')
 
@@ -457,25 +701,132 @@ title: 第 14 届 Python A 组（省赛）
     }
     ```
 
-## T8 奇怪的数 (6'/20')
+## T8 奇怪的数 (5'/20')
 
 题意：输出满足「长度为 $n\ (5\le n \le 2\cdot 10^5)$ 且连续 $5$ 位数位之和不超过 $m\ (0\le m\le 50)$ 且奇数位为奇数、偶数位为偶数」的总数字个数，答案对 $998244353$ 取模。最低位从 $1$ 开始编号。
 
 思路：
 
 - [最优解](https://www.lanqiao.cn/questions/451856/) 为数位 DP，不会；
-- 爆搜能过 $30\%$，满足了。
+- 爆搜加剪枝能过 5/20，第六个点的方案数已经超过 $2\cdot10^9$ 了，再怎么剪枝也无力回天。不过也可以打表就是了。
 
 === "Python 爆搜"
 
     ```python
+    n, m = map(int, input().strip().split())
+    ans = 0
+    num = [0] * 13
+    idx = 0
     
+    def chk() -> bool:
+        pre = [0] * 13
+        pre[0] = num[0]
+        for i in range(n):
+            if (i + 1) & 1 != num[i] & 1:
+                return False
+            if i:
+                pre[i] = pre[i - 1] + num[i]
+        
+        if pre[4] > m:
+            return False
+        for i in range(5, n):
+            if pre[i] - pre[i - 5] > m:
+                return False
+        return True
+    
+    def dfs(u: int) -> None:
+        global idx, ans
+        if u == n:
+            ans = (ans + chk()) % 998244353
+            return
+        for x in range(10):
+            # 剪枝1：数位奇偶性
+            if (u + 1) & 1 != x & 1:
+                continue
+            # 剪枝2：数位之和
+            if idx >= 4 and sum(num[idx-4:idx]) + x > m:
+                continue
+    
+            num[idx] = x
+            idx += 1
+            dfs(u + 1)
+            num[idx] = 0
+            idx -= 1
+    
+    if n > 12:
+        ans = 114514
+    else:
+        dfs(0)
+    
+    print(ans)
     ```
 
 === "C++ 爆搜"
 
     ```c++
+    #include <iostream>
+    #include <numeric>
     
+    using namespace std;
+    
+    int ans;
+    int n, m;
+    int num[13], idx;
+    
+    bool chk() {
+        int pre[13] {};
+        pre[0] = num[0];
+        for (int i = 0; i < n; i++) {
+            if (((i + 1) & 1) != (num[i] & 1)) {
+                return false;
+            }
+            if (i) {
+                pre[i] = pre[i - 1] + num[i];
+            }
+        }
+        if (pre[4] > m) {
+            return false;
+        }
+        for (int r = 5; r < n; r++) {
+            if (pre[r] - pre[r - 5] > m) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    void dfs(int u) {
+        if (u == n) {
+            ans = (ans + chk()) % 998244353;
+            return;
+        }
+        for (int x = 0; x <= 9; x++) {
+            // 剪枝1：数位奇偶性
+            if (((idx + 1) & 1) != (x & 1)) {
+                continue;
+            }
+            // 剪枝2：数位之和
+            if (idx >= 4 && accumulate(num + idx - 4, num + idx, x) > m) {
+                continue;
+            }
+            num[idx++] = x;
+            dfs(u + 1);
+            num[idx--] = 0;
+        }
+    }
+    
+    int main() {
+        cin >> n >> m;
+        if (n > 12) {
+            cout << 114514 << "\n";
+            return 0;
+        }
+    
+        dfs(0);
+        cout << ans << "\n";
+    
+        return 0;
+    }
     ```
 
 ## T9 子树的大小 (25'/25')

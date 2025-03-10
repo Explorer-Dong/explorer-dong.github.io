@@ -790,7 +790,7 @@ def solve():
     return 'YES'
 ```
 
-## 回溯 / 递归 / dfs / 分治
+## 回溯 / 递归 / 分治
 
 ### 子集型回溯
 
@@ -1246,7 +1246,88 @@ def minimumMoves(self, grid: List[List[int]]) -> int:
         return dfs(0, 0)
 ```
 
-### 图上 DFS
+
+
+### 分治
+
+[395. 至少有 K 个重复字符的最长子串 - 力扣（LeetCode）](https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/description/)
+
+$f(s)$ 表示字符串 s 中所有字符不少于 $k$ 个的子串中的最大长度。考察所有在当前 $s$ 串中出现次数少于 $k$ 的字符（记作分割字符），最终最大串肯定不包含之。因此，每一层递归，以找到的第一个分割字符作为隔板，将 $s$ 分成 若干个小的子串，取其中最大值即可。
+
+时间复杂度：$O(26N)$，这是由于每一层递归必然完全删除一个小写字母，且每一层需要遍历整个字符串，时间复杂度是 $O(N)$；所以总复杂度是 $O(26N)$。
+
+```python
+    def longestSubstring(self, s1: str, k: int) -> int:
+        # s1 中所有字符数量 >= k 个最长子串
+        def f(s1):
+            cnt = Counter(s1)
+            for ch, c in cnt.items():
+                if c < k:
+                    return max(f(sub) for sub in s1.split(ch))
+            return len(s1)
+        return f(s1)
+```
+
+[1763. 最长的美好子字符串 - 力扣（LeetCode）](https://leetcode.cn/problems/longest-nice-substring/description/)
+
+$f(s)$ 表示字符串 $s$ 中所有字符出现大小写的最长子串。以 $s1$ 中只出现大写 / 小写的字母作为分割点，将问题分治，返回最大长度中出现最早的字符串。时间复杂度：$O(26 \times n)$，因为每一层需要 $O(n)$ 的复杂度，每一层递归至少减少一个字符。
+
+```python
+from collections import *
+from string import ascii_lowercase, ascii_uppercase 
+L, U = ascii_lowercase, ascii_uppercase 
+def f(s1):
+    s = set(s1)
+    for l, u in zip(L, U):
+        if (l in s) != (u in s):
+            ss = s1.split(l if l in s else u)
+            res = ''
+            for sub in ss:
+                cur = f(sub)
+                if len(cur) > len(res): res = cur 
+            return res 
+    return s1
+
+class Solution:
+    def longestNiceSubstring(self, s: str) -> str:
+        return f(s)
+```
+
+## 搜索 / DFS / BFS
+
+### 枚举DFS
+
+[5.最大数字 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/2193/learning/?page=1&first_category_id=1&tags=DFS,国赛&tag_relation=intersection&difficulty=20)
+
+**思路**
+
+- 贪心，从左到右，尽可能构造 9。
+
+- 对每一位数字，只会用一种操作。
+
+```python
+import sys
+input = lambda: sys.stdin.readline().strip()
+N, A, B = map(int, input().split())
+sN = str(N)
+res = 0
+def dfs(i, n, a, b):
+    global res 
+    if i >= len(sN):
+        res = max(res, n) 
+        return 
+    x = int(sN[i])
+    d = min(9 - x, a)
+    dfs(i + 1, n * 10 + (x + d), a - d, b)
+    if b >= x + 1:
+        dfs(i + 1, n * 10 + 9, a, b - (x + 1))
+dfs(0, 0, A, B)
+print(res)
+```
+
+
+
+### 图上DFS
 
 [1.小朋友崇拜圈 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/182/learning/?page=1&first_category_id=1&tags=省赛,DFS&tag_relation=intersection&difficulty=20)
 
@@ -1305,57 +1386,107 @@ def dfs(u, idx):
 for u in range(1, n + 1):   # 确保访问所有连通分量
     dfs(u, 1)
 print(res)
-
-
-
 ```
 
 
 
-### 分治
+### 模拟 BFS
 
-[395. 至少有 K 个重复字符的最长子串 - 力扣（LeetCode）](https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/description/)
 
-$f(s)$ 表示字符串 s 中所有字符不少于 $k$ 个的子串中的最大长度。考察所有在当前 $s$ 串中出现次数少于 $k$ 的字符（记作分割字符），最终最大串肯定不包含之。因此，每一层递归，以找到的第一个分割字符作为隔板，将 $s$ 分成 若干个小的子串，取其中最大值即可。
 
-时间复杂度：$O(26N)$，这是由于每一层递归必然完全删除一个小写字母，且每一层需要遍历整个字符串，时间复杂度是 $O(N)$；所以总复杂度是 $O(26N)$。
+**网格图模拟BFS**
+
+- 是给定一个二维网格，以及一些初始位置，并说明初始位置的蔓延条件，最后求一些计数或者最值问题。
+- 通过队列 $q$ 存储位置。初始值即为初始位置
+- 每次考虑当前位置 $(x,y)$ 的四周，尝试蔓延
+
+网格图BFS模板。
 
 ```python
-    def longestSubstring(self, s1: str, k: int) -> int:
-        # s1 中所有字符数量 >= k 个最长子串
-        def f(s1):
-            cnt = Counter(s1)
-            for ch, c in cnt.items():
-                if c < k:
-                    return max(f(sub) for sub in s1.split(ch))
-            return len(s1)
-        return f(s1)
+# 设置q的初始值，如 q.append(...)
+q = deque()
+
+di = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+while q:
+    x, y = q.popleft() # 弹出队首
+    for dx, dy in di:   # 遍历四个方向，尝试蔓延
+        nx, ny = x + dx, y + dy
+        if 0 <= nx < n and 0 <= ny < m: # 判断蔓延是否合法
+            q.append((nx, ny))  # 加到队尾，表示后续开始蔓延的位置
+            # 其他操作
 ```
 
-[1763. 最长的美好子字符串 - 力扣（LeetCode）](https://leetcode.cn/problems/longest-nice-substring/description/)
 
-$f(s)$ 表示字符串 $s$ 中所有字符出现大小写的最长子串。以 $s1$ 中只出现大写 / 小写的字母作为分割点，将问题分治，返回最大长度中出现最早的字符串。时间复杂度：$O(26 \times n)$，因为每一层需要 $O(n)$ 的复杂度，每一层递归至少减少一个字符。
+
+[695. 岛屿的最大面积 - 力扣（LeetCode）](https://leetcode.cn/problems/max-area-of-island/description/)
+
+**思路**
+
+- 枚举每个连通的岛屿，通过将访问过的位置设置为0，即 $grid[i][j] = 0$ 进行记录
+- 每个岛屿的“登陆点”即为 $q$ 的初始内容
+- 每次将 $q$ 的队首弹出，考虑其上下左右是否有陆地，是则加入到队尾，并且标记访问过，更新岛屿面积
+- 重复操作，直到 $q$为空。
 
 ```python
-from collections import *
-from string import ascii_lowercase, ascii_uppercase 
-L, U = ascii_lowercase, ascii_uppercase 
-def f(s1):
-    s = set(s1)
-    for l, u in zip(L, U):
-        if (l in s) != (u in s):
-            ss = s1.split(l if l in s else u)
-            res = ''
-            for sub in ss:
-                cur = f(sub)
-                if len(cur) > len(res): res = cur 
-            return res 
-    return s1
-
 class Solution:
-    def longestNiceSubstring(self, s: str) -> str:
-        return f(s)
+    def maxAreaOfIsland(self, g: List[List[int]]) -> int:
+        n, m = len(g), len(g[0])
+        q = deque()
+        res = 0
+        di = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        def bfs(i, j):  # 考虑登陆点为 (i, j)的岛屿
+            ans = 1
+            q = deque([(i, j)]) 
+            g[i][j] = 0 # 登陆点设置为0，表示已经访问过
+            while q:
+                x, y = q.popleft() # 弹出队首
+                for dx, dy in di:   # 遍历四个方向，考虑是否有陆地
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < n and 0 <= ny < m and g[nx][ny]:   
+                        q.append((nx, ny))  # 有陆地，加到队尾，表示后续需要考虑的位置
+                        ans += 1
+                        g[nx][ny] = 0 # 标记访问
+            return ans             
+        for i, row in enumerate(g):
+            for j, x in enumerate(row):
+                if x == 1:  # 遍历所有连通分量
+                    res = max(res, bfs(i, j))
+        return res 
 ```
+
+
+
+[1.长草 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/149/learning/?page=1&first_category_id=1&tags=BFS&tag_relation=intersection&difficulty=20)
+
+````python
+import sys
+from collections import deque
+input = lambda: sys.stdin.readline().strip()
+n, m = map(int, input().split())
+g = [[0] * m for _ in range(n)]
+di = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+q = deque()
+for i in range(n):
+    r = input()
+    for j, x in enumerate(r):
+        if x == 'g':
+            g[i][j] = 1
+            q.append((i, j))
+k = int(input())
+while q and k:
+    for _ in range(len(q)):
+        x, y = q.popleft()
+        for dx, dy in di:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < n and 0 <= ny < m and g[nx][ny] == 0:
+                g[nx][ny] = 1
+                q.append((nx, ny))
+    k -= 1
+for row in g:
+    print(''.join('g' if x else '.' for x in row))
+````
+
+
 
 ## 排序
 

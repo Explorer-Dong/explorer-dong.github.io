@@ -188,6 +188,9 @@ nav:
         - base/data-mining/anomaly-detection.md
       - 自然语言处理:
         - base/natural-language-processing/index.md
+        - base/natural-language-processing/intro.md
+        - base/natural-language-processing/model.md
+        - base/natural-language-processing/task.md
       - 计算机视觉:
         - base/computer-vision/index.md
       - 语音识别:
@@ -227,6 +230,8 @@ nav:
         - base/college-physics/index.md
       - 高等数学:
         - base/advanced-math/index.md
+        - base/advanced-math/differentiation.md
+        - base/advanced-math/integration.md
       - 线性代数:
         - base/linear-algebra/index.md
       - 概率论:
@@ -278,9 +283,10 @@ nav:
   - 后端:
     - back-end/index.md
     - C++:
+      - back-end/cplusplus/index.md
       - back-end/cplusplus/cpp-basic.md
-      - crow:
-        - back-end/cplusplus/crow/crow-basic.md
+      - back-end/cplusplus/cpp-oop.md
+      - back-end/cplusplus/cpp-advanced.md
     - Python:
       - back-end/python/python-basic.md
       - Flask:

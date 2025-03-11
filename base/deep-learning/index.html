@@ -5675,55 +5675,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#感知器" class="md-nav__link">
+  <a href="#全连接神经网络" class="md-nav__link">
     <span class="md-ellipsis">
-      感知器
+      全连接神经网络
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="感知器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#神经元模型" class="md-nav__link">
-    <span class="md-ellipsis">
-      神经元模型
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#感知机与多层网络" class="md-nav__link">
-    <span class="md-ellipsis">
-      感知机与多层网络
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#误差逆传播算法" class="md-nav__link">
-    <span class="md-ellipsis">
-      误差逆传播算法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#前馈神经网络" class="md-nav__link">
-    <span class="md-ellipsis">
-      前馈神经网络
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="前馈神经网络">
+    <nav class="md-nav" aria-label="全连接神经网络">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5736,9 +5694,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#反向传播算法" class="md-nav__link">
+  <a href="#模型" class="md-nav__link">
     <span class="md-ellipsis">
-      反向传播算法
+      模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#学习准则" class="md-nav__link">
+    <span class="md-ellipsis">
+      学习准则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#优化算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化算法
     </span>
   </a>
   
@@ -5809,33 +5785,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#注意力机制与外部记忆" class="md-nav__link">
-    <span class="md-ellipsis">
-      注意力机制与外部记忆
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#序列生成模型" class="md-nav__link">
-    <span class="md-ellipsis">
-      序列生成模型
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#深度生成模型" class="md-nav__link">
-    <span class="md-ellipsis">
-      深度生成模型
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -5871,66 +5820,55 @@
   <h1>深度学习导读</h1>
 
 <h2 id="前言">前言<a class="headerlink" href="#前言" title="页面定位">&para;</a></h2>
-<p>本文记录深度学习入门笔记。教材主要参考邱锡鹏老师的神经网络与深度学习 <sup id="fnref:book"><a class="footnote-ref" href="#fn:book">1</a></sup> <sup id="fnref:nndl"><a class="footnote-ref" href="#fn:nndl">2</a></sup> <sup id="fnref:nndl github"><a class="footnote-ref" href="#fn:nndl github">3</a></sup>，框架以 <a href="https://pytorch.org/docs/stable/index.html">PyTorch</a> 为主，<a href="https://tensorflow.google.cn/api_docs/python/tf">TensorFlow</a> 为辅。比较推荐 <a href="https://space.bilibili.com/3129054/lists/874339">Karpathy 的教学视频</a> 用来视频自学，<a href="https://zh.d2l.ai/index.html">《动手学深度学习（PyTorch 版）》</a> 用来动手实践。</p>
+<p>本文记录深度学习入门笔记。教材主要参考邱锡鹏老师的《神经网络与深度学习》<sup id="fnref:book"><a class="footnote-ref" href="#fn:book">1</a></sup> <sup id="fnref:nndl"><a class="footnote-ref" href="#fn:nndl">2</a></sup> <sup id="fnref:nndl github"><a class="footnote-ref" href="#fn:nndl github">3</a></sup>，其余参考内容：</p>
+<ul>
+<li>代码框架：<a href="https://pytorch.org/docs/stable/index.html">PyTorch</a>；</li>
+<li>教学视频：<a href="https://space.bilibili.com/3129054/lists/874339">Karpathy 的教学视频</a>；</li>
+<li>动手实践：<a href="https://zh.d2l.ai/index.html">《动手学深度学习（PyTorch 版）》</a>。</li>
+</ul>
 <h2 id="绪论">绪论<a class="headerlink" href="#绪论" title="页面定位">&para;</a></h2>
-<p><strong>表示学习是什么</strong>？与传统的特征工程目的一致，为了得到数据中的更好的特征。不同的是，特征工程中的特征选择、特征映射等策略都是可控的方式，而表示学习就是利用深度学习从数据中学习高层的有效特征。</p>
-<p><strong>深度学习是什么</strong>？我们知道机器学习就是在手动处理完特征后，构建对应的模型 <strong>预测输出</strong>。而深度学习就是将机器学习的手动特征工程也用模型进行 <strong>表示学习</strong> 来学习出有效特征，然后继续构建模型 <strong>预测输出</strong>。如下图所示：</p>
+<p><strong>表示学习是什么</strong>？与传统的特征工程目的一致，为了得到数据中的更好的特征。不同的是，特征工程中的特征选择、特征映射等策略都是手动可控的方式，而表示学习就是利用深度神经网络从数据中自动学习高层的有效特征。</p>
+<p><strong>深度学习是什么</strong>？我们知道机器学习就是在「手动处理完特征」后，构建对应的模型「预测输出」。而深度学习就是将机器学习的手动特征工程也用模型进行「表示学习」来学习出有效特征，然后继续构建模型「预测输出」。如下图所示：</p>
 <p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409121508150.png" data-type="image" data-width="auto" data-height="auto" data-title="深度学习的数据处理流程" data-desc-position="bottom"><img alt="深度学习的数据处理流程" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409121508150.png" /></a></p>
 <p><strong>为什么会有深度学习</strong>？最简单的一点就是，很多特征我们根本没法定义一种表示规则来表示特征，比如说对于图像，怎么定义复杂的图像的特征呢？比如说对于音频，又怎么定义复杂的音频的特征呢？没办法，我们直接学特征！</p>
 <p><strong>神经网络是什么</strong>？就是万千模型中的一种，仅此而已。</p>
-<p><strong>为什么用神经网络进行深度学习</strong>？有了上面对深度学习定义的理解，可以发现其中最具有挑战性的特点就是，模型怎么知道什么才是好特征？什么是不好的特征？神经网络可以很好的解决这个问题。通过由浅到深层层神经元的特征提取，深层的神经元就可以学习更高语义的特征，并且通过这种方式也可以实现「<strong>端到端</strong>」的学习方式，而不用像机器学习的方法那样，先选特征再学习。并且神经网络模型也可以很好的解决深度学习中特征的「<strong>贡献度分配</strong>」问题。</p>
-<p>在机器学习中，我们学习到了诸如线性模型、决策树模型、贝叶斯模型等模型，下面我们将正式开始深度学习中神经网络模型的学习。</p>
-<h2 id="感知器">感知器<a class="headerlink" href="#感知器" title="页面定位">&para;</a></h2>
-<h3 id="神经元模型">神经元模型<a class="headerlink" href="#神经元模型" title="页面定位">&para;</a></h3>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021447476.png" data-type="image" data-width="auto" data-height="auto" data-title="M-P 神经元模型" data-desc-position="bottom"><img alt="M-P 神经元模型" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021447476.png" /></a></p>
-<p>我们介绍 M-P 神经元模型。该神经元模型必须具备以下三个特征：</p>
-<ol>
-<li>输入：来自其他连接的神经元传递过来的输入信号</li>
-<li>处理：输入信号通过带权重的连接进行传递，神经元接受到所有输入值的总和，再与神经元的阈值进行比较</li>
-<li>输出：通过激活函数的处理以得到输出</li>
-</ol>
-<p>激活函数可以参考 3.3 中的逻辑函数（logistic function），此处将其声明为 sigmoid 函数，同样不采用不。连续光滑的分段函数。</p>
-<h3 id="感知机与多层网络">感知机与多层网络<a class="headerlink" href="#感知机与多层网络" title="页面定位">&para;</a></h3>
-<p>本目从 <strong>无隐藏层的感知机</strong> 出发，介绍神经网络在简单的线性可分问题上的应用；接着介绍 <strong>含有一层隐藏层的多层感知机</strong>，及其对于简单的非线性可分问题上的应用；最后引入多层前馈神经网络模型的概念。</p>
-<p>感知机。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021609339.png" data-type="image" data-width="auto" data-height="auto" data-title="感知机（Perceptron）" data-desc-position="bottom"><img alt="感知机（Perceptron）" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021609339.png" /></a></p>
-<p>感知机（Perceptron）由两层神经元组成。第一层是输入层，第二层是输出层。其中只有输出层的神经元为功能神经元，也即 M-P 神经元。先不谈如何训练得到上面的 <span class="arithmatex">\(w_1,w_2,\theta\)</span>，我们先看看上面的感知机训练出来以后可以有什么功能？</p>
-<p>通过单层的感知机，我们可以实现简单的线性可分的分类任务，比如逻辑运算中的 <strong>与、或、非</strong> 运算，下面演示一下如何使用单层感知机实现上述三种逻辑运算：</p>
-<details class="note">
-<summary>使用单层感知机实现线性可分任务：与、或、非三种逻辑运算</summary>
-<p>与运算、或运算是二维线性可分任务，一定可以找到一条直线将其划分为两个类别：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091955554.png" data-type="image" data-width="auto" data-height="auto" data-title="二维线性可分任务" data-desc-position="bottom"><img alt="二维线性可分任务" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091955554.png" /></a></p>
-<p>非运算是一维线性可分任务，同样也可以找到一条直线将其划分为两个类别：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091959633.png" data-type="image" data-width="auto" data-height="auto" data-title="一维线性可分任务" data-desc-position="bottom"><img alt="一维线性可分任务" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404091959633.png" /></a></p>
-</details>
-<p>多层感知机。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021604059.png" data-type="image" data-width="auto" data-height="auto" data-title="神经网络图例：多层感知机" data-desc-position="bottom"><img alt="神经网络图例：多层感知机" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021604059.png" /></a></p>
-<p>所谓的多层感知机其实就是增加了一个隐藏层，则神经网络模型就变为三层，含有一个输入层，一个隐藏层，和一个输出层，更准确的说应该是“单隐层网络”。其中隐藏层和输出层中的所有神经元均为功能神经元。</p>
-<p>为了学习出网络中的连接权 <span class="arithmatex">\(w_i\)</span> 以及所有功能神经元中的阈值 <span class="arithmatex">\(\theta_j\)</span>，我们需要通过每一次迭代的结果进行参数的修正，对于连接权 <span class="arithmatex">\(w_i\)</span> 而言，我们假设当前感知机的输出为 <span class="arithmatex">\(\hat y\)</span>，则连接权 <span class="arithmatex">\(w_i\)</span> 应做以下调整。其中 <span class="arithmatex">\(\eta\)</span> 为学习率。</p>
-<div class="arithmatex">\[
-\begin{aligned}
-w_i \leftarrow w_i + \Delta w_i \\
-\Delta w_i = \eta (y - \hat y) x_i
-\end{aligned}
-\]</div>
-<details class="note">
-<summary>使用多层感知机实现异或逻辑运算</summary>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092000730.png" data-type="image" data-width="auto" data-height="auto" data-title="使用多层感知机实现异或逻辑运算" data-desc-position="bottom"><img alt="使用多层感知机实现异或逻辑运算" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092000730.png" /></a></p>
-</details>
-<p>多层前馈神经网络。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021604208.png" data-type="image" data-width="auto" data-height="auto" data-title="多层前馈神经网络结构示意图" data-desc-position="bottom"><img alt="多层前馈神经网络结构示意图" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021604208.png" /></a></p>
-<p>所谓多层前馈神经网络，定义就是各层神经元之间不会跨层连接，也不存在同层连接，其中：</p>
+<p><strong>为什么用神经网络进行深度学习</strong>？有了上面对深度学习定义的理解，可以发现其中最具有挑战性的特点就是，模型怎么知道什么才是好特征？什么是不好的特征？神经网络可以很好的解决这个问题。通过由浅到深层层神经元的特征提取，深层的神经元就可以学习更高语义的特征，并且通过这种方式也可以实现「端到端」的学习方式，而不用像机器学习的方法那样，先选特征再学习。并且神经网络模型也可以很好的解决深度学习中特征的「贡献度分配」问题。</p>
+<h2 id="全连接神经网络">全连接神经网络<a class="headerlink" href="#全连接神经网络" title="页面定位">&para;</a></h2>
+<p>全连接神经网络 (Full Connect Neural Network) 又称前馈神经网络 (Feedforward Neural Network)、感知机 (Perceptron)，是深度神经网络模型的开山鼻祖，通过向前传递数据，向后更新参数，实现学习和拟合的功能。</p>
+<p>全连接神经网络模型的学习准则一般采用交叉熵损失，优化算法一般采用小批量随机梯度下降 (Mini-batch Stochastic Gradient Descent, 简称 Mini-batch SGD) 算法。</p>
+<h3 id="神经元">神经元<a class="headerlink" href="#神经元" title="页面定位">&para;</a></h3>
+<figure id="__fc_1">
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021447476.png" data-type="image" data-width="auto" data-height="auto" data-title="神经元模型" data-desc-position="bottom"><img alt="神经元模型" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021447476.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 1. </span> 神经元模型</p>
+</figcaption>
+</figure>
+<p><strong>神经元是网络模型中的最小学习单元</strong>。每一个神经元接受输入 <span class="arithmatex">\(\sum_{i=1}^n w_ix_i - \theta\)</span>，通过设定好的激活函数 <span class="arithmatex">\(f\)</span> 得到该神经元对应的输出值 <span class="arithmatex">\(f(\sum_{i=1}^n w_ix_i - \theta)\)</span>。其中 <span class="arithmatex">\(\theta\)</span> 可以理解为神经元的激活阈值，也可以理解为神经元模型中的偏置项。</p>
+<p><strong>神经元中的激活函数大有门道、种类极多</strong>。为了确保网络可以拟合复杂的映射关系，需要激活函数是「非线性」的；为了便于对网络求导从而进行参数更新，需要确保激活函数是「可导」的；为了防止对网络求导的过程中出现梯度消失或者梯度爆炸，需要确保激活函数是「单调并且有界」。主要有以下 3 种类型：</p>
 <ul>
-<li>输入层仅仅接受外界输入，没有函数处理功能</li>
-<li>隐藏层和输出层进行函数处理</li>
+<li>S 型函数。例如 Sigmoid 函数、Tanh 函数；</li>
+<li>斜坡函数。例如 ReLU 函数；</li>
+<li>Swish 函数。复合函数。</li>
 </ul>
-<h3 id="误差逆传播算法">误差逆传播算法<a class="headerlink" href="#误差逆传播算法" title="页面定位">&para;</a></h3>
-<p>多层网络的学习能力比感知机的学习能力强很多。想要训练一个多层网络模型，仅仅通过感知机的参数学习规则是不够的，我们需要一个全新的、更强大的学习规则。这其中最优秀的就是误差逆传播算法 (errorBackPropagation, BP)，往往用它来训练多层前馈神经网络。下面我们来了解一下 BP 算法的内容、参数推导与算法流程。</p>
-<p>模型参数。</p>
-<p>我们对着神经网络图，从输入到输出进行介绍与理解：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404090923723.png" data-type="image" data-width="auto" data-height="auto" data-title="单隐层神经网络" data-desc-position="bottom"><img alt="单隐层神经网络" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404090923723.png" /></a></p>
+<h3 id="模型">模型<a class="headerlink" href="#模型" title="页面定位">&para;</a></h3>
+<figure id="__fc_2">
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404090923723.png" data-type="image" data-width="auto" data-height="auto" data-title="两层全连接神经网络" data-desc-position="bottom"><img alt="两层全连接神经网络" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404090923723.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 2. </span> 两层全连接神经网络模型</p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>在神经网络模型中，我们定义输入层为前，输出层为后。</p>
+</div>
+<p><strong>功能简介</strong>。所谓全连接神经网络，就是各层神经元之间不会跨层连接，也不存在同层连接，其中：</p>
 <ul>
-<li>隐层：对于隐层的第 <span class="arithmatex">\(h\)</span> 个神经元<ul>
+<li>输入层仅仅接受外界输入，没有函数处理功能；</li>
+<li>隐藏层和输出层进行函数处理。</li>
+</ul>
+<p><strong>神经元的输入与输出</strong>。分为「有函数处理功能」和「无函数处理功能」两类：</p>
+<ul>
+<li>隐藏层：对于隐藏层的第 <span class="arithmatex">\(h\)</span> 个神经元<ul>
 <li>输入：<span class="arithmatex">\(\alpha_h = \sum_{i=1}^dx_i v_{ih}\)</span></li>
 <li>输出：<span class="arithmatex">\(b_h = f(\alpha_h - \gamma_h)\)</span></li>
 </ul>
@@ -5941,30 +5879,28 @@ w_i \leftarrow w_i + \Delta w_i \\
 </ul>
 </li>
 </ul>
-<p>现在给定一个训练集学习一个分类器。其中每一个样本都含有 <span class="arithmatex">\(d\)</span> 个特征，<span class="arithmatex">\(l\)</span> 个输出。现在使用 <strong>标准 BP 神经网络模型</strong>，每输入一个样本都迭代一次。对于单隐层神经网络而言，一共有 4 种参数，即：</p>
+<p><strong>网络参数</strong>。现在给定一个训练集学习一个分类器。其中每一个样本都含有 <span class="arithmatex">\(d\)</span> 个特征，<span class="arithmatex">\(l\)</span> 个输出。每输入一个样本都迭代一次。对于单隐层神经网络而言，一共有 4 种参数，即：</p>
 <ul>
 <li>输入层到隐层的 <span class="arithmatex">\(d \times q\)</span> 个权值 <span class="arithmatex">\(v_{ih}(i=1,2,\cdots,d,\ h=1,2,\cdots,q)\)</span></li>
-<li>隐层的 <span class="arithmatex">\(q\)</span> 个 M-P 神经元的阈值 <span class="arithmatex">\(\gamma_h(h=1,2,\cdots,q)\)</span></li>
+<li>隐层的 <span class="arithmatex">\(q\)</span> 个神经元的阈值 <span class="arithmatex">\(\gamma_h(h=1,2,\cdots,q)\)</span></li>
 <li>隐层到输出层的 <span class="arithmatex">\(q\times l\)</span> 个权值 <span class="arithmatex">\(w_{hj}(h=1,2,\cdots,q,\ j=1,2,\cdots,l)\)</span></li>
-<li>输出层的 <span class="arithmatex">\(l\)</span> 个 M-P 神经元的阈值 <span class="arithmatex">\(\theta_j(j=1,2,\cdots,l)\)</span></li>
+<li>输出层的 <span class="arithmatex">\(l\)</span> 个神经元的阈值 <span class="arithmatex">\(\theta_j(j=1,2,\cdots,l)\)</span></li>
 </ul>
-<p>参数推导。</p>
-<p>确定损失函数。</p>
-<ul>
-<li>
-<p>对于上述 4 种参数，我们均采用梯度下降策略。<strong>以损失函数的负梯度方向对参数进行调整</strong>。每次输入一个训练样本，都会进行一次参数迭代更新，这叫 <strong>标准 BP 算法</strong>。</p>
-</li>
-<li>
-<p>根本目标是使损失函数尽可能小，我们定义损失函数 <span class="arithmatex">\(E\)</span> 为当前样本的均方误差，并为了求导计算方便添加一个常量 <span class="arithmatex">\(\frac{1}{2}\)</span>，对于第 <span class="arithmatex">\(k\)</span> 个训练样本，有如下损失函数：</p>
-</li>
-</ul>
+<h3 id="学习准则">学习准则<a class="headerlink" href="#学习准则" title="页面定位">&para;</a></h3>
+<p>假设每次输入一个训练样本进行参数更新（即 batch size = 1）。由于网络输出内容是实数，因此我们定义目标函数 <span class="arithmatex">\(\mathcal L\)</span> 为当前训练样本的「均方误差」。那么对于第 <span class="arithmatex">\(k\)</span> 个训练样本，就有如下损失：</p>
 <div class="arithmatex">\[
-E_k = \frac{1}{2} \sum _{j = 1}^l (\hat y_j^k - y_j^k)^2
+\mathcal L_k = \frac{1}{2} \sum _{j = 1}^l (\hat y_j^k - y_j^k)^2
 \]</div>
-<p>确定迭代修正量。</p>
-<ul>
-<li>
-<p>假定当前学习率为 <span class="arithmatex">\(\eta\)</span>，对于上述 4 种参数的迭代公式为：</p>
+<p>其中：为了求导方便，添加一个常量 <span class="arithmatex">\(\dfrac{1}{2}\)</span>。<span class="arithmatex">\(\hat y\)</span> 为样本真实值，<span class="arithmatex">\(y\)</span> 为样本预测值。</p>
+<h3 id="优化算法">优化算法<a class="headerlink" href="#优化算法" title="页面定位">&para;</a></h3>
+<p>在进行梯度下降时，经过简单的推导可以发现，第 <span class="arithmatex">\(l\)</span> 层的损失 <span class="arithmatex">\(\delta (l)\)</span> 依赖于后一项的损失 <span class="arithmatex">\(\delta(l+1)\)</span>，于是参数更新的逻辑就是从输出层开始逐层往后更新，直到第一层隐藏层。为此，我们引入著名的优化算法：误差逆传播算法 (error Back Propagation, BP)，其算法流程如下图所示：</p>
+<figure id="__fc_3">
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250311102803885.png" data-type="image" data-width="auto" data-height="auto" data-title="误差逆传播算法流程" data-desc-position="bottom"><img alt="误差逆传播算法流程" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250311102803885.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 3. </span> 误差逆传播算法流程</p>
+</figcaption>
+</figure>
+<p>以上述单隐层神经网络为例，尝试推导参数更新的过程。假定学习率（搜索步长）为 <span class="arithmatex">\(\eta\)</span>，那么上述 4 种参数的迭代公式就为：</p>
 <div class="arithmatex">\[
 \begin{aligned}
 w_{hj} &amp;\leftarrow w_{hj}+\Delta w_{hj} \\
@@ -5973,8 +5909,6 @@ v_{ih} &amp;\leftarrow v_{ih}+\Delta v_{ih} \\
 \gamma_{h} &amp;\leftarrow \gamma_{h}+\Delta \gamma_{h} \\
 \end{aligned}
 \]</div>
-</li>
-<li>
 <p>其中，修正量分别为：</p>
 <div class="arithmatex">\[
 \begin{aligned}
@@ -5984,8 +5918,6 @@ v_{ih} &amp;\leftarrow v_{ih}+\Delta v_{ih} \\
 \Delta \gamma_{h} &amp;= -\eta e_h \\
 \end{aligned}
 \]</div>
-</li>
-</ul>
 <details class="note">
 <summary>修正量推导 - 链式法则</summary>
 <p>公式表示：</p>
@@ -5995,24 +5927,6 @@ v_{ih} &amp;\leftarrow v_{ih}+\Delta v_{ih} \\
 <p>输入层到隐层的权重、隐层神经元的阈值：</p>
 <p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092223804.jpg" data-type="image" data-width="auto" data-height="auto" data-title="输入层到隐层的权重、隐层神经元的阈值" data-desc-position="bottom"><img alt="输入层到隐层的权重、隐层神经元的阈值" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092223804.jpg" /></a></p>
 </details>
-<p>算法流程。</p>
-<p>对于当前样本的输出损失 <span class="arithmatex">\(E_k\)</span> 和学习率 <span class="arithmatex">\(\eta\)</span>，我们进行以下迭代过程：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404090920527.png" data-type="image" data-width="auto" data-height="auto" data-title="BP 神经网络算法流程" data-desc-position="bottom"><img alt="BP 神经网络算法流程" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404090920527.png" /></a></p>
-<p>还有一种 BP 神经网络方法就是 <strong>累计 BP 神经网络</strong> 算法，基本思路就是对于全局训练样本计算累计误差，从而更新参数。在实际应用过程中，一般先采用累计 BP 算法，再采用标准 BP 算法。还有一种思路就是使用随机 BP 算法，即每次随机选择一个训练样本进行参数更新。</p>
-<h2 id="前馈神经网络">前馈神经网络<a class="headerlink" href="#前馈神经网络" title="页面定位">&para;</a></h2>
-<p>前馈神经网络 (Feedforward Neural Network) 就是网络模型中的全连接层。通过向前传递数据，向后更新参数，实现学习和拟合的功能。</p>
-<p>前馈神经网络模型的学习准则一般采用交叉熵损失，优化算法一般采用小批量随机梯度下降 (Mini-batch Stochastic Gradient Descent, 简称 Mini-batch SGD) 算法。</p>
-<h3 id="神经元">神经元<a class="headerlink" href="#神经元" title="页面定位">&para;</a></h3>
-<p><strong>网络模型中的最小学习单元是什么</strong>？神经元。每一个神经元接受输入 <span class="arithmatex">\(z\)</span>，通过设定好的激活函数 <span class="arithmatex">\(f\)</span>，给出输出 <span class="arithmatex">\(a=f(z)\)</span>。神经元中的激活函数大致种类极多，主要有以下 3 种：</p>
-<ul>
-<li>S 型函数。Sigmoid 函数。例如 logistic 函数和 Tanh 函数。</li>
-<li>斜坡函数。Relu 函数。</li>
-<li>Swish 函数。复合函数。</li>
-</ul>
-<p><strong>激活函数的 4 个原则是什么？为什么</strong>？。非线性、可导、单调、有界。为了确保网络可以拟合复杂的映射关系，需要激活函数是非线性的；为了便于对网络求导从而进行参数更新，需要确保激活函数是可导的；为了防止对网络求导的过程中出现梯度消失或者梯度爆炸，需要确保激活函数是单调并且有界。</p>
-<h3 id="反向传播算法">反向传播算法<a class="headerlink" href="#反向传播算法" title="页面定位">&para;</a></h3>
-<p>注：我们定义输入层为前，输出层为后。</p>
-<p>在进行随机梯度下降时。经过简单的推导可以发现，第 <span class="arithmatex">\(l\)</span> 层的损失 <span class="arithmatex">\(\delta (l)\)</span> 依赖于后一项的损失 <span class="arithmatex">\(\delta(l+1)\)</span>，于是每一个样本更新参数的逻辑就是从输出层开始逐层往前直到第一层隐藏层进行更新。</p>
 <h2 id="卷积神经网络">卷积神经网络<a class="headerlink" href="#卷积神经网络" title="页面定位">&para;</a></h2>
 <p>为了解决全连接网络不能学习到局部不变性的缺点，卷积网络应运而生。卷积网络有三大特征：局部连接、权重共享、时/间上的次采样。</p>
 <h3 id="卷积方式">卷积方式<a class="headerlink" href="#卷积方式" title="页面定位">&para;</a></h3>
@@ -6021,10 +5935,10 @@ v_{ih} &amp;\leftarrow v_{ih}+\Delta v_{ih} \\
 <p>空洞卷积。</p>
 <h3 id="卷积网络">卷积网络<a class="headerlink" href="#卷积网络" title="页面定位">&para;</a></h3>
 <p>卷积神经网络的典型结构如下图所示：</p>
-<figure id="__fc_1">
+<figure id="__fc_4">
 <p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410311351161.png" data-type="image" data-width="auto" data-height="auto" data-title="卷积神经网络的典型结构" data-desc-position="bottom"><img alt="卷积神经网络的典型结构" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410311351161.png" /></a></p>
 <figcaption>
-<p><span class="caption-prefix">图 1. </span> 卷积神经网络的典型结构</p>
+<p><span class="caption-prefix">图 4. </span> 卷积神经网络的典型结构</p>
 </figcaption>
 </figure>
 <p><strong>卷积层</strong>。对于二维卷积而言，我们假设输入共有 D 个图像，需要学习 P 个特征，并不是只需要学习 P 个卷积核的，对于每一个特征需要单独对每一张图像学习一个卷积核，因此需要学习 <span class="arithmatex">\(D\times P\)</span> 个卷积核。</p>
@@ -6081,32 +5995,6 @@ v_{ih} &amp;\leftarrow v_{ih}+\Delta v_{ih} \\
 <p><strong>学习率的动态调整算法</strong>。一般来说就是两个阶段，在初期的阶段，学习率线性增长，在之后的阶段中，学习率逐渐衰减。详情见 Facebook 的这篇论文 <a href="https://arxiv.org/pdf/1706.02677">Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour [2018]</a>。</p>
 <p>下图展示了预热学习率调整的学习效果。图源：<a href="https://arxiv.org/abs/1812.01187v2">Bag of Tricks for Image Classification with Convolutional Neural Networks [2018]</a>。</p>
 <p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201601516.jpg" data-type="image" data-width="auto" data-height="auto" data-title="Visualization of learning rate schedules with warm-up.  Top:  cosine and step schedules for batch size 1024. Bottom: Top-1 validation accuracy curve with regard to the two schedules." data-desc-position="bottom"><img alt="Visualization of learning rate schedules with warm-up.  Top:  cosine and step schedules for batch size 1024. Bottom: Top-1 validation accuracy curve with regard to the two schedules." src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201601516.jpg" /></a></p>
-<h2 id="注意力机制与外部记忆">注意力机制与外部记忆<a class="headerlink" href="#注意力机制与外部记忆" title="页面定位">&para;</a></h2>
-<h2 id="序列生成模型">序列生成模型<a class="headerlink" href="#序列生成模型" title="页面定位">&para;</a></h2>
-<h2 id="深度生成模型">深度生成模型<a class="headerlink" href="#深度生成模型" title="页面定位">&para;</a></h2>
-<p>本章我们学习深度生成模型。用一句话概括就是使用深度神经网络训练一个模型使得其输出结果符合某个预定的分布。</p>
-<ul>
-<li>
-<p>变分自编码器 VAE</p>
-</li>
-<li>
-<p>生成对抗网络 GAN</p>
-</li>
-<li>
-<p>Stable Diffusion：经典的文生图模型。分为以下三个部分，这三个部分均可以单独训练：</p>
-<ul>
-<li>
-<p>编码器</p>
-</li>
-<li>
-<p>生成模型</p>
-</li>
-<li>
-<p>解码器</p>
-</li>
-</ul>
-</li>
-</ul>
 <div class="footnote">
 <hr />
 <ol>
@@ -6143,7 +6031,7 @@ v_{ih} &amp;\leftarrow v_{ih}+\Delta v_{ih} \\
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月5日 15:11:00">2025年3月5日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月11日 05:54:54">2025年3月11日</span>
   </span>
 
     
@@ -6359,6 +6247,8 @@ v_{ih} &amp;\leftarrow v_{ih}+\Delta v_{ih} \\
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.js"></script>
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../injects/javascripts/link_blank.js"></script>
       

@@ -3642,18 +3642,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#枚举dfs" class="md-nav__link">
+  <a href="#枚举-dfs" class="md-nav__link">
     <span class="md-ellipsis">
-      枚举DFS
+      枚举 DFS
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#图上dfs" class="md-nav__link">
+  <a href="#图上-dfs" class="md-nav__link">
     <span class="md-ellipsis">
-      图上DFS
+      图上 DFS
     </span>
   </a>
   
@@ -3726,9 +3726,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bisect库二分" class="md-nav__link">
+  <a href="#bisect-库二分" class="md-nav__link">
     <span class="md-ellipsis">
-      bisect库二分
+      bisect 库二分
     </span>
   </a>
   
@@ -7763,18 +7763,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#枚举dfs" class="md-nav__link">
+  <a href="#枚举-dfs" class="md-nav__link">
     <span class="md-ellipsis">
-      枚举DFS
+      枚举 DFS
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#图上dfs" class="md-nav__link">
+  <a href="#图上-dfs" class="md-nav__link">
     <span class="md-ellipsis">
-      图上DFS
+      图上 DFS
     </span>
   </a>
   
@@ -7847,9 +7847,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bisect库二分" class="md-nav__link">
+  <a href="#bisect-库二分" class="md-nav__link">
     <span class="md-ellipsis">
-      bisect库二分
+      bisect 库二分
     </span>
   </a>
   
@@ -9259,256 +9259,6 @@
 
   <h1>代码模板 (Python)</h1>
 
-<div class="toc"><span class="toctitle">目录</span><ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#常用数据结构-api">常用数据结构 API</a><ul>
-<li><a href="#列表">列表</a></li>
-<li><a href="#队列">队列</a></li>
-<li><a href="#字典">字典</a></li>
-<li><a href="#counter">Counter</a></li>
-<li><a href="#map-映射函数">map 映射函数</a></li>
-<li><a href="#自定义-set-规则">自定义 set 规则</a></li>
-<li><a href="#io">I/O</a></li>
-<li><a href="#二叉堆--优先队列">二叉堆 / 优先队列</a></li>
-<li><a href="#有序列表--有序集合">有序列表 / 有序集合</a></li>
-</ul>
-</li>
-<li><a href="#字符串">字符串</a><ul>
-<li><a href="#kmp">KMP</a></li>
-<li><a href="#字符串排序">字符串排序</a></li>
-<li><a href="#z-函数-扩展-kmp">Z 函数 (扩展 KMP)</a></li>
-<li><a href="#判断子序列">判断子序列</a></li>
-<li><a href="#字符串哈希">字符串哈希</a></li>
-<li><a href="#字符串-api">字符串 API</a></li>
-</ul>
-</li>
-<li><a href="#区间问题">区间问题</a><ul>
-<li><a href="#区间选点问题--最大不相交区间数量">区间选点问题 / 最大不相交区间数量</a></li>
-<li><a href="#区间分组">区间分组</a></li>
-<li><a href="#区间覆盖">区间覆盖</a></li>
-<li><a href="#合并区间">合并区间</a></li>
-<li><a href="#区间交集">区间交集</a></li>
-</ul>
-</li>
-<li><a href="#回溯--递归--分治">回溯 / 递归 / 分治</a><ul>
-<li><a href="#子集型回溯">子集型回溯</a></li>
-<li><a href="#组合型回溯">组合型回溯</a></li>
-<li><a href="#排列型回溯">排列型回溯</a></li>
-<li><a href="#回溯分割字符串">回溯分割字符串</a></li>
-<li><a href="#分治">分治</a></li>
-</ul>
-</li>
-<li><a href="#搜索--dfs--bfs">搜索 / DFS / BFS</a><ul>
-<li><a href="#枚举dfs">枚举DFS</a></li>
-<li><a href="#图上dfs">图上DFS</a></li>
-<li><a href="#模拟-bfs">模拟 BFS</a></li>
-</ul>
-</li>
-<li><a href="#排序">排序</a><ul>
-<li><a href="#计数排序">计数排序</a></li>
-</ul>
-</li>
-<li><a href="#离散化">离散化</a></li>
-<li><a href="#二分查找--二分答案">二分查找 / 二分答案</a><ul>
-<li><a href="#二分查找数学模型">二分查找数学模型</a></li>
-<li><a href="#bisect库二分">bisect库二分</a></li>
-<li><a href="#朴素二分">朴素二分</a></li>
-<li><a href="#多维二分">多维二分</a></li>
-<li><a href="#二分答案">二分答案</a></li>
-<li><a href="#自定义比较规则">自定义比较规则</a></li>
-</ul>
-</li>
-<li><a href="#滑动窗口">滑动窗口</a><ul>
-<li><a href="#定长滑动窗口">定长滑动窗口</a></li>
-<li><a href="#不定长滑动窗口">不定长滑动窗口</a></li>
-<li><a href="#不定长滑窗--哈希计数">不定长滑窗 + 哈希计数</a></li>
-<li><a href="#枚举型滑窗--分组滑窗">枚举型滑窗 / 分组滑窗</a></li>
-<li><a href="#双指针">双指针</a></li>
-<li><a href="#分组循环">分组循环</a></li>
-</ul>
-</li>
-<li><a href="#单调结构">单调结构</a><ul>
-<li><a href="#单调栈">单调栈</a></li>
-<li><a href="#单调队列">单调队列</a></li>
-<li><a href="#单调栈优化-dp">单调栈优化 dp</a></li>
-<li><a href="#单调队列优化-dp">单调队列优化 dp</a></li>
-</ul>
-</li>
-<li><a href="#前缀差分">前缀/差分</a><ul>
-<li><a href="#一维前缀和">一维前缀和</a></li>
-<li><a href="#一维差分">一维差分</a></li>
-<li><a href="#二维差分">二维差分</a></li>
-<li><a href="#二维前缀">二维前缀</a></li>
-</ul>
-</li>
-<li><a href="#数学">数学</a><ul>
-<li><a href="#数论">数论</a><ul>
-<li><a href="#取整函数">取整函数</a></li>
-<li><a href="#素数">素数</a></li>
-<li><a href="#约数">约数</a></li>
-<li><a href="#欧拉函数">欧拉函数</a></li>
-<li><a href="#裴蜀定理">裴蜀定理</a></li>
-<li><a href="#欧几里得算法">欧几里得算法</a></li>
-<li><a href="#线性同余方程">线性同余方程</a></li>
-<li><a href="#乘法逆元">乘法逆元</a></li>
-<li><a href="#中国剩余定理">中国剩余定理</a></li>
-</ul>
-</li>
-<li><a href="#离散数学">离散数学</a><ul>
-<li><a href="#容斥">容斥</a></li>
-<li><a href="#鸽巢原理--抽屉原理">鸽巢原理 / 抽屉原理</a></li>
-</ul>
-</li>
-<li><a href="#数学公式">数学公式</a><ul>
-<li><a href="#排序不等式">排序不等式</a></li>
-<li><a href="#区间递增-k-个数">区间递增 k 个数</a></li>
-<li><a href="#平均数不等式">平均数不等式</a></li>
-<li><a href="#求和公式">求和公式</a></li>
-<li><a href="#取模性质">取模性质</a></li>
-<li><a href="#数列">数列</a></li>
-</ul>
-</li>
-<li><a href="#组合数学">组合数学</a><ul>
-<li><a href="#二项式定理">二项式定理</a></li>
-<li><a href="#卡特兰数">卡特兰数</a></li>
-</ul>
-</li>
-<li><a href="#快速幂">快速幂</a><ul>
-<li><a href="#矩阵快速幂">矩阵快速幂</a></li>
-</ul>
-</li>
-<li><a href="#高等数学">高等数学</a><ul>
-<li><a href="#调和级数">调和级数</a></li>
-<li><a href="#泰勒展开式">泰勒展开式</a></li>
-<li><a href="#stirling-斯特林公式">Stirling 斯特林公式</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#数据结构">数据结构</a><ul>
-<li><a href="#并查集">并查集</a></li>
-<li><a href="#字典树">字典树</a><ul>
-<li><a href="#26-叉字典树">26 叉字典树</a></li>
-<li><a href="#哈希字典树">哈希字典树</a></li>
-</ul>
-</li>
-<li><a href="#线段树">线段树</a><ul>
-<li><a href="#lazy-线段树">lazy 线段树</a></li>
-<li><a href="#lazy-线段树带动态开点">lazy 线段树（带动态开点）</a></li>
-<li><a href="#递归动态开点无-lazy-线段树">递归动态开点（无 lazy) 线段树</a></li>
-<li><a href="#动态开点--lazy-线段树-旧版">动态开点 + lazy 线段树 （旧版）</a></li>
-<li><a href="#_1"></a></li>
-<li><a href="#线段树优化问题">线段树优化问题</a></li>
-</ul>
-</li>
-<li><a href="#树状数组">树状数组</a><ul>
-<li><a href="#离散化树状数组--还原">离散化树状数组 + 还原</a></li>
-</ul>
-</li>
-<li><a href="#st-表--可重复贡献问题">ST 表 / 可重复贡献问题</a></li>
-</ul>
-</li>
-<li><a href="#图论">图论</a><ul>
-<li><a href="#建图">建图</a></li>
-<li><a href="#floyd">Floyd</a></li>
-<li><a href="#dijkstra">Dijkstra</a><ul>
-<li><a href="#朴素-dijkstra">朴素 Dijkstra</a></li>
-<li><a href="#堆优化-dijkstra">堆优化 Dijkstra</a></li>
-<li><a href="#堆优化-dijkstra字典写法">堆优化 Dijkstra（字典写法）</a></li>
-<li><a href="#最短路与子序列和积问题">最短路与子序列「和/积」问题</a></li>
-<li><a href="#动态修改边权">动态修改边权</a></li>
-</ul>
-</li>
-<li><a href="#最小生成树">最小生成树</a><ul>
-<li><a href="#prim">Prim</a></li>
-</ul>
-</li>
-<li><a href="#二分图">二分图</a><ul>
-<li><a href="#二分图判定">二分图判定</a></li>
-<li><a href="#二分图最大匹配--匈牙利算法">二分图最大匹配 / 匈牙利算法</a></li>
-<li><a href="#二分图最大权完美匹配--km-算法">二分图最大权完美匹配 / KM 算法</a></li>
-</ul>
-</li>
-<li><a href="#连通块问题">连通块问题</a></li>
-<li><a href="#最小费用最大流">最小费用最大流</a></li>
-</ul>
-</li>
-<li><a href="#树上问题">树上问题</a><ul>
-<li><a href="#倍增-lca">倍增 LCA</a></li>
-<li><a href="#树上差分">树上差分</a></li>
-<li><a href="#树形-dp换根-dp">树形 DP(换根 DP)</a></li>
-<li><a href="#树上异或">树上异或</a></li>
-<li><a href="#树上直径">树上直径</a></li>
-</ul>
-</li>
-<li><a href="#位运算">位运算</a><ul>
-<li><a href="#位运算与集合论">位运算与集合论</a></li>
-<li><a href="#拆位试填法">拆位试填法</a></li>
-</ul>
-</li>
-<li><a href="#动态规划">动态规划</a><ul>
-<li><a href="#背包问题">背包问题</a><ul>
-<li><a href="#0---1-背包">0 - 1 背包</a></li>
-<li><a href="#完全背包">完全背包</a></li>
-<li><a href="#多重背包">多重背包</a></li>
-<li><a href="#分组背包">分组背包</a></li>
-</ul>
-</li>
-<li><a href="#线性-dp">线性 dp</a><ul>
-<li><a href="#最长上升子序列">最长上升子序列</a></li>
-<li><a href="#最长公共子序列">最长公共子序列</a></li>
-<li><a href="#编辑距离">编辑距离</a></li>
-</ul>
-</li>
-<li><a href="#网格图-dp">网格图 dp</a><ul>
-<li><a href="#多路线问题">多路线问题</a></li>
-</ul>
-</li>
-<li><a href="#区间-dp">区间 dp</a><ul>
-<li><a href="#最长回文子序列">最长回文子序列</a></li>
-<li><a href="#最长回文子串">最长回文子串</a></li>
-</ul>
-</li>
-<li><a href="#数位-dp">数位 dp</a></li>
-<li><a href="#状态机-dp">状态机 dp</a></li>
-<li><a href="#状压-dp--状态压缩-dp">状压 dp / 状态压缩 dp</a><ul>
-<li><a href="#全排列型状压">全排列型状压</a></li>
-<li><a href="#划分成-k-个子集的问题">划分成 \(k\) 个子集的问题</a></li>
-<li><a href="#多重状压记忆化搜索">多重状压：记忆化搜索</a></li>
-<li><a href="#k-进制状压">\(k\) 进制状压</a></li>
-</ul>
-</li>
-<li><a href="#划分-dp">划分 dp</a><ul>
-<li><a href="#约束划分个数">约束划分个数</a></li>
-<li><a href="#不相交区间">不相交区间</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#贪心">贪心</a><ul>
-<li><a href="#排序贪心">排序贪心</a></li>
-<li><a href="#反悔贪心">反悔贪心</a><ul>
-<li><a href="#反悔堆">反悔堆</a></li>
-<li><a href="#尝试反悔--反悔栈">尝试反悔 + 反悔栈</a></li>
-</ul>
-</li>
-<li><a href="#消消乐贪心">消消乐贪心</a></li>
-<li><a href="#贪心集合划分">贪心集合划分</a></li>
-</ul>
-</li>
-<li><a href="#贡献法">贡献法</a></li>
-<li><a href="#计算几何">计算几何</a><ul>
-<li><a href="#旋转与向量">旋转与向量</a></li>
-<li><a href="#距离">距离</a><ul>
-<li><a href="#曼哈顿距离转切比雪夫">曼哈顿距离转切比雪夫</a></li>
-<li><a href="#切比雪夫转曼哈顿距离">切比雪夫转曼哈顿距离</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#杂项问题">杂项问题</a></li>
-</ul>
-</div>
 <h2 id="前言">前言<a class="headerlink" href="#前言" title="页面定位">&para;</a></h2>
 <p>此模板包含 Python 常用代码模板、示例，以及经典问题的题解和链接。</p>
 <p>有不严谨和错误的地方还望评论区斧正。</p>
@@ -11284,7 +11034,7 @@ z [i] = len(LCP(s, s [i:]))
 </span><span id="__span-52-18"><a id="__codelineno-52-18" name="__codelineno-52-18"></a>        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <h2 id="搜索--dfs--bfs">搜索 / DFS / BFS<a class="headerlink" href="#搜索--dfs--bfs" title="页面定位">&para;</a></h2>
-<h3 id="枚举dfs">枚举DFS<a class="headerlink" href="#枚举dfs" title="页面定位">&para;</a></h3>
+<h3 id="枚举-dfs">枚举 DFS<a class="headerlink" href="#枚举-dfs" title="页面定位">&para;</a></h3>
 <p><a href="https://www.lanqiao.cn/problems/2193/learning/?page=1&amp;first_category_id=1&amp;tags=DFS,国赛&amp;tag_relation=intersection&amp;difficulty=20">5.最大数字 - 蓝桥云课 (lanqiao.cn)</a></p>
 <p><strong>思路</strong></p>
 <ul>
@@ -11294,10 +11044,10 @@ z [i] = len(LCP(s, s [i:]))
 <li>
 <p>对每一位数字，只会用一种操作。</p>
 </li>
-<li>记 <span class="arithmatex">\(dfs(i, n, a, b)\)</span>表示当前考虑到第 <span class="arithmatex">\(i\)</span>位，剩下 <span class="arithmatex">\(a\)</span>次操作1和 <span class="arithmatex">\(b\)</span>次操作2情况下，当前获得的最大数为 <span class="arithmatex">\(n\)</span> </li>
-<li>对于操作1，考虑 <span class="arithmatex">\(d=min(9-x,a)\)</span>，即当前能够执行操作1的次数</li>
+<li>记 <span class="arithmatex">\(dfs(i, n, a, b)\)</span> 表示当前考虑到第 <span class="arithmatex">\(i\)</span> 位，剩下 <span class="arithmatex">\(a\)</span> 次操作 1 和 <span class="arithmatex">\(b\)</span> 次操作 2 情况下，当前获得的最大数为 <span class="arithmatex">\(n\)</span> </li>
+<li>对于操作 1，考虑 <span class="arithmatex">\(d=min(9-x,a)\)</span>，即当前能够执行操作 1 的次数</li>
 <li>则 <span class="arithmatex">\(n ← n \times 10 + (x + d)\)</span>，$a ← a - d $</li>
-<li>对于操作2，考虑 <span class="arithmatex">\(b\)</span> 是否大于等于 <span class="arithmatex">\(x + 1\)</span>，是则可以得到9，且 <span class="arithmatex">\(b ← b - (x + 1)\)</span></li>
+<li>对于操作 2，考虑 <span class="arithmatex">\(b\)</span> 是否大于等于 <span class="arithmatex">\(x + 1\)</span>，是则可以得到 9，且 <span class="arithmatex">\(b ← b - (x + 1)\)</span></li>
 </ul>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-53-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-53-2"> 2</a></span>
@@ -11333,7 +11083,7 @@ z [i] = len(LCP(s, s [i:]))
 </span><span id="__span-53-16"><a id="__codelineno-53-16" name="__codelineno-53-16"></a><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
 </span><span id="__span-53-17"><a id="__codelineno-53-17" name="__codelineno-53-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="图上dfs">图上DFS<a class="headerlink" href="#图上dfs" title="页面定位">&para;</a></h3>
+<h3 id="图上-dfs">图上 DFS<a class="headerlink" href="#图上-dfs" title="页面定位">&para;</a></h3>
 <p><a href="https://www.lanqiao.cn/problems/182/learning/?page=1&amp;first_category_id=1&amp;tags=省赛,DFS&amp;tag_relation=intersection&amp;difficulty=20">1.小朋友崇拜圈 - 蓝桥云课 (lanqiao.cn)</a></p>
 <p><strong>语言整理</strong></p>
 <p>一个有向图，每个节点 <span class="arithmatex">\(u\)</span> 有且仅有一条出边 <span class="arithmatex">\(u→v\)</span>。给定 <span class="arithmatex">\(g\)</span> 数组，<span class="arithmatex">\(g[u]=v\)</span> 表示这条出边。</p>
@@ -11390,7 +11140,7 @@ z [i] = len(LCP(s, s [i:]))
 <span class="normal"><a href="#__codelineno-55-16">16</a></span>
 <span class="normal"><a href="#__codelineno-55-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 </span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2"></a><span class="nb">input</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3"></a><span class="n">sys</span><span class="o">.</span><span class="n">setrecursionlimit</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>  <span class="c1"># 增加递归深度至少大于n，因为 python 默认为 1000</span>
+</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3"></a><span class="n">sys</span><span class="o">.</span><span class="n">setrecursionlimit</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>  <span class="c1"># 增加递归深度至少大于 n，因为 python 默认为 1000</span>
 </span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4"></a><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 </span><span id="__span-55-5"><a id="__codelineno-55-5" name="__codelineno-55-5"></a><span class="n">g</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
 </span><span id="__span-55-6"><a id="__codelineno-55-6" name="__codelineno-55-6"></a><span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
@@ -11407,14 +11157,14 @@ z [i] = len(LCP(s, s [i:]))
 </span><span id="__span-55-17"><a id="__codelineno-55-17" name="__codelineno-55-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="模拟-bfs">模拟 BFS<a class="headerlink" href="#模拟-bfs" title="页面定位">&para;</a></h3>
-<p><strong>网格图模拟BFS</strong></p>
+<p><strong>网格图模拟 BFS</strong></p>
 <ul>
 <li>是给定一个二维网格，以及一些初始位置，并说明初始位置的蔓延条件。</li>
 <li>通过队列 <span class="arithmatex">\(q\)</span> 存储位置。初始值即为初始位置</li>
 <li>每次考虑当前位置 <span class="arithmatex">\((x,y)\)</span> 的四周，尝试蔓延</li>
 </ul>
 <p><a class="glightbox" href="https://assets.leetcode.com/uploads/2021/05/01/maxarea1-grid.jpg" data-type="image" data-width="auto" data-height="auto" data-title="img" data-desc-position="bottom"><img alt="img" src="https://assets.leetcode.com/uploads/2021/05/01/maxarea1-grid.jpg" /></a></p>
-<p>网格图BFS模板。</p>
+<p>网格图 BFS 模板。</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-56-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-56-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-56-3"> 3</a></span>
@@ -11426,7 +11176,7 @@ z [i] = len(LCP(s, s [i:]))
 <span class="normal"><a href="#__codelineno-56-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-56-10">10</a></span>
 <span class="normal"><a href="#__codelineno-56-11">11</a></span>
-<span class="normal"><a href="#__codelineno-56-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1"></a><span class="c1"># 设置q的初始值，如 q.append(...)</span>
+<span class="normal"><a href="#__codelineno-56-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1"></a><span class="c1"># 设置 q 的初始值，如 q.append(...)</span>
 </span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2"></a><span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span> <span class="c1"># 或者 q = deque() 之后，q.append((3, 4))</span>
 </span><span id="__span-56-3"><a id="__codelineno-56-3" name="__codelineno-56-3"></a><span class="n">g</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 标记访问过</span>
 </span><span id="__span-56-4"><a id="__codelineno-56-4" name="__codelineno-56-4"></a><span class="n">di</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
@@ -11442,10 +11192,10 @@ z [i] = len(LCP(s, s [i:]))
 <p><a href="https://leetcode.cn/problems/max-area-of-island/description/">695. 岛屿的最大面积 - 力扣（LeetCode）</a></p>
 <p><strong>思路</strong></p>
 <ul>
-<li>枚举每个连通的岛屿，通过将访问过的位置设置为0，即 <span class="arithmatex">\(grid[i][j] = 0\)</span> 进行记录</li>
+<li>枚举每个连通的岛屿，通过将访问过的位置设置为 0，即 <span class="arithmatex">\(grid[i][j] = 0\)</span> 进行记录</li>
 <li>每个岛屿的“登陆点”即为 <span class="arithmatex">\(q\)</span> 的初始内容</li>
 <li>每次将 <span class="arithmatex">\(q\)</span> 的队首弹出，考虑其上下左右是否有陆地，是则加入到队尾，并且标记访问过，更新岛屿面积</li>
-<li>重复操作，直到 <span class="arithmatex">\(q\)</span>为空。</li>
+<li>重复操作，直到 <span class="arithmatex">\(q\)</span> 为空。</li>
 </ul>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-57-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-57-2"> 2</a></span>
@@ -11479,7 +11229,7 @@ z [i] = len(LCP(s, s [i:]))
 </span><span id="__span-57-7"><a id="__codelineno-57-7" name="__codelineno-57-7"></a>        <span class="k">def</span><span class="w"> </span><span class="nf">bfs</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>  <span class="c1"># 考虑登陆点为 (i, j)的岛屿</span>
 </span><span id="__span-57-8"><a id="__codelineno-57-8" name="__codelineno-57-8"></a>            <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span id="__span-57-9"><a id="__codelineno-57-9" name="__codelineno-57-9"></a>            <span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)])</span> 
-</span><span id="__span-57-10"><a id="__codelineno-57-10" name="__codelineno-57-10"></a>            <span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 登陆点设置为0，表示已经访问过</span>
+</span><span id="__span-57-10"><a id="__codelineno-57-10" name="__codelineno-57-10"></a>            <span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 登陆点设置为 0，表示已经访问过</span>
 </span><span id="__span-57-11"><a id="__codelineno-57-11" name="__codelineno-57-11"></a>            <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
 </span><span id="__span-57-12"><a id="__codelineno-57-12" name="__codelineno-57-12"></a>                <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span> <span class="c1"># 弹出队首</span>
 </span><span id="__span-57-13"><a id="__codelineno-57-13" name="__codelineno-57-13"></a>                <span class="k">for</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="ow">in</span> <span class="n">di</span><span class="p">:</span>   <span class="c1"># 遍历四个方向，考虑是否有陆地</span>
@@ -11639,8 +11389,8 @@ z [i] = len(LCP(s, s [i:]))
 <blockquote>
 <p>无特殊说明，均为整数。</p>
 </blockquote>
-<p>二分查找基本模型：给定一个单调不减的数组 <span class="arithmatex">\(a\)</span>, 返回恰好严格<strong>大于</strong> <span class="arithmatex">\(x\)</span> 的下标位置。</p>
-<p>​                                   给定一个单调不减的数组 <span class="arithmatex">\(a\)</span>, 返回第一个严格<strong>大于</strong> <span class="arithmatex">\(x\)</span> 的下标位置。</p>
+<p>二分查找基本模型：给定一个单调不减的数组 <span class="arithmatex">\(a\)</span>, 返回恰好严格 <strong>大于</strong> <span class="arithmatex">\(x\)</span> 的下标位置。</p>
+<p>​                                   给定一个单调不减的数组 <span class="arithmatex">\(a\)</span>, 返回第一个严格 <strong>大于</strong> <span class="arithmatex">\(x\)</span> 的下标位置。</p>
 <p>​                                   给定一个单调不减的数组 <span class="arithmatex">\(a\)</span>, 返回恰好 <span class="arithmatex">\(a[i] &gt; x\)</span>  的下标位置 <span class="arithmatex">\(i\)</span> 。                                   </p>
 <p>记为 <span class="arithmatex">\(bisect(a, x)\)</span></p>
 <blockquote>
@@ -11651,61 +11401,61 @@ z [i] = len(LCP(s, s [i:]))
 <p><span class="arithmatex">\(bisect(a, 9)\)</span> = 4</p>
 <p><span class="arithmatex">\(bisect(a, 7000)\)</span> = 6</p>
 </blockquote>
-<p>二分查找变形：给定一个单调不减的数组 <span class="arithmatex">\(a\)</span>, 返回恰好<strong>大于等于</strong> <span class="arithmatex">\(x\)</span> 的下标位置</p>
-<p>​                                                              等价为返回恰好<strong>大于</strong> <span class="arithmatex">\(x-1\)</span> 的下标位置</p>
+<p>二分查找变形：给定一个单调不减的数组 <span class="arithmatex">\(a\)</span>, 返回恰好 <strong>大于等于</strong> <span class="arithmatex">\(x\)</span> 的下标位置</p>
+<p>​                                                              等价为返回恰好 <strong>大于</strong> <span class="arithmatex">\(x-1\)</span> 的下标位置</p>
 <p>即 <span class="arithmatex">\(bisect(a, x - 1)\)</span></p>
 <blockquote>
 <p>a = [1, 9, 9, 9, 200, 500]</p>
 <ul>
 <li>
-<p>恰好大于等于9的位置</p>
+<p>恰好大于等于 9 的位置</p>
 <p><span class="arithmatex">\(bisect(a, 9 -1)\)</span> = 1</p>
 </li>
 <li>
-<p>恰好大于等于200的位置</p>
+<p>恰好大于等于 200 的位置</p>
 <p><span class="arithmatex">\(bisect(a, 200 - 1)\)</span> = 4</p>
 </li>
 </ul>
 </blockquote>
-<p>二分查找变形1：给定一个单调不减的数组 <span class="arithmatex">\(a\)</span> ，返回恰好<strong>小于等于</strong> <span class="arithmatex">\(x\)</span> 的下标位置</p>
-<p>​                                                                    等价为返回恰好大于<span class="arithmatex">\(x\)</span> 的下标位置 <span class="arithmatex">\(-1\)</span> </p>
+<p>二分查找变形 1：给定一个单调不减的数组 <span class="arithmatex">\(a\)</span> ，返回恰好 <strong>小于等于</strong> <span class="arithmatex">\(x\)</span> 的下标位置</p>
+<p>​                                                                    等价为返回恰好大于 <span class="arithmatex">\(x\)</span> 的下标位置 <span class="arithmatex">\(-1\)</span> </p>
 <p>即 <span class="arithmatex">\(bisect(a, x) - 1\)</span></p>
 <blockquote>
 <p>a = [1, 9, 9, 9, 200, 500]</p>
 <ul>
 <li>
-<p>恰好小于等于9的位置</p>
+<p>恰好小于等于 9 的位置</p>
 <p><span class="arithmatex">\(bisect(a, 9) - 1\)</span> = 3</p>
 </li>
 <li>
-<p>恰好小于等于500的位置</p>
+<p>恰好小于等于 500 的位置</p>
 <p><span class="arithmatex">\(bisect(a, 500 )\)</span> = 5</p>
 </li>
 </ul>
 </blockquote>
-<p>二分查找变形2：给定一个<strong>单调不增</strong>的数组 <span class="arithmatex">\(a\)</span>, 返回恰好<strong>小于</strong> <span class="arithmatex">\(x\)</span> 的下标位置</p>
+<p>二分查找变形 2：给定一个 <strong>单调不增</strong> 的数组 <span class="arithmatex">\(a\)</span>, 返回恰好 <strong>小于</strong> <span class="arithmatex">\(x\)</span> 的下标位置</p>
 <p>处理方法：<span class="arithmatex">\(a' = [-x \text{ for } x \text{ in }a]\)</span></p>
-<p>​               等价于<span class="arithmatex">\(bisect(a', -x)\)</span></p>
+<p>​               等价于 <span class="arithmatex">\(bisect(a', -x)\)</span></p>
 <blockquote>
 <p>也可以用逆序做，更推荐用相反数做；</p>
 <p><span class="arithmatex">\(a = [500, 200, 9, 9, 9, 1]\)</span></p>
 <p><span class="arithmatex">\(a' = [-500, -200, -9, -9, -9, -1]\)</span></p>
 <ul>
 <li>
-<p>原数组中恰好小于9 的位置</p>
+<p>原数组中恰好小于 9 的位置</p>
 <p><span class="arithmatex">\(bisect(a', -9)\)</span> = 5</p>
 </li>
 </ul>
 </blockquote>
-<h3 id="bisect库二分">bisect库二分<a class="headerlink" href="#bisect库二分" title="页面定位">&para;</a></h3>
+<h3 id="bisect-库二分">bisect 库二分<a class="headerlink" href="#bisect-库二分" title="页面定位">&para;</a></h3>
 <p><code>bisect(a, x, lo = 0, hi = len(nums))</code></p>
 <ul>
 <li>给定一个单调不减的数组 <span class="arithmatex">\(a\)</span>, 在其 <span class="arithmatex">\([lo, hi]\)</span> 区间中, 返回第一个严格大于 <span class="arithmatex">\(x\)</span> 的下标位置</li>
 <li>时间复杂度 <span class="arithmatex">\(O( \log n)\)</span></li>
 </ul>
 <blockquote>
-<p>bisect.bisect 和 bisect.bisect_right 是完全相同且同时支持的函数，为了方便，我们不写bisect_right；</p>
-<p>同时为了防止混淆，我们也不提bisect_left，大家需要灵活学习如果用一个bisect实现所有变形；</p>
+<p>bisect.bisect 和 bisect.bisect_right 是完全相同且同时支持的函数，为了方便，我们不写 bisect_right；</p>
+<p>同时为了防止混淆，我们也不提 bisect_left，大家需要灵活学习如果用一个 bisect 实现所有变形；</p>
 </blockquote>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-65-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-65-2"> 2</a></span>
@@ -11739,23 +11489,23 @@ z [i] = len(LCP(s, s [i:]))
 </span><span id="__span-65-7"><a id="__codelineno-65-7" name="__codelineno-65-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># 输出: 1 (第一个大于 3 的索引)</span>
 </span><span id="__span-65-8"><a id="__codelineno-65-8" name="__codelineno-65-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># 输出: 1 (第一个大于 1 的索引)</span>
 </span><span id="__span-65-9"><a id="__codelineno-65-9" name="__codelineno-65-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="o">-</span><span class="mi">99</span><span class="p">))</span>  <span class="c1"># 输出: 0 (第一个大于 -99 的索引)</span>
-</span><span id="__span-65-10"><a id="__codelineno-65-10" name="__codelineno-65-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> <span class="c1"># 输出: 4 (第一个大于9 的索引)</span>
-</span><span id="__span-65-11"><a id="__codelineno-65-11" name="__codelineno-65-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">7000</span><span class="p">))</span> <span class="c1"># 输出: 6 (第一个大于7000 的索引，此时等于数组长度)</span>
+</span><span id="__span-65-10"><a id="__codelineno-65-10" name="__codelineno-65-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> <span class="c1"># 输出: 4 (第一个大于 9 的索引)</span>
+</span><span id="__span-65-11"><a id="__codelineno-65-11" name="__codelineno-65-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">7000</span><span class="p">))</span> <span class="c1"># 输出: 6 (第一个大于 7000 的索引，此时等于数组长度)</span>
 </span><span id="__span-65-12"><a id="__codelineno-65-12" name="__codelineno-65-12"></a>
 </span><span id="__span-65-13"><a id="__codelineno-65-13" name="__codelineno-65-13"></a>
 </span><span id="__span-65-14"><a id="__codelineno-65-14" name="__codelineno-65-14"></a><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
-</span><span id="__span-65-15"><a id="__codelineno-65-15" name="__codelineno-65-15"></a><span class="c1"># 如果需要找第一个大于等于x的位置索引</span>
+</span><span id="__span-65-15"><a id="__codelineno-65-15" name="__codelineno-65-15"></a><span class="c1"># 如果需要找第一个大于等于 x 的位置索引</span>
 </span><span id="__span-65-16"><a id="__codelineno-65-16" name="__codelineno-65-16"></a><span class="c1"># bisect(nums, x - 1) ？</span>
 </span><span id="__span-65-17"><a id="__codelineno-65-17" name="__codelineno-65-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">9</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># 输出: 1 (第一个大于等于 9 的索引)</span>
 </span><span id="__span-65-18"><a id="__codelineno-65-18" name="__codelineno-65-18"></a><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">200</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># 输出: 4 (第一个大于等于 200 的索引)</span>
 </span><span id="__span-65-19"><a id="__codelineno-65-19" name="__codelineno-65-19"></a>
-</span><span id="__span-65-20"><a id="__codelineno-65-20" name="__codelineno-65-20"></a><span class="c1"># 逆序数组，找到第一个小于x的位置索引</span>
+</span><span id="__span-65-20"><a id="__codelineno-65-20" name="__codelineno-65-20"></a><span class="c1"># 逆序数组，找到第一个小于 x 的位置索引</span>
 </span><span id="__span-65-21"><a id="__codelineno-65-21" name="__codelineno-65-21"></a><span class="c1">#      0     1   2  3  4  5</span>
 </span><span id="__span-65-22"><a id="__codelineno-65-22" name="__codelineno-65-22"></a><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </span><span id="__span-65-23"><a id="__codelineno-65-23" name="__codelineno-65-23"></a><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">]</span>
 </span><span id="__span-65-24"><a id="__codelineno-65-24" name="__codelineno-65-24"></a><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">))</span>  <span class="c1"># 输出: 5 (第一个小于 9 的位置索引)</span>
 </span></code></pre></div></td></tr></table></div>
-<p><a href="https://www.luogu.com.cn/problem/P2249">P2249 【深基13.例1】查找 - 洛谷 (luogu.com.cn)</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P2249">P2249 【深基 13.例 1】查找 - 洛谷 (luogu.com.cn)</a></p>
 <p><strong>题目描述</strong></p>
 <p>输入 <span class="arithmatex">\(n\)</span> 个不超过 <span class="arithmatex">\(10^9\)</span> 的单调不减的非负整数 <span class="arithmatex">\(a_1,a_2,\dots,a_{n}\)</span>，然后进行 <span class="arithmatex">\(m\)</span> 次询问。对于每次询问，给出一个整数 <span class="arithmatex">\(q\)</span>，要求输出这个数字在序列中第一次出现的编号，如果没有找到的话输出 <span class="arithmatex">\(-1\)</span> 。</p>
 <p><strong>输入格式</strong></p>
@@ -11796,17 +11546,17 @@ z [i] = len(LCP(s, s [i:]))
 </span><span id="__span-68-5"><a id="__codelineno-68-5" name="__codelineno-68-5"></a><span class="n">nums</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
 </span><span id="__span-68-6"><a id="__codelineno-68-6" name="__codelineno-68-6"></a><span class="n">Q</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
 </span><span id="__span-68-7"><a id="__codelineno-68-7" name="__codelineno-68-7"></a>
-</span><span id="__span-68-8"><a id="__codelineno-68-8" name="__codelineno-68-8"></a><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="c1"># nums构成的集合，如果待查询数组q not in s，直接返回-1</span>
+</span><span id="__span-68-8"><a id="__codelineno-68-8" name="__codelineno-68-8"></a><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="c1"># nums 构成的集合，如果待查询数组 q not in s，直接返回-1</span>
 </span><span id="__span-68-9"><a id="__codelineno-68-9" name="__codelineno-68-9"></a><span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">Q</span><span class="p">:</span>
 </span><span id="__span-68-10"><a id="__codelineno-68-10" name="__codelineno-68-10"></a>    <span class="k">if</span> <span class="n">q</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
-</span><span id="__span-68-11"><a id="__codelineno-68-11" name="__codelineno-68-11"></a>    <span class="k">else</span><span class="p">:</span> <span class="c1"># q 一定出现在nums中, 利用技巧将“大于等于x”转化成“大于x-1”</span>
+</span><span id="__span-68-11"><a id="__codelineno-68-11" name="__codelineno-68-11"></a>    <span class="k">else</span><span class="p">:</span> <span class="c1"># q 一定出现在 nums 中, 利用技巧将“大于等于 x”转化成“大于 x-1”</span>
 </span><span id="__span-68-12"><a id="__codelineno-68-12" name="__codelineno-68-12"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">q</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <p><a href="https://leetcode.cn/problems/count-the-number-of-fair-pairs/description/">2563. 统计公平数对的数目 - 力扣（LeetCode）</a> 同 <a href="https://codeforces.com/problemset/problem/1538/C">Problem - 1538C - Codeforces</a></p>
 <ul>
 <li>由于求符合条件的数对个数，与顺序无关，先排序</li>
 <li>对 $  \text{lower} \le x + y \le \text{upper}$，变形为 $  \text{lower} - x \le  y \le \text{upper} - x$</li>
-<li>即对一个 <span class="arithmatex">\(x\)</span>， 区间<span class="arithmatex">\([i + 1, n)\)</span> 中有多少个数出现在 区间 <span class="arithmatex">\([\text{lower} - x, \text{upper} - x]\)</span> </li>
+<li>即对一个 <span class="arithmatex">\(x\)</span>， 区间 <span class="arithmatex">\([i + 1, n)\)</span> 中有多少个数出现在 区间 <span class="arithmatex">\([\text{lower} - x, \text{upper} - x]\)</span> </li>
 <li>即求 <span class="arithmatex">\(L = bisect(a, \text[lower] - x - 1)\)</span>，<span class="arithmatex">\(R = bisect(a, \text{upper} - x) - 1\)</span></li>
 <li>答案等于 <span class="arithmatex">\(R-L + 1\)</span></li>
 </ul>
@@ -11831,19 +11581,19 @@ z [i] = len(LCP(s, s [i:]))
 </span><span id="__span-69-10"><a id="__codelineno-69-10" name="__codelineno-69-10"></a>        <span class="k">return</span> <span class="n">res</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="朴素二分">朴素二分<a class="headerlink" href="#朴素二分" title="页面定位">&para;</a></h3>
-<p>内置 <span class="arithmatex">\(bisect\)</span> 固然好用，当条件从 "恰好 <span class="arithmatex">\(a[i] &gt; x\)</span> 的下标位置 <span class="arithmatex">\(i\)</span> "变成更通用的：</p>
+<p>内置 <span class="arithmatex">\(bisect\)</span> 固然好用，当条件从 "恰好 <span class="arithmatex">\(a[i] &gt; x\)</span> 的下标位置 <span class="arithmatex">\(i\)</span> " 变成更通用的：</p>
 <ul>
-<li>给定一个单调不减的数组 <span class="arithmatex">\(a\)</span>, 和关于 <span class="arithmatex">\(a[i]\)</span>单调不减函数 <span class="arithmatex">\(check\)</span>， 返回恰好有 <span class="arithmatex">\(check(a[i]) &gt; x\)</span> 的下标位置 <span class="arithmatex">\(i\)</span></li>
-<li>例如，<span class="arithmatex">\(check(a[i]) = {(a[i])} ^ 3 + 2 \cdot a[i] + 1\)</span> 希望找到一个位置 <span class="arithmatex">\(i\)</span>，恰好<span class="arithmatex">\(check(a[i]) &gt; x\)</span>；</li>
+<li>给定一个单调不减的数组 <span class="arithmatex">\(a\)</span>, 和关于 <span class="arithmatex">\(a[i]\)</span> 单调不减函数 <span class="arithmatex">\(check\)</span>， 返回恰好有 <span class="arithmatex">\(check(a[i]) &gt; x\)</span> 的下标位置 <span class="arithmatex">\(i\)</span></li>
+<li>例如，<span class="arithmatex">\(check(a[i]) = {(a[i])} ^ 3 + 2 \cdot a[i] + 1\)</span> 希望找到一个位置 <span class="arithmatex">\(i\)</span>，恰好 <span class="arithmatex">\(check(a[i]) &gt; x\)</span>；</li>
 </ul>
 <blockquote>
 <p>可以发现，前文提及的数学模型，对应的 <span class="arithmatex">\(check(a[i])\)</span> 即 <span class="arithmatex">\(a[i]\)</span>，是通用表述下的一个特例；</p>
 </blockquote>
-<p>在python3.8版本不支持 bisect传递比较规则，即无法传递 <span class="arithmatex">\(check\)</span> 函数，于是我们需要自己实现 bisect函数。</p>
+<p>在 python3.8 版本不支持 bisect 传递比较规则，即无法传递 <span class="arithmatex">\(check\)</span> 函数，于是我们需要自己实现 bisect 函数。</p>
 <p>基本模型实现思路：</p>
 <ul>
 <li>
-<p>对于区间 <span class="arithmatex">\([lo, hi]\)</span>上二分，将区间划分为左半部 <span class="arithmatex">\([lo, \frac{lo + hi}{2})\)</span>, 右半部 <span class="arithmatex">\([\frac{lo + hi}{2}, hi)\)</span>;</p>
+<p>对于区间 <span class="arithmatex">\([lo, hi]\)</span> 上二分，将区间划分为左半部 <span class="arithmatex">\([lo, \frac{lo + hi}{2})\)</span>, 右半部 <span class="arithmatex">\([\frac{lo + hi}{2}, hi)\)</span>;</p>
 </li>
 <li>
 <p>区间中点 <span class="arithmatex">\(i = \frac{lo + hi}{2}\)</span>, 考虑  <span class="arithmatex">\(a[i] &gt; x\)</span> 吗？</p>
@@ -11857,7 +11607,7 @@ z [i] = len(LCP(s, s [i:]))
 <li>
 <p>当 <span class="arithmatex">\(lo = hi\)</span> 结束，故 while 条件为 <span class="arithmatex">\(lo &lt; hi\)</span></p>
 <blockquote>
-<p>不会出现 $lo &gt; hi $的情况</p>
+<p>不会出现 $lo &gt; hi $ 的情况</p>
 </blockquote>
 </li>
 </ul>
@@ -11915,7 +11665,7 @@ z [i] = len(LCP(s, s [i:]))
 <span class="normal"><a href="#__codelineno-71-12">12</a></span>
 <span class="normal"><a href="#__codelineno-71-13">13</a></span>
 <span class="normal"><a href="#__codelineno-71-14">14</a></span>
-<span class="normal"><a href="#__codelineno-71-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1"></a><span class="c1"># 【朴素二分】实现 bisect，支持传递check函数</span>
+<span class="normal"><a href="#__codelineno-71-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1"></a><span class="c1"># 【朴素二分】实现 bisect，支持传递 check 函数</span>
 </span><span id="__span-71-2"><a id="__codelineno-71-2" name="__codelineno-71-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">bisect</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">check</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">y</span><span class="p">):</span>
 </span><span id="__span-71-3"><a id="__codelineno-71-3" name="__codelineno-71-3"></a>    <span class="k">if</span> <span class="n">hi</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">hi</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </span><span id="__span-71-4"><a id="__codelineno-71-4" name="__codelineno-71-4"></a>    <span class="k">while</span> <span class="n">lo</span> <span class="o">&lt;</span> <span class="n">hi</span><span class="p">:</span>
@@ -11927,7 +11677,7 @@ z [i] = len(LCP(s, s [i:]))
 </span><span id="__span-71-10"><a id="__codelineno-71-10" name="__codelineno-71-10"></a>    <span class="k">return</span> <span class="n">lo</span>
 </span><span id="__span-71-11"><a id="__codelineno-71-11" name="__codelineno-71-11"></a><span class="c1"># 示例用法</span>
 </span><span id="__span-71-12"><a id="__codelineno-71-12" name="__codelineno-71-12"></a><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
-</span><span id="__span-71-13"><a id="__codelineno-71-13" name="__codelineno-71-13"></a><span class="c1"># 找到 a[i] ** 3 + a[i] * 2 + 1 恰好大于x的位置</span>
+</span><span id="__span-71-13"><a id="__codelineno-71-13" name="__codelineno-71-13"></a><span class="c1"># 找到 a [i] ** 3 + a [i] * 2 + 1 恰好大于 x 的位置</span>
 </span><span id="__span-71-14"><a id="__codelineno-71-14" name="__codelineno-71-14"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">1000</span>
 </span><span id="__span-71-15"><a id="__codelineno-71-15" name="__codelineno-71-15"></a><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">check</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">#4</span>
 </span></code></pre></div></td></tr></table></div>
@@ -11943,9 +11693,9 @@ z [i] = len(LCP(s, s [i:]))
 <li>答案 <span class="arithmatex">\(res\)</span> 存在一个确定、连续区间 <span class="arithmatex">\([lo, hi]\)</span></li>
 <li>对确定的 <span class="arithmatex">\(res = i\)</span>，能够求出 <span class="arithmatex">\(check(i) =False \text{还是 }True\)</span>, 即是否满足条件 </li>
 </ul>
-<p><strong>基本模型</strong>：构造<strong>”False → True“ 模型</strong></p>
+<p><strong>基本模型</strong>：构造 <strong>”False → True“ 模型</strong></p>
 <ul>
-<li>答案具有单调增性，即 <span class="arithmatex">\(res\)</span> 是<span class="arithmatex">\(check(i)\)</span> 条件进行 <span class="arithmatex">\(False/True\)</span> 切换的临界点；</li>
+<li>答案具有单调增性，即 <span class="arithmatex">\(res\)</span> 是 <span class="arithmatex">\(check(i)\)</span> 条件进行 <span class="arithmatex">\(False/True\)</span> 切换的临界点；</li>
 </ul>
 <blockquote>
 <p>时间复杂度：<span class="arithmatex">\(O(check(n) \cdot \log(L))\)</span> , 其中 <span class="arithmatex">\(check(n)\)</span> 表示进行一次遍历检查的复杂度</p>
@@ -11986,7 +11736,7 @@ z [i] = len(LCP(s, s [i:]))
 </span><span id="__span-73-12"><a id="__codelineno-73-12" name="__codelineno-73-12"></a>
 </span><span id="__span-73-13"><a id="__codelineno-73-13" name="__codelineno-73-13"></a><span class="n">target</span> <span class="o">=</span> <span class="mi">99999</span>
 </span><span id="__span-73-14"><a id="__codelineno-73-14" name="__codelineno-73-14"></a><span class="n">res</span> <span class="o">=</span> <span class="n">bisect</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">18</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">target</span><span class="p">)</span>
-</span><span id="__span-73-15"><a id="__codelineno-73-15" name="__codelineno-73-15"></a><span class="c1"># 找到恰好 f(x) &gt; target的地方</span>
+</span><span id="__span-73-15"><a id="__codelineno-73-15" name="__codelineno-73-15"></a><span class="c1"># 找到恰好 f(x) &gt; target 的地方</span>
 </span><span id="__span-73-16"><a id="__codelineno-73-16" name="__codelineno-73-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>  <span class="c1"># 47</span>
 </span><span id="__span-73-17"><a id="__codelineno-73-17" name="__codelineno-73-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>  <span class="c1"># 103871</span>
 </span><span id="__span-73-18"><a id="__codelineno-73-18" name="__codelineno-73-18"></a><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">res</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># 97383</span>
@@ -12013,9 +11763,9 @@ z [i] = len(LCP(s, s [i:]))
 <p>拆开来看 <span class="arithmatex">\(v\)</span> 的上下界</p>
 </li>
 <li>
-<p>对于下界，<span class="arithmatex">\(check_1(v)\)</span> 表示恰好不存在 $ a// v &gt; b$，即全部满足 <span class="arithmatex">\(a // v \le b\)</span>，随着 <span class="arithmatex">\(v\)</span> 增大，从<strong>不满足 → 满足。</strong></p>
+<p>对于下界，<span class="arithmatex">\(check_1(v)\)</span> 表示恰好不存在 $ a// v &gt; b$，即全部满足 <span class="arithmatex">\(a // v \le b\)</span>，随着 <span class="arithmatex">\(v\)</span> 增大，从 <strong>不满足 → 满足。</strong></p>
 </li>
-<li>对于上界，<span class="arithmatex">\(check_2(v)\)</span> 表示恰好存在 $ a// v &lt; b$，随着 <span class="arithmatex">\(v\)</span> 增大，从<strong>不满足 → 满足。</strong>二分得到的是 <span class="arithmatex">\(M+ 1\)</span>，记得减去 1。</li>
+<li>对于上界，<span class="arithmatex">\(check_2(v)\)</span> 表示恰好存在 $ a// v &lt; b$，随着 <span class="arithmatex">\(v\)</span> 增大，从 <strong>不满足 → 满足。</strong> 二分得到的是 <span class="arithmatex">\(M+ 1\)</span>，记得减去 1。</li>
 </ul>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-74-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-74-2"> 2</a></span>
@@ -12127,14 +11877,14 @@ z [i] = len(LCP(s, s [i:]))
 <li><code>1 &lt;= k &lt;= 10 ** 12</code></li>
 </ul>
 <p><strong>语言整理</strong></p>
-<p>给定长度为 <span class="arithmatex">\(n\)</span> 一组数 <span class="arithmatex">\(\text{a}\)</span>，和  <span class="arithmatex">\(k\)</span> 个人。这组数任意拆分的小子堆，每个人一堆，求可以拿走的最大值 <span class="arithmatex">\(res\)</span> 。</p>
+<p>给定长度为 <span class="arithmatex">\(n\)</span> 一组数 <span class="arithmatex">\(a\)</span>，和 <span class="arithmatex">\(k\)</span> 个人。这组数任意拆分的小子堆，每个人一堆，求可以拿走的最大值 <span class="arithmatex">\(res\)</span> 。</p>
 <p><strong>思路</strong></p>
 <ul>
-<li>显然，答案有界，界于区间 <span class="arithmatex">\([0, \max(\text{a})]\)</span></li>
-<li>对 <span class="arithmatex">\(res\)</span> 上界，即 <span class="arithmatex">\(check\)</span> 表示恰好 <span class="arithmatex">\(\text {sum(x // res for x in range(1, max(a) + 1))} &lt; k\)</span> </li>
-<li>二分得到的结果 - 1 是答案</li>
+<li>显然，答案有界，界于区间 <span class="arithmatex">\([0, \max(a)]\)</span></li>
+<li>对 <span class="arithmatex">\(res\)</span> 上界，即 <span class="arithmatex">\(check\)</span> 表示恰好 <code>sum(x // res for x in range(1, max(a) + 1)) &lt; k</code></li>
+<li>二分得到的结果 <span class="arithmatex">\(-1\)</span> 是答案</li>
 </ul>
-<p>写法1</p>
+<p>写法 1</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-78-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-78-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-78-3"> 3</a></span>
@@ -12157,7 +11907,7 @@ z [i] = len(LCP(s, s [i:]))
 </span><span id="__span-78-10"><a id="__codelineno-78-10" name="__codelineno-78-10"></a>            <span class="k">else</span><span class="p">:</span> <span class="n">lo</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
 </span><span id="__span-78-11"><a id="__codelineno-78-11" name="__codelineno-78-11"></a>        <span class="k">return</span> <span class="n">lo</span> <span class="o">-</span> <span class="mi">1</span>
 </span></code></pre></div></td></tr></table></div>
-<p>写法2</p>
+<p>写法 2</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-79-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-79-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-79-3"> 3</a></span>
@@ -13633,8 +13383,8 @@ f [i][j] =\min\left\{\min_{k = j+1}^{j+g}f [i][k], ~\min_{k = i+1}^{i+g}f [k][j]
 <p><strong>问题定义</strong></p>
 <div class="arithmatex">\[
 \begin{aligned}
-&amp;对于长度为 n的数组a,给定q组区间[l,r], \\
-&amp;对每组区间[l,r]求 \sum_{i=l}^r{a[i]} = a[l] + a[l + 1] + \cdots+a[r],其中 l\le r
+&amp;对于长度为 n 的数组 a, 给定 q 组区间 [l, r], \\
+&amp;对每组区间 [l, r] 求 \sum_{i = l}^r{a [i]} = a [l] + a [l + 1] + \cdots+a [r], 其中 l\le r
 \end{aligned}
 \]</div>
 <p><strong>数据范围</strong></p>
@@ -13654,18 +13404,18 @@ f [i][j] =\min\left\{\min_{k = j+1}^{j+g}f [i][k], ~\min_{k = i+1}^{i+g}f [k][j]
 <p>预处理前缀和，可前缀和之差，以 <span class="arithmatex">\(O(1)\)</span> 完成单次区间求和；</p>
 </li>
 <li>
-<p>总复杂度为<span class="arithmatex">\(O(n)\)</span> 预处理 +  <span class="arithmatex">\(O(q)\)</span> 询问，即 <span class="arithmatex">\(O(q + n)\)</span>；</p>
+<p>总复杂度为 <span class="arithmatex">\(O(n)\)</span> 预处理 +  <span class="arithmatex">\(O(q)\)</span> 询问，即 <span class="arithmatex">\(O(q + n)\)</span>；</p>
 </li>
 </ul>
-<p><span class="arithmatex">\(\text{定义: }p[i] = \sum(a[:i]), \\\)</span></p>
+<p><span class="arithmatex">\(\text{定义: }p[i] = \sum(a[: i]), \\\)</span></p>
 <div class="arithmatex">\[
 \begin{aligned}
 则有:
-p[0] = \sum(a[:0]) &amp;= 0 \\
-p[1] = \sum(a[:1]) &amp;= a[0] \\ 
-p[n - 1] = \sum(a[: n - 1]) &amp;= a[0] + ... + a[n - 2] \\ 
-p[n] = \sum(a[:n]) &amp;= a[0] + ... + a[n - 2] + a[n - 1] = \sum(a) \\
-显然可以发现 p[n] - p[n-1] &amp;= a[n-1] \\
+p [0] = \sum(a [: 0]) &amp;= 0 \\
+p [1] = \sum(a [: 1]) &amp;= a [0] \\ 
+p [n - 1] = \sum(a [: n - 1]) &amp;= a [0] + ... + a [n - 2] \\ 
+p [n] = \sum(a [: n]) &amp;= a [0] + ... + a [n - 2] + a [n - 1] = \sum(a) \\
+显然可以发现 p [n] - p [n-1] &amp;= a [n-1] \\
 \end{aligned}
 \]</div>
 <p>即 <span class="arithmatex">\(p[n] = p[n - 1] + a[n-1],\)</span></p>
@@ -13677,7 +13427,7 @@ p[n] = \sum(a[:n]) &amp;= a[0] + ... + a[n - 2] + a[n - 1] = \sum(a) \\
 </span><span id="__span-122-2"><a id="__codelineno-122-2" name="__codelineno-122-2"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 </span><span id="__span-122-3"><a id="__codelineno-122-3" name="__codelineno-122-3"></a>    <span class="n">p</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 </span></code></pre></div></td></tr></table></div>
-<p><a href="https://www.luogu.com.cn/problem/P8218">P8218 【深进1.例1】求区间和 - 洛谷 (luogu.com.cn)</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P8218">P8218 【深进 1.例 1】求区间和 - 洛谷 (luogu.com.cn)</a></p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-123-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-123-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-123-3"> 3</a></span>
@@ -13702,16 +13452,16 @@ p[n] = \sum(a[:n]) &amp;= a[0] + ... + a[n - 2] + a[n - 1] = \sum(a) \\
 </span><span id="__span-123-5"><a id="__codelineno-123-5" name="__codelineno-123-5"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
 </span><span id="__span-123-6"><a id="__codelineno-123-6" name="__codelineno-123-6"></a><span class="n">q</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 </span><span id="__span-123-7"><a id="__codelineno-123-7" name="__codelineno-123-7"></a>
-</span><span id="__span-123-8"><a id="__codelineno-123-8" name="__codelineno-123-8"></a><span class="c1"># 前缀和模板, p[i] = sum(a[:i])</span>
+</span><span id="__span-123-8"><a id="__codelineno-123-8" name="__codelineno-123-8"></a><span class="c1"># 前缀和模板, p [i] = sum(a [: i])</span>
 </span><span id="__span-123-9"><a id="__codelineno-123-9" name="__codelineno-123-9"></a><span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </span><span id="__span-123-10"><a id="__codelineno-123-10" name="__codelineno-123-10"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 </span><span id="__span-123-11"><a id="__codelineno-123-11" name="__codelineno-123-11"></a>    <span class="n">p</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 </span><span id="__span-123-12"><a id="__codelineno-123-12" name="__codelineno-123-12"></a>
 </span><span id="__span-123-13"><a id="__codelineno-123-13" name="__codelineno-123-13"></a><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
 </span><span id="__span-123-14"><a id="__codelineno-123-14" name="__codelineno-123-14"></a>    <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-</span><span id="__span-123-15"><a id="__codelineno-123-15" name="__codelineno-123-15"></a>    <span class="c1"># l, r 下标从1开始，即求 a[l - 1] + a[l] + ... + a[r - 1]</span>
-</span><span id="__span-123-16"><a id="__codelineno-123-16" name="__codelineno-123-16"></a>    <span class="c1"># 即 sum(a[l - 1:r])</span>
-</span><span id="__span-123-17"><a id="__codelineno-123-17" name="__codelineno-123-17"></a>    <span class="c1"># 即 p[r] - p[l - 1]</span>
+</span><span id="__span-123-15"><a id="__codelineno-123-15" name="__codelineno-123-15"></a>    <span class="c1"># l, r 下标从 1 开始，即求 a [l - 1] + a [l] + ... + a [r - 1]</span>
+</span><span id="__span-123-16"><a id="__codelineno-123-16" name="__codelineno-123-16"></a>    <span class="c1"># 即 sum(a [l - 1: r])</span>
+</span><span id="__span-123-17"><a id="__codelineno-123-17" name="__codelineno-123-17"></a>    <span class="c1"># 即 p [r] - p [l - 1]</span>
 </span><span id="__span-123-18"><a id="__codelineno-123-18" name="__codelineno-123-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="一维差分">一维差分<a class="headerlink" href="#一维差分" title="页面定位">&para;</a></h3>
@@ -13889,18 +13639,18 @@ p[n] = \sum(a[:n]) &amp;= a[0] + ... + a[n - 2] + a[n - 1] = \sum(a) \\
 \]</div>
 <p>灵神恒等式*</p>
 <div class="arithmatex">\[
-\left\lfloor\frac{\lfloor n/p\rfloor}q\right\rfloor=\left\lfloor\frac n{pq}\right\rfloor
+\left\lfloor\frac{\lfloor n/p\rfloor}q\right\rfloor =\left\lfloor\frac n{pq}\right\rfloor
 \]</div>
 <p><a href="https://leetcode.cn/problems/minimum-number-of-days-to-eat-n-oranges/description/?envType=daily-question&amp;envId=2024-05-12">1553. 吃掉 N 个橘子的最少天数 - 力扣（LeetCode）</a></p>
 <p>实际上这个结论可以推广到任意个数，比如：</p>
 <div class="arithmatex">\[
-\left\lfloor\frac{\left\lfloor\frac{\left\lfloor\frac n{p_1}\right\rfloor}{p_2}\right\rfloor}{p_3}\right\rfloor=\left\lfloor\frac n{p_1\cdot p_2\cdot p_3}\right\rfloor
+\left\lfloor\frac{\left\lfloor\frac{\left\lfloor\frac n{p_1}\right\rfloor}{p_2}\right\rfloor}{p_3}\right\rfloor =\left\lfloor\frac n{p_1\cdot p_2\cdot p_3}\right\rfloor
 \]</div>
 <p><a href="https://hydro.ac/d/nnu_contest/p/LC2">题目详情 - 数字游戏 - HydroOJ</a></p>
-<p><strong>不等式</strong>
-$$
+<p><strong>不等式</strong></p>
+<div class="arithmatex">\[
 x-1 &lt;\lfloor x\rfloor\leqslant x\leqslant\lceil x\rceil &lt; x+1
-$$</p>
+\]</div>
 <p><strong>取余性质</strong></p>
 <div class="arithmatex">\[
 n \mod m = n - m \cdot \left\lfloor \frac{n}{m}\right\rfloor
@@ -14085,9 +13835,16 @@ n \mod m = n - m \cdot \left\lfloor \frac{n}{m}\right\rfloor
 <p>例如：<span class="arithmatex">\((9!)_{10}=(720)_{10}=(880)_{9} = 8 \times 9^2 + 8 \times 9^1+0\times 1=3^4\times 2^3+2^3 \times 3^2=3^2\times 2^4\times 5\)</span>；</p>
 <p><span class="arithmatex">\(5!=(120)_{10}=1111000_{2}=2^3\times 3^1\times5^1\)</span>。</p>
 </blockquote>
-<p><span class="arithmatex">\(x\)</span> 在 <span class="arithmatex">\(b\)</span> 进制下的表示是 <span class="arithmatex">\(x = \sum d_i b^{i}\)</span>，最低非 0 位 <span class="arithmatex">\(k\)</span> 对应 <span class="arithmatex">\(d_k\times b^k\)</span>, 一定能将 <span class="arithmatex">\(x\)</span> 表示成 <span class="arithmatex">\(b^k \times (\sum d_i\times b^{i-k})\)</span>，实际上由于 <span class="arithmatex">\(x\)</span> 可以表示成标准分解式 <span class="arithmatex">\(x=p_0^{k_0} \times p_1^{k_1}\cdots\)</span>，将 <span class="arithmatex">\(b\)</span> 分解成 <span class="arithmatex">\(p_0^{k'_0} \times \cdots\)</span>，将 <span class="arithmatex">\(b\)</span> 代入 <span class="arithmatex">\(n!\)</span> 的标准分解式，</p>
-<p>得，$ n! = p_0^{k_0} \times p_1^{k_1}\cdots=b^k \times (\sum d_i \times b^{i-k})=(p_0 ^{k^{'}<em 0="0">0} \times p_1 ^{k^{'}_1} \times...)^k \times (\sum d_i \times b^{i-k}) = (p_0 ^{k^{'}</em>)$} \cdot k } \times p_1 ^{k^{'}_{1} \cdot k} \times...) \times (\sum d_i \times b^{i-k</p>
-<p>即， $p_0^{k_0} \times p_1^{k_1}\cdots = (p_0 ^{k^{'}<em 1="1">{0} \cdot k } \times p_1 ^{k^{'}</em>) $} \cdot k} \times...) \times (\sum d_i \times b^{i-k</p>
+<p><span class="arithmatex">\(x\)</span> 在 <span class="arithmatex">\(b\)</span> 进制下的表示是 <span class="arithmatex">\(x = \sum d_i b^{i}\)</span>，最低非 0 位 <span class="arithmatex">\(k\)</span> 对应 <span class="arithmatex">\(d_k\times b^k\)</span>, 一定能将 <span class="arithmatex">\(x\)</span> 表示成 <span class="arithmatex">\(b^k \times (\sum d_i\times b^{i-k})\)</span>，实际上由于 <span class="arithmatex">\(x\)</span> 可以表示成标准分解式 <span class="arithmatex">\(x=p_0^{k_0} \times p_1^{k_1}\cdots\)</span>，将 <span class="arithmatex">\(b\)</span> 分解成 <span class="arithmatex">\(p_0^{k'_0} \times \cdots\)</span>，将 <span class="arithmatex">\(b\)</span> 代入 <span class="arithmatex">\(n!\)</span> 的标准分解式，得：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+n! &amp;= p_0^{k_0} \times p_1^{k_1}\cdots\\
+&amp;=b^k \times (\sum d_i \times b^{i-k})\\
+&amp;=(p_0 ^{k^{'}_0} \times p_1 ^{k^{'}_1} \times...)^k \times (\sum d_i \times b^{i-k}) \\
+&amp;= (p_0 ^{k^{'}_{0} \cdot k } \times p_1 ^{k^{'}_{1} \cdot k} \times...) \times (\sum d_i \times b^{i-k})
+\end{aligned}
+\]</div>
+<p>即， <span class="arithmatex">\(p_0^{k_0} \times p_1^{k_1}\cdots = (p_0 ^{k^{'}_{0} \cdot k } \times p_1 ^{k^{'}_{1} \cdot k} \times...) \times (\sum d_i \times b^{i-k})\)</span></p>
 <p>由于 <span class="arithmatex">\(k_i = k^{'}_{i} \cdot k\)</span>，由于 <span class="arithmatex">\(k\)</span> 是最低位，应取 <span class="arithmatex">\(k\)</span> 等于 <span class="arithmatex">\(\min \frac{k_i}{k_i'}\)</span>。转换为：<span class="arithmatex">\(k_i\)</span> 为 <span class="arithmatex">\(b\)</span> 的质因子在 <span class="arithmatex">\(n!\)</span> 中出现的次数。</p>
 <p><a href="https://codeforces.com/contest/1114/problem/C">Problem - C - Codeforces</a></p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-136-1"> 1</a></span>
@@ -14143,7 +13900,7 @@ n \mod m = n - m \cdot \left\lfloor \frac{n}{m}\right\rfloor
 </span><span id="__span-136-22"><a id="__codelineno-136-22" name="__codelineno-136-22"></a>    <span class="k">return</span> <span class="n">res</span>
 </span><span id="__span-136-23"><a id="__codelineno-136-23" name="__codelineno-136-23"></a><span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">():</span>
 </span><span id="__span-136-24"><a id="__codelineno-136-24" name="__codelineno-136-24"></a>    <span class="n">n</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-</span><span id="__span-136-25"><a id="__codelineno-136-25" name="__codelineno-136-25"></a>    <span class="n">pf</span> <span class="o">=</span> <span class="n">breakdown</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 对b进行质因子分解</span>
+</span><span id="__span-136-25"><a id="__codelineno-136-25" name="__codelineno-136-25"></a>    <span class="n">pf</span> <span class="o">=</span> <span class="n">breakdown</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># 对 b 进行质因子分解</span>
 </span><span id="__span-136-26"><a id="__codelineno-136-26" name="__codelineno-136-26"></a>    <span class="n">res</span> <span class="o">=</span> <span class="n">inf</span>
 </span><span id="__span-136-27"><a id="__codelineno-136-27" name="__codelineno-136-27"></a>    <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">pf</span><span class="p">:</span>
 </span><span id="__span-136-28"><a id="__codelineno-136-28" name="__codelineno-136-28"></a>        <span class="n">res</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">fpf</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="o">//</span> <span class="n">c</span><span class="p">)</span>
@@ -17693,7 +17450,7 @@ i \in[0, n - 2^k + 1)
 </span></code></pre></div></td></tr></table></div>
 <p>单次询问：<span class="arithmatex">\(O(1)\)</span></p>
 <p>例如， 对于 <span class="arithmatex">\(qry(5, 10)\)</span>，区间长度为 <span class="arithmatex">\(6\)</span>，<span class="arithmatex">\(int(log_2^6) = 2\)</span>，只需要 <span class="arithmatex">\(k = 2^2\)</span> 的两个区间一定可以覆盖整个区间。</p>
-<p>即 <span class="arithmatex">\(opt(5, 10) = opt(opt(5, 8), opt(7, 10))\)</span>，即分别是 $(l, l + 2^k-1) $和 <span class="arithmatex">\((r - 2^k+1,r)\)</span></p>
+<p>即 <span class="arithmatex">\(opt(5, 10) = opt(opt(5, 8), opt(7, 10))\)</span>，即分别是 $(l, l + 2^k-1) $ 和 <span class="arithmatex">\((r - 2^k+1,r)\)</span></p>
 <div class="arithmatex">\[
 qry(l, r) = opt(qry(l, k), qry(r - 2 ^k + 1, k))
 \]</div>
@@ -20365,9 +20122,10 @@ f [i, j-c]~ &amp;= ~\sum(f [i-1, j-c],&amp;  &amp;~f [i, j- 2 \cdot c])
 </span><span id="__span-267-4"><a id="__codelineno-267-4" name="__codelineno-267-4"></a>            <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="n">k</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </span></code></pre></div></td></tr></table></div>
 <div class="arithmatex">\[
-f(i, j)=\max    (f(i - 1,  j),  &amp;f(i-1,~ j-w)+v,&amp; ~\cdots , &amp;~ f(i-1,~ j - c \cdot w) + c \cdot v))&amp;
-\\
+\begin{aligned}
+f(i, j)=\max    (f(i - 1,  j),  &amp;f(i-1,~ j-w)+v,&amp; ~\cdots , &amp;~ f(i-1,~ j - c \cdot w) + c \cdot v))&amp; \\
 f(i, j - w)=\max(   &amp;f(i-1,~ j-w),&amp;  ~\cdots , &amp;~ f(i-1,~ j - c \cdot w) + (c-1) \cdot v),&amp; ~f(i-1, j - (c + 1) \cdot w) + c \cdot v))
+\end{aligned}
 \]</div>
 <p>可以发现无法借助完全背包的方法进行优化。</p>
 <p><strong>二进制拆分重量为新的包裹</strong>：<span class="arithmatex">\(O(N \cdot W\cdot log(\sum W) \cdot )\)</span></p>
@@ -20498,16 +20256,20 @@ f(i, j - w)=\max(   &amp;f(i-1,~ j-w),&amp;  ~\cdots , &amp;~ f(i-1,~ j - c \cdo
 <span class="normal"><a href="#__codelineno-272-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-272-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-272-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-272-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-272-1"><a id="__codelineno-272-1" name="__codelineno-272-1"></a><span class="c1">#</span>
+<span class="normal"><a href="#__codelineno-272-10">10</a></span>
+<span class="normal"><a href="#__codelineno-272-11">11</a></span>
+<span class="normal"><a href="#__codelineno-272-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-272-1"><a id="__codelineno-272-1" name="__codelineno-272-1"></a><span class="c1">#</span>
 </span><span id="__span-272-2"><a id="__codelineno-272-2" name="__codelineno-272-2"></a>
-</span><span id="__span-272-3"><a id="__codelineno-272-3" name="__codelineno-272-3"></a><span class="c1"># f [n][m] </span>
-</span><span id="__span-272-4"><a id="__codelineno-272-4" name="__codelineno-272-4"></a><span class="n">f</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
-</span><span id="__span-272-5"><a id="__codelineno-272-5" name="__codelineno-272-5"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-</span><span id="__span-272-6"><a id="__codelineno-272-6" name="__codelineno-272-6"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-</span><span id="__span-272-7"><a id="__codelineno-272-7" name="__codelineno-272-7"></a>        <span class="k">if</span> <span class="n">s1</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">s2</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
-</span><span id="__span-272-8"><a id="__codelineno-272-8" name="__codelineno-272-8"></a>            <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-</span><span id="__span-272-9"><a id="__codelineno-272-9" name="__codelineno-272-9"></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-272-10"><a id="__codelineno-272-10" name="__codelineno-272-10"></a>            <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+</span><span id="__span-272-3"><a id="__codelineno-272-3" name="__codelineno-272-3"></a>
+</span><span id="__span-272-4"><a id="__codelineno-272-4" name="__codelineno-272-4"></a>
+</span><span id="__span-272-5"><a id="__codelineno-272-5" name="__codelineno-272-5"></a><span class="c1"># f [n][m] </span>
+</span><span id="__span-272-6"><a id="__codelineno-272-6" name="__codelineno-272-6"></a><span class="n">f</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+</span><span id="__span-272-7"><a id="__codelineno-272-7" name="__codelineno-272-7"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-272-8"><a id="__codelineno-272-8" name="__codelineno-272-8"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-272-9"><a id="__codelineno-272-9" name="__codelineno-272-9"></a>        <span class="k">if</span> <span class="n">s1</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">s2</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
+</span><span id="__span-272-10"><a id="__codelineno-272-10" name="__codelineno-272-10"></a>            <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-272-11"><a id="__codelineno-272-11" name="__codelineno-272-11"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-272-12"><a id="__codelineno-272-12" name="__codelineno-272-12"></a>            <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
 </span></code></pre></div></td></tr></table></div>
 <h4 id="编辑距离">编辑距离<a class="headerlink" href="#编辑距离" title="页面定位">&para;</a></h4>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-273-1"> 1</a></span>
@@ -21956,13 +21718,13 @@ $ f(t, i, j)  $ 表示 <span class="arithmatex">\(A, B\)</span> 共同走了 <sp
 <p><a href="https://leetcode.cn/problems/queue-reconstruction-by-height/description/">406. 根据身高重建队列 - 力扣（LeetCode）</a></p>
 <p><strong>语言整理</strong>
 有一群人排好队, 每个人身高为 <span class="arithmatex">\(h_i\)</span>, 前面恰好 <span class="arithmatex">\(k_i\)</span> 个身高不小于他的人数;
-将$ (h_1, k_1), (h_2, k_2), ..., (h_i, k_i), ...$ 打乱，请你恢复原来的顺序</p>
+将 $ (h_1, k_1), (h_2, k_2), ..., (h_i, k_i), ...$ 打乱，请你恢复原来的顺序</p>
 <p><strong>思考</strong></p>
 <ul>
 <li>恢复顺序的依据: 通过 <span class="arithmatex">\((h_i, k_i)\)</span> 能唯一确定此人的位置;</li>
 <li>由于被打乱, 恢复顺序一定需要排序; </li>
 <li>由于 <span class="arithmatex">\(k_i\)</span> 为前面身高不小于他的人数, 可想到按照身高降序排序, 同身高内部按照 <span class="arithmatex">\(k_i\)</span> 升序排序; </li>
-<li>对排序后的数组遍历, 按照"插入排序"的思想找到合适的位置</li>
+<li>对排序后的数组遍历, 按照 "插入排序" 的思想找到合适的位置</li>
 </ul>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-316-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-316-2"> 2</a></span>
@@ -22065,24 +21827,24 @@ $ f(t, i, j)  $ 表示 <span class="arithmatex">\(A, B\)</span> 共同走了 <sp
 </span><span id="__span-318-12"><a id="__codelineno-318-12" name="__codelineno-318-12"></a>                    <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span> 
 </span><span id="__span-318-13"><a id="__codelineno-318-13" name="__codelineno-318-13"></a>        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
-<p><strong>2024_CA_省C.训练士兵</strong></p>
+<p><strong>2024_CA_省 C.训练士兵</strong></p>
 <p>[P10387 <a href="https://www.luogu.com.cn/problem/P10387">蓝桥杯 2024 省 A] 训练士兵 - 洛谷 (luogu.com.cn)</a></p>
-<p><strong>语言整理</strong>
-$$
+<p><strong>语言整理</strong></p>
+<p>$$
 \begin{aligned}</p>
-<p>&amp;共n人，每人需要c_i次训练;
+<p>&amp;共 n 人，每人需要 c_i 次训练;
 \
-&amp;每人单独训练每次花费p_i元;
+&amp;每人单独训练每次花费 p_i 元;
 \
-&amp;团购训练花费S元;
+&amp;团购训练花费 S 元;
 \
 &amp;求所有人完成训练的最小花费?
 \end{aligned}
-$$
-<strong>思路</strong></p>
+$$</p>
+<p><strong>思路</strong></p>
 <ul>
 <li>
-<p>团购价不变，有些人训练次数<span class="arithmatex">\(c_i\)</span>少，有些人多；</p>
+<p>团购价不变，有些人训练次数 <span class="arithmatex">\(c_i\)</span> 少，有些人多；</p>
 </li>
 <li>
 <p>一开始团购价 <span class="arithmatex">\(S\)</span> 往往比所有人单独训练价格 <span class="arithmatex">\(tot\)</span> 更小；随着人训练完成后退出，<span class="arithmatex">\(tot\)</span> 应该动态更新维护；</p>
@@ -22098,7 +21860,7 @@ $$
 <p><span class="arithmatex">\(tot\)</span> 初始为 <span class="arithmatex">\(\sum p_i\)</span></p>
 </li>
 <li>
-<p>用<span class="arithmatex">\(res\)</span>记录答案，初始为<span class="arithmatex">\(0\)</span>；用 <span class="arithmatex">\(cnt\)</span> 记录<strong>已经团购的次数</strong></p>
+<p>用 <span class="arithmatex">\(res\)</span> 记录答案，初始为 <span class="arithmatex">\(0\)</span>；用 <span class="arithmatex">\(cnt\)</span> 记录 <strong>已经团购的次数</strong></p>
 </li>
 <li>
 <p>按照训练次数升序遍历， 如果 <span class="arithmatex">\(tot \ge S\)</span>，团购合适；<span class="arithmatex">\(res ← res + (c_i - cnt) \times S\)</span>；<span class="arithmatex">\(cnt ← c_i\)</span></p>
@@ -22107,7 +21869,7 @@ $$
 <p>否则团购不合适，<span class="arithmatex">\(res ← res + (c_i - cnt) \times p_i\)</span></p>
 </li>
 <li>
-<p>每一次遍历完成，代表此人训练完成且退出，需要动态维护<span class="arithmatex">\(tot\)</span>，即 <span class="arithmatex">\(tot ← tot- p_i\)</span></p>
+<p>每一次遍历完成，代表此人训练完成且退出，需要动态维护 <span class="arithmatex">\(tot\)</span>，即 <span class="arithmatex">\(tot ← tot- p_i\)</span></p>
 </li>
 </ul>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-319-1"> 1</a></span>
@@ -22147,7 +21909,7 @@ $$
 </span><span id="__span-319-10"><a id="__codelineno-319-10" name="__codelineno-319-10"></a><span class="c1"># 数据预处理</span>
 </span><span id="__span-319-11"><a id="__codelineno-319-11" name="__codelineno-319-11"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 </span><span id="__span-319-12"><a id="__codelineno-319-12" name="__codelineno-319-12"></a>    <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
-</span><span id="__span-319-13"><a id="__codelineno-319-13" name="__codelineno-319-13"></a><span class="c1"># 排序：根据nums[i][1]即次数排序，默认是由低到高</span>
+</span><span id="__span-319-13"><a id="__codelineno-319-13" name="__codelineno-319-13"></a><span class="c1"># 排序：根据 nums [i][1] 即次数排序，默认是由低到高</span>
 </span><span id="__span-319-14"><a id="__codelineno-319-14" name="__codelineno-319-14"></a><span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </span><span id="__span-319-15"><a id="__codelineno-319-15" name="__codelineno-319-15"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 </span><span id="__span-319-16"><a id="__codelineno-319-16" name="__codelineno-319-16"></a>    <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
@@ -22159,7 +21921,7 @@ $$
 </span><span id="__span-319-22"><a id="__codelineno-319-22" name="__codelineno-319-22"></a>        <span class="n">cnt</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 </span><span id="__span-319-23"><a id="__codelineno-319-23" name="__codelineno-319-23"></a>    <span class="k">else</span><span class="p">:</span>   <span class="c1"># 团购不合适，此人单独训练</span>
 </span><span id="__span-319-24"><a id="__codelineno-319-24" name="__codelineno-319-24"></a>        <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">cnt</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</span><span id="__span-319-25"><a id="__codelineno-319-25" name="__codelineno-319-25"></a>    <span class="n">tot</span> <span class="o">-=</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c1"># 第i人完成训练，减去他的单独训练成本</span>
+</span><span id="__span-319-25"><a id="__codelineno-319-25" name="__codelineno-319-25"></a>    <span class="n">tot</span> <span class="o">-=</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c1"># 第 i 人完成训练，减去他的单独训练成本</span>
 </span><span id="__span-319-26"><a id="__codelineno-319-26" name="__codelineno-319-26"></a><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="反悔贪心">反悔贪心<a class="headerlink" href="#反悔贪心" title="页面定位">&para;</a></h3>
@@ -22779,7 +22541,7 @@ y' = r \sin (\theta - \alpha) = y \cos \alpha - x \sin \alpha
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月11日 05:55:24">2025年3月11日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月11日 06:17:18">2025年3月11日</span>
   </span>
 
     

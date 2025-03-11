@@ -2020,13 +2020,13 @@ return -1 if res > m else res
 
 **语言整理**
 
-给定长度为 $n$ 一组数 $\text{a}$，和  $k$ 个人。这组数任意拆分的小子堆，每个人一堆，求可以拿走的最大值 $res$ 。
+给定长度为 $n$ 一组数 $a$，和 $k$ 个人。这组数任意拆分的小子堆，每个人一堆，求可以拿走的最大值 $res$ 。
 
 **思路**
 
-- 显然，答案有界，界于区间 $[0, \max(\text{a})]$
-- 对 $res$ 上界，即 $check$ 表示恰好 $\text {sum(x // res for x in range(1, max(a) + 1))} < k$ 
-- 二分得到的结果 - 1 是答案
+- 显然，答案有界，界于区间 $[0, \max(a)]$
+- 对 $res$ 上界，即 $check$ 表示恰好 `sum(x // res for x in range(1, max(a) + 1)) < k`
+- 二分得到的结果 $-1$ 是答案
 
 写法 1
 
@@ -3337,6 +3337,7 @@ $$
 [题目详情 - 数字游戏 - HydroOJ](https://hydro.ac/d/nnu_contest/p/LC2)
 
 **不等式**
+
 $$
 x-1 <\lfloor x\rfloor\leqslant x\leqslant\lceil x\rceil < x+1
 $$
@@ -3509,11 +3510,18 @@ def fpf(n, p):   # factorial_prime_factor
 >
 > $5!=(120)_{10}=1111000_{2}=2^3\times 3^1\times5^1$。
 
-$x$ 在 $b$ 进制下的表示是 $x = \sum d_i b^{i}$，最低非 0 位 $k$ 对应 $d_k\times b^k$, 一定能将 $x$ 表示成 $b^k \times (\sum d_i\times b^{i-k})$，实际上由于 $x$ 可以表示成标准分解式 $x=p_0^{k_0} \times p_1^{k_1}\cdots$，将 $b$ 分解成 $p_0^{k'_0} \times \cdots$，将 $b$ 代入 $n!$ 的标准分解式，
+$x$ 在 $b$ 进制下的表示是 $x = \sum d_i b^{i}$，最低非 0 位 $k$ 对应 $d_k\times b^k$, 一定能将 $x$ 表示成 $b^k \times (\sum d_i\times b^{i-k})$，实际上由于 $x$ 可以表示成标准分解式 $x=p_0^{k_0} \times p_1^{k_1}\cdots$，将 $b$ 分解成 $p_0^{k'_0} \times \cdots$，将 $b$ 代入 $n!$ 的标准分解式，得：
 
-得，$ n! = p_0^{k_0} \times p_1^{k_1}\cdots=b^k \times (\sum d_i \times b^{i-k})=(p_0 ^{k^{'}_0} \times p_1 ^{k^{'}_1} \times...)^k \times (\sum d_i \times b^{i-k}) = (p_0 ^{k^{'}_{0} \cdot k } \times p_1 ^{k^{'}_{1} \cdot k} \times...) \times (\sum d_i \times b^{i-k})$
+$$
+\begin{aligned}
+n! &= p_0^{k_0} \times p_1^{k_1}\cdots\\
+&=b^k \times (\sum d_i \times b^{i-k})\\
+&=(p_0 ^{k^{'}_0} \times p_1 ^{k^{'}_1} \times...)^k \times (\sum d_i \times b^{i-k}) \\
+&= (p_0 ^{k^{'}_{0} \cdot k } \times p_1 ^{k^{'}_{1} \cdot k} \times...) \times (\sum d_i \times b^{i-k})
+\end{aligned}
+$$
 
-即， $p_0^{k_0} \times p_1^{k_1}\cdots = (p_0 ^{k^{'}_{0} \cdot k } \times p_1 ^{k^{'}_{1} \cdot k} \times...) \times (\sum d_i \times b^{i-k}) $
+即， $p_0^{k_0} \times p_1^{k_1}\cdots = (p_0 ^{k^{'}_{0} \cdot k } \times p_1 ^{k^{'}_{1} \cdot k} \times...) \times (\sum d_i \times b^{i-k})$
 
 由于 $k_i = k^{'}_{i} \cdot k$，由于 $k$ 是最低位，应取 $k$ 等于 $\min \frac{k_i}{k_i'}$。转换为：$k_i$ 为 $b$ 的质因子在 $n!$ 中出现的次数。
 
@@ -8057,9 +8065,10 @@ for i in range(1, n + 1):
 ```
 
 $$
-f(i, j)=\max 	(f(i - 1,  j), 	&f(i-1,~ j-w)+v,& ~\cdots , &~ f(i-1,~ j - c \cdot w) + c \cdot v))&
-\\
+\begin{aligned}
+f(i, j)=\max 	(f(i - 1,  j), 	&f(i-1,~ j-w)+v,& ~\cdots , &~ f(i-1,~ j - c \cdot w) + c \cdot v))& \\
 f(i, j - w)=\max(	&f(i-1,~ j-w),&	 ~\cdots , &~ f(i-1,~ j - c \cdot w) + (c-1) \cdot v),& ~f(i-1, j - (c + 1) \cdot w) + c \cdot v))
+\end{aligned}
 $$
 
 可以发现无法借助完全背包的方法进行优化。
@@ -9386,6 +9395,7 @@ $f[x]$  表示 $ 0 \sim endTime[x] $ 时间段内的最多报酬，一种转移�
 [P10387 [蓝桥杯 2024 省 A\] 训练士兵 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P10387)
 
 **语言整理**
+
 $$
 \begin{aligned}
 
@@ -9398,6 +9408,7 @@ $$
 &求所有人完成训练的最小花费?
 \end{aligned}
 $$
+
 **思路**
 
 - 团购价不变，有些人训练次数 $c_i$ 少，有些人多；

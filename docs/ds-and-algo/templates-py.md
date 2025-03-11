@@ -2,8 +2,6 @@
 title: 代码模板 (Python)
 ---
 
-[TOC]
-
 ## 前言
 
 此模板包含 Python 常用代码模板、示例，以及经典问题的题解和链接。
@@ -1291,7 +1289,7 @@ class Solution:
 
 ## 搜索 / DFS / BFS
 
-### 枚举DFS
+### 枚举 DFS
 
 [5.最大数字 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/2193/learning/?page=1&first_category_id=1&tags=DFS,国赛&tag_relation=intersection&difficulty=20)
 
@@ -1300,10 +1298,10 @@ class Solution:
 - 贪心，从左到右，尽可能构造 9。
 
 - 对每一位数字，只会用一种操作。
-- 记 $dfs(i, n, a, b)$表示当前考虑到第 $i$位，剩下 $a$次操作1和 $b$次操作2情况下，当前获得的最大数为 $n$ 
-- 对于操作1，考虑 $d=min(9-x,a)$，即当前能够执行操作1的次数
+- 记 $dfs(i, n, a, b)$ 表示当前考虑到第 $i$ 位，剩下 $a$ 次操作 1 和 $b$ 次操作 2 情况下，当前获得的最大数为 $n$ 
+- 对于操作 1，考虑 $d=min(9-x,a)$，即当前能够执行操作 1 的次数
 - 则 $n ← n \times 10 + (x + d)$，$a ← a - d $
-- 对于操作2，考虑 $b$ 是否大于等于 $x + 1$，是则可以得到9，且 $b ← b - (x + 1)$
+- 对于操作 2，考虑 $b$ 是否大于等于 $x + 1$，是则可以得到 9，且 $b ← b - (x + 1)$
 
 ```python
 import sys
@@ -1327,7 +1325,7 @@ print(res)
 
 
 
-### 图上DFS
+### 图上 DFS
 
 [1.小朋友崇拜圈 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/182/learning/?page=1&first_category_id=1&tags=省赛,DFS&tag_relation=intersection&difficulty=20)
 
@@ -1371,7 +1369,7 @@ for u in range(1, n + 1):
 ```python
 import sys
 input = lambda: sys.stdin.readline().strip()
-sys.setrecursionlimit(10000)  # 增加递归深度至少大于n，因为 python 默认为 1000
+sys.setrecursionlimit(10000)  # 增加递归深度至少大于 n，因为 python 默认为 1000
 n = int(input())
 g = [0] + list(map(int, input().split()))
 res = 0
@@ -1394,7 +1392,7 @@ print(res)
 
 
 
-**网格图模拟BFS**
+**网格图模拟 BFS**
 
 - 是给定一个二维网格，以及一些初始位置，并说明初始位置的蔓延条件。
 - 通过队列 $q$ 存储位置。初始值即为初始位置
@@ -1402,10 +1400,10 @@ print(res)
 
 ![img](https://assets.leetcode.com/uploads/2021/05/01/maxarea1-grid.jpg)
 
-网格图BFS模板。
+网格图 BFS 模板。
 
 ```python
-# 设置q的初始值，如 q.append(...)
+# 设置 q 的初始值，如 q.append(...)
 q = deque([(3, 4)]) # 或者 q = deque() 之后，q.append((3, 4))
 g[3][4] = 0 # 标记访问过
 di = [(0, 1), (0, -1), (1, 0), (-1, 0)]
@@ -1425,10 +1423,10 @@ while q:
 
 **思路**
 
-- 枚举每个连通的岛屿，通过将访问过的位置设置为0，即 $grid[i][j] = 0$ 进行记录
+- 枚举每个连通的岛屿，通过将访问过的位置设置为 0，即 $grid[i][j] = 0$ 进行记录
 - 每个岛屿的“登陆点”即为 $q$ 的初始内容
 - 每次将 $q$ 的队首弹出，考虑其上下左右是否有陆地，是则加入到队尾，并且标记访问过，更新岛屿面积
-- 重复操作，直到 $q$为空。
+- 重复操作，直到 $q$ 为空。
 
 ```python
 class Solution:
@@ -1440,7 +1438,7 @@ class Solution:
         def bfs(i, j):  # 考虑登陆点为 (i, j)的岛屿
             ans = 1
             q = deque([(i, j)]) 
-            g[i][j] = 0 # 登陆点设置为0，表示已经访问过
+            g[i][j] = 0 # 登陆点设置为 0，表示已经访问过
             while q:
                 x, y = q.popleft() # 弹出队首
                 for dx, dy in di:   # 遍历四个方向，考虑是否有陆地
@@ -1580,9 +1578,9 @@ mp_rev = {i: x for i, x in zip(nums, tmp)}
 
 > 无特殊说明，均为整数。
 
-二分查找基本模型：给定一个单调不减的数组 $a$, 返回恰好严格**大于** $x$ 的下标位置。
+二分查找基本模型：给定一个单调不减的数组 $a$, 返回恰好严格 **大于** $x$ 的下标位置。
 
-​									给定一个单调不减的数组 $a$, 返回第一个严格**大于** $x$ 的下标位置。
+​									给定一个单调不减的数组 $a$, 返回第一个严格 **大于** $x$ 的下标位置。
 
 ​									给定一个单调不减的数组 $a$, 返回恰好 $a[i] > x$  的下标位置 $i$ 。									
 
@@ -1602,47 +1600,47 @@ mp_rev = {i: x for i, x in zip(nums, tmp)}
 
 
 
-二分查找变形：给定一个单调不减的数组 $a$, 返回恰好**大于等于** $x$ 的下标位置
+二分查找变形：给定一个单调不减的数组 $a$, 返回恰好 **大于等于** $x$ 的下标位置
 
-​															   等价为返回恰好**大于** $x-1$ 的下标位置
+​															   等价为返回恰好 **大于** $x-1$ 的下标位置
 
 即 $bisect(a, x - 1)$
 
 > a = [1, 9, 9, 9, 200, 500]
 >
-> - 恰好大于等于9的位置
+> - 恰好大于等于 9 的位置
 >
 >     $bisect(a, 9 -1)$ = 1
 >
-> - 恰好大于等于200的位置
+> - 恰好大于等于 200 的位置
 >
 >     $bisect(a, 200 - 1)$ = 4
 
 
 
-二分查找变形1：给定一个单调不减的数组 $a$ ，返回恰好**小于等于** $x$ 的下标位置
+二分查找变形 1：给定一个单调不减的数组 $a$ ，返回恰好 **小于等于** $x$ 的下标位置
 
-​																	 等价为返回恰好大于$x$ 的下标位置 $-1$ 
+​																	 等价为返回恰好大于 $x$ 的下标位置 $-1$ 
 
 即 $bisect(a, x) - 1$
 
 > a = [1, 9, 9, 9, 200, 500]
 >
-> - 恰好小于等于9的位置
+> - 恰好小于等于 9 的位置
 >
 >     $bisect(a, 9) - 1$ = 3
 >
-> - 恰好小于等于500的位置
+> - 恰好小于等于 500 的位置
 >
 >     $bisect(a, 500 )$ = 5
 
 
 
-二分查找变形2：给定一个**单调不增**的数组 $a$, 返回恰好**小于** $x$ 的下标位置
+二分查找变形 2：给定一个 **单调不增** 的数组 $a$, 返回恰好 **小于** $x$ 的下标位置
 
 处理方法：$a' = [-x \text{ for } x \text{ in }a]$
 
-​				等价于$bisect(a', -x)$
+​				等价于 $bisect(a', -x)$
 
 > 也可以用逆序做，更推荐用相反数做；
 
@@ -1650,22 +1648,22 @@ mp_rev = {i: x for i, x in zip(nums, tmp)}
 >
 > $a' = [-500, -200, -9, -9, -9, -1]$
 >
-> - 原数组中恰好小于9 的位置
+> - 原数组中恰好小于 9 的位置
 >
 >     $bisect(a', -9)$ = 5
 
 
 
-### bisect库二分
+### bisect 库二分
 
 `bisect(a, x, lo = 0, hi = len(nums))`
 
 - 给定一个单调不减的数组 $a$, 在其 $[lo, hi]$ 区间中, 返回第一个严格大于 $x$ 的下标位置
 - 时间复杂度 $O( \log n)$
 
-> bisect.bisect 和 bisect.bisect_right 是完全相同且同时支持的函数，为了方便，我们不写bisect_right；
+> bisect.bisect 和 bisect.bisect_right 是完全相同且同时支持的函数，为了方便，我们不写 bisect_right；
 >
-> 同时为了防止混淆，我们也不提bisect_left，大家需要灵活学习如果用一个bisect实现所有变形；
+> 同时为了防止混淆，我们也不提 bisect_left，大家需要灵活学习如果用一个 bisect 实现所有变形；
 
 ```python
 from bisect import *
@@ -1677,24 +1675,24 @@ arr = [1, 9, 9, 9, 200, 500]
 print(bisect(arr, 3))  # 输出: 1 (第一个大于 3 的索引)
 print(bisect(arr, 1))  # 输出: 1 (第一个大于 1 的索引)
 print(bisect(arr, -99))  # 输出: 0 (第一个大于 -99 的索引)
-print(bisect(arr, 9)) # 输出: 4 (第一个大于9 的索引)
-print(bisect(arr, 7000)) # 输出: 6 (第一个大于7000 的索引，此时等于数组长度)
+print(bisect(arr, 9)) # 输出: 4 (第一个大于 9 的索引)
+print(bisect(arr, 7000)) # 输出: 6 (第一个大于 7000 的索引，此时等于数组长度)
 
 
 arr = [1, 9, 9, 9, 200, 500]
-# 如果需要找第一个大于等于x的位置索引
+# 如果需要找第一个大于等于 x 的位置索引
 # bisect(nums, x - 1) ？
 print(bisect(arr, 9 - 1))  # 输出: 1 (第一个大于等于 9 的索引)
 print(bisect(arr, 200 - 1))  # 输出: 4 (第一个大于等于 200 的索引)
 
-# 逆序数组，找到第一个小于x的位置索引
+# 逆序数组，找到第一个小于 x 的位置索引
 #      0     1   2  3  4  5
 arr = [500, 200, 9, 9, 9, 1]
 arr = [-x for x in arr]
 print(bisect(arr, -9))  # 输出: 5 (第一个小于 9 的位置索引)
 ```
 
-[P2249 【深基13.例1】查找 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P2249)
+[P2249 【深基 13.例 1】查找 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P2249)
 
 **题目描述**
 
@@ -1742,10 +1740,10 @@ n, m = map(int, input().split())
 nums = list(map(int, input().split()))
 Q = list(map(int, input().split()))
 
-s = set(nums) # nums构成的集合，如果待查询数组q not in s，直接返回-1
+s = set(nums) # nums 构成的集合，如果待查询数组 q not in s，直接返回-1
 for q in Q:
     if q not in s: print(-1, end = " ")
-    else: # q 一定出现在nums中, 利用技巧将“大于等于x”转化成“大于x-1”
+    else: # q 一定出现在 nums 中, 利用技巧将“大于等于 x”转化成“大于 x-1”
         print(bisect(nums, q - 1) + 1, end = " ")
 ```
 
@@ -1757,7 +1755,7 @@ for q in Q:
 
 - 由于求符合条件的数对个数，与顺序无关，先排序
 - 对 $  \text{lower} \le x + y \le \text{upper}$，变形为 $  \text{lower} - x \le  y \le \text{upper} - x$
-- 即对一个 $x$， 区间$[i + 1, n)$ 中有多少个数出现在 区间 $[\text{lower} - x, \text{upper} - x]$ 
+- 即对一个 $x$， 区间 $[i + 1, n)$ 中有多少个数出现在 区间 $[\text{lower} - x, \text{upper} - x]$ 
 - 即求 $L = bisect(a, \text[lower] - x - 1)$，$R = bisect(a, \text{upper} - x) - 1$
 - 答案等于 $R-L + 1$
 
@@ -1778,20 +1776,20 @@ class Solution:
 
 ### 朴素二分
 
-内置 $bisect$ 固然好用，当条件从 "恰好 $a[i] > x$ 的下标位置 $i$ "变成更通用的：
+内置 $bisect$ 固然好用，当条件从 "恰好 $a[i] > x$ 的下标位置 $i$ " 变成更通用的：
 
-- 给定一个单调不减的数组 $a$, 和关于 $a[i]$单调不减函数 $check$， 返回恰好有 $check(a[i]) > x$ 的下标位置 $i$
-- 例如，$check(a[i]) = {(a[i])} ^ 3 + 2 \cdot a[i] + 1$ 希望找到一个位置 $i$，恰好$check(a[i]) > x$；
+- 给定一个单调不减的数组 $a$, 和关于 $a[i]$ 单调不减函数 $check$， 返回恰好有 $check(a[i]) > x$ 的下标位置 $i$
+- 例如，$check(a[i]) = {(a[i])} ^ 3 + 2 \cdot a[i] + 1$ 希望找到一个位置 $i$，恰好 $check(a[i]) > x$；
 
 > 可以发现，前文提及的数学模型，对应的 $check(a[i])$ 即 $a[i]$，是通用表述下的一个特例；
 
-在python3.8版本不支持 bisect传递比较规则，即无法传递 $check$ 函数，于是我们需要自己实现 bisect函数。
+在 python3.8 版本不支持 bisect 传递比较规则，即无法传递 $check$ 函数，于是我们需要自己实现 bisect 函数。
 
 
 
 基本模型实现思路：
 
-- 对于区间 $[lo, hi]$上二分，将区间划分为左半部 $[lo, \frac{lo + hi}{2})$, 右半部 $[\frac{lo + hi}{2}, hi)$;
+- 对于区间 $[lo, hi]$ 上二分，将区间划分为左半部 $[lo, \frac{lo + hi}{2})$, 右半部 $[\frac{lo + hi}{2}, hi)$;
 
 - 区间中点 $i = \frac{lo + hi}{2}$, 考虑  $a[i] > x$ 吗？
 
@@ -1801,7 +1799,7 @@ class Solution:
 
 - 当 $lo = hi$ 结束，故 while 条件为 $lo < hi$
 
-    > 不会出现 $lo > hi $的情况
+    > 不会出现 $lo > hi $ 的情况
 
 ```python
 # 【朴素二分】实现 bisect
@@ -1833,7 +1831,7 @@ $check$ 模型思路：
 - 当 $lo = hi$ 结束，故 while 条件为 $lo < hi$
 
 ```python
-# 【朴素二分】实现 bisect，支持传递check函数
+# 【朴素二分】实现 bisect，支持传递 check 函数
 def bisect(a, x, lo = 0, hi = None, check = lambda y: y):
     if hi is None: hi = len(a)
     while lo < hi:
@@ -1845,7 +1843,7 @@ def bisect(a, x, lo = 0, hi = None, check = lambda y: y):
     return lo
 # 示例用法
 a = [1, 9, 9, 9, 200, 500]
-# 找到 a[i] ** 3 + a[i] * 2 + 1 恰好大于x的位置
+# 找到 a [i] ** 3 + a [i] * 2 + 1 恰好大于 x 的位置
 x = 1000
 print(bisect(a, x, check = lambda y: y ** 3 + y * 2 + 1)) #4
 ```
@@ -1867,9 +1865,9 @@ idx = bisect_left(a, (2, )) # 1
 - 答案 $res$ 存在一个确定、连续区间 $[lo, hi]$
 - 对确定的 $res = i$，能够求出 $check(i) =False \text{还是 }True$, 即是否满足条件 
 
-**基本模型**：构造**”False → True“ 模型**
+**基本模型**：构造 **”False → True“ 模型**
 
-- 答案具有单调增性，即 $res$ 是$check(i)$ 条件进行 $False/True$ 切换的临界点；
+- 答案具有单调增性，即 $res$ 是 $check(i)$ 条件进行 $False/True$ 切换的临界点；
 
     
 
@@ -1901,7 +1899,7 @@ def bisect(lo, hi, target, check):
 
 target = 99999
 res = bisect(1, 10 ** 18, target, lambda x, target: f(x) > target)
-# 找到恰好 f(x) > target的地方
+# 找到恰好 f(x) > target 的地方
 print(res)  # 47
 print(f(res))  # 103871
 print(f(res - 1))  # 97383
@@ -1932,8 +1930,8 @@ $\text{对于 }100\%\text{ 的评测用例,}1\leq n\leq10^4\mathrm{,}1\leq b\leq
 
 - 拆开来看 $v$ 的上下界
 
-- 对于下界，$check_1(v)$ 表示恰好不存在 $ a// v > b$，即全部满足 $a // v \le b$，随着 $v$ 增大，从**不满足 → 满足。**
-- 对于上界，$check_2(v)$ 表示恰好存在 $ a// v < b$，随着 $v$ 增大，从**不满足 → 满足。**二分得到的是 $M+ 1$，记得减去 1。
+- 对于下界，$check_1(v)$ 表示恰好不存在 $ a// v > b$，即全部满足 $a // v \le b$，随着 $v$ 增大，从 **不满足 → 满足。**
+- 对于上界，$check_2(v)$ 表示恰好存在 $ a// v < b$，随着 $v$ 增大，从 **不满足 → 满足。** 二分得到的是 $M+ 1$，记得减去 1。
 
 ```python
 import sys
@@ -2030,7 +2028,7 @@ return -1 if res > m else res
 - 对 $res$ 上界，即 $check$ 表示恰好 $\text {sum(x // res for x in range(1, max(a) + 1))} < k$ 
 - 二分得到的结果 - 1 是答案
 
-写法1
+写法 1
 
 ```python
 class Solution:
@@ -2046,7 +2044,7 @@ class Solution:
         return lo - 1
 ```
 
-写法2
+写法 2
 
 ```python
 class Solution:
@@ -3115,8 +3113,8 @@ class Solution:
 
 $$
 \begin{aligned}
-&对于长度为 n的数组a,给定q组区间[l,r], \\
-&对每组区间[l,r]求 \sum_{i=l}^r{a[i]} = a[l] + a[l + 1] + \cdots+a[r],其中 l\le r
+&对于长度为 n 的数组 a, 给定 q 组区间 [l, r], \\
+&对每组区间 [l, r] 求 \sum_{i = l}^r{a [i]} = a [l] + a [l + 1] + \cdots+a [r], 其中 l\le r
 \end{aligned}
 $$
 
@@ -3136,18 +3134,18 @@ $n \in [1, 10^5], q \in [1, 10^5] $
 
 - 预处理前缀和，可前缀和之差，以 $O(1)$ 完成单次区间求和；
 
-- 总复杂度为$O(n)$ 预处理 +  $O(q)$ 询问，即 $O(q + n)$；
+- 总复杂度为 $O(n)$ 预处理 +  $O(q)$ 询问，即 $O(q + n)$；
 
-$\text{定义: }p[i] = \sum(a[:i]), \\$
+$\text{定义: }p[i] = \sum(a[: i]), \\$
 
 $$
 \begin{aligned}
 则有:
-p[0] = \sum(a[:0]) &= 0 \\
-p[1] = \sum(a[:1]) &= a[0] \\ 
-p[n - 1] = \sum(a[: n - 1]) &= a[0] + ... + a[n - 2] \\ 
-p[n] = \sum(a[:n]) &= a[0] + ... + a[n - 2] + a[n - 1] = \sum(a) \\
-显然可以发现 p[n] - p[n-1] &= a[n-1] \\
+p [0] = \sum(a [: 0]) &= 0 \\
+p [1] = \sum(a [: 1]) &= a [0] \\ 
+p [n - 1] = \sum(a [: n - 1]) &= a [0] + ... + a [n - 2] \\ 
+p [n] = \sum(a [: n]) &= a [0] + ... + a [n - 2] + a [n - 1] = \sum(a) \\
+显然可以发现 p [n] - p [n-1] &= a [n-1] \\
 \end{aligned}
 $$
 
@@ -3165,7 +3163,7 @@ for i in range(n):
 
 
 
-[P8218 【深进1.例1】求区间和 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P8218)
+[P8218 【深进 1.例 1】求区间和 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P8218)
 
 ```python
 import sys
@@ -3175,16 +3173,16 @@ n = int(input())
 a = list(map(int, input().split()))
 q = int(input())
 
-# 前缀和模板, p[i] = sum(a[:i])
+# 前缀和模板, p [i] = sum(a [: i])
 p = [0] * (n + 1)
 for i in range(n):
     p[i + 1] = p[i] + a[i]
 
 for _ in range(q):
     l, r = map(int, input().split())
-    # l, r 下标从1开始，即求 a[l - 1] + a[l] + ... + a[r - 1]
-    # 即 sum(a[l - 1:r])
-    # 即 p[r] - p[l - 1]
+    # l, r 下标从 1 开始，即求 a [l - 1] + a [l] + ... + a [r - 1]
+    # 即 sum(a [l - 1: r])
+    # 即 p [r] - p [l - 1]
     print(p[r] - p[l - 1])
 ```
 
@@ -3325,7 +3323,7 @@ $$
 灵神恒等式*
 
 $$
-\left\lfloor\frac{\lfloor n/p\rfloor}q\right\rfloor=\left\lfloor\frac n{pq}\right\rfloor
+\left\lfloor\frac{\lfloor n/p\rfloor}q\right\rfloor =\left\lfloor\frac n{pq}\right\rfloor
 $$
 
 [1553. 吃掉 N 个橘子的最少天数 - 力扣（LeetCode）](https://leetcode.cn/problems/minimum-number-of-days-to-eat-n-oranges/description/?envType=daily-question&envId=2024-05-12)
@@ -3333,7 +3331,7 @@ $$
 实际上这个结论可以推广到任意个数，比如：
 
 $$
-\left\lfloor\frac{\left\lfloor\frac{\left\lfloor\frac n{p_1}\right\rfloor}{p_2}\right\rfloor}{p_3}\right\rfloor=\left\lfloor\frac n{p_1\cdot p_2\cdot p_3}\right\rfloor
+\left\lfloor\frac{\left\lfloor\frac{\left\lfloor\frac n{p_1}\right\rfloor}{p_2}\right\rfloor}{p_3}\right\rfloor =\left\lfloor\frac n{p_1\cdot p_2\cdot p_3}\right\rfloor
 $$
 
 [题目详情 - 数字游戏 - HydroOJ](https://hydro.ac/d/nnu_contest/p/LC2)
@@ -3546,7 +3544,7 @@ def breakdown(n):
     return res
 def solve():
     n, b = map(int, input().split())
-    pf = breakdown(b) # 对b进行质因子分解
+    pf = breakdown(b) # 对 b 进行质因子分解
     res = inf
     for f, c in pf:
         res = min(res, fpf(n, f) // c)
@@ -6111,7 +6109,7 @@ for j in range(1, lenj):
 
 例如， 对于 $qry(5, 10)$，区间长度为 $6$，$int(log_2^6) = 2$，只需要 $k = 2^2$ 的两个区间一定可以覆盖整个区间。
 
-即 $opt(5, 10) = opt(opt(5, 8), opt(7, 10))$，即分别是 $(l, l + 2^k-1) $和 $(r - 2^k+1,r)$
+即 $opt(5, 10) = opt(opt(5, 8), opt(7, 10))$，即分别是 $(l, l + 2^k-1) $ 和 $(r - 2^k+1,r)$
 
 $$
 qry(l, r) = opt(qry(l, k), qry(r - 2 ^k + 1, k))
@@ -8168,6 +8166,8 @@ $ f[i][j] 表示从s[0: i] 和 s2[0: j] 中的最长公共子序列$
 ```python
 #
 
+
+
 # f [n][m] 
 f = [[0] * (m + 1) for _ in range(n + 1)]
 for i in range(1, n + 1):
@@ -9289,14 +9289,14 @@ $f[x]$  表示 $ 0 \sim endTime[x] $ 时间段内的最多报酬，一种转移�
 
 **语言整理**
 有一群人排好队, 每个人身高为 $h_i$, 前面恰好 $k_i$ 个身高不小于他的人数;
-将$ (h_1, k_1), (h_2, k_2), ..., (h_i, k_i), ...$ 打乱，请你恢复原来的顺序
+将 $ (h_1, k_1), (h_2, k_2), ..., (h_i, k_i), ...$ 打乱，请你恢复原来的顺序
 
 **思考**
 
 - 恢复顺序的依据: 通过 $(h_i, k_i)$ 能唯一确定此人的位置;
 - 由于被打乱, 恢复顺序一定需要排序; 
 - 由于 $k_i$ 为前面身高不小于他的人数, 可想到按照身高降序排序, 同身高内部按照 $k_i$ 升序排序; 
-- 对排序后的数组遍历, 按照"插入排序"的思想找到合适的位置
+- 对排序后的数组遍历, 按照 "插入排序" 的思想找到合适的位置
 
 
 
@@ -9381,7 +9381,7 @@ $f[x]$  表示 $ 0 \sim endTime[x] $ 时间段内的最多报酬，一种转移�
         return sum(sel)
 ```
 
-**2024_CA_省C.训练士兵**
+**2024_CA_省 C.训练士兵**
 
 [P10387 [蓝桥杯 2024 省 A\] 训练士兵 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P10387)
 
@@ -9389,18 +9389,18 @@ $f[x]$  表示 $ 0 \sim endTime[x] $ 时间段内的最多报酬，一种转移�
 $$
 \begin{aligned}
 
-&共n人，每人需要c_i次训练;
+&共 n 人，每人需要 c_i 次训练;
 \\
-&每人单独训练每次花费p_i元;
+&每人单独训练每次花费 p_i 元;
 \\
-&团购训练花费S元;
+&团购训练花费 S 元;
 \\
 &求所有人完成训练的最小花费?
 \end{aligned}
 $$
 **思路**
 
-- 团购价不变，有些人训练次数$c_i$少，有些人多；
+- 团购价不变，有些人训练次数 $c_i$ 少，有些人多；
 
 - 一开始团购价 $S$ 往往比所有人单独训练价格 $tot$ 更小；随着人训练完成后退出，$tot$ 应该动态更新维护；
 
@@ -9413,13 +9413,13 @@ $$
 
 - $tot$ 初始为 $\sum p_i$
 
-- 用$res$记录答案，初始为$0$；用 $cnt$ 记录**已经团购的次数**
+- 用 $res$ 记录答案，初始为 $0$；用 $cnt$ 记录 **已经团购的次数**
 
 - 按照训练次数升序遍历， 如果 $tot \ge S$，团购合适；$res ← res + (c_i - cnt) \times S$；$cnt ← c_i$
 
 - 否则团购不合适，$res ← res + (c_i - cnt) \times p_i$
 
-- 每一次遍历完成，代表此人训练完成且退出，需要动态维护$tot$，即 $tot ← tot- p_i$
+- 每一次遍历完成，代表此人训练完成且退出，需要动态维护 $tot$，即 $tot ← tot- p_i$
 
     
 
@@ -9436,7 +9436,7 @@ p, c = [0] * n, [0] * n
 # 数据预处理
 for i in range(n):
     nums[i] = list(map(int, input().split()))
-# 排序：根据nums[i][1]即次数排序，默认是由低到高
+# 排序：根据 nums [i][1] 即次数排序，默认是由低到高
 nums.sort(key = lambda x: x[1])
 for i in range(n):
     p[i], c[i] = nums[i][0], nums[i][1]
@@ -9448,7 +9448,7 @@ for i in range(n):
         cnt = c[i]
     else:   # 团购不合适，此人单独训练
         res += (c[i] - cnt) * p[i]
-    tot -= p[i] # 第i人完成训练，减去他的单独训练成本
+    tot -= p[i] # 第 i 人完成训练，减去他的单独训练成本
 print(res)
 
 ```

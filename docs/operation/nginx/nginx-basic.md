@@ -102,3 +102,17 @@ server {
     }
 }
 ```
+
+## 配置 http 自动跳转 https
+
+添加一个 server 块，内容如下：
+
+```nginx
+server {
+    listen 80;
+    server_name example.com;
+    return 301 https://$host$request_uri;
+}
+```
+
+之后使用 `nginx -s reload` 重启 nginx 即可。

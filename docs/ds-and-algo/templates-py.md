@@ -204,40 +204,6 @@ for line in sys.stdin:
 
 
 
-### 二叉堆 / 优先队列
-
-**`heapq.heappush(heap, item)`**
-
-- 将 `item` 添加到 `heap` 中，并保持堆的不变性。
-- 时间复杂度：$O(log n)$
-
-**`heapq.heappop(heap)`**
-
-- 弹出并返回 `heap` 中的最小元素，并保持堆的不变性。
-- 时间复杂度：$O(log n)$
-- 
-
-```python
-from heapq import *
-
-heap = []
-heappush(heap, 3)
-heappush(heap, 1)
-heappush(heap, 2)
-print(heap)  # 输出: [1, 3, 2]
-
-heapify(nums)
-score = heappop(nums)
-heappush(nums, val)
-nums = []
-heapq.heappush(nums, val)	#插入
-heapq.heappop(nums)			#弹出顶部
-# 注意：
-# python 中堆默认且只能是小顶堆
-```
-
-
-
 ### 有序列表 / 有序集合
 
 **SortedList**
@@ -4687,6 +4653,163 @@ $$
 
 ## 数据结构
 
+### 堆 / 优先队列
+
+库导入：`from heapq import *`
+
+注意：python的heap，默认是小堆顶，即二叉堆堆顶元素大于左右孩子。
+
+**`heappush(heap, item)`**
+
+- 将 `item` 添加到 `heap` 中，并保持堆的不变性。
+- 时间复杂度：$O(log n)$
+
+**`heappop(heap)`**
+
+- 弹出并返回 `heap` 中的最小元素，并保持堆的不变性。
+- 时间复杂度：$O(log n)$
+
+`heap[0]` 取堆顶元素，时间复杂度 $O(1)$ 
+
+<img src="https://pic.leetcode.cn/1741764815-tCQKMa-image.png" alt="image.png" style="zoom:33%;" />
+
+```python
+from heapq import *
+
+hq = []
+
+heappush(hq, 5)
+heappush(hq, 9)
+heappush(hq, 11)
+heappush(hq, 12)
+heappush(hq, 13)
+heappush(hq, 15)
+print(hq)  # 输出: [5, 9, 11, 12, 13, 15]
+
+# 获取堆顶元素（最小），O(1)
+print(hq[0]) # 5
+
+# 弹出堆顶元素（最小），O(logn)
+heappop(hq)
+print(hq) # 输出 [9, 12, 11, 15, 13]
+
+# 注意：python 中堆默认且只能是小顶堆
+
+# 大顶堆，通过取反实现
+nums = [15, 13, 9, 5, 11, 12]
+hq = []
+for x in nums:
+    heappush(hq, -x)
+    
+print(hq) # [-15, -13, -12, -5, -11, -9]
+
+# 获取堆顶元素（最大）
+print(-hq[0]) # 15
+
+
+# 弹出堆顶元素（最大），O(logn)
+heappop(hq) 
+print(hq) # [-13, -11, -12, -5, -9]
+print(-hq[0]) # 13
+
+```
+
+[[2530. 执行 K 次操作后的最大分数 - 力扣（LeetCode）](https://leetcode.cn/problems/maximal-score-after-applying-k-operations/)](https://leetcode.cn/problems/mark-elements-on-array-by-performing-queries/description/)
+
+给你一个下标从 **0** 开始的整数数组 `nums` 和一个整数 `k` 。你的 **起始分数** 为 `0` 。
+
+在一步 **操作** 中：
+
+1. 选出一个满足 `0 <= i < nums.length` 的下标 `i` ，
+2. 将你的 **分数** 增加 `nums[i]` ，并且
+3. 将 `nums[i]` 替换为 `ceil(nums[i] / 3)` 。
+
+返回在 **恰好** 执行 `k` 次操作后，你可能获得的最大分数。
+
+向上取整函数 `ceil(val)` 的结果是大于或等于 `val` 的最小整数。
+
+**示例 2：**
+
+```
+输入：nums = [1,10,3,3,3], k = 3
+输出：17
+解释：可以执行下述操作：
+第 1 步操作：选中 i = 1 ，nums 变为 [1,4,3,3,3] 。分数增加 10 。
+第 2 步操作：选中 i = 1 ，nums 变为 [1,2,3,3,3] 。分数增加 4 。
+第 3 步操作：选中 i = 2 ，nums 变为 [1,2,1,3,3] 。分数增加 3 。
+最后分数是 10 + 4 + 3 = 17 。
+```
+
+```python
+from heapq import *
+from math import *
+class Solution:
+    def maxKelements(self, nums: List[int], k: int) -> int:
+        res = 0
+        hq = []
+        for i, x in enumerate(nums):
+            nums[i] = -x
+            heappush(hq, -x)
+        for _ in range(k):
+            x = heappop(hq)
+            res += x 
+            heappush(hq, -ceil(-x / 3))
+        return -res
+```
+
+
+
+
+
+
+
+
+
+
+
+[1.删字母 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/6272/learning/?page=1&first_category_id=1&tags=优先队列,省模拟赛&tag_relation=intersection&sort=difficulty&asc=1)
+
+**思路**
+
+- 转换成从 $n$ 个字母中，选出 $n-m$ 个，使得字符串字典序最小
+
+- 贪心：考虑当前选择字母的范围。假设上一处选择的字母下标为 $L$，左边界 $L+1$。右边界 $R$ 应该保证其右侧还有足够的备选项，在区间内，贪心的选择最小的字母。
+
+- 最小堆，插入可以选择的元素，每次选择完成进行一次 $pop$ 
+
+    > 例如，
+    >
+    > 12, 5, 7, 6, 20, 1, 4, 15, 21        从9个数中，删除3个，即选择6个。
+    >
+    > 第一个可以选择的范围是 $[0, 3]$ ，即右边界的右侧有5个备选项。
+    >
+    > 第一处选择了5，下标为1，第二个可以选择的范围是 $[2, 4]$，即右边界还有4个备选项。
+
+```python
+import sys
+input = lambda: sys.stdin.readline().strip()
+from heapq import *
+n, m = map(int, input().split())
+s = input()
+
+hq = []
+res = ''
+L = 0
+for i in range(m):
+    heappush(hq, (s[i], i))
+for R in range(m, n):
+    heappush(hq, (s[R], R))
+    mn, mni = heappop(hq)
+    while mni < L:
+        mn, mni = heappop(hq)
+    res += mn 
+    L = mni + 1
+print(res)
+
+```
+
+> 注意：本题还有单调栈解法更为简单。
+
 ### 并查集
 
 并查集是一种用于管理元素所属集合的数据结构，实现为一个森林，其中每棵树表示一个集合，树中的节点表示对应集合中的元素。集合内的元素可达且连通。
@@ -4790,7 +4913,9 @@ def union(u, v):
 
 
 
-常用拓展：
+**常见问题**
+
+- 求连通块个数
 
 - 记录每个集合大小：绑定到根节点
 - 记录每个点到根节点的 **距离**：绑定到每一个节点上
@@ -4841,6 +4966,76 @@ for _ in range(p):
 
 
 **并查集维护连通分量**
+
+[P1536 村村通 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P1536)
+
+**语言整理**
+
+给定若干组数据，每组给 $n,m$ 表示有 $n$ 个节点的无向图，有 $m$ 条边。求使得任意两个节点都可达还需要添加多少条边。
+
+**思路**
+
+- 可达、连通问题，想到并查集维护节点之间的可达性，用 $union$ 操作更新并查集
+- 考虑独立连通块的个数，即 $cnt=len(set(fa))$ ，最少只需要添加 $cnt - 1$ 条边，能够让任意连通块可达，即所有节点可达。
+
+- 下标从1开始时，可定 $fa = list(range(n+1))$，同时 $cnt$ 要减去1
+
+```python
+# https://www.luogu.com.cn/problem/P1536
+import sys
+input = lambda: sys.stdin.readline().strip()
+
+while True:
+    s = input()
+    if s == '0': break
+    n, m = map(int, s.split())
+    fa = list(range(n + 1))
+    def find(x):
+        if fa[x] == x: return x
+        fa[x] = find(fa[x])
+        return fa[x]
+    def union(u, v):
+        if find(u) != find(v):
+            fa[find(v)] = find(u)
+    for _ in range(m):
+        u, v = map(int, input().split())
+        union(u, v)
+
+    # 压缩成严格菊花集
+    for x in range(1, n + 1):
+        fa[x] = find(x)
+        
+    cnt = len(set(fa)) - 1 # 连通块数量，-1是减去下标0
+    print(cnt - 1)  # cnt - 1是需要修路数量
+```
+
+[1.合根植物 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/110/learning/?page=1&first_category_id=1&tags=并查集,国赛&tag_relation=intersection&sort=difficulty&asc=1)
+
+```python
+# https://www.lanqiao.cn/problems/110/learning/?page=1&first_category_id=1&tags=%E7%9C%81%E8%B5%9B,%E5%B9%B6%E6%9F%A5%E9%9B%86&tag_relation=intersection&sort=difficulty&asc=1
+import sys
+input = lambda: sys.stdin.readline().strip()
+
+m, n = map(int, input().split())
+k = int(input())
+fa = list(range(m * n + 1))
+def find(x):
+    if fa[x] == x: return x
+    fa[x] = find(fa[x])
+    return fa[x]
+def union(u, v):
+    if find(u) != find(v):
+        fa[find(v)] = find(u)
+for _ in range(k):
+    u, v = map(int, input().split())
+    union(u, v)
+    
+for x in range(1, n * m + 1):
+    fa[x] = find(x)
+print(len(set(fa)) - 1)
+```
+
+
 
 [1998. 数组的最大公因数排序 - 力扣（LeetCode）](https://leetcode.cn/problems/gcd-sort-of-an-array/)
 

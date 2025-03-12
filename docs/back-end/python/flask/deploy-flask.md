@@ -2,6 +2,9 @@
 title: 部署 Flask 应用
 ---
 
+!!! warning
+    本文年代久远，谨慎参考。后续会系统更新 Python-Flask 的使用教程，吧，maybe。
+
 ## 前言
 
 Flask 是使用 Python 作为后端语言的 Web 微框，旨在帮助开发者快速开发出一个小型网站。个人示例项目就采用了 Flask 框架，前端直接使用 Flask 自带的 Jinja2 进行渲染，数据库采用 MySQL。项目地址 [YunJinWeb](https://github.com/Explorer-Dong/YunJinWeb)，下面为以此项目为 demo 进行云服务器部署的过程
@@ -138,8 +141,6 @@ make && make install
 ./nginx
 ```
 
-{% fold info @解决：80 端口被占用的问题 %}
-
 > 解决：端口被占用的问题
 >
 > ![解决启动遇到的端口占用](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126617.png)
@@ -149,8 +150,6 @@ make && make install
 > 最终结果：然后浏览器通过 http 协议默认的 80 端口访问公网 ip，就可以看到欢呼雀跃的一幕
 >
 > ![最终结果](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126618.png)
-
-{% endfold %}
 
 ## 配置 Python
 
@@ -225,14 +224,10 @@ source /usr/local/bin/virtualenvwrapper.sh
 source ~/.bashrc
 ```
 
-{% fold info @解决：virtualenvwrapper.sh: There was a problem running the initialization hooks. 报错 %}
-
 > 解决 `virtualenvwrapper.sh: There was a problem running the initialization hooks.` 报错
 >
 > - 解决方案二：注意上述 `VIRTUALENVWRAPPER_PYTHON=/usr/bin/python311` 中的路径是否正确
 > - 解决方案一：[virtualenvwrapper.sh 报错: There was a problem running the initialization hooks.解决](https://www.cnblogs.com/cpl9412290130/p/10019231.html)
-
-{% endfold %}
 
 ## 运行项目
 
@@ -247,12 +242,12 @@ sequenceDiagram
     participant uWSGI
     participant App as Python应用
     
-    User->>Nginx: 发送HTTP请求
+    User->>Nginx: 发送 HTTP 请求
     Nginx->>uWSGI: 转发请求
     uWSGI->>App: 处理请求
     App-->>uWSGI: 返回响应
     uWSGI-->>Nginx: 返回响应
-    Nginx-->>User: 返回HTTP响应
+    Nginx-->>User: 返回 HTTP 响应
 ```
 
 ### (1) 创建 py 虚拟环境
@@ -303,8 +298,6 @@ pip install -r requirements.txt
 
 ### (5) 运行 Flask 应用
 
-{% fold light @内测阶段 %}
-
 **内测阶段**：使用 Flask 内置服务器运行应用
 
 运行 Flask 主接口文件 `app.py`，之后就可以通过 ip 地址 + 端口号的方式进行访问了
@@ -354,8 +347,6 @@ python app.py
 > ```bash
 > sudo kill -9 $(sudo lsof -t -i :<port>)
 > ```
-
-{% endfold %}
 
 **公测阶段**：使用 uwsgi 应用服务器运行应用
 

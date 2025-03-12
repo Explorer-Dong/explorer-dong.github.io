@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://wiki.dwj601.cn/back-end/python/python-basic/">
       
       
-        <link rel="prev" href="../../cplusplus/cpp-advanced/">
+        <link rel="prev" href="../python-setup/">
       
       
         <link rel="next" href="../flask/deploy-flask/">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Python 基础 - Open Wiki Community</title>
+        <title>Python 语法基础 - Open Wiki Community</title>
       
     
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#前言" class="md-skip">
+        <a href="#python-的数据类型" class="md-skip">
           跳转至
         </a>
       
@@ -151,7 +151,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python 基础
+              Python 语法基础
             
           </span>
         </div>
@@ -4275,7 +4275,7 @@
         
   
   <span class="md-ellipsis">
-    C++ 基础
+    C++ 语法基础
     
   </span>
   
@@ -4353,6 +4353,8 @@
       
         
       
+        
+      
     
     
       
@@ -4394,6 +4396,28 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python 配置指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -4408,7 +4432,7 @@
           
   
   <span class="md-ellipsis">
-    Python 基础
+    Python 语法基础
     
   </span>
   
@@ -4420,7 +4444,7 @@
         
   
   <span class="md-ellipsis">
-    Python 基础
+    Python 语法基础
     
   </span>
   
@@ -4443,97 +4467,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
+  <a href="#python-的数据类型" class="md-nav__link">
     <span class="md-ellipsis">
-      前言
+      Python 的数据类型
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#浅析-py-中的数据类型" class="md-nav__link">
+  <a href="#python-的万物引用" class="md-nav__link">
     <span class="md-ellipsis">
-      浅析 py 中的数据类型
+      Python 的万物引用
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="浅析 py 中的数据类型">
+    <nav class="md-nav" aria-label="Python 的万物引用">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#前言_1" class="md-nav__link">
+  <a href="#变量模型" class="md-nav__link">
     <span class="md-ellipsis">
-      前言
+      变量模型
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#数据类型" class="md-nav__link">
+  <a href="#引用赋值与数据类型的关系" class="md-nav__link">
     <span class="md-ellipsis">
-      数据类型
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#理解与运用" class="md-nav__link">
-    <span class="md-ellipsis">
-      理解与运用
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="理解与运用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#一万恶的万物引用" class="md-nav__link">
-    <span class="md-ellipsis">
-      一、万恶的万物引用
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#二浅拷贝与深拷贝" class="md-nav__link">
-    <span class="md-ellipsis">
-      二、浅拷贝与深拷贝
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#三函数参数传递" class="md-nav__link">
-    <span class="md-ellipsis">
-      三、函数参数传递
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#题外话" class="md-nav__link">
-    <span class="md-ellipsis">
-      题外话
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#参考" class="md-nav__link">
-    <span class="md-ellipsis">
-      参考
+      引用赋值与数据类型的关系
     </span>
   </a>
   
@@ -4545,44 +4509,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#查看库的安装位置" class="md-nav__link">
+  <a href="#python-的拷贝构造" class="md-nav__link">
     <span class="md-ellipsis">
-      查看库的安装位置
+      Python 的拷贝构造
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="查看库的安装位置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#方法1使用模块内置方法" class="md-nav__link">
-    <span class="md-ellipsis">
-      方法1：使用模块内置方法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#方法二基于-pip-方法" class="md-nav__link">
-    <span class="md-ellipsis">
-      方法二：基于 pip 方法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#参考_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      参考
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4618,10 +4549,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_3" >
         
           
-          <label class="md-nav__link" for="__nav_6_3_2" id="__nav_6_3_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4633,8 +4564,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_3">
             <span class="md-nav__icon md-icon"></span>
             Flask
           </label>
@@ -5838,97 +5769,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
+  <a href="#python-的数据类型" class="md-nav__link">
     <span class="md-ellipsis">
-      前言
+      Python 的数据类型
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#浅析-py-中的数据类型" class="md-nav__link">
+  <a href="#python-的万物引用" class="md-nav__link">
     <span class="md-ellipsis">
-      浅析 py 中的数据类型
+      Python 的万物引用
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="浅析 py 中的数据类型">
+    <nav class="md-nav" aria-label="Python 的万物引用">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#前言_1" class="md-nav__link">
+  <a href="#变量模型" class="md-nav__link">
     <span class="md-ellipsis">
-      前言
+      变量模型
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#数据类型" class="md-nav__link">
+  <a href="#引用赋值与数据类型的关系" class="md-nav__link">
     <span class="md-ellipsis">
-      数据类型
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#理解与运用" class="md-nav__link">
-    <span class="md-ellipsis">
-      理解与运用
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="理解与运用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#一万恶的万物引用" class="md-nav__link">
-    <span class="md-ellipsis">
-      一、万恶的万物引用
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#二浅拷贝与深拷贝" class="md-nav__link">
-    <span class="md-ellipsis">
-      二、浅拷贝与深拷贝
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#三函数参数传递" class="md-nav__link">
-    <span class="md-ellipsis">
-      三、函数参数传递
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#题外话" class="md-nav__link">
-    <span class="md-ellipsis">
-      题外话
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#参考" class="md-nav__link">
-    <span class="md-ellipsis">
-      参考
+      引用赋值与数据类型的关系
     </span>
   </a>
   
@@ -5940,44 +5811,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#查看库的安装位置" class="md-nav__link">
+  <a href="#python-的拷贝构造" class="md-nav__link">
     <span class="md-ellipsis">
-      查看库的安装位置
+      Python 的拷贝构造
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="查看库的安装位置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#方法1使用模块内置方法" class="md-nav__link">
-    <span class="md-ellipsis">
-      方法1：使用模块内置方法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#方法二基于-pip-方法" class="md-nav__link">
-    <span class="md-ellipsis">
-      方法二：基于 pip 方法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#参考_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      参考
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -6013,27 +5851,52 @@
   
 
 
-  <h1>Python 基础</h1>
+  <h1>Python 语法基础</h1>
 
-<h2 id="前言">前言<a class="headerlink" href="#前言" title="页面定位">&para;</a></h2>
-<p>本文记录 Python3 语法相关的内容。</p>
-<h2 id="浅析-py-中的数据类型">浅析 py 中的数据类型<a class="headerlink" href="#浅析-py-中的数据类型" title="页面定位">&para;</a></h2>
-<h3 id="前言_1">前言<a class="headerlink" href="#前言_1" title="页面定位">&para;</a></h3>
-<p>在写 py 的函数时，想要实现下述 C++ 的语法：</p>
-<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</span></code></pre></div></td></tr></table></div>
-<p>但是忽然想起来 python 传参时虽然都是引用但是门道有所不同。概念模糊已久，故写此博客权当强化记忆。</p>
-<h3 id="数据类型">数据类型<a class="headerlink" href="#数据类型" title="页面定位">&para;</a></h3>
-<p>在 python 中，可以按照 <strong>数据的可变性</strong> 将所有的数据类型分为两大类：</p>
+<p>本文记录 Python 的语法基础。</p>
+<h2 id="python-的数据类型">Python 的数据类型<a class="headerlink" href="#python-的数据类型" title="页面定位">&para;</a></h2>
+<p>在 Python 中，可以按照「数据的可变性」可以将数据分为两大类：</p>
 <ul>
-<li>不可变数据类型 <span class="arithmatex">\(\text{(mutable)}\)</span>：整数 <code>int</code>、浮点数 <code>float</code>、字符串 <code>str</code>、元组 <code>tuple</code></li>
-<li>可变数据类型 <span class="arithmatex">\(\text{(immutable)}\)</span>：列表 <code>list</code>、字典 <code>dict</code>、集合 <code>set</code></li>
+<li>可变数据类型 (immutable data type)：列表 <code>list</code>、字典 <code>dict</code>、集合 <code>set</code>；</li>
+<li>不可变数据类型 (mutable data type)：整数 <code>int</code>、浮点数 <code>float</code>、字符串 <code>str</code>、元组 <code>tuple</code>。</li>
 </ul>
-<p>python 中的很多语法知识都是围绕这两种数据类型分别展开，接下来将从 <strong>万恶的万物引用</strong>、<strong>浅拷贝与深拷贝</strong>、<strong>函数参数传递</strong> 三个视角来理解与运用这两种数据类型。</p>
-<h3 id="理解与运用">理解与运用<a class="headerlink" href="#理解与运用" title="页面定位">&para;</a></h3>
-<h4 id="一万恶的万物引用">一、万恶的万物引用<a class="headerlink" href="#一万恶的万物引用" title="页面定位">&para;</a></h4>
-<p>在 python 中「所有的一切都是引用」这句话已经听烂了，但是从未实践证实一番。所谓的万物引用可以从 C++ 的赋值和 Python 的赋值进行对比。</p>
-<p>在 C++ 中，数据的赋值语句就相当于拷贝构造，即相当于重新开辟一块内存空间用于被赋值的新变量。比如下面的程序：</p>
+<p>当然，不可变数据并非真的不可变。如果不可变数据中嵌套了可变数据，仍然可以修改其中嵌套的可变数据。比如下面的程序：</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">original_data</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s2">&quot;have a good day&quot;</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">original_data</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># 修改嵌套的可变数据（程序正常运行）</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">original_data</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">original_data</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="c1"># 修改嵌套的不可变数据（程序报错）</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="n">original_data</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;world&quot;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">original_data</span><span class="p">)</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="sd">&quot;&quot;&quot; 程序输出：</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="sd">(1, 2, [3, 4], &#39;have a good day&#39;)</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="sd">(1, 2, [&#39;hello&#39;, 4], &#39;have a good day&#39;)</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="sd">TypeError: &#39;str&#39; object does not support item assignment</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">&quot;&quot;&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="python-的万物引用">Python 的万物引用<a class="headerlink" href="#python-的万物引用" title="页面定位">&para;</a></h2>
+<p>在 Python 中「所有的一切都是引用」这句话已经听烂了，但是从未实践证实一番。所谓的万物引用可以从 C++ 的赋值和 Python 的赋值进行对比。</p>
+<h3 id="变量模型">变量模型<a class="headerlink" href="#变量模型" title="页面定位">&para;</a></h3>
+<p><strong>在 C++ 中，变量的赋值语句其实是在拷贝构造</strong>。即重新开辟一块内存空间用于被赋值的新变量。比如下面的程序：</p>
 <div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
@@ -6044,19 +5907,32 @@
 <span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="cm">/* 程序输出：</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="cm">1 2 3</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="cm">-1 2 3</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="cm">*/</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Memory address of a: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Memory address of b: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="p">}</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="cm">/* 程序输出：</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="cm">Memory address of a: 0x8b5a3ffa40</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="cm">Memory address of b: 0x8b5a3ffa20</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="cm">*/</span>
 </span></code></pre></div></td></tr></table></div>
-<p>我们知道程序运行时，对于一个数据的存储相当于在内存中开一块临时空间，直到一个逻辑段结束将会自动销毁变量并释放内存空间。在上述 C++ 程序段中，赋值就相当于重新开辟一块内存空间用于存储拷贝的新变量。但是在 Python 中截然不同：所有的赋值全都是一个引用，也就是说所有赋值后的变量都和原始变量一起指向同一块内存空间。比如下面的程序：</p>
+<p>可以看到输出的内存地址是不一样的。</p>
+<p><strong>在 Python 中，变量的赋值其实是在添加引用</strong>。即所有的赋值后的变量全都是指向同一块内存的引用。比如下面的程序：</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
@@ -6081,7 +5957,18 @@
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="sd">1542586187072</span>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>那岂不是牵一发而动全身？我改了其中一个，其余的引用岂不是都被改动了？的确是如此。</p>
+<p>可以看到输出的内存地址是完全一样的。</p>
+<p>上述两个程序可以用下面一张图来概括：</p>
+<figure id="__fc_1">
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407031133477.png" data-type="image" data-width="auto" data-height="auto" data-title="C++ 盒子模型 vs Python 标签模型" data-desc-position="bottom"><img alt="C++ 盒子模型 vs Python 标签模型" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407031133477.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 1. </span> C++ 盒子模型 vs Python 标签模型 <sup id="fnref:py-ref"><a class="footnote-ref" href="#fn:py-ref">1</a></sup></p>
+</figcaption>
+</figure>
+<p>即，C++ 中的变量相当于盒子，简单的赋值语句就相当于重新拿一个盒子装原来的数据；而 Python 中的变量相当于标签，简单的赋值语句就相当于所有标签都贴到了同一块数据上。</p>
+<h3 id="引用赋值与数据类型的关系">引用赋值与数据类型的关系<a class="headerlink" href="#引用赋值与数据类型的关系" title="页面定位">&para;</a></h3>
+<p>知道了 Python 所有的赋值都是引用以后，新问题出现了：如果我们需要修改某个引用中的值，会发生什么呢？这就需要按照 Python 的数据类型分开讨论了。</p>
+<p><strong>对于可变数据类型</strong>。修改某个引用中的值不会产生新的内存开销。也就是说，会牵一发而动全身。比如下面的程序：</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -6101,30 +5988,43 @@
 <span class="normal"><a href="#__codelineno-3-17">17</a></span>
 <span class="normal"><a href="#__codelineno-3-18">18</a></span>
 <span class="normal"><a href="#__codelineno-3-19">19</a></span>
-<span class="normal"><a href="#__codelineno-3-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">c</span> <span class="o">=</span> <span class="n">b</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># a[0] = -1 和 b[0] = -1 效果都是一样的</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># a[0] = -1 和 b[0] = -1 效果都是一样的</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="sd">&quot;&quot;&quot; 程序输出：</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="sd">3180113116480</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="sd">3180113116480</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="sd">3180113116480</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="sd">[-1, 2, 3]</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="sd">[-1, 2, 3]</span>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="sd">[-1, 2, 3]</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="sd">&quot;&quot;&quot; 程序输出：</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="sd">1441782879424</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="sd">1441782879424</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="sd">1441782879424</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="sd">1441782879424</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="sd">1441782879424</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="sd">1441782879424</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="sd">[-1, 2, 3]</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="sd">[-1, 2, 3]</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="sd">[-1, 2, 3]</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>上述所有的示例都可以用下面一张图来表示：C++ 中的变量相当于盒子，简单的赋值语句就相当于重新拿一个盒子装原来的数据；而 Python 中的变量相当于标签，简单的赋值语句就相当于所有标签都贴到了同一块数据上：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407031133477.png" data-type="image" data-width="auto" data-height="auto" data-title="C++盒子模型 vs Python 标签模型" data-desc-position="bottom"><img alt="C++盒子模型 vs Python 标签模型" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407031133477.png" /></a></p>
-<p>当然了，不可变数据是无法进行上述的「单点修改」的，只有重新构造一个对象，比如重新赋值、拼接、截取等操作。但此时无论是可变数据类型还是不可变数据类型，重新构造一个对象并进行赋值其实就相当于「重新开辟一块内存并贴上标签」了，和引用的关系不大，如下面的程序段：</p>
+<p>可以看到三个可变数据类型变量 <span class="arithmatex">\(a,b,c\)</span> 指向的内存空间没有发生改变，并且修改了其中一个变量的值以后，其余变量也都跟着改变。</p>
+<p><strong>对于不可变数据类型</strong>。由于不支持修改操作，那么支持的「重新赋值、拼接、截取」等操作就会重新申请内存。比如下面的程序段：</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -6139,27 +6039,31 @@
 <span class="normal"><a href="#__codelineno-4-12">12</a></span>
 <span class="normal"><a href="#__codelineno-4-13">13</a></span>
 <span class="normal"><a href="#__codelineno-4-14">14</a></span>
-<span class="normal"><a href="#__codelineno-4-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nb">list</span> <span class="o">=</span> <span class="n">my_list</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">my_list</span><span class="p">))</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="nb">list</span><span class="p">))</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="n">t</span> <span class="o">=</span> <span class="n">s</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="n">t</span> <span class="o">+=</span> <span class="s1">&#39;world&#39;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="sd">&quot;&quot;&quot; 程序输出</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="sd">2454192202816</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="sd">2454190413376</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="sd">[1, 2, 3]</span>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="sd">[6, 6, 6]</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="sd">2193178293488</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="sd">2193178293488</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="sd">2193178293488</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="sd">2193178282864</span>
 </span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>此时就相当于这样的图例：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407031146252.png" data-type="image" data-width="auto" data-height="auto" data-title="重新开辟一块内存并贴上标签" data-desc-position="bottom"><img alt="重新开辟一块内存并贴上标签" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407031146252.png" /></a></p>
-<p>有了上述的知识储备后，理解接下来的知识简直就是易如反掌。</p>
-<h4 id="二浅拷贝与深拷贝">二、浅拷贝与深拷贝<a class="headerlink" href="#二浅拷贝与深拷贝" title="页面定位">&para;</a></h4>
-<p>一句话概括：浅拷贝只会拷贝原始对象的第一层数据，其中的不可变数据就会拷贝出一个全新的对象，而其中的可变数据仍然是引用；深拷贝会递归的拷贝原始对象的每一层数据从而构造出一个全新的对象。</p>
+<p>可以看到另一个引用变量 <span class="arithmatex">\(t\)</span> 在进行拼接操作后，对应的内存地址发生了改变，也就是说申请了新的内存空间。</p>
+<p><strong>意义和作用</strong>。既然有这样的特性，那一定就有不同的适用场景。可以很明显的对应到 C++ 语言：</p>
+<ul>
+<li>Python 可变数据类型的引用，如果发生了修改操作，就等价于 C++ 的引用传递；</li>
+<li>Python 不可变数据类型的引用，如果发生了修改操作，就等价于 C++ 的值传递。</li>
+</ul>
+<h2 id="python-的拷贝构造">Python 的拷贝构造<a class="headerlink" href="#python-的拷贝构造" title="页面定位">&para;</a></h2>
+<p>拷贝也就是所谓的复制，在 C++ 中，所有的拷贝都是重新申请内存。在 Python 中略有不同，由于常规的赋值都是引用，因此我们需要额外的 <code>copy</code> 库来完成拷贝工作。</p>
+<p>浅拷贝只会拷贝原始对象的第一层数据，其中的不可变数据就会拷贝出一个全新的对象，而其中的可变数据仍然是引用；深拷贝会递归的拷贝原始对象的每一层数据从而构造出一个全新的对象。</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
@@ -6186,309 +6090,43 @@
 <span class="normal"><a href="#__codelineno-5-24">24</a></span>
 <span class="normal"><a href="#__codelineno-5-25">25</a></span>
 <span class="normal"><a href="#__codelineno-5-26">26</a></span>
-<span class="normal"><a href="#__codelineno-5-27">27</a></span>
-<span class="normal"><a href="#__codelineno-5-28">28</a></span>
-<span class="normal"><a href="#__codelineno-5-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1"># 创建一个嵌套列表</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="n">original_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="c1"># 使用[:]切片进行浅拷贝</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="c1"># 浅拷贝</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="n">sliced_list</span> <span class="o">=</span> <span class="n">original_list</span><span class="p">[:]</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="c1"># 使用copy模块的浅拷贝</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="n">shallow_copied_list</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">original_list</span><span class="p">)</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="c1"># 使用copy模块的深拷贝</span>
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="n">deep_copied_list</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">original_list</span><span class="p">)</span>
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="c1"># 修改嵌套列表中的元素</span>
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="n">original_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;haha&quot;</span>
-</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="n">original_list</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;changed&#39;</span>
-</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a>
-</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original list:</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">original_list</span><span class="p">)</span>
-</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sliced list:</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sliced_list</span><span class="p">)</span>
-</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shallow copied:</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">shallow_copied_list</span><span class="p">)</span>
-</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Deep copied:</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">deep_copied_list</span><span class="p">)</span>
-</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23"></a>
-</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="sd">&quot;&quot;&quot; 程序输出：</span>
-</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="sd">Original list:   [&#39;haha&#39;, 2, [&#39;changed&#39;, 4]]</span>
-</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="sd">Sliced list:     [1, 2, [&#39;changed&#39;, 4]]</span>
-</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="sd">Shallow copied:  [1, 2, [&#39;changed&#39;, 4]]</span>
-</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28"></a><span class="sd">Deep copied:     [1, 2, [3, 4]]</span>
-</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="n">shallow_copied_list</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">original_list</span><span class="p">)</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="c1"># 深拷贝</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="n">deep_copied_list</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">original_list</span><span class="p">)</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="c1"># 修改嵌套列表中的元素</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="n">original_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;haha&quot;</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="n">original_list</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;changed&#39;</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original list:</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">original_list</span><span class="p">)</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sliced list:</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sliced_list</span><span class="p">)</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shallow copied:</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">shallow_copied_list</span><span class="p">)</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Deep copied:</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">deep_copied_list</span><span class="p">)</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21"></a>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22"></a><span class="sd">&quot;&quot;&quot; 程序输出：</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="sd">Original list:   [&#39;haha&#39;, 2, [&#39;changed&#39;, 4]]</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="sd">Sliced list:     [1, 2, [&#39;changed&#39;, 4]]</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="sd">Shallow copied:  [1, 2, [&#39;changed&#39;, 4]]</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="sd">Deep copied:     [1, 2, [3, 4]]</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
-<h4 id="三函数参数传递">三、函数参数传递<a class="headerlink" href="#三函数参数传递" title="页面定位">&para;</a></h4>
-<p>在前文知识的铺垫下，理解函数参数的传递简直就是喝水，下面开始讲解。既然全都是引用，那么在函数传递参数时也是如此，所有的形参都是实参的引用，于是就回到了「一、万恶的万物引用」中介绍的：</p>
-<ul>
-<li>
-<p>若实参是可变数据类型，相当于 C++ 中的引用传参。那么对形参的「单点修改」操作也会改变实参的数据。当然如果对形参赋值全新的对象则并不会改变实参的值，因为让形参指向了新的栈空间。</p>
+<p>由于嵌套的可变元素在浅拷贝的逻辑中是引用，就导致了浅拷贝的结果中嵌套的可变元素仍然会被后续的操作改变。而深拷贝就不会出现这种问题，数据被拷贝到了全新的内存。这告诉我们如果我们需要完全一份新数据，就必须使用深拷贝。</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:py-ref">
+<p><a href="https://www.cnblogs.com/demon89/p/7400234.html">Python 对象引用、可变性和垃圾回收</a>&#160;<a class="footnote-backref" href="#fnref:py-ref" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li>
-<p>若实参是不可变数据类型，相当于 C++ 中 <code>const</code> 级别的引用传递。那么就无法对形参进行「单点修改」操作。只能构造一个全新的对象重新赋值给形参，同样的，此时的形参就不再是实参的引用，而是指向了全新的栈空间。</p>
-</li>
-</ul>
-<p>实例程序如下：</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-6-10">10</a></span>
-<span class="normal"><a href="#__codelineno-6-11">11</a></span>
-<span class="normal"><a href="#__codelineno-6-12">12</a></span>
-<span class="normal"><a href="#__codelineno-6-13">13</a></span>
-<span class="normal"><a href="#__codelineno-6-14">14</a></span>
-<span class="normal"><a href="#__codelineno-6-15">15</a></span>
-<span class="normal"><a href="#__codelineno-6-16">16</a></span>
-<span class="normal"><a href="#__codelineno-6-17">17</a></span>
-<span class="normal"><a href="#__codelineno-6-18">18</a></span>
-<span class="normal"><a href="#__codelineno-6-19">19</a></span>
-<span class="normal"><a href="#__codelineno-6-20">20</a></span>
-<span class="normal"><a href="#__codelineno-6-21">21</a></span>
-<span class="normal"><a href="#__codelineno-6-22">22</a></span>
-<span class="normal"><a href="#__codelineno-6-23">23</a></span>
-<span class="normal"><a href="#__codelineno-6-24">24</a></span>
-<span class="normal"><a href="#__codelineno-6-25">25</a></span>
-<span class="normal"><a href="#__codelineno-6-26">26</a></span>
-<span class="normal"><a href="#__codelineno-6-27">27</a></span>
-<span class="normal"><a href="#__codelineno-6-28">28</a></span>
-<span class="normal"><a href="#__codelineno-6-29">29</a></span>
-<span class="normal"><a href="#__codelineno-6-30">30</a></span>
-<span class="normal"><a href="#__codelineno-6-31">31</a></span>
-<span class="normal"><a href="#__codelineno-6-32">32</a></span>
-<span class="normal"><a href="#__codelineno-6-33">33</a></span>
-<span class="normal"><a href="#__codelineno-6-34">34</a></span>
-<span class="normal"><a href="#__codelineno-6-35">35</a></span>
-<span class="normal"><a href="#__codelineno-6-36">36</a></span>
-<span class="normal"><a href="#__codelineno-6-37">37</a></span>
-<span class="normal"><a href="#__codelineno-6-38">38</a></span>
-<span class="normal"><a href="#__codelineno-6-39">39</a></span>
-<span class="normal"><a href="#__codelineno-6-40">40</a></span>
-<span class="normal"><a href="#__codelineno-6-41">41</a></span>
-<span class="normal"><a href="#__codelineno-6-42">42</a></span>
-<span class="normal"><a href="#__codelineno-6-43">43</a></span>
-<span class="normal"><a href="#__codelineno-6-44">44</a></span>
-<span class="normal"><a href="#__codelineno-6-45">45</a></span>
-<span class="normal"><a href="#__codelineno-6-46">46</a></span>
-<span class="normal"><a href="#__codelineno-6-47">47</a></span>
-<span class="normal"><a href="#__codelineno-6-48">48</a></span>
-<span class="normal"><a href="#__codelineno-6-49">49</a></span>
-<span class="normal"><a href="#__codelineno-6-50">50</a></span>
-<span class="normal"><a href="#__codelineno-6-51">51</a></span>
-<span class="normal"><a href="#__codelineno-6-52">52</a></span>
-<span class="normal"><a href="#__codelineno-6-53">53</a></span>
-<span class="normal"><a href="#__codelineno-6-54">54</a></span>
-<span class="normal"><a href="#__codelineno-6-55">55</a></span>
-<span class="normal"><a href="#__codelineno-6-56">56</a></span>
-<span class="normal"><a href="#__codelineno-6-57">57</a></span>
-<span class="normal"><a href="#__codelineno-6-58">58</a></span>
-<span class="normal"><a href="#__codelineno-6-59">59</a></span>
-<span class="normal"><a href="#__codelineno-6-60">60</a></span>
-<span class="normal"><a href="#__codelineno-6-61">61</a></span>
-<span class="normal"><a href="#__codelineno-6-62">62</a></span>
-<span class="normal"><a href="#__codelineno-6-63">63</a></span>
-<span class="normal"><a href="#__codelineno-6-64">64</a></span>
-<span class="normal"><a href="#__codelineno-6-65">65</a></span>
-<span class="normal"><a href="#__codelineno-6-66">66</a></span>
-<span class="normal"><a href="#__codelineno-6-67">67</a></span>
-<span class="normal"><a href="#__codelineno-6-68">68</a></span>
-<span class="normal"><a href="#__codelineno-6-69">69</a></span>
-<span class="normal"><a href="#__codelineno-6-70">70</a></span>
-<span class="normal"><a href="#__codelineno-6-71">71</a></span>
-<span class="normal"><a href="#__codelineno-6-72">72</a></span>
-<span class="normal"><a href="#__codelineno-6-73">73</a></span>
-<span class="normal"><a href="#__codelineno-6-74">74</a></span>
-<span class="normal"><a href="#__codelineno-6-75">75</a></span>
-<span class="normal"><a href="#__codelineno-6-76">76</a></span>
-<span class="normal"><a href="#__codelineno-6-77">77</a></span>
-<span class="normal"><a href="#__codelineno-6-78">78</a></span>
-<span class="normal"><a href="#__codelineno-6-79">79</a></span>
-<span class="normal"><a href="#__codelineno-6-80">80</a></span>
-<span class="normal"><a href="#__codelineno-6-81">81</a></span>
-<span class="normal"><a href="#__codelineno-6-82">82</a></span>
-<span class="normal"><a href="#__codelineno-6-83">83</a></span>
-<span class="normal"><a href="#__codelineno-6-84">84</a></span>
-<span class="normal"><a href="#__codelineno-6-85">85</a></span>
-<span class="normal"><a href="#__codelineno-6-86">86</a></span>
-<span class="normal"><a href="#__codelineno-6-87">87</a></span>
-<span class="normal"><a href="#__codelineno-6-88">88</a></span>
-<span class="normal"><a href="#__codelineno-6-89">89</a></span>
-<span class="normal"><a href="#__codelineno-6-90">90</a></span>
-<span class="normal"><a href="#__codelineno-6-91">91</a></span>
-<span class="normal"><a href="#__codelineno-6-92">92</a></span>
-<span class="normal"><a href="#__codelineno-6-93">93</a></span>
-<span class="normal"><a href="#__codelineno-6-94">94</a></span>
-<span class="normal"><a href="#__codelineno-6-95">95</a></span>
-<span class="normal"><a href="#__codelineno-6-96">96</a></span>
-<span class="normal"><a href="#__codelineno-6-97">97</a></span>
-<span class="normal"><a href="#__codelineno-6-98">98</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_mutable</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">di</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">se</span><span class="p">:</span> <span class="nb">set</span><span class="p">):</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>    <span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a>    <span class="n">di</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;what&quot;</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>    <span class="n">se</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;可变数据类型修改中&quot;</span><span class="p">)</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ls: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">ls</span><span class="p">)))</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;di: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">di</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">di</span><span class="p">)))</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;se: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">==========</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">se</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">se</span><span class="p">)))</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_immutable</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a>    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a>    <span class="n">y</span> <span class="o">=</span> <span class="mi">789</span>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a>    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a>    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;不可变数据类型修改中&quot;</span><span class="p">)</span>
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span>
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">==========</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23"></a>
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24"></a>
-</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26"></a>    <span class="c1"># 可变数据类型</span>
-</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27"></a>    <span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28"></a>    <span class="n">di</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;world&quot;</span><span class="p">}</span>
-</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29"></a>    <span class="n">se</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;可变数据类型修改前&quot;</span><span class="p">)</span>
-</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ls: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">ls</span><span class="p">)))</span>
-</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;di: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">di</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">di</span><span class="p">)))</span>
-</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;se: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">==========</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">se</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">se</span><span class="p">)))</span>
-</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34"></a>
-</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35"></a>    <span class="n">test_mutable</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="n">di</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span>
-</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36"></a>
-</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;可变数据类型修改后&quot;</span><span class="p">)</span>
-</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ls: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">ls</span><span class="p">)))</span>
-</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;di: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">di</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">di</span><span class="p">)))</span>
-</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;se: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">==========</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">se</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">se</span><span class="p">)))</span>
-</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41"></a>
-</span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42"></a>    <span class="c1"># 不可变数据类型</span>
-</span><span id="__span-6-43"><a id="__codelineno-6-43" name="__codelineno-6-43"></a>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">520</span><span class="p">,</span> <span class="mf">13.14</span>
-</span><span id="__span-6-44"><a id="__codelineno-6-44" name="__codelineno-6-44"></a>    <span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-</span><span id="__span-6-45"><a id="__codelineno-6-45" name="__codelineno-6-45"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;不可变数据类型修改前&quot;</span><span class="p">)</span>
-</span><span id="__span-6-46"><a id="__codelineno-6-46" name="__codelineno-6-46"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
-</span><span id="__span-6-47"><a id="__codelineno-6-47" name="__codelineno-6-47"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
-</span><span id="__span-6-48"><a id="__codelineno-6-48" name="__codelineno-6-48"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span>
-</span><span id="__span-6-49"><a id="__codelineno-6-49" name="__codelineno-6-49"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">==========</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
-</span><span id="__span-6-50"><a id="__codelineno-6-50" name="__codelineno-6-50"></a>
-</span><span id="__span-6-51"><a id="__codelineno-6-51" name="__codelineno-6-51"></a>    <span class="n">test_immutable</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
-</span><span id="__span-6-52"><a id="__codelineno-6-52" name="__codelineno-6-52"></a>
-</span><span id="__span-6-53"><a id="__codelineno-6-53" name="__codelineno-6-53"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;不可变数据类型修改后&quot;</span><span class="p">)</span>
-</span><span id="__span-6-54"><a id="__codelineno-6-54" name="__codelineno-6-54"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
-</span><span id="__span-6-55"><a id="__codelineno-6-55" name="__codelineno-6-55"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
-</span><span id="__span-6-56"><a id="__codelineno-6-56" name="__codelineno-6-56"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span>
-</span><span id="__span-6-57"><a id="__codelineno-6-57" name="__codelineno-6-57"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t: </span><span class="si">{}</span><span class="s2"> id: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">==========</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
-</span><span id="__span-6-58"><a id="__codelineno-6-58" name="__codelineno-6-58"></a>
-</span><span id="__span-6-59"><a id="__codelineno-6-59" name="__codelineno-6-59"></a><span class="sd">&quot;&quot;&quot; 程序输出：</span>
-</span><span id="__span-6-60"><a id="__codelineno-6-60" name="__codelineno-6-60"></a><span class="sd">可变数据类型修改前</span>
-</span><span id="__span-6-61"><a id="__codelineno-6-61" name="__codelineno-6-61"></a><span class="sd">ls: [1, 2, 3]                id: 2180798758528</span>
-</span><span id="__span-6-62"><a id="__codelineno-6-62" name="__codelineno-6-62"></a><span class="sd">di: {1: &#39;hello&#39;, 2: &#39;world&#39;} id: 2180798863872</span>
-</span><span id="__span-6-63"><a id="__codelineno-6-63" name="__codelineno-6-63"></a><span class="sd">se: {1, 2, 3}                id: 2180795027008</span>
-</span><span id="__span-6-64"><a id="__codelineno-6-64" name="__codelineno-6-64"></a><span class="sd">==========</span>
-</span><span id="__span-6-65"><a id="__codelineno-6-65" name="__codelineno-6-65"></a>
-</span><span id="__span-6-66"><a id="__codelineno-6-66" name="__codelineno-6-66"></a><span class="sd">可变数据类型修改中</span>
-</span><span id="__span-6-67"><a id="__codelineno-6-67" name="__codelineno-6-67"></a><span class="sd">ls: [4, 5, 6]                id: 2180763483776 # 重新赋值：形参的地址值发生了改变</span>
-</span><span id="__span-6-68"><a id="__codelineno-6-68" name="__codelineno-6-68"></a><span class="sd">di: {1: &#39;what&#39;, 2: &#39;world&#39;}  id: 2180798863872 # 单点修改：形参的地址值保持不变</span>
-</span><span id="__span-6-69"><a id="__codelineno-6-69" name="__codelineno-6-69"></a><span class="sd">se: {1, 2, 3, 4}             id: 2180795027008 # 单点修改：形参的地址值保持不变</span>
-</span><span id="__span-6-70"><a id="__codelineno-6-70" name="__codelineno-6-70"></a><span class="sd">==========</span>
-</span><span id="__span-6-71"><a id="__codelineno-6-71" name="__codelineno-6-71"></a>
-</span><span id="__span-6-72"><a id="__codelineno-6-72" name="__codelineno-6-72"></a><span class="sd">可变数据类型修改后</span>
-</span><span id="__span-6-73"><a id="__codelineno-6-73" name="__codelineno-6-73"></a><span class="sd">ls: [1, 2, 3]                id: 2180798758528 # 重新赋值：实参保持不变</span>
-</span><span id="__span-6-74"><a id="__codelineno-6-74" name="__codelineno-6-74"></a><span class="sd">di: {1: &#39;what&#39;, 2: &#39;world&#39;}  id: 2180798863872 # 单点修改：实参发生改变</span>
-</span><span id="__span-6-75"><a id="__codelineno-6-75" name="__codelineno-6-75"></a><span class="sd">se: {1, 2, 3, 4}             id: 2180795027008 # 单点修改：实参发生改变</span>
-</span><span id="__span-6-76"><a id="__codelineno-6-76" name="__codelineno-6-76"></a><span class="sd">==========</span>
-</span><span id="__span-6-77"><a id="__codelineno-6-77" name="__codelineno-6-77"></a>
-</span><span id="__span-6-78"><a id="__codelineno-6-78" name="__codelineno-6-78"></a><span class="sd">不可变数据类型修改前</span>
-</span><span id="__span-6-79"><a id="__codelineno-6-79" name="__codelineno-6-79"></a><span class="sd">x: 520       id: 2180798041936</span>
-</span><span id="__span-6-80"><a id="__codelineno-6-80" name="__codelineno-6-80"></a><span class="sd">y: 13.14     id: 2180798040688</span>
-</span><span id="__span-6-81"><a id="__codelineno-6-81" name="__codelineno-6-81"></a><span class="sd">s: hello     id: 2180798864816</span>
-</span><span id="__span-6-82"><a id="__codelineno-6-82" name="__codelineno-6-82"></a><span class="sd">t: (6, 6, 6) id: 2180798863616</span>
-</span><span id="__span-6-83"><a id="__codelineno-6-83" name="__codelineno-6-83"></a><span class="sd">==========</span>
-</span><span id="__span-6-84"><a id="__codelineno-6-84" name="__codelineno-6-84"></a>
-</span><span id="__span-6-85"><a id="__codelineno-6-85" name="__codelineno-6-85"></a><span class="sd">不可变数据类型修改中</span>
-</span><span id="__span-6-86"><a id="__codelineno-6-86" name="__codelineno-6-86"></a><span class="sd">x: -1        id: 140715370481248 # 重新赋值：形参的地址值发生了改变</span>
-</span><span id="__span-6-87"><a id="__codelineno-6-87" name="__codelineno-6-87"></a><span class="sd">y: 789       id: 2180798040432   # 重新赋值：形参的地址值发生了改变</span>
-</span><span id="__span-6-88"><a id="__codelineno-6-88" name="__codelineno-6-88"></a><span class="sd">s: ello      id: 2180798584368   # 重新赋值：形参的地址值发生了改变</span>
-</span><span id="__span-6-89"><a id="__codelineno-6-89" name="__codelineno-6-89"></a><span class="sd">t: (6, 6)    id: 2180798838528   # 重新赋值：形参的地址值发生了改变</span>
-</span><span id="__span-6-90"><a id="__codelineno-6-90" name="__codelineno-6-90"></a><span class="sd">==========</span>
-</span><span id="__span-6-91"><a id="__codelineno-6-91" name="__codelineno-6-91"></a>
-</span><span id="__span-6-92"><a id="__codelineno-6-92" name="__codelineno-6-92"></a><span class="sd">不可变数据类型修改后</span>
-</span><span id="__span-6-93"><a id="__codelineno-6-93" name="__codelineno-6-93"></a><span class="sd">x: 520       id: 2180798041936   # 重新赋值：实参保持不变</span>
-</span><span id="__span-6-94"><a id="__codelineno-6-94" name="__codelineno-6-94"></a><span class="sd">y: 13.14     id: 2180798040688   # 重新赋值：实参保持不变</span>
-</span><span id="__span-6-95"><a id="__codelineno-6-95" name="__codelineno-6-95"></a><span class="sd">s: hello     id: 2180798864816   # 重新赋值：实参保持不变</span>
-</span><span id="__span-6-96"><a id="__codelineno-6-96" name="__codelineno-6-96"></a><span class="sd">t: (6, 6, 6) id: 2180798863616   # 重新赋值：实参保持不变</span>
-</span><span id="__span-6-97"><a id="__codelineno-6-97" name="__codelineno-6-97"></a><span class="sd">==========</span>
-</span><span id="__span-6-98"><a id="__codelineno-6-98" name="__codelineno-6-98"></a><span class="sd">&quot;&quot;&quot;</span>
-</span></code></pre></div></td></tr></table></div>
-<p>可以看到：无论是可变数据类型还是不可变数据，函数调用完成之后地址都不会发生改变。</p>
-<ul>
-<li>对于可变数据类型：在函数中可以进行重新赋值，也可以进行单点修改。如果重新赋值，形参的地址值会发生改变，实参保持不变；如果单点修改，形参的地址值保持不变，实参发生改变。</li>
-<li>对于不可变数据类型：在函数中只能进行重新赋值。形参的地址值会发生改变，实参保持不变。</li>
-</ul>
-<p>此时再回到一开头提到的，可以通过传递整数实现吗？答案是不可以。因为 int 在 Python 中是不可变的，无法在函数中进行「单点修改」操作，我们只能将其装入可变数据类型比如 list 中实现在函数中通过修改形参达到修改实参的目的。</p>
-<h3 id="题外话">题外话<a class="headerlink" href="#题外话" title="页面定位">&para;</a></h3>
-<p>不可变数据并非真正的不可变。如果不可变数据其中嵌套了可变数据，仍然可以修改其中嵌套的可变数据；当然不可变数据仍然不可修改。比如下面的程序：</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-7-10">10</a></span>
-<span class="normal"><a href="#__codelineno-7-11">11</a></span>
-<span class="normal"><a href="#__codelineno-7-12">12</a></span>
-<span class="normal"><a href="#__codelineno-7-13">13</a></span>
-<span class="normal"><a href="#__codelineno-7-14">14</a></span>
-<span class="normal"><a href="#__codelineno-7-15">15</a></span>
-<span class="normal"><a href="#__codelineno-7-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">original_data</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s2">&quot;have a good day&quot;</span><span class="p">)</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">original_data</span><span class="p">)</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="c1"># 修改嵌套的可变数据</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="n">original_data</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">original_data</span><span class="p">)</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="c1"># 修改嵌套的不可变数据</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="n">original_data</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;world&quot;</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">original_data</span><span class="p">)</span>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="sd">&quot;&quot;&quot; 程序输出：</span>
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="sd">(1, 2, [3, 4], &#39;have a good day&#39;)</span>
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="sd">(1, 2, [&#39;hello&#39;, 4], &#39;have a good day&#39;)</span>
-</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="sd">TypeError: &#39;str&#39; object does not support item assignment</span>
-</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="sd">&quot;&quot;&quot;</span>
-</span></code></pre></div></td></tr></table></div>
-<h3 id="参考">参考<a class="headerlink" href="#参考" title="页面定位">&para;</a></h3>
-<p><a href="https://blog.csdn.net/weixin_68789096/article/details/136314349">一文读懂 Python 值传递和引用传递</a></p>
-<p><a href="https://www.cnblogs.com/demon89/p/7400234.html">Python 对象引用、可变性和垃圾回收</a></p>
-<h2 id="查看库的安装位置">查看库的安装位置<a class="headerlink" href="#查看库的安装位置" title="页面定位">&para;</a></h2>
-<p>由于本地安装了多个 python 解释器，所以想要打印某个版本的解释器下载的「包或模块」的路径，整理一下大约有两种方法</p>
-<h3 id="方法1使用模块内置方法">方法1：使用模块内置方法<a class="headerlink" href="#方法1使用模块内置方法" title="页面定位">&para;</a></h3>
-<p>如果模块内置了 <code>__file__</code> 方法，则可以直接打印出来：</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
-<span class="normal"><a href="#__codelineno-8-2">2</a></span>
-<span class="normal"><a href="#__codelineno-8-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406052305698.png" data-type="image" data-width="auto" data-height="auto" data-title="直接打印" data-desc-position="bottom"><img alt="直接打印" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406052305698.png" /></a></p>
-<h3 id="方法二基于-pip-方法">方法二：基于 pip 方法<a class="headerlink" href="#方法二基于-pip-方法" title="页面定位">&para;</a></h3>
-<p>有些库没有内置上述 <code>__file__</code> 方法，可以使用 pip 指令进行打印：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>pip<span class="w"> </span>show<span class="w"> </span>&lt;PackgeName<span class="w"> </span>or<span class="w"> </span>ModelName&gt;
-</span></code></pre></div></td></tr></table></div>
-<p>例如想要打印 <code>sortedcontainers</code> 包的安装路径：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>pip<span class="w"> </span>show<span class="w"> </span>sortedcontainers
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406052310960.png" data-type="image" data-width="auto" data-height="auto" data-title="使用 pip 指令进行打印" data-desc-position="bottom"><img alt="使用 pip 指令进行打印" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406052310960.png" /></a></p>
-<h3 id="参考_1">参考<a class="headerlink" href="#参考_1" title="页面定位">&para;</a></h3>
-<p><a href="https://blog.csdn.net/C_chuxin/article/details/82960824">如何查看安装的 python 库的位置</a></p>
+</ol>
+</div>
 
 
 
@@ -6511,7 +6149,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年2月25日 03:56:29">2025年2月25日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月12日 08:04:49">2025年3月12日</span>
   </span>
 
     
@@ -6636,7 +6274,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../../cplusplus/cpp-advanced/" class="md-footer__link md-footer__link--prev" aria-label="上一页: C++ 高级教程">
+          <a href="../python-setup/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Python 配置指南">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6646,7 +6284,7 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                C++ 高级教程
+                Python 配置指南
               </div>
             </div>
           </a>

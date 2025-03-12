@@ -4687,7 +4687,9 @@ $$
 
 ### 并查集
 
-并查集是一种用于管理元素所属集合的数据结构，实现为一个森林，其中每棵树表示一个集合，树中的节点表示对应集合中的元素。<img src="https://pic.leetcode.cn/1741748205-rrerHS-image.png" alt="image.png" style="zoom:50%;" />
+并查集是一种用于管理元素所属集合的数据结构，实现为一个森林，其中每棵树表示一个集合，树中的节点表示对应集合中的元素。集合内的元素可达且连通。
+
+<img src="https://pic.leetcode.cn/1741748205-rrerHS-image.png" alt="image.png" style="zoom:50%;" />
 
 - $union(u, v)$ 合并两个元素所属集合（合并对应的树）
 - $find(x)$ 查询某个元素所属集合（查询对应的树的根节点），这可以用于判断两个元素是否属于同一集合
@@ -4702,31 +4704,32 @@ $$
     fa = list(range(n)) # [0, 1, 2, ..., n - 1]
     ```
 
-- 查询：沿着树向上移动，直至找到根节点。
+- 查询：当 $fa[x] =x$ 表示 $x$ 节点即是根节点；否则，通过递归调用 $find(fa[x])$，沿着树向上移动，直至找到根节点。通常在判断是否可达、连通问题时进行查询，如需要判断 $u,v$ 是否属于一个集合，通过 $find(u),find(v)$ 是否相等判断。
 
     <img src="https://pic.leetcode.cn/1741748277-RgfNTu-image.png" alt="image.png" style="zoom:50%;" />
 
 ```python
 # 查找 x 所属集合（对应的树的树根）
 def find(x):
-	if fa[x] != x:
-        return find(fa[x])
-    return x
+	if fa[x] == x: return x
+    return find(fa[x])
 ```
+
+> find(4) -> find(3) -> find(1) -> 1
 
 ```python
 def find(x):
     return x if fa[x] == x else find(fa[x])
 ```
 
-- 合并：要合并两棵树，我们只需要将一棵树的根节点连到另一棵树的根节点
+- 合并：要合并两棵树，我们只需要将一棵树的根节点 $find(v)$ 连到另一棵树的根节点 $find(u)$，即 $fa[find(v)] ← find(u)$。通常在更新可达、连通关系进行合并。
 
     
 
     <img src="https://pic.leetcode.cn/1741750133-ShXMMP-image.png" alt="image.png" style="zoom:50%;" />
 
 ```python
-# v 并向 u 中 
+# v所在集合并到u所在集合中
 def union(u, v):
     if find(u) != find(v):
         fa[find(v)] = find(u)
@@ -4736,36 +4739,34 @@ def union(u, v):
 
 **路径压缩**
 
-查询过程中，经过的每个元素都属于该集合，我们可直接修改 $fa[x] ← find(fa[x])$，将其连到根节点以加快后续查询。最终，我们会将原树压缩成树高越发接近2的树。
+查询过程中，经过的每个元素都属于该集合，我们可直接更新每个元素，让其父节点指向树根。即 $fa[x] ← find(fa[x])$ 来减少树根，加快后续查询。最终，我们会将原树压缩成树高越发接近2的树。
 
 <img src="https://pic.leetcode.cn/1741750082-qDWJcM-image.png" alt="image.png" style="zoom:50%;" />
 
 ```python
 def find(x):
-    if fa[x] != x:
-        fa[x] = find(fa[x])
-    return x
+    if fa[x] == x: return x
+    fa[x] = find(fa[x])
+    return fa[x]
 ```
 
-
+> find(4) -> fa[4] ← find(3) -> fa[3] ← find(1) -> 1
 
 **并查集递归模板**
 
 ```python
-    fa = list(range(n)) # [0, 1, 2, ..., n - 1]
-    # 查找 x 集合的根
-    def find(x):
-        if fa[x] != x:
-            fa[x] = find(fa[x])
-        return x
-
-    # v 并向 u 中 
-    def union(u, v):
-        if find(u) != find(v):
-	        fa[find(v)] = find(u)
+# 并查集模板
+fa = list(range(n + 1))
+def find(x):
+    if fa[x] == x: return x
+    fa[x] = find(fa[x])
+    return fa[x]
+def union(u, v):
+    if find(u) != find(v):
+        fa[find(v)] = find(u)
 ```
 
-迭代写法
+**迭代模板**
 
 ```python
 fa = list(range(n))
@@ -4791,6 +4792,49 @@ def union(u, v):
 
 - 记录每个集合大小：绑定到根节点
 - 记录每个点到根节点的 **距离**：绑定到每一个节点上
+
+[P1551 亲戚 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P1551)
+
+**语言整理**
+
+对一个无向图有 $n$ 个点， $m$ 条边， $(u,v)$ 表示一条无向边。给定 $p$ 组查询，每组查询判断 $p_u,p_v$ 是否可达。
+
+**思路**
+
+- 可达、连通的连通分量可以看作一个集合。
+- 对给定的无向边 $(u,v )$ ，可通过 $union(u,v)$  合并，表示可达、连通关系。
+
+- 对每组询问，$find(p_u)$ 和 $find(p_v)$ 的关系判断 $u,v$ 是否可达。
+
+    <img src="C:\Users\TsingPig\AppData\Roaming\Typora\typora-user-images\image-20250312114004084.png" alt="image-20250312114004084" style="zoom:33%;" />
+
+
+
+```python
+# https://www.luogu.com.cn/problem/P1551
+import sys
+n, m, p = map(int, input().split())
+
+# 并查集模板
+fa = list(range(n + 1))
+def find(x):
+    if fa[x] == x: return x
+    fa[x] = find(fa[x])
+    return fa[x]
+def union(u, v):
+    if find(u) != find(v):
+        fa[find(v)] = find(u)
+
+for _ in range(m):
+    u, v = map(int, input().split())
+    # 通过合并，表示可达、连通关系
+    union(u, v)
+
+for _ in range(p):
+    u, v = map(int, input().split())
+    print('Yes' if find(u) == find(v) else 'No')
+
+```
 
 
 

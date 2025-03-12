@@ -4687,23 +4687,79 @@ $$
 
 ### 并查集
 
-合并和查询的时间复杂度： 近似 $O(1)$
+并查集是一种用于管理元素所属集合的数据结构，实现为一个森林，其中每棵树表示一个集合，树中的节点表示对应集合中的元素。<img src="https://pic.leetcode.cn/1741748205-rrerHS-image.png" alt="image.png" style="zoom:50%;" />
 
-`find(u) == find(v)` 表示 u, v 在同一集合。
+- $union(u, v)$ 合并两个元素所属集合（合并对应的树）
+- $find(x)$ 查询某个元素所属集合（查询对应的树的根节点），这可以用于判断两个元素是否属于同一集合
+
+- 合并和查询的时间复杂度： 近似  $O(1)$
+
+**实现**
+
+- 初始化：每个元素都位于一个单独的集合，表示为一棵只有根节点的树。方便起见，我们将根节点的父亲设为自己
+
+    ```python
+    fa = list(range(n)) # [0, 1, 2, ..., n - 1]
+    ```
+
+- 查询：沿着树向上移动，直至找到根节点。
+
+    <img src="https://pic.leetcode.cn/1741748277-RgfNTu-image.png" alt="image.png" style="zoom:50%;" />
+
+```python
+# 查找 x 所属集合（对应的树的树根）
+def find(x):
+	if fa[x] != x:
+        return find(fa[x])
+    return x
+```
+
+```python
+def find(x):
+    return x if fa[x] == x else find(fa[x])
+```
+
+- 合并：要合并两棵树，我们只需要将一棵树的根节点连到另一棵树的根节点
+
+    
+
+    <img src="https://pic.leetcode.cn/1741750133-ShXMMP-image.png" alt="image.png" style="zoom:50%;" />
+
+```python
+# v 并向 u 中 
+def union(u, v):
+    if find(u) != find(v):
+        fa[find(v)] = find(u)
+```
+
+
 
 **路径压缩**
 
-递归写法
+查询过程中，经过的每个元素都属于该集合，我们可直接修改 $fa[x] ← find(fa[x])$，将其连到根节点以加快后续查询。最终，我们会将原树压缩成树高越发接近2的树。
+
+<img src="https://pic.leetcode.cn/1741750082-qDWJcM-image.png" alt="image.png" style="zoom:50%;" />
 
 ```python
-    fa = list(range(n))
+def find(x):
+    if fa[x] != x:
+        fa[x] = find(fa[x])
+    return x
+```
+
+
+
+**并查集递归模板**
+
+```python
+    fa = list(range(n)) # [0, 1, 2, ..., n - 1]
     # 查找 x 集合的根
     def find(x):
         if fa[x] != x:
             fa[x] = find(fa[x])
-        return fa[x]
+        return x
 
-    # v 并向 u 中 Z
+    # v 并向 u 中 
     def union(u, v):
         if find(u) != find(v):
 	        fa[find(v)] = find(u)
@@ -5645,7 +5701,7 @@ class Solution:
 
 
 
-#### 
+
 
 #### 线段树优化问题
 

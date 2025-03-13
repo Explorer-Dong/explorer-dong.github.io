@@ -4711,10 +4711,9 @@ print(-hq[0]) # 15
 heappop(hq) 
 print(hq) # [-13, -11, -12, -5, -9]
 print(-hq[0]) # 13
-
 ```
 
-[[2530. 执行 K 次操作后的最大分数 - 力扣（LeetCode）](https://leetcode.cn/problems/maximal-score-after-applying-k-operations/)](https://leetcode.cn/problems/mark-elements-on-array-by-performing-queries/description/)
+[3080. 执行操作标记数组中的元素 - 力扣（LeetCode）](https://leetcode.cn/problems/mark-elements-on-array-by-performing-queries/description/)
 
 给你一个下标从 **0** 开始的整数数组 `nums` 和一个整数 `k` 。你的 **起始分数** 为 `0` 。
 
@@ -4756,16 +4755,6 @@ class Solution:
             heappush(hq, -ceil(-x / 3))
         return -res
 ```
-
-
-
-
-
-
-
-
-
-
 
 [1.删字母 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/6272/learning/?page=1&first_category_id=1&tags=优先队列,省模拟赛&tag_relation=intersection&sort=difficulty&asc=1)
 
@@ -4829,7 +4818,7 @@ print(res)
     fa = list(range(n)) # [0, 1, 2, ..., n - 1]
     ```
 
-- 查询：当 $fa[x] =x$ 表示 $x$ 节点即是根节点；否则，通过递归调用 $find(fa[x])$，沿着树向上移动，直至找到根节点。通常在判断是否可达、连通问题时进行查询，如需要判断 $u,v$ 是否属于一个集合，通过 $find(u),find(v)$ 是否相等判断。
+- 查询：当  $fa[x] =x $  表示 $x$ 节点即是根节点；否则，通过递归调用 $ find(fa[x]) $，沿着树向上移动，直至找到根节点。通常在判断是否可达、连通问题时进行查询，如需要判断 $ u,v $ 是否属于一个集合，通过 $ find(u),find(v) $  是否相等判断。
 
     <img src="https://pic.leetcode.cn/1741748277-RgfNTu-image.png" alt="image.png" style="zoom:50%;" />
 
@@ -4839,8 +4828,6 @@ def find(x):
 	if fa[x] == x: return x
     return find(fa[x])
 ```
-
-> find(4) -> find(3) -> find(1) -> 1
 
 ```python
 def find(x):
@@ -4875,7 +4862,7 @@ def find(x):
     return fa[x]
 ```
 
-> find(4) -> fa[4] ← find(3) -> fa[3] ← find(1) -> 1
+
 
 **并查集递归模板**
 
@@ -4933,12 +4920,11 @@ def union(u, v):
 
 - 对每组询问，$find(p_u)$ 和 $find(p_v)$ 的关系判断 $u,v$ 是否可达。
 
-    <img src="C:\Users\TsingPig\AppData\Roaming\Typora\typora-user-images\image-20250312114004084.png" alt="image-20250312114004084" style="zoom:33%;" />
+    <img src="https://pic.leetcode.cn/1741843275-YnoDaB-image.png" alt="image.png" style="zoom:33%;" />
 
 
 
 ```python
-# https://www.luogu.com.cn/problem/P1551
 import sys
 n, m, p = map(int, input().split())
 
@@ -4981,7 +4967,6 @@ for _ in range(p):
 - 下标从1开始时，可定 $fa = list(range(n+1))$，同时 $cnt$ 要减去1
 
 ```python
-# https://www.luogu.com.cn/problem/P1536
 import sys
 input = lambda: sys.stdin.readline().strip()
 
@@ -5012,7 +4997,6 @@ while True:
 [1.合根植物 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/110/learning/?page=1&first_category_id=1&tags=并查集,国赛&tag_relation=intersection&sort=difficulty&asc=1)
 
 ```python
-# https://www.lanqiao.cn/problems/110/learning/?page=1&first_category_id=1&tags=%E7%9C%81%E8%B5%9B,%E5%B9%B6%E6%9F%A5%E9%9B%86&tag_relation=intersection&sort=difficulty&asc=1
 import sys
 input = lambda: sys.stdin.readline().strip()
 

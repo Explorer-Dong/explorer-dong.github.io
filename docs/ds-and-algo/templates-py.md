@@ -204,40 +204,6 @@ for line in sys.stdin:
 
 
 
-### 二叉堆 / 优先队列
-
-**`heapq.heappush(heap, item)`**
-
-- 将 `item` 添加到 `heap` 中，并保持堆的不变性。
-- 时间复杂度：$O(log n)$
-
-**`heapq.heappop(heap)`**
-
-- 弹出并返回 `heap` 中的最小元素，并保持堆的不变性。
-- 时间复杂度：$O(log n)$
-- 
-
-```python
-from heapq import *
-
-heap = []
-heappush(heap, 3)
-heappush(heap, 1)
-heappush(heap, 2)
-print(heap)  # 输出: [1, 3, 2]
-
-heapify(nums)
-score = heappop(nums)
-heappush(nums, val)
-nums = []
-heapq.heappush(nums, val)	#插入
-heapq.heappop(nums)			#弹出顶部
-# 注意：
-# python 中堆默认且只能是小顶堆
-```
-
-
-
 ### 有序列表 / 有序集合
 
 **SortedList**
@@ -4687,31 +4653,232 @@ $$
 
 ## 数据结构
 
+### 堆 / 优先队列
+
+库导入：`from heapq import *`
+
+注意：python的heap，默认是小堆顶，即二叉堆堆顶元素大于左右孩子。
+
+**`heappush(heap, item)`**
+
+- 将 `item` 添加到 `heap` 中，并保持堆的不变性。
+- 时间复杂度：$O(log n)$
+
+**`heappop(heap)`**
+
+- 弹出并返回 `heap` 中的最小元素，并保持堆的不变性。
+- 时间复杂度：$O(log n)$
+
+`heap[0]` 取堆顶元素，时间复杂度 $O(1)$ 
+
+<img src="https://pic.leetcode.cn/1741764815-tCQKMa-image.png" alt="image.png" style="zoom:33%;" />
+
+```python
+from heapq import *
+
+hq = []
+
+heappush(hq, 5)
+heappush(hq, 9)
+heappush(hq, 11)
+heappush(hq, 12)
+heappush(hq, 13)
+heappush(hq, 15)
+print(hq)  # 输出: [5, 9, 11, 12, 13, 15]
+
+# 获取堆顶元素（最小），O(1)
+print(hq[0]) # 5
+
+# 弹出堆顶元素（最小），O(logn)
+heappop(hq)
+print(hq) # 输出 [9, 12, 11, 15, 13]
+
+# 注意：python 中堆默认且只能是小顶堆
+
+# 大顶堆，通过取反实现
+nums = [15, 13, 9, 5, 11, 12]
+hq = []
+for x in nums:
+    heappush(hq, -x)
+    
+print(hq) # [-15, -13, -12, -5, -11, -9]
+
+# 获取堆顶元素（最大）
+print(-hq[0]) # 15
+
+
+# 弹出堆顶元素（最大），O(logn)
+heappop(hq) 
+print(hq) # [-13, -11, -12, -5, -9]
+print(-hq[0]) # 13
+```
+
+[3080. 执行操作标记数组中的元素 - 力扣（LeetCode）](https://leetcode.cn/problems/mark-elements-on-array-by-performing-queries/description/)
+
+给你一个下标从 **0** 开始的整数数组 `nums` 和一个整数 `k` 。你的 **起始分数** 为 `0` 。
+
+在一步 **操作** 中：
+
+1. 选出一个满足 `0 <= i < nums.length` 的下标 `i` ，
+2. 将你的 **分数** 增加 `nums[i]` ，并且
+3. 将 `nums[i]` 替换为 `ceil(nums[i] / 3)` 。
+
+返回在 **恰好** 执行 `k` 次操作后，你可能获得的最大分数。
+
+向上取整函数 `ceil(val)` 的结果是大于或等于 `val` 的最小整数。
+
+**示例 2：**
+
+```
+输入：nums = [1,10,3,3,3], k = 3
+输出：17
+解释：可以执行下述操作：
+第 1 步操作：选中 i = 1 ，nums 变为 [1,4,3,3,3] 。分数增加 10 。
+第 2 步操作：选中 i = 1 ，nums 变为 [1,2,3,3,3] 。分数增加 4 。
+第 3 步操作：选中 i = 2 ，nums 变为 [1,2,1,3,3] 。分数增加 3 。
+最后分数是 10 + 4 + 3 = 17 。
+```
+
+```python
+from heapq import *
+from math import *
+class Solution:
+    def maxKelements(self, nums: List[int], k: int) -> int:
+        res = 0
+        hq = []
+        for i, x in enumerate(nums):
+            nums[i] = -x
+            heappush(hq, -x)
+        for _ in range(k):
+            x = heappop(hq)
+            res += x 
+            heappush(hq, -ceil(-x / 3))
+        return -res
+```
+
+[1.删字母 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/6272/learning/?page=1&first_category_id=1&tags=优先队列,省模拟赛&tag_relation=intersection&sort=difficulty&asc=1)
+
+**思路**
+
+- 转换成从 $n$ 个字母中，选出 $n-m$ 个，使得字符串字典序最小
+
+- 贪心：考虑当前选择字母的范围。假设上一处选择的字母下标为 $L$，左边界 $L+1$。右边界 $R$ 应该保证其右侧还有足够的备选项，在区间内，贪心的选择最小的字母。
+
+- 最小堆，插入可以选择的元素，每次选择完成进行一次 $pop$ 
+
+    > 例如，
+    >
+    > 12, 5, 7, 6, 20, 1, 4, 15, 21        从9个数中，删除3个，即选择6个。
+    >
+    > 第一个可以选择的范围是 $[0, 3]$ ，即右边界的右侧有5个备选项。
+    >
+    > 第一处选择了5，下标为1，第二个可以选择的范围是 $[2, 4]$，即右边界还有4个备选项。
+
+```python
+import sys
+input = lambda: sys.stdin.readline().strip()
+from heapq import *
+n, m = map(int, input().split())
+s = input()
+
+hq = []
+res = ''
+L = 0
+for i in range(m):
+    heappush(hq, (s[i], i))
+for R in range(m, n):
+    heappush(hq, (s[R], R))
+    mn, mni = heappop(hq)
+    while mni < L:
+        mn, mni = heappop(hq)
+    res += mn 
+    L = mni + 1
+print(res)
+
+```
+
+> 注意：本题还有单调栈解法更为简单。
+
 ### 并查集
 
-合并和查询的时间复杂度： 近似 $O(1)$
+并查集是一种用于管理元素所属集合的数据结构，实现为一个森林，其中每棵树表示一个集合，树中的节点表示对应集合中的元素。集合内的元素可达且连通。
 
-`find(u) == find(v)` 表示 u, v 在同一集合。
+<img src="https://pic.leetcode.cn/1741748205-rrerHS-image.png" alt="image.png" style="zoom:50%;" />
+
+- $union(u, v)$ 合并两个元素所属集合（合并对应的树）
+- $find(x)$ 查询某个元素所属集合（查询对应的树的根节点），这可以用于判断两个元素是否属于同一集合
+
+- 合并和查询的时间复杂度： 近似  $O(1)$
+
+**实现**
+
+- 初始化：每个元素都位于一个单独的集合，表示为一棵只有根节点的树。方便起见，我们将根节点的父亲设为自己
+
+    ```python
+    fa = list(range(n)) # [0, 1, 2, ..., n - 1]
+    ```
+
+- 查询：当  $fa[x] =x$  表示 $x$ 节点即是根节点；否则，通过递归调用 $find(fa[x])$，沿着树向上移动，直至找到根节点。通常在判断是否可达、连通问题时进行查询，如需要判断 $u,v$ 是否属于一个集合，通过 $find(u),find(v)$  是否相等判断。
+
+    <img src="https://pic.leetcode.cn/1741748277-RgfNTu-image.png" alt="image.png" style="zoom:50%;" />
+
+```python
+# 查找 x 所属集合（对应的树的树根）
+def find(x):
+	if fa[x] == x: return x
+    return find(fa[x])
+```
+
+```python
+def find(x):
+    return x if fa[x] == x else find(fa[x])
+```
+
+- 合并：要合并两棵树，我们只需要将一棵树的根节点 $find(v)$ 连到另一棵树的根节点 $find(u)$，即 $fa[find(v)] \leftarrow find(u)$。通常在更新可达、连通关系进行合并。
+
+    
+
+    <img src="https://pic.leetcode.cn/1741750133-ShXMMP-image.png" alt="image.png" style="zoom:50%;" />
+
+```python
+# v所在集合并到u所在集合中
+def union(u, v):
+    if find(u) != find(v):
+        fa[find(v)] = find(u)
+```
+
+
 
 **路径压缩**
 
-递归写法
+查询过程中，经过的每个元素都属于该集合，我们可直接更新每个元素，让其父节点指向树根。即 $fa[x] \leftarrow find(fa[x])$ 来减少树根，加快后续查询。最终，我们会将原树压缩成树高越发接近2的树。
+
+<img src="https://pic.leetcode.cn/1741750082-qDWJcM-image.png" alt="image.png" style="zoom:50%;" />
 
 ```python
-    fa = list(range(n))
-    # 查找 x 集合的根
-    def find(x):
-        if fa[x] != x:
-            fa[x] = find(fa[x])
-        return fa[x]
-
-    # v 并向 u 中 Z
-    def union(u, v):
-        if find(u) != find(v):
-	        fa[find(v)] = find(u)
+def find(x):
+    if fa[x] == x: return x
+    fa[x] = find(fa[x])
+    return fa[x]
 ```
 
-迭代写法
+
+
+**并查集递归模板**
+
+```python
+# 并查集模板
+fa = list(range(n + 1))
+def find(x):
+    if fa[x] == x: return x
+    fa[x] = find(fa[x])
+    return fa[x]
+def union(u, v):
+    if find(u) != find(v):
+        fa[find(v)] = find(u)
+```
+
+**迭代模板**
 
 ```python
 fa = list(range(n))
@@ -4733,14 +4900,126 @@ def union(u, v):
 
 
 
-常用拓展：
+**常见问题**
+
+- 求连通块个数
 
 - 记录每个集合大小：绑定到根节点
 - 记录每个点到根节点的 **距离**：绑定到每一个节点上
 
+[P1551 亲戚 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P1551)
+
+**语言整理**
+
+对一个无向图有 $n$ 个点， $m$ 条边， $(u,v)$ 表示一条无向边。给定 $p$ 组查询，每组查询判断 $p_u,p_v$ 是否可达。
+
+**思路**
+
+- 可达、连通的连通分量可以看作一个集合。
+- 对给定的无向边 $(u,v )$ ，可通过 $union(u,v)$  合并，表示可达、连通关系。
+
+- 对每组询问，$find(p_u)$ 和 $find(p_v)$ 的关系判断 $u,v$ 是否可达。
+
+    <img src="https://pic.leetcode.cn/1741843275-YnoDaB-image.png" alt="image.png" style="zoom:33%;" />
+
+
+
+```python
+import sys
+n, m, p = map(int, input().split())
+
+# 并查集模板
+fa = list(range(n + 1))
+def find(x):
+    if fa[x] == x: return x
+    fa[x] = find(fa[x])
+    return fa[x]
+def union(u, v):
+    if find(u) != find(v):
+        fa[find(v)] = find(u)
+
+for _ in range(m):
+    u, v = map(int, input().split())
+    # 通过合并，表示可达、连通关系
+    union(u, v)
+
+for _ in range(p):
+    u, v = map(int, input().split())
+    print('Yes' if find(u) == find(v) else 'No')
+
+```
+
 
 
 **并查集维护连通分量**
+
+[P1536 村村通 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P1536)
+
+**语言整理**
+
+给定若干组数据，每组给 $n,m$ 表示有 $n$ 个节点的无向图，有 $m$ 条边。求使得任意两个节点都可达还需要添加多少条边。
+
+**思路**
+
+- 可达、连通问题，想到并查集维护节点之间的可达性，用 $union$ 操作更新并查集
+- 考虑独立连通块的个数，即 $cnt=len(set(fa))$ ，最少只需要添加 $cnt - 1$ 条边，能够让任意连通块可达，即所有节点可达。
+
+- 下标从1开始时，可定 $fa = list(range(n+1))$，同时 $cnt$ 要减去1
+
+```python
+import sys
+input = lambda: sys.stdin.readline().strip()
+
+while True:
+    s = input()
+    if s == '0': break
+    n, m = map(int, s.split())
+    fa = list(range(n + 1))
+    def find(x):
+        if fa[x] == x: return x
+        fa[x] = find(fa[x])
+        return fa[x]
+    def union(u, v):
+        if find(u) != find(v):
+            fa[find(v)] = find(u)
+    for _ in range(m):
+        u, v = map(int, input().split())
+        union(u, v)
+
+    # 压缩成严格菊花集
+    for x in range(1, n + 1):
+        fa[x] = find(x)
+        
+    cnt = len(set(fa)) - 1 # 连通块数量，-1是减去下标0
+    print(cnt - 1)  # cnt - 1是需要修路数量
+```
+
+[1.合根植物 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/110/learning/?page=1&first_category_id=1&tags=并查集,国赛&tag_relation=intersection&sort=difficulty&asc=1)
+
+```python
+import sys
+input = lambda: sys.stdin.readline().strip()
+
+m, n = map(int, input().split())
+k = int(input())
+fa = list(range(m * n + 1))
+def find(x):
+    if fa[x] == x: return x
+    fa[x] = find(fa[x])
+    return fa[x]
+def union(u, v):
+    if find(u) != find(v):
+        fa[find(v)] = find(u)
+for _ in range(k):
+    u, v = map(int, input().split())
+    union(u, v)
+    
+for x in range(1, n * m + 1):
+    fa[x] = find(x)
+print(len(set(fa)) - 1)
+```
+
+
 
 [1998. 数组的最大公因数排序 - 力扣（LeetCode）](https://leetcode.cn/problems/gcd-sort-of-an-array/)
 
@@ -5647,7 +5926,7 @@ class Solution:
 
 
 
-#### 
+
 
 #### 线段树优化问题
 

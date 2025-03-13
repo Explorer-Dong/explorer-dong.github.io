@@ -290,6 +290,7 @@ nav:
       - back-end/cplusplus/cpp-oop.md
       - back-end/cplusplus/cpp-advanced.md
     - Python:
+      - back-end/python/python-setup.md
       - back-end/python/python-basic.md
       - Flask:
         - back-end/python/flask/deploy-flask.md

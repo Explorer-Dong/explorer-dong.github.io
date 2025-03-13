@@ -2,13 +2,9 @@
 title: 微分学
 ---
 
-## 导数 (derivative)
+## 极限 (limit)
 
-针对一元函数而言，导数定义为平均变化量 $\dfrac{\mathrm d y}{\mathrm dx}$ 在 $\mathrm dx$ 取足够小时的最佳近似。
-
-## 极限
-
-求极限一些方法方法：
+求极限一些方法：
 
 1. 等价无穷小
 2. 洛必达法则
@@ -32,9 +28,50 @@ e^{x}&=\sum_{n = 0}^{\infty} \frac{1}{n !} x^{n}= 1+x+\frac{1}{2 !} x^{2}+\cdots
 \end{aligned}
 $$
 
-## 微分
+## 导数 (derivative)
 
-### 基本函数
+### 导数定义
+
+代数上定义为「一元函数 $f(x)$ 的平均变化量 $\dfrac{\Delta f}{\Delta x}$ 在 $\Delta x$ 取足够小时的最佳近似」，几何上理解为「一元函数在某点的切线斜率」。
+
+记法：
+
+- $\Delta x$ 取足够小时记作 $\mathrm dx$；
+- $f(x)$ 的导数记作 $f'(x)$ 或 $\dfrac{\mathrm d f(x)}{\mathrm dx}$ 或 $\dfrac{\mathrm d}{\mathrm dx}f(x)$。
+
+根据导数的定义，我们可以很容易的推导出很多初等函数的导数解析式（也就是所谓的导函数）。这里需要注意的是，在利用导数定义推导函数时，含有微小变化量平方阶及以上的量 $(\mathrm {d}x)^n,\ (n\ge 2)$ 就可以直接忽略了（也就是所谓的高阶无穷小量）。
+
+### 求导法则
+
+**加法法则**。可以借助图像的叠加来理解，即利用导数定义将两个函数值的微小变化量累加来计算函数加法后的变化量：
+
+$$
+\frac{\mathrm d}{\mathrm dx}(f(x)+g(x))=\frac{\mathrm df(x)}{\mathrm dx}+\frac{\mathrm dg(x)}{\mathrm dx}
+$$
+
+**乘法法则**。可以借助矩形的面积来理解，即利用导数定义计算矩形的面积变化量：
+
+$$
+\frac{\mathrm d}{\mathrm dx}(f(x)\cdot g(x))=\frac{\mathrm df(x)}{\mathrm dx}g(x) + \frac{\mathrm dg(x)}{\mathrm dx}f(x)
+$$
+
+**链式法则**。也就是所谓的复合函数求导，可以结合换元和导数定义来计算变化量：
+
+$$
+\frac{\mathrm d}{\mathrm dx}f(g(x))= \frac{\mathrm df}{\mathrm dg}(g(x))\frac{\mathrm dg}{dx}(x)
+$$
+
+## 微分 (differential)
+
+### 微分定义
+
+代数上定义为「一元函数 $f(x)$ 在自变量微小变化 $\mathrm dx$ 下，导数与 $\mathrm dx$ 的乘积」，几何上理解为「函数值变化量的线性近似」。
+
+记法：$f(x)$ 的微分记作 $\mathrm df(x)$，且 $\mathrm df(x)=f'(x)\cdot \mathrm dx$。
+
+### 微分公式
+
+**指对幂函数**。如下：
 
 $$
 \text{d}(C) = 0
@@ -64,7 +101,7 @@ $$
 \text{d}(\log_a x) = \frac{1}{x \ln a} \, \text{d}x
 $$
 
-### 三角函数
+**三角函数**。如下：
 
 $$
 \text{d}(\sin x) = \cos x \, \text{d}x
@@ -90,7 +127,7 @@ $$
 \text{d}(\csc x) = -\csc x \cot x \, \text{d}x
 $$
 
-### 反三角函数
+**反三角函数**。如下：
 
 $$
 \text{d}(\arcsin x) = \frac{1}{\sqrt{1 - x^2}} \, \text{d}x

@@ -4818,7 +4818,7 @@ print(res)
     fa = list(range(n)) # [0, 1, 2, ..., n - 1]
     ```
 
-- 查询：当  $fa[x] =x $  表示 $x$ 节点即是根节点；否则，通过递归调用 $ find(fa[x]) $，沿着树向上移动，直至找到根节点。通常在判断是否可达、连通问题时进行查询，如需要判断 $ u,v $ 是否属于一个集合，通过 $ find(u),find(v) $  是否相等判断。
+- 查询：当  $fa[x] =x$  表示 $x$ 节点即是根节点；否则，通过递归调用 $find(fa[x])$，沿着树向上移动，直至找到根节点。通常在判断是否可达、连通问题时进行查询，如需要判断 $u,v$ 是否属于一个集合，通过 $find(u),find(v)$  是否相等判断。
 
     <img src="https://pic.leetcode.cn/1741748277-RgfNTu-image.png" alt="image.png" style="zoom:50%;" />
 
@@ -4834,7 +4834,7 @@ def find(x):
     return x if fa[x] == x else find(fa[x])
 ```
 
-- 合并：要合并两棵树，我们只需要将一棵树的根节点 $find(v)$ 连到另一棵树的根节点 $find(u)$，即 $fa[find(v)] ← find(u)$。通常在更新可达、连通关系进行合并。
+- 合并：要合并两棵树，我们只需要将一棵树的根节点 $find(v)$ 连到另一棵树的根节点 $find(u)$，即 $fa[find(v)] \leftarrow find(u)$。通常在更新可达、连通关系进行合并。
 
     
 
@@ -4851,7 +4851,7 @@ def union(u, v):
 
 **路径压缩**
 
-查询过程中，经过的每个元素都属于该集合，我们可直接更新每个元素，让其父节点指向树根。即 $fa[x] ← find(fa[x])$ 来减少树根，加快后续查询。最终，我们会将原树压缩成树高越发接近2的树。
+查询过程中，经过的每个元素都属于该集合，我们可直接更新每个元素，让其父节点指向树根。即 $fa[x] \leftarrow find(fa[x])$ 来减少树根，加快后续查询。最终，我们会将原树压缩成树高越发接近2的树。
 
 <img src="https://pic.leetcode.cn/1741750082-qDWJcM-image.png" alt="image.png" style="zoom:50%;" />
 

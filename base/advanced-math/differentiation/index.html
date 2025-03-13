@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#极限" class="md-skip">
+        <a href="#导数-derivative" class="md-skip">
           跳转至
         </a>
       
@@ -116,7 +116,23 @@
             
             
 
-<center>当前站点由 <a href="https://blog.dwj601.cn/" target="_blank">blog.dwj601.cn</a> 迁移而来，将会持续更新技术文章。原站点转为更新个人的学习心得与感悟。</center>
+<style>
+    .orange-link {
+        color: orange !important;
+    }
+    .white-link {
+        color: white !important;
+    }
+</style>
+
+<div align="center">
+    <a href="https://www.aliyun.com/product/ecs?userCode=jpec1z57" target="_blank" class="orange-link">
+        阿里云推广计划
+    </a>
+    <a href="https://www.aliyun.com/product/ecs?userCode=jpec1z57" target="_blank" class="white-link">
+        学生认证可免费领取300元优惠券，适用于绝大多数阿里云产品。2C2G3M年租只需99元。老用户可享最多6.5折升配优惠！
+    </a>
+</div>
 
 
           </div>
@@ -1341,7 +1357,7 @@
         
   
   <span class="md-ellipsis">
-    数据预处理
+    结构化数据预处理
     
   </span>
   
@@ -1554,6 +1570,12 @@
           
         
       
+        
+      
+        
+      
+        
+      
     
     
       
@@ -1582,6 +1604,11 @@
 
             </a>
             
+              
+              <label class="md-nav__link " for="__nav_2_2_7" id="__nav_2_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
           </div>
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="false">
@@ -1591,6 +1618,72 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-vision/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    绪论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-vision/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    模型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-vision/task/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任务
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
           </ul>
@@ -2776,6 +2869,15 @@
       目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#导数-derivative" class="md-nav__link">
+    <span class="md-ellipsis">
+      导数 (derivative)
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#极限" class="md-nav__link">
@@ -5771,6 +5873,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#导数-derivative" class="md-nav__link">
+    <span class="md-ellipsis">
+      导数 (derivative)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#极限" class="md-nav__link">
     <span class="md-ellipsis">
       极限
@@ -5855,6 +5966,8 @@
 
   <h1>微分学</h1>
 
+<h2 id="导数-derivative">导数 (derivative)<a class="headerlink" href="#导数-derivative" title="页面定位">&para;</a></h2>
+<p>针对一元函数而言，导数定义为平均变化量 <span class="arithmatex">\(\dfrac{\mathrm d y}{\mathrm dx}\)</span> 在 <span class="arithmatex">\(\mathrm dx\)</span> 取足够小时的最佳近似。</p>
 <h2 id="极限">极限<a class="headerlink" href="#极限" title="页面定位">&para;</a></h2>
 <p>求极限一些方法方法：</p>
 <ol>
@@ -5866,16 +5979,16 @@
 <p>给出 <a href="https://blog.csdn.net/Infinity_07/article/details/113830088">泰勒展开的常用公式</a>：</p>
 <div class="arithmatex">\[
 \begin{aligned}
-e^{x}&amp;=\sum_{n=0}^{\infty} \frac{1}{n !} x^{n}=1+x+\frac{1}{2 !} x^{2}+\cdots \in(-\infty,+\infty) \\
-\sin x&amp;=\sum_{n=0}^{\infty} \frac{(-1)^{n}}{(2 n+1) !} x^{2 n+1}=x-\frac{1}{3 !} x^{3}+\frac{1}{5 !} x^{5}+\cdots, x \in(-\infty,+\infty) \\
-\cos x&amp;=\sum_{n=0}^{\infty} \frac{(-1)^{n}}{(2 n) !} x^{2 n}=1-\frac{1}{2 !} x^{2}+\frac{1}{4 !} x^{4}+\cdots, x \in(-\infty,+\infty) \\
-\tan x&amp;=\sum_{n=1}^{\infty} \frac{B_{2 n}(-4)^{n}\left(1-4^{n}\right)}{(2 n) !} x^{2 n-1}=x+\frac{1}{3} x^{3}+\frac{2}{15} x^{5}+\cdots,x\in (-\frac{\pi}{2},\frac{\pi}{2})\\
-\arcsin x&amp;=\sum_{n=0}^{\infty} \frac{(2 n) !}{4^{n}(n !)^{2}(2 n+1)} x^{2n+1}=x+\frac{1}{6} x^{3}+\frac{3}{40} x^{5}+\frac{5}{112} x^{7}+\frac{35}{1152} x^{9}+\cdots+, x \in(-1,1)\\
-\arctan x&amp;=\sum_{n=0}^{\infty} \frac{(-1)^{n}}{2 n+1} x^{2 n+1}=x-\frac{1}{3} x^{3}+\frac{1}{5} x^{5}+\cdots+ x \in[-1,1] \\
-\ln (1+x)&amp;=\sum_{n=0}^{\infty} \frac{(-1)^{n}}{n+1} x^{n+1}=x-\frac{1}{2} x^{2}+\frac{1}{3} x^{3}+\cdots, x \in(-1,1] \\
-\frac{1}{1-x}&amp;=\sum_{n=0}^{\infty} x^{n}=1+x+x^{2}+x^{3}+\cdots, x \in(-1,1) \\
-\frac{1}{1+x}&amp;=\sum_{n=0}^{\infty}(-1)^{n} x^{n}=1-x+x^{2}-x^{3}+\cdots, x \in(-1,1)\\
-(1+x)^{\alpha}&amp;=1+\sum_{n=1}^{\infty} \frac{\alpha(\alpha-1) \cdots(\alpha-n+1)}{n !} x^{n}=1+\alpha x+\frac{\alpha(\alpha-1)}{2 !} x^{2}+\cdots, x \in(-1,1) \\
+e^{x}&amp;=\sum_{n = 0}^{\infty} \frac{1}{n !} x^{n}= 1+x+\frac{1}{2 !} x^{2}+\cdots \in(-\infty,+\infty) \\
+\sin x&amp;=\sum_{n = 0}^{\infty} \frac{(-1)^{n}}{(2 n+1) !} x^{2 n+1}= x-\frac{1}{3 !} x^{3}+\frac{1}{5 !} x^{5}+\cdots, x \in(-\infty,+\infty) \\
+\cos x&amp;=\sum_{n = 0}^{\infty} \frac{(-1)^{n}}{(2 n) !} x^{2 n}= 1-\frac{1}{2 !} x^{2}+\frac{1}{4 !} x^{4}+\cdots, x \in(-\infty,+\infty) \\
+\tan x&amp;=\sum_{n = 1}^{\infty} \frac{B_{2 n}(-4)^{n}\left(1-4^{n}\right)}{(2 n) !} x^{2 n-1}= x+\frac{1}{3} x^{3}+\frac{2}{15} x^{5}+\cdots, x\in (-\frac{\pi}{2},\frac{\pi}{2})\\
+\arcsin x&amp;=\sum_{n = 0}^{\infty} \frac{(2 n) !}{4^{n}(n !)^{2}(2 n+1)} x^{2n+1}= x+\frac{1}{6} x^{3}+\frac{3}{40} x^{5}+\frac{5}{112} x^{7}+\frac{35}{1152} x^{9}+\cdots+, x \in(-1,1)\\
+\arctan x&amp;=\sum_{n = 0}^{\infty} \frac{(-1)^{n}}{2 n+1} x^{2 n+1}= x-\frac{1}{3} x^{3}+\frac{1}{5} x^{5}+\cdots+ x \in [-1,1] \\
+\ln (1+x)&amp;=\sum_{n = 0}^{\infty} \frac{(-1)^{n}}{n+1} x^{n+1}= x-\frac{1}{2} x^{2}+\frac{1}{3} x^{3}+\cdots, x \in(-1,1] \\
+\frac{1}{1-x}&amp;=\sum_{n = 0}^{\infty} x^{n}= 1+x+x^{2}+x^{3}+\cdots, x \in(-1,1) \\
+\frac{1}{1+x}&amp;=\sum_{n = 0}^{\infty}(-1)^{n} x^{n}= 1-x+x^{2}-x^{3}+\cdots, x \in(-1,1)\\
+(1+x)^{\alpha}&amp;= 1+\sum_{n = 1}^{\infty} \frac{\alpha(\alpha-1) \cdots(\alpha-n+1)}{n !} x^{n}= 1+\alpha x+\frac{\alpha(\alpha-1)}{2 !} x^{2}+\cdots, x \in(-1,1) \\
 \end{aligned}
 \]</div>
 <h2 id="微分">微分<a class="headerlink" href="#微分" title="页面定位">&para;</a></h2>
@@ -5955,7 +6068,7 @@ e^{x}&amp;=\sum_{n=0}^{\infty} \frac{1}{n !} x^{n}=1+x+\frac{1}{2 !} x^{2}+\cdot
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月10日 15:26:15">2025年3月10日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月13日 07:51:27">2025年3月13日</span>
   </span>
 
     

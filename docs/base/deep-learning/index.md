@@ -28,18 +28,12 @@ title: 深度学习导读
 
 **为什么用神经网络进行深度学习**？有了上面对深度学习定义的理解，可以发现其中最具有挑战性的特点就是，模型怎么知道什么才是好特征？什么是不好的特征？神经网络可以很好的解决这个问题。通过由浅到深层层神经元的特征提取，深层的神经元就可以学习更高语义的特征，并且通过这种方式也可以实现「端到端」的学习方式，而不用像机器学习的方法那样，先选特征再学习。并且神经网络模型也可以很好的解决深度学习中特征的「贡献度分配」问题。
 
-## 全连接神经网络
+## 人工神经元
 
-全连接神经网络 (Full Connect Neural Network) 又称前馈神经网络 (Feedforward Neural Network)、感知机 (Perceptron)，是深度神经网络模型的开山鼻祖，通过向前传递数据，向后更新参数，实现学习和拟合的功能。
-
-全连接神经网络模型的学习准则一般采用交叉熵损失，优化算法一般采用小批量随机梯度下降 (Mini-batch Stochastic Gradient Descent, 简称 Mini-batch SGD) 算法。
-
-### 神经元
-
-![神经元模型](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021447476.png)
+![人工神经元模型](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021447476.png)
 
 /// fc
-神经元模型
+人工神经元模型
 ///
 
 **神经元是网络模型中的最小学习单元**。每一个神经元接受输入 $\sum_{i=1}^n w_ix_i - \theta$，通过设定好的激活函数 $f$ 得到该神经元对应的输出值 $f(\sum_{i=1}^n w_ix_i - \theta)$。其中 $\theta$ 可以理解为神经元的激活阈值，也可以理解为神经元模型中的偏置项。
@@ -49,6 +43,12 @@ title: 深度学习导读
 - S 型函数。例如 Sigmoid 函数、Tanh 函数；
 - 斜坡函数。例如 ReLU 函数；
 - Swish 函数。复合函数。
+
+## 全连接神经网络
+
+全连接神经网络 (Full Connect Neural Network) 又称前馈神经网络 (Feedforward Neural Network)、感知机 (Perceptron)，是深度神经网络模型的开山鼻祖，通过向前传递数据，向后更新参数，实现学习和拟合的功能。
+
+全连接神经网络模型的学习准则一般采用交叉熵损失，优化算法一般采用小批量随机梯度下降 (Mini-batch Stochastic Gradient Descent, 简称 Mini-batch SGD) 算法。
 
 ### 模型
 

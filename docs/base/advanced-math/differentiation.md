@@ -2,6 +2,10 @@
 title: 微分学
 ---
 
+## 导数 (derivative)
+
+针对一元函数而言，导数定义为平均变化量 $\dfrac{\mathrm d y}{\mathrm dx}$ 在 $\mathrm dx$ 取足够小时的最佳近似。
+
 ## 极限
 
 求极限一些方法方法：
@@ -15,16 +19,16 @@ title: 微分学
 
 $$
 \begin{aligned}
-e^{x}&=\sum_{n=0}^{\infty} \frac{1}{n !} x^{n}=1+x+\frac{1}{2 !} x^{2}+\cdots \in(-\infty,+\infty) \\
-\sin x&=\sum_{n=0}^{\infty} \frac{(-1)^{n}}{(2 n+1) !} x^{2 n+1}=x-\frac{1}{3 !} x^{3}+\frac{1}{5 !} x^{5}+\cdots, x \in(-\infty,+\infty) \\
-\cos x&=\sum_{n=0}^{\infty} \frac{(-1)^{n}}{(2 n) !} x^{2 n}=1-\frac{1}{2 !} x^{2}+\frac{1}{4 !} x^{4}+\cdots, x \in(-\infty,+\infty) \\
-\tan x&=\sum_{n=1}^{\infty} \frac{B_{2 n}(-4)^{n}\left(1-4^{n}\right)}{(2 n) !} x^{2 n-1}=x+\frac{1}{3} x^{3}+\frac{2}{15} x^{5}+\cdots,x\in (-\frac{\pi}{2},\frac{\pi}{2})\\
-\arcsin x&=\sum_{n=0}^{\infty} \frac{(2 n) !}{4^{n}(n !)^{2}(2 n+1)} x^{2n+1}=x+\frac{1}{6} x^{3}+\frac{3}{40} x^{5}+\frac{5}{112} x^{7}+\frac{35}{1152} x^{9}+\cdots+, x \in(-1,1)\\
-\arctan x&=\sum_{n=0}^{\infty} \frac{(-1)^{n}}{2 n+1} x^{2 n+1}=x-\frac{1}{3} x^{3}+\frac{1}{5} x^{5}+\cdots+ x \in[-1,1] \\
-\ln (1+x)&=\sum_{n=0}^{\infty} \frac{(-1)^{n}}{n+1} x^{n+1}=x-\frac{1}{2} x^{2}+\frac{1}{3} x^{3}+\cdots, x \in(-1,1] \\
-\frac{1}{1-x}&=\sum_{n=0}^{\infty} x^{n}=1+x+x^{2}+x^{3}+\cdots, x \in(-1,1) \\
-\frac{1}{1+x}&=\sum_{n=0}^{\infty}(-1)^{n} x^{n}=1-x+x^{2}-x^{3}+\cdots, x \in(-1,1)\\
-(1+x)^{\alpha}&=1+\sum_{n=1}^{\infty} \frac{\alpha(\alpha-1) \cdots(\alpha-n+1)}{n !} x^{n}=1+\alpha x+\frac{\alpha(\alpha-1)}{2 !} x^{2}+\cdots, x \in(-1,1) \\
+e^{x}&=\sum_{n = 0}^{\infty} \frac{1}{n !} x^{n}= 1+x+\frac{1}{2 !} x^{2}+\cdots \in(-\infty,+\infty) \\
+\sin x&=\sum_{n = 0}^{\infty} \frac{(-1)^{n}}{(2 n+1) !} x^{2 n+1}= x-\frac{1}{3 !} x^{3}+\frac{1}{5 !} x^{5}+\cdots, x \in(-\infty,+\infty) \\
+\cos x&=\sum_{n = 0}^{\infty} \frac{(-1)^{n}}{(2 n) !} x^{2 n}= 1-\frac{1}{2 !} x^{2}+\frac{1}{4 !} x^{4}+\cdots, x \in(-\infty,+\infty) \\
+\tan x&=\sum_{n = 1}^{\infty} \frac{B_{2 n}(-4)^{n}\left(1-4^{n}\right)}{(2 n) !} x^{2 n-1}= x+\frac{1}{3} x^{3}+\frac{2}{15} x^{5}+\cdots, x\in (-\frac{\pi}{2},\frac{\pi}{2})\\
+\arcsin x&=\sum_{n = 0}^{\infty} \frac{(2 n) !}{4^{n}(n !)^{2}(2 n+1)} x^{2n+1}= x+\frac{1}{6} x^{3}+\frac{3}{40} x^{5}+\frac{5}{112} x^{7}+\frac{35}{1152} x^{9}+\cdots+, x \in(-1,1)\\
+\arctan x&=\sum_{n = 0}^{\infty} \frac{(-1)^{n}}{2 n+1} x^{2 n+1}= x-\frac{1}{3} x^{3}+\frac{1}{5} x^{5}+\cdots+ x \in [-1,1] \\
+\ln (1+x)&=\sum_{n = 0}^{\infty} \frac{(-1)^{n}}{n+1} x^{n+1}= x-\frac{1}{2} x^{2}+\frac{1}{3} x^{3}+\cdots, x \in(-1,1] \\
+\frac{1}{1-x}&=\sum_{n = 0}^{\infty} x^{n}= 1+x+x^{2}+x^{3}+\cdots, x \in(-1,1) \\
+\frac{1}{1+x}&=\sum_{n = 0}^{\infty}(-1)^{n} x^{n}= 1-x+x^{2}-x^{3}+\cdots, x \in(-1,1)\\
+(1+x)^{\alpha}&= 1+\sum_{n = 1}^{\infty} \frac{\alpha(\alpha-1) \cdots(\alpha-n+1)}{n !} x^{n}= 1+\alpha x+\frac{\alpha(\alpha-1)}{2 !} x^{2}+\cdots, x \in(-1,1) \\
 \end{aligned}
 $$
 

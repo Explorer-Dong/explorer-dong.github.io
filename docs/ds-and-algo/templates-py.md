@@ -7966,17 +7966,141 @@ https://leetcode.cn/problems/minimize-or-of-remaining-elements-using-operations/
 
 ## 动态规划
 
-[划分型 dp - 力扣（LeetCode）](https://leetcode.cn/problem-list/lfZOUTrA/)
+[DP 题单（LeetCode）](https://leetcode.cn/discuss/post/3581838/fen-xiang-gun-ti-dan-dong-tai-gui-hua-ru-007o/)
 
-[数位 dp - 力扣（LeetCode）](https://leetcode.cn/problem-list/30QHpYGW/)
+### 入门 dp
 
-[状压 dp - 力扣（LeetCode）](https://leetcode.cn/problem-list/ptud3zoQ/)
+[70. 爬楼梯 - 力扣（LeetCode）](https://leetcode.cn/problems/climbing-stairs/description/)
 
-[线性 dp / 背包 - 力扣（LeetCode）](https://leetcode.cn/problem-list/PAkZSAkX/)
+递归写法
 
-[状态机 dp - 力扣（LeetCode）](https://leetcode.cn/problem-list/oX87FqKK/)
+```python
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        def dfs(n):
+            return 1 if n == 1 or n == 0 else dfs(n - 1) + dfs(n - 2)            
+        return dfs(n)
+```
 
-[区间 dp - 力扣（LeetCode）](https://leetcode.cn/problem-list/2UzczrXX/)
+
+
+记忆化搜索：lru_cache
+
+```python
+from functools import *
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        @lru_cache(maxsize = None)
+        def dfs(n):
+            return 1 if n == 1 or n == 0 else dfs(n - 1) + dfs(n - 2)            
+        return dfs(n)
+s = Solution()
+print(s.climbStairs(3)) # 3
+```
+
+
+
+[198. 打家劫舍 - 力扣（LeetCode）](https://leetcode.cn/problems/house-robber/description/)
+
+**选或者不选**
+$f[i][1]$ 表示从前 $i$ 个屋子, 且第 $i$ 个屋子偷的最大金额
+$f[i][0]$ 表示从前 $i$ 个屋子，且第 $i$ 个屋子不偷的最大金额
+不偷, $f[i][0] = \text{max(f[j][1] for j in range(i))}$
+偷,   $f[i][1] = \text{max(f[j][0] for j in range(i)) + nums[i]}$
+
+```python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        f = [[0] * 2 for _ in range(n + 1)]
+        for i in range(1, n + 1):
+            f[i][0] = max(f[i - 1][1], f[i - 1][0])
+            f[i][1] = f[i - 1][0] + nums[i - 1]
+        return max(f[n][1], f[n][0])
+```
+
+
+
+### 线性 dp
+
+#### 最长上升子序列
+
+$O(n^2)$ 做法，$f[i]$ 表示以 $nums[i]$ 结尾的所有上升子序列中最长的长度。
+
+```python
+for i, x in enumerate(nums):
+    for j in range(i):
+        if nums[j] < x:
+            f[i] = max(f[i], f[j] + 1)
+```
+
+$O(nlogn)$ 做法，$f[i]$ 表示长度为 $i$ 的所有上升子序列中，子序列末尾的最小值。
+
+正序遍历 $nums$ 中每一个数 $x$， 二分找出 $x$ 在 $f$ 中的插入位置（恰好大于 $ x$ 的位置）。
+
+```python
+# f [i] 表示长度为 i 的子序列的末尾元素的最小值
+f = []
+
+# 找到恰好大于 x 的位置
+def check(x, mid):
+    return f[mid] >= x
+for x in nums:
+    lo, hi = 0, len(f)
+    while lo < hi:
+        mid = (lo + hi) >> 1
+        if check(x, mid):
+            hi = mid 
+        else:
+            lo = mid + 1
+    if lo >= len(f):
+        f.append(x)
+    else:
+        f[lo] = x
+```
+
+
+
+#### 最长公共子序列
+
+$ f[i][j] 表示从s[0: i] 和 s2[0: j] 中的最长公共子序列$
+
+时间复杂度：$O(mn)$
+
+可以证明：$f(i-1, j -1)+ 1 \ge \max(f(i-1,j), ~f(i,~j-1))$  
+
+```python
+# f [n][m] 
+f = [[0] * (m + 1) for _ in range(n + 1)]
+for i in range(1, n + 1):
+    for j in range(1, m + 1):
+        if s1[i - 1] == s2[j - 1]:
+            f[i][j] = f[i - 1][j - 1] + 1
+        else:
+            f[i][j] = max(f[i - 1][j], f[i][j - 1])
+```
+
+
+
+#### 编辑距离
+
+```python
+def getEditDist(s1, s2):
+    m, n = len(s1), len(s2)
+    f = [[inf] * (n + 1) for _ in range(m + 1)]
+    for i in range(1, m + 1): f[i][0] = i
+    for i in range(1, n + 1): f[0][i] = i
+    f[0][0] = 0
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            a = f[i - 1][j] + 1
+            b = f[i][j - 1] + 1
+            c = f[i - 1][j - 1] + (1 if s1[i - 1] != s2[j - 1] else 0)
+            f[i][j] = min(a, b, c)
+    return f[m][n]
+```
+
+
 
 ### 背包问题
 
@@ -7996,7 +8120,7 @@ $N$ 个物品，价值为 $v_i$，重量为 $w_i$，背包容量为 $W$。挑选
   - 所有拿物品的选法
   - 条件：1. 只从前 $i$ 个物品中选；2. 总重量 $\le j$ 
 
-- 表示的属性（一般是 $\max, \min, 个数$）：所有选法的总价值的最大值（$\max$ ）
+- 表示的属性：所有选法的总价值的最大值（$\max$ ）
 
   最终求解的问题 $f(N, W)$ 。
 
@@ -8008,15 +8132,16 @@ $N$ 个物品，价值为 $v_i$，重量为 $w_i$，背包容量为 $W$。挑选
 
 ```python
 # f [i][j] 表示用前 i 个物品，在总重量不超过 j 的情况下，所有物品选法构成的集合中，总价值的最大值
-# f [0][0] ~ f [N][0] = 0
 # 考虑 f [i][j] 对应集合的完备划分： 选 i ，其子集的最大值是 f [i - 1][j - w[i]] + v [i]，需要在 j - w [i] >= 0 满足
 # 不选 i， 其子集的最大值是 f [i - 1][j]。一定可以满足
+f = [[0] * (W + 1) for _ in range(N + 1)]
 for i in range(1, N + 1):
-    for j in range(W + 1):
-        f[i][j] = f[i - 1][j]
-        if j - w[i] >= 0:
-            f[i][j] = max(f[i][j], f[i - 1][j - w[i]] + v[i])
-return f[N][W]
+    for j in range(1, W + 1):
+        if j - w[i] >= 0: # 可以选i，也可以不选i
+            f[i][j] = max(f[i - 1][j], f[i - 1][j - w[i]] + v[i])
+        else:
+            f[i][j] = f[i - 1][j] # 只能不选i
+print(f[N][W])
 ```
 
 滚动数组优化为一维：逆序遍历
@@ -8035,6 +8160,32 @@ for i in range(1, N + 1):
         # 此时 f [j] 就代表 f [i - 1][j], f [j - w[i] 代表 f [i - 1][j - w[i]]
 return f[W]        
 ```
+
+
+
+ [NOIP 2005 普及组\] 采药 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P1048)
+
+```python
+import sys
+input = lambda: sys.stdin.readline().strip()
+
+W, N = map(int, input().split())
+w, v = [0] * (N + 1), [0] * (N + 1)
+for i in range(1, N + 1):
+    w[i], v[i] = map(int, input().split())
+# f[i][j] 表示在前i个物品中，重量不超过j的所有选择方案的集合中，获得的最大价值
+# 最终要求 f[N][W]
+f = [[0] * (W + 1) for _ in range(N + 1)]
+for i in range(1, N + 1):
+    for j in range(1, W + 1):
+        if j - w[i] >= 0: # 可以选i，也可以不选i
+            f[i][j] = max(f[i - 1][j], f[i - 1][j - w[i]] + v[i])
+        else:
+            f[i][j] = f[i - 1][j] # 只能不选i
+print(f[N][W])
+```
+
+
 
 [题目详情 - LC2431. 最大限度地提高购买水果的口味 - HydroOJ](https://hydro.ac/d/nnu_contest/p/LC1)
 
@@ -8059,7 +8210,6 @@ return f[W]
 **恰好装满型 0 - 1 背包**
 
 [2915. 和为目标值的最长子序列的长度 - 力扣（LeetCode）](https://leetcode.cn/problems/length-of-the-longest-subsequence-that-sums-to-target/description/?envType=featured-list&envId=OZhLbgFT?envType=featured-list&envId=OZhLbgFT)
-
 $$
 f [i][j] = max(f [i - 1][j], ~ f [i - 1][j - w] + v)
 $$
@@ -8075,20 +8225,24 @@ $$
 得到二维版本：
 
 ```python
-    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
-        # f [i][j] 表示从前 i 个数中，和为 j 的子序列的所有选法构成的集合中，子序列长度的最大值
-        # f [n][target]
-        # f [i][j] = max(f [i - 1][j], f [i - 1][j - w] + 1)
+class Solution:
+    def lengthOfLongestSubsequence(self, nums: List[int], t: int) -> int:
+        a = nums
         n = len(nums)
-        f = [[-inf] * (target + 1) for _ in range(n + 1)]
-        f[0][0] = 0
+        dp = [[-inf] * (t + 1) for _ in range(n + 1)]
+        for i in range(n + 1): dp[i][0] = 0
         for i in range(1, n + 1):
-            w = nums[i - 1]
-            for j in range(target + 1):
-                f[i][j] = f[i - 1][j]
-                if j - w >= 0:
-                    f[i][j] = max(f[i][j], f[i - 1][j - w] + 1)
-        return f[n][target] if f[n][target] >= 0 else -1
+            w = a[i - 1]
+            for j in range(t + 1): 
+                if j >= w: 
+                    dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - w] + 1)
+                else:  
+                    dp[i][j] = dp[i - 1][j]
+        if dp[n][t] >= 0:
+            return dp[n][t]
+        else: 
+            return -1
+ 
 ```
 
 优化：$j$ 的上界可以优化为 $\min(\text{重量前缀}, target)$
@@ -8207,7 +8361,7 @@ $$
 \begin{align}
 f [i, j]~ &=~Max(f [i-1, j],&  	&f [i-1, j-w]+v,&	&~f [i-1, j-2w]+2v,&	&~f [i-1, j-3w]+3v &,...) \\
 f [i, j-w]~ &= ~Max(	&		&f [i-1, j-w],&	&~f [i-1, j-2w]+v,&			&~f [i-1, j-3w]+2v,    &...)
-\end{align} 
+\end{align}
 $$
 
 所以 $f(i, j) = \max \big(f(i - 1, j), f(i, j - w[i]) + v[i] \big)$， 
@@ -8233,6 +8387,12 @@ for i in range(1, N + 1):
 [518. 零钱兑换 II - 力扣（LeetCode）](https://leetcode.cn/problems/coin-change-ii/description/?envType=featured-list&envId=OZhLbgFT?envType=featured-list&envId=OZhLbgFT)
 
 **完全背包求组合方案数**
+$$
+\begin{align}
+f [i, j]~ &=~\sum(f [i-1, j],&  	&f [i-1, j-w]+v,&	&~f [i-1, j-2w]+2v,&	&~f [i-1, j-3w]+3v &,...) \\
+f [i, j-w]~ &= ~\sum(	&		&f [i-1, j-w],&	&~f [i-1, j-2w]+v,&			&~f [i-1, j-3w]+2v,    &...)
+\end{align}
+$$
 
 $$
 \begin{align}
@@ -8401,89 +8561,6 @@ for i in range(1, N + 1):
         for k in range(len(W[i])):
             if j - W[i][k] >= 0:
                 f[j] = max(f[j], f[j - W[i][k]] + V[i][k])     
-```
-
-### 线性 dp
-
-#### 最长上升子序列
-
-$O(n^2)$ 做法，$f[i]$ 表示以 $nums[i]$ 结尾的所有上升子序列中最长的长度。
-
-```python
-for i, x in enumerate(nums):
-    for j in range(i):
-        if nums[j] < x:
-            f[i] = max(f[i], f[j] + 1)
-```
-
-$O(nlogn)$ 做法，$f[i]$ 表示长度为 $i$ 的所有上升子序列中，子序列末尾的最小值。
-
-正序遍历 $nums$ 中每一个数 $x$， 二分找出 $x$ 在 $f$ 中的插入位置（恰好大于 $ x$ 的位置）。
-
-```python
-# f [i] 表示长度为 i 的子序列的末尾元素的最小值
-f = []
-
-# 找到恰好大于 x 的位置
-def check(x, mid):
-    return f[mid] >= x
-for x in nums:
-    lo, hi = 0, len(f)
-    while lo < hi:
-        mid = (lo + hi) >> 1
-        if check(x, mid):
-            hi = mid 
-        else:
-            lo = mid + 1
-    if lo >= len(f):
-        f.append(x)
-    else:
-        f[lo] = x
-```
-
-
-
-#### 最长公共子序列
-
-$ f[i][j] 表示从s[0: i] 和 s2[0: j] 中的最长公共子序列$
-
-时间复杂度：$O(mn)$
-
-可以证明：$f(i-1, j -1)+ 1 \ge \max(f(i-1,j), ~f(i,~j-1))$  
-
-```python
-#
-
-
-
-# f [n][m] 
-f = [[0] * (m + 1) for _ in range(n + 1)]
-for i in range(1, n + 1):
-    for j in range(1, m + 1):
-        if s1[i - 1] == s2[j - 1]:
-            f[i][j] = f[i - 1][j - 1] + 1
-        else:
-            f[i][j] = max(f[i - 1][j], f[i][j - 1])
-```
-
-
-
-#### 编辑距离
-
-```python
-def getEditDist(s1, s2):
-    m, n = len(s1), len(s2)
-    f = [[inf] * (n + 1) for _ in range(m + 1)]
-    for i in range(1, m + 1): f[i][0] = i
-    for i in range(1, n + 1): f[0][i] = i
-    f[0][0] = 0
-    for i in range(1, m + 1):
-        for j in range(1, n + 1):
-            a = f[i - 1][j] + 1
-            b = f[i][j - 1] + 1
-            c = f[i - 1][j - 1] + (1 if s1[i - 1] != s2[j - 1] else 0)
-            f[i][j] = min(a, b, c)
-    return f[m][n]
 ```
 
 

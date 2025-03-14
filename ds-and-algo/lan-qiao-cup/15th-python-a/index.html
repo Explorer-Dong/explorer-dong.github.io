@@ -2507,55 +2507,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../base/computer-network/physical-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/application-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    物理层
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../base/computer-network/data-link-layer/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    数据链路层
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../base/computer-network/network-layer/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    网络层
+    应用层
     
   </span>
   
@@ -2595,11 +2551,55 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../base/computer-network/application-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/network-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    应用层
+    网络层
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../base/computer-network/data-link-layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据链路层
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../base/computer-network/physical-layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    物理层
     
   </span>
   
@@ -3974,9 +3974,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#t2-召唤数学精灵" class="md-nav__link">
+  <a href="#t2-召唤数学精灵-55" class="md-nav__link">
     <span class="md-ellipsis">
-      T2 召唤数学精灵
+      T2 召唤数学精灵 (5'/5')
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t3-数字诗意-1010" class="md-nav__link">
+    <span class="md-ellipsis">
+      T3 数字诗意 (10'/10')
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t4-回文数组" class="md-nav__link">
+    <span class="md-ellipsis">
+      T4 回文数组
     </span>
   </a>
   
@@ -5862,9 +5880,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#t2-召唤数学精灵" class="md-nav__link">
+  <a href="#t2-召唤数学精灵-55" class="md-nav__link">
     <span class="md-ellipsis">
-      T2 召唤数学精灵
+      T2 召唤数学精灵 (5'/5')
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t3-数字诗意-1010" class="md-nav__link">
+    <span class="md-ellipsis">
+      T3 数字诗意 (10'/10')
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t4-回文数组" class="md-nav__link">
+    <span class="md-ellipsis">
+      T4 回文数组
     </span>
   </a>
   
@@ -5908,10 +5944,7 @@
 <p>题意：给定 <span class="arithmatex">\(7385137888721\)</span> 个 <span class="arithmatex">\(2\times 2\)</span> 的方块和 <span class="arithmatex">\(10470245\)</span> 个 <span class="arithmatex">\(1\times 1\)</span> 的方块，输出能拼成的最大的正方形的边长。</p>
 <p>思路：一个贪心的拼接方法就是，先用 <span class="arithmatex">\(2\times 2\)</span> 的方块拼完整的大正方形，然后再用 <span class="arithmatex">\(1\times 1\)</span> 的方块在原来大正方形的顶角两边逐渐扩展。按照这样的贪心思路，可以发现 <span class="arithmatex">\(\left \lfloor \sqrt {7385137888721\times 4} \right \rfloor = 5435122\)</span>，即只用 <span class="arithmatex">\(2\times 2\)</span> 的方块可以拼接边长为 <span class="arithmatex">\(5435122\)</span> 的大正方形，由于是偶数，所以这个大正方形是可以拼出来的。接下来考虑用 <span class="arithmatex">\(1\times 1\)</span> 的方块补顶角边，发现 <span class="arithmatex">\(5435122 \times 2+1=10870245&gt;10470245\)</span>，即补一层都不够。</p>
 <p>最终答案为：<span class="arithmatex">\(5435122\)</span>。</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>上述计算操作可以使用电脑自带计算器，也可以用编程语言。两种语言计算开根并下取整的方法如下。</p>
-</div>
+<p>注意：上述计算操作可以使用电脑自带计算器，也可以用编程语言。两种语言计算开根并下取整的方法如下。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">C++</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5956,7 +5989,83 @@
 </div>
 </div>
 </div>
-<h2 id="t2-召唤数学精灵">T2 召唤数学精灵<a class="headerlink" href="#t2-召唤数学精灵" title="页面定位">&para;</a></h2>
+<h2 id="t2-召唤数学精灵-55">T2 召唤数学精灵 (5'/5')<a class="headerlink" href="#t2-召唤数学精灵-55" title="页面定位">&para;</a></h2>
+<p>题意：输出 <span class="arithmatex">\([1,2024041331404202]\)</span> 内有多少个数字 <span class="arithmatex">\(x\)</span> 满足 <span class="arithmatex">\(\displaystyle\left(\prod_{1}^x-\sum_{1}^x\right)\bmod100=0\)</span>。</p>
+<p>思路：数学题直接打表找规律。发现每个 100 内都有两个合法解且 <span class="arithmatex">\(x \bmod 100\)</span> 为偶数时刚好合法，那么最终答案就是上界从百位开始乘以 2，再减去最大时多算的一个，再加上 1,3,24 三个合法数，最终答案就是 <span class="arithmatex">\(2024041331404202 \bmod 100\times2-1+3=40480826628086\)</span>。</p>
+<p>注意：打表时需要用到阶乘，可以手搓，也可以用库。Python 中的阶乘函数为 <code>math.factorial()</code>，C++ 中的阶乘函数为 <code>std::tgamma()</code>，对应的库为 <code>cmath</code>。不过还是用 Python 比较方便，因为 C++ 的 long long 精度有限。</p>
+<h2 id="t3-数字诗意-1010">T3 数字诗意 (10'/10')<a class="headerlink" href="#t3-数字诗意-1010" title="页面定位">&para;</a></h2>
+<p>题意：给定一个含有 <span class="arithmatex">\(n\ (1\le n\le 2\cdot10^5)\)</span> 个数的数组 <span class="arithmatex">\(a\ (1\le a_i\le10^{16})\)</span>，问其中不能被连续正整数之和（至少两个）表示的数有多少个。</p>
+<p>思路：一道数学题。连续的正整数之和如下式：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\sum_{x}^{x+k-1}&amp;=\frac{(x+x+k-1)\cdot k}{2}\\
+&amp;=\frac{1}{2}\cdot(2x+k-1)\cdot k \quad (x\ge1,\ k\ge1)
+\end{aligned}
+\]</div>
+<p>不难发现 <span class="arithmatex">\(2x+k-1\)</span> 和 <span class="arithmatex">\(k\)</span> 的奇偶性是相反的，那就说明合法的数一定含有奇数因子。什么数不含有奇数因子呢？只有 <span class="arithmatex">\(2\)</span> 的幂。因此答案就是数组中 <span class="arithmatex">\(2\)</span> 的幂的数量。最后特判 <span class="arithmatex">\(1\)</span> 即可。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="n">ans</span> <span class="o">+=</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c++ highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">    </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">        </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">        </span><span class="n">ans</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<h2 id="t4-回文数组">T4 回文数组<a class="headerlink" href="#t4-回文数组" title="页面定位">&para;</a></h2>
 
 
 
@@ -5979,7 +6088,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月13日 13:43:12">2025年3月13日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月14日 15:33:28">2025年3月14日</span>
   </span>
 
     

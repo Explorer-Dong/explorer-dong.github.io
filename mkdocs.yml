@@ -195,6 +195,9 @@ nav:
         - base/natural-language-processing/task.md
       - 计算机视觉:
         - base/computer-vision/index.md
+        - base/computer-vision/intro.md
+        - base/computer-vision/model.md
+        - base/computer-vision/task.md
       - 语音识别:
         - base/speech-recognition/index.md
       - 智慧教育:
@@ -272,6 +275,7 @@ nav:
     - 蓝桥杯:
       - ds-and-algo/lan-qiao-cup/index.md
       - ds-and-algo/lan-qiao-cup/14th-python-a.md
+      - ds-and-algo/lan-qiao-cup/15th-python-a.md
   - 前端:
     - front-end/index.md
     - front-end/html-basic.md

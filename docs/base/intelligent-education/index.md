@@ -10,6 +10,11 @@ title: 智慧教育导读
 
 ## 绪论
 
+知识图谱的主要技术：
 
+- 知识抽取：
+- 知识表示：TransE (Translating Embeddings for Modeling Multi-relational Data)
+- 知识融合：
+- 知识推理：
 
 ## 后记

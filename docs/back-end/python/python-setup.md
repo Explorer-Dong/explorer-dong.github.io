@@ -77,3 +77,11 @@ pipreqs ./ --encoding=utf8 --force
 ```bash
 pip install -r requirements.txt
 ```
+
+## 修复安装 Python 时出现 Error 0x80070422 和 Error 0x80070643
+
+本质原因是之前没有按照官方程序卸载 Python。需要到注册表里彻底删掉对应的文件，在下面的三个路径下一一尝试，删除对应的版本的 Python 文件即可：
+
+- `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall`
+- `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall`
+- `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall`

@@ -4657,7 +4657,7 @@ $$
 
 库导入：`from heapq import *`
 
-注意：python的heap，默认是小堆顶，即二叉堆堆顶元素大于左右孩子。
+注意：python的heap，默认是小堆顶，即二叉堆堆顶元素小于左右孩子。
 
 **`heappush(heap, item)`**
 
@@ -6512,41 +6512,126 @@ class ST:
 
 ### 建图
 
-邻接矩阵
+给定 $n$ 个节点，$m$ 条边。我们希望用 $g(u,v)$ 表示 $u,v$ 的信息。（如连通性、边权）
 
-```python
-g = [[inf] * n for _ in range(n)]
-for u, v, w in roads:
-    g[u][v] = g[v][u] = w
-    g[u][u] = g[v][v] = 0
+<img src="https://pic.leetcode.cn/1742044412-UDnzcZ-image.png" alt="image.png" style="zoom:50%;" />
+
+**邻接矩阵**
+
+带权无向图
+
+- 初始值设置为 $inf$ 表示不连通，即距离无穷大
+- $g(x,x)$ 应为 $0$
+
+```
+5 6
+0 1 2
+1 2 5
+0 3 3
+1 3 4
+3 4 7
+3 2 10
 ```
 
-邻接表建图
+```python
+from math import inf
+n, m = map(int, input().split())
+g = [[inf] * n for _ in range(n)]
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    g[u][v] = g[v][u] = w 
+    g[u][u] = g[v][v] = 0 # 原地不动，距离是0
+```
+
+```
+样例输出
+[0, 2, inf, 3, inf]
+[2, 0, 5, 4, inf]
+[inf, 5, 0, 10, inf]
+[3, 4, 10, 0, 7]
+[inf, inf, inf, 7, 0]
+```
+
+
+
+**邻接表**
 
 1. 带权无向图
 
 ```python
+n, m = map(int, input().split())
 e = [[] for _ in range(n)]
-for u, v, w in roads:
+for _ in range(m):
+    u, v, w = map(int, input().split())
     e[u].append((v, w))
     e[v].append((u, w))
+```
+
+```
+[(1, 2), (3, 3)]
+[(0, 2), (2, 5), (3, 4)]
+[(1, 5), (3, 10)]
+[(0, 3), (1, 4), (4, 7), (2, 10)]
+[(3, 7)]
 ```
 
 2. 带权有向图
 
 ```python
+n, m = map(int, input().split())
 e = [[] for _ in range(n)]
-for u, v, w in roads:
+for _ in range(m):
+    u, v, w = map(int, input().split())
     e[u].append((v, w))
 ```
 
 3. 不带权有向图
 
 ```python
+n, m = map(int, input().split())
 e = [[] for _ in range(n)]
-for u, v in roads:
+for _ in range(m):
     e[u].append(v)
 ```
+
+### 图的遍历
+
+**DFS序（邻接表版）**
+
+```python
+s = set() # 已经访问的
+def dfs(u):
+    for v, _ in e[u]:
+        if v not in s:
+            dfs(v)
+```
+
+```python
+n, m = map(int, input().split())
+e = [[] for _ in range(n)]
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    e[u].append((v, w))
+    e[v].append((u, w))
+
+s = set() # 已经访问的
+def dfs(u):
+    # 遍历当前节点的操作，如输出节点信息等
+    print(u, end = " ")
+    s.add(u)
+
+    # 遍历邻居
+    for v, _ in e[u]:
+        if v not in s:
+            dfs(v)
+    
+dfs(0) # 0 1 2 3 4 
+print() 
+s.clear() #已经访问的
+dfs(4) # 4 3 0 1 2 
+```
+
+
 
 
 
@@ -6564,40 +6649,162 @@ for u, v in roads:
 
 ### Floyd
 
+求解带权图上 **多源最短路**。
+
+给定 $n$ 个节点，$m$ 条边的带权无向图，和 $q$ 组询问，每次需要回答 $u, v$ 的最短路径长度。
+
+- 考虑 $u,v$ 路径上的中间节点 $k$ ，拆分成 $u \rightarrow k$ 的最短路径长度 + $k \rightarrow v$ 的最短路径长度
+-  $k$ 代表当前允许使用的中间节点，$k$ 遍历 $[0, n - 1]$ ，对于每个 $k$ 对整个邻接矩阵进行更新
+- $\text{ g[u][v] = min(g[u][v], g[u][k] + g[k][v])}$
+- 为什么 $k$ 不能放在其他位置？放在最外层，对于每个 $k$ 从左上到右下进行一次更新，能够有效利用之前的值。放在最内层，每处 $(u,v)$ 局部更新，不能有效利用之前的值。
+
+时间复杂度：$O(n^3)$
+
 ```python
-    mp = [[inf] * n for _ in range(n)]
-    for u, v, w in edges:
-        mp[u][v] = mp[v][u] = w
-        mp[u][u] = mp[v][v] = 0
-    for k in range(n):
-        for u in range(n):
-            for v in range(n):
-                mp[u][v] = min(mp[u][v], mp[u][k] + mp[k][v])
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    g[u][v] = g[v][u] = w
+    g[u][u] = g[v][v] = 0
+
+for k in range(n):
+    for u in range(n):
+        for v in range(n):
+            g[u][v] = min(g[u][v], g[u][k] + g[k][v])
 ```
 
+```python
+from math import inf
+n, m = map(int, input().split())
+g = [[inf] * n for _ in range(n)]
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    g[u][v] = g[v][u] = w
+    g[u][u] = g[v][v] = 0
+
+for k in range(n):
+    for u in range(n):
+        for v in range(n):
+            g[u][v] = min(g[u][v], g[u][k] + g[k][v])
+            
+print(g)
+print(g[4][2]) # 16
+```
+
+[1334. 阈值距离内邻居最少的城市 - 力扣（LeetCode）](https://leetcode.cn/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/description/)
+
+```python
+class Solution:
+    def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
+        res, idx = inf, 0
+        g = [[inf] * n for _ in range(n)]
+        for u, v, w in edges:
+            g[u][v] = g[v][u] = w
+            g[u][u] = g[v][v] = 0
+        for k in range(n):
+            for u in range(n):
+                for v in range(n):
+                    g[u][v] = min(g[u][v], g[u][k] + g[k][v])
+        for u in range(n):
+            cnt = sum(g[u][v] <= distanceThreshold and u != v for v in range(n))
+            if cnt <= res:
+                res, idx = cnt, u
+        return idx
+```
+
+
+
 ### Dijkstra
+
+求解**非负权图** 上单源最短路径。
 
 #### 朴素 Dijkstra
 
 适用于稠密图，时间复杂度：$O(n^2)$
 
 ```python
-        g = [[inf] * n for _ in range(n)]
-        for u, v, w in roads:
-            g[u][v] = g[v][u] = w
-            g[u][u] = g[v][v] = 0
-        d = [inf] * n       # dist 数组, d [i] 表示源点到 i 的最短路径长度
-        d[0] = 0
-        v = [False] * n     # 节点访问标记
-        for _ in range(n - 1): 
-            x = -1
-            for u in range(n):
-                if not v[u] and (x < 0 or d[u] < d[x]):
-                    x = u
-            v[x] = True
-            for u in range(n):
-                d[u] = min(d[u], d[x] + g[u][x])
+d = [inf] * n
+d[0] = 0
+s = set() # S集合为已经确定的节点集合
+
+for _ in range(n - 1):
+    x = -1
+    # 从 U - S中找出距离S最近的节点
+    for u in range(n):
+        if u not in s and (x < 0 or d[u] < d[x]):
+            x = u
+    s.add(x)
+
+    # 松弛，对每个节点判断以x作为中间节点时，是否距离原点更加
+    for u in range(n):
+        d[u] = min(d[u], d[x] + g[u][x])
 ```
+
+```python
+from math import inf
+n, m = map(int, input().split())
+g = [[inf] * n for _ in range(n)]
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    g[u][v] = g[v][u] = w
+    g[u][u] = g[v][v] = 0
+
+
+d = [inf] * n
+d[4] = 0
+s = set() # S集合为已经确定的节点集合
+
+for _ in range(n - 1):
+    x = -1
+    # 从 U - S中找出距离S最近的节点
+    for u in range(n):
+        if u not in s and (x < 0 or d[u] < d[x]):
+            x = u
+    s.add(x)
+
+    # 松弛，对每个节点判断以x作为中间节点时，是否距离原点更加
+    for u in range(n):
+        d[u] = min(d[u], d[x] + g[u][x])
+
+print(d) # [10, 11, 16, 7, 0]
+
+```
+
+
+
+[743. 网络延迟时间 - 力扣（LeetCode）](https://leetcode.cn/problems/network-delay-time/)
+
+```python
+class Solution:
+    def networkDelayTime(self, e: List[List[int]], n: int, k: int) -> int:
+        g = [[inf] * (n + 1) for _ in range(n + 1)]
+        m = len(e)
+        for i in range(m):
+            u, v, w = e[i]
+            g[u][v] = w
+            g[u][u] = g[v][v] = 0
+        
+        d = [inf] * (n + 1)
+        d[k] = 0
+        s = set() # S集合为已经确定的节点集合
+
+        for _ in range(n - 1):
+            x = -1
+            # 从 U - S中找出距离S最近的节点
+            for u in range(1, n + 1):
+                if u not in s and (x < 0 or d[u] < d[x]):
+                    x = u
+            s.add(x)
+
+            # 松弛，对每个节点判断以x作为中间节点时，是否距离原点更加
+            for u in range(1, n + 1):
+                d[u] = min(d[u], d[x] + g[x][u])
+        res = max(d[1: ])
+        return res if res < inf else -1
+```
+
+
+
+
 
 [1976. 到达目的地的方案数 - 力扣（LeetCode）](https://leetcode.cn/problems/number-of-ways-to-arrive-at-destination/description/?envType=daily-question&envId=2024-03-05)
 
@@ -6634,30 +6841,7 @@ for u, v in roads:
      
 ```
 
-[743. 网络延迟时间 - 力扣（LeetCode）](https://leetcode.cn/problems/network-delay-time/)
 
-有向图 + 邻接矩阵最短路
-
-```python
-    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        g = [[inf] * (n + 1) for _ in range(n + 1)]
-        for u, v, w in times:
-            g[u][v] = w
-            g[u][u] = g[v][v] = 0
-        d = [inf] * (n + 1)
-        d[k] = 0
-        v = [False] * (n + 1)
-        for _ in range(n - 1):
-            x = -1
-            for u in range(1, n + 1):
-                if not v[u] and (x < 0 or d[u] < d[x]):
-                    x = u
-            v[x] = True
-            for u in range(1, n + 1):
-                d[u] = min(d[u], d[x] + g[x][u])
-        res = max(d[1: ])
-        return res if res != inf else -1
-```
 
 [2662. 前往目标的最小代价 - 力扣（LeetCode）](https://leetcode.cn/problems/minimum-cost-of-a-path-with-special-roads/solutions/?envType=featured-list&envId=QAPjw82k?envType=featured-list&envId=QAPjw82k)
 
@@ -8003,10 +8187,10 @@ print(s.climbStairs(3)) # 3
 [198. 打家劫舍 - 力扣（LeetCode）](https://leetcode.cn/problems/house-robber/description/)
 
 **选或者不选**
-$f[i][1]$ 表示从前 $i$ 个屋子, 且第 $i$ 个屋子偷的最大金额
-$f[i][0]$ 表示从前 $i$ 个屋子，且第 $i$ 个屋子不偷的最大金额
-不偷, $f[i][0] = \text{max(f[j][1] for j in range(i))}$
-偷,   $f[i][1] = \text{max(f[j][0] for j in range(i)) + nums[i]}$
+$f[i][1]$ 表示考虑完前 $i$ 个屋子, 且第 $i$ 个屋子选的最大金额
+$f[i][0]$ 表示考虑完前 $i$ 个屋子，且第 $i$ 个屋子不选的最大金额
+不选，$f[i][0] = \text{max(f[i - 1][1], f[i - 1][0])}$
+选，   $f[i][1] = \text{f[i - 1][0] + nums[i - 1]}$
 
 ```python
 class Solution:

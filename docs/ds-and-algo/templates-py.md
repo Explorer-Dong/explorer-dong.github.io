@@ -6601,6 +6601,7 @@ for _ in range(m):
 ```python
 s = set() # 已经访问的
 def dfs(u):
+    s.add(u)
     for v, _ in e[u]:
         if v not in s:
             dfs(v)
@@ -6630,6 +6631,8 @@ print()
 s.clear() #已经访问的
 dfs(4) # 4 3 0 1 2 
 ```
+
+[1971. ](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)[寻找图中是否存在路径 ](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)[- ](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)[力扣（](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)[LeetCode](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)[）](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)
 
 
 
@@ -6664,7 +6667,6 @@ dfs(4) # 4 3 0 1 2
 for _ in range(m):
     u, v, w = map(int, input().split())
     g[u][v] = g[v][u] = w
-    g[u][u] = g[v][v] = 0
 
 for k in range(n):
     for u in range(n):
@@ -6679,7 +6681,6 @@ g = [[inf] * n for _ in range(n)]
 for _ in range(m):
     u, v, w = map(int, input().split())
     g[u][v] = g[v][u] = w
-    g[u][u] = g[v][v] = 0
 
 for k in range(n):
     for u in range(n):
@@ -6699,7 +6700,6 @@ class Solution:
         g = [[inf] * n for _ in range(n)]
         for u, v, w in edges:
             g[u][v] = g[v][u] = w
-            g[u][u] = g[v][v] = 0
         for k in range(n):
             for u in range(n):
                 for v in range(n):
@@ -6781,7 +6781,6 @@ class Solution:
         for i in range(m):
             u, v, w = e[i]
             g[u][v] = w
-            g[u][u] = g[v][v] = 0
         
         d = [inf] * (n + 1)
         d[k] = 0

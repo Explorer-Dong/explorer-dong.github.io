@@ -8389,6 +8389,7 @@ print(f[N][W])
 **恰好装满型 0 - 1 背包**
 
 [2915. 和为目标值的最长子序列的长度 - 力扣（LeetCode）](https://leetcode.cn/problems/length-of-the-longest-subsequence-that-sums-to-target/description/?envType=featured-list&envId=OZhLbgFT?envType=featured-list&envId=OZhLbgFT)
+
 $$
 f [i][j] = max(f [i - 1][j], ~ f [i - 1][j - w] + v)
 $$
@@ -8566,6 +8567,7 @@ for i in range(1, N + 1):
 [518. 零钱兑换 II - 力扣（LeetCode）](https://leetcode.cn/problems/coin-change-ii/description/?envType=featured-list&envId=OZhLbgFT?envType=featured-list&envId=OZhLbgFT)
 
 **完全背包求组合方案数**
+
 $$
 \begin{align}
 f [i, j]~ &=~\sum(f [i-1, j],&  	&f [i-1, j-w]+v,&	&~f [i-1, j-2w]+2v,&	&~f [i-1, j-3w]+3v &,...) \\

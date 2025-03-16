@@ -225,11 +225,11 @@ nav:
       - 计算机网络:
         - base/computer-network/index.md
         - base/computer-network/intro.md
-        - base/computer-network/physical-layer.md
-        - base/computer-network/data-link-layer.md
-        - base/computer-network/network-layer.md
-        - base/computer-network/transport-layer.md
         - base/computer-network/application-layer.md
+        - base/computer-network/transport-layer.md
+        - base/computer-network/network-layer.md
+        - base/computer-network/data-link-layer.md
+        - base/computer-network/physical-layer.md
     - 数理基础:
       - 大学物理:
         - base/college-physics/index.md

@@ -171,5 +171,174 @@ $$
     }
     ```
 
-## T5 吊坠
+## T5 吊坠 (15'/15')
 
+题意：给定 $n\ (1\le n\le 200)$ 个长度为 $m\ (1\le m\le 50)$ 的环形字符串，现在定义两个环形字符串之间连边的权重为两个字符串的最长公共子串的长度。返回利用 $n-1$ 条边将这 $n$ 个字符串连接起来的最大总权重。
+
+思路：一道大杂烩：
+
+- 容易发现这是在求最大生成树，总边数约 $n^2$，Kurskal 时间复杂度为 $O(n^2\log n^2)$，我们还需要计算所有结点之间的边权；
+- 暴力计算所有边权的时间复杂度为 $O(n^2 m^3)$，使用「破环成链」技巧结合 dp 可以优化到 $O(n^2m^2)$。
+
+时间复杂度：$O(n^2m^2)$
+
+=== "Python"
+
+    ```python
+    class DSU:
+        def __init__(self, n: int):
+            self.p = [i for i in range(n)]
+        def find(self, x: int) -> int:
+            if self.p[x] != x:
+                self.p[x] = self.find(self.p[x])
+            return self.p[x]
+        def merge(self, x: int, y: int) -> None:
+            px, py = self.find(x), self.find(y)
+            if px != py:
+                self.p[px] = py
+
+    n, m = map(int, input().strip().split())
+    strs = [input().strip() for _ in range(n)]
+
+    # 计算边权
+    f = [[0] * (m << 1) for _ in range(m << 1)]
+    def calc(s: str, t: str) -> int:
+        s += s  # 破环成链
+        t += t  # 破环成链
+        ans = 0
+        for i in range(m << 1):
+            for j in range(m << 1):
+                f[i][j] = 0
+                if s[i] != t[j]:
+                    continue
+                if not i or not j:
+                    f[i][j] = 1
+                else:
+                    f[i][j] = f[i - 1][j - 1] + 1
+                ans = max(ans, f[i][j])
+        return min(ans, m)
+
+    edges = []
+    for i in range(n):
+        for j in range(i + 1, n):
+            edges.append((i, j, calc(strs[i], strs[j])))
+
+    # 求最大生成树
+    dsu = DSU(n)
+    edges.sort(key=lambda x: -x[-1])
+    ans = cnt = 0
+    for u, v, w in edges:
+        pu, pv = dsu.find(u), dsu.find(v)
+        if pu != pv:
+            dsu.merge(u, v)
+            ans += w
+            cnt += 1
+        if cnt == n - 1:
+            break
+
+    print(ans)
+    ```
+
+=== "C++"
+
+    ```c++
+    #include <iostream>
+    #include <vector>
+    #include <algorithm>
+    using namespace std;
+
+    struct DSU {
+        vector<int> p;
+        DSU(int n) {
+            p.resize(n);
+            for (int i = 0; i < n; i++) {
+                p[i] = i;
+            }
+        }
+        int find(int x) {
+            if (p[x] != x) {
+                p[x] = find(p[x]);
+            }
+            return p[x];
+        }
+        void merge(int x, int y) {
+            int px = find(x), py = find(y);
+            if (px != py) {
+                p[px] = p[py];
+            }
+        }
+    };
+
+    struct Edge {
+        int u, v, w;
+    };
+
+    const int N = 210, M = 55;
+    int n, m;
+    string strs[N];
+    vector<Edge> edges;
+    int f[M << 1][M << 1];
+
+    int calc(string& ss, string& tt) {
+        string s = ss + ss;
+        string t = tt + tt;
+        int ans = 0;
+        for (int i = 0; i < (m << 1); i++) {
+            for (int j = 0; j < (m << 1); j++) {
+                f[i][j] = 0;
+                if (s[i] != t[j]) {
+                    continue;
+                }
+                if (!i || !j) {
+                    f[i][j] = 1;
+                } else {
+                    f[i][j] = f[i - 1][j - 1] + 1;
+                }
+                ans = max(ans, f[i][j]);
+            }
+        }
+        return min(ans, m);
+    }
+
+    int main() {
+        cin >> n >> m;
+        for (int i = 0; i < n; i++) {
+            cin >> strs[i];
+        }
+        
+        // 计算所有边权
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                edges.push_back({i, j, calc(strs[i], strs[j])});
+            }
+        }
+
+        // 最大生成树
+        sort(edges.begin(), edges.end(), [&](Edge& x, Edge& y){
+            return x.w > y.w;
+        });
+        DSU dsu(n);
+        int ans = 0, cnt = 0;
+        for (auto& [u, v, w]: edges) {
+            int pu = dsu.find(u), pv = dsu.find(v);
+            if (pv != pu) {
+                dsu.merge(u, v);
+                ans += w;
+                cnt++;
+            }
+            if (cnt == n - 1) {
+                break;
+            }
+        }
+
+        cout << ans << "\n";
+
+        return 0;
+    }
+    ```
+
+## T6 砍柴 (0'/15')
+
+## T7 智力测试 (0'/20')
+
+## T8 最大异或结点 (0'/20')

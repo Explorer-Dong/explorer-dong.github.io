@@ -13,7 +13,7 @@ headingDivider: 2
 math: katex
 ---
 
-本文记录作者对科研文化的一知半解，考虑到涉世未深、经验不足，内容大多引自他人直言。
+本文记录作者对科研文化的一知半解，考虑到涉世未深、经验不足，内容大多引自他人之言。
 
 <!-- _paginate: skip -->
 
@@ -94,4 +94,4 @@ math: katex
 - [Marp on VSCode - Marp it](https://marpit.marp.app/directives)
 - [Paper Writing - Xudong Tian](https://www.jianguoyun.com/p/DasNcD0Q6fiQDRjnyO8FIAA)
 - [给各位天命人的劝退信 - jyywiki](https://jyywiki.cn/Letter.md)
-- 原文地址：[科研二三事 - Open Wiki Community](https://wiki.dwj601.cn/data-scienct/why-research/)
+- 原文地址：[科研二三事 - Open Wiki Community](https://wiki.dwj601.cn/data-science/why-research/)

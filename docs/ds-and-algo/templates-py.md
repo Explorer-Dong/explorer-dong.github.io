@@ -4657,7 +4657,7 @@ $$
 
 库导入：`from heapq import *`
 
-注意：python的heap，默认是小堆顶，即二叉堆堆顶元素大于左右孩子。
+注意：python的heap，默认是小堆顶，即二叉堆堆顶元素小于左右孩子。
 
 **`heappush(heap, item)`**
 
@@ -6512,40 +6512,124 @@ class ST:
 
 ### 建图
 
-邻接矩阵
+给定 $n$ 个节点，$m$ 条边。我们希望用 $g(u,v)$ 表示 $u,v$ 的信息。（如连通性、边权）
 
-```python
-g = [[inf] * n for _ in range(n)]
-for u, v, w in roads:
-    g[u][v] = g[v][u] = w
-    g[u][u] = g[v][v] = 0
+<img src="https://pic.leetcode.cn/1742044412-UDnzcZ-image.png" alt="image.png" style="zoom:50%;" />
+
+**邻接矩阵**
+
+带权无向图
+
+- 初始值设置为 $inf$ 表示不连通，即距离无穷大
+- $g(x,x)$ 应为 $0$
+
+```
+5 6
+0 1 2
+1 2 5
+0 3 3
+1 3 4
+3 4 7
+3 2 10
 ```
 
-邻接表建图
+```python
+from math import inf
+n, m = map(int, input().split())
+g = [[inf] * n for _ in range(n)]
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    g[u][v] = g[v][u] = w 
+    g[u][u] = g[v][v] = 0 # 原地不动，距离是0
+```
+
+```
+样例输出
+[0, 2, inf, 3, inf]
+[2, 0, 5, 4, inf]
+[inf, 5, 0, 10, inf]
+[3, 4, 10, 0, 7]
+[inf, inf, inf, 7, 0]
+```
+
+
+
+**邻接表**
 
 1. 带权无向图
 
 ```python
+n, m = map(int, input().split())
 e = [[] for _ in range(n)]
-for u, v, w in roads:
+for _ in range(m):
+    u, v, w = map(int, input().split())
     e[u].append((v, w))
     e[v].append((u, w))
+```
+
+```
+[(1, 2), (3, 3)]
+[(0, 2), (2, 5), (3, 4)]
+[(1, 5), (3, 10)]
+[(0, 3), (1, 4), (4, 7), (2, 10)]
+[(3, 7)]
 ```
 
 2. 带权有向图
 
 ```python
+n, m = map(int, input().split())
 e = [[] for _ in range(n)]
-for u, v, w in roads:
+for _ in range(m):
+    u, v, w = map(int, input().split())
     e[u].append((v, w))
 ```
 
 3. 不带权有向图
 
 ```python
+n, m = map(int, input().split())
 e = [[] for _ in range(n)]
-for u, v in roads:
+for _ in range(m):
     e[u].append(v)
+```
+
+### 图的遍历
+
+**DFS序（邻接表版）**
+
+```python
+s = set() # 已经访问的
+def dfs(u):
+    s.add(u)
+    for v, _ in e[u]:
+        if v not in s:
+            dfs(v)
+```
+
+```python
+n, m = map(int, input().split())
+e = [[] for _ in range(n)]
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    e[u].append((v, w))
+    e[v].append((u, w))
+
+s = set() # 已经访问的
+def dfs(u):
+    # 遍历当前节点的操作，如输出节点信息等
+    print(u, end = " ")
+    s.add(u)
+
+    # 遍历邻居
+    for v, _ in e[u]:
+        if v not in s:
+            dfs(v)
+    
+dfs(0) # 0 1 2 3 4 
+print() 
+s.clear() #已经访问的
+dfs(4) # 4 3 0 1 2 
 ```
 
 
@@ -6564,40 +6648,158 @@ for u, v in roads:
 
 ### Floyd
 
+求解带权图上 **多源最短路**。
+
+给定 $n$ 个节点，$m$ 条边的带权无向图，和 $q$ 组询问，每次需要回答 $u, v$ 的最短路径长度。
+
+- 考虑 $u,v$ 路径上的中间节点 $k$ ，拆分成 $u \rightarrow k$ 的最短路径长度 + $k \rightarrow v$ 的最短路径长度
+-  $k$ 代表当前允许使用的中间节点，$k$ 遍历 $[0, n - 1]$ ，对于每个 $k$ 对整个邻接矩阵进行更新
+- $\text{ g[u][v] = min(g[u][v], g[u][k] + g[k][v])}$
+- 为什么 $k$ 不能放在其他位置？放在最外层，对于每个 $k$ 从左上到右下进行一次更新，能够有效利用之前的值。放在最内层，每处 $(u,v)$ 局部更新，不能有效利用之前的值。
+
+时间复杂度：$O(n^3)$
+
 ```python
-    mp = [[inf] * n for _ in range(n)]
-    for u, v, w in edges:
-        mp[u][v] = mp[v][u] = w
-        mp[u][u] = mp[v][v] = 0
-    for k in range(n):
-        for u in range(n):
-            for v in range(n):
-                mp[u][v] = min(mp[u][v], mp[u][k] + mp[k][v])
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    g[u][v] = g[v][u] = w
+
+for k in range(n):
+    for u in range(n):
+        for v in range(n):
+            g[u][v] = min(g[u][v], g[u][k] + g[k][v])
 ```
 
+```python
+from math import inf
+n, m = map(int, input().split())
+g = [[inf] * n for _ in range(n)]
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    g[u][v] = g[v][u] = w
+
+for k in range(n):
+    for u in range(n):
+        for v in range(n):
+            g[u][v] = min(g[u][v], g[u][k] + g[k][v])
+            
+print(g)
+print(g[4][2]) # 16
+```
+
+[1334. 阈值距离内邻居最少的城市 - 力扣（LeetCode）](https://leetcode.cn/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/description/)
+
+```python
+class Solution:
+    def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
+        res, idx = inf, 0
+        g = [[inf] * n for _ in range(n)]
+        for u, v, w in edges:
+            g[u][v] = g[v][u] = w
+        for k in range(n):
+            for u in range(n):
+                for v in range(n):
+                    g[u][v] = min(g[u][v], g[u][k] + g[k][v])
+        for u in range(n):
+            cnt = sum(g[u][v] <= distanceThreshold and u != v for v in range(n))
+            if cnt <= res:
+                res, idx = cnt, u
+        return idx
+```
+
+
+
 ### Dijkstra
+
+求解**非负权图** 上单源最短路径。
 
 #### 朴素 Dijkstra
 
 适用于稠密图，时间复杂度：$O(n^2)$
 
 ```python
-        g = [[inf] * n for _ in range(n)]
-        for u, v, w in roads:
-            g[u][v] = g[v][u] = w
-            g[u][u] = g[v][v] = 0
-        d = [inf] * n       # dist 数组, d [i] 表示源点到 i 的最短路径长度
-        d[0] = 0
-        v = [False] * n     # 节点访问标记
-        for _ in range(n - 1): 
-            x = -1
-            for u in range(n):
-                if not v[u] and (x < 0 or d[u] < d[x]):
-                    x = u
-            v[x] = True
-            for u in range(n):
-                d[u] = min(d[u], d[x] + g[u][x])
+d = [inf] * n
+d[0] = 0
+s = set() # S集合为已经确定的节点集合
+
+for _ in range(n - 1):
+    x = -1
+    # 从 U - S中找出距离S最近的节点
+    for u in range(n):
+        if u not in s and (x < 0 or d[u] < d[x]):
+            x = u
+    s.add(x)
+
+    # 松弛，对每个节点判断以x作为中间节点时，是否距离原点更加
+    for u in range(n):
+        d[u] = min(d[u], d[x] + g[u][x])
 ```
+
+```python
+from math import inf
+n, m = map(int, input().split())
+g = [[inf] * n for _ in range(n)]
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    g[u][v] = g[v][u] = w
+    g[u][u] = g[v][v] = 0
+
+
+d = [inf] * n
+d[4] = 0
+s = set() # S集合为已经确定的节点集合
+
+for _ in range(n - 1):
+    x = -1
+    # 从 U - S中找出距离S最近的节点
+    for u in range(n):
+        if u not in s and (x < 0 or d[u] < d[x]):
+            x = u
+    s.add(x)
+
+    # 松弛，对每个节点判断以x作为中间节点时，是否距离原点更加
+    for u in range(n):
+        d[u] = min(d[u], d[x] + g[u][x])
+
+print(d) # [10, 11, 16, 7, 0]
+
+```
+
+
+
+[743. 网络延迟时间 - 力扣（LeetCode）](https://leetcode.cn/problems/network-delay-time/)
+
+```python
+class Solution:
+    def networkDelayTime(self, e: List[List[int]], n: int, k: int) -> int:
+        g = [[inf] * (n + 1) for _ in range(n + 1)]
+        m = len(e)
+        for i in range(m):
+            u, v, w = e[i]
+            g[u][v] = w
+        
+        d = [inf] * (n + 1)
+        d[k] = 0
+        s = set() # S集合为已经确定的节点集合
+
+        for _ in range(n - 1):
+            x = -1
+            # 从 U - S中找出距离S最近的节点
+            for u in range(1, n + 1):
+                if u not in s and (x < 0 or d[u] < d[x]):
+                    x = u
+            s.add(x)
+
+            # 松弛，对每个节点判断以x作为中间节点时，是否距离原点更加
+            for u in range(1, n + 1):
+                d[u] = min(d[u], d[x] + g[x][u])
+        res = max(d[1: ])
+        return res if res < inf else -1
+```
+
+
+
+
 
 [1976. 到达目的地的方案数 - 力扣（LeetCode）](https://leetcode.cn/problems/number-of-ways-to-arrive-at-destination/description/?envType=daily-question&envId=2024-03-05)
 
@@ -6634,30 +6836,7 @@ for u, v in roads:
      
 ```
 
-[743. 网络延迟时间 - 力扣（LeetCode）](https://leetcode.cn/problems/network-delay-time/)
 
-有向图 + 邻接矩阵最短路
-
-```python
-    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        g = [[inf] * (n + 1) for _ in range(n + 1)]
-        for u, v, w in times:
-            g[u][v] = w
-            g[u][u] = g[v][v] = 0
-        d = [inf] * (n + 1)
-        d[k] = 0
-        v = [False] * (n + 1)
-        for _ in range(n - 1):
-            x = -1
-            for u in range(1, n + 1):
-                if not v[u] and (x < 0 or d[u] < d[x]):
-                    x = u
-            v[x] = True
-            for u in range(1, n + 1):
-                d[u] = min(d[u], d[x] + g[x][u])
-        res = max(d[1: ])
-        return res if res != inf else -1
-```
 
 [2662. 前往目标的最小代价 - 力扣（LeetCode）](https://leetcode.cn/problems/minimum-cost-of-a-path-with-special-roads/solutions/?envType=featured-list&envId=QAPjw82k?envType=featured-list&envId=QAPjw82k)
 
@@ -7966,17 +8145,141 @@ https://leetcode.cn/problems/minimize-or-of-remaining-elements-using-operations/
 
 ## 动态规划
 
-[划分型 dp - 力扣（LeetCode）](https://leetcode.cn/problem-list/lfZOUTrA/)
+[DP 题单（LeetCode）](https://leetcode.cn/discuss/post/3581838/fen-xiang-gun-ti-dan-dong-tai-gui-hua-ru-007o/)
 
-[数位 dp - 力扣（LeetCode）](https://leetcode.cn/problem-list/30QHpYGW/)
+### 入门 dp
 
-[状压 dp - 力扣（LeetCode）](https://leetcode.cn/problem-list/ptud3zoQ/)
+[70. 爬楼梯 - 力扣（LeetCode）](https://leetcode.cn/problems/climbing-stairs/description/)
 
-[线性 dp / 背包 - 力扣（LeetCode）](https://leetcode.cn/problem-list/PAkZSAkX/)
+递归写法
 
-[状态机 dp - 力扣（LeetCode）](https://leetcode.cn/problem-list/oX87FqKK/)
+```python
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        def dfs(n):
+            return 1 if n == 1 or n == 0 else dfs(n - 1) + dfs(n - 2)            
+        return dfs(n)
+```
 
-[区间 dp - 力扣（LeetCode）](https://leetcode.cn/problem-list/2UzczrXX/)
+
+
+记忆化搜索：lru_cache
+
+```python
+from functools import *
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        @lru_cache(maxsize = None)
+        def dfs(n):
+            return 1 if n == 1 or n == 0 else dfs(n - 1) + dfs(n - 2)            
+        return dfs(n)
+s = Solution()
+print(s.climbStairs(3)) # 3
+```
+
+
+
+[198. 打家劫舍 - 力扣（LeetCode）](https://leetcode.cn/problems/house-robber/description/)
+
+**选或者不选**
+$f[i][1]$ 表示考虑完前 $i$ 个屋子, 且第 $i$ 个屋子选的最大金额
+$f[i][0]$ 表示考虑完前 $i$ 个屋子，且第 $i$ 个屋子不选的最大金额
+不选，$f[i][0] = \text{max(f[i - 1][1], f[i - 1][0])}$
+选，   $f[i][1] = \text{f[i - 1][0] + nums[i - 1]}$
+
+```python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        f = [[0] * 2 for _ in range(n + 1)]
+        for i in range(1, n + 1):
+            f[i][0] = max(f[i - 1][1], f[i - 1][0])
+            f[i][1] = f[i - 1][0] + nums[i - 1]
+        return max(f[n][1], f[n][0])
+```
+
+
+
+### 线性 dp
+
+#### 最长上升子序列
+
+$O(n^2)$ 做法，$f[i]$ 表示以 $nums[i]$ 结尾的所有上升子序列中最长的长度。
+
+```python
+for i, x in enumerate(nums):
+    for j in range(i):
+        if nums[j] < x:
+            f[i] = max(f[i], f[j] + 1)
+```
+
+$O(nlogn)$ 做法，$f[i]$ 表示长度为 $i$ 的所有上升子序列中，子序列末尾的最小值。
+
+正序遍历 $nums$ 中每一个数 $x$， 二分找出 $x$ 在 $f$ 中的插入位置（恰好大于 $ x$ 的位置）。
+
+```python
+# f [i] 表示长度为 i 的子序列的末尾元素的最小值
+f = []
+
+# 找到恰好大于 x 的位置
+def check(x, mid):
+    return f[mid] >= x
+for x in nums:
+    lo, hi = 0, len(f)
+    while lo < hi:
+        mid = (lo + hi) >> 1
+        if check(x, mid):
+            hi = mid 
+        else:
+            lo = mid + 1
+    if lo >= len(f):
+        f.append(x)
+    else:
+        f[lo] = x
+```
+
+
+
+#### 最长公共子序列
+
+$ f[i][j] 表示从s[0: i] 和 s2[0: j] 中的最长公共子序列$
+
+时间复杂度：$O(mn)$
+
+可以证明：$f(i-1, j -1)+ 1 \ge \max(f(i-1,j), ~f(i,~j-1))$  
+
+```python
+# f [n][m] 
+f = [[0] * (m + 1) for _ in range(n + 1)]
+for i in range(1, n + 1):
+    for j in range(1, m + 1):
+        if s1[i - 1] == s2[j - 1]:
+            f[i][j] = f[i - 1][j - 1] + 1
+        else:
+            f[i][j] = max(f[i - 1][j], f[i][j - 1])
+```
+
+
+
+#### 编辑距离
+
+```python
+def getEditDist(s1, s2):
+    m, n = len(s1), len(s2)
+    f = [[inf] * (n + 1) for _ in range(m + 1)]
+    for i in range(1, m + 1): f[i][0] = i
+    for i in range(1, n + 1): f[0][i] = i
+    f[0][0] = 0
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            a = f[i - 1][j] + 1
+            b = f[i][j - 1] + 1
+            c = f[i - 1][j - 1] + (1 if s1[i - 1] != s2[j - 1] else 0)
+            f[i][j] = min(a, b, c)
+    return f[m][n]
+```
+
+
 
 ### 背包问题
 
@@ -7996,7 +8299,7 @@ $N$ 个物品，价值为 $v_i$，重量为 $w_i$，背包容量为 $W$。挑选
   - 所有拿物品的选法
   - 条件：1. 只从前 $i$ 个物品中选；2. 总重量 $\le j$ 
 
-- 表示的属性（一般是 $\max, \min, 个数$）：所有选法的总价值的最大值（$\max$ ）
+- 表示的属性：所有选法的总价值的最大值（$\max$ ）
 
   最终求解的问题 $f(N, W)$ 。
 
@@ -8008,15 +8311,16 @@ $N$ 个物品，价值为 $v_i$，重量为 $w_i$，背包容量为 $W$。挑选
 
 ```python
 # f [i][j] 表示用前 i 个物品，在总重量不超过 j 的情况下，所有物品选法构成的集合中，总价值的最大值
-# f [0][0] ~ f [N][0] = 0
 # 考虑 f [i][j] 对应集合的完备划分： 选 i ，其子集的最大值是 f [i - 1][j - w[i]] + v [i]，需要在 j - w [i] >= 0 满足
 # 不选 i， 其子集的最大值是 f [i - 1][j]。一定可以满足
+f = [[0] * (W + 1) for _ in range(N + 1)]
 for i in range(1, N + 1):
-    for j in range(W + 1):
-        f[i][j] = f[i - 1][j]
-        if j - w[i] >= 0:
-            f[i][j] = max(f[i][j], f[i - 1][j - w[i]] + v[i])
-return f[N][W]
+    for j in range(1, W + 1):
+        if j - w[i] >= 0: # 可以选i，也可以不选i
+            f[i][j] = max(f[i - 1][j], f[i - 1][j - w[i]] + v[i])
+        else:
+            f[i][j] = f[i - 1][j] # 只能不选i
+print(f[N][W])
 ```
 
 滚动数组优化为一维：逆序遍历
@@ -8035,6 +8339,32 @@ for i in range(1, N + 1):
         # 此时 f [j] 就代表 f [i - 1][j], f [j - w[i] 代表 f [i - 1][j - w[i]]
 return f[W]        
 ```
+
+
+
+ [NOIP 2005 普及组\] 采药 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P1048)
+
+```python
+import sys
+input = lambda: sys.stdin.readline().strip()
+
+W, N = map(int, input().split())
+w, v = [0] * (N + 1), [0] * (N + 1)
+for i in range(1, N + 1):
+    w[i], v[i] = map(int, input().split())
+# f[i][j] 表示在前i个物品中，重量不超过j的所有选择方案的集合中，获得的最大价值
+# 最终要求 f[N][W]
+f = [[0] * (W + 1) for _ in range(N + 1)]
+for i in range(1, N + 1):
+    for j in range(1, W + 1):
+        if j - w[i] >= 0: # 可以选i，也可以不选i
+            f[i][j] = max(f[i - 1][j], f[i - 1][j - w[i]] + v[i])
+        else:
+            f[i][j] = f[i - 1][j] # 只能不选i
+print(f[N][W])
+```
+
+
 
 [题目详情 - LC2431. 最大限度地提高购买水果的口味 - HydroOJ](https://hydro.ac/d/nnu_contest/p/LC1)
 
@@ -8075,20 +8405,24 @@ $$
 得到二维版本：
 
 ```python
-    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
-        # f [i][j] 表示从前 i 个数中，和为 j 的子序列的所有选法构成的集合中，子序列长度的最大值
-        # f [n][target]
-        # f [i][j] = max(f [i - 1][j], f [i - 1][j - w] + 1)
+class Solution:
+    def lengthOfLongestSubsequence(self, nums: List[int], t: int) -> int:
+        a = nums
         n = len(nums)
-        f = [[-inf] * (target + 1) for _ in range(n + 1)]
-        f[0][0] = 0
+        dp = [[-inf] * (t + 1) for _ in range(n + 1)]
+        for i in range(n + 1): dp[i][0] = 0
         for i in range(1, n + 1):
-            w = nums[i - 1]
-            for j in range(target + 1):
-                f[i][j] = f[i - 1][j]
-                if j - w >= 0:
-                    f[i][j] = max(f[i][j], f[i - 1][j - w] + 1)
-        return f[n][target] if f[n][target] >= 0 else -1
+            w = a[i - 1]
+            for j in range(t + 1): 
+                if j >= w: 
+                    dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - w] + 1)
+                else:  
+                    dp[i][j] = dp[i - 1][j]
+        if dp[n][t] >= 0:
+            return dp[n][t]
+        else: 
+            return -1
+ 
 ```
 
 优化：$j$ 的上界可以优化为 $\min(\text{重量前缀}, target)$
@@ -8207,7 +8541,7 @@ $$
 \begin{align}
 f [i, j]~ &=~Max(f [i-1, j],&  	&f [i-1, j-w]+v,&	&~f [i-1, j-2w]+2v,&	&~f [i-1, j-3w]+3v &,...) \\
 f [i, j-w]~ &= ~Max(	&		&f [i-1, j-w],&	&~f [i-1, j-2w]+v,&			&~f [i-1, j-3w]+2v,    &...)
-\end{align} 
+\end{align}
 $$
 
 所以 $f(i, j) = \max \big(f(i - 1, j), f(i, j - w[i]) + v[i] \big)$， 
@@ -8233,6 +8567,13 @@ for i in range(1, N + 1):
 [518. 零钱兑换 II - 力扣（LeetCode）](https://leetcode.cn/problems/coin-change-ii/description/?envType=featured-list&envId=OZhLbgFT?envType=featured-list&envId=OZhLbgFT)
 
 **完全背包求组合方案数**
+
+$$
+\begin{align}
+f [i, j]~ &=~\sum(f [i-1, j],&  	&f [i-1, j-w]+v,&	&~f [i-1, j-2w]+2v,&	&~f [i-1, j-3w]+3v &,...) \\
+f [i, j-w]~ &= ~\sum(	&		&f [i-1, j-w],&	&~f [i-1, j-2w]+v,&			&~f [i-1, j-3w]+2v,    &...)
+\end{align}
+$$
 
 $$
 \begin{align}
@@ -8401,89 +8742,6 @@ for i in range(1, N + 1):
         for k in range(len(W[i])):
             if j - W[i][k] >= 0:
                 f[j] = max(f[j], f[j - W[i][k]] + V[i][k])     
-```
-
-### 线性 dp
-
-#### 最长上升子序列
-
-$O(n^2)$ 做法，$f[i]$ 表示以 $nums[i]$ 结尾的所有上升子序列中最长的长度。
-
-```python
-for i, x in enumerate(nums):
-    for j in range(i):
-        if nums[j] < x:
-            f[i] = max(f[i], f[j] + 1)
-```
-
-$O(nlogn)$ 做法，$f[i]$ 表示长度为 $i$ 的所有上升子序列中，子序列末尾的最小值。
-
-正序遍历 $nums$ 中每一个数 $x$， 二分找出 $x$ 在 $f$ 中的插入位置（恰好大于 $ x$ 的位置）。
-
-```python
-# f [i] 表示长度为 i 的子序列的末尾元素的最小值
-f = []
-
-# 找到恰好大于 x 的位置
-def check(x, mid):
-    return f[mid] >= x
-for x in nums:
-    lo, hi = 0, len(f)
-    while lo < hi:
-        mid = (lo + hi) >> 1
-        if check(x, mid):
-            hi = mid 
-        else:
-            lo = mid + 1
-    if lo >= len(f):
-        f.append(x)
-    else:
-        f[lo] = x
-```
-
-
-
-#### 最长公共子序列
-
-$ f[i][j] 表示从s[0: i] 和 s2[0: j] 中的最长公共子序列$
-
-时间复杂度：$O(mn)$
-
-可以证明：$f(i-1, j -1)+ 1 \ge \max(f(i-1,j), ~f(i,~j-1))$  
-
-```python
-#
-
-
-
-# f [n][m] 
-f = [[0] * (m + 1) for _ in range(n + 1)]
-for i in range(1, n + 1):
-    for j in range(1, m + 1):
-        if s1[i - 1] == s2[j - 1]:
-            f[i][j] = f[i - 1][j - 1] + 1
-        else:
-            f[i][j] = max(f[i - 1][j], f[i][j - 1])
-```
-
-
-
-#### 编辑距离
-
-```python
-def getEditDist(s1, s2):
-    m, n = len(s1), len(s2)
-    f = [[inf] * (n + 1) for _ in range(m + 1)]
-    for i in range(1, m + 1): f[i][0] = i
-    for i in range(1, n + 1): f[0][i] = i
-    f[0][0] = 0
-    for i in range(1, m + 1):
-        for j in range(1, n + 1):
-            a = f[i - 1][j] + 1
-            b = f[i][j - 1] + 1
-            c = f[i - 1][j - 1] + (1 if s1[i - 1] != s2[j - 1] else 0)
-            f[i][j] = min(a, b, c)
-    return f[m][n]
 ```
 
 

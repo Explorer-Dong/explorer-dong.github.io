@@ -6632,10 +6632,6 @@ s.clear() #已经访问的
 dfs(4) # 4 3 0 1 2 
 ```
 
-[1971. ](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)[寻找图中是否存在路径 ](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)[- ](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)[力扣（](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)[LeetCode](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)[）](https://leetcode.cn/problems/find-if-path-exists-in-graph/description/)
-
-
-
 
 
 去重边建图

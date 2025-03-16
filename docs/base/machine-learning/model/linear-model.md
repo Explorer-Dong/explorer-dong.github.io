@@ -90,46 +90,22 @@ $$
 
 基于「逻辑函数」与「线性回归」的逻辑回归二分类模型定义为：
 $$
-y = g(\boldsymbol{w}^T\boldsymbol{x}) =  \frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x}}}
+y = \sigma(\boldsymbol{w}^T\boldsymbol{x}) =  \frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x}}}
 $$
 
 模型有一个可学习参数「权重向量 $\boldsymbol {w}$」和一个不可学习的超参数「二分类映射阈值 $\text{threshold}$」。其中：
 
 - 权重向量 $\boldsymbol{w}$ 已经包含了偏执项 $b$，因此参数个数为 $D+1$；
-- 分类映射阈值需要人为定义，当一个样本的模型输出概率超过阈值时就将该样本判定为正例，反之则判定为负例。
+- 分类映射阈值 $\text{threshold}$ 需要人为定义。
 
-??? "「对数几率回归」名称的由来"
+由于我们将正例标记为 $1$，将负例标记为 $0$，且逻辑函数可以将实数域单调递增地压缩到 $(0,1)$ 之间，因此我们可以将逻辑回归模型输出的结果视为「样本属于正例的后验概率」，即 $p(y=1 \ | \ x)$。
 
-    由于逻辑函数可以将实数域压缩到 $(0,1)$ 之间，因此当我们对线性函数套一层逻辑函数后，就可以将映射的结果视为「**样本属于正例的后验概率**」，记作 $P(y=1 \ |\ \boldsymbol {x})$。因此有：
-    
-    $$
-    \begin{aligned}
-    P(y=1 \ |\ \boldsymbol {x}) = \frac{1}{1 + e^{-\boldsymbol{w}^T\boldsymbol{x}}}
-    \end{aligned}
-    $$
-    
-    那么样本属于负例的后验概率 $P(y=0 \ |\ \boldsymbol {x})$ 就为：
-    
-    $$
-    \begin{aligned}
-    P(y=0 \ |\ \boldsymbol {x}) &= 1 - P(y=1 \ |\ \boldsymbol {x}) \\
-    &= \frac{e^{-\boldsymbol{w}^T\boldsymbol{x}}}{1 + e^{-\boldsymbol{w}^T\boldsymbol{x}}}
-    \end{aligned}
-    $$
-    
-    经过简单变形可以得到：
-    
-    $$
-    \begin{aligned}
-    \boldsymbol{w}^T\boldsymbol{x} = \ln{\frac{P(y=1 \ |\ \boldsymbol {x})}{P(y=0 \ |\ \boldsymbol {x})}}
-    \end{aligned}
-    $$
-    
-    其中，正例后验概率 $P(y=1 \ |\ \boldsymbol {x})$ 与负例后验概率 $P(y=0 \ |\ \boldsymbol {x})$ 的比值 $\frac{P(y=1 \ |\ \boldsymbol {x})}{P(y=0 \ |\ \boldsymbol {x})}$ 被称作几率，取对数 $\ln{\frac{P(y=1 \ |\ \boldsymbol {x})}{P(y=0 \ |\ \boldsymbol {x})}}$ 就是对数几率。因此逻辑回归可以看作预测值为“标签的对数几率”的线性回归模型。也就有了「对数几率回归」这个别名。
+至于为什么叫做「后验」，是因为逻辑回归模型已经知道了输入的 $x$，也就是已经知道了某一个前提了。反之如果不知道任何前提直接建模事件发生的概率，就叫做先验概率。
 
 ### 学习准则
 
 我们采用最大似然估计。若我们将 $y$ 视作类后验概率 $p(y=1 \ | \ x)$，则有
+
 $$
 \ln \frac{p(y = 1 \ | \ x)}{p(y = 0 \ | \ x)} = w^Tx+b
 $$

@@ -100,5 +100,76 @@ $$
     }
     ```
 
-## T4 回文数组
+## T4 回文数组 (10'/10')
+
+题意：给定一个含有 $n\ (1\le n\le 10^5)$ 个数的数组 $a\ (-10^6\le a_i \le 10^6)$，可以选择相邻的两个数同时 $+1$ 或 $-1$，也可以选择一个数 $+1$ 或 $-1$。问最少操作多少次可以让 $a$ 变成回文数组。
+
+思路：贪心地，能一起操作就一起操作。我们只需要考虑数组的一半，由于是对称的，因此前一半和后一半等价，这里考虑前一半。
+
+时间复杂度：$O(n)$
+
+=== "Python"
+
+    ```python
+    n = int(input().strip())
+    a = list(map(int, input().strip().split()))
+    
+    d = []
+    for i in range(n // 2):
+        d.append(a[i] - a[n - i - 1])
+    
+    ans = 0
+    for i in range(len(d)):
+        ans += abs(d[i])
+        if i < len(d) - 1 and d[i] * d[i + 1] >= 0:
+            if d[i] >= 0 and d[i + 1] >= 0:
+                d[i + 1] = max(0, d[i + 1] - d[i])
+            else:
+                d[i + 1] = min(0, d[i + 1] - d[i])
+    
+    print(ans)
+    ```
+
+=== "C++"
+
+    ```c++
+    #include <iostream>
+    #include <vector>
+    
+    using namespace std;
+    using ll = long long;
+    
+    int main() {
+        int n;
+        cin >> n;
+    
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+    
+        vector<ll> d;
+        for (int i = 0; i < n / 2; i++) {
+            d.push_back(a[i] - a[n - i - 1]);
+        }
+    
+        ll ans = 0;
+        for (int i = 0; i < d.size(); i++) {
+            ans += abs(d[i]);
+            if (i < d.size() - 1 && d[i] * d[i + 1] >= 0) {
+                if (d[i] >= 0 && d[i + 1] >= 0) {
+                    d[i + 1] = max(0ll, d[i + 1] - d[i]);
+                } else {
+                    d[i + 1] = min(0ll, d[i + 1] - d[i]);
+                }
+            }
+        }
+    
+        cout << ans << "\n";
+    
+        return 0;
+    }
+    ```
+
+## T5 吊坠
 

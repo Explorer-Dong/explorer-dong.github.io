@@ -257,7 +257,7 @@ nav:
     - data-science/matplotlib-basic.md
   - 算法:
     - ds-and-algo/index.md
-    - ds-and-algo/templates-cpp.md
+    - ds-and-algo/templates.md
     - ds-and-algo/templates-py.md
     - 理论剖析:
       - ds-and-algo/theory/index.md

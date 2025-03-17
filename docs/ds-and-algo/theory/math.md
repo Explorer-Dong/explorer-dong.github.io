@@ -44,3 +44,71 @@ $$
 $$
 a^{-1} = a^{p-2}
 $$
+
+## 质数筛
+
+为了求解 $[1,n]$ 范围内的所有质数，我们可以有三种方法来实现，对应的时间开销逐渐减小。
+
+### 朴素筛法
+
+在枚举每一个数 $i$ 时，筛掉所有 $i$ 的倍数。时间复杂度：$O(n\log n)$。
+
+```c++
+std::vector<int> simple_prime_filter(int n) {
+    std::vector<bool> vis(n + 1);
+    std::vector<int> primes;
+    for (int i = 2; i <= n; i++) {
+        if (!vis[i]) {
+            primes.push_back(i);
+        }
+        for (int j = i; j <= n; j += i) {
+            vis[j] = true;
+        }
+    }
+    return primes;
+}
+```
+
+### 埃氏筛法
+
+若当前 $i$ 是质数，再筛掉 $i$ 的所有倍数。因为如果当前 $i$ 是合数，其实已经被筛掉了。时间复杂度：$O(n\log(\log n))$。
+
+```c++
+std::vector<int> eratosthenes_prime_filter(int n) {
+    std::vector<bool> vis(n + 1);
+    std::vector<int> primes;
+    for (int i = 2; i <= n; i++) {
+        if (!vis[i]) {
+            for (int j = i; j <= n; j += i) {
+               vis[j] = true;
+            }
+            primes.push_back(i);
+        }
+    }
+    return primes;
+}
+```
+
+### 欧拉筛法
+
+在枚举每一个数 $i$ 时，筛掉所有 $i$ 与已知质数的乘积。时间复杂度：$O(n)$。
+
+```c++
+std::vector<int> eular_prime_filter(int n) {
+    std::vector<bool> vis(n + 1);
+    std::vector<int> primes;
+    for (int i = 2; i <= n; i++) {
+        if (!vis[i]) {
+            primes.push_back(i);
+        }
+        for (int j = 0; primes[j] <= n / i; j++) {
+            vis[primes[j] * i] = true;
+            if (i % primes[j] == 0) {
+                break;
+            }
+        }
+    }
+    return primes;
+}
+```
+

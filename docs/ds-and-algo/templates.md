@@ -466,9 +466,11 @@ T modSumOfEqualRatioArray(T q, T k, T p) {
 
     ```python
     pow(a, b, p)
+    
+    """ 用法
+    print(pow(5, 10, 94315731))
+    """
     ```
-
-
 
 ### 乘法逆元
 

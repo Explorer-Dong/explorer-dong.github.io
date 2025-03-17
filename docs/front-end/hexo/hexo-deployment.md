@@ -21,7 +21,7 @@ graph LR
 
 ## 基于 hexo-deploy-git
 
-该方法在「Hexo 建站指南」中已详细介绍，不再赘述，见：<https://blog.dwj601.cn/FrontEnd/Hexo/build-your-own-website-with-hexo/#部署云端>。
+该方法在 [Hexo 建站指南](./build-your-own-website-with-hexo.md#部署云端) 中已详细介绍，不再赘述。
 
 ## 基于 GitHub Actions
 

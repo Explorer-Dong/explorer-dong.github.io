@@ -16,7 +16,7 @@
         <link rel="prev" href="../natural-language-processing/task/">
       
       
-        <link rel="next" href="intro/">
+        <link rel="next" href="image-classification/">
       
       
       <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
@@ -97,6 +97,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#成绩组成" class="md-skip">
+          跳转至
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -1626,11 +1631,11 @@
   
   
     <li class="md-nav__item">
-      <a href="intro/" class="md-nav__link">
+      <a href="image-classification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    绪论
+    图像分类
     
   </span>
   
@@ -1648,11 +1653,11 @@
   
   
     <li class="md-nav__item">
-      <a href="model/" class="md-nav__link">
+      <a href="semantic-segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    模型
+    语义分割
     
   </span>
   
@@ -1670,11 +1675,11 @@
   
   
     <li class="md-nav__item">
-      <a href="task/" class="md-nav__link">
+      <a href="object-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    任务
+    目标检测
     
   </span>
   
@@ -4364,8 +4369,6 @@
       
         
       
-        
-      
     
     
       
@@ -4422,28 +4425,6 @@
   
   <span class="md-ellipsis">
     C++ 语法基础
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../back-end/cplusplus/cpp-oop/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    C++ 面向对象
     
   </span>
   
@@ -5810,6 +5791,41 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#成绩组成" class="md-nav__link">
+    <span class="md-ellipsis">
+      成绩组成
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#任务定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      任务定义
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#参考内容" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考内容
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5842,22 +5858,33 @@
 
   <h1>计算机视觉导读</h1>
 
-<p>本文记录计算机视觉的入门笔记。理论部分参考《Computer Vision: Algorithms and Applications, 2nd Edition》<sup id="fnref:szeliski"><a class="footnote-ref" href="#fn:szeliski">1</a></sup> 和《计算机视觉理论与实践》<sup id="fnref:book"><a class="footnote-ref" href="#fn:book">2</a></sup>，实践部分参考 Huggingface CV Course <sup id="fnref:hf"><a class="footnote-ref" href="#fn:hf">3</a></sup> 和《动手学深度学习》<sup id="fnref:d2l"><a class="footnote-ref" href="#fn:d2l">4</a></sup>。</p>
-<p>成绩组成：考勤 5%，作业 10%，实验 10%，大作业 25%，期末 50%。</p>
+<p>本文记录计算机视觉的入门笔记。</p>
+<h2 id="成绩组成">成绩组成<a class="headerlink" href="#成绩组成" title="页面定位">&para;</a></h2>
+<p>考勤 5%，作业 10%，实验 10%，大作业 25%，期末 50%。</p>
+<h2 id="任务定义">任务定义<a class="headerlink" href="#任务定义" title="页面定位">&para;</a></h2>
+<p>计算机视觉 (Computer Vision, CV) 是一个人工智能研究领域，主要利用「图像、视频」等数据解决「预测、生成」等下游任务。其中：</p>
+<ul>
+<li>预测任务比如：图像 / 视频分类 (Image / Video Classification)、语义分割 (Semantic Segmentation)、目标检测 (Object Detection) 等；</li>
+<li>生成任务比如：风格迁移、图像 / 视频生成等。</li>
+</ul>
+<p>数据预处理部分见 <a href="../digital-image-processing/">数字图像处理</a>。</p>
+<h2 id="参考内容">参考内容<a class="headerlink" href="#参考内容" title="页面定位">&para;</a></h2>
+<p>理论部分参考：</p>
+<ul>
+<li><a href="https://szeliski.org/Book/">《Computer Vision: Algorithms and Applications, 2nd Edition》</a>；</li>
+<li>《计算机视觉理论与实践》<sup id="fnref:book"><a class="footnote-ref" href="#fn:book">1</a></sup>。</li>
+</ul>
+<p>实践部分参考：</p>
+<ul>
+<li><a href="https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome">Computer Vision Course - huggingface.co</a>；</li>
+<li><a href="https://zh.d2l.ai/index.html">《动手学深度学习》 - d2l.ai</a>；</li>
+<li><a href="https://pytorch.org/vision/stable/">torchvision - PyTorch</a>。</li>
+</ul>
 <div class="footnote">
 <hr />
 <ol>
-<li id="fn:szeliski">
-<p><a href="https://szeliski.org/Book/">https://szeliski.org/Book/</a>&#160;<a class="footnote-backref" href="#fnref:szeliski" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
 <li id="fn:book">
-<p>刘家瑛, 等. <em>计算机视觉理论与实践</em>. 北京: 高等教育出版社, 2021.&#160;<a class="footnote-backref" href="#fnref:book" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:hf">
-<p><a href="https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome">https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome</a>&#160;<a class="footnote-backref" href="#fnref:hf" title="Jump back to footnote 3 in the text">&#8617;</a></p>
-</li>
-<li id="fn:d2l">
-<p><a href="https://zh.d2l.ai/index.html">https://zh.d2l.ai/index.html</a>&#160;<a class="footnote-backref" href="#fnref:d2l" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>刘家瑛, 等. <em>计算机视觉理论与实践</em>. 北京: 高等教育出版社, 2021.&#160;<a class="footnote-backref" href="#fnref:book" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -5883,7 +5910,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月13日 07:51:27">2025年3月13日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月18日 10:34:11">2025年3月18日</span>
   </span>
 
     
@@ -6025,13 +6052,13 @@
         
         
           
-          <a href="intro/" class="md-footer__link md-footer__link--next" aria-label="下一页: 绪论">
+          <a href="image-classification/" class="md-footer__link md-footer__link--next" aria-label="下一页: 图像分类">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                绪论
+                图像分类
               </div>
             </div>
             <div class="md-footer__button md-icon">

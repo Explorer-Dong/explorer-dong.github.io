@@ -1619,11 +1619,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../base/computer-vision/intro/" class="md-nav__link">
+      <a href="../../../base/computer-vision/image-classification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    绪论
+    图像分类
     
   </span>
   
@@ -1641,11 +1641,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../base/computer-vision/model/" class="md-nav__link">
+      <a href="../../../base/computer-vision/semantic-segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    模型
+    语义分割
     
   </span>
   
@@ -1663,11 +1663,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../base/computer-vision/task/" class="md-nav__link">
+      <a href="../../../base/computer-vision/object-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    任务
+    目标检测
     
   </span>
   
@@ -4356,8 +4356,6 @@
       
         
       
-        
-      
     
     
       
@@ -4417,28 +4415,6 @@
   
   <span class="md-ellipsis">
     C++ 语法基础
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cplusplus/cpp-oop/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    C++ 面向对象
     
   </span>
   
@@ -4653,6 +4629,24 @@
   <a href="#python-的拷贝构造" class="md-nav__link">
     <span class="md-ellipsis">
       Python 的拷贝构造
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-的变量作用域" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python 的变量作用域
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-的运算符优先级" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python 的运算符优先级
     </span>
   </a>
   
@@ -5960,6 +5954,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#python-的变量作用域" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python 的变量作用域
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-的运算符优先级" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python 的运算符优先级
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6260,6 +6272,173 @@
 </span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>由于嵌套的可变元素在浅拷贝的逻辑中是引用，就导致了浅拷贝的结果中嵌套的可变元素仍然会被后续的操作改变。而深拷贝就不会出现这种问题，数据被拷贝到了全新的内存。这告诉我们如果我们需要完全一份新数据，就必须使用深拷贝。</p>
+<h2 id="python-的变量作用域">Python 的变量作用域<a class="headerlink" href="#python-的变量作用域" title="页面定位">&para;</a></h2>
+<p><strong>在不修改变量的情况下</strong>。Python 查找变量的顺序是：</p>
+<ol>
+<li>先查找函数内部的变量；</li>
+<li>再查找外层函数中的变量；</li>
+<li>然后查找全局变量；</li>
+<li>最后查找 built-in 和其他 import 进来的 package 中的变量。</li>
+</ol>
+<p><strong>如果需要修改外层的变量</strong>。此时就必须使用关键字来声明变量的位置：</p>
+<ol>
+<li>对于外层函数的变量，需要使用 <code>nonlocal</code> 关键字（<code>nonlocal</code> 只会向外找一层函数，比如当前是嵌套的第 <span class="arithmatex">\(n\)</span> 层函数，那么声明了 <code>nonlocal</code> 之后只会影响到第 <span class="arithmatex">\(n-1\)</span> 层函数中的对应变量，<span class="arithmatex">\(1\sim n-2\)</span> 层的函数中同名变量不会受影响）；</li>
+<li>对于全局区域的变量，需要使用 <code>global</code> 关键字。</li>
+</ol>
+<p><strong>对于 Python 的 class 变量</strong>。完全遵守上述规则，只不过增加了两种变量：实例变量和类变量（私有变量和保护变量的作用域涉及到面向对象，和本节讨论的内容无关，不予讨论）。具体地：</p>
+<ul>
+<li>实例变量需要通过 <code>self.var</code> 来定义，一个类实例共享所有实例变量；</li>
+<li>类变量直接在类中定义，所有类实例共享同一个类变量。</li>
+</ul>
+<p>下面的程序解释了 Python 的 class 变量的访问逻辑：</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>    <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;animal&quot;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">var</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="n">my_dog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;corgi&quot;</span><span class="p">)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_dog</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">category</span><span class="p">)</span>  <span class="c1"># 类变量</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">my_dog</span><span class="o">.</span><span class="n">category</span><span class="p">)</span>            <span class="c1"># 实例变量</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="sd">&quot;&quot;&quot; 输出</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="sd">animal</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="sd">corgi</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="sd">&quot;&quot;&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="python-的运算符优先级">Python 的运算符优先级<a class="headerlink" href="#python-的运算符优先级" title="页面定位">&para;</a></h2>
+<p>首先看一下 Python 都有哪些 <a href="https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#operators">运算符</a>：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>+<span class="w">       </span>-<span class="w">       </span>*<span class="w">       </span>**<span class="w">      </span>/<span class="w">       </span>//<span class="w">      </span>%<span class="w">      </span>@
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>&lt;&lt;<span class="w">      </span>&gt;&gt;<span class="w">      </span><span class="p">&amp;</span><span class="w">       </span><span class="p">|</span><span class="w">       </span>^<span class="w">       </span>~<span class="w">       </span>:<span class="o">=</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>&lt;<span class="w">       </span>&gt;<span class="w">       </span>&lt;<span class="o">=</span><span class="w">      </span>&gt;<span class="o">=</span><span class="w">      </span><span class="o">==</span><span class="w">      </span>!<span class="o">=</span>
+</span></code></pre></div></td></tr></table></div>
+<p>然后再看一下 Python 的 <a href="https://docs.python.org/zh-cn/3.13/reference/expressions.html#operator-precedence">运算符优先级</a>：</p>
+<figure id="__tc_1">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">运算符</th>
+<th style="text-align: center;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>(expressions...)</code></td>
+<td style="text-align: center;">绑定或加圆括号的表达式</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>[expressions...]</code></td>
+<td style="text-align: center;">列表显示</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>{key: value...}</code></td>
+<td style="text-align: center;">字典显示</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>{expressions...}</code></td>
+<td style="text-align: center;">集合显示</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x[index]</code></td>
+<td style="text-align: center;">抽取</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x[index:index]</code></td>
+<td style="text-align: center;">切片</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x(arguments...)</code></td>
+<td style="text-align: center;">调用</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x.attribute</code></td>
+<td style="text-align: center;">属性引用</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>await x</code></td>
+<td style="text-align: center;">await 表达式</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>**</code></td>
+<td style="text-align: center;">乘方</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>+x</code>, <code>-x</code>, <code>~x</code></td>
+<td style="text-align: center;">正，负，按位非 NOT</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>*</code>, <code>@</code>, <code>/</code>, <code>//</code>, <code>%</code></td>
+<td style="text-align: center;">乘，矩阵乘，除，整除，取余</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>+</code>, <code>-</code></td>
+<td style="text-align: center;">加和减</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&lt;&lt;</code>, <code>&gt;&gt;</code></td>
+<td style="text-align: center;">移位</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&amp;</code></td>
+<td style="text-align: center;">按位与 AND</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>^</code></td>
+<td style="text-align: center;">按位异或 XOR</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>|</code></td>
+<td style="text-align: center;">按位或 OR</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>in</code>, <code>not in</code>, <code>is</code>, <code>is not</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>!=</code>, <code>==</code></td>
+<td style="text-align: center;">比较运算，包括成员检测和标识号检测</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>not x</code></td>
+<td style="text-align: center;">布尔逻辑非 NOT</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>and</code></td>
+<td style="text-align: center;">布尔逻辑与 AND</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>or</code></td>
+<td style="text-align: center;">布尔逻辑或 OR</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>if -- else</code></td>
+<td style="text-align: center;">条件表达式</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>lambda</code></td>
+<td style="text-align: center;">lambda 表达式</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>:=</code></td>
+<td style="text-align: center;">赋值表达式</td>
+</tr>
+</tbody>
+</table>
+<figcaption>
+<p><span class="caption-prefix">表 1. </span> Python 的运算符优先级表（越往下等级越低）</p>
+</figcaption>
+</figure>
 <div class="footnote">
 <hr />
 <ol>
@@ -6290,7 +6469,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月12日 08:04:49">2025年3月12日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月18日 09:30:12">2025年3月18日</span>
   </span>
 
     

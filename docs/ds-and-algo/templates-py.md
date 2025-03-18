@@ -1512,32 +1512,6 @@ def get_min_k(cnt, k):
         return res 
 ```
 
-## 离散化
-
-二分写法
-
-```python
-sorted_nums = sorted(set(nums))
-nums = [bisect.bisect_left(sorted_nums, x) + 1 for x in nums]
-```
-
-字典写法
-
-```python
-    sorted_nums = sorted(set(nums))
-    mp = {x: i + 1 for i, x in enumerate(sorted_nums)}
-    nums = [mp[x] for x in nums]
-```
-
-二分 + 还原
-
-```python
-tmp = nums.copy()
-sorted_nums = sorted(set(nums))
-nums = [bisect.bisect_left(sorted_nums, x) + 1 for x in nums]
-mp_rev = {i: x for i, x in zip(nums, tmp)}
-```
-
 ## 二分查找 / 二分答案
 
 ### 二分查找数学模型
@@ -2029,6 +2003,32 @@ class Solution:
 
 
 [1642. 可以到达的最远建筑 - 力扣（LeetCode）](https://leetcode.cn/problems/furthest-building-you-can-reach/)
+
+- 记录一下高度差数组
+- 对于每次 $check$，首先对高度差数组的前 $res$ 项降序排序，得到新数组 $t$
+- 对 $t$ 的前 $ladder$ 项，贪心的用梯子，只需要考虑后 `t[ladders:]` 部分的和
+- 这部分的和，如果大于 $bricks$，说明，不能够到达
+- 找出恰好不能到达的位置 $res$，-1是答案
+
+```python
+class Solution:
+    def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
+        n = len(heights)
+        lo, hi = 0, n
+        d = [max(0, heights[i + 1] - heights[i]) for i in range(n - 1)]
+        def check(res):
+            t = sorted(d[:res], reverse = True)
+            return bricks < sum(t[ladders: ])
+        while lo < hi:
+            i = (lo + hi) >> 1
+            if check(i):
+                hi = i 
+            else:
+                lo = i + 1
+        return lo - 1
+```
+
+
 
 ```python
     def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
@@ -3396,6 +3396,8 @@ for i in range(2, n + 1):
 
 ##### **(3). 分解质因子**
 
+> 所谓质因子分解是将一个正整数 $n$ 写成一个或多个质数的乘积形式。
+
 试除法。复杂度不超过 $O(\sqrt n )$，实际上是 $O(logn) \sim O(\sqrt {n})$
 
 对于一个数 x，最多有一个大于等于 $\sqrt n$ 的质因子。（可以用反证法，证明）
@@ -3403,8 +3405,9 @@ for i in range(2, n + 1):
 所以只需要进行特判，在遍历完 $[2, int(\sqrt n)]$ 区间后，如果 x 比 1 大，则 x 就等于那最后一个质因子。
 
 ```python
+from math import *
 def solve(x):
-    for i in range(2, int(math.sqrt(x)) + 1):	# i = 2; i * i <= x
+    for i in range(2, int(sqrt(x)) + 1):	# i = 2; i * i <= x
         if x % i == 0:
             s = 0
             while x % i == 0:
@@ -3414,43 +3417,53 @@ def solve(x):
     if x > 1:
         print(f'{x} 1')
     print()
+
+solve(2 ** 3 * 3 ** 4 * 5 ** 2 * 7 * 14) 
 ```
 
-Oi Wiki 风格：
+Oi Wiki 风格：统计质因子及其出现次数
 
 ```python
-def breakdown(N):
-    result = []
-    for i in range(2, int(sqrt(N)) + 1):
-        if N % i == 0: # 如果 i 能够整除 N，说明 i 为 N 的一个质因子。
-            while N % i == 0:
-                N //= i
-            result.append(i)
-    if N != 1: # 说明再经过操作之后 N 留下了一个素数
-        result.append(N)
-    return result
-```
-
-统计质因子及其出现次数
-
-```python
+from math import *
 # 统计质因子及其出现次数
-def breakdown(n):
+def breakdown(x):
     res = []
-    for i in range(2, int(sqrt(n)) + 1):
-        if n % i == 0:
+    for i in range(2, int(sqrt(x)) + 1):
+        if x % i == 0:
             cnt = 0
-            while n % i == 0:
-                n //= i
+            while x % i == 0:
+                x //= i
                 cnt += 1
             res.append((i, cnt))
-    if n > 1: res.append((n, 1))
+    if x > 1: res.append((x, 1))
     return res
+print(breakdown(2 ** 3 * 3 ** 4 * 5 ** 2 * 7 * 14)) # [(2, 4), (3, 4), (5, 2), (7, 2)]
 ```
 
 
 
-##### (4). 阶乘分解质因子
+[1.质因数个数 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/2155/learning/?page=1&first_category_id=1&name=质因数个数)
+
+```python
+from math import *
+# 统计质因子及其出现次数
+def breakdown(x):
+    res = set()
+    for i in range(2, int(sqrt(x)) + 1):
+        if x % i == 0:
+            cnt = 0
+            while x % i == 0:
+                x //= i
+                cnt += 1
+            res.add(i)
+    if x > 1: res.add(x)
+    return res
+print(len(breakdown(int(input()))))
+```
+
+
+
+##### (4). 乘分解质因子
 
 **求 $n!$ 中 质因子 $p$ 的出现次数问题**
 
@@ -3535,15 +3548,34 @@ print(solve())
 复杂度为：$O(\sqrt{n})$
 
 ```python
+from math import *
 def solve(x):
     res = []
-    for i in range(2, int(math.sqrt(x)) + 1):
+    for i in range(2, int(sqrt(x)) + 1):
         if x % i == 0:
             res.append(i)
             if i != x // i:
             	res.append(x // i)
-	res.sort()  
+    return res
+print(solve(24)) # [2, 12, 3, 8, 4, 6]
 ```
+
+[5.约数个数 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/587/learning/?page=1&first_category_id=1&name=约数)
+
+```python
+from math import *
+def solve(x):
+    res = []
+    for i in range(2, int(sqrt(x)) + 1):
+        if x % i == 0:
+            res.append(i)
+            if i != x // i:
+            	res.append(x // i)
+    return len(res) + 2
+print(solve(1200000))
+```
+
+
 
 **乘积数的约数个数**
 
@@ -5251,7 +5283,7 @@ def minimumCost(self, n: int, edges: List[List[int]], query: List[List[int]]) ->
 
 
 
-### 字典树
+### Trie树 / 字典树
 
 #### 26 叉字典树
 
@@ -6594,7 +6626,7 @@ for _ in range(m):
     e[u].append(v)
 ```
 
-### 图的遍历
+### 图遍历
 
 **DFS序（邻接表版）**
 
@@ -10398,6 +10430,24 @@ def solve():
 
 ## 杂项问题
 
+[【蓝桥杯】Python自带编辑器IDLE的使用教程_python蓝桥杯编译器-CSDN博客](https://blog.csdn.net/xia_yanbing/article/details/114641646)
+
+### IDLE使用
+
+- 新建文件：Ctrl + N
+- 运行：F5
+- 打开文档：F1（蓝桥杯可用）
+
+- 字体：Options  -> Configure IDLE -> Font/Tabs，建议：Consolas, 18
+
+- alt+3 注释代码
+
+- alt+4 取消注释
+
+- Tab多行缩进，Ctrl + [ 取消缩进
+
+    
+
 **$ceil$ 精度处理**
 
 同时存在除法和 $ceil$ 运算时， $ceil(a /b)$ 以及 $ceil(a/b +x)$ 操作会由于精度问题，导致偏差。
@@ -10460,4 +10510,118 @@ $f(i, j) =\min \{f(i - 1, j - 1) + d[i]/s,\ ceil(f(i - 1, j) + d[i]/s)\}$
                 return k
 ```
 
-[灵茶 の 试炼 (qq.com)](https://docs.qq.com/sheet/DWGFoRGVZRmxNaXFz?tab=BB08J2)	
+### 离散化
+
+二分写法
+
+```python
+sorted_nums = sorted(set(nums))
+nums = [bisect.bisect_left(sorted_nums, x) + 1 for x in nums]
+```
+
+字典写法
+
+```python
+    sorted_nums = sorted(set(nums))
+    mp = {x: i + 1 for i, x in enumerate(sorted_nums)}
+    nums = [mp[x] for x in nums]
+```
+
+二分 + 还原
+
+```python
+tmp = nums.copy()
+sorted_nums = sorted(set(nums))
+nums = [bisect.bisect_left(sorted_nums, x) + 1 for x in nums]
+mp_rev = {i: x for i, x in zip(nums, tmp)}
+```
+
+### 日期问题
+
+[蓝桥杯必备模块——datetime 轻松应对各类时间问题_python时间差计算:轻松应对日期和时间的差异-CSDN博客](https://blog.csdn.net/lishuaigell/article/details/123933236)
+
+[Python datetime模块详解、示例-CSDN博客](https://blog.csdn.net/cmzsteven/article/details/64906245)
+
+
+
+
+
+#### datetime 库
+
+```python
+from datetime import *
+
+# 计算日期之差
+t1 = date(year = 2025, month = 3, day= 1)
+t2 = date(year = 2025, month = 3, day = 17)
+
+print(t2 - t1) # 16 days, 0:00:00
+print((t2 - t1).days) # 16
+
+# 参数也可简化
+t1 = date(2025, 1, 1)
+t2 = date(2025, 3, 17)
+print((t2 - t1).days) # 75
+
+# 获取当前日期
+print(date.today()) # 2025-03-17
+
+
+t1 = date(2025, 3, 17)
+print(t1 + timedelta(days = 2)) # 2025-03-19
+print(t1 + timedelta(1)) # 2025-03-18
+print(t1.weekday()) # 0，weekday()从0~6对应星期1~7
+
+```
+
+
+
+[0第几天 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/614/learning/)
+
+```python
+from datetime import *
+print((date(2000, 5, 4) - date(2000, 1, 1)).days + 1) # 第几天，要加1
+```
+
+
+
+[0星期一 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/611/learning/)
+
+```python
+from datetime import *
+t1 = date(1901, 1, 1)
+t2 = date(2000, 12, 31)
+
+res = 0
+while t1 <= t2:
+    if t1.weekday() == 0:
+        res += 1
+    t1 += timedelta(days = 1)
+print(res)
+
+```
+
+[0含 2 天数 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/1038/learning/)
+
+> Python 的 `datetime` 模块支持的日期范围是从 `0001-01-01` 到 `9999-12-31`。如果你尝试处理超出这个范围的日期，就会引发这个错误。
+
+```python
+from datetime import *
+
+t1 = date(1900, 1, 1)
+t2 = date(9999, 12, 31)
+delta = timedelta(1)
+res = 0
+while t1 < t2:
+    if '2' in ''.join([str(t1.year), str(t1.month), str(t1.day)]): res += 1
+    t1 += delta
+print(res + 1) # 1994240，加上最后一天的2
+```
+
+
+
+
+
+[灵茶 の 试炼 (qq.com)](https://docs.qq.com/sheet/DWGFoRGVZRmxNaXFz?tab=BB08J2)
+
+​	

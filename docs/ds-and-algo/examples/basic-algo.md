@@ -1051,7 +1051,7 @@ $$
                 if remain < 0:
                     return
                 elif remain == 0:
-                    ans.append(path.copy())
+                    ans.append(path.copy())  # 对于列表，append 的是一个引用，所以要加 copy
                     return
                 for i in range(idx, n):
                     path.append(candidates[i])

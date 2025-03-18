@@ -2,7 +2,25 @@
 title: C++ 语法基础
 ---
 
-本文收集一些 C++ 相关的语法知识。
+本文记录 C++ 的语法基础。
+
+## C++ 的运算符优先级
+
+先看看 C++ 都有哪些 [运算符](ttps://zh.cppreference.com/w/cpp/language/expressions)：
+
+![C++ 的运算符](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318171949224.png)
+
+/// fc
+C++ 的运算符
+///
+
+再看看这些 [运算符的优先级](https://zh.cppreference.com/w/cpp/language/operator_precedence)：
+
+![C++ 的运算符优先级](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318172044391.png)
+
+/// fc
+C++ 的运算符优先级
+///
 
 ## 文件 I/O *
 

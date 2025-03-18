@@ -294,7 +294,6 @@ nav:
     - C++:
       - back-end/cplusplus/index.md
       - back-end/cplusplus/cpp-basic.md
-      - back-end/cplusplus/cpp-oop.md
       - back-end/cplusplus/cpp-advanced.md
     - Python:
       - back-end/python/python-setup.md

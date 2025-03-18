@@ -154,6 +154,8 @@ plugins:
   - meta
 
 
+draft_docs: _*.md
+
 # 页面导航
 nav:
   - index.md
@@ -195,9 +197,9 @@ nav:
         - base/natural-language-processing/task.md
       - 计算机视觉:
         - base/computer-vision/index.md
-        - base/computer-vision/intro.md
-        - base/computer-vision/model.md
-        - base/computer-vision/task.md
+        - base/computer-vision/image-classification.md
+        - base/computer-vision/semantic-segmentation.md
+        - base/computer-vision/object-detection.md
       - 语音识别:
         - base/speech-recognition/index.md
       - 智慧教育:
@@ -249,12 +251,13 @@ nav:
         - base/optimization-method/constraint-optimization.md
   - 炼丹:
     - data-science/index.md
+    - data-science/why-research.md
     - data-science/numpy-basic.md
     - data-science/pandas-basic.md
     - data-science/matplotlib-basic.md
   - 算法:
     - ds-and-algo/index.md
-    - ds-and-algo/templates-cpp.md
+    - ds-and-algo/templates.md
     - ds-and-algo/templates-py.md
     - 理论剖析:
       - ds-and-algo/theory/index.md
@@ -291,7 +294,6 @@ nav:
     - C++:
       - back-end/cplusplus/index.md
       - back-end/cplusplus/cpp-basic.md
-      - back-end/cplusplus/cpp-oop.md
       - back-end/cplusplus/cpp-advanced.md
     - Python:
       - back-end/python/python-setup.md

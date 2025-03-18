@@ -1,14 +1,13 @@
 ---
-title: 代码模板 (C++)
+title: 代码模板
 ---
 
-## 前言
-
-本文记录 C++ 语言的代码模板，可编译通过的最低 C++ 标准为 C++11。结构参考：[acm-icpc 算法学习笔记&板子目录 - 知乎 CurryWOE](https://zhuanlan.zhihu.com/p/557770472)
+!!! tip
+    本文记录算法竞赛的代码模板，编程语言采用 C++ 11+ 和 Python 3.11+，全部使用 built-in 模块。产生原因在于：某些场合可以快速抄板子而不用大脑记忆，因此不会涉及到任何原理部分，如果有原理解读的需求，可以跳转到 [理论剖析](./theory/index.md) 部分阅读。
 
 ## 基础
 
-### 闭区间二分的边界问题
+### 闭区间二分
 
 ```c++
 // 闭区间寻找左边界
@@ -388,22 +387,17 @@ T modSumOfEqualRatioArray(T q, T k, T p) {
 
 ### 质数筛
 
-```cpp
-struct PrimesCount {
-    int n;
-    vector<int> pre, vis;
-    PrimesCount(int n) : n(n), pre(n + 1), vis(n + 1) {
-        eulerFilter();
-    }
-    void eulerFilter() {
-        // O(n)
-        vector<int> primes;
+欧拉筛法，求解 $[1,n]$ 范围内的所有质数。时间复杂度 $O(n)$。
+
+=== "C++"
+
+    ```c++
+    std::vector<int> eular_prime_filter(int n) {
+        std::vector<bool> vis(n + 1);
+        std::vector<int> primes;
         for (int i = 2; i <= n; i++) {
             if (!vis[i]) {
                 primes.push_back(i);
-                pre[i] = pre[i - 1] + 1;
-            } else {
-                pre[i] = pre[i - 1];
             }
             for (int j = 0; primes[j] <= n / i; j++) {
                 vis[primes[j] * i] = true;
@@ -412,55 +406,71 @@ struct PrimesCount {
                 }
             }
         }
+        return primes;
     }
-    void eratosthenesFilter() {
-        // O(nloglogn)
-        for (int i = 2; i <= n; i++) {
-            if (!vis[i]) {
-                pre[i] = pre[i - 1] + 1;
-                for (int j = i; j <= n; j += i) {
-                    vis[j] = true;
-                }
-            } else {
-                pre[i] = pre[i - 1];
-            }
-        }
-    }
-    void simpleFilter() {
-        // O(nlogn)
-        for (int i = 2; i <= n; i++) {
-            if (!vis[i]) {
-                pre[i] = pre[i - 1] + 1;
-            } else {
-                pre[i] = pre[i - 1];
-            }
-            for (int j = i; j <= n; j += i) {
-                vis[j] = true;
-            }
-        }
-    }
-};
+    
+    /* 用法
+    std::vector<int> primes = eular_prime_filter(N);
+    for (int p: primes) {}
+    */
+    ```
 
-/* 使用示例
-PrimesCount obj(n);         // construct an object
-cout << obj.pre[n] << "\n"; // pre[i] means prime numbers in range of [1, i]
-*/
-```
+=== "Python"
+
+    ```python
+    def eular_prime_filter(n: int) -> List[int]:
+        primes = []
+        vis = [False] * (n + 1)
+        for i in range(2, n + 1):
+            if not vis[i]:
+                primes.append(i)
+                vis[i] = True
+            for p in primes:
+                if p * i > n:
+                    break
+                vis[p * i] = True
+                if i % p == 0:
+                    break
+        return primes
+    
+    """ 用法
+    primes = eular_prime_filter(n)
+    for p in primes:
+        pass
+    """
+    ```
 
 ### 快速幂
 
-```c++
-// 计算 a^b % p
-int qmi(int a, int b, int p) {
-    int res = 1 % p;  // 防止 p=1
-    while (b) {
-        if (b & 1) res = res * a % p;
-        a = 1ll * a * a % p;
-        b >>= 1;
+计算 $a^b \bmod p$。时间复杂度 $O(\log b)$。
+
+=== "C++"
+
+    ```c++
+    int qmi(int a, int b, int p) {
+        int res = 1 % p;  // 防止 p=1
+        while (b) {
+            if (b & 1) res = res * a % p;
+            a = 1ll * a * a % p;
+            b >>= 1;
+        }
+        return res;
     }
-    return res;
-}
-```
+    
+    /* 用法
+    std::cout << qmi(5, 10, 94315731) << "\n";
+    */
+    ```
+
+=== "Python"
+
+    ```python
+    pow(a, b, p)
+    
+    """ 用法
+    print(pow(5, 10, 94315731))
+    """
+    ```
 
 ### 乘法逆元
 

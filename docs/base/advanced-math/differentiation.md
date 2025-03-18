@@ -2,7 +2,7 @@
 title: 微分学
 ---
 
-## 极限 (limit)
+## 极限 (Limit)
 
 求极限一些方法：
 
@@ -28,7 +28,7 @@ e^{x}&=\sum_{n = 0}^{\infty} \frac{1}{n !} x^{n}= 1+x+\frac{1}{2 !} x^{2}+\cdots
 \end{aligned}
 $$
 
-## 导数 (derivative)
+## 导数 (Derivative)
 
 ### 导数定义
 
@@ -61,7 +61,13 @@ $$
 \frac{\mathrm d}{\mathrm dx}f(g(x))= \frac{\mathrm df}{\mathrm dg}(g(x))\frac{\mathrm dg}{dx}(x)
 $$
 
-## 微分 (differential)
+### 高阶导数
+
+### 偏导数
+
+
+
+## 微分 (Differential)
 
 ### 微分定义
 
@@ -144,3 +150,7 @@ $$
 $$
 \text{d}(\text{arccot}\ x) = -\frac{1}{1 + x^2} \, \text{d}x
 $$
+
+### 全微分 (Total Differential)
+
+多元微分

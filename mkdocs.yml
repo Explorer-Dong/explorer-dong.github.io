@@ -251,7 +251,6 @@ nav:
         - base/optimization-method/constraint-optimization.md
   - 炼丹:
     - data-science/index.md
-    - data-science/why-research.md
     - data-science/numpy-basic.md
     - data-science/pandas-basic.md
     - data-science/matplotlib-basic.md

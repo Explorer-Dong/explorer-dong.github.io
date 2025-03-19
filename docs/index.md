@@ -50,12 +50,12 @@ flowchart LR
     数据挖掘(数据挖掘)
     自然语言处理(自然语言处理)
     计算机视觉(计算机视觉)
-    语音识别(语音识别)
+    数字信号处理(数字信号处理)
     智慧教育(智慧教育)
 
-    Python高级应用 --> 数字图像处理 & 机器学习
+    Python高级应用 --> 数字图像处理 & 数字信号处理 & 机器学习
     机器学习 --> 数据挖掘 & 深度学习
-    深度学习 --> 自然语言处理 & 计算机视觉 & 语音识别 --> 智慧教育
+    深度学习 --> 自然语言处理 & 计算机视觉 --> 智慧教育
     数字图像处理 --> 计算机视觉
 
     高等数学(高等数学)
@@ -87,7 +87,7 @@ flowchart LR
     click 数据挖掘 "./base/data-mining/"
     click 自然语言处理 "./base/natural-language-processing/"
     click 计算机视觉 "./base/computer-vision/"
-    click 语音识别 "./base/speech-recognition/"
+    click 数字信号处理 "./base/digital-signal-processing/"
     click 智慧教育 "./base/intelligent-education/"
 ```
 

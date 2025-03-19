@@ -3571,8 +3571,8 @@ def solve(x):
             res.append(i)
             if i != x // i:
             	res.append(x // i)
-    return len(res) + 2
-print(solve(1200000))
+    return len(res) + 2 # 1 和 自身
+print(solve(1200000)) # 96
 ```
 
 
@@ -4745,7 +4745,7 @@ print(hq) # [-13, -11, -12, -5, -9]
 print(-hq[0]) # 13
 ```
 
-[3080. 执行操作标记数组中的元素 - 力扣（LeetCode）](https://leetcode.cn/problems/mark-elements-on-array-by-performing-queries/description/)
+[2530. 执行 K 次操作后的最大分数 - 力扣（LeetCode）](https://leetcode.cn/problems/maximal-score-after-applying-k-operations/description/)
 
 给你一个下标从 **0** 开始的整数数组 `nums` 和一个整数 `k` 。你的 **起始分数** 为 `0` 。
 
@@ -10617,8 +10617,6 @@ while t1 < t2:
     t1 += delta
 print(res + 1) # 1994240，加上最后一天的2
 ```
-
-
 
 
 

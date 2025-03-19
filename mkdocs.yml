@@ -116,22 +116,22 @@ markdown_extensions:
 # 注入
 extra_javascript:
   # KaTeX
-  - injects/javascripts/katex.js
+  - asserts/javascripts/katex.js
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.js
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js
   # mermaid
   - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js
   # 外链跳转
-  - injects/javascripts/link_blank.js
+  - asserts/javascripts/link_blank.js
   # 百度统计
-  - injects/javascripts/baidu_tongji.js
+  - asserts/javascripts/baidu_tongji.js
   # 聊天机器人
-  - injects/javascripts/robot.js
+  - asserts/javascripts/robot.js
 extra_css:
   # KaTeX
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.css
   # 自定义样式
-  - injects/stylesheets/extra.css
+  - asserts/stylesheets/extra.css
 
 
 # 插件配置
@@ -323,6 +323,7 @@ nav:
       - operation/shell/ubuntu-guide.md
   - 工具:
     - dev-tools/index.md
+    - dev-tools/windows-setup.md
     - dev-tools/jetbrains-license.md
     - dev-tools/devcpp-lqb-config.md
     - dev-tools/idle-lqb-config.md

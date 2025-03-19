@@ -177,6 +177,10 @@
          <lastmod>2025-03-19</lastmod>
     </url>
     <url>
+         <loc>https://wiki.dwj601.cn/base/digital-signal-processing/</loc>
+         <lastmod>2025-03-19</lastmod>
+    </url>
+    <url>
          <loc>https://wiki.dwj601.cn/base/intelligent-education/</loc>
          <lastmod>2025-03-19</lastmod>
     </url>
@@ -309,10 +313,6 @@
          <lastmod>2025-03-19</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/base/speech-recognition/</loc>
-         <lastmod>2025-03-19</lastmod>
-    </url>
-    <url>
          <loc>https://wiki.dwj601.cn/data-science/</loc>
          <lastmod>2025-03-19</lastmod>
     </url>
@@ -342,6 +342,10 @@
     </url>
     <url>
          <loc>https://wiki.dwj601.cn/dev-tools/jetbrains-license/</loc>
+         <lastmod>2025-03-19</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/dev-tools/windows-setup/</loc>
          <lastmod>2025-03-19</lastmod>
     </url>
     <url>
@@ -385,19 +389,15 @@
          <lastmod>2025-03-19</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/ds-and-algo/examples/advanced-algo/</loc>
+         <loc>https://wiki.dwj601.cn/ds-and-algo/examples/examples-advanced-algo/</loc>
          <lastmod>2025-03-19</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/ds-and-algo/examples/advanced-ds/</loc>
+         <loc>https://wiki.dwj601.cn/ds-and-algo/examples/examples-basic-algo/</loc>
          <lastmod>2025-03-19</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/ds-and-algo/examples/basic-algo/</loc>
-         <lastmod>2025-03-19</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/ds-and-algo/examples/basic-ds/</loc>
+         <loc>https://wiki.dwj601.cn/ds-and-algo/examples/examples-ds/</loc>
          <lastmod>2025-03-19</lastmod>
     </url>
     <url>

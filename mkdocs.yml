@@ -166,6 +166,8 @@ nav:
         - base/python-application/index.md
       - 数字图像处理:
         - base/digital-image-processing/index.md
+      - 数字信号处理:
+        - base/digital-signal-processing/index.md
       - 机器学习:
         - base/machine-learning/index.md
         - base/machine-learning/intro.md
@@ -200,8 +202,6 @@ nav:
         - base/computer-vision/image-classification.md
         - base/computer-vision/semantic-segmentation.md
         - base/computer-vision/object-detection.md
-      - 语音识别:
-        - base/speech-recognition/index.md
       - 智慧教育:
         - base/intelligent-education/index.md
     - 计算机基础:

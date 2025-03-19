@@ -7248,6 +7248,8 @@ def modifiedGraphEdges(self, n: int, edges: List[List[int]], source: int, destin
 
 ### 最小生成树
 
+[P3366 【模板】最小生成树 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P3366)
+
 #### Prim
 
 ```python
@@ -7280,6 +7282,53 @@ def solve():
         print(res)
         return
     print('orz')
+```
+
+#### Kruskal
+
+```python
+import sys
+
+input = lambda: sys.stdin.readline().strip()
+
+def solve():
+    n, m = map(int, input().split())
+    edges = []
+    for _ in range(m):
+        u, v, w = map(int, input().split())
+        edges.append((w, u, v))
+    
+    # 按边的权重排序
+    edges.sort()
+    
+    # 并查集初始化
+    fa = list(range(n + 1))
+    def find(x):
+        if fa[x] == x:
+            return x
+        fa[x] = find(fa[x])
+        return fa[x]
+    def union(u, v):
+        if find(u) != find(v):
+            fa[find(v)] = find(u)
+            return True
+        return False
+    
+    res = 0  # 最小生成树的权重和
+    cnt = 0  # 已选择的边数
+    for w, u, v in edges:
+        if union(u, v):  # 如果边的两个端点不在同一集合中
+            res += w
+            cnt += 1
+            if cnt == n - 1:  # 已经选择了 n-1 条边，最小生成树完成
+                break
+    
+    if cnt == n - 1:
+        print(res)
+    else:
+        print('orz')  # 无法形成最小生成树
+
+solve()
 ```
 
 

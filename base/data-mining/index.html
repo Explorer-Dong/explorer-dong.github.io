@@ -16,7 +16,7 @@
         <link rel="prev" href="../deep-learning/">
       
       
-        <link rel="next" href="intro/">
+        <link rel="next" href="data-preprocess/">
       
       
       <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
@@ -855,10 +855,6 @@
       
         
       
-        
-      
-        
-      
     
     
       
@@ -901,28 +897,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../machine-learning/intro/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    绪论
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -988,7 +962,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_4_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_4_3" >
         
           
           
@@ -1005,14 +979,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_2_4_4" id="__nav_2_2_4_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_2_4_3" id="__nav_2_2_4_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_2_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2_4_4">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_2_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_4_3">
             <span class="md-nav__icon md-icon"></span>
             模型
           </label>
@@ -1226,28 +1200,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../machine-learning/afterword/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    后记
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1337,8 +1289,6 @@
       
         
       
-        
-      
     
     
       
@@ -1390,33 +1340,11 @@
   
   
     <li class="md-nav__item">
-      <a href="intro/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    绪论
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="data-preprocess/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    结构化数据预处理
+    关系型数据预处理
     
   </span>
   
@@ -1496,8 +1424,6 @@
       
         
       
-        
-      
     
     
       
@@ -1540,28 +1466,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../natural-language-processing/intro/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    绪论
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -5795,6 +5699,14 @@
   <h1>数据挖掘导读</h1>
 
 <p>本文初稿完成于大二下学期，由于授课内容 <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> 与机器学习课程交叉较多，因此知识体量看上去微乎其微。算是对机器学习领域的一个补充。</p>
+<p>科学发展范式：实验（经验）科学 <span class="arithmatex">\(\to\)</span> 理论科学 <span class="arithmatex">\(\to\)</span> 计算科学 <span class="arithmatex">\(\to\)</span> 数据科学。</p>
+<p>一些定义：</p>
+<ul>
+<li>数据的定义：分为结构化和非结构化数据。结构化例如关系数据库的含有显式的属性和取值，非结构化例如文本、图像、音频和视频；</li>
+<li>知识的定义：有意义的信息或模式，具备典型性、新颖性、时效性、准确性、实用性；</li>
+<li>数据挖掘的定义：从数据中提取知识；</li>
+<li>数据挖掘的过程：数据预处理、算法实践、解释评估。</li>
+</ul>
 <div class="footnote">
 <hr />
 <ol>
@@ -5825,7 +5737,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月5日 15:11:00">2025年3月5日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月20日 13:14:29">2025年3月20日</span>
   </span>
 
     
@@ -5967,13 +5879,13 @@
         
         
           
-          <a href="intro/" class="md-footer__link md-footer__link--next" aria-label="下一页: 绪论">
+          <a href="data-preprocess/" class="md-footer__link md-footer__link--next" aria-label="下一页: 关系型数据预处理">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                绪论
+                关系型数据预处理
               </div>
             </div>
             <div class="md-footer__button md-icon">

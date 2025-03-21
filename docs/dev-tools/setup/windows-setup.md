@@ -1,5 +1,5 @@
 ---
-title: Windows 配置指南
+title: 配置 Windows
 ---
 
 对一些 Windows 11 上常见问题和需求进行自定义配置。

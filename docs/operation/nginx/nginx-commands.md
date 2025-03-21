@@ -1,14 +1,12 @@
 ---
-title: Nginx 常用命令合集
+title: Nginx 常用命令
 ---
 
-## 前言
+在 Ubuntu22.04 操作系统上，我们使用 Nginx 需要不断使用其相关命令，本文介绍一下常用的几个命令。
 
-在 Ubuntu22.04 操作系统上，我们使用 nginx 需要不断使用其相关命令，下面介绍一下常用的几个命令
+## `nginx -?,-h`
 
-## nginx -?,-h
-
-我们用 `nginx -h` 或 `nginx -?` 来查看当前 nginx 的版本和全部的指令简介：
+我们用 `nginx -h` 或 `nginx -?` 来查看当前 Nginx 的版本和全部的指令简介：
 
 ```nginx
 root@dwj2:~# nginx -h
@@ -28,18 +26,18 @@ Options:
   -g directives : set global directives out of configuration file
 ```
 
-## nginx -v
+## `nginx -v`
 
-我们用 `nginx -v` 来查看当前 nginx 的版本信息，往往用来检测 nginx 是否安装成功：
+我们用 `nginx -v` 来查看当前 Nginx 的版本信息，往往用来检测 Nginx 是否安装成功：
 
 ```nginx
 root@dwj2:~# nginx -v
 nginx version: nginx/1.18.0 (Ubuntu)
 ```
 
-## nginx -V
+## `nginx -V`
 
-我们用 `nginx -V` 来查看当前 nginx 版本信息，同时显示配置信息，往往用来查看配置文件的存放路径：
+我们用 `nginx -V` 来查看当前 Nginx 版本信息，同时显示配置信息，往往用来查看配置文件的存放路径：
 
 ```nginx
 root@dwj2:~# nginx -V
@@ -49,7 +47,7 @@ TLS SNI support enabled
 configure arguments: --with-cc-opt='-g -O2 -ffile-prefix-map=/build/nginx-zctdR4/nginx-1.18.0=. -flto=auto -ffat-lto-objects -flto=auto -ffat-lto-objects -fstack-protector-strong -Wformat -Werror=format-security -fPIC -Wdate-time -D_FORTIFY_SOURCE=2' --with-ld-opt='-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now -fPIC' --prefix=/usr/share/nginx --conf-path=/etc/nginx/nginx.conf --http-log-path=/var/log/nginx/access.log --error-log-path=/var/log/nginx/error.log --lock-path=/var/lock/nginx.lock --pid-path=/run/nginx.pid --modules-path=/usr/lib/nginx/modules --http-client-body-temp-path=/var/lib/nginx/body --http-fastcgi-temp-path=/var/lib/nginx/fastcgi --http-proxy-temp-path=/var/lib/nginx/proxy --http-scgi-temp-path=/var/lib/nginx/scgi --http-uwsgi-temp-path=/var/lib/nginx/uwsgi --with-compat --with-debug --with-pcre-jit --with-http_ssl_module --with-http_stub_status_module --with-http_realip_module --with-http_auth_request_module --with-http_v2_module --with-http_dav_module --with-http_slice_module --with-threads --add-dynamic-module=/build/nginx-zctdR4/nginx-1.18.0/debian/modules/http-geoip2 --with-http_addition_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_sub_module
 ```
 
-我们将上面的内容进行分行介绍
+按照上面的内容分行介绍：
 
 ```nginx
 # 版本信息
@@ -126,11 +124,11 @@ configure arguments:
 --with-http_sub_module           # 用于替换响应内容
 ```
 
-## nginx -t
+## `nginx -t`
 
 我们用 `nginx -t` 来测试配置文件是否格式正确：
 
-成功时：
+成功时，输出成功信息：
 
 ```nginx
 root@dwj2:~# nginx -t
@@ -138,7 +136,7 @@ nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
-失败时：提示报错信息
+失败时，输出报错内容：
 
 ```nginx
 root@dwj2:~# nginx -t
@@ -146,7 +144,7 @@ nginx: [emerg] directive "include" is not terminated by ";" in /etc/nginx/nginx.
 nginx: configuration file /etc/nginx/nginx.conf test failed
 ```
 
-## nginx -T
+## `nginx -T`
 
 我们用 `nginx -T` 来测试配置文件是否格式正确，同时将所有的配置信息输出到屏幕上，我们可以对输出信息转存用来备份配置：
 
@@ -159,9 +157,9 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 ...
 ```
 
-## nginx -q
+## `nginx -q`
 
-我们用 `nginx -q` 来测试配置，与 -t 和 -T 不同的是，该命令不会显示非错误信息从而简化输出
+我们用 `nginx -q` 来测试配置，与 `-t` 和 `-T` 不同的是，该命令不会显示非错误信息从而简化输出
 
 ```nginx
 root@dwj2:~# nginx -q
@@ -178,34 +176,34 @@ nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)
 nginx: [emerg] still could not bind()
 ```
 
-## nginx -s \<signal\>
+## `nginx -s <signal>`
 
-我们使用 `nginx -s <signal>` 相关指令来对控制 nginx 的 master 进程
+我们使用 `nginx -s <signal>` 相关指令来对控制 Nginx 的 master 进程。
 
-### nginx -s stop
+### `nginx -s stop`
 
-我们使用 `nginx -s stop` 指令来停止 nginx 服务器，使其不再处理新的请求，并且关闭已有的连接
+我们使用 `nginx -s stop` 指令来停止 Nginx 服务器，使其不再处理新的请求，并且关闭已有的连接。
 
-### nginx -s quit
+### `nginx -s quit`
 
-我们使用 `nginx -s quit` 指令来优雅地关闭 nginx 服务器。与 `stop` 信号不同，`quit` 信号会等待当前请求处理完毕后再关闭服务器，这样可以确保不丢失任何已接收但未处理完的请求
+我们使用 `nginx -s quit` 指令来优雅地关闭 Nginx 服务器。与 `stop` 信号不同，`quit` 信号会等待当前请求处理完毕后再关闭服务器，这样可以确保不丢失任何已接收但未处理完的请求。
 
-### nginx -s reopen
+### `nginx -s reopen`
 
-我们使用 `nginx -s reopen` 指令来重新打开 nginx 的日志文件。重新打开日志文件可以在不重启Nginx的情况下切换日志文件，这在日志轮换时非常有用
+我们使用 `nginx -s reopen` 指令来重新打开 Nginx 的日志文件。重新打开日志文件可以在不重启Nginx的情况下切换日志文件，这在日志轮换时非常有用。
 
-### nginx -s reload
+### `nginx -s reload`
 
-我们使用 `nginx -s reload` 指令来重新加载Nginx的配置文件，而无需停止服务器。这使得在不停止服务的情况下更新配置成为可能，可以避免中断用户的访问
+我们使用 `nginx -s reload` 指令来重新加载Nginx的配置文件，而无需停止服务器。这使得在不停止服务的情况下更新配置成为可能，可以避免中断用户的访问。
 
-## nginx -p \<prefix\>
+## `nginx -p <prefix>`
 
-我们使用 `nginx -s <prefix>` 指令来配置 nginx 的工作路径
+我们使用 `nginx -p <prefix>` 指令来配置 Nginx 的工作路径。
 
-## nginx -c \<filename\>
+## `nginx -c <filename>`
 
-我们使用 `nginx -s <prefix>` 指令来指定 nginx 的配置文件路径
+我们使用 `nginx -c <prefix>` 指令来指定 Nginx 的配置文件路径。
 
-## nginx -g \<directives\>
+## `nginx -g <directives>`
 
-我们使用 `nginx -s <prefix>` 指令来指定全局指令而不会写入配置文件中
+我们使用 `nginx -g <prefix>` 指令来指定全局指令而不会写入配置文件中。

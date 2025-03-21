@@ -1,14 +1,14 @@
 ﻿---
-title: Git 基础
+title: Git 常用命令
 ---
 
 ## 前言
 
-> Git 是一款版本管理软件，适用目前绝大多数操作系统；Github 是一个代码托管平台，与 Git 没有任何关系。只不过 Git 可以基于 Github 进行分布式云存储与交互，因此往往需要结合二者从而达到相对良好的 Teamwork 状态。
+Git 是一款版本管理软件，适用目前绝大多数操作系统；Github 是一个代码托管平台，与 Git 没有任何关系。只不过 Git 可以基于 Github 进行分布式云存储与交互，因此往往需要结合二者从而达到相对良好的 Teamwork 状态。
 
 本文记录 Git 的常用命令。完整命令见官方文档：[https://git-scm.com/book/zh/v2](https://git-scm.com/book/zh/v2)。
 
-## 概览
+下面的图和表概述了 Git 的整个逻辑框架。
 
 |     工作区     |     暂存区     |     仓库区     |
 | :------------: | :------------: | :------------: |
@@ -21,21 +21,21 @@ Git 的三个区域
 ![Git 操作命令概览](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402271037959.png)
 
 /// fc
-操作命令概览
+Git 的基本能命令
 ///
 
-## 命令
+下面将会从 5 个方面展开 Git 的命令。
 
-### 1 查看
+## 查看
 
-#### 查看状态
+### 查看状态
 
 ```bash
 # 查看当前文件状态
 git status
 ```
 
-#### 查看日志
+### 查看日志
 
 ```bash
 # 从当前版本开始查询 commit 日志
@@ -47,7 +47,7 @@ git log
 git reflog
 ```
 
-#### 查看差异
+### 查看差异
 
 ```bash
 # 查看工作区与暂存区的差异
@@ -65,16 +65,16 @@ git diff --cached <FileName>
 git diff --cached
 ```
 
-### 2 配置
+## 配置
 
-#### 初始化
+### 初始化
 
 ```bash
 # 初始化仓库
 git init
 ```
 
-#### 查看配置
+### 查看配置
 
 ```bash
 # 查看 git 配置信息
@@ -94,7 +94,7 @@ git config --global --get http.proxy
 git config --global --get https.proxy
 ```
 
-#### 编辑配置
+### 编辑配置
 
 1）邮箱、密码、用户名
 
@@ -144,9 +144,9 @@ git remote set-url --add github https://gitee.com/idwj/idwj.git
 git remote rm <RemoteName>
 ```
 
-### 3 迭代
+## 迭代
 
-#### 工作区到暂存区
+### 工作区到暂存区
 
 ```bash
 # 工作区到暂存区（单文件）
@@ -156,14 +156,14 @@ git add <FileName>
 git add .
 ```
 
-#### 暂存区到仓库区
+### 暂存区到仓库区
 
 ```bash
 # 暂存区到仓库区
 git commit -m '<Comment>'
 ```
 
-#### 仓库区到服务器
+### 仓库区到服务器
 
 ```bash
 # 仓库区到云服务器（常规方法）
@@ -181,7 +181,7 @@ git push
 git push --force <RemoteName> <BranchName>
 ```
 
-#### 服务器到本地
+### 服务器到本地
 
 一键克隆整个项目
 
@@ -215,16 +215,16 @@ git pull
 git push
 ```
 
-### 4 回溯
+## 回溯
 
-#### 工作区到未管理或上一个版本
+### 工作区到未管理或上一个版本
 
 ```bash
 # 取消新文件的管理 or 将修改文件回溯到上一个版本的初始状态
 git checkout -- <FileName>
 ```
 
-#### 暂存区到工作区状态
+### 暂存区到工作区状态
 
 ```bash
 # 取消 add（一个文件），默认为 --mixed 模式，即保存修改但是从暂存区到工作区
@@ -234,7 +234,7 @@ git reset <FileName>
 git reset .
 ```
 
-#### 仓库区到暂存区状态
+### 仓库区到暂存区状态
 
 ```bash
 # 移动 HEAD 指针到指定的版本
@@ -246,7 +246,7 @@ git reset --hard '<commit_id>' # 【不推荐】工作区与暂存区全部被�
 git commit --amend
 ```
 
-#### 取消服务器的修改
+### 取消服务器的修改
 
 取消 **当前版本** 某文件（夹）的版本管理
 
@@ -280,9 +280,9 @@ git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch <File
 删除在 .gitignore 中的相应语句即可
 ```
 
-### 5 分支
+## 分支
 
-#### 创建分支
+### 创建分支
 
 ```bash
 # 创建分支
@@ -292,7 +292,7 @@ git branch <BranchName>
 git push <RemoteName> <BranchName>
 ```
 
-#### 删除分支
+### 删除分支
 
 ```bash
 # 切换到另一个分支再进行删除操作
@@ -303,7 +303,7 @@ git branch -d <BranchName>
 git push <RemoteName> --delete <BranchName>
 ```
 
-#### 修改分支
+### 修改分支
 
 如果修改的分支为远程保护分支，则在远程更新之前，需要在远程相应的服务商家那里对保护分支进行重新设定
 
@@ -316,14 +316,14 @@ git push <RemoteName> <NewName>
 git push <RemoteName> --delete <OldName>
 ```
 
-#### 合并分支
+### 合并分支
 
 ```bash
 # 首先将当前分支切换到需要被合并的分支 <NowBranch>，接着合并需要被合并的分支 <TodoBranch>
 git merge <TodoBranch>
 ```
 
-#### 拉取分支
+### 拉取分支
 
 ```bash
 # 在 clone 后只会拉取默认分支，想要拉取其余的分支执行

@@ -1,8 +1,6 @@
 ---
-title: Git 的 Pull Request 是什么
+title: Git PR 解读
 ---
-
-## 前言
 
 早闻 Git 的 PR 功能，趁着端午放假在家便来实战一波，做个小小的记录。
 
@@ -12,21 +10,33 @@ title: Git 的 Pull Request 是什么
 
 ![pull-request-workflow](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091607490.svg)
 
+/// fc
+Pull Request 工作逻辑
+///
+
 ## 实操
 
-### 1 fork 目标仓库
+### fork 目标仓库
 
 进入目标仓库，点击右上角的 fork 按钮进行 fork
 
 ![fork 目标仓库](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091618430.png)
 
-### 2 clone 至本地
+/// fc
+fork 目标仓库
+///
+
+### clone 至本地
 
 进入自己的仓库，找到对应的项目并复制克隆链接
 
 ![clone 至本地](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091620622.png)
 
-### 3 编辑内容并版本管理
+/// fc
+clone 至本地
+///
+
+### 编辑内容并版本管理
 
 !!! warning
 
@@ -34,26 +44,21 @@ title: Git 的 Pull Request 是什么
 
 我们将需要修改的内容完善后，进行 add 和 commit 操作即可。
 
-### 4 push 至仓库
+### push 至仓库
 
 此处将已经版本管理好的内容 push 到自己刚才 fork 出来的仓库即可。上述示例中需要 push 到 develop 分支上。
 
-### 5 发起 PR 请求
+### 发起 PR 请求
 
 在选择合适的分支后，点击 Contribute 按钮即可看到 Open pull request 选项，点击即可发起 PR 请求：
 
 ![发起 PR 请求](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091634960.png)
-
-## 尾声
-
-在进行实战时，由于原项目的作者进行了分支保护，即编写了 PR 的安全检查流，以至于我前两次分别踩到了：master 分支保护和 develop 分支名称不一致，两个坑。因此不得已提前自己手动关闭掉这两个 PR，也因此获得了人生中首个非正式的 Achievements 哈哈：
-
-![Achievements](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091633666.png)
-
-![Achievement](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091633736.png)
+/// fc
+发起 PR 请求
+///
 
 ## 参考
 
-[吵疯了，Pull Request到底是个啥？](https://zhuanlan.zhihu.com/p/347918608)
+[吵疯了，Pull Request到底是个啥 - 知乎](https://zhuanlan.zhihu.com/p/347918608)
 
-[百大技术UP带你玩转 Pull Request](https://www.bilibili.com/video/BV11d4y1H74N/)
+[百大技术UP带你玩转 Pull Request - bilibili](https://www.bilibili.com/video/BV11d4y1H74N/)

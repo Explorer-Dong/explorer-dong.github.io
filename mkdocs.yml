@@ -304,28 +304,22 @@ nav:
         - back-end/database/opengauss/opengauss-import-data.md
   - 运维:
     - operation/index.md
+    - operation/shell-basic.md
+    - operation/gnu-linux-basic.md
     - Nginx:
-      - operation/nginx/nginx-basic.md
-      - operation/nginx/nginx-command.md
-      - operation/nginx/solve-nginx-reload-error.md
-      - operation/nginx/whereis-nginx.md
-    - 安全:
-      - operation/safe/solve-server-invade.md
-    - CLI:
-      - operation/shell/shell-basic.md
-      - operation/shell/solve-shell-problems.md
-      - operation/shell/ubuntu-guide.md
+      - operation/nginx/nginx-commands.md
+      - operation/nginx/nginx-setup.md
+      - operation/nginx/nginx-examples.md
   - 工具:
     - dev-tools/index.md
-    - dev-tools/windows-setup.md
     - dev-tools/jetbrains-license.md
-    - dev-tools/devcpp-lqb-config.md
-    - dev-tools/idle-lqb-config.md
-    - CLion:
-      - dev-tools/clion/clion-config.md
-      - dev-tools/clion/solve-clion-problems.md
+    - 配置指南:
+      - dev-tools/setup/windows-setup.md
+      - dev-tools/setup/devcpp-setup.md
+      - dev-tools/setup/idle-setup.md
+      - dev-tools/setup/clion-setup.md
     - Git:
-      - dev-tools/git/git-basic.md
+      - dev-tools/git/git-commands.md
       - dev-tools/git/git-pull-request.md
       - dev-tools/git/git-self-define-command.md
       - dev-tools/git/solve-git-problems.md

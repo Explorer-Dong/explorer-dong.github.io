@@ -222,7 +222,6 @@ nav:
         - base/computer-organization/device.md
       - 计算机网络:
         - base/computer-network/index.md
-        - base/computer-network/intro.md
         - base/computer-network/application-layer.md
         - base/computer-network/transport-layer.md
         - base/computer-network/network-layer.md

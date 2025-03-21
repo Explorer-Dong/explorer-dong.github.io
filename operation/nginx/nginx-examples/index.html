@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://wiki.dwj601.cn/dev-tools/idle-lqb-config/">
+        <link rel="canonical" href="https://wiki.dwj601.cn/operation/nginx/nginx-examples/">
       
       
-        <link rel="prev" href="../devcpp-lqb-config/">
+        <link rel="prev" href="../nginx-setup/">
       
       
-        <link rel="next" href="../clion/clion-config/">
+        <link rel="next" href="../../../dev-tools/">
       
       
       <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
@@ -24,14 +24,14 @@
     
     
       
-        <title>IDLE 蓝桥杯竞赛配置 - Open Wiki Community</title>
+        <title>Nginx 实战案例 - Open Wiki Community</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,9 +52,9 @@
     
       <link rel="stylesheet" href="https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../../asserts/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../asserts/stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -71,7 +71,7 @@
     
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -80,7 +80,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#前言" class="md-skip">
+        <a href="#反向代理" class="md-skip">
           跳转至
         </a>
       
@@ -148,7 +148,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
+    <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
   <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
@@ -167,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              IDLE 蓝桥杯竞赛配置
+              Nginx 实战案例
             
           </span>
         </div>
@@ -291,7 +291,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -310,7 +310,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../base/" class="md-tabs__link">
+        <a href="../../../base/" class="md-tabs__link">
           
   
     
@@ -330,7 +330,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../data-science/" class="md-tabs__link">
+        <a href="../../../data-science/" class="md-tabs__link">
           
   
     
@@ -350,7 +350,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../ds-and-algo/" class="md-tabs__link">
+        <a href="../../../ds-and-algo/" class="md-tabs__link">
           
   
     
@@ -370,7 +370,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../front-end/" class="md-tabs__link">
+        <a href="../../../front-end/" class="md-tabs__link">
           
   
     
@@ -390,32 +390,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../back-end/" class="md-tabs__link">
+        <a href="../../../back-end/" class="md-tabs__link">
           
   
     
   
   后端
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../operation/" class="md-tabs__link">
-          
-  
-    
-  
-  运维
 
         </a>
       </li>
@@ -432,7 +412,27 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  运维
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../dev-tools/" class="md-tabs__link">
           
   
     
@@ -484,7 +484,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
+    <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
   <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
@@ -513,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -563,7 +563,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/" class="md-nav__link ">
+            <a href="../../../base/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -681,7 +681,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/python-application/" class="md-nav__link ">
+            <a href="../../../base/python-application/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -741,7 +741,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/digital-image-processing/" class="md-nav__link ">
+            <a href="../../../base/digital-image-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -801,7 +801,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../base/digital-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -867,7 +867,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/machine-learning/" class="md-nav__link ">
+            <a href="../../../base/machine-learning/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -901,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/machine-learning/data/" class="md-nav__link">
+      <a href="../../../base/machine-learning/data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -962,7 +962,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/machine-learning/model/" class="md-nav__link ">
+            <a href="../../../base/machine-learning/model/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -996,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/machine-learning/model/linear-model/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/linear-model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1018,7 +1018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/machine-learning/model/decision-tree-model/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/decision-tree-model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1040,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/machine-learning/model/bayes-model/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/bayes-model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1062,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/machine-learning/model/probability-graph-model/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/probability-graph-model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1084,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/machine-learning/model/ensemble-learning/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/ensemble-learning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1106,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/machine-learning/model/lazy-learning/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/lazy-learning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1128,7 +1128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/machine-learning/model/cluster-learning/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/cluster-learning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1150,7 +1150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/machine-learning/model/semi-supervised-learning/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/semi-supervised-learning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1180,7 +1180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/machine-learning/eval/" class="md-nav__link">
+      <a href="../../../base/machine-learning/eval/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1233,7 +1233,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/deep-learning/" class="md-nav__link ">
+            <a href="../../../base/deep-learning/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1299,7 +1299,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/data-mining/" class="md-nav__link ">
+            <a href="../../../base/data-mining/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1333,7 +1333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/data-mining/data-preprocess/" class="md-nav__link">
+      <a href="../../../base/data-mining/data-preprocess/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1355,7 +1355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/data-mining/association-analysis/" class="md-nav__link">
+      <a href="../../../base/data-mining/association-analysis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1377,7 +1377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/data-mining/anomaly-detection/" class="md-nav__link">
+      <a href="../../../base/data-mining/anomaly-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1434,7 +1434,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/natural-language-processing/" class="md-nav__link ">
+            <a href="../../../base/natural-language-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1468,7 +1468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/natural-language-processing/model/" class="md-nav__link">
+      <a href="../../../base/natural-language-processing/model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1490,7 +1490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/natural-language-processing/task/" class="md-nav__link">
+      <a href="../../../base/natural-language-processing/task/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1549,7 +1549,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/computer-vision/" class="md-nav__link ">
+            <a href="../../../base/computer-vision/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1583,7 +1583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/computer-vision/image-classification/" class="md-nav__link">
+      <a href="../../../base/computer-vision/image-classification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1605,7 +1605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/computer-vision/semantic-segmentation/" class="md-nav__link">
+      <a href="../../../base/computer-vision/semantic-segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1627,7 +1627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/computer-vision/object-detection/" class="md-nav__link">
+      <a href="../../../base/computer-vision/object-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1680,7 +1680,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/intelligent-education/" class="md-nav__link ">
+            <a href="../../../base/intelligent-education/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1805,7 +1805,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/object-oriented-programming/" class="md-nav__link ">
+            <a href="../../../base/object-oriented-programming/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1865,7 +1865,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/digital-logic-circuit/" class="md-nav__link ">
+            <a href="../../../base/digital-logic-circuit/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1925,7 +1925,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/computer-system-basic/" class="md-nav__link ">
+            <a href="../../../base/computer-system-basic/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1985,7 +1985,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/database/" class="md-nav__link ">
+            <a href="../../../base/database/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2053,7 +2053,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/operating-system/" class="md-nav__link ">
+            <a href="../../../base/operating-system/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2087,7 +2087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/operating-system/intro/" class="md-nav__link">
+      <a href="../../../base/operating-system/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2109,7 +2109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/operating-system/concurrent/" class="md-nav__link">
+      <a href="../../../base/operating-system/concurrent/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2131,7 +2131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/operating-system/virtualization/" class="md-nav__link">
+      <a href="../../../base/operating-system/virtualization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2153,7 +2153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/operating-system/persistence/" class="md-nav__link">
+      <a href="../../../base/operating-system/persistence/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2212,7 +2212,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/computer-organization/" class="md-nav__link ">
+            <a href="../../../base/computer-organization/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2246,7 +2246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/computer-organization/cpu/" class="md-nav__link">
+      <a href="../../../base/computer-organization/cpu/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2268,7 +2268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/computer-organization/memory/" class="md-nav__link">
+      <a href="../../../base/computer-organization/memory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2290,7 +2290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/computer-organization/device/" class="md-nav__link">
+      <a href="../../../base/computer-organization/device/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2353,7 +2353,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/computer-network/" class="md-nav__link ">
+            <a href="../../../base/computer-network/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2387,7 +2387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/computer-network/application-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/application-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2409,7 +2409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/computer-network/transport-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/transport-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2431,7 +2431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/computer-network/network-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/network-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2453,7 +2453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/computer-network/data-link-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/data-link-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2475,7 +2475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/computer-network/physical-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/physical-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2589,7 +2589,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/college-physics/" class="md-nav__link ">
+            <a href="../../../base/college-physics/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2653,7 +2653,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/advanced-math/" class="md-nav__link ">
+            <a href="../../../base/advanced-math/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2687,7 +2687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/advanced-math/differentiation/" class="md-nav__link">
+      <a href="../../../base/advanced-math/differentiation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2709,7 +2709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/advanced-math/integration/" class="md-nav__link">
+      <a href="../../../base/advanced-math/integration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2762,7 +2762,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/linear-algebra/" class="md-nav__link ">
+            <a href="../../../base/linear-algebra/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2822,7 +2822,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/probability-and-statistics/" class="md-nav__link ">
+            <a href="../../../base/probability-and-statistics/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2890,7 +2890,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/optimization-method/" class="md-nav__link ">
+            <a href="../../../base/optimization-method/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2924,7 +2924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/optimization-method/intro/" class="md-nav__link">
+      <a href="../../../base/optimization-method/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2946,7 +2946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/optimization-method/linear-search/" class="md-nav__link">
+      <a href="../../../base/optimization-method/linear-search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2968,7 +2968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/optimization-method/unconstraint-optimization/" class="md-nav__link">
+      <a href="../../../base/optimization-method/unconstraint-optimization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2990,7 +2990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/optimization-method/constraint-optimization/" class="md-nav__link">
+      <a href="../../../base/optimization-method/constraint-optimization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3064,7 +3064,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../data-science/" class="md-nav__link ">
+            <a href="../../../data-science/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3098,7 +3098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-science/numpy-basic/" class="md-nav__link">
+      <a href="../../../data-science/numpy-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3120,7 +3120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-science/pandas-basic/" class="md-nav__link">
+      <a href="../../../data-science/pandas-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3142,7 +3142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-science/matplotlib-basic/" class="md-nav__link">
+      <a href="../../../data-science/matplotlib-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3204,7 +3204,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../ds-and-algo/" class="md-nav__link ">
+            <a href="../../../ds-and-algo/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3238,7 +3238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/templates/" class="md-nav__link">
+      <a href="../../../ds-and-algo/templates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3260,7 +3260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/templates-py/" class="md-nav__link">
+      <a href="../../../ds-and-algo/templates-py/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3321,7 +3321,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../ds-and-algo/theory/" class="md-nav__link ">
+            <a href="../../../ds-and-algo/theory/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3355,7 +3355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/theory/base/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3377,7 +3377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/theory/ds/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/ds/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3399,7 +3399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/theory/dp/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/dp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3421,7 +3421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/theory/string/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/string/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3443,7 +3443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/theory/geometry/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/geometry/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3465,7 +3465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/theory/graph/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/graph/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3487,7 +3487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/theory/game/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/game/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3509,7 +3509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/theory/math/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/math/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3568,7 +3568,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../ds-and-algo/examples/" class="md-nav__link ">
+            <a href="../../../ds-and-algo/examples/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3602,7 +3602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/examples/examples-basic-algo/" class="md-nav__link">
+      <a href="../../../ds-and-algo/examples/examples-basic-algo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3624,7 +3624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/examples/examples-advanced-algo/" class="md-nav__link">
+      <a href="../../../ds-and-algo/examples/examples-advanced-algo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3646,7 +3646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/examples/examples-ds/" class="md-nav__link">
+      <a href="../../../ds-and-algo/examples/examples-ds/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3703,7 +3703,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../ds-and-algo/lan-qiao-cup/" class="md-nav__link ">
+            <a href="../../../ds-and-algo/lan-qiao-cup/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3737,7 +3737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/lan-qiao-cup/14th-python-a/" class="md-nav__link">
+      <a href="../../../ds-and-algo/lan-qiao-cup/14th-python-a/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3759,7 +3759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ds-and-algo/lan-qiao-cup/15th-python-a/" class="md-nav__link">
+      <a href="../../../ds-and-algo/lan-qiao-cup/15th-python-a/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3827,7 +3827,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../front-end/" class="md-nav__link ">
+            <a href="../../../front-end/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3861,7 +3861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../front-end/html-basic/" class="md-nav__link">
+      <a href="../../../front-end/html-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3883,7 +3883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../front-end/css-basic/" class="md-nav__link">
+      <a href="../../../front-end/css-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3950,7 +3950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../front-end/javascript/javascript-basic/" class="md-nav__link">
+      <a href="../../../front-end/javascript/javascript-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4029,7 +4029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../front-end/hexo/build-your-own-website-with-hexo/" class="md-nav__link">
+      <a href="../../../front-end/hexo/build-your-own-website-with-hexo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4051,7 +4051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../front-end/hexo/hexo-deployment/" class="md-nav__link">
+      <a href="../../../front-end/hexo/hexo-deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4073,7 +4073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../front-end/hexo/hexo-enhancement/" class="md-nav__link">
+      <a href="../../../front-end/hexo/hexo-enhancement/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4139,7 +4139,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../back-end/" class="md-nav__link ">
+            <a href="../../../back-end/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4200,7 +4200,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../back-end/cplusplus/" class="md-nav__link ">
+            <a href="../../../back-end/cplusplus/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4234,7 +4234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-end/cplusplus/cpp-basic/" class="md-nav__link">
+      <a href="../../../back-end/cplusplus/cpp-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4256,7 +4256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-end/cplusplus/cpp-advanced/" class="md-nav__link">
+      <a href="../../../back-end/cplusplus/cpp-advanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4335,7 +4335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-end/python/python-setup/" class="md-nav__link">
+      <a href="../../../back-end/python/python-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4357,7 +4357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-end/python/python-basic/" class="md-nav__link">
+      <a href="../../../back-end/python/python-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4424,7 +4424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-end/python/flask/deploy-flask/" class="md-nav__link">
+      <a href="../../../back-end/python/flask/deploy-flask/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4511,7 +4511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-end/database/database-basic/" class="md-nav__link">
+      <a href="../../../back-end/database/database-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4580,7 +4580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-end/database/mysql/mysql-basic/" class="md-nav__link">
+      <a href="../../../back-end/database/mysql/mysql-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4602,7 +4602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-end/database/mysql/solve-mysql-problems/" class="md-nav__link">
+      <a href="../../../back-end/database/mysql/solve-mysql-problems/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4681,7 +4681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-end/database/opengauss/opengauss-basic/" class="md-nav__link">
+      <a href="../../../back-end/database/opengauss/opengauss-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4703,7 +4703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-end/database/opengauss/opengauss-remote-connect/" class="md-nav__link">
+      <a href="../../../back-end/database/opengauss/opengauss-remote-connect/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4725,7 +4725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-end/database/opengauss/opengauss-import-data/" class="md-nav__link">
+      <a href="../../../back-end/database/opengauss/opengauss-import-data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4767,421 +4767,6 @@
       
   
   
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../operation/" class="md-nav__link ">
-              
-  
-  <span class="md-ellipsis">
-    运维
-    
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            运维
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Nginx
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2">
-            <span class="md-nav__icon md-icon"></span>
-            Nginx
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../operation/nginx/nginx-basic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nginx 基础
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../operation/nginx/nginx-command/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nginx 常用命令合集
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../operation/nginx/solve-nginx-reload-error/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    解决 Nginx 重启报错
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../operation/nginx/whereis-nginx/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    使用 apt 安装 Nginx 后的软件包是如何布局的
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    安全
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_3">
-            <span class="md-nav__icon md-icon"></span>
-            安全
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../operation/safe/solve-server-invade/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    解决服务器入侵攻击
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    CLI
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_4">
-            <span class="md-nav__icon md-icon"></span>
-            CLI
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../operation/shell/shell-basic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Shell 基础
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../operation/shell/solve-shell-problems/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    解决 shell 相关问题
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../operation/shell/ubuntu-guide/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ubuntu 使用指南
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -5191,12 +4776,6 @@
       
         
           
-        
-      
-        
-      
-        
-      
         
       
         
@@ -5220,16 +4799,16 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    工具
+    运维
     
   </span>
   
@@ -5237,16 +4816,16 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
-            工具
+            运维
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5259,11 +4838,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../windows-setup/" class="md-nav__link">
+      <a href="../../shell-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Windows 配置指南
+    Shell 基础
     
   </span>
   
@@ -5281,11 +4860,87 @@
   
   
     <li class="md-nav__item">
-      <a href="../jetbrains-license/" class="md-nav__link">
+      <a href="../../gnu-linux-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    更新 Jetbrains 学生许可证
+    GNU/Linux 基础 (Ubuntu)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Nginx
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            Nginx
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx-commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nginx 常用命令
     
   </span>
   
@@ -5303,11 +4958,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../devcpp-lqb-config/" class="md-nav__link">
+      <a href="../nginx-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    DevCpp 蓝桥杯竞赛配置
+    Nginx 配置指南
     
   </span>
   
@@ -5336,7 +4991,7 @@
           
   
   <span class="md-ellipsis">
-    IDLE 蓝桥杯竞赛配置
+    Nginx 实战案例
     
   </span>
   
@@ -5348,7 +5003,7 @@
         
   
   <span class="md-ellipsis">
-    IDLE 蓝桥杯竞赛配置
+    Nginx 实战案例
     
   </span>
   
@@ -5371,37 +5026,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
+  <a href="#反向代理" class="md-nav__link">
     <span class="md-ellipsis">
-      前言
+      反向代理
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#配置" class="md-nav__link">
-    <span class="md-ellipsis">
-      配置
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="配置">
+    <nav class="md-nav" aria-label="反向代理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-编写文件" class="md-nav__link">
+  <a href="#基本概念" class="md-nav__link">
     <span class="md-ellipsis">
-      1 编写文件
+      基本概念
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-修改样式" class="md-nav__link">
+  <a href="#前置操作" class="md-nav__link">
     <span class="md-ellipsis">
-      2 修改样式
+      前置操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx-配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nginx 配置
     </span>
   </a>
   
@@ -5412,10 +5067,119 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#http-自动跳转-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      http 自动跳转 https
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../dev-tools/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    工具
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            工具
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev-tools/jetbrains-license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    更新 Jetbrains 学生许可证
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -5434,29 +5198,30 @@
       
         
       
+        
+      
+        
+      
     
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
         
           
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    CLion
+    配置指南
     
   </span>
   
@@ -5464,10 +5229,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
-            CLion
+            配置指南
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5478,11 +5243,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../clion/clion-config/" class="md-nav__link">
+      <a href="../../../dev-tools/setup/windows-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    CLion 配置指南
+    配置 Windows
     
   </span>
   
@@ -5500,11 +5265,55 @@
   
   
     <li class="md-nav__item">
-      <a href="../clion/solve-clion-problems/" class="md-nav__link">
+      <a href="../../../dev-tools/setup/devcpp-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    解决 CLion 相关问题
+    配置 DevCpp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev-tools/setup/idle-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配置 IDLE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev-tools/setup/clion-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配置 CLion
     
   </span>
   
@@ -5545,20 +5354,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
         
           
-          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -5570,8 +5376,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
             <span class="md-nav__icon md-icon"></span>
             Git
           </label>
@@ -5584,11 +5390,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../git/git-basic/" class="md-nav__link">
+      <a href="../../../dev-tools/git/git-commands/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Git 基础
+    Git 常用命令
     
   </span>
   
@@ -5606,11 +5412,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../git/git-pull-request/" class="md-nav__link">
+      <a href="../../../dev-tools/git/git-pull-request/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Git 的 Pull Request 是什么
+    Git PR 解读
     
   </span>
   
@@ -5628,7 +5434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../git/git-self-define-command/" class="md-nav__link">
+      <a href="../../../dev-tools/git/git-self-define-command/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5650,11 +5456,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../git/solve-git-problems/" class="md-nav__link">
+      <a href="../../../dev-tools/git/solve-git-problems/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    解决 Git 相关问题
+    Git 问题解决
     
   </span>
   
@@ -5728,37 +5534,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
+  <a href="#反向代理" class="md-nav__link">
     <span class="md-ellipsis">
-      前言
+      反向代理
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#配置" class="md-nav__link">
-    <span class="md-ellipsis">
-      配置
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="配置">
+    <nav class="md-nav" aria-label="反向代理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-编写文件" class="md-nav__link">
+  <a href="#基本概念" class="md-nav__link">
     <span class="md-ellipsis">
-      1 编写文件
+      基本概念
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-修改样式" class="md-nav__link">
+  <a href="#前置操作" class="md-nav__link">
     <span class="md-ellipsis">
-      2 修改样式
+      前置操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx-配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nginx 配置
     </span>
   </a>
   
@@ -5766,6 +5572,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-自动跳转-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      http 自动跳转 https
+    </span>
+  </a>
   
 </li>
       
@@ -5785,7 +5600,7 @@
 
 
   
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/dev-tools/idle-lqb-config.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/operation/nginx/nginx-examples.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5794,32 +5609,222 @@
     
       
     
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/dev-tools/idle-lqb-config.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/operation/nginx/nginx-examples.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-  <h1>IDLE 蓝桥杯竞赛配置</h1>
+  <h1>Nginx 实战案例</h1>
 
-<h2 id="前言">前言<a class="headerlink" href="#前言" title="页面定位">&para;</a></h2>
-<p>由于连续两届篮球杯都是 CA 省二，迫于加分压力不得不转 PA 组（其实是摸鱼不刷题导致的）。阅读篮球杯 py 组手册后发现只能使用 3.8.6 版本且编辑器只能用自带的 IDLE，故特此记录一下相关配置。</p>
-<h2 id="配置">配置<a class="headerlink" href="#配置" title="页面定位">&para;</a></h2>
-<h3 id="1-编写文件">1 编写文件<a class="headerlink" href="#1-编写文件" title="页面定位">&para;</a></h3>
-<p>在双击快捷方式后会弹出一个 shell 窗口，支持简单的交互式编码：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091642746.png" data-type="image" data-width="auto" data-height="auto" data-title="快捷方式" data-desc-position="bottom"><img alt="快捷方式" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091642746.png" /></a></p>
-<p>我们点击左上角的 File 即可进行新建或打开 <code>.py</code> 文件的操作：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091647404.png" data-type="image" data-width="auto" data-height="auto" data-title="新建 or 打开" data-desc-position="bottom"><img alt="新建 or 打开" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091647404.png" /></a></p>
-<h3 id="2-修改样式">2 修改样式<a class="headerlink" href="#2-修改样式" title="页面定位">&para;</a></h3>
-<p>在 shell 或编辑界面中均有 Options 选项，点击后进行个性化定制：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091647404.png" data-type="image" data-width="auto" data-height="auto" data-title="Options 选项" data-desc-position="bottom"><img alt="Options 选项" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091647404.png" /></a></p>
-<p>「字体部分」选择 consoles 字体、13 号大小、4 个标准空格的 tab：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091649022.png" data-type="image" data-width="auto" data-height="auto" data-title="选择 consoles 字体、13 号大小、4 个标准空格的 tab" data-desc-position="bottom"><img alt="选择 consoles 字体、13 号大小、4 个标准空格的 tab" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091649022.png" /></a></p>
-<p>「高亮部分」选择 New 主题：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091650602.png" data-type="image" data-width="auto" data-height="auto" data-title="选择 New 主题" data-desc-position="bottom"><img alt="选择 New 主题" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091650602.png" /></a></p>
-<p>「快捷键」部分，可修改运行模块快捷键为 Ctrl+F5 从而和 CLion 对应，当然也可以保持默认的 F5：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091651415.png" data-type="image" data-width="auto" data-height="auto" data-title="修改运行模块快捷键为 Ctrl+F5 从而和 CLion 对应" data-desc-position="bottom"><img alt="修改运行模块快捷键为 Ctrl+F5 从而和 CLion 对应" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406091651415.png" /></a></p>
+<p>本文介绍使用 Nginx 的实战案例。</p>
+<h2 id="反向代理">反向代理<a class="headerlink" href="#反向代理" title="页面定位">&para;</a></h2>
+<p>我们以「单服务器 + 单顶级域名 = 多网站」为例，实现 Nginx 的反向代理功能。</p>
+<h3 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="页面定位">&para;</a></h3>
+<p>在正式开始之前，有必要了解一下「代理系统」这个概念。所谓代理，简单来说就是连接用户与服务器的中间媒介。有正向代理、反向代理等实际应用。与以往传统的用户与服务器直连的方式不同，通过代理系统可以完成很多前者无法完成的任务，同时也有性能上质的飞跃，下面从理论的角度介绍代理系统的实际应用示例以及优势。例如：</p>
+<p><strong>正向代理</strong>。所谓的正向代理其实就是「面向用户」进行运作。常见的正向代理应用比如 VPN 服务就是很典型的一种。</p>
+<figure id="__fc_1">
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120927.png" data-type="image" data-width="auto" data-height="auto" data-title="正向代理" data-desc-position="bottom"><img alt="正向代理" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120927.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 1. </span> 正向代理逻辑</p>
+</figcaption>
+</figure>
+<p><strong>反向代理</strong>。所谓的反向代理的与上述正向代理对应，就是「面向服务器」进行运作。Nginx 与 Apache 就是典型的反向代理应用。通过选择性的配置性的从服务器获取数据返回给前端渲染给用户，来实现负载均衡、加速优化等效果。</p>
+<figure id="__fc_2">
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120846.png" data-type="image" data-width="auto" data-height="auto" data-title="反向代理" data-desc-position="bottom"><img alt="反向代理" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120846.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 2. </span> 反向代理逻辑</p>
+</figcaption>
+</figure>
+<h3 id="前置操作">前置操作<a class="headerlink" href="#前置操作" title="页面定位">&para;</a></h3>
+<p><strong>创建多个二级域名</strong>。多个网站可以通过「二级域名」的形式只依赖一个「顶级域名」实现。例如顶级域名为 <code>baidu.com</code>，二级域名为 <code>mcn.baidu.com</code>、<code>career.baidu.com</code> 等等。</p>
+<p><strong>解析二级域名绑定到服务器上</strong>。每一个「二级域名」都需要指向我们自己的服务器，这需要我们将二级域名解析到服务器对应的「IP 地址」上才能进行后续域名访问网站的操作。</p>
+<figure id="__fc_3">
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126611.png" data-type="image" data-width="auto" data-height="auto" data-title="将二级域名绑定到服务器" data-desc-position="bottom"><img alt="将二级域名绑定到服务器" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126611.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 3. </span> 将二级域名绑定到服务器</p>
+</figcaption>
+</figure>
+<p><strong>不同域名访问不同网站</strong>。现在所有的二级域名都指向了同一台服务器，那又怎么做到访问不同的网站呢？这就要看网站对外提供的服务类型了：</p>
+<ul>
+<li>如果是纯静态网站，那么只需要将对应的域名指向服务器中对应的路径即可；</li>
+<li>如果是动态网站，即需要启动端口的程序，那么可以配置 Nginx 将域名转发到对应的端口上。</li>
+</ul>
+<figure id="__fc_4">
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126612.png" data-type="image" data-width="auto" data-height="auto" data-title="纯静态网站的路由配置" data-desc-position="bottom"><img alt="纯静态网站的路由配置" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126612.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 4. </span> 纯静态网站的路由配置</p>
+</figcaption>
+</figure>
+<h3 id="nginx-配置">Nginx 配置<a class="headerlink" href="#nginx-配置" title="页面定位">&para;</a></h3>
+<p>纯静态网站的 Nginx 配置：</p>
+<div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#__codelineno-0-39">39</a></span>
+<span class="normal"><a href="#__codelineno-0-40">40</a></span>
+<span class="normal"><a href="#__codelineno-0-41">41</a></span>
+<span class="normal"><a href="#__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span>
+<span class="normal"><a href="#__codelineno-0-45">45</a></span>
+<span class="normal"><a href="#__codelineno-0-46">46</a></span>
+<span class="normal"><a href="#__codelineno-0-47">47</a></span>
+<span class="normal"><a href="#__codelineno-0-48">48</a></span>
+<span class="normal"><a href="#__codelineno-0-49">49</a></span>
+<span class="normal"><a href="#__codelineno-0-50">50</a></span>
+<span class="normal"><a href="#__codelineno-0-51">51</a></span>
+<span class="normal"><a href="#__codelineno-0-52">52</a></span>
+<span class="normal"><a href="#__codelineno-0-53">53</a></span>
+<span class="normal"><a href="#__codelineno-0-54">54</a></span>
+<span class="normal"><a href="#__codelineno-0-55">55</a></span>
+<span class="normal"><a href="#__codelineno-0-56">56</a></span>
+<span class="normal"><a href="#__codelineno-0-57">57</a></span>
+<span class="normal"><a href="#__codelineno-0-58">58</a></span>
+<span class="normal"><a href="#__codelineno-0-59">59</a></span>
+<span class="normal"><a href="#__codelineno-0-60">60</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">#----- docs.example.com 访问文档网站 -----#</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w">       </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span><span class="w">             </span><span class="c1"># 监听的端口</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w">  </span><span class="s">docs.example.com</span><span class="p">;</span><span class="w">    </span><span class="c1"># 监听的域名</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="c1"># ssl证书的相关文件路径</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">      </span><span class="s">/usr/local/nginx/ssl/test.cn_bundle.pem</span><span class="p">;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w">  </span><span class="s">/usr/local/nginx/ssl/test.cn.key</span><span class="p">;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="c1"># ssl相关配置</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="kn">ssl_session_cache</span><span class="w">    </span><span class="s">shared:SSL:1m</span><span class="p">;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="kn">ssl_session_timeout</span><span class="w">  </span><span class="mi">5m</span><span class="p">;</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="kn">ssl_ciphers</span><span class="w">  </span><span class="s">HIGH:!aNULL:!MD5</span><span class="p">;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w">  </span><span class="no">on</span><span class="p">;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="c1"># 项目路径 - 以静态资源为例</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">        </span><span class="kn">root</span><span class="w"> </span><span class="s">/usr/web/docs</span><span class="p">;</span><span class="w">           </span><span class="c1"># 网站根目录</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="p">}</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="c1">#----- www.example.com 访问主站 -----#</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">    </span><span class="kn">listen</span><span class="w">       </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span><span class="w">             </span><span class="c1"># 监听的端口</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="kn">server_name</span><span class="w">  </span><span class="s">www.example.com</span><span class="p">;</span><span class="w">     </span><span class="c1"># 监听的网址</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">    </span><span class="c1"># ssl证书的相关文件路径</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">      </span><span class="s">/usr/local/nginx/ssl/b.test.cn_bundle.pem</span><span class="p">;</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w">  </span><span class="s">/usr/local/nginx/ssl/b.test.cn.key</span><span class="p">;</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">    </span><span class="kn">ssl_session_cache</span><span class="w">    </span><span class="s">shared:SSL:1m</span><span class="p">;</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">    </span><span class="kn">ssl_session_timeout</span><span class="w">  </span><span class="mi">5m</span><span class="p">;</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">    </span><span class="kn">ssl_ciphers</span><span class="w">  </span><span class="s">HIGH:!aNULL:!MD5</span><span class="p">;</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">    </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w">  </span><span class="no">on</span><span class="p">;</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">        </span><span class="kn">root</span><span class="w"> </span><span class="s">/usr/web/www</span><span class="p">;</span><span class="w">            </span><span class="c1"># 根目录</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="p">}</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="c1">#----- example.com 通过重定向的方式也访问主站 -----#</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">    </span><span class="kn">listen</span><span class="w">       </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span><span class="w">             </span><span class="c1"># 监听的端口</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">    </span><span class="kn">server_name</span><span class="w">  </span><span class="s">example.com</span><span class="p">;</span><span class="w">         </span><span class="c1"># 监听的网址</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46"></a>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">    </span><span class="c1"># ssl证书的相关文件路径</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">      </span><span class="s">/usr/local/nginx/ssl/b.test.cn_bundle.pem</span><span class="p">;</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w">  </span><span class="s">/usr/local/nginx/ssl/b.test.cn.key</span><span class="p">;</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50"></a>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="w">    </span><span class="c1"># ssl相关配置</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">    </span><span class="kn">ssl_session_cache</span><span class="w">    </span><span class="s">shared:SSL:1m</span><span class="p">;</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="w">    </span><span class="kn">ssl_session_timeout</span><span class="w">  </span><span class="mi">5m</span><span class="p">;</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">    </span><span class="kn">ssl_ciphers</span><span class="w">  </span><span class="s">HIGH:!aNULL:!MD5</span><span class="p">;</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="w">    </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w">  </span><span class="no">on</span><span class="p">;</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w">  </span><span class="s">https://www.example.com</span><span class="w">  </span><span class="c1"># 重定向到 example.com</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="w">    </span><span class="err">}</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="err">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>需要启动端口的网站，Nginx 配置：</p>
+<div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">yunjin123.cn</span><span class="w"> </span><span class="s">www.yunjin123.cn</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">      </span><span class="s">/etc/nginx/ssl/yunjin123.cn.pem</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w">  </span><span class="s">/etc/nginx/ssl/yunjin123.cn.key</span><span class="p">;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="kn">ssl_session_cache</span><span class="w">    </span><span class="s">shared:SSL:1m</span><span class="p">;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="kn">ssl_session_timeout</span><span class="w">  </span><span class="mi">5m</span><span class="p">;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="kn">ssl_ciphers</span><span class="w">  </span><span class="s">HIGH:!aNULL:!MD5</span><span class="p">;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w">  </span><span class="no">on</span><span class="p">;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:5000/</span><span class="p">;</span><span class="w">  </span><span class="c1"># 转发到 5000 端口对应的程序上</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>配置完成后使用 <code>nginx -s reload</code> 重启 Nginx 即可。</p>
+<h2 id="http-自动跳转-https">http 自动跳转 https<a class="headerlink" href="#http-自动跳转-https" title="页面定位">&para;</a></h2>
+<p>添加一个 server 块，内容如下：</p>
+<div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="s">https://</span><span class="nv">$host$request_uri</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
 
 
 
@@ -5842,7 +5847,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年2月25日 03:56:29">2025年2月25日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月21日 16:05:03">2025年3月21日</span>
   </span>
 
     
@@ -5852,7 +5857,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年6月9日 08:52:37">2024年6月9日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月21日 16:05:03">2025年3月21日</span>
   </span>
 
     
@@ -5967,7 +5972,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../devcpp-lqb-config/" class="md-footer__link md-footer__link--prev" aria-label="上一页: DevCpp 蓝桥杯竞赛配置">
+          <a href="../nginx-setup/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Nginx 配置指南">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5977,20 +5982,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                DevCpp 蓝桥杯竞赛配置
+                Nginx 配置指南
               </div>
             </div>
           </a>
         
         
           
-          <a href="../clion/clion-config/" class="md-footer__link md-footer__link--next" aria-label="下一页: CLion 配置指南">
+          <a href="../../../dev-tools/" class="md-footer__link md-footer__link--next" aria-label="下一页: 工具专栏简介">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                CLion 配置指南
+                工具专栏简介
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -6048,12 +6053,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "content.code.copy", "content.code.select", "content.tooltips", "content.action.edit", "content.action.view", "search.highlight", "search.share", "search.suggest", "toc.follow", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "content.code.copy", "content.code.select", "content.tooltips", "content.action.edit", "content.action.view", "search.highlight", "search.share", "search.suggest", "toc.follow", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
-        <script src="../../asserts/javascripts/katex.js"></script>
+        <script src="../../../asserts/javascripts/katex.js"></script>
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.js"></script>
       
@@ -6061,11 +6066,11 @@
       
         <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
       
-        <script src="../../asserts/javascripts/link_blank.js"></script>
+        <script src="../../../asserts/javascripts/link_blank.js"></script>
       
-        <script src="../../asserts/javascripts/baidu_tongji.js"></script>
+        <script src="../../../asserts/javascripts/baidu_tongji.js"></script>
       
-        <script src="../../asserts/javascripts/robot.js"></script>
+        <script src="../../../asserts/javascripts/robot.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

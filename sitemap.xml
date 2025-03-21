@@ -313,31 +313,11 @@
          <lastmod>2025-03-21</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/dev-tools/devcpp-lqb-config/</loc>
-         <lastmod>2025-03-21</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/dev-tools/idle-lqb-config/</loc>
-         <lastmod>2025-03-21</lastmod>
-    </url>
-    <url>
          <loc>https://wiki.dwj601.cn/dev-tools/jetbrains-license/</loc>
          <lastmod>2025-03-21</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/dev-tools/windows-setup/</loc>
-         <lastmod>2025-03-21</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/dev-tools/clion/clion-config/</loc>
-         <lastmod>2025-03-21</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/dev-tools/clion/solve-clion-problems/</loc>
-         <lastmod>2025-03-21</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/dev-tools/git/git-basic/</loc>
+         <loc>https://wiki.dwj601.cn/dev-tools/git/git-commands/</loc>
          <lastmod>2025-03-21</lastmod>
     </url>
     <url>
@@ -350,6 +330,22 @@
     </url>
     <url>
          <loc>https://wiki.dwj601.cn/dev-tools/git/solve-git-problems/</loc>
+         <lastmod>2025-03-21</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/dev-tools/setup/clion-setup/</loc>
+         <lastmod>2025-03-21</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/dev-tools/setup/devcpp-setup/</loc>
+         <lastmod>2025-03-21</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/dev-tools/setup/idle-setup/</loc>
+         <lastmod>2025-03-21</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.dwj601.cn/dev-tools/setup/windows-setup/</loc>
          <lastmod>2025-03-21</lastmod>
     </url>
     <url>
@@ -461,35 +457,23 @@
          <lastmod>2025-03-21</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/operation/nginx/nginx-basic/</loc>
+         <loc>https://wiki.dwj601.cn/operation/gnu-linux-basic/</loc>
          <lastmod>2025-03-21</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/operation/nginx/nginx-command/</loc>
+         <loc>https://wiki.dwj601.cn/operation/shell-basic/</loc>
          <lastmod>2025-03-21</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/operation/nginx/solve-nginx-reload-error/</loc>
+         <loc>https://wiki.dwj601.cn/operation/nginx/nginx-commands/</loc>
          <lastmod>2025-03-21</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/operation/nginx/whereis-nginx/</loc>
+         <loc>https://wiki.dwj601.cn/operation/nginx/nginx-examples/</loc>
          <lastmod>2025-03-21</lastmod>
     </url>
     <url>
-         <loc>https://wiki.dwj601.cn/operation/safe/solve-server-invade/</loc>
-         <lastmod>2025-03-21</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/operation/shell/shell-basic/</loc>
-         <lastmod>2025-03-21</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/operation/shell/solve-shell-problems/</loc>
-         <lastmod>2025-03-21</lastmod>
-    </url>
-    <url>
-         <loc>https://wiki.dwj601.cn/operation/shell/ubuntu-guide/</loc>
+         <loc>https://wiki.dwj601.cn/operation/nginx/nginx-setup/</loc>
          <lastmod>2025-03-21</lastmod>
     </url>
 </urlset>

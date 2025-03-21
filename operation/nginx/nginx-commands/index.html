@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://wiki.dwj601.cn/operation/nginx/nginx-basic/">
+        <link rel="canonical" href="https://wiki.dwj601.cn/operation/nginx/nginx-commands/">
       
       
-        <link rel="prev" href="../../">
+        <link rel="prev" href="../../gnu-linux-basic/">
       
       
-        <link rel="next" href="../nginx-command/">
+        <link rel="next" href="../nginx-setup/">
       
       
       <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Nginx 基础 - Open Wiki Community</title>
+        <title>Nginx 常用命令 - Open Wiki Community</title>
       
     
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#基本概念" class="md-skip">
+        <a href="#nginx---h" class="md-skip">
           跳转至
         </a>
       
@@ -167,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Nginx 基础
+              Nginx 常用命令
             
           </span>
         </div>
@@ -4835,14 +4835,56 @@
                 
   
   
-    
   
   
-  
-    
-    
-      
+    <li class="md-nav__item">
+      <a href="../../shell-basic/" class="md-nav__link">
         
+  
+  <span class="md-ellipsis">
+    Shell 基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gnu-linux-basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GNU/Linux 基础 (Ubuntu)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
       
         
       
@@ -4865,10 +4907,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -4880,8 +4922,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_4">
             <span class="md-nav__icon md-icon"></span>
             Nginx
           </label>
@@ -4905,7 +4947,7 @@
           
   
   <span class="md-ellipsis">
-    Nginx 基础
+    Nginx 常用命令
     
   </span>
   
@@ -4917,7 +4959,7 @@
         
   
   <span class="md-ellipsis">
-    Nginx 基础
+    Nginx 常用命令
     
   </span>
   
@@ -4940,46 +4982,100 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#基本概念" class="md-nav__link">
+  <a href="#nginx---h" class="md-nav__link">
     <span class="md-ellipsis">
-      基本概念
+      nginx -?,-h
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#反向代理实战" class="md-nav__link">
+  <a href="#nginx--v" class="md-nav__link">
     <span class="md-ellipsis">
-      反向代理实战
+      nginx -v
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="反向代理实战">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--v_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -V
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--t" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -t
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--t_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -T
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--q" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -q
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--s" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -s &lt;signal&gt;
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="nginx -s &lt;signal&gt;">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-创建多个二级域名" class="md-nav__link">
+  <a href="#nginx--s-stop" class="md-nav__link">
     <span class="md-ellipsis">
-      (1) 创建多个二级域名
+      nginx -s stop
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-解析二级域名绑定到服务器上" class="md-nav__link">
+  <a href="#nginx--s-quit" class="md-nav__link">
     <span class="md-ellipsis">
-      (2) 解析二级域名绑定到服务器上
+      nginx -s quit
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-不同域名访问不同网站" class="md-nav__link">
+  <a href="#nginx--s-reopen" class="md-nav__link">
     <span class="md-ellipsis">
-      (3) 不同域名访问不同网站
+      nginx -s reopen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx--s-reload" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -s reload
     </span>
   </a>
   
@@ -4991,9 +5087,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#配置-http-自动跳转-https" class="md-nav__link">
+  <a href="#nginx--p" class="md-nav__link">
     <span class="md-ellipsis">
-      配置 http 自动跳转 https
+      nginx -p &lt;prefix&gt;
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--c" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -c &lt;filename&gt;
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--g" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -g &lt;directives&gt;
     </span>
   </a>
   
@@ -5015,11 +5129,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../nginx-command/" class="md-nav__link">
+      <a href="../nginx-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Nginx 常用命令合集
+    Nginx 配置指南
     
   </span>
   
@@ -5037,237 +5151,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../solve-nginx-reload-error/" class="md-nav__link">
+      <a href="../nginx-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    解决 Nginx 重启报错
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../whereis-nginx/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    使用 apt 安装 Nginx 后的软件包是如何布局的
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    安全
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_3">
-            <span class="md-nav__icon md-icon"></span>
-            安全
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../safe/solve-server-invade/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    解决服务器入侵攻击
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    CLI
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_4">
-            <span class="md-nav__icon md-icon"></span>
-            CLI
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../shell/shell-basic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Shell 基础
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../shell/solve-shell-problems/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    解决 shell 相关问题
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../shell/ubuntu-guide/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ubuntu 使用指南
+    Nginx 实战案例
     
   </span>
   
@@ -5304,12 +5192,6 @@
       
         
           
-        
-      
-        
-      
-        
-      
         
       
         
@@ -5369,28 +5251,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/windows-setup/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Windows 配置指南
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../dev-tools/jetbrains-license/" class="md-nav__link">
         
   
@@ -5412,52 +5272,12 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../dev-tools/devcpp-lqb-config/" class="md-nav__link">
+    
+    
+      
         
-  
-  <span class="md-ellipsis">
-    DevCpp 蓝桥杯竞赛配置
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../dev-tools/idle-lqb-config/" class="md-nav__link">
+      
         
-  
-  <span class="md-ellipsis">
-    IDLE 蓝桥杯竞赛配置
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
       
         
       
@@ -5475,14 +5295,14 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
         
           
-          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    CLion
+    配置指南
     
   </span>
   
@@ -5490,10 +5310,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
-            CLion
+            配置指南
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5504,11 +5324,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/clion/clion-config/" class="md-nav__link">
+      <a href="../../../dev-tools/setup/windows-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    CLion 配置指南
+    配置 Windows
     
   </span>
   
@@ -5526,11 +5346,55 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/clion/solve-clion-problems/" class="md-nav__link">
+      <a href="../../../dev-tools/setup/devcpp-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    解决 CLion 相关问题
+    配置 DevCpp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev-tools/setup/idle-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配置 IDLE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev-tools/setup/clion-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配置 CLion
     
   </span>
   
@@ -5578,10 +5442,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
         
           
-          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -5593,8 +5457,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
             <span class="md-nav__icon md-icon"></span>
             Git
           </label>
@@ -5607,11 +5471,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/git/git-basic/" class="md-nav__link">
+      <a href="../../../dev-tools/git/git-commands/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Git 基础
+    Git 常用命令
     
   </span>
   
@@ -5633,7 +5497,7 @@
         
   
   <span class="md-ellipsis">
-    Git 的 Pull Request 是什么
+    Git PR 解读
     
   </span>
   
@@ -5677,7 +5541,7 @@
         
   
   <span class="md-ellipsis">
-    解决 Git 相关问题
+    Git 问题解决
     
   </span>
   
@@ -5751,46 +5615,100 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#基本概念" class="md-nav__link">
+  <a href="#nginx---h" class="md-nav__link">
     <span class="md-ellipsis">
-      基本概念
+      nginx -?,-h
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#反向代理实战" class="md-nav__link">
+  <a href="#nginx--v" class="md-nav__link">
     <span class="md-ellipsis">
-      反向代理实战
+      nginx -v
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="反向代理实战">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--v_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -V
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--t" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -t
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--t_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -T
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--q" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -q
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--s" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -s &lt;signal&gt;
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="nginx -s &lt;signal&gt;">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-创建多个二级域名" class="md-nav__link">
+  <a href="#nginx--s-stop" class="md-nav__link">
     <span class="md-ellipsis">
-      (1) 创建多个二级域名
+      nginx -s stop
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-解析二级域名绑定到服务器上" class="md-nav__link">
+  <a href="#nginx--s-quit" class="md-nav__link">
     <span class="md-ellipsis">
-      (2) 解析二级域名绑定到服务器上
+      nginx -s quit
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-不同域名访问不同网站" class="md-nav__link">
+  <a href="#nginx--s-reopen" class="md-nav__link">
     <span class="md-ellipsis">
-      (3) 不同域名访问不同网站
+      nginx -s reopen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx--s-reload" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -s reload
     </span>
   </a>
   
@@ -5802,9 +5720,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#配置-http-自动跳转-https" class="md-nav__link">
+  <a href="#nginx--p" class="md-nav__link">
     <span class="md-ellipsis">
-      配置 http 自动跳转 https
+      nginx -p &lt;prefix&gt;
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--c" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -c &lt;filename&gt;
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx--g" class="md-nav__link">
+    <span class="md-ellipsis">
+      nginx -g &lt;directives&gt;
     </span>
   </a>
   
@@ -5826,7 +5762,7 @@
 
 
   
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/operation/nginx/nginx-basic.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/operation/nginx/nginx-commands.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5835,34 +5771,18 @@
     
       
     
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/operation/nginx/nginx-basic.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/operation/nginx/nginx-commands.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-  <h1>Nginx 基础</h1>
+  <h1>Nginx 常用命令</h1>
 
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/nginx.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-artical/nginx.png" /></a></p>
-<h2 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="页面定位">&para;</a></h2>
-<p>在正式开始介绍 nginx 时，有必要了解一下 <strong>代理系统</strong> 这个概念。所谓代理，简单来说就是连接用户与服务器的中间媒介。有正向代理、反向代理等实际应用。与以往传统的用户与服务器直连的方式不同，通过代理系统可以完成很多前者无法完成的任务，同时也有性能上质的飞跃，下面从理论的角度介绍代理系统的实际应用示例以及优势。例如：</p>
-<p><strong>正向代理</strong>：所谓的正向代理其实就是 <strong>面向用户</strong> 进行运作。常见的正向代理应用比如 VPN 服务就是很典型的一种。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120927.png" data-type="image" data-width="auto" data-height="auto" data-title="正向代理" data-desc-position="bottom"><img alt="正向代理" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120927.png" /></a></p>
-<p><strong>反向代理</strong>：所谓的反向代理的与上述正向代理对应，就是 <strong>面向服务器</strong> 进行运作。常见的反向代理应用比如 Nginx 与 Apache 服务器就是典型的应用。通过选择性的配置性的从服务器获取数据返回给前端渲染给用户，来实现负载均衡、加速优化等效果</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120846.png" data-type="image" data-width="auto" data-height="auto" data-title="反向代理" data-desc-position="bottom"><img alt="反向代理" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120846.png" /></a></p>
-<h2 id="反向代理实战">反向代理实战<a class="headerlink" href="#反向代理实战" title="页面定位">&para;</a></h2>
-<p>我们以 <strong>单服务器+单顶级域名 = 多网站</strong> 为目标驱动，简单实现一下 nginx 反向代理的功能。</p>
-<p>参考：<a href="https://blog.csdn.net/qq_38431321/article/details/123018259">通过 Nginx 在一台服务器部署多个 Web 应用</a></p>
-<h3 id="1-创建多个二级域名">(1) 创建多个二级域名<a class="headerlink" href="#1-创建多个二级域名" title="页面定位">&para;</a></h3>
-<p>多个网站可以通过 <strong>二级域名</strong> 的形式只依赖一个 <strong>顶级域名</strong> 实现。例如顶级域名为 <code>baidu.com</code>，二级域名为 <code>mcn.baidu.com</code>、<code>career.baidu.com</code> 等等。</p>
-<h3 id="2-解析二级域名绑定到服务器上">(2) 解析二级域名绑定到服务器上<a class="headerlink" href="#2-解析二级域名绑定到服务器上" title="页面定位">&para;</a></h3>
-<p>每一个 <strong>二级域名</strong> 都需要指向我们自己的服务器，这需要我们将二级域名解析到服务器对应的 <strong>IP 地址</strong> 上才能进行后续的「域名访问网站」的操作。例如，我们将 docs 二级域名绑定到服务器 <code>47.113.205.127</code> 上，已达到后续可以访问 <code>dwj601.lova</code>、<code>www.dwj601.lova</code> 和 <code>docs.dwj601.lova</code> 指向的不同网站的目的。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126611.png" data-type="image" data-width="auto" data-height="auto" data-title="将二级域名绑定到服务器" data-desc-position="bottom"><img alt="将二级域名绑定到服务器" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126611.png" /></a></p>
-<h3 id="3-不同域名访问不同网站">(3) 不同域名访问不同网站<a class="headerlink" href="#3-不同域名访问不同网站" title="页面定位">&para;</a></h3>
-<p>现在所有的二级域名都指向了同一台服务器，那又怎么做到访问不同的网站呢？由于一台电脑理论上可以运行多个网站程序，而每一个网站程序本质上就是一个资源文件夹，即：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126612.png" data-type="image" data-width="auto" data-height="auto" data-title="不同的网站对应不同的资源文件夹" data-desc-position="bottom"><img alt="不同的网站对应不同的资源文件夹" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126612.png" /></a></p>
-<p>那如何根据二级域名区分访问哪一个资源文件夹呢？这时 nginx 代理功能就发挥作用了。我们进行 nginx 代理服务器的配置。配置文件为 <code>/etc/nginx/nginx.conf</code>。按照上述需求，假如此时我们需要 <code>docs.example.com</code> 访问文档网站，<code>www.example.com</code> 与 <code>example.com</code> 都访问主站，我们可以这样进行 nginx 的配置：</p>
+<p>在 Ubuntu22.04 操作系统上，我们使用 Nginx 需要不断使用其相关命令，本文介绍一下常用的几个命令。</p>
+<h2 id="nginx---h"><code>nginx -?,-h</code><a class="headerlink" href="#nginx---h" title="页面定位">&para;</a></h2>
+<p>我们用 <code>nginx -h</code> 或 <code>nginx -?</code> 来查看当前 Nginx 的版本和全部的指令简介：</p>
 <div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -5877,125 +5797,257 @@
 <span class="normal"><a href="#__codelineno-0-12">12</a></span>
 <span class="normal"><a href="#__codelineno-0-13">13</a></span>
 <span class="normal"><a href="#__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#__codelineno-0-20">20</a></span>
-<span class="normal"><a href="#__codelineno-0-21">21</a></span>
-<span class="normal"><a href="#__codelineno-0-22">22</a></span>
-<span class="normal"><a href="#__codelineno-0-23">23</a></span>
-<span class="normal"><a href="#__codelineno-0-24">24</a></span>
-<span class="normal"><a href="#__codelineno-0-25">25</a></span>
-<span class="normal"><a href="#__codelineno-0-26">26</a></span>
-<span class="normal"><a href="#__codelineno-0-27">27</a></span>
-<span class="normal"><a href="#__codelineno-0-28">28</a></span>
-<span class="normal"><a href="#__codelineno-0-29">29</a></span>
-<span class="normal"><a href="#__codelineno-0-30">30</a></span>
-<span class="normal"><a href="#__codelineno-0-31">31</a></span>
-<span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal"><a href="#__codelineno-0-36">36</a></span>
-<span class="normal"><a href="#__codelineno-0-37">37</a></span>
-<span class="normal"><a href="#__codelineno-0-38">38</a></span>
-<span class="normal"><a href="#__codelineno-0-39">39</a></span>
-<span class="normal"><a href="#__codelineno-0-40">40</a></span>
-<span class="normal"><a href="#__codelineno-0-41">41</a></span>
-<span class="normal"><a href="#__codelineno-0-42">42</a></span>
-<span class="normal"><a href="#__codelineno-0-43">43</a></span>
-<span class="normal"><a href="#__codelineno-0-44">44</a></span>
-<span class="normal"><a href="#__codelineno-0-45">45</a></span>
-<span class="normal"><a href="#__codelineno-0-46">46</a></span>
-<span class="normal"><a href="#__codelineno-0-47">47</a></span>
-<span class="normal"><a href="#__codelineno-0-48">48</a></span>
-<span class="normal"><a href="#__codelineno-0-49">49</a></span>
-<span class="normal"><a href="#__codelineno-0-50">50</a></span>
-<span class="normal"><a href="#__codelineno-0-51">51</a></span>
-<span class="normal"><a href="#__codelineno-0-52">52</a></span>
-<span class="normal"><a href="#__codelineno-0-53">53</a></span>
-<span class="normal"><a href="#__codelineno-0-54">54</a></span>
-<span class="normal"><a href="#__codelineno-0-55">55</a></span>
-<span class="normal"><a href="#__codelineno-0-56">56</a></span>
-<span class="normal"><a href="#__codelineno-0-57">57</a></span>
-<span class="normal"><a href="#__codelineno-0-58">58</a></span>
-<span class="normal"><a href="#__codelineno-0-59">59</a></span>
-<span class="normal"><a href="#__codelineno-0-60">60</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">#----- docs.example.com 访问文档网站 -----#</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w">       </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span><span class="w">             </span><span class="c1"># 监听的端口</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w">  </span><span class="s">docs.example.com</span><span class="p">;</span><span class="w">    </span><span class="c1"># 监听的域名</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="c1"># ssl证书的相关文件路径</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">      </span><span class="s">/usr/local/nginx/ssl/test.cn_bundle.pem</span><span class="p">;</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w">  </span><span class="s">/usr/local/nginx/ssl/test.cn.key</span><span class="p">;</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="c1"># ssl相关配置</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="kn">ssl_session_cache</span><span class="w">    </span><span class="s">shared:SSL:1m</span><span class="p">;</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="kn">ssl_session_timeout</span><span class="w">  </span><span class="mi">5m</span><span class="p">;</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="kn">ssl_ciphers</span><span class="w">  </span><span class="s">HIGH:!aNULL:!MD5</span><span class="p">;</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w">  </span><span class="no">on</span><span class="p">;</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="c1"># 项目路径 - 以静态资源为例</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">        </span><span class="kn">root</span><span class="w"> </span><span class="s">/usr/web/docs</span><span class="p">;</span><span class="w">           </span><span class="c1"># 网站根目录</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="p">}</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="c1">#----- www.example.com 访问主站 -----#</span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">    </span><span class="kn">listen</span><span class="w">       </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span><span class="w">             </span><span class="c1"># 监听的端口</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="kn">server_name</span><span class="w">  </span><span class="s">www.example.com</span><span class="p">;</span><span class="w">     </span><span class="c1"># 监听的网址</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">    </span><span class="c1"># ssl证书的相关文件路径</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">      </span><span class="s">/usr/local/nginx/ssl/b.test.cn_bundle.pem</span><span class="p">;</span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w">  </span><span class="s">/usr/local/nginx/ssl/b.test.cn.key</span><span class="p">;</span>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">    </span><span class="kn">ssl_session_cache</span><span class="w">    </span><span class="s">shared:SSL:1m</span><span class="p">;</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">    </span><span class="kn">ssl_session_timeout</span><span class="w">  </span><span class="mi">5m</span><span class="p">;</span>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">    </span><span class="kn">ssl_ciphers</span><span class="w">  </span><span class="s">HIGH:!aNULL:!MD5</span><span class="p">;</span>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">    </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w">  </span><span class="no">on</span><span class="p">;</span>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">        </span><span class="kn">root</span><span class="w"> </span><span class="s">/usr/web/www</span><span class="p">;</span><span class="w">            </span><span class="c1"># 根目录</span>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="p">}</span>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a>
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="c1">#----- example.com 通过重定向的方式也访问主站 -----#</span>
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">    </span><span class="kn">listen</span><span class="w">       </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span><span class="w">             </span><span class="c1"># 监听的端口</span>
-</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">    </span><span class="kn">server_name</span><span class="w">  </span><span class="s">example.com</span><span class="p">;</span><span class="w">         </span><span class="c1"># 监听的网址</span>
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">    </span><span class="c1"># ssl证书的相关文件路径</span>
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">      </span><span class="s">/usr/local/nginx/ssl/b.test.cn_bundle.pem</span><span class="p">;</span>
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w">  </span><span class="s">/usr/local/nginx/ssl/b.test.cn.key</span><span class="p">;</span>
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50"></a>
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="w">    </span><span class="c1"># ssl相关配置</span>
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">    </span><span class="kn">ssl_session_cache</span><span class="w">    </span><span class="s">shared:SSL:1m</span><span class="p">;</span>
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="w">    </span><span class="kn">ssl_session_timeout</span><span class="w">  </span><span class="mi">5m</span><span class="p">;</span>
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">    </span><span class="kn">ssl_ciphers</span><span class="w">  </span><span class="s">HIGH:!aNULL:!MD5</span><span class="p">;</span>
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="w">    </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w">  </span><span class="no">on</span><span class="p">;</span>
-</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56"></a>
-</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w">  </span><span class="s">https://www.example.com</span><span class="w">  </span><span class="c1"># 重定向到 example.com</span>
-</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="w">    </span><span class="err">}</span>
-</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="err">}</span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">root@dwj2:~</span><span class="c1"># nginx -h</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="s">nginx</span><span class="w"> </span><span class="s">version:</span><span class="w"> </span><span class="s">nginx/1.18.0</span><span class="w"> </span><span class="s">(Ubuntu)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="s">Usage:</span><span class="w"> </span><span class="s">nginx</span><span class="w"> </span><span class="s">[-?hvVtTq]</span><span class="w"> </span><span class="s">[-s</span><span class="w"> </span><span class="s">signal]</span><span class="w"> </span><span class="s">[-c</span><span class="w"> </span><span class="s">filename]</span><span class="w"> </span><span class="s">[-p</span><span class="w"> </span><span class="s">prefix]</span><span class="w"> </span><span class="s">[-g</span><span class="w"> </span><span class="s">directives]</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="s">Options:</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="s">-?,-h</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="s">this</span><span class="w"> </span><span class="s">help</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">  </span><span class="s">-v</span><span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="s">show</span><span class="w"> </span><span class="s">version</span><span class="w"> </span><span class="s">and</span><span class="w"> </span><span class="s">exit</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">  </span><span class="s">-V</span><span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="s">show</span><span class="w"> </span><span class="s">version</span><span class="w"> </span><span class="s">and</span><span class="w"> </span><span class="s">configure</span><span class="w"> </span><span class="s">options</span><span class="w"> </span><span class="s">then</span><span class="w"> </span><span class="s">exit</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="s">-t</span><span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="s">test</span><span class="w"> </span><span class="s">configuration</span><span class="w"> </span><span class="s">and</span><span class="w"> </span><span class="s">exit</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span><span class="s">-T</span><span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="s">test</span><span class="w"> </span><span class="s">configuration,</span><span class="w"> </span><span class="s">dump</span><span class="w"> </span><span class="s">it</span><span class="w"> </span><span class="s">and</span><span class="w"> </span><span class="s">exit</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">  </span><span class="s">-q</span><span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="s">suppress</span><span class="w"> </span><span class="s">non-error</span><span class="w"> </span><span class="s">messages</span><span class="w"> </span><span class="s">during</span><span class="w"> </span><span class="s">configuration</span><span class="w"> </span><span class="s">testing</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">  </span><span class="s">-s</span><span class="w"> </span><span class="s">signal</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="s">send</span><span class="w"> </span><span class="s">signal</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="s">a</span><span class="w"> </span><span class="s">master</span><span class="w"> </span><span class="s">process:</span><span class="w"> </span><span class="s">stop,</span><span class="w"> </span><span class="s">quit,</span><span class="w"> </span><span class="s">reopen,</span><span class="w"> </span><span class="s">reload</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">  </span><span class="s">-p</span><span class="w"> </span><span class="s">prefix</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="s">set</span><span class="w"> </span><span class="s">prefix</span><span class="w"> </span><span class="s">path</span><span class="w"> </span><span class="s">(default:</span><span class="w"> </span><span class="s">/usr/share/nginx/)</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">  </span><span class="s">-c</span><span class="w"> </span><span class="s">filename</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s">set</span><span class="w"> </span><span class="s">configuration</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">(default:</span><span class="w"> </span><span class="s">/etc/nginx/nginx.conf)</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">  </span><span class="s">-g</span><span class="w"> </span><span class="s">directives</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">set</span><span class="w"> </span><span class="s">global</span><span class="w"> </span><span class="s">directives</span><span class="w"> </span><span class="s">out</span><span class="w"> </span><span class="s">of</span><span class="w"> </span><span class="s">configuration</span><span class="w"> </span><span class="s">file</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="配置-http-自动跳转-https">配置 http 自动跳转 https<a class="headerlink" href="#配置-http-自动跳转-https" title="页面定位">&para;</a></h2>
-<p>添加一个 server 块，内容如下：</p>
+<h2 id="nginx--v"><code>nginx -v</code><a class="headerlink" href="#nginx--v" title="页面定位">&para;</a></h2>
+<p>我们用 <code>nginx -v</code> 来查看当前 Nginx 的版本信息，往往用来检测 Nginx 是否安装成功：</p>
 <div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="s">https://</span><span class="nv">$host$request_uri</span><span class="p">;</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">root@dwj2:~</span><span class="c1"># nginx -v</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="s">nginx</span><span class="w"> </span><span class="s">version:</span><span class="w"> </span><span class="s">nginx/1.18.0</span><span class="w"> </span><span class="s">(Ubuntu)</span>
 </span></code></pre></div></td></tr></table></div>
-<p>之后使用 <code>nginx -s reload</code> 重启 nginx 即可。</p>
+<h2 id="nginx--v_1"><code>nginx -V</code><a class="headerlink" href="#nginx--v_1" title="页面定位">&para;</a></h2>
+<p>我们用 <code>nginx -V</code> 来查看当前 Nginx 版本信息，同时显示配置信息，往往用来查看配置文件的存放路径：</p>
+<div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">root@dwj2:~</span><span class="c1"># nginx -V</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="s">nginx</span><span class="w"> </span><span class="s">version:</span><span class="w"> </span><span class="s">nginx/1.18.0</span><span class="w"> </span><span class="s">(Ubuntu)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="s">built</span><span class="w"> </span><span class="s">with</span><span class="w"> </span><span class="s">OpenSSL</span><span class="w"> </span><span class="mi">3</span><span class="s">.0.2</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="s">Mar</span><span class="w"> </span><span class="mi">2022</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="s">TLS</span><span class="w"> </span><span class="s">SNI</span><span class="w"> </span><span class="s">support</span><span class="w"> </span><span class="s">enabled</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="s">configure</span><span class="w"> </span><span class="s">arguments:</span><span class="w"> </span><span class="s">--with-cc-opt=&#39;-g</span><span class="w"> </span><span class="s">-O2</span><span class="w"> </span><span class="s">-ffile-prefix-map=/build/nginx-zctdR4/nginx-1.18.0=.</span><span class="w"> </span><span class="s">-flto=auto</span><span class="w"> </span><span class="s">-ffat-lto-objects</span><span class="w"> </span><span class="s">-flto=auto</span><span class="w"> </span><span class="s">-ffat-lto-objects</span><span class="w"> </span><span class="s">-fstack-protector-strong</span><span class="w"> </span><span class="s">-Wformat</span><span class="w"> </span><span class="s">-Werror=format-security</span><span class="w"> </span><span class="s">-fPIC</span><span class="w"> </span><span class="s">-Wdate-time</span><span class="w"> </span><span class="s">-D_FORTIFY_SOURCE=2&#39;</span><span class="w"> </span><span class="s">--with-ld-opt=&#39;-Wl,-Bsymbolic-functions</span><span class="w"> </span><span class="s">-flto=auto</span><span class="w"> </span><span class="s">-ffat-lto-objects</span><span class="w"> </span><span class="s">-flto=auto</span><span class="w"> </span><span class="s">-Wl,-z,relro</span><span class="w"> </span><span class="s">-Wl,-z,now</span><span class="w"> </span><span class="s">-fPIC&#39;</span><span class="w"> </span><span class="s">--prefix=/usr/share/nginx</span><span class="w"> </span><span class="s">--conf-path=/etc/nginx/nginx.conf</span><span class="w"> </span><span class="s">--http-log-path=/var/log/nginx/access.log</span><span class="w"> </span><span class="s">--error-log-path=/var/log/nginx/error.log</span><span class="w"> </span><span class="s">--lock-path=/var/lock/nginx.lock</span><span class="w"> </span><span class="s">--pid-path=/run/nginx.pid</span><span class="w"> </span><span class="s">--modules-path=/usr/lib/nginx/modules</span><span class="w"> </span><span class="s">--http-client-body-temp-path=/var/lib/nginx/body</span><span class="w"> </span><span class="s">--http-fastcgi-temp-path=/var/lib/nginx/fastcgi</span><span class="w"> </span><span class="s">--http-proxy-temp-path=/var/lib/nginx/proxy</span><span class="w"> </span><span class="s">--http-scgi-temp-path=/var/lib/nginx/scgi</span><span class="w"> </span><span class="s">--http-uwsgi-temp-path=/var/lib/nginx/uwsgi</span><span class="w"> </span><span class="s">--with-compat</span><span class="w"> </span><span class="s">--with-debug</span><span class="w"> </span><span class="s">--with-pcre-jit</span><span class="w"> </span><span class="s">--with-http_ssl_module</span><span class="w"> </span><span class="s">--with-http_stub_status_module</span><span class="w"> </span><span class="s">--with-http_realip_module</span><span class="w"> </span><span class="s">--with-http_auth_request_module</span><span class="w"> </span><span class="s">--with-http_v2_module</span><span class="w"> </span><span class="s">--with-http_dav_module</span><span class="w"> </span><span class="s">--with-http_slice_module</span><span class="w"> </span><span class="s">--with-threads</span><span class="w"> </span><span class="s">--add-dynamic-module=/build/nginx-zctdR4/nginx-1.18.0/debian/modules/http-geoip2</span><span class="w"> </span><span class="s">--with-http_addition_module</span><span class="w"> </span><span class="s">--with-http_gunzip_module</span><span class="w"> </span><span class="s">--with-http_gzip_static_module</span><span class="w"> </span><span class="s">--with-http_sub_module</span>
+</span></code></pre></div></td></tr></table></div>
+<p>按照上面的内容分行介绍：</p>
+<div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span>
+<span class="normal"><a href="#__codelineno-3-36">36</a></span>
+<span class="normal"><a href="#__codelineno-3-37">37</a></span>
+<span class="normal"><a href="#__codelineno-3-38">38</a></span>
+<span class="normal"><a href="#__codelineno-3-39">39</a></span>
+<span class="normal"><a href="#__codelineno-3-40">40</a></span>
+<span class="normal"><a href="#__codelineno-3-41">41</a></span>
+<span class="normal"><a href="#__codelineno-3-42">42</a></span>
+<span class="normal"><a href="#__codelineno-3-43">43</a></span>
+<span class="normal"><a href="#__codelineno-3-44">44</a></span>
+<span class="normal"><a href="#__codelineno-3-45">45</a></span>
+<span class="normal"><a href="#__codelineno-3-46">46</a></span>
+<span class="normal"><a href="#__codelineno-3-47">47</a></span>
+<span class="normal"><a href="#__codelineno-3-48">48</a></span>
+<span class="normal"><a href="#__codelineno-3-49">49</a></span>
+<span class="normal"><a href="#__codelineno-3-50">50</a></span>
+<span class="normal"><a href="#__codelineno-3-51">51</a></span>
+<span class="normal"><a href="#__codelineno-3-52">52</a></span>
+<span class="normal"><a href="#__codelineno-3-53">53</a></span>
+<span class="normal"><a href="#__codelineno-3-54">54</a></span>
+<span class="normal"><a href="#__codelineno-3-55">55</a></span>
+<span class="normal"><a href="#__codelineno-3-56">56</a></span>
+<span class="normal"><a href="#__codelineno-3-57">57</a></span>
+<span class="normal"><a href="#__codelineno-3-58">58</a></span>
+<span class="normal"><a href="#__codelineno-3-59">59</a></span>
+<span class="normal"><a href="#__codelineno-3-60">60</a></span>
+<span class="normal"><a href="#__codelineno-3-61">61</a></span>
+<span class="normal"><a href="#__codelineno-3-62">62</a></span>
+<span class="normal"><a href="#__codelineno-3-63">63</a></span>
+<span class="normal"><a href="#__codelineno-3-64">64</a></span>
+<span class="normal"><a href="#__codelineno-3-65">65</a></span>
+<span class="normal"><a href="#__codelineno-3-66">66</a></span>
+<span class="normal"><a href="#__codelineno-3-67">67</a></span>
+<span class="normal"><a href="#__codelineno-3-68">68</a></span>
+<span class="normal"><a href="#__codelineno-3-69">69</a></span>
+<span class="normal"><a href="#__codelineno-3-70">70</a></span>
+<span class="normal"><a href="#__codelineno-3-71">71</a></span>
+<span class="normal"><a href="#__codelineno-3-72">72</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1"># 版本信息</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">nginx</span><span class="w"> </span><span class="s">version:</span><span class="w"> </span><span class="s">nginx/1.18.0</span><span class="w"> </span><span class="s">(Ubuntu)</span><span class="w">    </span><span class="c1"># 运行在 Ubuntu 系统上的 nginx 且版本为 1.18.0</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1"># 编译选项</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="s">built</span><span class="w"> </span><span class="s">with</span><span class="w"> </span><span class="s">OpenSSL</span><span class="w"> </span><span class="mi">3</span><span class="s">.0.2</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="s">Mar</span><span class="w"> </span><span class="mi">2022</span><span class="w">    </span><span class="c1"># 使用了 OpenSSL 3.0.2 进行构建，构建日期为 2022 年 3 月 15 日</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="s">TLS</span><span class="w"> </span><span class="s">SNI</span><span class="w"> </span><span class="s">support</span><span class="w"> </span><span class="s">enabled</span><span class="w">                 </span><span class="c1"># 启用了 TLS SNI 支持，这是支持多个域名共享一个 IP 地址的技术</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1"># 配置参数</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="s">configure</span><span class="w"> </span><span class="s">arguments:</span><span class="w"> </span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1"># 编译器选项</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="s">--with-cc-opt=&#39;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span><span class="s">-g</span><span class="w">                        </span><span class="c1"># 在编译过程中生成调试信息</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">    </span><span class="s">-O2</span><span class="w">                       </span><span class="c1"># 启用优化等级 2，以提高编译后代码的执行效率</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">    </span><span class="c1"># 指定了一个文件路径映射，用于在编译时将文件路径中的指定前缀替换成另一个前缀</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">    </span><span class="s">-ffile-prefix-map=/build/nginx-zctdR4/nginx-1.18.0=.</span><span class="w"> </span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">    </span><span class="s">-flto=auto</span><span class="w">                       </span><span class="c1"># 启用链接时优化 (Link Time Optimization)，以在链接阶段进一步优化代码</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">    </span><span class="s">-ffat-lto-objects</span><span class="w">                </span><span class="c1"># 生成链接时优化的对象文件</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">    </span><span class="s">-fstack-protector-strong</span><span class="w">         </span><span class="c1"># 启用强栈保护机制，以保护程序免受栈溢出攻击</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">    </span><span class="s">-Wformat</span><span class="w"> </span><span class="s">-Werror=format-security</span><span class="w"> </span><span class="c1"># 开启对格式化字符串的检查，并将格式化字符串的安全性问题视为错误</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">    </span><span class="s">-fPIC</span><span class="w">                            </span><span class="c1"># 生成位置无关代码，通常用于动态链接库的编译</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">    </span><span class="s">-Wdate-time</span><span class="w">                      </span><span class="c1"># 生成有关日期时间的警告</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">    </span><span class="s">-D_FORTIFY_SOURCE=2</span><span class="w">              </span><span class="c1"># 启用堆栈和字符串长度检查，用于提高程序的安全性</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="s">&#39;</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27"></a>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="c1"># 链接器选项</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="s">--with-ld-opt=&#39;</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">    </span><span class="s">-Wl,-Bsymbolic-functions</span><span class="w">         </span><span class="c1"># 通过 --export-dynamic 在 ELF 输出中创建动态符号表</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">    </span><span class="s">-flto=auto</span><span class="w">                       </span><span class="c1"># 启用链接时优化</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">    </span><span class="s">-ffat-lto-objects</span><span class="w">                </span><span class="c1"># 生成链接时优化的对象文件</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="w">    </span><span class="s">-Wl,-z,relro</span><span class="w">                     </span><span class="c1"># 在可执行文件中启用 RELRO (Relocation Read-Only)，以增加对 GOT (Global Offset Table) 的保护</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">    </span><span class="s">-Wl,-z,now</span><span class="w">                       </span><span class="c1"># 立即解析动态链接库，以减少动态链接的时间延迟</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">    </span><span class="s">-fPIC</span><span class="w">                            </span><span class="c1"># 同样是为了生成位置无关代码，以支持动态链接</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="s">&#39;</span>
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37"></a>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="s">--prefix=/usr/share/nginx</span><span class="w">                          </span><span class="c1"># Nginx 的安装路径</span>
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="s">--conf-path=/etc/nginx/nginx.conf</span><span class="w">                  </span><span class="c1"># 主配置文件的路径</span>
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="s">--http-log-path=/var/log/nginx/access.log</span><span class="w">          </span><span class="c1"># 访问日志的路径</span>
+</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="s">--error-log-path=/var/log/nginx/error.log</span><span class="w">          </span><span class="c1"># 错误日志的路径</span>
+</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="s">--lock-path=/var/lock/nginx.lock</span><span class="w">                   </span><span class="c1"># 锁文件的路径</span>
+</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="s">--pid-path=/run/nginx.pid</span><span class="w">                          </span><span class="c1"># 进程 ID 文件的路径</span>
+</span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="s">--modules-path=/usr/lib/nginx/modules</span><span class="w">              </span><span class="c1"># Nginx 模块的路径</span>
+</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45"></a>
+</span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="c1"># 不同类型临时文件的存储路径</span>
+</span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="s">--http-client-body-temp-path=/var/lib/nginx/body</span><span class="w"> </span>
+</span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="s">--http-fastcgi-temp-path=/var/lib/nginx/fastcgi</span><span class="w"> </span>
+</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="s">--http-proxy-temp-path=/var/lib/nginx/proxy</span><span class="w"> </span>
+</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="s">--http-scgi-temp-path=/var/lib/nginx/scgi</span><span class="w"> </span>
+</span><span id="__span-3-51"><a id="__codelineno-3-51" name="__codelineno-3-51"></a><span class="s">--http-uwsgi-temp-path=/var/lib/nginx/uwsgi</span><span class="w"> </span>
+</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52"></a>
+</span><span id="__span-3-53"><a id="__codelineno-3-53" name="__codelineno-3-53"></a><span class="s">--with-compat</span><span class="w"> </span>
+</span><span id="__span-3-54"><a id="__codelineno-3-54" name="__codelineno-3-54"></a><span class="s">--with-debug</span><span class="w">                      </span><span class="c1"># 启用了调试模式</span>
+</span><span id="__span-3-55"><a id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="s">--with-pcre-jit</span><span class="w">                   </span><span class="c1"># 启用了 PCRE JIT 编译优化</span>
+</span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56"></a><span class="s">--with-http_ssl_module</span><span class="w">            </span><span class="c1"># 启用了 SSL 模块，用于支持 HTTPS</span>
+</span><span id="__span-3-57"><a id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="s">--with-http_stub_status_module</span><span class="w">    </span><span class="c1"># 启用了状态模块，可以通过访问某个 URL 获取 Nginx 的状态信息</span>
+</span><span id="__span-3-58"><a id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="s">--with-http_realip_module</span><span class="w">         </span><span class="c1"># 启用了 RealIP 模块，用于获取客户端真实 IP 地址</span>
+</span><span id="__span-3-59"><a id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="s">--with-http_auth_request_module</span><span class="w">   </span><span class="c1"># 启用了 Auth Request 模块，用于在访问某个页面之前执行认证请求</span>
+</span><span id="__span-3-60"><a id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="s">--with-http_v2_module</span><span class="w">             </span><span class="c1"># 启用了 HTTP/2 模块</span>
+</span><span id="__span-3-61"><a id="__codelineno-3-61" name="__codelineno-3-61"></a><span class="s">--with-http_dav_module</span><span class="w">            </span><span class="c1"># 启用了 WebDAV 模块</span>
+</span><span id="__span-3-62"><a id="__codelineno-3-62" name="__codelineno-3-62"></a><span class="s">--with-http_slice_module</span><span class="w">          </span><span class="c1"># 启用了 Slice 模块，用于分片传输</span>
+</span><span id="__span-3-63"><a id="__codelineno-3-63" name="__codelineno-3-63"></a><span class="s">--with-threads</span><span class="w">                    </span><span class="c1"># 启用了多线程支持</span>
+</span><span id="__span-3-64"><a id="__codelineno-3-64" name="__codelineno-3-64"></a>
+</span><span id="__span-3-65"><a id="__codelineno-3-65" name="__codelineno-3-65"></a><span class="c1"># 添加了 GeoIP2 模块，用于根据 IP 地址获取地理位置信息</span>
+</span><span id="__span-3-66"><a id="__codelineno-3-66" name="__codelineno-3-66"></a><span class="s">--add-dynamic-module=/build/nginx-zctdR4/nginx-1.18.0/debian/modules/http-geoip2</span><span class="w"> </span>
+</span><span id="__span-3-67"><a id="__codelineno-3-67" name="__codelineno-3-67"></a>
+</span><span id="__span-3-68"><a id="__codelineno-3-68" name="__codelineno-3-68"></a><span class="c1"># 启用了额外的 HTTP 模块</span>
+</span><span id="__span-3-69"><a id="__codelineno-3-69" name="__codelineno-3-69"></a><span class="s">--with-http_addition_module</span><span class="w">      </span><span class="c1"># 用于添加内容</span>
+</span><span id="__span-3-70"><a id="__codelineno-3-70" name="__codelineno-3-70"></a><span class="s">--with-http_gunzip_module</span><span class="w">        </span><span class="c1"># 用于解压缩内容</span>
+</span><span id="__span-3-71"><a id="__codelineno-3-71" name="__codelineno-3-71"></a><span class="s">--with-http_gzip_static_module</span><span class="w">   </span><span class="c1"># 用于静态压缩内容</span>
+</span><span id="__span-3-72"><a id="__codelineno-3-72" name="__codelineno-3-72"></a><span class="s">--with-http_sub_module</span><span class="w">           </span><span class="c1"># 用于替换响应内容</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="nginx--t"><code>nginx -t</code><a class="headerlink" href="#nginx--t" title="页面定位">&para;</a></h2>
+<p>我们用 <code>nginx -t</code> 来测试配置文件是否格式正确：</p>
+<p>成功时，输出成功信息：</p>
+<div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">root@dwj2:~</span><span class="c1"># nginx -t</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">configuration</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">/etc/nginx/nginx.conf</span><span class="w"> </span><span class="s">syntax</span><span class="w"> </span><span class="s">is</span><span class="w"> </span><span class="s">ok</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">configuration</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">/etc/nginx/nginx.conf</span><span class="w"> </span><span class="s">test</span><span class="w"> </span><span class="s">is</span><span class="w"> </span><span class="s">successful</span>
+</span></code></pre></div></td></tr></table></div>
+<p>失败时，输出报错内容：</p>
+<div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">root@dwj2:~</span><span class="c1"># nginx -t</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">directive</span><span class="w"> </span><span class="s">&quot;include&quot;</span><span class="w"> </span><span class="s">is</span><span class="w"> </span><span class="s">not</span><span class="w"> </span><span class="s">terminated</span><span class="w"> </span><span class="s">by</span><span class="w"> </span><span class="s">&quot;</span><span class="p">;</span><span class="k">&quot;</span><span class="w"> </span><span class="s">in</span><span class="w"> </span><span class="s">/etc/nginx/nginx.conf:6</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">configuration</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">/etc/nginx/nginx.conf</span><span class="w"> </span><span class="s">test</span><span class="w"> </span><span class="s">failed</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="nginx--t_1"><code>nginx -T</code><a class="headerlink" href="#nginx--t_1" title="页面定位">&para;</a></h2>
+<p>我们用 <code>nginx -T</code> 来测试配置文件是否格式正确，同时将所有的配置信息输出到屏幕上，我们可以对输出信息转存用来备份配置：</p>
+<div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">root@dwj2:~</span><span class="c1"># nginx -T</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">configuration</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">/etc/nginx/nginx.conf</span><span class="w"> </span><span class="s">syntax</span><span class="w"> </span><span class="s">is</span><span class="w"> </span><span class="s">ok</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">configuration</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">/etc/nginx/nginx.conf</span><span class="w"> </span><span class="s">test</span><span class="w"> </span><span class="s">is</span><span class="w"> </span><span class="s">successful</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="c1"># 所有配置信息</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="s">...</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="nginx--q"><code>nginx -q</code><a class="headerlink" href="#nginx--q" title="页面定位">&para;</a></h2>
+<p>我们用 <code>nginx -q</code> 来测试配置，与 <code>-t</code> 和 <code>-T</code> 不同的是，该命令不会显示非错误信息从而简化输出</p>
+<div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="k">root@dwj2:~</span><span class="c1"># nginx -q</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">bind()</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="n">0.0.0.0</span><span class="p">:</span><span class="mi">80</span><span class="w"> </span><span class="s">failed</span><span class="w"> </span><span class="s">(98:</span><span class="w"> </span><span class="s">Unknown</span><span class="w"> </span><span class="s">error)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">bind()</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">failed</span><span class="w"> </span><span class="s">(98:</span><span class="w"> </span><span class="s">Unknown</span><span class="w"> </span><span class="s">error)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">bind()</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="n">0.0.0.0</span><span class="p">:</span><span class="mi">80</span><span class="w"> </span><span class="s">failed</span><span class="w"> </span><span class="s">(98:</span><span class="w"> </span><span class="s">Unknown</span><span class="w"> </span><span class="s">error)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">bind()</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">failed</span><span class="w"> </span><span class="s">(98:</span><span class="w"> </span><span class="s">Unknown</span><span class="w"> </span><span class="s">error)</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">bind()</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="n">0.0.0.0</span><span class="p">:</span><span class="mi">80</span><span class="w"> </span><span class="s">failed</span><span class="w"> </span><span class="s">(98:</span><span class="w"> </span><span class="s">Unknown</span><span class="w"> </span><span class="s">error)</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">bind()</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">failed</span><span class="w"> </span><span class="s">(98:</span><span class="w"> </span><span class="s">Unknown</span><span class="w"> </span><span class="s">error)</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">bind()</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="n">0.0.0.0</span><span class="p">:</span><span class="mi">80</span><span class="w"> </span><span class="s">failed</span><span class="w"> </span><span class="s">(98:</span><span class="w"> </span><span class="s">Unknown</span><span class="w"> </span><span class="s">error)</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">bind()</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">failed</span><span class="w"> </span><span class="s">(98:</span><span class="w"> </span><span class="s">Unknown</span><span class="w"> </span><span class="s">error)</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">bind()</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="n">0.0.0.0</span><span class="p">:</span><span class="mi">80</span><span class="w"> </span><span class="s">failed</span><span class="w"> </span><span class="s">(98:</span><span class="w"> </span><span class="s">Unknown</span><span class="w"> </span><span class="s">error)</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">bind()</span><span class="w"> </span><span class="s">to</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">failed</span><span class="w"> </span><span class="s">(98:</span><span class="w"> </span><span class="s">Unknown</span><span class="w"> </span><span class="s">error)</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="s">nginx:</span><span class="w"> </span><span class="s">[emerg]</span><span class="w"> </span><span class="s">still</span><span class="w"> </span><span class="s">could</span><span class="w"> </span><span class="s">not</span><span class="w"> </span><span class="s">bind()</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="nginx--s"><code>nginx -s &lt;signal&gt;</code><a class="headerlink" href="#nginx--s" title="页面定位">&para;</a></h2>
+<p>我们使用 <code>nginx -s &lt;signal&gt;</code> 相关指令来对控制 Nginx 的 master 进程。</p>
+<h3 id="nginx--s-stop"><code>nginx -s stop</code><a class="headerlink" href="#nginx--s-stop" title="页面定位">&para;</a></h3>
+<p>我们使用 <code>nginx -s stop</code> 指令来停止 Nginx 服务器，使其不再处理新的请求，并且关闭已有的连接。</p>
+<h3 id="nginx--s-quit"><code>nginx -s quit</code><a class="headerlink" href="#nginx--s-quit" title="页面定位">&para;</a></h3>
+<p>我们使用 <code>nginx -s quit</code> 指令来优雅地关闭 Nginx 服务器。与 <code>stop</code> 信号不同，<code>quit</code> 信号会等待当前请求处理完毕后再关闭服务器，这样可以确保不丢失任何已接收但未处理完的请求。</p>
+<h3 id="nginx--s-reopen"><code>nginx -s reopen</code><a class="headerlink" href="#nginx--s-reopen" title="页面定位">&para;</a></h3>
+<p>我们使用 <code>nginx -s reopen</code> 指令来重新打开 Nginx 的日志文件。重新打开日志文件可以在不重启Nginx的情况下切换日志文件，这在日志轮换时非常有用。</p>
+<h3 id="nginx--s-reload"><code>nginx -s reload</code><a class="headerlink" href="#nginx--s-reload" title="页面定位">&para;</a></h3>
+<p>我们使用 <code>nginx -s reload</code> 指令来重新加载Nginx的配置文件，而无需停止服务器。这使得在不停止服务的情况下更新配置成为可能，可以避免中断用户的访问。</p>
+<h2 id="nginx--p"><code>nginx -p &lt;prefix&gt;</code><a class="headerlink" href="#nginx--p" title="页面定位">&para;</a></h2>
+<p>我们使用 <code>nginx -p &lt;prefix&gt;</code> 指令来配置 Nginx 的工作路径。</p>
+<h2 id="nginx--c"><code>nginx -c &lt;filename&gt;</code><a class="headerlink" href="#nginx--c" title="页面定位">&para;</a></h2>
+<p>我们使用 <code>nginx -c &lt;prefix&gt;</code> 指令来指定 Nginx 的配置文件路径。</p>
+<h2 id="nginx--g"><code>nginx -g &lt;directives&gt;</code><a class="headerlink" href="#nginx--g" title="页面定位">&para;</a></h2>
+<p>我们使用 <code>nginx -g &lt;prefix&gt;</code> 指令来指定全局指令而不会写入配置文件中。</p>
 
 
 
@@ -6018,7 +6070,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月12日 08:04:49">2025年3月12日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月21日 16:05:03">2025年3月21日</span>
   </span>
 
     
@@ -6028,7 +6080,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年9月13日 13:10:37">2024年9月13日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年4月3日 15:40:03">2024年4月3日</span>
   </span>
 
     
@@ -6143,7 +6195,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 运维专栏简介">
+          <a href="../../gnu-linux-basic/" class="md-footer__link md-footer__link--prev" aria-label="上一页: GNU/Linux 基础 (Ubuntu)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6153,20 +6205,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                运维专栏简介
+                GNU/Linux 基础 (Ubuntu)
               </div>
             </div>
           </a>
         
         
           
-          <a href="../nginx-command/" class="md-footer__link md-footer__link--next" aria-label="下一页: Nginx 常用命令合集">
+          <a href="../nginx-setup/" class="md-footer__link md-footer__link--next" aria-label="下一页: Nginx 配置指南">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Nginx 常用命令合集
+                Nginx 配置指南
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -1,22 +1,14 @@
 ---
-title: openGauss 基础
+title: openGauss 环境配置
 ---
 
-## 前言
-
-起因是学校的数据库课程需要使用关系型数据库 openGauss 进行教学，那便研究研究，顺便做个笔记。
-
-官方网站：[openGauss 官方网站 | openGauss 主页 | openGauss 社区官网](https://opengauss.org/zh/)
-
-## 安装与配置
-
-### 硬件支持
+## 硬件支持
 
 - 虚拟机：腾讯云 2 核 2 G 3Mbps 轻量应用服务器（提前放通 5432 安全组便于后期的 SSH 连接）
 - 操作系统：CentOS 7.6 64bit
 - SSH 工具：Mobaxterm Personal Edition v24.0 Build 5204
 
-### 下载安装包
+## 下载安装包
 
 由于只需要单节点服务，因此我们选择下载 openGauss 5.0.3 (LTS) 轻量版。
 
@@ -26,7 +18,7 @@ title: openGauss 基础
 
 ![使用 wget 命令下载安装包至云服务器](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192106221.png)
 
-### 配置安装环境
+## 配置安装环境
 
 > 可能是出于安全考虑，openGauss 不允许使用 root 用户运行，因此我们有必要创建普通用户并对一些必要的目录基于必要的权限；同时，目前 openGauss 只能在防火墙关闭的状态下安装，因此我们也不得不关闭防火墙。
 
@@ -90,7 +82,7 @@ sudo chmod -R 750 /opt/dbLearning/install_package /opt/dbLearning/installation /
 
 ![关闭防火墙](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192242146.png)
 
-### 执行安装
+## 执行安装
 
 切换到普通用户 dbuser 的权限：
 
@@ -116,7 +108,7 @@ sh ./install.sh --mode single -D /opt/dbLearning/data -R /opt/dbLearning/install
 
 需要输入密码并二次确认。
 
-### 启停数据库
+## 启停数据库
 
 在普通用户 dbuser 下，使用刚才安装下来的 `gs_ctl` 命令行工具启停 openGauss 数据库。
 
@@ -138,7 +130,7 @@ gs_ctl stop -D /opt/dbLearning/data
 gs_ctl restart -D /opt/dbLearning/data
 ```
 
-### 测试连接
+## 测试连接
 
 
 现在我们已经可以在 shell 终端使用 openGauss 独有的命令行工具 `gsql` 进行连接与管理了：
@@ -153,7 +145,7 @@ gsql -d <dbname> -U <username> -p <port> -h <host>
 
 ![显示所有的数据库](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192243905.png)
 
-### 连接 DataGrip
+## 连接 DataGrip
 
 > 仅仅使用自带的命令行工具进行管理有点麻烦，故尝试与本地的 DataGrip 数据库图形化管理软件进行连接。
 
@@ -202,7 +194,7 @@ gsql -d <dbname> -U <username> -p <port> -h <host>
 
 ![自动创建一个与用户名相同的 schema](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409201144556.png)
 
-### 参考
+## 参考
 
 [文档地图 > 安装指南 > 安装概述](https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/InstallationGuide/安装概述.html)
 
@@ -217,11 +209,3 @@ gsql -d <dbname> -U <username> -p <port> -h <host>
 [文档地图 > 工具与命令参考 > 系统内部命令 > gs_ctl](https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/ToolandCommandReference/gs_ctl.html)
 
 [最全 IDEA、Navicat、DataGrip 连接 openGauss 数据库_datagrip opengauss](https://blog.csdn.net/m0_73646990/article/details/139360136)
-
-## 基本命令
-
-### 参考
-
-[华为 openGauss 数据库命令大全：一站式掌握核心运维操作_opengauss 命令](https://blog.csdn.net/yangqjiayou/article/details/137050247)
-
-[openGauss 数据量管理指南：管理数据库安全-管理用户及权限](https://www.cnblogs.com/openGauss-bot/articles/18267596)

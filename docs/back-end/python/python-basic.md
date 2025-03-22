@@ -1,8 +1,8 @@
 ---
-title: Python 语法基础
+title: Python 语言基础
 ---
 
-本文记录 Python 的语法基础。
+本文记录 Python 基础。
 
 ## Python 的数据类型
 

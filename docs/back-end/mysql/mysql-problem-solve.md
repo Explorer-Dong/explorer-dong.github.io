@@ -1,8 +1,8 @@
 ---
-title: 解决 MySQL 相关问题
+title: MySQL 问题解决
 ---
 
-## 前言
+本文记录 MySQL 的问题解决方案
 
 ## 解决 Connection refused: connect 的问题
 

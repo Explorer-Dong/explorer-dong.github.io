@@ -1,20 +1,36 @@
 ---
-title: openGauss 导入数据
+title: openGauss 基础操作
 ---
 
-## 前言
+本文记录 openGauss 数据库的基本操作。官方文档：<https://docs.opengauss.org/zh/>。
 
-本文简单介绍一下如何利用 gsql 将数据批量导入 openGauss。
+## openGauss 远程连接
 
-## 1 环境
+### 问题阐述
 
-- 操作系统：CentOS 7.6 64bit
-- 数据库管理软件（含版本号）：openGauss 5.0.3 (LTS) 轻量版
-- 其他工具：Mobaxterm Personal Edition v24.0 Build 5204、DataGrip v2024.1.3
+由于 openGauss 数据库不允许使用默认用户（默认叫做 omm）进行远程连接，因此我们不得不创建一个新的用户进行连接。但是连接后总是警告说没有权限访问 pg_user 表并且无法查看和操作数据库中的任何信息。
 
-## 2 流程
+### 解决方案
 
-### 2.1 创建表
+由于新创建的用户权限很低，为了能够在远程连接后达到和数据库系统默认用户几乎一致的权限，我们使用下面的语句对新用户进行权限提升：
+
+```sql
+alter user <user_name> with SYSADMIN;
+```
+
+这样就可以进行任意级别的对象进行图形化的增删改查操作。
+
+### 参考文章
+
+<https://docs.opengauss.org/zh/docs/5.0.0-lite/docs/DatabaseAdministrationGuide/管理员.html>
+
+<https://chatgpt.com/share/673031aa-b46c-8002-88b6-9ab1d80afa5c>
+
+## openGauss 导入数据
+
+简单介绍一下如何利用 gsql 将数据批量导入 openGauss。
+
+### 创建表
 
 首先登录 openGauss 并 [创建数据库](https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/BriefTutorial/创建数据库.html) experiment 用于后续表的设计。
 
@@ -28,7 +44,7 @@ title: openGauss 导入数据
 
 ![检查表结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122300379.png)
 
-### 2.2 构造数据
+### 构造数据
 
 接下来进行数据的构造和导入工作。在开始构造数据之前，有必要了解一下对应的 [数据格式规范](https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/DatabaseOMGuide/使用gsql元命令导入数据.html)。可以看到是支持 `.csv` 文件的，并且默认将第一行识别为数据而不是表头。因此我设计出了这样的 prompt：
 
@@ -40,7 +56,7 @@ title: openGauss 导入数据
 
 我们将上述数据复制到 `/home/dbuser/stu_data.csv` 文件中等待后续的导入工作。
 
-### 2.3 导入数据并测试
+### 导入数据
 
 我们执行如下 gsql 元命令将数据从本地文件 `std_data.csv` 导入到学生表中。
 
@@ -52,7 +68,7 @@ title: openGauss 导入数据
 
 ![成功导入](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122301877.png)
 
-## 题外话
+### 题外话
 
 - 如果要在 gsql 命令行环境中 [启动上下文记忆模式](https://www.cndba.cn/dave/article/116534)，可以在登录时添加 `-r` 参数。
 - 中文字符的字节数默认为 3，因此上述导入数据时第一次会失败，因为设置为了 2。

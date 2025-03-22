@@ -276,8 +276,10 @@ nav:
     - front-end/index.md
     - front-end/html-basic.md
     - front-end/css-basic.md
+    - front-end/yaml-basic.md
     - JavaScript:
       - front-end/javascript/javascript-basic.md
+      - front-end/javascript/javascript-advanced.md
     - Hexo:
       - front-end/hexo/build-your-own-website-with-hexo.md
       - front-end/hexo/hexo-deployment.md
@@ -285,23 +287,18 @@ nav:
   - 后端:
     - back-end/index.md
     - C++:
-      - back-end/cplusplus/index.md
       - back-end/cplusplus/cpp-basic.md
-      - back-end/cplusplus/cpp-advanced.md
+      - back-end/cplusplus/cpp-crow.md
     - Python:
       - back-end/python/python-setup.md
       - back-end/python/python-basic.md
-      - Flask:
-        - back-end/python/flask/deploy-flask.md
-    - 数据库:
-      - back-end/database/database-basic.md
-      - MySQL:
-        - back-end/database/mysql/mysql-basic.md
-        - back-end/database/mysql/solve-mysql-problems.md
-      - openGauss:
-        - back-end/database/opengauss/opengauss-basic.md
-        - back-end/database/opengauss/opengauss-remote-connect.md
-        - back-end/database/opengauss/opengauss-import-data.md
+      - back-end/python/python-flask.md
+    - MySQL:
+      - back-end/mysql/mysql-basic.md
+      - back-end/mysql/mysql-problem-solve.md
+    - openGauss:
+      - back-end/opengauss/opengauss-setup.md
+      - back-end/opengauss/opengauss-basic.md
   - 运维:
     - operation/index.md
     - operation/shell-basic.md
@@ -313,7 +310,7 @@ nav:
   - 工具:
     - dev-tools/index.md
     - dev-tools/jetbrains-license.md
-    - 配置指南:
+    - 软件配置:
       - dev-tools/setup/windows-setup.md
       - dev-tools/setup/devcpp-setup.md
       - dev-tools/setup/idle-setup.md

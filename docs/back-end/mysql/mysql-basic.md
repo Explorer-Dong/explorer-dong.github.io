@@ -1,5 +1,5 @@
 ---
-title: MySQL 基础
+title: MySQL 基础操作
 ---
 
 ## 前言

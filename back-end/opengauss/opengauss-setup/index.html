@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://wiki.dwj601.cn/back-end/database/opengauss/opengauss-remote-connect/">
+        <link rel="canonical" href="https://wiki.dwj601.cn/back-end/opengauss/opengauss-setup/">
       
       
-        <link rel="prev" href="../opengauss-basic/">
+        <link rel="prev" href="../../mysql/mysql-problem-solve/">
       
       
-        <link rel="next" href="../opengauss-import-data/">
+        <link rel="next" href="../opengauss-basic/">
       
       
       <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
@@ -24,14 +24,14 @@
     
     
       
-        <title>openGauss 远程连接 - Open Wiki Community</title>
+        <title>openGauss 环境配置 - Open Wiki Community</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,9 +52,9 @@
     
       <link rel="stylesheet" href="https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../../../../asserts/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../asserts/stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -71,7 +71,7 @@
     
     
     
-   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -80,7 +80,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#问题阐述" class="md-skip">
+        <a href="#硬件支持" class="md-skip">
           跳转至
         </a>
       
@@ -148,7 +148,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
+    <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
   <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
@@ -167,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              openGauss 远程连接
+              openGauss 环境配置
             
           </span>
         </div>
@@ -291,7 +291,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -310,7 +310,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../base/" class="md-tabs__link">
+        <a href="../../../base/" class="md-tabs__link">
           
   
     
@@ -330,7 +330,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../data-science/" class="md-tabs__link">
+        <a href="../../../data-science/" class="md-tabs__link">
           
   
     
@@ -350,7 +350,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../ds-and-algo/" class="md-tabs__link">
+        <a href="../../../ds-and-algo/" class="md-tabs__link">
           
   
     
@@ -370,7 +370,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../front-end/" class="md-tabs__link">
+        <a href="../../../front-end/" class="md-tabs__link">
           
   
     
@@ -392,7 +392,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
     
@@ -412,7 +412,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../operation/" class="md-tabs__link">
+        <a href="../../../operation/" class="md-tabs__link">
           
   
     
@@ -432,7 +432,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../dev-tools/" class="md-tabs__link">
+        <a href="../../../dev-tools/" class="md-tabs__link">
           
   
     
@@ -484,7 +484,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
+    <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
   <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
@@ -513,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -563,7 +563,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/" class="md-nav__link ">
+            <a href="../../../base/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -681,7 +681,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/python-application/" class="md-nav__link ">
+            <a href="../../../base/python-application/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -741,7 +741,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/digital-image-processing/" class="md-nav__link ">
+            <a href="../../../base/digital-image-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -801,7 +801,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../base/digital-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -867,7 +867,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/machine-learning/" class="md-nav__link ">
+            <a href="../../../base/machine-learning/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -901,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/machine-learning/data/" class="md-nav__link">
+      <a href="../../../base/machine-learning/data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -962,7 +962,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/machine-learning/model/" class="md-nav__link ">
+            <a href="../../../base/machine-learning/model/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -996,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/machine-learning/model/linear-model/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/linear-model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1018,7 +1018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/machine-learning/model/decision-tree-model/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/decision-tree-model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1040,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/machine-learning/model/bayes-model/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/bayes-model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1062,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/machine-learning/model/probability-graph-model/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/probability-graph-model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1084,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/machine-learning/model/ensemble-learning/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/ensemble-learning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1106,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/machine-learning/model/lazy-learning/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/lazy-learning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1128,7 +1128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/machine-learning/model/cluster-learning/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/cluster-learning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1150,7 +1150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/machine-learning/model/semi-supervised-learning/" class="md-nav__link">
+      <a href="../../../base/machine-learning/model/semi-supervised-learning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1180,7 +1180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/machine-learning/eval/" class="md-nav__link">
+      <a href="../../../base/machine-learning/eval/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1233,7 +1233,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/deep-learning/" class="md-nav__link ">
+            <a href="../../../base/deep-learning/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1299,7 +1299,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/data-mining/" class="md-nav__link ">
+            <a href="../../../base/data-mining/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1333,7 +1333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/data-mining/data-preprocess/" class="md-nav__link">
+      <a href="../../../base/data-mining/data-preprocess/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1355,7 +1355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/data-mining/association-analysis/" class="md-nav__link">
+      <a href="../../../base/data-mining/association-analysis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1377,7 +1377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/data-mining/anomaly-detection/" class="md-nav__link">
+      <a href="../../../base/data-mining/anomaly-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1434,7 +1434,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/natural-language-processing/" class="md-nav__link ">
+            <a href="../../../base/natural-language-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1468,7 +1468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/natural-language-processing/model/" class="md-nav__link">
+      <a href="../../../base/natural-language-processing/model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1490,7 +1490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/natural-language-processing/task/" class="md-nav__link">
+      <a href="../../../base/natural-language-processing/task/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1549,7 +1549,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/computer-vision/" class="md-nav__link ">
+            <a href="../../../base/computer-vision/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1583,7 +1583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/computer-vision/image-classification/" class="md-nav__link">
+      <a href="../../../base/computer-vision/image-classification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1605,7 +1605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/computer-vision/semantic-segmentation/" class="md-nav__link">
+      <a href="../../../base/computer-vision/semantic-segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1627,7 +1627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/computer-vision/object-detection/" class="md-nav__link">
+      <a href="../../../base/computer-vision/object-detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1680,7 +1680,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/intelligent-education/" class="md-nav__link ">
+            <a href="../../../base/intelligent-education/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1805,7 +1805,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/object-oriented-programming/" class="md-nav__link ">
+            <a href="../../../base/object-oriented-programming/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1865,7 +1865,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/digital-logic-circuit/" class="md-nav__link ">
+            <a href="../../../base/digital-logic-circuit/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1925,7 +1925,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/computer-system-basic/" class="md-nav__link ">
+            <a href="../../../base/computer-system-basic/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1985,7 +1985,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/database/" class="md-nav__link ">
+            <a href="../../../base/database/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2053,7 +2053,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/operating-system/" class="md-nav__link ">
+            <a href="../../../base/operating-system/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2087,7 +2087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/operating-system/intro/" class="md-nav__link">
+      <a href="../../../base/operating-system/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2109,7 +2109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/operating-system/concurrent/" class="md-nav__link">
+      <a href="../../../base/operating-system/concurrent/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2131,7 +2131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/operating-system/virtualization/" class="md-nav__link">
+      <a href="../../../base/operating-system/virtualization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2153,7 +2153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/operating-system/persistence/" class="md-nav__link">
+      <a href="../../../base/operating-system/persistence/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2212,7 +2212,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/computer-organization/" class="md-nav__link ">
+            <a href="../../../base/computer-organization/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2246,7 +2246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/computer-organization/cpu/" class="md-nav__link">
+      <a href="../../../base/computer-organization/cpu/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2268,7 +2268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/computer-organization/memory/" class="md-nav__link">
+      <a href="../../../base/computer-organization/memory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2290,7 +2290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/computer-organization/device/" class="md-nav__link">
+      <a href="../../../base/computer-organization/device/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2353,7 +2353,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/computer-network/" class="md-nav__link ">
+            <a href="../../../base/computer-network/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2387,7 +2387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/computer-network/application-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/application-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2409,7 +2409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/computer-network/transport-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/transport-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2431,7 +2431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/computer-network/network-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/network-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2453,7 +2453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/computer-network/data-link-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/data-link-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2475,7 +2475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/computer-network/physical-layer/" class="md-nav__link">
+      <a href="../../../base/computer-network/physical-layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2589,7 +2589,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/college-physics/" class="md-nav__link ">
+            <a href="../../../base/college-physics/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2653,7 +2653,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/advanced-math/" class="md-nav__link ">
+            <a href="../../../base/advanced-math/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2687,7 +2687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/advanced-math/differentiation/" class="md-nav__link">
+      <a href="../../../base/advanced-math/differentiation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2709,7 +2709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/advanced-math/integration/" class="md-nav__link">
+      <a href="../../../base/advanced-math/integration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2762,7 +2762,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/linear-algebra/" class="md-nav__link ">
+            <a href="../../../base/linear-algebra/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2822,7 +2822,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/probability-and-statistics/" class="md-nav__link ">
+            <a href="../../../base/probability-and-statistics/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2890,7 +2890,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../base/optimization-method/" class="md-nav__link ">
+            <a href="../../../base/optimization-method/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2924,7 +2924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/optimization-method/intro/" class="md-nav__link">
+      <a href="../../../base/optimization-method/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2946,7 +2946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/optimization-method/linear-search/" class="md-nav__link">
+      <a href="../../../base/optimization-method/linear-search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2968,7 +2968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/optimization-method/unconstraint-optimization/" class="md-nav__link">
+      <a href="../../../base/optimization-method/unconstraint-optimization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2990,7 +2990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../base/optimization-method/constraint-optimization/" class="md-nav__link">
+      <a href="../../../base/optimization-method/constraint-optimization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3064,7 +3064,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../data-science/" class="md-nav__link ">
+            <a href="../../../data-science/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3098,7 +3098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data-science/numpy-basic/" class="md-nav__link">
+      <a href="../../../data-science/numpy-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3120,7 +3120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data-science/pandas-basic/" class="md-nav__link">
+      <a href="../../../data-science/pandas-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3142,7 +3142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data-science/matplotlib-basic/" class="md-nav__link">
+      <a href="../../../data-science/matplotlib-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3204,7 +3204,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../ds-and-algo/" class="md-nav__link ">
+            <a href="../../../ds-and-algo/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3238,7 +3238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/templates/" class="md-nav__link">
+      <a href="../../../ds-and-algo/templates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3260,7 +3260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/templates-py/" class="md-nav__link">
+      <a href="../../../ds-and-algo/templates-py/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3321,7 +3321,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../ds-and-algo/theory/" class="md-nav__link ">
+            <a href="../../../ds-and-algo/theory/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3355,7 +3355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/theory/base/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3377,7 +3377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/theory/ds/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/ds/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3399,7 +3399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/theory/dp/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/dp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3421,7 +3421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/theory/string/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/string/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3443,7 +3443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/theory/geometry/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/geometry/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3465,7 +3465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/theory/graph/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/graph/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3487,7 +3487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/theory/game/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/game/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3509,7 +3509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/theory/math/" class="md-nav__link">
+      <a href="../../../ds-and-algo/theory/math/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3568,7 +3568,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../ds-and-algo/examples/" class="md-nav__link ">
+            <a href="../../../ds-and-algo/examples/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3602,7 +3602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/examples/examples-basic-algo/" class="md-nav__link">
+      <a href="../../../ds-and-algo/examples/examples-basic-algo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3624,7 +3624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/examples/examples-advanced-algo/" class="md-nav__link">
+      <a href="../../../ds-and-algo/examples/examples-advanced-algo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3646,7 +3646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/examples/examples-ds/" class="md-nav__link">
+      <a href="../../../ds-and-algo/examples/examples-ds/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3703,7 +3703,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../ds-and-algo/lan-qiao-cup/" class="md-nav__link ">
+            <a href="../../../ds-and-algo/lan-qiao-cup/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3737,7 +3737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/lan-qiao-cup/14th-python-a/" class="md-nav__link">
+      <a href="../../../ds-and-algo/lan-qiao-cup/14th-python-a/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3759,7 +3759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../ds-and-algo/lan-qiao-cup/15th-python-a/" class="md-nav__link">
+      <a href="../../../ds-and-algo/lan-qiao-cup/15th-python-a/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3810,6 +3810,8 @@
       
         
       
+        
+      
     
     
       
@@ -3827,7 +3829,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../front-end/" class="md-nav__link ">
+            <a href="../../../front-end/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3861,7 +3863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../front-end/html-basic/" class="md-nav__link">
+      <a href="../../../front-end/html-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3883,11 +3885,33 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../front-end/css-basic/" class="md-nav__link">
+      <a href="../../../front-end/css-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     CSS 基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../front-end/yaml-basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    YAML 基础
     
   </span>
   
@@ -3909,6 +3933,8 @@
       
         
       
+        
+      
     
     
       
@@ -3921,10 +3947,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
         
           
-          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -3936,8 +3962,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
             <span class="md-nav__icon md-icon"></span>
             JavaScript
           </label>
@@ -3950,11 +3976,33 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../front-end/javascript/javascript-basic/" class="md-nav__link">
+      <a href="../../../front-end/javascript/javascript-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     JavaScript 基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../front-end/javascript/javascript-advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JavaScript 进阶
     
   </span>
   
@@ -4000,10 +4048,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
         
           
-          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4015,8 +4063,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
             <span class="md-nav__icon md-icon"></span>
             Hexo
           </label>
@@ -4029,7 +4077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../front-end/hexo/build-your-own-website-with-hexo/" class="md-nav__link">
+      <a href="../../../front-end/hexo/build-your-own-website-with-hexo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4051,7 +4099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../front-end/hexo/hexo-deployment/" class="md-nav__link">
+      <a href="../../../front-end/hexo/hexo-deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4073,7 +4121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../front-end/hexo/hexo-enhancement/" class="md-nav__link">
+      <a href="../../../front-end/hexo/hexo-enhancement/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4124,6 +4172,8 @@
       
         
       
+        
+      
     
     
       
@@ -4144,7 +4194,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4181,10 +4231,6 @@
     
       
         
-          
-        
-      
-        
       
         
       
@@ -4206,10 +4252,8 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
         
           
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../../cplusplus/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="">
+            
   
   <span class="md-ellipsis">
     C++
@@ -4217,14 +4261,8 @@
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2">
@@ -4234,19 +4272,17 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
-            
-              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../../../cplusplus/cpp-basic/" class="md-nav__link">
+      <a href="../../cplusplus/cpp-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    C++ 语法基础
+    C++ 语言基础
     
   </span>
   
@@ -4264,11 +4300,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cplusplus/cpp-advanced/" class="md-nav__link">
+      <a href="../../cplusplus/cpp-crow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    C++ 高级教程
+    C++ 网络编程 (Crow)
     
   </span>
   
@@ -4346,11 +4382,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python-setup/" class="md-nav__link">
+      <a href="../../python/python-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Python 配置指南
+    Python 环境配置
     
   </span>
   
@@ -4368,11 +4404,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python-basic/" class="md-nav__link">
+      <a href="../../python/python-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Python 语法基础
+    Python 语言基础
     
   </span>
   
@@ -4389,8 +4425,40 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../python/python-flask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python 网络编程 (Flask)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
+      
+        
       
         
       
@@ -4398,22 +4466,25 @@
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_3" >
         
           
-          <label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
-    Flask
+    MySQL
     
   </span>
   
@@ -4421,10 +4492,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
             <span class="md-nav__icon md-icon"></span>
-            Flask
+            MySQL
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4435,11 +4506,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/flask/deploy-flask/" class="md-nav__link">
+      <a href="../../mysql/mysql-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    部署 Flask 应用
+    MySQL 基础操作
     
   </span>
   
@@ -4450,9 +4521,23 @@
 
               
             
-          </ul>
-        </nav>
-      
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mysql/mysql-problem-solve/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL 问题解决
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -4476,8 +4561,6 @@
   
     
     
-      
-        
       
         
       
@@ -4498,182 +4581,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    数据库
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4">
-            <span class="md-nav__icon md-icon"></span>
-            数据库
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../database-basic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    数据库基础
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    MySQL
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4_2">
-            <span class="md-nav__icon md-icon"></span>
-            MySQL
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../mysql/mysql-basic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MySQL 基础
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../mysql/solve-mysql-problems/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    解决 MySQL 相关问题
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_3" id="__nav_6_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -4685,34 +4596,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_5">
             <span class="md-nav__icon md-icon"></span>
             openGauss
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../opengauss-basic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    openGauss 基础
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -4732,7 +4621,7 @@
           
   
   <span class="md-ellipsis">
-    openGauss 远程连接
+    openGauss 环境配置
     
   </span>
   
@@ -4744,7 +4633,7 @@
         
   
   <span class="md-ellipsis">
-    openGauss 远程连接
+    openGauss 环境配置
     
   </span>
   
@@ -4767,27 +4656,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#问题阐述" class="md-nav__link">
+  <a href="#硬件支持" class="md-nav__link">
     <span class="md-ellipsis">
-      问题阐述
+      硬件支持
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#解决方案" class="md-nav__link">
+  <a href="#下载安装包" class="md-nav__link">
     <span class="md-ellipsis">
-      解决方案
+      下载安装包
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#参考文章" class="md-nav__link">
+  <a href="#配置安装环境" class="md-nav__link">
     <span class="md-ellipsis">
-      参考文章
+      配置安装环境
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#执行安装" class="md-nav__link">
+    <span class="md-ellipsis">
+      执行安装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#启停数据库" class="md-nav__link">
+    <span class="md-ellipsis">
+      启停数据库
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#测试连接" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试连接
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#连接-datagrip" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接 DataGrip
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#参考" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
     </span>
   </a>
   
@@ -4809,24 +4743,16 @@
   
   
     <li class="md-nav__item">
-      <a href="../opengauss-import-data/" class="md-nav__link">
+      <a href="../opengauss-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    openGauss 导入数据
+    openGauss 基础操作
     
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -4883,7 +4809,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../operation/" class="md-nav__link ">
+            <a href="../../../operation/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4917,7 +4843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/shell-basic/" class="md-nav__link">
+      <a href="../../../operation/shell-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4939,7 +4865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/gnu-linux-basic/" class="md-nav__link">
+      <a href="../../../operation/gnu-linux-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5010,7 +4936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/nginx/nginx-commands/" class="md-nav__link">
+      <a href="../../../operation/nginx/nginx-commands/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5032,7 +4958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/nginx/nginx-setup/" class="md-nav__link">
+      <a href="../../../operation/nginx/nginx-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5054,7 +4980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/nginx/nginx-examples/" class="md-nav__link">
+      <a href="../../../operation/nginx/nginx-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5120,7 +5046,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../dev-tools/" class="md-nav__link ">
+            <a href="../../../dev-tools/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -5154,7 +5080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../dev-tools/jetbrains-license/" class="md-nav__link">
+      <a href="../../../dev-tools/jetbrains-license/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5205,7 +5131,7 @@
             
   
   <span class="md-ellipsis">
-    配置指南
+    软件配置
     
   </span>
   
@@ -5216,7 +5142,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
-            配置指南
+            软件配置
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5227,7 +5153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../dev-tools/setup/windows-setup/" class="md-nav__link">
+      <a href="../../../dev-tools/setup/windows-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5249,7 +5175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../dev-tools/setup/devcpp-setup/" class="md-nav__link">
+      <a href="../../../dev-tools/setup/devcpp-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5271,7 +5197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../dev-tools/setup/idle-setup/" class="md-nav__link">
+      <a href="../../../dev-tools/setup/idle-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5293,7 +5219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../dev-tools/setup/clion-setup/" class="md-nav__link">
+      <a href="../../../dev-tools/setup/clion-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5374,7 +5300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../dev-tools/git/git-commands/" class="md-nav__link">
+      <a href="../../../dev-tools/git/git-commands/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5396,7 +5322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../dev-tools/git/git-pull-request/" class="md-nav__link">
+      <a href="../../../dev-tools/git/git-pull-request/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5418,7 +5344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../dev-tools/git/git-self-define-command/" class="md-nav__link">
+      <a href="../../../dev-tools/git/git-self-define-command/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5440,7 +5366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../dev-tools/git/solve-git-problems/" class="md-nav__link">
+      <a href="../../../dev-tools/git/solve-git-problems/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5518,27 +5444,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#问题阐述" class="md-nav__link">
+  <a href="#硬件支持" class="md-nav__link">
     <span class="md-ellipsis">
-      问题阐述
+      硬件支持
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#解决方案" class="md-nav__link">
+  <a href="#下载安装包" class="md-nav__link">
     <span class="md-ellipsis">
-      解决方案
+      下载安装包
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#参考文章" class="md-nav__link">
+  <a href="#配置安装环境" class="md-nav__link">
     <span class="md-ellipsis">
-      参考文章
+      配置安装环境
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#执行安装" class="md-nav__link">
+    <span class="md-ellipsis">
+      执行安装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#启停数据库" class="md-nav__link">
+    <span class="md-ellipsis">
+      启停数据库
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#测试连接" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试连接
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#连接-datagrip" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接 DataGrip
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#参考" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
     </span>
   </a>
   
@@ -5560,7 +5531,7 @@
 
 
   
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/back-end/database/opengauss/opengauss-remote-connect.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/back-end/opengauss/opengauss-setup.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5569,25 +5540,166 @@
     
       
     
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/back-end/database/opengauss/opengauss-remote-connect.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/back-end/opengauss/opengauss-setup.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-  <h1>openGauss 远程连接</h1>
+  <h1>openGauss 环境配置</h1>
 
-<h2 id="问题阐述">问题阐述<a class="headerlink" href="#问题阐述" title="页面定位">&para;</a></h2>
-<p>由于 openGauss 数据库不允许使用默认用户（默认叫做 omm）进行远程连接，因此我们不得不创建一个新的用户进行连接。但是连接后总是警告说没有权限访问 pg_user 表并且无法查看和操作数据库中的任何信息。</p>
-<h2 id="解决方案">解决方案<a class="headerlink" href="#解决方案" title="页面定位">&para;</a></h2>
-<p>由于新创建的用户权限很低，为了能够在远程连接后达到和数据库系统默认用户几乎一致的权限，我们使用下面的语句对新用户进行权限提升：</p>
-<div class="language-sql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">alter</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="o">&lt;</span><span class="n">user_name</span><span class="o">&gt;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">SYSADMIN</span><span class="p">;</span>
+<h2 id="硬件支持">硬件支持<a class="headerlink" href="#硬件支持" title="页面定位">&para;</a></h2>
+<ul>
+<li>虚拟机：腾讯云 2 核 2 G 3Mbps 轻量应用服务器（提前放通 5432 安全组便于后期的 SSH 连接）</li>
+<li>操作系统：CentOS 7.6 64bit</li>
+<li>SSH 工具：Mobaxterm Personal Edition v24.0 Build 5204</li>
+</ul>
+<h2 id="下载安装包">下载安装包<a class="headerlink" href="#下载安装包" title="页面定位">&para;</a></h2>
+<p>由于只需要单节点服务，因此我们选择下载 openGauss 5.0.3 (LTS) 轻量版。</p>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192052001.png" data-type="image" data-width="auto" data-height="auto" data-title="安装包选择" data-desc-position="bottom"><img alt="安装包选择" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192052001.png" /></a></p>
+<p>我们登录后获取轻量版下载链接，进入 shell 连接云服务器，在合适的位置创建并进入目录。我使用的是 <code>/opt/dbLearning</code> 目录，使用 wget 命令下载安装包至云服务器。</p>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192106221.png" data-type="image" data-width="auto" data-height="auto" data-title="使用 wget 命令下载安装包至云服务器" data-desc-position="bottom"><img alt="使用 wget 命令下载安装包至云服务器" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192106221.png" /></a></p>
+<h2 id="配置安装环境">配置安装环境<a class="headerlink" href="#配置安装环境" title="页面定位">&para;</a></h2>
+<blockquote>
+<p>可能是出于安全考虑，openGauss 不允许使用 root 用户运行，因此我们有必要创建普通用户并对一些必要的目录基于必要的权限；同时，目前 openGauss 只能在防火墙关闭的状态下安装，因此我们也不得不关闭防火墙。</p>
+</blockquote>
+<p>创建普通用户 dbuser：</p>
+<ul>
+<li>
+<p>创建用户</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>dbuser
 </span></code></pre></div></td></tr></table></div>
-<p>这样就可以进行任意级别的对象进行图形化的增删改查操作。</p>
-<h2 id="参考文章">参考文章<a class="headerlink" href="#参考文章" title="页面定位">&para;</a></h2>
-<p><a href="https://docs.opengauss.org/zh/docs/5.0.0-lite/docs/DatabaseAdministrationGuide/管理员.html">https://docs.opengauss.org/zh/docs/5.0.0-lite/docs/DatabaseAdministrationGuide/管理员.html</a></p>
-<p><a href="https://chatgpt.com/share/673031aa-b46c-8002-88b6-9ab1d80afa5c">https://chatgpt.com/share/673031aa-b46c-8002-88b6-9ab1d80afa5c</a></p>
+</li>
+<li>
+<p>删除用户</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo<span class="w"> </span>userdel<span class="w"> </span>-r<span class="w"> </span>dbuser
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>为新建的用户 dbuser 设置密码</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo<span class="w"> </span>passwd<span class="w"> </span>dbuser
+</span></code></pre></div></td></tr></table></div>
+</li>
+</ul>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192242731.png" data-type="image" data-width="auto" data-height="auto" data-title="创建普通用户 dbuser" data-desc-position="bottom"><img alt="创建普通用户 dbuser" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192242731.png" /></a></p>
+<p>创建数据库安装包解压目录、安装目录、数据目录：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/opt/dbLearning/install_package<span class="w"> </span>/opt/dbLearning/installation<span class="w"> </span>/opt/dbLearning/data
+</span></code></pre></div></td></tr></table></div>
+<p>赋予目录权限：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># 将这三个目录的所有者设置为用户 dbuser</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>dbuser:dbuser<span class="w"> </span>/opt/dbLearning/install_package<span class="w"> </span>/opt/dbLearning/installation<span class="w"> </span>/opt/dbLearning/data
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="c1"># 确保 dbuser 用户对这些目录有读、写、执行权限</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">750</span><span class="w"> </span>/opt/dbLearning/install_package<span class="w"> </span>/opt/dbLearning/installation<span class="w"> </span>/opt/dbLearning/data
+</span></code></pre></div></td></tr></table></div>
+<p>关闭防火墙：</p>
+<ul>
+<li>
+<p>查看防火墙状态：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>firewalld
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>关闭防火墙：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>systemctl<span class="w"> </span>stop<span class="w"> </span>firewalld.service
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>开启防火墙：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>systemctl<span class="w"> </span>start<span class="w"> </span>firewalld.service
+</span></code></pre></div></td></tr></table></div>
+</li>
+</ul>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192242146.png" data-type="image" data-width="auto" data-height="auto" data-title="关闭防火墙" data-desc-position="bottom"><img alt="关闭防火墙" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192242146.png" /></a></p>
+<h2 id="执行安装">执行安装<a class="headerlink" href="#执行安装" title="页面定位">&para;</a></h2>
+<p>切换到普通用户 dbuser 的权限：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>su<span class="w"> </span>-<span class="w"> </span>dbuser
+</span></code></pre></div></td></tr></table></div>
+<p>解压压缩包至安装包目录：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>tar<span class="w"> </span>-zxf<span class="w"> </span>openGauss-Lite-5.0.3-CentOS-x86_64.tar.gz<span class="w"> </span>-C<span class="w"> </span>install_package/
+</span></code></pre></div></td></tr></table></div>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192242065.png" data-type="image" data-width="auto" data-height="auto" data-title="解压压缩包至安装包目录" data-desc-position="bottom"><img alt="解压压缩包至安装包目录" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192242065.png" /></a></p>
+<p>进入 <code>./install_package/</code> 路径并执行 <code>install.sh</code> 进行安装：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>sh<span class="w"> </span>./install.sh<span class="w"> </span>--mode<span class="w"> </span>single<span class="w"> </span>-D<span class="w"> </span>/opt/dbLearning/data<span class="w"> </span>-R<span class="w"> </span>/opt/dbLearning/installation/
+</span></code></pre></div></td></tr></table></div>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192243793.png" data-type="image" data-width="auto" data-height="auto" data-title="部分安装成功后的输出信息" data-desc-position="bottom"><img alt="部分安装成功后的输出信息" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192243793.png" /></a></p>
+<p>需要输入密码并二次确认。</p>
+<h2 id="启停数据库">启停数据库<a class="headerlink" href="#启停数据库" title="页面定位">&para;</a></h2>
+<p>在普通用户 dbuser 下，使用刚才安装下来的 <code>gs_ctl</code> 命令行工具启停 openGauss 数据库。</p>
+<p>启动 openGauss：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>gs_ctl<span class="w"> </span>start<span class="w"> </span>-D<span class="w"> </span>/opt/dbLearning/data
+</span></code></pre></div></td></tr></table></div>
+<p>停止 openGauss：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>gs_ctl<span class="w"> </span>stop<span class="w"> </span>-D<span class="w"> </span>/opt/dbLearning/data
+</span></code></pre></div></td></tr></table></div>
+<p>重启 openGauss：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>gs_ctl<span class="w"> </span>restart<span class="w"> </span>-D<span class="w"> </span>/opt/dbLearning/data
+</span></code></pre></div></td></tr></table></div>
+<h2 id="测试连接">测试连接<a class="headerlink" href="#测试连接" title="页面定位">&para;</a></h2>
+<p>现在我们已经可以在 shell 终端使用 openGauss 独有的命令行工具 <code>gsql</code> 进行连接与管理了：</p>
+<p>注：初次连接时，dbname 使用缺省值 <code>postgres</code>，username 就是安装 openGauss 时的用户名 <code>dbuser</code>（这一点很抽象，直接拿操作系统的用户名作为数据库管理系统的用户名 🤣）。若直接在服务器上连接数据库时，端口和主机可以不填。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>gsql<span class="w"> </span>-d<span class="w"> </span>&lt;dbname&gt;<span class="w"> </span>-U<span class="w"> </span>&lt;username&gt;<span class="w"> </span>-p<span class="w"> </span>&lt;port&gt;<span class="w"> </span>-h<span class="w"> </span>&lt;host&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>进入数据库管理系统后，输入 <code>\l</code> 看到所有的数据库就表明安装配置成功了！</p>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192243905.png" data-type="image" data-width="auto" data-height="auto" data-title="显示所有的数据库" data-desc-position="bottom"><img alt="显示所有的数据库" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192243905.png" /></a></p>
+<h2 id="连接-datagrip">连接 DataGrip<a class="headerlink" href="#连接-datagrip" title="页面定位">&para;</a></h2>
+<blockquote>
+<p>仅仅使用自带的命令行工具进行管理有点麻烦，故尝试与本地的 DataGrip 数据库图形化管理软件进行连接。</p>
+</blockquote>
+<p>首先，我们需要修改数据库的配置文件，允许非 localhost 也可以访问数据库。</p>
+<ul>
+<li>
+<p>新增 pg_hba.conf 文件两条信息：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>host<span class="w"> </span>all<span class="w"> </span>all<span class="w"> </span><span class="m">10</span>.0.4.14/32<span class="w"> </span>md5
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>host<span class="w"> </span>all<span class="w"> </span>all<span class="w"> </span><span class="m">0</span>.0.0.0/0<span class="w">   </span>md5
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>启用 postgresql.conf 中的密码加密并将加密方式改为 md5，顺便将监听端口设置为 '*'：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="nv">password_encryption_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="nv">listen_address</span><span class="w"> </span><span class="o">=</span><span class="s1">&#39;*&#39;</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>重启 openGauss：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>gs_ctl<span class="w"> </span>restart
+</span></code></pre></div></td></tr></table></div>
+</li>
+</ul>
+<p>注：openGauss 不允许使用数据库超级用户进行远程连接，因此我们不得不在连接数据库后创建新的数据库管理员，假设就叫 user1。</p>
+<ul>
+<li>
+<p>使用默认数据库进行连接：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>gsql<span class="w"> </span>-d<span class="w"> </span>postgres<span class="w"> </span>-U<span class="w"> </span>dbuser
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>创建新的数据库管理用户：</p>
+<div class="language-sql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">user1</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&lt;password&gt;&#39;</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+</li>
+</ul>
+<p>最后使用本地的 DataGrip 使用 postgre 内核连接服务器的 openGauss 数据库就可以成功了！</p>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409201140997.png" data-type="image" data-width="auto" data-height="auto" data-title="远程连接成功" data-desc-position="bottom"><img alt="远程连接成功" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409201140997.png" /></a></p>
+<p>并且从 <a href="https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/SQLReference/CREATE-USER.html">官方 SQL 的用法</a> 来看，使用 CREATE 会在连接的数据库下创建一个与用户名相同的 schema，很诡异但的确如此：</p>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409201144556.png" data-type="image" data-width="auto" data-height="auto" data-title="自动创建一个与用户名相同的 schema" data-desc-position="bottom"><img alt="自动创建一个与用户名相同的 schema" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409201144556.png" /></a></p>
+<h2 id="参考">参考<a class="headerlink" href="#参考" title="页面定位">&para;</a></h2>
+<p><a href="https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/InstallationGuide/安装概述.html">文档地图 &gt; 安装指南 &gt; 安装概述</a></p>
+<p><a href="https://blog.csdn.net/qq_40833874/article/details/120686852">Centos7 添加删除用户和用户操作命令_centos7 删除用户命令</a></p>
+<p>报错解决：<a href="https://chatgpt.com/share/66ed13f8-b2a8-800a-b6fc-f3cdd51e69f5">修改 SEMMNI 解决 openguass 报错</a></p>
+<p>报错解决：<a href="https://www.modb.pro/db/5980">gaussdb 启动报错 gs_ctl: invalid data in pid</a></p>
+<p>报错解决：<a href="https://blog.csdn.net/sunshinepx/article/details/90635833">pg 启动异常 FATAL: could not open lock file "/tmp/.s.PGSQL.5432.lock": Permission denied_pg could not open lock file</a></p>
+<p><a href="https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/ToolandCommandReference/gs_ctl.html">文档地图 &gt; 工具与命令参考 &gt; 系统内部命令 &gt; gs_ctl</a></p>
+<p><a href="https://blog.csdn.net/m0_73646990/article/details/139360136">最全 IDEA、Navicat、DataGrip 连接 openGauss 数据库_datagrip opengauss</a></p>
 
 
 
@@ -5610,7 +5722,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年2月25日 03:56:29">2025年2月25日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月22日 12:32:42">2025年3月22日</span>
   </span>
 
     
@@ -5620,7 +5732,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年11月11日 01:38:16">2024年11月11日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年9月20日 06:35:01">2024年9月20日</span>
   </span>
 
     
@@ -5735,7 +5847,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../opengauss-basic/" class="md-footer__link md-footer__link--prev" aria-label="上一页: openGauss 基础">
+          <a href="../../mysql/mysql-problem-solve/" class="md-footer__link md-footer__link--prev" aria-label="上一页: MySQL 问题解决">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5745,20 +5857,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                openGauss 基础
+                MySQL 问题解决
               </div>
             </div>
           </a>
         
         
           
-          <a href="../opengauss-import-data/" class="md-footer__link md-footer__link--next" aria-label="下一页: openGauss 导入数据">
+          <a href="../opengauss-basic/" class="md-footer__link md-footer__link--next" aria-label="下一页: openGauss 基础操作">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                openGauss 导入数据
+                openGauss 基础操作
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -5816,12 +5928,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "content.code.copy", "content.code.select", "content.tooltips", "content.action.edit", "content.action.view", "search.highlight", "search.share", "search.suggest", "toc.follow", "announce.dismiss"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "content.code.copy", "content.code.select", "content.tooltips", "content.action.edit", "content.action.view", "search.highlight", "search.share", "search.suggest", "toc.follow", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
-        <script src="../../../../asserts/javascripts/katex.js"></script>
+        <script src="../../../asserts/javascripts/katex.js"></script>
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.js"></script>
       
@@ -5829,11 +5941,11 @@
       
         <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
       
-        <script src="../../../../asserts/javascripts/link_blank.js"></script>
+        <script src="../../../asserts/javascripts/link_blank.js"></script>
       
-        <script src="../../../../asserts/javascripts/baidu_tongji.js"></script>
+        <script src="../../../asserts/javascripts/baidu_tongji.js"></script>
       
-        <script src="../../../../asserts/javascripts/robot.js"></script>
+        <script src="../../../asserts/javascripts/robot.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

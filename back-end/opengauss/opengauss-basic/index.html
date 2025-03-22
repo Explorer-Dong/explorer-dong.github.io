@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://wiki.dwj601.cn/back-end/database/database-basic/">
+        <link rel="canonical" href="https://wiki.dwj601.cn/back-end/opengauss/opengauss-basic/">
       
       
-        <link rel="prev" href="../../python/flask/deploy-flask/">
+        <link rel="prev" href="../opengauss-setup/">
       
       
-        <link rel="next" href="../mysql/mysql-basic/">
+        <link rel="next" href="../../../operation/">
       
       
       <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
@@ -24,7 +24,7 @@
     
     
       
-        <title>数据库基础 - Open Wiki Community</title>
+        <title>openGauss 基础操作 - Open Wiki Community</title>
       
     
     
@@ -98,6 +98,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#opengauss-远程连接" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -162,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              数据库基础
+              openGauss 基础操作
             
           </span>
         </div>
@@ -3805,6 +3810,8 @@
       
         
       
+        
+      
     
     
       
@@ -3899,8 +3906,32 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../front-end/yaml-basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    YAML 基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
+      
+        
       
         
       
@@ -3916,10 +3947,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
         
           
-          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -3931,8 +3962,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
             <span class="md-nav__icon md-icon"></span>
             JavaScript
           </label>
@@ -3950,6 +3981,28 @@
   
   <span class="md-ellipsis">
     JavaScript 基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../front-end/javascript/javascript-advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JavaScript 进阶
     
   </span>
   
@@ -3995,10 +4048,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
         
           
-          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4010,8 +4063,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
             <span class="md-nav__icon md-icon"></span>
             Hexo
           </label>
@@ -4119,6 +4172,8 @@
       
         
       
+        
+      
     
     
       
@@ -4176,10 +4231,6 @@
     
       
         
-          
-        
-      
-        
       
         
       
@@ -4201,10 +4252,8 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
         
           
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../cplusplus/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="">
+            
   
   <span class="md-ellipsis">
     C++
@@ -4212,14 +4261,8 @@
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2">
@@ -4227,8 +4270,6 @@
             C++
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
             
               
                 
@@ -4241,7 +4282,7 @@
         
   
   <span class="md-ellipsis">
-    C++ 语法基础
+    C++ 语言基础
     
   </span>
   
@@ -4259,11 +4300,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cplusplus/cpp-advanced/" class="md-nav__link">
+      <a href="../../cplusplus/cpp-crow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    C++ 高级教程
+    C++ 网络编程 (Crow)
     
   </span>
   
@@ -4345,7 +4386,7 @@
         
   
   <span class="md-ellipsis">
-    Python 配置指南
+    Python 环境配置
     
   </span>
   
@@ -4367,7 +4408,7 @@
         
   
   <span class="md-ellipsis">
-    Python 语法基础
+    Python 语言基础
     
   </span>
   
@@ -4384,8 +4425,40 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../python/python-flask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python 网络编程 (Flask)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
+      
+        
       
         
       
@@ -4393,22 +4466,25 @@
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_3" >
         
           
-          <label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
-    Flask
+    MySQL
     
   </span>
   
@@ -4416,10 +4492,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
             <span class="md-nav__icon md-icon"></span>
-            Flask
+            MySQL
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4430,11 +4506,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python/flask/deploy-flask/" class="md-nav__link">
+      <a href="../../mysql/mysql-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    部署 Flask 应用
+    MySQL 基础操作
     
   </span>
   
@@ -4445,9 +4521,23 @@
 
               
             
-          </ul>
-        </nav>
-      
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mysql/mysql-problem-solve/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL 问题解决
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -4471,8 +4561,6 @@
   
     
     
-      
-        
       
         
       
@@ -4493,14 +4581,14 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="">
             
   
   <span class="md-ellipsis">
-    数据库
+    openGauss
     
   </span>
   
@@ -4508,12 +4596,34 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_5">
             <span class="md-nav__icon md-icon"></span>
-            数据库
+            openGauss
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opengauss-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    openGauss 环境配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -4529,238 +4639,140 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    openGauss 基础操作
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    数据库基础
+    openGauss 基础操作
     
   </span>
   
 
       </a>
       
-    </li>
+        
+
   
 
-              
-            
-              
-                
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
   
-    
-    
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
+        <li class="md-nav__item">
+  <a href="#opengauss-远程连接" class="md-nav__link">
+    <span class="md-ellipsis">
+      openGauss 远程连接
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="openGauss 远程连接">
+      <ul class="md-nav__list">
         
+          <li class="md-nav__item">
+  <a href="#问题阐述" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题阐述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#解决方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      解决方案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#参考文章" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文章
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
+        <li class="md-nav__item">
+  <a href="#opengauss-导入数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      openGauss 导入数据
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="openGauss 导入数据">
+      <ul class="md-nav__list">
         
+          <li class="md-nav__item">
+  <a href="#创建表" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#构造数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      构造数据
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#导入数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      导入数据
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#题外话" class="md-nav__link">
+    <span class="md-ellipsis">
+      题外话
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
-            
+    </ul>
   
-  <span class="md-ellipsis">
-    MySQL
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4_2">
-            <span class="md-nav__icon md-icon"></span>
-            MySQL
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mysql/mysql-basic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MySQL 基础
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mysql/solve-mysql-problems/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    解决 MySQL 相关问题
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_3" id="__nav_6_4_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    openGauss
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            openGauss
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../opengauss/opengauss-basic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    openGauss 基础
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../opengauss/opengauss-remote-connect/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    openGauss 远程连接
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../opengauss/opengauss-import-data/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    openGauss 导入数据
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
+</nav>
       
     </li>
   
@@ -5140,7 +5152,7 @@
             
   
   <span class="md-ellipsis">
-    配置指南
+    软件配置
     
   </span>
   
@@ -5151,7 +5163,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
-            配置指南
+            软件配置
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5446,6 +5458,107 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opengauss-远程连接" class="md-nav__link">
+    <span class="md-ellipsis">
+      openGauss 远程连接
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="openGauss 远程连接">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#问题阐述" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题阐述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#解决方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      解决方案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#参考文章" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文章
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opengauss-导入数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      openGauss 导入数据
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="openGauss 导入数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#创建表" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#构造数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      构造数据
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#导入数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      导入数据
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#题外话" class="md-nav__link">
+    <span class="md-ellipsis">
+      题外话
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5460,7 +5573,7 @@
 
 
   
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/back-end/database/database-basic.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/back-end/opengauss/opengauss-basic.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5469,16 +5582,55 @@
     
       
     
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/back-end/database/database-basic.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/back-end/opengauss/opengauss-basic.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-  <h1>数据库基础</h1>
+  <h1>openGauss 基础操作</h1>
 
-<p><a href="https://developer.aliyun.com/learning/roadmap/database">数据库学习路线 - 阿里云开发者社区</a></p>
+<p>本文记录 openGauss 数据库的基本操作。官方文档：<a href="https://docs.opengauss.org/zh/">https://docs.opengauss.org/zh/</a>。</p>
+<h2 id="opengauss-远程连接">openGauss 远程连接<a class="headerlink" href="#opengauss-远程连接" title="页面定位">&para;</a></h2>
+<h3 id="问题阐述">问题阐述<a class="headerlink" href="#问题阐述" title="页面定位">&para;</a></h3>
+<p>由于 openGauss 数据库不允许使用默认用户（默认叫做 omm）进行远程连接，因此我们不得不创建一个新的用户进行连接。但是连接后总是警告说没有权限访问 pg_user 表并且无法查看和操作数据库中的任何信息。</p>
+<h3 id="解决方案">解决方案<a class="headerlink" href="#解决方案" title="页面定位">&para;</a></h3>
+<p>由于新创建的用户权限很低，为了能够在远程连接后达到和数据库系统默认用户几乎一致的权限，我们使用下面的语句对新用户进行权限提升：</p>
+<div class="language-sql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">alter</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="o">&lt;</span><span class="n">user_name</span><span class="o">&gt;</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">SYSADMIN</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>这样就可以进行任意级别的对象进行图形化的增删改查操作。</p>
+<h3 id="参考文章">参考文章<a class="headerlink" href="#参考文章" title="页面定位">&para;</a></h3>
+<p><a href="https://docs.opengauss.org/zh/docs/5.0.0-lite/docs/DatabaseAdministrationGuide/管理员.html">https://docs.opengauss.org/zh/docs/5.0.0-lite/docs/DatabaseAdministrationGuide/管理员.html</a></p>
+<p><a href="https://chatgpt.com/share/673031aa-b46c-8002-88b6-9ab1d80afa5c">https://chatgpt.com/share/673031aa-b46c-8002-88b6-9ab1d80afa5c</a></p>
+<h2 id="opengauss-导入数据">openGauss 导入数据<a class="headerlink" href="#opengauss-导入数据" title="页面定位">&para;</a></h2>
+<p>简单介绍一下如何利用 gsql 将数据批量导入 openGauss。</p>
+<h3 id="创建表">创建表<a class="headerlink" href="#创建表" title="页面定位">&para;</a></h3>
+<p>首先登录 openGauss 并 <a href="https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/BriefTutorial/创建数据库.html">创建数据库</a> experiment 用于后续表的设计。</p>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122259262.png" data-type="image" data-width="auto" data-height="auto" data-title="创建数据库 experiment" data-desc-position="bottom"><img alt="创建数据库 experiment" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122259262.png" /></a></p>
+<p>然后进入 experiment 数据库并 <a href="https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/BriefTutorial/创建表.html">创建学生表</a> student。设置学号 <code>sno char(8)</code>、姓名 <code>sname char(10)</code>、性别 <code>ssex char(2)</code>、年龄 <code>sage integer(3)</code> 四个属性。</p>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122300081.png" data-type="image" data-width="auto" data-height="auto" data-title="创建学生表 student" data-desc-position="bottom"><img alt="创建学生表 student" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122300081.png" /></a></p>
+<p>最后以防万一，检查一下当前数据库 experiment 下所有的表以及对应的表结构。使用 <code>\dt</code> 命令查看当前数据库下的所有表，使用 <code>\d &lt;table_name&gt;</code> 命令查看当前数据库下指定的表结构。</p>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122300379.png" data-type="image" data-width="auto" data-height="auto" data-title="检查表结构" data-desc-position="bottom"><img alt="检查表结构" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122300379.png" /></a></p>
+<h3 id="构造数据">构造数据<a class="headerlink" href="#构造数据" title="页面定位">&para;</a></h3>
+<p>接下来进行数据的构造和导入工作。在开始构造数据之前，有必要了解一下对应的 <a href="https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/DatabaseOMGuide/使用gsql元命令导入数据.html">数据格式规范</a>。可以看到是支持 <code>.csv</code> 文件的，并且默认将第一行识别为数据而不是表头。因此我设计出了这样的 prompt：</p>
+<blockquote>
+<p>“请帮我生成一个数据库的学生表的数据。格式为 csv，用逗号分隔符分隔。属性共有 4 个，分别为学号 sno char(8)、姓名 sname char(10)、性别 ssex char(2)、年龄 sage integer(3)。请不要加上表头信息，首行直接从数据开始。生成共 20 条学生信息数据。请将结果直接打印出来。”</p>
+</blockquote>
+<p>最终给出的结果如下：</p>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122301562.png" data-type="image" data-width="auto" data-height="auto" data-title="GLM4 构造的数据" data-desc-position="bottom"><img alt="GLM4 构造的数据" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122301562.png" /></a></p>
+<p>我们将上述数据复制到 <code>/home/dbuser/stu_data.csv</code> 文件中等待后续的导入工作。</p>
+<h3 id="导入数据">导入数据<a class="headerlink" href="#导入数据" title="页面定位">&para;</a></h3>
+<p>我们执行如下 gsql 元命令将数据从本地文件 <code>std_data.csv</code> 导入到学生表中。</p>
+<div class="language-postgresql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="err">\</span><span class="k">copy</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="err">‘</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">dbuser</span><span class="o">/</span><span class="n">stu_data</span><span class="mf">.</span><span class="k">csv</span><span class="err">’</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="k">delimiter</span><span class="err">’</span><span class="p">,</span><span class="err">’</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>出现报错说性别一栏的长度不够。<a href="https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/BriefTutorial/ALTER-TABLE语句.html">修改字段</a> <code>ssex</code> 属性为 <code>char(3)</code> 则可以成功导入。</p>
+<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122301877.png" data-type="image" data-width="auto" data-height="auto" data-title="成功导入" data-desc-position="bottom"><img alt="成功导入" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122301877.png" /></a></p>
+<h3 id="题外话">题外话<a class="headerlink" href="#题外话" title="页面定位">&para;</a></h3>
+<ul>
+<li>如果要在 gsql 命令行环境中 <a href="https://www.cndba.cn/dave/article/116534">启动上下文记忆模式</a>，可以在登录时添加 <code>-r</code> 参数。</li>
+<li>中文字符的字节数默认为 3，因此上述导入数据时第一次会失败，因为设置为了 2。</li>
+</ul>
 
 
 
@@ -5501,7 +5653,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年2月25日 03:56:29">2025年2月25日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月22日 12:32:42">2025年3月22日</span>
   </span>
 
     
@@ -5511,7 +5663,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年1月30日 17:19:14">2025年1月30日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年10月12日 15:20:34">2024年10月12日</span>
   </span>
 
     
@@ -5626,7 +5778,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../../python/flask/deploy-flask/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 部署 Flask 应用">
+          <a href="../opengauss-setup/" class="md-footer__link md-footer__link--prev" aria-label="上一页: openGauss 环境配置">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5636,20 +5788,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                部署 Flask 应用
+                openGauss 环境配置
               </div>
             </div>
           </a>
         
         
           
-          <a href="../mysql/mysql-basic/" class="md-footer__link md-footer__link--next" aria-label="下一页: MySQL 基础">
+          <a href="../../../operation/" class="md-footer__link md-footer__link--next" aria-label="下一页: 运维专栏简介">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                MySQL 基础
+                运维专栏简介
               </div>
             </div>
             <div class="md-footer__button md-icon">

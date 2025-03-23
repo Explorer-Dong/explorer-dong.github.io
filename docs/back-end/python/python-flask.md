@@ -75,19 +75,19 @@ TODO
 
 **构造数据库信息**。由于数据库相关的资源已经被我存储在了本地 Windows，故直接在本地开发环境中利用 DataGrip 数据库管理工具将相应的信息复制到这台服务器的 MySQL 数据库中即可：
 
-![本地选择 MySQL 数据库](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126613.png)
+![本地选择 MySQL 数据库](https://cdn.dwj601.cn/images/202401260126613.png)
 
 /// fc
 本地选择 MySQL 数据库
 ///
 
-![填写服务器信息和应用端口并测试连接](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126614.png)
+![填写服务器信息和应用端口并测试连接](https://cdn.dwj601.cn/images/202401260126614.png)
 
 /// fc
 填写服务器信息和应用端口并测试连接
 ///
 
-![拷贝本地资源至远程的数据库](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126615.png)
+![拷贝本地资源至远程的数据库](https://cdn.dwj601.cn/images/202401260126615.png)
 
 /// fc
 拷贝本地资源至远程的数据库
@@ -99,7 +99,7 @@ TODO
 
 **下载 Nginx**。进入 [nginx 官网](http://nginx.org/en/download.html) 并找到以下内容：
 
-![找到 Nginx 的下载链接](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126616.png)
+![找到 Nginx 的下载链接](https://cdn.dwj601.cn/images/202401260126616.png)
 
 /// fc
 找到 Nginx 的下载链接
@@ -139,14 +139,14 @@ make && make install
 
 > 报错：端口被占用。
 >
-> ![端口被占用](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126617.png)
+> ![端口被占用](https://cdn.dwj601.cn/images/202401260126617.png)
 >
 > 解决：使用 `killall -9 nginx` 杀掉 nginx 的进程，然后重启。
 
 
 最后浏览器通过 http 协议默认的 80 端口访问公网 ip，就可以看到欢呼雀跃的一幕：
 
-![最终结果](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126618.png)
+![最终结果](https://cdn.dwj601.cn/images/202401260126618.png)
 
 /// fc
 Nginx 启动成功

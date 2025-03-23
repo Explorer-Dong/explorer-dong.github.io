@@ -8,13 +8,13 @@ title: 基础专栏简介
 
 本栏目文章以「AI / CS 学科笔记」为主。主要收录计算机科学与技术、智能科学与技术相关笔记。欢迎评论与补充。
 
-![I Love NNU](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501301807985.png)
+![I Love NNU](https://cdn.dwj601.cn/images/202501301807985.png)
 
 /// caption
 :heart: NNU
 ///
 
-![按照学习类型进行的人工智能领域分类](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250224083517762.png)
+![按照学习类型进行的人工智能领域分类](https://cdn.dwj601.cn/images/20250224083517762.png)
 
 /// caption
 按照学习类型进行的人工智能领域分类 [^1]

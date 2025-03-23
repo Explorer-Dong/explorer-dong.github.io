@@ -10,7 +10,7 @@ title: 贝叶斯模型
 
 $$
 \begin{aligned}
-LL(\theta_c) &= \log P(D_c\ |\ \theta_c) \\ 
+LL(\theta_c) &= \log P(D_c\ |\ \theta_c) \\
 &= \sum_{x \in D_c} \log P(x\ |\ \theta_c)
 \end{aligned}
 $$
@@ -51,7 +51,7 @@ $$
 
 如何寻找依赖关系？我们从属性依赖图出发
 
-![属性依赖图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405210830260.png)
+![属性依赖图](https://cdn.dwj601.cn/images/202405210830260.png)
 
 如上图所示：
 
@@ -66,7 +66,7 @@ $$
 
 |                           同父结构                           |                           V 型结构                            |                           顺序结构                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![同父结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406111010107.png) | ![V 型结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406111010429.png) | ![顺序结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406111010676.png) |
+| ![同父结构](https://cdn.dwj601.cn/images/202406111010107.png) | ![V 型结构](https://cdn.dwj601.cn/images/202406111010429.png) | ![顺序结构](https://cdn.dwj601.cn/images/202406111010676.png) |
 |             在已知 $x_1$ 的情况下 $x_3,x_4$ 独立             |          若 $x_4$ 未知则 $x_1,x_2$ 独立，反之不独立          |                在已知 $x$ 的情况下 $y,z$ 独立                |
 
 概率计算公式参考：[超详细讲解贝叶斯网络(Bayesian network)](https://www.cnblogs.com/USTC-ZCC/p/12786860.html)

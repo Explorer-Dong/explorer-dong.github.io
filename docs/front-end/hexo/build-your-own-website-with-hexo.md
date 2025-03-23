@@ -93,9 +93,9 @@ deploy:
 hexo deploy  # 可简写为 hexo d
 ```
 
-5）配置 Github Pages。选择 Source 为 Deploy from a branch 并选用 public 分支
+5）配置 GitHub Pages。选择 Source 为 Deploy from a branch 并选用 public 分支
 
-![配置 Github Pages 页面](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501220201709.png)
+![配置 GitHub Pages 页面](https://cdn.dwj601.cn/images/202501220201709.png)
 
 现在访问 `https://<username>.github.io/demo/`，如果可以看到与之前本地测试时一样的界面，恭喜你，现在已经可以在项目的 `source/_post/` 目录下撰写博客并且全球共享了！
 

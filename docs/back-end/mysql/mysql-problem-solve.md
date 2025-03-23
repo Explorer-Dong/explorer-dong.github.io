@@ -10,7 +10,7 @@ title: MySQL 问题解决
 
 在 Ubuntu 上下载完 MySQL 以后，尝试在本地 DataGrip 连接该服务器上的数据库，结果出现报错 ：Connection refused: connect，如下图：
 
-![Connection refused: connect](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403261820758.png)
+![Connection refused: connect](https://cdn.dwj601.cn/images/202403261820758.png)
 
 ### 解决
 

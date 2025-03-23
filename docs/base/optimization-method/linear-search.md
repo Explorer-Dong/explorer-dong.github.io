@@ -31,11 +31,11 @@ title: 线性搜索
     
         1. 若 $f(x_1) \ge f(x_2)$ 则 $x^* \in [x_1,b]$
     
-            ![保留右区间](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404121125038.png)
+            ![保留右区间](https://cdn.dwj601.cn/images/202404121125038.png)
     
         2. 若 $f(x_1) < f(x_2)$ 则 $x^* \in [a,x_2]$​
     
-            ![保留左区间](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404121125961.png)
+            ![保留左区间](https://cdn.dwj601.cn/images/202404121125961.png)
     
         3. 若 $f(x_1) = f(x_2)$ 则 $x^* \in [x_1,x_2]$
     
@@ -224,7 +224,7 @@ $$
 
 基于「函数值、一阶导数」进行选点。
 
-![三点二次插值法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404170915756.png)
+![三点二次插值法](https://cdn.dwj601.cn/images/202404170915756.png)
 
 **三点二次插值法**。给定初始迭代区间 $[a_0,b_0]$ 和初始迭代解 $t_0$。每次在目标函数上取三个点来拟合一个二次函数，通过拟合出来的二次函数的最小值，来更新三个点为 $a_1,b_1,t_1$，直到区间小于上界长度 $\delta$，终止迭代，极小值就是当前状态二次函数的最小值。
 

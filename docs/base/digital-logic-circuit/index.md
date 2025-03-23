@@ -10,20 +10,20 @@ title: 数字逻辑电路
 
 | 运算类型 |                           逻辑符号                           |                 逻辑表达式                 |
 | :------: | :----------------------------------------------------------: | :----------------------------------------: |
-|    与    | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245091.png" alt="image-20231008095031818" style="zoom:33%;" /> |                   $Y=AB$                   |
-|    或    | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245093.png" alt="image-20231008095047759" style="zoom:33%;" /> |                  $Y=A+B$                   |
-|    非    | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245094.png" alt="image-20231008094808523" style="zoom:33%;" /> |              $Y=\overline{A}$              |
-|   与非   | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245095.png" alt="image-20231008095111128" style="zoom:33%;" /> |             $Y=\overline{AB}$              |
-|   或非   | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245096.png" alt="image-20231008095809755" style="zoom:33%;" /> |             $Y=\overline{A+B}$             |
-|   异或   | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245097.png" alt="image-20231008095902796" style="zoom:33%;" /> | $Y=\overline A B+A \overline B=A \oplus B$ |
-|   同或   | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245098.png" alt="image-20231008095922663" style="zoom:33%;" /> |    $Y = AB + \bar A \bar B = A\odot B$     |
-|  与或非  | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245099.png" alt="image-20231008095947154" style="zoom:33%;" /> |            $Y=\overline{AB+CD}$            |
+|    与    | <img src="https://cdn.dwj601.cn/images/202404101245091.png" alt="image-20231008095031818" style="zoom:33%;" /> |                   $Y=AB$                   |
+|    或    | <img src="https://cdn.dwj601.cn/images/202404101245093.png" alt="image-20231008095047759" style="zoom:33%;" /> |                  $Y=A+B$                   |
+|    非    | <img src="https://cdn.dwj601.cn/images/202404101245094.png" alt="image-20231008094808523" style="zoom:33%;" /> |              $Y=\overline{A}$              |
+|   与非   | <img src="https://cdn.dwj601.cn/images/202404101245095.png" alt="image-20231008095111128" style="zoom:33%;" /> |             $Y=\overline{AB}$              |
+|   或非   | <img src="https://cdn.dwj601.cn/images/202404101245096.png" alt="image-20231008095809755" style="zoom:33%;" /> |             $Y=\overline{A+B}$             |
+|   异或   | <img src="https://cdn.dwj601.cn/images/202404101245097.png" alt="image-20231008095902796" style="zoom:33%;" /> | $Y=\overline A B+A \overline B=A \oplus B$ |
+|   同或   | <img src="https://cdn.dwj601.cn/images/202404101245098.png" alt="image-20231008095922663" style="zoom:33%;" /> |    $Y = AB + \bar A \bar B = A\odot B$     |
+|  与或非  | <img src="https://cdn.dwj601.cn/images/202404101245099.png" alt="image-20231008095947154" style="zoom:33%;" /> |            $Y=\overline{AB+CD}$            |
 
 使用逻辑函数表示实际问题：
 
 |                           实际问题                           |                           图片示例                           |                           变量表示                           |                           列真值表                           |                           逻辑函数                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245100.png" alt="image-20231008102102546" style="zoom:25%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245101.png" alt="image-20231008102037276" style="zoom:25%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245102.png" alt="image-20231008101253710" style="zoom:50%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245104.png" alt="image-20231008101303842" style="zoom: 33%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245105.png" alt="image-20231008101318582" style="zoom:33%;" /> |
+| <img src="https://cdn.dwj601.cn/images/202404101245100.png" alt="image-20231008102102546" style="zoom:25%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245101.png" alt="image-20231008102037276" style="zoom:25%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245102.png" alt="image-20231008101253710" style="zoom:50%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245104.png" alt="image-20231008101303842" style="zoom: 33%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245105.png" alt="image-20231008101318582" style="zoom:33%;" /> |
 
 逻辑函数[^逻辑函数解释]及其表示方法
 
@@ -31,38 +31,38 @@ title: 数字逻辑电路
 
 |      方法      |                             示例                             |
 | :------------: | :----------------------------------------------------------: |
-|     真值表     | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245106.png" alt="image-20231008110656451" style="zoom: 33%;" /> |
-| 逻辑函数表达式 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245107.png" alt="image-20231008110713908" style="zoom:25%;" /> |
-|     逻辑图     | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245108.png" alt="image-20240116131615935" style="zoom: 25%;" /> |
-|     波形图     | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245109.png" alt="image-20231008111013474" style="zoom:33%;" /> |
+|     真值表     | <img src="https://cdn.dwj601.cn/images/202404101245106.png" alt="image-20231008110656451" style="zoom: 33%;" /> |
+| 逻辑函数表达式 | <img src="https://cdn.dwj601.cn/images/202404101245107.png" alt="image-20231008110713908" style="zoom:25%;" /> |
+|     逻辑图     | <img src="https://cdn.dwj601.cn/images/202404101245108.png" alt="image-20240116131615935" style="zoom: 25%;" /> |
+|     波形图     | <img src="https://cdn.dwj601.cn/images/202404101245109.png" alt="image-20231008111013474" style="zoom:33%;" /> |
 
 真值表到逻辑图的转换:
 
 - 查看真值表
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245110.png" alt="image-20231008112605100" style="zoom:33%;" />
+    <img src="https://cdn.dwj601.cn/images/202404101245110.png" alt="image-20231008112605100" style="zoom:33%;" />
 
 - 根据真值表写出逻辑表达式
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245111.png" alt="image-20231008112628066" style="zoom: 50%;" />
+    <img src="https://cdn.dwj601.cn/images/202404101245111.png" alt="image-20231008112628066" style="zoom: 50%;" />
 
 - 化简（上式不用化简）
 
 - 绘制逻辑图
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245112.png" alt="image-20231008112708161" style="zoom:50%;" />
+    <img src="https://cdn.dwj601.cn/images/202404101245112.png" alt="image-20231008112708161" style="zoom:50%;" />
 
 逻辑图到真值表的转换：
 
 - 根据逻辑图逐级写出表达式
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245113.png" alt="image-20231008112800422" style="zoom:50%;" />
+    <img src="https://cdn.dwj601.cn/images/202404101245113.png" alt="image-20231008112800422" style="zoom:50%;" />
 
 - 化简
 
 - 代入所有输入变量求真值表
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245114.png" alt="image-20231008112839220" style="zoom:50%;" />
+    <img src="https://cdn.dwj601.cn/images/202404101245114.png" alt="image-20231008112839220" style="zoom:50%;" />
 
 ## 2 逻辑代数 | 硬件描述语言基础
 
@@ -70,15 +70,15 @@ title: 数字逻辑电路
 
 #### 2.1.1 基本定律和恒等式
 
-![image-20231008114849627](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245115.png)
+![image-20231008114849627](https://cdn.dwj601.cn/images/202404101245115.png)
 
-![image-20231008114943429](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245116.png)
+![image-20231008114943429](https://cdn.dwj601.cn/images/202404101245116.png)
 
 #### 2.1.2 基本规则
 
 1. **代入规则** - 类似于换元
 
-    ![image-20231008115435355](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245117.png)
+    ![image-20231008115435355](https://cdn.dwj601.cn/images/202404101245117.png)
 
 2. **反演规则**（获得反函数 $\overline Y$ ）
 
@@ -88,9 +88,9 @@ title: 数字逻辑电路
     - 保持原来的运算优先顺序（即如果在原函数表达式中，AB 之间先运算，再和其他变量进行运算，那么非函数的表达式中，仍然是 AB 之间先运算）
     - 对于反变量以外的非号应保留不变
 
-    ![image-20231008115328932](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245118.png)
+    ![image-20231008115328932](https://cdn.dwj601.cn/images/202404101245118.png)
 
-    ![image-20231008115337125](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245119.png)
+    ![image-20231008115337125](https://cdn.dwj601.cn/images/202404101245119.png)
 
 3. **对偶规则**（获得对偶式 $L'$ ）
 
@@ -102,11 +102,11 @@ title: 数字逻辑电路
 
 1. 与或表达式：若干个与项相或
 
-    ![image-20231013094928938](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245120.png)
+    ![image-20231013094928938](https://cdn.dwj601.cn/images/202404101245120.png)
 
 2. 或与表达式：若干个或项相与
 
-    ![image-20231013094938441](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245121.png)
+    ![image-20231013094938441](https://cdn.dwj601.cn/images/202404101245121.png)
 
 #### 2.2.2 最小项与最小项表达式
 
@@ -114,7 +114,7 @@ title: 数字逻辑电路
 
 2. 最小项表达式：所有的最小项相或
 
-    ![image-20231013100105922](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245122.png)
+    ![image-20231013100105922](https://cdn.dwj601.cn/images/202404101245122.png)
 
 #### 2.2.3 最大项与最大项表达式
 
@@ -122,7 +122,7 @@ title: 数字逻辑电路
 
 2. 最大项表达式：所有的最大项相与
 
-    ![image-20240116134303065](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245123.png)
+    ![image-20240116134303065](https://cdn.dwj601.cn/images/202404101245123.png)
 
 #### 2.2.4 最大项和最小项的关系
 
@@ -155,7 +155,7 @@ $$
     >
     > 变换方法：常常使用两次取反的套路进行变换
 
-    <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245124.png" alt="image-20231013112834593" style="zoom:50%;" />
+    <img src="https://cdn.dwj601.cn/images/202404101245124.png" alt="image-20231013112834593" style="zoom:50%;" />
 
 ### 2.4 逻辑函数的卡诺图化简法
 
@@ -221,13 +221,13 @@ MOS 管含有 NMOS 管和 PMOS 管，NMOS 管与 PMOS 管的组合称为互补 M
 
 |      器件      |                             电路                             |
 | :------------: | :----------------------------------------------------------: |
-|      开关      | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245125.png" alt="image-20231201090156879" style="zoom:67%;" /> |
-| 反相器（非门） | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245126.png" alt="image-20231201090250860" style="zoom: 50%;" /> |
-|     与非门     | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245127.png" alt="image-20231201090233084" style="zoom:50%;" /> |
-|     或非门     | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245128.png" alt="image-20231201090319423" style="zoom:33%;" /> |
-| 传输门（开关） | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245129.png" alt="image-20231222104533397" style="zoom:33%;" /> |
-|      与门      | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245130.png" alt="image-20240117003028351" style="zoom:33%;" /> |
-|      或门      | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245131.png" alt="image-20240117003058029" style="zoom:33%;" /> |
+|      开关      | <img src="https://cdn.dwj601.cn/images/202404101245125.png" alt="image-20231201090156879" style="zoom:67%;" /> |
+| 反相器（非门） | <img src="https://cdn.dwj601.cn/images/202404101245126.png" alt="image-20231201090250860" style="zoom: 50%;" /> |
+|     与非门     | <img src="https://cdn.dwj601.cn/images/202404101245127.png" alt="image-20231201090233084" style="zoom:50%;" /> |
+|     或非门     | <img src="https://cdn.dwj601.cn/images/202404101245128.png" alt="image-20231201090319423" style="zoom:33%;" /> |
+| 传输门（开关） | <img src="https://cdn.dwj601.cn/images/202404101245129.png" alt="image-20231222104533397" style="zoom:33%;" /> |
+|      与门      | <img src="https://cdn.dwj601.cn/images/202404101245130.png" alt="image-20240117003028351" style="zoom:33%;" /> |
+|      或门      | <img src="https://cdn.dwj601.cn/images/202404101245131.png" alt="image-20240117003058029" style="zoom:33%;" /> |
 
 **应用示例**
 
@@ -237,11 +237,11 @@ MOS 管含有 NMOS 管和 PMOS 管，NMOS 管与 PMOS 管的组合称为互补 M
 
 |                             电路                             |                          逻辑表达式                          |    功能描述    |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :------------: |
-| <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245132.png" alt="image-20231201090643503" style="zoom:50%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245133.png" alt="image-20231201090727291" style="zoom:50%;" /> |     异或门     |
-| ![image-20240117103214449](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245134.png) |                    $L=\overline{(BC+D)A}$                    |                |
-| ![image-20240117103238963](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245135.png) | $L=\overline{(A+B)X}=\overline{(A+B)\overline{AB}}=A\odot B$ |     同或门     |
-| <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245136.png" alt="image-20231201091736402" style="zoom:50%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245137.png" alt="image-20231201091750341" style="zoom:50%;" /> |     异或门     |
-| <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245138.png" alt="image-20231201091831389" style="zoom:50%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245139.png" alt="image-20231201091858929" style="zoom:50%;" /> | 2 选 1 数据选择器 |
+| <img src="https://cdn.dwj601.cn/images/202404101245132.png" alt="image-20231201090643503" style="zoom:50%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245133.png" alt="image-20231201090727291" style="zoom:50%;" /> |     异或门     |
+| ![image-20240117103214449](https://cdn.dwj601.cn/images/202404101245134.png) |                    $L=\overline{(BC+D)A}$                    |                |
+| ![image-20240117103238963](https://cdn.dwj601.cn/images/202404101245135.png) | $L=\overline{(A+B)X}=\overline{(A+B)\overline{AB}}=A\odot B$ |     同或门     |
+| <img src="https://cdn.dwj601.cn/images/202404101245136.png" alt="image-20231201091736402" style="zoom:50%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245137.png" alt="image-20231201091750341" style="zoom:50%;" /> |     异或门     |
+| <img src="https://cdn.dwj601.cn/images/202404101245138.png" alt="image-20231201091831389" style="zoom:50%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245139.png" alt="image-20231201091858929" style="zoom:50%;" /> | 2 选 1 数据选择器 |
 
 ## 4 组合逻辑电路
 
@@ -268,10 +268,10 @@ MOS 管含有 NMOS 管和 PMOS 管，NMOS 管与 PMOS 管的组合称为互补 M
 
 |         电路类型         |    优化策略    |                            电路图                            |  优化结果  |
 | :----------------------: | :------------: | :----------------------------------------------------------: | :--------: |
-|        单输出电路        |  统一元件类型  | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245140.png" alt="image-20231117112320588" style="zoom: 33%;" /> | 见左图文字 |
-|        多输出电路        | 共享相同逻辑项 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245141.png" alt="image-20231117112426358" style="zoom:33%;" /> | 见左图文字 |
-| 多级逻辑电路（限定入数） |   提取公因项   | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245142.png" alt="image-20231117112559081" style="zoom:33%;" /> | 见左图文字 |
-| 多级逻辑电路（限定入数） |   提取公因项   | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245143.png" alt="image-20231117112618856" style="zoom: 33%;" /> | 见左图文字 |
+|        单输出电路        |  统一元件类型  | <img src="https://cdn.dwj601.cn/images/202404101245140.png" alt="image-20231117112320588" style="zoom: 33%;" /> | 见左图文字 |
+|        多输出电路        | 共享相同逻辑项 | <img src="https://cdn.dwj601.cn/images/202404101245141.png" alt="image-20231117112426358" style="zoom:33%;" /> | 见左图文字 |
+| 多级逻辑电路（限定入数） |   提取公因项   | <img src="https://cdn.dwj601.cn/images/202404101245142.png" alt="image-20231117112559081" style="zoom:33%;" /> | 见左图文字 |
+| 多级逻辑电路（限定入数） |   提取公因项   | <img src="https://cdn.dwj601.cn/images/202404101245143.png" alt="image-20231117112618856" style="zoom: 33%;" /> | 见左图文字 |
 
 ### 4.3 竞争与冒险
 
@@ -285,7 +285,7 @@ MOS 管含有 NMOS 管和 PMOS 管，NMOS 管与 PMOS 管的组合称为互补 M
 
 3. 输出端并联电容器。如下图：
 
-![输出端并联电容器](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245144.png)
+![输出端并联电容器](https://cdn.dwj601.cn/images/202404101245144.png)
 
 ### 4.4 典型电路示例
 
@@ -300,18 +300,18 @@ MOS 管含有 NMOS 管和 PMOS 管，NMOS 管与 PMOS 管的组合称为互补 M
 |      名称      |     型号      |                           逻辑符号                           |                           功能分析                           |                            逻辑图                            |
 | :------------: | :-----------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | 4-2 优先编码器  |    74LS00     |                2 片 7400（4 个 2 输入与非门）实现                 | 需要将 4-2 优先编码器的两个逻辑函数转化为与非式，从而进行电路逻辑的搭建。化简后发现需要 7 个 2 输入与非门，故需要 2 片 7400 才能实现 4-2 线优先编码器 |                                                              |
-| 8-3 优先编码器  |    CD4532     | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245145.png" alt="image-20231208104642447" style="zoom: 50%;" /> | 除了 8 个输入端与 3 个输出端，还有 EI、EO 与 GS 端。其中 **GS** 是用来标明当前电路是否处于工作状态的，即如果没有输入端为有效信号，GS 就是低电平，反之则是高电平。而 **EI 与 EO** 是为了电路扩展而诞生的，当 EI 为高电平且没有任何输入的情况下，EO 也是 1，此时的 4532 就相当于一根导线，从而可以进行片子的扩展 |            由于有现成的集成电路板，故就是逻辑符号            |
-| 16-4 优先编码器 |    CD4532     |                         2 片 4532 实现                          | 首先确保 EI 始终为高电平。**输出后三位** 就是两个 4532 片子的 3 输出分别或的结果，**最高位的输出** 是高位片的 GS 端的结果 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245146.png" alt="image-20240117120736794" style="zoom:200%;" /> |
-| 32-5 优先编码器 | 74LS00+CD4532 |                     1 片 7400+4 片 4532 实现                      | 首先确保 EI 始终为高电平。**输出后三位** 就是四个 4532 片子的 3 输出分别或的结果，**最高位的两个输出** 取决于 4 个片子 GS 端 4-2 优先编码的结果。 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245147.png" alt="image-20240117121434992" style="zoom:200%;" /> |
+| 8-3 优先编码器  |    CD4532     | <img src="https://cdn.dwj601.cn/images/202404101245145.png" alt="image-20231208104642447" style="zoom: 50%;" /> | 除了 8 个输入端与 3 个输出端，还有 EI、EO 与 GS 端。其中 **GS** 是用来标明当前电路是否处于工作状态的，即如果没有输入端为有效信号，GS 就是低电平，反之则是高电平。而 **EI 与 EO** 是为了电路扩展而诞生的，当 EI 为高电平且没有任何输入的情况下，EO 也是 1，此时的 4532 就相当于一根导线，从而可以进行片子的扩展 |            由于有现成的集成电路板，故就是逻辑符号            |
+| 16-4 优先编码器 |    CD4532     |                         2 片 4532 实现                          | 首先确保 EI 始终为高电平。**输出后三位** 就是两个 4532 片子的 3 输出分别或的结果，**最高位的输出** 是高位片的 GS 端的结果 | <img src="https://cdn.dwj601.cn/images/202404101245146.png" alt="image-20240117120736794" style="zoom:200%;" /> |
+| 32-5 优先编码器 | 74LS00+CD4532 |                     1 片 7400+4 片 4532 实现                      | 首先确保 EI 始终为高电平。**输出后三位** 就是四个 4532 片子的 3 输出分别或的结果，**最高位的两个输出** 取决于 4 个片子 GS 端 4-2 优先编码的结果。 | <img src="https://cdn.dwj601.cn/images/202404101245147.png" alt="image-20240117121434992" style="zoom:200%;" /> |
 
 #### 4.4.2 译码器/数据分配器
 
 |    名称    |      型号      |                           逻辑符号                           |                           功能分析                           |                            逻辑图                            |
 | :--------: | :------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| 2-4 译码器  |     74X139     | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245148.png" alt="image-20231208101820876" style="zoom: 33%;" /> |     使能端有效时。按照对应的输出给出相应输出的低电平信号     |            由于有现成的集成电路板，故就是逻辑符号            |
-| 3-8 译码器  |     74X138     | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245149.png" alt="image-20231208101658175" style="zoom:25%;" /> |     使能端有效时。按照对应的输出给出相应输出的低电平信号     |            由于有现成的集成电路板，故就是逻辑符号            |
-| 4-16 译码器 | 74X138 或 74X139 |                     2 片 74X138 或 5 片 74X139                     | 使能端有效时。**输入的前三位** 分别接入两片 3-8 译码器的输入端，**输入的最后一位** 接入两片 3-8 译码器的高电平使能端即可；如果用 2-4 译码器来实现，**输入的前两位** 分别接入四片 2-4 译码器的输入端，**输入的后两位** 通过一个 2-4 译码器的四个输入分别接入 4 片 2-4 译码器的低电平使能端即可 | ![image-20240117125311036](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245150.png) |
-| 5-32 译码器 | 74X139+74X138  |                     1 片 74X139+4 片 74X138                      | 使能端有效时。**输入的前三位** 分别接入四片 3-8 译码器的输入端，**输入的后两位** 通过 2-4 译码的 4 个结果分别接入四片 3-8 译码器的低电平使能端，从而决定是哪一个 3-8 译码器在工作 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245151.png" alt="image-20231208104231966" style="zoom: 200%;" /> |
+| 2-4 译码器  |     74X139     | <img src="https://cdn.dwj601.cn/images/202404101245148.png" alt="image-20231208101820876" style="zoom: 33%;" /> |     使能端有效时。按照对应的输出给出相应输出的低电平信号     |            由于有现成的集成电路板，故就是逻辑符号            |
+| 3-8 译码器  |     74X138     | <img src="https://cdn.dwj601.cn/images/202404101245149.png" alt="image-20231208101658175" style="zoom:25%;" /> |     使能端有效时。按照对应的输出给出相应输出的低电平信号     |            由于有现成的集成电路板，故就是逻辑符号            |
+| 4-16 译码器 | 74X138 或 74X139 |                     2 片 74X138 或 5 片 74X139                     | 使能端有效时。**输入的前三位** 分别接入两片 3-8 译码器的输入端，**输入的最后一位** 接入两片 3-8 译码器的高电平使能端即可；如果用 2-4 译码器来实现，**输入的前两位** 分别接入四片 2-4 译码器的输入端，**输入的后两位** 通过一个 2-4 译码器的四个输入分别接入 4 片 2-4 译码器的低电平使能端即可 | ![image-20240117125311036](https://cdn.dwj601.cn/images/202404101245150.png) |
+| 5-32 译码器 | 74X139+74X138  |                     1 片 74X139+4 片 74X138                      | 使能端有效时。**输入的前三位** 分别接入四片 3-8 译码器的输入端，**输入的后两位** 通过 2-4 译码的 4 个结果分别接入四片 3-8 译码器的低电平使能端，从而决定是哪一个 3-8 译码器在工作 | <img src="https://cdn.dwj601.cn/images/202404101245151.png" alt="image-20231208104231966" style="zoom: 200%;" /> |
 
 **使用译码器实现逻辑函数**
 
@@ -321,17 +321,17 @@ MOS 管含有 NMOS 管和 PMOS 管，NMOS 管与 PMOS 管的组合称为互补 M
 3. 转化为译码器的输出（写成 $\sum m_i$ 的形式）
 4. 在译码器的输出端加一个多输入与非门即可（对结果进行与非）
 
-![image-20231208110328594](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245152.png)
+![image-20231208110328594](https://cdn.dwj601.cn/images/202404101245152.png)
 
 **数据分配器**
 
 功能：相当于多输出的单刀多掷开关，是将公共数据线上的数据按需要送到不同的通道上去的逻辑电路。
 
-![image-20231208114700981](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245153.png)
+![image-20231208114700981](https://cdn.dwj601.cn/images/202404101245153.png)
 
 <center> 图一：示意图 </center>
 
-![image-20231208114749275](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245154.png)
+![image-20231208114749275](https://cdn.dwj601.cn/images/202404101245154.png)
 
 <center> 图二：功能仿真图 </center>
 
@@ -339,10 +339,10 @@ MOS 管含有 NMOS 管和 PMOS 管，NMOS 管与 PMOS 管的组合称为互补 M
 
 | 名称  |    型号    |                           逻辑符号                           |                           功能分析                           |                            逻辑图                            |
 | :---: | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| 2 选 1  |    ---     | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245155.png" alt="image-20240117135219030" style="zoom:33%;" /> |               通过控制端 $S$ 来选择 $D_0,D_1$                | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245156.png" alt="image-20240117135236405" style="zoom:33%;" /> |
-| 4 选 1  |    ---     | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245157.png" alt="image-20240117135258894" style="zoom:33%;" /> |        通过控制端 $S_0,S_1$ 来选择 $D_0,D_1,D_2,D_3$         | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245158.png" alt="image-20240117135326247" style="zoom:33%;" /> |
-| 8 选 1  |  74HC151   | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245159.png" alt="image-20240117135401170" style="zoom: 25%;" /> |            通过控制端 $S_0-S_2$ 来选择 $D_0-D_7$             |            由于有现成的集成电路板，故就是逻辑符号            |
-| 16 选 1 | 2 片 74HC151 |                             ---                              | 通过控制端 $S_0-S_3$ 来选择 $D_0-D_{15}$，**输入的前三位** 连接三个控制端，**输入的最后一位** 连接两片 74151 的使能端，其实就是译码器的魔改版，让输出为相应的译码结果的高电平而已 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245160.png" alt="image-20240117135555070"  /> |
+| 2 选 1  |    ---     | <img src="https://cdn.dwj601.cn/images/202404101245155.png" alt="image-20240117135219030" style="zoom:33%;" /> |               通过控制端 $S$ 来选择 $D_0,D_1$                | <img src="https://cdn.dwj601.cn/images/202404101245156.png" alt="image-20240117135236405" style="zoom:33%;" /> |
+| 4 选 1  |    ---     | <img src="https://cdn.dwj601.cn/images/202404101245157.png" alt="image-20240117135258894" style="zoom:33%;" /> |        通过控制端 $S_0,S_1$ 来选择 $D_0,D_1,D_2,D_3$         | <img src="https://cdn.dwj601.cn/images/202404101245158.png" alt="image-20240117135326247" style="zoom:33%;" /> |
+| 8 选 1  |  74HC151   | <img src="https://cdn.dwj601.cn/images/202404101245159.png" alt="image-20240117135401170" style="zoom: 25%;" /> |            通过控制端 $S_0-S_2$ 来选择 $D_0-D_7$             |            由于有现成的集成电路板，故就是逻辑符号            |
+| 16 选 1 | 2 片 74HC151 |                             ---                              | 通过控制端 $S_0-S_3$ 来选择 $D_0-D_{15}$，**输入的前三位** 连接三个控制端，**输入的最后一位** 连接两片 74151 的使能端，其实就是译码器的魔改版，让输出为相应的译码结果的高电平而已 | <img src="https://cdn.dwj601.cn/images/202404101245160.png" alt="image-20240117135555070"  /> |
 
 **使用数据选择器实现逻辑函数**
 
@@ -382,38 +382,38 @@ $$
 
 ### 5.1 基本双稳态电路
 
-![双稳态电路](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245162.png)
+![双稳态电路](https://cdn.dwj601.cn/images/202404101245162.png)
 
 ### 5.2 `SR` 锁存器
 
 | 门级元件组成 |                            电路图                            |                   功能分析                    |
 | :----------: | :----------------------------------------------------------: | :-------------------------------------------: |
-|  或非门实现  | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245163.png" alt="image-20231222100822028" style="zoom:50%;" /> | 高电平有效。全 0 不变，谁 1 谁有效，都 1 不确定状态 |
-|  与非门实现  | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245164.png" alt="image-20231222100904959" style="zoom:50%;" /> | 低电平有效。全 1 不变，谁 0 谁有效，都 0 不确定状态 |
+|  或非门实现  | <img src="https://cdn.dwj601.cn/images/202404101245163.png" alt="image-20231222100822028" style="zoom:50%;" /> | 高电平有效。全 0 不变，谁 1 谁有效，都 1 不确定状态 |
+|  与非门实现  | <img src="https://cdn.dwj601.cn/images/202404101245164.png" alt="image-20231222100904959" style="zoom:50%;" /> | 低电平有效。全 1 不变，谁 0 谁有效，都 0 不确定状态 |
 
 |      应用      |                            电路图                            |                           功能分析                           |
 | :------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|    开关电路    | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245165.png" alt="image-20231222101855246" style="zoom:50%;" />	<img src="https://s2.loli.net/2023/12/22/tzFvJp8ulGnRsj5.png" alt="image-20231222102251343" style="zoom:35%;" /> |                无论开关如何震动，输出始终正常                |
-| 门控 SR 锁存器 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245166.png" alt="image-20231222103758704" style="zoom:33%;" /> | 就是加了一个使能端 E，如果 E 为 1，则就是一个基本的 SR 锁存器，如果 E 为 0，则保持 |
+|    开关电路    | <img src="https://cdn.dwj601.cn/images/202404101245165.png" alt="image-20231222101855246" style="zoom:50%;" />	<img src="https://s2.loli.net/2023/12/22/tzFvJp8ulGnRsj5.png" alt="image-20231222102251343" style="zoom:35%;" /> |                无论开关如何震动，输出始终正常                |
+| 门控 SR 锁存器 | <img src="https://cdn.dwj601.cn/images/202404101245166.png" alt="image-20231222103758704" style="zoom:33%;" /> | 就是加了一个使能端 E，如果 E 为 1，则就是一个基本的 SR 锁存器，如果 E 为 0，则保持 |
 
 ### 5.3 `D` 锁存器
 
 |      电路名称       |                          逻辑电路图                          |       功能分析        |
 | :-----------------: | :----------------------------------------------------------: | :-------------------: |
-| 传输门控制的 D 锁存器 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245167.png" alt="image-20231222105139215" style="zoom: 50%;" /> | E = 0, Q = 不变；E = 1, Q = D |
-| 逻辑门控制的 D 锁存器 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245168.png" alt="image-20240117191849592" style="zoom:67%;" /> | E = 0, Q = 不变；E = 1, Q = D |
+| 传输门控制的 D 锁存器 | <img src="https://cdn.dwj601.cn/images/202404101245167.png" alt="image-20231222105139215" style="zoom: 50%;" /> | E = 0, Q = 不变；E = 1, Q = D |
+| 逻辑门控制的 D 锁存器 | <img src="https://cdn.dwj601.cn/images/202404101245168.png" alt="image-20240117191849592" style="zoom:67%;" /> | E = 0, Q = 不变；E = 1, Q = D |
 
 ### 5.4 触发器
 
 #### 5.4.1 主从 D 触发器的电路结构和工作原理
 
-![主从 D 触发器](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245169.png)
+![主从 D 触发器](https://cdn.dwj601.cn/images/202404101245169.png)
 
 #### 5.4.2 典型的主从 D 触发器集成电路
 
-![逻辑图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245170.png)
+![逻辑图](https://cdn.dwj601.cn/images/202404101245170.png)
 
-![电路板](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410120949220.png)
+![电路板](https://cdn.dwj601.cn/images/202410120949220.png)
 
 ![真值表](https://s2.loli.net/2024/01/17/GY3msiIEMtXr1kU.png)
 
@@ -423,11 +423,11 @@ $$
 
 |   类型    |                           逻辑符号                           |                            特性表                            |                           特性方程                           |                            状态图                            |
 | :-------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| D 触发器  | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245171.png" alt="image-20240117190140089" style="zoom: 33%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245172.png" alt="image-20240117190521349" style="zoom:25%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245173.png" alt="image-20240117190538232" style="zoom:25%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245174.png" alt="image-20240117190553444" style="zoom:33%;" /> |
-| JK 触发器 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245175.png" alt="image-20240117190400613" style="zoom:33%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245176.png" alt="image-20240117190647444" style="zoom:25%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245177.png" alt="image-20240117190703599" style="zoom:25%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245178.png" alt="image-20240117190716843" style="zoom: 67%;" /> |
-| T 触发器  | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245179.png" alt="image-20240117190415482" style="zoom:33%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245180.png" alt="image-20240117190800382" style="zoom:33%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245181.png" alt="image-20240117190818921" style="zoom:25%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245182.png" alt="image-20240117190838344" style="zoom:67%;" /> |
-| T' 触发器 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245183.png" alt="image-20240117190915612" style="zoom:33%;" /> |                         $T\equiv 1$                          | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245184.png" alt="image-20240117190926990" style="zoom:33%;" /> |                                                              |
-| SR 触发器 | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245185.png" alt="image-20240117190440059" style="zoom:33%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245186.png" alt="image-20240117191017989" style="zoom:25%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245187.png" alt="image-20240117191040611" style="zoom:33%;" /> | <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245188.png" alt="image-20240117191057024" style="zoom:33%;" /> |
+| D 触发器  | <img src="https://cdn.dwj601.cn/images/202404101245171.png" alt="image-20240117190140089" style="zoom: 33%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245172.png" alt="image-20240117190521349" style="zoom:25%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245173.png" alt="image-20240117190538232" style="zoom:25%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245174.png" alt="image-20240117190553444" style="zoom:33%;" /> |
+| JK 触发器 | <img src="https://cdn.dwj601.cn/images/202404101245175.png" alt="image-20240117190400613" style="zoom:33%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245176.png" alt="image-20240117190647444" style="zoom:25%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245177.png" alt="image-20240117190703599" style="zoom:25%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245178.png" alt="image-20240117190716843" style="zoom: 67%;" /> |
+| T 触发器  | <img src="https://cdn.dwj601.cn/images/202404101245179.png" alt="image-20240117190415482" style="zoom:33%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245180.png" alt="image-20240117190800382" style="zoom:33%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245181.png" alt="image-20240117190818921" style="zoom:25%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245182.png" alt="image-20240117190838344" style="zoom:67%;" /> |
+| T' 触发器 | <img src="https://cdn.dwj601.cn/images/202404101245183.png" alt="image-20240117190915612" style="zoom:33%;" /> |                         $T\equiv 1$                          | <img src="https://cdn.dwj601.cn/images/202404101245184.png" alt="image-20240117190926990" style="zoom:33%;" /> |                                                              |
+| SR 触发器 | <img src="https://cdn.dwj601.cn/images/202404101245185.png" alt="image-20240117190440059" style="zoom:33%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245186.png" alt="image-20240117191017989" style="zoom:25%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245187.png" alt="image-20240117191040611" style="zoom:33%;" /> | <img src="https://cdn.dwj601.cn/images/202404101245188.png" alt="image-20240117191057024" style="zoom:33%;" /> |
 
 ## 6 时序逻辑电路
 
@@ -461,9 +461,9 @@ $$
 
 本节讲讲 N 位二进制计数器中，利用集成电路板 $74LVC161$ 实现的 **4 位同步二进制递增计数器**。进而引出利用该 4 位计数器 **实现模 N 计数器** 的分析与设计思路。同时补充 $74LVC162$ 实现的 **4 位同步十进制递增计时器**，进而引出相关的模 N 设计思路。下面分析 74LVC161 4 位同步二进制递增计数器集成板
 
-![74LVC161 集成板](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410121118821.png)
+![74LVC161 集成板](https://cdn.dwj601.cn/images/202410121118821.png)
 
-![74LVC161 逻辑功能表](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404101245189.png)
+![74LVC161 逻辑功能表](https://cdn.dwj601.cn/images/202404101245189.png)
 
 注解：
 

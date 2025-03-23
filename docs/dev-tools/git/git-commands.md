@@ -4,7 +4,7 @@ title: Git 常用命令
 
 ## 前言
 
-Git 是一款版本管理软件，适用目前绝大多数操作系统；Github 是一个代码托管平台，与 Git 没有任何关系。只不过 Git 可以基于 Github 进行分布式云存储与交互，因此往往需要结合二者从而达到相对良好的 Teamwork 状态。
+Git 是一款版本管理软件，适用目前绝大多数操作系统；GitHub 是一个代码托管平台，与 Git 没有任何关系。只不过 Git 可以基于 GitHub 进行分布式云存储与交互，因此往往需要结合二者从而达到相对良好的 Teamwork 状态。
 
 本文记录 Git 的常用命令。完整命令见官方文档：[https://git-scm.com/book/zh/v2](https://git-scm.com/book/zh/v2)。
 
@@ -18,7 +18,7 @@ Git 是一款版本管理软件，适用目前绝大多数操作系统；Github 
 Git 的三个区域
 ///
 
-![Git 操作命令概览](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202402271037959.png)
+![Git 操作命令概览](https://cdn.dwj601.cn/images/202402271037959.png)
 
 /// fc
 Git 的基本能命令

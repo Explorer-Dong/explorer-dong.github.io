@@ -34,15 +34,15 @@ alter user <user_name> with SYSADMIN;
 
 首先登录 openGauss 并 [创建数据库](https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/BriefTutorial/创建数据库.html) experiment 用于后续表的设计。
 
-![创建数据库 experiment](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122259262.png)
+![创建数据库 experiment](https://cdn.dwj601.cn/images/202410122259262.png)
 
 然后进入 experiment 数据库并 [创建学生表](https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/BriefTutorial/创建表.html) student。设置学号 `sno char(8)`、姓名 `sname char(10)`、性别 `ssex char(2)`、年龄 `sage integer(3)` 四个属性。
 
-![创建学生表 student](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122300081.png)
+![创建学生表 student](https://cdn.dwj601.cn/images/202410122300081.png)
 
 最后以防万一，检查一下当前数据库 experiment 下所有的表以及对应的表结构。使用 `\dt` 命令查看当前数据库下的所有表，使用 `\d <table_name>` 命令查看当前数据库下指定的表结构。
 
-![检查表结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122300379.png)
+![检查表结构](https://cdn.dwj601.cn/images/202410122300379.png)
 
 ### 构造数据
 
@@ -52,7 +52,7 @@ alter user <user_name> with SYSADMIN;
 
 最终给出的结果如下：
 
-![GLM4 构造的数据](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122301562.png)
+![GLM4 构造的数据](https://cdn.dwj601.cn/images/202410122301562.png)
 
 我们将上述数据复制到 `/home/dbuser/stu_data.csv` 文件中等待后续的导入工作。
 
@@ -66,7 +66,7 @@ alter user <user_name> with SYSADMIN;
 
 出现报错说性别一栏的长度不够。[修改字段](https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/BriefTutorial/ALTER-TABLE语句.html) `ssex` 属性为 `char(3)` 则可以成功导入。
 
-![成功导入](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410122301877.png)
+![成功导入](https://cdn.dwj601.cn/images/202410122301877.png)
 
 ### 题外话
 

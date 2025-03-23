@@ -95,7 +95,7 @@ $$
 
     已知 n 阶行列式 D，按第 $x$ 行展开后有 $D=\sum_{i=1}^n a_{xi}A_{xi}$，现在将 $a_{xi}$ 替换为 $a_{yi}$ 且 $x\ne y$，则 $\sum_{i=1}^n a_{yi}A_{xi}=0$。道理很简单，现在求解的值其实也是一个行列式，并且这个行列式有两行/列的元素完全相等，那么显然的行列式的值就是 0。例如下面这道题：显然 (1) 的结果为 0，(2) 只需要配凑一下即可。
     
-    ![例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140938343.png)
+    ![例题](https://cdn.dwj601.cn/images/202406140938343.png)
 
 ### 特殊的行列式
 
@@ -103,7 +103,7 @@ $$
 
 #### 分块行列式
 
-![分块行列式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140938721.png)
+![分块行列式](https://cdn.dwj601.cn/images/202406140938721.png)
 
 0 在左下或右上就是左上角与右下角行列式之积（$D=D_1D_2$），0 在左上或右下就是左下角与右上角行列式之积加上符号判定。
 
@@ -111,13 +111,13 @@ $$
 
 #### 2n 阶行列式
 
-![2n 阶行列式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140939983.png)
+![2n 阶行列式](https://cdn.dwj601.cn/images/202406140939983.png)
 
 先行对换再列对换，通过分块行列式和数学归纳法，可得行列式的值是一个等比数列。
 
 #### 范德蒙德行列式 *
 
-![范德蒙德行列式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140939979.png)
+![范德蒙德行列式](https://cdn.dwj601.cn/images/202406140939979.png)
 
 证明。首先从最后一行开始，依次减去前一行的 $x_1$ 倍，凑出第一列一个元素不为零的情况，最后通过数学归纳法即可求解。项数为 $C_n^2$。
 ## 2 矩阵
@@ -163,7 +163,7 @@ $$
 
 矩阵乘法算律：
 
-![矩阵乘法算律](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140939006.png)
+![矩阵乘法算律](https://cdn.dwj601.cn/images/202406140939006.png)
 
 我们分别解释上面的「矩阵乘法」算律：
 
@@ -188,19 +188,19 @@ $$
 
 矩阵转置算律：
 
-![矩阵转置算律](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140940894.png)
+![矩阵转置算律](https://cdn.dwj601.cn/images/202406140940894.png)
 
 证明 (4)。左边的 $c_{ij}$ 其实应该是 $AB$ 的 $c_{ji}$ ，对应 $A$ 的第 $j$ 行与 $B$ 的第 $i$ 列，那么反过来对于 $ij$ 就是 $B$ 转置的第 $i$ 行与 $A$ 转置的第 $j$ 列。
 
 对称矩阵。对于一个方阵 $A$，若有 $A = A^T$ 则称 $A$ 为对称阵。给一个对阵矩阵的例题：
 
-![对称矩阵 - 例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140940661.png)
+![对称矩阵 - 例题](https://cdn.dwj601.cn/images/202406140940661.png)
 
 #### 2.2.5 方阵的行列式
 
 行列式算律：
 
-![行列式算律](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140940619.png)
+![行列式算律](https://cdn.dwj601.cn/images/202406140940619.png)
 
 伴随矩阵：
 
@@ -208,7 +208,7 @@ $$
 AA^* = A^* A = \left | A \right |E
 $$
 
-![伴随矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140940481.png)
+![伴随矩阵](https://cdn.dwj601.cn/images/202406140940481.png)
 
 ### 2.3 逆矩阵
 
@@ -253,33 +253,33 @@ $$
 
 如果线性方程组
 
-![线性方程组](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937686.png)
+![线性方程组](https://cdn.dwj601.cn/images/202406140937686.png)
 
 的系数矩阵 A 的行列式不为零，即
 
-![系数矩阵 A 的行列式不为零](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937651.png)
+![系数矩阵 A 的行列式不为零](https://cdn.dwj601.cn/images/202406140937651.png)
 
 则方程组有唯一解
 
-![方程组有唯一解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937081.png)
+![方程组有唯一解](https://cdn.dwj601.cn/images/202406140937081.png)
 
 其中 $A_j(j=1,2,...,n)$ 是把系数矩阵 A 中第 $j$ 列的元素用方程组右端的常数项代替后所得到的 n 阶矩阵，即
 
-![任意一列](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937003.png)
+![任意一列](https://cdn.dwj601.cn/images/202406140937003.png)
 
 证明：
 
 第一步：方程组转化为矩阵方程
 
-![方程组转化为矩阵方程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937364.png)
+![方程组转化为矩阵方程](https://cdn.dwj601.cn/images/202406140937364.png)
 
 第二步：应用逆矩阵消元
 
-![应用逆矩阵消元](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937245.png)
+![应用逆矩阵消元](https://cdn.dwj601.cn/images/202406140937245.png)
 
 第三步：应用行列式的性质计算
 
-![应用行列式的性质计算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140937432.png)
+![应用行列式的性质计算](https://cdn.dwj601.cn/images/202406140937432.png)
 
 ### 2.5 矩阵分块法
 
@@ -293,49 +293,49 @@ $$
 
     若
     
-    ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946427.png)
+    ![若](https://cdn.dwj601.cn/images/202406140946427.png)
     
     则
     
-    ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946428.png)
+    ![则](https://cdn.dwj601.cn/images/202406140946428.png)
 
 === "按位数乘"
 
     若
     
-    ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946429.png)
+    ![若](https://cdn.dwj601.cn/images/202406140946429.png)
     
     则
     
-    ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946430.png)
+    ![则](https://cdn.dwj601.cn/images/202406140946430.png)
 
 === "矩阵乘法"
 
     若
     
-    ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946431.png)
+    ![若](https://cdn.dwj601.cn/images/202406140946431.png)
     
     则
     
-    ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946432.png)
+    ![则](https://cdn.dwj601.cn/images/202406140946432.png)
     
     其中
     
-    ![其中](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946433.png)
+    ![其中](https://cdn.dwj601.cn/images/202406140946433.png)
 
 === "按位转置"
 
     若
     
-    ![若](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946434.png)
+    ![若](https://cdn.dwj601.cn/images/202406140946434.png)
     
     则
     
-    ![则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946435.png)
+    ![则](https://cdn.dwj601.cn/images/202406140946435.png)
 
 === "对角分块矩阵"
 
-    ![对角分块矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946436.png)
+    ![对角分块矩阵](https://cdn.dwj601.cn/images/202406140946436.png)
     
     其中 $A_1,A_2,...,A_s$ 都是方阵，则称 $A$ 为对角分块矩阵
 
@@ -343,15 +343,15 @@ $$
 
 幂运算就是主对角线相应元素的幂运算
 
-![幂运算就是主对角线相应元素的幂运算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946437.png)
+![幂运算就是主对角线相应元素的幂运算](https://cdn.dwj601.cn/images/202406140946437.png)
 
 矩阵行列式运算性质
 
-![矩阵行列式运算性质](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946438.png)
+![矩阵行列式运算性质](https://cdn.dwj601.cn/images/202406140946438.png)
 
 矩阵的逆就是主对角线的块按位取逆
 
-![矩阵的逆就是主对角线的块按位取逆](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946439.png)
+![矩阵的逆就是主对角线的块按位取逆](https://cdn.dwj601.cn/images/202406140946439.png)
 
 按行按列分块的应用
 
@@ -368,11 +368,11 @@ $$
 
 分块的整体运算思想 + 矩阵提取公因子
 
-![分块的整体运算思想 + 矩阵提取公因子](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946440.png)
+![分块的整体运算思想 + 矩阵提取公因子](https://cdn.dwj601.cn/images/202406140946440.png)
 
 逆矩阵的按定义的求法，即配凑求出逆矩阵（常规计算法是利用了伴随矩阵的计算思想）
 
-![配凑求出逆矩阵](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946441.png)
+![配凑求出逆矩阵](https://cdn.dwj601.cn/images/202406140946441.png)
 
 ## 3 矩阵的初等变换
 
@@ -494,7 +494,7 @@ $$
 
 5. 加法性质：
 
-    ![加法性质](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946453.png)
+    ![加法性质](https://cdn.dwj601.cn/images/202406140946453.png)
 
 6. 压缩性：若 $A_{m\times n}$ 的秩为 $r$，则 $A$ 一定可以转化为
    
@@ -523,7 +523,7 @@ $$
 
 向量组与矩阵的关系：
 
-![向量组与矩阵的关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946454.png)
+![向量组与矩阵的关系](https://cdn.dwj601.cn/images/202406140946454.png)
 
 #### 4.1.2 线性组合和线性表示
 
@@ -531,49 +531,49 @@ $$
 
 （一）线性组合：
 
-![线性组合定义](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946455.png)
+![线性组合定义](https://cdn.dwj601.cn/images/202406140946455.png)
 
 （二）线性表示：
 
-![线性表示定义](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946456.png)
+![线性表示定义](https://cdn.dwj601.cn/images/202406140946456.png)
 
 判定：转化为判定方程组有解问题，从而转化为求解矩阵的秩的问题 5
 
 - 判定 **向量** $b$ 能否被 **向量组** $A$ 线性表示：
 
-    ![向量被向量组线性表示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946457.png)
+    ![向量被向量组线性表示](https://cdn.dwj601.cn/images/202406140946457.png)
 
 - 判定 **向量组** $B$ 能否被 **向量组** $A$ 线性表示：
   
-    ![向量组被向量组线性表示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946458.png)
+    ![向量组被向量组线性表示](https://cdn.dwj601.cn/images/202406140946458.png)
     
     该判定定理有以下推论：
     
-    ![放缩性质](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946459.png)
+    ![放缩性质](https://cdn.dwj601.cn/images/202406140946459.png)
     
 - 判定 **向量组** $B$ 与 **向量组** $A$ 等价：
 
-    ![向量组与向量组等价](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946460.png)
+    ![向量组与向量组等价](https://cdn.dwj601.cn/images/202406140946460.png)
 
 ### 4.2 向量组的线性相关性
 
 定义：
 
-![线性相关定义](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946461.png)
+![线性相关定义](https://cdn.dwj601.cn/images/202406140946461.png)
 
-![注意](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946462.png)
+![注意](https://cdn.dwj601.cn/images/202406140946462.png)
 
 判定：
 
 - 定理一：
 
-    ![定理一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946463.png)
+    ![定理一](https://cdn.dwj601.cn/images/202406140946463.png)
 
     证明：按照定义，只需要移项 or 同除，进行构造即可
 
 - 定理二：
 
-    ![定理二](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946464.png)
+    ![定理二](https://cdn.dwj601.cn/images/202406140946464.png)
     
     证明：按照定义，转化为齐次线性方程组解的问题
     
@@ -584,25 +584,25 @@ $$
 
 - 结论一：
 
-    ![结论一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946465.png)
+    ![结论一](https://cdn.dwj601.cn/images/202406140946465.png)
 
     证明：$R(A)<m \to R(B)\le R(A)+1 <m+1$
 
 - 结论二：
 
-    ![结论二](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946466.png)
+    ![结论二](https://cdn.dwj601.cn/images/202406140946466.png)
 
     证明：$R(A_{x\times m})=m \to R\binom{A}{b}=m$
 
 - 结论三：
 
-    ![结论三](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946467.png)
+    ![结论三](https://cdn.dwj601.cn/images/202406140946467.png)
 
     证明：$R(A)\le n <m$
 
 - 结论四：
 
-    ![结论四](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946468.png)
+    ![结论四](https://cdn.dwj601.cn/images/202406140946468.png)
     
     证明：$R(A)=m,R(A,b)<m+1 \to Ax=b\text{有唯一解}$
     
@@ -617,7 +617,7 @@ $$
 
 定义一：
 
-![定义一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946469.png)
+![定义一](https://cdn.dwj601.cn/images/202406140946469.png)
 
 注意：
 
@@ -626,17 +626,17 @@ $$
 
 定义二：
 
-![定义二](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946470.png)
+![定义二](https://cdn.dwj601.cn/images/202406140946470.png)
 
 #### 4.3.2 向量组的秩和矩阵的秩的关系
 
-![向量组的秩和矩阵的秩的关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946471.png)
+![向量组的秩和矩阵的秩的关系](https://cdn.dwj601.cn/images/202406140946471.png)
 
 #### 4.3.3 向量组的秩的结论
 
-![向量组的秩的结论 1-2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946472.png)
+![向量组的秩的结论 1-2](https://cdn.dwj601.cn/images/202406140946472.png)
 
-![向量组的秩的结论 3-5](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946473.png)
+![向量组的秩的结论 3-5](https://cdn.dwj601.cn/images/202406140946473.png)
 
 证明：全部可以使用矩阵的秩的性质进行证明
 
@@ -664,7 +664,7 @@ $$
 
 **考点三：已知空间中的某向量 x 在基 A 下坐标为 $\lambda$，以及从基 A 到基 B 的过渡矩阵为 P，求解转换基为 B 之后的坐标 $\gamma$**
 
-![求解过程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946474.png)
+![求解过程](https://cdn.dwj601.cn/images/202406140946474.png)
 
 ### 4.5 线性方程组的解的结构
 
@@ -710,13 +710,13 @@ $$
 
     一、正交化
     
-    ![正交化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946478.png)
+    ![正交化](https://cdn.dwj601.cn/images/202406140946478.png)
     
-    ![正交化 - 续](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946479.png)
+    ![正交化 - 续](https://cdn.dwj601.cn/images/202406140946479.png)
     
     二、单位化
     
-    ![单位化](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140946480.png)
+    ![单位化](https://cdn.dwj601.cn/images/202406140946480.png)
 
 正交矩阵。
 

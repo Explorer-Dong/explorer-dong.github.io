@@ -44,7 +44,7 @@ title: 计算机网络导读
 
 一图胜千言：
 
-<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250228112919578.jpg" alt="网络模型" style="zoom:50%;" />
+<img src="https://cdn.dwj601.cn/images/20250228112919578.jpg" alt="网络模型" style="zoom:50%;" />
 
 /// fc
 网络模型概览（图源 [程序员鱼皮](https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&mid=2247571386&idx=3&sn=4c8e4bedb0db16e4f84e85378c1d51ff&chksm=e80c8b5dd2d937502e3c3793205b7540399368d039e51091036868e7425f09a7ac9229c7cdcc&scene=126&sessionid=1741312002#rd)）

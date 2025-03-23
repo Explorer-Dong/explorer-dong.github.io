@@ -12,11 +12,11 @@ title: openGauss 环境配置
 
 由于只需要单节点服务，因此我们选择下载 openGauss 5.0.3 (LTS) 轻量版。
 
-![安装包选择](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192052001.png)
+![安装包选择](https://cdn.dwj601.cn/images/202409192052001.png)
 
 我们登录后获取轻量版下载链接，进入 shell 连接云服务器，在合适的位置创建并进入目录。我使用的是 `/opt/dbLearning` 目录，使用 wget 命令下载安装包至云服务器。
 
-![使用 wget 命令下载安装包至云服务器](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192106221.png)
+![使用 wget 命令下载安装包至云服务器](https://cdn.dwj601.cn/images/202409192106221.png)
 
 ## 配置安装环境
 
@@ -42,7 +42,7 @@ title: openGauss 环境配置
     sudo passwd dbuser
     ```
 
-![创建普通用户 dbuser](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192242731.png)
+![创建普通用户 dbuser](https://cdn.dwj601.cn/images/202409192242731.png)
 
 创建数据库安装包解压目录、安装目录、数据目录：
 
@@ -80,7 +80,7 @@ sudo chmod -R 750 /opt/dbLearning/install_package /opt/dbLearning/installation /
     systemctl start firewalld.service
     ```
 
-![关闭防火墙](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192242146.png)
+![关闭防火墙](https://cdn.dwj601.cn/images/202409192242146.png)
 
 ## 执行安装
 
@@ -96,7 +96,7 @@ su - dbuser
 tar -zxf openGauss-Lite-5.0.3-CentOS-x86_64.tar.gz -C install_package/
 ```
 
-![解压压缩包至安装包目录](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192242065.png)
+![解压压缩包至安装包目录](https://cdn.dwj601.cn/images/202409192242065.png)
 
 进入 `./install_package/` 路径并执行 `install.sh` 进行安装：
 
@@ -104,7 +104,7 @@ tar -zxf openGauss-Lite-5.0.3-CentOS-x86_64.tar.gz -C install_package/
 sh ./install.sh --mode single -D /opt/dbLearning/data -R /opt/dbLearning/installation/
 ```
 
-![部分安装成功后的输出信息](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192243793.png)
+![部分安装成功后的输出信息](https://cdn.dwj601.cn/images/202409192243793.png)
 
 需要输入密码并二次确认。
 
@@ -143,7 +143,7 @@ gsql -d <dbname> -U <username> -p <port> -h <host>
 
 进入数据库管理系统后，输入 `\l` 看到所有的数据库就表明安装配置成功了！
 
-![显示所有的数据库](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409192243905.png)
+![显示所有的数据库](https://cdn.dwj601.cn/images/202409192243905.png)
 
 ## 连接 DataGrip
 
@@ -188,11 +188,11 @@ gsql -d <dbname> -U <username> -p <port> -h <host>
 
 最后使用本地的 DataGrip 使用 postgre 内核连接服务器的 openGauss 数据库就可以成功了！
 
-![远程连接成功](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409201140997.png)
+![远程连接成功](https://cdn.dwj601.cn/images/202409201140997.png)
 
 并且从 [官方 SQL 的用法](https://docs-opengauss.osinfra.cn/zh/docs/5.0.0-lite/docs/SQLReference/CREATE-USER.html) 来看，使用 CREATE 会在连接的数据库下创建一个与用户名相同的 schema，很诡异但的确如此：
 
-![自动创建一个与用户名相同的 schema](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409201144556.png)
+![自动创建一个与用户名相同的 schema](https://cdn.dwj601.cn/images/202409201144556.png)
 
 ## 参考
 

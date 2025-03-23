@@ -4,7 +4,7 @@ title: 数据结构
 
 数据结构由「数据」和「结构」两部分组成。我们主要讨论的是后者，即结构部分。按照逻辑结构可以将各种数据结果分类为「线性结构」和「非线性结构」。如下图所示：
 
-![线性数据结构 vs 非线性数据结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408301527018.png)
+![线性数据结构 vs 非线性数据结构](https://cdn.dwj601.cn/images/202408301527018.png)
 
 /// caption
 线性数据结构 vs 非线性数据结构
@@ -30,7 +30,7 @@ title: 数据结构
 
 === "双向链表结点添加"
 
-    ![添加结点](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218514.png)
+    ![添加结点](https://cdn.dwj601.cn/images/202406292218514.png)
     /// caption
     ///
     
@@ -43,7 +43,7 @@ title: 数据结构
 
 === "双向链表结点删除"
 
-    ![删除结点](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218515.png)
+    ![删除结点](https://cdn.dwj601.cn/images/202406292218515.png)
     /// caption
     ///
     
@@ -119,7 +119,7 @@ $$
 
 广义表结点的结构如下示意图所示：
 
-![广义表结点结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218530.png)
+![广义表结点结构示意图](https://cdn.dwj601.cn/images/202406292218530.png)
 
 /// caption
 
@@ -145,7 +145,7 @@ struct GListNode {
 
 ??? "一些广义表的结构示例图"
 
-    ![广义表的结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218531.png)
+    ![广义表的结构示意图](https://cdn.dwj601.cn/images/202406292218531.png)
     /// caption
     广义表的结构示意图
     ///
@@ -273,7 +273,7 @@ struct GListNode {
 
 构建：当插入结点进行构建时出现了有结点平衡因子的绝对值超过了 1，则进行“旋转”调整，旋转共分为 4 种
 
-![旋转 - LL、LR](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218546.png)
+![旋转 - LL、LR](https://cdn.dwj601.cn/images/202406292218546.png)
 
 /// caption
 
@@ -281,7 +281,7 @@ struct GListNode {
 
 ///
 
-![旋转 - LR](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218547.png)
+![旋转 - LR](https://cdn.dwj601.cn/images/202406292218547.png)
 
 /// caption
 
@@ -289,7 +289,7 @@ struct GListNode {
 
 ///
 
-![旋转 - RL](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218548.png)
+![旋转 - RL](https://cdn.dwj601.cn/images/202406292218548.png)
 
 /// caption
 
@@ -299,7 +299,7 @@ struct GListNode {
 
 尝试模拟一遍下列序列的构造过程就可以理解了：
 
-![例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218549.png)
+![例题](https://cdn.dwj601.cn/images/202406292218549.png)
 
 /// caption
 

@@ -48,7 +48,7 @@ $$
 
 **主成分分析 (Principal Component Analysis, PCA)**。另外一种线性降维算法。该算法有两个原则：样本到超平面的距离都尽可能近、样本在超平面的投影都尽可能分开。基于此思想可以得到 PCA 算法流程：
 
-![PCA 算法流程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406040911195.png)
+![PCA 算法流程](https://cdn.dwj601.cn/images/202406040911195.png)
 
 /// fc
 PCA 算法流程

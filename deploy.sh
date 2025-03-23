@@ -11,7 +11,7 @@ ossutil cp e:/_notes/Wiki/site/search/search_index.json oss://dwj-oss/search-fil
 
 # 修改 js 中的 search url
 OLD_STRING="search/search_index.json"
-NEW_STRING="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/search-files/search_index.json"
+NEW_STRING="https://cdn.dwj601.cn/search-files/search_index.json"
 for file in site/assets/javascripts/bundle.*.min.js; do
     if [[ -f "$file" ]]; then
         sed -i "s|$OLD_STRING|$NEW_STRING|g" "$file"

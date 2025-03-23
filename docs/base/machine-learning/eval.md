@@ -68,7 +68,7 @@ $$
 
 **P-R 曲线**。横坐标为查全率 (Recall)，纵坐标为查准率 (Precision)。
 
-![P-R 曲线](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190830311.png)
+![P-R 曲线](https://cdn.dwj601.cn/images/202403190830311.png)
 
 /// fc
 P-R 曲线
@@ -80,7 +80,7 @@ P-R 曲线
 
 **ROC (Receiver Operating Characteristic, ROC) 曲线**。即受试者工作特征曲线。横坐标为假正例率 $\displaystyle FPR = \frac{FP}{FP+TN}$，纵坐标为真正例率 $\displaystyle TPR = \frac{TP}{TP+FN}$。
 
-![ROC 曲线图与 AUC](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403190851371.png)
+![ROC 曲线图与 AUC](https://cdn.dwj601.cn/images/202403190851371.png)
 
 /// fc
 ROC 曲线图与 AUC
@@ -116,7 +116,7 @@ ROC 曲线图与 AUC
 
 一般来说，训练误差 $<$ 验证误差 $\approx$ 测试误差 $\approx$ 泛化误差。
 
-![训练误差与其他误差随模型复杂度的变化趋势图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250224200251928.png)
+![训练误差与其他误差随模型复杂度的变化趋势图](https://cdn.dwj601.cn/images/20250224200251928.png)
 
 /// fc
 训练误差与测试误差随模型复杂度的变化趋势图
@@ -193,7 +193,7 @@ $$
 - 随着训练的不断进行，模型的拟合能力逐渐增强，这会加剧模型对数据的敏感度，从而使得方差主导了泛化误差；
 - 在模型过度训练后，数据的轻微扰动都可能导致预测输出发生显著的变化，此时方差就几乎完全主导了泛化误差。
 
-![泛化误差与偏差、方差的关系示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250224205845825.png)
+![泛化误差与偏差、方差的关系示意图](https://cdn.dwj601.cn/images/20250224205845825.png)
 
 /// fc
 泛化误差与偏差、方差的关系示意图

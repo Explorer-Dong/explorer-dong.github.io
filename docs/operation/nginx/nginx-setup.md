@@ -54,34 +54,34 @@ nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx /usr/share/man
 
 ### `/usr/sbin/nginx`
 
-![/usr/sbin/nginx](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404031007306.png)
+![/usr/sbin/nginx](https://cdn.dwj601.cn/images/202404031007306.png)
 
-![* 含义解释](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404031011583.png)
+![* 含义解释](https://cdn.dwj601.cn/images/202404031011583.png)
 
 当前路径包含了 Nginx 服务器的可执行文件。而 Ubuntu 中这个位置是用于存放系统管理的可执行文件的标准目录之一，可以从图二中的 `*` 看出，在 Mobaxterm 中，文件名后面加 `*` 表示该文件拥有执行权限。
 
 ### `/usr/lib/nginx`
 
-![/usr/lib/nginx](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404031019394.png)
+![/usr/lib/nginx](https://cdn.dwj601.cn/images/202404031019394.png)
 
-![/usr/lib/nginx/modules](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404031014214.png)
+![/usr/lib/nginx/modules](https://cdn.dwj601.cn/images/202404031014214.png)
 
 当前路径包含 Nginx 的共享对象模块（so，shared objects）。通常情况下，这些模块文件可能被 Nginx 服务器在运行时动态加载。当服务器需要使用特定功能时，它会动态加载相应的模块，以提供所需的功。
 
 ### `/etc/nginx`
 
-![/etc/nginx](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404031027880.png)
+![/etc/nginx](https://cdn.dwj601.cn/images/202404031027880.png)
 
 当前路径是 Nginx 的主要配置文件目录。我们主要在这里进行 Nginx 的配置。
 
 ### `/usr/share/nginx`
 
-![/usr/share/nginx](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404031027018.png)
+![/usr/share/nginx](https://cdn.dwj601.cn/images/202404031027018.png)
 
 当前路径包含一些 Nginx 的静态资源，同时软链接到模块依赖文件。
 
 ### `/usr/share/man/man8/nginx.8.gz`
 
-![/usr/share/man/man8/nginx.8.gz](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404031303783.png)
+![/usr/share/man/man8/nginx.8.gz](https://cdn.dwj601.cn/images/202404031303783.png)
 
 当前路径包含 Nginx 的手册页文件，以供用户查阅 Nginx 命令的使用说明。我们可以使用 `gzip -d nginx.8.gz` 将其解压后阅读。

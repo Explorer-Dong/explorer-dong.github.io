@@ -14,7 +14,7 @@ title: Nginx 实战案例
 
 **正向代理**。所谓的正向代理其实就是「面向用户」进行运作。常见的正向代理应用比如 VPN 服务就是很典型的一种。
 
-![正向代理](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120927.png)
+![正向代理](https://cdn.dwj601.cn/images/202403300120927.png)
 
 /// fc
 正向代理逻辑
@@ -22,7 +22,7 @@ title: Nginx 实战案例
 
 **反向代理**。所谓的反向代理的与上述正向代理对应，就是「面向服务器」进行运作。Nginx 与 Apache 就是典型的反向代理应用。通过选择性的配置性的从服务器获取数据返回给前端渲染给用户，来实现负载均衡、加速优化等效果。
 
-![反向代理](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403300120846.png)
+![反向代理](https://cdn.dwj601.cn/images/202403300120846.png)
 
 /// fc
 反向代理逻辑
@@ -34,7 +34,7 @@ title: Nginx 实战案例
 
 **解析二级域名绑定到服务器上**。每一个「二级域名」都需要指向我们自己的服务器，这需要我们将二级域名解析到服务器对应的「IP 地址」上才能进行后续域名访问网站的操作。
 
-![将二级域名绑定到服务器](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126611.png)
+![将二级域名绑定到服务器](https://cdn.dwj601.cn/images/202401260126611.png)
 
 /// fc
 将二级域名绑定到服务器
@@ -45,7 +45,7 @@ title: Nginx 实战案例
 - 如果是纯静态网站，那么只需要将对应的域名指向服务器中对应的路径即可；
 - 如果是动态网站，即需要启动端口的程序，那么可以配置 Nginx 将域名转发到对应的端口上。
 
-![纯静态网站的路由配置](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202401260126612.png)
+![纯静态网站的路由配置](https://cdn.dwj601.cn/images/202401260126612.png)
 
 /// fc
 纯静态网站的路由配置

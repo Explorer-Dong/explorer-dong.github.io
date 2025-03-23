@@ -14,7 +14,7 @@ title: 任务
 
 具体地，有三个变量分别为 Stack、Buffer 和 一个集合 A。一共有三种操作，分别为 shift、left-arc、right-arc，其中 shift 就是将一个单词从 Buffer 转移到 Stack 中，left-arc 就是在 Stack 的栈顶两个元素中定义一个「指向左的边以及对应的依存关系」，并将这个边和关系保存到集合 A 中，right-arc 就和 left-arc 相反。具体如下图所示：
 
-![Transition-based Parsing 示例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250317084734245.png)
+![Transition-based Parsing 示例](https://cdn.dwj601.cn/images/20250317084734245.png)
 
 /// fc
 Transition-based Parsing 示例

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const script = document.createElement("script");
-    script.src = "https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/dify/embed.min.js";
+    script.src = "https://cdn.dwj601.cn/cdn-js/dify/embed.min.js";
     script.id = "H3jDmXMsTCvIylta";
     script.defer = true;
     document.body.appendChild(script);

@@ -12,7 +12,7 @@ title: GNU/Linux 基础 (Ubuntu)
 
 以 Ubuntu22.04 为例。下面是我的文件目录：
 
-![Ubuntu22.04 目录结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409132006698.png)
+![Ubuntu22.04 目录结构](https://cdn.dwj601.cn/images/202409132006698.png)
 
 /// fc
 Ubuntu22.04 目录结构
@@ -141,7 +141,7 @@ Ubuntu22.04 目录结构
 
 首先以 root 用户身份登录并进入 `/opt/OS/task2/` 目录，然后创建一个测试文件 `root_file.txt` 和一个测试文件夹 `root_folder`。使用 `ls -l` 命令列出当前目录下所有文件的详细信息：
 
-![root 用户创建的文件和文件夹](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409271003057.png)
+![root 用户创建的文件和文件夹](https://cdn.dwj601.cn/images/202409271003057.png)
 
 可以看到一共有 $6$ 列信息，从左到右依次为：用户访问权限、与文件链接的个数、文件属主、文件属组、文件大小、最后修改日期、文件/目录名。$2-5$ 列的信息都很显然，第 $1$ 列信息一共有 $10$ 个字符，其中第 $1$ 个字符表示当前文件的类型，共有如下几种：
 
@@ -328,7 +328,7 @@ useradd -d /home/john -m john
 useradd -d /home/mike -m mike
 ```
 
-![添加 4 个用户](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409272339074.png)
+![添加 4 个用户](https://cdn.dwj601.cn/images/202409272339074.png)
 
 **二、为 alice 设置密码**
 
@@ -336,7 +336,7 @@ useradd -d /home/mike -m mike
 passwd alice
 ```
 
-![为 alice 设置密码](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409272340323.png)
+![为 alice 设置密码](https://cdn.dwj601.cn/images/202409272340323.png)
 
 **三、创建用户组 workgroup 并将 alice、bob、john 加入**
 
@@ -367,7 +367,7 @@ passwd alice
 
     - `-g`：用于指定用户的主组（primary group）。主组是当用户创建文件或目录时默认分配的组
 
-![创建用户组 workgroup 并将 alice、bob、john 加入](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409272341900.png)
+![创建用户组 workgroup 并将 alice、bob、john 加入](https://cdn.dwj601.cn/images/202409272341900.png)
 
 **四、创建 `/home/work` 目录并将其属主改为 alice，属组改为 workgroup**
 
@@ -382,7 +382,7 @@ chown alice:workgroup work
 chown alice.workgroup work
 ```
 
-![创建 /home/work 目录并将其属主改为 alice，属组改为 workgroup](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409272343315.png)
+![创建 /home/work 目录并将其属主改为 alice，属组改为 workgroup](https://cdn.dwj601.cn/images/202409272343315.png)
 
 **五、修改 work 目录的权限**
 
@@ -396,20 +396,20 @@ chmod ug+rwx,o-rwx work
 chmod 770 work
 ```
 
-![修改 work 目录的权限](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409272345642.png)
+![修改 work 目录的权限](https://cdn.dwj601.cn/images/202409272345642.png)
 
 **六、权限功能测试**
 
 以 bob 用户身份在 work 目录下创建 `bob.txt` 文件。可以看到符合默认创建文件的权限格式 $644$：
 
-![以 bob 用户在 work 下创建 bob.txt 文件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409272350694.png)
+![以 bob 用户在 work 下创建 bob.txt 文件](https://cdn.dwj601.cn/images/202409272350694.png)
 
 同组用户与不同组用户关于「目录/文件」的 `rw` 权限测试。
 
 - 关于 $770$ 目录。由于 work 目录被 bob 创建时权限设置为了 $770$，bob 用户与 john 用户属于同一个组 workgroup，因此 john 因为 $g=7$ 可以进入 work 目录进行操作，而 bob 用户与 mike 用户不属于同一个组，因此 mike 因为 $o=0$ 无法进入 work 目录，更不用说查看或者修改 work 目录中的文件了。
 - 关于 $644$ 文件。现在 john 由于 $770$ 中的第二个 $7$ 进入了 work 目录。由文件默认的 $644$ 权限可以知道：john 因为第一个 $4$ 可以读文件，但是不可以写文件，因此如下图所示，可以执行 `cat` 查看文件内容，但是不可以执行 `echo` 编辑文件内容。至于 mike，可以看到无论起始是否在 work 目录，都没有权限 `cd` 到 work 目录或者 `ls` 查看 work 目录中的内容。
 
-![权限测试](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409280007514.png)
+![权限测试](https://cdn.dwj601.cn/images/202409280007514.png)
 
 ## 进程管理与调试
 
@@ -450,7 +450,7 @@ do
 done
 ```
 
-![编写 sh 文件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081735300.png)
+![编写 sh 文件](https://cdn.dwj601.cn/images/202410081735300.png)
 
 **二、为 `badproc.sh` 增加可执行权限**
 
@@ -458,7 +458,7 @@ done
 chmod u+x badproc.sh
 ```
 
-![增加可执行权限](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081736525.png)
+![增加可执行权限](https://cdn.dwj601.cn/images/202410081736525.png)
 
 **三、在后台执行 `badproc.sh`**
 
@@ -468,7 +468,7 @@ chmod u+x badproc.sh
 
 - `&` 表示后台执行
 
-![后台执行](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081737564.png)
+![后台执行](https://cdn.dwj601.cn/images/202410081737564.png)
 
 **四、利用 `ps` 命令查看其进程号**
 
@@ -476,7 +476,7 @@ chmod u+x badproc.sh
 ps aux | grep badproc
 ```
 
-![查看进程号](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081739971.png)
+![查看进程号](https://cdn.dwj601.cn/images/202410081739971.png)
 
 **五、利用 `kill` 命令杀死该进程**
 
@@ -484,11 +484,11 @@ ps aux | grep badproc
 kill -9 <PID>
 ```
 
-![杀死该进程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081748528.png)
+![杀死该进程](https://cdn.dwj601.cn/images/202410081748528.png)
 
 **六、删除 `badproc.sh` 程序运行时创建的目录和文件**
 
-![删除目录和文件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081748818.png)
+![删除目录和文件](https://cdn.dwj601.cn/images/202410081748818.png)
 
 ### gdb 调试相关命令
 
@@ -554,13 +554,13 @@ int main() {
 }
 ```
 
-![创建文件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081813738.png)
+![创建文件](https://cdn.dwj601.cn/images/202410081813738.png)
 
 这段程序首先通过调用 `fork()` 函数创建一个子进程，并通过 `pid` 信息来判断当前进程是父进程还是子进程。在并发的逻辑下，执行哪一个进程的逻辑是未知的。
 
 **二、编译运行 `fork.c` 文件**
 
-![编译运行](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081807870.png)
+![编译运行](https://cdn.dwj601.cn/images/202410081807870.png)
 
 从上述运行结果可以看出：并发时，首先执行父进程的逻辑，然后才执行子进程的逻辑。
 
@@ -574,17 +574,17 @@ set follow-fork-mode child
 catch exec
 ```
 
-![追踪子进程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081947476.png)
+![追踪子进程](https://cdn.dwj601.cn/images/202410081947476.png)
 
 运行到第一个断点时分别观察父进程 1510168 和子进程 1510171：
 
-![父进程 1510168](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081948301.png)
+![父进程 1510168](https://cdn.dwj601.cn/images/202410081948301.png)
 
-![子进程 1510171](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081949586.png)
+![子进程 1510171](https://cdn.dwj601.cn/images/202410081949586.png)
 
 运行到第二个断点时观察子进程 1510171：
 
-![运行到第二个断点时观察子进程 1510171](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081951803.png)
+![运行到第二个断点时观察子进程 1510171](https://cdn.dwj601.cn/images/202410081951803.png)
 
 从上述子进程的追踪结果可以看出，在父进程结束之后，子进程成功执行了 `pid == 0` 的逻辑并开始调用 `ls` 工具。
 
@@ -614,7 +614,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 对于当前路径下链接出来的可执行文件 demo，为什么 `demo` 无法正常执行，`./demo` 就可以正常执行？如下图所示：
 
-![demo 无法正常执行 VS ./demo 可以正常执行](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410091759777.png)
+![demo 无法正常执行 VS ./demo 可以正常执行](https://cdn.dwj601.cn/images/202410091759777.png)
 
 根本原因是 bash 默认执行 PATH 环境变量下的可执行文件，显然上述的 demo 可执行文件并不在 PATH 对应的路径下，那么 PATH 路径都有哪些呢？我们使用 `echo $PATH | tr ':' '\n'` 打印出来：
 
@@ -650,7 +650,7 @@ root@dwj2:/opt/OS/task4# echo $PATH | tr ':' '\n'
 
     注意：当我们不使用 -o 参数指定 outfile 的名称时，默认是 `a.out`，如下图所示，其中 demo 可执行文件是之前用来输出 `'hello'` 的：
 
-    ![-I<dir>](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410091835107.png)
+    ![-I<dir>](https://cdn.dwj601.cn/images/202410091835107.png)
 
 - `-L<dir>` 顾名思义就是「库文件连接」搜索目录。例如下面的编译语句：
 
@@ -728,7 +728,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
 
 最后我们查看一下 p1 和 p2 详细信息，如下图所示。显然静态链接的可执行文件 p1 占用的存储空间远大于动态连接的可执行文件 p2。
 
-![p1 和 p2 详细信息](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410091956946.png)
+![p1 和 p2 详细信息](https://cdn.dwj601.cn/images/202410091956946.png)
 
 ## 工具扩展
 

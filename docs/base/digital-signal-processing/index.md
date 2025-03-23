@@ -23,7 +23,7 @@ title: 数字信号处理
 
 时域表示中，横坐标就是时间，纵坐标就是声音强度。如下：
 
-![时域图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250305095425917.png)
+![时域图](https://cdn.dwj601.cn/images/20250305095425917.png)
 
 /// fc
 时谱图
@@ -31,7 +31,7 @@ title: 数字信号处理
 
 频域表示中，横坐标就是频率，纵坐标就是声音强度。如下：
 
-![频谱图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250305095426184.png)
+![频谱图](https://cdn.dwj601.cn/images/20250305095426184.png)
 
 /// fc
 频谱图
@@ -39,7 +39,7 @@ title: 数字信号处理
 
 时频域表示中，横坐标就是时间，纵坐标就是频率，声音强度通过颜色来表示。如下：
 
-![语谱图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250305095422831.png)
+![语谱图](https://cdn.dwj601.cn/images/20250305095422831.png)
 
 /// fc
 语谱图

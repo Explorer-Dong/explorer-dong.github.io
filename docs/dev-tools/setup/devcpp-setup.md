@@ -8,7 +8,7 @@ title: 配置 DevCpp
 
 进入以下目录：
 
-![进入以下目录](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403210937178.png)
+![进入以下目录](https://cdn.dwj601.cn/images/202403210937178.png)
 
 /// fc
 进入以下目录
@@ -16,7 +16,7 @@ title: 配置 DevCpp
 
 添加以下编译命令：
 
-![添加以下编译命令](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403210937916.png)
+![添加以下编译命令](https://cdn.dwj601.cn/images/202403210937916.png)
 
 /// fc
 添加以下编译命令
@@ -24,13 +24,13 @@ title: 配置 DevCpp
 
 ## 环境选项
 
-![进入以下目录](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403210954362.png)
+![进入以下目录](https://cdn.dwj601.cn/images/202403210954362.png)
 
 /// fc
 进入以下目录
 ///
 
-![注意其中的主题和 UI font](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403210955883.png)
+![注意其中的主题和 UI font](https://cdn.dwj601.cn/images/202403210955883.png)
 
 /// fc
 注意其中的主题和 UI font
@@ -40,13 +40,13 @@ title: 配置 DevCpp
 
 进入以下目录：
 
-![进入以下目录](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403210953731.png)
+![进入以下目录](https://cdn.dwj601.cn/images/202403210953731.png)
 
 /// fc
 进入以下目录
 ///
 
-![取消中括号的配对](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403210956025.png)
+![取消中括号的配对](https://cdn.dwj601.cn/images/202403210956025.png)
 
 /// fc
 取消中括号的配对
@@ -56,7 +56,7 @@ title: 配置 DevCpp
 
 进入以下目录：
 
-![进入以下目录](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403210959850.png)
+![进入以下目录](https://cdn.dwj601.cn/images/202403210959850.png)
 
 /// fc
 进入以下目录
@@ -64,7 +64,7 @@ title: 配置 DevCpp
 
 设置注释配置：
 
-![设置注释配置](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403210959208.png)
+![设置注释配置](https://cdn.dwj601.cn/images/202403210959208.png)
 
 /// fc
 设置注释配置

@@ -12,8 +12,8 @@ theme:
   language: zh
   custom_dir: overrides
   # 图标
-  logo: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg
-  favicon: https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg
+  logo: https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg
+  favicon: https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil 
@@ -120,7 +120,7 @@ extra_javascript:
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.js
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js
   # mermaid
-  - https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js
+  - https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js
   # 外链跳转
   - asserts/javascripts/link_blank.js
   # 百度统计

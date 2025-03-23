@@ -8,7 +8,7 @@ title: 配置 Windows
 
 Windows 上默认的微软输入法挺好用的，至少不会出现兼容性问题，关于系统自带的输入法配置方法，可以进入设置中以下路径自己探索：
 
-![微软输入法配置路径](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250319125259528.png)
+![微软输入法配置路径](https://cdn.dwj601.cn/images/20250319125259528.png)
 
 /// fc
 微软输入法配置路径
@@ -16,7 +16,7 @@ Windows 上默认的微软输入法挺好用的，至少不会出现兼容性问
 
 而配置打出角标的方法，其实就是自定义一个短语。我们进入「词库和自学习」一栏，找到「用户定义的短语」，点击「添加或编辑自定义短语」之后自己按照习惯配置一下就可以了：
 
-![按照自己的习惯定义角标符号的快捷键](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250319125648827.png)
+![按照自己的习惯定义角标符号的快捷键](https://cdn.dwj601.cn/images/20250319125648827.png)
 
 /// fc
 按照自己的习惯定义角标符号的快捷键
@@ -32,7 +32,7 @@ wmic useraccount get name,sid
 
 我的计算机输出结果如下：
 
-![终端输出结果](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250319124515341.png)
+![终端输出结果](https://cdn.dwj601.cn/images/20250319124515341.png)
 
 /// fc
 终端输出结果
@@ -40,7 +40,7 @@ wmic useraccount get name,sid
 
 那么注册表中我寻找的路径就是：
 
-![我的注册表中的寻找路径](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250319124608769.png)
+![我的注册表中的寻找路径](https://cdn.dwj601.cn/images/20250319124608769.png)
 
 /// fc
 我的注册表中的寻找路径

@@ -16,7 +16,7 @@ import numpy as np
 print(np.__file__)
 ```
 
-![直接打印的运行结果](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406052305698.png)
+![直接打印的运行结果](https://cdn.dwj601.cn/images/202406052305698.png)
 
 /// fc
 直接打印的运行结果
@@ -34,7 +34,7 @@ pip show <PackgeName or ModelName>
 pip show sortedcontainers
 ```
 
-![基于 pip 工具的运行结果](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406052310960.png)
+![基于 pip 工具的运行结果](https://cdn.dwj601.cn/images/202406052310960.png)
 
 /// fc
 基于 pip 工具的运行结果

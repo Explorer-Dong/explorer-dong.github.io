@@ -21,7 +21,7 @@ title: 存储
 
 前置知识。cache 一般被组装在 CPU 内部，便于和寄存器进行高效的数据交互。与此同时，设计者将 cache 和内存划分为由相同大小存储空间组成的存储器，这里 "相同大小的存储空间" 在 cache 中被称为行 (line) 或槽 (slot)，在内存中被称为块 (block)。为了知道 cache 中每一个行是否有效缓存了内存的信息，设计者对 cache 中的每一行设定了一个有效位来区分是否缓存了有效信息。
 
-![CPU 读取内存信息的流程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410160933739.png)
+![CPU 读取内存信息的流程](https://cdn.dwj601.cn/images/202410160933739.png)
 
 如上图展示的 CPU 读取内存信息的流程图。CPU 在得到内存中的某一个地址后需要访问该地址指向的信息。此时可以首先查询 cache，若果没有找到，再进行 cache 缺失处理并去内存中查询。
 
@@ -49,7 +49,7 @@ for (int j = 0; j < N; j++)
 
 1）直接映射（模映射）
 
-![直接映射](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231108282.png)
+![直接映射](https://cdn.dwj601.cn/images/202410231108282.png)
 
 映射关系。首先我们需要对内存块和缓存行进行编号。假设缓存一共有 $k$ 行，那么第 $i$ 个内存块就会唯一对应到第 $i\ \%\ k$ 个缓存行。
 
@@ -59,7 +59,7 @@ for (int j = 0; j < N; j++)
 
 2）全相联映射
 
-![分块示意图 | 全相联映射](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231126000.png)
+![分块示意图 | 全相联映射](https://cdn.dwj601.cn/images/202410231126000.png)
 
 映射关系。内存中的每一个块可以缓存到任意一个 cache 行中。
 
@@ -69,7 +69,7 @@ for (int j = 0; j < N; j++)
 
 3）组相联映射
 
-![分块示意图 | 组相联映射](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231131574.png)
+![分块示意图 | 组相联映射](https://cdn.dwj601.cn/images/202410231131574.png)
 
 映射关系。对于 N 路组相联，cache 中每一个组含有 N 个 cache 行，组间进行直接映射，组内全相联映射。
 
@@ -151,7 +151,7 @@ CPU 在执行写操作时，可能会写入 cache，为了保证 cache 和内存
 
 ### 内存的工作逻辑
 
-![内存的工作逻辑](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112007235.png)
+![内存的工作逻辑](https://cdn.dwj601.cn/images/202410112007235.png)
 
 上图与缓存的工作逻辑类似，隐藏了 cache，突出了地址译码的逻辑。
 
@@ -167,7 +167,7 @@ CPU 与内存的数据通信分为异步和同步两种：
 
 ### 地址译码器
 
-![一维单译码器 VS 二维双译码器](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112041997.png)
+![一维单译码器 VS 二维双译码器](https://cdn.dwj601.cn/images/202410112041997.png)
 
 如果有 $n$ 位地址位，就决定了寻址范围为 $[0,2^n-1]$。不难发现如果是一维单译码，就需要译码器有 $2^n$ 个译码寻址线。如果是二维双译码，就只需要译码器有大约 $2 \times 2^{n/2}$ 个译码寻址线。显然当地址位较多时，二维双译码器是更优的。
 

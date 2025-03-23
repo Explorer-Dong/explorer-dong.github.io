@@ -257,7 +257,7 @@ $$
 
         结果如下：
 
-        ![手搓imresize并使用双线性插值](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412101637009.png)
+        ![手搓imresize并使用双线性插值](https://cdn.dwj601.cn/images/202412101637009.png)
 
     === "MATLAB API"
 
@@ -370,7 +370,7 @@ subplot(2, 2, 3), imshow(new_gray), title('直方图增强图像');
 subplot(2, 2, 4), imhist(new_gray), title('直方图增强图像直方图');
 ```
 
-![基于直方图修正的对比度增强](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501072000665.png)
+![基于直方图修正的对比度增强](https://cdn.dwj601.cn/images/202501072000665.png)
 
 #### 2.3 基于照度反射模型
 
@@ -386,7 +386,7 @@ subplot(2, 2, 4), imhist(new_gray), title('直方图增强图像直方图');
 
 首先给出 **暗原色先验原理**。在无雾的环境下，绝大多数非天空图像的局部区域内，某一些像素在 RGB 三色通道中至少有一个通道的像素颜色值比较低。那么对于原始图像 $J$，就可以计算出其每一个位置的暗原色灰度值从而得到暗原色通道图 $J^{dark}$。下图直观的给出了暗原色通道图的计算方法：
 
-![暗原色图像的计算方法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411181452787.png)
+![暗原色图像的计算方法](https://cdn.dwj601.cn/images/202411181452787.png)
 
 接着给出 **雾天成像模型**。定义图像中的某个像素点为 $x$，雾天成像图为 $I$，原始图像为 $J$，成像像素点 $x$ 距实体距离为 $d(x)$，大气光为 $A$，大气散射系数为 $\beta$，则透射率 $t(x)=e^{-\beta \cdot d(x)}$。
 
@@ -405,7 +405,7 @@ $$
 
 - 对于参数 $t(x)$。如下图估计：
 
-    ![参数 t(x) 的估计](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411181540502.png)
+    ![参数 t(x) 的估计](https://cdn.dwj601.cn/images/202411181540502.png)
 
 有了参数 $A$ 和 $t(x)$ 的具体结果，就可以直接算出原始图像，也就是去雾图像了。
 
@@ -518,7 +518,7 @@ $$
 
             输出：
 
-            ![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412052057463.png)
+            ![输出](https://cdn.dwj601.cn/images/202412052057463.png)
 
             2）matlab 库函数
 
@@ -536,7 +536,7 @@ $$
 
             输出：
 
-            ![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501080941228.png)
+            ![输出](https://cdn.dwj601.cn/images/202501080941228.png)
 
             3）Python-OpenCV 库函数
 
@@ -554,7 +554,7 @@ $$
 
             输出：
 
-            ![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412052138666.png)
+            ![输出](https://cdn.dwj601.cn/images/202412052138666.png)
 
     === "高斯滤波"
 
@@ -644,7 +644,7 @@ $$
 
             输出：
 
-            ![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412051944655.png)
+            ![输出](https://cdn.dwj601.cn/images/202412051944655.png)
 
             2）matlab 库函数
 
@@ -668,11 +668,11 @@ $$
 
             输出：同样只需要关注中间 9 个元素：
 
-            ![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412052114124.png)
+            ![输出](https://cdn.dwj601.cn/images/202412052114124.png)
 
             至于为什么和模拟的输出结果不一致，是因为自定义实现的代码中「**高斯核参数并不完全准确**」，matlab 中的高斯核参数如下：
 
-            ![真实高斯核](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412052116057.png)
+            ![真实高斯核](https://cdn.dwj601.cn/images/202412052116057.png)
 
             3）Python-OpenCV 库函数
 
@@ -696,7 +696,7 @@ $$
 
             输出：
 
-            ![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412052142741.png)
+            ![输出](https://cdn.dwj601.cn/images/202412052142741.png)
 
     === "中值滤波"
 
@@ -744,7 +744,7 @@ $$
 
             输出：
 
-            ![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412052118819.png)
+            ![输出](https://cdn.dwj601.cn/images/202412052118819.png)
 
             2）matlab 库函数
 
@@ -762,7 +762,7 @@ $$
 
             输出：除了边缘，其余内容与自定义实现的代码运行结果一致：
 
-            ![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412052120505.png)
+            ![输出](https://cdn.dwj601.cn/images/202412052120505.png)
 
             3）Python-OpenCV 库函数
 
@@ -781,7 +781,7 @@ $$
 
             输出：
 
-            ![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412052145219.png)
+            ![输出](https://cdn.dwj601.cn/images/202412052145219.png)
 
             **小结**
 
@@ -967,11 +967,11 @@ image_grad = imfilter(原图, kernel)
 
     - `fspecial("laplacian", 0)`，最后的参数填 0 就是最原始的拉普拉斯算子；
 
-        ![laplacian 算子](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501081543838.png)
+        ![laplacian 算子](https://cdn.dwj601.cn/images/202501081543838.png)
 
     - `fspecial("log", [3, 3], 0.5)`，后面的参数分别为卷积核大小以及 $\sigma$ 的具体数值；
 
-        ![log 算子](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501081544876.png)
+        ![log 算子](https://cdn.dwj601.cn/images/202501081544876.png)
 
 **2）边缘检测**
 
@@ -984,7 +984,7 @@ bw = edge(原图, "具体的算子方法")
 
 MATLAB 中集成了以下 5 种上面提到的算子方法：
 
-![MATLAB 边缘检测函数 edge 中集成的算子方法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501081549121.png)
+![MATLAB 边缘检测函数 edge 中集成的算子方法](https://cdn.dwj601.cn/images/202501081549121.png)
 
 #### 4.4 频域滤波 *
 
@@ -1105,10 +1105,10 @@ bw = reshape(white_index, size(gray));
 
 **Haar-like 特征**。可以通过区域像素值的差来提取图像中的各种特征，至于如何快速计算区域的像素差，可以使用二维前缀和的处理技巧进行加速。可提取的特征如下图所示：
 
-![Haar-like 可提取的特征类型](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412301520537.png)
+![Haar-like 可提取的特征类型](https://cdn.dwj601.cn/images/202412301520537.png)
 
 ## 综合案例
 
 ### 7 图像检索
 
-![图像检索流程图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051311142.png)
+![图像检索流程图](https://cdn.dwj601.cn/images/202501051311142.png)

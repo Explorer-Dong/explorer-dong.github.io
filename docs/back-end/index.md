@@ -8,7 +8,7 @@ title: 后端专栏简介
 
 本栏目文章以「后端开发」笔记为主。欢迎评论与补充。
 
-![后端开发学习路线](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501302221609.png)
+![后端开发学习路线](https://cdn.dwj601.cn/images/202501302221609.png)
 
 /// caption
 后端开发学习路线 [^1]

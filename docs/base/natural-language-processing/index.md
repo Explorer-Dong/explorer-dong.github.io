@@ -21,7 +21,7 @@ title: 自然语言处理导读
 
 ## 研究内容
 
-![NLP 的主要研究内容](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250303083104252.png)
+![NLP 的主要研究内容](https://cdn.dwj601.cn/images/20250303083104252.png)
 
 /// fc
 NLP 的主要研究内容

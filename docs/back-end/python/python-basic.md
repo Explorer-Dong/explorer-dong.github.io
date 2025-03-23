@@ -83,7 +83,7 @@ print(id(c))
 
 上述两个程序可以用下面一张图来概括：
 
-![C++ 盒子模型 vs Python 标签模型](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407031133477.png)
+![C++ 盒子模型 vs Python 标签模型](https://cdn.dwj601.cn/images/202407031133477.png)
 
 /// fc
 C++ 盒子模型 vs Python 标签模型 [^py-ref]

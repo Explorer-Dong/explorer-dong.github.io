@@ -44,11 +44,11 @@ title: 半监督学习
 
 以经典 S3VM 中的经典算法 TSVM 为例。给出优化函数、算法图例、算法伪代码：
 
-![优化函数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406110812596.png)
+![优化函数](https://cdn.dwj601.cn/images/202406110812596.png)
 
-![算法图例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406110817802.png)
+![算法图例](https://cdn.dwj601.cn/images/202406110817802.png)
 
-![二分类 - 伪代码](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406110812160.png)
+![二分类 - 伪代码](https://cdn.dwj601.cn/images/202406110812160.png)
 
 ## 图半监督学习
 
@@ -62,10 +62,10 @@ title: 半监督学习
 
 **优化函数**。定义图矩阵的能量损失函数为图中每一个结点与所有结点的能量损失和，目标就是最小化能量损失和：
 
-![优化函数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406110848096.png)
+![优化函数](https://cdn.dwj601.cn/images/202406110848096.png)
 
 **多分类**，无法直接求出闭式解，只能进行迭代式计算。
 
 **新增变量**。我们定义标记矩阵 F，其形状为 $(l+u) \times d$，学习该矩阵对应的值，最终每一个未标记样本 $x_i$ 就是 $\arg \max F_i$：
 
-![多分类 - 伪代码](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406110915333.png)
+![多分类 - 伪代码](https://cdn.dwj601.cn/images/202406110915333.png)

@@ -6,7 +6,7 @@ title: 关联分析
 
 ## 基本概念
 
-![关联向量数据集：每一个元组表示一条订单信息，1 表示购买，0 表示未购买](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410210822548.png)
+![关联向量数据集：每一个元组表示一条订单信息，1 表示购买，0 表示未购买](https://cdn.dwj601.cn/images/202410210822548.png)
 
 基本定义：
 
@@ -99,11 +99,11 @@ title: 关联分析
 
 首先扫描一遍事务集，去除不符合最小支持度阈值的项 F，并将频繁项按照频率降序排序，同时对每一个事务中的项按照频繁项的顺序重新排序，如下图所示：
 
-![首先扫描一遍事务集，去除不符合的候选一项集 F，并将项集按照频率降序排序](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411041037092.png)
+![首先扫描一遍事务集，去除不符合的候选一项集 F，并将项集按照频率降序排序](https://cdn.dwj601.cn/images/202411041037092.png)
 
 接着再扫描一遍事务集构造出最终的 FP 树，如下图所示：
 
-![扫描一遍事务集构造 FP 树](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411041037337.png)
+![扫描一遍事务集构造 FP 树](https://cdn.dwj601.cn/images/202411041037337.png)
 
 2）寻找频繁项集
 
@@ -131,33 +131,33 @@ title: 关联分析
     
     首先扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树：
     
-    ![扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051012396.png)
+    ![扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树](https://cdn.dwj601.cn/images/202501051012396.png)
     
     **2）寻找频繁项集**
     
     以 c 为频繁项：
     
-    ![以 c 为频繁项 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018981.png)
+    ![以 c 为频繁项 - 1](https://cdn.dwj601.cn/images/202501051018981.png)
     
-    ![以 c 为频繁项 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018227.png)
+    ![以 c 为频繁项 - 2](https://cdn.dwj601.cn/images/202501051018227.png)
     
     以 a 为频繁项：
     
-    ![以 a 为频繁项 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018675.png)
+    ![以 a 为频繁项 - 1](https://cdn.dwj601.cn/images/202501051018675.png)
     
-    ![以 a 为频繁项 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018151.png)
+    ![以 a 为频繁项 - 2](https://cdn.dwj601.cn/images/202501051018151.png)
     
     以 e 作为频繁项：
     
-    ![以 e 作为频繁项](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018671.png)
+    ![以 e 作为频繁项](https://cdn.dwj601.cn/images/202501051018671.png)
     
     以 b 作为频繁项：
     
-    ![以 b 作为频繁项](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018110.png)
+    ![以 b 作为频繁项](https://cdn.dwj601.cn/images/202501051018110.png)
     
     以 d 作为频繁项：
     
-    ![以 d 作为频繁项](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018098.png)
+    ![以 d 作为频繁项](https://cdn.dwj601.cn/images/202501051018098.png)
 
 ### Eclat 算法
 
@@ -165,11 +165,11 @@ title: 关联分析
 
 这里再补充一个 Apriori 算法的变种，叫做 Eclat 算法。其算法逻辑是将项集编号和项集进行「反拉链」存储：
 
-![扫描一遍事务集将水平数据格式转换成垂直数据](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501042123959.png)
+![扫描一遍事务集将水平数据格式转换成垂直数据](https://cdn.dwj601.cn/images/202501042123959.png)
 
 后续在统计频繁项集时只需要取 **TID集** 的交集即可：
 
-![取TID集的交集 - 假设最小支持度阈值为 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411110820401.png)
+![取TID集的交集 - 假设最小支持度阈值为 2](https://cdn.dwj601.cn/images/202411110820401.png)
 
 ## 置信度检测
 
@@ -248,11 +248,11 @@ $$
 
 子序列的包含关系如下图所示：
 
-![子序列的包含关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501041508534.png)
+![子序列的包含关系](https://cdn.dwj601.cn/images/202501041508534.png)
 
 频繁序列（序列模式）的定义为满足最小支持度技术的序列，如下图所示：
 
-![频繁序列（序列模式）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501041510594.png)
+![频繁序列（序列模式）](https://cdn.dwj601.cn/images/202501041510594.png)
 
 k-序列即包含 $k$ 个项的序列，序列中的元素可以重复，例如对于一个只有两个项的 2-序列，可以有以下的所有序列可能：
 

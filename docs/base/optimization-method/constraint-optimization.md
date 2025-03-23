@@ -10,7 +10,7 @@ title: 约束优化方法
 
 #### 线性规划问题
 
-![线性规划问题的一般形式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211918859.png)
+![线性规划问题的一般形式](https://cdn.dwj601.cn/images/202403211918859.png)
 
 #### 图解法
 
@@ -18,19 +18,19 @@ title: 约束优化方法
 
 === "刚好只有一个最优解"
     
-    ![刚好只有一个最优解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211917063.png)
+    ![刚好只有一个最优解](https://cdn.dwj601.cn/images/202403211917063.png)
 
 === "有无穷多最优解"
 
-    ![有无穷多最优解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211920849.png)
+    ![有无穷多最优解](https://cdn.dwj601.cn/images/202403211920849.png)
 
 === "有无界解"
 
-    ![有无界解](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211921495.png)
+    ![有无界解](https://cdn.dwj601.cn/images/202403211921495.png)
 
 === "无可行解（可行域为空集）"
 
-    ![无可行解（可行域为空集）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403211922747.png)
+    ![无可行解（可行域为空集）](https://cdn.dwj601.cn/images/202403211922747.png)
 
 #### 基本性质
 
@@ -38,7 +38,7 @@ title: 约束优化方法
 
     ??? note "证明"
     
-        ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403212109584.jpg)
+        ![证明](https://cdn.dwj601.cn/images/202403212109584.jpg)
 
 2. 如果线性规划问题有最优解，那么最优解可在可行域的顶点中确定
 
@@ -67,7 +67,7 @@ title: 约束优化方法
 
 ??? note "举个例子"
 
-    ![一般线性规划转化为标准形 - 演示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403212111330.jpg)
+    ![一般线性规划转化为标准形 - 演示](https://cdn.dwj601.cn/images/202403212111330.jpg)
 
 #### 基本可行解
 
@@ -81,7 +81,7 @@ title: 约束优化方法
 
     ??? note "证明（反证法）"
 
-        ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403222103333.jpg)
+        ![证明](https://cdn.dwj601.cn/images/202403222103333.jpg)
 
 - 有时，目标函数可能在多个顶点处达到最大，这时在这些顶点的 **凸组合** 上也达到最大值，这时线性规划问题有无限多个最优解。
 
@@ -105,21 +105,21 @@ title: 约束优化方法
     
     1.1 确定线性规划的目标
     
-    ![确定线性规划的目标](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403281940243.png)
+    ![确定线性规划的目标](https://cdn.dwj601.cn/images/202403281940243.png)
     
     1.2 添加松弛变量
     
-    ![添加松弛变量](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403281942808.png)
+    ![添加松弛变量](https://cdn.dwj601.cn/images/202403281942808.png)
     
     1.3 用非基变量线性表示基变量
     
-    ![用非基变量线性表示基变量](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403281937210.png)
+    ![用非基变量线性表示基变量](https://cdn.dwj601.cn/images/202403281937210.png)
     
-    ![向量表示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403281939336.png)
+    ![向量表示](https://cdn.dwj601.cn/images/202403281939336.png)
     
     二、最优性检验
     
-    ![最优性检验](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403282010283.jpg)
+    ![最优性检验](https://cdn.dwj601.cn/images/202403282010283.jpg)
 
 1. **唯一最优解** 判别定理：对于 **目标函数求解最大值** 的情形。若 $\forall j \in [m+1, n]$ 有 $\sigma_j \le 0$ 则当前基本可行解 $x^{(k)}$ 为最优解。
 
@@ -167,17 +167,17 @@ title: 约束优化方法
 
 ??? note "实战演练"
 
-    ![单纯形法的求解步骤 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056146.jpg)
+    ![单纯形法的求解步骤 - 1](https://cdn.dwj601.cn/images/202403272056146.jpg)
     
-    ![单纯形法的求解步骤 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403272056440.jpg)
+    ![单纯形法的求解步骤 - 2](https://cdn.dwj601.cn/images/202403272056440.jpg)
 
 单纯形表法：
 
 ??? note "实战演练"
 
-    ![实战演练](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171407440.jpg)
+    ![实战演练](https://cdn.dwj601.cn/images/202404171407440.jpg)
     
-    ![代码验算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171410846.jpg)
+    ![代码验算](https://cdn.dwj601.cn/images/202404171410846.jpg)
 
 ### 对偶与对偶单纯形法
 
@@ -185,7 +185,7 @@ title: 约束优化方法
 
 已知原问题的表达式，如何求解对偶问题的表达式？我们需掌握以下对偶转换规则：
 
-![转化规则](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071144213.png)
+![转化规则](https://cdn.dwj601.cn/images/202404071144213.png)
 
 从上图不难发现，其实就是对线性规划的三个部分进行转换：目标函数、m 个约束条件、n 个自变量，下面分别进行文字介绍：
 
@@ -204,7 +204,7 @@ title: 约束优化方法
 
 ??? note "实战演练"
 
-    ![实例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407081127115.png)
+    ![实例](https://cdn.dwj601.cn/images/202407081127115.png)
 
 #### 对偶定理
 
@@ -215,11 +215,11 @@ title: 约束优化方法
 
 ??? note "实战演练"
 
-    ![问题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407081259988.png)
+    ![问题](https://cdn.dwj601.cn/images/202407081259988.png)
     
     对于上述问题，我们可以先写出其对偶问题：
     
-    ![对偶问题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407081300732.png)
+    ![对偶问题](https://cdn.dwj601.cn/images/202407081300732.png)
     
     显然的对于 $y^*=(\frac{4}{5},\frac{3}{5})^T$，上述 2,3,4 是取不到等号的，对应的 $x^*=(-,0,0,0,-)^T$。还剩两个变量 $x_1,x_5$ 通过 1,5 两个不等式取等进行计算：
     
@@ -236,9 +236,9 @@ title: 约束优化方法
 
 ??? note "实战演练"
 
-    ![实战演练](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171409291.jpg)
+    ![实战演练](https://cdn.dwj601.cn/images/202404171409291.jpg)
     
-    ![代码验算](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404171411832.jpg)
+    ![代码验算](https://cdn.dwj601.cn/images/202404171411832.jpg)
 
 ## 二次规划
 
@@ -303,7 +303,7 @@ $$
 
 算法流程：
 
-![Primal ASM 算法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406191553692.png)
+![Primal ASM 算法](https://cdn.dwj601.cn/images/202406191553692.png)
 
 算法解析：
 
@@ -362,21 +362,21 @@ $$
 
 不加证明的给出结论：当惩罚因子 $\to \infty$ 时，目标函数趋于最小值。下面给出算法流程：
 
-![等式约束的二次罚函数法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406120820032.png)
+![等式约束的二次罚函数法](https://cdn.dwj601.cn/images/202406120820032.png)
 
 ### 拉格朗日乘子法
 
 目标函数：
 
-![目标函数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406281100567.png)
+![目标函数](https://cdn.dwj601.cn/images/202406281100567.png)
 
 拉格朗日函数：
 
-![拉格朗日函数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406281102611.png)
+![拉格朗日函数](https://cdn.dwj601.cn/images/202406281102611.png)
 
 KKT 条件：
 
-![KKT 条件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406281102383.png)
+![KKT 条件](https://cdn.dwj601.cn/images/202406281102383.png)
 
 在实际求解时，我们只需要罗列上述 KKT 条件中的 (1) 和 (5)，另外三个显然不需要再罗列了。我们只需要对 $m$ 个不等式约束条件对应的乘子进行是否为零的讨论即可，显然需要讨论 $2^m$ 次。
 

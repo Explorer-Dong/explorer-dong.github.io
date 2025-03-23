@@ -19,7 +19,7 @@
         <link rel="next" href="../anomaly-detection/">
       
       
-      <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
+      <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -150,7 +150,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -486,7 +486,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -5562,7 +5562,7 @@
 
 <p>人们在购物时，有些东西往往是捆绑购买的，如果我们想要通过客户的购物记录挖掘出捆绑消费的物品并将这些物品摆放在一起，可以显著提升商品的销售量，那么如何挖掘出这样的捆绑关系呢？本章我们学习一种无监督学习方法：关联分析。一般来说购买了某个物品是一个很重要的事情，因此购物记录的属性全都是非对称二元属性。本章最后再补充一下序列的关联分析。</p>
 <h2 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="页面定位">&para;</a></h2>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410210822548.png" data-type="image" data-width="auto" data-height="auto" data-title="关联向量数据集：每一个元组表示一条订单信息，1 表示购买，0 表示未购买" data-desc-position="bottom"><img alt="关联向量数据集：每一个元组表示一条订单信息，1 表示购买，0 表示未购买" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410210822548.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410210822548.png" data-type="image" data-width="auto" data-height="auto" data-title="关联向量数据集：每一个元组表示一条订单信息，1 表示购买，0 表示未购买" data-desc-position="bottom"><img alt="关联向量数据集：每一个元组表示一条订单信息，1 表示购买，0 表示未购买" src="https://cdn.dwj601.cn/images/202410210822548.png" /></a></p>
 <p>基本定义：</p>
 <ul>
 <li>
@@ -5659,9 +5659,9 @@
 <p>主要分为两步，一步是构造 FP 树，一步就是根据 FP 树寻找频繁项集。举例说明：假设最小支持度阈值为 22.2%（2/9）。</p>
 <p>一）构造 FP 树</p>
 <p>首先扫描一遍事务集，去除不符合最小支持度阈值的项 F，并将频繁项按照频率降序排序，同时对每一个事务中的项按照频繁项的顺序重新排序，如下图所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411041037092.png" data-type="image" data-width="auto" data-height="auto" data-title="首先扫描一遍事务集，去除不符合的候选一项集 F，并将项集按照频率降序排序" data-desc-position="bottom"><img alt="首先扫描一遍事务集，去除不符合的候选一项集 F，并将项集按照频率降序排序" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411041037092.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202411041037092.png" data-type="image" data-width="auto" data-height="auto" data-title="首先扫描一遍事务集，去除不符合的候选一项集 F，并将项集按照频率降序排序" data-desc-position="bottom"><img alt="首先扫描一遍事务集，去除不符合的候选一项集 F，并将项集按照频率降序排序" src="https://cdn.dwj601.cn/images/202411041037092.png" /></a></p>
 <p>接着再扫描一遍事务集构造出最终的 FP 树，如下图所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411041037337.png" data-type="image" data-width="auto" data-height="auto" data-title="扫描一遍事务集构造 FP 树" data-desc-position="bottom"><img alt="扫描一遍事务集构造 FP 树" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411041037337.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202411041037337.png" data-type="image" data-width="auto" data-height="auto" data-title="扫描一遍事务集构造 FP 树" data-desc-position="bottom"><img alt="扫描一遍事务集构造 FP 树" src="https://cdn.dwj601.cn/images/202411041037337.png" /></a></p>
 <p>2）寻找频繁项集</p>
 <p>构造完 FP 树后，如何基于该树寻找频繁项集呢？分为三步：</p>
 <ol>
@@ -5705,27 +5705,27 @@
 </table>
 <p><strong>1）构建 FP 树</strong></p>
 <p>首先扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051012396.png" data-type="image" data-width="auto" data-height="auto" data-title="扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树" data-desc-position="bottom"><img alt="扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051012396.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501051012396.png" data-type="image" data-width="auto" data-height="auto" data-title="扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树" data-desc-position="bottom"><img alt="扫描一遍事务集得到所有频繁项并对事务集中的项进行排序，然后基于重排的事务集构建 FP 树" src="https://cdn.dwj601.cn/images/202501051012396.png" /></a></p>
 <p><strong>2）寻找频繁项集</strong></p>
 <p>以 c 为频繁项：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018981.png" data-type="image" data-width="auto" data-height="auto" data-title="以 c 为频繁项 - 1" data-desc-position="bottom"><img alt="以 c 为频繁项 - 1" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018981.png" /></a></p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018227.png" data-type="image" data-width="auto" data-height="auto" data-title="以 c 为频繁项 - 2" data-desc-position="bottom"><img alt="以 c 为频繁项 - 2" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018227.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501051018981.png" data-type="image" data-width="auto" data-height="auto" data-title="以 c 为频繁项 - 1" data-desc-position="bottom"><img alt="以 c 为频繁项 - 1" src="https://cdn.dwj601.cn/images/202501051018981.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501051018227.png" data-type="image" data-width="auto" data-height="auto" data-title="以 c 为频繁项 - 2" data-desc-position="bottom"><img alt="以 c 为频繁项 - 2" src="https://cdn.dwj601.cn/images/202501051018227.png" /></a></p>
 <p>以 a 为频繁项：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018675.png" data-type="image" data-width="auto" data-height="auto" data-title="以 a 为频繁项 - 1" data-desc-position="bottom"><img alt="以 a 为频繁项 - 1" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018675.png" /></a></p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018151.png" data-type="image" data-width="auto" data-height="auto" data-title="以 a 为频繁项 - 2" data-desc-position="bottom"><img alt="以 a 为频繁项 - 2" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018151.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501051018675.png" data-type="image" data-width="auto" data-height="auto" data-title="以 a 为频繁项 - 1" data-desc-position="bottom"><img alt="以 a 为频繁项 - 1" src="https://cdn.dwj601.cn/images/202501051018675.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501051018151.png" data-type="image" data-width="auto" data-height="auto" data-title="以 a 为频繁项 - 2" data-desc-position="bottom"><img alt="以 a 为频繁项 - 2" src="https://cdn.dwj601.cn/images/202501051018151.png" /></a></p>
 <p>以 e 作为频繁项：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018671.png" data-type="image" data-width="auto" data-height="auto" data-title="以 e 作为频繁项" data-desc-position="bottom"><img alt="以 e 作为频繁项" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018671.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501051018671.png" data-type="image" data-width="auto" data-height="auto" data-title="以 e 作为频繁项" data-desc-position="bottom"><img alt="以 e 作为频繁项" src="https://cdn.dwj601.cn/images/202501051018671.png" /></a></p>
 <p>以 b 作为频繁项：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018110.png" data-type="image" data-width="auto" data-height="auto" data-title="以 b 作为频繁项" data-desc-position="bottom"><img alt="以 b 作为频繁项" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018110.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501051018110.png" data-type="image" data-width="auto" data-height="auto" data-title="以 b 作为频繁项" data-desc-position="bottom"><img alt="以 b 作为频繁项" src="https://cdn.dwj601.cn/images/202501051018110.png" /></a></p>
 <p>以 d 作为频繁项：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018098.png" data-type="image" data-width="auto" data-height="auto" data-title="以 d 作为频繁项" data-desc-position="bottom"><img alt="以 d 作为频繁项" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051018098.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501051018098.png" data-type="image" data-width="auto" data-height="auto" data-title="以 d 作为频繁项" data-desc-position="bottom"><img alt="以 d 作为频繁项" src="https://cdn.dwj601.cn/images/202501051018098.png" /></a></p>
 </details>
 <h3 id="eclat-算法">Eclat 算法<a class="headerlink" href="#eclat-算法" title="页面定位">&para;</a></h3>
 <p>等价类变换（Equivalence CLAss Transformation，Eclat）算法</p>
 <p>这里再补充一个 Apriori 算法的变种，叫做 Eclat 算法。其算法逻辑是将项集编号和项集进行「反拉链」存储：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501042123959.png" data-type="image" data-width="auto" data-height="auto" data-title="扫描一遍事务集将水平数据格式转换成垂直数据" data-desc-position="bottom"><img alt="扫描一遍事务集将水平数据格式转换成垂直数据" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501042123959.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501042123959.png" data-type="image" data-width="auto" data-height="auto" data-title="扫描一遍事务集将水平数据格式转换成垂直数据" data-desc-position="bottom"><img alt="扫描一遍事务集将水平数据格式转换成垂直数据" src="https://cdn.dwj601.cn/images/202501042123959.png" /></a></p>
 <p>后续在统计频繁项集时只需要取 <strong>TID集</strong> 的交集即可：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411110820401.png" data-type="image" data-width="auto" data-height="auto" data-title="取TID集的交集 - 假设最小支持度阈值为 2" data-desc-position="bottom"><img alt="取TID集的交集 - 假设最小支持度阈值为 2" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411110820401.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202411110820401.png" data-type="image" data-width="auto" data-height="auto" data-title="取TID集的交集 - 假设最小支持度阈值为 2" data-desc-position="bottom"><img alt="取TID集的交集 - 假设最小支持度阈值为 2" src="https://cdn.dwj601.cn/images/202411110820401.png" /></a></p>
 <h2 id="置信度检测">置信度检测<a class="headerlink" href="#置信度检测" title="页面定位">&para;</a></h2>
 <p>有了所有的频繁项集，接下来就是在每一个频繁项集中挖掘强关联规则。具体的，假设当前的一个频繁项集为 <span class="arithmatex">\(F\)</span>，且 <span class="arithmatex">\(|F|=k\)</span>，那么就可以枚举 <span class="arithmatex">\(2^k-2\)</span> 次所有的前后件组合进行置信度检测。由于前面在计算支持度时，频繁项集中所有的项都算过支持度了，就可以提前保存好供当前置信度检测时使用，因此置信度检测时除了 <span class="arithmatex">\(O(2^k)\)</span> 的枚举开销之外，其余时间开销可以看做 <span class="arithmatex">\(O(1)\)</span>。</p>
 <p>当然，我们在进行前后件组合的搜索时，可以利用先验知识进行剪枝。具体的，假设当前的频繁项集 <span class="arithmatex">\(F\)</span> 被划分为了 <span class="arithmatex">\(X \to F-X\)</span> 的关联规则：</p>
@@ -5777,9 +5777,9 @@
 <h2 id="关联分析在序列数据上的应用">关联分析在序列数据上的应用<a class="headerlink" href="#关联分析在序列数据上的应用" title="页面定位">&para;</a></h2>
 <p>当数据的类型不是非对称的二元属性，而是一个序列数据时，如何挖掘其中的强关联序列呢？本节我们补充学习子序列的包含关系、频繁序列（序列模式）的表示形式以及「k-序列」的定义。</p>
 <p>子序列的包含关系如下图所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501041508534.png" data-type="image" data-width="auto" data-height="auto" data-title="子序列的包含关系" data-desc-position="bottom"><img alt="子序列的包含关系" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501041508534.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501041508534.png" data-type="image" data-width="auto" data-height="auto" data-title="子序列的包含关系" data-desc-position="bottom"><img alt="子序列的包含关系" src="https://cdn.dwj601.cn/images/202501041508534.png" /></a></p>
 <p>频繁序列（序列模式）的定义为满足最小支持度技术的序列，如下图所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501041510594.png" data-type="image" data-width="auto" data-height="auto" data-title="频繁序列（序列模式）" data-desc-position="bottom"><img alt="频繁序列（序列模式）" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501041510594.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501041510594.png" data-type="image" data-width="auto" data-height="auto" data-title="频繁序列（序列模式）" data-desc-position="bottom"><img alt="频繁序列（序列模式）" src="https://cdn.dwj601.cn/images/202501041510594.png" /></a></p>
 <p>k-序列即包含 <span class="arithmatex">\(k\)</span> 个项的序列，序列中的元素可以重复，例如对于一个只有两个项的 2-序列，可以有以下的所有序列可能：</p>
 <div class="arithmatex">\[
 \begin{aligned}
@@ -5811,7 +5811,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年2月28日 12:25:07">2025年2月28日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
   </span>
 
     
@@ -6028,7 +6028,7 @@
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
       
-        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
+        <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../../asserts/javascripts/link_blank.js"></script>
       

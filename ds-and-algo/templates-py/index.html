@@ -19,7 +19,7 @@
         <link rel="next" href="../theory/">
       
       
-      <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
+      <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -150,7 +150,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -486,7 +486,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -9755,7 +9755,7 @@
 <li>考虑 <span class="arithmatex">\(s[i] \ne s[\pi(i-1)]\)</span>，失配时，希望找到 <span class="arithmatex">\(s[0] \sim s[i-1]\)</span> 中，仅次于 <span class="arithmatex">\(\pi[i-1]\)</span> 的第二长度 <span class="arithmatex">\(j\)</span>，使得在位置 <span class="arithmatex">\(i-1\)</span> 的前后缀性质仍然保持，即  <span class="arithmatex">\(s[0] \sim s[j-1] = s[i-j] \sim s[i-1]\)</span>。</li>
 </ul>
 <p>实际上，第二长真后缀也完整存在于 当前真前缀 <span class="arithmatex">\(s[0] \sim s[j-1]\)</span> 中，即有转移方程：<span class="arithmatex">\(j^{(n-1)}=\pi(j^n-1)\)</span>。所以如此往复，要么直到 $s[i]=s[j'] $ ，然后转移到第一种情况；要么直到 <span class="arithmatex">\(j'=0\)</span> 。两种情况，通过判断 $s[i] $ 是否 <span class="arithmatex">\(s[j']\)</span> 来确定要不要让 <span class="arithmatex">\(j'+1\)</span> 统一，最后 <span class="arithmatex">\(s[i]=s[j']\)</span>。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055650.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055650.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055650.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055650.png" /></a></p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
@@ -10527,7 +10527,7 @@ z [i] = len(LCP(s, s [i:]))
 <p><strong>N 皇后问题</strong></p>
 <p>皇后之间不同行，不同列，且不能在同一斜线。如果只满足不同行不同列，等价于每行每列恰好一个皇后。如果用 <span class="arithmatex">\(col\)</span> 表示皇后的位置，<span class="arithmatex">\(col[i]\)</span> 表示 第 <span class="arithmatex">\(i\)</span> 行的皇后在第 <span class="arithmatex">\(col[i]\)</span> 列，则 "每行每列恰好一个皇后" 等价于 枚举 <span class="arithmatex">\(col\)</span> 的全排列。</p>
 <p>加上斜线上不能有皇后的条件，如果从上往下枚举，则左上方向、右上方向不能有皇后。所以问题变成，当前枚举到 第 <span class="arithmatex">\(i\)</span> 行，可以枚举的列号的集合 <span class="arithmatex">\(S\)</span> 。枚举列 <span class="arithmatex">\(j \in S\)</span> ，合法情况即在 <span class="arithmatex">\(\forall r \in [0 ,~ i-1]\)</span> ，其列值 <span class="arithmatex">\(c = col[r]\)</span> 都不满足 <span class="arithmatex">\(i+j=r+c\)</span> 或者 <span class="arithmatex">\(i-j=r-c\)</span>。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055651.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055651.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055651.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055651.png" /></a></p>
 <p>写法 1：$ dfs(i, S)$ 枚举当前到第 <span class="arithmatex">\(i\)</span> 行（选第 <span class="arithmatex">\(i\)</span> 个数），可以选择的列号的集合是 <span class="arithmatex">\(S\)</span> （没选择过的数字集合 S）</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-45-2"> 2</a></span>
@@ -14610,7 +14610,7 @@ S_n = \frac{a_1(1-q^n)}{1-q},~q \ne1
 \\
 H(n) = C_{2n}^n-C_{2n}^{n-1} = \frac{C_{2n}^n}{n+1} = \frac{(2n)!}{(n + 1)! n!}
 \]</div>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055652.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055652.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055652.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055652.png" /></a></p>
 <p>证明方法：</p>
 <p>看成从从 <span class="arithmatex">\((0,~ 0)\)</span> 到 右上角 <span class="arithmatex">\((n, ~n )\)</span>，每次只能向右或者向上，向上的次数不超过向右的次数的路径数。</p>
 <p>对于不合法的情况，超过 <span class="arithmatex">\(y = x\)</span> ，即一定触碰 <span class="arithmatex">\(y = x + 1\)</span>， 取路径与 <span class="arithmatex">\(y = x + 1\)</span> 交点中，距离原点最近的点，将路径远离原点的部分关于 <span class="arithmatex">\(y = x + 1\)</span> 翻转。由于原来的终点 <span class="arithmatex">\((n,n)\)</span> 关于 <span class="arithmatex">\(y = x + 1\)</span> 翻转的点是 $(n - 1, n + 1) $ ，所以不合法的路径数是 <span class="arithmatex">\(C_{2n}^{n-1}\)</span></p>
@@ -14634,7 +14634,7 @@ H(n) = H(n-1) \cdot \frac{2n(2n - 1)}{(n+1)n} = H(n-1) \cdot \frac{(4n - 2)}{(n+
 </ul>
 <p>凸多边形划分问题</p>
 <p><strong>在一个 n 边形中，通过不相交于 n 边形内部的对角线，把 n 边形拆分为若干个三角形，问有多少种拆分方案？</strong></p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055653.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055653.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055653.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055653.png" /></a></p>
 <p>以凸多边形的一边为基，设这条边的 2 个顶点为 A 和 B。从剩余顶点中选 1 个，可以将凸多边形分成三个部分，中间是一个三角形，左右两边分别是两个凸多边形，然后求解左右两个凸多边形。</p>
 <p>2.设问题的解 f(n)，其中 n 表示顶点数，那么 f(n)= f(2)<em>f(n-1)+f(3)</em> f(n-2)+……+f(n-2)<em>f(3)+f(n-1)</em> f(2)。
 其中，f(2)<em>f(n-1)表示：三个相邻的顶点构成一个三角形，另外两个部分的顶点数分别为 2（一条直线两个点）和 n-1。
@@ -18759,7 +18759,7 @@ d_{1, x} + nw + d_{0, dest} - d_{0, u} = target \\
 nw = target - d_{1, x} + d_{0, u} -  d_{0, dest}
 \]</div>
 <p>当这个值大于 1 时，是一个合法的边权，进行修改。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055654.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055654.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055654.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055654.png" /></a></p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-235-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-235-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-235-3"> 3</a></span>
@@ -18907,7 +18907,7 @@ nw = target - d_{1, x} + d_{0, u} -  d_{0, dest}
 <ul>
 <li>可能存在孤点</li>
 </ul>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055655.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055655.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055655.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055655.png" /></a></p>
 <h4 id="二分图判定">二分图判定<a class="headerlink" href="#二分图判定" title="页面定位">&para;</a></h4>
 <p><a href="https://leetcode.cn/problems/is-graph-bipartite/description/?envType=featured-list&amp;envId=JMxeEVyu?envType=featured-list&amp;envId=JMxeEVyu">785. 判断二分图 - 力扣（LeetCode）</a></p>
 <p>DFS 染色：</p>
@@ -19042,15 +19042,15 @@ nw = target - d_{1, x} + d_{0, u} -  d_{0, dest}
 </li>
 <li>完美匹配的边数 = 左 / 右部的点数</li>
 </ul>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055656.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055656.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055656.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055656.png" /></a></p>
 <p><strong>二分图最大权完美匹配</strong>：二分图边权和最大的完美匹配。</p>
 <p><strong>交替路</strong>：从一个未匹配点出发(右)，依次经过非匹配边、匹配边、非匹配边…形成的路径叫交替路。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055657.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055657.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055657.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055657.png" /></a></p>
 <p><strong>增广路</strong>：从一个未匹配点出发(右)，走交替路，如果途径另一个未匹配点（出发的点不算），则这条交替路称为增广路（agumenting path）。例如，图 5 中的一条增广路如图 6 所示（图中的匹配点均用红色标出）</p>
 <ul>
 <li>特点：<strong>非匹配边比匹配边多一条</strong>。因此，研究增广路的意义是改进匹配。只要把增广路中的匹配边和非匹配边的身份交换即可。由于中间的匹配节点不存在其他相连的匹配边，所以这样做不会破坏匹配的性质。交换后，图中的匹配边数目比原来多了 1 条。</li>
 </ul>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055658.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055658.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055658.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055658.png" /></a></p>
 <p><strong>增广路定理</strong></p>
 <p>通过不停地找增广路来增加匹配中的匹配边和匹配点。找不到增广路时，达到最大匹配</p>
 <p><a href="https://www.acwing.com/problem/content/863/">861. 二分图的最大匹配 - AcWing 题库</a></p>
@@ -19643,7 +19643,7 @@ nw = target - d_{1, x} + d_{0, u} -  d_{0, dest}
 </span><span id="__span-247-7"><a id="__codelineno-247-7" name="__codelineno-247-7"></a>    <span class="k">if</span> <span class="n">father</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
 </span><span id="__span-247-8"><a id="__codelineno-247-8" name="__codelineno-247-8"></a>        <span class="n">diff</span><span class="p">[</span><span class="n">father</span><span class="p">[</span><span class="n">a</span><span class="p">]]</span> <span class="o">-=</span> <span class="mi">1</span>
 </span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055659.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055659.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055659.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055659.png" /></a></p>
 <h3 id="树形-dp换根-dp">树形 DP(换根 DP)<a class="headerlink" href="#树形-dp换根-dp" title="页面定位">&para;</a></h3>
 <p><a href="https://leetcode.cn/problems/sum-of-distances-in-tree/description/">834. 树中距离之和 - 力扣（LeetCode）</a></p>
 <p><a href="https://hydro.ac/d/nnu_contest/p/17">题目详情 - Problem 4E. 最大社交深度和 - HydroOJ</a></p>
@@ -19701,7 +19701,7 @@ nw = target - d_{1, x} + d_{0, u} -  d_{0, dest}
 <p><span class="arithmatex">\(u\)</span> 剔除 v 子树部分下降 1，深度和增加 <span class="arithmatex">\(n - siz[v]\)</span></p>
 <p><span class="arithmatex">\(v\)</span> 子树部分上升 1，深度和减少 <span class="arithmatex">\(siz[v]\)</span></p>
 <p>则状态转移方程 <span class="arithmatex">\(res[v] = res[u] - siz[v] + (n - siz[v])\)</span></p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055660.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055660.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055660.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055660.png" /></a></p>
 <h3 id="树上异或">树上异或<a class="headerlink" href="#树上异或" title="页面定位">&para;</a></h3>
 <p>性质 1：对树上一条路径 <span class="arithmatex">\(u \rightarrow x_0 \rightarrow x_1 \rightarrow \cdots \rightarrow v\)</span> 进行相邻节点两两异或运算，等价于只对路径起始节点和终止节点异或。</p>
 <p>因而树上相邻异或 等价于 树上任意两点进行异或</p>
@@ -20319,7 +20319,7 @@ nw = target - d_{1, x} + d_{0, u} -  d_{0, dest}
 <p>最终求解的问题 <span class="arithmatex">\(f(N, W)\)</span> 。</p>
 <p>状态计算：</p>
 <p>集合的划分问题：如何将集合 <span class="arithmatex">\(f(i,j)\)</span> 划分成更小的可计算子集。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055661.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055661.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055661.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055661.png" /></a></p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-277-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-277-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-277-3"> 3</a></span>
@@ -21108,7 +21108,7 @@ $ f(t, i, j)  $ 表示 <span class="arithmatex">\(A, B\)</span> 共同走了 <sp
 </span><span id="__span-305-11"><a id="__codelineno-305-11" name="__codelineno-305-11"></a>        <span class="k">return</span> <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
 </span></code></pre></div></td></tr></table></div>
 <p><a href="https://leetcode.cn/problems/minimum-score-triangulation-of-polygon/description/?envType=featured-list&amp;envId=2UzczrXX?envType=featured-list&amp;envId=2UzczrXX">1039. 多边形三角剖分的最低得分 - 力扣（LeetCode）</a></p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055662.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055662.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055662.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055662.png" /></a></p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-306-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-306-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-306-3"> 3</a></span>
@@ -21678,7 +21678,7 @@ $ f(t, i, j)  $ 表示 <span class="arithmatex">\(A, B\)</span> 共同走了 <sp
 <p><span class="arithmatex">\(f(i,j)\)</span> 能由 <span class="arithmatex">\(f(i-1, k)\)</span> 状态转移的充要条件：1. <span class="arithmatex">\(j ~\&amp;~ k =0\)</span> ，保证同列上下两行不会同时放竖方块的上半部分。2. <span class="arithmatex">\(j ~|~ k\)</span> 的所有连续的 0 的个数必须是偶数。<span class="arithmatex">\(j ~|~ k\)</span> 为 0 当且仅当上下两行都是横方块，所以必须是偶数个。</p>
 <p>初始状态对于 <span class="arithmatex">\(f(0)\)</span> ，不能对第一行产生影响，所以只有 <span class="arithmatex">\(f(0,~0) = 1\)</span> ，其余为 0。最终目标：<span class="arithmatex">\(f(N, 0)\)</span> ，状态转移方程：<span class="arithmatex">\(f(i,j) = \sum valid(f(i-1,k))\)</span></p>
 <p>对于所有 <span class="arithmatex">\(M\)</span> 位二进制数，预处理其是否满足所有连续 0 的个数是否是偶数。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055663.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250302102055663.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250302102055663.png" data-type="image" data-width="auto" data-height="auto" data-title="image.png" data-desc-position="bottom"><img alt="image.png" src="https://cdn.dwj601.cn/images/20250302102055663.png" /></a></p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-323-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-323-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-323-3"> 3</a></span>
@@ -23231,7 +23231,7 @@ y' = r \sin (\theta - \alpha) = y \cos \alpha - x \sin \alpha
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月19日 02:03:32">2025年3月19日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
   </span>
 
     
@@ -23246,39 +23246,6 @@ y' = r \sin (\theta - \alpha) = y \cos \alpha - x \sin \alpha
 
     
     
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="贡献者">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/TsingPig" class="md-author" title="@TsingPig">
-          
-          <img src="https://avatars.githubusercontent.com/u/112939306?v=4&size=72" alt="TsingPig">
-        </a>
-      
-        <a href="https://github.com/Explorer-Dong" class="md-author" title="@Explorer-Dong">
-          
-          <img src="https://avatars.githubusercontent.com/u/128051718?v=4&size=72" alt="Explorer-Dong">
-        </a>
-      
-        <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
-          
-          <img src="https://avatars.githubusercontent.com/u/19864447?v=4&size=72" alt="web-flow">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
     
   </aside>
 
@@ -23458,7 +23425,7 @@ y' = r \sin (\theta - \alpha) = y \cos \alpha - x \sin \alpha
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
       
-        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
+        <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../asserts/javascripts/link_blank.js"></script>
       

@@ -19,7 +19,7 @@
         <link rel="next" href="../hexo-enhancement/">
       
       
-      <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
+      <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -150,7 +150,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -486,7 +486,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -5658,9 +5658,9 @@
 <p>该方法可以利用 GitHub Actions 的 CI/CD 功能，省去「本地构建」与「手动部署」的操作，让 GitHub 平台帮助我们完成这两步操作，从而让我们只需要像维护项目代码一样专注于内容创作与版本管理，而无需关心其他任何事情。下面以「源码和站点同属一个仓库」的情景为例介绍具体地操作与工作流配置。</p>
 <p>1）创建一个空 GitHub 仓库、创建一个鉴权 token（该 token 可以让 GitHub Actions 以你的身份操作你的仓库）、赋予 GitHub Actions 读写权限</p>
 <p>创建一个鉴权 token：<code>头像 &gt;&gt; Settings &gt;&gt; Developer settings &gt;&gt; Personal access tokens &gt;&gt; Tokens (classic)</code></p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501230044185.png" data-type="image" data-width="auto" data-height="auto" data-title="创建一个鉴权 token：头像 &gt;&gt; Settings &gt;&gt; Developer settings &gt;&gt; Personal access tokens &gt;&gt; Tokens (classic)" data-desc-position="bottom"><img alt="创建一个鉴权 token：头像 &gt;&gt; Settings &gt;&gt; Developer settings &gt;&gt; Personal access tokens &gt;&gt; Tokens (classic)" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501230044185.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501230044185.png" data-type="image" data-width="auto" data-height="auto" data-title="创建一个鉴权 token：头像 &gt;&gt; Settings &gt;&gt; Developer settings &gt;&gt; Personal access tokens &gt;&gt; Tokens (classic)" data-desc-position="bottom"><img alt="创建一个鉴权 token：头像 &gt;&gt; Settings &gt;&gt; Developer settings &gt;&gt; Personal access tokens &gt;&gt; Tokens (classic)" src="https://cdn.dwj601.cn/images/202501230044185.png" /></a></p>
 <p>赋予 GitHub Actions 读写权限：<code>Settings &gt;&gt; Actions &gt;&gt; General &gt;&gt; Workflow permissions</code></p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501230055064.png" data-type="image" data-width="auto" data-height="auto" data-title="赋予 GitHub Actions 读写权限：Settings &gt;&gt; Actions &gt;&gt; General &gt;&gt; Workflow permissions" data-desc-position="bottom"><img alt="赋予 GitHub Actions 读写权限：Settings &gt;&gt; Actions &gt;&gt; General &gt;&gt; Workflow permissions" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501230055064.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501230055064.png" data-type="image" data-width="auto" data-height="auto" data-title="赋予 GitHub Actions 读写权限：Settings &gt;&gt; Actions &gt;&gt; General &gt;&gt; Workflow permissions" data-desc-position="bottom"><img alt="赋予 GitHub Actions 读写权限：Settings &gt;&gt; Actions &gt;&gt; General &gt;&gt; Workflow permissions" src="https://cdn.dwj601.cn/images/202501230055064.png" /></a></p>
 <p>2）初始化一个博客项目</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>hexo<span class="w"> </span>init
 </span></code></pre></div></td></tr></table></div>
@@ -5742,13 +5742,13 @@
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
 </span></code></pre></div></td></tr></table></div>
 <p>6）在 GitHub Pages 上配置站点托管分支 <code>Settings &gt;&gt; Pages &gt;&gt; Build and deployment</code></p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501230103361.png" data-type="image" data-width="auto" data-height="auto" data-title="在 GitHub Pages 上配置站点托管分支：Settings &gt;&gt; Pages &gt;&gt; Build and deployment" data-desc-position="bottom"><img alt="在 GitHub Pages 上配置站点托管分支：Settings &gt;&gt; Pages &gt;&gt; Build and deployment" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501230103361.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501230103361.png" data-type="image" data-width="auto" data-height="auto" data-title="在 GitHub Pages 上配置站点托管分支：Settings &gt;&gt; Pages &gt;&gt; Build and deployment" data-desc-position="bottom"><img alt="在 GitHub Pages 上配置站点托管分支：Settings &gt;&gt; Pages &gt;&gt; Build and deployment" src="https://cdn.dwj601.cn/images/202501230103361.png" /></a></p>
 <p>GitHub Pages 按照上述工作流的指令，检测到 push 后开始执行，即 checkout、generate 和 deploy。等待所有流程结束后，重新加载 <code>https://&lt;username&gt;.github.io/&lt;project&gt;/</code> 就可以发现站点已经托管成功了！</p>
 <h2 id="基于-git-hooks">基于 Git Hooks<a class="headerlink" href="#基于-git-hooks" title="页面定位">&para;</a></h2>
-<p>由于 Github Pages 服务使用的服务器在美丽国，不用魔法访问速度过慢，国内平替 Gitee Pages 已经停止服务了。故综合考虑还是部署到国内服务器上。当然这前提是你应已拥有一台国内备案的 <a href="https://www.aliyun.com/product/ecs?userCode=jpec1z57">云服务器</a> 和一个 <a href="https://wanwang.aliyun.com/domain/">域名</a>。如果觉得备案太麻烦，可以考虑入手一台 <a href="https://www.aliyun.com/product/ecs?userCode=jpec1z57">香港云服务器</a>。下面将基于 Git Hooks 工具，介绍如何将自己的 Hexo 静态博客项目部署到阿里云服务器上并持续集成、持续部署。</p>
+<p>由于 GitHub Pages 服务使用的服务器在美丽国，不用魔法访问速度过慢，国内平替 Gitee Pages 已经停止服务了。故综合考虑还是部署到国内服务器上。当然这前提是你应已拥有一台国内备案的 <a href="https://www.aliyun.com/product/ecs?userCode=jpec1z57">云服务器</a> 和一个 <a href="https://wanwang.aliyun.com/domain/">域名</a>。如果觉得备案太麻烦，可以考虑入手一台 <a href="https://www.aliyun.com/product/ecs?userCode=jpec1z57">香港云服务器</a>。下面将基于 Git Hooks 工具，介绍如何将自己的 Hexo 静态博客项目部署到阿里云服务器上并持续集成、持续部署。</p>
 <h3 id="云平台端">云平台端<a class="headerlink" href="#云平台端" title="页面定位">&para;</a></h3>
 <p>1）域名解析。我们需要将自己的域名指向自己的服务器 IP，下图中记录值即你的云服务器 IP 地址</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404051247292.png" data-type="image" data-width="auto" data-height="auto" data-title="域名解析" data-desc-position="bottom"><img alt="域名解析" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404051247292.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404051247292.png" data-type="image" data-width="auto" data-height="auto" data-title="域名解析" data-desc-position="bottom"><img alt="域名解析" src="https://cdn.dwj601.cn/images/202404051247292.png" /></a></p>
 <h3 id="服务器端">服务器端<a class="headerlink" href="#服务器端" title="页面定位">&para;</a></h3>
 <p>使用终端连接工具连接到服务器后开始下面的操作。常用连接工具比如 MobaXterm。</p>
 <h4 id="git-hooks">Git Hooks<a class="headerlink" href="#git-hooks" title="页面定位">&para;</a></h4>
@@ -5769,7 +5769,7 @@
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="c1"># 编辑 /etc/sudoers 文件，在 root ALL=(ALL:ALL) ALL 后追加一句</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>git<span class="w"> </span><span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span><span class="w"> </span>ALL
 </span></code></pre></div></td></tr></table></div>
-<p>2）创建 Git Hooks。与 Github Pages 自动部署的工作流逻辑类似，我们将静态文件推送到云服务器后，需要让云服务器帮我们持续部署。我们可以借助 Git Hooks 的功能来实现</p>
+<p>2）创建 Git Hooks。与 GitHub Pages 自动部署的工作流逻辑类似，我们将静态文件推送到云服务器后，需要让云服务器帮我们持续部署。我们可以借助 Git Hooks 的功能来实现</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
@@ -5819,7 +5819,7 @@
 <p>1）本地生成密钥（公钥 + 私钥），连按三次回车即可生成默认配置的密钥（如果本地已经有密钥对了，这一步可以跳过）</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>ssh-keygen
 </span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071758590.png" data-type="image" data-width="auto" data-height="auto" data-title="使用 Git Bash 生成密钥" data-desc-position="bottom"><img alt="使用 Git Bash 生成密钥" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071758590.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404071758590.png" data-type="image" data-width="auto" data-height="auto" data-title="使用 Git Bash 生成密钥" data-desc-position="bottom"><img alt="使用 Git Bash 生成密钥" src="https://cdn.dwj601.cn/images/202404071758590.png" /></a></p>
 <p>2）在 <code>/home/git</code> 目录下右键新建名为 <code>.ssh</code> 的文件夹，并在该文件夹内新建名为 <code>authorized_keys</code> 的文本文件，将之前生成的公钥文件中的所有内容复制进去，保存。</p>
 <p>3）修改文件/文件夹的权限与属主</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
@@ -5832,7 +5832,7 @@
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>ssh<span class="w"> </span>git@xxx.xxx.xxx.xxx<span class="w">  </span><span class="c1"># 填你的服务器 ip 地址</span>
 </span></code></pre></div></td></tr></table></div>
 <p>首次连接需要输入一个 <code>yes</code> 用来在本地存储主机信息。如果不需要输入密码就进入了命令行界面，表示 ssh 通信建立成功！</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071826099.png" data-type="image" data-width="auto" data-height="auto" data-title="ssh 连接成功" data-desc-position="bottom"><img alt="ssh 连接成功" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071826099.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404071826099.png" data-type="image" data-width="auto" data-height="auto" data-title="ssh 连接成功" data-desc-position="bottom"><img alt="ssh 连接成功" src="https://cdn.dwj601.cn/images/202404071826099.png" /></a></p>
 <h4 id="nginx">Nginx<a class="headerlink" href="#nginx" title="页面定位">&para;</a></h4>
 <p>Nginx 实现了主机虚拟化的功能，即一台主机可以通过 Nginx 的分发功能对外提供多种服务。如果需要向外提供 https 服务，还需要准备一个 <a href="https://www.aliyun.com/product/cas?userCode=jpec1z57">SSL 证书</a>。然后在服务器上下载安装 Nginx 并编辑 nginx.conf 文件（以我的配置为例）</p>
 <div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
@@ -5873,13 +5873,13 @@
 <div class="language-yaml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://blog.dwj601.cn</span>
 </span></code></pre></div></td></tr></table></div>
 <p>deploy 字段配置如下：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071833798.png" data-type="image" data-width="auto" data-height="auto" data-title="编辑 _config.yml 文件中的 deploy 字段" data-desc-position="bottom"><img alt="编辑 _config.yml 文件中的 deploy 字段" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071833798.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404071833798.png" data-type="image" data-width="auto" data-height="auto" data-title="编辑 _config.yml 文件中的 deploy 字段" data-desc-position="bottom"><img alt="编辑 _config.yml 文件中的 deploy 字段" src="https://cdn.dwj601.cn/images/202404071833798.png" /></a></p>
 <p>最后我们在本地只需要执行 <code>hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</code> 即可实现一步部署到自己的服务器！</p>
 <p>部署后可以进入服务器的 <code>--work-tree</code> 目录，检查站点是否被 checkout 过来。下图表示 checkout 成功：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071837567.png" data-type="image" data-width="auto" data-height="auto" data-title="checkout 成功" data-desc-position="bottom"><img alt="checkout 成功" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404071837567.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404071837567.png" data-type="image" data-width="auto" data-height="auto" data-title="checkout 成功" data-desc-position="bottom"><img alt="checkout 成功" src="https://cdn.dwj601.cn/images/202404071837567.png" /></a></p>
 <h3 id="原理">原理<a class="headerlink" href="#原理" title="页面定位">&para;</a></h3>
 <p><strong>Hexo 持续部署的原理</strong>。如下图所示（我自己画的，如有不对请及时矫正）</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081614614.jpg" data-type="image" data-width="auto" data-height="auto" data-title="Hexo 持续部署的原理图" data-desc-position="bottom"><img alt="Hexo 持续部署的原理图" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081614614.jpg" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404081614614.jpg" data-type="image" data-width="auto" data-height="auto" data-title="Hexo 持续部署的原理图" data-desc-position="bottom"><img alt="Hexo 持续部署的原理图" src="https://cdn.dwj601.cn/images/202404081614614.jpg" /></a></p>
 <p><strong>Git Hooks 的定义与工作原理</strong>。可以将其类比 github workflows，可以在我们做出某些行为的前后自动执行一些我们预设定的任务。此处使用到的就是 post-receive 任务，<a href="https://git-scm.com/docs/githooks#post-receive">原文</a> 是这样解释的：</p>
 <blockquote>
 <p>This hook is invoked by [git-receive-pack<a href="https://www.git-scm.com/docs/git-receive-pack">1]</a> when it reacts to <code>git push</code> and updates reference(s) in its repository. It executes on the remote repository once after all the refs have been updated.</p>
@@ -5890,7 +5890,7 @@
 <p>SSH（Secure Shell，安全外壳）是一种网络安全协议，通过加密和认证机制实现安全的访问和文件传输等业务。传统远程登录和文件传输方式，例如 Telnet、FTP，使用明文传输数据，存在很多的安全隐患。随着人们对网络安全的重视，这些方式已经慢慢不被接受。SSH 协议通过对网络数据进行加密和验证，在不安全的网络环境中提供了安全的网络服务。作为 Telnet 和其他不安全远程 shell 协议的安全替代方案，目前 SSH 协议已经被全世界广泛使用，大多数设备都支持 SSH 功能。</p>
 </blockquote>
 <p>用一张图来更加清晰直观的理解：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081642038.png" data-type="image" data-width="auto" data-height="auto" data-title="SSH 工作原理图" data-desc-position="bottom"><img alt="SSH 工作原理图" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081642038.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404081642038.png" data-type="image" data-width="auto" data-height="auto" data-title="SSH 工作原理图" data-desc-position="bottom"><img alt="SSH 工作原理图" src="https://cdn.dwj601.cn/images/202404081642038.png" /></a></p>
 <h3 id="参考">参考<a class="headerlink" href="#参考" title="页面定位">&para;</a></h3>
 <p><a href="https://www.glimound.com/build-hexo-blog/">基于 Hexo 的静态博客网站搭建并部署至云服务器</a></p>
 <p><a href="https://www.runoob.com/linux/linux-comm-chmod.html">Linux chmod 命令</a></p>
@@ -5920,7 +5920,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月17日 12:21:16">2025年3月17日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
   </span>
 
     
@@ -5935,29 +5935,6 @@
 
     
     
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="贡献者">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/Explorer-Dong" class="md-author" title="@Explorer-Dong">
-          
-          <img src="https://avatars.githubusercontent.com/u/128051718?v=4&size=72" alt="Explorer-Dong">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
     
   </aside>
 
@@ -6137,7 +6114,7 @@
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
       
-        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
+        <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../../asserts/javascripts/link_blank.js"></script>
       

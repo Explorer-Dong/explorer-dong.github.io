@@ -19,7 +19,7 @@
         <link rel="next" href="../../computer-organization/">
       
       
-      <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
+      <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -150,7 +150,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -486,7 +486,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -5493,8 +5493,8 @@
 <table>
 <thead>
 <tr>
-<th style="text-align: center;"><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501140947081.png" data-type="image" data-width="auto" data-height="auto" data-title="磁盘（立体图）" data-desc-position="bottom"><img alt="磁盘（立体图）" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501140947081.png" /></a></th>
-<th style="text-align: center;"><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501140947644.png" data-type="image" data-width="auto" data-height="auto" data-title="磁盘（截面图）" data-desc-position="bottom"><img alt="磁盘（截面图）" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501140947644.png" /></a></th>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/202501140947081.png" data-type="image" data-width="auto" data-height="auto" data-title="磁盘（立体图）" data-desc-position="bottom"><img alt="磁盘（立体图）" src="https://cdn.dwj601.cn/images/202501140947081.png" /></a></th>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/202501140947644.png" data-type="image" data-width="auto" data-height="auto" data-title="磁盘（截面图）" data-desc-position="bottom"><img alt="磁盘（截面图）" src="https://cdn.dwj601.cn/images/202501140947644.png" /></a></th>
 </tr>
 </thead>
 <tbody>
@@ -5516,14 +5516,14 @@ c &amp;= x \% (m\times k) \% k \\
 \]</div>
 <p>如果有不是从 <span class="arithmatex">\(0\)</span> 开始编号的，就用换元法将上述对应的变量替换掉即可，例如假设磁头和扇区都从 <span class="arithmatex">\(1\)</span> 开始编号，那么就将 <span class="arithmatex">\(c'=c-1,x'=x-1\)</span> 代入上式即可。</p>
 <p><strong>移臂调度</strong>。通过移动臂的平移，读出合适的柱面信息，为了降低移动臂的移动时间开销，面对大量 I/O 请求时，需要设计一个合理的移动算法。用一个例子来说明就再清晰不过了，假设当前移动臂所在柱面为 53 号，柱面的取值范围为 0-199，现在有一个柱面请求序列为 98, 183, 37, 122, 14, 124, 65, 67，五种调度算法如下所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501141034534.png" data-type="image" data-width="auto" data-height="auto" data-title="5 种移臂调度算法示例" data-desc-position="bottom"><img alt="5 种移臂调度算法示例" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501141034534.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501141034534.png" data-type="image" data-width="auto" data-height="auto" data-title="5 种移臂调度算法示例" data-desc-position="bottom"><img alt="5 种移臂调度算法示例" src="https://cdn.dwj601.cn/images/202501141034534.png" /></a></p>
 <p><strong>旋转调度</strong>。对于同一个柱面，我们希望在尽可能少的旋转圈数内完成所有请求扇区的读写，有两种策略：</p>
 <ol>
 <li>循环排序。即优化扇区请求序列的顺序，这个可以从软件上实现；</li>
 <li>优化分布。即优化扇区的数据分布，这需要从硬件上实现，即需要根据磁盘转速和数据处理速度两者联合定夺扇区的数据分布。</li>
 </ol>
 <p>给优化分布举个例子。假设旋转一周时间为 20ms，读出每个扇区后的处理时间为 4ms，则右边的优化分布能提高信息处理速度：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501141054698.png" data-type="image" data-width="auto" data-height="auto" data-title="优化分布实例" data-desc-position="bottom"><img alt="优化分布实例" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501141054698.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501141054698.png" data-type="image" data-width="auto" data-height="auto" data-title="优化分布实例" data-desc-position="bottom"><img alt="优化分布实例" src="https://cdn.dwj601.cn/images/202501141054698.png" /></a></p>
 <h2 id="文件系统">文件系统<a class="headerlink" href="#文件系统" title="页面定位">&para;</a></h2>
 <h3 id="文件定义">文件定义<a class="headerlink" href="#文件定义" title="页面定位">&para;</a></h3>
 <p><strong>索引文件</strong>。在类 Unix 操作系统中，文件由「索引结点」和「文件数据」两部分组成。具体的，索引结点 <code>inode</code> 用来存储「文件的元数据」和「文件的数据所在物理存储块指针」，而文件数据就是文件的原始信息。可以简单的理解为如下的结构体：</p>
@@ -5582,13 +5582,13 @@ c &amp;= x \% (m\times k) \% k \\
 <h3 id="文件组织">文件组织<a class="headerlink" href="#文件组织" title="页面定位">&para;</a></h3>
 <p><strong>文件目录</strong>。大量的文件需要我们进行合理的管理，以树形文件目录为例。为了便于管理，设计者将每一个 <code>inode</code> 进行唯一性编号（记作 <code>inode_id</code>），这样用户打开一个文件其实是发送一个 <code>inode_id</code> 给操作系统，操作系统会根据 <code>inode_id</code> 查询到对应的 <code>inode</code> 并基于此 <code>inode</code> 将对应的文件加载到内存。</p>
 <p>所以为什么要把目录设置成树形结构？从开发者角度来说，树形目录没有任何作用，他们只需要关心什么 <code>inode_id</code>，别的都不操心。但是从用户角度来说，树形目录的意义就很大了。具体的，对于用户来说，树形目录可以让我们分级分类管理多而杂的文件，并且在不同的树路径下，我们可以取相同名称的文件。与此同时，不同的子树存储的数据可以被划分到不同的硬件存储器中，这就方便了用户从物理意义上将数据进行迁移。下面展示一个可重名的树形文件目录在不同视角下存储的信息：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201829367.png" data-type="image" data-width="auto" data-height="auto" data-title="用户角度的目录结构 VS 系统角度的目录结构" data-desc-position="bottom"><img alt="用户角度的目录结构 VS 系统角度的目录结构" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201829367.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412201829367.png" data-type="image" data-width="auto" data-height="auto" data-title="用户角度的目录结构 VS 系统角度的目录结构" data-desc-position="bottom"><img alt="用户角度的目录结构 VS 系统角度的目录结构" src="https://cdn.dwj601.cn/images/202412201829367.png" /></a></p>
 <p><strong>文件共享</strong>。下面介绍两种文件链接以达到共享目的的方式：</p>
 <ul>
 <li>硬链接。可以理解为拷贝文件的 <code>inode</code> 而非拷贝文件；</li>
 <li>软链接。也可以称为符号链接，可以理解为创建一个新的文件，只不过这个文件存储的是被链接文件的路径。</li>
 </ul>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412241603205.png" data-type="image" data-width="auto" data-height="auto" data-title="文件的软硬链接示例" data-desc-position="bottom"><img alt="文件的软硬链接示例" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412241603205.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412241603205.png" data-type="image" data-width="auto" data-height="auto" data-title="文件的软硬链接示例" data-desc-position="bottom"><img alt="文件的软硬链接示例" src="https://cdn.dwj601.cn/images/202412241603205.png" /></a></p>
 <p>对于上图的示例：</p>
 <ol>
 <li>创建了一份名为 <code>origin.txt</code> 的原始文件，占用 <span class="arithmatex">\(4502\)</span> 个字节，其对应的 <code>inode_id</code> 为 <span class="arithmatex">\(1047884\)</span>；</li>
@@ -5625,7 +5625,7 @@ c &amp;= x \% (m\times k) \% k \\
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月5日 02:18:02">2025年3月5日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
   </span>
 
     
@@ -5842,7 +5842,7 @@ c &amp;= x \% (m\times k) \% k \\
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
       
-        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
+        <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../../asserts/javascripts/link_blank.js"></script>
       

@@ -19,7 +19,7 @@
         <link rel="next" href="../device/">
       
       
-      <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
+      <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -150,7 +150,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -486,7 +486,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -5638,7 +5638,7 @@
 </ul>
 <h3 id="缓存的工作逻辑">缓存的工作逻辑<a class="headerlink" href="#缓存的工作逻辑" title="页面定位">&para;</a></h3>
 <p>前置知识。cache 一般被组装在 CPU 内部，便于和寄存器进行高效的数据交互。与此同时，设计者将 cache 和内存划分为由相同大小存储空间组成的存储器，这里 "相同大小的存储空间" 在 cache 中被称为行 (line) 或槽 (slot)，在内存中被称为块 (block)。为了知道 cache 中每一个行是否有效缓存了内存的信息，设计者对 cache 中的每一行设定了一个有效位来区分是否缓存了有效信息。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410160933739.png" data-type="image" data-width="auto" data-height="auto" data-title="CPU 读取内存信息的流程" data-desc-position="bottom"><img alt="CPU 读取内存信息的流程" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410160933739.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410160933739.png" data-type="image" data-width="auto" data-height="auto" data-title="CPU 读取内存信息的流程" data-desc-position="bottom"><img alt="CPU 读取内存信息的流程" src="https://cdn.dwj601.cn/images/202410160933739.png" /></a></p>
 <p>如上图展示的 CPU 读取内存信息的流程图。CPU 在得到内存中的某一个地址后需要访问该地址指向的信息。此时可以首先查询 cache，若果没有找到，再进行 cache 缺失处理并去内存中查询。</p>
 <div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -5667,17 +5667,17 @@
 <p>注意：在考虑 CPU 访存时间时，如果脱靶，不仅仅需要考虑访问内存的时间，还要考虑访问 cache 的时间。</p>
 <h3 id="缓存与内存的映射关系">缓存与内存的映射关系<a class="headerlink" href="#缓存与内存的映射关系" title="页面定位">&para;</a></h3>
 <p>1）直接映射（模映射）</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231108282.png" data-type="image" data-width="auto" data-height="auto" data-title="直接映射" data-desc-position="bottom"><img alt="直接映射" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231108282.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410231108282.png" data-type="image" data-width="auto" data-height="auto" data-title="直接映射" data-desc-position="bottom"><img alt="直接映射" src="https://cdn.dwj601.cn/images/202410231108282.png" /></a></p>
 <p>映射关系。首先我们需要对内存块和缓存行进行编号。假设缓存一共有 <span class="arithmatex">\(k\)</span> 行，那么第 <span class="arithmatex">\(i\)</span> 个内存块就会唯一对应到第 <span class="arithmatex">\(i\ \%\ k\)</span> 个缓存行。</p>
 <p>访存机制。假设现在 CPU 需要访问一个地址 AR。如果没有缓存机制，那就直接到内存中访问这个地址对应的信息即可；在直接映射的缓存规则下应该如何访问呢？在块的大小是 2 的幂并且缓存行数 k 也是 2 的幂的情况下，可以将内存地址划分为：标记、cache 行号、块内地址三个部分。前两个部分其实直接对应了内存中的哪一块，只不过在模映射规则下，可以先通过「cache 行号」的比较结果来判断是否需要继续进行标记匹配。具体的，如果此时 <code>cache 行号匹配成功 &amp;&amp; 标记匹配成功 &amp;&amp; cache 的这一行是有效行</code>，那就算命中了，此时地址译码器就直接返回 cache 中当前地址 AR 存储的数据/指令；反之如果 <code>cache 行号匹配失败 || 标记匹配失败 || cache 的这一行不是有效行</code>，那就算脱靶，此时就需要到内存找这个地址对应的数据/地址并返回，同时需要把这个地址在所在的块复制一份到 cache 对应的行。</p>
 <p>工作特点。这种缓存方式的优点在于可以在一定程度上减少地址的匹配位数。但是越简单的东西 <strong>缺点</strong> 也一定越明显，这种策略很可能造成极端情况发生，即某些被频繁访问的内存块对应的 cache 行号是一样的，这就无法利用上别的闲置的行，并且会导致 cache 对应的行被一直被替换，起不到缓存的作用。</p>
 <p>2）全相联映射</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231126000.png" data-type="image" data-width="auto" data-height="auto" data-title="分块示意图 | 全相联映射" data-desc-position="bottom"><img alt="分块示意图 | 全相联映射" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231126000.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410231126000.png" data-type="image" data-width="auto" data-height="auto" data-title="分块示意图 | 全相联映射" data-desc-position="bottom"><img alt="分块示意图 | 全相联映射" src="https://cdn.dwj601.cn/images/202410231126000.png" /></a></p>
 <p>映射关系。内存中的每一个块可以缓存到任意一个 cache 行中。</p>
 <p>访存机制。内存地址从高位到低位被划分为：标记和块内地址。地址译码器根据 CPU 发出来的地址进行解析之后，遍历 cache 中所有的行进行标记匹配。</p>
 <p>特点。显然的全相联映射的 <strong>优点</strong> 在于直接解决了模映射策略中不断遇到模数相等需要不断替换的极端情况。<strong>缺点</strong> 在于丢失了模映射的匹配优势，每一次匹配都需要完全匹配所有的标记。</p>
 <p>3）组相联映射</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231131574.png" data-type="image" data-width="auto" data-height="auto" data-title="分块示意图 | 组相联映射" data-desc-position="bottom"><img alt="分块示意图 | 组相联映射" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410231131574.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410231131574.png" data-type="image" data-width="auto" data-height="auto" data-title="分块示意图 | 组相联映射" data-desc-position="bottom"><img alt="分块示意图 | 组相联映射" src="https://cdn.dwj601.cn/images/202410231131574.png" /></a></p>
 <p>映射关系。对于 N 路组相联，cache 中每一个组含有 N 个 cache 行，组间进行直接映射，组内全相联映射。</p>
 <p>访存机制。内存地址从高位到低位被划分为：标记、cache 组号和块内地址。首先用内存块号 <span class="arithmatex">\(\%\)</span> cache 的组数得到当前内存块在 cache 中的组号，然后遍历当前组中所有的 cache 行进行标记匹配和标志位判断。</p>
 <p>特点。综合了直接映射和全相联映射的 <strong>优点</strong>，既可以避免频繁替换的极端情况，也可以加快地址的匹配速度。</p>
@@ -5756,7 +5756,7 @@ P =\frac{43520-68-20\times 9}{43520}\approx99.43\%
 <p>部分内容参考：<a href="https://zhuanlan.zhihu.com/p/561501585">深入内存/主存：解剖 DRAM 存储器</a></p>
 </blockquote>
 <h3 id="内存的工作逻辑">内存的工作逻辑<a class="headerlink" href="#内存的工作逻辑" title="页面定位">&para;</a></h3>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112007235.png" data-type="image" data-width="auto" data-height="auto" data-title="内存的工作逻辑" data-desc-position="bottom"><img alt="内存的工作逻辑" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112007235.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410112007235.png" data-type="image" data-width="auto" data-height="auto" data-title="内存的工作逻辑" data-desc-position="bottom"><img alt="内存的工作逻辑" src="https://cdn.dwj601.cn/images/202410112007235.png" /></a></p>
 <p>上图与缓存的工作逻辑类似，隐藏了 cache，突出了地址译码的逻辑。</p>
 <p>CPU 首先通过「控制线」将读/写信号送到内存，然后分读写两种情况：</p>
 <ol>
@@ -5769,7 +5769,7 @@ P =\frac{43520-68-20\times 9}{43520}\approx99.43\%
 <li>同步。CPU 从数据线取数无须内存的信号，而是在向内存发出取数信号后，经过确定的时间后就从数据线取数。</li>
 </ol>
 <h3 id="地址译码器">地址译码器<a class="headerlink" href="#地址译码器" title="页面定位">&para;</a></h3>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112041997.png" data-type="image" data-width="auto" data-height="auto" data-title="一维单译码器 VS 二维双译码器" data-desc-position="bottom"><img alt="一维单译码器 VS 二维双译码器" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410112041997.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410112041997.png" data-type="image" data-width="auto" data-height="auto" data-title="一维单译码器 VS 二维双译码器" data-desc-position="bottom"><img alt="一维单译码器 VS 二维双译码器" src="https://cdn.dwj601.cn/images/202410112041997.png" /></a></p>
 <p>如果有 <span class="arithmatex">\(n\)</span> 位地址位，就决定了寻址范围为 <span class="arithmatex">\([0,2^n-1]\)</span>。不难发现如果是一维单译码，就需要译码器有 <span class="arithmatex">\(2^n\)</span> 个译码寻址线。如果是二维双译码，就只需要译码器有大约 <span class="arithmatex">\(2 \times 2^{n/2}\)</span> 个译码寻址线。显然当地址位较多时，二维双译码器是更优的。</p>
 <h3 id="芯片扩展">芯片扩展<a class="headerlink" href="#芯片扩展" title="页面定位">&para;</a></h3>
 <p>芯片扩展分为「字扩展、位扩展和字位同时扩展」三种。已经在数电中学习过了，不再赘述。</p>
@@ -5797,7 +5797,7 @@ P =\frac{43520-68-20\times 9}{43520}\approx99.43\%
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月5日 02:18:02">2025年3月5日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
   </span>
 
     
@@ -6014,7 +6014,7 @@ P =\frac{43520-68-20\times 9}{43520}\approx99.43\%
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
       
-        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
+        <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../../asserts/javascripts/link_blank.js"></script>
       

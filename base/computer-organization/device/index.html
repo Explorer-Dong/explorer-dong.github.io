@@ -19,7 +19,7 @@
         <link rel="next" href="../../computer-network/">
       
       
-      <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
+      <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -150,7 +150,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -486,7 +486,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -5480,7 +5480,7 @@
 <h2 id="数据校验">数据校验<a class="headerlink" href="#数据校验" title="页面定位">&para;</a></h2>
 <p>数据在信道传送的过程中，可能会因为各种噪声或者硬件原因出现错误，我们有必要进行数据的检错与纠错。通俗来说就是我们想知道数据在传输的过程中有没有发生变化以及如果发生了变化我们应该如何纠正这个错误变化。本目我们只学习数据传输过程中的错误检测，具体的叫做「奇偶校验法」策略。</p>
 <p>在开始学习具体的错误检测方法之前，先看一下数据校验的流程图来对其有一个全局的把握：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409180822743.png" data-type="image" data-width="auto" data-height="auto" data-title="数据校验流程图" data-desc-position="bottom"><img alt="数据校验流程图" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409180822743.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409180822743.png" data-type="image" data-width="auto" data-height="auto" data-title="数据校验流程图" data-desc-position="bottom"><img alt="数据校验流程图" src="https://cdn.dwj601.cn/images/202409180822743.png" /></a></p>
 <p>如上图所示，对于原始数据 M，我们想知道其在经过各种期间和总线之后有没有发生异变，显然我们可以将 M 的副本一起传送，但这样的开销就直接变成了两倍，因此尝试用一个存储开销更小的东西来作为原始数据 M 的一个唯一表示，即校验码。数据传输的过程中，我们将原始数据和校验码一起传输，最后通过比对原始数据的校验码以及最后数据的校验码来判定是否发生了数据传输的错误。</p>
 <p>具体的。对于偶校验法。我们将校验码取作原始数据 <span class="arithmatex">\(M\)</span> 所有二进制位的异或，此时校验码只有一位，因此也被称为校验位 <span class="arithmatex">\(P\)</span>。现在 <span class="arithmatex">\((M,P)\)</span> 开始传输，经过了各种存储器和总线后我们将其表示为 <span class="arithmatex">\((M',P'')\)</span>。我们想知道此时的 <span class="arithmatex">\(M'\)</span> 和之前的 <span class="arithmatex">\(M\)</span> 是不是同一个东西，怎么办呢？重新拿 <span class="arithmatex">\(M'\)</span> 计算一次校验位得到 <span class="arithmatex">\(P'\)</span>，比较 <span class="arithmatex">\(P''\)</span> 和 <span class="arithmatex">\(P'\)</span> 是否相同即可，如果相同，我们就认为数据传输没有发生问题，如果不相同那么数据传输就发生了问题，需要对 <span class="arithmatex">\(M'\)</span> 纠错后再输出。奇校验就是在用原始数据的每一位计算异或值后，再异或一次 <span class="arithmatex">\(1\)</span>。</p>
 <p><strong>这合理吗</strong>？显然不具备绝对正确性。但奇偶校验强就强在逻辑很简单，并且对于硬件的开销很小，毕竟只多传输了 1 位。反例如下：</p>
@@ -5523,7 +5523,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月5日 02:18:02">2025年3月5日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
   </span>
 
     
@@ -5740,7 +5740,7 @@
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
       
-        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
+        <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../../asserts/javascripts/link_blank.js"></script>
       

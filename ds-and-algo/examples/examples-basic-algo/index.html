@@ -19,7 +19,7 @@
         <link rel="next" href="../examples-advanced-algo/">
       
       
-      <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
+      <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -150,7 +150,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -486,7 +486,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -7566,7 +7566,7 @@ R''&amp;=\frac{3}{4}R'+\frac{1}{4}P_j \\
 <p>题意：给定 <span class="arithmatex">\(n,m,x,y\ (1\le n,m\le10^9,2\le x,y&lt; 30000)\)</span>，其中 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 均为质数。现在有一个排列数数组，需要将数组中的部分数字分配给两个人。其中一个人需要 <span class="arithmatex">\(n\)</span> 个数且不允许给它能被 <span class="arithmatex">\(x\)</span> 整除的数，另一个人需要 <span class="arithmatex">\(m\)</span> 个数且不允许给它能被 <span class="arithmatex">\(y\)</span> 整除的数。问这个排列数数组的大小最小是多少。</p>
 <p>思路：假设排列数共有 <span class="arithmatex">\(h\)</span> 个，两个人分别叫 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(B\)</span>。由于 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 均为质数，那么 <span class="arithmatex">\([1,h]\)</span> 中能被 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 整除的数一定呈现下图中有部分交集或没有交集的情况。一种贪心的分配策略就是，优先将 <span class="arithmatex">\(B\)</span> 不需要的数分配给 <span class="arithmatex">\(A\)</span>，然后再从 <span class="arithmatex">\(h-p-q+a\)</span> 中分配，对 <span class="arithmatex">\(B\)</span> 也是如此。又由于 <span class="arithmatex">\(h\)</span> 越大，可分配的数字就越多，为了找到最小的 <span class="arithmatex">\(h\)</span> 我们二分答案即可。</p>
 <figure id="__fc_1">
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250225154154468.png" data-type="image" data-width="auto" data-height="auto" data-title="集合关系" data-desc-position="bottom"><img alt="集合关系" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250225154154468.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250225154154468.png" data-type="image" data-width="auto" data-height="auto" data-title="集合关系" data-desc-position="bottom"><img alt="集合关系" src="https://cdn.dwj601.cn/images/20250225154154468.png" /></a></p>
 <figcaption>
 <p><span class="caption-prefix">图 1. </span> 集合关系</p>
 </figcaption>
@@ -7913,7 +7913,7 @@ R''&amp;=\frac{3}{4}R'+\frac{1}{4}P_j \\
 <p>题意：给定一个含有 <span class="arithmatex">\(n\ (1\le n \le 30)\)</span> 个不重复元素的序列，问如何选取其中的元素（可重复选），能够使得选出的数字总和为 <span class="arithmatex">\(\text{target}\ (1\le \text{target}\le 40)\)</span>。给出所有具体选数方案（不考虑数字的选择顺序）。</p>
 <p>思路：组合型搜索经典例题。在枚举序列中的元素时，需要从上一次枚举结束的位置开始，防止方案重复（也可以理解为剪枝操作）。下图对搜索方案进行了清晰地解释。</p>
 <figure id="__fc_2">
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407250146195.png" data-type="image" data-width="auto" data-height="auto" data-title="组合型搜索 - 剪枝逻辑" data-desc-position="bottom"><img alt="组合型搜索 - 剪枝逻辑" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407250146195.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202407250146195.png" data-type="image" data-width="auto" data-height="auto" data-title="组合型搜索 - 剪枝逻辑" data-desc-position="bottom"><img alt="组合型搜索 - 剪枝逻辑" src="https://cdn.dwj601.cn/images/202407250146195.png" /></a></p>
 <figcaption>
 <p><span class="caption-prefix">图 2. </span> 组合型搜索 - 剪枝逻辑</p>
 </figcaption>
@@ -8502,7 +8502,7 @@ R''&amp;=\frac{3}{4}R'+\frac{1}{4}P_j \\
 </li>
 <li>
 <p>手玩样例：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407250147150.png" data-type="image" data-width="auto" data-height="auto" data-title="手玩样例" data-desc-position="bottom"><img alt="手玩样例" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407250147150.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202407250147150.png" data-type="image" data-width="auto" data-height="auto" data-title="手玩样例" data-desc-position="bottom"><img alt="手玩样例" src="https://cdn.dwj601.cn/images/202407250147150.png" /></a></p>
 <ul>
 <li>显然按照定义，上述压缩字符串一共有五个单元</li>
 <li>我们用红色表示进入递归，蓝色表示驱动递归结束并回溯。可以发现</li>
@@ -11264,7 +11264,7 @@ class Solution:
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月19日 13:15:05">2025年3月19日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
   </span>
 
     
@@ -11279,29 +11279,6 @@ class Solution:
 
     
     
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="贡献者">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/Explorer-Dong" class="md-author" title="@Explorer-Dong">
-          
-          <img src="https://avatars.githubusercontent.com/u/128051718?v=4&size=72" alt="Explorer-Dong">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
     
   </aside>
 
@@ -11481,7 +11458,7 @@ class Solution:
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
       
-        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
+        <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../../asserts/javascripts/link_blank.js"></script>
       

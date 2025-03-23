@@ -19,7 +19,7 @@
         <link rel="next" href="../memory/">
       
       
-      <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
+      <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -150,7 +150,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -486,7 +486,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -5872,9 +5872,9 @@
 <h3 id="运算部件">运算部件<a class="headerlink" href="#运算部件" title="页面定位">&para;</a></h3>
 <h4 id="执行部件与控制信号">执行部件与控制信号<a class="headerlink" href="#执行部件与控制信号" title="页面定位">&para;</a></h4>
 <p>执行部件。ALU 有两个运算数输入 A 和 B 以及一个控制输入 ALUctr，输出为一个运算结果 Result、零信号 Zero 和溢出信号 Overflow。ALU 的内部结构如下图所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409250813229.png" data-type="image" data-width="auto" data-height="auto" data-title="ALU 实现" data-desc-position="bottom"><img alt="ALU 实现" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409250813229.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409250813229.png" data-type="image" data-width="auto" data-height="auto" data-title="ALU 实现" data-desc-position="bottom"><img alt="ALU 实现" src="https://cdn.dwj601.cn/images/202409250813229.png" /></a></p>
 <p>控制信号。对于 MIPS 中的 11 条指令，可以归纳为 7 种操作：addu、add、or、subu、sub、sltu、slt。也就是说 ALUctr 只需要 <span class="arithmatex">\(\lceil \log_2(7) \rceil =3\)</span> 个选择控制位。如下表所示，列出了 ALUctr 的选择控制逻辑：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409261337035.png" data-type="image" data-width="auto" data-height="auto" data-title="ALUctr 的选择控制逻辑" data-desc-position="bottom"><img alt="ALUctr 的选择控制逻辑" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409261337035.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409261337035.png" data-type="image" data-width="auto" data-height="auto" data-title="ALUctr 的选择控制逻辑" data-desc-position="bottom"><img alt="ALUctr 的选择控制逻辑" src="https://cdn.dwj601.cn/images/202409261337035.png" /></a></p>
 <p>ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生对应的运算逻辑。具体的，ALUctr 内部有 4 个运算控制信号，分别为 SUBctr、OPctr、OVctr 和 SIGctr。下面借书中原文分别解释 4 个控制信号对应的逻辑：</p>
 <blockquote>
 <p>SUBctr 用来控制 ALU 执行加法还是减法运算。当 SUBctr = 1 时，做减法；当 SUBctr = 0 时，做加法。</p>
@@ -5883,7 +5883,7 @@
 <p>SIGctr 信号控制 ALU 是执行「带符号整数比较小于置 1」还是执行「无符号数比较小于置 1」的功能。当 SIGctr = 0，执行「无符号数比较小于置 1」的功能；当 SIGctr = 1 时，执行「带符号整数比较小于置 1」的功能。</p>
 </blockquote>
 <p>这样就可以完整实现 ALU 运算了。下表详细解释了每一条指令的运算类型与 ALUctr 取值之间的关系：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409261336957.png" data-type="image" data-width="auto" data-height="auto" data-title="运算类型与 ALUctr 取值之间的关系" data-desc-position="bottom"><img alt="运算类型与 ALUctr 取值之间的关系" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409261336957.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409261336957.png" data-type="image" data-width="auto" data-height="auto" data-title="运算类型与 ALUctr 取值之间的关系" data-desc-position="bottom"><img alt="运算类型与 ALUctr 取值之间的关系" src="https://cdn.dwj601.cn/images/202409261336957.png" /></a></p>
 <h4 id="控制逻辑详解">控制逻辑详解<a class="headerlink" href="#控制逻辑详解" title="页面定位">&para;</a></h4>
 <p>加减运算控制（SUBctr）：很显然，加法（SUBctr = 0），减法（SUBctr = 1）。</p>
 <p>输出内容控制（OPctr）：很显然， 3 大类运算就对应 3 个取值。</p>
@@ -5918,7 +5918,7 @@
 P_i = (P_{i-1}+Xy_i) \gg 1,\quad P_0 = 0
 \]</div>
 <p>模拟过程如下：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291051084.png" data-type="image" data-width="auto" data-height="auto" data-title="算例" data-desc-position="bottom"><img alt="算例" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291051084.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409291051084.png" data-type="image" data-width="auto" data-height="auto" data-title="算例" data-desc-position="bottom"><img alt="算例" src="https://cdn.dwj601.cn/images/202409291051084.png" /></a></p>
 </details>
 <p>原码乘法可以应用在在浮点数的尾数运算中。对数值位直接使用原码乘法即可，符号位就是两个乘数的符号位相异或的结果，例如：设 <span class="arithmatex">\([x]_\text{原}=0.1110\)</span>，<span class="arithmatex">\([y]_\text{原}=1.1101\)</span>，计算 <span class="arithmatex">\([x\times y]_\text{原}\)</span>，符号位为 <span class="arithmatex">\(0\oplus 1=1\)</span>，数值位为 <span class="arithmatex">\([x]_\text{原} \times [y]_\text{原}\)</span>，即 <span class="arithmatex">\(1110 \times 1101\)</span> 的原码乘法运算结果 <span class="arithmatex">\(10110110\)</span>。同时，可以采用分块思想对该算法进行优化。具体的，由于是逐位运算，因此我们需要进行 <span class="arithmatex">\(n\)</span> 次相乘再相加的操作，时间复杂度为 <span class="arithmatex">\(O(n)\)</span>。现有的优化方案就是逐 <span class="arithmatex">\(k\)</span> 位运算，那么时间复杂度就可以优化为 <span class="arithmatex">\(O(\frac{n}{k})\)</span>。</p>
 <h4 id="补码乘法运算">补码乘法运算<a class="headerlink" href="#补码乘法运算" title="页面定位">&para;</a></h4>
@@ -5926,7 +5926,7 @@ P_i = (P_{i-1}+Xy_i) \gg 1,\quad P_0 = 0
 <details class="note">
 <summary>推导过程</summary>
 <p>布斯算法的本质是将符号位与数值位一起运算，也就是对有符号数的一次性运算算法。如下推导：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291113812.png" data-type="image" data-width="auto" data-height="auto" data-title="推导" data-desc-position="bottom"><img alt="推导" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291113812.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409291113812.png" data-type="image" data-width="auto" data-height="auto" data-title="推导" data-desc-position="bottom"><img alt="推导" src="https://cdn.dwj601.cn/images/202409291113812.png" /></a></p>
 <p>进而可以得到关于「真值」的部分积递推公式：</p>
 <div class="arithmatex">\[
 P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
@@ -5939,7 +5939,7 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
 \end{aligned}
 \]</div>
 <p>显然的 <span class="arithmatex">\(y_{i-2}-y_{i-1}\)</span> 只有 <span class="arithmatex">\(-1,0,1\)</span> 共 3 种情况，因此我们只需要知道 <span class="arithmatex">\([-X]_{\text{补}}\)</span> 和 <span class="arithmatex">\([X]_{\text{补}}\)</span> 即可利用 <strong>算数移位</strong> 和加法快速运算。例如下面的算例：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291137346.png" data-type="image" data-width="auto" data-height="auto" data-title="算例" data-desc-position="bottom"><img alt="算例" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291137346.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409291137346.png" data-type="image" data-width="auto" data-height="auto" data-title="算例" data-desc-position="bottom"><img alt="算例" src="https://cdn.dwj601.cn/images/202409291137346.png" /></a></p>
 </details>
 <p>由于计算机中的数据都是以补码形式存储，因此补码乘法的使用场景更加广泛。至于优化，与原码乘法的优化方案类似。</p>
 <h2 id="指令集体系结构">指令集体系结构<a class="headerlink" href="#指令集体系结构" title="页面定位">&para;</a></h2>
@@ -5973,7 +5973,7 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
 <p>我们知道指令都是 01 序列，这并不利于快速编程实现与人类阅读理解，为此引入了汇编语言。一般来说每一种指令集都会对应一套汇编，MIPS 也不例外。因此我们就需要学习 MIPS 的指令类型及其在程序中的汇编表示（选择、循环和过程调用）。</p>
 <p>当然，程序与汇编之间的转换已经在《计算机系统基础》这门课程中已经学习过了，主要学的是 C 语言与 IA-32 指令集之间的转换，不再赘述。同时，很多基础性的概念诸如「程序转换步骤」也不再赘述。本节，我们重点学习 MIPS 的指令格式以及 11 条 MIPS 指令的汇编表示，具备「通过 <strong>查表</strong> 将 MIPS 系统的机器代码与 MIPS 系统的汇编代码进行转换」的能力即可。</p>
 <p>在开始介绍具体的 11 条 MIPS 指令之前，我们先看一下 MIPS 的指令类型，共有三种，如下图所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411061010223.png" data-type="image" data-width="auto" data-height="auto" data-title="MIPS 指令类型及其格式" data-desc-position="bottom"><img alt="MIPS 指令类型及其格式" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411061010223.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202411061010223.png" data-type="image" data-width="auto" data-height="auto" data-title="MIPS 指令类型及其格式" data-desc-position="bottom"><img alt="MIPS 指令类型及其格式" src="https://cdn.dwj601.cn/images/202411061010223.png" /></a></p>
 <h4 id="r-型指令">R-型指令<a class="headerlink" href="#r-型指令" title="页面定位">&para;</a></h4>
 <p>这里的 R 即 Register。操作数和结果都存放在寄存器中。对应的操作码 OP 为 000000，具体的操作类型由 func 字段决定。具体的：</p>
 <ul>
@@ -5981,7 +5981,7 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
 <li>若是移位运算，则根据 shamt 字段给出的移位数，将 rt 中的数据进行移位后送到寄存器 rd 中。</li>
 </ul>
 <p>下图仅列出了 5 条双目运算的汇编指令及其功能阐述：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412221620086.png" data-type="image" data-width="auto" data-height="auto" data-title="R-型指令的：汇编、RTL描述、功能描述" data-desc-position="bottom"><img alt="R-型指令的：汇编、RTL描述、功能描述" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412221620086.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412221620086.png" data-type="image" data-width="auto" data-height="auto" data-title="R-型指令的：汇编、RTL描述、功能描述" data-desc-position="bottom"><img alt="R-型指令的：汇编、RTL描述、功能描述" src="https://cdn.dwj601.cn/images/202412221620086.png" /></a></p>
 <h4 id="i-型指令">I-型指令<a class="headerlink" href="#i-型指令" title="页面定位">&para;</a></h4>
 <p>这里的 I 即 Immediate。字段相对于 R 型指令就少了不少，具体的：</p>
 <ul>
@@ -5990,7 +5990,7 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
 <li>若是条件转移（分支转移）。就将 rs 和 rt 进行运算后，根据运算结果决定是否要转移到相应的地址处执行，具体的寻址方式是相对寻址，即将 PC 加上立即数对应的偏移量得到有效地址。</li>
 </ul>
 <p>下图列出了上述三种指令的具体逻辑：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412221621230.png" data-type="image" data-width="auto" data-height="auto" data-title="I-型指令的：汇编、RTL描述、功能描述" data-desc-position="bottom"><img alt="I-型指令的：汇编、RTL描述、功能描述" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412221621230.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412221621230.png" data-type="image" data-width="auto" data-height="auto" data-title="I-型指令的：汇编、RTL描述、功能描述" data-desc-position="bottom"><img alt="I-型指令的：汇编、RTL描述、功能描述" src="https://cdn.dwj601.cn/images/202412221621230.png" /></a></p>
 <h4 id="j-型指令">J-型指令<a class="headerlink" href="#j-型指令" title="页面定位">&para;</a></h4>
 <p>这里的 J 即 Jump。J-型指令只有一个操作码和一个 26 位的直接地址。具体的：</p>
 <ul>
@@ -5998,7 +5998,7 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
 </ul>
 <p><strong>为什么在末尾补两个 0 即可？</strong> 是因为在 MIPS 指令集体系结构中，是按照字（4 个字节）对齐的，也就是说其对内存的访存都是以 4 个字节为一个整体，每次寻址时只需要知道起始的字节位置并一次性读取 4 个字节即可得到 32 位地址。又由于从 0 开始编址，那么最终的地址就都是 4 的倍数了。更进一步的，如果按照 <span class="arithmatex">\(k\)</span> 个字节对齐，那么所有的地址就都是 <span class="arithmatex">\(k\)</span> 的倍数。</p>
 <p>下图列出了具体实现：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412221621702.png" data-type="image" data-width="auto" data-height="auto" data-title="J-型指令的：汇编、RTL描述、功能描述" data-desc-position="bottom"><img alt="J-型指令的：汇编、RTL描述、功能描述" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412221621702.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412221621702.png" data-type="image" data-width="auto" data-height="auto" data-title="J-型指令的：汇编、RTL描述、功能描述" data-desc-position="bottom"><img alt="J-型指令的：汇编、RTL描述、功能描述" src="https://cdn.dwj601.cn/images/202412221621702.png" /></a></p>
 <h2 id="单周期处理器">单周期处理器<a class="headerlink" href="#单周期处理器" title="页面定位">&para;</a></h2>
 <p>本章我们开始学习具体的 CPU 执行指令的过程。CPU 的设计方法分为「硬连线设计」和「微程序设计」两种。其中硬连线的设计方法就是根据指令直接设计硬件来支持执行，而微程序的设计方法就是将指令的执行构成抽象为程序设计来支持执行。前者的执行速度更快但是不易维护，适用于精简指令集架构 RISC 的设计，后者的执行速度较慢但是可维护性和可扩展性更好，适合复杂指令集架构 CISC 的设计。下面要介绍的「单周期处理器」和「流水线处理器」都是采用硬连线的设计思路。</p>
 <p>同样的，由于一个 ISA 涉及几十上百条指令，因此我们仅仅学习最基本的 chapter4 中的 11 条 MIPS 指令在「<strong>单周期处理器</strong>」中的执行过程。而所谓的单周期处理器，就是一个周期仅仅执行一条指令（于是单周期处理器的周期就是执行时间开销最长的指令对应的时间）。</p>
@@ -6010,7 +6010,7 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
 <p>下面我们将会围绕 MIPS 中那 11 条指令，来回答上述问题。</p>
 <h3 id="数据通路">数据通路<a class="headerlink" href="#数据通路" title="页面定位">&para;</a></h3>
 <p>下图是单周期处理器完整的控制部件与执行部件：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412222033155.png" data-type="image" data-width="auto" data-height="auto" data-title="单周期处理器的控制部件与执行部件" data-desc-position="bottom"><img alt="单周期处理器的控制部件与执行部件" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412222033155.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412222033155.png" data-type="image" data-width="auto" data-height="auto" data-title="单周期处理器的控制部件与执行部件" data-desc-position="bottom"><img alt="单周期处理器的控制部件与执行部件" src="https://cdn.dwj601.cn/images/202412222033155.png" /></a></p>
 <p>如上图所示，加下划线的都是控制信号，用虚线箭头指出。共有 9 个，从上到下分别为：</p>
 <ul>
 <li>RegWr：寄存器写使能控制信号。1 表示允许写，0 表示禁止写；</li>
@@ -6190,7 +6190,7 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
 <p>本章我们学习「<strong>流水线处理器</strong>」的设计。与上述「单周期处理器」类似，学习 11 条 MIPS 指令在流水线处理器中是如何执行的。而由于流水线的指令执行方式会带来一些冒险问题，因此再介绍一下冒险问题是如何产生的以及应该如何规避冒险问题。</p>
 <p>所谓流水线，其实就是并行执行指令。首先我们需要将指令统一划分为相同的字段，例如（取指、译码、执行、访存、写回）五个字段。接下来就可以并行执行指令了，当然这里的并行并不是很多指令一起执行，这样显然就不能正确运行程序逻辑了，所谓并行指的是指令仍然顺序执行，只不过可以分字段并行，例如，下一条指令在上一条指令进入译码阶段时可以开始进入取指阶段，以此类推。</p>
 <p>具体的，对于上述 11 条指令，都有取指和译码两个阶段，区别就在于根据译码得到控制信号后的运算逻辑以及是否需要从存储器取数或是否需要将数据写入存储器。其中 Load 指令具有所有的阶段，如下「时空图」所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041128119.png" data-type="image" data-width="auto" data-height="auto" data-title="lw 指令的功能段划分" data-desc-position="bottom"><img alt="lw 指令的功能段划分" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041128119.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412041128119.png" data-type="image" data-width="auto" data-height="auto" data-title="lw 指令的功能段划分" data-desc-position="bottom"><img alt="lw 指令的功能段划分" src="https://cdn.dwj601.cn/images/202412041128119.png" /></a></p>
 <p>但并不是所有的指令都像 Load 指令一样具有所有的段，为了能够让所有的指令能够在统一的段划分下并行执行，需要对其余的指令进行空段扩展，使其均成为 5 段指令。具体的：</p>
 <ol>
 <li>5 条 R 型指令和 I 型运算指令 ori 和 addiu 都需要在 Write 之前加上一段空 Mem 段；</li>
@@ -6199,13 +6199,13 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
 </ol>
 <h3 id="数据通路_1">数据通路<a class="headerlink" href="#数据通路_1" title="页面定位">&para;</a></h3>
 <p>进而可以得到如下图所示的 5 段流水线处理器的控制部件和处理部件：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412231937821.png" data-type="image" data-width="auto" data-height="auto" data-title="5 段流水线处理器的控制部件和处理部件" data-desc-position="bottom"><img alt="5 段流水线处理器的控制部件和处理部件" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412231937821.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412231937821.png" data-type="image" data-width="auto" data-height="auto" data-title="5 段流水线处理器的控制部件和处理部件" data-desc-position="bottom"><img alt="5 段流水线处理器的控制部件和处理部件" src="https://cdn.dwj601.cn/images/202412231937821.png" /></a></p>
 <p>如上图所示，5 段流水就对应了指令执行过程中的 5 个逻辑。仍然用下划线表示控制信号并用虚线指出，从左到右共有 10 个控制信号，相比于单周期处理器多了一个 R-type 指令，其余不变。当 R-type 取 1 时表示当前指令是 R-型指令，取 0 表示非 R-型指令。</p>
 <p>注意到上图的寄存器堆结构中，写口与读口是分离的，也就是说允许在一个周期内同时进行寄存器的读和写操作。</p>
 <h3 id="控制信号_1">控制信号<a class="headerlink" href="#控制信号_1" title="页面定位">&para;</a></h3>
 <p>在流水线处理器中，所有的控制信号都在 IF/ID 段寄存器中全部产生并不断向之后的段寄存器传递，直到某个信号不再被使用就终止传递。也就是说在流水线处理器中，段寄存器传递的不仅仅是数据，也有各种控制信号。下面详细介绍数据在各段寄存器中的传递情况。</p>
 <p><strong>IF 段</strong>。向下一个段寄存器 IF/ID 传递：<code>指令 I</code>、<code>PC+4</code>、<code>PC[31:28]</code> 共 3 个信息。如下图所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412232110873.png" data-type="image" data-width="auto" data-height="auto" data-title="IUnit的内部实现" data-desc-position="bottom"><img alt="IUnit的内部实现" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412232110873.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412232110873.png" data-type="image" data-width="auto" data-height="auto" data-title="IUnit的内部实现" data-desc-position="bottom"><img alt="IUnit的内部实现" src="https://cdn.dwj601.cn/images/202412232110873.png" /></a></p>
 <p><strong>ID 段</strong>。向下一个段寄存器 ID/Ex 传递：<code>PC+4</code>、<code>PC[31:28]||target[25:0]||00</code>、<code>func</code>、<code>imm16</code>、<code>R[Rs]</code>、<code>R[Rt]</code>、<code>Rt</code>、<code>Rd</code> 共 8 个信息。</p>
 <p><strong>Ex 段</strong>。Ex 段开始产生控制信号。此处的 5 个控制信号除了 R-type 的取值取决于指令类型以外，其余的控制信号取值与单周期处理器完全一致。向下一个段寄存器 Ex/Mem 传递的内容取决于指令需要计算的东西如下：</p>
 <ul>
@@ -6238,7 +6238,7 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
 <li>将寄存器的读口和写口分离。同样由于流水线策略的并行机制，会导致指令写寄存器 (Write) 和指令读寄存器 (Reg/Dec) 的情况同时发生，为了解决这个问题，可以将寄存器的读口和写口分离，详情见 chapter6.1 中的数据通路图。</li>
 </ol>
 <p>解决结构冒险的示意图如下所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412040949539.png" data-type="image" data-width="auto" data-height="auto" data-title="结构冒险解决策略" data-desc-position="bottom"><img alt="结构冒险解决策略" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412040949539.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412040949539.png" data-type="image" data-width="auto" data-height="auto" data-title="结构冒险解决策略" data-desc-position="bottom"><img alt="结构冒险解决策略" src="https://cdn.dwj601.cn/images/202412040949539.png" /></a></p>
 <p><strong>数据冒险 (data dependencies)</strong>。理解为写后读，即从 Reg 读取的数据是没有更新过的旧值。</p>
 <p>解决方法如下：</p>
 <ol>
@@ -6246,9 +6246,9 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
 <li>寄存器写后立刻读。让寄存器能够在一个周期内将数据从写口传递到读口。</li>
 </ol>
 <p>解决数据冒险的示意图如下所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041018200.png" data-type="image" data-width="auto" data-height="auto" data-title="数据冒险解决策略" data-desc-position="bottom"><img alt="数据冒险解决策略" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041018200.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412041018200.png" data-type="image" data-width="auto" data-height="auto" data-title="数据冒险解决策略" data-desc-position="bottom"><img alt="数据冒险解决策略" src="https://cdn.dwj601.cn/images/202412041018200.png" /></a></p>
 <p>特殊的。上述示意图中执行的都是算数运算。但如果出现了 Load 指令，那么运算结果是在 Mem 段之后才能从数据存储器 DM 中读出来，由于「后续指令只能依赖已经计算出的数据」，因此如果紧跟在 Load 指令之后的一条指令需要使用 DM 中读出的数据参与 ALU 的计算，就没办法使用上述的转发技术。如下图所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041143660.png" data-type="image" data-width="auto" data-height="auto" data-title="Load-use 数据冒险" data-desc-position="bottom"><img alt="Load-use 数据冒险" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041143660.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412041143660.png" data-type="image" data-width="auto" data-height="auto" data-title="Load-use 数据冒险" data-desc-position="bottom"><img alt="Load-use 数据冒险" src="https://cdn.dwj601.cn/images/202412041143660.png" /></a></p>
 <p>解决方法就是在 Load 指令的后面增加一条无关指令或者空指令，然后再转发。至于怎么增加，可以从硬件、软件、编译三个角度进行：</p>
 <ol>
 <li>硬件角度。阻塞一个周期；</li>
@@ -6284,7 +6284,7 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月5日 02:18:02">2025年3月5日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
   </span>
 
     
@@ -6501,7 +6501,7 @@ P_{i} = [P_{i-1} + (y_{i-2}-y_{i-1})X] \gg 1
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
       
-        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
+        <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../../asserts/javascripts/link_blank.js"></script>
       

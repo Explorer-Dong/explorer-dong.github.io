@@ -19,7 +19,7 @@
         <link rel="next" href="../bayes-model/">
       
       
-      <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
+      <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -150,7 +150,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -486,7 +486,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -5649,9 +5649,9 @@
 <p>下面介绍一个经典的机器学习模型：决策树模型。可以利用该模型完成监督学习任务，比如常见的分类与回归。下面将会花较多篇幅讲解决策树模型在分类任务上的应用。</p>
 <p>当然，决策树模型绝不至于此，基于这种划分决策的思想诞生出了很多别的模型，例如：异常检测任务中的孤立森林模型、集成学习任务中的基学习器模型等等，留给读者进一步探索。</p>
 <h2 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="页面定位">&para;</a></h2>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404281628303.png" data-type="image" data-width="auto" data-height="auto" data-title="决策树结构" data-desc-position="bottom"><img alt="决策树结构" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404281628303.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404281628303.png" data-type="image" data-width="auto" data-height="auto" data-title="决策树结构" data-desc-position="bottom"><img alt="决策树结构" src="https://cdn.dwj601.cn/images/202404281628303.png" /></a></p>
 <p>决策树的结构如上图所示。决策树算法遵循自顶向下、分而治之的思想。叶子结点表示分类结果、边表示属性划分、分支结点表示属性选择。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404281647289.png" data-type="image" data-width="auto" data-height="auto" data-title="决策树算法伪代码" data-desc-position="bottom"><img alt="决策树算法伪代码" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404281647289.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404281647289.png" data-type="image" data-width="auto" data-height="auto" data-title="决策树算法伪代码" data-desc-position="bottom"><img alt="决策树算法伪代码" src="https://cdn.dwj601.cn/images/202404281647289.png" /></a></p>
 <p>决策树的算法伪代码如上图所示。下面依次解释：</p>
 <ol>
 <li>生成分支结点：选择最优的属性作为当前结点决策依据；</li>
@@ -5666,7 +5666,7 @@
 </ol>
 <h2 id="划分策略">划分策略<a class="headerlink" href="#划分策略" title="页面定位">&para;</a></h2>
 <p>一般而言，决策树中每一个结点的分支数量可以是两个，即二路划分，也可以是多个，即多路划分。显然就需要对连续的数值属性进行离散化。但无论是类别属性（二元属性、标称属性、序数属性）还是离散化后的数值属性，划分时都要遵守分组的合法性，如下图所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501061713732.png" data-type="image" data-width="auto" data-height="auto" data-title="左1图和左2图都是合理的分组划分策略，而右1图就不合理了" data-desc-position="bottom"><img alt="左1图和左2图都是合理的分组划分策略，而右1图就不合理了" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501061713732.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501061713732.png" data-type="image" data-width="auto" data-height="auto" data-title="左1图和左2图都是合理的分组划分策略，而右1图就不合理了" data-desc-position="bottom"><img alt="左1图和左2图都是合理的分组划分策略，而右1图就不合理了" src="https://cdn.dwj601.cn/images/202501061713732.png" /></a></p>
 <h2 id="属性选择">属性选择<a class="headerlink" href="#属性选择" title="页面定位">&para;</a></h2>
 <p>在递归建树时，如何选择出当前局面下的最优属性来划分样本呢？我们「希望当前结点的所包含的样本尽可能属于同一类」这一根本目的出发，讨论三种最优属性选择策略。</p>
 <h3 id="信息增益">信息增益<a class="headerlink" href="#信息增益" title="页面定位">&para;</a></h3>
@@ -5725,9 +5725,9 @@
 <p>对于第二个问题：对于已知属性值的样本，我们可以计算出每一个属性值的样本数量，从而计算出一个集合比例，这样对于未知属性值的样本，只需要按照前面计算出来的集合，按照概率划分到对应的子结点即可</p>
 <h2 id="多变量决策树">多变量决策树<a class="headerlink" href="#多变量决策树" title="页面定位">&para;</a></h2>
 <p>很好，本目就是来解决上述连续值处理的过高时间复杂度的问题的。现在对于一个结点，不是选择最优划分属性，而是对建一个合适的线性分类器，如图：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405062204413.png" data-type="image" data-width="auto" data-height="auto" data-title="合适的线性分类器" data-desc-position="bottom"><img alt="合适的线性分类器" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405062204413.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202405062204413.png" data-type="image" data-width="auto" data-height="auto" data-title="合适的线性分类器" data-desc-position="bottom"><img alt="合适的线性分类器" src="https://cdn.dwj601.cn/images/202405062204413.png" /></a></p>
 <h2 id="决策树模型小结">决策树模型小结<a class="headerlink" href="#决策树模型小结" title="页面定位">&para;</a></h2>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501062024741.png" data-type="image" data-width="auto" data-height="auto" data-title="决策树模型小结 &amp; 发展史" data-desc-position="bottom"><img alt="决策树模型小结 &amp; 发展史" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501062024741.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501062024741.png" data-type="image" data-width="auto" data-height="auto" data-title="决策树模型小结 &amp; 发展史" data-desc-position="bottom"><img alt="决策树模型小结 &amp; 发展史" src="https://cdn.dwj601.cn/images/202501062024741.png" /></a></p>
 
 
 
@@ -5750,7 +5750,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月5日 15:11:00">2025年3月5日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
   </span>
 
     
@@ -5967,7 +5967,7 @@
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
       
-        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
+        <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../../../asserts/javascripts/link_blank.js"></script>
       

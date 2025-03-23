@@ -19,7 +19,7 @@
         <link rel="next" href="../constraint-optimization/">
       
       
-      <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
+      <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -150,7 +150,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -486,7 +486,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -6061,18 +6061,18 @@
 </details>
 <h3 id="41-最速下降法">4.1 最速下降法<a class="headerlink" href="#41-最速下降法" title="页面定位">&para;</a></h3>
 <p>放一张生动的图：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132016327.png" data-type="image" data-width="auto" data-height="auto" data-title="最速下降法 - 迭代示意图" data-desc-position="bottom"><img alt="最速下降法 - 迭代示意图" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132016327.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202406132016327.png" data-type="image" data-width="auto" data-height="auto" data-title="最速下降法 - 迭代示意图" data-desc-position="bottom"><img alt="最速下降法 - 迭代示意图" src="https://cdn.dwj601.cn/images/202406132016327.png" /></a></p>
 <p>迭代公式：</p>
 <div class="arithmatex">\[
 x_{k+1} = x_k - \alpha_k \nabla f(x_k)
 \]</div>
 <p>每次迭代时，<strong>下降方向</strong> <span class="arithmatex">\(d_k\)</span> 采用当前解 <span class="arithmatex">\(x_k\)</span> 处的负梯度方向 <span class="arithmatex">\(- \nabla f(x_k)\)</span>，<strong>步长因子</strong> <span class="arithmatex">\(\alpha_k\)</span> 采用精确线性搜索算法的计算结果。</p>
 <p>易证相邻迭代解 <span class="arithmatex">\(x_k,x_{k+1}\)</span> 的方向 <span class="arithmatex">\(d_k,d_{k+1}\)</span> 是正交的：由于 <span class="arithmatex">\(\phi(\alpha) = f(x_k + \alpha d_k)\)</span>，在采用线搜索找最优步长时，步长的搜索结果 <span class="arithmatex">\(\alpha_k\)</span> 即为使得 <span class="arithmatex">\(\phi'(\alpha)=0\)</span> 的解，于是可得 <span class="arithmatex">\(0=\phi'(\alpha) = \phi'(\alpha_k) = \nabla f(x_k+\alpha_k d_k)d_k = -d_{k+1}^T \cdot d_k\)</span>，即 <span class="arithmatex">\(d_{k+1}^T \cdot d_k = 0\)</span>。如图：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132046068.png" data-type="image" data-width="auto" data-height="auto" data-title="相邻迭代解的方向正交" data-desc-position="bottom"><img alt="相邻迭代解的方向正交" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132046068.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202406132046068.png" data-type="image" data-width="auto" data-height="auto" data-title="相邻迭代解的方向正交" data-desc-position="bottom"><img alt="相邻迭代解的方向正交" src="https://cdn.dwj601.cn/images/202406132046068.png" /></a></p>
 <p>也正因为搜索方向正交的特性导致最速下降法的收敛速度往往不尽如人意。优点在于程序设计简单并且计算和存储量都不大，以及对初始点的要求不高。</p>
 <h3 id="42-牛顿法">4.2 牛顿法<a class="headerlink" href="#42-牛顿法" title="页面定位">&para;</a></h3>
 <p>放一张生动的图：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140902324.gif" data-type="image" data-width="auto" data-height="auto" data-title="牛顿法 - 迭代示意图" data-desc-position="bottom"><img alt="牛顿法 - 迭代示意图" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140902324.gif" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202406140902324.gif" data-type="image" data-width="auto" data-height="auto" data-title="牛顿法 - 迭代示意图" data-desc-position="bottom"><img alt="牛顿法 - 迭代示意图" src="https://cdn.dwj601.cn/images/202406140902324.gif" /></a></p>
 <details class="warning" open="open">
 <summary>Warning</summary>
 <p>注：本图演示的是求解一维函数零点的迭代过程，需要使得 <span class="arithmatex">\(f(x)=0\)</span>，因此比值式为原函数除以导函数。后续介绍的是极小化函数的过程，需要使得 <span class="arithmatex">\(f'(x)=0\)</span>，因此比值式为一阶导数除以二阶导数，高维就是二阶梯度的逆乘以一阶梯度。</p>
@@ -6283,7 +6283,7 @@ r_m(x_k)
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月8日 13:18:41">2025年3月8日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
   </span>
 
     
@@ -6500,7 +6500,7 @@ r_m(x_k)
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
       
-        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
+        <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../../asserts/javascripts/link_blank.js"></script>
       

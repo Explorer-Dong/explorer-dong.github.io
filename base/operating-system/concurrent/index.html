@@ -19,7 +19,7 @@
         <link rel="next" href="../virtualization/">
       
       
-      <link rel="icon" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg">
+      <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
@@ -150,7 +150,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -486,7 +486,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/wiki-16px.svg" alt="logo">
+  <img src="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -5612,8 +5612,8 @@
 <table>
 <thead>
 <tr>
-<th style="text-align: center;"><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409241450175.png" data-type="image" data-width="auto" data-height="auto" data-title="五态模型 - 状态转换" data-desc-position="bottom"><img alt="五态模型 - 状态转换" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409241450175.png" /></a></th>
-<th style="text-align: center;"><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409242052428.png" data-type="image" data-width="auto" data-height="auto" data-title="七态模型 - 状态转换" data-desc-position="bottom"><img alt="七态模型 - 状态转换" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409242052428.png" /></a></th>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/202409241450175.png" data-type="image" data-width="auto" data-height="auto" data-title="五态模型 - 状态转换" data-desc-position="bottom"><img alt="五态模型 - 状态转换" src="https://cdn.dwj601.cn/images/202409241450175.png" /></a></th>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/202409242052428.png" data-type="image" data-width="auto" data-height="auto" data-title="七态模型 - 状态转换" data-desc-position="bottom"><img alt="七态模型 - 状态转换" src="https://cdn.dwj601.cn/images/202409242052428.png" /></a></th>
 </tr>
 </thead>
 <tbody>
@@ -5627,8 +5627,8 @@
 <table>
 <thead>
 <tr>
-<th style="text-align: center;"><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411121040792.png" data-type="image" data-width="auto" data-height="auto" data-title="进程映象" data-desc-position="bottom"><img alt="进程映象" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411121040792.png" /></a></th>
-<th style="text-align: center;"><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409270845459.png" data-type="image" data-width="auto" data-height="auto" data-title="进程映象" data-desc-position="bottom"><img alt="进程映象" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409270845459.png" /></a></th>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/202411121040792.png" data-type="image" data-width="auto" data-height="auto" data-title="进程映象" data-desc-position="bottom"><img alt="进程映象" src="https://cdn.dwj601.cn/images/202411121040792.png" /></a></th>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/202409270845459.png" data-type="image" data-width="auto" data-height="auto" data-title="进程映象" data-desc-position="bottom"><img alt="进程映象" src="https://cdn.dwj601.cn/images/202409270845459.png" /></a></th>
 </tr>
 </thead>
 <tbody>
@@ -5662,7 +5662,7 @@
 <h4 id="12-进程切换">1.2 进程切换<a class="headerlink" href="#12-进程切换" title="页面定位">&para;</a></h4>
 <p><strong>进程的切换</strong>。在绪论中我们学习到，一个进程需要通过「系统调用」发起中断请求，使得 CPU 进入核心态来执行固定的系统调用子程序，也就是所谓的「状态切换」。那么进程切换又是个什么原理呢？我们知道，在支持多道程序并发的系统中，会有多个进程在内存中利用同一个 CPU 核心 "同时" 工作。注意这里的同时加上了引号，因为其实并不是同时，只不过 CPU 在执行不同进程的指令时来回切换的太快，以至于人类无法分辨出多个进程的执行顺序而已。</p>
 <p>这就引出了「进程切换」的概念。顾名思义，进程切换就是让 CPU 终止当前正在处理的进程，转而切换去执行另一个进程。可以发现进程切换其实就是一个进程打断另一个进程从而让自己占有 CPU 的一个过程。注意到这个阶段 CPU 是一定会被打断的，那么进程切换就与系统调用类似，也是一个发送中断请求从而让 CPU 进入核心态然后执行进程切换逻辑的一个过程。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409270937298.png" data-type="image" data-width="auto" data-height="auto" data-title="进程发生切换时，进程上下文的保存逻辑" data-desc-position="bottom"><img alt="进程发生切换时，进程上下文的保存逻辑" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409270937298.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409270937298.png" data-type="image" data-width="auto" data-height="auto" data-title="进程发生切换时，进程上下文的保存逻辑" data-desc-position="bottom"><img alt="进程发生切换时，进程上下文的保存逻辑" src="https://cdn.dwj601.cn/images/202409270937298.png" /></a></p>
 <p>以上图为例，展示了进程 0 和进程 1 之间切换的全过程逻辑：</p>
 <ol>
 <li>首先，进程 1 发起中断请求尝试占用 CPU；</li>
@@ -5694,7 +5694,7 @@
 <li>低级调度。即七态模型中「就绪态 <span class="arithmatex">\(\to\)</span> 运行态」的转换。决定哪些内存中的进程可以获得 CPU 计算资源。</li>
 </ul>
 <p><strong>调度度量指标</strong>。如下图：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081443847.png" data-type="image" data-width="auto" data-height="auto" data-title="进程调度的评价指标" data-desc-position="bottom"><img alt="进程调度的评价指标" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410081443847.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081443847.png" data-type="image" data-width="auto" data-height="auto" data-title="进程调度的评价指标" data-desc-position="bottom"><img alt="进程调度的评价指标" src="https://cdn.dwj601.cn/images/202410081443847.png" /></a></p>
 <p>重点关注周转时间相关的度量指标。大部分题目中，作业周转的开始都会表述成 "作业到达时间"。由于「周转时间 <span class="arithmatex">\(=\)</span> 运行时间 <span class="arithmatex">\(+\)</span> 等待时间」，因此上述「带权」的含义可以理解为作业处理的效率，取值范围为 <span class="arithmatex">\([1,\infty]\)</span>。</p>
 <p><strong><span class="arithmatex">\(7\)</span> 种调度算法</strong>。如下列表：</p>
 <ol>
@@ -5820,8 +5820,8 @@
 <table>
 <thead>
 <tr>
-<th style="text-align: center;"><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410181036336.png" data-type="image" data-width="auto" data-height="auto" data-title="互斥" data-desc-position="bottom"><img alt="互斥" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410181036336.png" /></a></th>
-<th style="text-align: center;"><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410221600543.png" data-type="image" data-width="auto" data-height="auto" data-title="同步" data-desc-position="bottom"><img alt="同步" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410221600543.png" /></a></th>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/202410181036336.png" data-type="image" data-width="auto" data-height="auto" data-title="互斥" data-desc-position="bottom"><img alt="互斥" src="https://cdn.dwj601.cn/images/202410181036336.png" /></a></th>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/202410221600543.png" data-type="image" data-width="auto" data-height="auto" data-title="同步" data-desc-position="bottom"><img alt="同步" src="https://cdn.dwj601.cn/images/202410221600543.png" /></a></th>
 </tr>
 </thead>
 <tbody>
@@ -5836,13 +5836,13 @@
 <ol>
 <li>
 <p>银行家算法。该算法是 Dijkstra 在上世纪六十年代设计出来的（可以发现这早于他发明信号量与 PV 操作），主要用于死锁避免来确定是否需要给申请资源的进程分配资源。</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411010855566.png" data-type="image" data-width="auto" data-height="auto" data-title="银行家算法 - 数据类型示例" data-desc-position="bottom"><img alt="银行家算法 - 数据类型示例" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411010855566.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202411010855566.png" data-type="image" data-width="auto" data-height="auto" data-title="银行家算法 - 数据类型示例" data-desc-position="bottom"><img alt="银行家算法 - 数据类型示例" src="https://cdn.dwj601.cn/images/202411010855566.png" /></a></p>
 <p>如上图示例，银行家算法一共有 4 个数据类型：1）资源总数向量 2）可用资源向量 3）资源需求矩阵 4）已分配资源矩阵。</p>
 <p>值得注意的是。该算法只适合用来教学，没有什么实际意义（至少在当下已经完全没有意义了）。从上述对算法的解析不难看出，银行家算法需要提前知道每一个进程所需的资源开销，就光凭这一点就很不切实际了，因为这很难提前预知（就和调度算法中提前知道进程的服务时间一样不切实际）。其次不难发现，银行家算法其实就是 dfs，这种试探性搜索算法会随着资源种类的增加而指数级上升；</p>
 </li>
 <li>
 <p>资源分配图算法。该算法是一种用于死锁检测和死锁解除的算法。在这种设计思路下， OS 允许发生死锁。OS 通过死锁检测算法来检测当前并发的进程是否发生了死锁，然后再应用死锁解除算法来解除死锁的局面。该算法将「资源」和「进程」抽象成图的两种结点，「进程请求资源」和「资源分配给进程」抽象成图的两种边，如下图所示：</p>
-<p><a class="glightbox" href="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411051438972.png" data-type="image" data-width="auto" data-height="auto" data-title="资源分配抽象图" data-desc-position="bottom"><img alt="资源分配抽象图" src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411051438972.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202411051438972.png" data-type="image" data-width="auto" data-height="auto" data-title="资源分配抽象图" data-desc-position="bottom"><img alt="资源分配抽象图" src="https://cdn.dwj601.cn/images/202411051438972.png" /></a></p>
 <p>对于死锁检测。按照图中的请求和分配关系逐个结束未阻塞的进程并重新分配资源，如果图出现了环就表示无法继续分配资源了，即出现了死锁状态；对于死锁接触，有以下三种策略：1）将陷入死锁状态的进程全部结束 2）逐个结束陷入死锁状态的进程 3）剥夺陷入死锁状态的进程所占用的资源并重新分配直到死锁状态接触。</p>
 <p>这种算法也有一个很大的问题，其死锁解除的时间开销也是很大的。</p>
 </li>
@@ -5869,7 +5869,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月5日 02:18:02">2025年3月5日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
   </span>
 
     
@@ -6086,7 +6086,7 @@
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js"></script>
       
-        <script src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/cdn-js/mermaid/mermaid.min.js"></script>
+        <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
         <script src="../../../asserts/javascripts/link_blank.js"></script>
       

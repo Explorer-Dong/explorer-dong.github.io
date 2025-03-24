@@ -2,9 +2,9 @@
 title: Python 环境配置
 ---
 
-本文记录 Python 相关的配置方法。
+本文记录 Python 的环境配置信息。
 
-## 查看 Python 库的安装位置
+## 查看库的安装位置
 
 由于本地安装了多个 Python 解释器，想要打印某个版本的解释器下载的「包或模块」的路径，整理一下大约有两种方法。
 
@@ -40,7 +40,7 @@ pip show sortedcontainers
 基于 pip 工具的运行结果
 ///
 
-## 打开 VSCode 时自动在终端激活 Python 的虚拟环境
+## 自动激活虚拟环境 (VSCode)
 
 打开用户设置 json 文件。加一行下面的配置即可：
 
@@ -48,17 +48,17 @@ pip show sortedcontainers
 "python.terminal.activateEnvInCurrentTerminal": true,
 ```
 
-不过奇怪的是使用 VSCode 创建虚拟环境后虽然在终端显示了确实是对应的虚拟环境，但是使用诸如 `which pip` 或 `which python` 后，显示的都是默认的路径而非虚拟环境对应的路径。使用 Pycharm 在当前路径创建虚拟环境就可以正常识别出来（VSCode 轻量但是问题比较多，Pycharm 笨重但是可以确保没问题）。
+不过奇怪的是使用 VSCode 创建虚拟环境后虽然在终端显示了确实是对应的虚拟环境，但是使用诸如 `which pip` 或 `which python` 后，显示的都是默认的路径而非虚拟环境对应的路径。使用 Pycharm 在当前路径创建虚拟环境就可以正常识别出来。
 
-## 自动生成项目依赖文件 requirements.txt
+## 自动生成 requirements.txt
 
-**场景一：单一虚拟环境**。如果当前环境仅为当前项目独有，使用下面的命令即可：
+如果当前环境仅为当前项目独有，使用下面的命令即可：
 
 ```bash
 pip freeze > requirements.txt
 ```
 
-**场景二：基础环境**。如果当前环境并非独属于当前项目，使用上述命令会生成很多与当前项目无关的依赖包，推荐使用 [`pipreqs`](https://github.com/bndr/pipreqs) 包，可以自动搜索独属于当前项目依赖的包。
+如果当前环境并非独属于当前项目，使用上述命令会生成很多与当前项目无关的依赖包，推荐使用 [`pipreqs`](https://github.com/bndr/pipreqs) 包，可以自动搜索独属于当前项目依赖的包，命令如下：
 
 ```bash
 # 安装
@@ -68,16 +68,54 @@ pip install pipreqs
 pipreqs ./ --encoding=utf8 --force
 ```
 
-当然，如果要基于 requirements.txt 文件安装依赖，使用下面的命令即可：
+!!! tip
+    当然最好还是用虚拟环境然后用上述第一种方法生成依赖。
+
+基于 requirements.txt 文件安装依赖：
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 修复安装 Python 时出现 Error 0x80070422 和 Error 0x80070643
+## 解决安装时出现 0x80070422 和 0x80070643 报错
 
 本质原因是之前没有按照官方程序卸载 Python。需要到注册表里彻底删掉对应的文件，在下面的三个路径下一一尝试，删除对应的版本的 Python 文件即可：
 
 - `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall`
 - `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall`
 - `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall`
+
+## 更换 pip 下载源
+
+默认的 pip 会从国外 PyPI 拉取库，要么本地有代理加速，要么换镜像源。
+
+镜像源列表：
+
+- 清华大学：`https://pypi.tuna.tsinghua.edu.cn/simple/`
+- 中国科技大学：`https://pypi.mirrors.ustc.edu.cn/simple/`
+- 阿里云：`https://mirrors.aliyun.com/pypi/simple/`
+- 腾讯云：`https://mirrors.cloud.tencent.com/pypi/simple/`
+
+临时换源：
+
+```bash
+pip install <PackageName> -i https://pypi.tuna.tsinghua.edu.cn/simple/
+```
+
+永久换源：
+
+```bash
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/
+```
+
+查看当前配置：
+
+```bash
+pip config list
+```
+
+恢复默认源：
+
+```bash
+pip config unset global.index-url
+```

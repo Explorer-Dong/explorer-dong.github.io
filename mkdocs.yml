@@ -301,8 +301,8 @@ nav:
       - back-end/opengauss/opengauss-basic.md
   - 运维:
     - operation/index.md
-    - operation/shell-basic.md
     - operation/gnu-linux-basic.md
+    - operation/gnu-linux-advanced.md
     - Nginx:
       - operation/nginx/nginx-commands.md
       - operation/nginx/nginx-setup.md

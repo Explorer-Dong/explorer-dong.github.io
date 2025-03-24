@@ -96,6 +96,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#本站定位" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -515,6 +520,18 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -525,6 +542,61 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#本站定位" class="md-nav__link">
+    <span class="md-ellipsis">
+      本站定位
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#共建社区" class="md-nav__link">
+    <span class="md-ellipsis">
+      共建社区
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#行文规范" class="md-nav__link">
+    <span class="md-ellipsis">
+      行文规范
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#站点地图" class="md-nav__link">
+    <span class="md-ellipsis">
+      站点地图
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -4716,11 +4788,11 @@
   
   
     <li class="md-nav__item">
-      <a href="operation/shell-basic/" class="md-nav__link">
+      <a href="operation/gnu-linux-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Shell 基础
+    GNU/Linux 基础 (Ubuntu)
     
   </span>
   
@@ -4738,11 +4810,11 @@
   
   
     <li class="md-nav__item">
-      <a href="operation/gnu-linux-basic/" class="md-nav__link">
+      <a href="operation/gnu-linux-advanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    GNU/Linux 基础 (Ubuntu)
+    GNU/Linux 进阶 (Ubuntu)
     
   </span>
   
@@ -5312,6 +5384,50 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#本站定位" class="md-nav__link">
+    <span class="md-ellipsis">
+      本站定位
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#共建社区" class="md-nav__link">
+    <span class="md-ellipsis">
+      共建社区
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#行文规范" class="md-nav__link">
+    <span class="md-ellipsis">
+      行文规范
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#站点地图" class="md-nav__link">
+    <span class="md-ellipsis">
+      站点地图
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5346,21 +5462,17 @@
 
   <h1>首页</h1>
 
-<h2 align="center"> 本站定位 </h2>
-
+<h2 id="本站定位">本站定位<a class="headerlink" href="#本站定位" title="页面定位">&para;</a></h2>
 <p>欢迎访问！本网站以「AI / CS 学科笔记」与「开发技术文章」为基础，旨在构建一个 <strong>开放知识社群 (Open <abbr title="一种允许一群用户用简单的描述来创建和连接一组网页的社会计算系统。">Wiki</abbr> Community)</strong>。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun OSS 双平台部署。如果您觉得内容不错，欢迎⭐。</p>
-<h2 align="center"> 共建社区 </h2>
-
+<h2 id="共建社区">共建社区<a class="headerlink" href="#共建社区" title="页面定位">&para;</a></h2>
 <p>若您有 <strong>意见或建议</strong>，欢迎参与贡献！贡献者名单将会出现在对应页面的底部，也会给您的 GitHub 账户累计贡献积分。详细的贡献方式如下：</p>
 <ul>
 <li>评论区留言：<code>下滑至页面最低部 &gt;&gt; 点击登录 &gt;&gt; 输入您的宝贵意见或建议</code>；</li>
 <li>修改文章 / 新增内容：<code>点击网站右上角的小猫娘前往 GitHub 仓库 &gt;&gt; 点击右上角 Fork 按钮 &gt;&gt; 回到原来的网站页面点击右上角铅笔按钮 &gt;&gt; 编辑内容后向我发起 Pull Request</code>。当然您也可以将仓库克隆至本地，按照 <code>.github/workflows/bot.yml</code> 文件指引安装构建文档所需的依赖环境，完成修改 / 新增后推送至仓库并向我发起 Pull Request。</li>
 </ul>
-<h2 align="center"> 行文规范 </h2>
-
+<h2 id="行文规范">行文规范<a class="headerlink" href="#行文规范" title="页面定位">&para;</a></h2>
 <p>本站点行文格式主要参考 <a href="https://oi-wiki.org/intro/format/">OI <abbr title="一种允许一群用户用简单的描述来创建和连接一组网页的社会计算系统。">Wiki</abbr> 格式手册</a>。其中，单页文章标题为 H2 至 H3，低于 H3 等级的标题不应再出现，可以采用段首加粗的形式。根据该格式，您可以对每一篇文章有一个整体的阅读把握。</p>
-<h2 align="center"> 站点地图 </h2>
-
+<h2 id="站点地图">站点地图<a class="headerlink" href="#站点地图" title="页面定位">&para;</a></h2>
 <p>下面的两张拓扑图覆盖了本站的全部内容。</p>
 <div align="center">
 
@@ -5471,7 +5583,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月24日 16:00:27">2025年3月24日</span>
   </span>
 
     

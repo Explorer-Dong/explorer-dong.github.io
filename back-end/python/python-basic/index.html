@@ -4467,30 +4467,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Python 的万物引用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#变量模型" class="md-nav__link">
-    <span class="md-ellipsis">
-      变量模型
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#引用赋值与数据类型的关系" class="md-nav__link">
-    <span class="md-ellipsis">
-      引用赋值与数据类型的关系
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -4840,11 +4816,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../operation/shell-basic/" class="md-nav__link">
+      <a href="../../../operation/gnu-linux-basic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Shell 基础
+    GNU/Linux 基础 (Ubuntu)
     
   </span>
   
@@ -4862,11 +4838,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../operation/gnu-linux-basic/" class="md-nav__link">
+      <a href="../../../operation/gnu-linux-advanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    GNU/Linux 基础 (Ubuntu)
+    GNU/Linux 进阶 (Ubuntu)
     
   </span>
   
@@ -5456,30 +5432,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Python 的万物引用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#变量模型" class="md-nav__link">
-    <span class="md-ellipsis">
-      变量模型
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#引用赋值与数据类型的关系" class="md-nav__link">
-    <span class="md-ellipsis">
-      引用赋值与数据类型的关系
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -5585,7 +5537,6 @@
 </span></code></pre></div></td></tr></table></div>
 <h2 id="python-的万物引用">Python 的万物引用<a class="headerlink" href="#python-的万物引用" title="页面定位">&para;</a></h2>
 <p>在 Python 中「所有的一切都是引用」这句话已经听烂了，但是从未实践证实一番。所谓的万物引用可以从 C++ 的赋值和 Python 的赋值进行对比。</p>
-<h3 id="变量模型">变量模型<a class="headerlink" href="#变量模型" title="页面定位">&para;</a></h3>
 <p><strong>在 C++ 中，变量的赋值语句其实是在拷贝构造</strong>。即重新开辟一块内存空间用于被赋值的新变量。比如下面的程序：</p>
 <div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
@@ -5652,11 +5603,10 @@
 <figure id="__fc_1">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202407031133477.png" data-type="image" data-width="auto" data-height="auto" data-title="C++ 盒子模型 vs Python 标签模型" data-desc-position="bottom"><img alt="C++ 盒子模型 vs Python 标签模型" src="https://cdn.dwj601.cn/images/202407031133477.png" /></a></p>
 <figcaption>
-<p><span class="caption-prefix">图 1. </span> C++ 盒子模型 vs Python 标签模型 <sup id="fnref:py-ref"><a class="footnote-ref" href="#fn:py-ref">1</a></sup></p>
+<p><span class="caption-prefix">图 1. </span><a href="https://www.cnblogs.com/demon89/p/7400234.html">C++ 盒子模型 vs. Python 标签模型</a></p>
 </figcaption>
 </figure>
 <p>即，C++ 中的变量相当于盒子，简单的赋值语句就相当于重新拿一个盒子装原来的数据；而 Python 中的变量相当于标签，简单的赋值语句就相当于所有标签都贴到了同一块数据上。</p>
-<h3 id="引用赋值与数据类型的关系">引用赋值与数据类型的关系<a class="headerlink" href="#引用赋值与数据类型的关系" title="页面定位">&para;</a></h3>
 <p>知道了 Python 所有的赋值都是引用以后，新问题出现了：如果我们需要修改某个引用中的值，会发生什么呢？这就需要按照 Python 的数据类型分开讨论了。</p>
 <p><strong>对于可变数据类型</strong>。修改某个引用中的值不会产生新的内存开销。也就是说，会牵一发而动全身。比如下面的程序：</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
@@ -5976,14 +5926,6 @@
 <p><span class="caption-prefix">表 1. </span> Python 的运算符优先级表（越往下等级越低）</p>
 </figcaption>
 </figure>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:py-ref">
-<p><a href="https://www.cnblogs.com/demon89/p/7400234.html">Python 对象引用、可变性和垃圾回收</a>&#160;<a class="footnote-backref" href="#fnref:py-ref" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
 
 
 
@@ -6006,7 +5948,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月24日 16:00:27">2025年3月24日</span>
   </span>
 
     

@@ -1,5 +1,9 @@
 /* 自定义的 CSS 样式 */
 
+h2 {
+    text-align: center !important;
+}
+
 /* 调色板颜色 */
 [data-md-color-scheme="slate"] {
     --md-primary-fg-color: #2e303e;

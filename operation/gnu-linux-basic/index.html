@@ -13,10 +13,10 @@
         <link rel="canonical" href="https://wiki.dwj601.cn/operation/gnu-linux-basic/">
       
       
-        <link rel="prev" href="../shell-basic/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../nginx/nginx-commands/">
+        <link rel="next" href="../gnu-linux-advanced/">
       
       
       <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#前言" class="md-skip">
+        <a href="#文件系统" class="md-skip">
           跳转至
         </a>
       
@@ -4715,28 +4715,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../shell-basic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Shell 基础
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -4786,15 +4764,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
-    <span class="md-ellipsis">
-      前言
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#文件系统" class="md-nav__link">
     <span class="md-ellipsis">
       文件系统
@@ -4804,328 +4773,172 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#包管理工具-apt-的使用" class="md-nav__link">
+  <a href="#软件管理工具-apt" class="md-nav__link">
     <span class="md-ellipsis">
-      包管理工具 apt 的使用
+      软件管理工具 APT
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#修改终端语言" class="md-nav__link">
+  <a href="#shell-vs-terminal" class="md-nav__link">
     <span class="md-ellipsis">
-      修改终端语言
+      Shell vs. Terminal
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#用户与权限管理" class="md-nav__link">
+  <a href="#修改-shell-语言" class="md-nav__link">
     <span class="md-ellipsis">
-      用户与权限管理
+      修改 Shell 语言
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="用户与权限管理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#关于用户和组" class="md-nav__link">
-    <span class="md-ellipsis">
-      关于用户和组
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#关于权限管理" class="md-nav__link">
-    <span class="md-ellipsis">
-      关于权限管理
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#相关命令" class="md-nav__link">
-    <span class="md-ellipsis">
-      相关命令
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="相关命令">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#提升权限-sudo" class="md-nav__link">
-    <span class="md-ellipsis">
-      提升权限 sudo
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#查看当前用户-whoami" class="md-nav__link">
-    <span class="md-ellipsis">
-      查看当前用户 whoami
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#创建用户-useradd" class="md-nav__link">
-    <span class="md-ellipsis">
-      创建用户 useradd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#删除用户-userdel" class="md-nav__link">
-    <span class="md-ellipsis">
-      删除用户 userdel
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#修改用户信息-usermod" class="md-nav__link">
-    <span class="md-ellipsis">
-      修改用户信息 usermod
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#修改用户密码-passwd" class="md-nav__link">
-    <span class="md-ellipsis">
-      修改用户密码 passwd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#切换用户-su" class="md-nav__link">
-    <span class="md-ellipsis">
-      切换用户 su
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#查看当前用户所属组-groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      查看当前用户所属组 groups
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#创建用户组-groupadd" class="md-nav__link">
-    <span class="md-ellipsis">
-      创建用户组 groupadd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#删除用户组-groupdel" class="md-nav__link">
-    <span class="md-ellipsis">
-      删除用户组 groupdel
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#改变属主-chown-" class="md-nav__link">
-    <span class="md-ellipsis">
-      改变属主 chown *
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#改变属组-chgrp-" class="md-nav__link">
-    <span class="md-ellipsis">
-      改变属组 chgrp *
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#改变权限-chmod-" class="md-nav__link">
-    <span class="md-ellipsis">
-      改变权限 chmod *
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#默认权限-umask" class="md-nav__link">
-    <span class="md-ellipsis">
-      默认权限 umask
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#练习" class="md-nav__link">
-    <span class="md-ellipsis">
-      练习
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#进程管理与调试" class="md-nav__link">
+  <a href="#基础命令" class="md-nav__link">
     <span class="md-ellipsis">
-      进程管理与调试
+      基础命令
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="进程管理与调试">
+    <nav class="md-nav" aria-label="基础命令">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#进程管理相关命令" class="md-nav__link">
+  <a href="#改变目录-cd" class="md-nav__link">
     <span class="md-ellipsis">
-      进程管理相关命令
+      改变目录 cd
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#练习_1" class="md-nav__link">
+  <a href="#打印目录内容-ls" class="md-nav__link">
     <span class="md-ellipsis">
-      练习
+      打印目录内容 ls
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#gdb-调试相关命令" class="md-nav__link">
+  <a href="#打印当前路径-pwd" class="md-nav__link">
     <span class="md-ellipsis">
-      gdb 调试相关命令
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gnulinux-编程" class="md-nav__link">
-    <span class="md-ellipsis">
-      GNU/Linux 编程
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GNU/Linux 编程">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gcc-基础" class="md-nav__link">
-    <span class="md-ellipsis">
-      GCC 基础
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GCC 基础">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#环境变量" class="md-nav__link">
-    <span class="md-ellipsis">
-      环境变量
+      打印当前路径 pwd
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#gcc-选项" class="md-nav__link">
+  <a href="#打印当前用户名" class="md-nav__link">
     <span class="md-ellipsis">
-      gcc 选项
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#静态链接--动态链接" class="md-nav__link">
-    <span class="md-ellipsis">
-      静态链接 | 动态链接
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#工具扩展" class="md-nav__link">
-    <span class="md-ellipsis">
-      工具扩展
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="工具扩展">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tree" class="md-nav__link">
-    <span class="md-ellipsis">
-      tree
+      打印当前用户名
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#wget" class="md-nav__link">
+  <a href="#创建文件夹-mkdir" class="md-nav__link">
     <span class="md-ellipsis">
-      wget
+      创建文件夹 mkdir
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#创建文件-touch" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建文件 touch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#复制-cp" class="md-nav__link">
+    <span class="md-ellipsis">
+      复制 cp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#移动-mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      移动 mv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#删除-rm" class="md-nav__link">
+    <span class="md-ellipsis">
+      删除 rm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#打印-echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      打印 echo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#查看-cat" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看 cat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分页查看-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      分页查看 more
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#输出重定向-" class="md-nav__link">
+    <span class="md-ellipsis">
+      输出重定向 &gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#查找-find" class="md-nav__link">
+    <span class="md-ellipsis">
+      查找 find
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#匹配-grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      匹配 grep
     </span>
   </a>
   
@@ -5140,6 +4953,28 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gnu-linux-advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GNU/Linux 进阶 (Ubuntu)
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -5712,15 +5547,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
-    <span class="md-ellipsis">
-      前言
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#文件系统" class="md-nav__link">
     <span class="md-ellipsis">
       文件系统
@@ -5730,328 +5556,172 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#包管理工具-apt-的使用" class="md-nav__link">
+  <a href="#软件管理工具-apt" class="md-nav__link">
     <span class="md-ellipsis">
-      包管理工具 apt 的使用
+      软件管理工具 APT
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#修改终端语言" class="md-nav__link">
+  <a href="#shell-vs-terminal" class="md-nav__link">
     <span class="md-ellipsis">
-      修改终端语言
+      Shell vs. Terminal
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#用户与权限管理" class="md-nav__link">
+  <a href="#修改-shell-语言" class="md-nav__link">
     <span class="md-ellipsis">
-      用户与权限管理
+      修改 Shell 语言
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="用户与权限管理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#关于用户和组" class="md-nav__link">
-    <span class="md-ellipsis">
-      关于用户和组
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#关于权限管理" class="md-nav__link">
-    <span class="md-ellipsis">
-      关于权限管理
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#相关命令" class="md-nav__link">
-    <span class="md-ellipsis">
-      相关命令
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="相关命令">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#提升权限-sudo" class="md-nav__link">
-    <span class="md-ellipsis">
-      提升权限 sudo
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#查看当前用户-whoami" class="md-nav__link">
-    <span class="md-ellipsis">
-      查看当前用户 whoami
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#创建用户-useradd" class="md-nav__link">
-    <span class="md-ellipsis">
-      创建用户 useradd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#删除用户-userdel" class="md-nav__link">
-    <span class="md-ellipsis">
-      删除用户 userdel
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#修改用户信息-usermod" class="md-nav__link">
-    <span class="md-ellipsis">
-      修改用户信息 usermod
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#修改用户密码-passwd" class="md-nav__link">
-    <span class="md-ellipsis">
-      修改用户密码 passwd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#切换用户-su" class="md-nav__link">
-    <span class="md-ellipsis">
-      切换用户 su
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#查看当前用户所属组-groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      查看当前用户所属组 groups
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#创建用户组-groupadd" class="md-nav__link">
-    <span class="md-ellipsis">
-      创建用户组 groupadd
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#删除用户组-groupdel" class="md-nav__link">
-    <span class="md-ellipsis">
-      删除用户组 groupdel
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#改变属主-chown-" class="md-nav__link">
-    <span class="md-ellipsis">
-      改变属主 chown *
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#改变属组-chgrp-" class="md-nav__link">
-    <span class="md-ellipsis">
-      改变属组 chgrp *
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#改变权限-chmod-" class="md-nav__link">
-    <span class="md-ellipsis">
-      改变权限 chmod *
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#默认权限-umask" class="md-nav__link">
-    <span class="md-ellipsis">
-      默认权限 umask
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#练习" class="md-nav__link">
-    <span class="md-ellipsis">
-      练习
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#进程管理与调试" class="md-nav__link">
+  <a href="#基础命令" class="md-nav__link">
     <span class="md-ellipsis">
-      进程管理与调试
+      基础命令
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="进程管理与调试">
+    <nav class="md-nav" aria-label="基础命令">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#进程管理相关命令" class="md-nav__link">
+  <a href="#改变目录-cd" class="md-nav__link">
     <span class="md-ellipsis">
-      进程管理相关命令
+      改变目录 cd
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#练习_1" class="md-nav__link">
+  <a href="#打印目录内容-ls" class="md-nav__link">
     <span class="md-ellipsis">
-      练习
+      打印目录内容 ls
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#gdb-调试相关命令" class="md-nav__link">
+  <a href="#打印当前路径-pwd" class="md-nav__link">
     <span class="md-ellipsis">
-      gdb 调试相关命令
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gnulinux-编程" class="md-nav__link">
-    <span class="md-ellipsis">
-      GNU/Linux 编程
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GNU/Linux 编程">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gcc-基础" class="md-nav__link">
-    <span class="md-ellipsis">
-      GCC 基础
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GCC 基础">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#环境变量" class="md-nav__link">
-    <span class="md-ellipsis">
-      环境变量
+      打印当前路径 pwd
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#gcc-选项" class="md-nav__link">
+  <a href="#打印当前用户名" class="md-nav__link">
     <span class="md-ellipsis">
-      gcc 选项
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#静态链接--动态链接" class="md-nav__link">
-    <span class="md-ellipsis">
-      静态链接 | 动态链接
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#工具扩展" class="md-nav__link">
-    <span class="md-ellipsis">
-      工具扩展
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="工具扩展">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tree" class="md-nav__link">
-    <span class="md-ellipsis">
-      tree
+      打印当前用户名
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#wget" class="md-nav__link">
+  <a href="#创建文件夹-mkdir" class="md-nav__link">
     <span class="md-ellipsis">
-      wget
+      创建文件夹 mkdir
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#创建文件-touch" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建文件 touch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#复制-cp" class="md-nav__link">
+    <span class="md-ellipsis">
+      复制 cp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#移动-mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      移动 mv
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#删除-rm" class="md-nav__link">
+    <span class="md-ellipsis">
+      删除 rm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#打印-echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      打印 echo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#查看-cat" class="md-nav__link">
+    <span class="md-ellipsis">
+      查看 cat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分页查看-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      分页查看 more
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#输出重定向-" class="md-nav__link">
+    <span class="md-ellipsis">
+      输出重定向 &gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#查找-find" class="md-nav__link">
+    <span class="md-ellipsis">
+      查找 find
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#匹配-grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      匹配 grep
     </span>
   </a>
   
@@ -6096,82 +5766,48 @@
 
   <h1>GNU/Linux 基础 (Ubuntu)</h1>
 
-<h2 id="前言">前言<a class="headerlink" href="#前言" title="页面定位">&para;</a></h2>
-<p>本文借助 GNU/Linux 的 Ubuntu 发行版展开 GNU/Linux 的一些基础知识与操作方法。</p>
-<p>所以为什么要叫做 GNU/Linux 这么“繁琐”的名字呢？现在大家都程序该操作系统为 Linux，但其实是不合理的，因为 Linux 只是这个操作系统的内核，还需要配合 GNU 的一整套工具链，包括 bash（命令行）、glibc（标准库）、GCC（编译器）等才能称之为操作系统。</p>
+<p>本文记录 GNU/Linux 基础内容，操作系统为 Ubuntu 22.04。</p>
+<p>所以为什么要叫做 GNU/Linux 这么“繁琐”的名字呢？现在大家都称呼该操作系统为 Linux 操作系统，但其实这是不合理的，因为 Linux 只是这个操作系统的内核，还需要配合 GNU 的一整套工具链（包括命令行终端 bash、C 标准库 glibc、C 编译器 GCC 等）才能称之为操作系统。当然，为了方便，后续都将 GNU/Linux 简称为 Linux。</p>
 <h2 id="文件系统">文件系统<a class="headerlink" href="#文件系统" title="页面定位">&para;</a></h2>
-<p>以 Ubuntu22.04 为例。下面是我的文件目录：</p>
-<figure id="__fc_1">
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409132006698.png" data-type="image" data-width="auto" data-height="auto" data-title="Ubuntu22.04 目录结构" data-desc-position="bottom"><img alt="Ubuntu22.04 目录结构" src="https://cdn.dwj601.cn/images/202409132006698.png" /></a></p>
-<figcaption>
-<p><span class="caption-prefix">图 1. </span> Ubuntu22.04 目录结构</p>
-</figcaption>
-</figure>
-<p>下面是 gpt-4o 生成的解释：</p>
-<blockquote>
-<p><strong>/boot</strong>: 存放启动加载程序和内核相关的文件，例如 <code>vmlinuz</code> 和 <code>initrd.img</code>，是系统启动时加载的内容。</p>
-<p><strong>/dev</strong>: 包含系统中的设备文件。Linux 将所有设备（如硬盘、CD-ROM、键盘）视为文件，放在这个目录下。</p>
-<p><strong>/etc</strong>: 存储系统配置文件和启动脚本。几乎所有的系统级配置文件都位于此处。</p>
-<p><strong>/home</strong>: 每个用户的主目录都在这个目录下。用户的个人数据、配置文件、下载等内容存放于此。</p>
-<p><strong>/lost+found</strong>: 存放系统崩溃或磁盘故障后恢复的文件碎片。通常这个目录只有在使用 ext 文件系统时才存在。</p>
-<p><strong>/media</strong>: 用于自动挂载的可移动媒体设备的挂载点，如 CD-ROM、USB 驱动器等。</p>
-<p><strong>/mnt</strong>: 用于临时挂载的文件系统。例如，系统管理员可能会使用这个目录挂载临时文件系统。</p>
-<p><strong>/opt</strong>: 为第三方应用程序提供存储位置，通常是独立于默认包管理系统的程序。</p>
-<p><strong>/proc</strong>: 一个虚拟文件系统，提供系统内核和运行进程的信息。比如，<code>/proc/cpuinfo</code> 包含 CPU 的信息。</p>
-<p><strong>/root</strong>: 超级用户（root）的主目录。与普通用户的主目录在 <code>/home</code> 不同，root 用户的主目录在根目录下。</p>
-<p><strong>/run</strong>: 存储应用程序和服务的运行时数据，如进程 ID 文件（PID）、锁文件等。</p>
-<p><strong>/snap</strong>: 包含 Snap 包管理系统的应用程序安装目录。</p>
-<p><strong>/srv</strong>: 存放为服务（service）提供的数据。比如，Web 服务器可能会在这里存放网站文件。</p>
-<p><strong>/sys</strong>: 和 <code>/proc</code> 类似，提供系统硬件信息的接口，是一个虚拟文件系统。</p>
-<p><strong>/tmp</strong>: 用于存储临时文件，系统重启后这些文件通常会被删除。</p>
-<p><strong>/usr</strong>: 包含用户的二进制文件、库文件、文档等资源。<code>/usr/bin</code>、<code>/usr/lib</code>、<code>/usr/share</code> 等都在这个目录下。</p>
-<p><strong>/var</strong>: 存储经常发生变化的文件，比如日志文件、邮件队列、临时文件等。</p>
-<p><strong>/bin</strong>: 包含基本的用户命令的二进制文件，例如 <code>ls</code>、<code>cp</code> 等。通常系统启动时所需的命令都在此目录下。</p>
-<p><strong>/lib</strong>: 包含基本的共享库文件和内核模块。系统启动时所需的库文件通常在此目录下。</p>
-<p><strong>/lib32</strong>: 32 位系统的库文件目录，用于兼容 32 位程序。</p>
-<p><strong>/lib64</strong>: 64 位系统的库文件目录，用于 64 位程序。</p>
-<p><strong>/libx32</strong>: x32 ABI（应用二进制接口）的库文件目录，提供与 <code>x86-64</code> 兼容的 32 位地址空间。</p>
-<p><strong>/sbin</strong>: 包含系统管理员使用的二进制文件，如 <code>fdisk</code>、<code>ifconfig</code> 等，这些工具主要用于系统管理和维护。</p>
-</blockquote>
-<h2 id="包管理工具-apt-的使用">包管理工具 apt 的使用<a class="headerlink" href="#包管理工具-apt-的使用" title="页面定位">&para;</a></h2>
-<p>首先说明一下，包管理工具在 Linux 操作系统中的存在，就类似于应用商店在手机上的存在。我们可以利用包管理工具 安装、卸载、更新我们的软件。在 Linux 的 Ubuntu 发行版中，使用 apt 包管理工具进行软件管理。接下来介绍一下其基本命令。</p>
-<ol>
-<li>
-<p>更新软件包列表。其实是更新每一个软件包对应的版本号，而非真正更新了软件。原理大概类比于手机端提示更新（一定是最新版），但是服务器不会实时更新软件的最新版编号（因为没有实时联网），因此需要我们手动更新获取所有软件的最新版本编号，从而可以后续真正意义上的软件更新：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/202409132006698.png" data-type="image" data-width="auto" data-height="auto" data-title="Ubuntu22.04 目录结构" data-desc-position="bottom"><img src="https://cdn.dwj601.cn/images/202409132006698.png" alt="Ubuntu22.04 目录结构" style="zoom:150%;" /></a></th>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/20250324172802457.png" data-type="image" data-width="auto" data-height="auto" data-title="功能解释" data-desc-position="bottom"><img alt="功能解释" src="https://cdn.dwj601.cn/images/20250324172802457.png" /></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Ubuntu22.04 目录结构</td>
+<td style="text-align: center;"><a href="https://mp.weixin.qq.com/s/kMPlOZ6BD6XxcS4k9XyOwQ?scene=1">功能解释</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="软件管理工具-apt">软件管理工具 APT<a class="headerlink" href="#软件管理工具-apt" title="页面定位">&para;</a></h2>
+<p>Ubuntu/Debian 提供了软件管理工具 APT (Advanced Package Tool)，可以通过命令行管理机器上的所有软件。下面简单罗列一下 APT 的常用命令及其功能：</p>
+<p>1）<strong>更新软件包列表</strong>。其实是更新每一个软件包对应的版本号，而非真正更新了软件。原理大概类比于手机端提示更新（一定是最新版），但是服务器不会实时更新软件的最新版编号（因为没有实时联网），因此需要我们手动更新获取所有软件的最新版本编号，从而可以后续真正意义上的软件更新：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>apt<span class="w"> </span>update
 </span></code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p>更新软件包。更新全局软件包到最新版本：</p>
+<p>2）<strong>更新软件包</strong>。更新全局软件包到最新版本：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>apt<span class="w"> </span>upgrade
 </span></code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p>安装软件包。安装指定的软件包：</p>
+<p>3）<strong>安装软件包</strong>。安装指定的软件包：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>apt<span class="w"> </span>install<span class="w"> </span>&lt;PackageName&gt;
 </span></code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p>删除软件包。删除指定的软件包：</p>
+<p>4）<strong>删除软件包</strong>。删除指定的软件包：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>apt<span class="w"> </span>remove<span class="w"> </span>&lt;PackageName&gt;
 </span></code></pre></div></td></tr></table></div>
-</li>
-</ol>
-<h2 id="修改终端语言">修改终端语言<a class="headerlink" href="#修改终端语言" title="页面定位">&para;</a></h2>
-<p>报错英文看不懂？提示英文看不懂？搜索查询太费事？直接解决终端语言！接下来将介绍在 Linux 的 Ubuntu 22.04 上修改终端语言的操作。</p>
-<ol>
-<li>
-<p>安装中文语言包：</p>
+<h2 id="shell-vs-terminal">Shell vs. Terminal<a class="headerlink" href="#shell-vs-terminal" title="页面定位">&para;</a></h2>
+<p>Shell 是 Shell 语言的解释器，与传统的编程语言类似，也是编译为字节码然后运行在处理器上。当然不同的解释器有不同的语法，但都大差不差。而终端从某种程度上来说也是一个 GUI，它能够让我们通过 Shell 语言和操作系统交互从而完成人类意愿。</p>
+<h2 id="修改-shell-语言">修改 Shell 语言<a class="headerlink" href="#修改-shell-语言" title="页面定位">&para;</a></h2>
+<p>Shell 的运行结果通过 Terminal 呈现，如果遇到都是英文的输出结果，可以进行以下操作将其转换为中文。</p>
+<p>1）<strong>安装中文语言包</strong>：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>apt<span class="w"> </span>install<span class="w"> </span>language-pack-zh-hans
 </span></code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p>添加中文语言支持：</p>
+<p>2）<strong>添加中文语言支持</strong>：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>locale-gen<span class="w"> </span>zh_CN.UTF-8
 </span></code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p>修改 locale 文件配置地域：</p>
+<p>3）<strong>编辑 <code>/etc/default/locale</code> 文件并编辑</strong>：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
@@ -6183,628 +5819,77 @@
 <span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-6-10">10</a></span>
 <span class="normal"><a href="#__codelineno-6-11">11</a></span>
-<span class="normal"><a href="#__codelineno-6-12">12</a></span>
-<span class="normal"><a href="#__codelineno-6-13">13</a></span>
-<span class="normal"><a href="#__codelineno-6-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>vim<span class="w"> </span>/etc/default/locale
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="nv">LANG</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="nv">LANGUAGE</span><span class="o">=</span><span class="s2">&quot;zh_CN:zh:en_US:en&quot;</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="nv">LC_NUMERIC</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="nv">LC_TIME</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="nv">LC_MONETARY</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="nv">LC_PAPER</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="nv">LC_IDENTIFICATION</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="nv">LC_NAME</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="nv">LC_ADDRESS</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="nv">LC_TELEPHONE</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="nv">LC_MEASUREMENT</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="nv">LC_ALL</span><span class="o">=</span>zh_CN.UTF-8
+<span class="normal"><a href="#__codelineno-6-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nv">LANG</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nv">LANGUAGE</span><span class="o">=</span><span class="s2">&quot;zh_CN:zh:en_US:en&quot;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="nv">LC_NUMERIC</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="nv">LC_TIME</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="nv">LC_MONETARY</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="nv">LC_PAPER</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="nv">LC_IDENTIFICATION</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="nv">LC_NAME</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="nv">LC_ADDRESS</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="nv">LC_TELEPHONE</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="nv">LC_MEASUREMENT</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="nv">LC_ALL</span><span class="o">=</span>zh_CN.UTF-8
 </span></code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p>重启：</p>
+<p>4）<strong>重启机器</strong>：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>reboot
 </span></code></pre></div></td></tr></table></div>
-</li>
-</ol>
-<h2 id="用户与权限管理">用户与权限管理<a class="headerlink" href="#用户与权限管理" title="页面定位">&para;</a></h2>
-<p>在 Windows 中，我们对用户和权限的概念接触的并不多，因为很多东西都默认设置好了。但是在 GNU/Linux 中，很多文件的权限都需要自己配置和定义，因此「用户与权限管理」的操作方法十分重要。我们从现象入手逐个进行讲解。</p>
-<p>首先以 root 用户身份登录并进入 <code>/opt/OS/task2/</code> 目录，然后创建一个测试文件 <code>root_file.txt</code> 和一个测试文件夹 <code>root_folder</code>。使用 <code>ls -l</code> 命令列出当前目录下所有文件的详细信息：</p>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409271003057.png" data-type="image" data-width="auto" data-height="auto" data-title="root 用户创建的文件和文件夹" data-desc-position="bottom"><img alt="root 用户创建的文件和文件夹" src="https://cdn.dwj601.cn/images/202409271003057.png" /></a></p>
-<p>可以看到一共有 <span class="arithmatex">\(6\)</span> 列信息，从左到右依次为：用户访问权限、与文件链接的个数、文件属主、文件属组、文件大小、最后修改日期、文件/目录名。<span class="arithmatex">\(2-5\)</span> 列的信息都很显然，第 <span class="arithmatex">\(1\)</span> 列信息一共有 <span class="arithmatex">\(10\)</span> 个字符，其中第 <span class="arithmatex">\(1\)</span> 个字符表示当前文件的类型，共有如下几种：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">文件类型</th>
-<th style="text-align: center;">符号</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">普通文件</td>
-<td style="text-align: center;"><code>-</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">目录</td>
-<td style="text-align: center;"><code>d</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">字符设备文件</td>
-<td style="text-align: center;"><code>c</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">块设备文件</td>
-<td style="text-align: center;"><code>b</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">符号链接</td>
-<td style="text-align: center;"><code>l</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">本地域套接口</td>
-<td style="text-align: center;"><code>s</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">有名管道</td>
-<td style="text-align: center;"><code>p</code></td>
-</tr>
-</tbody>
-</table>
-<p>第 <span class="arithmatex">\(2-10\)</span> 共 <span class="arithmatex">\(9\)</span> 个字符分 <span class="arithmatex">\(3\)</span> 个一组，分别表示「属主 user 权限、属组 group 权限、其他用户 other 权限」，下面分别介绍「用户和组」以及「权限管理」两个概念。</p>
-<h3 id="关于用户和组">关于用户和组<a class="headerlink" href="#关于用户和组" title="页面定位">&para;</a></h3>
-<p>首先我们需要明确用户和组这两个概念的定义：</p>
-<ul>
-<li><strong>文件用户（user/u）</strong>：文件的拥有者。</li>
-<li><strong>所属组（group/g）</strong>：与该文件关联的用户组，组内成员享有特定的权限。</li>
-<li><strong>其他用户（others/o）</strong>：系统中不属于拥有者或组的其他用户。</li>
-</ul>
-<p>举个例子。对于当前用户 <code>now_user</code> 以及当前用户所在的组 <code>now_group</code>，同组用户 <code>adj_user</code> 和其他用户 <code>other_user</code> 可以形象的理解为以下的集合关系：</p>
-<pre class="mermaid"><code>graph TB
-    subgraph ag[another_group]
-    other_user1
-    other_user2
-    end
-    subgraph ng[now_group]
-    now_user
-    adj_user
-    end</code></pre>
-<h3 id="关于权限管理">关于权限管理<a class="headerlink" href="#关于权限管理" title="页面定位">&para;</a></h3>
-<p>一共有 3 种权限，如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"></th>
-<th style="text-align: center;">文件</th>
-<th style="text-align: center;">目录</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>r</code></td>
-<td style="text-align: center;">可查看文件</td>
-<td style="text-align: center;">能列出目录下内容</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>w</code></td>
-<td style="text-align: center;">可修改文件</td>
-<td style="text-align: center;">能在目录中创建、删除和重命名文件</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>x</code></td>
-<td style="text-align: center;">可执行文件</td>
-<td style="text-align: center;">能进入目录</td>
-</tr>
-</tbody>
-</table>
-<p>那么我们平时看到的关于权限还有数字的配置，是怎么回事呢？其实是对上述字符配置的八进制数字化。读 <span class="arithmatex">\(r\)</span> 对应 <span class="arithmatex">\(4\)</span>，写 <span class="arithmatex">\(w\)</span> 对应 <span class="arithmatex">\(2\)</span>，可执行 <span class="arithmatex">\(x\)</span> 对应 <span class="arithmatex">\(1\)</span>，例如如果一个文件对于所有用户都拥有可读、可写、可执行权限，那么就是 <code>rwxrwxrwx</code>，对应到数字就是 <span class="arithmatex">\(777\)</span>。</p>
-<h3 id="相关命令">相关命令<a class="headerlink" href="#相关命令" title="页面定位">&para;</a></h3>
-<p>下面罗列一些用户与权限管理相关的命令，打 <span class="arithmatex">\(*\)</span> 表示重要命令。</p>
-<h4 id="提升权限-sudo">提升权限 sudo<a class="headerlink" href="#提升权限-sudo" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>...
+<h2 id="基础命令">基础命令<a class="headerlink" href="#基础命令" title="页面定位">&para;</a></h2>
+<h3 id="改变目录-cd">改变目录 cd<a class="headerlink" href="#改变目录-cd" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>../
 </span></code></pre></div></td></tr></table></div>
-<p>sudo 的全称是 superuser do，即 <strong>超级用户执行</strong>。命令之前加上 <code>sudo</code> 的意思是普通用户以管理员身份执行指令，从而以管理员权限执行比如：安装软件、系统设置和文件系统等安全操作。可以避免不必要的安全风险。如果是 root 用户则无需添加。</p>
-<h4 id="查看当前用户-whoami">查看当前用户 whoami<a class="headerlink" href="#查看当前用户-whoami" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>whoami
+<p><code>../</code> 表示上一级，<code>./</code> 表示当前一级（也可以不写），<code>/</code> 表示从根目录开始。</p>
+<h3 id="打印目录内容-ls">打印目录内容 ls<a class="headerlink" href="#打印目录内容-ls" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>ls
 </span></code></pre></div></td></tr></table></div>
-<p>打印当前用户名。</p>
-<h4 id="创建用户-useradd">创建用户 useradd<a class="headerlink" href="#创建用户-useradd" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>useradd<span class="w"> </span>&lt;username&gt;
+<p><code>-l</code> 参数即 long listing format，表示打印详细信息，<code>-h</code> 参数即 human-readable，会使得结果更加可读，例如占用存储空间加上单位等等。</p>
+<h3 id="打印当前路径-pwd">打印当前路径 pwd<a class="headerlink" href="#打印当前路径-pwd" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nb">pwd</span>
 </span></code></pre></div></td></tr></table></div>
-<p>添加用户。</p>
-<h4 id="删除用户-userdel">删除用户 userdel<a class="headerlink" href="#删除用户-userdel" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>userdel<span class="w"> </span>&lt;username&gt;
+<h3 id="打印当前用户名">打印当前用户名<a class="headerlink" href="#打印当前用户名" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>whoami
 </span></code></pre></div></td></tr></table></div>
-<p>删除用户。</p>
-<ul>
-<li><code>-r</code> 表示同时删除数据信息。</li>
-</ul>
-<h4 id="修改用户信息-usermod">修改用户信息 usermod<a class="headerlink" href="#修改用户信息-usermod" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>usermod
+<h3 id="创建文件夹-mkdir">创建文件夹 mkdir<a class="headerlink" href="#创建文件夹-mkdir" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>mkdir<span class="w"> </span>&lt;FolderName&gt;
 </span></code></pre></div></td></tr></table></div>
-<ul>
-<li>使用 <code>-h</code> 参数查看所有用法。</li>
-</ul>
-<h4 id="修改用户密码-passwd">修改用户密码 passwd<a class="headerlink" href="#修改用户密码-passwd" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>passwd<span class="w"> </span>&lt;username&gt;
+<h3 id="创建文件-touch">创建文件 touch<a class="headerlink" href="#创建文件-touch" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>touch<span class="w"> </span>&lt;FileName&gt;
 </span></code></pre></div></td></tr></table></div>
-<h4 id="切换用户-su">切换用户 su<a class="headerlink" href="#切换用户-su" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>su<span class="w"> </span>&lt;username&gt;
+<h3 id="复制-cp">复制 cp<a class="headerlink" href="#复制-cp" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>cp<span class="w"> </span><span class="o">[</span>option<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w"> </span>&lt;target&gt;
 </span></code></pre></div></td></tr></table></div>
-<p>添加 <code>-</code> 参数则直接进入 <code>/home/&lt;username&gt;/</code> 目录（如果有的话）。</p>
-<h4 id="查看当前用户所属组-groups">查看当前用户所属组 groups<a class="headerlink" href="#查看当前用户所属组-groups" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>groups
+<p><code>-r</code> 表示递归复制，<code>-i</code> 用来当出现重名文件时进行提示。source 表示被拷贝的资源，target 表示拷贝后的资源名称或者路径。</p>
+<h3 id="移动-mv">移动 mv<a class="headerlink" href="#移动-mv" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>mv<span class="w"> </span><span class="o">[</span>option<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w"> </span>&lt;target&gt;
 </span></code></pre></div></td></tr></table></div>
-<h4 id="创建用户组-groupadd">创建用户组 groupadd<a class="headerlink" href="#创建用户组-groupadd" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>groupadd
+<p><code>-i</code> 用来当出现重名文件时进行提示。source 表示被移动的资源，target 表示移动后的资源名称或者路径（可以以此进行重命名）。</p>
+<h3 id="删除-rm">删除 rm<a class="headerlink" href="#删除-rm" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>rm<span class="w"> </span><span class="o">[</span>option<span class="o">]</span><span class="w"> </span>&lt;source&gt;
 </span></code></pre></div></td></tr></table></div>
-<h4 id="删除用户组-groupdel">删除用户组 groupdel<a class="headerlink" href="#删除用户组-groupdel" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>groupdel
+<p><code>-i</code> 需要一个一个确认，<code>-f</code> 表示强制删除，<code>-r</code> 表示递归删除。</p>
+<h3 id="打印-echo">打印 echo<a class="headerlink" href="#打印-echo" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span>
 </span></code></pre></div></td></tr></table></div>
-<h4 id="改变属主-chown-">改变属主 chown *<a class="headerlink" href="#改变属主-chown-" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>chown<span class="w"> </span>&lt;user&gt;<span class="w"> </span>&lt;filename&gt;
+<p>将 echo 后面紧跟着的内容打印到命令行解释器中。可以用来查看环境变量的具体值。也可以配合输出重定向符号 <code>&gt;</code> 将信息打印到文件中实现创建新文件的作用。例如 <code>echo "hello" &gt; file.txt</code> 用于创建 file.txt 文件并且在其中写下 <code>hello</code> 信息。</p>
+<h3 id="查看-cat">查看 cat<a class="headerlink" href="#查看-cat" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>cat<span class="w"> </span><span class="o">[</span>option<span class="o">]</span><span class="w"> </span>&lt;source&gt;
 </span></code></pre></div></td></tr></table></div>
-<p>将指定文件 filename 更改属主为 user。</p>
-<h4 id="改变属组-chgrp-">改变属组 chgrp *<a class="headerlink" href="#改变属组-chgrp-" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>chgrp<span class="w"> </span>&lt;group&gt;<span class="w"> </span>&lt;filename&gt;
+<p><code>-n</code> 或 <code>--number</code> 表示将 source 中的内容打印出来的同时带上行号。也可以配合输出重定位符号 <code>&gt;</code> 将信息输出到文件中。例如 <code>cat -n a.txt &gt; b.txt</code> 表示将 a.txt 文件中的内容带上行号输出到 b.txt 文件中。</p>
+<h3 id="分页查看-more">分页查看 more<a class="headerlink" href="#分页查看-more" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>more<span class="w"> </span>&lt;source&gt;
 </span></code></pre></div></td></tr></table></div>
-<p>将指定文件 filename 更改属组为 group。</p>
-<h4 id="改变权限-chmod-">改变权限 chmod *<a class="headerlink" href="#改变权限-chmod-" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a>chmod<span class="w"> </span>&lt;option&gt;<span class="w"> </span>&lt;filename&gt;
+<p>与 <code>cat</code> 类似，只不过可以分页展示。按空格键下一页，<code>b</code> 键上一页，<code>q</code> 键退出。可以配合管道符 <code>|</code> (将左边的输出作为右边的输入) 与别的命令组合从而实现分页展示，例如 <code>tree | more</code> 表示分页打印文件目录。</p>
+<h3 id="输出重定向-">输出重定向 &gt;<a class="headerlink" href="#输出重定向-" title="页面定位">&para;</a></h3>
+<p>标准输出（stdout）默认是显示器。<code>&gt;</code> 表示创建或覆盖，<code>&gt;&gt;</code> 表示追加。</p>
+<h3 id="查找-find">查找 find<a class="headerlink" href="#查找-find" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a>find<span class="w"> </span>&lt;path&gt;<span class="w"> </span>&lt;expression&gt;
 </span></code></pre></div></td></tr></table></div>
-<p>将文件 filename 更改所有用户对应的权限。举个例子就知道了：让 <code>demo.py</code> 文件只能让所有者拥有可读、可写和可执行权限，其余任何用户都只有可读和可写权限。</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
-<span class="normal"><a href="#__codelineno-21-2">2</a></span>
-<span class="normal"><a href="#__codelineno-21-3">3</a></span>
-<span class="normal"><a href="#__codelineno-21-4">4</a></span>
-<span class="normal"><a href="#__codelineno-21-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="c1"># 写法一</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>chmod<span class="w"> </span><span class="nv">u</span><span class="o">=</span>rwx,go<span class="o">=</span>rw<span class="w"> </span>demo.py
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a>
-</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="c1"># 写法二</span>
-</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5"></a>chmod<span class="w"> </span><span class="m">766</span><span class="w"> </span>demo.py
+<p><code>-maxdepth &lt;num&gt;</code>, <code>-mindepth &lt;num&gt;</code>: 最大、最小搜索深度。</p>
+<h3 id="匹配-grep">匹配 grep<a class="headerlink" href="#匹配-grep" title="页面定位">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>grep<span class="w"> </span><span class="o">[</span>option<span class="o">]</span><span class="w"> </span>&lt;pattern&gt;<span class="w"> </span>&lt;source&gt;
 </span></code></pre></div></td></tr></table></div>
-<p>至于为什么数字表示法会用 <span class="arithmatex">\(4,2,1\)</span>，是因为 <span class="arithmatex">\(4,2,1\)</span> 刚好对应了二进制的 <span class="arithmatex">\(001, 010, 100\)</span>，三者的组合可以完美的表示出 <span class="arithmatex">\([0,7]\)</span> 范围内的任何一个数。</p>
-<h4 id="默认权限-umask">默认权限 umask<a class="headerlink" href="#默认权限-umask" title="页面定位">&para;</a></h4>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="nb">umask</span>
-</span></code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-S</code> 显示字符型默认权限</li>
-</ul>
-<p>直接使用 <code>umask</code> 会显示 <span class="arithmatex">\(4\)</span> 位八进制数，第一位是当前用户的 <span class="arithmatex">\(uid\)</span>，后三位分别表示当前用户创建文件时的默认权限的补，例如 <span class="arithmatex">\(0022\)</span> 表示当前用户 <span class="arithmatex">\(uid\)</span> 为 <span class="arithmatex">\(0\)</span>，创建的文件/目录默认权限为 <span class="arithmatex">\(777-022=755\)</span>。</p>
-<p>可能是出于安全考虑，文件默认不允许拥有可执行权限，因此如果 <code>umask</code> 显示为 <span class="arithmatex">\(0022\)</span>，则创建的文件默认权限为 <span class="arithmatex">\(644\)</span>，即每一位都 <span class="arithmatex">\(-1\)</span> 以确保是偶数。</p>
-<h3 id="练习">练习<a class="headerlink" href="#练习" title="页面定位">&para;</a></h3>
-<p><strong>一、添加 4 个用户：alice、bob、john、mike</strong></p>
-<p>首先需要确保当前是 root 用户，使用 <code>su root</code> 切换到 root 用户。然后在创建用户时同时创建该用户对应的目录：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
-<span class="normal"><a href="#__codelineno-23-2">2</a></span>
-<span class="normal"><a href="#__codelineno-23-3">3</a></span>
-<span class="normal"><a href="#__codelineno-23-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a>useradd<span class="w"> </span>-d<span class="w"> </span>/home/alice<span class="w"> </span>-m<span class="w"> </span>alice
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>useradd<span class="w"> </span>-d<span class="w"> </span>/home/bob<span class="w"> </span>-m<span class="w"> </span>bob
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a>useradd<span class="w"> </span>-d<span class="w"> </span>/home/john<span class="w"> </span>-m<span class="w"> </span>john
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a>useradd<span class="w"> </span>-d<span class="w"> </span>/home/mike<span class="w"> </span>-m<span class="w"> </span>mike
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409272339074.png" data-type="image" data-width="auto" data-height="auto" data-title="添加 4 个用户" data-desc-position="bottom"><img alt="添加 4 个用户" src="https://cdn.dwj601.cn/images/202409272339074.png" /></a></p>
-<p><strong>二、为 alice 设置密码</strong></p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>passwd<span class="w"> </span>alice
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409272340323.png" data-type="image" data-width="auto" data-height="auto" data-title="为 alice 设置密码" data-desc-position="bottom"><img alt="为 alice 设置密码" src="https://cdn.dwj601.cn/images/202409272340323.png" /></a></p>
-<p><strong>三、创建用户组 workgroup 并将 alice、bob、john 加入</strong></p>
-<ul>
-<li>
-<p>创建用户组：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>groupadd<span class="w"> </span>workgroup
-</span></code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p>添加到新组：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
-<span class="normal"><a href="#__codelineno-26-2">2</a></span>
-<span class="normal"><a href="#__codelineno-26-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>workgroup<span class="w"> </span>alice
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>workgroup<span class="w"> </span>bob
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3"></a>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>workgroup<span class="w"> </span>john
-</span></code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-a</code>：是 <code>--append</code> 的缩写，表示将用户添加到一个组，而不会移除她已有的其他组。这个选项必须与 <code>-G</code> 一起使用</li>
-<li><code>-G</code>：指定要添加用户的附加组（即用户可以属于多个组），这里是 workgroup</li>
-</ul>
-</li>
-<li>
-<p>将 workgroup 作为各自的主组：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
-<span class="normal"><a href="#__codelineno-27-2">2</a></span>
-<span class="normal"><a href="#__codelineno-27-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a>usermod<span class="w"> </span>-g<span class="w"> </span>workgroup<span class="w"> </span>alice
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2"></a>usermod<span class="w"> </span>-g<span class="w"> </span>workgroup<span class="w"> </span>bob
-</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3"></a>usermod<span class="w"> </span>-g<span class="w"> </span>workgroup<span class="w"> </span>john
-</span></code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-g</code>：用于指定用户的主组（primary group）。主组是当用户创建文件或目录时默认分配的组</li>
-</ul>
-</li>
-</ul>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409272341900.png" data-type="image" data-width="auto" data-height="auto" data-title="创建用户组 workgroup 并将 alice、bob、john 加入" data-desc-position="bottom"><img alt="创建用户组 workgroup 并将 alice、bob、john 加入" src="https://cdn.dwj601.cn/images/202409272341900.png" /></a></p>
-<p><strong>四、创建 <code>/home/work</code> 目录并将其属主改为 alice，属组改为 workgroup</strong></p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
-<span class="normal"><a href="#__codelineno-28-2">2</a></span>
-<span class="normal"><a href="#__codelineno-28-3">3</a></span>
-<span class="normal"><a href="#__codelineno-28-4">4</a></span>
-<span class="normal"><a href="#__codelineno-28-5">5</a></span>
-<span class="normal"><a href="#__codelineno-28-6">6</a></span>
-<span class="normal"><a href="#__codelineno-28-7">7</a></span>
-<span class="normal"><a href="#__codelineno-28-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="c1"># 创建目录</span>
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a>mkdir<span class="w"> </span>work
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a>
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4"></a><span class="c1"># 修改属主和属组</span>
-</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5"></a>chown<span class="w"> </span>alice:workgroup<span class="w"> </span>work
-</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6"></a>
-</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7"></a><span class="c1"># 或者</span>
-</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8"></a>chown<span class="w"> </span>alice.workgroup<span class="w"> </span>work
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409272343315.png" data-type="image" data-width="auto" data-height="auto" data-title="创建 /home/work 目录并将其属主改为 alice，属组改为 workgroup" data-desc-position="bottom"><img alt="创建 /home/work 目录并将其属主改为 alice，属组改为 workgroup" src="https://cdn.dwj601.cn/images/202409272343315.png" /></a></p>
-<p><strong>五、修改 work 目录的权限</strong></p>
-<p>使得属组内的用户对该目录具有所有权限，属组外的用户对该目录没有任何权限。</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
-<span class="normal"><a href="#__codelineno-29-2">2</a></span>
-<span class="normal"><a href="#__codelineno-29-3">3</a></span>
-<span class="normal"><a href="#__codelineno-29-4">4</a></span>
-<span class="normal"><a href="#__codelineno-29-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="c1"># 写法一</span>
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>chmod<span class="w"> </span>ug+rwx,o-rwx<span class="w"> </span>work
-</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3"></a>
-</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="c1"># 写法二</span>
-</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a>chmod<span class="w"> </span><span class="m">770</span><span class="w"> </span>work
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409272345642.png" data-type="image" data-width="auto" data-height="auto" data-title="修改 work 目录的权限" data-desc-position="bottom"><img alt="修改 work 目录的权限" src="https://cdn.dwj601.cn/images/202409272345642.png" /></a></p>
-<p><strong>六、权限功能测试</strong></p>
-<p>以 bob 用户身份在 work 目录下创建 <code>bob.txt</code> 文件。可以看到符合默认创建文件的权限格式 <span class="arithmatex">\(644\)</span>：</p>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409272350694.png" data-type="image" data-width="auto" data-height="auto" data-title="以 bob 用户在 work 下创建 bob.txt 文件" data-desc-position="bottom"><img alt="以 bob 用户在 work 下创建 bob.txt 文件" src="https://cdn.dwj601.cn/images/202409272350694.png" /></a></p>
-<p>同组用户与不同组用户关于「目录/文件」的 <code>rw</code> 权限测试。</p>
-<ul>
-<li>关于 <span class="arithmatex">\(770\)</span> 目录。由于 work 目录被 bob 创建时权限设置为了 <span class="arithmatex">\(770\)</span>，bob 用户与 john 用户属于同一个组 workgroup，因此 john 因为 <span class="arithmatex">\(g=7\)</span> 可以进入 work 目录进行操作，而 bob 用户与 mike 用户不属于同一个组，因此 mike 因为 <span class="arithmatex">\(o=0\)</span> 无法进入 work 目录，更不用说查看或者修改 work 目录中的文件了。</li>
-<li>关于 <span class="arithmatex">\(644\)</span> 文件。现在 john 由于 <span class="arithmatex">\(770\)</span> 中的第二个 <span class="arithmatex">\(7\)</span> 进入了 work 目录。由文件默认的 <span class="arithmatex">\(644\)</span> 权限可以知道：john 因为第一个 <span class="arithmatex">\(4\)</span> 可以读文件，但是不可以写文件，因此如下图所示，可以执行 <code>cat</code> 查看文件内容，但是不可以执行 <code>echo</code> 编辑文件内容。至于 mike，可以看到无论起始是否在 work 目录，都没有权限 <code>cd</code> 到 work 目录或者 <code>ls</code> 查看 work 目录中的内容。</li>
-</ul>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409280007514.png" data-type="image" data-width="auto" data-height="auto" data-title="权限测试" data-desc-position="bottom"><img alt="权限测试" src="https://cdn.dwj601.cn/images/202409280007514.png" /></a></p>
-<h2 id="进程管理与调试">进程管理与调试<a class="headerlink" href="#进程管理与调试" title="页面定位">&para;</a></h2>
-<p>在熟悉了 bash shell 的基本命令以及 GNU/Linux 中用户与权限管理的基本概念后，我们就可以开始尝试管理 GNU/Linux 中的程序了。当然每一个程序在开始运行后都会成为一个或多个进程，因此接下来简单介绍一下 GNU/Linux 的进程管理。最后再通过调试一个 C 程序来熟悉 GNU 调试工具 gdb (GNU Debugger) 的使用。</p>
-<h3 id="进程管理相关命令">进程管理相关命令<a class="headerlink" href="#进程管理相关命令" title="页面定位">&para;</a></h3>
-<p>查看进程状态 ps</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a>ps
-</span></code></pre></div></td></tr></table></div>
-<p>动态查看进程状态 top</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a>top
-</span></code></pre></div></td></tr></table></div>
-<p>杀死某个进程 kill</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>&lt;PID&gt;
-</span></code></pre></div></td></tr></table></div>
-<h3 id="练习_1">练习<a class="headerlink" href="#练习_1" title="页面定位">&para;</a></h3>
-<p><strong>一、编写一个 shell 程序 <code>badproc.sh</code> 使其不断循环</strong></p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span>
-<span class="normal"><a href="#__codelineno-33-2">2</a></span>
-<span class="normal"><a href="#__codelineno-33-3">3</a></span>
-<span class="normal"><a href="#__codelineno-33-4">4</a></span>
-<span class="normal"><a href="#__codelineno-33-5">5</a></span>
-<span class="normal"><a href="#__codelineno-33-6">6</a></span>
-<span class="normal"><a href="#__codelineno-33-7">7</a></span>
-<span class="normal"><a href="#__codelineno-33-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="ch">#! /bin/bash</span>
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2"></a><span class="k">while</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;I&#39;m making files!&quot;</span>
-</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3"></a><span class="k">do</span>
-</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4"></a><span class="w">    </span>mkdir<span class="w"> </span>adir
-</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5"></a><span class="w">    </span><span class="nb">cd</span><span class="w"> </span>adir
-</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6"></a><span class="w">    </span>touch<span class="w"> </span>afile
-</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7"></a><span class="w">    </span>sleep<span class="w"> </span>10s
-</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8"></a><span class="k">done</span>
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081735300.png" data-type="image" data-width="auto" data-height="auto" data-title="编写 sh 文件" data-desc-position="bottom"><img alt="编写 sh 文件" src="https://cdn.dwj601.cn/images/202410081735300.png" /></a></p>
-<p><strong>二、为 <code>badproc.sh</code> 增加可执行权限</strong></p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1"></a>chmod<span class="w"> </span>u+x<span class="w"> </span>badproc.sh
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081736525.png" data-type="image" data-width="auto" data-height="auto" data-title="增加可执行权限" data-desc-position="bottom"><img alt="增加可执行权限" src="https://cdn.dwj601.cn/images/202410081736525.png" /></a></p>
-<p><strong>三、在后台执行 <code>badproc.sh</code></strong></p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1"></a>./badproc.sh<span class="w"> </span><span class="p">&amp;</span>
-</span></code></pre></div></td></tr></table></div>
-<ul>
-<li><code>&amp;</code> 表示后台执行</li>
-</ul>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081737564.png" data-type="image" data-width="auto" data-height="auto" data-title="后台执行" data-desc-position="bottom"><img alt="后台执行" src="https://cdn.dwj601.cn/images/202410081737564.png" /></a></p>
-<p><strong>四、利用 <code>ps</code> 命令查看其进程号</strong></p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1"></a>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>badproc
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081739971.png" data-type="image" data-width="auto" data-height="auto" data-title="查看进程号" data-desc-position="bottom"><img alt="查看进程号" src="https://cdn.dwj601.cn/images/202410081739971.png" /></a></p>
-<p><strong>五、利用 <code>kill</code> 命令杀死该进程</strong></p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>&lt;PID&gt;
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081748528.png" data-type="image" data-width="auto" data-height="auto" data-title="杀死该进程" data-desc-position="bottom"><img alt="杀死该进程" src="https://cdn.dwj601.cn/images/202410081748528.png" /></a></p>
-<p><strong>六、删除 <code>badproc.sh</code> 程序运行时创建的目录和文件</strong></p>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081748818.png" data-type="image" data-width="auto" data-height="auto" data-title="删除目录和文件" data-desc-position="bottom"><img alt="删除目录和文件" src="https://cdn.dwj601.cn/images/202410081748818.png" /></a></p>
-<h3 id="gdb-调试相关命令">gdb 调试相关命令<a class="headerlink" href="#gdb-调试相关命令" title="页面定位">&para;</a></h3>
-<p>基本命令参考 GNU OF GDB 官网：<a href="https://www.gnu.org/software/gdb/">https://www.gnu.org/software/gdb/</a>。常用的如下：</p>
-<p>开始运行</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1"></a>r
-</span></code></pre></div></td></tr></table></div>
-<ul>
-<li>r 即 run</li>
-</ul>
-<p>设置断点</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="k">break</span><span class="w"> </span>&lt;line&gt;
-</span></code></pre></div></td></tr></table></div>
-<ul>
-<li>line 即行号</li>
-</ul>
-<p>运行到下一个断点</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1"></a>c
-</span></code></pre></div></td></tr></table></div>
-<ul>
-<li>c 即 continue</li>
-</ul>
-<p>{% fold light @练习 %}</p>
-<p><strong>一、创建 <code>fork.c</code> 文件</strong></p>
-<div class="language-c highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-41-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-41-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-41-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-41-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-41-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-41-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-41-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-41-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-41-10">10</a></span>
-<span class="normal"><a href="#__codelineno-41-11">11</a></span>
-<span class="normal"><a href="#__codelineno-41-12">12</a></span>
-<span class="normal"><a href="#__codelineno-41-13">13</a></span>
-<span class="normal"><a href="#__codelineno-41-14">14</a></span>
-<span class="normal"><a href="#__codelineno-41-15">15</a></span>
-<span class="normal"><a href="#__codelineno-41-16">16</a></span>
-<span class="normal"><a href="#__codelineno-41-17">17</a></span>
-<span class="normal"><a href="#__codelineno-41-18">18</a></span>
-<span class="normal"><a href="#__codelineno-41-19">19</a></span>
-<span class="normal"><a href="#__codelineno-41-20">20</a></span>
-<span class="normal"><a href="#__codelineno-41-21">21</a></span>
-<span class="normal"><a href="#__codelineno-41-22">22</a></span>
-<span class="normal"><a href="#__codelineno-41-23">23</a></span>
-<span class="normal"><a href="#__codelineno-41-24">24</a></span>
-<span class="normal"><a href="#__codelineno-41-25">25</a></span>
-<span class="normal"><a href="#__codelineno-41-26">26</a></span>
-<span class="normal"><a href="#__codelineno-41-27">27</a></span>
-<span class="normal"><a href="#__codelineno-41-28">28</a></span>
-<span class="normal"><a href="#__codelineno-41-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
-</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/types.h&gt;</span>
-</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span>
-</span><span id="__span-41-6"><a id="__codelineno-41-6" name="__codelineno-41-6"></a>
-</span><span id="__span-41-7"><a id="__codelineno-41-7" name="__codelineno-41-7"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-41-8"><a id="__codelineno-41-8" name="__codelineno-41-8"></a><span class="w">    </span><span class="cm">/* fork another process */</span>
-</span><span id="__span-41-9"><a id="__codelineno-41-9" name="__codelineno-41-9"></a><span class="w">    </span><span class="kt">pid_t</span><span class="w">  </span><span class="n">pid</span><span class="p">;</span>
-</span><span id="__span-41-10"><a id="__codelineno-41-10" name="__codelineno-41-10"></a><span class="w">    </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-</span><span id="__span-41-11"><a id="__codelineno-41-11" name="__codelineno-41-11"></a>
-</span><span id="__span-41-12"><a id="__codelineno-41-12" name="__codelineno-41-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-41-13"><a id="__codelineno-41-13" name="__codelineno-41-13"></a><span class="w">        </span><span class="cm">/* error occurred */</span>
-</span><span id="__span-41-14"><a id="__codelineno-41-14" name="__codelineno-41-14"></a><span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Fork Failed&quot;</span><span class="p">);</span>
-</span><span id="__span-41-15"><a id="__codelineno-41-15" name="__codelineno-41-15"></a><span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
-</span><span id="__span-41-16"><a id="__codelineno-41-16" name="__codelineno-41-16"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-41-17"><a id="__codelineno-41-17" name="__codelineno-41-17"></a><span class="w">        </span><span class="cm">/* child process */</span>
-</span><span id="__span-41-18"><a id="__codelineno-41-18" name="__codelineno-41-18"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;This is child process, pid=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">());</span>
-</span><span id="__span-41-19"><a id="__codelineno-41-19" name="__codelineno-41-19"></a><span class="w">        </span><span class="n">execlp</span><span class="p">(</span><span class="s">&quot;/bin/ls&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ls&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
-</span><span id="__span-41-20"><a id="__codelineno-41-20" name="__codelineno-41-20"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Child process finished</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="cm">/*这句话不会被打印，除非execlp调用未成功*/</span>
-</span><span id="__span-41-21"><a id="__codelineno-41-21" name="__codelineno-41-21"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-41-22"><a id="__codelineno-41-22" name="__codelineno-41-22"></a><span class="w">        </span><span class="cm">/* parent process */</span>
-</span><span id="__span-41-23"><a id="__codelineno-41-23" name="__codelineno-41-23"></a><span class="w">        </span><span class="cm">/* parent will wait for the child to complete */</span>
-</span><span id="__span-41-24"><a id="__codelineno-41-24" name="__codelineno-41-24"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;This is parent process, pid=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">());</span>
-</span><span id="__span-41-25"><a id="__codelineno-41-25" name="__codelineno-41-25"></a><span class="w">        </span><span class="n">wait</span><span class="w"> </span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-</span><span id="__span-41-26"><a id="__codelineno-41-26" name="__codelineno-41-26"></a><span class="w">        </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;Child Complete</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-</span><span id="__span-41-27"><a id="__codelineno-41-27" name="__codelineno-41-27"></a><span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span><span id="__span-41-28"><a id="__codelineno-41-28" name="__codelineno-41-28"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-41-29"><a id="__codelineno-41-29" name="__codelineno-41-29"></a><span class="p">}</span>
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081813738.png" data-type="image" data-width="auto" data-height="auto" data-title="创建文件" data-desc-position="bottom"><img alt="创建文件" src="https://cdn.dwj601.cn/images/202410081813738.png" /></a></p>
-<p>这段程序首先通过调用 <code>fork()</code> 函数创建一个子进程，并通过 <code>pid</code> 信息来判断当前进程是父进程还是子进程。在并发的逻辑下，执行哪一个进程的逻辑是未知的。</p>
-<p><strong>二、编译运行 <code>fork.c</code> 文件</strong></p>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081807870.png" data-type="image" data-width="auto" data-height="auto" data-title="编译运行" data-desc-position="bottom"><img alt="编译运行" src="https://cdn.dwj601.cn/images/202410081807870.png" /></a></p>
-<p>从上述运行结果可以看出：并发时，首先执行父进程的逻辑，然后才执行子进程的逻辑。</p>
-<p><strong>三、gdb 调试</strong></p>
-<p>在 fork 创建子进程后追踪子进程：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1">1</a></span>
-<span class="normal"><a href="#__codelineno-42-2">2</a></span>
-<span class="normal"><a href="#__codelineno-42-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1"></a>gdb<span class="w"> </span>fork
-</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="nb">set</span><span class="w"> </span>follow-fork-mode<span class="w"> </span>child
-</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3"></a>catch<span class="w"> </span><span class="nb">exec</span>
-</span></code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081947476.png" data-type="image" data-width="auto" data-height="auto" data-title="追踪子进程" data-desc-position="bottom"><img alt="追踪子进程" src="https://cdn.dwj601.cn/images/202410081947476.png" /></a></p>
-<p>运行到第一个断点时分别观察父进程 1510168 和子进程 1510171：</p>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081948301.png" data-type="image" data-width="auto" data-height="auto" data-title="父进程 1510168" data-desc-position="bottom"><img alt="父进程 1510168" src="https://cdn.dwj601.cn/images/202410081948301.png" /></a></p>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081949586.png" data-type="image" data-width="auto" data-height="auto" data-title="子进程 1510171" data-desc-position="bottom"><img alt="子进程 1510171" src="https://cdn.dwj601.cn/images/202410081949586.png" /></a></p>
-<p>运行到第二个断点时观察子进程 1510171：</p>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081951803.png" data-type="image" data-width="auto" data-height="auto" data-title="运行到第二个断点时观察子进程 1510171" data-desc-position="bottom"><img alt="运行到第二个断点时观察子进程 1510171" src="https://cdn.dwj601.cn/images/202410081951803.png" /></a></p>
-<p>从上述子进程的追踪结果可以看出，在父进程结束之后，子进程成功执行了 <code>pid == 0</code> 的逻辑并开始调用 <code>ls</code> 工具。</p>
-<p>{% endfold %}</p>
-<h2 id="gnulinux-编程">GNU/Linux 编程<a class="headerlink" href="#gnulinux-编程" title="页面定位">&para;</a></h2>
-<p>这里的 GNU/Linux 编程对应的高级语言是 C/C++ 编程语言。本部分主要是为了熟悉 C/C++ 编程中的 <strong>静态链接</strong> 与 <strong>动态链接</strong> 逻辑。</p>
-<h3 id="gcc-基础">GCC 基础<a class="headerlink" href="#gcc-基础" title="页面定位">&para;</a></h3>
-<p>相比于在 Windows 进行 C/C++ 编程时需要自己额外安装编译器集合 MSVC (Microsoft Visual C++) 或 MinGW (Minimalist GNU for Windows)，GNU/Linux 发行版 Ubuntu22.04 已经默认配置好了编译器集合 GCC (GNU Compiler Collection)，我们可以利用 GCC 提供的前端工具 gcc 等快捷地使用编译器集合中的所有工具。具体命令可以参考 GCC 官方在线文档：<a href="https://gcc.gnu.org/onlinedocs/">https://gcc.gnu.org/onlinedocs/</a>。</p>
-<p>我们可以使用 <code>gcc --version</code> 命令查看当前的 GCC 版本：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-1">1</a></span>
-<span class="normal"><a href="#__codelineno-43-2">2</a></span>
-<span class="normal"><a href="#__codelineno-43-3">3</a></span>
-<span class="normal"><a href="#__codelineno-43-4">4</a></span>
-<span class="normal"><a href="#__codelineno-43-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1"></a>root@dwj2:/opt/OS/task4#<span class="w"> </span>gcc<span class="w"> </span>--version
-</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2"></a>gcc<span class="w"> </span><span class="o">(</span>Ubuntu<span class="w"> </span><span class="m">11</span>.4.0-1ubuntu1~22.04<span class="o">)</span><span class="w"> </span><span class="m">11</span>.4.0
-</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3"></a>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>Free<span class="w"> </span>Software<span class="w"> </span>Foundation,<span class="w"> </span>Inc.
-</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4"></a>This<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software<span class="p">;</span><span class="w"> </span>see<span class="w"> </span>the<span class="w"> </span><span class="nb">source</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>copying<span class="w"> </span>conditions.<span class="w">  </span>There<span class="w"> </span>is<span class="w"> </span>NO
-</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5"></a>warranty<span class="p">;</span><span class="w"> </span>not<span class="w"> </span>even<span class="w"> </span><span class="k">for</span><span class="w"> </span>MERCHANTABILITY<span class="w"> </span>or<span class="w"> </span>FITNESS<span class="w"> </span>FOR<span class="w"> </span>A<span class="w"> </span>PARTICULAR<span class="w"> </span>PURPOSE.
-</span></code></pre></div></td></tr></table></div>
-<p>因此我们选择版本最相近的手册 <a href="https://gcc.gnu.org/onlinedocs/gcc-11.5.0/gcc/">gcc-11.5.0</a> 进行阅读。对于最基本的编译操作和理论，已经在 <a href="https://blog.dwj601.cn/GPA/4th-term/SysBasic/#3-1-程序转换概述">计算机系统基础</a> 课程中有所学习，就不重复造轮子了，常见的指令直接跳转阅读即可。</p>
-<h4 id="环境变量">环境变量<a class="headerlink" href="#环境变量" title="页面定位">&para;</a></h4>
-<p>对于当前路径下链接出来的可执行文件 demo，为什么 <code>demo</code> 无法正常执行，<code>./demo</code> 就可以正常执行？如下图所示：</p>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410091759777.png" data-type="image" data-width="auto" data-height="auto" data-title="demo 无法正常执行 VS ./demo 可以正常执行" data-desc-position="bottom"><img alt="demo 无法正常执行 VS ./demo 可以正常执行" src="https://cdn.dwj601.cn/images/202410091759777.png" /></a></p>
-<p>根本原因是 bash 默认执行 PATH 环境变量下的可执行文件，显然上述的 demo 可执行文件并不在 PATH 对应的路径下，那么 PATH 路径都有哪些呢？我们使用 <code>echo $PATH | tr ':' '\n'</code> 打印出来：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-44-1">1</a></span>
-<span class="normal"><a href="#__codelineno-44-2">2</a></span>
-<span class="normal"><a href="#__codelineno-44-3">3</a></span>
-<span class="normal"><a href="#__codelineno-44-4">4</a></span>
-<span class="normal"><a href="#__codelineno-44-5">5</a></span>
-<span class="normal"><a href="#__codelineno-44-6">6</a></span>
-<span class="normal"><a href="#__codelineno-44-7">7</a></span>
-<span class="normal"><a href="#__codelineno-44-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1"></a>root@dwj2:/opt/OS/task4#<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$PATH</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span>
-</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2"></a>/usr/local/sbin
-</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3"></a>/usr/local/bin
-</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4"></a>/usr/sbin
-</span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5"></a>/usr/bin
-</span><span id="__span-44-6"><a id="__codelineno-44-6" name="__codelineno-44-6"></a>/usr/games
-</span><span id="__span-44-7"><a id="__codelineno-44-7" name="__codelineno-44-7"></a>/usr/local/games
-</span><span id="__span-44-8"><a id="__codelineno-44-8" name="__codelineno-44-8"></a>/snap/bin
-</span></code></pre></div></td></tr></table></div>
-<p>能不能使用 demo 运行呢？有很多解决办法，但根本逻辑都是将当前路径加入到 PATH 环境变量。下面补充几个 gcc 和 g++ (编译 C++ 用) 相关的环境变量：</p>
-<ul>
-<li>头文件搜索路径<ul>
-<li><code>C_INCLUDE_PATH</code>: gcc 找头文件的路径。</li>
-<li><code>CPLUS_INCLUDE_PATH</code>: g++ 找头文件的路径。</li>
-</ul>
-</li>
-<li>库文件搜索路径<ul>
-<li><code>LD_LIBRARY_PATH</code>: 找动态链接库的路径。</li>
-<li><code>LIBRARY_PATH</code>: 找静态链接库的路径。</li>
-</ul>
-</li>
-</ul>
-<h4 id="gcc-选项">gcc 选项<a class="headerlink" href="#gcc-选项" title="页面定位">&para;</a></h4>
-<p>在计算机系统基础中已经学习到了，C/C++ 最基本的编译链就是 <code>-E</code>、<code>-S</code>、<code>-c</code>、<code>-o</code>，每一个参数都包含前面所有的参数。下面主要讲讲 <code>-I&lt;dir&gt;</code>，<code>-L&lt;dir&gt;</code> 和 <code>-l&lt;name&gt;</code> 三个参数：</p>
-<ul>
-<li>
-<p><code>-I&lt;dir&gt;</code> 顾名思义就是「头文件导入」的搜索目录。例如下面的编译语句：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1"></a>gcc<span class="w"> </span>–I/opt/OS/task4/include<span class="w"> </span>demo.c
-</span></code></pre></div></td></tr></table></div>
-<p>注意：当我们不使用 -o 参数指定 outfile 的名称时，默认是 <code>a.out</code>，如下图所示，其中 demo 可执行文件是之前用来输出 <code>'hello'</code> 的：</p>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410091835107.png" data-type="image" data-width="auto" data-height="auto" data-title="-I&lt;dir&gt;" data-desc-position="bottom"><img alt="-I&lt;dir&gt;" src="https://cdn.dwj601.cn/images/202410091835107.png" /></a></p>
-</li>
-<li>
-<p><code>-L&lt;dir&gt;</code> 顾名思义就是「库文件连接」搜索目录。例如下面的编译语句：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-46-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1"></a>gcc<span class="w"> </span>-o<span class="w"> </span>x11fred<span class="w"> </span>-L/usr/openwin/lib<span class="w"> </span>x11fred.c
-</span></code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p><code>-l&lt;name&gt;</code> 比较有意思，就是直接制定了库文件是哪一个。正因为有了这样的用法，我们在给库文件 (<code>.a</code> 表示静态库文件，<code>.so</code> 表示动态库文件) 起名时，就只能起 <code>lib&lt;name&gt;.a</code> 或 <code>lib&lt;name&gt;.so</code>。例如下面的编译语句：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1">1</a></span>
-<span class="normal"><a href="#__codelineno-47-2">2</a></span>
-<span class="normal"><a href="#__codelineno-47-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1"></a>gcc<span class="w"> </span>-o<span class="w"> </span>fred<span class="w"> </span>-lm<span class="w"> </span>fred.c
-</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2"></a><span class="c1"># 等价于</span>
-</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3"></a>gcc<span class="w"> </span>–o<span class="w"> </span>fred<span class="w"> </span>/usr/lib/libm.a<span class="w"> </span>fred.c
-</span></code></pre></div></td></tr></table></div>
-</li>
-</ul>
-<h3 id="静态链接--动态链接">静态链接 | 动态链接<a class="headerlink" href="#静态链接--动态链接" title="页面定位">&para;</a></h3>
-<p>对于下面的函数库与调用示例：</p>
-<div class="language-c highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-48-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-48-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-48-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-48-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-48-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-48-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-48-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-48-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-48-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-48-10">10</a></span>
-<span class="normal"><a href="#__codelineno-48-11">11</a></span>
-<span class="normal"><a href="#__codelineno-48-12">12</a></span>
-<span class="normal"><a href="#__codelineno-48-13">13</a></span>
-<span class="normal"><a href="#__codelineno-48-14">14</a></span>
-<span class="normal"><a href="#__codelineno-48-15">15</a></span>
-<span class="normal"><a href="#__codelineno-48-16">16</a></span>
-<span class="normal"><a href="#__codelineno-48-17">17</a></span>
-<span class="normal"><a href="#__codelineno-48-18">18</a></span>
-<span class="normal"><a href="#__codelineno-48-19">19</a></span>
-<span class="normal"><a href="#__codelineno-48-20">20</a></span>
-<span class="normal"><a href="#__codelineno-48-21">21</a></span>
-<span class="normal"><a href="#__codelineno-48-22">22</a></span>
-<span class="normal"><a href="#__codelineno-48-23">23</a></span>
-<span class="normal"><a href="#__codelineno-48-24">24</a></span>
-<span class="normal"><a href="#__codelineno-48-25">25</a></span>
-<span class="normal"><a href="#__codelineno-48-26">26</a></span>
-<span class="normal"><a href="#__codelineno-48-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="c1">// addvec.c</span>
-</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">addvec</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4"></a><span class="w">        </span><span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6"></a><span class="p">}</span>
-</span><span id="__span-48-7"><a id="__codelineno-48-7" name="__codelineno-48-7"></a>
-</span><span id="__span-48-8"><a id="__codelineno-48-8" name="__codelineno-48-8"></a><span class="c1">// multvec.c</span>
-</span><span id="__span-48-9"><a id="__codelineno-48-9" name="__codelineno-48-9"></a><span class="kt">void</span><span class="w"> </span><span class="nf">multvec</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-48-10"><a id="__codelineno-48-10" name="__codelineno-48-10"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-48-11"><a id="__codelineno-48-11" name="__codelineno-48-11"></a><span class="w">        </span><span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-</span><span id="__span-48-12"><a id="__codelineno-48-12" name="__codelineno-48-12"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-48-13"><a id="__codelineno-48-13" name="__codelineno-48-13"></a><span class="p">}</span>
-</span><span id="__span-48-14"><a id="__codelineno-48-14" name="__codelineno-48-14"></a>
-</span><span id="__span-48-15"><a id="__codelineno-48-15" name="__codelineno-48-15"></a><span class="c1">// vector.h</span>
-</span><span id="__span-48-16"><a id="__codelineno-48-16" name="__codelineno-48-16"></a><span class="kt">void</span><span class="w"> </span><span class="nf">addvec</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
-</span><span id="__span-48-17"><a id="__codelineno-48-17" name="__codelineno-48-17"></a><span class="kt">void</span><span class="w"> </span><span class="nf">multvec</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
-</span><span id="__span-48-18"><a id="__codelineno-48-18" name="__codelineno-48-18"></a>
-</span><span id="__span-48-19"><a id="__codelineno-48-19" name="__codelineno-48-19"></a><span class="c1">// main.c</span>
-</span><span id="__span-48-20"><a id="__codelineno-48-20" name="__codelineno-48-20"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-</span><span id="__span-48-21"><a id="__codelineno-48-21" name="__codelineno-48-21"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;vector.h&quot;</span>
-</span><span id="__span-48-22"><a id="__codelineno-48-22" name="__codelineno-48-22"></a><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">},</span><span class="w"> </span><span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-</span><span id="__span-48-23"><a id="__codelineno-48-23" name="__codelineno-48-23"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-48-24"><a id="__codelineno-48-24" name="__codelineno-48-24"></a><span class="w">    </span><span class="n">addvec</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-</span><span id="__span-48-25"><a id="__codelineno-48-25" name="__codelineno-48-25"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;z = [%d, %d]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-</span><span id="__span-48-26"><a id="__codelineno-48-26" name="__codelineno-48-26"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-</span><span id="__span-48-27"><a id="__codelineno-48-27" name="__codelineno-48-27"></a><span class="p">}</span>
-</span></code></pre></div></td></tr></table></div>
-<p>生成静态库文件 <code>libvector.a</code> 并链接至可执行文件 p1 中：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-49-1">1</a></span>
-<span class="normal"><a href="#__codelineno-49-2">2</a></span>
-<span class="normal"><a href="#__codelineno-49-3">3</a></span>
-<span class="normal"><a href="#__codelineno-49-4">4</a></span>
-<span class="normal"><a href="#__codelineno-49-5">5</a></span>
-<span class="normal"><a href="#__codelineno-49-6">6</a></span>
-<span class="normal"><a href="#__codelineno-49-7">7</a></span>
-<span class="normal"><a href="#__codelineno-49-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="c1"># 将两个自定义库函数编译为可重定位目标文件 addvec.o 和 multvec.o</span>
-</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2"></a>gcc<span class="w"> </span>-c<span class="w"> </span>addvec.c<span class="w"> </span>multvec.c
-</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3"></a>
-</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4"></a><span class="c1"># 将两个可重定位目标文件打包成静态库文件 libvector.a</span>
-</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5"></a>ar<span class="w"> </span>crv<span class="w"> </span>libvector.a<span class="w"> </span>addvec.o<span class="w"> </span>multvec.o
-</span><span id="__span-49-6"><a id="__codelineno-49-6" name="__codelineno-49-6"></a>
-</span><span id="__span-49-7"><a id="__codelineno-49-7" name="__codelineno-49-7"></a><span class="c1"># 生成静态链接的可执行文件 p1</span>
-</span><span id="__span-49-8"><a id="__codelineno-49-8" name="__codelineno-49-8"></a>gcc<span class="w"> </span>-static<span class="w"> </span>-o<span class="w"> </span>p1<span class="w"> </span>main.c<span class="w"> </span>-L.<span class="w"> </span>-lvector
-</span></code></pre></div></td></tr></table></div>
-<p>生成动态库文件 <code>libvector.so</code> 并链接至可执行文件 p2 中：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-50-1">1</a></span>
-<span class="normal"><a href="#__codelineno-50-2">2</a></span>
-<span class="normal"><a href="#__codelineno-50-3">3</a></span>
-<span class="normal"><a href="#__codelineno-50-4">4</a></span>
-<span class="normal"><a href="#__codelineno-50-5">5</a></span>
-<span class="normal"><a href="#__codelineno-50-6">6</a></span>
-<span class="normal"><a href="#__codelineno-50-7">7</a></span>
-<span class="normal"><a href="#__codelineno-50-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1"></a><span class="c1"># 将两个自定义库函数编译为动态库文件 libvector.so</span>
-</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2"></a>gcc<span class="w"> </span>-shared<span class="w"> </span>-o<span class="w"> </span>libvector.so<span class="w"> </span>addvec.c<span class="w"> </span>multvec.c
-</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3"></a>
-</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4"></a><span class="c1"># 生成动态链接的可执行文件 p2</span>
-</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5"></a>gcc<span class="w"> </span>-o<span class="w"> </span>p2<span class="w"> </span>main.c<span class="w"> </span>-L.<span class="w"> </span>-lvector
-</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6"></a>
-</span><span id="__span-50-7"><a id="__codelineno-50-7" name="__codelineno-50-7"></a><span class="c1"># 使用 ./p2 执行之前需要明确一下动态库文件的链接搜索路径，否则会找不到动态库文件</span>
-</span><span id="__span-50-8"><a id="__codelineno-50-8" name="__codelineno-50-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:.
-</span></code></pre></div></td></tr></table></div>
-<p>最后我们查看一下 p1 和 p2 详细信息，如下图所示。显然静态链接的可执行文件 p1 占用的存储空间远大于动态连接的可执行文件 p2。</p>
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410091956946.png" data-type="image" data-width="auto" data-height="auto" data-title="p1 和 p2 详细信息" data-desc-position="bottom"><img alt="p1 和 p2 详细信息" src="https://cdn.dwj601.cn/images/202410091956946.png" /></a></p>
-<h2 id="工具扩展">工具扩展<a class="headerlink" href="#工具扩展" title="页面定位">&para;</a></h2>
-<h3 id="tree">tree<a class="headerlink" href="#tree" title="页面定位">&para;</a></h3>
-<p>目录可视化工具。</p>
-<p>下载地址：<a href="hhttps://gnuwin32.sourceforge.net/packages/tree.htm">Tree for Windows (sourceforge.net)open in new window</a>，下载 Binaries 的 Zip 文件。解压完成后，将 bin 目录下的 tree.exe 复制到 Git Bash 安装路径下的 usr/bin 文件夹下，即可使用 tree 命令。</p>
-<p>基本命令格式：<code>tree [-option] [dir]</code></p>
-<ul>
-<li>显示中文：<code>-N</code>。如果中文名是中文，不加 <code>-N</code> 有些电脑上是乱码的。</li>
-<li>选择展示的层级：<code>-L [n]</code>。</li>
-<li>只显示文件夹：<code>-d</code>。</li>
-<li>区分文件夹、普通文件、可执行文件：<code>-FC</code>。<code>C</code> 是加上颜色。</li>
-<li>起别名：<code>alias tree='tree -FCN'</code>。</li>
-<li>输出目录结构到文件： <code>tree -L 2 -I '*.js|node_modules|*.md|*.json|*.css|*.ht' &gt; tree.txt</code>。</li>
-</ul>
-<h3 id="wget">wget<a class="headerlink" href="#wget" title="页面定位">&para;</a></h3>
-<p>url 下载工具。</p>
-<p>下载地址：<a href="https://eternallybored.org/misc/wget/">Windows binaries of GNU Wget</a>，选择合适的版本和架构包进行下载。将 wget.exe 移动到 Git Bash 安装路径下的 usr/bin 文件夹下，即可使用 wget 命令。</p>
-<p>基本命令格式：<code>wget [url]</code></p>
-<ul>
-<li>指定文件名：<code>-O</code>。</li>
-<li>指定目录：<code>-P</code>。</li>
-<li>下载多个文件：<code>wget -i [url.txt]</code>。</li>
-<li>断点续传：<code>wget -c -t [n] [url]</code>。<code>n</code> 代表尝试的次数，<code>0</code> 代表一直尝试。</li>
-<li>后台执行：<code>wget -b [url]</code>。执行该命令的回显信息都会自动存储在 <code>wget.log</code> 文件中。</li>
-<li>下载一个网站的所有图片、视频和 pdf 文件：<code>wget -r -A.pdf url</code>。</li>
-</ul>
+<p>使用正则表达式在指定文件中进行模式匹配。<code>-n</code> 显示行号，<code>-i</code> 忽略大小写，<code>-r</code> 递归搜索，<code>-c</code> 打印匹配数量。</p>
 
 
 
@@ -6827,7 +5912,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月24日 10:32:59">2025年3月24日</span>
   </span>
 
     
@@ -6842,6 +5927,29 @@
 
     
     
+    
+      
+  <span class="md-source-file__fact">
+    
+      
+  <span class="md-icon" title="贡献者">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+  </span>
+  <span>GitHub</span>
+
+    
+    <nav>
+      
+        <a href="https://github.com/Explorer-Dong" class="md-author" title="@Explorer-Dong">
+          
+          <img src="https://avatars.githubusercontent.com/u/128051718?v=4&size=72" alt="Explorer-Dong">
+        </a>
+      
+      
+      
+    </nav>
+  </span>
+
     
   </aside>
 
@@ -6929,7 +6037,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../shell-basic/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Shell 基础">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 运维专栏简介">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6939,20 +6047,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                Shell 基础
+                运维专栏简介
               </div>
             </div>
           </a>
         
         
           
-          <a href="../nginx/nginx-commands/" class="md-footer__link md-footer__link--next" aria-label="下一页: Nginx 常用命令">
+          <a href="../gnu-linux-advanced/" class="md-footer__link md-footer__link--next" aria-label="下一页: GNU/Linux 进阶 (Ubuntu)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Nginx 常用命令
+                GNU/Linux 进阶 (Ubuntu)
               </div>
             </div>
             <div class="md-footer__button md-icon">

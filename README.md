@@ -1,4 +1,8 @@
-<div align="center"><img src="https://cdn.dwj601.cn/images/20250321124008628.png" alt="site logo" style="zoom:67%;" /></div>
+<div align="center">
+    <a href="https://wiki.dwj601.cn/">
+        <img src="https://cdn.dwj601.cn/images/20250321124008628.png" alt="site logo" style="zoom:40%;" />
+    </a>
+</div>
 
 本网站以「AI / CS 学科笔记」与「开发技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun OSS 双平台部署。如果您觉得内容不错，欢迎⭐。访问链接：
 

@@ -811,11 +811,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -827,7 +827,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1198,14 +1198,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5406,14 +5406,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5502,13 +5502,13 @@
 <li>纯半监督学习</li>
 <li>直推学习</li>
 </ol>
-<h2 id="未标记样本">未标记样本<a class="headerlink" href="#未标记样本" title="页面定位">&para;</a></h2>
+<h2 id="未标记样本">未标记样本</h2>
 <p>对未标记数据的分布进行假设，两种假设：</p>
 <ol>
 <li>簇状分布</li>
 <li>流形分布</li>
 </ol>
-<h2 id="生成式方法">生成式方法<a class="headerlink" href="#生成式方法" title="页面定位">&para;</a></h2>
+<h2 id="生成式方法">生成式方法</h2>
 <p>分别介绍「生成式方法」和「判别式方法」及其区别和联系。</p>
 <p>生成式方法：核心思想就是用联合分布 <span class="arithmatex">\(p(x,y)\)</span> 进行建模，即对特征分布 <span class="arithmatex">\(p(x)\)</span> 进行建模，十分关心数据是怎么来（生成）的。生成式方法需要对数据的分布进行合理的假设，这通常需要计算类先验概率 <span class="arithmatex">\(p(y)\)</span> 和特征条件概率 <span class="arithmatex">\(p(x\ |\ y)\)</span>，之后再在所有假设之上进行利用贝叶斯定理计算后验概率 <span class="arithmatex">\(p(y\ |\ x)\)</span>。典型的例子如：</p>
 <ul>
@@ -5525,15 +5525,15 @@
 <li>支持向量机</li>
 <li>条件随机场</li>
 </ul>
-<h2 id="自监督训练补">自监督训练（补）<a class="headerlink" href="#自监督训练补" title="页面定位">&para;</a></h2>
+<h2 id="自监督训练补">自监督训练（补）</h2>
 <p>根本思想就是利用有标记数据进行模型训练，然后对未标记数据进行预测，选择置信度较高的一些样本加入训练集重新训练模型，不断迭代进行直到最终训练出来一个利用大量未标记数据训练出来的模型。</p>
 <p>如何定义置信度高？我们利用信息熵的概念，即对于每一个测试样本都有一个预测向量，信息熵越大表明模型对其的预测结果越模糊，因此置信度高正比于信息熵小，将信息熵较小的测试样本打上「伪标记」加入训练集。</p>
-<h2 id="半监督-svm">半监督 SVM<a class="headerlink" href="#半监督-svm" title="页面定位">&para;</a></h2>
+<h2 id="半监督-svm">半监督 SVM</h2>
 <p>以经典 S3VM 中的经典算法 TSVM 为例。给出优化函数、算法图例、算法伪代码：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202406110812596.png" data-type="image" data-width="auto" data-height="auto" data-title="优化函数" data-desc-position="bottom"><img alt="优化函数" src="https://cdn.dwj601.cn/images/202406110812596.png" /></a></p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202406110817802.png" data-type="image" data-width="auto" data-height="auto" data-title="算法图例" data-desc-position="bottom"><img alt="算法图例" src="https://cdn.dwj601.cn/images/202406110817802.png" /></a></p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202406110812160.png" data-type="image" data-width="auto" data-height="auto" data-title="二分类 - 伪代码" data-desc-position="bottom"><img alt="二分类 - 伪代码" src="https://cdn.dwj601.cn/images/202406110812160.png" /></a></p>
-<h2 id="图半监督学习">图半监督学习<a class="headerlink" href="#图半监督学习" title="页面定位">&para;</a></h2>
+<h2 id="图半监督学习">图半监督学习</h2>
 <p>同样解决分类问题，以「迭代式标记传播算法」为例。</p>
 <p><strong>二分类</strong>，可以直接求出闭式解。</p>
 <p><strong>算法逻辑</strong>。每一个样本对应图中的一个结点，两个结点会连上一个边，边权正比于两结点样本的相似性。最终根据图中已知的某些结点进行传播标记即可。与基于密度的聚类算法类似，区别在于此处不同的簇 cluster 可能会对应同一个类别 class。</p>
@@ -5618,7 +5618,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

@@ -801,11 +801,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -817,7 +817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4418,14 +4418,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5405,14 +5405,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5496,7 +5496,7 @@
   <h1>Python 环境配置</h1>
 
 <p>本文记录 Python 的环境配置信息。</p>
-<h2 id="查看库的安装位置">查看库的安装位置<a class="headerlink" href="#查看库的安装位置" title="页面定位">&para;</a></h2>
+<h2 id="查看库的安装位置">查看库的安装位置</h2>
 <p>由于本地安装了多个 Python 解释器，想要打印某个版本的解释器下载的「包或模块」的路径，整理一下大约有两种方法。</p>
 <p>如果模块内置了 <code>__file__</code> 方法，则可以直接打印出来。比如下面的程序：</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
@@ -5523,12 +5523,12 @@
 <p><span class="caption-prefix">图 2. </span> 基于 pip 工具的运行结果</p>
 </figcaption>
 </figure>
-<h2 id="自动激活虚拟环境-vscode">自动激活虚拟环境 (VSCode)<a class="headerlink" href="#自动激活虚拟环境-vscode" title="页面定位">&para;</a></h2>
+<h2 id="自动激活虚拟环境-vscode">自动激活虚拟环境 (VSCode)</h2>
 <p>打开用户设置 json 文件。加一行下面的配置即可：</p>
 <div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nt">&quot;python.terminal.activateEnvInCurrentTerminal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 </span></code></pre></div></td></tr></table></div>
 <p>不过奇怪的是使用 VSCode 创建虚拟环境后虽然在终端显示了确实是对应的虚拟环境，但是使用诸如 <code>which pip</code> 或 <code>which python</code> 后，显示的都是默认的路径而非虚拟环境对应的路径。使用 Pycharm 在当前路径创建虚拟环境就可以正常识别出来。</p>
-<h2 id="自动生成-requirementstxt">自动生成 requirements.txt<a class="headerlink" href="#自动生成-requirementstxt" title="页面定位">&para;</a></h2>
+<h2 id="自动生成-requirementstxt">自动生成 requirements.txt</h2>
 <p>如果当前环境仅为当前项目独有，使用下面的命令即可：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </span></code></pre></div></td></tr></table></div>
@@ -5550,14 +5550,14 @@
 <p>基于 requirements.txt 文件安装依赖：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </span></code></pre></div></td></tr></table></div>
-<h2 id="解决安装时出现-0x80070422-和-0x80070643-报错">解决安装时出现 0x80070422 和 0x80070643 报错<a class="headerlink" href="#解决安装时出现-0x80070422-和-0x80070643-报错" title="页面定位">&para;</a></h2>
+<h2 id="解决安装时出现-0x80070422-和-0x80070643-报错">解决安装时出现 0x80070422 和 0x80070643 报错</h2>
 <p>本质原因是之前没有按照官方程序卸载 Python。需要到注册表里彻底删掉对应的文件，在下面的三个路径下一一尝试，删除对应的版本的 Python 文件即可：</p>
 <ul>
 <li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall</code></li>
 <li><code>HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall</code></li>
 <li><code>HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall</code></li>
 </ul>
-<h2 id="更换-pip-下载源">更换 pip 下载源<a class="headerlink" href="#更换-pip-下载源" title="页面定位">&para;</a></h2>
+<h2 id="更换-pip-下载源">更换 pip 下载源</h2>
 <p>默认的 pip 会从国外 PyPI 拉取库，要么本地有代理加速，要么换镜像源。</p>
 <p>镜像源列表：</p>
 <ul>
@@ -5653,7 +5653,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

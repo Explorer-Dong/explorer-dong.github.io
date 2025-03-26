@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#度量指标" class="md-skip">
+        <a href="#回归任务" class="md-skip">
           跳转至
         </a>
       
@@ -811,11 +811,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -827,7 +827,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1226,28 +1226,18 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#度量指标" class="md-nav__link">
-    <span class="md-ellipsis">
-      度量指标
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="度量指标">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#回归任务" class="md-nav__link">
     <span class="md-ellipsis">
       回归任务
@@ -1255,8 +1245,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#二分类任务" class="md-nav__link">
     <span class="md-ellipsis">
       二分类任务
@@ -1264,18 +1254,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#多分类任务" class="md-nav__link">
     <span class="md-ellipsis">
       多分类任务
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -5452,28 +5437,18 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#度量指标" class="md-nav__link">
-    <span class="md-ellipsis">
-      度量指标
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="度量指标">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#回归任务" class="md-nav__link">
     <span class="md-ellipsis">
       回归任务
@@ -5481,8 +5456,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#二分类任务" class="md-nav__link">
     <span class="md-ellipsis">
       二分类任务
@@ -5490,18 +5465,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#多分类任务" class="md-nav__link">
     <span class="md-ellipsis">
       多分类任务
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -5590,19 +5560,19 @@
 
   <h1>评估</h1>
 
-<p>对于预测任务，机器学习就是学习出一个最佳模型从而在未知数据上进行预测。那我们应当如何评价一个模型的好坏从而选择最佳模型呢？本节首先介绍预测任务模型的度量指标，然后从理论的角度分析模型误差的来源，最后简单讲讲超参调优策略。</p>
-<h2 id="度量指标">度量指标<a class="headerlink" href="#度量指标" title="页面定位">&para;</a></h2>
-<h3 id="回归任务">回归任务<a class="headerlink" href="#回归任务" title="页面定位">&para;</a></h3>
+<p>模型在训练（学习、拟合）的过程中，必须要有一个目标，比如最小化目标函数或最大化目标函数，这里的目标函数都可以转化为损失函数，因此下文这两个概念不做区分。</p>
+<p>而目标函数不光可以用来训练模型，也可以评估模型。因此我们以评估模型为引，详细展开各个学习任务中常用的目标函数以及评估指标。最后简单介绍一下模型损失的来源以及超参调优的策略。</p>
+<h2 id="回归任务">回归任务</h2>
 <p>对于回归任务，模型输出的是一个具体的实数。常见的度量指标如下。</p>
-<p><strong>均方误差 (Mean Square Error, MSE)</strong>。即模型预测值 <span class="arithmatex">\(f(\boldsymbol{x}_i)\)</span> 与标签值 <span class="arithmatex">\(y_i\)</span> 的平均平方误差，也就是所谓的方差。取值范围为 <span class="arithmatex">\([0,+\infty]\)</span>，越小越好。如下式：
-$$
+<p><strong>均方误差 (Mean Square Error, MSE)</strong>。即模型预测值 <span class="arithmatex">\(f(\boldsymbol{x}_i)\)</span> 与标签值 <span class="arithmatex">\(y_i\)</span> 的平均平方误差，也就是所谓的方差。取值范围为 <span class="arithmatex">\([0,+\infty]\)</span>，越小越好。如下式：</p>
+<div class="arithmatex">\[
 \text{MSE} =\frac{1}{N} \sum_{i = 1}^N (f(\boldsymbol{x}_i) - y_i)^2
-$$</p>
+\]</div>
 <p><strong><span class="arithmatex">\(R^2\)</span> 分数</strong>。取值范围为 <span class="arithmatex">\([-\infty,1]\)</span>，越大越好。如下式：</p>
 <div class="arithmatex">\[
 R^2 = 1 - \frac{\sum_{i = 1}^N(f(\boldsymbol{x}_i)-y_i)^2}{\sum_{i = 1}^N(\bar{y} - y_i)^2},\quad \bar{y} = \frac{1}{N}\sum_{i = 1}^N y_i
 \]</div>
-<h3 id="二分类任务">二分类任务<a class="headerlink" href="#二分类任务" title="页面定位">&para;</a></h3>
+<h2 id="二分类任务">二分类任务</h2>
 <p>对于二分类任务，模型输出的大多都是样本属于正例的概率。常见的度量指标如下。</p>
 <p><strong>混淆矩阵 (confusion matrix)</strong>。二分类模型的预测结果。</p>
 <figure id="__tc_1">
@@ -5690,10 +5660,10 @@ R^2 = 1 - \frac{\sum_{i = 1}^N(f(\boldsymbol{x}_i)-y_i)^2}{\sum_{i = 1}^N(\bar{y
 </tbody>
 </table>
 </figure>
-<p>由于实际场景中需要「兼顾查准率和查全率」同时可能需要对其中一个有所偏好，我们引入 <span class="arithmatex">\(F_{\beta}\)</span> 分数。当 <span class="arithmatex">\(\beta=1\)</span> 时就是标准的 F1 分数，当 <span class="arithmatex">\(\beta&gt;1\)</span> 时对查全率有偏好，当 <span class="arithmatex">\(\beta&lt;1\)</span> 时对查准率有偏好。<span class="arithmatex">\(F_{\beta}\)</span> 分数如下式：
-$$
+<p>由于实际场景中需要「兼顾查准率和查全率」同时可能需要对其中一个有所偏好，我们引入 <span class="arithmatex">\(F_{\beta}\)</span> 分数。当 <span class="arithmatex">\(\beta=1\)</span> 时就是标准的 F1 分数，当 <span class="arithmatex">\(\beta&gt;1\)</span> 时对查全率有偏好，当 <span class="arithmatex">\(\beta&lt;1\)</span> 时对查准率有偏好。<span class="arithmatex">\(F_{\beta}\)</span> 分数如下式：</p>
+<div class="arithmatex">\[
 F_{\beta} = \frac{(1+\beta^2) \cdot P \cdot R}{\beta^2\cdot P + R}
-$$</p>
+\]</div>
 <p>上述指标都是针对一个混淆矩阵展开，如果需要度量「二分类模型的泛化能力」是远远不够的。为此我们引入 P-R 曲线和 ROC 曲线。两者的产生方式相同，都是：根据二分类模型对测试数据类别的预测概率划分一个阈值，并将预测概率超过阈值的判定为正例，低于阈值的判定为负例。然后将阈值依次选择为每个样本（假设为 <span class="arithmatex">\(N\)</span> 个测试样本）的预测概率值进行二分类即可得到 <span class="arithmatex">\(N\)</span> 个混淆矩阵，进而得到曲线中的 <span class="arithmatex">\(N\)</span> 个数据点。</p>
 <p><strong>P-R 曲线</strong>。横坐标为查全率 (Recall)，纵坐标为查准率 (Precision)。</p>
 <figure id="__fc_1">
@@ -5725,7 +5695,7 @@ $$</p>
 <p>曲线解读。不同曲线同样对应了不同模型的泛化能力。我们用「ROC 曲线下方的面积 (Area Under ROC Curve, AUC)」来衡量模型的泛化能力，面积越大则对应模型的泛化性能越好。取值范围为 <span class="arithmatex">\([0.5,1]\)</span>，其中 <span class="arithmatex">\(0.5\)</span> 表示模型进行随机预测的性能。</p>
 </li>
 </ul>
-<h3 id="多分类任务">多分类任务<a class="headerlink" href="#多分类任务" title="页面定位">&para;</a></h3>
+<h2 id="多分类任务">多分类任务</h2>
 <p>我们可以将多分类问题拆分为多个二分类问题（假设为 <span class="arithmatex">\(n\)</span> 个），从而可以获得多个混淆矩阵。根据求平均顺序的不同，多分类任务的度量指标分为「宏」与「微」两个类别。其中宏是先求指标再取平均，微是先取平均再求指标。</p>
 <figure id="__tc_4">
 <figcaption>
@@ -5756,8 +5726,8 @@ $$</p>
 </tbody>
 </table>
 </figure>
-<h2 id="模型误差">模型误差<a class="headerlink" href="#模型误差" title="页面定位">&para;</a></h2>
-<h3 id="误差类别">误差类别<a class="headerlink" href="#误差类别" title="页面定位">&para;</a></h3>
+<h2 id="模型误差">模型误差</h2>
+<h3 id="误差类别">误差类别</h3>
 <p>知道了数据集的划分策略后，针对不同的数据，模型会对应不同的误差。有以下四种：</p>
 <ul>
 <li>训练误差。针对训练数据而言，即模型在训练集上的预测错误率。训练轮数越多或模型的复杂度越高，训练误差越小；</li>
@@ -5773,7 +5743,7 @@ $$</p>
 </figcaption>
 </figure>
 <p>可以看到，模型复杂度不够就会欠拟合导致测试误差较高，模型复杂度过高就会过拟合也会导致测试误差较高。</p>
-<h3 id="误差规避">误差规避<a class="headerlink" href="#误差规避" title="页面定位">&para;</a></h3>
+<h3 id="误差规避">误差规避</h3>
 <p>为了避免模型发生欠拟合或过拟合，我们需要对模型做出一些约束或者设置一些训练策略。</p>
 <p><strong>欠拟合解决方法</strong>。欠拟合就说明模型复杂度不够，我们需要增加模型的复杂度，常见的规避欠拟合的方法如下：</p>
 <ul>
@@ -5830,7 +5800,7 @@ $$</p>
 </figure>
 <p>通过给目标函数添加正则化项，不仅可以防止过拟合，其中的 <span class="arithmatex">\(L_1\)</span> 正则化项还可以进行特征选择，因为其使得不重要特征的系数被惩罚得很小，通过特征选择也可以降低计算量从而提升计算效率。</p>
 <p>然而给目标函数添加正则化项并非万金油选项。在整个目标函数中正则化项有着举足轻重的意义，一旦正则化项的系数发生了微小的变动，对于整个模型的影响都是巨大的。因此有时添加正则化项并不一定能带来泛化性能的提升。</p>
-<h3 id="误差来源">误差来源<a class="headerlink" href="#误差来源" title="页面定位">&para;</a></h3>
+<h3 id="误差来源">误差来源</h3>
 <p>如何从理论上来解释模型的泛化误差呢？我们引入「偏差方差分解」理论。</p>
 <p>在此之前我们需要知道偏差、方差和噪声的基本定义：</p>
 <ul>
@@ -5867,7 +5837,7 @@ E(f; D) = bias^2(x) + var(x) + \epsilon^2
 <p><span class="caption-prefix">图 4. </span> 泛化误差与偏差、方差的关系示意图</p>
 </figcaption>
 </figure>
-<h2 id="超参调优">超参调优<a class="headerlink" href="#超参调优" title="页面定位">&para;</a></h2>
+<h2 id="超参调优">超参调优</h2>
 <p>所谓的调参，是基于超参数进行的。我们知道一个模型有「可训练」的参数和「不可训练」的超参数，调参调的就是这里的超参数。在将数据集划分为训练集、验证集和测试集的情况下，一般使用训练集学习可训练的参数，使用验证集来度量不同超参数组合下的模型性能，得到最佳的超参数组合后才能最终使用测试集进行测试。</p>
 <p>常见的 <a href="https://zhuanlan.zhihu.com/p/234509605">超参调优方法</a> 有：网格搜索、随机搜索、贝叶斯优化。</p>
 
@@ -5892,7 +5862,7 @@ E(f; D) = bias^2(x) + var(x) + \epsilon^2
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月26日 05:37:49">2025年3月26日</span>
   </span>
 
     
@@ -5945,7 +5915,7 @@ E(f; D) = bias^2(x) + var(x) + \epsilon^2
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

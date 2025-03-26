@@ -801,11 +801,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -817,7 +817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4146,14 +4146,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -4209,39 +4209,6 @@
       服务器端
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="服务器端">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#git-hooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Git Hooks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nginx" class="md-nav__link">
-    <span class="md-ellipsis">
-      Nginx
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -5474,14 +5441,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5537,39 +5504,6 @@
       服务器端
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="服务器端">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#git-hooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Git Hooks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nginx" class="md-nav__link">
-    <span class="md-ellipsis">
-      Nginx
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -5639,7 +5573,7 @@
 
   <h1>Hexo 部署指南</h1>
 
-<h2 id="前言">前言<a class="headerlink" href="#前言" title="页面定位">&para;</a></h2>
+<h2 id="前言">前言</h2>
 <pre class="mermaid"><code>graph LR
   A(部署 Hexo)
   S1(基于 GitHub Pages)
@@ -5652,9 +5586,9 @@
   S1 --&gt; m1
   S1 --&gt; m2
   S2 --&gt; m3</code></pre>
-<h2 id="基于-hexo-deploy-git">基于 hexo-deploy-git<a class="headerlink" href="#基于-hexo-deploy-git" title="页面定位">&para;</a></h2>
+<h2 id="基于-hexo-deploy-git">基于 hexo-deploy-git</h2>
 <p>该方法在 <a href="../build-your-own-website-with-hexo/#部署云端">Hexo 建站指南</a> 中已详细介绍，不再赘述。</p>
-<h2 id="基于-github-actions">基于 GitHub Actions<a class="headerlink" href="#基于-github-actions" title="页面定位">&para;</a></h2>
+<h2 id="基于-github-actions">基于 GitHub Actions</h2>
 <p>该方法可以利用 GitHub Actions 的 CI/CD 功能，省去「本地构建」与「手动部署」的操作，让 GitHub 平台帮助我们完成这两步操作，从而让我们只需要像维护项目代码一样专注于内容创作与版本管理，而无需关心其他任何事情。下面以「源码和站点同属一个仓库」的情景为例介绍具体地操作与工作流配置。</p>
 <p>1）创建一个空 GitHub 仓库、创建一个鉴权 token（该 token 可以让 GitHub Actions 以你的身份操作你的仓库）、赋予 GitHub Actions 读写权限</p>
 <p>创建一个鉴权 token：<code>头像 &gt;&gt; Settings &gt;&gt; Developer settings &gt;&gt; Personal access tokens &gt;&gt; Tokens (classic)</code></p>
@@ -5744,14 +5678,14 @@
 <p>6）在 GitHub Pages 上配置站点托管分支 <code>Settings &gt;&gt; Pages &gt;&gt; Build and deployment</code></p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501230103361.png" data-type="image" data-width="auto" data-height="auto" data-title="在 GitHub Pages 上配置站点托管分支：Settings &gt;&gt; Pages &gt;&gt; Build and deployment" data-desc-position="bottom"><img alt="在 GitHub Pages 上配置站点托管分支：Settings &gt;&gt; Pages &gt;&gt; Build and deployment" src="https://cdn.dwj601.cn/images/202501230103361.png" /></a></p>
 <p>GitHub Pages 按照上述工作流的指令，检测到 push 后开始执行，即 checkout、generate 和 deploy。等待所有流程结束后，重新加载 <code>https://&lt;username&gt;.github.io/&lt;project&gt;/</code> 就可以发现站点已经托管成功了！</p>
-<h2 id="基于-git-hooks">基于 Git Hooks<a class="headerlink" href="#基于-git-hooks" title="页面定位">&para;</a></h2>
+<h2 id="基于-git-hooks">基于 Git Hooks</h2>
 <p>由于 GitHub Pages 服务使用的服务器在美丽国，不用魔法访问速度过慢，国内平替 Gitee Pages 已经停止服务了。故综合考虑还是部署到国内服务器上。当然这前提是你应已拥有一台国内备案的 <a href="https://www.aliyun.com/product/ecs?userCode=jpec1z57">云服务器</a> 和一个 <a href="https://wanwang.aliyun.com/domain/">域名</a>。如果觉得备案太麻烦，可以考虑入手一台 <a href="https://www.aliyun.com/product/ecs?userCode=jpec1z57">香港云服务器</a>。下面将基于 Git Hooks 工具，介绍如何将自己的 Hexo 静态博客项目部署到阿里云服务器上并持续集成、持续部署。</p>
-<h3 id="云平台端">云平台端<a class="headerlink" href="#云平台端" title="页面定位">&para;</a></h3>
+<h3 id="云平台端">云平台端</h3>
 <p>1）域名解析。我们需要将自己的域名指向自己的服务器 IP，下图中记录值即你的云服务器 IP 地址</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404051247292.png" data-type="image" data-width="auto" data-height="auto" data-title="域名解析" data-desc-position="bottom"><img alt="域名解析" src="https://cdn.dwj601.cn/images/202404051247292.png" /></a></p>
-<h3 id="服务器端">服务器端<a class="headerlink" href="#服务器端" title="页面定位">&para;</a></h3>
+<h3 id="服务器端">服务器端</h3>
 <p>使用终端连接工具连接到服务器后开始下面的操作。常用连接工具比如 MobaXterm。</p>
-<h4 id="git-hooks">Git Hooks<a class="headerlink" href="#git-hooks" title="页面定位">&para;</a></h4>
+<h4 id="git-hooks">Git Hooks</h4>
 <p>1）新建服务器用户。由于 root 用户的权限过大不够安全，因此我们创建一个新用户并赋予持续集成的权限</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
@@ -5814,7 +5748,7 @@
 </span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="c1"># 将站点目录的所有权移交给 git 用户</span>
 </span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22"></a>chown<span class="w"> </span>-R<span class="w"> </span>git:git<span class="w"> </span>/home/www/blog
 </span></code></pre></div></td></tr></table></div>
-<h4 id="ssh">SSH<a class="headerlink" href="#ssh" title="页面定位">&para;</a></h4>
+<h4 id="ssh">SSH</h4>
 <p>为了绝对的自动化 CD，就需要避免所有的人为干预，例如要避免本地机与云主机通信时手动输入密码的操作，可以借助 SSH 来规避这个问题。</p>
 <p>1）本地生成密钥（公钥 + 私钥），连按三次回车即可生成默认配置的密钥（如果本地已经有密钥对了，这一步可以跳过）</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>ssh-keygen
@@ -5833,7 +5767,7 @@
 </span></code></pre></div></td></tr></table></div>
 <p>首次连接需要输入一个 <code>yes</code> 用来在本地存储主机信息。如果不需要输入密码就进入了命令行界面，表示 ssh 通信建立成功！</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404071826099.png" data-type="image" data-width="auto" data-height="auto" data-title="ssh 连接成功" data-desc-position="bottom"><img alt="ssh 连接成功" src="https://cdn.dwj601.cn/images/202404071826099.png" /></a></p>
-<h4 id="nginx">Nginx<a class="headerlink" href="#nginx" title="页面定位">&para;</a></h4>
+<h4 id="nginx">Nginx</h4>
 <p>Nginx 实现了主机虚拟化的功能，即一台主机可以通过 Nginx 的分发功能对外提供多种服务。如果需要向外提供 https 服务，还需要准备一个 <a href="https://www.aliyun.com/product/cas?userCode=jpec1z57">SSL 证书</a>。然后在服务器上下载安装 Nginx 并编辑 nginx.conf 文件（以我的配置为例）</p>
 <div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
@@ -5867,7 +5801,7 @@
 </span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="本地机端">本地机端<a class="headerlink" href="#本地机端" title="页面定位">&para;</a></h3>
+<h3 id="本地机端">本地机端</h3>
 <p>我们在本地的 Hexo 项目中，编辑 <code>_config.yml</code> 文件。</p>
 <p>url 字段修改为自己的域名：</p>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://blog.dwj601.cn</span>
@@ -5877,7 +5811,7 @@
 <p>最后我们在本地只需要执行 <code>hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</code> 即可实现一步部署到自己的服务器！</p>
 <p>部署后可以进入服务器的 <code>--work-tree</code> 目录，检查站点是否被 checkout 过来。下图表示 checkout 成功：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404071837567.png" data-type="image" data-width="auto" data-height="auto" data-title="checkout 成功" data-desc-position="bottom"><img alt="checkout 成功" src="https://cdn.dwj601.cn/images/202404071837567.png" /></a></p>
-<h3 id="原理">原理<a class="headerlink" href="#原理" title="页面定位">&para;</a></h3>
+<h3 id="原理">原理</h3>
 <p><strong>Hexo 持续部署的原理</strong>。如下图所示（我自己画的，如有不对请及时矫正）</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404081614614.jpg" data-type="image" data-width="auto" data-height="auto" data-title="Hexo 持续部署的原理图" data-desc-position="bottom"><img alt="Hexo 持续部署的原理图" src="https://cdn.dwj601.cn/images/202404081614614.jpg" /></a></p>
 <p><strong>Git Hooks 的定义与工作原理</strong>。可以将其类比 github workflows，可以在我们做出某些行为的前后自动执行一些我们预设定的任务。此处使用到的就是 post-receive 任务，<a href="https://git-scm.com/docs/githooks#post-receive">原文</a> 是这样解释的：</p>
@@ -5891,7 +5825,7 @@
 </blockquote>
 <p>用一张图来更加清晰直观的理解：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404081642038.png" data-type="image" data-width="auto" data-height="auto" data-title="SSH 工作原理图" data-desc-position="bottom"><img alt="SSH 工作原理图" src="https://cdn.dwj601.cn/images/202404081642038.png" /></a></p>
-<h3 id="参考">参考<a class="headerlink" href="#参考" title="页面定位">&para;</a></h3>
+<h3 id="参考">参考</h3>
 <p><a href="https://www.glimound.com/build-hexo-blog/">基于 Hexo 的静态博客网站搭建并部署至云服务器</a></p>
 <p><a href="https://www.runoob.com/linux/linux-comm-chmod.html">Linux chmod 命令</a></p>
 <p><a href="https://www.runoob.com/linux/linux-comm-chown.html">Linux chown 命令</a></p>
@@ -5973,7 +5907,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

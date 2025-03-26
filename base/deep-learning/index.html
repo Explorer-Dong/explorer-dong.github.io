@@ -811,11 +811,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../digital-signal-processing/" class="md-nav__link ">
+            <a href="../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -827,7 +827,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5320,14 +5320,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5494,21 +5494,21 @@
 
   <h1>深度学习导读</h1>
 
-<h2 id="前言">前言<a class="headerlink" href="#前言" title="页面定位">&para;</a></h2>
+<h2 id="前言">前言</h2>
 <p>本文记录深度学习入门笔记。教材主要参考邱锡鹏老师的《神经网络与深度学习》<sup id="fnref:book"><a class="footnote-ref" href="#fn:book">1</a></sup> <sup id="fnref:nndl"><a class="footnote-ref" href="#fn:nndl">2</a></sup> <sup id="fnref:nndl github"><a class="footnote-ref" href="#fn:nndl github">3</a></sup>，其余参考内容：</p>
 <ul>
 <li>代码框架：<a href="https://pytorch.org/docs/stable/index.html">PyTorch</a>；</li>
 <li>教学视频：<a href="https://space.bilibili.com/3129054/lists/874339">Karpathy 的教学视频</a>；</li>
 <li>动手实践：<a href="https://zh.d2l.ai/index.html">《动手学深度学习（PyTorch 版）》</a>。</li>
 </ul>
-<h2 id="绪论">绪论<a class="headerlink" href="#绪论" title="页面定位">&para;</a></h2>
+<h2 id="绪论">绪论</h2>
 <p><strong>表示学习是什么</strong>？与传统的特征工程目的一致，为了得到数据中的更好的特征。不同的是，特征工程中的特征选择、特征映射等策略都是手动可控的方式，而表示学习就是利用深度神经网络从数据中自动学习高层的有效特征。</p>
 <p><strong>深度学习是什么</strong>？我们知道机器学习就是在「手动处理完特征」后，构建对应的模型「预测输出」。而深度学习就是将机器学习的手动特征工程也用模型进行「表示学习」来学习出有效特征，然后继续构建模型「预测输出」。如下图所示：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409121508150.png" data-type="image" data-width="auto" data-height="auto" data-title="深度学习的数据处理流程" data-desc-position="bottom"><img alt="深度学习的数据处理流程" src="https://cdn.dwj601.cn/images/202409121508150.png" /></a></p>
 <p><strong>为什么会有深度学习</strong>？最简单的一点就是，很多特征我们根本没法定义一种表示规则来表示特征，比如说对于图像，怎么定义复杂的图像的特征呢？比如说对于音频，又怎么定义复杂的音频的特征呢？没办法，我们直接学特征！</p>
 <p><strong>神经网络是什么</strong>？就是万千模型中的一种，仅此而已。</p>
 <p><strong>为什么用神经网络进行深度学习</strong>？有了上面对深度学习定义的理解，可以发现其中最具有挑战性的特点就是，模型怎么知道什么才是好特征？什么是不好的特征？神经网络可以很好的解决这个问题。通过由浅到深层层神经元的特征提取，深层的神经元就可以学习更高语义的特征，并且通过这种方式也可以实现「端到端」的学习方式，而不用像机器学习的方法那样，先选特征再学习。并且神经网络模型也可以很好的解决深度学习中特征的「贡献度分配」问题。</p>
-<h2 id="人工神经元">人工神经元<a class="headerlink" href="#人工神经元" title="页面定位">&para;</a></h2>
+<h2 id="人工神经元">人工神经元</h2>
 <figure id="__fc_1">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404021447476.png" data-type="image" data-width="auto" data-height="auto" data-title="人工神经元模型" data-desc-position="bottom"><img alt="人工神经元模型" src="https://cdn.dwj601.cn/images/202404021447476.png" /></a></p>
 <figcaption>
@@ -5522,10 +5522,10 @@
 <li>斜坡函数。例如 ReLU 函数；</li>
 <li>Swish 函数。复合函数。</li>
 </ul>
-<h2 id="全连接神经网络">全连接神经网络<a class="headerlink" href="#全连接神经网络" title="页面定位">&para;</a></h2>
+<h2 id="全连接神经网络">全连接神经网络</h2>
 <p>全连接神经网络 (Full Connect Neural Network) 又称前馈神经网络 (Feedforward Neural Network)、感知机 (Perceptron)，是深度神经网络模型的开山鼻祖，通过向前传递数据，向后更新参数，实现学习和拟合的功能。</p>
 <p>全连接神经网络模型的学习准则一般采用交叉熵损失，优化算法一般采用小批量随机梯度下降 (Mini-batch Stochastic Gradient Descent, 简称 Mini-batch SGD) 算法。</p>
-<h3 id="模型">模型<a class="headerlink" href="#模型" title="页面定位">&para;</a></h3>
+<h3 id="模型">模型</h3>
 <figure id="__fc_2">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404090923723.png" data-type="image" data-width="auto" data-height="auto" data-title="两层全连接神经网络" data-desc-position="bottom"><img alt="两层全连接神经网络" src="https://cdn.dwj601.cn/images/202404090923723.png" /></a></p>
 <figcaption>
@@ -5561,13 +5561,13 @@
 <li>隐层到输出层的 <span class="arithmatex">\(q\times l\)</span> 个权值 <span class="arithmatex">\(w_{hj}(h=1,2,\cdots,q,\ j=1,2,\cdots,l)\)</span></li>
 <li>输出层的 <span class="arithmatex">\(l\)</span> 个神经元的阈值 <span class="arithmatex">\(\theta_j(j=1,2,\cdots,l)\)</span></li>
 </ul>
-<h3 id="学习准则">学习准则<a class="headerlink" href="#学习准则" title="页面定位">&para;</a></h3>
+<h3 id="学习准则">学习准则</h3>
 <p>假设每次输入一个训练样本进行参数更新（即 batch size = 1）。由于网络输出内容是实数，因此我们定义目标函数 <span class="arithmatex">\(\mathcal L\)</span> 为当前训练样本的「均方误差」。那么对于第 <span class="arithmatex">\(k\)</span> 个训练样本，就有如下损失：</p>
 <div class="arithmatex">\[
 \mathcal L_k = \frac{1}{2} \sum _{j = 1}^l (\hat y_j^k - y_j^k)^2
 \]</div>
 <p>其中：为了求导方便，添加一个常量 <span class="arithmatex">\(\dfrac{1}{2}\)</span>。<span class="arithmatex">\(\hat y\)</span> 为样本真实值，<span class="arithmatex">\(y\)</span> 为样本预测值。</p>
-<h3 id="优化算法">优化算法<a class="headerlink" href="#优化算法" title="页面定位">&para;</a></h3>
+<h3 id="优化算法">优化算法</h3>
 <p>在进行梯度下降时，经过简单的推导可以发现，第 <span class="arithmatex">\(l\)</span> 层的损失 <span class="arithmatex">\(\delta (l)\)</span> 依赖于后一项的损失 <span class="arithmatex">\(\delta(l+1)\)</span>，于是参数更新的逻辑就是从输出层开始逐层往后更新，直到第一层隐藏层。为此，我们引入著名的优化算法：误差逆传播算法 (error Back Propagation, BP)，其算法流程如下图所示：</p>
 <figure id="__fc_3">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250311102803885.png" data-type="image" data-width="auto" data-height="auto" data-title="误差逆传播算法流程" data-desc-position="bottom"><img alt="误差逆传播算法流程" src="https://cdn.dwj601.cn/images/20250311102803885.png" /></a></p>
@@ -5602,13 +5602,13 @@ v_{ih} &amp;\leftarrow v_{ih}+\Delta v_{ih} \\
 <p>输入层到隐层的权重、隐层神经元的阈值：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404092223804.jpg" data-type="image" data-width="auto" data-height="auto" data-title="输入层到隐层的权重、隐层神经元的阈值" data-desc-position="bottom"><img alt="输入层到隐层的权重、隐层神经元的阈值" src="https://cdn.dwj601.cn/images/202404092223804.jpg" /></a></p>
 </details>
-<h2 id="卷积神经网络">卷积神经网络<a class="headerlink" href="#卷积神经网络" title="页面定位">&para;</a></h2>
+<h2 id="卷积神经网络">卷积神经网络</h2>
 <p>为了解决全连接网络不能学习到局部不变性的缺点，卷积网络应运而生。卷积网络有三大特征：局部连接、权重共享、时/间上的次采样。</p>
-<h3 id="卷积方式">卷积方式<a class="headerlink" href="#卷积方式" title="页面定位">&para;</a></h3>
+<h3 id="卷积方式">卷积方式</h3>
 <p>等宽卷积、宽卷积、窄卷积；</p>
 <p>转置卷积；</p>
 <p>空洞卷积。</p>
-<h3 id="卷积网络">卷积网络<a class="headerlink" href="#卷积网络" title="页面定位">&para;</a></h3>
+<h3 id="卷积网络">卷积网络</h3>
 <p>卷积神经网络的典型结构如下图所示：</p>
 <figure id="__fc_4">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410311351161.png" data-type="image" data-width="auto" data-height="auto" data-title="卷积神经网络的典型结构" data-desc-position="bottom"><img alt="卷积神经网络的典型结构" src="https://cdn.dwj601.cn/images/202410311351161.png" /></a></p>
@@ -5627,9 +5627,9 @@ v_{ih} &amp;\leftarrow v_{ih}+\Delta v_{ih} \\
 <li>GoogleNet。</li>
 <li>DenseNet。</li>
 </ul>
-<h3 id="参数学习">参数学习<a class="headerlink" href="#参数学习" title="页面定位">&para;</a></h3>
+<h3 id="参数学习">参数学习</h3>
 <p>同样是反向传播算法通过梯度下降进行优化。</p>
-<h2 id="循环神经网络">循环神经网络<a class="headerlink" href="#循环神经网络" title="页面定位">&para;</a></h2>
+<h2 id="循环神经网络">循环神经网络</h2>
 <p>监督学习任务：</p>
 <ol>
 <li>序列到类别模式。例如「序列分类」中的情感分类任务：给定一个语言序列，分析序列的类别；</li>
@@ -5641,7 +5641,7 @@ v_{ih} &amp;\leftarrow v_{ih}+\Delta v_{ih} \\
 <li>传统机器学习方法：自回归模型。具体的，模型 <span class="arithmatex">\(y_i=\beta_0 + \beta_1 y_{i-1} + \beta_2 y_{i-2} + \cdots + \beta_p y_{i-p}\)</span> 被称为 P 阶自回归模型。可以看出这种模型仅仅利用到了标签值并且定义当前标签值与曾经的标签值呈线性关系；</li>
 <li>前沿深度学习方法：RNN 模型、LSTM 模型、时序卷积模型、Transformer。</li>
 </ul>
-<h2 id="网络优化">网络优化<a class="headerlink" href="#网络优化" title="页面定位">&para;</a></h2>
+<h2 id="网络优化">网络优化</h2>
 <p>为了能够让一个网络模型「训练速度更快」和「泛化性能更好」，我们可以采用各种网络优化策略。针对一个神经网络，可以有如下五个角度的网路优化策略。</p>
 <p>更好的优化算法：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202412201527036.png" data-type="image" data-width="auto" data-height="auto" data-title="更好的优化算法" data-desc-position="bottom"><img alt="更好的优化算法" src="https://cdn.dwj601.cn/images/202412201527036.png" /></a></p>
@@ -5759,7 +5759,7 @@ v_{ih} &amp;\leftarrow v_{ih}+\Delta v_{ih} \\
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

@@ -801,11 +801,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -817,7 +817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -3671,14 +3671,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5573,14 +5573,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5838,7 +5838,7 @@
 <p class="admonition-title">施工中</p>
 <p>未纳入前言导读表中的题目表示还没有更新。计划在 2025 年 5 月前更新完 <a href="../">配套习题</a> 部分的所有题解。</p>
 </div>
-<h2 id="前言">前言<a class="headerlink" href="#前言" title="页面定位">&para;</a></h2>
+<h2 id="前言">前言</h2>
 <p>本文精选一些「进阶算法」的例题并进行详细的原理讲解与代码实现。算法标签主要是「动态规划、字符串、计算几何、图论、博弈论、数学」。题目来源主要是 Codeforces、洛谷、LeetCode。</p>
 <p>为了提升阅读效率，我将题目的重要元信息单独罗列为了一张表格，可以按照自己的实际需求按需跳转阅读。</p>
 <figure>
@@ -5866,11 +5866,11 @@
 </tbody>
 </table>
 </figure>
-<h2 id="动态规划">动态规划<a class="headerlink" href="#动态规划" title="页面定位">&para;</a></h2>
+<h2 id="动态规划">动态规划</h2>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202408291538900.png" data-type="image" data-width="auto" data-height="auto" data-title="被动转移 vs 主动转移" data-desc-position="bottom"><img alt="被动转移 vs 主动转移" src="https://cdn.dwj601.cn/images/202408291538900.png" /></a></p>
 <p>动态规划的「例题解析」。</p>
 <p>动态规划分为被动转移和主动转移，而其根本在于状态表示和状态转移。如何<strong>完整表示</strong>所有状态？如何<strong>不重不漏</strong>划分子集从而进行状态转移？</p>
-<h3 id="递推">递推<a class="headerlink" href="#递推" title="页面定位">&para;</a></h3>
+<h3 id="递推">递推</h3>
 <p>反转字符串：<a href="https://www.acwing.com/problem/content/5574/">https://www.acwing.com/problem/content/5574/</a></p>
 <blockquote>
 <p>题意：给定 n 个字符串，每一个字符串对应一个代价 <span class="arithmatex">\(w_i\)</span>，现在需要对这 n 个字符串进行可能的翻转操作使得最终的 n 个字符串呈现字典序上升的状态，给出最小翻转代价。</p>
@@ -6723,7 +6723,7 @@ k:= z_{i-1}+ \left\lceil \log_2(\frac{\log_2 {a_{i-1}}}{\log_2{a_i}}) \right \rc
 </span><span id="__span-8-51"><a id="__codelineno-8-51" name="__codelineno-8-51"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-8-52"><a id="__codelineno-8-52" name="__codelineno-8-52"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="线性-dp">线性 dp<a class="headerlink" href="#线性-dp" title="页面定位">&para;</a></h3>
+<h3 id="线性-dp">线性 dp</h3>
 <p>最小化网络并发线程分配</p>
 <p><a href="https://vijos.org/d/nnu_contest/p/1492">https://vijos.org/d/nnu_contest/p/1492</a></p>
 <blockquote>
@@ -7617,7 +7617,7 @@ dp[i]=\sum_{j=1}^{\left\lfloor i/2 \right\rfloor}dp[j]+1
 </span><span id="__span-20-44"><a id="__codelineno-20-44" name="__codelineno-20-44"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-20-45"><a id="__codelineno-20-45" name="__codelineno-20-45"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="网格图dp">网格图dp<a class="headerlink" href="#网格图dp" title="页面定位">&para;</a></h3>
+<h3 id="网格图dp">网格图dp</h3>
 <p>过河卒</p>
 <p><a href="https://www.luogu.com.cn/problem/P1002">https://www.luogu.com.cn/problem/P1002</a></p>
 <blockquote>
@@ -8063,7 +8063,7 @@ dp[i]=\sum_{j=1}^{\left\lfloor i/2 \right\rfloor}dp[j]+1
 </span><span id="__span-25-35"><a id="__codelineno-25-35" name="__codelineno-25-35"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-25-36"><a id="__codelineno-25-36" name="__codelineno-25-36"></a><span class="p">};</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="树形dp">树形dp<a class="headerlink" href="#树形dp" title="页面定位">&para;</a></h3>
+<h3 id="树形dp">树形dp</h3>
 <p>最大社交深度和</p>
 <p><a href="https://vijos.org/d/nnu_contest/p/1534">https://vijos.org/d/nnu_contest/p/1534</a></p>
 <blockquote>
@@ -8322,7 +8322,7 @@ dep[ch] = dep[fa]-x+n-x = dep[fa]+n-2\times x
 </span><span id="__span-29-52"><a id="__codelineno-29-52" name="__codelineno-29-52"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">max_element</span><span class="p">(</span><span class="n">dep</span><span class="p">,</span><span class="w"> </span><span class="n">dep</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 </span><span id="__span-29-53"><a id="__codelineno-29-53" name="__codelineno-29-53"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="高维dp">高维dp<a class="headerlink" href="#高维dp" title="页面定位">&para;</a></h3>
+<h3 id="高维dp">高维dp</h3>
 <p>栈</p>
 <p><a href="https://www.luogu.com.cn/problem/P1044">https://www.luogu.com.cn/problem/P1044</a></p>
 <blockquote>
@@ -8742,7 +8742,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-34-21"><a id="__codelineno-34-21" name="__codelineno-34-21"></a>                <span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="n">res</span> <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">])</span> <span class="o">%</span> <span class="n">mod</span>
 </span><span id="__span-34-22"><a id="__codelineno-34-22" name="__codelineno-34-22"></a>        <span class="k">return</span> <span class="n">res</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="区间dp">区间dp<a class="headerlink" href="#区间dp" title="页面定位">&para;</a></h3>
+<h3 id="区间dp">区间dp</h3>
 <p>对称山脉</p>
 <p><a href="https://www.acwing.com/problem/content/5169/">https://www.acwing.com/problem/content/5169/</a></p>
 <p>模拟，时间复杂度 <span class="arithmatex">\(O(n^3)\)</span></p>
@@ -8905,7 +8905,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-36-43"><a id="__codelineno-36-43" name="__codelineno-36-43"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-36-44"><a id="__codelineno-36-44" name="__codelineno-36-44"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="状压dp">状压dp<a class="headerlink" href="#状压dp" title="页面定位">&para;</a></h3>
+<h3 id="状压dp">状压dp</h3>
 <p>Avoid K Palindrome</p>
 <p><a href="https://atcoder.jp/contests/abc359/tasks/abc359_d">https://atcoder.jp/contests/abc359/tasks/abc359_d</a></p>
 <blockquote>
@@ -8913,9 +8913,9 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 <p>思路：最暴力的做法就是 2^q 枚举所有可能的字符串，然后再 O(n) 的检查，这样时间复杂度为 <span class="arithmatex">\(O(n2^n)\)</span>，只能通过 20 以内的数据。一般字符串回文问题可以考虑 dp。
 </p>
 </blockquote>
-<h2 id="图论">图论<a class="headerlink" href="#图论" title="页面定位">&para;</a></h2>
+<h2 id="图论">图论</h2>
 <p>图论的「例题解析」。</p>
-<h3 id="拓扑">拓扑<a class="headerlink" href="#拓扑" title="页面定位">&para;</a></h3>
+<h3 id="拓扑">拓扑</h3>
 <p>有向图的拓扑序列</p>
 <p><a href="https://www.acwing.com/problem/content/850/">https://www.acwing.com/problem/content/850/</a></p>
 <blockquote>
@@ -9233,7 +9233,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-38-92"><a id="__codelineno-38-92" name="__codelineno-38-92"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-38-93"><a id="__codelineno-38-93" name="__codelineno-38-93"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="二分图">二分图<a class="headerlink" href="#二分图" title="页面定位">&para;</a></h3>
+<h3 id="二分图">二分图</h3>
 <p>染色法判定二分图</p>
 <p><a href="https://www.acwing.com/problem/content/862/">https://www.acwing.com/problem/content/862/</a></p>
 <blockquote>
@@ -9344,7 +9344,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-39-48"><a id="__codelineno-39-48" name="__codelineno-39-48"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Yes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 </span><span id="__span-39-49"><a id="__codelineno-39-49" name="__codelineno-39-49"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="最小生成树">最小生成树<a class="headerlink" href="#最小生成树" title="页面定位">&para;</a></h3>
+<h3 id="最小生成树">最小生成树</h3>
 <p>Kruskal算法求最小生成树</p>
 <p><a href="https://www.acwing.com/problem/content/861/">https://www.acwing.com/problem/content/861/</a></p>
 <blockquote>
@@ -9880,7 +9880,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-43-75"><a id="__codelineno-43-75" name="__codelineno-43-75"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-43-76"><a id="__codelineno-43-76" name="__codelineno-43-76"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="最短路">最短路<a class="headerlink" href="#最短路" title="页面定位">&para;</a></h3>
+<h3 id="最短路">最短路</h3>
 <p>Dijkstra求最短路</p>
 <p>朴素版 - <a href="https://www.acwing.com/problem/content/851/">https://www.acwing.com/problem/content/851/</a></p>
 <p>堆优化 - <a href="https://www.acwing.com/problem/content/852/">https://www.acwing.com/problem/content/852/</a></p>
@@ -10605,7 +10605,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-51-45"><a id="__codelineno-51-45" name="__codelineno-51-45"></a>
 </span><span id="__span-51-46"><a id="__codelineno-51-46" name="__codelineno-51-46"></a>        <span class="k">return</span> <span class="n">res</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="最近公共祖先">最近公共祖先<a class="headerlink" href="#最近公共祖先" title="页面定位">&para;</a></h3>
+<h3 id="最近公共祖先">最近公共祖先</h3>
 <p>树的直径</p>
 <p><a href="https://www.acwing.com/problem/content/5563/">https://www.acwing.com/problem/content/5563/</a></p>
 <blockquote>
@@ -10981,7 +10981,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-53-85"><a id="__codelineno-53-85" name="__codelineno-53-85"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-53-86"><a id="__codelineno-53-86" name="__codelineno-53-86"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="博弈论">博弈论<a class="headerlink" href="#博弈论" title="页面定位">&para;</a></h2>
+<h2 id="博弈论">博弈论</h2>
 <p>博弈论的「例题解析」。思考如何必胜态和必败态是什么以及如何构造这样的局面。</p>
 <p>Salyg1n and the MEX Game</p>
 <p><a href="https://codeforces.com/contest/1867/problem/C">https://codeforces.com/contest/1867/problem/C</a></p>
@@ -11069,7 +11069,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-54-38"><a id="__codelineno-54-38" name="__codelineno-54-38"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-54-39"><a id="__codelineno-54-39" name="__codelineno-54-39"></a><span class="p">}</span><span class="w"> </span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="计算几何">计算几何<a class="headerlink" href="#计算几何" title="页面定位">&para;</a></h2>
+<h2 id="计算几何">计算几何</h2>
 <p>计算几何的「例题解析」。</p>
 <p>Minimum Manhattan Distance</p>
 <p><a href="https://codeforces.com/gym/104639/problem/J">https://codeforces.com/gym/104639/problem/J</a></p>
@@ -11337,9 +11337,9 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-58-15"><a id="__codelineno-58-15" name="__codelineno-58-15"></a><span class="k">if</span> <span class="p">(</span><span class="n">up</span> <span class="ow">and</span> <span class="n">down</span><span class="p">):</span> <span class="nb">print</span><span class="p">((</span><span class="n">w</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">u</span><span class="p">)</span>
 </span><span id="__span-58-16"><a id="__codelineno-58-16" name="__codelineno-58-16"></a><span class="k">else</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">w</span> <span class="o">/</span> <span class="n">u</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="数论">数论<a class="headerlink" href="#数论" title="页面定位">&para;</a></h2>
+<h2 id="数论">数论</h2>
 <p>数论的「例题解析」。整数问题。</p>
-<h3 id="质数">质数<a class="headerlink" href="#质数" title="页面定位">&para;</a></h3>
+<h3 id="质数">质数</h3>
 <p>Divide and Equalize</p>
 <blockquote>
 <p>题意：给定 <span class="arithmatex">\(n\)</span> 个数，问能否找到一个数 <span class="arithmatex">\(num\)</span>，使得 <span class="arithmatex">\(num^n = \prod_{i=1}^{n}a_i\)</span></p>
@@ -11414,7 +11414,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-59-33"><a id="__codelineno-59-33" name="__codelineno-59-33"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Yes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 </span><span id="__span-59-34"><a id="__codelineno-59-34" name="__codelineno-59-34"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="整除">整除<a class="headerlink" href="#整除" title="页面定位">&para;</a></h3>
+<h3 id="整除">整除</h3>
 <p>Deja Vu</p>
 <p><a href="https://codeforces.com/contest/1891/problem/B">https://codeforces.com/contest/1891/problem/B</a></p>
 <blockquote>
@@ -11558,7 +11558,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-60-59"><a id="__codelineno-60-59" name="__codelineno-60-59"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-60-60"><a id="__codelineno-60-60" name="__codelineno-60-60"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="组合数学">组合数学<a class="headerlink" href="#组合数学" title="页面定位">&para;</a></h3>
+<h3 id="组合数学">组合数学</h3>
 <p>序列数量</p>
 <p><a href="https://www.acwing.com/problem/content/5571/">https://www.acwing.com/problem/content/5571/</a></p>
 <blockquote>
@@ -11659,7 +11659,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 </span><span id="__span-61-36"><a id="__codelineno-61-36" name="__codelineno-61-36"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-61-37"><a id="__codelineno-61-37" name="__codelineno-61-37"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="思维题">思维题<a class="headerlink" href="#思维题" title="页面定位">&para;</a></h2>
+<h2 id="思维题">思维题</h2>
 <p>思维题的「例题解析」。</p>
 <p>图的遍历</p>
 <p><a href="https://www.luogu.com.cn/problem/P3916">https://www.luogu.com.cn/problem/P3916</a></p>
@@ -13302,7 +13302,7 @@ f[i][j][1] = f[i][j - 1][0] + f[i][j - 1][1] - f[i][j - k - 1][0]
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

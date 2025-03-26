@@ -801,11 +801,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -817,7 +817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4440,14 +4440,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5405,14 +5405,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5496,7 +5496,7 @@
   <h1>Python 语言基础</h1>
 
 <p>本文记录 Python 基础。</p>
-<h2 id="python-的数据类型">Python 的数据类型<a class="headerlink" href="#python-的数据类型" title="页面定位">&para;</a></h2>
+<h2 id="python-的数据类型">Python 的数据类型</h2>
 <p>在 Python 中，可以按照「数据的可变性」可以将数据分为两大类：</p>
 <ul>
 <li>可变数据类型 (immutable data type)：列表 <code>list</code>、字典 <code>dict</code>、集合 <code>set</code>；</li>
@@ -5535,7 +5535,7 @@
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="sd">TypeError: &#39;str&#39; object does not support item assignment</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="python-的万物引用">Python 的万物引用<a class="headerlink" href="#python-的万物引用" title="页面定位">&para;</a></h2>
+<h2 id="python-的万物引用">Python 的万物引用</h2>
 <p>在 Python 中「所有的一切都是引用」这句话已经听烂了，但是从未实践证实一番。所谓的万物引用可以从 C++ 的赋值和 Python 的赋值进行对比。</p>
 <p><strong>在 C++ 中，变量的赋值语句其实是在拷贝构造</strong>。即重新开辟一块内存空间用于被赋值的新变量。比如下面的程序：</p>
 <div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
@@ -5701,7 +5701,7 @@
 <li>Python 可变数据类型的引用，如果发生了修改操作，就等价于 C++ 的引用传递；</li>
 <li>Python 不可变数据类型的引用，如果发生了修改操作，就等价于 C++ 的值传递。</li>
 </ul>
-<h2 id="python-的拷贝构造">Python 的拷贝构造<a class="headerlink" href="#python-的拷贝构造" title="页面定位">&para;</a></h2>
+<h2 id="python-的拷贝构造">Python 的拷贝构造</h2>
 <p>拷贝也就是所谓的复制，在 C++ 中，所有的拷贝都是重新申请内存。在 Python 中略有不同，由于常规的赋值都是引用，因此我们需要额外的 <code>copy</code> 库来完成拷贝工作。</p>
 <p>浅拷贝只会拷贝原始对象的第一层数据，其中的不可变数据就会拷贝出一个全新的对象，而其中的可变数据仍然是引用；深拷贝会递归的拷贝原始对象的每一层数据从而构造出一个全新的对象。</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
@@ -5759,7 +5759,7 @@
 </span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>由于嵌套的可变元素在浅拷贝的逻辑中是引用，就导致了浅拷贝的结果中嵌套的可变元素仍然会被后续的操作改变。而深拷贝就不会出现这种问题，数据被拷贝到了全新的内存。这告诉我们如果我们需要完全一份新数据，就必须使用深拷贝。</p>
-<h2 id="python-的变量作用域">Python 的变量作用域<a class="headerlink" href="#python-的变量作用域" title="页面定位">&para;</a></h2>
+<h2 id="python-的变量作用域">Python 的变量作用域</h2>
 <p><strong>在不修改变量的情况下</strong>。Python 查找变量的顺序是：</p>
 <ol>
 <li>先查找函数内部的变量；</li>
@@ -5806,7 +5806,7 @@
 </span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="sd">corgi</span>
 </span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="python-的运算符优先级">Python 的运算符优先级<a class="headerlink" href="#python-的运算符优先级" title="页面定位">&para;</a></h2>
+<h2 id="python-的运算符优先级">Python 的运算符优先级</h2>
 <p>首先看一下 Python 都有哪些 <a href="https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#operators">运算符</a>：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
 <span class="normal"><a href="#__codelineno-7-2">2</a></span>
@@ -6001,7 +6001,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

@@ -811,11 +811,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -827,7 +827,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -947,14 +947,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5494,14 +5494,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5675,7 +5675,7 @@
   <h1>数据</h1>
 
 <p>机器学习的根本还是数据，模型只是逼近数据规律的上限。数据的质量直接对应了最终的输出指标。</p>
-<h2 id="数据预处理">数据预处理<a class="headerlink" href="#数据预处理" title="页面定位">&para;</a></h2>
+<h2 id="数据预处理">数据预处理</h2>
 <p>在讲解数据预处理方法之前，我们先梳理一下都有哪些类型的数据。数据的类型大约可以归纳为以下三种：</p>
 <ol>
 <li>结构化数据。比如关系型数据、知识图谱（语义网络）数据；</li>
@@ -5686,13 +5686,13 @@
 <ol>
 <li>关于「结构化数据」的预处理方法，在 <a href="../../data-mining/data-preprocess/">关系型数据预处理 - data mining</a> 中已经有详细介绍，不再赘述；</li>
 <li>关于「半结构化数据」的预处理方法，现在有很多成熟的解析器可以将半结构化数据转换为对应标签下的非结构化数据，因此本质上还是在处理非结构化数据；</li>
-<li>关于「非结构化数据」的预处理方法，就对应到不同的研究领域了。比如文本数据对应到 <a href="../../natural-language-processing/">自然语言处理</a> 领域，图像 / 视频数据对应到 <a href="../../computer-vision/">计算机视觉</a> 领域，音频数据对应到 <a href="../../digital-signal-processing/">数字信号处理</a> 领域。在对应的笔记中都有详细的数据预处理方法，这里不再赘述。</li>
+<li>关于「非结构化数据」的预处理方法，就对应到不同的研究领域了。比如文本数据对应到 <a href="../../natural-language-processing/">自然语言处理</a> 领域，图像 / 视频数据对应到 <a href="../../computer-vision/">计算机视觉</a> 领域，音频数据对应到 <a href="../../speech-signal-processing/">语音信号处理</a> 领域。在对应的笔记中都有详细的数据预处理方法，这里不再赘述。</li>
 </ol>
-<h2 id="特征工程">特征工程<a class="headerlink" href="#特征工程" title="页面定位">&para;</a></h2>
+<h2 id="特征工程">特征工程</h2>
 <p>特征工程在机器学习任务中起着举足轻重的作用，大多数机器学习的应用场景下，大部分的时间其实都花在了特征工程上。而之所以需要花费大量的精力去做特征工程，主要是为了「减低特征维度来减少计算开销」同时「提升模型泛化性能」。</p>
-<h3 id="特征选择">特征选择<a class="headerlink" href="#特征选择" title="页面定位">&para;</a></h3>
+<h3 id="特征选择">特征选择</h3>
 <p>所谓的特征选择，就是在所有的 <span class="arithmatex">\(D\)</span> 个特征中直接选择出 <span class="arithmatex">\(D'\ (D'&lt;D)\)</span> 个特征作为模型的输入。常见的方法就是网格搜索，即尺取法枚举。</p>
-<h3 id="特征映射">特征映射<a class="headerlink" href="#特征映射" title="页面定位">&para;</a></h3>
+<h3 id="特征映射">特征映射</h3>
 <p>特征映射（也就是所谓的降维）同样是减少数据的特征维度，相比于直接删除某些特征，特征映射会在压缩特征维度的基础上尽可能保留最佳特征。下面介绍几种降维算法。</p>
 <p><strong>多维缩放 (multidimensional scaling, MDS)</strong>。一种线性降维算法。该算法的原则：对于任意的两个样本，降维后两个样本之间的距离保持不变。</p>
 <p>我们定义 <span class="arithmatex">\(b_{ij}\)</span> 为降维后任意两个样本之间的内积，<span class="arithmatex">\(dist_{ij}\)</span> 表示任意两个样本的原始距离，<span class="arithmatex">\(Z \in R^{d'\times m},d' \le d\)</span> 为降维后数据集的特征矩阵。可以得到以下降维流程：</p>
@@ -5711,7 +5711,7 @@ b_{ij}=-\frac{1}{2}(dist_{ij}^{2}-dist_{i\cdot}^{2}-dist_{\cdot j}^{2}+dist_{\cd
 <p><span class="caption-prefix">图 1. </span> PCA 算法流程</p>
 </figcaption>
 </figure>
-<h3 id="度量学习">度量学习<a class="headerlink" href="#度量学习" title="页面定位">&para;</a></h3>
+<h3 id="度量学习">度量学习</h3>
 <p>降维的本质是寻找一种合适的样本之间距离度量方式，为什么不直接学习距离度量方式呢？我们引入「度量学习」的概念。</p>
 <p>为了有参可学，我们需要定义样本之间距离计算表达式中的参数。定义如下马氏距离：</p>
 <div class="arithmatex">\[
@@ -5725,22 +5725,22 @@ b_{ij}=-\frac{1}{2}(dist_{ij}^{2}-dist_{i\cdot}^{2}-dist_{\cdot j}^{2}+dist_{\cd
 <p>下面介绍两种度量学习算法来学习上述 M 矩阵，也就是数据集的「协方差矩阵的逆」中的参数。准确的说是学习一个矩阵来近似代替协方差矩阵的逆矩阵。</p>
 <p><strong>近邻成分分析 (Neighborhood Component Analysis, NCA)</strong>。目标函数：最小化所有数据点的对数似然函数的负值。</p>
 <p><strong>大间隔最近邻 (Large Margin Nearest Neighbor, LMNN)</strong><sup id="fnref:paper"><a class="footnote-ref" href="#fn:paper">1</a></sup> <sup id="fnref:paper explain"><a class="footnote-ref" href="#fn:paper explain">2</a></sup>。目标函数：最小化同一个类别中最近邻点的距离，同时最大化不同类别中最近邻点的距离。</p>
-<h2 id="数据划分">数据划分<a class="headerlink" href="#数据划分" title="页面定位">&para;</a></h2>
+<h2 id="数据划分">数据划分</h2>
 <p>数据集的划分策略大约有三种。</p>
-<h3 id="留出法">留出法<a class="headerlink" href="#留出法" title="页面定位">&para;</a></h3>
+<h3 id="留出法">留出法</h3>
 <p>即 hold-out。将数据集分为「训练集、验证集和测试集」三个部分。测试集对于训练是完全未知的，我们划分出测试集是为了模拟未来未知的数据。当下的任务就是利用训练集训练出最佳模型来尽可能好的拟合验证集，进而在测试集上得出模型的最终指标。</p>
-<h3 id="交叉验证法">交叉验证法<a class="headerlink" href="#交叉验证法" title="页面定位">&para;</a></h3>
+<h3 id="交叉验证法">交叉验证法</h3>
 <p>即 cross validation。一般为 <span class="arithmatex">\(k\)</span> 折交叉验证。即将「数据集与测试集的差集」随机划分为 <span class="arithmatex">\(k\)</span> 个大小相似的互斥子集，将其中 <span class="arithmatex">\(k-1\)</span> 份作为训练集，<span class="arithmatex">\(1\)</span> 份作为验证集。算法执行 <span class="arithmatex">\(k\)</span> 次获得平均误差。该方法避免了因为数据划分的随机性带来的系统误差。</p>
-<h3 id="自助法">自助法<a class="headerlink" href="#自助法" title="页面定位">&para;</a></h3>
+<h3 id="自助法">自助法</h3>
 <p>即 bootstrapping。在数据集中进行有放回采样得到训练集。从数据集 <span class="arithmatex">\(D\ (|D|=m)\)</span> 中有放回采样 <span class="arithmatex">\(m\)</span> 次，这 <span class="arithmatex">\(m\)</span> 个抽出来的样本集合 <span class="arithmatex">\(D'\)</span> 大约占数据集的 <span class="arithmatex">\(\frac{2}{3}\)</span>，于是就可以将抽出的样本集合 <span class="arithmatex">\(D'\)</span> 作为训练集，<span class="arithmatex">\(D-D'\)</span> 作为测试集。</p>
 <p>证明很简单，我们计算测试集比例。一次采样中某个样本没有被选中的概率为 <span class="arithmatex">\(1-\dfrac{1}{m}\)</span>，那么 m 次采样中某个样本从没被选中的概率就是 <span class="arithmatex">\((1-\dfrac{1}{m})^m\)</span>，由于 <span class="arithmatex">\(\displaystyle \lim_{m\to+\infty}(1-\dfrac{1}{m})^m = \frac{1}{e}\approx 0.368\)</span>，那么就可以得出测试集 <span class="arithmatex">\(D'\)</span> 大约就占总数据集的 <span class="arithmatex">\(\dfrac{1}{3}\)</span>。</p>
-<h2 id="数据平衡">数据平衡<a class="headerlink" href="#数据平衡" title="页面定位">&para;</a></h2>
+<h2 id="数据平衡">数据平衡</h2>
 <p>在分类任务的数据集中，往往会出现类别不平衡的问题。即使在类别平衡时，使用一对其余等算法进行多分类也会出现类比不平衡的问题，因此解决类比不平衡问题十分关键。</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>数据平衡操作只能用于训练集，验证集和测试集不能进行任何分布上的改变。</p>
 </div>
-<h3 id="阈值移动">阈值移动<a class="headerlink" href="#阈值移动" title="页面定位">&para;</a></h3>
+<h3 id="阈值移动">阈值移动</h3>
 <p>对于二分类任务。我们定义 <span class="arithmatex">\(y\)</span> 为样本预测为正例的概率，当训练集中正负样例比例相近时，一般以 <span class="arithmatex">\(0.5\)</span> 为划分依据，即 <span class="arithmatex">\(y&gt;0.5\)</span> 的判定为正例，反之为负例。简单修改一下 <span class="arithmatex">\(y&gt;0.5\)</span> 就得到了下式：</p>
 <div class="arithmatex">\[
 \frac{y}{1-y}&gt; 1
@@ -5750,14 +5750,14 @@ b_{ij}=-\frac{1}{2}(dist_{ij}^{2}-dist_{i\cdot}^{2}-dist_{\cdot j}^{2}+dist_{\cd
 \frac{y}{1-y} &gt; \frac{m^+}{m^-}
 \]</div>
 <p>值得注意的是，由于训练集往往不能遵循独立同分布原则，也就导致我们观测的 <span class="arithmatex">\(\dfrac{m^+}{m^-}\)</span> 其实不能准确代表真实的正负比例。</p>
-<h3 id="欠采样">欠采样<a class="headerlink" href="#欠采样" title="页面定位">&para;</a></h3>
+<h3 id="欠采样">欠采样</h3>
 <p>去除过多的样本从而平衡正负例数量。</p>
 <ul>
 <li>优点：训练的时间开销小；</li>
 <li>缺点：可能会丢失重要信息。</li>
 </ul>
 <p>典型算法：EasyEnsemble。</p>
-<h3 id="过采样">过采样<a class="headerlink" href="#过采样" title="页面定位">&para;</a></h3>
+<h3 id="过采样">过采样</h3>
 <p>添加额外的样本从而平衡正负例数量。</p>
 <ul>
 <li>缺点：简单的重复采样会导致模型过拟合数据，缺少泛化能力。</li>
@@ -5796,7 +5796,7 @@ b_{ij}=-\frac{1}{2}(dist_{ij}^{2}-dist_{i\cdot}^{2}-dist_{\cdot j}^{2}+dist_{\cd
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月26日 05:37:49">2025年3月26日</span>
   </span>
 
     
@@ -5849,7 +5849,7 @@ b_{ij}=-\frac{1}{2}(dist_{ij}^{2}-dist_{i\cdot}^{2}-dist_{\cdot j}^{2}+dist_{\cd
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

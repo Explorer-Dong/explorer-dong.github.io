@@ -801,11 +801,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -817,7 +817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4564,14 +4564,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5411,14 +5411,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5508,17 +5508,17 @@
   <h1>MySQL 问题解决</h1>
 
 <p>本文记录 MySQL 的问题解决方案</p>
-<h2 id="解决-connection-refused-connect-的问题">解决 Connection refused: connect 的问题<a class="headerlink" href="#解决-connection-refused-connect-的问题" title="页面定位">&para;</a></h2>
-<h3 id="问题">问题<a class="headerlink" href="#问题" title="页面定位">&para;</a></h3>
+<h2 id="解决-connection-refused-connect-的问题">解决 Connection refused: connect 的问题</h2>
+<h3 id="问题">问题</h3>
 <p>在 Ubuntu 上下载完 MySQL 以后，尝试在本地 DataGrip 连接该服务器上的数据库，结果出现报错 ：Connection refused: connect，如下图：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202403261820758.png" data-type="image" data-width="auto" data-height="auto" data-title="Connection refused: connect" data-desc-position="bottom"><img alt="Connection refused: connect" src="https://cdn.dwj601.cn/images/202403261820758.png" /></a></p>
-<h3 id="解决">解决<a class="headerlink" href="#解决" title="页面定位">&para;</a></h3>
+<h3 id="解决">解决</h3>
 <p>进入 MySQL 配置文件：<code>"/etc/mysql/mysql.conf.d/mysqld.cnf"</code>，将下面的代码注释掉并<strong>重启</strong>即可</p>
 <div class="language-mysql highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">bind</span><span class="o">-</span><span class="n">address</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mf">127.0.0.1</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="原理">原理<a class="headerlink" href="#原理" title="页面定位">&para;</a></h3>
+<h3 id="原理">原理</h3>
 <p>取消连接绑定，使得可以在任意远程主机上连接该服务器的 MySQL 服务器</p>
-<h3 id="参考">参考<a class="headerlink" href="#参考" title="页面定位">&para;</a></h3>
+<h3 id="参考">参考</h3>
 <p><a href="https://zhuanlan.zhihu.com/p/601584675">https://zhuanlan.zhihu.com/p/601584675</a></p>
 
 
@@ -5595,7 +5595,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

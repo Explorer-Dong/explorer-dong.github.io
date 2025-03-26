@@ -809,11 +809,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -825,7 +825,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2998,14 +2998,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -3043,30 +3043,6 @@
       Fibonacci 法
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Fibonacci 法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#323-二分法" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2.3 二分法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#324-插值法" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2.4 插值法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -5467,14 +5443,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5512,30 +5488,6 @@
       Fibonacci 法
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Fibonacci 法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#323-二分法" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2.3 二分法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#324-插值法" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2.4 插值法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -5632,9 +5584,9 @@
 <li>3.2 介绍 <strong>缩小搜索区间</strong> 的「精确线性搜索算法」：0.618 法、斐波那契法、二分法、插值法</li>
 <li>3.3 介绍 <strong>缩小搜索区间</strong> 的「不精确线性搜索算法」：Armijo 准则、Goldstein 准则、Wolfe 准则</li>
 </ul>
-<h2 id="确定初始搜索区间">确定初始搜索区间<a class="headerlink" href="#确定初始搜索区间" title="页面定位">&para;</a></h2>
+<h2 id="确定初始搜索区间">确定初始搜索区间</h2>
 <p>确定初始搜索区间 <span class="arithmatex">\([a,b]\)</span>，我们利用 <a href="https://zhuanlan.zhihu.com/p/109701879">进退法</a></p>
-<h2 id="精确线性搜索算法">精确线性搜索算法<a class="headerlink" href="#精确线性搜索算法" title="页面定位">&para;</a></h2>
+<h2 id="精确线性搜索算法">精确线性搜索算法</h2>
 <details class="note">
 <summary>预备知识：单峰函数定理</summary>
 <p>在正式开始介绍之前，我们先了解 <strong>单峰函数定理</strong>：</p>
@@ -5928,10 +5880,10 @@
 </div>
 </div>
 </details>
-<h3 id="0618-法">0.618 法<a class="headerlink" href="#0618-法" title="页面定位">&para;</a></h3>
+<h3 id="0618-法">0.618 法</h3>
 <p>基于「函数值」进行选点。</p>
 <p>按照黄金分割的比例取点 <span class="arithmatex">\(x_1\)</span> 和 <span class="arithmatex">\(x_2\)</span>，不断迭代判断 <span class="arithmatex">\(f(x_1)\)</span> 和 <span class="arithmatex">\(f(x_2)\)</span> 的值，直到 <span class="arithmatex">\(b_k-\lambda_k&lt;\delta\)</span> 或 <span class="arithmatex">\(\mu_k-a_k&lt;\delta\)</span> 则结束迭代，取最优解 <span class="arithmatex">\(x^*\)</span> 为对应的 <span class="arithmatex">\(\lambda_k\)</span> 或 <span class="arithmatex">\(\mu_k\)</span> 即可。</p>
-<h3 id="fibonacci-法">Fibonacci 法<a class="headerlink" href="#fibonacci-法" title="页面定位">&para;</a></h3>
+<h3 id="fibonacci-法">Fibonacci 法</h3>
 <p>基于「函数值」进行选点。</p>
 <p>第 <span class="arithmatex">\(k\)</span> 次迭代的区间长度是上一个区间长度的 <span class="arithmatex">\(\frac{F_{n-k}}{F_{n-k+1}}\)</span>​，即：</p>
 <div class="arithmatex">\[
@@ -5948,24 +5900,24 @@ b_n-a_n &amp;= \frac{F_1}{F_2}(b_{n-1}-a_{n-1}) \\
 \end{aligned}
 \]</div>
 <p>在已知上界 <span class="arithmatex">\(\delta\)</span> 的情况下可以直接计算出 <span class="arithmatex">\(n\)</span> 的值，于是迭代 <span class="arithmatex">\(n\)</span> 次即可得到最终的步长值 <span class="arithmatex">\(\lambda_n\)</span> 或 <span class="arithmatex">\(\mu_n\)</span></p>
-<h4 id="323-二分法">3.2.3 二分法<a class="headerlink" href="#323-二分法" title="页面定位">&para;</a></h4>
+<h4 id="323-二分法">3.2.3 二分法</h4>
 <p>基于「一阶导数」进行选点。</p>
 <p>单调性存在于导数上。极值点左边导数 <span class="arithmatex">\(&lt;0\)</span>，极值点右边导数 <span class="arithmatex">\(&gt;0\)</span>，于是可以进行二分搜索。</p>
-<h4 id="324-插值法">3.2.4 插值法<a class="headerlink" href="#324-插值法" title="页面定位">&para;</a></h4>
+<h4 id="324-插值法">3.2.4 插值法</h4>
 <p>基于「函数值、一阶导数」进行选点。</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404170915756.png" data-type="image" data-width="auto" data-height="auto" data-title="三点二次插值法" data-desc-position="bottom"><img alt="三点二次插值法" src="https://cdn.dwj601.cn/images/202404170915756.png" /></a></p>
 <p><strong>三点二次插值法</strong>。给定初始迭代区间 <span class="arithmatex">\([a_0,b_0]\)</span> 和初始迭代解 <span class="arithmatex">\(t_0\)</span>。每次在目标函数上取三个点来拟合一个二次函数，通过拟合出来的二次函数的最小值，来更新三个点为 <span class="arithmatex">\(a_1,b_1,t_1\)</span>，直到区间小于上界长度 <span class="arithmatex">\(\delta\)</span>，终止迭代，极小值就是当前状态二次函数的最小值。</p>
 <p>那么我们如何求解当前状态二次函数的最小值呢？假定三个已知点为 <span class="arithmatex">\(x_1&lt;x_2&lt;x_3\)</span>，且 <span class="arithmatex">\(f(x_1)&gt;f(x_2)&lt;f(x_3)\)</span>，我们需要知道二次函数的三个参数 <span class="arithmatex">\(a,b,c\)</span>，刚好三个已知点可以得到三个方程，从而解出二次函数的三个未知数。</p>
 <p><strong>两点二次插值法</strong>。只不过少取了一个点，多利用了一个点的导数值来确定二次函数的三个参数罢了，其余迭代过程与三点二次插值完全一致。</p>
-<h2 id="不精确线性搜索算法">不精确线性搜索算法<a class="headerlink" href="#不精确线性搜索算法" title="页面定位">&para;</a></h2>
+<h2 id="不精确线性搜索算法">不精确线性搜索算法</h2>
 <p>精确搜索有时会导致搜索时间过长，尤其是当最优解离当前点还很远时。接下来我们介绍不精确线性搜索方法，在确保每一步的函数值都有充分下降的必要条件下，确保收敛并提升计算效率。真的有这么厉害的算法吗？其实根本逻辑很简单，<strong>Armijo 准则</strong> 限定了搜索方向的上界、<strong>Goldstein 准则</strong> 在前者的基础上又限定了搜索方向的下界（防止过小导致收敛过慢）、<strong>Wolfe 准则</strong> 在前者的基础上又完善了下界的约束（确保不会把可行解排除在搜索区间外）</p>
 <p>符号定义：我们在已知上一步解 <span class="arithmatex">\(x_k\)</span> 和下次迭代的下降方向 <span class="arithmatex">\(d_k\)</span> 的基础上，需要寻找合适的 <span class="arithmatex">\(\alpha\)</span>。于是唯一变量就是 <span class="arithmatex">\(\alpha\)</span>，我们直接定义关于 <span class="arithmatex">\(\alpha\)</span> 的一元函数 <span class="arithmatex">\(\phi(\alpha) = f(x_k + \alpha d_k)\)</span>，<span class="arithmatex">\(g_k\)</span> 表示梯度。</p>
-<h3 id="armijo-准则">Armijo 准则<a class="headerlink" href="#armijo-准则" title="页面定位">&para;</a></h3>
+<h3 id="armijo-准则">Armijo 准则</h3>
 <p>只限定搜索上界，给定初始点 <span class="arithmatex">\(x_0\)</span>、系数 <span class="arithmatex">\(\rho\)</span>：</p>
 <div class="arithmatex">\[
 f(x_k + \alpha d_k) \le \rho \cdot g_k^Td_k \cdot \alpha + f(x_k)
 \]</div>
-<h3 id="goldstein-准则">Goldstein 准则<a class="headerlink" href="#goldstein-准则" title="页面定位">&para;</a></h3>
+<h3 id="goldstein-准则">Goldstein 准则</h3>
 <p>又限定了搜索下界，同样给定初始点 <span class="arithmatex">\(x_0\)</span>、系数 <span class="arithmatex">\(\rho\)</span>：</p>
 <div class="arithmatex">\[
 \begin{aligned}
@@ -5973,7 +5925,7 @@ f(x_k + \alpha d_k) \le &amp;\rho \cdot g_k^Td_k \cdot \alpha + f(x_k)\\
 f(x_k + \alpha d_k) \ge &amp;(1-\rho) \cdot g_k^Td_k \cdot \alpha + f(x_k)
 \end{aligned}
 \]</div>
-<h3 id="wolfe-准则">Wolfe 准则<a class="headerlink" href="#wolfe-准则" title="页面定位">&para;</a></h3>
+<h3 id="wolfe-准则">Wolfe 准则</h3>
 <p>完善了搜索下界的约束，即保证新点的梯度 <span class="arithmatex">\(g_{k+1}^Td_k\)</span> 不低于老点梯度 <span class="arithmatex">\(g_{k}^Td_k\)</span> 的 <span class="arithmatex">\(\sigma\)</span> 倍。给定 <span class="arithmatex">\(x_0,\rho,\sigma\)</span>：</p>
 <div class="arithmatex">\[
 \begin{aligned}
@@ -6064,7 +6016,7 @@ g(x_k + \alpha_kd_k)^Td_k \ge&amp; \sigma g_{k}^Td_k\\
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

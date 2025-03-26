@@ -811,11 +811,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -827,7 +827,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1176,14 +1176,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5496,14 +5496,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5677,7 +5677,7 @@
   <h1>聚类学习</h1>
 
 <p>本章我们学习一个经典的无监督学习方法：聚类。即通过某种规则将数据集划分为不同的簇。我们将会首先学习数据对象的距离计算规则，接着从结果论的角度学习如何评估一个聚类结果的好坏，最后按照类别介绍几个具体的聚类算法。</p>
-<h2 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="页面定位">&para;</a></h2>
+<h2 id="基本概念">基本概念</h2>
 <p><strong>距离计算</strong>。聚类的本质就是根据样本之间的距离将距离相近的数据对象认定为同一个类别，因此最关键的一步就是如何定义数据对象之间的距离（有些教材也会将距离度量成为邻近度度量）。无论是什么类型的属性，比如二元属性、标称属性、序数属性、数值属性等等，都可以归纳为以下两种距离计算的标准：</p>
 <ol>
 <li>
@@ -5720,9 +5720,9 @@ d_{\mathrm{cen}}(C_i,C_j)&amp;=\mathrm{dist}(\boldsymbol{\mu}_i,\boldsymbol{\mu}
 <p>常见的内部指标比如：轮廓系数。</p>
 </li>
 </ol>
-<h2 id="基于划分的聚类算法">基于划分的聚类算法<a class="headerlink" href="#基于划分的聚类算法" title="页面定位">&para;</a></h2>
+<h2 id="基于划分的聚类算法">基于划分的聚类算法</h2>
 <p>Kmeans 及其变种都只适用于 <strong>凸形状</strong> 的样本分布。</p>
-<h3 id="k-means">K-means<a class="headerlink" href="#k-means" title="页面定位">&para;</a></h3>
+<h3 id="k-means">K-means</h3>
 <p>目标函数（损失函数）定义为：</p>
 <div class="arithmatex">\[
 \text{loss}=\sum_i^K\sum_{x\in c_i}\|x-c_i\|_2^2
@@ -5739,25 +5739,25 @@ d_{\mathrm{cen}}(C_i,C_j)&amp;=\mathrm{dist}(\boldsymbol{\mu}_i,\boldsymbol{\mu}
 <li>达到最大迭代次数。</li>
 </ul>
 <p>假设样本数量为 N，簇的数量为 K，最大迭代轮数为 iter，则 Kmeans 算法的时间复杂度为 <span class="arithmatex">\(O(\text{iter} \times NK)\)</span>。</p>
-<h3 id="k-means_1">K-means++<a class="headerlink" href="#k-means_1" title="页面定位">&para;</a></h3>
+<h3 id="k-means_1">K-means++</h3>
 <p>此法相对于 K-means 做出了一个小的改进。在一开始选择 k 个聚类中心时，并不是随机初始化 k 个，而是首先随机出 1 个，然后循环 <span class="arithmatex">\(k-1\)</span> 次选择剩下的 k-1 个聚类中心。选择的规则是：每次选择最不可能成为新的聚类中心的数据对象，或者是到所有聚类中心的最小距离最大的数据对象。</p>
-<h3 id="bisecting-k-means">Bisecting K-means<a class="headerlink" href="#bisecting-k-means" title="页面定位">&para;</a></h3>
+<h3 id="bisecting-k-means">Bisecting K-means</h3>
 <p>此法叫做二分 K-means 算法。具体的，在一开始将所有的数据对象划分为一个簇，然后每次选择一个误差最大的簇进行二分裂，不断分裂直到收敛。这种方法不能使得 Loss 最小，但是可以作为 K-means 算法的一个预热，比如可以通过这种方法得到一个相对合理的簇中心，然后再利用 K-means 算法进行聚类。</p>
-<h3 id="k-mediods">K-mediods<a class="headerlink" href="#k-mediods" title="页面定位">&para;</a></h3>
+<h3 id="k-mediods">K-mediods</h3>
 <p>目标函数定义为：</p>
 <div class="arithmatex">\[
 \text{loss}=\sum_i^K\sum_{x\in o_i}\lvert x-o_i\rvert
 \]</div>
 <p>即 K 中心点算法。例如 PAM 算法，其使用实际的数据对象作为簇中心而不是用均值众数等新点作为簇中心。具体的，对于每一个簇中心 <span class="arithmatex">\(O_i\)</span>，随机选择一个非簇中心的数据对象 <span class="arithmatex">\(O_{\text{random}}\)</span>，如果用 <span class="arithmatex">\(O_{\text{random}}\)</span> 替换 <span class="arithmatex">\(O_i\)</span> 之后损失减小，则替换，否则继续迭代直到算法收敛。</p>
-<h2 id="基于层次的聚类算法">基于层次的聚类算法<a class="headerlink" href="#基于层次的聚类算法" title="页面定位">&para;</a></h2>
+<h2 id="基于层次的聚类算法">基于层次的聚类算法</h2>
 <p>主要介绍簇之间的邻近性度量方法以及凝聚方法 (Agglomerative, AGNES) 和分裂方法 (Divisive Analysis, DIANA)。两种算法可以形象的表述为下图：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501051622124.png" data-type="image" data-width="auto" data-height="auto" data-title="凝聚层次聚类 vs 分裂层次聚类" data-desc-position="bottom"><img alt="凝聚层次聚类 vs 分裂层次聚类" src="https://cdn.dwj601.cn/images/202501051622124.png" /></a></p>
-<h3 id="簇之间的邻近性度量">簇之间的邻近性度量<a class="headerlink" href="#簇之间的邻近性度量" title="页面定位">&para;</a></h3>
+<h3 id="簇之间的邻近性度量">簇之间的邻近性度量</h3>
 <p>单链（Single-linkage）：簇之间的邻近度定义为不同簇中两个最近的数据对象的距离；</p>
 <p>全链（Complete-linkage）：簇之间的邻近度定义为不同簇中两个最远的数据对象的距离；</p>
 <p>均链（Average-linkage）：簇之间的邻近度定义为不同簇中所有数据对象之间距离的均值；</p>
 <p>质心距离（Distance between centroids）：簇之间的邻近度定义为不同簇的质心之间的距离。</p>
-<h3 id="agnes">AGNES<a class="headerlink" href="#agnes" title="页面定位">&para;</a></h3>
+<h3 id="agnes">AGNES</h3>
 <p>凝聚算法有点类似于并查集，初始时每一个样本点都是一个簇，不断合并最接近的两个簇直到达到需要的簇数量就停止合并。而这里簇之间的距离就按照上面介绍的簇之间的邻近性度量来实现。</p>
 <p>不同邻近度方法下凝聚层次聚类对比：</p>
 <table>
@@ -5787,10 +5787,10 @@ d_{\mathrm{cen}}(C_i,C_j)&amp;=\mathrm{dist}(\boldsymbol{\mu}_i,\boldsymbol{\mu}
 </tr>
 </tbody>
 </table>
-<h3 id="diana">DIANA<a class="headerlink" href="#diana" title="页面定位">&para;</a></h3>
+<h3 id="diana">DIANA</h3>
 <p>分裂算法有点类似于 Bisecting K-means，每次选一个簇根据某种规则将其分类为两个簇，直到达到需要的簇数量就停止分裂。</p>
-<h2 id="基于密度的聚类算法">基于密度的聚类算法<a class="headerlink" href="#基于密度的聚类算法" title="页面定位">&para;</a></h2>
-<h3 id="dbscan">DBSCAN<a class="headerlink" href="#dbscan" title="页面定位">&para;</a></h3>
+<h2 id="基于密度的聚类算法">基于密度的聚类算法</h2>
+<h3 id="dbscan">DBSCAN</h3>
 <p>基于密度的带噪声空间聚类（Density-Based Spatial Clustering of Application with Noise, DBSCAN）</p>
 <p>其实，就是一个朴素 dfs。算法定义为：</p>
 <ul>
@@ -5799,7 +5799,7 @@ d_{\mathrm{cen}}(C_i,C_j)&amp;=\mathrm{dist}(\boldsymbol{\mu}_i,\boldsymbol{\mu}
 <li>如果可以成为核心对象，则形成一个簇 C 并将当前邻域内没有归属的数据对象全都纳为 C 的数据对象，并以这些新纳入的数据对象为起点递归的拓展，直到无法拓展新的数据对象。</li>
 </ul>
 <p>基于密度的 DBDSAN 聚类算法可以适应更加复杂的数据分布场景，但是缺点在于对超参数 (<span class="arithmatex">\(\epsilon,\text{Minpts}\)</span>) 很敏感。并且由于超参数是二维联合的，因此如何调参 (<span class="arithmatex">\(\epsilon,\text{Minpts}\)</span>) 是一个很困难的事。在此基础之上，提出 DBSCAN 算法的团队又提出了其改良版本：OPTICS 算法。</p>
-<h3 id="optics">OPTICS<a class="headerlink" href="#optics" title="页面定位">&para;</a></h3>
+<h3 id="optics">OPTICS</h3>
 <p>用于确定聚类结构的排序点聚类（Ordering Points To Identify the Clustering Structure, OPTICS）</p>
 <p>基于密度的 OPTICS 算法延续了 DBSCAN 的策略，只需要提前设定邻域内最少数据对象数量 Minpts 而不需要提前设置邻域大小 <span class="arithmatex">\(\epsilon\)</span>。有两个关键的概念定义：</p>
 <ul>
@@ -5888,7 +5888,7 @@ d_{\mathrm{cen}}(C_i,C_j)&amp;=\mathrm{dist}(\boldsymbol{\mu}_i,\boldsymbol{\mu}
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

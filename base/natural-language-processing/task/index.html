@@ -811,11 +811,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -827,7 +827,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1536,14 +1536,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5428,14 +5428,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5542,10 +5542,10 @@
 
   <h1>任务</h1>
 
-<h2 id="依存分析">依存分析<a class="headerlink" href="#依存分析" title="页面定位">&para;</a></h2>
+<h2 id="依存分析">依存分析</h2>
 <p>前置知识：神经网络基础、反向传播原理。</p>
 <p>依存分析任务定义为：判断句子中单词之间的依赖关系。属于基础任务中的句法分析，通过依存分析任务得到句子单词之间的依赖关系之后就可以更方便的进行机器翻译等更困难的任务。</p>
-<h3 id="理论基础">理论基础<a class="headerlink" href="#理论基础" title="页面定位">&para;</a></h3>
+<h3 id="理论基础">理论基础</h3>
 <p>这里讲的理论基础并不是语言学上的规则（不同的语言有不同的规则，且很复杂，这里不展开），而是一套规范化的算法流程。最常见的就是 Nivre 在 2003 年提出的「Greedy Deterministic Transition-based Parsing」方法。</p>
 <p>具体地，有三个变量分别为 Stack、Buffer 和 一个集合 A。一共有三种操作，分别为 shift、left-arc、right-arc，其中 shift 就是将一个单词从 Buffer 转移到 Stack 中，left-arc 就是在 Stack 的栈顶两个元素中定义一个「指向左的边以及对应的依存关系」，并将这个边和关系保存到集合 A 中，right-arc 就和 left-arc 相反。具体如下图所示：</p>
 <figure id="__fc_1">
@@ -5556,14 +5556,14 @@
 </figure>
 <p>假设某种语言一共有 <span class="arithmatex">\(n\)</span> 种依存关系，那么最终的任务就是一个 <span class="arithmatex">\(2n+1\)</span> 的「多分类任务」。其中 left-arc 对应 <span class="arithmatex">\(n\)</span> 种，right-arc 对应 <span class="arithmatex">\(n\)</span> 种，shift 对应 <span class="arithmatex">\(1\)</span> 种。</p>
 <p>在有监督学习场景下，学习准则就是最小化交叉熵损失函数。传统与现代依存分析方法本质的不同在于特征的构造上。</p>
-<h3 id="传统方法">传统方法<a class="headerlink" href="#传统方法" title="页面定位">&para;</a></h3>
+<h3 id="传统方法">传统方法</h3>
 <p>传统方法上，上述</p>
-<h3 id="深度模型">深度模型<a class="headerlink" href="#深度模型" title="页面定位">&para;</a></h3>
+<h3 id="深度模型">深度模型</h3>
 <p>Danqi Chen 在 2014 年的工作 <a href="https://aclanthology.org/D14-1082">A Fast and Accurate Dependency Parser using Neural Networks</a> 中，提出了基于 FNN 的深度神经网络模型进行端到端的依存分析，解决了传统方法中特征需要人工构造、特征稀疏（0 太多）和特征不紧凑（维度太大）的问题。</p>
-<h3 id="评估方法">评估方法<a class="headerlink" href="#评估方法" title="页面定位">&para;</a></h3>
-<h2 id="机器翻译">机器翻译<a class="headerlink" href="#机器翻译" title="页面定位">&para;</a></h2>
+<h3 id="评估方法">评估方法</h3>
+<h2 id="机器翻译">机器翻译</h2>
 <p>前置知识：序列模型基础、注意力机制。</p>
-<h2 id="模型微调">模型微调<a class="headerlink" href="#模型微调" title="页面定位">&para;</a></h2>
+<h2 id="模型微调">模型微调</h2>
 <p>前置知识：预训练模型基础。</p>
 
 
@@ -5640,7 +5640,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

@@ -811,11 +811,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -827,7 +827,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1088,14 +1088,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5406,14 +5406,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5496,7 +5496,7 @@
 
   <h1>贝叶斯模型</h1>
 
-<h2 id="极大似然估计">极大似然估计<a class="headerlink" href="#极大似然估计" title="页面定位">&para;</a></h2>
+<h2 id="极大似然估计">极大似然估计</h2>
 <p>根本任务：寻找合适的参数 <span class="arithmatex">\(\hat \theta\)</span> 使得「当前的样本情况发生的概率」最大。又由于假设每一个样本相互独立，因此可以用连乘的形式表示上述概率，当然由于概率较小导致连乘容易出现浮点数精度损失，因此尝尝采用取对数的方式来避免「下溢」问题。也就是所谓的「对数似然估计」方法。</p>
 <p>我们定义对数似然 <span class="arithmatex">\(\text{(log-likelihood)}\)</span> 估计函数如下：</p>
 <div class="arithmatex">\[
@@ -5509,7 +5509,7 @@ LL(\theta_c) &amp;= \log P(D_c\ |\ \theta_c) \\
 <div class="arithmatex">\[
 \hat \theta_c = \arg \max_{\theta_c} LL(\theta_c)
 \]</div>
-<h2 id="朴素贝叶斯分类器">朴素贝叶斯分类器<a class="headerlink" href="#朴素贝叶斯分类器" title="页面定位">&para;</a></h2>
+<h2 id="朴素贝叶斯分类器">朴素贝叶斯分类器</h2>
 <p>我们定义当前类别为 <span class="arithmatex">\(c\)</span>，则 <span class="arithmatex">\(P(c)\)</span> 称为类先验概率，<span class="arithmatex">\(P(x\ |\ c)\)</span> 称为类条件概率。最终的贝叶斯判定准则为：</p>
 <div class="arithmatex">\[
 P(c\ |\ x) = \frac{P(c)P(x\ |\ c)}{P(x)}
@@ -5524,7 +5524,7 @@ P(c\ |\ x) = \frac{P(c)}{P(x)} \prod_{i = 1}^d P(x_i\ |\ c)
 <li>对于连续数据。我们就没法直接统计数据数量了，替换方法是使用高斯函数。我们根据已有数据计算得到一个对于当前属性的高斯函数，后续计算测试样例对应属性的条件概率，代入求得的高斯函数即可。</li>
 <li>对于类条件概率为 0 的情况。我们采用拉普拉斯修正。即让所有属性的样本个数 <span class="arithmatex">\(+1\)</span>，于是总样本数就需要 <span class="arithmatex">\(+d\)</span> 来确保总概率仍然为 <span class="arithmatex">\(1\)</span>。这是额外引入的 bias</li>
 </ul>
-<h2 id="半朴素贝叶斯分类器">半朴素贝叶斯分类器<a class="headerlink" href="#半朴素贝叶斯分类器" title="页面定位">&para;</a></h2>
+<h2 id="半朴素贝叶斯分类器">半朴素贝叶斯分类器</h2>
 <p>朴素贝叶斯的问题是假设过于强，现实不可能所有的属性都相互独立。半朴素贝叶斯弱化了朴素贝叶斯的假设。现在假设每一个属性最多只依赖一个其他属性。即独依赖估计 (One-Dependent Estimator, ODE)，于是就有了下面的贝叶斯判定准测：</p>
 <div class="arithmatex">\[
 P(c\ |\ x) \propto P(c) \prod _{i = 1}^d P(x_i\ |\ c, pa_i)
@@ -5538,7 +5538,7 @@ P(c\ |\ x) \propto P(c) \prod _{i = 1}^d P(x_i\ |\ c, pa_i)
 <li>TAN 确定属性父属性算法中：我们需要计算每一个属性之间的互信息，最后得到一个以互信息为边权的完全图。最终选择最大的一些边构成一个最大带权生成树</li>
 <li>AODE 确定属性父属性算法中：采用集成的思想，以每一个属性作为超父属性，最后选择最优即可</li>
 </ul>
-<h2 id="贝叶斯网">贝叶斯网<a class="headerlink" href="#贝叶斯网" title="页面定位">&para;</a></h2>
+<h2 id="贝叶斯网">贝叶斯网</h2>
 <p>构造一个关于属性之间的 DAG 图，从而进行后续类条件概率的计算。三种典型依赖关系：</p>
 <table>
 <thead>
@@ -5562,7 +5562,7 @@ P(c\ |\ x) \propto P(c) \prod _{i = 1}^d P(x_i\ |\ c, pa_i)
 </tbody>
 </table>
 <p>概率计算公式参考：<a href="https://www.cnblogs.com/USTC-ZCC/p/12786860.html">超详细讲解贝叶斯网络(Bayesian network)</a></p>
-<h2 id="em-算法">EM 算法<a class="headerlink" href="#em-算法" title="页面定位">&para;</a></h2>
+<h2 id="em-算法">EM 算法</h2>
 <p>现在我们需要解决含有隐变量 <span class="arithmatex">\(Z\)</span> 的情况。如何在已知数据集含有隐变量的情况下计算出模型的所有参数？我们引入 EM 算法。EM 迭代型算法共两步</p>
 <ul>
 <li>E-step：首先利用观测数据 <span class="arithmatex">\(X\)</span> 和参数 <span class="arithmatex">\(\Theta_t\)</span> 得到关于隐变量的期望 <span class="arithmatex">\(Z^t\)</span></li>
@@ -5648,7 +5648,7 @@ P(c\ |\ x) \propto P(c) \prod _{i = 1}^d P(x_i\ |\ c, pa_i)
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

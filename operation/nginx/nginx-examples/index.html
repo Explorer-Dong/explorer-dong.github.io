@@ -801,11 +801,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -817,7 +817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4894,14 +4894,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5402,14 +5402,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5499,9 +5499,9 @@
   <h1>Nginx 实战案例</h1>
 
 <p>本文介绍使用 Nginx 的实战案例。</p>
-<h2 id="反向代理">反向代理<a class="headerlink" href="#反向代理" title="页面定位">&para;</a></h2>
+<h2 id="反向代理">反向代理</h2>
 <p>我们以「单服务器 + 单顶级域名 = 多网站」为例，实现 Nginx 的反向代理功能。</p>
-<h3 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="页面定位">&para;</a></h3>
+<h3 id="基本概念">基本概念</h3>
 <p>在正式开始之前，有必要了解一下「代理系统」这个概念。所谓代理，简单来说就是连接用户与服务器的中间媒介。有正向代理、反向代理等实际应用。与以往传统的用户与服务器直连的方式不同，通过代理系统可以完成很多前者无法完成的任务，同时也有性能上质的飞跃，下面从理论的角度介绍代理系统的实际应用示例以及优势。例如：</p>
 <p><strong>正向代理</strong>。所谓的正向代理其实就是「面向用户」进行运作。常见的正向代理应用比如 VPN 服务就是很典型的一种。</p>
 <figure id="__fc_1">
@@ -5517,7 +5517,7 @@
 <p><span class="caption-prefix">图 2. </span> 反向代理逻辑</p>
 </figcaption>
 </figure>
-<h3 id="前置操作">前置操作<a class="headerlink" href="#前置操作" title="页面定位">&para;</a></h3>
+<h3 id="前置操作">前置操作</h3>
 <p><strong>创建多个二级域名</strong>。多个网站可以通过「二级域名」的形式只依赖一个「顶级域名」实现。例如顶级域名为 <code>baidu.com</code>，二级域名为 <code>mcn.baidu.com</code>、<code>career.baidu.com</code> 等等。</p>
 <p><strong>解析二级域名绑定到服务器上</strong>。每一个「二级域名」都需要指向我们自己的服务器，这需要我们将二级域名解析到服务器对应的「IP 地址」上才能进行后续域名访问网站的操作。</p>
 <figure id="__fc_3">
@@ -5537,7 +5537,7 @@
 <p><span class="caption-prefix">图 4. </span> 纯静态网站的路由配置</p>
 </figcaption>
 </figure>
-<h3 id="nginx-配置">Nginx 配置<a class="headerlink" href="#nginx-配置" title="页面定位">&para;</a></h3>
+<h3 id="nginx-配置">Nginx 配置</h3>
 <p>纯静态网站的 Nginx 配置：</p>
 <div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -5693,7 +5693,7 @@
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>配置完成后使用 <code>nginx -s reload</code> 重启 Nginx 即可。</p>
-<h2 id="http-自动跳转-https">http 自动跳转 https<a class="headerlink" href="#http-自动跳转-https" title="页面定位">&para;</a></h2>
+<h2 id="http-自动跳转-https">http 自动跳转 https</h2>
 <p>添加一个 server 块，内容如下：</p>
 <div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
@@ -5780,7 +5780,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

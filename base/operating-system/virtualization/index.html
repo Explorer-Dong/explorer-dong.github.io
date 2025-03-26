@@ -809,11 +809,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -825,7 +825,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2180,14 +2180,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5410,14 +5410,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5507,7 +5507,7 @@
   <h1>虚拟化</h1>
 
 <p>本章展开虚拟化的学习。所谓虚拟化，与并发一样，是一种技术手段，通过将一个进程划分为不同的部分并按需调入内存，实现每个进程独占内存的假象。</p>
-<h2 id="产生背景">产生背景<a class="headerlink" href="#产生背景" title="页面定位">&para;</a></h2>
+<h2 id="产生背景">产生背景</h2>
 <p><strong>连续存储</strong>。我们首先学习古老的连续存储技术，以便更好的过渡到后面的页式存储。连续存储顾名思义，就是对于每一个进程，都需要完整的将其装入或移出内存，有以下三种连续存储策略：</p>
 <ol>
 <li>连续分区。一个进程占用整个用户内存空间（内存分为 OS 空间和用户空间）。这种策略显然不支持并发，同时也让内存浪费严重；</li>
@@ -5516,15 +5516,15 @@
 </ol>
 <p><strong>页式存储</strong>。本章我们会以页式存储为例，展开虚拟化技术的学习（段式、段页式等虚拟化技术此处不予讨论）。但是在开始学习之前不妨问个问题：为什么会有虚拟化技术？从上面介绍的连续存储方法可以看出，如果将一个进程完整的调入调出内存，将会很大程度上约束程序员的编程空间，因为内存造价相对较高，并且现在程序的空间需求越来越大，完整的调入调出进程就变得不合适，再加上程序具有局部性这一天然的优势，我们完全可以将一个进程分割成小部分，然后按需调入内存即可。这不仅提升了编程空间，也可以让程序员不受限于不同主机内存大小不一的问题，而只需要关心每一个程序具体的运行逻辑。</p>
 <p><strong>虚拟化技术的局限性</strong>。虚拟化技术并不是万能的。对于程序空间要求高，但是计算速度要求不是很严格的应用场景（例如服务器、台式机、笔记本），虚拟化技术可谓是神来之笔，大大提升了程序空间开销的上限。但是虚拟化技术实现的代价就是需要一定的时间开销来完成虚拟地址到物理地址的转换，这对于计算实时性要求高并且计算资源有限的场景式无法容忍的，比如嵌入式，此时 CPU 访问的指令就直接对应了 cache 或内存中的物理地址。</p>
-<h2 id="页式存储">页式存储<a class="headerlink" href="#页式存储" title="页面定位">&para;</a></h2>
+<h2 id="页式存储">页式存储</h2>
 <p>页式存储的 Python 模拟：<a href="https://github.com/Explorer-Dong/OS_Simulate/tree/main/Experiment_final">Explorer-Dong/OS_Simulate</a></p>
 <p>下面详细展开页式存储的实现细节。</p>
-<h3 id="组织结构">组织结构<a class="headerlink" href="#组织结构" title="页面定位">&para;</a></h3>
+<h3 id="组织结构">组织结构</h3>
 <p><strong>分块方式</strong>。对于页式存储，设计者将内存和进程分别划分为等空间大小的子模块。其中内存中的子模块叫做 frame/实页/页框，进程中的子模块叫做 page/虚页/页面。</p>
 <p><strong>映射关系</strong>。对于页式存储，实页和虚页之间是全相联映射的关系，即进程中任意一个虚页可以对换到内存中任意一个实页中。值得注意的是，这里的对换与内存和 cache 的对换并不是一个意思。在内存和 cache 中，存储的都是实际的物理地址，因此内存和 cache 的对换就是信息的复制与拷贝并通过一个标记位来表示存储是否有效。但是在外存虚页和内存实页的对换中，由于进程的虚页地址和内存的实页地址并不是基于同一个空间，因此我们不能像内存和 cache 一样把所有信息进行对换，于是「页表」应运而生。</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202411121121875.png" data-type="image" data-width="auto" data-height="auto" data-title="页表示意图" data-desc-position="bottom"><img alt="页表示意图" src="https://cdn.dwj601.cn/images/202411121121875.png" /></a></p>
 <p>如上图所示，我们通过页表建立起了「进程的虚页」与「内存的实页」之间的对应关系。在页表中每一行数据被称为页表项，对应一个虚页的映射信息。例如上图所示一共有 8 个虚页，那么页表就一共有 8 个页表项。每一个进程都有自己的一个页表用来记录其每一个虚页在实页中的映射关系。为了节省空间，每一个进程只会在其 PCB 中存储对应页表的首地址与偏移量。</p>
-<h3 id="基本功能">基本功能<a class="headerlink" href="#基本功能" title="页面定位">&para;</a></h3>
+<h3 id="基本功能">基本功能</h3>
 <p><strong>地址转换</strong>。在虚拟化技术下，CPU 从进程加载到的地址都是虚拟地址，需要将其转化为物理地址才能正确访问到存储在内存中的信息，这一般交给存储器管理单元 (Memory Management Unit, MMU) 来完成。</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202411121136128.png" data-type="image" data-width="auto" data-height="auto" data-title="分页式存储的地址转换逻辑" data-desc-position="bottom"><img alt="分页式存储的地址转换逻辑" src="https://cdn.dwj601.cn/images/202411121136128.png" /></a></p>
 <p>如上图所示。MMU 首先会根据页表基址寄存器中的地址找到内存中当前进程对应的页表，接着根据虚拟地址中的高位字段得到虚页号，然后根据虚页号定位到页表中的一个页表项：</p>
@@ -5534,7 +5534,7 @@
 </ul>
 <p><strong>页面替换</strong>。页面替换算法和缓存的替换算法完全一致，这里不再赘述。</p>
 <p><strong>写回机制</strong>。也就是读写的一致性策略，页表中有一项叫做修改位，如果在读写或被替换时发现修改位为 <span class="arithmatex">\(1\)</span>，则表明对应实页的数据被修改了，此时一般采用 write back 策略来保持一致性，也就是撤回到外存时更新外存信息。</p>
-<h3 id="优化改进">优化改进<a class="headerlink" href="#优化改进" title="页面定位">&para;</a></h3>
+<h3 id="优化改进">优化改进</h3>
 <p><strong>快表机制</strong>。由于每一个进程的页表都会被加载到内存中，这就意味着每次做地址转换访问页表时都需要访问内存，那为什么不能访问 cache 呢？设计者将经常访问到的页表项拿出来放到 cache 中组成了新的页表叫做后备转换缓冲器 (Translation Lookaside Buffer, TLB)，通常称其为快表（在快表的概念下内存的页表就被称为慢表）。这样一来在地址转换时就会首先查询 cache 中 TLB 的页表项，如果没找到就再去访问内存中的页表。</p>
 <table>
 <thead>
@@ -5641,7 +5641,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

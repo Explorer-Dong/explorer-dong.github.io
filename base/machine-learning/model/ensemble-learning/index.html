@@ -811,11 +811,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -827,7 +827,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1132,14 +1132,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5448,14 +5448,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5580,7 +5580,7 @@
 
   <h1>集成学习</h1>
 
-<h2 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="页面定位">&para;</a></h2>
+<h2 id="基本概念">基本概念</h2>
 <p>集成学习由多个不同的 <strong>组件学习器</strong> 组合而成。学习器不能太坏并且学习器之间需要有差异。如何产生并结合“<strong>好而不同</strong>”的个体学习器是集成学习研究的核心。集成学习示意图如下：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202405070818069.png" data-type="image" data-width="auto" data-height="auto" data-title="多个不同的学习组件" data-desc-position="bottom"><img alt="多个不同的学习组件" src="https://cdn.dwj601.cn/images/202405070818069.png" /></a></p>
 <p>根据个体学习器的生成方式，目前集成学习可分为两类，代表作如下：</p>
@@ -5588,7 +5588,7 @@
 <li>个体学习器直接存在强依赖关系，必须串行生成的序列化方法：<strong>Boosting</strong>；</li>
 <li>个体学习器间不存在强依赖关系，可以同时生成的并行化方法：<strong>Bagging</strong> 和 <strong>随机森林 (Random Forest)</strong>。</li>
 </ol>
-<h2 id="boosting-算法">Boosting 算法<a class="headerlink" href="#boosting-算法" title="页面定位">&para;</a></h2>
+<h2 id="boosting-算法">Boosting 算法</h2>
 <p>Boosting 算法族的逻辑：</p>
 <ol>
 <li>个体学习器之间存在强依赖关系；</li>
@@ -5618,37 +5618,37 @@ e^{\alpha_i}&amp;, h_i(x)\ne f(x)
 </li>
 </ol>
 <p>代表算法：AdaBoost、GBDT、XGBoost。</p>
-<h2 id="bagging-算法">Bagging 算法<a class="headerlink" href="#bagging-算法" title="页面定位">&para;</a></h2>
+<h2 id="bagging-算法">Bagging 算法</h2>
 <p>在指定学习器个数 <span class="arithmatex">\(T\)</span> 的情况下，并行训练 <span class="arithmatex">\(T\)</span> 个相互之间没有依赖的基学习器。最著名的并行式集成学习策略是 Bagging。问题式逐步深入 Bagging 算法实现：</p>
 <ol>
 <li><strong>如何计算最终集成的结果</strong>？直接进行大数投票即可，注意每一个学习器都是等权重的</li>
 <li><strong>如何选择每一个训练器的训练样本</strong>？顾名思义，就是进行 <span class="arithmatex">\(T\)</span> 次自助采样法</li>
 <li><strong>如何选择基学习器</strong>？往往采用决策树 or 神经网络</li>
 </ol>
-<h2 id="random-forest-算法">Random Forest 算法<a class="headerlink" href="#random-forest-算法" title="页面定位">&para;</a></h2>
+<h2 id="random-forest-算法">Random Forest 算法</h2>
 <p>随机森林 (Random Forest, RF) 是 Bagging 的一个扩展。问题式逐步深入随机森林算法实现：</p>
 <ol>
 <li><strong>如何计算最终集成的结果</strong>？直接进行大数投票即可，注意每一个学习器都是等权重的</li>
 <li><strong>为什么叫森林</strong>？每一个基学习器都是「单层」决策树</li>
 <li><strong>随机在哪</strong>？首先每一个学习器对应的训练样本都是随机的，其次每一个基学习器的属性都是随机的 <span class="arithmatex">\(k(k \in [1,V])\)</span> 个（由于基学习器是决策树，并且属性是不完整的，故这些决策树都被称为弱决策树）</li>
 </ol>
-<h2 id="集成输出">集成输出<a class="headerlink" href="#集成输出" title="页面定位">&para;</a></h2>
+<h2 id="集成输出">集成输出</h2>
 <p>基学习器有了，如何确定集成模型的最终输出呢？我们假设 <span class="arithmatex">\(T\)</span> 个基学习器对于当前样本 <span class="arithmatex">\(x\)</span> 的输出依次为 <span class="arithmatex">\(h_i(x),i=1,2,\cdots,T\)</span>。模型的最终输出为 <span class="arithmatex">\(H(x)\)</span>。</p>
-<h3 id="平均法">平均法<a class="headerlink" href="#平均法" title="页面定位">&para;</a></h3>
+<h3 id="平均法">平均法</h3>
 <p>对于数值型输出 <span class="arithmatex">\(h_i(x) \in R\)</span>，常见的结合策略采是 <strong>平均法</strong>。分为两种：</p>
 <ol>
 <li>简单平均法：<span class="arithmatex">\(H(x) = \displaystyle \frac{1}{T} \sum_{i =1}^T h_i(x)\)</span></li>
 <li>加权平均法：<span class="arithmatex">\(H(x) = \displaystyle\sum_{i=1}^T w_i h_i(x),\quad w_i \ge 0, \sum_{i=1}^Tw_i = 1\)</span></li>
 </ol>
 <p>显然简单平均法是加权平均法的特殊。一般而言，当个体学习器性能差距较大时采用加权平均法，相近时采用简单平均法。</p>
-<h3 id="投票法">投票法<a class="headerlink" href="#投票法" title="页面定位">&para;</a></h3>
+<h3 id="投票法">投票法</h3>
 <p>对于分类型输出 <span class="arithmatex">\(h_i(x) = [h_i^1(x), h_i^2(x), \cdots, h_i^N(x)]\)</span>，即每一个基学习器都会输出一个 <span class="arithmatex">\(N\)</span> 维的标记向量，其中只有一个打上了标记。常见的结合策略是 <strong>投票法</strong>。分为三种：</p>
 <ol>
 <li>绝对多数投票法：选择超过半数的，如果没有则 <strong>拒绝投票</strong></li>
 <li>相对多数投票法：选择票数最多的，如果有多个相同票数的则随机取一个</li>
 <li>加权投票法：每一个基学习器有一个权重，从而进行投票</li>
 </ol>
-<h3 id="学习法">学习法<a class="headerlink" href="#学习法" title="页面定位">&para;</a></h3>
+<h3 id="学习法">学习法</h3>
 <p>其实就是将所有基学习器的输出作为训练数据，重新训练一个模型对输出结果进行预测。其中，基学习器称为“初级学习器”，输出映射学习器称为“次级学习器”或”元学习器” <span class="arithmatex">\(\text{(meta-learner)}\)</span>。对于当前样本 <span class="arithmatex">\((x,y)\)</span>，<span class="arithmatex">\(n\)</span> 个基学习器的输出为 <span class="arithmatex">\(y_1 = h_1(x),y_2 = h_2(x),\cdots,y_n = h_n(x)\)</span>，则最终输出 <span class="arithmatex">\(H(x)\)</span> 为：</p>
 <div class="arithmatex">\[
 H(x) = G(y_1, y_2, \cdots, y_n)
@@ -5660,7 +5660,7 @@ H(x) = G(y_1, y_2, \cdots, y_n)
 <li>贝叶斯模型平均 (Bayes Model Averaging, BMA)</li>
 </ol>
 <p>经过验证，Stacking 的泛化能力往往比 BMA 更优。</p>
-<h2 id="小结">小结<a class="headerlink" href="#小结" title="页面定位">&para;</a></h2>
+<h2 id="小结">小结</h2>
 <p>Random Forest 与 Bagging 相比，多增加了一个属性随机，进而提升了不同学习器之间的差异度，进而提升了模型性能，效果如下：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202405071016457.png" data-type="image" data-width="auto" data-height="auto" data-title="提升了模型性能" data-desc-position="bottom"><img alt="提升了模型性能" src="https://cdn.dwj601.cn/images/202405071016457.png" /></a></p>
 <p>Random Forest 与 Bagging 均采用自助采样法。Bagging 优势在于不仅解决了训练样本不足的问题，同时 T 个学习器的训练样本之间是有交集的，这也就可以减小测试的方差。</p>
@@ -5749,7 +5749,7 @@ H(x) = G(y_1, y_2, \cdots, y_n)
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

@@ -811,11 +811,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -827,7 +827,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1423,14 +1423,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5410,14 +5410,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5512,7 +5512,7 @@
 <li>而在异常检测的任务中，需要对两者进行区分，并且异常检测的任务就是检测出离群点。</li>
 </ul>
 <p>因为离群点的出现可能预示着数据中含有不同的分布情况，这通常是让人感兴趣的，而噪声无论是什么任务都需要提前处理掉。</p>
-<h2 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="页面定位">&para;</a></h2>
+<h2 id="基本概念">基本概念</h2>
 <p>在异常检测任务中，数据往往都没有进行标注；并且由于异常数据的比例极少，这也导致了数据不平衡的问题；与此同时，由于异常数据的特征是没有定义的，很容易就将其和噪声混淆了。</p>
 <p>由于上述的种种限制，使得异常检测任务很难使用二分类器进行拟合；并且也无法使用有监督学习方法，往往只能使用无监督学习的方法来进行异常检测。</p>
 <p>异常点的类型主要有以下三种：</p>
@@ -5521,8 +5521,8 @@
 <li>情境离群点。在某种情境下，需要一定的先验知识，例如检测地区温度异常，需要考虑到地区的差异带来的温度差异，而不是仅仅考虑一个温度的数值差异；</li>
 <li>集体离群点。同样需要先验知识，需要知道不同数据群体之间的邻近性度量的差异。</li>
 </ol>
-<h2 id="异常检测算法">异常检测算法<a class="headerlink" href="#异常检测算法" title="页面定位">&para;</a></h2>
-<h3 id="孤立森林">孤立森林<a class="headerlink" href="#孤立森林" title="页面定位">&para;</a></h3>
+<h2 id="异常检测算法">异常检测算法</h2>
+<h3 id="孤立森林">孤立森林</h3>
 <p>孤立森林 (Isolation Forest) 是一个基于集成树模型的「<strong>无监督</strong>」异常检测算法。对于森林中的每一棵树，初始时含有所有的数据对象，每次对树的所有结点进行分裂，分裂规则为随机选择一个属性并随机选择一个分割点，然后基于这个分割点将结点中的数据对象划分为两部分，直到一个结点只含有一个数据对象或者达到最大深度时停止分裂。孤立森林中树之间的区别取决于分裂时选择的属性不同，这与决策树算法比较类似。</p>
 <p>森林构造出来的，如何确定异常点呢？该算法定义第 <span class="arithmatex">\(i\)</span> 个样本 <span class="arithmatex">\(x_i\)</span> 的异常分数 <span class="arithmatex">\(s\)</span> 为下式：</p>
 <div class="arithmatex">\[
@@ -5548,12 +5548,12 @@ s(x_i, N) = 2^{-\frac{E(h(x_i))}{c(N)}}
 <p>缺点：不适用于高维稀疏的样本分布。难以发现集体离群点。</p>
 </li>
 </ul>
-<h3 id="基于距离的异常检测">基于距离的异常检测<a class="headerlink" href="#基于距离的异常检测" title="页面定位">&para;</a></h3>
+<h3 id="基于距离的异常检测">基于距离的异常检测</h3>
 <p>一句话概括就是如果一个数据对象的 <span class="arithmatex">\(r\)</span> 邻域内数据对象个数不足阈值 <span class="arithmatex">\(k\)</span>，则认为当前数据对象是一个异常点。代码实现时，双重 for loop 即可。</p>
 <p>该法有一个很大的问题就是，超参数有两个，很容易出现不同超参导致聚类结果大幅波动的问题。比如下面的数据分布：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501061023357.png" data-type="image" data-width="auto" data-height="auto" data-title="基于距离的异常检测 - 弊端" data-desc-position="bottom"><img alt="基于距离的异常检测 - 弊端" src="https://cdn.dwj601.cn/images/202501061023357.png" /></a></p>
 <p>数据对象 <span class="arithmatex">\(P_1\)</span> 邻域内的对象数量是满足阈值的，但是很容易看出来 <span class="arithmatex">\(P_1\)</span> 是一个异常点。</p>
-<h3 id="基于密度的异常检测">基于密度的异常检测<a class="headerlink" href="#基于密度的异常检测" title="页面定位">&para;</a></h3>
+<h3 id="基于密度的异常检测">基于密度的异常检测</h3>
 <p>基于密度的异常检测就可以规避上述基于距离的异常检测隐含的问题。这里介绍 LOF 算法，论文地址为：<a href="https://dl.acm.org/doi/pdf/10.1145/335191.335388">LOF: Identifying Density-Based Local Outliers</a></p>
 <p>定义数据对象 <span class="arithmatex">\(x\)</span> 的「k-距离 <span class="arithmatex">\(dist_k(x)\)</span>」为全体数据对象中与其相距第 k 大的距离值。定义 <span class="arithmatex">\(N_k(x)\)</span> 为全体数据对象中距离数据对象 <span class="arithmatex">\(x\)</span> 的距离小于等于 k-距离的数据对象个数。于是可以得到以下两个指标：</p>
 <ul>
@@ -5656,7 +5656,7 @@ LOF_k = \frac{\sum_{x'\in N_k(x)} \frac{lrd_k(x')}{lrd_k(x)} }{|N_k(x)|}
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

@@ -801,11 +801,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -817,7 +817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -3137,14 +3137,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5475,14 +5475,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5650,9 +5650,9 @@
   <h1>numpy 基础</h1>
 
 <p>本文记录 numpy 库的学习笔记。</p>
-<h2 id="nparray-用法">np.array 用法<a class="headerlink" href="#nparray-用法" title="页面定位">&para;</a></h2>
+<h2 id="nparray-用法">np.array 用法</h2>
 <p>使用 <code>np.array()</code> 方法可以使用列表或元组用来初始化一个 numpy 数组，数据类型为 <code>np.ndarray</code>，当然可以通过 <code>dtype</code> 指定元素类型。对于数据类型为 <code>ndarray</code> 的对象 <code>arr</code>，常用的方法包括但不限于以下几种：</p>
-<h3 id="创建和初始化">创建和初始化<a class="headerlink" href="#创建和初始化" title="页面定位">&para;</a></h3>
+<h3 id="创建和初始化">创建和初始化</h3>
 <ul>
 <li><code>np.array(object, dtype=None)</code>：从列表、元组等对象创建一个 <code>ndarray</code>。</li>
 <li><code>np.zeros(shape, dtype=float)</code>：创建一个全零的数组。</li>
@@ -5662,20 +5662,20 @@
 <li><code>np.arange(start, stop, step, dtype=None)</code>：创建一个等差数列的数组。</li>
 <li><code>np.linspace(start, stop, num=50, dtype=None)</code>：创建一个等间隔的数组。</li>
 </ul>
-<h3 id="形状操作">形状操作<a class="headerlink" href="#形状操作" title="页面定位">&para;</a></h3>
+<h3 id="形状操作">形状操作</h3>
 <ul>
 <li><code>arr.shape</code>：返回数组的形状维度。</li>
 <li><code>arr.reshape(newshape)</code>：返回改变形状后的数组（注：新形状的元素个数与原来的元素个数必须相等）。</li>
 <li><code>arr.flatten()</code>：返回将原数组展平后的一维数组。</li>
 <li><code>arr.transpose()</code> 或 <code>arr.T</code>：返回转置后的数组。</li>
 </ul>
-<h3 id="索引和切片">索引和切片<a class="headerlink" href="#索引和切片" title="页面定位">&para;</a></h3>
+<h3 id="索引和切片">索引和切片</h3>
 <ul>
 <li><code>arr[index]</code>：通过索引访问数组元素。</li>
 <li><code>arr[start:stop:step]</code>：通过切片访问数组元素。</li>
 <li><code>arr[x, y]</code>：高维元素可以用逗号分隔符访问（注：其中的 x 可以是数字、切片或数组）。</li>
 </ul>
-<h3 id="数学运算">数学运算<a class="headerlink" href="#数学运算" title="页面定位">&para;</a></h3>
+<h3 id="数学运算">数学运算</h3>
 <p><code>axis</code> 是轴的意思，numpy 中 <code>axis=0</code> 表示按列，<code>axis=1</code> 表示按行。</p>
 <ul>
 <li><code>arr.sum(axis=None)</code>：计算数组元素的和。</li>
@@ -5687,25 +5687,25 @@
 <li><code>arr.cumsum(axis=None)</code>：返回数组的前缀和。</li>
 <li><code>arr.cumprod(axis=None)</code>：返回数组的前缀积。</li>
 </ul>
-<h3 id="逻辑运算">逻辑运算<a class="headerlink" href="#逻辑运算" title="页面定位">&para;</a></h3>
+<h3 id="逻辑运算">逻辑运算</h3>
 <ul>
 <li><code>arr.all()</code>：检查数组中所有元素是否为真。</li>
 <li><code>arr.any()</code>：检查数组中是否有任何元素为真。</li>
 </ul>
-<h3 id="排序和搜索">排序和搜索<a class="headerlink" href="#排序和搜索" title="页面定位">&para;</a></h3>
+<h3 id="排序和搜索">排序和搜索</h3>
 <ul>
 <li><code>np.sort(arr)</code>：返回对数组进行排序的新数组。</li>
 <li><code>np.argsort(arr)</code>：返回排序后每个位置在原数组中的位置索引。</li>
 <li><code>np.argmax(arr)</code>：返回数组中最大值的索引。</li>
 <li><code>np.argmin(arr)</code>：返回数组中最小值的索引。</li>
 </ul>
-<h3 id="其他常用方法">其他常用方法<a class="headerlink" href="#其他常用方法" title="页面定位">&para;</a></h3>
+<h3 id="其他常用方法">其他常用方法</h3>
 <ul>
 <li><code>arr.astype(dtype)</code>：将数组转换为指定数据类型。</li>
 <li><code>arr.copy()</code>：创建数组的副本。</li>
 <li><code>arr.tolist()</code>：将数组转换为列表。</li>
 </ul>
-<h2 id="矩阵运算">矩阵运算<a class="headerlink" href="#矩阵运算" title="页面定位">&para;</a></h2>
+<h2 id="矩阵运算">矩阵运算</h2>
 <p>numpy 的矩阵运算没有 matlab 来的那么显然，因为有一些隐式的规则。需要注意的是所有的容器类型全都是 <code>np.ndarray</code>。共分为以下几种数据结构：</p>
 <ul>
 <li>标量（Scalar）：一个单独的数字，没有维度</li>
@@ -5713,7 +5713,7 @@
 <li>矩阵（Matrix）：二维数组</li>
 <li>张量（Tensor）：三维或更多维度的数组</li>
 </ul>
-<h3 id="元素级运算">元素级运算<a class="headerlink" href="#元素级运算" title="页面定位">&para;</a></h3>
+<h3 id="元素级运算">元素级运算</h3>
 <p><code>+, -, *, /, ^, sqrt</code> 等和 <strong>标量</strong> 进行运算时都是元素级运算。和 <strong>形状相同</strong> 的数组进行运算时也都是元素级运算。例如：</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -5760,7 +5760,7 @@
 <p>若形状不同，则会报错：</p>
 <div class="language-makefile highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nf">ValueError</span><span class="o">:</span><span class="w"> </span><span class="n">operands</span> <span class="n">could</span> <span class="n">not</span> <span class="n">be</span> <span class="n">broadcast</span> <span class="n">together</span> <span class="n">with</span> <span class="n">shapes</span> (2<span class="p">,</span>3) (3<span class="p">,</span>3)
 </span></code></pre></div></td></tr></table></div>
-<h3 id="向量级运算">向量级运算<a class="headerlink" href="#向量级运算" title="页面定位">&para;</a></h3>
+<h3 id="向量级运算">向量级运算</h3>
 <p>分为两类：内积（点积）和外积（叉积）</p>
 <ul>
 <li>内积相当于 <span class="arithmatex">\(A_{1\times n}\times B_{n\times 1}=x\)</span></li>
@@ -5898,7 +5898,7 @@
 </span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29"></a><span class="sd"> [ 9 12 15  3  3  3]]</span>
 </span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="矩阵级运算">矩阵级运算<a class="headerlink" href="#矩阵级运算" title="页面定位">&para;</a></h3>
+<h3 id="矩阵级运算">矩阵级运算</h3>
 <p>常用 <code>@</code> 运算符、<code>np.dot(a, b)</code> 和 <code>a.dot(b)</code> 方法。运算结果为矩阵。</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
@@ -5947,7 +5947,7 @@
 <li>全都是矩阵。此时与向量自动对齐不同，矩阵运算需要我们手动进行对齐，否则报「矩阵没有对齐」的错误；</li>
 <li>既有矩阵也有向量。此时同样需要我们手动对齐，否则报「矩阵没有对齐」的错误。</li>
 </ol>
-<h3 id="小结">小结<a class="headerlink" href="#小结" title="页面定位">&para;</a></h3>
+<h3 id="小结">小结</h3>
 <p>我们可以将上述总结为「元素级」运算和「矩阵级」运算。向量和矩阵统称为矩阵。张量运算机制暂时不予讨论</p>
 <ul>
 <li>对于元素级运算。如果矩阵直接和标量运算就没有约束；如果和另外一个矩阵进行标量运算就需要保证两个矩阵的 <strong>形状完全一致</strong>；</li>
@@ -6028,7 +6028,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

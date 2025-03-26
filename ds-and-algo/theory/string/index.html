@@ -801,11 +801,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -817,7 +817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -3465,14 +3465,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5375,14 +5375,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5438,7 +5438,7 @@
 
   <h1>字符串</h1>
 
-<h2 id="字符串匹配">字符串匹配<a class="headerlink" href="#字符串匹配" title="页面定位">&para;</a></h2>
+<h2 id="字符串匹配">字符串匹配</h2>
 <p>字符串可以看做一种顺序存储且元素为字符的顺序表。在实际应用中，关于字符串最常见的操作就是串的匹配。</p>
 <p><strong>KMP 算法</strong>。对于模式串 <span class="arithmatex">\(t,(1\le|t|\le m)\)</span>，我们希望在模板串 <span class="arithmatex">\(s,(1\le|s|\le n)\)</span> 中计算 <span class="arithmatex">\(t\)</span> 的出现次数或者首次出现 <span class="arithmatex">\(t\)</span> 的位置等等。显然可以枚举 <span class="arithmatex">\(s\)</span> 的每个位置然后与 <span class="arithmatex">\(t\)</span> 进行匹配，这样的时间复杂度为 <span class="arithmatex">\(O(nm)\)</span>。而 <a href="https://www.cs.jhu.edu/~misha/ReadingSeminar/Papers/Knuth77.pdf">KMP 算法</a> 可以做到 <span class="arithmatex">\(O(n+m)\)</span>，具体地：</p>
 <ul>
@@ -5509,7 +5509,7 @@
 </div>
 </div>
 </details>
-<h2 id="哈希表">哈希表<a class="headerlink" href="#哈希表" title="页面定位">&para;</a></h2>
+<h2 id="哈希表">哈希表</h2>
 <p>哈希表是一种应用场景很广的算法思想。其核心思想是空间换时间，通过建立「对象的哈希码」与「对象」之间的映射关系，实现通过对象哈希码快速定位对象的功能。大多数编程语言都实现了哈希的映射功能，例如 C++ 中的 <code>unordered_map</code> 类、Python 中的 <code>dict</code> 类、Java 中的 <code>HashMap</code> 类等。</p>
 <p><strong>哈希表的数据结构</strong>。哈希表是一种特殊的数组，其每一个元素都是一个桶，这个桶可以是链表、红黑树或别的子数据结构。通过哈希函数，将对象计算出一个哈希码即可快速计算出其在哈希表数组中的偏移，从而 <span class="arithmatex">\(O(1)\)</span> 的定位到该对象所在的桶，然后再在桶中查询该对象。C++ 的 unordered_map 库中的 unordered_map 类和 unordered_multimap 类的基类 _Hashtable 中，定义的哈希表数组是动态数组，数组中的桶是单链表数据结构。源码 <code>D:\installation_package\Jetbrains\CLion\bin\mingw\lib\gcc\x86_64-w64-mingw32\13.1.0\include\c++\bits\hashtable.h</code> 是这样解释的：</p>
 <blockquote>
@@ -5601,7 +5601,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

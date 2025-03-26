@@ -799,11 +799,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -815,7 +815,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5281,14 +5281,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5445,14 +5445,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5584,11 +5584,11 @@
   <h1>Git 问题解决</h1>
 
 <p>本文记录使用 Git 的过程中遇到的一些问题以及对应的解决方法。</p>
-<h2 id="解决-git-分支冲突的问题">解决 Git 分支冲突的问题<a class="headerlink" href="#解决-git-分支冲突的问题" title="页面定位">&para;</a></h2>
+<h2 id="解决-git-分支冲突的问题">解决 Git 分支冲突的问题</h2>
 <p>一直习惯于 add commit push 的三步走，偶然间看到了一个评论说在 push 之前还应该有一个 pull，小小的疑问就埋在了我的心里。</p>
 <p>于是我就先了解了 pull 的工作原理，就是先拉取代码（fetch）再合并分支（merge）的过程，简而言之就是将「别人在原项目的基础上更新的代码」与「我在原项目的基础上更新的代码」进行合并。</p>
 <p>那么问题来了，如果别人更新的内容与我更新的内容在源文件的同一个地方，那不就出问题了吗？！于是有了下面的内容。</p>
-<h3 id="初始化">初始化<a class="headerlink" href="#初始化" title="页面定位">&para;</a></h3>
+<h3 id="初始化">初始化</h3>
 <p>我们通过 GitHub 上的 Network 进行可视化讲解。假设现在我们有一个本地项目、GitHub 空仓库、本地仓库提交记录，如下：</p>
 <figure id="__fc_1">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202402270029674.png" data-type="image" data-width="auto" data-height="auto" data-title="GitHub 空仓库" data-desc-position="bottom"><img alt="GitHub 空仓库" src="https://cdn.dwj601.cn/images/202402270029674.png" /></a></p>
@@ -5622,7 +5622,7 @@
 <p><span class="caption-prefix">图 5. </span> test.md 文件中内容</p>
 </figcaption>
 </figure>
-<h3 id="无冲突时">无冲突时<a class="headerlink" href="#无冲突时" title="页面定位">&para;</a></h3>
+<h3 id="无冲突时">无冲突时</h3>
 <p>现在我们在本地对 test.md 文件进行编辑，编辑后如下：</p>
 <figure id="__fc_6">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202402270029680.png" data-type="image" data-width="auto" data-height="auto" data-title="编辑后的 test.md 文件" data-desc-position="bottom"><img alt="编辑后的 test.md 文件" src="https://cdn.dwj601.cn/images/202402270029680.png" /></a></p>
@@ -5673,7 +5673,7 @@
 <p><span class="caption-prefix">图 12. </span> 现在的 Network 图</p>
 </figcaption>
 </figure>
-<h3 id="有冲突时">有冲突时<a class="headerlink" href="#有冲突时" title="页面定位">&para;</a></h3>
+<h3 id="有冲突时">有冲突时</h3>
 <p>为了更加直观的展示，我们在原有的基础上多增加几个正常结点，当前 Network 如下：</p>
 <figure id="__fc_13">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202402270029688.png" data-type="image" data-width="auto" data-height="auto" data-title="当前 Network 图" data-desc-position="bottom"><img alt="当前 Network 图" src="https://cdn.dwj601.cn/images/202402270029688.png" /></a></p>
@@ -5744,7 +5744,7 @@
 <p><span class="caption-prefix">图 22. </span> 最终 Network 图</p>
 </figcaption>
 </figure>
-<h3 id="总结">总结<a class="headerlink" href="#总结" title="页面定位">&para;</a></h3>
+<h3 id="总结">总结</h3>
 <p>总的来说，就两句话：</p>
 <ul>
 <li>当我的改动与最新项目的改动没有重叠时：<strong>pull 后就直接进行合并</strong></li>
@@ -5754,8 +5754,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="解决-git-自动转义中文的问题">解决 Git 自动转义中文的问题<a class="headerlink" href="#解决-git-自动转义中文的问题" title="页面定位">&para;</a></h2>
-<h3 id="问题复现">问题复现<a class="headerlink" href="#问题复现" title="页面定位">&para;</a></h3>
+<h2 id="解决-git-自动转义中文的问题">解决 Git 自动转义中文的问题</h2>
+<h3 id="问题复现">问题复现</h3>
 <p>在使用 Git Bash 命令行工具时，其配套的 Git 程序会自动对中文进行转义，其他的程序则不会，如下图：</p>
 <figure id="__fc_23">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409010902437.png" data-type="image" data-width="auto" data-height="auto" data-title="git bash VS other bash" data-desc-position="bottom"><img alt="git bash VS other bash" src="https://cdn.dwj601.cn/images/202409010902437.png" /></a></p>
@@ -5763,11 +5763,11 @@
 <p><span class="caption-prefix">图 23. </span> Git 程序 VS 其他程序</p>
 </figcaption>
 </figure>
-<h3 id="解决方案">解决方案<a class="headerlink" href="#解决方案" title="页面定位">&para;</a></h3>
+<h3 id="解决方案">解决方案</h3>
 <p>在 Git Bash 终端输入下面的命令取消 Git 程序对中文的转义：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.quotepath<span class="w"> </span><span class="nb">false</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="最终效果">最终效果<a class="headerlink" href="#最终效果" title="页面定位">&para;</a></h3>
+<h3 id="最终效果">最终效果</h3>
 <figure id="__fc_24">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202502071715678.png" data-type="image" data-width="auto" data-height="auto" data-title="不会对中文自动转义了" data-desc-position="bottom"><img alt="不会对中文自动转义了" src="https://cdn.dwj601.cn/images/202502071715678.png" /></a></p>
 <figcaption>
@@ -5849,7 +5849,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

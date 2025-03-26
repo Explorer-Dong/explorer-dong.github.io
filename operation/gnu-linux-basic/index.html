@@ -801,11 +801,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -817,7 +817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4752,14 +4752,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5535,14 +5535,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5768,7 +5768,7 @@
 
 <p>本文记录 GNU/Linux 基础内容，操作系统为 Ubuntu 22.04。</p>
 <p>所以为什么要叫做 GNU/Linux 这么“繁琐”的名字呢？现在大家都称呼该操作系统为 Linux 操作系统，但其实这是不合理的，因为 Linux 只是这个操作系统的内核，还需要配合 GNU 的一整套工具链（包括命令行终端 bash、C 标准库 glibc、C 编译器 GCC 等）才能称之为操作系统。当然，为了方便，后续都将 GNU/Linux 简称为 Linux。</p>
-<h2 id="文件系统">文件系统<a class="headerlink" href="#文件系统" title="页面定位">&para;</a></h2>
+<h2 id="文件系统">文件系统</h2>
 <table>
 <thead>
 <tr>
@@ -5783,7 +5783,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="软件管理工具-apt">软件管理工具 APT<a class="headerlink" href="#软件管理工具-apt" title="页面定位">&para;</a></h2>
+<h2 id="软件管理工具-apt">软件管理工具 APT</h2>
 <p>Ubuntu/Debian 提供了软件管理工具 APT (Advanced Package Tool)，可以通过命令行管理机器上的所有软件。下面简单罗列一下 APT 的常用命令及其功能：</p>
 <p>1）<strong>更新软件包列表</strong>。其实是更新每一个软件包对应的版本号，而非真正更新了软件。原理大概类比于手机端提示更新（一定是最新版），但是服务器不会实时更新软件的最新版编号（因为没有实时联网），因此需要我们手动更新获取所有软件的最新版本编号，从而可以后续真正意义上的软件更新：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>apt<span class="w"> </span>update
@@ -5797,9 +5797,9 @@
 <p>4）<strong>删除软件包</strong>。删除指定的软件包：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>apt<span class="w"> </span>remove<span class="w"> </span>&lt;PackageName&gt;
 </span></code></pre></div></td></tr></table></div>
-<h2 id="shell-vs-terminal">Shell vs. Terminal<a class="headerlink" href="#shell-vs-terminal" title="页面定位">&para;</a></h2>
+<h2 id="shell-vs-terminal">Shell vs. Terminal</h2>
 <p>Shell 是 Shell 语言的解释器，与传统的编程语言类似，也是编译为字节码然后运行在处理器上。当然不同的解释器有不同的语法，但都大差不差。而终端从某种程度上来说也是一个 GUI，它能够让我们通过 Shell 语言和操作系统交互从而完成人类意愿。</p>
-<h2 id="修改-shell-语言">修改 Shell 语言<a class="headerlink" href="#修改-shell-语言" title="页面定位">&para;</a></h2>
+<h2 id="修改-shell-语言">修改 Shell 语言</h2>
 <p>Shell 的运行结果通过 Terminal 呈现，如果遇到都是英文的输出结果，可以进行以下操作将其转换为中文。</p>
 <p>1）<strong>安装中文语言包</strong>：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>apt<span class="w"> </span>install<span class="w"> </span>language-pack-zh-hans
@@ -5835,58 +5835,58 @@
 <p>4）<strong>重启机器</strong>：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>reboot
 </span></code></pre></div></td></tr></table></div>
-<h2 id="基础命令">基础命令<a class="headerlink" href="#基础命令" title="页面定位">&para;</a></h2>
-<h3 id="改变目录-cd">改变目录 cd<a class="headerlink" href="#改变目录-cd" title="页面定位">&para;</a></h3>
+<h2 id="基础命令">基础命令</h2>
+<h3 id="改变目录-cd">改变目录 cd</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>../
 </span></code></pre></div></td></tr></table></div>
 <p><code>../</code> 表示上一级，<code>./</code> 表示当前一级（也可以不写），<code>/</code> 表示从根目录开始。</p>
-<h3 id="打印目录内容-ls">打印目录内容 ls<a class="headerlink" href="#打印目录内容-ls" title="页面定位">&para;</a></h3>
+<h3 id="打印目录内容-ls">打印目录内容 ls</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>ls
 </span></code></pre></div></td></tr></table></div>
 <p><code>-l</code> 参数即 long listing format，表示打印详细信息，<code>-h</code> 参数即 human-readable，会使得结果更加可读，例如占用存储空间加上单位等等。</p>
-<h3 id="打印当前路径-pwd">打印当前路径 pwd<a class="headerlink" href="#打印当前路径-pwd" title="页面定位">&para;</a></h3>
+<h3 id="打印当前路径-pwd">打印当前路径 pwd</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nb">pwd</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="打印当前用户名">打印当前用户名<a class="headerlink" href="#打印当前用户名" title="页面定位">&para;</a></h3>
+<h3 id="打印当前用户名">打印当前用户名</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>whoami
 </span></code></pre></div></td></tr></table></div>
-<h3 id="创建文件夹-mkdir">创建文件夹 mkdir<a class="headerlink" href="#创建文件夹-mkdir" title="页面定位">&para;</a></h3>
+<h3 id="创建文件夹-mkdir">创建文件夹 mkdir</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>mkdir<span class="w"> </span>&lt;FolderName&gt;
 </span></code></pre></div></td></tr></table></div>
-<h3 id="创建文件-touch">创建文件 touch<a class="headerlink" href="#创建文件-touch" title="页面定位">&para;</a></h3>
+<h3 id="创建文件-touch">创建文件 touch</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>touch<span class="w"> </span>&lt;FileName&gt;
 </span></code></pre></div></td></tr></table></div>
-<h3 id="复制-cp">复制 cp<a class="headerlink" href="#复制-cp" title="页面定位">&para;</a></h3>
+<h3 id="复制-cp">复制 cp</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>cp<span class="w"> </span><span class="o">[</span>option<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w"> </span>&lt;target&gt;
 </span></code></pre></div></td></tr></table></div>
 <p><code>-r</code> 表示递归复制，<code>-i</code> 用来当出现重名文件时进行提示。source 表示被拷贝的资源，target 表示拷贝后的资源名称或者路径。</p>
-<h3 id="移动-mv">移动 mv<a class="headerlink" href="#移动-mv" title="页面定位">&para;</a></h3>
+<h3 id="移动-mv">移动 mv</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>mv<span class="w"> </span><span class="o">[</span>option<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w"> </span>&lt;target&gt;
 </span></code></pre></div></td></tr></table></div>
 <p><code>-i</code> 用来当出现重名文件时进行提示。source 表示被移动的资源，target 表示移动后的资源名称或者路径（可以以此进行重命名）。</p>
-<h3 id="删除-rm">删除 rm<a class="headerlink" href="#删除-rm" title="页面定位">&para;</a></h3>
+<h3 id="删除-rm">删除 rm</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>rm<span class="w"> </span><span class="o">[</span>option<span class="o">]</span><span class="w"> </span>&lt;source&gt;
 </span></code></pre></div></td></tr></table></div>
 <p><code>-i</code> 需要一个一个确认，<code>-f</code> 表示强制删除，<code>-r</code> 表示递归删除。</p>
-<h3 id="打印-echo">打印 echo<a class="headerlink" href="#打印-echo" title="页面定位">&para;</a></h3>
+<h3 id="打印-echo">打印 echo</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>将 echo 后面紧跟着的内容打印到命令行解释器中。可以用来查看环境变量的具体值。也可以配合输出重定向符号 <code>&gt;</code> 将信息打印到文件中实现创建新文件的作用。例如 <code>echo "hello" &gt; file.txt</code> 用于创建 file.txt 文件并且在其中写下 <code>hello</code> 信息。</p>
-<h3 id="查看-cat">查看 cat<a class="headerlink" href="#查看-cat" title="页面定位">&para;</a></h3>
+<h3 id="查看-cat">查看 cat</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>cat<span class="w"> </span><span class="o">[</span>option<span class="o">]</span><span class="w"> </span>&lt;source&gt;
 </span></code></pre></div></td></tr></table></div>
 <p><code>-n</code> 或 <code>--number</code> 表示将 source 中的内容打印出来的同时带上行号。也可以配合输出重定位符号 <code>&gt;</code> 将信息输出到文件中。例如 <code>cat -n a.txt &gt; b.txt</code> 表示将 a.txt 文件中的内容带上行号输出到 b.txt 文件中。</p>
-<h3 id="分页查看-more">分页查看 more<a class="headerlink" href="#分页查看-more" title="页面定位">&para;</a></h3>
+<h3 id="分页查看-more">分页查看 more</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>more<span class="w"> </span>&lt;source&gt;
 </span></code></pre></div></td></tr></table></div>
 <p>与 <code>cat</code> 类似，只不过可以分页展示。按空格键下一页，<code>b</code> 键上一页，<code>q</code> 键退出。可以配合管道符 <code>|</code> (将左边的输出作为右边的输入) 与别的命令组合从而实现分页展示，例如 <code>tree | more</code> 表示分页打印文件目录。</p>
-<h3 id="输出重定向-">输出重定向 &gt;<a class="headerlink" href="#输出重定向-" title="页面定位">&para;</a></h3>
+<h3 id="输出重定向-">输出重定向 &gt;</h3>
 <p>标准输出（stdout）默认是显示器。<code>&gt;</code> 表示创建或覆盖，<code>&gt;&gt;</code> 表示追加。</p>
-<h3 id="查找-find">查找 find<a class="headerlink" href="#查找-find" title="页面定位">&para;</a></h3>
+<h3 id="查找-find">查找 find</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a>find<span class="w"> </span>&lt;path&gt;<span class="w"> </span>&lt;expression&gt;
 </span></code></pre></div></td></tr></table></div>
 <p><code>-maxdepth &lt;num&gt;</code>, <code>-mindepth &lt;num&gt;</code>: 最大、最小搜索深度。</p>
-<h3 id="匹配-grep">匹配 grep<a class="headerlink" href="#匹配-grep" title="页面定位">&para;</a></h3>
+<h3 id="匹配-grep">匹配 grep</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>grep<span class="w"> </span><span class="o">[</span>option<span class="o">]</span><span class="w"> </span>&lt;pattern&gt;<span class="w"> </span>&lt;source&gt;
 </span></code></pre></div></td></tr></table></div>
 <p>使用正则表达式在指定文件中进行模式匹配。<code>-n</code> 显示行号，<code>-i</code> 忽略大小写，<code>-r</code> 递归搜索，<code>-c</code> 打印匹配数量。</p>
@@ -5965,7 +5965,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

@@ -811,11 +811,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -827,7 +827,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1044,14 +1044,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5565,14 +5565,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5823,11 +5823,11 @@
 \]</div>
 <p>其中 <span class="arithmatex">\(\boldsymbol {w} = [w_1,w_2,\cdots,w_D,b]^T, \boldsymbol {x} = [x_1,x_2,\cdots,x_D,1]^T\)</span> 均为增广向量。样本的特征个数为 <span class="arithmatex">\(D\)</span>，样本的总个数为 <span class="arithmatex">\(N\)</span>，模型为 <span class="arithmatex">\(f(\cdot)\)</span>。</p>
 <p>基于此模型，我们就可以通过机器学习来进行分类与回归任务。值得注意的是，尽管线性模型无法解决线性不可分的问题，但其强就强在形式简单、易于建模以及高可解释性，同时也是很多非线性模型的基础。</p>
-<h2 id="线性回归">线性回归<a class="headerlink" href="#线性回归" title="页面定位">&para;</a></h2>
+<h2 id="线性回归">线性回归</h2>
 <p>线性回归顾名思义就是利用线性模型解决「回归」任务。</p>
-<h3 id="模型">模型<a class="headerlink" href="#模型" title="页面定位">&para;</a></h3>
+<h3 id="模型">模型</h3>
 <p>线性回归表达式就是最基本的线性模型表达式，因为最基本的线性模型最终的输出就是一个实数。</p>
-<h3 id="学习准则">学习准则<a class="headerlink" href="#学习准则" title="页面定位">&para;</a></h3>
+<h3 id="学习准则">学习准则</h3>
 <p>我们定义学习准则为平方误差，那么损失函数 <span class="arithmatex">\(\mathcal L_{\boldsymbol w}\)</span> 就是：</p>
 <div class="arithmatex">\[
 \mathcal L_{\boldsymbol w} = (\boldsymbol y -\boldsymbol X \boldsymbol w) ^T (\boldsymbol y - \boldsymbol X\boldsymbol w)
@@ -5841,7 +5841,7 @@ x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2D} &amp; 1 \\
 x_{N1} &amp; x_{N2} &amp; \cdots &amp; x_{ND} &amp; 1
 \end{bmatrix}
 \]</div>
-<h3 id="优化算法">优化算法<a class="headerlink" href="#优化算法" title="页面定位">&para;</a></h3>
+<h3 id="优化算法">优化算法</h3>
 <p>为了最小化这个损失函数，我们用最常规的梯度下降算法。令 <span class="arithmatex">\(\dfrac{\partial \mathcal L_{\boldsymbol w}}{\partial \boldsymbol w}=0\)</span>，得：</p>
 <div class="arithmatex">\[
 \boldsymbol X^T\boldsymbol X \boldsymbol w = \boldsymbol X^T \boldsymbol y
@@ -5859,7 +5859,7 @@ x_{N1} &amp; x_{N2} &amp; \cdots &amp; x_{ND} &amp; 1
 \boldsymbol w^* = (\boldsymbol X^T \boldsymbol X + \alpha \boldsymbol I)^{-1} \boldsymbol X^T \boldsymbol y
 \]</div>
 <p>上式中 <span class="arithmatex">\(\alpha\)</span> 就变成了超参数。</p>
-<h2 id="逻辑回归">逻辑回归<a class="headerlink" href="#逻辑回归" title="页面定位">&para;</a></h2>
+<h2 id="逻辑回归">逻辑回归</h2>
 <p>若想要利用线性回归的实数结果进行「二分类」，我们需要将回归结果映射成一个固定区间，便于定义阈值从而二分类。常见的映射函数如下：</p>
 <div class="arithmatex">\[
 g(x) = \frac{1}{1+e^{-x}}
@@ -5871,7 +5871,7 @@ g(x) = \frac{1}{1+e^{-x}}
 <p><span class="caption-prefix">图 1. </span> 逻辑函数示意图</p>
 </figcaption>
 </figure>
-<h3 id="模型_1">模型<a class="headerlink" href="#模型_1" title="页面定位">&para;</a></h3>
+<h3 id="模型_1">模型</h3>
 <p>基于「逻辑函数」与「线性回归」的逻辑回归二分类模型定义为：</p>
 <div class="arithmatex">\[
 y = \sigma(\boldsymbol{w}^T\boldsymbol{x}) =  \frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x}}}
@@ -5883,7 +5883,7 @@ y = \sigma(\boldsymbol{w}^T\boldsymbol{x}) =  \frac{1}{1+e^{-\boldsymbol{w}^T\bo
 </ul>
 <p>由于我们将正例标记为 <span class="arithmatex">\(1\)</span>，将负例标记为 <span class="arithmatex">\(0\)</span>，且逻辑函数可以将实数域单调递增地压缩到 <span class="arithmatex">\((0,1)\)</span> 之间，因此我们可以将逻辑回归模型输出的结果视为「样本属于正例的后验概率」，即 <span class="arithmatex">\(p(y=1 \ | \ \boldsymbol x)\)</span>。</p>
 <p>至于为什么叫做「后验」，是因为逻辑回归模型已经知道了输入的 <span class="arithmatex">\(x\)</span>，也就是已经知道了某一个前提了。反之如果不知道任何前提直接建模事件发生的概率，就叫做先验概率。</p>
-<h3 id="学习准则_1">学习准则<a class="headerlink" href="#学习准则_1" title="页面定位">&para;</a></h3>
+<h3 id="学习准则_1">学习准则</h3>
 <p>我们采用最大似然估计 (Maximum Likelihood Estimation, MLE)，即在没有任何先验假设的情况下估计模型的参数使得当前的数据发生的概率最大。这是频率派的一种参数估计策略。</p>
 <p>若我们将 <span class="arithmatex">\(y\)</span> 视作类后验概率 <span class="arithmatex">\(p(y=1 \ | \ x)\)</span>，则有</p>
 <div class="arithmatex">\[
@@ -5937,7 +5937,7 @@ l(w, b) &amp;= l(\beta) \\
 <div class="arithmatex">\[
 \arg \min_{\beta} l(\beta) = \sum_{i = 1}^m \left(- y_i e^{\beta^T\hat x} + \ln({1 + e^{\beta^T\hat x}})\right )
 \]</div>
-<h3 id="优化算法_1">优化算法<a class="headerlink" href="#优化算法_1" title="页面定位">&para;</a></h3>
+<h3 id="优化算法_1">优化算法</h3>
 <p>由于上式是关于 <span class="arithmatex">\(\beta\)</span> 的高阶可导连续凸函数，因此我们有很多数值优化算法可以求得最优解时的参数值，比如梯度下降法、牛顿法、拟牛顿法等。我们以牛顿法 (Newton Method) 为例：</p>
 <p>最优解 <span class="arithmatex">\(\beta ^*\)</span> 定义为：</p>
 <div class="arithmatex">\[
@@ -5948,11 +5948,11 @@ l(w, b) &amp;= l(\beta) \\
 \beta ^{t+1} = \beta^t - \left( \frac{\partial^2{l(\beta)}}{\partial{\beta} \partial{\beta^T}} \right)^{-1} \frac{\partial{l(\beta)}}{\partial{\beta}}
 \]</div>
 <p>其中 <span class="arithmatex">\(l(\beta)\)</span> 关于 <span class="arithmatex">\(\beta\)</span> 的一阶导、二阶导的推导过程如下：</p>
-<h2 id="支持向量机">支持向量机<a class="headerlink" href="#支持向量机" title="页面定位">&para;</a></h2>
+<h2 id="支持向量机">支持向量机</h2>
 <p>依然是分类学习任务。我们希望找到一个超平面将训练集中样本划分开来，那么如何寻找这个超平面呢？下面开始介绍。</p>
 <p>本章知识点逻辑链：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404160810540.png" data-type="image" data-width="auto" data-height="auto" data-title="支持向量机知识点关系图" data-desc-position="bottom"><img alt="支持向量机知识点关系图" src="https://cdn.dwj601.cn/images/202404160810540.png" /></a></p>
-<h3 id="间隔与支持向量">间隔与支持向量<a class="headerlink" href="#间隔与支持向量" title="页面定位">&para;</a></h3>
+<h3 id="间隔与支持向量">间隔与支持向量</h3>
 <p>对于只有两个特征，输出只有两种状态的训练集而言，很显然我们得到如下图所示的超平面，并且显然应该选择最中间的泛化能力最强的那一个超平面：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404152019991.png" data-type="image" data-width="auto" data-height="auto" data-title="间隔与支持向量" data-desc-position="bottom"><img alt="间隔与支持向量" src="https://cdn.dwj601.cn/images/202404152019991.png" /></a></p>
 <p>我们定义超平面为：</p>
@@ -5982,7 +5982,7 @@ w^T+b&amp;=-1
 \end{aligned}
 \]</div>
 <p>这就是 SVM（support vector machine）的基本型</p>
-<h3 id="对偶问题">对偶问题<a class="headerlink" href="#对偶问题" title="页面定位">&para;</a></h3>
+<h3 id="对偶问题">对偶问题</h3>
 <p>将上述 SVM 基本型转化为对偶问题，从而可以更高效的求解该最优化问题。</p>
 <details class="note">
 <summary>对偶转化推导</summary>
@@ -6014,7 +6014,7 @@ y_if(x_i) \ge 1&amp;,\text{原始可行性} \\
 </ul>
 </details>
 <p>现在得到的对偶问题其实是一个二次规划问题，我们可以采用 SMO（Sequential Minimal Optimization） 算法求解。具体略。</p>
-<h3 id="核函数">核函数<a class="headerlink" href="#核函数" title="页面定位">&para;</a></h3>
+<h3 id="核函数">核函数</h3>
 <p>对原始样本进行升维，即 <span class="arithmatex">\(x_i \to \phi(x_i)\)</span>，新的问题出现了，计算内积 <span class="arithmatex">\(\phi(x_i)^T \phi(x_i)\)</span> 变得很困难，我们尝试解决这个内积的计算，即使用一个函数（核函数）来近似代替上述内积的计算结果，常用的核函数如下：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404160949464.png" data-type="image" data-width="auto" data-height="auto" data-title="常用核函数" data-desc-position="bottom"><img alt="常用核函数" src="https://cdn.dwj601.cn/images/202404160949464.png" /></a></p>
 <p>表格中的高斯核也就是所谓的径向基函数核 (Radial Basis Function Kernel, RBF 核)，其中的参数 <span class="arithmatex">\(\gamma=\frac{1}{2\sigma^2}\)</span>，因此 RBF 核的表达式也可以写成：</p>
@@ -6025,7 +6025,7 @@ y_if(x_i) \ge 1&amp;,\text{原始可行性} \\
 <li>当 <span class="arithmatex">\(\gamma\)</span> 较大时，<span class="arithmatex">\(\exp(-\gamma \|x_i - x_j\|^2)\)</span> 的衰减速度会很快。这意味着只有非常接近的样本点才会有较高的相似度。此时，模型会更关注局部特征。并且会导致模型具有较高的复杂度，因为模型会更容易拟合训练数据中的细节和噪声，从而可能导致过拟合。</li>
 <li>当 <span class="arithmatex">\(\gamma\)</span> 较小时，<span class="arithmatex">\(\exp(-\gamma \|x_i - x_j\|^2)\)</span> 的衰减速度会变慢。较远的样本点之间也可能会有较高的相似度。此时，模型会更关注全局特征。但此时模型的复杂度较低，容易忽略训练数据中的细节，从而可能导致欠拟合</li>
 </ul>
-<h3 id="软间隔与正则化">软间隔与正则化<a class="headerlink" href="#软间隔与正则化" title="页面定位">&para;</a></h3>
+<h3 id="软间隔与正则化">软间隔与正则化</h3>
 <p>对于超平面的选择，其实并不是那么容易，并且即使训练出了一个超平面，我们也不知道是不是过拟合产生的，因此我们需要稍微减轻约束条件的强度，因此引入软间隔的概念。</p>
 <p>我们定义软间隔为：某些样本可以不严格满足约束条件 <span class="arithmatex">\(y_i(w^Tx+b) \ge 1\)</span> 从而需要尽可能减少不满足的样本个数，因此引入新的优化项：替代损失函数</p>
 <div class="arithmatex">\[
@@ -6037,7 +6037,7 @@ l_{\text{option}}
 <div class="arithmatex">\[
 \min_{w, b,\xi_i} \quad \frac{1}{2}||w||^2+C\sum_{i = 1}^m \xi_i
 \]</div>
-<h3 id="支持向量回归">支持向量回归<a class="headerlink" href="#支持向量回归" title="页面定位">&para;</a></h3>
+<h3 id="支持向量回归">支持向量回归</h3>
 <p>支持向量回归 (Support Vector Regression, SVR) 与传统的回归任务不同，传统的回归任务需要计算每一个样本的误差，而支持向量回归允许有一定的误差，即，仅仅计算落在隔离带外面的样本损失。</p>
 <p>原始问题：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404230832245.png" data-type="image" data-width="auto" data-height="auto" data-title="原始问题" data-desc-position="bottom"><img alt="原始问题" src="https://cdn.dwj601.cn/images/202404230832245.png" /></a></p>
@@ -6048,14 +6048,14 @@ l_{\text{option}}
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404230833048.png" data-type="image" data-width="auto" data-height="auto" data-title="KKT 条件" data-desc-position="bottom"><img alt="KKT 条件" src="https://cdn.dwj601.cn/images/202404230833048.png" /></a></p>
 <p>预测模型：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404230834844.png" data-type="image" data-width="auto" data-height="auto" data-title="预测模型" data-desc-position="bottom"><img alt="预测模型" src="https://cdn.dwj601.cn/images/202404230834844.png" /></a></p>
-<h3 id="核方法">核方法<a class="headerlink" href="#核方法" title="页面定位">&para;</a></h3>
+<h3 id="核方法">核方法</h3>
 <p>通过上述：支持向量基本型、支持向量软间隔化、支持向量回归，三个模型的学习，可以发现最终的预测模型都是关于核函数与拉格朗日乘子的线性组合，那么这是巧合吗？并不是巧合，这其中其实有一个表示定理：</p>
 <div class="arithmatex">\[
 h^*(x) = \sum_{i = 1}^m\alpha_i \kappa(x, x_i)
 \]</div>
-<h2 id="softmax">softmax<a class="headerlink" href="#softmax" title="页面定位">&para;</a></h2>
+<h2 id="softmax">softmax</h2>
 <p>我们一般采用多分类+集成的策略来解决多分类的学习任务。具体的学习任务大概是：将多分类任务拆分为多个二分类任务，每一个二分类任务训练一个学习器；在测试数据时，将所有的分类器进行集成以获得最终的分类结果。这里有两个关键点：如何拆分多分类任务？如何集成二分类学习器？集成策略见第 8 章，本目主要介绍 <strong>多分类学习任务的拆分</strong>。主要有三种拆分策略：一对多、一对其余、多对多。对于 N 个类别而言：</p>
-<h3 id="一对一">一对一<a class="headerlink" href="#一对一" title="页面定位">&para;</a></h3>
+<h3 id="一对一">一对一</h3>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404020850504.png" data-type="image" data-width="auto" data-height="auto" data-title="一对一" data-desc-position="bottom"><img alt="一对一" src="https://cdn.dwj601.cn/images/202404020850504.png" /></a></p>
 <ul>
 <li>名称：One vs. One (OvO)</li>
@@ -6063,21 +6063,21 @@ h^*(x) = \sum_{i = 1}^m\alpha_i \kappa(x, x_i)
 <li>测试：对于一个样本进行分类预测时，需要用 <span class="arithmatex">\(\frac{N(N-1)}{2}\)</span> 个学习器分别进行分类，最终分得的结果种类最多的类别就是样本的预测类别</li>
 <li>特点：类别较少时，时间和内存开销往往更大；类别较多时，时间开销往往较小</li>
 </ul>
-<h3 id="一对其余">一对其余<a class="headerlink" href="#一对其余" title="页面定位">&para;</a></h3>
+<h3 id="一对其余">一对其余</h3>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404020852608.png" data-type="image" data-width="auto" data-height="auto" data-title="一对其余" data-desc-position="bottom"><img alt="一对其余" src="https://cdn.dwj601.cn/images/202404020852608.png" /></a></p>
 <ul>
 <li>名称：One vs. Rest (OvR)</li>
 <li>训练：需要对 N 个类别进行 <span class="arithmatex">\(N\)</span> 次训练，得到 <span class="arithmatex">\(N\)</span> 个二分类学习器。每次将目标类别作为正例，其余所有类别均为反例</li>
 <li>测试：对于一个样本进行分类预测时，需要用 <span class="arithmatex">\(N\)</span> 个学习器分别进行分类，每一个学习器显然只会输出二值，假定为正负。正表示当前样例属于该学习器的正类，反之属于反类。若 <span class="arithmatex">\(N\)</span> 个学习器输出了多个正类标签，则还需通过执行度选择最终的类别。</li>
 </ul>
-<h3 id="多对多">多对多<a class="headerlink" href="#多对多" title="页面定位">&para;</a></h3>
+<h3 id="多对多">多对多</h3>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404020853931.png" data-type="image" data-width="auto" data-height="auto" data-title="多对多" data-desc-position="bottom"><img alt="多对多" src="https://cdn.dwj601.cn/images/202404020853931.png" /></a></p>
 <ul>
 <li>名称：Many vs. Many (MvM)</li>
 <li>训练（编码）：对于 N 个类别数据，我们自定义 M 次划分。每次选择若干个类别作为正类，其余类作为反类。每一个样本在 M 个二分类学习器中都有一个分类结果，也就可以看做一个 M 维的向量。m 个样本也就构成了 m 个在 M 维空间的点阵。</li>
 <li>测试（解码）：对于测试样本，对于 M 个学习器同样也会有 M 个类别标记构成的向量，我们计算当前样本与训练集构造的 m 个样本的海明距离、欧氏距离，距离当前测试样本最近的点属于的类别，我们就认为是当前测试样本的类别。</li>
 </ul>
-<h3 id="softmax-函数">softmax 函数<a class="headerlink" href="#softmax-函数" title="页面定位">&para;</a></h3>
+<h3 id="softmax-函数">softmax 函数</h3>
 <p>将当前测试样本属于各个类别的概率之和约束为 <span class="arithmatex">\(1\)</span>。若共有 <span class="arithmatex">\(n\)</span> 个输出，则将第 <span class="arithmatex">\(i\)</span> 个输出 <span class="arithmatex">\(x_i\)</span> 转化为 <span class="arithmatex">\([0,1]\)</span> 取值范围的公式为：</p>
 <div class="arithmatex">\[
 P_i =\frac{e^{x_i}}{\sum_{j = 1}^n e^{x_j}}
@@ -6157,7 +6157,7 @@ P_i =\frac{e^{x_i}}{\sum_{j = 1}^n e^{x_j}}
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

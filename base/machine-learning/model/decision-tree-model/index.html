@@ -811,11 +811,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -827,7 +827,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1066,14 +1066,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5481,14 +5481,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5648,7 +5648,7 @@
 
 <p>下面介绍一个经典的机器学习模型：决策树模型。可以利用该模型完成监督学习任务，比如常见的分类与回归。下面将会花较多篇幅讲解决策树模型在分类任务上的应用。</p>
 <p>当然，决策树模型绝不至于此，基于这种划分决策的思想诞生出了很多别的模型，例如：异常检测任务中的孤立森林模型、集成学习任务中的基学习器模型等等，留给读者进一步探索。</p>
-<h2 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="页面定位">&para;</a></h2>
+<h2 id="基本概念">基本概念</h2>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404281628303.png" data-type="image" data-width="auto" data-height="auto" data-title="决策树结构" data-desc-position="bottom"><img alt="决策树结构" src="https://cdn.dwj601.cn/images/202404281628303.png" /></a></p>
 <p>决策树的结构如上图所示。决策树算法遵循自顶向下、分而治之的思想。叶子结点表示分类结果、边表示属性划分、分支结点表示属性选择。</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404281647289.png" data-type="image" data-width="auto" data-height="auto" data-title="决策树算法伪代码" data-desc-position="bottom"><img alt="决策树算法伪代码" src="https://cdn.dwj601.cn/images/202404281647289.png" /></a></p>
@@ -5664,12 +5664,12 @@
 </ul>
 </li>
 </ol>
-<h2 id="划分策略">划分策略<a class="headerlink" href="#划分策略" title="页面定位">&para;</a></h2>
+<h2 id="划分策略">划分策略</h2>
 <p>一般而言，决策树中每一个结点的分支数量可以是两个，即二路划分，也可以是多个，即多路划分。显然就需要对连续的数值属性进行离散化。但无论是类别属性（二元属性、标称属性、序数属性）还是离散化后的数值属性，划分时都要遵守分组的合法性，如下图所示：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501061713732.png" data-type="image" data-width="auto" data-height="auto" data-title="左1图和左2图都是合理的分组划分策略，而右1图就不合理了" data-desc-position="bottom"><img alt="左1图和左2图都是合理的分组划分策略，而右1图就不合理了" src="https://cdn.dwj601.cn/images/202501061713732.png" /></a></p>
-<h2 id="属性选择">属性选择<a class="headerlink" href="#属性选择" title="页面定位">&para;</a></h2>
+<h2 id="属性选择">属性选择</h2>
 <p>在递归建树时，如何选择出当前局面下的最优属性来划分样本呢？我们「希望当前结点的所包含的样本尽可能属于同一类」这一根本目的出发，讨论三种最优属性选择策略。</p>
-<h3 id="信息增益">信息增益<a class="headerlink" href="#信息增益" title="页面定位">&para;</a></h3>
+<h3 id="信息增益">信息增益</h3>
 <p>Iterative dichotomiser 3 (ID3) 算法首次在机器学习中引入了信息的概念。具体的：</p>
 <ul>
 <li>信息量 (Amount of information)。对于一个随机事件 <span class="arithmatex">\(X\)</span>，其发生的概率为 <span class="arithmatex">\(P\)</span>，则该事件是否发生对应的信息量为 <span class="arithmatex">\(-\log_2 P\)</span>。可以看出，一个随机事件发生的可能性越大，对应的信息量就越少；</li>
@@ -5684,7 +5684,7 @@
 <div class="arithmatex">\[
 \text{Ent\_Gain}(D, a)=\text{Ent}(D) - \sum_{i = 1}^V \frac{|D^i|}{|D|} \text{Ent}(D^i)
 \]</div>
-<h3 id="信息增益率">信息增益率<a class="headerlink" href="#信息增益率" title="页面定位">&para;</a></h3>
+<h3 id="信息增益率">信息增益率</h3>
 <p>由于 ID3 算法使用信息增益选择最优属性进行划分时，会在属性的取值较多时有偏好，C4.5 算法对其进行了改进。同时 C4.5 算法考虑了连续的数值属性离散化、缺失值处理和剪枝技术，这都会在接下来的小节中具体展开。</p>
 <p>不过所谓的属性选择策略的优化，其实就是在 ID3 的基础上增加了一个规范化，信息增益率的定义式如下：</p>
 <div class="arithmatex">\[
@@ -5695,7 +5695,7 @@
 \text{IV}(D, a) = -\sum_{i = 1}^V \frac{|D^i|}{|D|} \log_2 \frac{|D^i|}{|D|}
 \]</div>
 <p>可以看出 <span class="arithmatex">\(\text{IV}(D, a)\)</span> 其实就是数据集 <span class="arithmatex">\(D\)</span> 在属性 <span class="arithmatex">\(a\)</span> 所以可能取值上的信息熵。一般而言，属性的属性取值越多，信息增益越大，对应的 <span class="arithmatex">\(\text{IV}\)</span> 值也越大，这样就可以规范化信息增益，避免在选择最优划分属性时模型偏好于更多属性取值的属性了。</p>
-<h3 id="基尼指数增益">基尼指数增益<a class="headerlink" href="#基尼指数增益" title="页面定位">&para;</a></h3>
+<h3 id="基尼指数增益">基尼指数增益</h3>
 <p>分类与回归树 (Classification And Regression Tree, CART) 算法在决策树模型中引入了基尼指数 (Gini index) 来进行最优划分属性的选择。基尼指数是用来衡量一个国家或地区的收益差距的指标，基尼指数越小则表明收入差距越小。</p>
 <p>假设当前结点对应的样本集合为 D，其中含有 <span class="arithmatex">\(t\)</span> 个类别并且第 <span class="arithmatex">\(k\)</span> 个类别所占样本集合比例为 <span class="arithmatex">\(P_k\)</span>，则当前结点的基尼指数为：</p>
 <div class="arithmatex">\[
@@ -5705,17 +5705,17 @@
 <div class="arithmatex">\[
 \text{Gini\_Gain}(D,a) = \text{Gini(D)} - \sum_{i = 1}^V \frac{|D^i|}{|D|} \text{Gini}(D^i)
 \]</div>
-<h2 id="剪枝处理">剪枝处理<a class="headerlink" href="#剪枝处理" title="页面定位">&para;</a></h2>
+<h2 id="剪枝处理">剪枝处理</h2>
 <p>为了防止模型过拟合并且降低计算复杂度，我们需要使用验证集对决策树进行剪枝。一共有两种剪枝方法：</p>
 <ol>
 <li>预剪枝。基于贪心的思想，决策每次划分是否需要进行。我们知道最佳属性的选择是基于信息增益等关于结点纯度的算法策略，而是否进行子结点的生成需要我们进行性能评估，即从测试精度的角度来考虑。因此决策划分是否进行取决于子结点生成前后在验证集上的测试精度，如果可以得到提升则进行生成，反之则不生成子结点，也就是预剪枝的逻辑；</li>
 <li>后剪枝。同样是预剪枝的精度决策标准。我们在一个决策树完整生成以后，从深度最大的分支结点开始讨论是否可以作为叶子结点，也就是是否删除该分支的子结点。决策的依据是删除子结点前后在测试集上的精度是否有提升，如果有则删除子结点，反之不变。</li>
 </ol>
 <p>两种剪枝策略的区别在于。预剪枝是基于贪心，也就是说没有考虑到全局的情况，可能出现当前结点划分后测试精度下降，但是后续结点继续划分会得到性能提升，从而导致预剪枝的决策树泛化性能下降；而后剪枝就可以规避贪心导致的局部最优，但是计算的时间开销更大。</p>
-<h2 id="连续与缺失值">连续与缺失值<a class="headerlink" href="#连续与缺失值" title="页面定位">&para;</a></h2>
-<h3 id="连续值处理">连续值处理<a class="headerlink" href="#连续值处理" title="页面定位">&para;</a></h3>
+<h2 id="连续与缺失值">连续与缺失值</h2>
+<h3 id="连续值处理">连续值处理</h3>
 <p>这里讲解二分法 (bi-partition)。主要就是在计算信息增益时增加了一步，将属性的取值情况划分为了两类。那么如何划分呢？关键在于划分点的取值。假设当前属性 a 的取值是连续值，去重排序后得到 n 个数值，我们取这 n 个数值的 n-1 个间隔的中值作为划分点集合，枚举其中的每一个划分点计算最大信息增益，对应的划分点就是当前连续取值的属性的二分划分点。~~时间复杂度极高！也不知道 C4.5 算法怎么想的~~</p>
-<h3 id="缺失值处理">缺失值处理<a class="headerlink" href="#缺失值处理" title="页面定位">&para;</a></h3>
+<h3 id="缺失值处理">缺失值处理</h3>
 <p>当然我们可以直接删除含有缺失信息的样本，但是这对数据信息过于浪费，尤其是当数据量不大时，如何解决这个问题呢？我们需要解决两个问题：</p>
 <ol>
 <li>在选择最优划分属性时，如何计算含有缺失值的属性对应的信息增益呢？</li>
@@ -5723,10 +5723,10 @@
 </ol>
 <p>对于第一个问题：只计算属性值没有缺失的样本，然后放缩到原始的数据集合大小即可</p>
 <p>对于第二个问题：对于已知属性值的样本，我们可以计算出每一个属性值的样本数量，从而计算出一个集合比例，这样对于未知属性值的样本，只需要按照前面计算出来的集合，按照概率划分到对应的子结点即可</p>
-<h2 id="多变量决策树">多变量决策树<a class="headerlink" href="#多变量决策树" title="页面定位">&para;</a></h2>
+<h2 id="多变量决策树">多变量决策树</h2>
 <p>很好，本目就是来解决上述连续值处理的过高时间复杂度的问题的。现在对于一个结点，不是选择最优划分属性，而是对建一个合适的线性分类器，如图：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202405062204413.png" data-type="image" data-width="auto" data-height="auto" data-title="合适的线性分类器" data-desc-position="bottom"><img alt="合适的线性分类器" src="https://cdn.dwj601.cn/images/202405062204413.png" /></a></p>
-<h2 id="决策树模型小结">决策树模型小结<a class="headerlink" href="#决策树模型小结" title="页面定位">&para;</a></h2>
+<h2 id="决策树模型小结">决策树模型小结</h2>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501062024741.png" data-type="image" data-width="auto" data-height="auto" data-title="决策树模型小结 &amp; 发展史" data-desc-position="bottom"><img alt="决策树模型小结 &amp; 发展史" src="https://cdn.dwj601.cn/images/202501062024741.png" /></a></p>
 
 
@@ -5803,7 +5803,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

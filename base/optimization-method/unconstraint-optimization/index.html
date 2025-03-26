@@ -809,11 +809,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../digital-signal-processing/" class="md-nav__link ">
+            <a href="../../speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -825,7 +825,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -3020,14 +3020,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5428,14 +5428,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -6059,7 +6059,7 @@
 </div>
 </div>
 </details>
-<h3 id="41-最速下降法">4.1 最速下降法<a class="headerlink" href="#41-最速下降法" title="页面定位">&para;</a></h3>
+<h3 id="41-最速下降法">4.1 最速下降法</h3>
 <p>放一张生动的图：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202406132016327.png" data-type="image" data-width="auto" data-height="auto" data-title="最速下降法 - 迭代示意图" data-desc-position="bottom"><img alt="最速下降法 - 迭代示意图" src="https://cdn.dwj601.cn/images/202406132016327.png" /></a></p>
 <p>迭代公式：</p>
@@ -6070,7 +6070,7 @@ x_{k+1} = x_k - \alpha_k \nabla f(x_k)
 <p>易证相邻迭代解 <span class="arithmatex">\(x_k,x_{k+1}\)</span> 的方向 <span class="arithmatex">\(d_k,d_{k+1}\)</span> 是正交的：由于 <span class="arithmatex">\(\phi(\alpha) = f(x_k + \alpha d_k)\)</span>，在采用线搜索找最优步长时，步长的搜索结果 <span class="arithmatex">\(\alpha_k\)</span> 即为使得 <span class="arithmatex">\(\phi'(\alpha)=0\)</span> 的解，于是可得 <span class="arithmatex">\(0=\phi'(\alpha) = \phi'(\alpha_k) = \nabla f(x_k+\alpha_k d_k)d_k = -d_{k+1}^T \cdot d_k\)</span>，即 <span class="arithmatex">\(d_{k+1}^T \cdot d_k = 0\)</span>。如图：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202406132046068.png" data-type="image" data-width="auto" data-height="auto" data-title="相邻迭代解的方向正交" data-desc-position="bottom"><img alt="相邻迭代解的方向正交" src="https://cdn.dwj601.cn/images/202406132046068.png" /></a></p>
 <p>也正因为搜索方向正交的特性导致最速下降法的收敛速度往往不尽如人意。优点在于程序设计简单并且计算和存储量都不大，以及对初始点的要求不高。</p>
-<h3 id="42-牛顿法">4.2 牛顿法<a class="headerlink" href="#42-牛顿法" title="页面定位">&para;</a></h3>
+<h3 id="42-牛顿法">4.2 牛顿法</h3>
 <p>放一张生动的图：</p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202406140902324.gif" data-type="image" data-width="auto" data-height="auto" data-title="牛顿法 - 迭代示意图" data-desc-position="bottom"><img alt="牛顿法 - 迭代示意图" src="https://cdn.dwj601.cn/images/202406140902324.gif" /></a></p>
 <details class="warning" open="open">
@@ -6082,7 +6082,7 @@ x_{k+1} = x_k - \alpha_k \nabla f(x_k)
 x_{k+1} = x_k - \nabla^2f(x_k)^{-1}\nabla f(x_k)
 \]</div>
 <p>牛顿法相较于最速下降法有了更快的收敛速度，但是由于需要计算和存储海塞矩阵导致计算量增加并且有些目标函数可能根本求不出二阶梯度。同时牛顿法对于初始迭代点的选择比最速下降法要苛刻的多。</p>
-<h3 id="43-共轭梯度法">4.3 共轭梯度法<a class="headerlink" href="#43-共轭梯度法" title="页面定位">&para;</a></h3>
+<h3 id="43-共轭梯度法">4.3 共轭梯度法</h3>
 <p>我们利用共轭梯度法解决「正定二次函数」的极小化问题。由于最速下降法中相邻迭代点的方向是正交的导致搜索效率下降，牛顿法又由于需要计算和存储海塞矩阵导致存储开销过大，共轭梯度法的核心思想是 <strong>相邻两个迭代点的搜索方向是关于正定二次型的正定阵正交的</strong>。这样既保证了迭代收敛的速度也避免了计算存储海塞矩阵的开销。美中不足的是当共轭梯度法解决其他问题是往往会出现对线搜索的过度依赖，一旦线搜索变差会导致整个迭代过程精度变差。</p>
 <p>概念补充：</p>
 <ol>
@@ -6159,7 +6159,7 @@ x_{k+1} =&amp; x_k + \alpha_k d_k\\
 =&amp; x_k + (-\frac{g_k^T d_k}{d_k^TGd_k}) (-g_k + \frac{g_k^Tg_k}{g_{k-1}^T g_{k-1}} d_{k-1})
 \end{aligned}
 \]</div>
-<h3 id="44-拟牛顿法">4.4 拟牛顿法<a class="headerlink" href="#44-拟牛顿法" title="页面定位">&para;</a></h3>
+<h3 id="44-拟牛顿法">4.4 拟牛顿法</h3>
 <p>4.1 和 4.2 介绍的基于一阶梯度和二阶梯度的下降法都可以统一成下面的表达式：</p>
 <div class="arithmatex">\[
 x_{k+1} = x_k - \alpha_k B_k \nabla f(x_k)
@@ -6194,7 +6194,7 @@ B_0 = \nabla^2f(x_0)\\
 <li><a href="https://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E6%B3%95">牛顿法 - wiki - 更权威的解释</a></li>
 </ul>
 </blockquote>
-<h2 id="最小二乘法">最小二乘法<a class="headerlink" href="#最小二乘法" title="页面定位">&para;</a></h2>
+<h2 id="最小二乘法">最小二乘法</h2>
 <p>本章继续介绍无约束函数的最优化算法。不过和第四章的区别在于现在的目标函数是二次函数，称为「最小二乘问题」。</p>
 <p>所谓的无约束最小二乘问题，本质上是第四章介绍的无约束问题的一个子集，只不过因为使用场景很多所以单独拿出来进行讨论。也正因为使用场景多，学者们针对此类问题设计出了更加高效的最优化算法。</p>
 <p>无约束最小二乘问题的形式定义为：</p>
@@ -6210,7 +6210,7 @@ B_0 = \nabla^2f(x_0)\\
 \end{aligned}
 \]</div>
 <p>当 <span class="arithmatex">\(r_i(x)\)</span> 为线性函数时，当前问题为线性最小二乘问题；当 <span class="arithmatex">\(r_i(x)\)</span> 为非线性函数时，当前问题为非线性最小二乘问题。本章将分别讨论这两种最小二乘问题的优化求解策略。</p>
-<h3 id="51-线性最小二乘">5.1 线性最小二乘<a class="headerlink" href="#51-线性最小二乘" title="页面定位">&para;</a></h3>
+<h3 id="51-线性最小二乘">5.1 线性最小二乘</h3>
 <p>此时可以直接将目标函数写成：</p>
 <div class="arithmatex">\[
 \begin{aligned}
@@ -6230,7 +6230,7 @@ B_0 = \nabla^2f(x_0)\\
 x^*=(A^T A)^{-1}A^Tb
 \]</div>
 <p>当然 <span class="arithmatex">\(A^TA\)</span> 并不都是可逆的，并且在数据量足够大时，即使可逆也会让求逆操作即为耗时。针对此问题，提出了线性最小二乘的 QR 正交分解算法。</p>
-<h3 id="52-非线性最小二乘">5.2 非线性最小二乘<a class="headerlink" href="#52-非线性最小二乘" title="页面定位">&para;</a></h3>
+<h3 id="52-非线性最小二乘">5.2 非线性最小二乘</h3>
 <p>同样可以采用第四章学到的各种下降迭代算法，这里引入高斯牛顿法，推导的解的迭代公式为：</p>
 <div class="arithmatex">\[
 x^{k+1}= x^k - (A_k^TA_k)^{-1}A_k^Tr_k
@@ -6336,7 +6336,7 @@ r_m(x_k)
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

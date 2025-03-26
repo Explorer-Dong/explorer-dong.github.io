@@ -801,11 +801,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -817,7 +817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4774,14 +4774,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5490,14 +5490,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5677,7 +5677,7 @@
   <h1>GNU/Linux 进阶 (Ubuntu)</h1>
 
 <p>本文记录 GNU/Linux 进阶内容，操作系统为 Ubuntu 22.04。</p>
-<h2 id="权限管理">权限管理<a class="headerlink" href="#权限管理" title="页面定位">&para;</a></h2>
+<h2 id="权限管理">权限管理</h2>
 <p>在 Windows 中，我们对用户和权限的概念接触的并不多，因为很多东西都默认设置好了。但是在 GNU/Linux 中，很多文件的权限都需要自己配置和定义，因此权限管理的操作方法十分重要。我们从现象入手逐个进行讲解。</p>
 <p>首先以 root 用户身份登录并进入 <code>/opt/OS/task2/</code> 目录，然后创建一个测试文件 <code>root_file.txt</code> 和一个测试文件夹 <code>root_folder</code>。使用 <code>ls -l</code> 命令列出当前目录下所有文件的详细信息：</p>
 <figure id="__fc_1">
@@ -5689,6 +5689,9 @@
 <p>可以看到一共有 <span class="arithmatex">\(6\)</span> 列信息，从左到右依次为：用户访问权限、与文件链接的个数、文件属主、文件属组、文件大小、最后修改日期、文件/目录名。<span class="arithmatex">\(2-5\)</span> 列的信息都很显然，我们重点关注第一列信息。</p>
 <p>第 <span class="arithmatex">\(1\)</span> 列一共有 <span class="arithmatex">\(10\)</span> 个字符，其中第 <span class="arithmatex">\(1\)</span> 个字符表示当前文件的类型，共有如下几种：</p>
 <figure id="__tc_1">
+<figcaption>
+<p><span class="caption-prefix">表 1. </span> 符号与文件类型的关系</p>
+</figcaption>
 <table>
 <thead>
 <tr>
@@ -5727,12 +5730,9 @@
 </tr>
 </tbody>
 </table>
-<figcaption>
-<p><span class="caption-prefix">表 1. </span> 符号与文件类型的关系</p>
-</figcaption>
 </figure>
 <p>第 <span class="arithmatex">\(2-10\)</span> 共 <span class="arithmatex">\(9\)</span> 个字符分 <span class="arithmatex">\(3\)</span> 个一组，分别表示：属主 (user) 权限、属组 (group) 权限和其他用户 (other) 权限。</p>
-<h3 id="用户和组">用户和组<a class="headerlink" href="#用户和组" title="页面定位">&para;</a></h3>
+<h3 id="用户和组">用户和组</h3>
 <p>首先我们需要明确用户和组这两个概念的定义：</p>
 <ul>
 <li>文件用户（user/u）：文件的拥有者。</li>
@@ -5754,9 +5754,12 @@
 <p><span class="caption-prefix">图 2. </span> 直观理解用户和组</p>
 </figcaption>
 </figure>
-<h3 id="权限类别">权限类别<a class="headerlink" href="#权限类别" title="页面定位">&para;</a></h3>
+<h3 id="权限类别">权限类别</h3>
 <p>一共有 3 种权限，如下表所示：</p>
 <figure id="__tc_2">
+<figcaption>
+<p><span class="caption-prefix">表 2. </span> 权限类别</p>
+</figcaption>
 <table>
 <thead>
 <tr>
@@ -5783,12 +5786,9 @@
 </tr>
 </tbody>
 </table>
-<figcaption>
-<p><span class="caption-prefix">表 2. </span> 权限类别</p>
-</figcaption>
 </figure>
 <p>那么我们平时看到的关于权限还有数字的配置，是怎么回事呢？其实是对上述字符配置的八进制数字化。读 <span class="arithmatex">\(r\)</span> 对应 <span class="arithmatex">\(4\)</span>，写 <span class="arithmatex">\(w\)</span> 对应 <span class="arithmatex">\(2\)</span>，可执行 <span class="arithmatex">\(x\)</span> 对应 <span class="arithmatex">\(1\)</span>，例如如果一个文件对于所有用户都拥有可读、可写、可执行权限，那么就是 <code>rwxrwxrwx</code>，对应到数字就是 <span class="arithmatex">\(777\)</span>。</p>
-<h3 id="相关命令">相关命令<a class="headerlink" href="#相关命令" title="页面定位">&para;</a></h3>
+<h3 id="相关命令">相关命令</h3>
 <p>下面罗列一些和权限管理相关的命令。</p>
 <p><strong>提升权限</strong>：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo<span class="w"> </span>...
@@ -5945,9 +5945,9 @@
 </ul>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202409280007514.png" data-type="image" data-width="auto" data-height="auto" data-title="权限测试" data-desc-position="bottom"><img alt="权限测试" src="https://cdn.dwj601.cn/images/202409280007514.png" /></a></p>
 </details>
-<h2 id="进程管理">进程管理<a class="headerlink" href="#进程管理" title="页面定位">&para;</a></h2>
+<h2 id="进程管理">进程管理</h2>
 <p>在熟悉了 bash shell 的基本命令以及 GNU/Linux 中用户与权限管理的基本概念后，我们就可以开始尝试管理 GNU/Linux 中的进程了。接下来简单介绍一下 GNU/Linux 的进程管理。最后再通过调试一个 C 程序来熟悉 GNU 调试工具 gdb (GNU Debugger) 的使用。</p>
-<h3 id="进程监视">进程监视<a class="headerlink" href="#进程监视" title="页面定位">&para;</a></h3>
+<h3 id="进程监视">进程监视</h3>
 <p><strong>查看进程状态</strong>：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a>ps
 </span></code></pre></div></td></tr></table></div>
@@ -5999,7 +5999,7 @@
 <p><strong>六、删除 <code>badproc.sh</code> 程序运行时创建的目录和文件</strong></p>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081748818.png" data-type="image" data-width="auto" data-height="auto" data-title="删除目录和文件" data-desc-position="bottom"><img alt="删除目录和文件" src="https://cdn.dwj601.cn/images/202410081748818.png" /></a></p>
 </details>
-<h3 id="进程调试">进程调试<a class="headerlink" href="#进程调试" title="页面定位">&para;</a></h3>
+<h3 id="进程调试">进程调试</h3>
 <p>参考 <a href="https://www.gnu.org/software/gdb/">GDB 官网</a>。常用的如下：</p>
 <p><strong>开始运行</strong>：r 即 run</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a>r
@@ -6092,9 +6092,9 @@
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202410081951803.png" data-type="image" data-width="auto" data-height="auto" data-title="运行到第二个断点时观察子进程 1510171" data-desc-position="bottom"><img alt="运行到第二个断点时观察子进程 1510171" src="https://cdn.dwj601.cn/images/202410081951803.png" /></a></p>
 <p>从上述子进程的追踪结果可以看出，在父进程结束之后，子进程成功执行了 <code>pid == 0</code> 的逻辑并开始调用 <code>ls</code> 工具。</p>
 </details>
-<h2 id="cc-编程">C/C++ 编程<a class="headerlink" href="#cc-编程" title="页面定位">&para;</a></h2>
+<h2 id="cc-编程">C/C++ 编程</h2>
 <p>本部分主要是为了熟悉 C/C++ 编程中的「静态链接」与「动态链接」逻辑。</p>
-<h3 id="gcc-基础">GCC 基础<a class="headerlink" href="#gcc-基础" title="页面定位">&para;</a></h3>
+<h3 id="gcc-基础">GCC 基础</h3>
 <p>相比于在 Windows 进行 C/C++ 编程时需要自己额外安装编译器集合 MSVC (Microsoft Visual C++) 或 MinGW (Minimalist GNU for Windows)，GNU/Linux 发行版 Ubuntu22.04 已经默认配置好了编译器集合 GCC (GNU Compiler Collection)，我们可以利用 GCC 提供的前端工具 gcc 等快捷地使用编译器集合中的所有工具。具体命令可以参考 GCC 官方在线文档：<a href="https://gcc.gnu.org/onlinedocs/">https://gcc.gnu.org/onlinedocs/</a>。</p>
 <p>我们可以使用 <code>gcc --version</code> 命令查看当前的 GCC 版本：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1">1</a></span>
@@ -6152,7 +6152,7 @@
 <p>等价于：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1"></a>gcc<span class="w"> </span>–o<span class="w"> </span>fred<span class="w"> </span>/usr/lib/libm.a<span class="w"> </span>fred.c
 </span></code></pre></div></td></tr></table></div>
-<h3 id="库的链接">库的链接<a class="headerlink" href="#库的链接" title="页面定位">&para;</a></h3>
+<h3 id="库的链接">库的链接</h3>
 <p>对于下面的函数库与调用示例：</p>
 <div class="language-c highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-41-2"> 2</a></span>
@@ -6249,8 +6249,8 @@
 <p><span class="caption-prefix">图 3. </span> 静态链接的可执行文件 vs. 动态链接的可执行文件</p>
 </figcaption>
 </figure>
-<h2 id="工具扩展">工具扩展<a class="headerlink" href="#工具扩展" title="页面定位">&para;</a></h2>
-<h3 id="目录可视化工具-tree">目录可视化工具 tree<a class="headerlink" href="#目录可视化工具-tree" title="页面定位">&para;</a></h3>
+<h2 id="工具扩展">工具扩展</h2>
+<h3 id="目录可视化工具-tree">目录可视化工具 tree</h3>
 <p>Linux 默认自带，Windows 下载地址：<a href="https://gnuwin32.sourceforge.net/packages/tree.htm">Tree for Windows</a>，将二进制文件路径加入环境变量即可。</p>
 <p>基本命令格式：<code>tree [-option] [dir]</code></p>
 <ul>
@@ -6261,7 +6261,7 @@
 <li>起别名：<code>alias tree='tree -FCN'</code>。</li>
 <li>输出目录结构到文件： <code>tree -L 2 -I '*.js|node_modules|*.md|*.json|*.css|*.ht' &gt; tree.txt</code>。</li>
 </ul>
-<h3 id="url-下载工具-wget">URL 下载工具 wget<a class="headerlink" href="#url-下载工具-wget" title="页面定位">&para;</a></h3>
+<h3 id="url-下载工具-wget">URL 下载工具 wget</h3>
 <p>Linux 默认自带，Windows 下载地址：<a href="https://eternallybored.org/misc/wget/">Windows binaries of GNU Wget</a>。</p>
 <p>基本命令格式：<code>wget [url]</code></p>
 <ul>
@@ -6294,7 +6294,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月24日 10:32:59">2025年3月24日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月26日 05:37:49">2025年3月26日</span>
   </span>
 
     
@@ -6347,7 +6347,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

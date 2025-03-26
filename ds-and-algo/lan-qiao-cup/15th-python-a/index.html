@@ -801,11 +801,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../base/digital-signal-processing/" class="md-nav__link ">
+            <a href="../../../base/speech-signal-processing/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -817,7 +817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -3809,14 +3809,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5429,14 +5429,14 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -5546,7 +5546,7 @@
 
   <h1>第 15 届 Python A 组（省赛）</h1>
 
-<h2 id="t1-拼正方形-55">T1 拼正方形 (5'/5')<a class="headerlink" href="#t1-拼正方形-55" title="页面定位">&para;</a></h2>
+<h2 id="t1-拼正方形-55">T1 拼正方形 (5'/5')</h2>
 <p>题意：给定 <span class="arithmatex">\(7385137888721\)</span> 个 <span class="arithmatex">\(2\times 2\)</span> 的方块和 <span class="arithmatex">\(10470245\)</span> 个 <span class="arithmatex">\(1\times 1\)</span> 的方块，输出能拼成的最大的正方形的边长。</p>
 <p>思路：一个贪心的拼接方法就是，先用 <span class="arithmatex">\(2\times 2\)</span> 的方块拼完整的大正方形，然后再用 <span class="arithmatex">\(1\times 1\)</span> 的方块在原来大正方形的顶角两边逐渐扩展。按照这样的贪心思路，可以发现 <span class="arithmatex">\(\left \lfloor \sqrt {7385137888721\times 4} \right \rfloor = 5435122\)</span>，即只用 <span class="arithmatex">\(2\times 2\)</span> 的方块可以拼接边长为 <span class="arithmatex">\(5435122\)</span> 的大正方形，由于是偶数，所以这个大正方形是可以拼出来的。接下来考虑用 <span class="arithmatex">\(1\times 1\)</span> 的方块补顶角边，发现 <span class="arithmatex">\(5435122 \times 2+1=10870245&gt;10470245\)</span>，即补一层都不够。</p>
 <p>最终答案为：<span class="arithmatex">\(5435122\)</span>。</p>
@@ -5595,11 +5595,11 @@
 </div>
 </div>
 </div>
-<h2 id="t2-召唤数学精灵-55">T2 召唤数学精灵 (5'/5')<a class="headerlink" href="#t2-召唤数学精灵-55" title="页面定位">&para;</a></h2>
+<h2 id="t2-召唤数学精灵-55">T2 召唤数学精灵 (5'/5')</h2>
 <p>题意：输出 <span class="arithmatex">\([1,2024041331404202]\)</span> 内有多少个数字 <span class="arithmatex">\(x\)</span> 满足 <span class="arithmatex">\(\displaystyle\left(\prod_{1}^x-\sum_{1}^x\right)\bmod100=0\)</span>。</p>
 <p>思路：数学题直接打表找规律。发现每个 100 内都有两个合法解且 <span class="arithmatex">\(x \bmod 100\)</span> 为偶数时刚好合法，那么最终答案就是上界从百位开始乘以 2，再减去最大时多算的一个，再加上 1,3,24 三个合法数，最终答案就是 <span class="arithmatex">\(2024041331404202 \bmod 100\times2-1+3=40480826628086\)</span>。</p>
 <p>注意：打表时需要用到阶乘，可以手搓，也可以用库。Python 中的阶乘函数为 <code>math.factorial()</code>，C++ 中的阶乘函数为 <code>std::tgamma()</code>，对应的库为 <code>cmath</code>。不过还是用 Python 比较方便，因为 C++ 的 long long 精度有限。</p>
-<h2 id="t3-数字诗意-1010">T3 数字诗意 (10'/10')<a class="headerlink" href="#t3-数字诗意-1010" title="页面定位">&para;</a></h2>
+<h2 id="t3-数字诗意-1010">T3 数字诗意 (10'/10')</h2>
 <p>题意：给定一个含有 <span class="arithmatex">\(n\ (1\le n\le 2\cdot10^5)\)</span> 个数的数组 <span class="arithmatex">\(a\ (1\le a_i\le10^{16})\)</span>，问其中不能被连续正整数之和（至少两个）表示的数有多少个。</p>
 <p>思路：一道数学题。连续的正整数之和如下式：</p>
 <div class="arithmatex">\[
@@ -5671,7 +5671,7 @@
 </div>
 </div>
 </div>
-<h2 id="t4-回文数组-1010">T4 回文数组 (10'/10')<a class="headerlink" href="#t4-回文数组-1010" title="页面定位">&para;</a></h2>
+<h2 id="t4-回文数组-1010">T4 回文数组 (10'/10')</h2>
 <p>题意：给定一个含有 <span class="arithmatex">\(n\ (1\le n\le 10^5)\)</span> 个数的数组 <span class="arithmatex">\(a\ (-10^6\le a_i \le 10^6)\)</span>，可以选择相邻的两个数同时 <span class="arithmatex">\(+1\)</span> 或 <span class="arithmatex">\(-1\)</span>，也可以选择一个数 <span class="arithmatex">\(+1\)</span> 或 <span class="arithmatex">\(-1\)</span>。问最少操作多少次可以让 <span class="arithmatex">\(a\)</span> 变成回文数组。</p>
 <p>思路：贪心地，能一起操作就一起操作。我们只需要考虑数组的一半，由于是对称的，因此前一半和后一半等价，这里考虑前一半。</p>
 <p>时间复杂度：<span class="arithmatex">\(O(n)\)</span></p>
@@ -5789,7 +5789,7 @@
 </div>
 </div>
 </div>
-<h2 id="t5-吊坠-1515">T5 吊坠 (15'/15')<a class="headerlink" href="#t5-吊坠-1515" title="页面定位">&para;</a></h2>
+<h2 id="t5-吊坠-1515">T5 吊坠 (15'/15')</h2>
 <p>题意：给定 <span class="arithmatex">\(n\ (1\le n\le 200)\)</span> 个长度为 <span class="arithmatex">\(m\ (1\le m\le 50)\)</span> 的环形字符串，现在定义两个环形字符串之间连边的权重为两个字符串的最长公共子串的长度。返回利用 <span class="arithmatex">\(n-1\)</span> 条边将这 <span class="arithmatex">\(n\)</span> 个字符串连接起来的最大总权重。</p>
 <p>思路：一道大杂烩：</p>
 <ul>
@@ -6095,7 +6095,7 @@
 </div>
 </div>
 </div>
-<h2 id="t6-砍柴-1515">T6 砍柴 (15'/15')<a class="headerlink" href="#t6-砍柴-1515" title="页面定位">&para;</a></h2>
+<h2 id="t6-砍柴-1515">T6 砍柴 (15'/15')</h2>
 <p>题意：两人进行 <span class="arithmatex">\(T\ (1\le T\le 10^4)\)</span> 轮博弈，每轮给定一个初始值 <span class="arithmatex">\(n\ (1\le n \le 10^5)\)</span>，两人轮流对 <span class="arithmatex">\(n\)</span> 进行如下操作：选择一个质数 <span class="arithmatex">\(p\ (2\le p\le n)\)</span> 并让 <span class="arithmatex">\(n\)</span> 减去 <span class="arithmatex">\(p\)</span>。当任何一人无法继续操作时游戏结束，无法操作的人输。先手胜输出 <span class="arithmatex">\(1\)</span>，反之输出 <span class="arithmatex">\(0\)</span>。</p>
 <p>思路：又是一道大杂烩，套着博弈论外壳的 DP：</p>
 <ul>
@@ -6278,8 +6278,8 @@
 </div>
 </div>
 </div>
-<h2 id="t7-智力测试-020">T7 智力测试 (0'/20')<a class="headerlink" href="#t7-智力测试-020" title="页面定位">&para;</a></h2>
-<h2 id="t8-最大异或结点-020">T8 最大异或结点 (0'/20')<a class="headerlink" href="#t8-最大异或结点-020" title="页面定位">&para;</a></h2>
+<h2 id="t7-智力测试-020">T7 智力测试 (0'/20')</h2>
+<h2 id="t8-最大异或结点-020">T8 最大异或结点 (0'/20')</h2>
 
 
 
@@ -6355,7 +6355,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

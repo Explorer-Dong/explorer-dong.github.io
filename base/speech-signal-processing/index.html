@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://wiki.dwj601.cn/base/digital-signal-processing/">
+        <link rel="canonical" href="https://wiki.dwj601.cn/base/speech-signal-processing/">
       
       
         <link rel="prev" href="../digital-image-processing/">
@@ -24,7 +24,7 @@
     
     
       
-        <title>数字信号处理 - Open Wiki Community</title>
+        <title>语音信号处理 - Open Wiki Community</title>
       
     
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#前言" class="md-skip">
+        <a href="#数据处理" class="md-skip">
           跳转至
         </a>
       
@@ -167,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              数字信号处理
+              语音信号处理
             
           </span>
         </div>
@@ -817,7 +817,7 @@
               
   
   <span class="md-ellipsis">
-    数字信号处理
+    语音信号处理
     
   </span>
   
@@ -829,7 +829,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
-            数字信号处理
+            语音信号处理
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5320,30 +5320,54 @@
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
+  <a href="#数据处理" class="md-nav__link">
     <span class="md-ellipsis">
-      前言
+      数据处理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#音频数据类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      音频数据类型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#特征工程" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征工程
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#音频数据类型" class="md-nav__link">
+  <a href="#算法应用" class="md-nav__link">
     <span class="md-ellipsis">
-      音频数据类型
+      算法应用
     </span>
   </a>
   
@@ -5365,7 +5389,7 @@
 
 
   
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/digital-signal-processing/index.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/speech-signal-processing/index.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5374,47 +5398,44 @@
     
       
     
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/digital-signal-processing/index.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/speech-signal-processing/index.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-  <h1>数字信号处理</h1>
+  <h1>语音信号处理</h1>
 
-<h2 id="前言">前言<a class="headerlink" href="#前言" title="页面定位">&para;</a></h2>
-<p>本文记录数字信号处理的入门学习笔记。</p>
+<p>本文记录语音信号处理的入门学习笔记。部分参考内容如下：</p>
 <ul>
-<li>理论部分参考：《现代语音信号处理（Python版）》<sup id="fnref:book"><a class="footnote-ref" href="#fn:book">1</a></sup></li>
-<li>实践部分参考：<a href="https://huggingface.co/learn/audio-course/chapter0/introduction">Audio Course - huggingface.co</a>。</li>
+<li>理论：《现代语音信号处理（Python版）》<sup id="fnref:book"><a class="footnote-ref" href="#fn:book">1</a></sup>、<a href="https://gitee.com/liangrytanggc/python-book-code">配套代码</a>、<a href="https://www.yuntu.io/book/4971651197875#catalogue">全书目录</a></li>
+<li>实践：<a href="https://huggingface.co/learn/audio-course/chapter0/introduction">Audio Course - huggingface.co</a>。</li>
 </ul>
 <p>成绩组成：出勤+测验（*2）+期末大项目。</p>
-<h2 id="音频数据类型">音频数据类型<a class="headerlink" href="#音频数据类型" title="页面定位">&para;</a></h2>
+<h2 id="数据处理">数据处理</h2>
+<h3 id="音频数据类型">音频数据类型</h3>
 <p>语音信号数字化。原始的模拟信号首先被麦克风捕捉，并由声音信号转化为电信号。接下来，电信号会由模数转换器 (Analog-to-Digital Converter, ADC) 经由采样过程转换为数字化表示。</p>
 <p>人类可感知的声音频率范围：20 Hz - 20 kHz，声音强度范围：0 dB - 130 dB。</p>
 <p>语音信号大约有三种表示方法：时域表示（时谱图）、频域表示（频谱图）、时频域表示（语谱图）。其余的表示方法都是在前三者的基础之上进行一定的变换得来。但本质不变。其中：</p>
-<p>时域表示中，横坐标就是时间，纵坐标就是声音强度。如下：</p>
-<figure id="__fc_1">
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250305095425917.png" data-type="image" data-width="auto" data-height="auto" data-title="时域图" data-desc-position="bottom"><img alt="时域图" src="https://cdn.dwj601.cn/images/20250305095425917.png" /></a></p>
-<figcaption>
-<p><span class="caption-prefix">图 1. </span> 时谱图</p>
-</figcaption>
-</figure>
-<p>频域表示中，横坐标就是频率，纵坐标就是声音强度。如下：</p>
-<figure id="__fc_2">
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250305095426184.png" data-type="image" data-width="auto" data-height="auto" data-title="频谱图" data-desc-position="bottom"><img alt="频谱图" src="https://cdn.dwj601.cn/images/20250305095426184.png" /></a></p>
-<figcaption>
-<p><span class="caption-prefix">图 2. </span> 频谱图</p>
-</figcaption>
-</figure>
-<p>时频域表示中，横坐标就是时间，纵坐标就是频率，声音强度通过颜色来表示。如下：</p>
-<figure id="__fc_3">
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250305095422831.png" data-type="image" data-width="auto" data-height="auto" data-title="语谱图" data-desc-position="bottom"><img alt="语谱图" src="https://cdn.dwj601.cn/images/20250305095422831.png" /></a></p>
-<figcaption>
-<p><span class="caption-prefix">图 3. </span> 语谱图</p>
-</figcaption>
-</figure>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/20250305095425917.png" data-type="image" data-width="auto" data-height="auto" data-title="时域图" data-desc-position="bottom"><img alt="时域图" src="https://cdn.dwj601.cn/images/20250305095425917.png" /></a></th>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/20250305095426184.png" data-type="image" data-width="auto" data-height="auto" data-title="频谱图" data-desc-position="bottom"><img alt="频谱图" src="https://cdn.dwj601.cn/images/20250305095426184.png" /></a></th>
+<th style="text-align: center;"><a class="glightbox" href="https://cdn.dwj601.cn/images/20250305095422831.png" data-type="image" data-width="auto" data-height="auto" data-title="语谱图" data-desc-position="bottom"><img alt="语谱图" src="https://cdn.dwj601.cn/images/20250305095422831.png" /></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">时谱图</td>
+<td style="text-align: center;">频谱图</td>
+<td style="text-align: center;">语谱图</td>
+</tr>
+</tbody>
+</table>
+<h2 id="特征工程">特征工程</h2>
+<h2 id="算法应用">算法应用</h2>
 <div class="footnote">
 <hr />
 <ol>
@@ -5445,7 +5466,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月26日 05:37:49">2025年3月26日</span>
   </span>
 
     
@@ -5455,7 +5476,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年1月17日 16:42:31">2025年1月17日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月26日 05:37:49">2025年3月26日</span>
   </span>
 
     
@@ -5498,7 +5519,7 @@
 <script src="https://giscus.app/client.js"
         data-repo="Explorer-Dong/explorer-dong.github.io"
         data-repo-id="R_kgDOLW8nwQ"
-        data-category="General"
+        data-category="聊天 (Chat)"
         data-category-id="DIC_kwDOLW8nwc4CmYT5"
         data-mapping="pathname"
         data-strict="1"

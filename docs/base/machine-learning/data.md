@@ -16,7 +16,7 @@ title: 数据
 
 1. 关于「结构化数据」的预处理方法，在 [关系型数据预处理 - data mining](../data-mining/data-preprocess.md) 中已经有详细介绍，不再赘述；
 2. 关于「半结构化数据」的预处理方法，现在有很多成熟的解析器可以将半结构化数据转换为对应标签下的非结构化数据，因此本质上还是在处理非结构化数据；
-3. 关于「非结构化数据」的预处理方法，就对应到不同的研究领域了。比如文本数据对应到 [自然语言处理](../natural-language-processing/index.md) 领域，图像 / 视频数据对应到 [计算机视觉](../computer-vision/index.md) 领域，音频数据对应到 [数字信号处理](../digital-signal-processing/index.md) 领域。在对应的笔记中都有详细的数据预处理方法，这里不再赘述。
+3. 关于「非结构化数据」的预处理方法，就对应到不同的研究领域了。比如文本数据对应到 [自然语言处理](../natural-language-processing/index.md) 领域，图像 / 视频数据对应到 [计算机视觉](../computer-vision/index.md) 领域，音频数据对应到 [语音信号处理](../speech-signal-processing/index.md) 领域。在对应的笔记中都有详细的数据预处理方法，这里不再赘述。
 
 ## 特征工程
 

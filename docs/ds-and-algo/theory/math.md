@@ -8,7 +8,7 @@ title: 数学
 
 $$
 \begin{aligned}
-&\frac{\text{num}}{a} \equiv \text{num} \times a^{-1} (\text{mod } p)\\
+&\frac{\text{num}}{a} \equiv \text{num} \times a^{-1}\ (\bmod\ p)\\
 &\text{其中 } a^{-1} = a^{p-2} \text{ 当且仅当 $a$ 与 $p$ 互质}
 \end{aligned}
 $$
@@ -21,22 +21,22 @@ $$
 
 $$
 \begin{aligned}
-\frac{t}{a} \equiv t \times x\quad (\mod p) \\
-\frac{1}{a} \equiv 1 \times x\quad (\mod p) \\
-1 \equiv a \times x\quad (\mod p) \\
+\frac{t}{a} \equiv t \times x\ (\bmod\ p) \\
+\frac{1}{a} \equiv 1 \times x\ (\bmod\ p) \\
+1 \equiv a \times x\ (\bmod\ p) \\
 \end{aligned}
 $$
 
-由 [费马小定理](https://baike.baidu.com/item/费马小定理/4776158)，对于两个互质的整数 $g,h$ 而言，一定有下式成立：
+由 [费马小定理](https://baike.baidu.com/item/费马小定理/4776158) 可知，对于两个互质的整数 $g,h$，一定有下式成立：
 
 $$
-g^{h-1} \equiv 1\quad (\mod h)
+g^{h-1} \equiv 1\ (\bmod\ h)
 $$
 
 于是本题的推导就可以得到，当 $a$ 与 $p$ 互质时，有：
 
 $$
-a^{p-1} \equiv 1 \quad (\mod p)
+a^{p-1} \equiv 1 \ (\bmod\ p)
 $$
 
 于是 $a$ 的乘法逆元就是：
@@ -111,4 +111,3 @@ std::vector<int> eular_prime_filter(int n) {
     return primes;
 }
 ```
-

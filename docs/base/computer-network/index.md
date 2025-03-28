@@ -2,7 +2,7 @@
 title: 计算机网络导读
 ---
 
-本文记录计算机网络学习笔记。实验平台为学院 [自建服务](http://172.21.229.9/classrooms/cpnijula/announcement)，若要复现实验可以前往 [头歌](https://www.educoder.net/paths/zecl9i6m) 平台。参考：
+本文记录计算机网络的学习笔记。实验平台为学院 [自建服务](http://172.21.229.9/classrooms/cpnijula/announcement)，若要复现实验可以前往 [头歌](https://www.educoder.net/paths/zecl9i6m) 平台。参考：
 
 - 官方教材：谢希仁的《计算机网络》[^book]；
 - 民间博客：小林 coding 的 [图解网络](https://xiaolincoding.com/network/)。
@@ -13,8 +13,7 @@ title: 计算机网络导读
 
 作业 10%，期中 20%，实验（平台、报告、考试）30%，期末 40%。
 
-<!-- !!! tip "重点"
-
+<!-- 学习重点
     1. 了解计算机网络在经济生活中的应用范围及其重要性
     2. 了解网络的基本概念，**掌握典型交换方式及其优缺点**
     3. **掌握分层结构和网络协议**（核心内容）

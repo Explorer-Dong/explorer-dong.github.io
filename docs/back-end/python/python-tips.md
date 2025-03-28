@@ -1,8 +1,8 @@
 ---
-title: Python 环境配置
+title: Python 使用贴士
 ---
 
-本文记录 Python 的环境配置信息。
+本文记录 Python 相关的一些杂项信息，包括常规配置、外部工具、使用技巧等。
 
 ## 查看库的安装位置
 
@@ -119,3 +119,19 @@ pip config list
 ```bash
 pip config unset global.index-url
 ```
+
+## 终止并行程序
+
+如果想要中断一个并行或并发任务，在终端输入 Ctrl+C 往往是无效的，因为 Ctrl+C 一次只能结束一个线程。我们直接用 taskkill 终止对应程序的所有进程即可。以 Python 炼丹为例，直接终止所有的 python.exe 进程即可：
+
+=== "Windows"
+
+    ```bash
+    taskkill -F -IM python.exe
+    ```
+
+=== "Linux/MacOS"
+
+    ```bash
+    pkill -9 -f python
+    ```

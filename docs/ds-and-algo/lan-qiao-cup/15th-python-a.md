@@ -444,8 +444,169 @@ $$
 
 ## T7 智力测试 (0'/20')
 
-## T8 最大异或结点 (0'/20')
+## T8 最大异或结点 (20'/20')
 
 题意：给定一棵含有 $n\ (1\le n\le 10^5)$ 个结点的树，每一个结点都有一个权重 $w\ (0\le w\le 2^{31}-1)$。问任意一对不相连结点的权重按位异或 $w_i \oplus w_j$ 的最大值是多少。
 
-思路：
+思路：最大异或对问题，往字典树上思考。本题增加了一个「不相连」的约束，那么在构建好包含所有数字二进制位的字典树后，每次查询 $w_i$ 之前在树中删除 $w_i$ 的相邻结点，查询结束后再重新插入即可。
+
+时间复杂度：$O(n\log V)$，$V$ 为 $w$ 的值域上限。
+
+=== "Python"
+
+    ```python
+    class Trie:
+        def __init__(self, node_num: int, child_num: int, idx_start: int=0):
+            self.edge = [[None] * child_num for _ in range(node_num)]
+            self.cnt = [0] * (node_num)
+            self.idx = idx_start
+            self.root = idx_start
+    
+        def traverse(self, x: int, insert: bool) -> None:
+            # 遍历，插入或删除
+            p = self.root
+            for i in range(31, -1, -1):
+                b = 1 & (x >> i)
+                if self.edge[p][b] is None:
+                    self.idx += 1
+                    self.edge[p][b] = self.idx
+                p = self.edge[p][b]
+                self.cnt[p] += 1 if insert else -1
+    
+        def match(self, x: int) -> int:
+            # 根据异或逻辑从高位开始贪心匹配
+            p = self.root
+            res = 0
+            for i in range(31, -1, -1):
+                b = 1 & (x >> i)
+                if self.edge[p][b^1] is not None and self.cnt[self.edge[p][b^1]]:
+                    res |= 1 << i
+                    p = self.edge[p][b^1]
+                else:
+                    p = self.edge[p][b]
+            return res
+
+
+    n = int(input().strip())
+    w = list(map(int, input().strip().split()))
+    fa = list(map(int, input().strip().split()))
+    
+    # 存树
+    g = [[] for _ in range(n)]
+    for i in range(n):
+        if fa[i] == -1:
+            continue
+        g[i].append(fa[i])
+        g[fa[i]].append(i)
+    
+    # 建 trie
+    trie = Trie(n * 32, 2)
+    for i in range(n):
+        trie.traverse(w[i], insert=True)
+    
+    # 贪心匹配
+    ans = 0
+    for i in range(n):
+        for x in g[i]:
+            trie.traverse(x, insert=False)
+        ans = max(ans, trie.match(w[i]))
+        for x in g[i]:
+            trie.traverse(x, insert=True)
+    
+    print(ans)
+    ```
+
+=== "C++"
+
+    ```c++
+    #include <iostream>
+    #include <vector>
+    using namespace std;
+    
+    struct Trie {
+        vector<vector<int>> edge;
+        vector<int> cnt;
+        int idx, root;
+    
+        Trie(int node_num, int child_num, int idx_start=0) {
+            edge.resize(node_num);
+            for (auto& row: edge) {
+                row.resize(child_num, -1);  // -1 表示不存在对应的边
+            }
+            cnt.resize(node_num, 0);
+            idx = idx_start;
+            root = idx_start;
+        }
+    
+        void traverse(int x, bool insert) {
+            int p = root;
+            for (int i = 31; i >= 0; i--) {
+                int b = 1 & (x >> i);
+                if (edge[p][b] == -1) {
+                    edge[p][b] = ++idx;
+                }
+                p = edge[p][b];
+                cnt[p] += (insert ? 1 : -1);
+            }
+        }
+    
+        int match(int x) {
+            int p = root, res = 0;
+            for (int i = 31; i >= 0; i--) {
+                int b = 1 & (x >> i);
+                if (edge[p][b^1] != -1 && cnt[edge[p][b^1]]) {
+                    res |= 1 << i;
+                    p = edge[p][b^1];
+                } else {
+                    p = edge[p][b];
+                }
+            }
+            return res;
+        }
+    };
+    
+    int main() {
+        int n;
+        cin >> n;
+        vector<int> w(n);
+        for (int i = 0; i < n; i++) {
+            cin >> w[i];
+        }
+        vector<int> fa(n);
+        for (int i = 0; i < n; i++) {
+            cin >> fa[i];
+        }
+    
+        // 存树
+        vector<int> g[n];
+        for (int i = 0; i < n; i++) {
+            if (fa[i] == -1) {
+                continue;
+            }
+            g[i].push_back(fa[i]);
+            g[fa[i]].push_back(i);
+        }
+    
+        // 建 trie
+        Trie t(n * 32, 2);
+        for (int x: w) {
+            t.traverse(x, true);
+        }
+    
+        // 贪心匹配
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            for (int nab: g[i]) {
+                t.traverse(nab, false);
+            }
+            ans = max(ans, t.match(w[i]));
+            for (int nab: g[i]) {
+                t.traverse(nab, true);
+            }
+        }
+    
+        cout << ans << "\n";
+    
+        return 0;
+    }
+    ```

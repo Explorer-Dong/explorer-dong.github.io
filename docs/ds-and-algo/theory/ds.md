@@ -207,11 +207,20 @@ $$
 
 TODO
 
+并查集虽然一般用来解决集合问题，但数据结构实现上本质是一个由多棵有向根树组成的森林。在采用了路径压缩和按秩合并后，每一次查询与插入的时间复杂度都会均摊为一个常数。
+
 拓展域并查集：[例题](https://www.luogu.com.cn/article/kx2if31n)
 
 ## 树状数组
 
 TODO
+
+利用更多的区间维护一个序列的信息，所有维护信息的区间组成的形状形如一棵树，故称为树状数组。支持的操作有：
+
+- 区间查询：查询序列 `[1, pos]` 索引的元素之和。时间复杂度 $O(\log n)$；
+- 单点修改：修改序列 `pos` 索引的元素值。时间复杂度 $O(\log n)$。
+
+更多内容见：[树状数组 - OI Wiki](https://o-iwiki.org/ds/fenwick/)
 
 ## 线段树
 
@@ -228,6 +237,22 @@ TODO
 判定：想要判定一棵二叉树是否为二叉搜索树，只需要判断中序遍历的结果是不是递增的即可，可以采取中序遍历序列比对的方法，也可以在递归遍历二叉树的过程中通过记录前驱结点的值直接进行比较判断。时间复杂度 $O(n)$。
 
 ## 平衡二叉搜索树
+
+C++ 中叫做 `std::map`，Python 中叫做 `from sortedcontainers import SortedList`。
+
+> 例程：[切蛋糕 - AcWing](https://www.acwing.com/activity/content/code/content/8475415/)
+>
+> 官方：[sortedlist.py - grantjenks/python-sortedcontainers](https://github.com/grantjenks/python-sortedcontainers/blob/master/src/sortedcontainers/sortedlist.py)
+
+有序列表类。导入方法 `from sortedcontainers import SortedList`。可以类比 C++ 中的 `map` 类。共有以下内容，全部都是 $O(\log n)$ 的时间复杂度：
+
+1. `add(value)`: 添加一个值到有序列表
+2. `discard(value)`: 删除列表中的值（如果存在）
+3. `remove(value)`: 删除列表中的值（必须存在）
+4. `pop(index=-1)`: 删除并返回指定索引处的值
+5. `bisect_left(value)`: 返回插入值的最左索引
+6. `bisect_right(value)`: 返回插入值的最右索引
+7. `count(value)`: 计算值在列表中的出现次数
 
 **Treap**。二叉搜索树和堆的结合体。它通过维护两种性质来保持平衡：
 

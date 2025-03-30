@@ -101,9 +101,29 @@ void bisect_right(int target) {
             return self.q[0]
     ```
 
-### 并查集
+### 哈希表
 
-并查集虽然一般用来解决集合问题，但数据结构实现上本质是一个由多棵有向根树组成的森林。在采用了路径压缩和按秩合并后，每一次查询与插入的时间复杂度都会均摊为一个常数。
+在 C++ 中，使用哈希表 `std::unordered_map` 时可能会因为哈希冲突导致查询、插入操作降低到 $O(n)$，此时可以使用平衡树 `std::map` 进行替代，或者自定义一个哈希函数。
+
+```c++
+// C++ 自定义哈希函数 使用示例
+
+template <class T>
+struct CustomHash {
+    size_t operator()(T x) const {
+        static const size_t _prime = 0x9e3779b97f4a7c15;
+        size_t _hash_value = std::hash<T>()(x);
+        return _hash_value ^ (_hash_value >> 30) ^ _prime;
+    }
+};
+
+// 示例
+std::unordered_map<int, int, CustomHash<int>> f1;
+std::unordered_map<long long, int, CustomHash<long long>> f2;
+std::unordered_map<std::string, int, CustomHash<long long>> f3;
+```
+
+### 并查集
 
 === "C++"
 
@@ -190,15 +210,6 @@ void bisect_right(int target) {
 
 ### 树状数组
 
-利用更多的区间维护一个序列的信息，所有维护信息的区间组成的形状形如一棵树，故称为树状数组。
-
-下方代码模板目前支持的操作有：
-
-- 区间查询：查询序列 `[1, pos]` 索引的元素之和。时间复杂度 $O(\log n)$；
-- 单点修改：修改序列 `pos` 索引的元素值。时间复杂度 $O(\log n)$。
-
-更多内容见：[树状数组 - OI Wiki](https://o-iwiki.org/ds/fenwick/)
-
 === "C++"
 
     ```cpp
@@ -213,8 +224,10 @@ void bisect_right(int target) {
         }
     
     public:
+        // 初始化序列 O(n)。下标从 1 开始，初始化维护序列区间为 [1,n]
         BinaryIndexedTree(int n) : n(n), arr(n + 1) {}
     
+        // 单点修改 O(log n)。在 pos 这个位置加上 x
         void update(int pos, T x) {
             while (pos <= n) {
                 arr[pos] += x;
@@ -222,6 +235,7 @@ void bisect_right(int target) {
             }
         }
     
+        // 区间求和 O(log n)。返回 [1,pos] 的区间和
         T query_sum(int pos) {
             T ret = 0;
             while (pos) {
@@ -237,24 +251,18 @@ void bisect_right(int target) {
     ```python
     class BinaryIndexedTree:
         def __init__(self, n: int):
-            """
-            初始化序列 O(n)。下标从 1 开始，初始化维护序列区间为 [1,n]。
-            """
+            """ 初始化序列 O(n)。下标从 1 开始，初始化维护序列区间为 [1,n] """
             self.n = n
             self.arr = [0] * (n + 1)
     
         def update(self, pos: int, x: int) -> None:
-            """
-            单点修改 O(log n)。在 pos 这个位置加上 x。
-            """
+            """ 单点修改 O(log n)。在 pos 这个位置加上 x """
             while pos <= self.n:
                 self.arr[pos] += x
                 pos += self._lowbit(pos)
     
         def query_sum(self, pos: int) -> int:
-            """
-            区间求和 O(log n)。返回 [1,pos] 的区间和。
-            """
+            """ 区间求和 O(log n)。返回 [1,pos] 的区间和 """
             ret = 0
             while pos:
                 ret += self.arr[pos]
@@ -267,71 +275,63 @@ void bisect_right(int target) {
 
 ### 平衡树
 
-C++ 中叫做 `std::map`，Python 中叫做 `SortedList`。
-
-> 例程：[切蛋糕 - AcWing](https://www.acwing.com/activity/content/code/content/8475415/)
->
-> 官方：[sortedlist.py - grantjenks/python-sortedcontainers](https://github.com/grantjenks/python-sortedcontainers/blob/master/src/sortedcontainers/sortedlist.py)
-
-有序列表类。导入方法 `from sortedcontainers import SortedList`。可以类比 C++ 中的 `map` 类。共有以下内容，全部都是 $O(\log n)$ 的时间复杂度：
-
-1. `add(value)`: 添加一个值到有序列表
-2. `discard(value)`: 删除列表中的值（如果存在）
-3. `remove(value)`: 删除列表中的值（必须存在）
-4. `pop(index=-1)`: 删除并返回指定索引处的值
-5. `bisect_left(value)`: 返回插入值的最左索引
-6. `bisect_right(value)`: 返回插入值的最右索引
-7. `count(value)`: 计算值在列表中的出现次数
+C++ 中叫做 `std::map`，Python 中叫做 `from sortedcontainers import SortedList`。
 
 ## 动态规划
 
 ## 字符串
 
-控制中间结果的运算精度。
-
-```cpp
-#include <iostream>
-#include <iomanip>
-#include <sstream>
-
-using ll = long long;
-using namespace std;
-
-void solve() {
-    double x = 1.2345678;
-    cout << x << "\n"; // 输出 1.23457
-
-    stringstream ss;
-    ss << fixed << setprecision(3) << x;
-    cout << ss.str() << "\n"; // 输出 1.235
-}
-```
-
-### 哈希
-
-在 C++ 中，使用哈希表 `std::unordered_map` 时可能会因为哈希冲突导致查询、插入操作降低到 $O(n)$，此时可以使用平衡树 `std::map` 进行替代，或者自定义一个哈希函数。
-
-```c++
-// C++ 自定义哈希函数 使用示例
-
-template <class T>
-struct CustomHash {
-    size_t operator()(T x) const {
-        static const size_t _prime = 0x9e3779b97f4a7c15;
-        size_t _hash_value = std::hash<T>()(x);
-        return _hash_value ^ (_hash_value >> 30) ^ _prime;
-    }
-};
-
-// 示例
-std::unordered_map<int, int, CustomHash<int>> f1;
-std::unordered_map<long long, int, CustomHash<long long>> f2;
-std::unordered_map<std::string, int, CustomHash<long long>> f3;
-```
-
 ## 计算几何
 
-浮点数默认输出 6 位，范围内的数据正常打印，最后一位四舍五入，范围外的数据未知。
+关于控制浮点数的输出精度（均会四舍五入）：
+
+=== "C"
+
+    ```c
+    #include <stdio.h>
+    #include <stdlib.h>
+    
+    int main() {
+        double x = 3.1415926535;
+        printf("%.4f\n", x);
+    
+        return 0;
+    }
+    
+    /* 输出
+    3.1416
+    */
+    ```
+
+=== "C++"
+
+    ```c++
+    #include <iostream>
+    #include <iomanip>
+    
+    int main() {
+        double x = 3.1415926535;
+        std::cout << std::fixed << std::setprecision(4) << x << "\n";
+    
+        return 0;
+    }
+    
+    /* 输出
+    3.1416
+    */
+    ```
+
+=== "Python"
+
+    ```python
+    x = 3.1415926535
+    
+    print(f"{x:.4f}")
+    
+    """ 输出
+    3.1416
+    """
+    ```
 
 ## 图论
 
@@ -362,6 +362,7 @@ T modAdd(T a, T b, T p) {
 
 template<class T>
 T modMul(T a, T b, T p) {
+    // 防爆乘法
     // return: a*b % p
     T res = 0;
     for (; b; b >>= 1, a = modAdd(a, a, p)) {
@@ -374,14 +375,23 @@ T modMul(T a, T b, T p) {
 
 template<class T>
 T modSumOfEqualRatioArray(T q, T k, T p) {
+    // O(log k) 求等比数列之和
     // return: (q^0 + q^1 + ... + q^k) % p
     if (k == 0) {
         return 1;
     }
     if (k % 2 == 0) {
-        return modAdd<T>((T) 1, modMul(q, modSumOfEqualRatioArray(q, k - 1, p), p), p);
+        return modAdd<T>(
+            static_cast<T>(1),
+            modMul(q, modSumOfEqualRatioArray(q, k - 1, p), p),
+            p
+        );
     }
-    return modMul(((T) 1 + modPower(q, k / 2 + (T) 1, p)), modSumOfEqualRatioArray(q, k / 2, p), p);
+    return modMul(
+        static_cast<T>(1) + modPower(q, k / 2 + static_cast<T>(1), p),
+        modSumOfEqualRatioArray(q, k / 2, p),
+        p
+    );
 }
 ```
 
@@ -482,15 +492,22 @@ $$
 C_n^k = C(n, k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}
 $$
 
-**Python 库函数求解**。如果使用 Python 3.8 及以上的版本，则可以直接使用 [`math.comb(n, k)`](https://docs.python.org/3/library/math.html#math.comb) 来计算组合数 $C_n^k$。
+**1）Python 库函数**。在 Python3.8 及以上的版本中，可以直接使用 `math.comb(n, k)` 计算 $C_n^k$ 的值，时间复杂度 $O(\min(k,n-k))$。
 
-时间复杂度：$O(\min(k,n-k))$
+```python
+import math
 
-**递推法求解**。利用 $C_n^k = C_{n-1}^k + C_{n-1}^{k-1}$ 进行递推求解。以 [求组合数 I - AcWing](https://www.acwing.com/problem/content/887) 为例。
+n, k = 5, 3
+print(math.comb(n, k))
+
+""" 输出
+10
+"""
+```
+
+**2）递推法**。利用 $C_n^k = C_{n-1}^k + C_{n-1}^{k-1}$ 进行递推求解。$O(nk)$ 预处理出所有的组合数，$O(q)$ 查询。
 
 题意：求解 $q$ 次 $C_{n}^k\ \%\ p$ 的结果，其中 $q\le 10^4,1\le k \le n \le 2\times 10^3$，$p$ 为常数 $10^9+7$。
-
-思路：$O(nk)$ 预处理出所有的组合数，$O(q)$ 查询。
 
 ```cpp
 #include <iostream>
@@ -514,7 +531,7 @@ int main() {
         }
     }
 
-    // O(1) 查询
+    // O(q) 查询
     int q;
     cin >> q;
     while (q--) {
@@ -527,14 +544,9 @@ int main() {
 }
 ```
 
-**乘法逆元法求解**。如果题目中有取模运算，就可以将组合数公式中的「除法运算」转换为「关于逆元的乘法运算」进行求解。以 [求组合数 II - AcWing](https://www.acwing.com/problem/content/888/) 为例。
+**3）乘法逆元法**。如果题目中有模质数运算，就可以将组合数公式中的「除法运算」转换为「关于逆元的乘法运算」进行求解。$O(n\log p)$ 预处理出所有的「阶乘」和「乘法逆元」，$O(q)$ 查询。
 
 题意：求解 $q$ 次 $C_{n}^k\ \%\ p$ 的结果，其中 $q\le 10^4,1\le k \le n \le 10^5$，$p$ 为常数 $10^9+7$。
-
-思路：
-
-- 此题中需要对组合数 $C_n^k$ 的计算结果模上常数 $p$，由于此题的模数 $p$ 与 $n,k$ 一定互质，因此才可以采用将除法转换为乘法逆元的预处理做法来求解。如果仍然采用上述递推法将会超时；
-- 因此我们 $O(n\log p)$ 预处理出所有的「阶乘」和「乘法逆元」，然后 $O(q)$ 查询。
 
 ```c++
 #include <iostream>
@@ -566,7 +578,7 @@ int main() {
         infact[a] = (ll) infact[a - 1] * qmi(a, P - 2, P) % P;
     }
 
-    // O(1) 查询
+    // O(q) 查询
     int q;
     cin >> q;
     while (q--) {
@@ -576,5 +588,18 @@ int main() {
     }
 
     return 0;
+}
+```
+
+## 其他
+
+C++ 快读快写：
+
+```c++
+#include <iostream>
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr), std::cout.tie(nullptr);
 }
 ```

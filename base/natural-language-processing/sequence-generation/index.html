@@ -10,10 +10,10 @@
       
       
       
-        <link rel="canonical" href="https://wiki.dwj601.cn/base/natural-language-processing/task/">
+        <link rel="canonical" href="https://wiki.dwj601.cn/base/natural-language-processing/sequence-generation/">
       
       
-        <link rel="prev" href="../model/">
+        <link rel="prev" href="../sequence-classification/">
       
       
         <link rel="next" href="../../computer-vision/">
@@ -24,7 +24,7 @@
     
     
       
-        <title>任务 - Open Wiki Community</title>
+        <title>序列生成 - Open Wiki Community</title>
       
     
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#依存分析" class="md-skip">
+        <a href="#任务定义" class="md-skip">
           跳转至
         </a>
       
@@ -167,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              任务
+              序列生成
             
           </span>
         </div>
@@ -1523,12 +1523,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../model/" class="md-nav__link">
+      <a href="../sequence-classification/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    模型
+    序列分类
     
   </span>
   
@@ -1558,7 +1558,7 @@
   
   
   <span class="md-ellipsis">
-    任务
+    序列生成
     
   </span>
   
@@ -1571,7 +1571,7 @@
   
   
   <span class="md-ellipsis">
-    任务
+    序列生成
     
   </span>
   
@@ -1594,46 +1594,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#依存分析" class="md-nav__link">
+  <a href="#任务定义" class="md-nav__link">
     <span class="md-ellipsis">
-      依存分析
+      任务定义
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="依存分析">
+    <nav class="md-nav" aria-label="任务定义">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#理论基础" class="md-nav__link">
+  <a href="#语言翻译" class="md-nav__link">
     <span class="md-ellipsis">
-      理论基础
+      语言翻译
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#传统方法" class="md-nav__link">
+  <a href="#信息抽取" class="md-nav__link">
     <span class="md-ellipsis">
-      传统方法
+      信息抽取
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#深度模型" class="md-nav__link">
+  <a href="#内容生成" class="md-nav__link">
     <span class="md-ellipsis">
-      深度模型
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#评估方法" class="md-nav__link">
-    <span class="md-ellipsis">
-      评估方法
+      内容生成
     </span>
   </a>
   
@@ -1645,18 +1636,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#机器翻译" class="md-nav__link">
+  <a href="#recurrentnn" class="md-nav__link">
     <span class="md-ellipsis">
-      机器翻译
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#模型微调" class="md-nav__link">
-    <span class="md-ellipsis">
-      模型微调
+      RecurrentNN
     </span>
   </a>
   
@@ -5602,46 +5584,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#依存分析" class="md-nav__link">
+  <a href="#任务定义" class="md-nav__link">
     <span class="md-ellipsis">
-      依存分析
+      任务定义
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="依存分析">
+    <nav class="md-nav" aria-label="任务定义">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#理论基础" class="md-nav__link">
+  <a href="#语言翻译" class="md-nav__link">
     <span class="md-ellipsis">
-      理论基础
+      语言翻译
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#传统方法" class="md-nav__link">
+  <a href="#信息抽取" class="md-nav__link">
     <span class="md-ellipsis">
-      传统方法
+      信息抽取
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#深度模型" class="md-nav__link">
+  <a href="#内容生成" class="md-nav__link">
     <span class="md-ellipsis">
-      深度模型
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#评估方法" class="md-nav__link">
-    <span class="md-ellipsis">
-      评估方法
+      内容生成
     </span>
   </a>
   
@@ -5653,18 +5626,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#机器翻译" class="md-nav__link">
+  <a href="#recurrentnn" class="md-nav__link">
     <span class="md-ellipsis">
-      机器翻译
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#模型微调" class="md-nav__link">
-    <span class="md-ellipsis">
-      模型微调
+      RecurrentNN
     </span>
   </a>
   
@@ -5686,7 +5650,7 @@
 
 
   
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/natural-language-processing/task.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/natural-language-processing/sequence-generation.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5695,38 +5659,21 @@
     
       
     
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/natural-language-processing/task.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/natural-language-processing/sequence-generation.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-  <h1>任务</h1>
+  <h1>序列生成</h1>
 
-<h2 id="依存分析">依存分析</h2>
-<p>前置知识：神经网络基础、反向传播原理。</p>
-<p>依存分析任务定义为：判断句子中单词之间的依赖关系。属于基础任务中的句法分析，通过依存分析任务得到句子单词之间的依赖关系之后就可以更方便的进行机器翻译等更困难的任务。</p>
-<h3 id="理论基础">理论基础</h3>
-<p>这里讲的理论基础并不是语言学上的规则（不同的语言有不同的规则，且很复杂，这里不展开），而是一套规范化的算法流程。最常见的就是 Nivre 在 2003 年提出的「Greedy Deterministic Transition-based Parsing」方法。</p>
-<p>具体地，有三个变量分别为 Stack、Buffer 和 一个集合 A。一共有三种操作，分别为 shift、left-arc、right-arc，其中 shift 就是将一个单词从 Buffer 转移到 Stack 中，left-arc 就是在 Stack 的栈顶两个元素中定义一个「指向左的边以及对应的依存关系」，并将这个边和关系保存到集合 A 中，right-arc 就和 left-arc 相反。具体如下图所示：</p>
-<figure id="__fc_1">
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250317084734245.png" data-type="image" data-width="auto" data-height="auto" data-title="Transition-based Parsing 示例" data-desc-position="bottom"><img alt="Transition-based Parsing 示例" src="https://cdn.dwj601.cn/images/20250317084734245.png" /></a></p>
-<figcaption>
-<p><span class="caption-prefix">图 1. </span> Transition-based Parsing 示例</p>
-</figcaption>
-</figure>
-<p>假设某种语言一共有 <span class="arithmatex">\(n\)</span> 种依存关系，那么最终的任务就是一个 <span class="arithmatex">\(2n+1\)</span> 的「多分类任务」。其中 left-arc 对应 <span class="arithmatex">\(n\)</span> 种，right-arc 对应 <span class="arithmatex">\(n\)</span> 种，shift 对应 <span class="arithmatex">\(1\)</span> 种。</p>
-<p>在有监督学习场景下，学习准则就是最小化交叉熵损失函数。传统与现代依存分析方法本质的不同在于特征的构造上。</p>
-<h3 id="传统方法">传统方法</h3>
-<p>传统方法上，上述</p>
-<h3 id="深度模型">深度模型</h3>
-<p>Danqi Chen 在 2014 年的工作 <a href="https://aclanthology.org/D14-1082">A Fast and Accurate Dependency Parser using Neural Networks</a> 中，提出了基于 FNN 的深度神经网络模型进行端到端的依存分析，解决了传统方法中特征需要人工构造、特征稀疏（0 太多）和特征不紧凑（维度太大）的问题。</p>
-<h3 id="评估方法">评估方法</h3>
-<h2 id="机器翻译">机器翻译</h2>
-<p>前置知识：序列模型基础、注意力机制。</p>
-<h2 id="模型微调">模型微调</h2>
-<p>前置知识：预训练模型基础。</p>
+<h2 id="任务定义">任务定义</h2>
+<p>序列生成常见的任务有：语言翻译、信息抽取、内容生成等。下面分别介绍这些任务的自然语言理论基础，只有掌握了这些语言规则，才能更好的理解序列生成模型的设计思想。</p>
+<h3 id="语言翻译">语言翻译</h3>
+<h3 id="信息抽取">信息抽取</h3>
+<h3 id="内容生成">内容生成</h3>
+<h2 id="recurrentnn">RecurrentNN</h2>
 
 
 
@@ -5749,7 +5696,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 00:54:11">2025年3月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月31日 13:26:41">2025年3月31日</span>
   </span>
 
     
@@ -5759,7 +5706,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月10日 15:26:15">2025年3月10日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月31日 13:26:41">2025年3月31日</span>
   </span>
 
     
@@ -5874,7 +5821,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../model/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 模型">
+          <a href="../sequence-classification/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 序列分类">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5884,7 +5831,7 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                模型
+                序列分类
               </div>
             </div>
           </a>

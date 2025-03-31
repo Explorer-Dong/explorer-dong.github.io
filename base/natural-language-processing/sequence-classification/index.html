@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://wiki.dwj601.cn/base/natural-language-processing/model/">
+        <link rel="canonical" href="https://wiki.dwj601.cn/base/natural-language-processing/sequence-classification/">
       
       
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="../task/">
+        <link rel="next" href="../sequence-generation/">
       
       
       <link rel="icon" href="https://cdn.dwj601.cn/web-imgs/img-static/wiki-16px.svg">
@@ -24,7 +24,7 @@
     
     
       
-        <title>模型 - Open Wiki Community</title>
+        <title>序列分类 - Open Wiki Community</title>
       
     
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#词向量模型" class="md-skip">
+        <a href="#任务定义" class="md-skip">
           跳转至
         </a>
       
@@ -167,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              模型
+              序列分类
             
           </span>
         </div>
@@ -1535,7 +1535,7 @@
   
   
   <span class="md-ellipsis">
-    模型
+    序列分类
     
   </span>
   
@@ -1548,7 +1548,7 @@
   
   
   <span class="md-ellipsis">
-    模型
+    序列分类
     
   </span>
   
@@ -1571,18 +1571,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#词向量模型" class="md-nav__link">
+  <a href="#任务定义" class="md-nav__link">
     <span class="md-ellipsis">
-      词向量模型
+      任务定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="任务定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#依存分析" class="md-nav__link">
+    <span class="md-ellipsis">
+      依存分析
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#命名实体识别" class="md-nav__link">
+    <span class="md-ellipsis">
+      命名实体识别
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#情感识别" class="md-nav__link">
+    <span class="md-ellipsis">
+      情感识别
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#序列模型" class="md-nav__link">
+  <a href="#word2vector" class="md-nav__link">
     <span class="md-ellipsis">
-      序列模型
+      Word2Vector
     </span>
   </a>
   
@@ -1598,18 +1631,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#预训练模型" class="md-nav__link">
+  <a href="#pretrained" class="md-nav__link">
     <span class="md-ellipsis">
-      预训练模型
+      PreTrained
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#后训练模型" class="md-nav__link">
+  <a href="#posttrained" class="md-nav__link">
     <span class="md-ellipsis">
-      后训练模型
+      PostTrained
     </span>
   </a>
   
@@ -1631,12 +1664,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../task/" class="md-nav__link">
+      <a href="../sequence-generation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    任务
+    序列生成
     
   </span>
   
@@ -5578,18 +5611,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#词向量模型" class="md-nav__link">
+  <a href="#任务定义" class="md-nav__link">
     <span class="md-ellipsis">
-      词向量模型
+      任务定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="任务定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#依存分析" class="md-nav__link">
+    <span class="md-ellipsis">
+      依存分析
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#命名实体识别" class="md-nav__link">
+    <span class="md-ellipsis">
+      命名实体识别
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#情感识别" class="md-nav__link">
+    <span class="md-ellipsis">
+      情感识别
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#序列模型" class="md-nav__link">
+  <a href="#word2vector" class="md-nav__link">
     <span class="md-ellipsis">
-      序列模型
+      Word2Vector
     </span>
   </a>
   
@@ -5605,18 +5671,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#预训练模型" class="md-nav__link">
+  <a href="#pretrained" class="md-nav__link">
     <span class="md-ellipsis">
-      预训练模型
+      PreTrained
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#后训练模型" class="md-nav__link">
+  <a href="#posttrained" class="md-nav__link">
     <span class="md-ellipsis">
-      后训练模型
+      PostTrained
     </span>
   </a>
   
@@ -5638,7 +5704,7 @@
 
 
   
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/natural-language-processing/model.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/natural-language-processing/sequence-classification.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5647,22 +5713,46 @@
     
       
     
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/natural-language-processing/model.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/natural-language-processing/sequence-classification.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-  <h1>模型</h1>
+  <h1>序列分类</h1>
 
-<h2 id="词向量模型">词向量模型</h2>
+<h2 id="任务定义">任务定义</h2>
+<p>序列分类常见的任务有：依存分析、命名实体识别、情感识别等。下面分别介绍这些任务的自然语言理论基础，只有掌握了这些语言规则，才能更好的理解序列分类模型的设计思想。</p>
+<h3 id="依存分析">依存分析</h3>
+<p>依存分析任务定义为：判断句子中单词之间的依赖关系。属于基础任务中的句法分析，通过依存分析任务得到句子单词之间的依赖关系之后就可以更方便的进行机器翻译等更困难的任务。</p>
+<!-- 这里讲的理论基础并不是语言学上的规则（不同的语言有不同的规则，且很复杂，这里不展开），而是一套规范化的算法流程。最常见的就是 Nivre 在 2003 年提出的「Greedy Deterministic Transition-based Parsing」方法。
+
+具体地，有三个变量分别为 Stack、Buffer 和 一个集合 A。一共有三种操作，分别为 shift、left-arc、right-arc，其中 shift 就是将一个单词从 Buffer 转移到 Stack 中，left-arc 就是在 Stack 的栈顶两个元素中定义一个「指向左的边以及对应的依存关系」，并将这个边和关系保存到集合 A 中，right-arc 就和 left-arc 相反。具体如下图所示：
+
+![Transition-based Parsing 示例](https://cdn.dwj601.cn/images/20250317084734245.png)
+
+/// fc
+Transition-based Parsing 示例
+///
+
+假设某种语言一共有 $n$ 种依存关系，那么最终的任务就是一个 $2n+1$ 的「多分类任务」。其中 left-arc 对应 $n$ 种，right-arc 对应 $n$ 种，shift 对应 $1$ 种。
+
+在有监督学习场景下，学习准则就是最小化交叉熵损失函数。传统与现代依存分析方法本质的不同在于特征的构造上。 -->
+
+<p>1）传统方法</p>
+<p>传统方法上，上述。。。</p>
+<p>2）深度模型</p>
+<p>Danqi Chen 在 2014 年的工作 <a href="https://aclanthology.org/D14-1082">A Fast and Accurate Dependency Parser using Neural Networks</a> 中，提出了基于 FNN 的深度神经网络模型进行端到端的依存分析，解决了传统方法中特征需要人工构造、特征稀疏（0 太多）和特征不紧凑（维度太大）的问题。</p>
+<h3 id="命名实体识别">命名实体识别</h3>
+<h3 id="情感识别">情感识别</h3>
+<h2 id="word2vector">Word2Vector</h2>
 <p>为了将自然语言更加合理的进行向量表示。相比于 One-Hot 向量表示方法，训练出一个分布式词向量模型可以获得更好的向量表示，从而支持后续的下游任务。</p>
 <p>最具影响力的词向量模型就是 Word2Vec，后续的 glove 模型又补充了分布式向量的距离度量方法。</p>
-<h2 id="序列模型">序列模型</h2>
 <h2 id="transformer">Transformer</h2>
-<h2 id="预训练模型">预训练模型</h2>
-<h2 id="后训练模型">后训练模型</h2>
+<h2 id="pretrained">PreTrained</h2>
+<p>在预训练模型的基础上，通过微调完成序列分类任务。</p>
+<h2 id="posttrained">PostTrained</h2>
 
 
 
@@ -5685,7 +5775,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月24日 16:00:27">2025年3月24日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月31日 13:26:41">2025年3月31日</span>
   </span>
 
     
@@ -5827,13 +5917,13 @@
         
         
           
-          <a href="../task/" class="md-footer__link md-footer__link--next" aria-label="下一页: 任务">
+          <a href="../sequence-generation/" class="md-footer__link md-footer__link--next" aria-label="下一页: 序列生成">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                任务
+                序列生成
               </div>
             </div>
             <div class="md-footer__button md-icon">

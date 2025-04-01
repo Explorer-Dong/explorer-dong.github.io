@@ -125,8 +125,8 @@ extra_javascript:
   - asserts/javascripts/link_blank.js
   # 百度统计
   - asserts/javascripts/baidu_tongji.js
-  # 聊天机器人
-  - asserts/javascripts/robot.js
+  # 聊天机器人（暂时不用，后期有机会自己部署到国内服务器）
+  # - asserts/javascripts/robot.js
 extra_css:
   # KaTeX
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.css
@@ -345,4 +345,4 @@ extra:
 
 
 # 页脚 Copyright
-copyright: Copyright &copy; 2024 - 2025 Wenjie
+copyright: <center><a href="https://beian.miit.gov.cn/">苏ICP备2024087610号-1</a></center>

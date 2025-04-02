@@ -94,7 +94,7 @@ $$
 
 主要介绍簇之间的邻近性度量方法以及凝聚方法 (Agglomerative, AGNES) 和分裂方法 (Divisive Analysis, DIANA)。两种算法可以形象的表述为下图：
 
-![凝聚层次聚类 vs 分裂层次聚类](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501051622124.png)
+![凝聚层次聚类 vs 分裂层次聚类](https://cdn.dwj601.cn/images/202501051622124.png)
 
 ### 簇之间的邻近性度量
 
@@ -150,4 +150,4 @@ $$
 
 最终可以得到一个按照某种规则排序的以及其可达距离。此时可以自行划分邻域的值进而按照预期进行聚类而不会像 DBSCAN 一样不受控制。OPTICS 的演示效果如下所示：
 
-![OPTICS 算法演示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501052101394.png)
+![OPTICS 算法演示](https://cdn.dwj601.cn/images/202501052101394.png)

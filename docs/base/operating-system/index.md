@@ -3,7 +3,7 @@ title: 操作系统导读
 ---
 
 
-![](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/web-imgs/img-static/OS.png)
+![](https://cdn.dwj601.cn/web-imgs/img-static/OS.png)
 
 学习资源：
 
@@ -12,7 +12,7 @@ title: 操作系统导读
 
 最难崩的一集：
 
-![最难崩的一集](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408301623261.png)
+![最难崩的一集](https://cdn.dwj601.cn/images/202408301623261.png)
 
 为什么要学这门课？
 

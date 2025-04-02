@@ -2,16 +2,22 @@
 title: 图像分类
 ---
 
-## LeNet
+本文以图像分类任务为引，展开 CV 界的一些重大突破。参考：
+
+- [Paper - TPAMI 2022 - Semi-Supervised and Unsupervised Deep Visual Learning: A Survey](https://arxiv.org/pdf/2208.11296)
+
+## 有监督的图像分类模型
+
+### LeNet
 
 1998 年，LeCun 提出了用于手写数字识别的 LeNet-5 网络，标志着卷积神经网络的开端：
 
 - 7 层网络，60K 参数量；
 - 使用 sigmoid 激活函数，softmax 作为分类器。
 
-![LeNet 网络结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318080954165.png)
+![LeNet 网络结构示意图](https://cdn.dwj601.cn/images/20250318080954165.png)
 
-## AlexNet
+### AlexNet
 
 2012 年，Krizhevsky 在 ILSVR 2012 上提出了 AlexNet 网络：
 
@@ -25,13 +31,13 @@ title: 图像分类
 - 在全连接层采用 **随机失活**（Dropout）策略缓解过拟合问题，提升模型的泛化性；
 - 采用 **数据增强技术**（Data augmentation）增强数据集，包括翻转（flipping），裁剪（cropping），颜色变换（color changes），避免过拟合问题；
 
-![AlexNet 网络结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318084540355.jpg)
+![AlexNet 网络结构示意图](https://cdn.dwj601.cn/images/20250318084540355.jpg)
 
-![随机失活](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318084352125.png)
+![随机失活](https://cdn.dwj601.cn/images/20250318084352125.png)
 
-![数据增强](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318084441623.png)
+![数据增强](https://cdn.dwj601.cn/images/20250318084441623.png)
 
-## VGGNet
+### VGGNet
 
 牛津大学的视觉几何组（Visual Geometry Group）在 ILSVR 2014 上提出了 VGG-16 网络：
 
@@ -50,7 +56,7 @@ title: 图像分类
 !!! tip "模型缺点"
     LeNet、AlexNet 和 VGG 采用相同的思想构建网络：通过堆叠卷积层提取并融合图像的空间特征，将其展平为一维向量后利用全连接层完成分类。此过程会产生以下问题：展平的过程中会丢弃一部分空间信息、全连接层的参数量过大。
 
-## NiNNet
+### NiNNet
 
 Network-in-Network（NiN）网络提出了微型神经网络的概念（Micro neural network），将卷积层和 MLP 结合的 Mlpconv 作为网络的基本块。
 
@@ -59,7 +65,7 @@ Network-in-Network（NiN）网络提出了微型神经网络的概念（Micro ne
 - Mlpconv 中的全连接层采用 1x1 的卷积核；
 - 提出全局平均池化操作（Global average pooling） ， 可以直接将最后的卷积层的通道数设置为类别数。
 
-## GoogLeNet
+### GoogLeNet
 
 2014 年，谷歌团队借鉴了 NIN 的思想，在 ILSVR2014 上提出了 GoogLeNet：
 
@@ -84,7 +90,7 @@ Inception V1。GoogLeNet 希望能够同时在深度和宽度上拓展网络，�
 
 Inception V2。特点：使用批标准化（BN）层。解决了内部协变量偏移的问题，同时提高了网络的训练速度。
 
-![训练阶段的算法流程图，测试阶段使用整个训练过程中的均值和标准差](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318084842090.png)
+![训练阶段的算法流程图，测试阶段使用整个训练过程中的均值和标准差](https://cdn.dwj601.cn/images/20250318084842090.png)
 
 其他标准化层：
 
@@ -101,11 +107,11 @@ Inception V1 的后续改进：
 !!! tip "网络退化"
     大量工作证明，网络越深则性能越强。但是当网络的层数超过 20 层时，继续加深网络反而会使其性能下降。原因并非过拟合或梯度消失/爆炸，而是 **网络退化**（Network degradation）。
 
-## ResNet
+### ResNet
 
 ResNet 模型引入了跳跃连接（Skip connection）的概念，让模型学习输入与目标输出之间的残差，而不是直接预测目标输出。即我们希望学习出来的 F(x) 趋近于 0，这解决了网络深度过大时出现的网络退化问题。
 
-![ResNet 网络结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318091046475.png)
+![ResNet 网络结构示意图](https://cdn.dwj601.cn/images/20250318091046475.png)
 
 ResNet 模型还引入了类似漏斗的 bottleneck 结构，由以下三部分组成：
 
@@ -115,16 +121,104 @@ ResNet 模型还引入了类似漏斗的 bottleneck 结构，由以下三部分�
 
 bottleneck 结构可有效减少参数量，增强模型的表达能力。先压缩再还原。
 
-![bottleneck 结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318091412771.png)
+![bottleneck 结构](https://cdn.dwj601.cn/images/20250318091412771.png)
 
-## DenseNet
+### DenseNet
 
 深度卷积神经网络仍面临着梯度消失的问题，这严重影响了网络的训练。DenseNet 网络在每一层和其后续层之间都建立了前向连接，因此每层都可以直接得到来自损失函数的梯度信息。
 
-![DenseNet 网络结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318091917382.png)
+![DenseNet 网络结构示意图](https://cdn.dwj601.cn/images/20250318091917382.png)
 
 !!! tip "Attention for CNNs"
     视觉注意力机制是人类视觉所特有的大脑信号处理机制，更关注视野中感兴趣的信息，而抑制其他无用信息。常见的注意力机制：通道注意力机制（Channel attention）、空间注意力机制（Spatial attention）。
 
-## SENet
+### SENet
 
+通道注意力机制。Squeeze-and-Excitation Networks（SENet）利用通道注意力机制使网络关注更重要的通道：
+
+- 压缩（Squeeze）模块：利用 GAP 提取每个通道的全局信息；
+- 激励（Excitation）模块：利用Sigmoid函数将全局信息映射到[0,1]，抑制不重要
+    的信息；
+- 加权：将激励模块输出的权重加权到每个通道的特征。
+
+![SENet](https://cdn.dwj601.cn/images/20250325081933991.png)
+
+### BAM
+
+Bottleneck Attention Module（BAM）采用了双分支结构：
+
+- 通道注意力机制分支：关注更重要的通道；
+- 空间注意力机制分支：关注更重要的空间位置。
+
+结合两个注意力机制可以让模型找到特征图中更重要的信息。当然，容易发现这是一个缝合怪，其实就只提出了一个空间注意力机制，缝合了漏斗结构、通道注意力、残差连接。
+
+![BAM](https://cdn.dwj601.cn/images/20250325081937779.png)
+
+## 半监督的图像分类模型
+
+TODO
+
+## 无监督的图像分类模型
+
+无监督图像分类任务本质上是为了学习一个能够高效特征提取的 encoder，然后再应用到下游的各种任务（比如图像分类）。所以本节其实是在讨论「预训练任务」。工作范式如下图所示：
+
+![无监督学习的工作范式](https://cdn.dwj601.cn/images/20250401080834825.png)
+
+/// fc
+无监督学习的工作范式，上半部分为训练 encoder（主要目的），下半部分为训练 decoder（次要目的）
+///
+
+当然，训练的根本是优化模型的损失，在有监督学习任务中，模型的损失很好做，就是预测标签与真实标签之间的差异，在无监督任务中怎么办呢？聪明的人类想出了各种方法来构造损失，常见的比如「自监督学习」、「对比学习」、「深度聚类」等等，无论哪种方法，本质上都是自定义了一个在无监督任务上的损失计算方法。我们重点讨论前两种方法，具体地：
+
+- 自监督学习 (Self-supervised Learning) 就是自己给图像打一个标签，然后就和监督学习一样了。当然这里的标签不是真实的语义标签，而是一些成本很低的低级语义标签，比如旋转度数、翻转情况、颜色变换等。通过让模型预测这些低级语义的标签，从而让模型可以很好的进行特征提取工作；
+- 对比学习 (Contrastive Learning) 认为同一张图像的不同变换具有相同的特征表示。变换图像的成本相较于人工标注的成本就低很多了，基于这种思想，损失函数就被设计为：最小化同一张图片各种变换之间的差异，同时最大化不同图片的各种变换之间的差异。
+
+### MAE
+
+[Paper - CVPR 2022 - Masked Autoencoders Are Scalable Vision Learners](https://openaccess.thecvf.com/content/CVPR2022/papers/He_Masked_Autoencoders_Are_Scalable_Vision_Learners_CVPR_2022_paper.pdf)
+
+掩码自编码器 (Masked Auto Encoder, MAE) 算自监督学习的一个实例。其实是一种很巧妙的想法，其自定义的标签是原始图像中的真实像素值，然后通过掩盖住真实图像的一部分，让模型最小化重构损失。这也被称为像素级的预训练方法。如下图所示：
+
+![像素级预训练方法（以 MAE 为例）](https://cdn.dwj601.cn/images/20250401101812602.png)
+
+/// fc
+像素级预训练方法（以 MAE 为例）
+///
+
+当然，还有实例级的预训练方法，即对整张图做一些变换，然后得到自定义的标签。比如旋转、翻转、切分等等。如下图所示：
+
+![实例级预训练方法](https://cdn.dwj601.cn/images/20250402111225265.png)
+
+/// fc
+实例级预训练方法
+///
+
+### SimCLR
+
+[Paper - ICML 2020 - A Simple Framework for Contrastive Learning of Visual Representations](https://dl.acm.org/doi/abs/10.5555/3524938.3525087)
+
+该模型引入了对比学习。假设一个 mini-batch 的大小为 $N$，对于其中的每一张图片 $X_i$，将其变换两次得到 $\overset{\sim} X_{i1},\overset{\sim} X_{i2}$，然后最小化 $\overset{\sim} X_{i1}$ 与 $\overset{\sim} X_{i2}$ 之间的差异，从而让模型学习到所有图片的最佳特征表示。
+
+![训练目标就是其中的 encoder f(·)](https://cdn.dwj601.cn/images/20250402130741486.jpg)
+
+/// fc
+训练目标就是其中的 encoder $f(\cdot)$
+///
+
+![SimCLR 算法流程](https://cdn.dwj601.cn/images/20250402125013069.jpg)
+
+/// fc
+SimCLR 算法流程
+///
+
+### CLIP
+
+同样是对比学习，只不过现在对于一张图片 $X_i$，与其对比的不再是变换的图像，而是一个对应的文本。TODO
+
+什么是零样本学习？为什么说可以预测出不存在的类别？传统的预测方式不可以预测出不存在的类别吗？损失函数是怎么被优化的？
+
+>Zero-shot Learning。也就是所谓的零样本学习，虽然我觉得这么翻译并不合适。该方法旨在让模型可以预测出训练数据之外的图像类别。当然这不是让模型造词，完整的类别 S 是有的，只不过训练集中的类别 T 是 S 的子集。
+>
+>早期的零样本学习方法是基于属性空间的，即：定义每一种类别的属性空间，每一张图片的标签都不再是具体的类别，而是属性的类别。然后让模型学习图片和属性之间的映射关系。模型预测时就预测属性的类别，然后计算预测的属性和每一种真实类别的属性相似度，从而得到最终的图片类别。当然，这要求训练集的图片中各种属性的出现次数都要足够的多，才能让模型学习到图片到每一种属性的映射关系。如下图所示：
+>
+>现在的方法。

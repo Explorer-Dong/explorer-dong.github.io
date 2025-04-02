@@ -464,7 +464,7 @@ int main() {
 
 由于是公有继承，故在 C 类创建的对象中，可以调用父类的全部 `public` 以及 `protected` 方法，当然自己的什么都可以调用啦~
 
-![调用示例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408281125969.png)
+![调用示例](https://cdn.dwj601.cn/images/202408281125969.png)
 
 ### 2.7 多重继承
 
@@ -571,7 +571,7 @@ class C : public virtual A { };
 class D : public B, public C { };
 ```
 
-![继承关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408281134686.png)
+![继承关系](https://cdn.dwj601.cn/images/202408281134686.png)
 
 那么 `D` 对象创建时，构造函数的调用顺序是：`A, B, C, D`
 
@@ -585,7 +585,7 @@ class D : public virtual A { };
 class E : public C, public virtual D { };
 ```
 
-![继承关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408281135128.png)
+![继承关系](https://cdn.dwj601.cn/images/202408281135128.png)
 
 那么 `E` 对象创建时，构造函数的调用顺序是：`A, D, B, C, E`
 
@@ -600,7 +600,7 @@ class E : public virtual D {};
 class F : public B, public E, public virtual C {};
 ```
 
-![继承关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408281135284.png)
+![继承关系](https://cdn.dwj601.cn/images/202408281135284.png)
 
 那么 `F` 对象创建时，构造函数的调用顺序是：`D, C, A, B, E, F`
 
@@ -663,15 +663,15 @@ class F : public B, public E, public virtual C {};
 
 === "输出"
 
-    ![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408281136747.png)
+    ![输出](https://cdn.dwj601.cn/images/202408281136747.png)
 
 如果删除基类中的 `virtual` 关键字，则无法调用子类对象中的 `Output` 函数，只会输出这个：
 
-![删除 virtual 关键字之后的输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408281137612.png)
+![删除 virtual 关键字之后的输出](https://cdn.dwj601.cn/images/202408281137612.png)
 
 并且会警告：
 
-![警告](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408281137789.png)
+![警告](https://cdn.dwj601.cn/images/202408281137789.png)
 
 ### 3.2 纯虚函数
 

@@ -2,6 +2,9 @@
 title: 理论剖析导读
 ---
 
-没有理论的实践寸步难行。
+!!! quote
+    有理走遍天下，无理寸步难行。
 
-行文结构参考：[acm-icpc 算法学习笔记&板子目录 - 知乎 CurryWOE](https://zhuanlan.zhihu.com/p/557770472)
+本系列文章尝试从本质来剖析算法原理，会结合一些实例来辅助理解。配套练习题见 [配套习题](../examples/index.md) 系列内容。
+
+本系列文章的行文结构参考：[acm-icpc 算法学习笔记&板子目录 - 知乎 CurryWOE](https://zhuanlan.zhihu.com/p/557770472)，欢迎在评论区留言补充🤗。

@@ -1,8 +1,8 @@
 ---
-title: Python 语法基础
+title: Python 语言基础
 ---
 
-本文记录 Python 的语法基础。
+本文记录 Python 基础。
 
 ## Python 的数据类型
 
@@ -35,8 +35,6 @@ TypeError: 'str' object does not support item assignment
 ## Python 的万物引用
 
 在 Python 中「所有的一切都是引用」这句话已经听烂了，但是从未实践证实一番。所谓的万物引用可以从 C++ 的赋值和 Python 的赋值进行对比。
-
-### 变量模型
 
 **在 C++ 中，变量的赋值语句其实是在拷贝构造**。即重新开辟一块内存空间用于被赋值的新变量。比如下面的程序：
 
@@ -83,17 +81,13 @@ print(id(c))
 
 上述两个程序可以用下面一张图来概括：
 
-![C++ 盒子模型 vs Python 标签模型](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407031133477.png)
+![C++ 盒子模型 vs Python 标签模型](https://cdn.dwj601.cn/images/202407031133477.png)
 
 /// fc
-C++ 盒子模型 vs Python 标签模型 [^py-ref]
+[C++ 盒子模型 vs. Python 标签模型](https://www.cnblogs.com/demon89/p/7400234.html)
 ///
 
-[^py-ref]: [Python 对象引用、可变性和垃圾回收](https://www.cnblogs.com/demon89/p/7400234.html)
-
 即，C++ 中的变量相当于盒子，简单的赋值语句就相当于重新拿一个盒子装原来的数据；而 Python 中的变量相当于标签，简单的赋值语句就相当于所有标签都贴到了同一块数据上。
-
-### 引用赋值与数据类型的关系
 
 知道了 Python 所有的赋值都是引用以后，新问题出现了：如果我们需要修改某个引用中的值，会发生什么呢？这就需要按照 Python 的数据类型分开讨论了。
 

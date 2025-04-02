@@ -16,15 +16,15 @@ title: 计算机系统基础
 
 曾经。冯诺依曼认为计算机应该由五个部分组成，相互协作完成任务：1）存储器。存储数据和指令；2）运算器。可以进行四则运算和逻辑运算；3）控制器。自动取指令来执行；4）输入设备。用户输入；5）输出设备。系统输出。如下图所示：
 
-![冯.诺依曼结构 - 计算机模型](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404141728836.png)
+![冯.诺依曼结构 - 计算机模型](https://cdn.dwj601.cn/images/202404141728836.png)
 
 现在。计算机结构模型是这样的：
 
-![现代计算机结构模型](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405141947181.png)
+![现代计算机结构模型](https://cdn.dwj601.cn/images/202405141947181.png)
 
 **计算机系统的层次结构是什么**？
 
-![计算机系统的层次结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404141733628.png)
+![计算机系统的层次结构](https://cdn.dwj601.cn/images/202404141733628.png)
 
 **如何评价计算机系统的性能**？一个完整的计算机系统由软件和硬件共同组成，而硬件的性能对其起决定性作用，但是硬件的性能检测和评价比较困难。我们主要介绍综合性测试和评价 **硬件性能** 的方法。
 
@@ -38,7 +38,7 @@ title: 计算机系统基础
 
 如果不考虑应用背景而直接比较计算机性能，往往通过 **程序的执行时间** 来衡量。下附程序的执行时间组成图：
 
-![程序的执行时间（用户感受到的）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403252043639.png)
+![程序的执行时间（用户感受到的）](https://cdn.dwj601.cn/images/202403252043639.png)
 
 我们关注的是 **用户 CPU 时间**。那么如何计算呢？我们引入三个相关计算量：
 
@@ -166,7 +166,7 @@ C 语言标准中规定：若运算中同时有无符号和带符号整数，则
 
 搞懂这张真值比较表即可：
 
-![真值比较表](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404141849432.png)
+![真值比较表](https://cdn.dwj601.cn/images/202404141849432.png)
 
 ### 2.3 浮点数的表示
 
@@ -182,7 +182,7 @@ C 语言标准中规定：若运算中同时有无符号和带符号整数，则
 
 正数的最小值：$0.10...0 \times 2^{00...0} = 2^{-1} \times 2^{-128}=2^{-129}$
 
-![浮点数的表示范围](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405052136266.png)
+![浮点数的表示范围](https://cdn.dwj601.cn/images/202405052136266.png)
 
 #### 2.3.2 浮点数的规格化
 
@@ -195,23 +195,23 @@ C 语言标准中规定：若运算中同时有无符号和带符号整数，则
 1. 对于尾数：隐藏位 1 还是存在，不过现在不是在小数点右边，而是在小数点左边
 2. 对于阶数：同样采用移码的形式，只不过现在的偏执常数不是 $2^{n-1}$，而是 $2^{n-1}-1$。因此单精度和双精度浮点数的偏执常数分别为 $2^{8-1}-1=127,2^{11-1}-1=1023$
 
-![IEEE 754 浮点数标准](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405052143554.png)
+![IEEE 754 浮点数标准](https://cdn.dwj601.cn/images/202405052143554.png)
 
 对于本目，需要掌握 **IEEE 754 规格化小数** 与 **真值** 之间的转换，转换规则如下：
 
 === "转换规则"
 
-    ![十进制小数转化为 IEEE754 的小数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081030218.png)
+    ![十进制小数转化为 IEEE754 的小数](https://cdn.dwj601.cn/images/202404081030218.png)
 
-    ![IEEE754 小数转化为十进制小数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081030753.png)
+    ![IEEE754 小数转化为十进制小数](https://cdn.dwj601.cn/images/202404081030753.png)
 
 === "浮点数的 5 种表示形式"
 
-    ![浮点数的 5 种表示形式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405111003712.png)
+    ![浮点数的 5 种表示形式](https://cdn.dwj601.cn/images/202405111003712.png)
 
 === "单精度浮点数的各种极端情况"
 
-    ![单精度浮点数的各种极端情况](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405111005676.png)
+    ![单精度浮点数的各种极端情况](https://cdn.dwj601.cn/images/202405111005676.png)
 
 #### 2.3.4 C 语言中的浮点数类型
 
@@ -282,7 +282,7 @@ C 语言标准中规定：若运算中同时有无符号和带符号整数，则
 
 对于机器数 `0xFFFFFFF6` 而言，下面的表示方式中，左侧为小端存储，右侧为大端存储：
 
-![左侧为小端存储，右侧为大端存储](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081008751.png)
+![左侧为小端存储，右侧为大端存储](https://cdn.dwj601.cn/images/202404081008751.png)
 
 ### 2.6 数据的基本运算
 
@@ -392,7 +392,7 @@ C 语言标准中规定：若运算中同时有无符号和带符号整数，则
 
 #### 2.6.4 整数加减运算
 
-![整数加/减运算部件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404081025914.png)
+![整数加/减运算部件](https://cdn.dwj601.cn/images/202404081025914.png)
 
 部件解读：对于无符号整数和有符号整数而言，都可采用该运算部件进行运算
 
@@ -574,7 +574,7 @@ $$
 
     其实很多时候并非写代码才会让电脑起反应，然后根据翻译得到的机器指令做事，我们随便碰些什么都对应很多的指令。下图是我对 **读、写、存文件** 的可视化展示，以此来加强对计算机内部运作机理的宏观理解：
 
-    ![wdf-is-sys](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406172152319.svg)
+    ![wdf-is-sys](https://cdn.dwj601.cn/images/202406172152319.svg)
 
     补充其中的几个概念：
 
@@ -658,7 +658,7 @@ IA-32 支持的数据类型及格式与 C 语言之间的对应关系：
 
 寄存器组织：共有三大类
 
-![寄存器组织](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406232114184.png)
+![寄存器组织](https://cdn.dwj601.cn/images/202406232114184.png)
 
 - 8 个通用寄存器，其中
     - `EAX, EBX, ECX, EDX` 均为 32 位寄存器
@@ -675,7 +675,7 @@ IA-32 支持的数据类型及格式与 C 语言之间的对应关系：
 2. 寄存器寻址：指定寄存器 R 的内容为操作数。在寄存器中找数据；
 3. **存储器寻址**：基址+变址 × 比例因子+偏移地址。在内存或者硬盘中找数据。
 
-![存储器寻址示例 - AT&T 格式汇编](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405212043567.png)
+![存储器寻址示例 - AT&T 格式汇编](https://cdn.dwj601.cn/images/202405212043567.png)
 
 #### 3.2.3 机器指令格式
 
@@ -775,11 +775,11 @@ RET 返回指令：在返回调用过程之前从栈中取出返回地址
 
     === "按边界对齐"
 
-        ![按边界对齐](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131154702.png)
+        ![按边界对齐](https://cdn.dwj601.cn/images/202405131154702.png)
 
     === "边界不对齐"
 
-        ![边界不对齐](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405131154636.png)
+        ![边界不对齐](https://cdn.dwj601.cn/images/202405131154636.png)
 
 
 ### 3.6 越界访问和缓冲区溢出

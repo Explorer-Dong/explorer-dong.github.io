@@ -71,7 +71,7 @@ graph TB
 
 我们用 $R = (A_1:D_1,A_2:D_2,...,A_n:D_n,)$ 来逻辑表示一个关系。其中 $R$ 表示关系，$A$ 表示属性，$D$ 表示属性的取值域。以下关键词几乎涵盖了关系的大部分术语。
 
-![关系的基本概念](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410221952093.png)
+![关系的基本概念](https://cdn.dwj601.cn/images/202410221952093.png)
 
 #### 2.2 关系操作
 
@@ -219,7 +219,7 @@ graph TB
 
 1）选择 $\sigma_F(R)$
 
-![选择](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410100937869.png)
+![选择](https://cdn.dwj601.cn/images/202410100937869.png)
 
 - 筛选出关系 R 中符合条件 $F\text{(Filter)}$ 的行；
 - 对应 SQL 中的 where 关键词；
@@ -227,7 +227,7 @@ graph TB
 
 2）投影 $\Pi_A(R)$
 
-![投影](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410100937746.png)
+![投影](https://cdn.dwj601.cn/images/202410100937746.png)
 
 - 筛选出关系 R 中含有属性集合 $A\text{(Attribute)}$ 的列；
 - 对应 SQL 中的 select 关键词；
@@ -235,7 +235,7 @@ graph TB
 
 3）连接 $R \Join S$
 
-![连接](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410100937483.png)
+![连接](https://cdn.dwj601.cn/images/202410100937483.png)
 
 - 一般连接。筛选出两个关系 R, S 的笛卡尔积 $R\times S$ 中「R 的属性组 A 和 S 的属性组 B」符合条件 $\theta$ 的行（即笛卡尔积的子集）。当关系为取等时，被称为 **等值连接**；当关系为取等并且需要在连接结果中删除这两个相同属性中的一个时，就叫做 **自然连接**；
 - 左外连接。当 R 的属性 A 的取值不在 S 的 B 中时，在结果中保留 R 的结果，S 对应的值填 NULL；
@@ -244,15 +244,15 @@ graph TB
 
 4）除法 $R \div S$
 
-![除法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410101017381.png)
+![除法](https://cdn.dwj601.cn/images/202410101017381.png)
 
 - 对于两个关系 $R(X,Y)$ 和 $S(Y,Z)$，$R\div S$ 的结果 $P(X)$ 是 R 满足下列条件的元组在 X 上的投影：R 在 X 上的象集包含 S 在 Y 上的投影。
 
 ??? note "除法运算示例"
 
-    ![例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410162126209.png)
+    ![例题](https://cdn.dwj601.cn/images/202410162126209.png)
 
-    ![例题 - 续](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410162127996.png)
+    ![例题 - 续](https://cdn.dwj601.cn/images/202410162127996.png)
 
 ### 3 SQL
 
@@ -415,7 +415,7 @@ limit 10 offset 5
 
 现在我们进行一个小练习。对于下面的两张表结构，查询 SC 表中 SC ='c1' 的课程成绩最高的学生学号、姓名和成绩。
 
-![学生表和课程表](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410301531215.png)
+![学生表和课程表](https://cdn.dwj601.cn/images/202410301531215.png)
 
 仅用「内连接」的实现方法如下：
 
@@ -564,7 +564,7 @@ for each {row | statement}
 
     对于下面的「学院学生选课」函数依赖关系：
 
-    ![函数依赖关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411140924531.png)
+    ![函数依赖关系](https://cdn.dwj601.cn/images/202411140924531.png)
 
     主码为 Sno 和 Cno 用方框框出；非主属性为 Grade，School 和 Sloc；实线表示完全函数决定，虚线表示部分函数决定。下面给出上述关系模式是否满足 2NF 的分析：
 
@@ -582,11 +582,11 @@ for each {row | statement}
 
 **3NF**：对于满足 2NF 的关系模式，假设主码为 X，非主码有 Y 和 Z，不允许出现 X 决定 Y，Y 又决定 Z 的传递依赖，否则还是会出现级联错误。例如下表 $\text{DemoTable}(\underline{Sno}, School, Sloc)$ 就不满足 3NF：
 
-![不满足 3NF](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411141045571.png)
+![不满足 3NF](https://cdn.dwj601.cn/images/202411141045571.png)
 
 **BCNF**：决定集要包含候选码。对于满足 2NF 的关系模式，假设主码为 (X, Y)，非主码为 Z，不允许出现 X 决定 Z，Z 又决定 Y 的传递依赖，否则还是会出现级联错误。例如下表 $\text{DemoTable}(\underline{S, J}, T)$ 就不满足 BCNF：
 
-![不满足 BCNF](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411141045758.png)
+![不满足 BCNF](https://cdn.dwj601.cn/images/202411141045758.png)
 
 至此已经介绍完所有函数依赖相关的范式。理论是枯燥的，但是能够确保数据库的高效与安全。
 
@@ -601,11 +601,11 @@ for each {row | statement}
 
 现在我们拉到了一个甲方，需要根据甲方的需求设计一个数据库。完整流程共分为六个阶段，如下图所示：
 
-![数据库设计的 6 个阶段与描述](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411070937459.png)
+![数据库设计的 6 个阶段与描述](https://cdn.dwj601.cn/images/202411070937459.png)
 
 本章我们主要学习概念结构和逻辑结构的设计。在开始之前，再对绪论中数据库的各级模式做一个补充：
 
-![数据库的各级模式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411070940768.png)
+![数据库的各级模式](https://cdn.dwj601.cn/images/202411070940768.png)
 
 #### 6.1 概念结构设计
 
@@ -636,7 +636,7 @@ for each {row | statement}
 
 一个查询语句的执行流程如下图所示：
 
-![查询处理步骤](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412260946320.png)
+![查询处理步骤](https://cdn.dwj601.cn/images/202412260946320.png)
 
 以下面这个查询语句为例：
 
@@ -651,13 +651,13 @@ where
 
 很容易得到对应的语法树如下：
 
-![语法树](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412141344131.png)
+![语法树](https://cdn.dwj601.cn/images/202412141344131.png)
 
 下面开始进行优化。此处我们只介绍「选择」和「连接」两种语句的优化策略，具体见各 DBMS 的实现文档。
 
 **逻辑优化**。对于逻辑优化，最基本的就是先选择，再做连接。然后就是投影操作可以在元组扫描的时候一次性做好。那么对于上述语法树而言，就可以得到如下的逻辑优化结果：
 
-![逻辑优化后的语法树](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412141510159.png)
+![逻辑优化后的语法树](https://cdn.dwj601.cn/images/202412141510159.png)
 
 **物理优化**。选择和逻辑优化分开讲解：
 

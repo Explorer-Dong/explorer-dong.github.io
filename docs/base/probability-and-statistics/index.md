@@ -306,7 +306,7 @@ $$
 
     ??? note "泊松分布正规性证明"
     
-        ![泊松分布正规性证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403151012817.png)
+        ![泊松分布正规性证明](https://cdn.dwj601.cn/images/202403151012817.png)
 
 ### 2.3 连续型随机变量及其概率密度函数
 
@@ -418,7 +418,7 @@ $$
 
 ??? note "几何意义：F(x,y) 即左下方无界矩形的面积"
 
-    ![联合分布函数的几何意义](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403271717479.png)
+    ![联合分布函数的几何意义](https://cdn.dwj601.cn/images/202403271717479.png)
 
 性质：其实配合几何意义理解就会很容易了
 
@@ -443,7 +443,7 @@ $$
     
     2. 表格法：
     
-        ![二维联合分布列](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403271728248.png)
+        ![二维联合分布列](https://cdn.dwj601.cn/images/202403271728248.png)
 
 性质：
 
@@ -484,7 +484,7 @@ $$
 
     ??? note "二元正态分布 - 密度函数的图像"
 
-        ![二元正态分布 - 密度函数的图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403290948792.png)
+        ![二元正态分布 - 密度函数的图像](https://cdn.dwj601.cn/images/202403290948792.png)
 
 计算题：往往给出一个二元密度函数，然后让我们求解（1）密度函数中的参数、（2）分布函数、（3）联合事件某个区域下的概率
 
@@ -855,27 +855,27 @@ $$
     
     === "0-1 分布"
     
-        ![0-1 分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313030.jpg)
+        ![0-1 分布](https://cdn.dwj601.cn/images/202404202313030.jpg)
     
     === "二项分布"
     
-        ![二项分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313503.jpg)
+        ![二项分布](https://cdn.dwj601.cn/images/202404202313503.jpg)
     
     === "几何分布"
     
-        ![几何分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313329.jpg)
+        ![几何分布](https://cdn.dwj601.cn/images/202404202313329.jpg)
     
     === "泊松分布"
     
-        ![泊松分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313316.jpg)
+        ![泊松分布](https://cdn.dwj601.cn/images/202404202313316.jpg)
     
     === "均匀分布"
     
-        ![均匀分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313239.jpg)
+        ![均匀分布](https://cdn.dwj601.cn/images/202404202313239.jpg)
     
     === "指数分布"
     
-        ![指数分布](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404202313832.jpg)
+        ![指数分布](https://cdn.dwj601.cn/images/202404202313832.jpg)
 
 
 ### 4.4 协方差与相关系数
@@ -938,7 +938,7 @@ $$
 
 ???+note "证明 - 二维正态分布的两个随机变量：相互独立 $\iff$ 线性无关"
 
-    ![二维正态分布的两个随机变量：相互独立 等价于 线性无关](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404261112302.jpg)
+    ![二维正态分布的两个随机变量：相互独立 等价于 线性无关](https://cdn.dwj601.cn/images/202404261112302.jpg)
     
     参考：https://www.zhihu.com/question/29641138
 
@@ -1009,15 +1009,15 @@ $$
 
     设总体 $X$ 的数学期望和方差分别为 $\mu$ 和 $\sigma^2$，$(X_1,X_2,...,X_n)$ 是简单随机样本，则：
 
-    ![样本均值的数学期望与总体的数学期望相等](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101145088.png)
+    ![样本均值的数学期望与总体的数学期望相等](https://cdn.dwj601.cn/images/202405101145088.png)
 
     即：样本均值的数学期望 $=$ 总体的数学期望
 
-    ![样本方差的数学期望与总体的数学期望 不相等](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101148690.png)
+    ![样本方差的数学期望与总体的数学期望 不相等](https://cdn.dwj601.cn/images/202405101148690.png)
 
     即：样本方差的数学期望 $\ne$ 总体的数学期望
 
-    ![修正样本方差推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405101148126.png)
+    ![修正样本方差推导](https://cdn.dwj601.cn/images/202405101148126.png)
 
     上图即：修正样本方差推导
   
@@ -1046,7 +1046,7 @@ $$
 
 密度函数图像：
 
-![密度函数图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405171013305.webp)
+![密度函数图像](https://cdn.dwj601.cn/images/202405171013305.webp)
 
 定义：
 
@@ -1063,17 +1063,17 @@ $$
 
     EY 的推导利用：$EX^2 = DX - (EX)^2$
     
-    ![EY 的推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405211524059.png)
+    ![EY 的推导](https://cdn.dwj601.cn/images/202405211524059.png)
     
     DY 的推导利用：方差计算公式、随机变量函数的数学期望进行计算
     
-    ![DY 的推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405211524574.png)
+    ![DY 的推导](https://cdn.dwj601.cn/images/202405211524574.png)
 
 **$t$ 分布**
 
 密度函数图像：
 
-![密度函数图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405171014091.webp)
+![密度函数图像](https://cdn.dwj601.cn/images/202405171014091.webp)
 
 定义：
 
@@ -1088,7 +1088,7 @@ $$
 
 密度函数图像：
 
-![密度函数图像](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202405171015933.webp)
+![密度函数图像](https://cdn.dwj601.cn/images/202405171015933.webp)
 
 定义：
 

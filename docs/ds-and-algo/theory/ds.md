@@ -4,7 +4,7 @@ title: 数据结构
 
 数据结构由「数据」和「结构」两部分组成。我们主要讨论的是后者，即结构部分。按照逻辑结构可以将各种数据结果分类为「线性结构」和「非线性结构」。如下图所示：
 
-![线性数据结构 vs 非线性数据结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408301527018.png)
+![线性数据结构 vs 非线性数据结构](https://cdn.dwj601.cn/images/202408301527018.png)
 
 /// caption
 线性数据结构 vs 非线性数据结构
@@ -30,7 +30,7 @@ title: 数据结构
 
 === "双向链表结点添加"
 
-    ![添加结点](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218514.png)
+    ![添加结点](https://cdn.dwj601.cn/images/202406292218514.png)
     /// caption
     ///
     
@@ -43,7 +43,7 @@ title: 数据结构
 
 === "双向链表结点删除"
 
-    ![删除结点](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218515.png)
+    ![删除结点](https://cdn.dwj601.cn/images/202406292218515.png)
     /// caption
     ///
     
@@ -102,53 +102,32 @@ $$
     - 设置一个辅助标志变量 `flag`；
     - 设置一个计数器 `count`；
 
-## 特殊矩阵
+!!! tip
+    有些教材还有「特殊矩阵」和「广义表」一说，但由于算法思想很简单或者可以被其他数据结构完美代替，因此本文不展开讨论。感兴趣的小伙伴可以看仓库历史中关于这两部分内容的讲解：[特殊矩阵](https://github.com/Explorer-Dong/explorer-dong.github.io/blob/f9e71ec0ebe8d17e95dc254d2e28f5abae7bb434/docs/ds-and-algo/theory/ds.md#特殊矩阵)、[广义表](https://github.com/Explorer-Dong/explorer-dong.github.io/blob/f9e71ec0ebe8d17e95dc254d2e28f5abae7bb434/docs/ds-and-algo/theory/ds.md#广义表)。
 
-对于一个常规的矩阵，我们可以按照「行优先」或「列优先」的方式完整的存储，但是对于一个 **稀疏矩阵**，这样的存储方式会极大的浪费存储空间从而降低算法的执行效率。常见的存储优化方法有两种：
+## 哈希表
 
-1. 三元组顺序表。将矩阵的非零元素及其下标存到一起，即 `vector<tuple<ValueType, int, int>>`；
-2. 十字链表。定义两个指针数组 `vector<CrossNode<T>*> cheads, rheads`，存储行列的头指针即可。
+哈希是一种应用极其广泛的算法，其核心功能为：**给定任意一个对象 A，能利用哈希表迅速找到以 A 的名义存储的结果**。关键点如下：
 
-## 广义表
+- 这里的 A 必须是可哈希的；
+- 这里的哈希表其实是一个数组；
+- 所谓的迅速其实是利用哈希函数计算出这个可哈希对象 A 的哈希码（就是一个数字对应到哈希表数组中的某一个下标索引值），然后 $O(1)$ 地在哈希表数组中索引出存储的内容。
 
-个人认为，广义表就是单链表的扩展版。链表中的每一个结点可以是存储数据的 data 结点，也可以是存储新链表 sublist 结点。为了满足这样的数据结构，我们需要每一个结点：
+举个例子。现在需要查询出你这学期翘了几次课，一个最直观的做法就是遍历数据库然后匹配你的学号（假设学号唯一），这样的时间复杂度为 $O(n)$，空间复杂度为 $O(1)$。但如果提前利用哈希算法存储了每一个学号对应的翘课次数，那么在输入你的学号后，就可以通过哈希函数计算出你学号对应的哈希码，然后在哈希表数组中索引出翘课的次数即可，这样的时间复杂度为 $O(1)$，空间复杂度为 $O(n)$。
 
-- 存储当前结点的类型，要么是 data 类型，要么是 sublist 类型。即枚举体类型；
-- 如果是 data 类型的结点，就存储数据；如果是 sublist 类型的结点，就存储子链表的地址。即联合体类型；
-- 存储下一个结点的地址。即指针类型。
+大多数编程语言都实现了哈希的功能，只要对象是可哈希的，就可以利用该算法完成空间换时间的操作。例如 C++ 中的 `unordered_map` 类、Python 中的 `dict` 类、Java 中的 `HashMap` 类等。
 
-广义表结点的结构如下示意图所示：
+**哈希冲突**。当然，哈希算法没法保证不同对象的哈希码都是不同的，有小概率会发生不同的对象映射出了相同的哈希码，此时就发生了哈希冲突。为了解决这个问题，要么优化哈希函数从而降低哈希冲突的概率，要么修改哈希表的一维数组结构，彻底解决哈希冲突。我们关注后者，有两种方法：
 
-![广义表结点结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218530.png)
+1. 拉链法 (Chaining)。我们仍然沿用一维数组作为哈希表，只不过将数组元素修改为单链表。一旦发生哈希冲突映射到了同一个数组位置，就在对应位置的单链表中往后拉链即可；
+2. 开放地址法 (Open Addressing)。该法保持原来的一维数组结构不变，将产生哈希冲突的元素移动到其他还没有被占用的位置（称为空桶）存储。这种方法在频繁产生哈希冲突时性能较差。而为了找到其他空位，开放地址法需要进行「空桶探测」，常见的探测方法有线性探测（从产生冲突的地方开始沿着某个方向枚举）、双重哈希探测（利用第二个哈希函数探测其余位置）。
 
-/// caption
+**哈希表的数据结构**。在 C++ 的 unordered_map 库中，unordered_map 与 unordered_multimap 的基类 _Hashtable 定义了哈希表的具体结构。具体地，其定义的哈希表是一维动态数组，数组元素是前向链表（即单链表）。源码 `/path/to/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable.h` 是这样解释的：
 
-广义表结点结构示意图
-
-///
-
-广义表结点的 C++ 定义如下代码所示：
-
-```c++
-template<class T>
-struct GListNode {
-    enum { ATOM, LIST } type;
-    union {
-        T data;
-        GListNode* sublist;
-    };
-    GListNode<T>* next;
-};
-```
-
-广义表数据结构可以应用在存储空间的分配策略上，对应的算法叫做「成组拉链法」。
-
-??? "一些广义表的结构示例图"
-
-    ![广义表的结构示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218531.png)
-    /// caption
-    广义表的结构示意图
-    ///
+> In terms of Standard containers the hashtable is like the aggregation of:
+>
+> *  std:: forward_list <_Node \> containing the elements
+> *  std:: vector < std:: forward_list <_Node \>:: iterator > representing the buckets
 
 ## 树
 
@@ -226,13 +205,26 @@ struct GListNode {
 
 ## 并查集
 
-## 拓展域并查集
+TODO
 
-参考：<https://www.luogu.com.cn/article/kx2if31n>
+并查集虽然一般用来解决集合问题，但数据结构实现上本质是一个由多棵有向根树组成的森林。在采用了路径压缩和按秩合并后，每一次查询与插入的时间复杂度都会均摊为一个常数。
+
+拓展域并查集：[例题](https://www.luogu.com.cn/article/kx2if31n)
 
 ## 树状数组
 
+TODO
+
+利用更多的区间维护一个序列的信息，所有维护信息的区间组成的形状形如一棵树，故称为树状数组。支持的操作有：
+
+- 区间查询：查询序列 `[1, pos]` 索引的元素之和。时间复杂度 $O(\log n)$；
+- 单点修改：修改序列 `pos` 索引的元素值。时间复杂度 $O(\log n)$。
+
+更多内容见：[树状数组 - OI Wiki](https://o-iwiki.org/ds/fenwick/)
+
 ## 线段树
+
+TODO
 
 ## 二叉搜索树
 
@@ -245,6 +237,22 @@ struct GListNode {
 判定：想要判定一棵二叉树是否为二叉搜索树，只需要判断中序遍历的结果是不是递增的即可，可以采取中序遍历序列比对的方法，也可以在递归遍历二叉树的过程中通过记录前驱结点的值直接进行比较判断。时间复杂度 $O(n)$。
 
 ## 平衡二叉搜索树
+
+C++ 中叫做 `std::map`，Python 中叫做 `from sortedcontainers import SortedList`。
+
+> 例程：[切蛋糕 - AcWing](https://www.acwing.com/activity/content/code/content/8475415/)
+>
+> 官方：[sortedlist.py - grantjenks/python-sortedcontainers](https://github.com/grantjenks/python-sortedcontainers/blob/master/src/sortedcontainers/sortedlist.py)
+
+有序列表类。导入方法 `from sortedcontainers import SortedList`。可以类比 C++ 中的 `map` 类。共有以下内容，全部都是 $O(\log n)$ 的时间复杂度：
+
+1. `add(value)`: 添加一个值到有序列表
+2. `discard(value)`: 删除列表中的值（如果存在）
+3. `remove(value)`: 删除列表中的值（必须存在）
+4. `pop(index=-1)`: 删除并返回指定索引处的值
+5. `bisect_left(value)`: 返回插入值的最左索引
+6. `bisect_right(value)`: 返回插入值的最右索引
+7. `count(value)`: 计算值在列表中的出现次数
 
 **Treap**。二叉搜索树和堆的结合体。它通过维护两种性质来保持平衡：
 
@@ -273,7 +281,7 @@ struct GListNode {
 
 构建：当插入结点进行构建时出现了有结点平衡因子的绝对值超过了 1，则进行“旋转”调整，旋转共分为 4 种
 
-![旋转 - LL、LR](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218546.png)
+![旋转 - LL、LR](https://cdn.dwj601.cn/images/202406292218546.png)
 
 /// caption
 
@@ -281,7 +289,7 @@ struct GListNode {
 
 ///
 
-![旋转 - LR](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218547.png)
+![旋转 - LR](https://cdn.dwj601.cn/images/202406292218547.png)
 
 /// caption
 
@@ -289,7 +297,7 @@ struct GListNode {
 
 ///
 
-![旋转 - RL](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218548.png)
+![旋转 - RL](https://cdn.dwj601.cn/images/202406292218548.png)
 
 /// caption
 
@@ -299,7 +307,7 @@ struct GListNode {
 
 尝试模拟一遍下列序列的构造过程就可以理解了：
 
-![例题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292218549.png)
+![例题](https://cdn.dwj601.cn/images/202406292218549.png)
 
 /// caption
 

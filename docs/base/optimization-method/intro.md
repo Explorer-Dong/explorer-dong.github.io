@@ -4,7 +4,7 @@ title: 绪论
 
 ##  最优化问题分类
 
-![最优化问题分类](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403091214182.png)
+![最优化问题分类](https://cdn.dwj601.cn/images/202403091214182.png)
 
 ## 最优化问题定义
 
@@ -55,7 +55,7 @@ $$
     
         ??? note "凸组合定理证明"
 
-            ![凸组合定理证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403102025159.png)
+            ![凸组合定理证明](https://cdn.dwj601.cn/images/202403102025159.png)
 
 2. 分析最优解的最优性条件
     - 超平面定义（凸集分离定理）：设 $D_1,D_2 \subset R^n$ 为两非空凸集，若存在非零向量 $\alpha \in R^n$ 和实数 $\beta$，使得
@@ -98,7 +98,7 @@ $$
 
     ??? note "凸函数的判别定理证明：函数值角度"
 
-        ![凸函数的判别定理证明 - 函数值角度](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131019868.png)
+        ![凸函数的判别定理证明 - 函数值角度](https://cdn.dwj601.cn/images/202403131019868.png)
 
 2. 一阶梯度角度：设 $f(x)$ 是定义在非空开凸集 $D$ 上的可微函数，则：
 
@@ -108,7 +108,7 @@ $$
     ??? note "凸函数的判别定理理解性记忆：一阶导数角度"
         无需掌握证明，但是为了便于理解性记忆，可以从 **二次凸函数** 进行辅助理解记忆。
 
-        ![凸函数的判别定理证明 - 一阶导数角度](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131018032.png)
+        ![凸函数的判别定理证明 - 一阶导数角度](https://cdn.dwj601.cn/images/202403131018032.png)
 
 3. 二阶梯度角度：设 $f(x)$ 是定义在非空开凸集 $D$ 上的二阶可微函数，则：
 
@@ -125,13 +125,13 @@ $$
 
     ??? "证明（反证法）"
     
-        ![证明（反证法）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122016285.png)
+        ![证明（反证法）](https://cdn.dwj601.cn/images/202403122016285.png)
 
 2. 定理：在可行域是凸集，目标函数是严格凸的情况下，局部最优解 $x^*$ 是「唯一」全局最优解。
 
     ??? "证明（反证法）"
     
-        ![证明（反证法）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122017101.png)
+        ![证明（反证法）](https://cdn.dwj601.cn/images/202403122017101.png)
 
 **确定可行域是否为凸集**。如下三条定理：
 
@@ -139,19 +139,19 @@ $$
 
     ??? note "证明"
 
-        ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019899.png)
+        ![证明](https://cdn.dwj601.cn/images/202403122019899.png)
 
 2. 定理：若约束条件 $c_i(x) \le 0$ 中每一个约束函数 $c_i(x)$ 都是凸函数，则可行域 $F$ 是凸集；
 
     ??? note "证明"
 
-        ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019572.png)
+        ![证明](https://cdn.dwj601.cn/images/202403122019572.png)
 
 3. 定理：若约束条件中每一个约束函数 $c_i(x)$ 都恒等于零，则可行域 $F$ 是凸集。
 
     ??? note "证明"
 
-        ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403122019751.png)
+        ![证明](https://cdn.dwj601.cn/images/202403122019751.png)
 
 ## 最优性条件
 
@@ -179,7 +179,7 @@ $$
 
     ??? note "证明"
     
-        ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403131639082.jpg)
+        ![证明](https://cdn.dwj601.cn/images/202403131639082.jpg)
 
 ### 充分必要条件
 
@@ -255,7 +255,7 @@ $$
 
     ??? note "证明"
 
-        ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201331819.png)
+        ![证明](https://cdn.dwj601.cn/images/202403201331819.png)
 
 #### 迭代的终止条件
 
@@ -267,7 +267,7 @@ $$
 
 但是问题在于这对收敛速度很快的算法不使用，如下图的无约束最优化问题。已知两个局部最优解分别为 $x_1^*,x_2^*$，迭代的两个解分别为 $\overline{x}_1,\overline{x}_2$，可以看出：尽管 2 号点相对于 1 号点更靠近局部最优解，但是由于 2 号点的梯度更大，明显不如 1 号点更加局部最优，因此利用微分算子作为迭代的终止条件不适用于收敛速度快的算法
 
-![无约束最优化问题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201330908.png)
+![无约束最优化问题](https://cdn.dwj601.cn/images/202403201330908.png)
 
 **对于超线性收敛的算法**。一个理想的收敛终止条件为 $||x^{(k)} - x^*|| \le \epsilon$，但是由于最优解 $x^*$ 是未知的，因此该方案不可行，同理 $f(x^*)$ 也是未知的，因此 $||f(x^{(k)}) - f(x^*)|| \le \epsilon$ 也是不可行的。那么有没有什么替代的方案呢？答案是有的。
 
@@ -279,7 +279,7 @@ $$
 
     ??? note "证明"
 
-        ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201425856.jpg)
+        ![证明](https://cdn.dwj601.cn/images/202403201425856.jpg)
 
 2. 方案二：利用「函数值序列」进行替代。即以下式作为迭代的终止条件
 
@@ -289,7 +289,7 @@ $$
 
     ??? note "证明"
 
-        ![证明](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403201425473.jpg)
+        ![证明](https://cdn.dwj601.cn/images/202403201425473.jpg)
 
 - 一般情况下，对于上述超线性算法的判断收敛的方法，只用其中一种往往不适当。此时一般使用两种方法集成的思路进行判断。
 

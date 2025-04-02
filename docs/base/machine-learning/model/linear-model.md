@@ -17,7 +17,7 @@ $$
 
 ## 线性回归
 
-线性回归顾名思义就是利用线性模型解决回归任务。
+线性回归顾名思义就是利用线性模型解决「回归」任务。
 
 ### 模型
 
@@ -72,7 +72,7 @@ $$
 
 ## 逻辑回归
 
-若想要利用线性回归的实数结果进行分类，我们需要将回归结果映射成一个固定区间，便于定义阈值从而二分类。常见的映射函数如下：
+若想要利用线性回归的实数结果进行「二分类」，我们需要将回归结果映射成一个固定区间，便于定义阈值从而二分类。常见的映射函数如下：
 
 $$
 g(x) = \frac{1}{1+e^{-x}}
@@ -80,7 +80,7 @@ $$
 
 该函数被叫做：逻辑函数 (logistic function)。不过在深度学习里面这又被叫做 sigmoid 激活函数。该函数的数学性质比较好，比如她是任意阶连续可导的凸函数，以及她的值域是 $(0,1)$。如下图所示：
 
-![逻辑函数示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250305202438099.png){width=400}
+![逻辑函数示意图](https://cdn.dwj601.cn/images/20250305202438099.png){width=400}
 
 /// fc
 逻辑函数示意图
@@ -89,6 +89,7 @@ $$
 ### 模型
 
 基于「逻辑函数」与「线性回归」的逻辑回归二分类模型定义为：
+
 $$
 y = \sigma(\boldsymbol{w}^T\boldsymbol{x}) =  \frac{1}{1+e^{-\boldsymbol{w}^T\boldsymbol{x}}}
 $$
@@ -98,13 +99,15 @@ $$
 - 权重向量 $\boldsymbol{w}$ 已经包含了偏执项 $b$，因此参数个数为 $D+1$；
 - 分类映射阈值 $\text{threshold}$ 需要人为定义。
 
-由于我们将正例标记为 $1$，将负例标记为 $0$，且逻辑函数可以将实数域单调递增地压缩到 $(0,1)$ 之间，因此我们可以将逻辑回归模型输出的结果视为「样本属于正例的后验概率」，即 $p(y=1 \ | \ x)$。
+由于我们将正例标记为 $1$，将负例标记为 $0$，且逻辑函数可以将实数域单调递增地压缩到 $(0,1)$ 之间，因此我们可以将逻辑回归模型输出的结果视为「样本属于正例的后验概率」，即 $p(y=1 \ | \ \boldsymbol x)$。
 
 至于为什么叫做「后验」，是因为逻辑回归模型已经知道了输入的 $x$，也就是已经知道了某一个前提了。反之如果不知道任何前提直接建模事件发生的概率，就叫做先验概率。
 
 ### 学习准则
 
-我们采用最大似然估计。若我们将 $y$ 视作类后验概率 $p(y=1 \ | \ x)$，则有
+我们采用最大似然估计 (Maximum Likelihood Estimation, MLE)，即在没有任何先验假设的情况下估计模型的参数使得当前的数据发生的概率最大。这是频率派的一种参数估计策略。
+
+若我们将 $y$ 视作类后验概率 $p(y=1 \ | \ x)$，则有
 
 $$
 \ln \frac{p(y = 1 \ | \ x)}{p(y = 0 \ | \ x)} = w^Tx+b
@@ -153,7 +156,7 @@ l(w, b) &= l(\beta) \\
 &= \sum_{i = 1}^m \ln \left [y_i p(y = 1 \ | \ \hat x; \beta) + (1 - y_i) p(y = 0 \ | \ \hat x; \beta) \right ] \\
 &= \sum_{i = 1}^m \ln \left [ y_i \frac{e^{\beta^T\hat x}}{1 + e^{\beta^T\hat x}} + (1-y_i) \frac{1}{1 + e^{\beta^T\hat x}} \right ] \\
 &= \sum_{i = 1}^m \ln \left [ \frac{y_i \beta^T\hat x +1 -y_i}{1 + e^{\beta^T\hat x}} \right ] \\
-&= 
+&=
 \begin{cases}
 \sum_{i = 1}^m \ln \left ( \frac{1}{1 + e^{\beta^T\hat x}} \right ), & y_i = 0  \\
 \sum_{i = 1}^m \ln \left ( \frac{e^{\beta^T\hat x}}{1 + e^{\beta^T\hat x}} \right ), & y_i = 1\\
@@ -193,13 +196,13 @@ $$
 
 本章知识点逻辑链：
 
-![支持向量机知识点关系图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404160810540.png)
+![支持向量机知识点关系图](https://cdn.dwj601.cn/images/202404160810540.png)
 
 ### 间隔与支持向量
 
 对于只有两个特征，输出只有两种状态的训练集而言，很显然我们得到如下图所示的超平面，并且显然应该选择最中间的泛化能力最强的那一个超平面：
 
-![间隔与支持向量](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404152019991.png)
+![间隔与支持向量](https://cdn.dwj601.cn/images/202404152019991.png)
 
 我们定义超平面为：
 
@@ -245,9 +248,9 @@ $$
 
 ??? note "对偶转化推导"
 
-    ![对偶转化推导 - 1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404152113847.jpg)
+    ![对偶转化推导 - 1](https://cdn.dwj601.cn/images/202404152113847.jpg)
     
-    ![对偶转化推导 - 2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404152113969.jpg)
+    ![对偶转化推导 - 2](https://cdn.dwj601.cn/images/202404152113969.jpg)
     
     于是模型 $f(x)$ 就是：
     
@@ -285,7 +288,7 @@ $$
 
 对原始样本进行升维，即 $x_i \to \phi(x_i)$，新的问题出现了，计算内积 $\phi(x_i)^T \phi(x_i)$ 变得很困难，我们尝试解决这个内积的计算，即使用一个函数（核函数）来近似代替上述内积的计算结果，常用的核函数如下：
 
-![常用核函数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404160949464.png)
+![常用核函数](https://cdn.dwj601.cn/images/202404160949464.png)
 
 表格中的高斯核也就是所谓的径向基函数核 (Radial Basis Function Kernel, RBF 核)，其中的参数 $\gamma=\frac{1}{2\sigma^2}$，因此 RBF 核的表达式也可以写成：
 
@@ -308,7 +311,7 @@ $$
 
 常见的平滑连续的替代损失函数为：
 
-![常见的平滑连续的替代损失函数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404161016727.png)
+![常见的平滑连续的替代损失函数](https://cdn.dwj601.cn/images/202404161016727.png)
 
 我们引入松弛变量 $\xi_i$ 得到原始问题的最终形式：
 
@@ -322,21 +325,21 @@ $$
 
 原始问题：
 
-![原始问题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404230832245.png)
+![原始问题](https://cdn.dwj601.cn/images/202404230832245.png)
 
-![约束条件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404230833515.png)
+![约束条件](https://cdn.dwj601.cn/images/202404230833515.png)
 
 对偶问题：
 
-![对偶问题](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404230833494.png)
+![对偶问题](https://cdn.dwj601.cn/images/202404230833494.png)
 
 KKT 条件：
 
-![KKT 条件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404230833048.png)
+![KKT 条件](https://cdn.dwj601.cn/images/202404230833048.png)
 
 预测模型：
 
-![预测模型](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404230834844.png)
+![预测模型](https://cdn.dwj601.cn/images/202404230834844.png)
 
 ### 核方法
 
@@ -352,7 +355,7 @@ $$
 
 ### 一对一
 
-![一对一](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404020850504.png)
+![一对一](https://cdn.dwj601.cn/images/202404020850504.png)
 
 - 名称：One vs. One (OvO)
 - 训练：需要对 N 个类别进行 $\frac{N(N-1)}{2}$ 次训练，得到 $\frac{N(N-1)}{2}$ 个二分类学习器
@@ -361,7 +364,7 @@ $$
 
 ### 一对其余
 
-![一对其余](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404020852608.png)
+![一对其余](https://cdn.dwj601.cn/images/202404020852608.png)
 
 - 名称：One vs. Rest (OvR)
 - 训练：需要对 N 个类别进行 $N$ 次训练，得到 $N$ 个二分类学习器。每次将目标类别作为正例，其余所有类别均为反例
@@ -369,7 +372,7 @@ $$
 
 ### 多对多
 
-![多对多](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404020853931.png)
+![多对多](https://cdn.dwj601.cn/images/202404020853931.png)
 
 - 名称：Many vs. Many (MvM)
 - 训练（编码）：对于 N 个类别数据，我们自定义 M 次划分。每次选择若干个类别作为正类，其余类作为反类。每一个样本在 M 个二分类学习器中都有一个分类结果，也就可以看做一个 M 维的向量。m 个样本也就构成了 m 个在 M 维空间的点阵。

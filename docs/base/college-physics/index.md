@@ -608,15 +608,15 @@ $$
 
 单色光
 
-![单色光](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307854.png)
+![单色光](https://cdn.dwj601.cn/images/202406292307854.png)
 
 复色光（白光）
 
-![复色光（白光）](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307855.png)
+![复色光（白光）](https://cdn.dwj601.cn/images/202406292307855.png)
 
 分析
 
-![分析](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307856.png)
+![分析](https://cdn.dwj601.cn/images/202406292307856.png)
 
 - 波带法：
 
@@ -650,7 +650,7 @@ $$
 
 ### 11.7 夫琅禾费圆孔衍射 光学仪器的分辨本领
 
-![夫琅禾费圆孔衍射](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307857.png)
+![夫琅禾费圆孔衍射](https://cdn.dwj601.cn/images/202406292307857.png)
 
 - 艾里斑满足的关系：
 
@@ -680,7 +680,7 @@ $$
 
     左 1 能分辨（$\gamma> \theta_0$），左 2 恰好能分辨（$\gamma=\theta_0$），左 3 无法分辨（$\gamma<\theta_0$）
 
-    ![瑞利判据示例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307858.png)
+    ![瑞利判据示例](https://cdn.dwj601.cn/images/202406292307858.png)
 
 ### 11.8 衍射光栅
 
@@ -702,7 +702,7 @@ $$
 
 #### 11.8.3 衍射光谱
 
-![衍射光谱](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307859.png)
+![衍射光谱](https://cdn.dwj601.cn/images/202406292307859.png)
 
 白光通过光栅后，中间产生中央明纹，边上的明纹会由于白光中的单色光波长不同而使得明纹产生了不同颜色的带状，由于波长越短衍射角越小，故对于一个波带，靠内侧的是紫光，靠外侧的是红光。
 
@@ -730,7 +730,7 @@ $$
 
 ### 11.10 反射光和折射光的偏振
 
-![反射光和折射光的偏振](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307860.png)
+![反射光和折射光的偏振](https://cdn.dwj601.cn/images/202406292307860.png)
 
 已知入射光线为自然光，入射角为 $\theta$，入射区域的折射率为 $n_1$，折射区域的折射率为 $n_2$。当上述入射角满足下式时：
 
@@ -886,7 +886,7 @@ $$
 
 大小关系：
 
-![大小关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307861.png)
+![大小关系](https://cdn.dwj601.cn/images/202406292307861.png)
 
 ## 第十三章 热力学基础
 
@@ -968,15 +968,15 @@ $$
 
 #### 13.4.3 绝热线和等温线
 
-![绝热线和等温线](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307862.png)
+![绝热线和等温线](https://cdn.dwj601.cn/images/202406292307862.png)
 
 在 A 点处，绝热线的斜率比等温线的斜率绝对值来的更大，具体看推导
 
-![推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307863.png)
+![推导](https://cdn.dwj601.cn/images/202406292307863.png)
 
 ### 【补充】13.3 与 13.4 小结
 
-![小结](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307864.png)
+![小结](https://cdn.dwj601.cn/images/202406292307864.png)
 
 ### 13.5 循环过程 卡诺循环
 
@@ -988,7 +988,7 @@ $$
 
 正循环：做正循环的系统一般叫热机，主要代表将热量转化为功的机器。$\eta$ 为热机效率
 
-![正循环](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307865.png)
+![正循环](https://cdn.dwj601.cn/images/202406292307865.png)
 
 $$
 \eta = \frac{W}{Q_1} = \frac{Q_1-Q_2}{Q_1} = 1-\frac{Q_2}{Q_1}
@@ -996,7 +996,7 @@ $$
 
 负循环：做负循环的系统一般叫制冷机，主要代表利用外界做功使热量由低处流向高处，从而获得低温的机器。$e$ 为制冷系数
 
-![负循环](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406292307866.png)
+![负循环](https://cdn.dwj601.cn/images/202406292307866.png)
 
 $$
 e =\frac{Q_2}{W} = \frac{Q_2}{Q_1-Q_2}

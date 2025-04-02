@@ -35,11 +35,11 @@ graph RL
 
 执行部件。ALU 有两个运算数输入 A 和 B 以及一个控制输入 ALUctr，输出为一个运算结果 Result、零信号 Zero 和溢出信号 Overflow。ALU 的内部结构如下图所示：
 
-![ALU 实现](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409250813229.png)
+![ALU 实现](https://cdn.dwj601.cn/images/202409250813229.png)
 
 控制信号。对于 MIPS 中的 11 条指令，可以归纳为 7 种操作：addu、add、or、subu、sub、sltu、slt。也就是说 ALUctr 只需要 $\lceil \log_2(7) \rceil =3$ 个选择控制位。如下表所示，列出了 ALUctr 的选择控制逻辑：
 
-![ALUctr 的选择控制逻辑](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409261337035.png)
+![ALUctr 的选择控制逻辑](https://cdn.dwj601.cn/images/202409261337035.png)
 
 ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生对应的运算逻辑。具体的，ALUctr 内部有 4 个运算控制信号，分别为 SUBctr、OPctr、OVctr 和 SIGctr。下面借书中原文分别解释 4 个控制信号对应的逻辑：
 
@@ -53,7 +53,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
 这样就可以完整实现 ALU 运算了。下表详细解释了每一条指令的运算类型与 ALUctr 取值之间的关系：
 
-![运算类型与 ALUctr 取值之间的关系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409261336957.png)
+![运算类型与 ALUctr 取值之间的关系](https://cdn.dwj601.cn/images/202409261336957.png)
 
 #### 控制逻辑详解
 
@@ -96,7 +96,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
     
     模拟过程如下：
 
-    ![算例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291051084.png)
+    ![算例](https://cdn.dwj601.cn/images/202409291051084.png)
 
 原码乘法可以应用在在浮点数的尾数运算中。对数值位直接使用原码乘法即可，符号位就是两个乘数的符号位相异或的结果，例如：设 $[x]_\text{原}=0.1110$，$[y]_\text{原}=1.1101$，计算 $[x\times y]_\text{原}$，符号位为 $0\oplus 1=1$，数值位为 $[x]_\text{原} \times [y]_\text{原}$，即 $1110 \times 1101$ 的原码乘法运算结果 $10110110$。同时，可以采用分块思想对该算法进行优化。具体的，由于是逐位运算，因此我们需要进行 $n$ 次相乘再相加的操作，时间复杂度为 $O(n)$。现有的优化方案就是逐 $k$ 位运算，那么时间复杂度就可以优化为 $O(\frac{n}{k})$。
 
@@ -108,7 +108,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
     布斯算法的本质是将符号位与数值位一起运算，也就是对有符号数的一次性运算算法。如下推导：
 
-    ![推导](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291113812.png)
+    ![推导](https://cdn.dwj601.cn/images/202409291113812.png)
 
     进而可以得到关于「真值」的部分积递推公式：
     
@@ -127,7 +127,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
     
     显然的 $y_{i-2}-y_{i-1}$ 只有 $-1,0,1$ 共 3 种情况，因此我们只需要知道 $[-X]_{\text{补}}$ 和 $[X]_{\text{补}}$ 即可利用 **算数移位** 和加法快速运算。例如下面的算例：
 
-    ![算例](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409291137346.png)
+    ![算例](https://cdn.dwj601.cn/images/202409291137346.png)
 
 由于计算机中的数据都是以补码形式存储，因此补码乘法的使用场景更加广泛。至于优化，与原码乘法的优化方案类似。
 
@@ -169,7 +169,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
 在开始介绍具体的 11 条 MIPS 指令之前，我们先看一下 MIPS 的指令类型，共有三种，如下图所示：
 
-![MIPS 指令类型及其格式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202411061010223.png)
+![MIPS 指令类型及其格式](https://cdn.dwj601.cn/images/202411061010223.png)
 
 #### R-型指令
 
@@ -180,7 +180,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
 下图仅列出了 5 条双目运算的汇编指令及其功能阐述：
 
-![R-型指令的：汇编、RTL描述、功能描述](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412221620086.png)
+![R-型指令的：汇编、RTL描述、功能描述](https://cdn.dwj601.cn/images/202412221620086.png)
 
 #### I-型指令
 
@@ -192,7 +192,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
 下图列出了上述三种指令的具体逻辑：
 
-![I-型指令的：汇编、RTL描述、功能描述](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412221621230.png)
+![I-型指令的：汇编、RTL描述、功能描述](https://cdn.dwj601.cn/images/202412221621230.png)
 
 #### J-型指令
 
@@ -204,7 +204,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
 下图列出了具体实现：
 
-![J-型指令的：汇编、RTL描述、功能描述](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412221621702.png)
+![J-型指令的：汇编、RTL描述、功能描述](https://cdn.dwj601.cn/images/202412221621702.png)
 
 ## 单周期处理器
 
@@ -223,7 +223,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
 下图是单周期处理器完整的控制部件与执行部件：
 
-![单周期处理器的控制部件与执行部件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412222033155.png)
+![单周期处理器的控制部件与执行部件](https://cdn.dwj601.cn/images/202412222033155.png)
 
 如上图所示，加下划线的都是控制信号，用虚线箭头指出。共有 9 个，从上到下分别为：
 
@@ -261,7 +261,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
 具体的，对于上述 11 条指令，都有取指和译码两个阶段，区别就在于根据译码得到控制信号后的运算逻辑以及是否需要从存储器取数或是否需要将数据写入存储器。其中 Load 指令具有所有的阶段，如下「时空图」所示：
 
-![lw 指令的功能段划分](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041128119.png)
+![lw 指令的功能段划分](https://cdn.dwj601.cn/images/202412041128119.png)
 
 但并不是所有的指令都像 Load 指令一样具有所有的段，为了能够让所有的指令能够在统一的段划分下并行执行，需要对其余的指令进行空段扩展，使其均成为 5 段指令。具体的：
 
@@ -273,7 +273,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
 进而可以得到如下图所示的 5 段流水线处理器的控制部件和处理部件：
 
-![5 段流水线处理器的控制部件和处理部件](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412231937821.png)
+![5 段流水线处理器的控制部件和处理部件](https://cdn.dwj601.cn/images/202412231937821.png)
 
 如上图所示，5 段流水就对应了指令执行过程中的 5 个逻辑。仍然用下划线表示控制信号并用虚线指出，从左到右共有 10 个控制信号，相比于单周期处理器多了一个 R-type 指令，其余不变。当 R-type 取 1 时表示当前指令是 R-型指令，取 0 表示非 R-型指令。
 
@@ -285,7 +285,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
 **IF 段**。向下一个段寄存器 IF/ID 传递：`指令 I`、`PC+4`、`PC[31:28]` 共 3 个信息。如下图所示：
 
-![IUnit的内部实现](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412232110873.png)
+![IUnit的内部实现](https://cdn.dwj601.cn/images/202412232110873.png)
 
 **ID 段**。向下一个段寄存器 ID/Ex 传递：`PC+4`、`PC[31:28]||target[25:0]||00`、`func`、`imm16`、`R[Rs]`、`R[Rt]`、`Rt`、`Rd` 共 8 个信息。
 
@@ -323,7 +323,7 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
 解决结构冒险的示意图如下所示：
 
-![结构冒险解决策略](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412040949539.png)
+![结构冒险解决策略](https://cdn.dwj601.cn/images/202412040949539.png)
 
 **数据冒险 (data dependencies)**。理解为写后读，即从 Reg 读取的数据是没有更新过的旧值。
 
@@ -334,11 +334,11 @@ ALU 内部运算逻辑。在 ALU 内部，需要根据控制信号 ALUctr 产生
 
 解决数据冒险的示意图如下所示：
 
-![数据冒险解决策略](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041018200.png)
+![数据冒险解决策略](https://cdn.dwj601.cn/images/202412041018200.png)
 
 特殊的。上述示意图中执行的都是算数运算。但如果出现了 Load 指令，那么运算结果是在 Mem 段之后才能从数据存储器 DM 中读出来，由于「后续指令只能依赖已经计算出的数据」，因此如果紧跟在 Load 指令之后的一条指令需要使用 DM 中读出的数据参与 ALU 的计算，就没办法使用上述的转发技术。如下图所示：
 
-![Load-use 数据冒险](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412041143660.png)
+![Load-use 数据冒险](https://cdn.dwj601.cn/images/202412041143660.png)
 
 解决方法就是在 Load 指令的后面增加一条无关指令或者空指令，然后再转发。至于怎么增加，可以从硬件、软件、编译三个角度进行：
 

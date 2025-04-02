@@ -10,7 +10,7 @@ title: 运维专栏简介
 
 [^linux]: <https://www.runoob.com/linux/linux-tutorial.html>
 
-![运维学习路线](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202501302249152.png)
+![运维学习路线](https://cdn.dwj601.cn/images/202501302249152.png)
 
 /// caption
 运维学习路线 [^roadmap]

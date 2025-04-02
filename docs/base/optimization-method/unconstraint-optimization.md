@@ -305,7 +305,7 @@ title: 无约束优化方法
 
 放一张生动的图：
 
-![最速下降法 - 迭代示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132016327.png)
+![最速下降法 - 迭代示意图](https://cdn.dwj601.cn/images/202406132016327.png)
 
 迭代公式：
 
@@ -317,7 +317,7 @@ $$
 
 易证相邻迭代解 $x_k,x_{k+1}$ 的方向 $d_k,d_{k+1}$ 是正交的：由于 $\phi(\alpha) = f(x_k + \alpha d_k)$，在采用线搜索找最优步长时，步长的搜索结果 $\alpha_k$ 即为使得 $\phi'(\alpha)=0$ 的解，于是可得 $0=\phi'(\alpha) = \phi'(\alpha_k) = \nabla f(x_k+\alpha_k d_k)d_k = -d_{k+1}^T \cdot d_k$，即 $d_{k+1}^T \cdot d_k = 0$。如图：
 
-![相邻迭代解的方向正交](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406132046068.png)
+![相邻迭代解的方向正交](https://cdn.dwj601.cn/images/202406132046068.png)
 
 也正因为搜索方向正交的特性导致最速下降法的收敛速度往往不尽如人意。优点在于程序设计简单并且计算和存储量都不大，以及对初始点的要求不高。
 
@@ -325,7 +325,7 @@ $$
 
 放一张生动的图：
 
-![牛顿法 - 迭代示意图](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202406140902324.gif)
+![牛顿法 - 迭代示意图](https://cdn.dwj601.cn/images/202406140902324.gif)
 
 ???+warning
 

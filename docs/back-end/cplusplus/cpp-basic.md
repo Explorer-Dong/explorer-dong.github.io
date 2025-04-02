@@ -1,14 +1,18 @@
 ---
-title: C++ 语法基础
+title: C++ 语言基础
 ---
 
-本文记录 C++ 的语法基础。
+本文记录 C++ 基础内容。部分参考内容：
 
-## C++ 的运算符优先级
+- [C++ 教程 - (runoob)](https://www.runoob.com/cplusplus/cpp-tutorial.html)
+- [C++ reference - (cppreference)](https://en.cppreference.com/w/)
+- [Microsoft C++、C 和汇编程序文档 - (microsoft)](https://learn.microsoft.com/zh-cn/cpp/?view=msvc-170)
+
+## C++ 运算符优先级
 
 先看看 C++ 都有哪些 [运算符](ttps://zh.cppreference.com/w/cpp/language/expressions)：
 
-![C++ 的运算符](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318171949224.png)
+![C++ 的运算符](https://cdn.dwj601.cn/images/20250318171949224.png)
 
 /// fc
 C++ 的运算符
@@ -16,13 +20,13 @@ C++ 的运算符
 
 再看看这些 [运算符的优先级](https://zh.cppreference.com/w/cpp/language/operator_precedence)：
 
-![C++ 的运算符优先级](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250318172044391.png)
+![C++ 的运算符优先级](https://cdn.dwj601.cn/images/20250318172044391.png)
 
 /// fc
 C++ 的运算符优先级
 ///
 
-## 文件 I/O *
+## C++ 文件 I/O
 
 C++ 封装了三个类用来进行文件 IO 操作，分别为 `ifstream`、`ofstream` 和 `fstream`。其中 `ifstream` 负责读文件，`ofstream` 负责写文件，`fstream` 读写都可以，三个类都需要依赖 `iostream` 和 `fstream` 头文件。下面分三个部分大致介绍一下，后续遇到了继续补充：
 
@@ -79,7 +83,7 @@ int main() {
 
 [C++ 文件和流](https://www.runoob.com/cplusplus/cpp-files-streams.html)
 
-## 命名空间 namespace
+## C++ 命名空间
 
 ### 疑问产生
 
@@ -235,7 +239,7 @@ int main() {
 
 <https://en.cppreference.com/w/cpp/header>
 
-## 多文件调用规范
+## C++ 多文件工程
 
 ### 常规认知
 
@@ -279,7 +283,7 @@ int main() {
 }
 ```
 
-![输出](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403012308775.png)
+![输出](https://cdn.dwj601.cn/images/202403012308775.png)
 
 ### 产生想法
 
@@ -314,7 +318,7 @@ void globalFun() {
 
     答：不是的，只需要一个 `.cpp` 文件引用了该 `.h` 头文件，在其中进行函数定义即可。`函数声明文件名.cpp` 是一种命名规范，便于管理与识别
 
-    ![不规范的 .cpp 文件命名方式](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403012308973.png)
+    ![不规范的 .cpp 文件命名方式](https://cdn.dwj601.cn/images/202403012308973.png)
 
 2. 问：内联函数不会产生函数重定义问题的原理是什么？
 
@@ -324,7 +328,7 @@ void globalFun() {
 
     答：C++中的 **类成员函数默认是内联的**（inline）。但是不推荐这种直接定义成员函数的方法，因为这会导致编译时代码膨胀（每个调用的地方都会被插入函数代码），故多文件编程的规范就是：无论是类的成员函数还是全局函数，函数的声明都写在 `.h` 文件中，而对于这些函数声明的定义都写在相同文件名的 `.cpp` 文件中。
 
-## 函数声明与函数定义中的缺省参数
+## C++ 函数的缺省参数
 
 ### 实践
 
@@ -356,19 +360,19 @@ int fun(int num) {
 
 如果在函数定义中继续进行缺省参数初始化，则会报错重定义缺省参数 `Redefinition of default argument` ：
 
-![Redefinition of default argument](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428426.png)
+![Redefinition of default argument](https://cdn.dwj601.cn/images/202403041428426.png)
 
 ### 理论
 
 编译时，编译器会查找函数的声明来获取该函数的签名信息，包括：参数类型和返回类型，并不关心函数体的内容。假如只在函数定义中定义了缺省参数，在函数声明时没有定义缺省参数，此时在调用该函数时没有传递参数，由于编译器在编译函数调用时只会寻找函数声明语句而不关心函数定义，就会发生无法寻找到目标函数的错误：
 
-![无法寻找到目标函数](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202403041428507.png)
+![无法寻找到目标函数](https://cdn.dwj601.cn/images/202403041428507.png)
 
 ### 总结
 
 无论是非内联函数（全局函数）还是内联函数（成员函数），缺省参数都只能定义在函数声明的参数列表中，而不能只在函数声明中重复定义或者只在函数定义中定义缺省参数值
 
-## 编译过程 *
+## C++ 编译
 
 TODO
 
@@ -376,10 +380,14 @@ TODO
 
 <https://www.zhihu.com/question/333560253/answer/2282723843>
 
-## 宏定义 *
+## C++ 宏
 
 TODO
 
-## 标准模板库 STL *
+## C++ 标准模板库
 
 TODO
+
+## C++ 面向对象
+
+参见：[面向对象程序设计](../../base/object-oriented-programming/index.md)

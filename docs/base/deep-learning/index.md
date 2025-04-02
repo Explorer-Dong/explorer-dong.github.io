@@ -20,7 +20,7 @@ title: 深度学习导读
 
 **深度学习是什么**？我们知道机器学习就是在「手动处理完特征」后，构建对应的模型「预测输出」。而深度学习就是将机器学习的手动特征工程也用模型进行「表示学习」来学习出有效特征，然后继续构建模型「预测输出」。如下图所示：
 
-![深度学习的数据处理流程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202409121508150.png)
+![深度学习的数据处理流程](https://cdn.dwj601.cn/images/202409121508150.png)
 
 **为什么会有深度学习**？最简单的一点就是，很多特征我们根本没法定义一种表示规则来表示特征，比如说对于图像，怎么定义复杂的图像的特征呢？比如说对于音频，又怎么定义复杂的音频的特征呢？没办法，我们直接学特征！
 
@@ -30,7 +30,7 @@ title: 深度学习导读
 
 ## 人工神经元
 
-![人工神经元模型](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404021447476.png)
+![人工神经元模型](https://cdn.dwj601.cn/images/202404021447476.png)
 
 /// fc
 人工神经元模型
@@ -52,7 +52,7 @@ title: 深度学习导读
 
 ### 模型
 
-![两层全连接神经网络](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404090923723.png)
+![两层全连接神经网络](https://cdn.dwj601.cn/images/202404090923723.png)
 
 /// fc
 两层全连接神经网络模型
@@ -96,7 +96,7 @@ $$
 
 在进行梯度下降时，经过简单的推导可以发现，第 $l$ 层的损失 $\delta (l)$ 依赖于后一项的损失 $\delta(l+1)$，于是参数更新的逻辑就是从输出层开始逐层往后更新，直到第一层隐藏层。为此，我们引入著名的优化算法：误差逆传播算法 (error Back Propagation, BP)，其算法流程如下图所示：
 
-![误差逆传播算法流程](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250311102803885.png)
+![误差逆传播算法流程](https://cdn.dwj601.cn/images/20250311102803885.png)
 
 /// fc
 误差逆传播算法流程
@@ -127,15 +127,15 @@ $$
 ??? note "修正量推导 - 链式法则"
     公式表示：
     
-    ![公式表示](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092222942.jpg)
+    ![公式表示](https://cdn.dwj601.cn/images/202404092222942.jpg)
     
     隐层到输出层的权重、输出神经元的阈值：
     
-    ![隐层到输出层的权重、输出神经元的阈值](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092222625.jpg)
+    ![隐层到输出层的权重、输出神经元的阈值](https://cdn.dwj601.cn/images/202404092222625.jpg)
     
     输入层到隐层的权重、隐层神经元的阈值：
     
-    ![输入层到隐层的权重、隐层神经元的阈值](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202404092223804.jpg)
+    ![输入层到隐层的权重、隐层神经元的阈值](https://cdn.dwj601.cn/images/202404092223804.jpg)
 
 ## 卷积神经网络
 
@@ -153,7 +153,7 @@ $$
 
 卷积神经网络的典型结构如下图所示：
 
-![卷积神经网络的典型结构](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202410311351161.png)
+![卷积神经网络的典型结构](https://cdn.dwj601.cn/images/202410311351161.png)
 
 /// fc
 卷积神经网络的典型结构
@@ -195,7 +195,7 @@ $$
 
 更好的优化算法：
 
-![更好的优化算法](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201527036.png)
+![更好的优化算法](https://cdn.dwj601.cn/images/202412201527036.png)
 
 更好的参数初始化方法：基于「范数保持性」的参数初始化方法。
 
@@ -228,4 +228,4 @@ $$
 
 下图展示了预热学习率调整的学习效果。图源：[Bag of Tricks for Image Classification with Convolutional Neural Networks [2018]](https://arxiv.org/abs/1812.01187v2)。
 
-![Visualization of learning rate schedules with warm-up.  Top:  cosine and step schedules for batch size 1024. Bottom: Top-1 validation accuracy curve with regard to the two schedules.](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202412201601516.jpg)
+![Visualization of learning rate schedules with warm-up.  Top:  cosine and step schedules for batch size 1024. Bottom: Top-1 validation accuracy curve with regard to the two schedules.](https://cdn.dwj601.cn/images/202412201601516.jpg)

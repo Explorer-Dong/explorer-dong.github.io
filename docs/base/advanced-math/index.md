@@ -8,7 +8,7 @@ title: 高等数学导读
 [^comp2]: [大学生数学竞赛（非数学类）学习导航](https://zhuanlan.zhihu.com/p/395552547)
 [^origin]: [微积分的本质](https://www.bilibili.com/video/BV1qW411N7FU)
 
-![知识体系](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/20250310230705375.jpg)
+![知识体系](https://cdn.dwj601.cn/images/20250310230705375.jpg)
 
 /// fc
 知识体系 [^arch]

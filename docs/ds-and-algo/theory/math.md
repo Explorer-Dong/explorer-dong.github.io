@@ -75,54 +75,53 @@ std::vector<int> eular_prime_filter(int n) {
 
 ## 乘法逆元
 
-假设当前需要在 $\% \ p$ 的情况下除以 $a$，则可以转化为乘以 $a$ 的乘法逆元 $a^{-1}$，即：
+假设 $x$ 需要在 $\% \ p$ 的情况下除以 $a$，若 $a$ 与 $p$ 互质，则该式可以转化为 $x$ 乘以 $a$ 的乘法逆元。我们将 $a$ 的乘法逆元记作 $inv(a)$。即：
+
+$$
+\frac{x}{a} \equiv x \cdot inv(a) \ (\bmod\ p)
+$$
+
+结合快速幂算法，计算乘法逆元的时间复杂度就是 $O(\log p)$。详细推导过程如下：
+
+1）对于任意 $a$ 的整数倍 $t$，一定有下式成立：
 
 $$
 \begin{aligned}
-&\frac{\text{num}}{a} \equiv \text{num} \times a^{-1}\ (\bmod\ p)\\
-&\text{其中 } a^{-1} = a^{p-2} \text{ 当且仅当 $a$ 与 $p$ 互质}
+\frac{t}{a} \equiv t \cdot inv(a) \ (\bmod\ p) \\
+\frac{1}{a} \equiv 1 \cdot inv(a) \ (\bmod\ p) \\
+1 \equiv a \cdot inv(a) \ (\bmod\ p) \\
 \end{aligned}
 $$
 
-时间复杂度：$O(\log p)$
-
-推导：
-
-对于任意 $a$ 的整数倍 $t$，一定有下式成立：其中的 $x$ 就是整数 $a$ 的乘法逆元，记作 $a^{-1}$
+2）由 [费马小定理](https://baike.baidu.com/item/费马小定理/4776158) 可知，对于两个互质的整数 $g,h$，一定有下式成立：
 
 $$
-\begin{aligned}
-\frac{t}{a} \equiv t \times x\ (\bmod\ p) \\
-\frac{1}{a} \equiv 1 \times x\ (\bmod\ p) \\
-1 \equiv a \times x\ (\bmod\ p) \\
-\end{aligned}
+1 \equiv g^{h-1} \ (\bmod\ h)
 $$
 
-由 [费马小定理](https://baike.baidu.com/item/费马小定理/4776158) 可知，对于两个互质的整数 $g,h$，一定有下式成立：
+3）于是本题的推导就可以得到，当 $a$ 与 $p$ 互质时，有：
 
 $$
-g^{h-1} \equiv 1\ (\bmod\ h)
+1 \equiv a^{p-1} \ (\bmod\ p)
 $$
 
-于是本题的推导就可以得到，当 $a$ 与 $p$ 互质时，有：
+4）于是可得 $a$ 的乘法逆元：
 
 $$
-a^{p-1} \equiv 1 \ (\bmod\ p)
-$$
-
-于是 $a$ 的乘法逆元就是：
-
-$$
-a^{-1} = a^{p-2}
+inv(a) = a^{p-2}
 $$
 
 ## 组合数
 
-**Python 库函数求解**。如果使用 Python 3.8 及以上的版本，则可以直接使用 [`math.comb(n, k)`](https://docs.python.org/3/library/math.html#math.comb) 来计算组合数 $C_n^k$。
+### 库函数 (Python)
+
+如果使用 Python 3.8 及以上的版本，则可以直接使用 [`math.comb(n, k)`](https://docs.python.org/3/library/math.html#math.comb) 来计算组合数 $C_n^k$。
 
 时间复杂度：$O(\min(k,n-k))$
 
-**递推法求解**。利用 $C_n^k = C_{n-1}^k + C_{n-1}^{k-1}$ 进行递推求解。以 [求组合数 I - AcWing](https://www.acwing.com/problem/content/887) 为例。
+### 递推法
+
+利用 $C_n^k = C_{n-1}^k + C_{n-1}^{k-1}$ 进行递推求解。以 [求组合数 I - AcWing](https://www.acwing.com/problem/content/887) 为例。
 
 题意：求解 $q$ 次 $C_{n}^k\ \%\ p$ 的结果，其中 $q\le 10^4,1\le k \le n \le 2\times 10^3$，$p$ 为常数 $10^9+7$。
 
@@ -163,7 +162,9 @@ int main() {
 }
 ```
 
-**乘法逆元法求解**。如果题目中有取模运算，就可以将组合数公式中的「除法运算」转换为「关于逆元的乘法运算」进行求解。以 [求组合数 II - AcWing](https://www.acwing.com/problem/content/888/) 为例。
+### 乘法逆元法
+
+如果题目中有取模运算，就可以将组合数公式中的「除法运算」转换为「关于逆元的乘法运算」进行求解。以 [求组合数 II - AcWing](https://www.acwing.com/problem/content/888/) 为例。
 
 题意：求解 $q$ 次 $C_{n}^k\ \%\ p$ 的结果，其中 $q\le 10^4,1\le k \le n \le 10^5$，$p$ 为常数 $10^9+7$。
 

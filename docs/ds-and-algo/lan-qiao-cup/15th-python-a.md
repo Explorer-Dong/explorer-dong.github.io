@@ -442,14 +442,98 @@ $$
     }
     ```
 
-## T7 智力测试 (0'/20')
+## T7 智力测试 (4'/20')
 
-题意：给定一个 $n\times m\ (1\le n,m\le 10^5)$ 矩阵的行列权值 $w\ (1\le w \le10^8)$。进行 $T\ (1\le T\le10^5)$ 轮询问，每轮询问给定矩阵中的两个点坐标，问从起点到终点的走法有多少。点移动的规则为：可以按行移动或按列移动，但是只能移动到权值刚好比其大的点上。
+题意：给定一个 $n\times m\ (1\le n,m\le 10^5)$ 矩阵的行列权值 $w\ (1\le w \le10^8)$。进行 $T\ (1\le T\le10^5)$ 轮询问，每轮询问给定矩阵中的两个点坐标，问从起点到终点的走法有多少，结果对 $p\ (p = 10^9+7)$ 取模。点移动的规则为：可以按行移动或按列移动，但是只能移动到权值刚好比其大的点上。
 
 思路：
 
-- 一个合格的高中生应该可以脱口而出对应的思路，就是一个走方格问题 + 乘法原理。假设行可以走 $r$ 次，列可以走 $c$ 次，那么走行还是走列的方案数就是 $C_{r+c}^r$，由于还会有重复数，按照乘法原理，我们乘上每一个重复数的数量即可（注意和终点数字重复就只算一个，因为终点只有一个）；
-- 本题难在代码实现。每次统计重复数时需要使用倍增优化，组合数需要使用乘法逆元在模大质数的情况下加速求解，具体见 [民间标答](https://www.lanqiao.cn/questions/870252/)。
+- 一个合格的高中生应该可以脱口而出对应的思路，就是一个走方格问题 + 乘法原理。假设行可以走 $r$ 次，列可以走 $c$ 次，那么走行还是走列的方案数就是 $C_{r+c}^r$，由于还会有重复数，按照乘法原理，我们乘上每一个重复数的数量即可（注意和终点数字重复就只算一个，因为终点只有一个）。本题难点在于 edge case 和代码实现；
+- 关于 edge case。一个很明显的就是终点的行列权重肯定不能小于起点。然后就是如果起点和终点在一起，方案数算 $1$。最后就是如果起点和终点在同一行或同一列，那么就不用考虑走方格问题了，直接算乘法原理的结果即可；
+- 纯暴力很容易码出来，每一次询问时遍历整个权重进行统计即可，时间复杂度为 $O(Tn)$，可以通过 $20\%$ 的测试点，下方已给出 Python 代码；
+- 接下来考虑正解。组合数可以用乘法逆元在 $O(n\log p)$ 内预处理出来，重复数可以用。走方格逻辑可以用二分查找在 $O(\log n)$ 内算出行列的跳跃次数，然后用预处理好的组合数在 $O(1)$ 内算出组合数结果。乘法原理逻辑可以用预处理好的前缀积 $O(1)$ 计算出来。
+
+时间复杂度：$O(T\log n)$
+
+=== "Python"
+
+    ```python
+    
+    ```
+
+=== "C++"
+
+    ```c++
+    
+    ```
+
+=== "Python 纯暴力 $O(Tn)$"
+
+    ```python
+    import math
+    from collections import defaultdict
+    
+    mod = 1000000007
+    
+    n, m, T = map(int, input().strip().split())
+    r = [0] + list(map(int, input().strip().split()))
+    c = [0] + list(map(int, input().strip().split()))
+    idx = []
+    for _ in range(T):
+        x1, y1, x2, y2 = map(int, input().strip().split())
+        idx.append((x1, y1, x2, y2))
+    
+    def solve() -> None:
+        OUTs = []
+    
+        for i, (x1, y1, x2, y2) in enumerate(idx):
+            # edge case: 起点与终点重合
+            if x2 == x1 and y2 == y1:
+                OUTs.append(1)
+                continue
+            # edge case: 没法跳
+            elif r[x2] < r[x1] or c[y2] < c[y1] or (r[x2] == r[x1] and c[y2] == c[y1]):
+                OUTs.append(0)
+                continue
+    
+            dr, dc = defaultdict(int), defaultdict(int)
+            for v in r:
+                if r[x1] < v < r[x2]:
+                    dr[v] += 1
+            for v in c:
+                if c[y1] < v < c[y2]:
+                    dc[v] += 1
+    
+            # edge case: 同一行或同一列（只有乘法原理逻辑）
+            if r[x2] == r[x1]:
+                ans = 1
+                for _, cnt in dc.items():
+                    ans = (ans * cnt) % mod
+                OUTs.append(ans)
+                continue
+            elif c[y2] == c[y1]:
+                ans = 1
+                for _, cnt in dr.items():
+                    ans = (ans * cnt) % mod
+                OUTs.append(ans)
+                continue
+            
+            # 走方格逻辑
+            ans = math.comb(len(dr) + len(dc) + 2, len(dc) + 1) % mod
+            
+            # 乘法原理逻辑
+            for _, cnt in dr.items():
+                ans = (ans * cnt) % mod
+            for _, cnt in dc.items():
+                ans = (ans * cnt) % mod
+    
+            OUTs.append(ans)
+    
+        print('\n'.join(map(str, OUTs)))
+    
+    if __name__ == '__main__':
+        solve()
+    ```
 
 ## T8 最大异或结点 (20'/20')
 

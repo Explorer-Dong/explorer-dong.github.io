@@ -3539,6 +3539,48 @@ def solve():
 print(solve())
 ```
 
+**阶乘合并**
+
+[1.阶乘的和 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/3527/learning/?page=1&first_category_id=1&name=阶乘的和)
+
+- $A_i!$ 的累加结果，$A_1! + A_2! + ... + A_n!$，对排序后的$A_1 < A_2 < ... < A_n$，由公因式提取可知，则 $A_1!$为最大公因数
+
+- 使用计数器 $m$ 存储 x!出现次数。 考虑阶乘的合并情况：考察 $x!$ 的个数 $c = m[x]$，若有 $c = k \times (x + 1)$，则能合并为 $k $ 个 $ (x + 1)!$ 。
+- 即合并条件为 $c % (x + 1) == 0$，合并操作为 $m[x + 1] ← m[x + 1] + c // (x + 1)$
+
+- 从 $A_1$ 开始合并，当无法合并时，相当于将 $A_1! + A_2! + ... + A_n!$ 转换成 $B_1! + B_2! + ... + B_m!$，返回 $B_1$ 即可
+
+```python
+# Ai!的累加结果，A1! + A2! + ... + An!，
+# 对排序后的A1 < A2 < ... < An，由公因式提取可知，则A1!为最大公因数
+
+# 使用计数器m存储 x!出现次数。
+# 考虑阶乘的合并情况：考察x!的个数c = m[x]，若有c = k * (x + 1)，则能合并为 k 个 (x + 1)!。
+# 即合并条件为 c % (x + 1) == 0，合并操作为 m[x + 1] ← m[x + 1] + c // (x + 1)
+
+# 从A1开始合并，当无法合并时，相当于将A1! + A2! + ... + An!转换成 B1! + B2! + ... + Bm!，返回B1即可
+
+from collections import Counter
+n = int(input())
+a = list(map(int, input().split()))
+a.sort()
+m = Counter()
+
+for x in a:
+    m[x] += 1
+
+x = a[0]
+while True:
+    c = m[x] # x! 的个数
+    if c % (x + 1) == 0: # x!的个数是x+1的倍数
+        m[x + 1] += c // (x + 1) # c = k * (x + 1)
+        x += 1
+    else:
+        print(x)
+        break
+
+```
+
 
 
 #### 约数
@@ -3632,6 +3674,8 @@ for f in range(1, mx):
     for x in range(f, mx, f):
         factors[x].append(f)
 ```
+
+
 
 
 
@@ -5281,6 +5325,33 @@ def minimumCost(self, n: int, edges: List[List[int]], query: List[List[int]]) ->
         return -1
 ```
 
+[1.修改数组 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/problems/185/learning/?page=1&first_category_id=1&name=修改数组)
+
+```python
+import os
+import sys
+
+N = int(input())
+
+a = list(map(int, input().split()))
+fa = list(range(10 ** 6 + 1))
+
+def find(x):
+    if x == fa[x]: return x
+    fa[x] = find(fa[x])
+    return fa[x]
+
+def union(u, v):
+    fa[find(v)] = find(u)
+
+for i in range(N):
+    a[i] = find(a[i])
+    union(a[i] + 1, a[i])
+
+print(*a)
+
+```
+
 
 
 ### Trie树 / 字典树
@@ -6778,7 +6849,7 @@ for _ in range(m):
 
 
 d = [inf] * n
-d[4] = 0
+d[0] = 0
 s = set() # S集合为已经确定的节点集合
 
 for _ in range(n - 1):
@@ -7248,12 +7319,15 @@ def modifiedGraphEdges(self, n: int, edges: List[List[int]], source: int, destin
 
 ### 最小生成树
 
+[P3366 【模板】最小生成树 - 洛谷 (luogu.com.cn)](https://www.luogu.com.cn/problem/P3366)
+
 #### Prim
 
 ```python
+from math import *
 def solve():
     n, m = map(int, input().split())
-    low_cost = [inf] * n 
+    d = [inf] * n 
     g = [[] for _ in range(n)]
     for _ in range(m):
         u, v, w = map(int, input().split())
@@ -7261,25 +7335,74 @@ def solve():
         g[u].append((v, w))
         g[v].append((u, w))
         
-    low_cost[0] = 0
+    d[0] = 0
     res = 0
     s = set()
     for _ in range(n):
         dx, x = inf, -1
-        for i in range(n):
-            if i not in s and (x < 0 or low_cost[i] < dx):
-                dx, x = low_cost[i], i
+        for i in range(n):	
+            if i not in s and (x < 0 or d[i] < dx):
+                dx, x = d[i], i
         s.add(x)
         res += dx
 
         for i, w in g[x]:
             if i not in s:
-                low_cost[i] = min(low_cost[i], w)
+                d[i] = min(d[i], w)
 
-    if inf not in low_cost:
+    if inf not in d:
         print(res)
         return
     print('orz')
+solve()
+
+```
+
+#### Kruskal
+
+```python
+import sys
+
+input = lambda: sys.stdin.readline().strip()
+
+def solve():
+    n, m = map(int, input().split())
+    edges = []
+    for _ in range(m):
+        u, v, w = map(int, input().split())
+        edges.append((w, u, v))
+    
+    # 按边的权重排序
+    edges.sort()
+    
+    # 并查集初始化
+    fa = list(range(n + 1))
+    def find(x):
+        if fa[x] == x:
+            return x
+        fa[x] = find(fa[x])
+        return fa[x]
+    def union(u, v):
+        if find(u) != find(v):
+            fa[find(v)] = find(u)
+            return True
+        return False
+    
+    res = 0  # 最小生成树的权重和
+    cnt = 0  # 已选择的边数
+    for w, u, v in edges:
+        if union(u, v):  # 如果边的两个端点不在同一集合中
+            res += w
+            cnt += 1
+            if cnt == n - 1:  # 已经选择了 n-1 条边，最小生成树完成
+                break
+    
+    if cnt == n - 1:
+        print(res)
+    else:
+        print('orz')  # 无法形成最小生成树
+
+solve()
 ```
 
 

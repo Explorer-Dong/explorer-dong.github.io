@@ -3744,6 +3744,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="组合数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#库函数-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      库函数 (Python)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#递推法" class="md-nav__link">
+    <span class="md-ellipsis">
+      递推法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#乘法逆元法" class="md-nav__link">
+    <span class="md-ellipsis">
+      乘法逆元法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -5712,6 +5745,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="组合数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#库函数-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      库函数 (Python)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#递推法" class="md-nav__link">
+    <span class="md-ellipsis">
+      递推法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#乘法逆元法" class="md-nav__link">
+    <span class="md-ellipsis">
+      乘法逆元法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -5843,39 +5909,37 @@
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <h2 id="乘法逆元">乘法逆元</h2>
-<p>假设当前需要在 <span class="arithmatex">\(\% \ p\)</span> 的情况下除以 <span class="arithmatex">\(a\)</span>，则可以转化为乘以 <span class="arithmatex">\(a\)</span> 的乘法逆元 <span class="arithmatex">\(a^{-1}\)</span>，即：</p>
+<p>假设 <span class="arithmatex">\(x\)</span> 需要在 <span class="arithmatex">\(\% \ p\)</span> 的情况下除以 <span class="arithmatex">\(a\)</span>，若 <span class="arithmatex">\(a\)</span> 与 <span class="arithmatex">\(p\)</span> 互质，则该式可以转化为 <span class="arithmatex">\(x\)</span> 乘以 <span class="arithmatex">\(a\)</span> 的乘法逆元。我们将 <span class="arithmatex">\(a\)</span> 的乘法逆元记作 <span class="arithmatex">\(inv(a)\)</span>。即：</p>
+<div class="arithmatex">\[
+\frac{x}{a} \equiv x \cdot inv(a) \ (\bmod\ p)
+\]</div>
+<p>结合快速幂算法，计算乘法逆元的时间复杂度就是 <span class="arithmatex">\(O(\log p)\)</span>。详细推导过程如下：</p>
+<p>1）对于任意 <span class="arithmatex">\(a\)</span> 的整数倍 <span class="arithmatex">\(t\)</span>，一定有下式成立：</p>
 <div class="arithmatex">\[
 \begin{aligned}
-&amp;\frac{\text{num}}{a} \equiv \text{num} \times a^{-1}\ (\bmod\ p)\\
-&amp;\text{其中 } a^{-1} = a^{p-2} \text{ 当且仅当 $a$ 与 $p$ 互质}
+\frac{t}{a} \equiv t \cdot inv(a) \ (\bmod\ p) \\
+\frac{1}{a} \equiv 1 \cdot inv(a) \ (\bmod\ p) \\
+1 \equiv a \cdot inv(a) \ (\bmod\ p) \\
 \end{aligned}
 \]</div>
-<p>时间复杂度：<span class="arithmatex">\(O(\log p)\)</span></p>
-<p>推导：</p>
-<p>对于任意 <span class="arithmatex">\(a\)</span> 的整数倍 <span class="arithmatex">\(t\)</span>，一定有下式成立：其中的 <span class="arithmatex">\(x\)</span> 就是整数 <span class="arithmatex">\(a\)</span> 的乘法逆元，记作 <span class="arithmatex">\(a^{-1}\)</span></p>
+<p>2）由 <a href="https://baike.baidu.com/item/费马小定理/4776158">费马小定理</a> 可知，对于两个互质的整数 <span class="arithmatex">\(g,h\)</span>，一定有下式成立：</p>
 <div class="arithmatex">\[
-\begin{aligned}
-\frac{t}{a} \equiv t \times x\ (\bmod\ p) \\
-\frac{1}{a} \equiv 1 \times x\ (\bmod\ p) \\
-1 \equiv a \times x\ (\bmod\ p) \\
-\end{aligned}
+1 \equiv g^{h-1} \ (\bmod\ h)
 \]</div>
-<p>由 <a href="https://baike.baidu.com/item/费马小定理/4776158">费马小定理</a> 可知，对于两个互质的整数 <span class="arithmatex">\(g,h\)</span>，一定有下式成立：</p>
+<p>3）于是本题的推导就可以得到，当 <span class="arithmatex">\(a\)</span> 与 <span class="arithmatex">\(p\)</span> 互质时，有：</p>
 <div class="arithmatex">\[
-g^{h-1} \equiv 1\ (\bmod\ h)
+1 \equiv a^{p-1} \ (\bmod\ p)
 \]</div>
-<p>于是本题的推导就可以得到，当 <span class="arithmatex">\(a\)</span> 与 <span class="arithmatex">\(p\)</span> 互质时，有：</p>
+<p>4）于是可得 <span class="arithmatex">\(a\)</span> 的乘法逆元：</p>
 <div class="arithmatex">\[
-a^{p-1} \equiv 1 \ (\bmod\ p)
-\]</div>
-<p>于是 <span class="arithmatex">\(a\)</span> 的乘法逆元就是：</p>
-<div class="arithmatex">\[
-a^{-1} = a^{p-2}
+inv(a) = a^{p-2}
 \]</div>
 <h2 id="组合数">组合数</h2>
-<p><strong>Python 库函数求解</strong>。如果使用 Python 3.8 及以上的版本，则可以直接使用 <a href="https://docs.python.org/3/library/math.html#math.comb"><code>math.comb(n, k)</code></a> 来计算组合数 <span class="arithmatex">\(C_n^k\)</span>。</p>
+<h3 id="库函数-python">库函数 (Python)</h3>
+<p>如果使用 Python 3.8 及以上的版本，则可以直接使用 <a href="https://docs.python.org/3/library/math.html#math.comb"><code>math.comb(n, k)</code></a> 来计算组合数 <span class="arithmatex">\(C_n^k\)</span>。</p>
 <p>时间复杂度：<span class="arithmatex">\(O(\min(k,n-k))\)</span></p>
-<p><strong>递推法求解</strong>。利用 <span class="arithmatex">\(C_n^k = C_{n-1}^k + C_{n-1}^{k-1}\)</span> 进行递推求解。以 <a href="https://www.acwing.com/problem/content/887">求组合数 I - AcWing</a> 为例。</p>
+<h3 id="递推法">递推法</h3>
+<p>利用 <span class="arithmatex">\(C_n^k = C_{n-1}^k + C_{n-1}^{k-1}\)</span> 进行递推求解。以 <a href="https://www.acwing.com/problem/content/887">求组合数 I - AcWing</a> 为例。</p>
 <p>题意：求解 <span class="arithmatex">\(q\)</span> 次 <span class="arithmatex">\(C_{n}^k\ \%\ p\)</span> 的结果，其中 <span class="arithmatex">\(q\le 10^4,1\le k \le n \le 2\times 10^3\)</span>，<span class="arithmatex">\(p\)</span> 为常数 <span class="arithmatex">\(10^9+7\)</span>。</p>
 <p>思路：<span class="arithmatex">\(O(nk)\)</span> 预处理出所有的组合数，<span class="arithmatex">\(O(q)\)</span> 查询。</p>
 <div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
@@ -5942,7 +6006,8 @@ a^{-1} = a^{p-2}
 </span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<p><strong>乘法逆元法求解</strong>。如果题目中有取模运算，就可以将组合数公式中的「除法运算」转换为「关于逆元的乘法运算」进行求解。以 <a href="https://www.acwing.com/problem/content/888/">求组合数 II - AcWing</a> 为例。</p>
+<h3 id="乘法逆元法">乘法逆元法</h3>
+<p>如果题目中有取模运算，就可以将组合数公式中的「除法运算」转换为「关于逆元的乘法运算」进行求解。以 <a href="https://www.acwing.com/problem/content/888/">求组合数 II - AcWing</a> 为例。</p>
 <p>题意：求解 <span class="arithmatex">\(q\)</span> 次 <span class="arithmatex">\(C_{n}^k\ \%\ p\)</span> 的结果，其中 <span class="arithmatex">\(q\le 10^4,1\le k \le n \le 10^5\)</span>，<span class="arithmatex">\(p\)</span> 为常数 <span class="arithmatex">\(10^9+7\)</span>。</p>
 <p>思路：</p>
 <ul>
@@ -6051,7 +6116,7 @@ a^{-1} = a^{p-2}
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月30日 16:04:09">2025年3月30日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月2日 12:41:27">2025年4月2日</span>
   </span>
 
     

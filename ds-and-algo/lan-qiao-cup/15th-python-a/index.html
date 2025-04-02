@@ -6475,7 +6475,7 @@
 <li>一个合格的高中生应该可以脱口而出对应的思路，就是一个走方格问题 + 乘法原理。假设行可以走 <span class="arithmatex">\(r\)</span> 次，列可以走 <span class="arithmatex">\(c\)</span> 次，那么走行还是走列的方案数就是 <span class="arithmatex">\(C_{r+c}^r\)</span>，由于还会有重复数，按照乘法原理，我们乘上每一个重复数的数量即可（注意和终点数字重复就只算一个，因为终点只有一个）。本题难点在于 edge case 和代码实现；</li>
 <li>关于 edge case。一个很明显的就是终点的行列权重肯定不能小于起点。然后就是如果起点和终点在一起，方案数算 <span class="arithmatex">\(1\)</span>。最后就是如果起点和终点在同一行或同一列，那么就不用考虑走方格问题了，直接算乘法原理的结果即可；</li>
 <li>纯暴力很容易码出来，每一次询问时遍历整个权重进行统计即可，时间复杂度为 <span class="arithmatex">\(O(Tn)\)</span>，可以通过 <span class="arithmatex">\(20\%\)</span> 的测试点，下方已给出 Python 代码；</li>
-<li>接下来考虑正解。组合数可以用乘法逆元在 <span class="arithmatex">\(O(n\log p)\)</span> 内预处理出来，重复数可以用。走方格逻辑可以用二分查找在 <span class="arithmatex">\(O(\log n)\)</span> 内算出行列的跳跃次数，然后用预处理好的组合数在 <span class="arithmatex">\(O(1)\)</span> 内算出组合数结果。乘法原理逻辑可以用预处理好的前缀积 <span class="arithmatex">\(O(1)\)</span> 计算出来。</li>
+<li>接下来考虑正解。组合数可以用乘法逆元在 <span class="arithmatex">\(O(n\log p)\)</span> 内预处理出来，重复数可以用前缀积在 <span class="arithmatex">\(O(n)\)</span> 内预处理出来。预处理结束后就开始走方格逻辑与乘法原理逻辑。具体地，走方格逻辑可以用二分查找在按权值大小排好序的列表中 <span class="arithmatex">\(O(\log n)\)</span> 内算出行列的跳跃次数，然后用预处理好的组合数在 <span class="arithmatex">\(O(1)\)</span> 内算出组合数结果。乘法原理逻辑可以用预处理好的前缀积 <span class="arithmatex">\(O(1)\)</span> 计算出来。</li>
 </ul>
 <p>时间复杂度：<span class="arithmatex">\(O(T\log n)\)</span></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Python</label><label for="__tabbed_6_2">C++</label><label for="__tabbed_6_3">Python 纯暴力 <span class="arithmatex">\(O(Tn)\)</span></label></div>
@@ -6950,7 +6950,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月2日 12:41:27">2025年4月2日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月2日 14:27:43">2025年4月2日</span>
   </span>
 
     

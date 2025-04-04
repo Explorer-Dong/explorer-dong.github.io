@@ -18,7 +18,7 @@ hide:
 1. 点击网站右上角的小猫娘前往 GitHub 仓库；
 2. 点击右上角 Fork 按钮；
 3. 回到原来的网站页面点击右上角铅笔按钮；
-4. 编辑内容后向我发起 Pull Request
+4. 编辑内容后向我发起 Pull Request。
 
 当然您也可以将仓库克隆至本地，按照 `.github/workflows/bot.yml` 文件指引安装构建文档所需的依赖环境，完成修改/新增后，推送至仓库并向我发起 Pull Request。
 

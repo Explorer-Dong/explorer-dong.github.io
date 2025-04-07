@@ -5957,7 +5957,7 @@ s_{i-1}+a_i,&amp;i\ge1
 <p>没有返回值？确实。如果我们单纯的遍历一棵树，是不需要返回值的，因为当前结点的所有子结点都遍历结束后，程序就会开始回溯。相比于上面的 <code>sum(x)</code> 函数，这里的递归终点是已经存在的。</p>
 <h3 id="分治">分治</h3>
 <p>分治是一个很有意思的递归算法。我们先不 care 分治算法是怎么样的。我们先看看校长是怎么惩罚翘课学生的：从最高的校长开始，ta 不 care 你上没上课，ta 只需要向各个学院的院长询问情况即可，而各个院长也不 care 你上没上课，ta 们只需要向所有年级的辅导员询问情况即可，而辅导员也不 care 你上没上课，ta 们只需要向所有的任课老师询问情况即可，任课老师上课点名了，你没来？那你有福了，任课老师和辅导员说你没来上课，辅导员和院长说你没来上课，院长和校长说你没来上课，校长知道了，那你彻底凉了（才怪）。</p>
-<p>至此一个现实场景中的分治策略就淋漓精致地体现出来了。分治算法也是一个道理，只不过用代码模拟出来，仅此而已。所以为什么要这么干呢？本质上是因为通过这种方法可以 <a href="https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm#Advantages">将办事效率提升到最大</a>。</p>
+<p>至此一个现实场景中的分治策略就淋漓尽致地体现出来了。分治算法也是一个道理，只不过用代码模拟出来，仅此而已。所以为什么要这么干呢？本质上是因为通过这种方法可以 <a href="https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm#Advantages">将办事效率提升到最大</a>。</p>
 <p>当然聪明的你也一定发现了分治算法和上述递归算法中有一些类似的东西：比如校长向所有院长询问，所有院长向所有辅导员询问等等，这些其实都是更小规模的子问题。那么就可以套用递归的逻辑，不断调用自己即可。</p>
 <p>但是这里有一个问题，每一级的工作人员都需要先拿到下一级工作人员传递的数据，整合以后才能往上一级传递。这就需要先让终点阶段的递归函数先执行，先前的递归函数才能继续执行。而这就是分治的精髓，先递归处理终点，再回溯传递数据。比如下面的伪代码：</p>
 <div class="language-c++ highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
@@ -6383,7 +6383,7 @@ s_{i-1}+a_i,&amp;i\ge1
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月19日 13:15:05">2025年3月19日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月4日 01:25:01">2025年4月4日</span>
   </span>
 
     

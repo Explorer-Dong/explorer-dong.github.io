@@ -196,7 +196,6 @@ nav:
       - 计算机视觉:
         - base/computer-vision/index.md
         - base/computer-vision/image-classification.md
-        - base/computer-vision/semantic-segmentation.md
         - base/computer-vision/object-detection.md
       - 智慧教育:
         - base/intelligent-education/index.md

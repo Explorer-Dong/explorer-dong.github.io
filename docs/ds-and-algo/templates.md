@@ -186,10 +186,10 @@ std::unordered_map<std::string, int, CustomHash<long long>> f3;
             self.p = [i for i in range(n)]    # p[i]表示第i个结点的祖宗编号
             self.cnt = [1 for i in range(n)]  # cnt[i]表示第i个结点所在集合中的结点总数
     
-        def find(self, x: int) -> int:
-            if self.p[x] != x:
-                self.p[x] = self.find(self.p[x])
-            return self.p[x]
+        def find(self, a: int) -> int:
+            if self.p[a] != a:
+                self.p[a] = self.find(self.p[a])
+            return self.p[a]
     
         def merge(self, a: int, b: int) -> None:
             pa, pb = self.find(a), self.find(b)
@@ -205,7 +205,7 @@ std::unordered_map<std::string, int, CustomHash<long long>> f3;
             return self.sz
     
         def size(self, a: int) -> int:
-            return self.cnt[a]
+            return self.cnt[self.find(a)]
     ```
 
 ### 树状数组

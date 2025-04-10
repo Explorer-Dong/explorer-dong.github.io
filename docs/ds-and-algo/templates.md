@@ -37,6 +37,211 @@ void bisect_right(int target) {
 }
 ```
 
+### 排序
+
+=== "C++ 快速排序"
+
+    ```c++
+    vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
+    
+    void quick_sort(int l, int r) {
+        if (l >= r) return;
+    
+        // conquer
+        int i = l - 1, j = r + 1, x = a[(l + r) >> 1];
+        while (i < j) {
+            while (a[++i] < x);
+            while (a[--j] > x);
+            if (i < j) swap(a[i], a[j]);
+        }
+    
+        // divide
+        quick_sort(l, j);
+        quick_sort(j + 1, r);
+    }
+    
+    quick_sort(0, a.size() - 1);  // 调用示例
+    ```
+
+=== "C++ 归并排序"
+
+    ```c++
+    vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
+    vector<int> t(a.size(), 0);       // 临时数组
+    
+    void merge_sort(int l, int r) {
+        if (l >= r) return;
+    
+        // divide
+        int mid = (l + r) >> 1;
+    
+        // conquer
+        merge_sort(l, mid), merge_sort(mid + 1, r);
+    
+        // combine
+        int i = l, j = mid + 1, k = 0;
+        while (i <= mid && j <= r) {
+            if (a[i] < a[j]) t[k++] = a[i++];
+            else t[k++] = a[j++];
+            cnt++;
+        }
+        while (i <= mid) t[k++] = a[i++];
+        while (j <= r) t[k++] = a[j++];
+    
+        for (i = l, j = 0; i <= r; i++) a[i] = t[j++];
+    };
+    
+    merge_sort(0, a.size() - 1);  // 调用示例
+    ```
+
+=== "C++ 堆排序"
+
+    === "非递归"
+    
+        ```c++
+        void down(int u) {
+            int l = 2 * u + 1;
+            int r = 2 * u + 2;
+            int t = u;
+    
+            while (true) {
+                if (l <= last && heap[u] > heap[l]) {
+                    t = l;
+                }
+                if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
+                    t = r;
+                }
+    
+                if (t != u) {
+                    swap(heap[t], heap[u]);
+                    u = t;
+                    l = 2 * u + 1;
+                    r = 2 * u + 2;
+                } else {
+                    break;
+                }
+            }
+        }
+    
+        void up(int u) {
+            int fa = (u - 1) / 2;
+    
+            while (fa >= 0 && heap[fa] > heap[u]) {
+                swap(heap[fa], heap[u]);
+                u = fa;
+                fa = (u - 1) / 2;
+            }
+        }
+        ```
+    
+    === "递归"
+    
+        ```c++
+        void down(int u) {
+            int l = 2 * u + 1;
+            int r = 2 * u + 2;
+    
+            int t = u;
+            if (l <= last && heap[u] > heap[l]) {
+                t = l;
+            }
+            if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
+                t = r;
+            }
+    
+            if (t != u) {
+                swap(heap[t], heap[u]);
+                down(t);
+            }
+        }
+    
+        void up(int u) {
+            int fa = (u - 1) / 2;
+    
+            if (fa >= 0 && heap[fa] > heap[u]) {
+                swap(heap[fa], heap[u]);
+                up(fa);
+            }
+        }
+        ```
+    
+    === "两种初始化"
+    
+        ```c++
+        // 从下往上
+        for (int i = n / 2; i >= 0; i--) {
+            down(i);
+        }
+        ```
+    
+        ```c++
+        // 从上往下
+        for (int i = 1; i < n; i++) {
+            up(i);
+        }
+        ```
+    
+    === "完整代码"
+    
+        ```c++
+        #include <iostream>
+    
+        using namespace std;
+    
+        int n, m;
+        int heap[100010];
+        int last;
+    
+        void down(int u) {
+            int l = 2 * u + 1;
+            int r = 2 * u + 2;
+    
+            int t = u;
+            if (l <= last && heap[u] > heap[l]) {
+                t = l;
+            }
+            if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
+                t = r;
+            }
+    
+            if (t != u) {
+                swap(heap[t], heap[u]);
+                down(t);
+            }
+        }
+    
+        void up(int u) {
+            int fa = (u - 1) / 2;
+    
+            if (fa >= 0 && heap[fa] > heap[u]) {
+                swap(heap[fa], heap[u]);
+                up(fa);
+            }
+        }
+    
+        int main() {
+            cin >> n >> m;
+            for (int i = 0; i < n; i++) {
+                cin >> heap[i];
+            }
+            last = n - 1;
+    
+            // 初始化堆结构
+            for (int i = n / 2; i >= 0; i--) {
+                down(i);
+            }
+    
+            // 输出堆顶 + 重新维护堆结构
+            for (int i = 0; i < m; i++) {
+                cout << heap[0] << " ";
+                heap[0] = heap[last--];
+                down(0);
+            }
+    
+            return 0;
+        }
+        ```
+
 ## 数据结构
 
 ### 单调队列

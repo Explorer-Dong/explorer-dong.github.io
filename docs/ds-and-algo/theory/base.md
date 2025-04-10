@@ -28,7 +28,6 @@ title: 基础算法
 - 差分算法适用于「频繁区间修改、不频繁单点查询」的场景。
 
 !!! tip
-
     如果需要同时频繁地「区间修改、区间查询」，可以使用进阶数据结构诸如 [树状数组](./ds.md/#树状数组) 或 [线段树](./ds.md/#线段树) 来实现。
 
 ### 前缀和算法
@@ -163,37 +162,13 @@ return_value divide_and_conquer(stage) {
 
 ### 快速排序
 
-这是一种不稳定的排序算法，核心思想是 **分治**。具体地，以升序为例，如果一个序列是有序的，那么对于该序列中的每一个元素，其左边所有元素都应该比右边所有元素小。基于该先验，我们就有了快速排序算法：
+这是一种不稳定的排序算法，核心思想是分治。具体地，以升序为例，如果一个序列是有序的，那么对于该序列中的每一个元素，其左边所有元素都应该比右边所有元素小。基于该先验，我们就有了快速排序算法：
 
 1. 选择序列中任意一个元素作为基准；
 2. 基于该基准，扫描一遍序列将比基准小的元素排在基准的左边，比基准大的元素排在基准的右边；
 3. 递归左右两边的序列直到序列只有 1 个元素为止。
 
 在计算时间复杂度时，我们可以将分治的逻辑想象成一棵二叉树，对于二叉树的每一层都会有 $O(n)$ 的遍历开销，而二叉树的层数平均有 $O(\log n)$ 层，因此排序的时间复杂度就是 $O(n\log n)$。当然如果每次选择的基准刚好是所在序列的最值，就会导致二叉树的层数退化到 $O(n)$，但一般来说不会这么极端。
-
-快速排序 C++ 示例代码：
-
-```c++
-vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
-
-void quick_sort(int l, int r) {
-    if (l >= r) return;
-
-    // conquer
-    int i = l - 1, j = r + 1, x = a[(l + r) >> 1];
-    while (i < j) {
-        while (a[++i] < x);
-        while (a[--j] > x);
-        if (i < j) swap(a[i], a[j]);
-    }
-
-    // divide
-    quick_sort(l, j);
-    quick_sort(j + 1, r);
-}
-
-quick_sort(0, a.size() - 1);  // 调用示例
-```
 
 ### 归并排序
 
@@ -205,40 +180,9 @@ quick_sort(0, a.size() - 1);  // 调用示例
 
 时间复杂度的计算与快速排序类似，只不过这里的分治递归二叉树一定是 $O(\log n)$ 层，那么时间复杂度就是稳定的 $O(n \log n)$。
 
-归并排序 C++ 示例代码：
-
-```c++
-vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
-vector<int> t(a.size(), 0);       // 临时数组
-
-void merge_sort(int l, int r) {
-    if (l >= r) return;
-
-    // divide
-    int mid = (l + r) >> 1;
-
-    // conquer
-    merge_sort(l, mid), merge_sort(mid + 1, r);
-
-    // combine
-    int i = l, j = mid + 1, k = 0;
-    while (i <= mid && j <= r) {
-        if (a[i] < a[j]) t[k++] = a[i++];
-        else t[k++] = a[j++];
-        cnt++;
-    }
-    while (i <= mid) t[k++] = a[i++];
-    while (j <= r) t[k++] = a[j++];
-
-    for (i = l, j = 0; i <= r; i++) a[i] = t[j++];
-};
-
-merge_sort(0, a.size() - 1);  // 调用示例
-```
-
 ### 堆排序
 
-这是一种不稳定的排序算法。其实就是利用了堆结构及其支持的操作，每次输出堆顶然后维护堆结构即可实现堆排序。因此如果掌握了  这一数据结构，堆排序算法就跃然纸上了：
+这是一种不稳定的排序算法。其实就是利用了堆结构及其支持的操作，每次输出堆顶然后维护堆结构即可实现堆排序。因此如果掌握了 [堆](./ds.md#堆) 这一数据结构，堆排序算法就跃然纸上了：
 
 1. 将给定的序列维护成堆结构；
 2. 每次输出堆顶并重新维护堆结构即可。
@@ -249,152 +193,3 @@ merge_sort(0, a.size() - 1);  // 调用示例
 2. 对于输出堆顶并重新维护堆结构。输出是 $O(1)$ 的，重新维护堆结构其实就是删除完全二叉树的根结点，这里有一个技巧，就是将数组中的最后一个树中元素替换掉数组中的第一个元素（即根结点），然后 `down()` 这个新的根结点即可实现重新维护出一个堆结构，这样对于 $n$ 个元素，每次都要 $O(\log n)$ 地 `down()` 一次，那么就是 $O(n\log n)$。
 
 最终的时间复杂度就是 $O(n\log n)$。
-
-堆排序 C++ 示例代码（下标从 0 开始）：
-
-=== "非递归"
-
-    ```c++
-    void down(int u) {
-        int l = 2 * u + 1;
-        int r = 2 * u + 2;
-        int t = u;
-        
-        while (true) {
-            if (l <= last && heap[u] > heap[l]) {
-                t = l;
-            }
-            if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
-                t = r;
-            }
-            
-            if (t != u) {
-                swap(heap[t], heap[u]);
-                down(t);
-                u = t;
-                l = 2 * u + 1;
-                r = 2 * u + 2;
-            } else {
-                break;
-            }
-        }
-    }
-    
-    void up(int u) {
-        int fa = (u - 1) / 2;
-        
-        while (fa >= 0 && heap[fa] > heap[u]) {
-            swap(heap[fa], heap[u]);
-            u = fa;
-            fa = (u - 1) / 2;
-        }
-    }
-    ```
-
-=== "递归"
-
-    ```c++
-    void down(int u) {
-        int l = 2 * u + 1;
-        int r = 2 * u + 2;
-        
-        int t = u;
-        if (l <= last && heap[u] > heap[l]) {
-            t = l;
-        }
-        if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
-            t = r;
-        }
-        
-        if (t != u) {
-            swap(heap[t], heap[u]);
-            down(t);
-        }
-    }
-    
-    void up(int u) {
-        int fa = (u - 1) / 2;
-        
-        if (fa >= 0 && heap[fa] > heap[u]) {
-            swap(heap[fa], heap[u]);
-            up(fa);
-        }
-    }
-    ```
-
-=== "两种初始化"
-
-    ```c++
-    // 从下往上
-    for (int i = n / 2; i >= 0; i--) {
-        down(i);
-    }
-    ```
-    
-    ```c++
-    // 从上往下
-    for (int i = 1; i < n; i++) {
-        up(i);
-    }
-    ```
-
-=== "完整代码"
-
-    ```c++
-    #include <iostream>
-    
-    using namespace std;
-    
-    int n, m;
-    int heap[100010];
-    int last;
-    
-    void down(int u) {
-        int l = 2 * u + 1;
-        int r = 2 * u + 2;
-        
-        int t = u;
-        if (l <= last && heap[u] > heap[l]) {
-            t = l;
-        }
-        if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
-            t = r;
-        }
-        
-        if (t != u) {
-            swap(heap[t], heap[u]);
-            down(t);
-        }
-    }
-    
-    void up(int u) {
-        int fa = (u - 1) / 2;
-        
-        if (fa >= 0 && heap[fa] > heap[u]) {
-            swap(heap[fa], heap[u]);
-            up(fa);
-        }
-    }
-    
-    int main() {
-        cin >> n >> m;
-        for (int i = 0; i < n; i++) {
-            cin >> heap[i];
-        }
-        last = n - 1;
-        
-        // 初始化堆结构
-        for (int i = n / 2; i >= 0; i--) {
-            down(i);
-        }
-        
-        // 输出堆顶 + 重新维护堆结构
-        for (int i = 0; i < m; i++) {
-            cout << heap[0] << " ";
-            heap[0] = heap[last--];
-            down(0);
-        }
-        
-        return 0;
-    }
-    ```

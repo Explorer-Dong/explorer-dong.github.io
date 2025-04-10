@@ -2,12 +2,16 @@
 title: 基础算法例题精讲
 ---
 
-!!! warning "施工中"
-    未纳入前言导读表中的题目表示还没有更新。计划在 2025 年 5 月前更新完 [配套习题](./index.md) 部分的所有题解。
-
 ## 前言
 
-本文精选一些「基础算法」的例题并进行详细的原理讲解与代码实现。算法标签主要是「贪心、前缀和与差分、二分、搜索、分治」。题目来源主要是 Codeforces、洛谷、LeetCode。
+本文精选一些「基础算法」的例题并进行详细的原理讲解与代码实现。算法标签主要是「贪心、前缀和与差分、二分、递归」。题目来源主要是 Codeforces、洛谷、LeetCode。
+
+一些做题小技巧：
+
+- 贪心：善用枚举，可以从一两个元素开始考虑；
+- 前缀和与差分：遇到区间修改操作时，应该立即想到其等价于对差分数组做端点修改操作；
+- 二分：当按照题意进行正面模拟发现难以实现或者复杂度过高时，可以观察变量之间是否有单调性关系；
+- 递归：搜索类题目，脑子里始终有一个搜索树，无论是具象化的树的题，还是可以抽象为树的搜索题；分治类题目，思考能不能先解决子问题，然后利用解决好的所有子问题来解决当前局面的问题。
 
 为了提升阅读效率，我将题目的重要元信息单独罗列为了一张表格，可以按照自己的实际需求按需跳转阅读。
 
@@ -31,9 +35,11 @@ title: 基础算法例题精讲
 | 二分 | CF 1900 | [CF](https://codeforces.com/contest/1996/problem/F) | [bomb](#bomb) | 跳脱二分答案思维定势 |
 | 二分、图论 | 洛谷 绿 | [洛谷](https://www.luogu.com.cn/problem/P1525) | [关押罪犯](#关押罪犯) | / |
 | 搜索 | CF 1000 * | [AcWing](https://www.acwing.com/problem/content/5150/) | [数量](#数量) | / |
-| 搜索、剪枝 | CF 1200 * | [力扣](https://leetcode.cn/problems/combination-sum/) | [组合总和](#组合总和) | 组合型搜索经典例题 |
+| 搜索、组合数、剪枝 | CF 1200 * | [力扣](https://leetcode.cn/problems/combination-sum/) | [组合总和](#组合总和) | 组合数板子题 |
 | 搜索 | CF 1500 * | [AcWing](https://www.acwing.com/problem/content/5284/) | [扩展字符串](#扩展字符串) | 设置上限 trick |
-| 搜索 | 洛谷 黄 | [洛谷](https://www.luogu.com.cn/problem/P1141) | [01 迷宫](#01-迷宫) | / |
+| 搜索、并查集 | 洛谷 黄 | [洛谷](https://www.luogu.com.cn/problem/P1141) | [01 迷宫](#01-迷宫) | 连通分量板子题 |
+| 搜索、排列数 | CF 1400 * | [力扣](https://leetcode.cn/problems/minimum-moves-to-spread-stones-over-grid/) | [将石头分散的最少移动次数](#将石头分散的最少移动次数) | 排列数板子题 |
+| 分治、同余 | CF 1400 * | [AcWing](https://www.acwing.com/problem/content/5469/) | [随机排列](#随机排列) | 逆序数板子题 |
 
 /// caption | <
 基础算法例题导读表（打 * 表示自己预估的难度）
@@ -1412,537 +1418,288 @@ $$
     }
     ```
 
-## 【递归】外星密码
+## 将石头分散的最少移动次数
 
-<https://www.luogu.com.cn/problem/P1928>
+题意：给定一个 $3\times 3$ 的矩阵 $g$，其中数字总和为 $9$ 且 $g[i][j] \ge 0$，现在需要将其中 $>1$ 的数字沿着直角边移动到值为 $0$ 的位置上使得最终矩阵全为 $1$，输出最小的总移动距离。
 
-> 线性递归
->
-> 题意：给定一个压缩后的密码串，需要解压为原来的形式。压缩形式距离
->
-> - `AC[3FUN]` $\to$ `ACFUNFUNFUN`
-> - `AB[2[2GH]]OP` $\to$ `ABGHGHGHGHOP`
->
-> 思路：
->
-> - 我们采用递归的策略
->
-> - 我们知道，对于每一个字符，一共有 4 种情况，分别是："字母"、"数字"、"["、"]"。如果是字母。我们分情况考虑
->
->     - "字母"：
->         1. 直接加入答案字符串即可
->     - "["：
->         1. 获取左括号后面的整体 - 采用 **递归** 策略获取后面的整体
->         2. 加入答案字符串
->     - "数字"：
->         1. 获取完整的数 - 循环小 trick
->         2. 获取数字后面的整体 - 采用 **递归** 策略获取后面的整体
->         3. 加入答案字符串 - 循环尾加入即可
->         4. **返回当前的答案字符串**
->     - "]"：
->         1. **返回当前的答案字符串** - 与上述 "[" 对应
->
-> - 代码设计分析：
->
->     - 我们将压缩后的字符串看成由下面两种单元组成：
->
->         1. **最外层中括号组成的单元**：如 `[2[2AB]]` 就算一个最外层中括号组成的单元
->         2. **连续的字母单元**：如 `OPQ` 就算一个连续的字母单元
->
->     - 解决各单元连接问题：
->     - 为了在递归处理完第一种单元后还能继续处理后续的第二种单元，我们直接按照压缩字符串的长度进行遍历，即 `while (i < s.size())` 操作
->     - 解决两种单元内部问题：
->         - 最外层中括号组成的单元：递归处理
->         - 连续的字母单元：直接加入当前答案字符串即可
->
-> - 手玩样例：
->
->     ![手玩样例](https://cdn.dwj601.cn/images/202407250147150.png)
->
->     - 显然按照定义，上述压缩字符串一共有五个单元
->     - 我们用红色表示进入递归，蓝色表示驱动递归结束并回溯。可以发现
->
-> - 时间复杂度：$\Theta(\text{res.length()})$
+思路：
 
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
+- 记 $0$ 为空位，假设有 $k$ 个空位，那么就一定有 $k$ 个 $1$ 可以移动，因此这道题本质上就是 $k$ 个空位与 $k$ 个 $1$ 的匹配问题。为了不漏掉任何一种匹配方式，我们直接全排列枚举空位或者 $1$ 的位置即可，此处我们选择前者；
+- Python 和 C++ 都内置了全排列的库函数：
+    - C++ 的全排列枚举库函数为 `std::next_permutation(ItFirst, ItEnd)`，每次返回刚好比当前排列字典序大的排列；
+    - Python 的全排列枚举库函数为 `itertools.permutations(Iterable)`，按照字典序一次性返回所有排列。
 
-string s;
-int i;
+时间复杂度：$O(9\times 9!)$
 
-string dfs() {
-    string res;
+=== "Python"
 
-    while (i < s.size()) {
-        if (s[i] >= 'A' && s[i] <= 'Z') {
-            while (s[i] >= 'A' && s[i] <= 'Z') {
-                res += s[i++];
-            }
-        }
-        if (s[i] == '[') {
-            i++;
-            res += dfs();
-        }
-        if (isdigit(s[i])) {
-            int cnt = 0;
-            while (isdigit(s[i])) {
-                cnt = cnt * 10 + s[i] - '0';
-                i++;
-            }
-            string t = dfs();
-            while (cnt--) {
-                res += t;
-            }
-            return res;
-        }
-        if (s[i] == ']') {
-            i++;
-            return res;
-        }
-    }
-
-    return res;
-}
-
-void solve() {
-    cin >> s;
-    cout << dfs() << "\n";
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-## 【dfs/状压 dp】吃奶酪 :star:
-
-> 题意：给定一个平面直角坐标系与 n 个点的坐标，起点在坐标原点。问如何选择行进路线使得到达每一个点且总路程最短 
-> - 思路一：爆搜。题中的 $n \le 15$ 直接无脑爆搜，但是 **TLE**。爆搜的思路为：每次选择其中的一个点，接下来选择剩余的没有被选择过的点继续搜索，知道所有的点全部都搜到为止
->
->     时间复杂度：$O(n!)$
->
-> - 思路二：状态压缩 DP。
->
->     时间复杂度：$O()$
-
-爆搜代码
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-const int N = 20;
-
-int n;
-double res = 4000.0;
-bool vis[N];
-
-struct Idx {
-    double x, y;
-} a[N];
-
-double d(Idx be, Idx en) {
-    return sqrt((be.x - en.x) * (be.x - en.x) + (be.y - en.y) * (be.y - en.y));
-}
-
-// 父结点坐标 fa，当前结点次序 now，当前路径长度 len 
-void dfs(Idx fa, int now, double len) {
-    vis[now] = true;
+    ```python
+    class Solution:
+        def minimumMoves(self, g: List[List[int]]) -> int:
+            a = []  # 存 0 的位置
+            b = []  # 存 1 的位置
+            for i in range(3):
+                for j in range(3):
+                    if g[i][j] == 0:
+                        a.append((i, j))
+                    elif g[i][j] > 1:
+                        b.extend([(i, j)] * (g[i][j] - 1))
     
-    if (count(vis + 1, vis + n + 1, true) == n) {
-        res = min(res, len);
-    }
+            ans = 1000
+            n = len(a)
+            vis = [False] * n
     
-    for (int i = 1; i <= n; i++)
-        if (!vis[i])
-            dfs(a[now], i, len + d(a[now], a[i]));
+            def dfs(i: int, now: int) -> None:
+                if i == n:
+                    nonlocal ans
+                    ans = min(ans, now)
+                    return
     
-    vis[now] = false;
-}
-
-void solve() {
-    cin >> n;
-    for (int i = 1; i <= n; i++) {
-        cin >> a[i].x >> a[i].y; 
-    }
+                # i 是 1，j 是空位
+                for j in range(n):
+                    if vis[j]:
+                        continue
+                    vis[j] = True
+                    dfs(
+                        i + 1,
+                        now + abs(a[j][0] - b[i][0]) + abs(a[j][1] - b[i][1])
+                    )
+                    vis[j] = False
     
-    for (int i = 1; i <= n; i++) {
-        Idx fa = {0, 0};
-        dfs(fa, i, d(fa, a[i]));
-    }
+            dfs(0, 0)
     
-    cout << fixed << setprecision(2) << res << "\n";
-}
+            return ans
+    ```
 
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
+=== "Python 库函数"
 
-状压 dp 代码
+    ```python
+    from itertools import permutations
+    
+    class Solution:
+        def minimumMoves(self, g: List[List[int]]) -> int:
+            a = []
+            b = []
+            for i in range(3):
+                for j in range(3):
+                    if g[i][j] == 0:
+                        a.append((i, j))
+                    elif g[i][j] > 1:
+                        for _ in range(g[i][j] - 1):
+                            b.append((i, j))
+    
+            ans = 1000
+            for p in permutations(a):
+                now = 0
+                for i, (x, y) in enumerate(p):
+                    now += abs(x - b[i][0]) + abs(y - b[i][1])
+                ans = min(ans, now)
+    
+            return ans
+    ```
 
-```cpp
+=== "C++"
 
-```
-
-## 【dfs/树形 dp】树的直径 :star:
-
-树的路径问题，考虑回溯。如何更新值？如何返回值？
-
-参考：<https://www.bilibili.com/video/BV17o4y187h1/>
-
-## 【dfs】在带权树网络中统计可连接服务器对数目
-
-<https://leetcode.cn/problems/count-pairs-of-connectable-servers-in-a-weighted-tree-network/description/>
-
-> 题意：给定一棵带权无根树，定义「中转结点」为以当前结点为根，能够寻找到两个不同分支下的结点，使得这两个结点到当前结点的简单路径长度可以被给定值 k 整除，问树中每一个结点的「中转结点」的有效对数是多少
->
-> 思路：dfs+乘法原理。
->
-> - 由于数据量是 $n=10^3$，可以直接枚举每一个顶点，并且每一个顶点的操作可以是 $O(n)$ 的，我们考虑遍历。对于每一个结点，对应的有效对数取决于每一个子树中的简单路径长度合法的结点数，通过深搜统计即可
-> - 统计出每一个子树的合法结点后还需要进行答案的计算，也就是有效对数的统计。对于每一个合法结点，都可以和非当前子树上的所有结点结合形成一个合法有效对，直接这样统计会导致结果重复计算一次，因此需要答案除以二。当然也可以利用乘法原理，一边统计每一个子树中有效的结点数，一边和已统计过的有效结点数进行计算
->
-> 时间复杂度：$O(n^2)$
->
-> 注：总结本题根本原因是提升对建图的理解以及针对 `vector` 用法的总结
->
-> - 关于建图
->     - 一开始编码时，我设置了结点访问状态数组 `vector<bool> vis` 和每一个结点到当前根结点的距离数组 `vector<int> d`，但其实都可以规避，因为本题是「树」形图，可以通过在深搜时同时传递父结点来规避掉 `vis` 数组的使用
->     - 同时由于只需要在遍历时计算路径是否合法从而计数，因此不需要存储每一个结点到当前根结点的路径值，可以通过再增加一个搜索状态参数来规避掉 `d` 数组的使用
-> - 关于 `vector`
->     - 一开始使用了全局 `vis` 数组，因此每次都需要进行清空操作。我使用了 `.clear()` 方法试图重新初始化数组，但这导致了状态的错误记录，可能是 LeetCode 平台 C++ 语言特有的坑，还是少用全局变量
->     - `.clear()` 方法会导致 `.size()` 为 0，但是仍然可以通过 `[]` 方法获得合法范围内的元素值，这是 `vector` 内存分配优化的结果
-
-```c++
-class Solution {
-public:
-    vector<int> countPairsOfConnectableServers(vector<vector<int>>& edges, int signalSpeed) {
-        int n = edges.size() + 1;
-        
-        struct node { int to, w; };
-        vector<vector<node>> g(n, vector<node>());
-        for (auto e: edges) {
-            int u = e[0], v = e[1], w = e[2];
-            g[u].push_back({v, w});
-            g[v].push_back({u, w});
-        }
-
-        function<int(int, int, int)> dfs = [&](int fa, int now, int d) {
-            int res = d % signalSpeed == 0;
-            for (auto ch: g[now]) {
-                if (ch.to != fa) {
-                    res += dfs(now, ch.to, d + ch.w);
-                }
-            }
-            return res;
-        };
-
-        vector<int> res(n);
-        for (int i = 0; i < n; i++) {
-            int sum = 0;
-            for (auto ch: g[i]) {
-                int cnt = dfs(i, ch.to, ch.w);
-                res[i] += cnt * sum;
-                sum += cnt;
-            }
-        }
-
-        return res;
-    }
-};
-```
-
-```python
-class Solution:
-    def countPairsOfConnectableServers(self, edges: List[List[int]], signalSpeed: int) -> List[int]:
-        n = len(edges) + 1
-
-        g = [[] for _ in range(n)]
-        for u, v, w in edges:
-            g[u].append((v, w))
-            g[v].append((u, w))
-
-        def dfs(fa: int, now: int, d: int) -> int:
-            ret = d % signalSpeed == 0
-            for ch in g[now]:
-                if ch[0] != fa:
-                    ret += dfs(now, ch[0], d + ch[1])
-            return ret
-
-        res = [0] * n
-        for i in range(n):
-            sum = 0
-            for ch in g[i]:
-                cnt = dfs(i, ch[0], ch[1])
-                res[i] += sum * cnt
-                sum += cnt
-
-        return res
-```
-
-## 【dfs】将石头分散到网格图的最少移动次数
-
-<https://leetcode.cn/problems/minimum-moves-to-spread-stones-over-grid/>
-
-> 标签：搜索、全排列、库函数
->
-> 题意：给定一个 $3\times 3$ 的矩阵 $g$，其中数字总和为 9 且 $g[i][j] \ge 0$，现在需要将其中 $>1$ 的数字逐个移动到值为 0 的位置上使得最终矩阵全为 1，问最少移动长度是多少。
->
-> 思路一：手写全排列
->
-> - 思路：可以将这道题抽象为求解「将 a 个大于 1 位置的数分配到 b 个 0 位置」的方案中的最小代价问题。容易联想到全排列选数的母问题：数字的位数对应这里的 b 个 0 位置，每个位置可以填的数对应这里的用哪个 a 来填。区别在于：0 的位置顺序不是固定的，用哪个 a 来填的顺序也不是固定的。这与全排列数中：被填的位置顺序是固定的，用哪个数来填不是固定的，有所区别。因此我们可以全排列枚举每一个位置，在此基础之上再全排列枚举每一个位置上可选的 a 进行填充。可以理解为全排列的嵌套。那么最终递归树的深度就是 0 的个数，递归时再用一个参数记录每一个选数分支对应的代价即可。
-> - 时间复杂度：$O(9\times 9!)$
->
-> 思路二：库函数全排列
->
-> - 思路：由于方阵的总和为 9，因此 > 1 的位置上减去 1 剩下的数值之和一定等于方阵中 0 的个数。因此我们可以将前者展开为和 0 相同大小的向量，并全排列枚举任意一者进行两者的匹配计算，维护其中的最小代价即是答案。
->     - C++ 的全排列枚举库函数为 `std::next_permutation(ItFirst, ItEnd)`
->     - Python 的全排列枚举库函数为 `itertools.permutations(Iterable)`
-> - 时间复杂度：$O(9\times 9!)$
-
-```c++
-class Solution {
-public:
-    int minimumMoves(vector<vector<int>>& g) {
-        vector<pair<int, int>> z, a;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (!g[i][j]) {
-                    z.push_back({i, j});
-                } else if (g[i][j] > 1) {
-                    a.push_back({i, j});
-                }
-            }
-        }
-
-        int res = INT_MAX, n = z.size();
-        vector<bool> vis(n);
-
-        auto dfs = [&](auto&& dfs, int dep, int t) -> void {
-            if (dep == n) {
-                res = min(res, t);
-                return;
-            }
-
-            for (int i = 0; i < n; i++) {
-                if (vis[i]) continue;
-                vis[i] = true;
-                for (auto& [x, y]: a) {
-                    if (g[x][y] <= 1) continue;
-                    g[x][y]--;
-                    dfs(dfs, dep + 1, t + abs(z[i].first - x) + abs(z[i].second - y));
-                    g[x][y]++;
-                }
-                vis[i] = false;
-            }
-        };
-        
-        dfs(dfs, 0, 0);
-
-        return res;
-    }
-};
-```
-
-C++ 库函数：
-
-```c++
-class Solution {
-public:
-    int minimumMoves(vector<vector<int>>& g) {
-        vector<pair<int, int>> z, a;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (!g[i][j]) {
-                    z.push_back({i, j});
-                } else {
-                    while (g[i][j] > 1) {
+    ```c++
+    class Solution {
+    public:
+        int minimumMoves(vector<vector<int>>& g) {
+            vector<array<int, 2>> a, b;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (g[i][j] == 0) {
                         a.push_back({i, j});
-                        g[i][j]--;
+                    } else if (g[i][j] > 1) {
+                        for (int _ = 0; _ < g[i][j] - 1; _++) {
+                            b.push_back({i, j});
+                        }
                     }
                 }
             }
+    
+            int ans = 1000;
+            int n = a.size();
+            vector<bool> vis(n);
+            
+            auto dfs = [&](auto&& dfs, int i, int now) -> void {
+                if (i == n) {
+                    ans = min(ans, now);
+                    return;
+                }
+                for (int j = 0; j < n; j++) {
+                    if (vis[j]) {
+                        continue;
+                    }
+                    vis[j] = true;
+                    dfs(
+                        dfs,
+                        i + 1,
+                        now + abs(a[j][0] - b[i][0]) + abs(a[j][1] - b[i][1])
+                    );
+                    vis[j] = false;
+                }
+            };
+    
+            dfs(dfs, 0, 0);
+            
+            return ans;
         }
+    };
+    ```
 
-        int res = INT_MAX;
-        do {
-            int t = 0;
-            for (int i = 0; i < z.size(); i++) {
-                t += abs(a[i].first - z[i].first) + abs(a[i].second - z[i].second);
+=== "C++ 库函数"
+
+    ```c++
+    class Solution {
+    public:
+        int minimumMoves(vector<vector<int>>& g) {
+            vector<array<int, 2>> a, b;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (g[i][j] == 0) {
+                        a.push_back({i, j});
+                    } else if (g[i][j] > 1) {
+                        for (int _ = 0; _ < g[i][j] - 1; _++) {
+                            b.push_back({i, j});
+                        }
+                    }
+                }
             }
-            res = min(res, t);
-        } while (next_permutation(a.begin(), a.end()));
+    
+            int ans = 1000;
+            do {
+                int now = 0;
+                for (int i = 0; i < a.size(); i++) {
+                    now += abs(a[i][0] - b[i][0]) + abs(a[i][1] - b[i][1]);
+                }
+                ans = min(ans, now);
+            } while (next_permutation(a.begin(), a.end()));
+    
+            return ans;
+        }
+    };
+    ```
 
-        return res;
+## 随机排列
+
+题意：给定一个含有 $n\ (2\le n\le 10^6)$ 个数的排列。现在将这个排列进行一定次数的对换操作，问是对换了 $3n$ 次还是 $7n+1$ 次。
+
+思路：
+
+- 一看到排列对换，立刻想到一个结论：在排列中进行一次对换操作，排列的逆序数的奇偶性就会发生一次变化；
+- 容易发现 $3n \equiv n \pmod 2,7n+1 \equiv n+1 \pmod 2$，因此两种对换次数下，排列的逆序数的奇偶性是不一样的，这就可以成为区分两种对换次数的判别依据；
+- 在发现了上述 trick 后，本题就变成了求序列逆序数的板子题。可以借助归并排序的分治思想求解。
+
+时间复杂度：$O(n \log n)$
+
+=== "Python"
+
+    ```python
+    n = int(input().strip())
+    a = list(map(int, input().strip().split()))
+    
+    def merge_sort(l: int, r: int) -> int:
+        if l >= r:
+            return 0
+    
+        # divide
+        mid = (l + r) >> 1
+    
+        # conquer
+        ans = merge_sort(l, mid) + merge_sort(mid + 1, r)
+    
+        # combine
+        t = []
+        i, j = l, mid + 1
+        while i <= mid and j <= r:
+            if a[i] <= a[j]:
+                t.append(a[i])
+                i += 1
+            else:
+                t.append(a[j])
+                j += 1
+                ans += mid - i + 1  # 点睛之笔
+        while i <= mid:
+            t.append(a[i])
+            i += 1
+        while j <= r:
+            t.append(a[j])
+            j += 1
+        a[l:r+1] = t
+    
+        return ans
+    
+    cnt = merge_sort(0, n - 1)
+    
+    if n & 1:
+        print(1 if cnt & 1 else 2)
+    else:
+        print(2 if cnt & 1 else 1)
+    ```
+
+=== "C++"
+
+    ```cpp
+    #include <iostream>
+    #include <vector>
+    
+    using namespace std;
+    using ll = long long;
+    
+    const int N = 1000010;
+    
+    int n;
+    int a[N];
+    
+    ll merge_sort(int l, int r) {
+        if (l >= r) {
+            return 0;
+        }
+    
+        // divide
+        int mid = (l + r) >> 1;
+    
+        // conquer
+        ll ans = merge_sort(l, mid) + merge_sort(mid + 1, r);
+    
+        // combine
+        int i = l, j = mid + 1;
+        vector<int> t;
+        while (i <= mid && j <= r) {
+            if (a[i] <= a[j]) {
+                t.push_back(a[i++]);
+            } else {
+                t.push_back(a[j++]);
+                ans += mid - i + 1;  // 点睛之笔
+            }
+        }
+        while (i <= mid) {
+            t.push_back(a[i++]);
+        }
+        while (j <= r) {
+            t.push_back(a[j++]);
+        }
+        for (int k = l, idx = 0; k <= r; k++) {
+            a[k] = t[idx++];
+        }
+    
+        return ans;
     }
-};
-```
-
-```python
-class Solution:
-    def minimumMoves(self, g: List[List[int]]) -> int:
-        a, z = [], []
-        for i in range(3):
-            for j in range(3):
-                if not g[i][j]:
-                    z.append((i, j))
-                elif g[i][j] > 1:
-                    a.append((i, j))
-
-        res = 1000
-        n = len(z)
-        vis = [False] * n
-        
-        def dfs(dep: int, t: int) -> None:
-            nonlocal res
-            if dep == n:
-                res = min(res, t)
-                return
-            for i in range(n):
-                if vis[i]: continue
-                vis[i] = True
-                for x, y in a:
-                    if g[x][y] <= 1: continue
-                    g[x][y] -= 1
-                    dfs(dep + 1, t + abs(z[i][0] - x) + abs(z[i][1] - y))
-                    g[x][y] += 1
-                vis[i] = False
-
-        dfs(0, 0)
-        
-        return res
-```
-
-Python 库函数：
-
-```python
-class Solution:
-    def minimumMoves(self, g: List[List[int]]) -> int:
-        from itertools import permutations
-        a, z = [], []
-        for i in range(3):
-            for j in range(3):
-                if not g[i][j]:
-                    z.append((i, j))
-                while g[i][j] > 1:
-                    a.append((i, j))
-                    g[i][j] -= 1
-        
-        res, n = 1000, len(a)
-        for p in permutations(a):
-            t = 0
-            for i in range(n):
-                t += abs(p[i][0] - z[i][0]) + abs(p[i][1] - z[i][1])
-            res = min(res, t)
-
-        return res
-```
-
-## 【分治】随机排列
-
-<https://www.acwing.com/problem/content/5469/>
-
-> 题意：给定一个 n 个数的全排列序列，并将其进行一定的对换，问是对换了 3n 次还是 7n+1 次
->
-> 思路：可以发现对于两种情况，就对应对换次数的奇偶性。当 n 为奇数：3n 为奇数，7n+1 为偶数；当 n 为偶数：3n 为偶数，7n+1 为奇数。故我们只需要判断序列的逆序数即可。为了求解逆序数，我们可以采用归并排序的 combine 过程进行统计即可
->
-> 时间复杂度：$O(n \log n)$
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-const int N = 1000010;
-
-int n, a[N], t[N];
-int cnt; // 逆序数 
-
-void MergeSort(int l, int r) {
-	if (l >= r) return;
-	
-	int mid = (l + r) >> 1;
-	
-	MergeSort(l, mid), MergeSort(mid + 1, r);
-	
-	int i = l, j = mid + 1, idx = 0;
-	
-	while (i <= mid && j <= r) {
-		if (a[i] < a[j]) t[idx++] = a[i++];
-		else {
-			cnt += mid - i + 1;
-			t[idx++] = a[j++];
-		}
-	}
-	
-	while (i <= mid) t[idx++] = a[i++];
-	while (j <= r) t[idx++] = a[j++];
-	
-	for (i = l, idx = 0; i <= r; i++, idx++) a[i] = t[idx];
-}
-
-void solve() {
-	cin >> n;
-	
-	for (int i = 0; i < n; i++) cin >> a[i];
-	
-	MergeSort(0, n - 1);
-	
-	int res;
-	
-	if (n % 2 == 1) {
-		if (cnt % 2) res = 1;
-		else res = 2;
-	} else {
-		if (cnt % 2) res = 2;
-		else res = 1;
-	}
-	
-	cout << res << "\n"; 
-}
-
-signed main() {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr), cout.tie(nullptr);
-	int T = 1;
-//	cin >> T;
-	while (T--) solve();
-	return 0;
-}
-```
-
-## 后记
-
-贪心：善用枚举，可以从一两个元素开始考虑。
-
-前缀和与差分：遇到区间修改操作时，应该立即想到其等价于对差分数组做端点修改操作。
-
-二分：当按照题意进行正面模拟发现难以实现或者复杂度过高时，可以观察变量之间是否有单调性关系。
-
-搜索：
-
-分治：
-
-其他：
-
-- 数学题：没思路就打表找规律；
-- 网格图：注意截距用法；
-
-针对 Python：
-
-- 多关键字排序：使用元组作为 lambda 的参数；
-- 未知行数的数据读入：用 try except EOFError；
-- DP：初始化要考虑周全，在使用 python 元组的赋值语法时，要注意不能有依赖关系。
+    
+    int main() {
+        cin >> n;
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+    
+        ll cnt = merge_sort(0, n - 1);
+    
+        if (n & 1) {
+            cout << (cnt & 1 ? 1 : 2) << "\n";
+        } else {
+            cout << (cnt & 1 ? 2 : 1) << "\n";
+        }
+    
+        return 0;
+    }
+    ```

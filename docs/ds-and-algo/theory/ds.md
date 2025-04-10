@@ -102,9 +102,6 @@ $$
     - 设置一个辅助标志变量 `flag`；
     - 设置一个计数器 `count`；
 
-!!! tip
-    有些教材还有「特殊矩阵」和「广义表」一说，但由于算法思想很简单或者可以被其他数据结构完美代替，因此本文不展开讨论。感兴趣的小伙伴可以看仓库历史中关于这两部分内容的讲解：[特殊矩阵](https://github.com/Explorer-Dong/explorer-dong.github.io/blob/f9e71ec0ebe8d17e95dc254d2e28f5abae7bb434/docs/ds-and-algo/theory/ds.md#特殊矩阵)、[广义表](https://github.com/Explorer-Dong/explorer-dong.github.io/blob/f9e71ec0ebe8d17e95dc254d2e28f5abae7bb434/docs/ds-and-algo/theory/ds.md#广义表)。
-
 ## 哈希表
 
 哈希是一种应用极其广泛的算法，其核心功能为：**给定任意一个对象 A，能利用哈希表迅速找到以 A 的名义存储的结果**。关键点如下：
@@ -128,6 +125,51 @@ $$
 >
 > *  std:: forward_list <_Node \> containing the elements
 > *  std:: vector < std:: forward_list <_Node \>:: iterator > representing the buckets
+
+!!! tip
+    至此所有的线性数据结构已经基本介绍完毕，接下来就开始非线性数据结构的讲解😊。
+
+## 广义表
+
+广义表可以看作单链表的扩展版，可以应用在存储空间的分配策略上，对应的算法叫做「成组拉链法」。其结点需要存储三类数据，示意图如下所示：
+
+![广义表结点结构示意图](https://cdn.dwj601.cn/images/202406292218530.png)
+
+/// fc
+广义表结点结构示意图
+///
+
+具体地：
+
+1. `type`：存储当前结点的类型。以枚举类型存在，起标识作用。因此 `type` 是一个枚举体 (enum)；
+
+- `data/sublist`：存储当前结点的内容。如果是 data 类型的结点，就存储数据；如果是 sublist 类型的结点，就存储子链表的地址。因此 `data/sublist` 是一个联合体 (union)；
+- `next`：存储下一个结点的地址。因此 `next` 是一个指针。
+
+广义表结点的 C++ 代码如下：
+
+```c++
+enum GListNodeType {
+    ATOM, LIST
+};
+template<class T>
+struct GListNode {
+    GListNodeType type;
+    union {
+        T data;
+        GListNode* sublist;
+    };
+    GListNode<T>* next;
+};
+```
+
+广义表的结构示例图如下：
+
+![广义表的结构示意图](https://cdn.dwj601.cn/images/202406292218531.png)
+
+/// fc
+广义表的结构示意图
+///
 
 ## 树
 

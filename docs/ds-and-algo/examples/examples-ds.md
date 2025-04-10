@@ -11,15 +11,121 @@ title: 数据结构例题精讲
 
 为了提升阅读效率，我将题目的重要元信息单独罗列为了一张表格，可以按照自己的实际需求按需跳转阅读。
 
-| 标签 🏷 | 难度 🔥 |                         链接 🔗                         |          锚点 ⚓           |    备注 ⭐    |
-| :----: | :----: | :----------------------------------------------------: | :-----------------------: | :----------: |
-| 并查集 |        | [AcWing](https://www.acwing.com/problem/content/5560/) | [孤立点数量](#孤立点数量) |              |
-| 并查集 | 洛谷绿 |     [洛谷](https://www.luogu.com.cn/problem/P1525)     |   [关押罪犯](#关押罪犯)   | 拓展域并查集 |
+| 标签 🏷 | 难度 🔥  |                     链接 🔗                     |        锚点 ⚓         | 备注 ⭐ |
+| :----: | :-----: | :--------------------------------------------: | :-------------------: | :----: |
+| 广义表 | 洛谷 黄 | [洛谷](https://www.luogu.com.cn/problem/P1928) | [外星密码](#外星密码) |   /    |
 
 /// caption | <
 数据结构例题导读表（打 * 表示自己预估的难度）
 ///
 
+## 外星密码
+
+题意：给定一个压缩后的密码串，需要解压为原来的形式（保证不超过 $20000$ 且最多 $10$ 层压缩）。例如：
+
+1. `AC[3FUN]` $\to$ `ACFUNFUNFUN`；
+2. `AB[2[2GH]]OP[2PQ]CD` $\to$ `ABGHGHGHGHOPPQPQCD`。
+
+思路：
+
+- 压缩密码串的结构很像广义表，即存在串行的纵向递归结构，比如上述第二个样例中 `[2[2GH]]` 与 `[2PQ]` 就是串行的递归结构；
+- 对于此类数据结构，一定不能忘记处理后续串行的递归结构，以及需要注意索引变量的引用问题。由于 Python 没有对单一整数的引用语法，因此使用全局变量代替。
+
+时间复杂度：$O(n)$
+
+=== "Python"
+
+    ```python
+    s = input().strip()
+    i = 0
+    
+    def dfs() -> str:
+        global i
+        now = ""
+    
+        # 递归终点
+        if i >= len(s):
+            return now
+    
+        # 处理前缀
+        while i < len(s) and s[i].isalpha():
+            now += s[i]
+            i += 1
+    
+        # 递归处理
+        if i < len(s) and s[i] == '[':
+            i += 1
+            x = 0
+            while i < len(s) and s[i].isdigit():
+                x = x * 10 + int(s[i])
+                i += 1
+            now += x * dfs()
+        if i < len(s) and s[i] == ']':
+            i += 1
+            return now
+    
+        # 处理后缀
+        now += dfs()
+    
+        return now
+    
+    print(dfs())
+    ```
+
+=== "C++"
+
+    ```c++
+    #include <iostream>
+    
+    using namespace std;
+    
+    string s;
+    
+    string dfs(int& i) {
+        int n = s.size();
+        string now = "";
+    
+        // 递归终点
+        if (i >= n) {
+            return now;
+        }
+        
+        // 处理前缀
+        while (i < n and isalpha(s[i])) {
+            now += s[i++];
+        }
+    
+        // 递归处理
+        if (i < n && s[i] == '[') {
+            i++;
+            int x = 0;
+            while (i < n && isdigit(s[i])) {
+                x = x * 10 + (s[i++] - '0');
+            }
+            string t = dfs(i);
+            while (x--) {
+                now += t;
+            }
+        }
+        if (i < n && s[i] == ']') {
+            i++;
+            return now;
+        }
+    
+        // 处理尾串
+        now += dfs(i);
+    
+        return now;
+    }
+    
+    int main() {
+        cin >> s;
+        int i = 0;
+        cout << dfs(i) << "\n";
+    
+        return 0;    
+    }
+    ```
 
 ## 【模板】双链表
 

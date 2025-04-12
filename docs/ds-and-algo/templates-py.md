@@ -3187,7 +3187,7 @@ d[x + 2][j + 1] -= k
 
 # 还原差分时，直接原地还原
 for i in range(m):
-    for j in rang(n):
+    for j in range(n):
         d[i + 1][j + 1] += d[i][j + 1] + d[i + 1][j] - d[i][j]
 
 ```

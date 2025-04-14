@@ -3,9 +3,9 @@ title: 第 16 届 Python A 组（省赛）
 ---
 
 !!! tip
-    官方 OJ 还没有开放评测，下述代码均为本人考场或赛后编写，仅供参考。真题见我的云盘：[第十六届蓝桥杯大赛软件赛省赛_PA.pdf](https://www.jianguoyun.com/p/DQbXSVwQo_mQDRj49vQFIAA)。
+    官方还没有开放评测，[洛谷](https://www.luogu.com.cn/problem/list?tag=363&orderBy=name&order=desc&page=1) 倒是更新得很快。
 
-## T1 偏蓝 (?'/5')
+## T1 偏蓝 (5'/5')
 
 题意：定义三元组中每一位的取值范围为 $[0,255]$ 的整数，问有多少个三元组满足：三元组中的第三个位置的数严格大于前两个位置的数。
 
@@ -30,7 +30,7 @@ title: 第 16 届 Python A 组（省赛）
 
 思路：不会，TODO。
 
-## T3 2025 图形 (?'/10')
+## T3 2025 图形 (10'/10')
 
 题意：给定 $h,w\ (1\le h,w\le 100)$，按照 $2,0,2,5$ 的顺序循环打印一个 $h$ 行 $w$ 列的字符串矩阵，同行中没有空格。
 
@@ -55,63 +55,45 @@ title: 第 16 届 Python A 组（省赛）
         print(ans)
     ```
 
-## T4 最大数字 (?'/10')
+## T4 最大数字 (10'/10')
 
 题意：给定一个含有 $n\ (1\le n\le 10^4)$ 个数的排列，现在需要重排使得重排后的序列中所有元素「二进制拼接」后的二进制数值最大，输出这个最大二进制数对应的十进制数。
 
-思路：贪心题，就是自定义一个排序规则。对于两个十进制数，我们从高到低位贪心比较其二进制表示，在比较时：
+思路：
 
-- 当不等时，谁是 $1$ 谁就排在前面；
-- 如果前缀完全一致，二进制长度短的排在前面。因为长度更长的后面可能紧跟着 $0$，这是不利的。
+- 贪心题，就是自定义一个排序规则。对于 $x$ 和 $y$ 两个二进制表示，如果 $x+y>y+x$，则 $x$ 要排在 $y$ 的前面（加号表示字符串拼接）；
+- Python 对字符串与十进制数的转换有限制，需要手动调大。每个数的二进制最多 $14$ 位，$n$ 个数开到 $150000$ 肯定可以，但这是 Python 3.11 引入的，不知道蓝桥杯的评测机能不能过；
+- [力扣原题](https://leetcode.cn/problems/maximum-possible-number-by-binary-concatenation/description/)，[证明](https://leetcode.cn/problems/largest-number/solutions/716725/gong-shui-san-xie-noxiang-xin-ke-xue-xi-vn86e/)。
 
-时间复杂度：$O(n\log^2 n)$，注意本题二进制转换十进制其实是很慢的，不知道评测机能不能扛得住。
+时间复杂度：$O(n\log n)$
 
 === "Python"
 
     ```python
+    from functools import cmp_to_key
+    import sys
+    sys.set_int_max_str_digits(150000)
+    
+    def cmp(x: str, y: str) -> int:
+        if x + y > y + x:
+            return -1  # 小于号
+        elif x + y == y + x:
+            return 0
+        return 1
+    
     n = int(input().strip())
     
-    class Obj:
-        def __init__(self, x: str) -> None:
-            self.x = x
+    a = [bin(x)[2:] for x in range(1, n + 1)]
+    a.sort(key=cmp_to_key(cmp))
     
-        def __lt__(self, obj) -> bool:
-            y = obj.x
-            lx = len(self.x)
-            ly = len(y)
-            i = j = 0
-            while i < lx and j < ly:
-                if self.x[i] != y[j]:
-                    return self.x[i] > y[j]
-                i += 1
-                j += 1
-            return lx < ly
-    
-    def parse(x: int) -> Obj:
-        b = ''
-        while x:
-            b += str(x % 2)
-            x //= 2
-        return Obj(b[::-1])
-    
-    a = []
-    for i in range(1, n + 1):
-        a.append(parse(i))
-    
-    a.sort()
-    
-    s = ''
-    for o in a:
-        s += o.x
-    
-    print(int(s, 2))
+    print(int(''.join(a), 2))
     ```
 
-## T5 倒水 (?'/15')
+## T5 倒水 (15'/15')
 
 题意：给定一个含有 $n\ (1\le n\le 10^5)$ 个数的序列 $a\ (1\le a_i \le 10^5)$ 和一个整数 $k\ (1\le k\le n)$。现在定义一种数值转移规则：对于第 $i$ 个元素 $a_i$，其可以从任意一个 $j < i$ 且 $i\equiv j \pmod k$ 的元素中转移一部分数值到自己身上。问经过任意次这种转移操作后，序列最小的元素最大可以是多少。
 
-思路：看到最大化最小元素立刻想到了二分，但是看到只能从前缀部分转移，貌似扫描一遍就可以了。我们分 $k$ 组，每组从左往右遍历并记录前缀元素数量、前缀和、前缀最小值：
+思路：看到最大化最小元素立刻想到了二分，但是看到只能从前缀部分转移，扫描一遍就可以了。我们分 $k$ 组，每组从左往右遍历并记录前缀元素数量、前缀和、前缀最小值：
 
 - 如果当前元素比不小于前缀最小值，那么就不会影响全局最小值，不用操作；
 - 如果当前元素严格小于前缀最小值，那么就肯定要拿前缀的数值转移一部分到自己身上，至于转移多少不重要，重要的是要更新转移后的前缀最小值。
@@ -164,8 +146,10 @@ title: 第 16 届 Python A 组（省赛）
 === "Python"
 
     ```python
+    from collections import deque
+    
     n, m = tuple(map(int, input().strip().split()))
-    g = [LII() for _ in range(n)]
+    g = [list(map(int, input().strip().split())) for _ in range(n)]
     ans = [[0] * m for _ in range(n)]
     
     vis = [[False] * m for _ in range(n)]

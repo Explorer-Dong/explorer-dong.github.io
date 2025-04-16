@@ -17,7 +17,7 @@ title: 目标检测
 
 目标检测可以分解为「定位 + 分类」两个子任务。考虑到图像分类已经在上一章介绍过了，因此本章我们重点关注目标定位。
 
-### 框
+### 框的概念
 
 **框的称呼**。有各种说法，比如：边界框、检测框、锚框，但无论哪种说法，本质上就是一个包裹对象的矩形边界罢了。当然其中的锚框一般定义为以某个像素为中心的框。
 
@@ -55,16 +55,51 @@ title: 目标检测
 
 ## 经典模型
 
-![目标检测历史发展图 - [A survey: object detection methods from CNN to transformer](https://link.springer.com/article/10.1007/s11042-022-13801-3)](https://cdn.dwj601.cn/images/20250408113117212.png)
+![[目标检测 - 历史发展图](https://link.springer.com/article/10.1007/s11042-022-13801-3)](https://cdn.dwj601.cn/images/20250408113117212.png)
 
 /// fc
-目标检测历史发展图 - [A survey: object detection methods from CNN to transformer](https://link.springer.com/article/10.1007/s11042-022-13801-3)
+[目标检测 - 历史发展图](https://link.springer.com/article/10.1007/s11042-022-13801-3)
 ///
 
-![目标检测历史发展图 - [Object Detection in 20 Years: A Survey](https://arxiv.org/pdf/1905.05055)](https://cdn.dwj601.cn/images/20250408113211717.jpg)
+### Seletive Search
+
+!!! tip
+    下面开始介绍两阶段目标检测算法。
+
+### RCNN
+
+### SPPNet
+
+### Fast RCNN
+
+### Faster RCNN
+
+[Paper - NeurIPS 2015 - Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](https://arxiv.org/pdf/1506.01497)
+
+[一文读懂 Faster RCNN - (zhihu.com)](https://zhuanlan.zhihu.com/p/31426458)
+
+![Faster RCNN 网络结构](https://cdn.dwj601.cn/images/20250415090902170.jpg)
 
 /// fc
-目标检测历史发展图 - [Object Detection in 20 Years: A Survey](https://arxiv.org/pdf/1905.05055)
+Faster RCNN 网络结构
 ///
 
-## 现代模型
+Faster RCNN 提出了区域候选网络 (Region Proposal Network, RPN) 策略，用以替代 SS 算法。RPN 提出了锚点的概念：特征图中的「一个元素」都对应了原始图像的「一个感受野区域」，该区域的中心像素称为锚点 (Anchor) ，以锚点为中心按一定的纵横比 (ratio) 和尺度 (scale) 绘制的框称为锚框 (Anchor box)。
+
+!!! tip
+    下面开始介绍单阶段目标检测算法。
+
+### YOLO
+
+
+
+### SDD
+
+!!! tip
+    下面开始介绍基于 Transformer 的目标检测算法。
+
+### DETR
+
+## 小目标检测
+
+## 开放词汇目标检测

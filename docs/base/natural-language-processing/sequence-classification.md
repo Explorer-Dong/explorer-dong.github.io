@@ -42,6 +42,10 @@ Danqi Chen 在 2014 年的工作 [A Fast and Accurate Dependency Parser using Ne
 
 最具影响力的词向量模型就是 Word2Vec，后续的 glove 模型又补充了分布式向量的距离度量方法。
 
+## LSTM
+
+前馈神经网络和循环神经网络已在 [深度学习](../deep-learning/index.md) 课程笔记中详细展开，此处不再赘述。直接切入长短时记忆 (Long Short-term Memory, LSTM) 网络。
+
 ## Transformer
 
 ## PreTrained

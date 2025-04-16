@@ -3515,18 +3515,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#前缀和算法" class="md-nav__link">
+  <a href="#前缀和" class="md-nav__link">
     <span class="md-ellipsis">
-      前缀和算法
+      前缀和
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#差分算法" class="md-nav__link">
+  <a href="#差分" class="md-nav__link">
     <span class="md-ellipsis">
-      差分算法
+      差分
     </span>
   </a>
   
@@ -3569,6 +3569,15 @@
   <a href="#分治" class="md-nav__link">
     <span class="md-ellipsis">
       分治
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#回溯" class="md-nav__link">
+    <span class="md-ellipsis">
+      回溯
     </span>
   </a>
   
@@ -5758,18 +5767,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#前缀和算法" class="md-nav__link">
+  <a href="#前缀和" class="md-nav__link">
     <span class="md-ellipsis">
-      前缀和算法
+      前缀和
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#差分算法" class="md-nav__link">
+  <a href="#差分" class="md-nav__link">
     <span class="md-ellipsis">
-      差分算法
+      差分
     </span>
   </a>
   
@@ -5812,6 +5821,15 @@
   <a href="#分治" class="md-nav__link">
     <span class="md-ellipsis">
       分治
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#回溯" class="md-nav__link">
+    <span class="md-ellipsis">
+      回溯
     </span>
   </a>
   
@@ -5922,12 +5940,12 @@
 <p class="admonition-title">Tip</p>
 <p>如果需要同时频繁地「区间修改、区间查询」，可以使用进阶数据结构诸如 <a href="../ds/#树状数组">树状数组</a> 或 <a href="../ds/#线段树">线段树</a> 来实现。</p>
 </div>
-<h3 id="前缀和算法">前缀和算法</h3>
+<h3 id="前缀和">前缀和</h3>
 <p>为了学习差分算法，我们有必要先学习前缀和算法。具体地，对于一个长度为 <span class="arithmatex">\(n\)</span> 的数组 <span class="arithmatex">\(a\)</span>，我们定义 <span class="arithmatex">\(s_i\)</span> 表示：</p>
 <div class="arithmatex">\[
 s_i=\sum_{j=0}^{i}a_j
 \]</div>
-<p>那么当进行区间查询求解数组中下标在闭区间 <span class="arithmatex">\([p,q]\)</span> 中的元素和时，只需要 <span class="arithmatex">\(s_q-s_{p-1}\)</span> 地 <span class="arithmatex">\(O(1)\)</span> 计算出来即可。我们称 <span class="arithmatex">\(s\)</span> 为数组 <span class="arithmatex">\(a\)</span> 的前缀和数组。为了维护出 <span class="arithmatex">\(s\)</span>，我们采用 <a href="../dp/">递推</a> 算法。即：</p>
+<p>那么当进行区间查询求解数组中下标在闭区间 <span class="arithmatex">\([p,q]\)</span> 中的元素和时，只需要 <span class="arithmatex">\(s_q-s_{p-1}\)</span> 地 <span class="arithmatex">\(O(1)\)</span> 计算出来即可。我们称 <span class="arithmatex">\(s\)</span> 为数组 <span class="arithmatex">\(a\)</span> 的前缀和数组。为了维护出 <span class="arithmatex">\(s\)</span>，我们采用 <a href="../dp/#引入">递推</a> 策略。即：</p>
 <div class="arithmatex">\[
 s_i=
 \begin{cases}
@@ -5935,7 +5953,7 @@ a_0,&amp;i=0\\
 s_{i-1}+a_i,&amp;i\ge1
 \end{cases}
 \]</div>
-<h3 id="差分算法">差分算法</h3>
+<h3 id="差分">差分</h3>
 <p>为了实现给数组中下标在闭区间 <span class="arithmatex">\([i,j]\)</span> 中的元素 <span class="arithmatex">\(s_{i\sim j}\)</span> 同时增加 <span class="arithmatex">\(x\)</span>，我们可以借助前缀和算法的思路来实现。具体地，仍然记原始数组为 <span class="arithmatex">\(a\)</span>，前缀和数组为 <span class="arithmatex">\(s\)</span>，如果将 <span class="arithmatex">\(a_i+x\)</span> 同时 <span class="arithmatex">\(a_{j+1}-x\)</span>，那么在维护前缀和数组 <span class="arithmatex">\(s\)</span> 时，<span class="arithmatex">\(s_{i\sim j}\)</span> 中的每一个元素就都增加了 <span class="arithmatex">\(x\)</span>。</p>
 <p>利用上述思路，我们可以将待操作的数组看做已经维护好的前缀和数组 <span class="arithmatex">\(s\)</span>，并利用 <span class="arithmatex">\(a_i=s_i-s_{i-1}\)</span> 计算出差分数组 <span class="arithmatex">\(a\)</span>，后续如果需要频繁地给待操作数组进行区间修改，只需要 <span class="arithmatex">\(O(1)\)</span> 地修改差分数组的两个边界即可。</p>
 <p>综上所述：</p>
@@ -5951,7 +5969,7 @@ s_{i-1}+a_i,&amp;i\ge1
 <li>如果 <span class="arithmatex">\(tar = a_{(l+r)/2}\)</span>，那么答案就是 <span class="arithmatex">\((l+r)/2\)</span>。</li>
 </ul>
 <h2 id="递归">递归</h2>
-<p>递归是编程入门的最后一关，也是打开新世界的钥匙。所谓递归，就是让一个函数自己调用自己从而实现一系列诸如：搜索、分治等算法。</p>
+<p>递归是编程入门的最后一关，也是打开新世界的钥匙。所谓递归，就是让一个函数自己调用自己从而实现一系列诸如：搜索、分治、回溯等算法。</p>
 <p>关于递归函数中调用自己的操作，你可以先不用 care 她到底是怎么执行的，你只需要关心她到底做了什么。比如现在有一个需求，需要封装一个函数 <code>sum(x)</code> 返回 <span class="arithmatex">\(\sum_{i=1}^x,\ (x\ge 1)\)</span> 的计算结果。你完全可以写出下面的程序：</p>
 <div class="language-c++ highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
@@ -5986,10 +6004,12 @@ s_{i-1}+a_i,&amp;i\ge1
 <div class="language-c++ highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">return_value</span><span class="w"> </span><span class="nf">function_name</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="cp"># 1. 递归终点</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="cp"># 2. 调用自己解决完全一样的逻辑但是规模更小的问题</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="p">(</span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="c1">// 1. 递归终点处理逻辑</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="c1">// 2. 当前状态处理逻辑</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="c1">// 3. 调用自己解决逻辑一致但规模更小的子问题</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>现在可以学习使用递归逻辑的一系列算法了。</p>
 <h3 id="搜索">搜索</h3>
@@ -6003,34 +6023,25 @@ s_{i-1}+a_i,&amp;i\ge1
 <div class="language-c++ highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
-<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">return_value</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="cp"># 1. 遍历当前结点</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="cp"># 2. 遍历当前结点的所有子结点</span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">return_type</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">node_index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="c1">// 1. 处理当前结点</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="c1">// 2. 遍历所有子结点</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>没有返回值？确实。如果我们单纯的遍历一棵树，是不需要返回值的，因为当前结点的所有子结点都遍历结束后，程序就会开始回溯。相比于上面的 <code>sum(x)</code> 函数，这里的递归终点是已经存在的。</p>
 <h3 id="分治">分治</h3>
-<p>分治是一个很有意思的递归算法。我们先不 care 分治算法是怎么样的。我们先看看校长是怎么惩罚翘课学生的：从最高的校长开始，ta 不 care 你上没上课，ta 只需要向各个学院的院长询问情况即可，而各个院长也不 care 你上没上课，ta 们只需要向所有年级的辅导员询问情况即可，而辅导员也不 care 你上没上课，ta 们只需要向所有的任课老师询问情况即可，任课老师上课点名了，你没来？那你有福了，任课老师和辅导员说你没来上课，辅导员和院长说你没来上课，院长和校长说你没来上课，校长知道了，那你彻底凉了（才怪）。</p>
-<p>至此一个现实场景中的分治策略就淋漓尽致地体现出来了。分治算法也是一个道理，只不过用代码模拟出来，仅此而已。所以为什么要这么干呢？本质上是因为通过这种方法可以 <a href="https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm#Advantages">将办事效率提升到最大</a>。</p>
-<p>当然聪明的你也一定发现了分治算法和上述递归算法中有一些类似的东西：比如校长向所有院长询问，所有院长向所有辅导员询问等等，这些其实都是更小规模的子问题。那么就可以套用递归的逻辑，不断调用自己即可。</p>
-<p>但是这里有一个问题，每一级的工作人员都需要先拿到下一级工作人员传递的数据，整合以后才能往上一级传递。这就需要先让终点阶段的递归函数先执行，先前的递归函数才能继续执行。而这就是分治的精髓，先递归处理终点，再回溯传递数据。比如下面的伪代码：</p>
-<div class="language-c++ highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span>
-<span class="normal"><a href="#__codelineno-4-4">4</a></span>
-<span class="normal"><a href="#__codelineno-4-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">return_value</span><span class="w"> </span><span class="nf">divide_and_conquer</span><span class="p">(</span><span class="n">stage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">    </span><span class="cp"># 1. 解决所有的子问题</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="cp"># 2. 联合处理所有子问题的结果</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="cp"># 3. 返回总结果</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="p">}</span>
-</span></code></pre></div></td></tr></table></div>
-<p>因此，分治算法可以总结为以下三个步骤：</p>
+<p>分治是一个很有意思的递归算法，其在上述搜索算法基础之上更进一步。分治算法的核心思想是将原问题转化为多个互不重叠（互斥）的子问题，通过优先求解子问题，来 <a href="https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm#Advantages">加速原问题的求解</a>。例如 <a href="#归并排序">归并排序算法</a> 就是分治的经典例子。当然，古有”分而治之，逐个击破“一说，也就是这个思想了。</p>
+<p>分治算法可以总结为以下三个步骤：</p>
 <ol>
-<li>divide。将待处理的问题划分为多个互斥的子问题；</li>
+<li>divide。将原问题问题划分为多个互不重叠的子问题；</li>
 <li>conquer。递归处理子问题；</li>
-<li>combine。联合子问题的处理结果得到最终的结果。</li>
+<li>combine。联合子问题的处理结果加速计算原问题的求解。</li>
 </ol>
 <p>当然，如果一个问题无法拆分为多个互斥的子问题，分治算法就不适用了，此时可以采用更高效的 <a href="../dp/">动态规划</a> 算法来尝试解决。</p>
+<h3 id="回溯">回溯</h3>
+<p>回溯算法在上述分治的基础之上更进一步。其实按理来说，递归函数的出栈就是回溯，但是这里介绍的回溯更多侧重于递归函数回溯后返回给当前问题的结果。举个例子，我们看看校长是怎么惩罚翘课学生的：从最高的校长开始，ta 不 care 你上没上课，ta 只需要向各个学院的院长询问情况即可，而各个院长也不 care 你上没上课，ta 们只需要向所有年级的辅导员询问情况即可，而辅导员也不 care 你上没上课，ta 们只需要向所有的任课老师询问情况即可，任课老师上课点名了，你没来？那你有福了，任课老师和辅导员说你没来上课，辅导员和院长说你没来上课，院长和校长说你没来上课，校长知道了，那你彻底凉了（才怪）。</p>
+<p>至此一个现实场景中的回溯策略就淋漓尽致地体现出来了。通过将原问题划分为多个不重叠的子问题，按照相同逻辑处理完子问题后，原问题得到了所有子问题的解，基于这些子问题的解就可以得到原问题的解，这就是回溯的思想。</p>
+<p>总结一下。聪明的你一定发现了，搜索、分治和回溯是层层递进的。搜索是正向试探的勇士，不断的寻找可能的结果，分治是懂得偷懒的领导，通过合理分配工作达到最佳办事效率，而回溯则是顾全大局的谋士，基于所有的已知结果做出最终的选择。</p>
 <h2 id="排序">排序</h2>
 <p>很多教程或教材都喜欢把这一块单独拿出来讲，可能因为排序算法是很多算法策略的具体实现。但这里有一些算法并不适合新手学习，如果遇到不怎么懂的排序策略，请先跳转到对应的知识点进行学习，之后再过来学习对应的排序算法会好很多。此处只讨论「快速排序」、「归并排序」和「堆排序」三种较为复杂的排序算法，其余排序算法请自行查阅。</p>
 <p>首先讲一个排序衍生出的概念：稳定性。如果一个排序算法，在对所有元素排序后，原来相同关键字的顺序保持不变，则称该排序算法是稳定的，反之如果相同关键字的顺序改变了就称该排序算法是不稳定的。</p>
@@ -6084,7 +6095,7 @@ s_{i-1}+a_i,&amp;i\ge1
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月15日 14:04:07">2025年4月15日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月16日 15:27:52">2025年4月16日</span>
   </span>
 
     

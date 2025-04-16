@@ -163,86 +163,87 @@ nav:
     - base/index.md
     - 人工智能基础:
       - Python 高级应用:
-        - base/python-application/index.md
+        - base/ai/python-application/index.md
       - 数字图像处理:
-        - base/digital-image-processing/index.md
+        - base/ai/digital-image-processing/index.md
       - 语音信号处理:
-        - base/speech-signal-processing/index.md
+        - base/ai/speech-signal-processing/index.md
       - 机器学习:
-        - base/machine-learning/index.md
-        - base/machine-learning/data.md
+        - base/ai/machine-learning/index.md
+        - base/ai/machine-learning/data.md
         - 模型:
-          - base/machine-learning/model/index.md
-          - base/machine-learning/model/linear-model.md
-          - base/machine-learning/model/decision-tree-model.md
-          - base/machine-learning/model/bayes-model.md
-          - base/machine-learning/model/probability-graph-model.md
-          - base/machine-learning/model/ensemble-learning.md
-          - base/machine-learning/model/lazy-learning.md
-          - base/machine-learning/model/cluster-learning.md
-          - base/machine-learning/model/semi-supervised-learning.md
-        - base/machine-learning/eval.md
+          - base/ai/machine-learning/model/index.md
+          - base/ai/machine-learning/model/linear-model.md
+          - base/ai/machine-learning/model/decision-tree-model.md
+          - base/ai/machine-learning/model/bayes-model.md
+          - base/ai/machine-learning/model/probability-graph-model.md
+          - base/ai/machine-learning/model/ensemble-learning.md
+          - base/ai/machine-learning/model/lazy-learning.md
+          - base/ai/machine-learning/model/cluster-learning.md
+          - base/ai/machine-learning/model/semi-supervised-learning.md
+        - base/ai/machine-learning/eval.md
       - 深度学习:
-        - base/deep-learning/index.md
+        - base/ai/deep-learning/index.md
       - 数据挖掘:
-        - base/data-mining/index.md
-        - base/data-mining/data-preprocess.md
-        - base/data-mining/association-analysis.md
-        - base/data-mining/anomaly-detection.md
+        - base/ai/data-mining/index.md
+        - base/ai/data-mining/data-preprocess.md
+        - base/ai/data-mining/association-analysis.md
+        - base/ai/data-mining/anomaly-detection.md
       - 自然语言处理:
-        - base/natural-language-processing/index.md
-        - base/natural-language-processing/sequence-classification.md
-        - base/natural-language-processing/sequence-generation.md
+        - base/ai/natural-language-processing/index.md
+        - base/ai/natural-language-processing/sequence-classification.md
+        - base/ai/natural-language-processing/sequence-generation.md
       - 计算机视觉:
-        - base/computer-vision/index.md
-        - base/computer-vision/image-classification.md
-        - base/computer-vision/object-detection.md
+        - base/ai/computer-vision/index.md
+        - base/ai/computer-vision/image-classification.md
+        - base/ai/computer-vision/object-detection.md
       - 智慧教育:
-        - base/intelligent-education/index.md
+        - base/ai/intelligent-education/index.md
     - 计算机基础:
       - 面向对象程序设计:
-        - base/object-oriented-programming/index.md
+        - base/cs/object-oriented-programming/index.md
       - 数字逻辑电路:
-        - base/digital-logic-circuit/index.md
+        - base/cs/digital-logic-circuit/index.md
       - 计算机系统基础:
-        - base/computer-system-basic/index.md
+        - base/cs/computer-system-basic/index.md
       - 数据库:
-        - base/database/index.md
+        - base/cs/database/index.md
       - 操作系统:
-        - base/operating-system/index.md
-        - base/operating-system/intro.md
-        - base/operating-system/concurrent.md
-        - base/operating-system/virtualization.md
-        - base/operating-system/persistence.md
+        - base/cs/operating-system/index.md
+        - base/cs/operating-system/intro.md
+        - base/cs/operating-system/concurrent.md
+        - base/cs/operating-system/virtualization.md
+        - base/cs/operating-system/persistence.md
       - 计算机组成:
-        - base/computer-organization/index.md
-        - base/computer-organization/cpu.md
-        - base/computer-organization/memory.md
-        - base/computer-organization/device.md
+        - base/cs/computer-organization/index.md
+        - base/cs/computer-organization/cpu.md
+        - base/cs/computer-organization/memory.md
+        - base/cs/computer-organization/device.md
       - 计算机网络:
-        - base/computer-network/index.md
-        - base/computer-network/application-layer.md
-        - base/computer-network/transport-layer.md
-        - base/computer-network/network-layer.md
-        - base/computer-network/data-link-layer.md
-        - base/computer-network/physical-layer.md
+        - base/cs/computer-network/index.md
+        - base/cs/computer-network/application-layer.md
+        - base/cs/computer-network/transport-layer.md
+        - base/cs/computer-network/network-layer.md
+        - base/cs/computer-network/data-link-layer.md
+        - base/cs/computer-network/physical-layer.md
     - 数理基础:
+      - base/math/index.md
       - 大学物理:
-        - base/college-physics/index.md
+        - base/math/college-physics/index.md
       - 高等数学:
-        - base/advanced-math/index.md
-        - base/advanced-math/differentiation.md
-        - base/advanced-math/integration.md
+        - base/math/advanced-math/index.md
+        - base/math/advanced-math/differentiation.md
+        - base/math/advanced-math/integration.md
       - 线性代数:
-        - base/linear-algebra/index.md
+        - base/math/linear-algebra/index.md
       - 概率论:
-        - base/probability-and-statistics/index.md
+        - base/math/probability-and-statistics/index.md
       - 最优化方法:
-        - base/optimization-method/index.md
-        - base/optimization-method/intro.md
-        - base/optimization-method/linear-search.md
-        - base/optimization-method/unconstraint-optimization.md
-        - base/optimization-method/constraint-optimization.md
+        - base/math/optimization-method/index.md
+        - base/math/optimization-method/intro.md
+        - base/math/optimization-method/linear-search.md
+        - base/math/optimization-method/unconstraint-optimization.md
+        - base/math/optimization-method/constraint-optimization.md
   - 炼丹:
     - data-science/index.md
     - data-science/numpy-basic.md
@@ -257,10 +258,9 @@ nav:
       - ds-and-algo/theory/base.md
       - ds-and-algo/theory/ds.md
       - ds-and-algo/theory/dp.md
-      - ds-and-algo/theory/string.md
       - ds-and-algo/theory/geometry.md
+      - ds-and-algo/theory/string.md
       - ds-and-algo/theory/graph.md
-      - ds-and-algo/theory/game.md
       - ds-and-algo/theory/math.md
     - 配套习题:
       - ds-and-algo/examples/index.md

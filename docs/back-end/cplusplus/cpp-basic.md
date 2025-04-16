@@ -390,4 +390,4 @@ TODO
 
 ## C++ 面向对象
 
-参见：[面向对象程序设计](../../base/object-oriented-programming/index.md)
+参见：[面向对象程序设计](../../base/cs/object-oriented-programming/index.md)

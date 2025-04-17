@@ -125,6 +125,8 @@ extra_javascript:
   - assets/javascripts/link_blank.js
   # 百度统计
   - assets/javascripts/baidu_tongji.js
+  # 首页脚本（暂时不用，会出现屏幕闪烁的情况）
+  # - assets/javascripts/homepage.js
   # 聊天机器人（暂时不用，后期有机会自己部署到国内服务器）
   # - assets/javascripts/robot.js
 extra_css:

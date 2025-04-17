@@ -145,6 +145,7 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       type: date
+      timezone: Asia/Shanghai
   # 显示文章作者（头像与 GitHub Profile 链接）
   - git-committers:
       repository: Explorer-Dong/explorer-dong.github.io

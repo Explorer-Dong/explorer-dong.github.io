@@ -3,17 +3,21 @@ title: 首页
 hide:
   - navigation
   - toc
+style: |
+  .md-content {
+    max-width: 800px !important;
+  }
 ---
 
 ## 本站定位
 
-欢迎访问！本网站以「AI / CS 学科笔记」与「开发技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun OSS 双平台部署。如果您觉得内容不错，欢迎⭐。
+欢迎访问！本网站以「AI/CS 学科笔记」与「开发技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun OSS 双平台部署。如果您觉得内容不错，欢迎⭐。
 
 *[Wiki]: 一种允许一群用户用简单的描述来创建和连接一组网页的社会计算系统。
 
 ## 共建社区
 
-若您有 **意见或建议**，欢迎参与贡献！贡献者名单将会出现在对应页面的底部，也会给您的 GitHub 账户累计贡献积分。详细的贡献方式如下：
+若您有 **意见或建议**，欢迎参与贡献！贡献者名单将会出现在对应页面的底部，也会给您的 GitHub 账户累计贡献积分。详细的贡献方式：
 
 1. 点击网站右上角的小猫娘前往 GitHub 仓库；
 2. 点击右上角 Fork 按钮；
@@ -24,7 +28,12 @@ hide:
 
 ## 行文规范
 
-本站点行文格式主要参考 [OI Wiki 格式手册](https://oi-wiki.org/intro/format/)。其中，单页文章标题为 H2 至 H3，低于 H3 等级的标题不应再出现，可以采用段首加粗的形式。根据该格式，您可以对每一篇文章有一个整体的阅读把握。
+本站点行文格式主要参考 OI Wiki 格式手册 [^oi-format]。其中：
+
+- 标题：单页文章标题为 H2 至 H3，低于 H3 等级的标题不应再出现，可以采用段首加粗的形式；
+- 链接：所有内链采用 `标题/章节` 的引用格式，所有外链采用 `标题/章节 | 作者/组织 - (顶级域名)` 的脚注格式。
+
+[^oi-format]: [格式手册 | OI Wiki - (oi-wiki.org)](https://oi-wiki.org/intro/format/)
 
 ## 站点地图
 
@@ -93,7 +102,7 @@ flowchart LR
     click 智慧教育 "./base/ai/intelligent-education/"
 ```
 
-<caption> 拓扑图 1. AI / CS 学科笔记 </caption>
+<caption> 拓扑图 1. AI/CS 学科笔记 </caption>
 
 ```mermaid
 graph LR

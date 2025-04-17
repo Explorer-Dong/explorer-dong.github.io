@@ -23,7 +23,7 @@ JSCPC 铜牌，2024 年 5 月，南京大学
 
 专栏撰写计划：结合上述冠军之路的知识大纲，从易到难剖析算法的理论原理，构成 [理论剖析](./theory/index.md) 部分；结合经典例题构成 [例题精讲](./examples/index.md) 部分；结合经典例题中的代码，将其中一些比较模板化的内容剥离出来构成代码模板：[C++](./templates.md)、[Python](./templates-py.md)，便于在一些可以携带纸质材料的场合使用。最后基于部分竞赛给出真题的解析，助力每一个有梦想的人。
 
-[^tree]: [XCPC 知识树 | walker shi - (zhihu.com)](https://zhuanlan.zhihu.com/p/454647571)
+[^tree]: [XCPC 知识树 | walker shi - (zhuanlan.zhihu.com)](https://zhuanlan.zhihu.com/p/454647571)
 
 [^dslib]: [数据结构算法库 | Explorer-Dong - (gtihub.com)](https://github.com/Explorer-Dong/DataStructure)
 

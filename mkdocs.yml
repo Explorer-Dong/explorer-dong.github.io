@@ -265,7 +265,7 @@ nav:
       - ds-and-algo/theory/string.md
       - ds-and-algo/theory/graph.md
       - ds-and-algo/theory/math.md
-    - 配套习题:
+    - 例题精讲:
       - ds-and-algo/examples/index.md
       - ds-and-algo/examples/examples-basic-algo.md
       - ds-and-algo/examples/examples-advanced-algo.md

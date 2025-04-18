@@ -78,7 +78,7 @@ std::vector<int> eular_prime_filter(int n) {
 假设 $x$ 需要在 $\% \ p$ 的情况下除以 $a$，若 $a$ 与 $p$ 互质，则该式可以转化为 $x$ 乘以 $a$ 的乘法逆元。我们将 $a$ 的乘法逆元记作 $inv(a)$。即：
 
 $$
-\frac{x}{a} \equiv x \cdot inv(a) \ (\bmod\ p)
+\frac{x}{a} \equiv x \cdot inv(a) \pmod p
 $$
 
 结合快速幂算法，计算乘法逆元的时间复杂度就是 $O(\log p)$。详细推导过程如下：
@@ -87,22 +87,22 @@ $$
 
 $$
 \begin{aligned}
-\frac{t}{a} \equiv t \cdot inv(a) \ (\bmod\ p) \\
-\frac{1}{a} \equiv 1 \cdot inv(a) \ (\bmod\ p) \\
-1 \equiv a \cdot inv(a) \ (\bmod\ p) \\
+\frac{t}{a} \equiv t \cdot inv(a) \pmod p \\
+\frac{1}{a} \equiv 1 \cdot inv(a) \pmod p \\
+1 \equiv a \cdot inv(a) \pmod p \\
 \end{aligned}
 $$
 
-2）由 [费马小定理](https://baike.baidu.com/item/费马小定理/4776158) 可知，对于两个互质的整数 $g,h$，一定有下式成立：
+2）由 [费马小定理](https://baike.baidu.com/item/费马小定理/4776158) 可知，若 $h$ 为质数（素数）且 $g$ 与 $h$ 互质（即 $g$ 不是 $h$ 的整数倍或者说 $\gcd(g,h)=1$），则有：
 
 $$
-1 \equiv g^{h-1} \ (\bmod\ h)
+1 \equiv g^{h-1} \pmod h
 $$
 
 3）于是本题的推导就可以得到，当 $a$ 与 $p$ 互质时，有：
 
 $$
-1 \equiv a^{p-1} \ (\bmod\ p)
+1 \equiv a^{p-1} \pmod p
 $$
 
 4）于是可得 $a$ 的乘法逆元：

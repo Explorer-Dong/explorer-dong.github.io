@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/images/wiki-16px.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#前言" class="md-skip">
+        <a href="#基于-hexo-deploy-git" class="md-skip">
           跳转至
         </a>
       
@@ -3325,7 +3325,7 @@
   
   
   <span class="md-ellipsis">
-    代码模板
+    代码模板 (C++)
     
   </span>
   
@@ -3641,7 +3641,7 @@
   
   
   <span class="md-ellipsis">
-    配套习题
+    例题精讲
     
   </span>
   
@@ -3658,7 +3658,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
-            配套习题
+            例题精讲
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4357,15 +4357,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
-    <span class="md-ellipsis">
-      前言
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#基于-hexo-deploy-git" class="md-nav__link">
     <span class="md-ellipsis">
       基于 hexo-deploy-git
@@ -4424,15 +4415,6 @@
   <a href="#原理" class="md-nav__link">
     <span class="md-ellipsis">
       原理
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#参考" class="md-nav__link">
-    <span class="md-ellipsis">
-      参考
     </span>
   </a>
   
@@ -5694,15 +5676,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
-    <span class="md-ellipsis">
-      前言
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#基于-hexo-deploy-git" class="md-nav__link">
     <span class="md-ellipsis">
       基于 hexo-deploy-git
@@ -5766,15 +5739,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#参考" class="md-nav__link">
-    <span class="md-ellipsis">
-      参考
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5814,7 +5778,8 @@
 
   <h1>Hexo 部署指南</h1>
 
-<h2 id="前言">前言</h2>
+<div align="center">
+
 <pre class="mermaid"><code>graph LR
   A(部署 Hexo)
   S1(基于 GitHub Pages)
@@ -5827,22 +5792,32 @@
   S1 --&gt; m1
   S1 --&gt; m2
   S2 --&gt; m3</code></pre>
+</div>
+
 <h2 id="基于-hexo-deploy-git">基于 hexo-deploy-git</h2>
 <p>该方法在 <a href="../build-your-own-website-with-hexo/#部署云端">Hexo 建站指南</a> 中已详细介绍，不再赘述。</p>
 <h2 id="基于-github-actions">基于 GitHub Actions</h2>
 <p>该方法可以利用 GitHub Actions 的 CI/CD 功能，省去「本地构建」与「手动部署」的操作，让 GitHub 平台帮助我们完成这两步操作，从而让我们只需要像维护项目代码一样专注于内容创作与版本管理，而无需关心其他任何事情。下面以「源码和站点同属一个仓库」的情景为例介绍具体地操作与工作流配置。</p>
-<p>1）创建一个空 GitHub 仓库、创建一个鉴权 token（该 token 可以让 GitHub Actions 以你的身份操作你的仓库）、赋予 GitHub Actions 读写权限</p>
-<p>创建一个鉴权 token：<code>头像 &gt;&gt; Settings &gt;&gt; Developer settings &gt;&gt; Personal access tokens &gt;&gt; Tokens (classic)</code></p>
+<p>1）创建一个空 GitHub 仓库、创建一个鉴权 token（该 token 可以让 GitHub Actions 以你的身份操作你的仓库）、赋予 GitHub Actions 读写权限：</p>
+<figure id="__fc_1">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501230044185.png" data-type="image" data-width="auto" data-height="auto" data-title="创建一个鉴权 token：头像 &gt;&gt; Settings &gt;&gt; Developer settings &gt;&gt; Personal access tokens &gt;&gt; Tokens (classic)" data-desc-position="bottom"><img alt="创建一个鉴权 token：头像 &gt;&gt; Settings &gt;&gt; Developer settings &gt;&gt; Personal access tokens &gt;&gt; Tokens (classic)" src="https://cdn.dwj601.cn/images/202501230044185.png" /></a></p>
-<p>赋予 GitHub Actions 读写权限：<code>Settings &gt;&gt; Actions &gt;&gt; General &gt;&gt; Workflow permissions</code></p>
+<figcaption>
+<p><span class="caption-prefix">图 1. </span> 创建一个鉴权 token：<code>头像 &gt;&gt; Settings &gt;&gt; Developer settings &gt;&gt; Personal access tokens &gt;&gt; Tokens (classic)</code></p>
+</figcaption>
+</figure>
+<figure id="__fc_2">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501230055064.png" data-type="image" data-width="auto" data-height="auto" data-title="赋予 GitHub Actions 读写权限：Settings &gt;&gt; Actions &gt;&gt; General &gt;&gt; Workflow permissions" data-desc-position="bottom"><img alt="赋予 GitHub Actions 读写权限：Settings &gt;&gt; Actions &gt;&gt; General &gt;&gt; Workflow permissions" src="https://cdn.dwj601.cn/images/202501230055064.png" /></a></p>
-<p>2）初始化一个博客项目</p>
+<figcaption>
+<p><span class="caption-prefix">图 2. </span> 赋予 GitHub Actions 读写权限：<code>Settings &gt;&gt; Actions &gt;&gt; General &gt;&gt; Workflow permissions</code></p>
+</figcaption>
+</figure>
+<p>2）初始化一个博客项目：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>hexo<span class="w"> </span>init
 </span></code></pre></div></td></tr></table></div>
-<p>3）编辑 _config.yml 文件中的 url 字段</p>
+<p>3）编辑 _config.yml 文件中的 url 字段：</p>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://explorer-dong.github.io/demo-github-actions</span>
 </span></code></pre></div></td></tr></table></div>
-<p>4）创建工作流文件 .github/workflows/bot.yml 并编辑如下内容</p>
+<p>4）创建工作流文件 .github/workflows/bot.yml 并编辑如下内容：</p>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
@@ -5895,7 +5870,7 @@
 </span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="w">          </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span><span class="w">   </span><span class="c1"># 存储站点的分支</span>
 </span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="w">          </span><span class="nt">folder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public</span><span class="w">     </span><span class="c1"># 构建出来的待部署的站点文件夹名称</span>
 </span></code></pre></div></td></tr></table></div>
-<p>5）初始化 Git 版本管理并连接到远程仓库</p>
+<p>5）初始化 Git 版本管理并连接到远程仓库：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -5916,18 +5891,28 @@
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1"># 首次推送</span>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
 </span></code></pre></div></td></tr></table></div>
-<p>6）在 GitHub Pages 上配置站点托管分支 <code>Settings &gt;&gt; Pages &gt;&gt; Build and deployment</code></p>
+<p>6）在 GitHub Pages 上配置站点托管分支 <code>Settings &gt;&gt; Pages &gt;&gt; Build and deployment</code>：</p>
+<figure id="__fc_3">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202501230103361.png" data-type="image" data-width="auto" data-height="auto" data-title="在 GitHub Pages 上配置站点托管分支：Settings &gt;&gt; Pages &gt;&gt; Build and deployment" data-desc-position="bottom"><img alt="在 GitHub Pages 上配置站点托管分支：Settings &gt;&gt; Pages &gt;&gt; Build and deployment" src="https://cdn.dwj601.cn/images/202501230103361.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 3. </span> 在 GitHub Pages 上配置站点托管分支：<code>Settings &gt;&gt; Pages &gt;&gt; Build and deployment</code></p>
+</figcaption>
+</figure>
 <p>GitHub Pages 按照上述工作流的指令，检测到 push 后开始执行，即 checkout、generate 和 deploy。等待所有流程结束后，重新加载 <code>https://&lt;username&gt;.github.io/&lt;project&gt;/</code> 就可以发现站点已经托管成功了！</p>
 <h2 id="基于-git-hooks">基于 Git Hooks</h2>
-<p>由于 GitHub Pages 服务使用的服务器在美丽国，不用魔法访问速度过慢，国内平替 Gitee Pages 已经停止服务了。故综合考虑还是部署到国内服务器上。当然这前提是你应已拥有一台国内备案的 <a href="https://www.aliyun.com/product/ecs?userCode=jpec1z57">云服务器</a> 和一个 <a href="https://wanwang.aliyun.com/domain/">域名</a>。如果觉得备案太麻烦，可以考虑入手一台 <a href="https://www.aliyun.com/product/ecs?userCode=jpec1z57">香港云服务器</a>。下面将基于 Git Hooks 工具，介绍如何将自己的 Hexo 静态博客项目部署到阿里云服务器上并持续集成、持续部署。</p>
+<p>由于 GitHub Pages 服务使用的服务器在美丽国，不用魔法访问速度过慢，国内平替 Gitee Pages 已经停止服务了。故综合考虑还是部署到国内服务器上。当然这前提是你应已拥有一台国内备案的云服务器 <sup id="fnref:ecs"><a class="footnote-ref" href="#fn:ecs">1</a></sup> 和一个域名 <sup id="fnref:domain"><a class="footnote-ref" href="#fn:domain">2</a></sup>。如果觉得备案太麻烦，可以考虑入手一台香港云服务器。下面将基于 Git Hooks 工具，介绍如何将自己的 Hexo 静态博客项目部署到阿里云服务器上并持续集成、持续部署。</p>
 <h3 id="云平台端">云平台端</h3>
-<p>1）域名解析。我们需要将自己的域名指向自己的服务器 IP，下图中记录值即你的云服务器 IP 地址</p>
+<p>1）域名解析。我们需要将自己的域名指向自己的服务器 IP，下图中记录值即你的云服务器 IP 地址：</p>
+<figure id="__fc_4">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404051247292.png" data-type="image" data-width="auto" data-height="auto" data-title="域名解析" data-desc-position="bottom"><img alt="域名解析" src="https://cdn.dwj601.cn/images/202404051247292.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 4. </span> 域名解析</p>
+</figcaption>
+</figure>
 <h3 id="服务器端">服务器端</h3>
 <p>使用终端连接工具连接到服务器后开始下面的操作。常用连接工具比如 MobaXterm。</p>
 <h4 id="git-hooks">Git Hooks</h4>
-<p>1）新建服务器用户。由于 root 用户的权限过大不够安全，因此我们创建一个新用户并赋予持续集成的权限</p>
+<p>1）新建服务器用户。由于 root 用户的权限过大不够安全，因此我们创建一个新用户并赋予持续集成的权限：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">3</a></span>
@@ -5944,7 +5929,7 @@
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="c1"># 编辑 /etc/sudoers 文件，在 root ALL=(ALL:ALL) ALL 后追加一句</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>git<span class="w"> </span><span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span><span class="w"> </span>ALL
 </span></code></pre></div></td></tr></table></div>
-<p>2）创建 Git Hooks。与 GitHub Pages 自动部署的工作流逻辑类似，我们将静态文件推送到云服务器后，需要让云服务器帮我们持续部署。我们可以借助 Git Hooks 的功能来实现</p>
+<p>2）创建 Git Hooks。与 GitHub Pages 自动部署的工作流逻辑类似，我们将静态文件推送到云服务器后，需要让云服务器帮我们持续部署。我们可以借助 Git Hooks 的功能来实现：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
@@ -5991,25 +5976,35 @@
 </span></code></pre></div></td></tr></table></div>
 <h4 id="ssh">SSH</h4>
 <p>为了绝对的自动化 CD，就需要避免所有的人为干预，例如要避免本地机与云主机通信时手动输入密码的操作，可以借助 SSH 来规避这个问题。</p>
-<p>1）本地生成密钥（公钥 + 私钥），连按三次回车即可生成默认配置的密钥（如果本地已经有密钥对了，这一步可以跳过）</p>
+<p>1）本地生成密钥（公钥 + 私钥），连按三次回车即可生成默认配置的密钥（如果本地已经有密钥对了，这一步可以跳过）：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>ssh-keygen
 </span></code></pre></div></td></tr></table></div>
+<figure id="__fc_5">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404071758590.png" data-type="image" data-width="auto" data-height="auto" data-title="使用 Git Bash 生成密钥" data-desc-position="bottom"><img alt="使用 Git Bash 生成密钥" src="https://cdn.dwj601.cn/images/202404071758590.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 5. </span> 使用 Git Bash 生成密钥</p>
+</figcaption>
+</figure>
 <p>2）在 <code>/home/git</code> 目录下右键新建名为 <code>.ssh</code> 的文件夹，并在该文件夹内新建名为 <code>authorized_keys</code> 的文本文件，将之前生成的公钥文件中的所有内容复制进去，保存。</p>
-<p>3）修改文件/文件夹的权限与属主</p>
+<p>3）修改文件/文件夹的权限 <sup id="fnref:chmod"><a class="footnote-ref" href="#fn:chmod">3</a></sup> 与属主 <sup id="fnref:chown"><a class="footnote-ref" href="#fn:chown">4</a></sup> ：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
 <span class="normal"><a href="#__codelineno-7-2">2</a></span>
 <span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/home/git/.ssh/authorized_keys
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>/home/git/.ssh
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>chown<span class="w"> </span>-R<span class="w"> </span>git:git<span class="w"> </span>/home/git/.ssh
 </span></code></pre></div></td></tr></table></div>
-<p>现在我们可以在本地测试 ssh 连接</p>
+<p>现在我们可以在本地测试 ssh 连接：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>ssh<span class="w"> </span>git@xxx.xxx.xxx.xxx<span class="w">  </span><span class="c1"># 填你的服务器 ip 地址</span>
 </span></code></pre></div></td></tr></table></div>
 <p>首次连接需要输入一个 <code>yes</code> 用来在本地存储主机信息。如果不需要输入密码就进入了命令行界面，表示 ssh 通信建立成功！</p>
+<figure id="__fc_6">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404071826099.png" data-type="image" data-width="auto" data-height="auto" data-title="ssh 连接成功" data-desc-position="bottom"><img alt="ssh 连接成功" src="https://cdn.dwj601.cn/images/202404071826099.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 6. </span> ssh 连接成功</p>
+</figcaption>
+</figure>
 <h4 id="nginx">Nginx</h4>
-<p>Nginx 实现了主机虚拟化的功能，即一台主机可以通过 Nginx 的分发功能对外提供多种服务。如果需要向外提供 https 服务，还需要准备一个 <a href="https://www.aliyun.com/product/cas?userCode=jpec1z57">SSL 证书</a>。然后在服务器上下载安装 Nginx 并编辑 nginx.conf 文件（以我的配置为例）</p>
+<p>Nginx 实现了主机虚拟化的功能，即一台主机可以通过 Nginx 的分发功能对外提供多种服务。如果需要向外提供 https 服务，还需要准备一个SSL 证书 <sup id="fnref:cas"><a class="footnote-ref" href="#fn:cas">5</a></sup>。然后在服务器上下载安装 Nginx 并编辑 nginx.conf 文件（以我的配置为例）：</p>
 <div class="language-nginx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
@@ -6048,31 +6043,73 @@
 <div class="language-yaml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://blog.dwj601.cn</span>
 </span></code></pre></div></td></tr></table></div>
 <p>deploy 字段配置如下：</p>
+<figure id="__fc_7">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404071833798.png" data-type="image" data-width="auto" data-height="auto" data-title="编辑 _config.yml 文件中的 deploy 字段" data-desc-position="bottom"><img alt="编辑 _config.yml 文件中的 deploy 字段" src="https://cdn.dwj601.cn/images/202404071833798.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 7. </span> 编辑 _config.yml 文件中的 deploy 字段</p>
+</figcaption>
+</figure>
 <p>最后我们在本地只需要执行 <code>hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</code> 即可实现一步部署到自己的服务器！</p>
 <p>部署后可以进入服务器的 <code>--work-tree</code> 目录，检查站点是否被 checkout 过来。下图表示 checkout 成功：</p>
+<figure id="__fc_8">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404071837567.png" data-type="image" data-width="auto" data-height="auto" data-title="checkout 成功" data-desc-position="bottom"><img alt="checkout 成功" src="https://cdn.dwj601.cn/images/202404071837567.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 8. </span> checkout 成功</p>
+</figcaption>
+</figure>
 <h3 id="原理">原理</h3>
-<p><strong>Hexo 持续部署的原理</strong>。如下图所示（我自己画的，如有不对请及时矫正）</p>
+<p><strong>Hexo 持续部署的原理</strong>。如下图所示（我自己画的，如有不对请及时矫正）：</p>
+<figure id="__fc_9">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404081614614.jpg" data-type="image" data-width="auto" data-height="auto" data-title="Hexo 持续部署的原理图" data-desc-position="bottom"><img alt="Hexo 持续部署的原理图" src="https://cdn.dwj601.cn/images/202404081614614.jpg" /></a></p>
-<p><strong>Git Hooks 的定义与工作原理</strong>。可以将其类比 github workflows，可以在我们做出某些行为的前后自动执行一些我们预设定的任务。此处使用到的就是 post-receive 任务，<a href="https://git-scm.com/docs/githooks#post-receive">原文</a> 是这样解释的：</p>
+<figcaption>
+<p><span class="caption-prefix">图 9. </span> Hexo 持续部署的原理图</p>
+</figcaption>
+</figure>
+<p><strong>Git Hooks 的定义与工作原理</strong> <sup id="fnref:githooks"><a class="footnote-ref" href="#fn:githooks">6</a></sup>。可以将其类比 github workflows，可以在我们做出某些行为的前后自动执行一些我们预设定的任务。此处使用到的就是 post-receive 任务，原文 <sup id="fnref:post-receive"><a class="footnote-ref" href="#fn:post-receive">7</a></sup> 是这样解释的：</p>
 <blockquote>
-<p>This hook is invoked by [git-receive-pack<a href="https://www.git-scm.com/docs/git-receive-pack">1]</a> when it reacts to <code>git push</code> and updates reference(s) in its repository. It executes on the remote repository once after all the refs have been updated.</p>
+<p>This hook is invoked by git-receive-pack when it reacts to <code>git push</code> and updates reference(s) in its repository. It executes on the remote repository once after all the refs have been updated.</p>
 </blockquote>
 <p>即当其接收到 push 任务并且存储库的索引被更新后，该钩子就会执行其中的内容。我们利用该功能，在将我们的站点 hexo deploy 到服务器后，hooks 检测到 git 索引更新了，就执行 checkout 命令推送上来的站点 checkout 到指定的站点托管目录下，从而实现了持续集成的功能。</p>
-<p><strong>SSH 的定义与工作原理</strong>。可以简单的将其理解为一种用来连接本地客户端与远程服务器的通信隧道。下面是 <a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/SSH.html">较为官方</a> 的解释：</p>
+<p><strong>SSH 的定义与工作原理</strong>。可以简单的将其理解为一种用来连接本地客户端与远程服务器的通信隧道。下面是较为官方 <sup id="fnref:ssh"><a class="footnote-ref" href="#fn:ssh">8</a></sup> 的解释：</p>
 <blockquote>
 <p>SSH（Secure Shell，安全外壳）是一种网络安全协议，通过加密和认证机制实现安全的访问和文件传输等业务。传统远程登录和文件传输方式，例如 Telnet、FTP，使用明文传输数据，存在很多的安全隐患。随着人们对网络安全的重视，这些方式已经慢慢不被接受。SSH 协议通过对网络数据进行加密和验证，在不安全的网络环境中提供了安全的网络服务。作为 Telnet 和其他不安全远程 shell 协议的安全替代方案，目前 SSH 协议已经被全世界广泛使用，大多数设备都支持 SSH 功能。</p>
 </blockquote>
 <p>用一张图来更加清晰直观的理解：</p>
+<figure id="__fc_10">
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202404081642038.png" data-type="image" data-width="auto" data-height="auto" data-title="SSH 工作原理图" data-desc-position="bottom"><img alt="SSH 工作原理图" src="https://cdn.dwj601.cn/images/202404081642038.png" /></a></p>
-<h3 id="参考">参考</h3>
-<p><a href="https://www.glimound.com/build-hexo-blog/">基于 Hexo 的静态博客网站搭建并部署至云服务器</a></p>
-<p><a href="https://www.runoob.com/linux/linux-comm-chmod.html">Linux chmod 命令</a></p>
-<p><a href="https://www.runoob.com/linux/linux-comm-chown.html">Linux chown 命令</a></p>
-<p><a href="https://githooks.com/">Git Hooks</a></p>
-<p><a href="https://git-scm.com/docs/githooks">githooks - Hooks used by Git</a></p>
-<p><a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/SSH.html">什么是 SSH？</a></p>
+<figcaption>
+<p><span class="caption-prefix">图 10. </span> SSH 工作原理图</p>
+</figcaption>
+</figure>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:ecs">
+<p><a href="https://www.aliyun.com/product/ecs?userCode=jpec1z57">云服务器 ECS | 阿里云 - (www.aliyun.com)</a>&#160;<a class="footnote-backref" href="#fnref:ecs" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:domain">
+<p><a href="https://wanwang.aliyun.com/domain/">域名选购 | 阿里云万网 - (wanwang.aliyun.com)</a>&#160;<a class="footnote-backref" href="#fnref:domain" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:chmod">
+<p><a href="https://www.runoob.com/linux/linux-comm-chmod.html">Linux chmod 命令 | 菜鸟教程 - (www.runoob.com)</a>&#160;<a class="footnote-backref" href="#fnref:chmod" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:chown">
+<p><a href="https://www.runoob.com/linux/linux-comm-chown.html">Linux chown 命令 | 菜鸟教程 - (www.runoob.com)</a>&#160;<a class="footnote-backref" href="#fnref:chown" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:cas">
+<p><a href="https://www.aliyun.com/product/cas?userCode=jpec1z57">数字证书管理服务 | 阿里云 - (www.aliyun.com)</a>&#160;<a class="footnote-backref" href="#fnref:cas" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:githooks">
+<p><a href="https://githooks.com/">Git Hooks | Matthew Hudson - (githooks.com)</a>&#160;<a class="footnote-backref" href="#fnref:githooks" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:post-receive">
+<p><a href="https://git-scm.com/docs/githooks#post-receive">post-receive | Git - (git-scm.com)</a>&#160;<a class="footnote-backref" href="#fnref:post-receive" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:ssh">
+<p><a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/SSH.html">什么是 SSH | Info-Finder - (info.support.huawei.com)</a>&#160;<a class="footnote-backref" href="#fnref:ssh" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -6095,7 +6132,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 08:54:11">2025年3月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月18日 13:10:00">2025年4月18日</span>
   </span>
 
     
@@ -6110,29 +6147,6 @@
 
     
     
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="贡献者">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/Explorer-Dong" class="md-author" title="@Explorer-Dong">
-          
-          <img src="https://avatars.githubusercontent.com/u/128051718?v=4&size=72" alt="Explorer-Dong">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
     
   </aside>
 

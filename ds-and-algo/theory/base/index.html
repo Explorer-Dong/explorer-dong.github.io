@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/images/wiki-16px.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -3330,7 +3330,7 @@
   
   
   <span class="md-ellipsis">
-    代码模板
+    代码模板 (C++)
     
   </span>
   
@@ -3543,6 +3543,30 @@
       二分
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="二分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#二分查找" class="md-nav__link">
+    <span class="md-ellipsis">
+      二分查找
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#二分答案" class="md-nav__link">
+    <span class="md-ellipsis">
+      二分答案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3829,7 +3853,7 @@
   
   
   <span class="md-ellipsis">
-    配套习题
+    例题精讲
     
   </span>
   
@@ -3846,7 +3870,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
-            配套习题
+            例题精讲
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5796,6 +5820,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="二分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#二分查找" class="md-nav__link">
+    <span class="md-ellipsis">
+      二分查找
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#二分答案" class="md-nav__link">
+    <span class="md-ellipsis">
+      二分答案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -5918,15 +5966,14 @@
 
 <p>基础因人而异，下面罗列的是个人认为相对基础的知识点。只有熟练掌握了以下基础算法，才有可能理解更复杂的算法从而解出更高难度的问题。</p>
 <h2 id="贪心">贪心</h2>
-<p>贪心算法其实并不简单，很多时候需要敢想敢猜并且证明往往并不容易，但因为这种方法套路不多，就放在第一个基础算法部分展开。</p>
-<p>贪心考虑的是局部最优，即每次做决策时都是选当前的局部最优解。当然，如果可以举出贪心后的反例，就可以考虑使用动态规划等其他全局性的策略来解决问题了。</p>
-<p>对于贪心问题的证明，我总结出了两个证明方法。如下：</p>
+<p>贪心考虑的是局部最优，即每次做决策时都是选当前的局部最优解。当然，如果能举出贪心的反例，即局部最优无法得出全局最优，就可以考虑使用 <a href="../dp/">动态规划</a> 等其他全局性策略来解决问题了。</p>
+<p>贪心算法其实并不简单，很多时候需要敢想敢猜并且证明并不容易，但因为这种方法套路不多，就放在第一个基础算法部分展开。对于贪心问题的证明，我总结出了以下证明方法：</p>
 <ul>
-<li>反证法：假设取一种方案比贪心方案更好，得出相反的结论；</li>
-<li>边界法：从边界开始考虑，因为满足边界条件更加容易枚举，从而进行后续的贪心。</li>
+<li>交换法：如果交换两个对象会得到更差的结果，那么原来的方案（顺序）就是合理的；</li>
+<li>边界法：由于边界也需要满足相同的条件，并且边界的情况往往更少，因此从边界开始考虑（枚举）往往可以证明出贪心的正确性。也可以理解为从更小规模的问题开始考虑。</li>
 </ul>
 <h2 id="前缀和与差分">前缀和与差分</h2>
-<p>前缀和与差分是两类算法，但由于是相辅相成的关系，故将其列在一起。两种算法的适用场景如下：</p>
+<p>前缀和与差分是两个相辅相成的算法。两者的适用场景如下：</p>
 <ul>
 <li>前缀和算法适用于「频繁求子数组之和、不频繁修改数组元素」的场景；</li>
 <li>差分算法适用于「频繁增减子数组元素值、不频繁求数组元素」的场景。</li>
@@ -5936,10 +5983,6 @@
 <li>前缀和算法适用于「频繁区间查询、不频繁单点修改」的场景；</li>
 <li>差分算法适用于「频繁区间修改、不频繁单点查询」的场景。</li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>如果需要同时频繁地「区间修改、区间查询」，可以使用进阶数据结构诸如 <a href="../ds/#树状数组">树状数组</a> 或 <a href="../ds/#线段树">线段树</a> 来实现。</p>
-</div>
 <h3 id="前缀和">前缀和</h3>
 <p>为了学习差分算法，我们有必要先学习前缀和算法。具体地，对于一个长度为 <span class="arithmatex">\(n\)</span> 的数组 <span class="arithmatex">\(a\)</span>，我们定义 <span class="arithmatex">\(s_i\)</span> 表示：</p>
 <div class="arithmatex">\[
@@ -5954,20 +5997,29 @@ s_{i-1}+a_i,&amp;i\ge1
 \end{cases}
 \]</div>
 <h3 id="差分">差分</h3>
-<p>为了实现给数组中下标在闭区间 <span class="arithmatex">\([i,j]\)</span> 中的元素 <span class="arithmatex">\(s_{i\sim j}\)</span> 同时增加 <span class="arithmatex">\(x\)</span>，我们可以借助前缀和算法的思路来实现。具体地，仍然记原始数组为 <span class="arithmatex">\(a\)</span>，前缀和数组为 <span class="arithmatex">\(s\)</span>，如果将 <span class="arithmatex">\(a_i+x\)</span> 同时 <span class="arithmatex">\(a_{j+1}-x\)</span>，那么在维护前缀和数组 <span class="arithmatex">\(s\)</span> 时，<span class="arithmatex">\(s_{i\sim j}\)</span> 中的每一个元素就都增加了 <span class="arithmatex">\(x\)</span>。</p>
-<p>利用上述思路，我们可以将待操作的数组看做已经维护好的前缀和数组 <span class="arithmatex">\(s\)</span>，并利用 <span class="arithmatex">\(a_i=s_i-s_{i-1}\)</span> 计算出差分数组 <span class="arithmatex">\(a\)</span>，后续如果需要频繁地给待操作数组进行区间修改，只需要 <span class="arithmatex">\(O(1)\)</span> 地修改差分数组的两个边界即可。</p>
+<p>为了实现给数组中下标在闭区间 <span class="arithmatex">\([i,j]\)</span> 中的元素 <span class="arithmatex">\(s_{i\sim j}\)</span> 同时增加 <span class="arithmatex">\(x\)</span> 的操作，我们可以借助前缀和算法的思想。具体地，仍然记原始数组为 <span class="arithmatex">\(a\)</span>，前缀和数组为 <span class="arithmatex">\(s\)</span>，如果将 <span class="arithmatex">\(a_i+x\)</span> 同时 <span class="arithmatex">\(a_{j+1}-x\)</span>，那么在维护前缀和数组 <span class="arithmatex">\(s\)</span> 时，<span class="arithmatex">\(s_{i\sim j}\)</span> 中的每一个元素就都增加了 <span class="arithmatex">\(x\)</span> 且 <span class="arithmatex">\(s\)</span> 中的其他元素值保持不变。</p>
+<p>利用上述思路，我们可以将待操作的数组看做已经维护好的前缀和数组 <span class="arithmatex">\(s\)</span>，并利用 <span class="arithmatex">\(a_i=s_i-s_{i-1}\)</span> 维护出数组 <span class="arithmatex">\(a\)</span>，后续如果需要频繁地给待操作数组 <span class="arithmatex">\(s\)</span> 进行区间修改，只需要 <span class="arithmatex">\(O(1)\)</span> 地修改 <span class="arithmatex">\(a\)</span> 数组的两个边界即可。这里的 <span class="arithmatex">\(a\)</span> 数组就叫做差分数组，这种修改思想就被称为差分算法。</p>
 <p>综上所述：</p>
 <ul>
-<li>前缀和算法高效的前提是数组元素尽可能保持不变，如果需要频繁变动数组元素，利用前缀和算法进行区间求和就不合适了；</li>
-<li>差分算法高效的前提是不需要频繁的索引数组元素，如果需要频繁索引数组元素，利用差分算法进行区间修改就不合适了。</li>
+<li>前缀和算法高效的前提是数组元素尽可能保持不变。如果需要频繁地变动数组元素，利用前缀和算法进行区间求和就不合适了；</li>
+<li>差分算法高效的前提是不需要频繁地索引数组元素，如果需要频繁地索引数组元素，利用差分算法进行区间修改也就不合适了。</li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>如果需要同时频繁地「区间修改、区间查询」，可以使用进阶数据结构诸如 <a href="../ds/#树状数组">树状数组</a> 或 <a href="../ds/#线段树">线段树</a> 来实现。</p>
+</div>
 <h2 id="二分">二分</h2>
-<p>二分本质上就是对「具有单调性的序列」进行加速查询的操作。假设有一个含有 <span class="arithmatex">\(n\)</span> 个元素的序列 <span class="arithmatex">\(a\)</span>，其属性 <span class="arithmatex">\(attr\)</span> 是单调递增的。现在想要查询属性 <span class="arithmatex">\(attr\)</span> 取值为 <span class="arithmatex">\(tar\)</span> 的元素在序列中的位置。显然我们可以遍历一边序列 <span class="arithmatex">\(a\)</span> 并逐个比较即可，但由于属性 <span class="arithmatex">\(attr\)</span> 是单调的，在下标范围为 <span class="arithmatex">\([l,r]\)</span> 的序列中查找时，只需要不断比较 <span class="arithmatex">\(tar\)</span> 和 <span class="arithmatex">\(a_{(l+r)/2}\)</span> 的值即可，具体地：</p>
+<p>二分本质上是对「单调序列」进行加速查询的操作。按照不同思考问题的角度，二分算法又分为二分查找与二分答案，其中二分查找可以理解为由因及果，而二分答案可以理解为由果追因。</p>
+<h3 id="二分查找">二分查找</h3>
+<p>如果你会按照字母的顺序查字典，那么你一定可以立刻理解二分查找算法。一般地，假设有一个含有 <span class="arithmatex">\(n\)</span> 个元素的序列 <span class="arithmatex">\(a\)</span>，其属性 <span class="arithmatex">\(attr\)</span> 是单调递增的。现在想要查询属性 <span class="arithmatex">\(attr\)</span> 取值为 <span class="arithmatex">\(tar\)</span> 的元素在序列中的位置 <span class="arithmatex">\(idx\)</span>。显然我们可以遍历一边序列 <span class="arithmatex">\(a\)</span> 得到结果，但由于属性 <span class="arithmatex">\(attr\)</span> 是单调的，在下标范围为 <span class="arithmatex">\([l,r]\)</span> 的序列中查找时，只需要不断比较 <span class="arithmatex">\(a_{(l+r)/2}\)</span> 和 <span class="arithmatex">\(tar\)</span> 的值即可，具体地：</p>
 <ul>
-<li>如果 <span class="arithmatex">\(tar &lt; a_{(l+r)/2}\)</span>，那么答案一定在 <span class="arithmatex">\([l,(l+r)/2]\)</span> 中；</li>
-<li>如果 <span class="arithmatex">\(tar &gt; a_{(l+r)/2}\)</span>，那么答案一定在 <span class="arithmatex">\([(l+r)/2,r]\)</span> 中；</li>
-<li>如果 <span class="arithmatex">\(tar = a_{(l+r)/2}\)</span>，那么答案就是 <span class="arithmatex">\((l+r)/2\)</span>。</li>
+<li>如果 <span class="arithmatex">\(a_{(l+r)/2}&gt;tar\)</span>，那么 <span class="arithmatex">\(idx\)</span> 一定在 <span class="arithmatex">\([l,(l+r)/2]\)</span> 中；</li>
+<li>如果 <span class="arithmatex">\(a_{(l+r)/2}&lt;tar\)</span>，那么 <span class="arithmatex">\(idx\)</span> 一定在 <span class="arithmatex">\([(l+r)/2,r]\)</span> 中；</li>
+<li>如果 <span class="arithmatex">\(a_{(l+r)/2}=tar\)</span>，那么 <span class="arithmatex">\(idx\)</span> 就是 <span class="arithmatex">\((l+r)/2\)</span>。</li>
 </ul>
+<p>这类题目一般都可以归纳为：给定自变量 <span class="arithmatex">\(x\)</span>，问在满足某个约束的情况下，<span class="arithmatex">\(x\)</span> 的最值是多少。假定 x 的值域为 <span class="arithmatex">\([low,high]\)</span>，那么这里的 <span class="arithmatex">\(x\)</span> 在 <span class="arithmatex">\([low,lim]\)</span> 时是满足（不满足）约束的，在 <span class="arithmatex">\([lim,high]\)</span> 是不满足（满足）约束的。这种性质也被称为「二段性」，具备了这种性质，我们直接在 <span class="arithmatex">\(x\)</span> 的值域中二分查找 <span class="arithmatex">\(lim\)</span> 即可。</p>
+<h3 id="二分答案">二分答案</h3>
+<p>二分答案其实就是二分查找，只不过你需要敏锐地发现需要「待求解的答案」与「满足约束的状态」满足上文提到的二段性，仅此而已。</p>
 <h2 id="递归">递归</h2>
 <p>递归是编程入门的最后一关，也是打开新世界的钥匙。所谓递归，就是让一个函数自己调用自己从而实现一系列诸如：搜索、分治、回溯等算法。</p>
 <p>关于递归函数中调用自己的操作，你可以先不用 care 她到底是怎么执行的，你只需要关心她到底做了什么。比如现在有一个需求，需要封装一个函数 <code>sum(x)</code> 返回 <span class="arithmatex">\(\sum_{i=1}^x,\ (x\ge 1)\)</span> 的计算结果。你完全可以写出下面的程序：</p>
@@ -6030,7 +6082,7 @@ s_{i-1}+a_i,&amp;i\ge1
 </span></code></pre></div></td></tr></table></div>
 <p>没有返回值？确实。如果我们单纯的遍历一棵树，是不需要返回值的，因为当前结点的所有子结点都遍历结束后，程序就会开始回溯。相比于上面的 <code>sum(x)</code> 函数，这里的递归终点是已经存在的。</p>
 <h3 id="分治">分治</h3>
-<p>分治是一个很有意思的递归算法，其在上述搜索算法基础之上更进一步。分治算法的核心思想是将原问题转化为多个互不重叠（互斥）的子问题，通过优先求解子问题，来 <a href="https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm#Advantages">加速原问题的求解</a>。例如 <a href="#归并排序">归并排序算法</a> 就是分治的经典例子。当然，古有”分而治之，逐个击破“一说，也就是这个思想了。</p>
+<p>分治是一个很有意思的递归算法，其在上述搜索算法基础之上更进一步。分治算法的核心思想是将原问题转化为多个互不重叠（互斥）的子问题，通过优先求解子问题，来加速原问题的求解 <sup id="fnref:adv"><a class="footnote-ref" href="#fn:adv">1</a></sup>。例如 <a href="#归并排序">归并排序算法</a> 就是分治的经典例子。当然，古有”分而治之，逐个击破“一说，也就是这个思想了。</p>
 <p>分治算法可以总结为以下三个步骤：</p>
 <ol>
 <li>divide。将原问题问题划分为多个互不重叠的子问题；</li>
@@ -6073,6 +6125,14 @@ s_{i-1}+a_i,&amp;i\ge1
 <li>对于输出堆顶并重新维护堆结构。输出是 <span class="arithmatex">\(O(1)\)</span> 的，重新维护堆结构其实就是删除完全二叉树的根结点，这里有一个技巧，就是将数组中的最后一个树中元素替换掉数组中的第一个元素（即根结点），然后 <code>down()</code> 这个新的根结点即可实现重新维护出一个堆结构，这样对于 <span class="arithmatex">\(n\)</span> 个元素，每次都要 <span class="arithmatex">\(O(\log n)\)</span> 地 <code>down()</code> 一次，那么就是 <span class="arithmatex">\(O(n\log n)\)</span>。</li>
 </ol>
 <p>最终的时间复杂度就是 <span class="arithmatex">\(O(n\log n)\)</span>。</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:adv">
+<p><a href="https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm#Advantages">Divide-and-conquer algorithm | WIKIPEDIA - (en.wikipedia.org)</a>&#160;<a class="footnote-backref" href="#fnref:adv" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -6095,7 +6155,7 @@ s_{i-1}+a_i,&amp;i\ge1
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月16日 23:27:52">2025年4月16日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月19日 00:34:47">2025年4月19日</span>
   </span>
 
     
@@ -6110,29 +6170,6 @@ s_{i-1}+a_i,&amp;i\ge1
 
     
     
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="贡献者">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/Explorer-Dong" class="md-author" title="@Explorer-Dong">
-          
-          <img src="https://avatars.githubusercontent.com/u/128051718?v=4&size=72" alt="Explorer-Dong">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
     
   </aside>
 

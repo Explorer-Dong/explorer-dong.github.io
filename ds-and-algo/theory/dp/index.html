@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/images/wiki-16px.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -3330,7 +3330,7 @@
   
   
   <span class="md-ellipsis">
-    代码模板
+    代码模板 (C++)
     
   </span>
   
@@ -3775,7 +3775,7 @@
   
   
   <span class="md-ellipsis">
-    配套习题
+    例题精讲
     
   </span>
   
@@ -3792,7 +3792,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
-            配套习题
+            例题精讲
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5809,7 +5809,7 @@
   <h1>动态规划</h1>
 
 <p>动态规划 (Dynamic Programming, DP) 算法是一种利用子问题的解来求解原问题的解的策略。通过实时存储子问题的解，该算法在原问题有大量「重叠子问题」的情况下尤为有效。</p>
-<p>当然，动态规划算法奏效的前提是原问题具有「最优子结构」的性质，即原问题可以被分解为多个子问题来求解；同时，动态规划算法还需要遵守「无后效性」原则，即当前问题依赖的子问题只能是已经被解决的问题，而不能是在未来才会被解决的问题。推荐阅读 <a href="https://leetcode.cn/discuss/post/223998/dong-tai-gui-hua-za-tan-by-heltion/">动态规划杂谈 | 何逊 - (leetcode.cn)</a> 来对动态规划有一个更深刻的认知。</p>
+<p>当然，动态规划算法奏效的前提是原问题具有「最优子结构」的性质，即原问题可以被分解为多个子问题来求解；同时，动态规划算法还需要遵守「无后效性」原则，即当前问题依赖的子问题只能是已经被解决的问题，而不能是在未来才会被解决的问题。推荐阅读《动态规划杂谈》 <sup id="fnref:talk"><a class="footnote-ref" href="#fn:talk">1</a></sup> 来对动态规划有一个更深刻的认知。</p>
 <p>从上面的文字可以看出，动态规划算法是基于子问题得到原问题的解，这个过程一般被称为状态转移。常见的有「被动转移」与「主动转移」两种策略，但这仅仅是思考习惯的区别，本文将会全部使用前者。下图展示了两种转移策略的逻辑：</p>
 <figure>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202408291538900.png" data-type="image" data-width="auto" data-height="auto" data-title="被动转移 vs. 主动转移" data-desc-position="bottom"><img alt="被动转移 vs. 主动转移" src="https://cdn.dwj601.cn/images/202408291538900.png" /></a></p>
@@ -5827,9 +5827,9 @@
 <p>上来就介绍各种 DP 模型似乎对新手并不友好，这里先简单过渡一下。在开始学习 DP 之前，你一定做过类似于求斐波那契数列的问题，即有一个函数定义为：</p>
 <div class="arithmatex">\[
 \begin{cases}
-f_i=1, &amp;i=1\\
-f_i=1, &amp;i=2\\
-f_i=f_{i-1}+f_{i-2}, &amp;i\ge3
+f_i = 1, &amp;i = 1\\
+f_i = 1, &amp;i = 2\\
+f_i = f_{i-1}+f_{i-2}, &amp;i\ge3
 \end{cases}
 \]</div>
 <p>你一定可以轻松地写出下面的搜索（递归）函数：</p>
@@ -5893,6 +5893,11 @@ f_i=f_{i-1}+f_{i-2}, &amp;i\ge3
 </span></code></pre></div></td></tr></table></div>
 <p>大家习惯于将其称作 <strong>记忆化搜索</strong>，因为其本质上还是搜索，只不过将中间的计算结果利用 <code>ans</code> 数组保存起来了而已。当然，把记忆化搜索写在这里并不代表其仅局限于此，有些时候记忆化搜索甚至可以解决高难度的题目，或者有助于你思考出递推（动态规划）写法。</p>
 <h2 id="线性-dp">线性 DP</h2>
+<p>线性 DP 顾名思义就是状态数组是线性的。注意：</p>
+<ul>
+<li>子串是连续的；</li>
+<li>子序列可以不是连续的。</li>
+</ul>
 <h2 id="背包-dp">背包 DP</h2>
 <h2 id="区间-dp">区间 DP</h2>
 <h2 id="数位-dp">数位 DP</h2>
@@ -5900,6 +5905,14 @@ f_i=f_{i-1}+f_{i-2}, &amp;i\ge3
 <h2 id="状压-dp">状压 DP</h2>
 <h2 id="概率-dp">概率 DP</h2>
 <h2 id="计数-dp">计数 DP</h2>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:talk">
+<p><a href="https://leetcode.cn/discuss/post/223998/dong-tai-gui-hua-za-tan-by-heltion/">动态规划杂谈 | 何逊 - (leetcode.cn)</a>&#160;<a class="footnote-backref" href="#fnref:talk" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -5922,7 +5935,7 @@ f_i=f_{i-1}+f_{i-2}, &amp;i\ge3
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月16日 23:27:52">2025年4月16日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月19日 00:34:47">2025年4月19日</span>
   </span>
 
     
@@ -5937,29 +5950,6 @@ f_i=f_{i-1}+f_{i-2}, &amp;i\ge3
 
     
     
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="贡献者">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/Explorer-Dong" class="md-author" title="@Explorer-Dong">
-          
-          <img src="https://avatars.githubusercontent.com/u/128051718?v=4&size=72" alt="Explorer-Dong">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
     
   </aside>
 

@@ -1229,12 +1229,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine-learning/eval/" class="md-nav__link">
+      <a href="../machine-learning/loss/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    评估
+    损失
     
   </span>
   
@@ -2914,7 +2914,7 @@
   
   
   <span class="md-ellipsis">
-    概率论
+    概率统计
     
   </span>
   
@@ -2926,7 +2926,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
-            概率论
+            概率统计
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5638,27 +5638,39 @@
 <h2 id="任务定义">任务定义</h2>
 <p>计算机视觉 (Computer Vision, CV) 是一个人工智能研究领域，主要利用「图像、视频」等数据解决「预测、生成」等下游任务。其中：</p>
 <ul>
-<li>预测任务比如：图像 / 视频分类 (Image / Video Classification)、语义分割 (Semantic Segmentation)、目标检测 (Object Detection) 等；</li>
-<li>生成任务比如：风格迁移、图像 / 视频生成等。</li>
+<li>预测任务比如：图像/视频分类 (Image/Video Classification)、目标检测 (Object Detection)等；</li>
+<li>生成任务比如：风格迁移、图像/视频生成等。</li>
 </ul>
 <p>数据预处理部分见 <a href="../digital-image-processing/">数字图像处理</a>。</p>
 <h2 id="参考内容">参考内容</h2>
 <p>理论部分参考：</p>
 <ul>
-<li><a href="https://szeliski.org/Book/">《Computer Vision: Algorithms and Applications, 2nd Edition》</a>；</li>
-<li>《计算机视觉理论与实践》<sup id="fnref:book"><a class="footnote-ref" href="#fn:book">1</a></sup>。</li>
+<li>《Computer Vision: Algorithms and Applications, 2nd Edition》 <sup id="fnref:cv-2nd"><a class="footnote-ref" href="#fn:cv-2nd">1</a></sup>；</li>
+<li>《计算机视觉理论与实践》<sup id="fnref:book"><a class="footnote-ref" href="#fn:book">2</a></sup>。</li>
 </ul>
 <p>实践部分参考：</p>
 <ul>
-<li><a href="https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome">Computer Vision Course - huggingface.co</a>；</li>
-<li><a href="https://zh.d2l.ai/index.html">《动手学深度学习》 - d2l.ai</a>；</li>
-<li><a href="https://pytorch.org/vision/stable/">torchvision - PyTorch</a>。</li>
+<li>Computer Vision Course <sup id="fnref:cv-hf"><a class="footnote-ref" href="#fn:cv-hf">3</a></sup>；</li>
+<li>《动手学深度学习》 <sup id="fnref:d2l"><a class="footnote-ref" href="#fn:d2l">4</a></sup>；</li>
+<li>PyTorch Vision Docs <sup id="fnref:pytorch"><a class="footnote-ref" href="#fn:pytorch">5</a></sup>。</li>
 </ul>
 <div class="footnote">
 <hr />
 <ol>
+<li id="fn:cv-2nd">
+<p><a href="https://szeliski.org/Book/">Computer Vision: Algorithms and Applications, 2nd Edition | Richard Szeliski - (szeliski.org)</a>&#160;<a class="footnote-backref" href="#fnref:cv-2nd" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
 <li id="fn:book">
-<p>刘家瑛, 等. <em>计算机视觉理论与实践</em>. 北京: 高等教育出版社, 2021.&#160;<a class="footnote-backref" href="#fnref:book" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>刘家瑛, 等. <em>计算机视觉理论与实践</em>. 北京: 高等教育出版社, 2021.&#160;<a class="footnote-backref" href="#fnref:book" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:cv-hf">
+<p><a href="https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome">Computer Vision Course | HuggingFace - (huggingface.co)</a>&#160;<a class="footnote-backref" href="#fnref:cv-hf" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:d2l">
+<p><a href="https://zh.d2l.ai/index.html">动手学深度学习 | 李沐 - (zh.d2l.ai)</a>&#160;<a class="footnote-backref" href="#fnref:d2l" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:pytorch">
+<p><a href="https://pytorch.org/vision/stable/">TorchVision | PyTorch - (pytorch.org)</a>&#160;<a class="footnote-backref" href="#fnref:pytorch" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -5684,7 +5696,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月16日 15:50:44">2025年4月16日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月22日 10:48:46">2025年4月22日</span>
   </span>
 
     

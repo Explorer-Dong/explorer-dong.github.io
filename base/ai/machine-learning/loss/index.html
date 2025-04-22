@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://wiki.dwj601.cn/base/ai/machine-learning/eval/">
+        <link rel="canonical" href="https://wiki.dwj601.cn/base/ai/machine-learning/loss/">
       
       
         <link rel="prev" href="../model/semi-supervised-learning/">
@@ -24,7 +24,7 @@
     
     
       
-        <title>评估 - Open Wiki Community</title>
+        <title>损失 - Open Wiki Community</title>
       
     
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#回归任务" class="md-skip">
+        <a href="#学习准则" class="md-skip">
           跳转至
         </a>
       
@@ -167,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              评估
+              损失
             
           </span>
         </div>
@@ -1243,7 +1243,7 @@
   
   
   <span class="md-ellipsis">
-    评估
+    损失
     
   </span>
   
@@ -1256,7 +1256,7 @@
   
   
   <span class="md-ellipsis">
-    评估
+    损失
     
   </span>
   
@@ -1277,6 +1277,15 @@
       本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#学习准则" class="md-nav__link">
+    <span class="md-ellipsis">
+      学习准则
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#回归任务" class="md-nav__link">
@@ -3032,7 +3041,7 @@
   
   
   <span class="md-ellipsis">
-    概率论
+    概率统计
     
   </span>
   
@@ -3044,7 +3053,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
-            概率论
+            概率统计
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -5690,6 +5699,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#学习准则" class="md-nav__link">
+    <span class="md-ellipsis">
+      学习准则
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#回归任务" class="md-nav__link">
     <span class="md-ellipsis">
       回归任务
@@ -5783,7 +5801,7 @@
 
 
   
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/ai/machine-learning/eval.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/ai/machine-learning/loss.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5792,17 +5810,20 @@
     
       
     
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/ai/machine-learning/eval.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/ai/machine-learning/loss.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-  <h1>评估</h1>
+  <h1>损失</h1>
 
-<p>模型在训练（学习、拟合）的过程中，必须要有一个目标，比如最小化目标函数或最大化目标函数，这里的目标函数都可以转化为损失函数，因此下文这两个概念不做区分。</p>
-<p>而目标函数不光可以用来训练模型，也可以评估模型。因此我们以评估模型为引，详细展开各个学习任务中常用的目标函数以及评估指标。最后简单介绍一下模型损失的来源以及超参调优的策略。</p>
+<p>模型在训练/学习/拟合的过程中，必须要有一个目标，比如最小化目标函数或最大化目标函数，一般将需要最小化的目标函数称作损失函数，下文这两个概念不做区分。</p>
+<p>考虑到模型的损失函数一般都是各种评价指标的“大杂烩”，因此本文标题也就取作《损失》。本文首先介绍损失函数的基本概念，然后展开损失函数在各种学习任务上的一般形态，最后补充模型损失的来源以及超参调优的策略。</p>
+<h2 id="学习准则">学习准则</h2>
+<p>学习准则就是指模型应当按照什么样的原则定义损失函数，常见的有：经验风险最小化、结构风险最小化、最大似然估计、最大后验概率共四种。《神经网络与深度学习》的 chapter2.3.1 <sup id="fnref:nndl"><a class="footnote-ref" href="#fn:nndl">1</a></sup> 中通过线性回归任务详细解释了这四种学习准则的理论与推导。</p>
+<p>有了损失函数，我们就需要最小化它，常见的优化方法有：梯度下降法、动量法等。更详细的内容见 <a href="../../../math/optimization-method/">最优化方法</a> 中的笔记，本文不再赘述，重点关注机器学习任务中损失函数的定义而非优化。</p>
 <h2 id="回归任务">回归任务</h2>
 <p>对于回归任务，模型输出的是一个具体的实数。常见的度量指标如下。</p>
 <p><strong>均方误差 (Mean Square Error, MSE)</strong>。即模型预测值 <span class="arithmatex">\(f(\boldsymbol{x}_i)\)</span> 与标签值 <span class="arithmatex">\(y_i\)</span> 的平均平方误差，也就是所谓的方差。取值范围为 <span class="arithmatex">\([0,+\infty]\)</span>，越小越好。如下式：</p>
@@ -6039,8 +6060,8 @@ F_{\beta} = \frac{(1+\beta^2) \cdot P \cdot R}{\beta^2\cdot P + R}
 </tbody>
 </table>
 </figure>
-<p>通过给目标函数添加正则化项，不仅可以防止过拟合，其中的 <span class="arithmatex">\(L_1\)</span> 正则化项还可以进行特征选择，因为其使得不重要特征的系数被惩罚得很小，通过特征选择也可以降低计算量从而提升计算效率。</p>
-<p>然而给目标函数添加正则化项并非万金油选项。在整个目标函数中正则化项有着举足轻重的意义，一旦正则化项的系数发生了微小的变动，对于整个模型的影响都是巨大的。因此有时添加正则化项并不一定能带来泛化性能的提升。</p>
+<p>通过给损失函数添加正则化项，不仅可以防止过拟合，其中的 <span class="arithmatex">\(L_1\)</span> 正则化项还可以进行特征选择，因为其使得不重要特征的系数被惩罚得很小，通过特征选择也可以降低计算量从而提升计算效率。</p>
+<p>然而给损失函数添加正则化项并非万金油选项。在整个损失函数中正则化项有着举足轻重的意义，一旦正则化项的系数发生了微小的变动，对于整个模型的影响都是巨大的。因此有时添加正则化项并不一定能带来泛化性能的提升。</p>
 <h3 id="误差来源">误差来源</h3>
 <p>如何从理论上来解释模型的泛化误差呢？我们引入「偏差方差分解」理论。</p>
 <p>在此之前我们需要知道偏差、方差和噪声的基本定义：</p>
@@ -6080,7 +6101,18 @@ E(f; D) = bias^2(x) + var(x) + \epsilon^2
 </figure>
 <h2 id="超参调优">超参调优</h2>
 <p>所谓的调参，是基于超参数进行的。我们知道一个模型有「可训练」的参数和「不可训练」的超参数，调参调的就是这里的超参数。在将数据集划分为训练集、验证集和测试集的情况下，一般使用训练集学习可训练的参数，使用验证集来度量不同超参数组合下的模型性能，得到最佳的超参数组合后才能最终使用测试集进行测试。</p>
-<p>常见的 <a href="https://zhuanlan.zhihu.com/p/234509605">超参调优方法</a> 有：网格搜索、随机搜索、贝叶斯优化。</p>
+<p>常见的超参调优方法 <sup id="fnref:hyper-param"><a class="footnote-ref" href="#fn:hyper-param">2</a></sup> 有：网格搜索、随机搜索、贝叶斯优化。</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:nndl">
+<p><a href="https://nndl.github.io/">邱锡鹏，神经网络与深度学习，机械工业出版社，2020.</a>&#160;<a class="footnote-backref" href="#fnref:nndl" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:hyper-param">
+<p><a href="https://zhuanlan.zhihu.com/p/234509605">4 种主流超参数调优技术 | McGL - (zhuanlan.zhihu.com)</a>&#160;<a class="footnote-backref" href="#fnref:hyper-param" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -6103,7 +6135,7 @@ E(f; D) = bias^2(x) + var(x) + \epsilon^2
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月16日 15:50:44">2025年4月16日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月22日 10:48:46">2025年4月22日</span>
   </span>
 
     

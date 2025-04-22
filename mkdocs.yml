@@ -184,7 +184,7 @@ nav:
           - base/ai/machine-learning/model/lazy-learning.md
           - base/ai/machine-learning/model/cluster-learning.md
           - base/ai/machine-learning/model/semi-supervised-learning.md
-        - base/ai/machine-learning/eval.md
+        - base/ai/machine-learning/loss.md
       - 深度学习:
         - base/ai/deep-learning/index.md
       - 数据挖掘:
@@ -239,7 +239,7 @@ nav:
         - base/math/advanced-math/integration.md
       - 线性代数:
         - base/math/linear-algebra/index.md
-      - 概率论:
+      - 概率统计:
         - base/math/probability-and-statistics/index.md
       - 最优化方法:
         - base/math/optimization-method/index.md

@@ -3,10 +3,6 @@ title: 首页
 hide:
   - navigation
   - toc
-style: |
-  .md-content {
-    max-width: 800px !important;
-  }
 ---
 
 ## 本站定位
@@ -71,15 +67,15 @@ flowchart LR
 
     高等数学(高等数学)
     线性代数(线性代数)
-    概率论(概率论)
+    概率统计(概率统计)
     最优化方法(最优化方法)
-    高等数学 & 线性代数 & 概率论 --> 最优化方法 --> 机器学习
+    概率统计 & 线性代数 & 高等数学 --> 最优化方法 --> 机器学习
     面向对象程序设计 --> Python高级应用
 
     %% 跳转链接
     click 高等数学 "./base/math/advanced-math/"
     click 线性代数 "./base/math/linear-algebra/"
-    click 概率论 "./base/math/probability-and-statistics/"
+    click 概率统计 "./base/math/probability-and-statistics/"
     click 最优化方法 "./base/math/optimization-method/"
 
     click 面向对象程序设计 "./base/cs/object-oriented-programming/"

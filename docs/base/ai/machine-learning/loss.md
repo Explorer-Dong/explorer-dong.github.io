@@ -155,13 +155,13 @@ ROC 曲线图与 AUC
 
 | 机器学习中的称呼 |      实际名称       |                          数学表达式                          |
 | :--------------: | :-----------------: | :----------------------------------------------------------: |
-|      一般式      | $p$ 范数的 $k$ 次方 | $\displaystyle \|\boldsymbol{x}\|_p^k = \left ( \left ( \sum_{i = 1}^{N}\vert x_i \vert^{p} \right)^{1/p}  \right)^k$ |
+|        /         | $p$ 范数的 $k$ 次方 | $\displaystyle \|\boldsymbol{x}\|_p^k = \left ( \left ( \sum_{i = 1}^{N}\vert x_i \vert^{p} \right)^{1/p}  \right)^k$ |
 |  $L_1$ 正则化项  |      $1$ 范数       | $\displaystyle \|\boldsymbol{x}\|_1 = \sum_{i = 1}^N \vert x_i \vert$ |
-|  $L_2$ 正则化项  |   $1$ 范数的平方    | $\displaystyle \|\boldsymbol{x}\|_2^2 = \left ( \left ( \sum_{i = 1}^{N}\vert x_i \vert^{2} \right)^{1/2}  \right)^2 = \sum_{i = 1}^{N}\vert x_i \vert^{2} = \sum_{i = 1}^{N}x_i^{2}$ |
-|    默认的范数    |      $2$ 范数       | $\displaystyle \|\boldsymbol{x}\| = \left (\sum_{i = 1}^{N}\vert x_i \vert^{2} \right)^{1/2}$ |
+|        /         |      $2$ 范数       | $\displaystyle \|\boldsymbol{x}\| = \left (\sum_{i = 1}^{N}\vert x_i \vert^{2} \right)^{1/2}$ |
+|  $L_2$ 正则化项  |   $2$ 范数的平方    | $\displaystyle \|\boldsymbol{x}\|_2^2 = \left ( \left ( \sum_{i = 1}^{N}\vert x_i \vert^{2} \right)^{1/2}  \right)^2 = \sum_{i = 1}^{N}\vert x_i \vert^{2} = \sum_{i = 1}^{N}x_i^{2}$ |
 
 /// tc | <
-正则化项表
+正则化项表（2 范数表达式的右下角标可以忽略，因为默认的范数一般都指 2 范数）
 ///
 
 通过给损失函数添加正则化项，不仅可以防止过拟合，其中的 $L_1$ 正则化项还可以进行特征选择，因为其使得不重要特征的系数被惩罚得很小，通过特征选择也可以降低计算量从而提升计算效率。

@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#前言" class="md-skip">
+        <a href="#查看" class="md-skip">
           跳转至
         </a>
       
@@ -5427,6 +5427,8 @@
       
         
       
+        
+      
     
     
     
@@ -5519,15 +5521,6 @@
       本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
-    <span class="md-ellipsis">
-      前言
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#查看" class="md-nav__link">
@@ -5675,9 +5668,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#工作区到未管理或上一个版本" class="md-nav__link">
+  <a href="#取消版本管理" class="md-nav__link">
     <span class="md-ellipsis">
-      工作区到未管理或上一个版本
+      取消版本管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#工作区到上一个版本" class="md-nav__link">
+    <span class="md-ellipsis">
+      工作区到上一个版本
     </span>
   </a>
   
@@ -5702,9 +5704,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#取消服务器的修改" class="md-nav__link">
+  <a href="#取消云端更改" class="md-nav__link">
     <span class="md-ellipsis">
-      取消服务器的修改
+      取消云端更改
     </span>
   </a>
   
@@ -5837,12 +5839,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../solve-git-problems/" class="md-nav__link">
+      <a href="../git-branch-conflict/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Git 问题解决
+    Git 分支冲突解读
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git 使用贴士
     
   </span>
   
@@ -5915,15 +5940,6 @@
       本页目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#前言" class="md-nav__link">
-    <span class="md-ellipsis">
-      前言
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#查看" class="md-nav__link">
@@ -6071,9 +6087,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#工作区到未管理或上一个版本" class="md-nav__link">
+  <a href="#取消版本管理" class="md-nav__link">
     <span class="md-ellipsis">
-      工作区到未管理或上一个版本
+      取消版本管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#工作区到上一个版本" class="md-nav__link">
+    <span class="md-ellipsis">
+      工作区到上一个版本
     </span>
   </a>
   
@@ -6098,9 +6123,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#取消服务器的修改" class="md-nav__link">
+  <a href="#取消云端更改" class="md-nav__link">
     <span class="md-ellipsis">
-      取消服务器的修改
+      取消云端更改
     </span>
   </a>
   
@@ -6205,14 +6230,10 @@
 
   <h1>Git 常用命令</h1>
 
-<h2 id="前言">前言</h2>
 <p>Git 是一款版本管理软件，适用目前绝大多数操作系统；GitHub 是一个代码托管平台，与 Git 没有任何关系。只不过 Git 可以基于 GitHub 进行分布式云存储与交互，因此往往需要结合二者从而达到相对良好的 Teamwork 状态。</p>
 <p>本文记录 Git 的常用命令。完整命令见官方文档：<a href="https://git-scm.com/book/zh/v2">https://git-scm.com/book/zh/v2</a>。</p>
 <p>下面的图和表概述了 Git 的整个逻辑框架。</p>
-<figure id="__tc_1">
-<figcaption>
-<p><span class="caption-prefix">表 1. </span> Git 的三个区域</p>
-</figcaption>
+<figure>
 <table>
 <thead>
 <tr>
@@ -6229,11 +6250,14 @@
 </tr>
 </tbody>
 </table>
+<figcaption>
+<p>Git 的三个区域</p>
+</figcaption>
 </figure>
-<figure id="__fc_1">
+<figure>
 <p><a class="glightbox" href="https://cdn.dwj601.cn/images/202402271037959.png" data-type="image" data-width="auto" data-height="auto" data-title="Git 操作命令概览" data-desc-position="bottom"><img alt="Git 操作命令概览" src="https://cdn.dwj601.cn/images/202402271037959.png" /></a></p>
 <figcaption>
-<p><span class="caption-prefix">图 1. </span> Git 的基本能命令</p>
+<p>Git 的基本命令</p>
 </figcaption>
 </figure>
 <p>下面将会从 5 个方面展开 Git 的命令。</p>
@@ -6436,123 +6460,143 @@
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a>git<span class="w"> </span>push
 </span></code></pre></div></td></tr></table></div>
 <h2 id="回溯">回溯</h2>
-<h3 id="工作区到未管理或上一个版本">工作区到未管理或上一个版本</h3>
+<h3 id="取消版本管理">取消版本管理</h3>
+<p>注意：该操作只能取消当前版本的文件管理，如果需要删除某个文件在所有版本中的管理，需要用到 <a href="../git-tips/#将文件从-git-系统中彻底删除">进阶命令</a>。</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
-<span class="normal"><a href="#__codelineno-20-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="c1"># 取消新文件的管理 or 将修改文件回溯到上一个版本的初始状态</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>--<span class="w"> </span>&lt;FileName&gt;
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span>
+<span class="normal"><a href="#__codelineno-20-4">4</a></span>
+<span class="normal"><a href="#__codelineno-20-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="c1"># 希望某些文件取消版本管理，但是依然保留在工作区</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>&lt;FileName&gt;
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;remove xxx file&#39;</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a>git<span class="w"> </span>push
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="c1"># 之后在 .gitignore 中增加上述 &lt;FileName&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li><code>--cached</code> 参数表示只删除已经 add/commit 的内容，原始文件保留，如果不加则会将原始文件也一并删除；</li>
+<li><code>-r</code> 参数表示针对文件夹进行递归删除。</li>
+</ul>
+<h3 id="工作区到上一个版本">工作区到上一个版本</h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="c1"># 取消新文件的管理 or 将修改文件回溯到上一个版本的初始状态</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>--<span class="w"> </span>&lt;FileName&gt;
 </span></code></pre></div></td></tr></table></div>
 <h3 id="暂存区到工作区状态">暂存区到工作区状态</h3>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
-<span class="normal"><a href="#__codelineno-21-2">2</a></span>
-<span class="normal"><a href="#__codelineno-21-3">3</a></span>
-<span class="normal"><a href="#__codelineno-21-4">4</a></span>
-<span class="normal"><a href="#__codelineno-21-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="c1"># 取消 add（一个文件），默认为 --mixed 模式，即保存修改但是从暂存区到工作区</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>git<span class="w"> </span>reset<span class="w"> </span>&lt;FileName&gt;
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a>
-</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="c1"># 取消 add（全部文件），默认为 --mixed 模式，即保存修改但是从暂存区到工作区</span>
-</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5"></a>git<span class="w"> </span>reset<span class="w"> </span>.
-</span></code></pre></div></td></tr></table></div>
-<h3 id="仓库区到暂存区状态">仓库区到暂存区状态</h3>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
 <span class="normal"><a href="#__codelineno-22-2">2</a></span>
 <span class="normal"><a href="#__codelineno-22-3">3</a></span>
 <span class="normal"><a href="#__codelineno-22-4">4</a></span>
-<span class="normal"><a href="#__codelineno-22-5">5</a></span>
-<span class="normal"><a href="#__codelineno-22-6">6</a></span>
-<span class="normal"><a href="#__codelineno-22-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="c1"># 移动 HEAD 指针到指定的版本</span>
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a>git<span class="w"> </span>reset<span class="w"> </span><span class="s1">&#39;&lt;commit_id&gt;&#39;</span><span class="w">        </span><span class="c1"># 默认为 --mixed，将指定版本与暂存区全部合并到工作区，暂存区清空</span>
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span><span class="s1">&#39;&lt;commit_id&gt;&#39;</span><span class="w"> </span><span class="c1"># 【更推荐】工作区不变，只是将指定版本合并到暂存区</span>
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span><span class="s1">&#39;&lt;commit_id&gt;&#39;</span><span class="w"> </span><span class="c1"># 【不推荐】工作区与暂存区全部被指定版本覆盖</span>
-</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5"></a>
-</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="c1"># 取消上一次 comment 并进入 vim 编辑模式</span>
-</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7"></a>git<span class="w"> </span>commit<span class="w"> </span>--amend
+<span class="normal"><a href="#__codelineno-22-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="c1"># 取消 add（一个文件），默认为 --mixed 模式，即保存修改但是从暂存区到工作区</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a>git<span class="w"> </span>reset<span class="w"> </span>&lt;FileName&gt;
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="c1"># 取消 add（全部文件），默认为 --mixed 模式，即保存修改但是从暂存区到工作区</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5"></a>git<span class="w"> </span>reset<span class="w"> </span>.
 </span></code></pre></div></td></tr></table></div>
-<h3 id="取消服务器的修改">取消服务器的修改</h3>
+<h3 id="仓库区到暂存区状态">仓库区到暂存区状态</h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">4</a></span>
+<span class="normal"><a href="#__codelineno-23-5">5</a></span>
+<span class="normal"><a href="#__codelineno-23-6">6</a></span>
+<span class="normal"><a href="#__codelineno-23-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="c1"># 移动 HEAD 指针到指定的版本</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>git<span class="w"> </span>reset<span class="w"> </span><span class="s1">&#39;&lt;commit_id&gt;&#39;</span><span class="w">        </span><span class="c1"># 默认为 --mixed，将指定版本与暂存区全部合并到工作区，暂存区清空</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span><span class="s1">&#39;&lt;commit_id&gt;&#39;</span><span class="w"> </span><span class="c1"># 【更推荐】工作区不变，只是将指定版本合并到暂存区</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span><span class="s1">&#39;&lt;commit_id&gt;&#39;</span><span class="w"> </span><span class="c1"># 【不推荐】工作区与暂存区全部被指定版本覆盖</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6"></a><span class="c1"># 取消上一次 comment 并进入 vim 编辑模式</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7"></a>git<span class="w"> </span>commit<span class="w"> </span>--amend
+</span></code></pre></div></td></tr></table></div>
+<h3 id="取消云端更改">取消云端更改</h3>
+<p>在本地强制推送即可：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>git<span class="w"> </span>push<span class="w"> </span>--force<span class="w"> </span>&lt;RemoteName&gt;<span class="w"> </span>&lt;BranchName&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>彻底删除某些文件在</p>
 <p>取消 <strong>当前版本</strong> 某文件（夹）的版本管理</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-23-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-23-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-23-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-23-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-23-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-23-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-23-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-23-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-23-10">10</a></span>
-<span class="normal"><a href="#__codelineno-23-11">11</a></span>
-<span class="normal"><a href="#__codelineno-23-12">12</a></span>
-<span class="normal"><a href="#__codelineno-23-13">13</a></span>
-<span class="normal"><a href="#__codelineno-23-14">14</a></span>
-<span class="normal"><a href="#__codelineno-23-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="c1"># 希望某些文件取消版本管理，但是依然保留在工作区</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>&lt;FileName&gt;
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;remove xxx file&#39;</span>
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a>git<span class="w"> </span>push
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a>在<span class="w"> </span>.gitignore<span class="w"> </span>中增加上述<span class="w"> </span>&lt;FileName&gt;
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6"></a>
-</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="c1"># 希望某些文件取消版本管理，同时在不保留在工作区</span>
-</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a>git<span class="w"> </span>rm<span class="w"> </span>&lt;FileName&gt;
-</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;delete xxx file(folder)&#39;</span>
-</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10"></a>git<span class="w"> </span>push
-</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11"></a>
-</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12"></a><span class="c1"># 如果希望某个目录离开暂存区可以添加 -r 参数，从而可以递归的将该目录下所有的文件 &amp; 子目录全部取消版本管理</span>
-</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13"></a>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>--cached<span class="w"> </span>&lt;Folder&gt;
-</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;remove xxx floder&#39;</span>
-</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15"></a>git<span class="w"> </span>push
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-25-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-25-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-25-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-25-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-25-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-25-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-25-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-25-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-25-10">10</a></span>
+<span class="normal"><a href="#__codelineno-25-11">11</a></span>
+<span class="normal"><a href="#__codelineno-25-12">12</a></span>
+<span class="normal"><a href="#__codelineno-25-13">13</a></span>
+<span class="normal"><a href="#__codelineno-25-14">14</a></span>
+<span class="normal"><a href="#__codelineno-25-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="c1"># 希望某些文件取消版本管理，但是依然保留在工作区</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>&lt;FileName&gt;
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;remove xxx file&#39;</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4"></a>git<span class="w"> </span>push
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5"></a>在<span class="w"> </span>.gitignore<span class="w"> </span>中增加上述<span class="w"> </span>&lt;FileName&gt;
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6"></a>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7"></a><span class="c1"># 希望某些文件取消版本管理，同时在不保留在工作区</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8"></a>git<span class="w"> </span>rm<span class="w"> </span>&lt;FileName&gt;
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;delete xxx file(folder)&#39;</span>
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10"></a>git<span class="w"> </span>push
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11"></a>
+</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12"></a><span class="c1"># 如果希望某个目录离开暂存区可以添加 -r 参数，从而可以递归的将该目录下所有的文件 &amp; 子目录全部取消版本管理</span>
+</span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13"></a>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>--cached<span class="w"> </span>&lt;Folder&gt;
+</span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;remove xxx floder&#39;</span>
+</span><span id="__span-25-15"><a id="__codelineno-25-15" name="__codelineno-25-15"></a>git<span class="w"> </span>push
 </span></code></pre></div></td></tr></table></div>
 <p>取消 <strong>所有版本</strong> 某文件。参考：<a href="https://blog.csdn.net/q258523454/article/details/83899911">单独删除某个文件的所有历史记录 - CSDN</a></p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>git<span class="w"> </span>filter-branch<span class="w"> </span>--force<span class="w"> </span>--index-filter<span class="w"> </span><span class="s1">&#39;git rm --cached --ignore-unmatch &lt;FilePath&gt;&#39;</span><span class="w"> </span>--prune-empty<span class="w"> </span>--tag-name-filter<span class="w"> </span>cat<span class="w"> </span>--<span class="w"> </span>--all
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>git<span class="w"> </span>filter-branch<span class="w"> </span>--force<span class="w"> </span>--index-filter<span class="w"> </span><span class="s1">&#39;git rm --cached --ignore-unmatch &lt;FilePath&gt;&#39;</span><span class="w"> </span>--prune-empty<span class="w"> </span>--tag-name-filter<span class="w"> </span>cat<span class="w"> </span>--<span class="w"> </span>--all
 </span></code></pre></div></td></tr></table></div>
 <p>希望某些文件加入版本管理</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>删除在<span class="w"> </span>.gitignore<span class="w"> </span>中的相应语句即可
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a>删除在<span class="w"> </span>.gitignore<span class="w"> </span>中的相应语句即可
 </span></code></pre></div></td></tr></table></div>
 <h2 id="分支">分支</h2>
 <h3 id="创建分支">创建分支</h3>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
-<span class="normal"><a href="#__codelineno-26-2">2</a></span>
-<span class="normal"><a href="#__codelineno-26-3">3</a></span>
-<span class="normal"><a href="#__codelineno-26-4">4</a></span>
-<span class="normal"><a href="#__codelineno-26-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="c1"># 创建分支</span>
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a>git<span class="w"> </span>branch<span class="w"> </span>&lt;BranchName&gt;
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3"></a>
-</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4"></a><span class="c1"># 远程同步</span>
-</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5"></a>git<span class="w"> </span>push<span class="w"> </span>&lt;RemoteName&gt;<span class="w"> </span>&lt;BranchName&gt;
-</span></code></pre></div></td></tr></table></div>
-<h3 id="删除分支">删除分支</h3>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
-<span class="normal"><a href="#__codelineno-27-2">2</a></span>
-<span class="normal"><a href="#__codelineno-27-3">3</a></span>
-<span class="normal"><a href="#__codelineno-27-4">4</a></span>
-<span class="normal"><a href="#__codelineno-27-5">5</a></span>
-<span class="normal"><a href="#__codelineno-27-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="c1"># 切换到另一个分支再进行删除操作</span>
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2"></a>git<span class="w"> </span>switch<span class="w"> </span>&lt;AnotherBranchName&gt;
-</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3"></a>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>&lt;BranchName&gt;
-</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4"></a>
-</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5"></a><span class="c1"># 远程同步</span>
-</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6"></a>git<span class="w"> </span>push<span class="w"> </span>&lt;RemoteName&gt;<span class="w"> </span>--delete<span class="w"> </span>&lt;BranchName&gt;
-</span></code></pre></div></td></tr></table></div>
-<h3 id="修改分支">修改分支</h3>
-<p>如果修改的分支为远程保护分支，则在远程更新之前，需要在远程相应的服务商家那里对保护分支进行重新设定</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
 <span class="normal"><a href="#__codelineno-28-2">2</a></span>
 <span class="normal"><a href="#__codelineno-28-3">3</a></span>
 <span class="normal"><a href="#__codelineno-28-4">4</a></span>
-<span class="normal"><a href="#__codelineno-28-5">5</a></span>
-<span class="normal"><a href="#__codelineno-28-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="c1"># 修改名称</span>
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a>git<span class="w"> </span>branch<span class="w"> </span>-m<span class="w"> </span>&lt;OldName&gt;<span class="w"> </span>&lt;NewName&gt;
+<span class="normal"><a href="#__codelineno-28-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="c1"># 创建分支</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a>git<span class="w"> </span>branch<span class="w"> </span>&lt;BranchName&gt;
 </span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a>
 </span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4"></a><span class="c1"># 远程同步</span>
-</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5"></a>git<span class="w"> </span>push<span class="w"> </span>&lt;RemoteName&gt;<span class="w"> </span>&lt;NewName&gt;
-</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6"></a>git<span class="w"> </span>push<span class="w"> </span>&lt;RemoteName&gt;<span class="w"> </span>--delete<span class="w"> </span>&lt;OldName&gt;
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5"></a>git<span class="w"> </span>push<span class="w"> </span>&lt;RemoteName&gt;<span class="w"> </span>&lt;BranchName&gt;
+</span></code></pre></div></td></tr></table></div>
+<h3 id="删除分支">删除分支</h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span>
+<span class="normal"><a href="#__codelineno-29-3">3</a></span>
+<span class="normal"><a href="#__codelineno-29-4">4</a></span>
+<span class="normal"><a href="#__codelineno-29-5">5</a></span>
+<span class="normal"><a href="#__codelineno-29-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="c1"># 切换到另一个分支再进行删除操作</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>git<span class="w"> </span>switch<span class="w"> </span>&lt;AnotherBranchName&gt;
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3"></a>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>&lt;BranchName&gt;
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4"></a>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="c1"># 远程同步</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6"></a>git<span class="w"> </span>push<span class="w"> </span>&lt;RemoteName&gt;<span class="w"> </span>--delete<span class="w"> </span>&lt;BranchName&gt;
+</span></code></pre></div></td></tr></table></div>
+<h3 id="修改分支">修改分支</h3>
+<p>如果修改的分支为远程保护分支，则在远程更新之前，需要在远程相应的服务商家那里对保护分支进行重新设定</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span>
+<span class="normal"><a href="#__codelineno-30-3">3</a></span>
+<span class="normal"><a href="#__codelineno-30-4">4</a></span>
+<span class="normal"><a href="#__codelineno-30-5">5</a></span>
+<span class="normal"><a href="#__codelineno-30-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="c1"># 修改名称</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2"></a>git<span class="w"> </span>branch<span class="w"> </span>-m<span class="w"> </span>&lt;OldName&gt;<span class="w"> </span>&lt;NewName&gt;
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3"></a>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4"></a><span class="c1"># 远程同步</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5"></a>git<span class="w"> </span>push<span class="w"> </span>&lt;RemoteName&gt;<span class="w"> </span>&lt;NewName&gt;
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6"></a>git<span class="w"> </span>push<span class="w"> </span>&lt;RemoteName&gt;<span class="w"> </span>--delete<span class="w"> </span>&lt;OldName&gt;
 </span></code></pre></div></td></tr></table></div>
 <h3 id="合并分支">合并分支</h3>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
-<span class="normal"><a href="#__codelineno-29-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="c1"># 首先将当前分支切换到需要被合并的分支 &lt;NowBranch&gt;，接着合并需要被合并的分支 &lt;TodoBranch&gt;</span>
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>git<span class="w"> </span>merge<span class="w"> </span>&lt;TodoBranch&gt;
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="c1"># 首先将当前分支切换到需要被合并的分支 &lt;NowBranch&gt;，接着合并需要被合并的分支 &lt;TodoBranch&gt;</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a>git<span class="w"> </span>merge<span class="w"> </span>&lt;TodoBranch&gt;
 </span></code></pre></div></td></tr></table></div>
 <h3 id="拉取分支">拉取分支</h3>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
-<span class="normal"><a href="#__codelineno-30-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="c1"># 在 clone 后只会拉取默认分支，想要拉取其余的分支执行</span>
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </span>&lt;RemoteName&gt;/&lt;BranchName&gt;
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span>
+<span class="normal"><a href="#__codelineno-32-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="c1"># 在 clone 后只会拉取默认分支，想要拉取其余的分支执行</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>-t<span class="w"> </span>&lt;RemoteName&gt;/&lt;BranchName&gt;
 </span></code></pre></div></td></tr></table></div>
 
 
@@ -6576,7 +6620,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月23日 08:54:11">2025年3月23日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月27日 17:28:42">2025年4月27日</span>
   </span>
 
     

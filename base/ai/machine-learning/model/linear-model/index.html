@@ -1125,6 +1125,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#其他回归模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他回归模型
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3138,6 +3147,10 @@
           
         
       
+        
+      
+        
+      
     
     
     
@@ -3167,6 +3180,11 @@
 
             </a>
             
+              
+              <label class="md-nav__link " for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
           </div>
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
@@ -3176,6 +3194,52 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../math/probability-and-statistics/prob/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概率论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../math/probability-and-statistics/stat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数理统计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
           </ul>
@@ -5854,6 +5918,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#其他回归模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他回归模型
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6087,11 +6160,11 @@ x_{N1} &amp; x_{N2} &amp; \cdots &amp; x_{ND} &amp; 1
 <div class="arithmatex">\[
 \boldsymbol X^T\boldsymbol X \boldsymbol w = \boldsymbol X^T \boldsymbol y
 \]</div>
-<p>情况一：若 <span class="arithmatex">\(\boldsymbol X^T \boldsymbol X\)</span> 可逆，则最佳参数 <span class="arithmatex">\(\boldsymbol w^*\)</span> 就是一个闭式解：</p>
+<p><strong>情况一：<span class="arithmatex">\(\boldsymbol X^T \boldsymbol X\)</span> 可逆</strong>。最佳参数 <span class="arithmatex">\(\boldsymbol w^*\)</span> 就是一个闭式解：</p>
 <div class="arithmatex">\[
 \boldsymbol w^* = (\boldsymbol X^T \boldsymbol X)^{-1}\boldsymbol X^T \boldsymbol y
 \]</div>
-<p>情况二：若 <span class="arithmatex">\(\boldsymbol X^T \boldsymbol X\)</span> 不可逆，我们引入 <span class="arithmatex">\(L_2\)</span> 正则化项 <span class="arithmatex">\(\alpha \| \boldsymbol w \|^2\)</span>。现在的损失函数形为：</p>
+<p><strong>情况二：<span class="arithmatex">\(\boldsymbol X^T \boldsymbol X\)</span> 不可逆</strong>。引入 <span class="arithmatex">\(L_2\)</span> 正则化项 <span class="arithmatex">\(\alpha \| \boldsymbol w \|^2\)</span>。现在的损失函数形为：</p>
 <div class="arithmatex">\[
 \mathcal L_{\boldsymbol w} = (\boldsymbol y - \boldsymbol X \boldsymbol w) ^T (\boldsymbol y - \boldsymbol X \boldsymbol w) + \alpha \| \boldsymbol w \|^2
 \]</div>
@@ -6100,6 +6173,18 @@ x_{N1} &amp; x_{N2} &amp; \cdots &amp; x_{ND} &amp; 1
 \boldsymbol w^* = (\boldsymbol X^T \boldsymbol X + \alpha \boldsymbol I)^{-1} \boldsymbol X^T \boldsymbol y
 \]</div>
 <p>上式中 <span class="arithmatex">\(\alpha\)</span> 就变成了超参数。</p>
+<h3 id="其他回归模型">其他回归模型</h3>
+<p>还有很多其他模型也支持回归任务，包括但不限于：支持向量机回归、决策树回归、XGBoost 回归、随机森林回归。当然，线性回归根据学习准则的不同，也有一些变种，包括：</p>
+<p><strong>LASSO 回归</strong> <sup id="fnref:lasso"><a class="footnote-ref" href="#fn:lasso">1</a></sup>。在损失函数中增加 <span class="arithmatex">\(L1\)</span> 正则化项：</p>
+<div class="arithmatex">\[
+\mathcal L_{\boldsymbol w} = (\boldsymbol y - \boldsymbol X \boldsymbol w) ^T (\boldsymbol y - \boldsymbol X \boldsymbol w) + \alpha \| \boldsymbol w \|_1
+\]</div>
+<p>同理 <span class="arithmatex">\(\alpha\)</span> 就变成了超参数，当然损失的第一部分前面也可以添加系数。</p>
+<p><strong>ElasticNet 回归</strong> <sup id="fnref:elasticnet"><a class="footnote-ref" href="#fn:elasticnet">2</a></sup>。在损失函数中增加 <span class="arithmatex">\(L1\)</span> 和 <span class="arithmatex">\(L2\)</span> 正则化项：</p>
+<div class="arithmatex">\[
+\mathcal L_{\boldsymbol w} = (\boldsymbol y - \boldsymbol X \boldsymbol w) ^T (\boldsymbol y - \boldsymbol X \boldsymbol w) + \alpha \rho \| \boldsymbol w \|_1 + \frac{\alpha (1-\rho)}{2} \| \boldsymbol w \|^2
+\]</div>
+<p>其中 <span class="arithmatex">\(\alpha\)</span> 与 <span class="arithmatex">\(\rho\)</span> 就变成了超参数。</p>
 <h2 id="逻辑回归">逻辑回归</h2>
 <p>若想要利用线性回归的实数结果进行「二分类」，我们需要将回归结果映射成一个固定区间，便于定义阈值从而二分类。常见的映射函数如下：</p>
 <div class="arithmatex">\[
@@ -6323,6 +6408,17 @@ h^*(x) = \sum_{i = 1}^m\alpha_i \kappa(x, x_i)
 <div class="arithmatex">\[
 P_i =\frac{e^{x_i}}{\sum_{j = 1}^n e^{x_j}}
 \]</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:lasso">
+<p><a href="https://scikit-learn.org.cn/view/411.html">sklearn.linear_model.Lasso | scikit-learn 中文社区 - (scikit-learn.org.cn)</a>&#160;<a class="footnote-backref" href="#fnref:lasso" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:elasticnet">
+<p><a href="https://scikit-learn.org.cn/view/404.html">sklearn.linear_model.ElasticNet | scikit-learn 中文社区 - (scikit-learn.org.cn)</a>&#160;<a class="footnote-backref" href="#fnref:elasticnet" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -6345,7 +6441,7 @@ P_i =\frac{e^{x_i}}{\sum_{j = 1}^n e^{x_j}}
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月16日 15:50:44">2025年4月16日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月27日 13:10:57">2025年4月27日</span>
   </span>
 
     

@@ -50,13 +50,13 @@ $$
 \boldsymbol X^T\boldsymbol X \boldsymbol w = \boldsymbol X^T \boldsymbol y
 $$
 
-情况一：若 $\boldsymbol X^T \boldsymbol X$ 可逆，则最佳参数 $\boldsymbol w^*$ 就是一个闭式解：
+**情况一：$\boldsymbol X^T \boldsymbol X$ 可逆**。最佳参数 $\boldsymbol w^*$ 就是一个闭式解：
 
 $$
 \boldsymbol w^* = (\boldsymbol X^T \boldsymbol X)^{-1}\boldsymbol X^T \boldsymbol y
 $$
 
-情况二：若 $\boldsymbol X^T \boldsymbol X$ 不可逆，我们引入 $L_2$ 正则化项 $\alpha \| \boldsymbol w \|^2$。现在的损失函数形为：
+**情况二：$\boldsymbol X^T \boldsymbol X$ 不可逆**。引入 $L_2$ 正则化项 $\alpha \| \boldsymbol w \|^2$。现在的损失函数形为：
 
 $$
 \mathcal L_{\boldsymbol w} = (\boldsymbol y - \boldsymbol X \boldsymbol w) ^T (\boldsymbol y - \boldsymbol X \boldsymbol w) + \alpha \| \boldsymbol w \|^2
@@ -69,6 +69,30 @@ $$
 $$
 
 上式中 $\alpha$ 就变成了超参数。
+
+### 其他回归模型
+
+还有很多其他模型也支持回归任务，包括但不限于：支持向量机回归、决策树回归、XGBoost 回归、随机森林回归。当然，线性回归根据学习准则的不同，也有一些变种，包括：
+
+**LASSO 回归** [^lasso]。在损失函数中增加 $L1$ 正则化项：
+
+[^lasso]: [sklearn.linear_model.Lasso | scikit-learn 中文社区 - (scikit-learn.org.cn)](https://scikit-learn.org.cn/view/411.html)
+
+$$
+\mathcal L_{\boldsymbol w} = (\boldsymbol y - \boldsymbol X \boldsymbol w) ^T (\boldsymbol y - \boldsymbol X \boldsymbol w) + \alpha \| \boldsymbol w \|_1
+$$
+
+同理 $\alpha$ 就变成了超参数，当然损失的第一部分前面也可以添加系数。
+
+**ElasticNet 回归** [^elasticnet]。在损失函数中增加 $L1$ 和 $L2$ 正则化项：
+
+[^elasticnet]: [sklearn.linear_model.ElasticNet | scikit-learn 中文社区 - (scikit-learn.org.cn)](https://scikit-learn.org.cn/view/404.html)
+
+$$
+\mathcal L_{\boldsymbol w} = (\boldsymbol y - \boldsymbol X \boldsymbol w) ^T (\boldsymbol y - \boldsymbol X \boldsymbol w) + \alpha \rho \| \boldsymbol w \|_1 + \frac{\alpha (1-\rho)}{2} \| \boldsymbol w \|^2
+$$
+
+其中 $\alpha$ 与 $\rho$ 就变成了超参数。
 
 ## 逻辑回归
 

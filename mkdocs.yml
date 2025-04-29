@@ -200,6 +200,7 @@ nav:
         - base/ai/computer-vision/index.md
         - base/ai/computer-vision/image-classification.md
         - base/ai/computer-vision/object-detection.md
+        - base/ai/computer-vision/image-super-resolution.md
       - 智慧教育:
         - base/ai/intelligent-education/index.md
     - 计算机基础:

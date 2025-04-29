@@ -2,13 +2,17 @@
 title: 序列分类
 ---
 
-## 任务定义
+序列分类常见的任务有：依存分析、命名实体识别、情感识别等。
 
-序列分类常见的任务有：依存分析、命名实体识别、情感识别等。下面分别介绍这些任务的自然语言理论基础，只有掌握了这些语言规则，才能更好的理解序列分类模型的设计思想。
-
-### 依存分析
+## 依存分析
 
 依存分析任务定义为：判断句子中单词之间的依赖关系。属于基础任务中的句法分析，通过依存分析任务得到句子单词之间的依赖关系之后就可以更方便的进行机器翻译等更困难的任务。
+
+### Word2Vector
+
+为了将自然语言更加合理的进行向量表示。相比于 One-Hot 向量表示方法，训练出一个分布式词向量模型可以获得更好的向量表示，从而支持后续的下游任务。
+
+最具影响力的词向量模型就是 Word2Vec，后续的 glove 模型又补充了分布式向量的距离度量方法。
 
 <!-- 这里讲的理论基础并不是语言学上的规则（不同的语言有不同的规则，且很复杂，这里不展开），而是一套规范化的算法流程。最常见的就是 Nivre 在 2003 年提出的「Greedy Deterministic Transition-based Parsing」方法。
 
@@ -26,30 +30,32 @@ Transition-based Parsing 示例
 
 1）传统方法
 
-传统方法上，上述。。。
+传统方法上，TODO。
 
 2）深度模型
 
-Danqi Chen 在 2014 年的工作 [A Fast and Accurate Dependency Parser using Neural Networks](https://aclanthology.org/D14-1082) 中，提出了基于 FNN 的深度神经网络模型进行端到端的依存分析，解决了传统方法中特征需要人工构造、特征稀疏（0 太多）和特征不紧凑（维度太大）的问题。
+Danqi Chen 在 2014 年的工作 《A Fast and Accurate Dependency Parser using Neural Networks》[^依存分析] 中，提出了基于 FNN 的深度神经网络模型进行端到端的依存分析，解决了传统方法中特征需要人工构造、特征稀疏（0 太多）和特征不紧凑（维度太大）的问题。
 
-### 命名实体识别
+[^依存分析]: [A Fast and Accurate Dependency Parser using Neural Networks | Danqi Chen - (aclanthology.org)](https://aclanthology.org/D14-1082)
 
-### 情感识别
+## 命名实体识别
 
-## Word2Vector
-
-为了将自然语言更加合理的进行向量表示。相比于 One-Hot 向量表示方法，训练出一个分布式词向量模型可以获得更好的向量表示，从而支持后续的下游任务。
-
-最具影响力的词向量模型就是 Word2Vec，后续的 glove 模型又补充了分布式向量的距离度量方法。
-
-## LSTM
+### LSTM
 
 前馈神经网络和循环神经网络已在 [深度学习](../deep-learning/index.md) 课程笔记中详细展开，此处不再赘述。直接切入长短时记忆 (Long Short-term Memory, LSTM) 网络。
 
-## Transformer
+TODO
 
-## PreTrained
+## 情感识别
 
-在预训练模型的基础上，通过微调完成序列分类任务。
+### Transformer
 
-## PostTrained
+TODO
+
+### PreTrained
+
+TODO
+
+### PostTrained
+
+TODO

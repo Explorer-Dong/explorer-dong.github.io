@@ -299,9 +299,10 @@ nav:
       - back-end/cplusplus/cpp-basic.md
       - back-end/cplusplus/cpp-crow.md
     - Python:
+      - back-end/python/python-setup.md
       - back-end/python/python-basic.md
-      - back-end/python/python-tips.md
-      - back-end/python/python-flask.md
+      - back-end/python/python-advanced.md
+      - back-end/python/python-web.md
     - MySQL:
       - back-end/mysql/mysql-basic.md
       - back-end/mysql/mysql-problem-solve.md

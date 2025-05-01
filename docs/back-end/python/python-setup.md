@@ -1,8 +1,8 @@
 ---
-title: Python 使用贴士
+title: Python 配置
 ---
 
-本文记录 Python 相关的一些杂项信息，包括常规配置、外部工具、使用技巧等。
+本文记录 Python 的一些配置。包括外部工具、使用技巧等。
 
 ## 查看库的安装位置
 
@@ -135,3 +135,18 @@ pip config unset global.index-url
     ```bash
     pkill -9 -f python
     ```
+
+## 安装 CPython 库
+
+TODO
+
+```bash
+pip install pesq
+```
+
+报错：`error: Microsoft Visual C++ 14.0 or greater is required.`
+
+原因：没有 MSCV 的编译环境，需要下载 CPython 的构建工具
+
+- [Microsoft C++ 生成工具](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)
+- [WindowsCompilers](https://wiki.python.org/moin/WindowsCompilers)

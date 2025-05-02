@@ -13,10 +13,10 @@
         <link rel="canonical" href="https://wiki.dwj601.cn/back-end/python/python-basic/">
       
       
-        <link rel="prev" href="../../cplusplus/cpp-crow/">
+        <link rel="prev" href="../python-setup/">
       
       
-        <link rel="next" href="../python-tips/">
+        <link rel="next" href="../python-advanced/">
       
       
       <link rel="icon" href="../../../assets/images/wiki-16px.svg">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Python 语言基础 - Open Wiki Community</title>
+        <title>Python 基础 - Open Wiki Community</title>
       
     
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#python-的数据类型" class="md-skip">
+        <a href="#基础语法" class="md-skip">
           跳转至
         </a>
       
@@ -167,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python 语言基础
+              Python 基础
             
           </span>
         </div>
@@ -4624,6 +4624,8 @@
       
         
       
+        
+      
     
     
     
@@ -4667,6 +4669,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python 配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -4682,7 +4707,7 @@
   
   
   <span class="md-ellipsis">
-    Python 语言基础
+    Python 基础
     
   </span>
   
@@ -4695,7 +4720,7 @@
   
   
   <span class="md-ellipsis">
-    Python 语言基础
+    Python 基础
     
   </span>
   
@@ -4718,45 +4743,78 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#python-的数据类型" class="md-nav__link">
+  <a href="#基础语法" class="md-nav__link">
     <span class="md-ellipsis">
-      Python 的数据类型
+      基础语法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基础语法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#数据类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#关于引用" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于引用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#拷贝构造" class="md-nav__link">
+    <span class="md-ellipsis">
+      拷贝构造
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#python-的万物引用" class="md-nav__link">
+  <a href="#变量作用域" class="md-nav__link">
     <span class="md-ellipsis">
-      Python 的万物引用
+      变量作用域
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#python-的拷贝构造" class="md-nav__link">
+  <a href="#运算符优先级" class="md-nav__link">
     <span class="md-ellipsis">
-      Python 的拷贝构造
+      运算符优先级
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#python-的变量作用域" class="md-nav__link">
+  <a href="#数据结构" class="md-nav__link">
     <span class="md-ellipsis">
-      Python 的变量作用域
+      数据结构
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#python-的运算符优先级" class="md-nav__link">
+  <a href="#文件操作" class="md-nav__link">
     <span class="md-ellipsis">
-      Python 的运算符优先级
+      文件操作
     </span>
   </a>
   
@@ -4778,12 +4836,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../python-tips/" class="md-nav__link">
+      <a href="../python-advanced/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Python 使用贴士
+    Python 进阶
     
   </span>
   
@@ -4801,12 +4859,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../python-flask/" class="md-nav__link">
+      <a href="../python-web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Python 网络编程 (Flask)
+    Python Web 开发
     
   </span>
   
@@ -5763,45 +5821,78 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#python-的数据类型" class="md-nav__link">
+  <a href="#基础语法" class="md-nav__link">
     <span class="md-ellipsis">
-      Python 的数据类型
+      基础语法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基础语法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#数据类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#关于引用" class="md-nav__link">
+    <span class="md-ellipsis">
+      关于引用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#拷贝构造" class="md-nav__link">
+    <span class="md-ellipsis">
+      拷贝构造
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#python-的万物引用" class="md-nav__link">
+  <a href="#变量作用域" class="md-nav__link">
     <span class="md-ellipsis">
-      Python 的万物引用
+      变量作用域
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#python-的拷贝构造" class="md-nav__link">
+  <a href="#运算符优先级" class="md-nav__link">
     <span class="md-ellipsis">
-      Python 的拷贝构造
+      运算符优先级
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#python-的变量作用域" class="md-nav__link">
+  <a href="#数据结构" class="md-nav__link">
     <span class="md-ellipsis">
-      Python 的变量作用域
+      数据结构
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#python-的运算符优先级" class="md-nav__link">
+  <a href="#文件操作" class="md-nav__link">
     <span class="md-ellipsis">
-      Python 的运算符优先级
+      文件操作
     </span>
   </a>
   
@@ -5839,10 +5930,17 @@
   
 
 
-  <h1>Python 语言基础</h1>
+  <h1>Python 基础</h1>
 
 <p>本文记录 Python 基础。</p>
-<h2 id="python-的数据类型">Python 的数据类型</h2>
+<h2 id="基础语法">基础语法</h2>
+<ul>
+<li>变量、数据类型、运算符</li>
+<li>流程控制（<code>if-else</code>、<code>for</code>/<code>while</code> 循环）</li>
+<li>函数定义与参数传递（<code>def</code>、<code>lambda</code>）</li>
+<li>异常处理（<code>try-except</code>）</li>
+</ul>
+<h3 id="数据类型">数据类型</h3>
 <p>在 Python 中，可以按照「数据的可变性」可以将数据分为两大类：</p>
 <ul>
 <li>可变数据类型 (immutable data type)：列表 <code>list</code>、字典 <code>dict</code>、集合 <code>set</code>；</li>
@@ -5881,7 +5979,7 @@
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="sd">TypeError: &#39;str&#39; object does not support item assignment</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="python-的万物引用">Python 的万物引用</h2>
+<h3 id="关于引用">关于引用</h3>
 <p>在 Python 中「所有的一切都是引用」这句话已经听烂了，但是从未实践证实一番。所谓的万物引用可以从 C++ 的赋值和 Python 的赋值进行对比。</p>
 <p><strong>在 C++ 中，变量的赋值语句其实是在拷贝构造</strong>。即重新开辟一块内存空间用于被赋值的新变量。比如下面的程序：</p>
 <div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
@@ -6047,7 +6145,7 @@
 <li>Python 可变数据类型的引用，如果发生了修改操作，就等价于 C++ 的引用传递；</li>
 <li>Python 不可变数据类型的引用，如果发生了修改操作，就等价于 C++ 的值传递。</li>
 </ul>
-<h2 id="python-的拷贝构造">Python 的拷贝构造</h2>
+<h2 id="拷贝构造">拷贝构造</h2>
 <p>拷贝也就是所谓的复制，在 C++ 中，所有的拷贝都是重新申请内存。在 Python 中略有不同，由于常规的赋值都是引用，因此我们需要额外的 <code>copy</code> 库来完成拷贝工作。</p>
 <p>浅拷贝只会拷贝原始对象的第一层数据，其中的不可变数据就会拷贝出一个全新的对象，而其中的可变数据仍然是引用；深拷贝会递归的拷贝原始对象的每一层数据从而构造出一个全新的对象。</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
@@ -6105,7 +6203,7 @@
 </span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>由于嵌套的可变元素在浅拷贝的逻辑中是引用，就导致了浅拷贝的结果中嵌套的可变元素仍然会被后续的操作改变。而深拷贝就不会出现这种问题，数据被拷贝到了全新的内存。这告诉我们如果我们需要完全一份新数据，就必须使用深拷贝。</p>
-<h2 id="python-的变量作用域">Python 的变量作用域</h2>
+<h2 id="变量作用域">变量作用域</h2>
 <p><strong>在不修改变量的情况下</strong>。Python 查找变量的顺序是：</p>
 <ol>
 <li>先查找函数内部的变量；</li>
@@ -6152,7 +6250,7 @@
 </span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="sd">corgi</span>
 </span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="python-的运算符优先级">Python 的运算符优先级</h2>
+<h2 id="运算符优先级">运算符优先级</h2>
 <p>首先看一下 Python 都有哪些 <a href="https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#operators">运算符</a>：</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
 <span class="normal"><a href="#__codelineno-7-2">2</a></span>
@@ -6272,6 +6370,16 @@
 <p><span class="caption-prefix">表 1. </span> Python 的运算符优先级表（越往下等级越低）</p>
 </figcaption>
 </figure>
+<h2 id="数据结构">数据结构</h2>
+<ul>
+<li>列表、元组、字典、集合的操作与应用场景</li>
+<li>字符串处理（格式化、常用方法）</li>
+</ul>
+<h2 id="文件操作">文件操作</h2>
+<ul>
+<li>读写文本/二进制文件（<code>open</code>、<code>with</code> 语句）</li>
+<li>JSON/CSV 文件处理（<code>json</code>、<code>csv</code> 模块）</li>
+</ul>
 
 
 
@@ -6294,7 +6402,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月25日 00:00:27">2025年3月25日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月1日 17:51:22">2025年5月1日</span>
   </span>
 
     
@@ -6420,7 +6528,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../../cplusplus/cpp-crow/" class="md-footer__link md-footer__link--prev" aria-label="上一页: C++ 网络编程 (Crow)">
+          <a href="../python-setup/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Python 配置">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6430,20 +6538,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                C++ 网络编程 (Crow)
+                Python 配置
               </div>
             </div>
           </a>
         
         
           
-          <a href="../python-tips/" class="md-footer__link md-footer__link--next" aria-label="下一页: Python 使用贴士">
+          <a href="../python-advanced/" class="md-footer__link md-footer__link--next" aria-label="下一页: Python 进阶">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Python 使用贴士
+                Python 进阶
               </div>
             </div>
             <div class="md-footer__button md-icon">

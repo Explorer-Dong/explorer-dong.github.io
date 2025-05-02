@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#物理层任务定义" class="md-skip">
+        <a href="#物理层基本概念" class="md-skip">
           跳转至
         </a>
       
@@ -2611,9 +2611,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#物理层任务定义" class="md-nav__link">
+  <a href="#物理层基本概念" class="md-nav__link">
     <span class="md-ellipsis">
-      物理层任务定义
+      物理层基本概念
     </span>
   </a>
   
@@ -2661,30 +2661,6 @@
       宽带接入技术
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="宽带接入技术">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#有线接入" class="md-nav__link">
-    <span class="md-ellipsis">
-      有线接入
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#无线接入" class="md-nav__link">
-    <span class="md-ellipsis">
-      无线接入
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4750,6 +4726,8 @@
       
         
       
+        
+      
     
     
     
@@ -4793,12 +4771,35 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../back-end/python/python-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python 配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../back-end/python/python-basic/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Python 语言基础
+    Python 基础
     
   </span>
   
@@ -4816,12 +4817,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../back-end/python/python-tips/" class="md-nav__link">
+      <a href="../../../../back-end/python/python-advanced/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Python 使用贴士
+    Python 进阶
     
   </span>
   
@@ -4839,12 +4840,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../back-end/python/python-flask/" class="md-nav__link">
+      <a href="../../../../back-end/python/python-web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Python 网络编程 (Flask)
+    Python Web 开发
     
   </span>
   
@@ -5795,9 +5796,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#物理层任务定义" class="md-nav__link">
+  <a href="#物理层基本概念" class="md-nav__link">
     <span class="md-ellipsis">
-      物理层任务定义
+      物理层基本概念
     </span>
   </a>
   
@@ -5846,30 +5847,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="宽带接入技术">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#有线接入" class="md-nav__link">
-    <span class="md-ellipsis">
-      有线接入
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#无线接入" class="md-nav__link">
-    <span class="md-ellipsis">
-      无线接入
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -5907,22 +5884,34 @@
   <h1>物理层</h1>
 
 <p>本章介绍五层模型的最底层「物理层」的基本知识。由于计算机网络的五层模型其实和物理传输无关，因此还会补充「通信」相关的知识。</p>
-<h2 id="物理层任务定义">物理层任务定义</h2>
+<h2 id="物理层基本概念">物理层基本概念</h2>
+<p>物理层主要编码数据链路层传来的数据。</p>
 <h2 id="数据通信基础">数据通信基础</h2>
-<p>传输媒体</p>
-<p>传输系统</p>
-<p>信号类型：模拟信号、数字信号</p>
-<p>调制与解调：可以理解为将模拟信号进行编码和解码的过程。</p>
-<h2 id="数据传输介质">数据传输介质</h2>
-<h2 id="多路复用技术">多路复用技术</h2>
-<p>为了让多用户同时使用一个传输信道而不互相干扰，需要设计一些规则让多个信号在同一个信道上进行传输。</p>
 <figure id="__fc_1">
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250411083657499.png" data-type="image" data-width="auto" data-height="auto" data-title="复用基本逻辑" data-desc-position="bottom"><img alt="复用基本逻辑" src="https://cdn.dwj601.cn/images/20250411083657499.png" /></a></p>
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250501203300182.png" data-type="image" data-width="auto" data-height="auto" data-title="数据传输逻辑" data-desc-position="bottom"><img alt="数据传输逻辑" src="https://cdn.dwj601.cn/images/20250501203300182.png" /></a></p>
 <figcaption>
-<p><span class="caption-prefix">图 1. </span> 复用基本逻辑</p>
+<p><span class="caption-prefix">图 1. </span> 数据传输逻辑（数字信号转换为模拟信号过程叫做调制，逆过程就叫解调）</p>
 </figcaption>
 </figure>
-<p>复用策略有很多，比如频分复用、时分复用和码分复用，前两者很容易理解，一个是同一个时刻不同的频率、一个是不同时刻不同信号，如下两图所示：</p>
+<p><strong>码元</strong>。一个信号波形的最小表示单位。一个码元最少需要 1 个比特位来表示，那么使用 m 个比特位表示的码元就有 <span class="arithmatex">\(2^m\)</span> 种状态，这类码元也被称为 <span class="arithmatex">\(2^m\)</span> 进制码元。码元的传播速度（调制速度）叫做波特率 (baud, B)，比特的传播速度叫做比特率 (S, bps)，显然就有 <span class="arithmatex">\(S=B\cdot \log_2 k\)</span>，<span class="arithmatex">\(k\)</span> 为码元的进制。</p>
+<p><strong>带宽与网速</strong>。带宽即传输介质能够传输信号的频率范围，单位为 Hz，本质就是电磁波每秒的振动次数；网速就是传输介质每秒传输的数据量，单位为 bps。</p>
+<p><strong>网速上限</strong>。在带宽为 <span class="arithmatex">\(B\)</span> Hz 的信道中：</p>
+<ul>
+<li>奈奎斯特 (Nyquist) 定理指出，若信道无噪声，则最大数据传输速率 <span class="arithmatex">\(R_{\max}=2\cdot B \cdot\log_2k\ (\text{bps})\)</span>；</li>
+<li>香农 (Shannon) 定理指出，若信道的信噪比为 <span class="arithmatex">\(S/N\)</span>，则最大数据传输速率 <span class="arithmatex">\(R_{\max}=B \cdot\log_2{(1+S/N)}\ (\text{bps})\)</span>。</li>
+</ul>
+<p>注：使用分贝 (dB) 来表示信噪比时，需要做转换：<span class="arithmatex">\(10\cdot \log_{10}S/N\ (\text{dB})\)</span>。</p>
+<h2 id="数据传输介质">数据传输介质</h2>
+<p>引导性介质、非引导性介质。</p>
+<h2 id="多路复用技术">多路复用技术</h2>
+<p>为了让多用户同时使用一个传输信道而不互相干扰，需要设计一些规则让多个信号在同一个信道上进行传输。</p>
+<figure id="__fc_2">
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250411083657499.png" data-type="image" data-width="auto" data-height="auto" data-title="复用基本逻辑" data-desc-position="bottom"><img alt="复用基本逻辑" src="https://cdn.dwj601.cn/images/20250411083657499.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 2. </span> 复用基本逻辑</p>
+</figcaption>
+</figure>
+<p>复用策略有很多，比如：频分复用、时分复用、波分复用和码分复用，前两者很容易理解，一个是同一个时刻不同的频率、一个是不同时刻不同信号，如下两图所示：</p>
 <table>
 <thead>
 <tr>
@@ -5937,16 +5926,27 @@
 </tr>
 </tbody>
 </table>
+<p>波分复用就是光的频分复用，不再赘述。重点介绍码分复用。</p>
+<p><strong>码分复用</strong>。码分复用就是给每一个终端定义一个 <span class="arithmatex">\(m\)</span> 位的码元，记作 <span class="arithmatex">\(x\)</span>，假设 <span class="arithmatex">\(x\)</span> 表示二进制的 <span class="arithmatex">\(0\)</span>，那么 <span class="arithmatex">\(\overline x\)</span> 就表示二进制的 <span class="arithmatex">\(1\)</span>，为了提升数学性质，将二进制中的 <span class="arithmatex">\(0\)</span> 用 <span class="arithmatex">\(-1\)</span> 代替，且严格遵守以下三个约束：</p>
+<ol>
+<li>不同终端的码元是正交的（规格化内积为 <span class="arithmatex">\(0\)</span>）；</li>
+<li>同一个终端相同表示的内积为 <span class="arithmatex">\(1\)</span>，相反表示的内积为 <span class="arithmatex">\(-1\)</span>；</li>
+</ol>
 <h2 id="数字传输系统">数字传输系统</h2>
+<p>美国贝尔实验室于 1985 首先提出同步光纤网 (Synchronous Optical Network, SONET) 概念。1988 年 ITU-T 接受了 SONET 的概念，并在其基础上制定了同步数字体系 (Synchronous Digital Hierarchy, SDH) 标准，从而统一了国际通信传输速率和接口标准体制，使之不仅仅适用于光纤，也适用于微波和卫星传输，成为通用性标准。</p>
 <h2 id="宽带接入技术">宽带接入技术</h2>
 <p>所谓宽带接入，就是让终端用户可以连接到互联网。主要有两类接入技术：有线接入和无线接入。</p>
-<h3 id="有线接入">有线接入</h3>
-<p>非对称数字用户线 (ADSL) 技术</p>
-<p>光纤同轴混合网 (HPC) 技术</p>
-<p>光纤到 x (FFTx) 技术</p>
-<h3 id="无线接入">无线接入</h3>
-<p>WiFi 技术</p>
-<p>移动蜂窝技术</p>
+<p>有线接入：</p>
+<ul>
+<li>非对称数字用户线 (ADSL) 技术；</li>
+<li>光纤同轴混合网 (HPC) 技术；</li>
+<li>光纤到 x (FFTx) 技术。</li>
+</ul>
+<p>无线接入：</p>
+<ul>
+<li>WiFi 技术；</li>
+<li>移动蜂窝技术。</li>
+</ul>
 
 
 
@@ -5969,7 +5969,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月16日 15:50:44">2025年4月16日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月2日 22:11:34">2025年5月2日</span>
   </span>
 
     

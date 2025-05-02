@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://wiki.dwj601.cn/back-end/python/python-tips/">
+        <link rel="canonical" href="https://wiki.dwj601.cn/back-end/python/python-advanced/">
       
       
         <link rel="prev" href="../python-basic/">
       
       
-        <link rel="next" href="../python-flask/">
+        <link rel="next" href="../python-web/">
       
       
       <link rel="icon" href="../../../assets/images/wiki-16px.svg">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Python 使用贴士 - Open Wiki Community</title>
+        <title>Python 进阶 - Open Wiki Community</title>
       
     
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#查看库的安装位置" class="md-skip">
+        <a href="#面向对象编程" class="md-skip">
           跳转至
         </a>
       
@@ -167,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python 使用贴士
+              Python 进阶
             
           </span>
         </div>
@@ -4624,6 +4624,8 @@
       
         
       
+        
+      
     
     
     
@@ -4670,12 +4672,35 @@
   
   
     <li class="md-nav__item">
+      <a href="../python-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python 配置
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../python-basic/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Python 语言基础
+    Python 基础
     
   </span>
   
@@ -4705,7 +4730,7 @@
   
   
   <span class="md-ellipsis">
-    Python 使用贴士
+    Python 进阶
     
   </span>
   
@@ -4718,7 +4743,7 @@
   
   
   <span class="md-ellipsis">
-    Python 使用贴士
+    Python 进阶
     
   </span>
   
@@ -4741,54 +4766,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#查看库的安装位置" class="md-nav__link">
+  <a href="#面向对象编程" class="md-nav__link">
     <span class="md-ellipsis">
-      查看库的安装位置
+      面向对象编程
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#自动激活虚拟环境-vscode" class="md-nav__link">
+  <a href="#模块化开发" class="md-nav__link">
     <span class="md-ellipsis">
-      自动激活虚拟环境 (VSCode)
+      模块化开发
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#自动生成-requirementstxt" class="md-nav__link">
+  <a href="#常用标准库" class="md-nav__link">
     <span class="md-ellipsis">
-      自动生成 requirements.txt
+      常用标准库
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#解决安装时出现-0x80070422-和-0x80070643-报错" class="md-nav__link">
+  <a href="#函数式编程" class="md-nav__link">
     <span class="md-ellipsis">
-      解决安装时出现 0x80070422 和 0x80070643 报错
+      函数式编程
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#更换-pip-下载源" class="md-nav__link">
+  <a href="#并发编程" class="md-nav__link">
     <span class="md-ellipsis">
-      更换 pip 下载源
+      并发编程
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#终止并行程序" class="md-nav__link">
+  <a href="#性能优化" class="md-nav__link">
     <span class="md-ellipsis">
-      终止并行程序
+      性能优化
     </span>
   </a>
   
@@ -4810,12 +4835,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../python-flask/" class="md-nav__link">
+      <a href="../python-web/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Python 网络编程 (Flask)
+    Python Web 开发
     
   </span>
   
@@ -5772,54 +5797,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#查看库的安装位置" class="md-nav__link">
+  <a href="#面向对象编程" class="md-nav__link">
     <span class="md-ellipsis">
-      查看库的安装位置
+      面向对象编程
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#自动激活虚拟环境-vscode" class="md-nav__link">
+  <a href="#模块化开发" class="md-nav__link">
     <span class="md-ellipsis">
-      自动激活虚拟环境 (VSCode)
+      模块化开发
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#自动生成-requirementstxt" class="md-nav__link">
+  <a href="#常用标准库" class="md-nav__link">
     <span class="md-ellipsis">
-      自动生成 requirements.txt
+      常用标准库
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#解决安装时出现-0x80070422-和-0x80070643-报错" class="md-nav__link">
+  <a href="#函数式编程" class="md-nav__link">
     <span class="md-ellipsis">
-      解决安装时出现 0x80070422 和 0x80070643 报错
+      函数式编程
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#更换-pip-下载源" class="md-nav__link">
+  <a href="#并发编程" class="md-nav__link">
     <span class="md-ellipsis">
-      更换 pip 下载源
+      并发编程
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#终止并行程序" class="md-nav__link">
+  <a href="#性能优化" class="md-nav__link">
     <span class="md-ellipsis">
-      终止并行程序
+      性能优化
     </span>
   </a>
   
@@ -5841,7 +5866,7 @@
 
 
   
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/back-end/python/python-tips.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/back-end/python/python-advanced.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5850,112 +5875,44 @@
     
       
     
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/back-end/python/python-tips.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/back-end/python/python-advanced.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-  <h1>Python 使用贴士</h1>
+  <h1>Python 进阶</h1>
 
-<p>本文记录 Python 相关的一些杂项信息，包括常规配置、外部工具、使用技巧等。</p>
-<h2 id="查看库的安装位置">查看库的安装位置</h2>
-<p>由于本地安装了多个 Python 解释器，想要打印某个版本的解释器下载的「包或模块」的路径，整理一下大约有两种方法。</p>
-<p>如果模块内置了 <code>__file__</code> 方法，则可以直接打印出来。比如下面的程序：</p>
-<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
-</span></code></pre></div></td></tr></table></div>
-<figure id="__fc_1">
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202406052305698.png" data-type="image" data-width="auto" data-height="auto" data-title="直接打印的运行结果" data-desc-position="bottom"><img alt="直接打印的运行结果" src="https://cdn.dwj601.cn/images/202406052305698.png" /></a></p>
-<figcaption>
-<p><span class="caption-prefix">图 1. </span> 直接打印的运行结果</p>
-</figcaption>
-</figure>
-<p>有些库没有内置上述 <code>__file__</code> 方法，可以使用 pip 工具进行打印。语法规则如下：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>pip<span class="w"> </span>show<span class="w"> </span>&lt;PackgeName<span class="w"> </span>or<span class="w"> </span>ModelName&gt;
-</span></code></pre></div></td></tr></table></div>
-<p>例如想要打印 <code>sortedcontainers</code> 包的安装路径：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>pip<span class="w"> </span>show<span class="w"> </span>sortedcontainers
-</span></code></pre></div></td></tr></table></div>
-<figure id="__fc_2">
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202406052310960.png" data-type="image" data-width="auto" data-height="auto" data-title="基于 pip 工具的运行结果" data-desc-position="bottom"><img alt="基于 pip 工具的运行结果" src="https://cdn.dwj601.cn/images/202406052310960.png" /></a></p>
-<figcaption>
-<p><span class="caption-prefix">图 2. </span> 基于 pip 工具的运行结果</p>
-</figcaption>
-</figure>
-<h2 id="自动激活虚拟环境-vscode">自动激活虚拟环境 (VSCode)</h2>
-<p>打开用户设置 json 文件。加一行下面的配置即可：</p>
-<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nt">&quot;python.terminal.activateEnvInCurrentTerminal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span></code></pre></div></td></tr></table></div>
-<p>不过奇怪的是使用 VSCode 创建虚拟环境后虽然在终端显示了确实是对应的虚拟环境，但是使用诸如 <code>which pip</code> 或 <code>which python</code> 后，显示的都是默认的路径而非虚拟环境对应的路径。使用 Pycharm 在当前路径创建虚拟环境就可以正常识别出来。</p>
-<h2 id="自动生成-requirementstxt">自动生成 requirements.txt</h2>
-<p>如果当前环境仅为当前项目独有，使用下面的命令即可：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
-</span></code></pre></div></td></tr></table></div>
-<p>如果当前环境并非独属于当前项目，使用上述命令会生成很多与当前项目无关的依赖包，推荐使用 <a href="https://github.com/bndr/pipreqs"><code>pipreqs</code></a> 包，可以自动搜索独属于当前项目依赖的包，命令如下：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span>
-<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1"># 安装</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>pip<span class="w"> </span>install<span class="w"> </span>pipreqs
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1"># 生成</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>pipreqs<span class="w"> </span>./<span class="w"> </span>--encoding<span class="o">=</span>utf8<span class="w"> </span>--force
-</span></code></pre></div></td></tr></table></div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>当然最好还是用虚拟环境然后用上述第一种方法生成依赖。</p>
-</div>
-<p>基于 requirements.txt 文件安装依赖：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</span></code></pre></div></td></tr></table></div>
-<h2 id="解决安装时出现-0x80070422-和-0x80070643-报错">解决安装时出现 0x80070422 和 0x80070643 报错</h2>
-<p>本质原因是之前没有按照官方程序卸载 Python。需要到注册表里彻底删掉对应的文件，在下面的三个路径下一一尝试，删除对应的版本的 Python 文件即可：</p>
+<h2 id="面向对象编程">面向对象编程</h2>
 <ul>
-<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall</code></li>
-<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall</code></li>
-<li><code>HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall</code></li>
+<li>类与对象、继承、多态、魔术方法</li>
+<li>设计模式基础（如单例、工厂模式）</li>
 </ul>
-<h2 id="更换-pip-下载源">更换 pip 下载源</h2>
-<p>默认的 pip 会从国外 PyPI 拉取库，要么本地有代理加速，要么换镜像源。</p>
-<p>镜像源列表：</p>
+<h2 id="模块化开发">模块化开发</h2>
 <ul>
-<li>清华大学：<code>https://pypi.tuna.tsinghua.edu.cn/simple/</code></li>
-<li>中国科技大学：<code>https://pypi.mirrors.ustc.edu.cn/simple/</code></li>
-<li>阿里云：<code>https://mirrors.aliyun.com/pypi/simple/</code></li>
-<li>腾讯云：<code>https://mirrors.cloud.tencent.com/pypi/simple/</code></li>
+<li>模块与包的组织（<code>import</code>、<code>__init__.py</code>）</li>
+<li>虚拟环境管理（<code>venv</code> 或 <code>conda</code>）</li>
 </ul>
-<p>临时换源：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>pip<span class="w"> </span>install<span class="w"> </span>&lt;PackageName&gt;<span class="w"> </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple/
-</span></code></pre></div></td></tr></table></div>
-<p>永久换源：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>pip<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>global.index-url<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple/
-</span></code></pre></div></td></tr></table></div>
-<p>查看当前配置：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>pip<span class="w"> </span>config<span class="w"> </span>list
-</span></code></pre></div></td></tr></table></div>
-<p>恢复默认源：</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>pip<span class="w"> </span>config<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>global.index-url
-</span></code></pre></div></td></tr></table></div>
-<h2 id="终止并行程序">终止并行程序</h2>
-<p>如果想要中断一个并行或并发任务，在终端输入 Ctrl+C 往往是无效的，因为 Ctrl+C 一次只能结束一个线程。我们直接用 taskkill 终止对应程序的所有进程即可。以 Python 炼丹为例，直接终止所有的 python.exe 进程即可：</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">Linux/MacOS</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>taskkill<span class="w"> </span>-F<span class="w"> </span>-IM<span class="w"> </span>python.exe
-</span></code></pre></div></td></tr></table></div>
-</div>
-<div class="tabbed-block">
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>pkill<span class="w"> </span>-9<span class="w"> </span>-f<span class="w"> </span>python
-</span></code></pre></div></td></tr></table></div>
-</div>
-</div>
-</div>
+<h2 id="常用标准库">常用标准库</h2>
+<ul>
+<li><code>os</code>/<code>sys</code>（系统操作）、<code>datetime</code>（时间处理）</li>
+<li><code>collections</code>（高效数据结构）、<code>itertools</code>（迭代工具）</li>
+</ul>
+<h2 id="函数式编程">函数式编程</h2>
+<ul>
+<li>高阶函数（<code>map</code>/<code>filter</code>/<code>reduce</code>）、闭包与装饰器</li>
+</ul>
+<h2 id="并发编程">并发编程</h2>
+<ul>
+<li>多线程/多进程（<code>threading</code>、<code>multiprocessing</code>）</li>
+<li>异步 IO（<code>asyncio</code>、<code>aiohttp</code>）</li>
+</ul>
+<h2 id="性能优化">性能优化</h2>
+<ul>
+<li>运行原理、代码剖析（<code>cProfile</code>）、内存管理</li>
+<li>C 扩展（如 <code>Cython</code> 基础）</li>
+</ul>
 
 
 
@@ -5978,7 +5935,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月28日 23:01:08">2025年3月28日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月1日 17:51:22">2025年5月1日</span>
   </span>
 
     
@@ -5988,7 +5945,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月12日 16:04:49">2025年3月12日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月1日 17:51:22">2025年5月1日</span>
   </span>
 
     
@@ -6104,7 +6061,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../python-basic/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Python 语言基础">
+          <a href="../python-basic/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Python 基础">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6114,20 +6071,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                Python 语言基础
+                Python 基础
               </div>
             </div>
           </a>
         
         
           
-          <a href="../python-flask/" class="md-footer__link md-footer__link--next" aria-label="下一页: Python 网络编程 (Flask)">
+          <a href="../python-web/" class="md-footer__link md-footer__link--next" aria-label="下一页: Python Web 开发">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Python 网络编程 (Flask)
+                Python Web 开发
               </div>
             </div>
             <div class="md-footer__button md-icon">

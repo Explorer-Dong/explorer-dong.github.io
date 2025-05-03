@@ -230,10 +230,7 @@ nav:
         - base/cs/computer-network/network-layer.md
         - base/cs/computer-network/data-link-layer.md
         - base/cs/computer-network/physical-layer.md
-    - 数理基础:
-      - base/math/index.md
-      - 大学物理:
-        - base/math/college-physics/index.md
+    - 数学基础:
       - 高等数学:
         - base/math/advanced-math/index.md
         - base/math/advanced-math/differentiation.md
@@ -250,6 +247,14 @@ nav:
         - base/math/optimization-method/linear-search.md
         - base/math/optimization-method/unconstraint-optimization.md
         - base/math/optimization-method/constraint-optimization.md
+    - 其他:
+      - 大学物理:
+        - base/others/college-physics/index.md
+      - 英语语法:
+        - base/others/english-grammar/index.md
+        - base/others/english-grammar/word-property.md
+        - base/others/english-grammar/sentence-ingredient.md
+        - base/others/english-grammar/sentence-type.md
   - 炼丹:
     - data-science/index.md
     - data-science/numpy-basic.md
@@ -342,7 +347,7 @@ extra:
     property: G-56NDVC0D5B
   # 文章状态定义
   status:
-    new: 最近新增
+    new: 待更新
     deprecated: 即将废弃
   # 页面底部社交链接
   social:

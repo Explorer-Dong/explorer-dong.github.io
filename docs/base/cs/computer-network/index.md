@@ -1,5 +1,6 @@
 ---
 title: 计算机网络导读
+status: new
 ---
 
 本文记录计算机网络的学习笔记。实验平台为学院 [自建服务](http://172.21.229.9/classrooms/cpnijula/announcement)，若要复现实验可以前往 [头歌](https://www.educoder.net/paths/zecl9i6m) 平台。参考：

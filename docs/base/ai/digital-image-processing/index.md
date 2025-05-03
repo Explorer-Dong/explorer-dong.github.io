@@ -1,5 +1,6 @@
 ---
 title: 数字图像处理
+status: new
 ---
 
 ## 前言

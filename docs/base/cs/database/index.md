@@ -1,5 +1,6 @@
 ---
-title: 数据库原理与应用
+title: 数据库
+status: new
 ---
 
 ## 前言

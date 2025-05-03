@@ -1,5 +1,6 @@
 ---
 title: Python 高级应用
+status: new
 ---
 
 !!! warning "注意"

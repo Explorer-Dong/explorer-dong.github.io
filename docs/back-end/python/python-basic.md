@@ -6,7 +6,7 @@ title: Python 基础
 
 ## 基础语法
 
-- 变量、数据类型、运算符
+- 数据类型、变量、运算符
 - 流程控制（`if-else`、`for`/`while` 循环）
 - 函数定义与参数传递（`def`、`lambda`）
 - 异常处理（`try-except`）
@@ -39,7 +39,7 @@ TypeError: 'str' object does not support item assignment
 """
 ```
 
-### 关于引用
+### 变量引用
 
 在 Python 中「所有的一切都是引用」这句话已经听烂了，但是从未实践证实一番。所谓的万物引用可以从 C++ 的赋值和 Python 的赋值进行对比。
 
@@ -159,7 +159,7 @@ print(id(t))
 - Python 可变数据类型的引用，如果发生了修改操作，就等价于 C++ 的引用传递；
 - Python 不可变数据类型的引用，如果发生了修改操作，就等价于 C++ 的值传递。
 
-## 拷贝构造
+### 变量拷贝
 
 拷贝也就是所谓的复制，在 C++ 中，所有的拷贝都是重新申请内存。在 Python 中略有不同，由于常规的赋值都是引用，因此我们需要额外的 `copy` 库来完成拷贝工作。
 
@@ -197,7 +197,7 @@ Deep copied:	 [1, 2, [3, 4]]
 
 由于嵌套的可变元素在浅拷贝的逻辑中是引用，就导致了浅拷贝的结果中嵌套的可变元素仍然会被后续的操作改变。而深拷贝就不会出现这种问题，数据被拷贝到了全新的内存。这告诉我们如果我们需要完全一份新数据，就必须使用深拷贝。
 
-## 变量作用域
+### 变量作用域
 
 **在不修改变量的情况下**。Python 查找变量的顺序是：
 
@@ -235,9 +235,11 @@ corgi
 """
 ```
 
-## 运算符优先级
+### 运算符
 
-首先看一下 Python 都有哪些 [运算符](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#operators)：
+首先看一下 Python 都有哪些运算符 [^op]：
+
+[^op]: [运算符 | Python - (docs.python.org)](https://docs.python.org/zh-cn/3.13/reference/lexical_analysis.html#operators)
 
 ```bash
 +       -       *       **      /       //      %      @
@@ -245,7 +247,9 @@ corgi
 <       >       <=      >=      ==      !=
 ```
 
-然后再看一下 Python 的 [运算符优先级](https://docs.python.org/zh-cn/3.13/reference/expressions.html#operator-precedence)：
+然后再看一下 Python 的运算符优先级 [^op-pri]：
+
+[^op-pri]: [运算符优先级 | Python - (docs.python.org)](https://docs.python.org/zh-cn/3.13/reference/expressions.html#operator-precedence)
 
 |                            运算符                            |                描述                |
 | :----------------------------------------------------------: | :--------------------------------: |
@@ -274,7 +278,7 @@ corgi
 |                           `lambda`                           |           lambda 表达式            |
 |                             `:=`                             |             赋值表达式             |
 
-/// tc
+/// tc | <
 Python 的运算符优先级表（越往下等级越低）
 ///
 

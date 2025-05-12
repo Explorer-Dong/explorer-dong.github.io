@@ -165,8 +165,6 @@ nav:
   - 基础:
     - base/index.md
     - 人工智能基础:
-      - Python 高级应用:
-        - base/ai/python-application/index.md
       - 数字图像处理:
         - base/ai/digital-image-processing/index.md
       - 语音信号处理:
@@ -201,8 +199,8 @@ nav:
         - base/ai/computer-vision/image-classification.md
         - base/ai/computer-vision/object-detection.md
         - base/ai/computer-vision/image-super-resolution.md
-      - 智慧教育:
-        - base/ai/intelligent-education/index.md
+      - 图神经网络:
+        - base/ai/graph-neural-network/index.md
     - 计算机基础:
       - 面向对象程序设计:
         - base/cs/object-oriented-programming/index.md
@@ -257,9 +255,14 @@ nav:
         - base/others/english-grammar/sentence-type.md
   - 炼丹:
     - data-science/index.md
-    - data-science/numpy-basic.md
-    - data-science/pandas-basic.md
-    - data-science/matplotlib-basic.md
+    - 第三方库:
+      - data-science/pkgs/numpy-basic.md
+      - data-science/pkgs/pandas-basic.md
+      - data-science/pkgs/matplotlib-basic.md
+    - 浅层模型:
+      - data-science/shallow-model/linear.md
+    - 深度模型:
+      - data-science/deep-model/fnn.md
   - 算法:
     - ds-and-algo/index.md
     - ds-and-algo/templates.md

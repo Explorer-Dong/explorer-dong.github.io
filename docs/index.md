@@ -7,7 +7,7 @@ hide:
 
 ## 本站定位
 
-欢迎访问！本网站以「AI/CS 学科笔记」与「开发技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun OSS 双平台部署。如果您觉得内容不错，欢迎⭐。
+欢迎访问！本网站以「AI/CS 学科基础笔记」与「工程实践技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 格式撰写，站点采用 MkDocs 框架编译，云端基于 GitHub Pages 与 Aliyun OSS 双平台部署。如果您觉得内容不错，欢迎⭐。
 
 *[Wiki]: 一种允许一群用户用简单的描述来创建和连接一组网页的社会计算系统。
 
@@ -37,6 +37,7 @@ hide:
 
 ```mermaid
 flowchart LR
+    %% 实体定义
     面向对象程序设计(面向对象程序设计)
     数据结构与算法(数据结构与算法)
     数字逻辑电路(数字逻辑电路)
@@ -46,11 +47,12 @@ flowchart LR
     计算机组成(计算机组成)
     计算机网络(计算机网络)
 
+    %% 关系定义
     面向对象程序设计 --> 数据结构与算法 --> 计算机系统基础
     数字逻辑电路 --> 计算机系统基础 --> 数据库 & 操作系统 & 计算机组成
     计算机组成 & 操作系统 --> 计算机网络
 
-    Python高级应用(Python 高级应用)
+    %% 实体定义
     数字图像处理(数字图像处理)
     机器学习(机器学习)
     深度学习(深度学习)
@@ -58,19 +60,22 @@ flowchart LR
     自然语言处理(自然语言处理)
     计算机视觉(计算机视觉)
     语音信号处理(语音信号处理)
-    智慧教育(智慧教育)
+    图神经网络(图神经网络)
 
-    Python高级应用 --> 数字图像处理 & 语音信号处理 & 机器学习
-    机器学习 --> 数据挖掘 & 深度学习
-    深度学习 --> 自然语言处理 & 计算机视觉 --> 智慧教育
+    %% 关系定义
+    机器学习 --> 数据挖掘
+    深度学习 --> 语音信号处理 & 自然语言处理 & 计算机视觉
+    自然语言处理 --> 图神经网络
     数字图像处理 --> 计算机视觉
 
+    %% 实体定义
     高等数学(高等数学)
     线性代数(线性代数)
     概率统计(概率统计)
     最优化方法(最优化方法)
-    概率统计 & 线性代数 & 高等数学 --> 最优化方法 --> 机器学习
-    面向对象程序设计 --> Python高级应用
+
+    %% 关系定义
+    高等数学 & 线性代数 & 概率统计 --> 最优化方法 --> 机器学习 & 深度学习
 
     %% 跳转链接
     click 高等数学 "./base/math/advanced-math/"
@@ -87,40 +92,41 @@ flowchart LR
     click 计算机组成 "./base/cs/computer-organization/"
     click 计算机网络 "./base/cs/computer-network/"
 
-    click Python高级应用 "./base/ai/python-application/"
     click 数字图像处理 "./base/ai/digital-image-processing/"
+    click 语音信号处理 "./base/ai/speech-signal-processing/"
     click 机器学习 "./base/ai/machine-learning/"
     click 深度学习 "./base/ai/deep-learning/"
     click 数据挖掘 "./base/ai/data-mining/"
-    click 自然语言处理 "./base/ai/natural-language-processing/"
     click 计算机视觉 "./base/ai/computer-vision/"
-    click 语音信号处理 "./base/ai/speech-signal-processing/"
-    click 智慧教育 "./base/ai/intelligent-education/"
+    click 自然语言处理 "./base/ai/natural-language-processing/"
+    click 图神经网络 "./base/ai/graph-neural-network/"
 ```
 
-<caption> 拓扑图 1. AI/CS 学科笔记 </caption>
+<caption> 拓扑图 1. AI/CS 学科基础笔记 </caption>
 
 ```mermaid
 graph LR
-  %% 实体定义
-  algo(数据结构与算法专栏)
-  dev_tools(开发工具专栏)
-  fe(前端开发专栏)
-  be(后端开发专栏)
-  dev_ops(运维开发专栏)
+    %% 实体定义
+    data_science(数据科学专栏)
+    ds_and_algo(数据结构与算法专栏)
+    dev_tools(开发工具专栏)
+    front_end(前端开发专栏)
+    back_end(后端开发专栏)
+    dev_ops(运维开发专栏)
+
+    %% 关系定义
+    ds_and_algo --> data_science & back_end
+    dev_tools --> front_end & back_end & dev_ops & data_science
   
-  %% 关系定义
-  algo --> be
-  dev_tools --> fe & be & dev_ops
-  
-  %% 跳转链接
-  click algo "./ds-and-algo/"
-  click dev_tools "./dev-tools/"
-  click fe "./front-end/"
-  click be "./back-end/"
-  click dev_ops "./operation/"
+    %% 跳转链接
+    click data_science "./data-science/"
+    click ds_and_algo "./ds-and-algo/"
+    click dev_tools "./dev-tools/"
+    click front_end "./front-end/"
+    click back_end "./back-end/"
+    click dev_ops "./operation/"
 ```
 
-<caption> 拓扑图 2. 开发技术文章 </caption>
+<caption> 拓扑图 2. 工程实践技术文章 </caption>
 
 </div>

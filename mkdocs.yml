@@ -255,13 +255,15 @@ nav:
         - base/others/english-grammar/sentence-type.md
   - 炼丹:
     - data-science/index.md
-    - 第三方库:
-      - data-science/pkgs/numpy-basic.md
-      - data-science/pkgs/pandas-basic.md
-      - data-science/pkgs/matplotlib-basic.md
-    - 浅层模型:
+    - 数据科学常用第三方库:
+      - data-science/pkgs/numpy.md
+      - data-science/pkgs/pandas.md
+      - data-science/pkgs/matplotlib.md
+    - 传统机器学习算法:
       - data-science/shallow-model/linear.md
-    - 深度模型:
+    - 现代深度学习模型:
+      - data-science/deep-model/cpu2gpu.md
+      - data-science/deep-model/gpu2gpus.md
       - data-science/deep-model/fnn.md
   - 算法:
     - ds-and-algo/index.md

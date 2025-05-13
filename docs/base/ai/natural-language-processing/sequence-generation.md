@@ -14,28 +14,32 @@ $$
 p(\mid y_{t-1})
 $$
 
-## 基于神经网络
+## 以 RNN 为基座
 
-从 2014 年第一篇 seq2seq 开始，基于神经网络的序列到序列模型就开始逐渐替换基于统计方法的应用模型了。
+2015 年，斯坦福 NLP 实验室在 EMNLP 上发表了一篇名为《Effective Approaches to Attention-based Neural Machine Translation》 [^rnn-nmt-paper] 的文章，其介绍了一种基于 RNN 的神经网络翻译模型，开启了神经机器翻译的时代。
 
-### Encoder-Decoder 架构
+[^rnn-nmt-paper]: [Effective Approaches to Attention-based Neural Machine Translation | Stanford NLP - (aclanthology.org)](https://aclanthology.org/D15-1166.pdf)
 
 ![传统的 Encoder-Decoder 架构](https://cdn.dwj601.cn/images/20250428083440132.png)
 
 /// fc
-传统的 Encoder-Decoder 架构
+基于 RNN 的 seq2seq 模型架构
 ///
 
-**编码器**。利用任意一种模型将输入语句编码为「单一」向量 $h_0$。
+### Encoder 部分
 
-**解码器**。在使用 RNN 作为解码器时，训练和测试阶段的模型输入是不一样的：
+利用任意一种模型将输入语句编码为「单一」向量 $h_0$。
+
+### Decoder 部分
+
+在使用 RNN 作为解码器时，训练和测试阶段的模型输入是不一样的：
 
 - 测试阶段：隐藏状态的输入是上一个时间步的输出；
 - 训练阶段：隐藏状态的输入不取决于上一个时间步的输出，而是正确答案对应的单词。
 
 上述测试阶段的解码器每一步只选择当前最优的输出，这种贪心策略显然不一定是最优的，为此研究人员提出了 beam search 策略。具体地，其含有一个超参数 $K$，在编码阶段，保存每一个隐藏状态的前 $K$ 个最优预测单词，之后就按照 $K$ 叉树的形式基于前一个状态生成的 $K$ 个输出得到 $K \times K$ 个输出，以此类推。最后按照某种度量标准选择所有输出序列中最优的那一条即可。
 
-### Attention 机制
+1）Attention 机制
 
 ![基于 Attention 机制的 Encoder-Decoder 架构](https://cdn.dwj601.cn/images/20250428101226957.png)
 
@@ -52,20 +56,40 @@ $$
 - 翻译效果更好：通过使用注意力机制，模型可以学习到全局关系，并且缓解了梯度消失问题，从而提升了翻译的效果；
 - 可解释性更好：相较于统计方法的硬对齐方法（只有对应与不对应），使用注意力机制其实就算一种软对齐（按照权重对应）。由于每一个时间步都可以计算每一个输入 token 与所有输入 token 之间的是注意力权重，那么就可以算出一个对齐矩阵，该矩阵完全是模型根据数据学习到的对齐结果。
 
-## Attention 进阶
+2）Attention 进阶
 
 上述思路都是针对单一句子进行的，如果涉及到更大规模的语料，就需要对注意力的计算方法进行一定的魔改。
 
-## 评价指标
+### 小结
+
+缺点：可解释性差、可控性差、因数据产生偏见、上下文保持困难、对训练集的规模要求高、对未见数据泛化性能差。
+
+热点：可以利用其他模态增强文本模态、做垂直领域、基于预训练模型做微调。
+
+## 以 Transformer 为基座
+
+2017 年，Google 团队发表在 NIPS 上的一篇《Attention is all you need》 [^atten-paper] 替换了上述 RNN 结构，解决了 RNN 不能并行计算的问题。
+
+[^atten-paper]: [Attention Is All You Need | Google - (arxiv.org)](https://arxiv.org/pdf/1706.03762)
+
+<img src="https://cdn.dwj601.cn/images/20250512083359691.jpg" alt="Transformer 模型架构" style="zoom: 50%;" />
+
+/// fc
+Transformer 模型架构
+///
+
+可以看到 Transformer 的模型架构也是 Encoder-Decoder 架构。下面详细讲解两部分网络结构。
+
+### Encoder 部分
+
+由「多头注意力」和「前馈网络」两部分组成。
+
+### Decoder 部分
+
+由「掩码多头注意力」、「多头注意力」和「前馈网络」三部分组成。
+
+## 性能度量
 
 BLUE：
 
-Rough：
-
-## 缺点
-
-可解释性差、可控性差、因数据产生偏见、上下文保持困难、对训练集的规模要求高、对未见数据泛化性能差。
-
-## 热点
-
-可以利用其他模态增强文本模态、做垂直领域、基于预训练模型做微调。
+ROUGH：

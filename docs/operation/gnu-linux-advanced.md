@@ -602,31 +602,3 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
 /// fc
 静态链接的可执行文件 vs. 动态链接的可执行文件
 ///
-
-## 工具扩展
-
-### 目录可视化工具 tree
-
-Linux 默认自带，Windows 下载地址：[Tree for Windows](https://gnuwin32.sourceforge.net/packages/tree.htm)，将二进制文件路径加入环境变量即可。
-
-基本命令格式：`tree [-option] [dir]`
-
-- 显示中文：`-N`。如果中文名是中文，不加 `-N` 有些电脑上是乱码的。
-- 选择展示的层级：`-L [n]`。
-- 只显示文件夹：`-d`。
-- 区分文件夹、普通文件、可执行文件：`-FC`。`C` 是加上颜色。
-- 起别名：`alias tree='tree -FCN'`。
-- 输出目录结构到文件： `tree -L 2 -I '*.js|node_modules|*.md|*.json|*.css|*.ht' > tree.txt`。
-
-### URL 下载工具 wget
-
-Linux 默认自带，Windows 下载地址：[Windows binaries of GNU Wget](https://eternallybored.org/misc/wget/)。
-
-基本命令格式：`wget [url]`
-
-- 指定文件名：`-O`。
-- 指定目录：`-P`。
-- 下载多个文件：`wget -i [url.txt]`。
-- 断点续传：`wget -c -t [n] [url]`。`n` 代表尝试的次数，`0` 代表一直尝试。
-- 后台执行：`wget -b [url]`。执行该命令的回显信息都会自动存储在 `wget.log` 文件中。
-- 下载一个网站的所有图片、视频和 pdf 文件：`wget -r -A.pdf url`。

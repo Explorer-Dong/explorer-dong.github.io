@@ -328,6 +328,7 @@ nav:
   - 工具:
     - dev-tools/index.md
     - dev-tools/jetbrains-license.md
+    - dev-tools/download.md
     - 软件配置:
       - dev-tools/setup/windows-setup.md
       - dev-tools/setup/devcpp-setup.md

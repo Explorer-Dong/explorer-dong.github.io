@@ -241,7 +241,6 @@ nav:
         - base/math/probability-and-statistics/stat.md
       - 最优化方法:
         - base/math/optimization-method/index.md
-        - base/math/optimization-method/intro.md
         - base/math/optimization-method/linear-search.md
         - base/math/optimization-method/unconstraint-optimization.md
         - base/math/optimization-method/constraint-optimization.md

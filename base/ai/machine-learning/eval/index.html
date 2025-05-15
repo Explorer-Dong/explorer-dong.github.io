@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://wiki.dwj601.cn/base/ai/graph-neural-network/">
+        <link rel="canonical" href="https://wiki.dwj601.cn/base/ai/machine-learning/eval/">
       
       
-        <link rel="prev" href="../computer-vision/image-super-resolution/">
+        <link rel="prev" href="../model/semi-supervised-learning/">
       
       
-        <link rel="next" href="../../cs/object-oriented-programming/">
+        <link rel="next" href="../../deep-learning/">
       
       
-      <link rel="icon" href="../../../assets/images/wiki-16px.svg">
+      <link rel="icon" href="../../../../assets/images/wiki-16px.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>图神经网络导读 - Open Wiki Community</title>
+        <title>评价 - Open Wiki Community</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,9 +52,9 @@
     
       <link rel="stylesheet" href="https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -71,7 +71,7 @@
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -80,7 +80,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#数据" class="md-skip">
+        <a href="#回归任务" class="md-skip">
           跳转至
         </a>
       
@@ -148,9 +148,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
+    <a href="../../../.." title="Open Wiki Community" class="md-header__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="../../../assets/images/wiki-16px.svg" alt="logo">
+  <img src="../../../../assets/images/wiki-16px.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -167,7 +167,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              图神经网络导读
+              评价
             
           </span>
         </div>
@@ -295,7 +295,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -318,7 +318,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../../../" class="md-tabs__link">
           
   
   
@@ -340,7 +340,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../data-science/" class="md-tabs__link">
+        <a href="../../../../data-science/" class="md-tabs__link">
           
   
   
@@ -362,7 +362,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../ds-and-algo/" class="md-tabs__link">
+        <a href="../../../../ds-and-algo/" class="md-tabs__link">
           
   
   
@@ -384,7 +384,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../front-end/" class="md-tabs__link">
+        <a href="../../../../front-end/" class="md-tabs__link">
           
   
   
@@ -406,7 +406,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../back-end/" class="md-tabs__link">
+        <a href="../../../../back-end/" class="md-tabs__link">
           
   
   
@@ -428,7 +428,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../operation/" class="md-tabs__link">
+        <a href="../../../../operation/" class="md-tabs__link">
           
   
   
@@ -450,7 +450,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../dev-tools/" class="md-tabs__link">
+        <a href="../../../../dev-tools/" class="md-tabs__link">
           
   
   
@@ -505,9 +505,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
+    <a href="../../../.." title="Open Wiki Community" class="md-nav__button md-logo" aria-label="Open Wiki Community" data-md-component="logo">
       
-  <img src="../../../assets/images/wiki-16px.svg" alt="logo">
+  <img src="../../../../assets/images/wiki-16px.svg" alt="logo">
 
     </a>
     Open Wiki Community
@@ -534,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -592,7 +592,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   
@@ -716,7 +716,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../digital-image-processing/" class="md-nav__link ">
+            <a href="../../digital-image-processing/" class="md-nav__link ">
               
   
   
@@ -777,7 +777,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../speech-signal-processing/" class="md-nav__link ">
+            <a href="../../speech-signal-processing/" class="md-nav__link ">
               
   
   
@@ -820,6 +820,8 @@
                 
   
   
+    
+  
   
   
     
@@ -844,15 +846,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../machine-learning/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -860,14 +862,6 @@
     机器学习
     
   </span>
-  
-    
-  
-  
-    <span class="md-status md-status--new" title="待更新">
-    </span>
-  
-
   
 
             </a>
@@ -879,7 +873,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
             机器学习
@@ -895,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine-learning/data/" class="md-nav__link">
+      <a href="../data/" class="md-nav__link">
         
   
   
@@ -957,7 +951,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../machine-learning/model/" class="md-nav__link ">
+            <a href="../model/" class="md-nav__link ">
               
   
   
@@ -965,6 +959,14 @@
     模型
     
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="待更新">
+    </span>
+  
+
   
 
             </a>
@@ -992,7 +994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine-learning/model/linear-model/" class="md-nav__link">
+      <a href="../model/linear-model/" class="md-nav__link">
         
   
   
@@ -1015,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine-learning/model/decision-tree-model/" class="md-nav__link">
+      <a href="../model/decision-tree-model/" class="md-nav__link">
         
   
   
@@ -1038,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine-learning/model/bayes-model/" class="md-nav__link">
+      <a href="../model/bayes-model/" class="md-nav__link">
         
   
   
@@ -1061,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine-learning/model/probability-graph-model/" class="md-nav__link">
+      <a href="../model/probability-graph-model/" class="md-nav__link">
         
   
   
@@ -1084,7 +1086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine-learning/model/ensemble-learning/" class="md-nav__link">
+      <a href="../model/ensemble-learning/" class="md-nav__link">
         
   
   
@@ -1107,7 +1109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine-learning/model/lazy-learning/" class="md-nav__link">
+      <a href="../model/lazy-learning/" class="md-nav__link">
         
   
   
@@ -1130,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine-learning/model/cluster-learning/" class="md-nav__link">
+      <a href="../model/cluster-learning/" class="md-nav__link">
         
   
   
@@ -1153,7 +1155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine-learning/model/semi-supervised-learning/" class="md-nav__link">
+      <a href="../model/semi-supervised-learning/" class="md-nav__link">
         
   
   
@@ -1181,20 +1183,144 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../machine-learning/loss/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    评价
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    损失
+    评价
     
   </span>
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      本页目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#回归任务" class="md-nav__link">
+    <span class="md-ellipsis">
+      回归任务
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="回归任务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#均方误差" class="md-nav__link">
+    <span class="md-ellipsis">
+      均方误差
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r2-分数" class="md-nav__link">
+    <span class="md-ellipsis">
+      \(R^2\) 分数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#二分类任务" class="md-nav__link">
+    <span class="md-ellipsis">
+      二分类任务
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二分类任务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#混淆矩阵" class="md-nav__link">
+    <span class="md-ellipsis">
+      混淆矩阵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p-r-曲线" class="md-nav__link">
+    <span class="md-ellipsis">
+      P-R 曲线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roc-曲线" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROC 曲线
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#多分类任务" class="md-nav__link">
+    <span class="md-ellipsis">
+      多分类任务
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1238,7 +1364,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../deep-learning/" class="md-nav__link ">
+            <a href="../../deep-learning/" class="md-nav__link ">
               
   
   
@@ -1313,7 +1439,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../data-mining/" class="md-nav__link ">
+            <a href="../../data-mining/" class="md-nav__link ">
               
   
   
@@ -1348,7 +1474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-mining/data-preprocess/" class="md-nav__link">
+      <a href="../../data-mining/data-preprocess/" class="md-nav__link">
         
   
   
@@ -1371,7 +1497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-mining/association-analysis/" class="md-nav__link">
+      <a href="../../data-mining/association-analysis/" class="md-nav__link">
         
   
   
@@ -1394,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-mining/anomaly-detection/" class="md-nav__link">
+      <a href="../../data-mining/anomaly-detection/" class="md-nav__link">
         
   
   
@@ -1452,7 +1578,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../natural-language-processing/" class="md-nav__link ">
+            <a href="../../natural-language-processing/" class="md-nav__link ">
               
   
   
@@ -1495,7 +1621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../natural-language-processing/sequence-classification/" class="md-nav__link">
+      <a href="../../natural-language-processing/sequence-classification/" class="md-nav__link">
         
   
   
@@ -1518,7 +1644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../natural-language-processing/sequence-generation/" class="md-nav__link">
+      <a href="../../natural-language-processing/sequence-generation/" class="md-nav__link">
         
   
   
@@ -1578,7 +1704,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../computer-vision/" class="md-nav__link ">
+            <a href="../../computer-vision/" class="md-nav__link ">
               
   
   
@@ -1621,7 +1747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../computer-vision/image-classification/" class="md-nav__link">
+      <a href="../../computer-vision/image-classification/" class="md-nav__link">
         
   
   
@@ -1644,7 +1770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../computer-vision/object-detection/" class="md-nav__link">
+      <a href="../../computer-vision/object-detection/" class="md-nav__link">
         
   
   
@@ -1667,7 +1793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../computer-vision/image-super-resolution/" class="md-nav__link">
+      <a href="../../computer-vision/image-super-resolution/" class="md-nav__link">
         
   
   
@@ -1695,8 +1821,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1715,20 +1839,20 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_8" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../intelligent-education/" class="md-nav__link ">
               
   
   
   <span class="md-ellipsis">
-    图神经网络
+    智慧教育
     
   </span>
   
@@ -1745,10 +1869,10 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_8">
             <span class="md-nav__icon md-icon"></span>
-            图神经网络
+            智慧教育
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1862,7 +1986,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../cs/object-oriented-programming/" class="md-nav__link ">
+            <a href="../../../cs/object-oriented-programming/" class="md-nav__link ">
               
   
   
@@ -1931,7 +2055,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../cs/digital-logic-circuit/" class="md-nav__link ">
+            <a href="../../../cs/digital-logic-circuit/" class="md-nav__link ">
               
   
   
@@ -2000,7 +2124,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../cs/computer-system-basic/" class="md-nav__link ">
+            <a href="../../../cs/computer-system-basic/" class="md-nav__link ">
               
   
   
@@ -2069,7 +2193,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../cs/database/" class="md-nav__link ">
+            <a href="../../../cs/database/" class="md-nav__link ">
               
   
   
@@ -2146,7 +2270,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../cs/operating-system/" class="md-nav__link ">
+            <a href="../../../cs/operating-system/" class="md-nav__link ">
               
   
   
@@ -2189,7 +2313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/operating-system/intro/" class="md-nav__link">
+      <a href="../../../cs/operating-system/intro/" class="md-nav__link">
         
   
   
@@ -2212,7 +2336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/operating-system/concurrent/" class="md-nav__link">
+      <a href="../../../cs/operating-system/concurrent/" class="md-nav__link">
         
   
   
@@ -2235,7 +2359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/operating-system/virtualization/" class="md-nav__link">
+      <a href="../../../cs/operating-system/virtualization/" class="md-nav__link">
         
   
   
@@ -2258,7 +2382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/operating-system/persistence/" class="md-nav__link">
+      <a href="../../../cs/operating-system/persistence/" class="md-nav__link">
         
   
   
@@ -2318,7 +2442,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../cs/computer-organization/" class="md-nav__link ">
+            <a href="../../../cs/computer-organization/" class="md-nav__link ">
               
   
   
@@ -2361,7 +2485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/computer-organization/cpu/" class="md-nav__link">
+      <a href="../../../cs/computer-organization/cpu/" class="md-nav__link">
         
   
   
@@ -2384,7 +2508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/computer-organization/memory/" class="md-nav__link">
+      <a href="../../../cs/computer-organization/memory/" class="md-nav__link">
         
   
   
@@ -2407,7 +2531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/computer-organization/device/" class="md-nav__link">
+      <a href="../../../cs/computer-organization/device/" class="md-nav__link">
         
   
   
@@ -2471,7 +2595,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../cs/computer-network/" class="md-nav__link ">
+            <a href="../../../cs/computer-network/" class="md-nav__link ">
               
   
   
@@ -2514,7 +2638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/computer-network/application-layer/" class="md-nav__link">
+      <a href="../../../cs/computer-network/application-layer/" class="md-nav__link">
         
   
   
@@ -2537,7 +2661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/computer-network/transport-layer/" class="md-nav__link">
+      <a href="../../../cs/computer-network/transport-layer/" class="md-nav__link">
         
   
   
@@ -2560,7 +2684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/computer-network/network-layer/" class="md-nav__link">
+      <a href="../../../cs/computer-network/network-layer/" class="md-nav__link">
         
   
   
@@ -2583,7 +2707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/computer-network/data-link-layer/" class="md-nav__link">
+      <a href="../../../cs/computer-network/data-link-layer/" class="md-nav__link">
         
   
   
@@ -2606,7 +2730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cs/computer-network/physical-layer/" class="md-nav__link">
+      <a href="../../../cs/computer-network/physical-layer/" class="md-nav__link">
         
   
   
@@ -2728,7 +2852,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../math/advanced-math/" class="md-nav__link ">
+            <a href="../../../math/advanced-math/" class="md-nav__link ">
               
   
   
@@ -2771,7 +2895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/advanced-math/differentiation/" class="md-nav__link">
+      <a href="../../../math/advanced-math/differentiation/" class="md-nav__link">
         
   
   
@@ -2794,7 +2918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/advanced-math/integration/" class="md-nav__link">
+      <a href="../../../math/advanced-math/integration/" class="md-nav__link">
         
   
   
@@ -2848,7 +2972,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../math/linear-algebra/" class="md-nav__link ">
+            <a href="../../../math/linear-algebra/" class="md-nav__link ">
               
   
   
@@ -2921,7 +3045,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../math/probability-and-statistics/" class="md-nav__link ">
+            <a href="../../../math/probability-and-statistics/" class="md-nav__link ">
               
   
   
@@ -2929,14 +3053,6 @@
     概率统计
     
   </span>
-  
-    
-  
-  
-    <span class="md-status md-status--new" title="待更新">
-    </span>
-  
-
   
 
             </a>
@@ -2964,7 +3080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/probability-and-statistics/prob/" class="md-nav__link">
+      <a href="../../../math/probability-and-statistics/prob/" class="md-nav__link">
         
   
   
@@ -2987,7 +3103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/probability-and-statistics/stat/" class="md-nav__link">
+      <a href="../../../math/probability-and-statistics/stat/" class="md-nav__link">
         
   
   
@@ -2995,6 +3111,14 @@
     数理统计
     
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="待更新">
+    </span>
+  
+
   
 
       </a>
@@ -3030,8 +3154,6 @@
       
         
       
-        
-      
     
     
     
@@ -3049,7 +3171,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../math/optimization-method/" class="md-nav__link ">
+            <a href="../../../math/optimization-method/" class="md-nav__link ">
               
   
   
@@ -3092,30 +3214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/optimization-method/intro/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    绪论
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../math/optimization-method/linear-search/" class="md-nav__link">
+      <a href="../../../math/optimization-method/linear-search/" class="md-nav__link">
         
   
   
@@ -3138,7 +3237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/optimization-method/unconstraint-optimization/" class="md-nav__link">
+      <a href="../../../math/optimization-method/unconstraint-optimization/" class="md-nav__link">
         
   
   
@@ -3161,7 +3260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/optimization-method/constraint-optimization/" class="md-nav__link">
+      <a href="../../../math/optimization-method/constraint-optimization/" class="md-nav__link">
         
   
   
@@ -3275,7 +3374,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../others/college-physics/" class="md-nav__link ">
+            <a href="../../../others/college-physics/" class="md-nav__link ">
               
   
   
@@ -3350,7 +3449,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../others/english-grammar/" class="md-nav__link ">
+            <a href="../../../others/english-grammar/" class="md-nav__link ">
               
   
   
@@ -3385,7 +3484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/english-grammar/word-property/" class="md-nav__link">
+      <a href="../../../others/english-grammar/word-property/" class="md-nav__link">
         
   
   
@@ -3408,7 +3507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/english-grammar/sentence-ingredient/" class="md-nav__link">
+      <a href="../../../others/english-grammar/sentence-ingredient/" class="md-nav__link">
         
   
   
@@ -3431,7 +3530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/english-grammar/sentence-type/" class="md-nav__link">
+      <a href="../../../others/english-grammar/sentence-type/" class="md-nav__link">
         
   
   
@@ -3506,7 +3605,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../data-science/" class="md-nav__link ">
+            <a href="../../../../data-science/" class="md-nav__link ">
               
   
   
@@ -3542,6 +3641,8 @@
   
     
     
+      
+        
       
         
       
@@ -3592,12 +3693,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-science/pkgs/numpy/" class="md-nav__link">
+      <a href="../../../../data-science/pkgs/numpy/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    numpy 基础
+    numpy
     
   </span>
   
@@ -3615,12 +3716,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-science/pkgs/pandas/" class="md-nav__link">
+      <a href="../../../../data-science/pkgs/pandas/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    pandas 基础
+    pandas
     
   </span>
   
@@ -3638,14 +3739,45 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-science/pkgs/matplotlib/" class="md-nav__link">
+      <a href="../../../../data-science/pkgs/matplotlib/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    matplotlib 基础
+    matplotlib
     
   </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data-science/pkgs/torch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    torch
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="待更新">
+    </span>
+  
+
   
 
       </a>
@@ -3716,7 +3848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-science/shallow-model/linear/" class="md-nav__link">
+      <a href="../../../../data-science/shallow-model/linear/" class="md-nav__link">
         
   
   
@@ -3724,6 +3856,14 @@
     线性模型
     
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="待更新">
+    </span>
+  
+
   
 
       </a>
@@ -3798,7 +3938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-science/deep-model/cpu2gpu/" class="md-nav__link">
+      <a href="../../../../data-science/deep-model/cpu2gpu/" class="md-nav__link">
         
   
   
@@ -3807,6 +3947,14 @@
     
   </span>
   
+    
+  
+  
+    <span class="md-status md-status--new" title="待更新">
+    </span>
+  
+
+  
 
       </a>
     </li>
@@ -3821,7 +3969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-science/deep-model/gpu2gpus/" class="md-nav__link">
+      <a href="../../../../data-science/deep-model/gpu2gpus/" class="md-nav__link">
         
   
   
@@ -3830,6 +3978,14 @@
     
   </span>
   
+    
+  
+  
+    <span class="md-status md-status--new" title="待更新">
+    </span>
+  
+
+  
 
       </a>
     </li>
@@ -3844,7 +4000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-science/deep-model/fnn/" class="md-nav__link">
+      <a href="../../../../data-science/deep-model/fnn/" class="md-nav__link">
         
   
   
@@ -3852,6 +4008,14 @@
     全连接神经网络
     
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="待更新">
+    </span>
+  
+
   
 
       </a>
@@ -3917,7 +4081,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ds-and-algo/" class="md-nav__link ">
+            <a href="../../../../ds-and-algo/" class="md-nav__link ">
               
   
   
@@ -3952,7 +4116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/templates/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/templates/" class="md-nav__link">
         
   
   
@@ -3975,7 +4139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/templates-py/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/templates-py/" class="md-nav__link">
         
   
   
@@ -4035,7 +4199,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ds-and-algo/theory/" class="md-nav__link ">
+            <a href="../../../../ds-and-algo/theory/" class="md-nav__link ">
               
   
   
@@ -4070,7 +4234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/theory/base/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/theory/base/" class="md-nav__link">
         
   
   
@@ -4093,7 +4257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/theory/ds/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/theory/ds/" class="md-nav__link">
         
   
   
@@ -4116,7 +4280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/theory/dp/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/theory/dp/" class="md-nav__link">
         
   
   
@@ -4139,7 +4303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/theory/geometry/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/theory/geometry/" class="md-nav__link">
         
   
   
@@ -4162,7 +4326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/theory/string/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/theory/string/" class="md-nav__link">
         
   
   
@@ -4185,7 +4349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/theory/graph/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/theory/graph/" class="md-nav__link">
         
   
   
@@ -4208,7 +4372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/theory/math/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/theory/math/" class="md-nav__link">
         
   
   
@@ -4268,7 +4432,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ds-and-algo/examples/" class="md-nav__link ">
+            <a href="../../../../ds-and-algo/examples/" class="md-nav__link ">
               
   
   
@@ -4303,7 +4467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/examples/examples-basic-algo/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/examples/examples-basic-algo/" class="md-nav__link">
         
   
   
@@ -4326,7 +4490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/examples/examples-advanced-algo/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/examples/examples-advanced-algo/" class="md-nav__link">
         
   
   
@@ -4349,7 +4513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/examples/examples-ds/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/examples/examples-ds/" class="md-nav__link">
         
   
   
@@ -4411,7 +4575,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ds-and-algo/lan-qiao-cup/" class="md-nav__link ">
+            <a href="../../../../ds-and-algo/lan-qiao-cup/" class="md-nav__link ">
               
   
   
@@ -4446,7 +4610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/lan-qiao-cup/16th-python-a/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/lan-qiao-cup/16th-python-a/" class="md-nav__link">
         
   
   
@@ -4469,7 +4633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/lan-qiao-cup/15th-python-a/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/lan-qiao-cup/15th-python-a/" class="md-nav__link">
         
   
   
@@ -4492,7 +4656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/lan-qiao-cup/14th-python-a/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/lan-qiao-cup/14th-python-a/" class="md-nav__link">
         
   
   
@@ -4515,7 +4679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ds-and-algo/lan-qiao-cup/13th-python-a/" class="md-nav__link">
+      <a href="../../../../ds-and-algo/lan-qiao-cup/13th-python-a/" class="md-nav__link">
         
   
   
@@ -4569,7 +4733,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ds-and-algo/raicom-caip/" class="md-nav__link ">
+            <a href="../../../../ds-and-algo/raicom-caip/" class="md-nav__link ">
               
   
   
@@ -4647,7 +4811,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../front-end/" class="md-nav__link ">
+            <a href="../../../../front-end/" class="md-nav__link ">
               
   
   
@@ -4682,7 +4846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/html-basic/" class="md-nav__link">
+      <a href="../../../../front-end/html-basic/" class="md-nav__link">
         
   
   
@@ -4705,7 +4869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/css-basic/" class="md-nav__link">
+      <a href="../../../../front-end/css-basic/" class="md-nav__link">
         
   
   
@@ -4728,7 +4892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/yaml-basic/" class="md-nav__link">
+      <a href="../../../../front-end/yaml-basic/" class="md-nav__link">
         
   
   
@@ -4800,7 +4964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/javascript/javascript-basic/" class="md-nav__link">
+      <a href="../../../../front-end/javascript/javascript-basic/" class="md-nav__link">
         
   
   
@@ -4823,7 +4987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/javascript/javascript-advanced/" class="md-nav__link">
+      <a href="../../../../front-end/javascript/javascript-advanced/" class="md-nav__link">
         
   
   
@@ -4905,7 +5069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/hexo/build-your-own-website-with-hexo/" class="md-nav__link">
+      <a href="../../../../front-end/hexo/build-your-own-website-with-hexo/" class="md-nav__link">
         
   
   
@@ -4928,7 +5092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/hexo/hexo-deployment/" class="md-nav__link">
+      <a href="../../../../front-end/hexo/hexo-deployment/" class="md-nav__link">
         
   
   
@@ -4951,7 +5115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../front-end/hexo/hexo-enhancement/" class="md-nav__link">
+      <a href="../../../../front-end/hexo/hexo-enhancement/" class="md-nav__link">
         
   
   
@@ -5020,7 +5184,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../back-end/" class="md-nav__link ">
+            <a href="../../../../back-end/" class="md-nav__link ">
               
   
   
@@ -5104,7 +5268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../back-end/cplusplus/cpp-basic/" class="md-nav__link">
+      <a href="../../../../back-end/cplusplus/cpp-basic/" class="md-nav__link">
         
   
   
@@ -5127,7 +5291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../back-end/cplusplus/cpp-crow/" class="md-nav__link">
+      <a href="../../../../back-end/cplusplus/cpp-crow/" class="md-nav__link">
         
   
   
@@ -5211,7 +5375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../back-end/python/python-setup/" class="md-nav__link">
+      <a href="../../../../back-end/python/python-setup/" class="md-nav__link">
         
   
   
@@ -5234,7 +5398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../back-end/python/python-basic/" class="md-nav__link">
+      <a href="../../../../back-end/python/python-basic/" class="md-nav__link">
         
   
   
@@ -5257,7 +5421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../back-end/python/python-advanced/" class="md-nav__link">
+      <a href="../../../../back-end/python/python-advanced/" class="md-nav__link">
         
   
   
@@ -5280,7 +5444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../back-end/python/python-web/" class="md-nav__link">
+      <a href="../../../../back-end/python/python-web/" class="md-nav__link">
         
   
   
@@ -5360,7 +5524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../back-end/mysql/mysql-basic/" class="md-nav__link">
+      <a href="../../../../back-end/mysql/mysql-basic/" class="md-nav__link">
         
   
   
@@ -5383,7 +5547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../back-end/mysql/mysql-problem-solve/" class="md-nav__link">
+      <a href="../../../../back-end/mysql/mysql-problem-solve/" class="md-nav__link">
         
   
   
@@ -5463,7 +5627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../back-end/opengauss/opengauss-setup/" class="md-nav__link">
+      <a href="../../../../back-end/opengauss/opengauss-setup/" class="md-nav__link">
         
   
   
@@ -5486,7 +5650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../back-end/opengauss/opengauss-basic/" class="md-nav__link">
+      <a href="../../../../back-end/opengauss/opengauss-basic/" class="md-nav__link">
         
   
   
@@ -5553,7 +5717,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../operation/" class="md-nav__link ">
+            <a href="../../../../operation/" class="md-nav__link ">
               
   
   
@@ -5588,7 +5752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../operation/gnu-linux-basic/" class="md-nav__link">
+      <a href="../../../../operation/gnu-linux-basic/" class="md-nav__link">
         
   
   
@@ -5611,7 +5775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../operation/gnu-linux-advanced/" class="md-nav__link">
+      <a href="../../../../operation/gnu-linux-advanced/" class="md-nav__link">
         
   
   
@@ -5685,7 +5849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../operation/nginx/nginx-commands/" class="md-nav__link">
+      <a href="../../../../operation/nginx/nginx-commands/" class="md-nav__link">
         
   
   
@@ -5708,7 +5872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../operation/nginx/nginx-setup/" class="md-nav__link">
+      <a href="../../../../operation/nginx/nginx-setup/" class="md-nav__link">
         
   
   
@@ -5731,7 +5895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../operation/nginx/nginx-examples/" class="md-nav__link">
+      <a href="../../../../operation/nginx/nginx-examples/" class="md-nav__link">
         
   
   
@@ -5800,7 +5964,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../dev-tools/" class="md-nav__link ">
+            <a href="../../../../dev-tools/" class="md-nav__link ">
               
   
   
@@ -5835,7 +5999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/jetbrains-license/" class="md-nav__link">
+      <a href="../../../../dev-tools/jetbrains-license/" class="md-nav__link">
         
   
   
@@ -5858,7 +6022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/download/" class="md-nav__link">
+      <a href="../../../../dev-tools/download/" class="md-nav__link">
         
   
   
@@ -5866,6 +6030,14 @@
     下载工具
     
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="待更新">
+    </span>
+  
+
   
 
       </a>
@@ -5934,7 +6106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/setup/windows-setup/" class="md-nav__link">
+      <a href="../../../../dev-tools/setup/windows-setup/" class="md-nav__link">
         
   
   
@@ -5957,7 +6129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/setup/devcpp-setup/" class="md-nav__link">
+      <a href="../../../../dev-tools/setup/devcpp-setup/" class="md-nav__link">
         
   
   
@@ -5980,7 +6152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/setup/idle-setup/" class="md-nav__link">
+      <a href="../../../../dev-tools/setup/idle-setup/" class="md-nav__link">
         
   
   
@@ -6003,7 +6175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/setup/clion-setup/" class="md-nav__link">
+      <a href="../../../../dev-tools/setup/clion-setup/" class="md-nav__link">
         
   
   
@@ -6089,7 +6261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/git/git-commands/" class="md-nav__link">
+      <a href="../../../../dev-tools/git/git-commands/" class="md-nav__link">
         
   
   
@@ -6112,7 +6284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/git/git-pull-request/" class="md-nav__link">
+      <a href="../../../../dev-tools/git/git-pull-request/" class="md-nav__link">
         
   
   
@@ -6135,7 +6307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/git/git-self-define-command/" class="md-nav__link">
+      <a href="../../../../dev-tools/git/git-self-define-command/" class="md-nav__link">
         
   
   
@@ -6158,7 +6330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/git/git-branch-conflict/" class="md-nav__link">
+      <a href="../../../../dev-tools/git/git-branch-conflict/" class="md-nav__link">
         
   
   
@@ -6181,7 +6353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dev-tools/git/git-tips/" class="md-nav__link">
+      <a href="../../../../dev-tools/git/git-tips/" class="md-nav__link">
         
   
   
@@ -6261,28 +6433,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#数据" class="md-nav__link">
+  <a href="#回归任务" class="md-nav__link">
     <span class="md-ellipsis">
-      数据
+      回归任务
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="回归任务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#均方误差" class="md-nav__link">
+    <span class="md-ellipsis">
+      均方误差
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#模型" class="md-nav__link">
-    <span class="md-ellipsis">
-      模型
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="模型">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#lightgcn" class="md-nav__link">
+  <a href="#r2-分数" class="md-nav__link">
     <span class="md-ellipsis">
-      LightGCN
+      \(R^2\) 分数
     </span>
   </a>
   
@@ -6294,9 +6466,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#损失" class="md-nav__link">
+  <a href="#二分类任务" class="md-nav__link">
     <span class="md-ellipsis">
-      损失
+      二分类任务
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二分类任务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#混淆矩阵" class="md-nav__link">
+    <span class="md-ellipsis">
+      混淆矩阵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p-r-曲线" class="md-nav__link">
+    <span class="md-ellipsis">
+      P-R 曲线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roc-曲线" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROC 曲线
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#多分类任务" class="md-nav__link">
+    <span class="md-ellipsis">
+      多分类任务
     </span>
   </a>
   
@@ -6318,7 +6532,7 @@
 
 
   
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/ai/graph-neural-network/index.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/edit/main/docs/base/ai/machine-learning/eval.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -6327,59 +6541,180 @@
     
       
     
-    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/ai/graph-neural-network/index.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/Explorer-Dong/explorer-dong.github.io/raw/main/docs/base/ai/machine-learning/eval.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-  <h1>图神经网络导读</h1>
+  <h1>评价</h1>
 
-<p>本文记录图神经网络的学习笔记，主要的下游任务是推荐系统。实际课程名为《智慧教育》。</p>
-<p>成绩组成：考勤，实验，大作业。</p>
-<p>一些资料如下：</p>
-<ul>
-<li>《推荐系统入门教程》 <sup id="fnref:fun-rec"><a class="footnote-ref" href="#fn:fun-rec">1</a></sup>；</li>
-<li>《A Comprehensive Survey on Graph Neural  Networks》 <sup id="fnref:tnnls"><a class="footnote-ref" href="#fn:tnnls">2</a></sup>；</li>
-</ul>
-<h2 id="数据">数据</h2>
-<p>图数据主要由知识图谱组成，关于知识图谱的主要技术（按执行顺序）如下：</p>
-<ol>
-<li>知识抽取：从非结构化数据中提取结构化的数据，例如「实体、关系和属性」，现在市面上有很多成熟的提取 Pipeline，大多都是基于深度模型；</li>
-<li>知识表示/嵌入：将上述提取出来的结构化数据（比如三元组。其实是有结构的非结构化数据，因为都是文本）表示为向量。常见的就是 Translate 系列模型 <sup id="fnref:trans"><a class="footnote-ref" href="#fn:trans">3</a></sup>；</li>
-<li>知识融合：解决不同源的知识之间的冲突，比如解决共指消解（同一个实体的属性指向了多个内容）、实体对齐（不同的表述但其实是相同的含义）等；</li>
-<li>知识推理：在上述三布构建出的知识图谱上进行推理任务，旨在发现图中的潜在知识关联或者补全图谱。可以借助图论知识进行推理，也可以借助上述第二步得到的嵌入向量进行推理。</li>
-</ol>
-<h2 id="模型">模型</h2>
-<h3 id="lightgcn">LightGCN</h3>
-<figure id="__fc_1">
-<p><a class="glightbox" href="https://cdn.dwj601.cn/images/20250508084029371.png" data-type="image" data-width="auto" data-height="auto" data-title="LightGCN 网络结构示意图" data-desc-position="bottom"><img alt="LightGCN 网络结构示意图" src="https://cdn.dwj601.cn/images/20250508084029371.png" /></a></p>
+<p>模型训练好之后，需要判断其性能，根据不同的任务就有不同的评价指标。本文重点介绍模型评价中的自动评价指标，人为评价指标此处不展开。</p>
+<h2 id="回归任务">回归任务</h2>
+<p>对于回归任务，模型输出的是一个具体的实数。</p>
+<h3 id="均方误差">均方误差</h3>
+<p>均方误差 (Mean Square Error, MSE) 即模型预测值 <span class="arithmatex">\(f(\boldsymbol{x}_i)\)</span> 与标签值 <span class="arithmatex">\(y_i\)</span> 的平均平方误差，也就是所谓的方差。取值范围为 <span class="arithmatex">\([0,+\infty]\)</span>，越小越好。如下式：</p>
+<div class="arithmatex">\[
+\text{MSE} =\frac{1}{N} \sum_{i = 1}^N (f(\boldsymbol{x}_i) - y_i)^2
+\]</div>
+<h3 id="r2-分数"><span class="arithmatex">\(R^2\)</span> 分数</h3>
+<p><span class="arithmatex">\(R^2\)</span> 分数的取值范围为 <span class="arithmatex">\([-\infty,1]\)</span>，越大越好。如下式：</p>
+<div class="arithmatex">\[
+R^2 = 1 - \frac{\sum_{i = 1}^N(f(\boldsymbol{x}_i)-y_i)^2}{\sum_{i = 1}^N(\bar{y} - y_i)^2},\quad \bar{y} = \frac{1}{N}\sum_{i = 1}^N y_i
+\]</div>
+<h2 id="二分类任务">二分类任务</h2>
+<p>对于二分类任务，模型输出的大多都是样本属于正例的概率。</p>
+<h3 id="混淆矩阵">混淆矩阵</h3>
+<p>混淆矩阵 (confusion matrix) 即二分类模型的预测结果。</p>
+<figure id="__tc_1">
 <figcaption>
-<p><span class="caption-prefix">图 1. </span> LightGCN 网络结构示意图</p>
+<p><span class="caption-prefix">表 1. </span> 二分类结果混淆矩阵</p>
+</figcaption>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">真实情况 \ 预测结果</th>
+<th style="text-align: center;">正例</th>
+<th style="text-align: center;">反例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>正例</strong></td>
+<td style="text-align: center;">TP（真正例）</td>
+<td style="text-align: center;">FN（假反例）</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>反例</strong></td>
+<td style="text-align: center;">FP（假反例）</td>
+<td style="text-align: center;">TN（真反例）</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<p>基于上述混淆矩阵 ，我们定义以下度量指标：</p>
+<figure id="__tc_2">
+<figcaption>
+<p><span class="caption-prefix">表 2. </span> 二分类度量指标（数据平衡时）</p>
+</figcaption>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">名称</th>
+<th style="text-align: center;">公式</th>
+<th style="text-align: center;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">准确率 (Accuracy)</td>
+<td style="text-align: center;"><span class="arithmatex">\(\text{Accuracy}=\dfrac{TP+TN}{TP+FN+FP+TN}\)</span></td>
+<td style="text-align: center;">错误率 = 1 - 准确率</td>
+</tr>
+<tr>
+<td style="text-align: center;">查准率/精度 (Precision)</td>
+<td style="text-align: center;"><span class="arithmatex">\(P = \dfrac{TP}{TP+FP}\)</span></td>
+<td style="text-align: center;">该指标可以理解为「我认为的正例里面确实为正例的样本数量越多越好」。适用于商品搜索推荐，即在有限的屏幕内容中显示出尽可能多的用户偏好商品。</td>
+</tr>
+<tr>
+<td style="text-align: center;">查全率/召回率 (Recall)</td>
+<td style="text-align: center;"><span class="arithmatex">\(R = \dfrac{TP}{TP+FN}\)</span></td>
+<td style="text-align: center;">该指标可以理解为「在测试集的所有正例里面预测为正例的样本数量越多越好」。适用于逃犯、病例检测，需要尽可能将正例检测出来。</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<p>当训练集正负例「不平衡」时，需要按照正负例分开评估。如下：</p>
+<figure id="__tc_3">
+<figcaption>
+<p><span class="caption-prefix">表 3. </span> 二分类度量指标（数据不平衡时）</p>
+</figcaption>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">名称</th>
+<th style="text-align: center;">公式</th>
+<th style="text-align: center;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">敏感性 (Sensitivity)</td>
+<td style="text-align: center;"><span class="arithmatex">\(\text{Sensitivity} = \dfrac{TP}{TP + FN}\)</span></td>
+<td style="text-align: center;">该指标只评估模型对正例的预测准确性。</td>
+</tr>
+<tr>
+<td style="text-align: center;">特异性 (Specificity)</td>
+<td style="text-align: center;"><span class="arithmatex">\(\text{Specificity} = \dfrac{TN}{FP + TN}\)</span></td>
+<td style="text-align: center;">该指标只评估模型对负例的预测准确性。</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<p>由于实际场景中需要「兼顾查准率和查全率」同时可能需要对其中一个有所偏好，我们引入 <span class="arithmatex">\(F_{\beta}\)</span> 分数。当 <span class="arithmatex">\(\beta=1\)</span> 时就是标准的 F1 分数，当 <span class="arithmatex">\(\beta&gt;1\)</span> 时对查全率有偏好，当 <span class="arithmatex">\(\beta&lt;1\)</span> 时对查准率有偏好。<span class="arithmatex">\(F_{\beta}\)</span> 分数如下式：</p>
+<div class="arithmatex">\[
+F_{\beta} = \frac{(1+\beta^2) \cdot P \cdot R}{\beta^2\cdot P + R}
+\]</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>上述指标都是针对一个混淆矩阵展开，如果需要度量「二分类模型的泛化能力」是远远不够的。为此我们引入 P-R 曲线和 ROC 曲线。两者的产生方式相同，都是：根据二分类模型对测试数据类别的预测概率划分一个阈值，并将预测概率超过阈值的判定为正例，低于阈值的判定为负例。然后将阈值依次选择为每个样本（假设为 <span class="arithmatex">\(N\)</span> 个测试样本）的预测概率值进行二分类即可得到 <span class="arithmatex">\(N\)</span> 个混淆矩阵，进而得到曲线中的 <span class="arithmatex">\(N\)</span> 个数据点。</p>
+</div>
+<h3 id="p-r-曲线">P-R 曲线</h3>
+<p>横坐标为查全率 (Recall)，纵坐标为查准率 (Precision)。</p>
+<figure id="__fc_1">
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202403190830311.png" data-type="image" data-width="auto" data-height="auto" data-title="P-R 曲线" data-desc-position="bottom"><img alt="P-R 曲线" src="https://cdn.dwj601.cn/images/202403190830311.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 1. </span> P-R 曲线</p>
 </figcaption>
 </figure>
-<p>LightGCN <sup id="fnref:lightgcn"><a class="footnote-ref" href="#fn:lightgcn">4</a></sup> 是中科大于 2020 年提出的一款基于图卷积神经网络的 SOTA 推荐模型。</p>
-<h2 id="损失">损失</h2>
-<p>Recall</p>
-<p>NDCG</p>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:fun-rec">
-<p><a href="https://github.com/datawhalechina/fun-rec/">datawhalechine/fun-rec - (github.com)</a>&#160;<a class="footnote-backref" href="#fnref:fun-rec" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:tnnls">
-<p><a href="https://arxiv.org/pdf/1901.00596">A Comprehensive Survey on Graph Neural  Networks | TNNLS 2020 - (arxiv.org)</a>&#160;<a class="footnote-backref" href="#fnref:tnnls" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:trans">
-<p><a href="https://mp.weixin.qq.com/s/2YbfL_1_SyM4wNozyaj4lw">知识图谱嵌入的 Translate 模型汇总：TransE, TransH, TransR, TransD - (mp.weixin.qq.com)</a>&#160;<a class="footnote-backref" href="#fnref:trans" title="Jump back to footnote 3 in the text">&#8617;</a></p>
-</li>
-<li id="fn:lightgcn">
-<p><a href="https://arxiv.org/abs/2002.02126">LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation | SIGIR 2020 - (arxiv.org)</a>&#160;<a class="footnote-backref" href="#fnref:lightgcn" title="Jump back to footnote 4 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
+<ul>
+<li>趋势解读。随着正例判定阈值不断下降，很显然查全率 <span class="arithmatex">\(R\)</span> 会不断上升，查准率 <span class="arithmatex">\(P\)</span> 会不断下降；</li>
+<li>曲线解读。不同曲线对应了不同模型的泛化能力，我们用「P-R 曲线与横纵坐标围成的面积」来衡量模型的泛化能力，面积越大则对应模型的泛化性能更好。因此上图中 A 模型泛化能力比 C 模型要好。但是我们往往会遇到比较 <span class="arithmatex">\(A\)</span> 与 <span class="arithmatex">\(B\)</span> 两个模型泛化能力的情况，考虑到计算实际曲线面积的复杂性，引入「平衡点」概念。平衡点就是 <span class="arithmatex">\(P=R\)</span> 这条直线与 P-R 曲线的交点。平衡点越高，则对应的模型泛化能力越好。因此上图中 <span class="arithmatex">\(A\)</span> 模型的性能优于 <span class="arithmatex">\(B\)</span> 模型的性能。</li>
+</ul>
+<h3 id="roc-曲线">ROC 曲线</h3>
+<p>ROC (Receiver Operating Characteristic, ROC) 曲线即受试者工作特征曲线。横坐标为假正例率 <span class="arithmatex">\(\displaystyle FPR = \frac{FP}{FP+TN}\)</span>，纵坐标为真正例率 <span class="arithmatex">\(\displaystyle TPR = \frac{TP}{TP+FN}\)</span>。</p>
+<figure id="__fc_2">
+<p><a class="glightbox" href="https://cdn.dwj601.cn/images/202403190851371.png" data-type="image" data-width="auto" data-height="auto" data-title="ROC 曲线图与 AUC" data-desc-position="bottom"><img alt="ROC 曲线图与 AUC" src="https://cdn.dwj601.cn/images/202403190851371.png" /></a></p>
+<figcaption>
+<p><span class="caption-prefix">图 2. </span> ROC 曲线图与 AUC</p>
+</figcaption>
+</figure>
+<ul>
+<li>趋势解读。随着正例判定阈值不断下降，真正例率与假正例率均会不断上升；</li>
+<li>曲线解读。不同曲线同样对应了不同模型的泛化能力。我们用「ROC 曲线下方的面积 (Area Under ROC Curve, AUC)」来衡量模型的泛化能力，面积越大则对应模型的泛化性能越好。取值范围为 <span class="arithmatex">\([0.5,1]\)</span>，其中 <span class="arithmatex">\(0.5\)</span> 表示模型进行随机预测的性能。</li>
+</ul>
+<h2 id="多分类任务">多分类任务</h2>
+<p>我们可以将多分类问题拆分为多个二分类问题（假设为 <span class="arithmatex">\(n\)</span> 个），从而可以获得多个混淆矩阵。根据求平均顺序的不同，多分类任务的度量指标分为「宏」与「微」两个类别。其中宏是先求指标再取平均，微是先取平均再求指标。</p>
+<figure id="__tc_4">
+<figcaption>
+<p><span class="caption-prefix">表 4. </span> 多分类任务度量指标表</p>
+</figcaption>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">类别 \ 指标</th>
+<th style="text-align: center;">查准率</th>
+<th style="text-align: center;">查全率</th>
+<th style="text-align: center;">F1 分数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>宏</strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(\displaystyle\text{macroP} = \frac{1}{n} \sum_{i=1}^n P_i\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\displaystyle \text{macroR} = \frac{1}{n} \sum_{i=1}^n R_i\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\displaystyle\text{macroF}_1 = \frac{2 \cdot\text{macroP} \cdot\text{macroR}}{\text{macroP}+\text{macroR}}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>微</strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(\displaystyle\text{microP} = \frac{\overline{TP}}{\overline{TP}+\overline{FP}}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\displaystyle\text{microR} = \frac{\overline{TP}}{\overline{TP}+\overline{FN}}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\displaystyle\text{microF}_1 = \frac{2 \cdot \text{microP} \cdot \text {microR}}{\text{microP}+\text{microR}}\)</span></td>
+</tr>
+</tbody>
+</table>
+</figure>
 
 
 
@@ -6402,7 +6737,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月13日 00:05:11">2025年5月13日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月15日 09:24:16">2025年5月15日</span>
   </span>
 
     
@@ -6412,7 +6747,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月13日 00:05:11">2025年5月13日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年2月26日 11:41:07">2025年2月26日</span>
   </span>
 
     
@@ -6528,7 +6863,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../computer-vision/image-super-resolution/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 图像超分">
+          <a href="../model/semi-supervised-learning/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 半监督学习">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6538,20 +6873,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                图像超分
+                半监督学习
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../cs/object-oriented-programming/" class="md-footer__link md-footer__link--next" aria-label="下一页: 面向对象程序设计">
+          <a href="../../deep-learning/" class="md-footer__link md-footer__link--next" aria-label="下一页: 深度学习导读">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                面向对象程序设计
+                深度学习导读
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -6611,12 +6946,12 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "content.code.copy", "content.code.select", "content.tooltips", "content.action.edit", "content.action.view", "search.highlight", "search.share", "search.suggest", "toc.follow", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "content.code.copy", "content.code.select", "content.tooltips", "content.action.edit", "content.action.view", "search.highlight", "search.share", "search.suggest", "toc.follow", "announce.dismiss"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
-        <script src="../../../assets/javascripts/katex.js"></script>
+        <script src="../../../../assets/javascripts/katex.js"></script>
       
         <script src="https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.js"></script>
       
@@ -6624,9 +6959,9 @@
       
         <script src="https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js"></script>
       
-        <script src="../../../assets/javascripts/link_blank.js"></script>
+        <script src="../../../../assets/javascripts/link_blank.js"></script>
       
-        <script src="../../../assets/javascripts/baidu_tongji.js"></script>
+        <script src="../../../../assets/javascripts/baidu_tongji.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

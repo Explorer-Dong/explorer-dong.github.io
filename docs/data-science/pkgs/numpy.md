@@ -1,8 +1,8 @@
 ---
-title: numpy 基础
+title: numpy
 ---
 
-本文记录 numpy 库的学习笔记。
+本文记录 [numpy](https://numpy.org/) 库的学习笔记。
 
 ## np.array 用法
 

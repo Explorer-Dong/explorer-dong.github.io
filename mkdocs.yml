@@ -182,7 +182,7 @@ nav:
           - base/ai/machine-learning/model/lazy-learning.md
           - base/ai/machine-learning/model/cluster-learning.md
           - base/ai/machine-learning/model/semi-supervised-learning.md
-        - base/ai/machine-learning/loss.md
+        - base/ai/machine-learning/eval.md
       - 深度学习:
         - base/ai/deep-learning/index.md
       - 数据挖掘:
@@ -199,8 +199,8 @@ nav:
         - base/ai/computer-vision/image-classification.md
         - base/ai/computer-vision/object-detection.md
         - base/ai/computer-vision/image-super-resolution.md
-      - 图神经网络:
-        - base/ai/graph-neural-network/index.md
+      - 智慧教育:
+        - base/ai/intelligent-education/index.md
     - 计算机基础:
       - 面向对象程序设计:
         - base/cs/object-oriented-programming/index.md
@@ -258,6 +258,7 @@ nav:
       - data-science/pkgs/numpy.md
       - data-science/pkgs/pandas.md
       - data-science/pkgs/matplotlib.md
+      - data-science/pkgs/torch.md
     - 传统机器学习算法:
       - data-science/shallow-model/linear.md
     - 现代深度学习模型:

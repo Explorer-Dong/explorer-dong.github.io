@@ -1,11 +1,13 @@
 ---
-title: 图神经网络导读
+title: 智慧教育导读
 status: new
 ---
 
-本文记录图神经网络的学习笔记，主要的下游任务是推荐系统。实际课程名为《智慧教育》。
+本文记录智慧教育的学习笔记。
 
 成绩组成：考勤，实验，大作业。
+
+## 推荐系统
 
 一些资料如下：
 
@@ -15,7 +17,7 @@ status: new
 [^fun-rec]: [datawhalechine/fun-rec - (github.com)](https://github.com/datawhalechina/fun-rec/)
 [^tnnls]: [A Comprehensive Survey on Graph Neural  Networks | TNNLS 2020 - (arxiv.org)](https://arxiv.org/pdf/1901.00596)
 
-## 数据
+### 数据
 
 图数据主要由知识图谱组成，关于知识图谱的主要技术（按执行顺序）如下：
 
@@ -25,8 +27,6 @@ status: new
 4. 知识推理：在上述三布构建出的知识图谱上进行推理任务，旨在发现图中的潜在知识关联或者补全图谱。可以借助图论知识进行推理，也可以借助上述第二步得到的嵌入向量进行推理。
 
 [^trans]: [知识图谱嵌入的 Translate 模型汇总：TransE, TransH, TransR, TransD - (mp.weixin.qq.com)](https://mp.weixin.qq.com/s/2YbfL_1_SyM4wNozyaj4lw)
-
-## 模型
 
 ### LightGCN
 
@@ -40,8 +40,13 @@ LightGCN [^lightgcn] 是中科大于 2020 年提出的一款基于图卷积神�
 
 [^lightgcn]: [LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation | SIGIR 2020 - (arxiv.org)](https://arxiv.org/abs/2002.02126)
 
-## 损失
+### 评价
 
 Recall
 
 NDCG
+
+## 认知诊断
+
+- 传统方法：IRT 理论；
+- 现代方法：深度认知诊断模型。

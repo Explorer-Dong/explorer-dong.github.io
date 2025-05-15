@@ -1,8 +1,8 @@
 ---
-title: matplotlib 基础
+title: matplotlib
 ---
 
-本文记录 Python 中 [matplotlib](https://matplotlib.org/stable/index.html) 库的学习笔记。
+本文记录 [matplotlib](https://matplotlib.org/stable/index.html) 库的学习笔记。
 
 ## 解决中文显示异常问题
 

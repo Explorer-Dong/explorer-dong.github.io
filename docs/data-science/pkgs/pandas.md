@@ -1,14 +1,8 @@
 ---
-title: pandas 基础
+title: pandas
 ---
 
-## 前言
-
-本文记录 pandas 的基础使用指南。
-
-开源地址：<https://github.com/pandas-dev/pandas>
-
-官方文档：<https://pandas.pydata.org/docs/reference/index.html>
+本文记录 [pandas](https://github.com/pandas-dev/pandas) 库的学习笔记。
 
 ## DataFrame
 

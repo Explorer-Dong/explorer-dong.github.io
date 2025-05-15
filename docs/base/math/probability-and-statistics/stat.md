@@ -1,5 +1,6 @@
 ---
 title: 数理统计
+status: new
 ---
 
 !!! warning

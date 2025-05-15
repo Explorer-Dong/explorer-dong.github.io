@@ -60,12 +60,12 @@ flowchart LR
     自然语言处理(自然语言处理)
     计算机视觉(计算机视觉)
     语音信号处理(语音信号处理)
-    图神经网络(图神经网络)
+    智慧教育(智慧教育)
 
     %% 关系定义
     机器学习 --> 数据挖掘
     深度学习 --> 语音信号处理 & 自然语言处理 & 计算机视觉
-    自然语言处理 --> 图神经网络
+    自然语言处理 --> 智慧教育
     数字图像处理 --> 计算机视觉
 
     %% 实体定义
@@ -99,7 +99,7 @@ flowchart LR
     click 数据挖掘 "./base/ai/data-mining/"
     click 计算机视觉 "./base/ai/computer-vision/"
     click 自然语言处理 "./base/ai/natural-language-processing/"
-    click 图神经网络 "./base/ai/graph-neural-network/"
+    click 智慧教育 "./base/ai/intelligent-education/"
 ```
 
 <caption> 拓扑图 1. AI/CS 学科基础笔记 </caption>

@@ -3,244 +3,142 @@ title: 代码模板 (C++)
 ---
 
 !!! tip
-    本文记录算法竞赛的代码模板，编程语言采用 C++ 11 及更高标准，全部使用 built-in 模块。产生原因在于：某些场合可以快速抄板子而不用大脑记忆，因此不会涉及到任何原理部分。如果有原理解读的需求，可以跳转到 [理论剖析](./theory/index.md) 部分阅读。
+    本文记录 C++ 语言的算法竞赛代码模板，全部使用 built-in 模块。产生原因在于：某些场合可以快速抄板子而不用大脑记忆，因此不会涉及到任何原理部分。如果有原理解读的需求，可以跳转到 [理论剖析](./theory/index.md) 部分阅读。
 
 ## 基础算法
 
 ### 闭区间二分
 
-```c++
-// 闭区间寻找左边界
-void bisect_left(int target) {
-    int l = 左边界, r = 右边界;
-    while (l < r) {
-        int mid = (l + r) >> 1;
-        if (落在了 target 的左边) {
-            l = mid + 1;
-        } else (落在了 target 上或右边) {
-            r = mid;
-        }
-    }
-}
+![查找区域](https://cdn.dwj601.cn/images/20250515144500232.png)
 
-// 闭区间寻找右边界
-void bisect_right(int target) {
-    int l = 左边界, r = 右边界;
-    while (l < r) {
-        int mid = (l + r + 1) >> 1;
-        if (落在了 target 的右边) {
-            r = mid - 1;
-        } else (落在了 target 上或左边) {
-            l = mid;
-        }
-    }
-}
-```
+/// fc
+查找区域
+///
 
-### 排序
-
-=== "C++ 快速排序"
+=== "闭区间寻找左边界"
 
     ```c++
-    vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
-    
-    void quick_sort(int l, int r) {
-        if (l >= r) return;
-    
-        // conquer
-        int i = l - 1, j = r + 1, x = a[(l + r) >> 1];
-        while (i < j) {
-            while (a[++i] < x);
-            while (a[--j] > x);
-            if (i < j) swap(a[i], a[j]);
+    void bisect_left(int target) {
+        int l = 左边界, r = 右边界;
+        while (l < r) {
+            int mid = (l + r) >> 1;
+            if (合法 or 偏大) {
+                r = mid;
+            } else {  // 偏小
+                l = mid + 1;
+            }
         }
-    
-        // divide
-        quick_sort(l, j);
-        quick_sort(j + 1, r);
     }
-    
-    quick_sort(0, a.size() - 1);  // 调用示例
     ```
 
-=== "C++ 归并排序"
+=== "闭区间寻找右边界"
 
     ```c++
-    vector<int> a = {3, 1, 4, 2, 5};  // 待排序数组
-    vector<int> t(a.size(), 0);       // 临时数组
-    
-    void merge_sort(int l, int r) {
-        if (l >= r) return;
-    
-        // divide
-        int mid = (l + r) >> 1;
-    
-        // conquer
-        merge_sort(l, mid), merge_sort(mid + 1, r);
-    
-        // combine
-        int i = l, j = mid + 1, k = 0;
-        while (i <= mid && j <= r) {
-            if (a[i] < a[j]) t[k++] = a[i++];
-            else t[k++] = a[j++];
-            cnt++;
+    void bisect_right(int target) {
+        int l = 左边界, r = 右边界;
+        while (l < r) {
+            int mid = (l + r + 1) >> 1;
+            if (合法 or 偏小) {
+                l = mid;
+            } else {  // 偏大
+                r = mid - 1;
+            }
         }
-        while (i <= mid) t[k++] = a[i++];
-        while (j <= r) t[k++] = a[j++];
+    }
+    ```
+
+### 自定义排序
+
+假设一个数据类型有身高 `height`、分数 `score`  和年龄 `age` 三个字段，现在的排序需求是：分数越高越靠前、若分数相同则年龄越小越靠前。
+
+=== "重载数据类型的小于号"
+
+    ```c++ hl_lines="8-13"
+    #include <iostream>
+    #include <algorithm>
+    using namespace std;
+    using ll = long long;
     
-        for (i = l, j = 0; i <= r; i++) a[i] = t[j++];
+    struct Item {
+        int height, score, age;
+        bool operator<(const Item& other) const {
+            if (this->score == other.score) {
+                return this->age < other.age;
+            }
+            return this->score > other.score;
+        }
     };
     
-    merge_sort(0, a.size() - 1);  // 调用示例
+    int main() {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+    
+        Item a[3] = {
+            {180, 90, 21},
+            {175, 92, 24},
+            {185, 90, 22}
+        };
+    
+        sort(a, a + 3);
+    
+        for (int i = 0; i < 3; i++) {
+            printf("height: %d, score: %d, age: %d\n",
+                a[i].height, a[i].score, a[i].age);
+        }
+    
+        /* 输出
+        *  height: 175, score: 92, age: 24
+        *  height: 180, score: 90, age: 21
+        *  height: 185, score: 90, age: 22
+        */
+    
+        return 0;
+    }
     ```
 
-=== "C++ 堆排序"
+=== "重载排序函数的比较规则"
 
-    === "非递归"
+    ```c++ hl_lines="21-24"
+    #include <iostream>
+    #include <algorithm>
+    using namespace std;
+    using ll = long long;
     
-        ```c++
-        void down(int u) {
-            int l = 2 * u + 1;
-            int r = 2 * u + 2;
-            int t = u;
+    struct Item {
+        int height, score, age;
+    };
     
-            while (true) {
-                if (l <= last && heap[u] > heap[l]) {
-                    t = l;
-                }
-                if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
-                    t = r;
-                }
+    int main() {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
     
-                if (t != u) {
-                    swap(heap[t], heap[u]);
-                    u = t;
-                    l = 2 * u + 1;
-                    r = 2 * u + 2;
-                } else {
-                    break;
-                }
+        Item a[3] = {
+            {180, 90, 21},
+            {175, 92, 24},
+            {185, 90, 22}
+        };
+    
+        sort(a, a + 3, [](Item& x, Item& y){
+            if (x.score == y.score) {
+                return x.age < y.age;
             }
+            return x.score > y.score;
+        });
+    
+        for (int i = 0; i < 3; i++) {
+            printf("height: %d, score: %d, age: %d\n",
+                a[i].height, a[i].score, a[i].age);
         }
     
-        void up(int u) {
-            int fa = (u - 1) / 2;
+        /* 输出
+        *  height: 175, score: 92, age: 24
+        *  height: 180, score: 90, age: 21
+        *  height: 185, score: 90, age: 22
+        */
     
-            while (fa >= 0 && heap[fa] > heap[u]) {
-                swap(heap[fa], heap[u]);
-                u = fa;
-                fa = (u - 1) / 2;
-            }
-        }
-        ```
-    
-    === "递归"
-    
-        ```c++
-        void down(int u) {
-            int l = 2 * u + 1;
-            int r = 2 * u + 2;
-    
-            int t = u;
-            if (l <= last && heap[u] > heap[l]) {
-                t = l;
-            }
-            if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
-                t = r;
-            }
-    
-            if (t != u) {
-                swap(heap[t], heap[u]);
-                down(t);
-            }
-        }
-    
-        void up(int u) {
-            int fa = (u - 1) / 2;
-    
-            if (fa >= 0 && heap[fa] > heap[u]) {
-                swap(heap[fa], heap[u]);
-                up(fa);
-            }
-        }
-        ```
-    
-    === "两种初始化"
-    
-        ```c++
-        // 从下往上
-        for (int i = n / 2; i >= 0; i--) {
-            down(i);
-        }
-        ```
-    
-        ```c++
-        // 从上往下
-        for (int i = 1; i < n; i++) {
-            up(i);
-        }
-        ```
-    
-    === "完整代码"
-    
-        ```c++
-        #include <iostream>
-    
-        using namespace std;
-    
-        int n, m;
-        int heap[100010];
-        int last;
-    
-        void down(int u) {
-            int l = 2 * u + 1;
-            int r = 2 * u + 2;
-    
-            int t = u;
-            if (l <= last && heap[u] > heap[l]) {
-                t = l;
-            }
-            if (r <= last && heap[u] > heap[r] && heap[r] < heap[l]) {
-                t = r;
-            }
-    
-            if (t != u) {
-                swap(heap[t], heap[u]);
-                down(t);
-            }
-        }
-    
-        void up(int u) {
-            int fa = (u - 1) / 2;
-    
-            if (fa >= 0 && heap[fa] > heap[u]) {
-                swap(heap[fa], heap[u]);
-                up(fa);
-            }
-        }
-    
-        int main() {
-            cin >> n >> m;
-            for (int i = 0; i < n; i++) {
-                cin >> heap[i];
-            }
-            last = n - 1;
-    
-            // 初始化堆结构
-            for (int i = n / 2; i >= 0; i--) {
-                down(i);
-            }
-    
-            // 输出堆顶 + 重新维护堆结构
-            for (int i = 0; i < m; i++) {
-                cout << heap[0] << " ";
-                heap[0] = heap[last--];
-                down(0);
-            }
-    
-            return 0;
-        }
-        ```
+        return 0;
+    }
+    ```
 
 ## 数据结构
 

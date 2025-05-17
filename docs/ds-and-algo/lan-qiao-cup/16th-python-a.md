@@ -3,7 +3,7 @@ title: 第 16 届 Python A 组（省赛）
 ---
 
 !!! tip
-    官方还没有开放评测，[洛谷](https://www.luogu.com.cn/problem/list?tag=363&orderBy=name&order=desc&page=1) 倒是更新得很快。
+    官方还没有开放评测，[洛谷](https://www.luogu.com.cn/problem/list?tag=363&orderBy=name&order=desc&page=1) 开放了全部评测，但是时间限制与比赛不太一样，往往更加严格，所以可能会出现洛谷过不了，但其实赛时能过的情况。
 
 ## T1 偏蓝 (5'/5')
 
@@ -135,15 +135,15 @@ title: 第 16 届 Python A 组（省赛）
 
 思路：不会，TODO。
 
-## T7 登山 (?'/20')
+## T7 登山 (20'/20')
 
 题意：给定一个 $n$ 行 $m$ 列的矩阵 $a\ (1\le a_{ij}\le 10^9)$，满足 $1\le n,m \le 10^4,1\le n\times m \le10^6$。给定在矩阵中的行走规则：可以走到同行同列中任意一个满足「向左或向上比当前元素大的位置上」、「向右或向下比当前元素小的位置上」。计算每个格子可以到达的最大高度，输出其均值并保留 $6$ 位小数。
 
-思路：直接遍历每一个连通分量即可，可以用 DSU，也可以二次遍历来给连通分量中每个位置标上可到达的最大值。和 [01 迷宫](../examples/examples-basic-algo.md/#01-迷宫) 这道题很相似。
+思路：直接遍历每一个连通分量即可，可以用 DSU，也可以二次遍历来给连通分量中每个位置标上可到达的最大值。其余实现可以参考 [01 迷宫](../examples/examples-basic-algo.md/#01-迷宫) 这道题。
 
 时间复杂度：$O(nm(n+m))$
 
-=== "Python"
+=== "Python BFS"
 
     ```python
     from collections import deque
@@ -206,8 +206,178 @@ title: 第 16 届 Python A 组（省赛）
     print(f"{s/(n * m):.6f}")
     ```
 
-## T8 原料采购 (0'/20')
+## T8 原料采购 (20'/20')
 
-题意：在一维坐标轴正方向上，给定一辆位于原点处的货车，其容量为 $m\ (1\le m\le 10^9)$。正方向上有从近到远的 $n\ (1\le n \le 10^5)$ 个进货源，每个进货源都有一个进货单价、存货量以及和原点的距离，分别记作 $a,b,c\ (1\le a_i,b_i,c_i \le 10^9)$。货车每行驶 $1$ 个单位花费 $o$ 且无需返程。问在进满货的情况下最低进货成本是多少。
+题意：在一维坐标轴正方向上，给定一辆位于原点处的货车，其容量为 $m\ (1\le m\le 10^9)$。正方向上有从近到远的 $n\ (1\le n \le 10^5)$ 个进货源，每个进货源都有一个进货单价、存货量和到原点的距离，分别记作 $a,b,c\ (1\le a_i,b_i,c_i \le 10^9)$。货车每行驶 $1$ 个单位花费 $o$ 且无需返程。输出进满货的最低成本，若没有方案可以装满输出 $-1$。
 
-思路：不会，TODO。应该是反悔贪心，用堆维护已经选择的货物，考场上没有写出来。
+思路：一道比较经典的反悔贪心题，模拟的过程略复杂，但整体难度不大。初始贪心时直接选择即可；后续反悔时，每次和之前单价更高的货物进行置换。可以使用大根堆来维护选择过的「货物单价与货物数量」。至于路费，无需在货物置换的过程中考虑，只需在全部置换结束后再算上即可。
+
+时间复杂度：$O(n\log n)$
+
+=== "Python"
+
+    ```python
+    from heapq import *
+    
+    MII = lambda: map(int, input().strip().split())
+    
+    class Site:
+        def __init__(self, price, num, dist):
+            self.price = price
+            self.num = num
+            self.dist = dist
+    
+    n, m, o = MII()
+    sites = [Site(*MII()) for _ in range(n)]
+    
+    def solve() -> None:
+        # 特判
+        if sum([site.num for site in sites]) < m:
+            print(-1)
+            return
+    
+        # 贪心
+        val = 0  # 车上货物价值
+        num = 0  # 车上货物数量
+        i = 0    # 枚举到的进货点下标
+        h = []   # [[货物单价的负数，选择的数量], [], ...]
+        while i < n:
+            choose = min(sites[i].num, m - num)
+    
+            if choose == 0:
+                i -= 1
+                break
+    
+            sites[i].num -= choose
+            num += choose
+            val += choose * sites[i].price
+            heappush(h, [-sites[i].price, choose])
+            i += 1
+    
+        # 反悔
+        heapify(h)
+        ans = val + sites[i].dist * o
+        while i < n:
+            if sites[i].price >= -h[0][0]:
+                i += 1
+                continue
+    
+            alter_num = 0  # 第 i 个进货源替换货物的数量
+            while len(h):
+                if -h[0][0] <= sites[i].price:
+                    break
+    
+                alter = min(h[0][1], sites[i].num)  # 替换量
+                h[0][1] -= alter
+                sites[i].num -= alter
+                alter_num += alter
+                val -= alter * (-h[0][0] - sites[i].price)
+    
+                if h[0][1] == 0:
+                    heappop(h)
+                if sites[i].num == 0:
+                    break
+    
+            if alter_num:
+                heappush(h, [-sites[i].price, alter_num])
+                ans = min(ans, val + sites[i].dist * o)
+    
+            i += 1
+    
+        print(ans)
+    
+    if __name__ == "__main__":
+        solve()
+    ```
+
+=== "C++"
+
+    ```c++
+    #include <iostream>
+    #include <queue>
+    using namespace std;
+    using ll = long long;
+    
+    const int N = 100010;
+    
+    ll n, m, o;
+    struct Site {
+        ll price, num, dist;
+    } sites[N];
+    
+    int main() {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+    
+        ll all_num = 0;
+        cin >> n >> m >> o;
+        for (int i = 0; i < n; i++) {
+            cin >> sites[i].price >> sites[i].num >> sites[i].dist;
+            all_num += sites[i].num;
+        }
+    
+        // 特判
+        if (all_num < m) {
+            cout << -1 << "\n";
+            return 0;
+        }
+    
+        // 贪心
+        ll val = 0, num = 0, i = 0;
+        priority_queue<pair<ll, ll>> h;
+        while (i < n) {
+            ll choose = min(sites[i].num, m - num);
+            if (!choose) {
+                i--;
+                break;
+            }
+            num += choose;
+            sites[i].num -= choose;
+            val += choose * sites[i].price;
+            h.push({sites[i].price, choose});
+            i++;
+        }
+    
+        // 反悔
+        ll ans = val + sites[i].dist * o;
+        while (i < n) {
+            if (h.top().first <= sites[i].price) {
+                i++;
+                continue;
+            }
+    
+            ll alter_num = 0;
+            while (h.size()) {
+                if (h.top().first <= sites[i].price) {
+                    break;
+                }
+    
+                auto [price, num] = h.top();
+                h.pop();
+                ll alter = min(num, sites[i].num);
+                num -= alter;
+                sites[i].num -= alter;
+                alter_num += alter;
+                val -= alter * (price - sites[i].price);
+    
+                if (num) {
+                    h.push({price, num});
+                }
+                if (!sites[i].num) {
+                    break;
+                }
+            }
+    
+            if (alter_num) {
+                h.push({sites[i].price, alter_num});
+                ans = min(ans, val + sites[i].dist * o);
+            }
+    
+            i++;
+        }
+    
+        cout << ans << "\n";
+    
+        return 0;
+    }
+    ```

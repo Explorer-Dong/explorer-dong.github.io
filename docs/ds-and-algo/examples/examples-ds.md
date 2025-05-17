@@ -3,15 +3,17 @@ title: 数据结构例题精讲
 ---
 
 !!! warning "施工中"
-    未纳入前言导读表中的题目表示还没有更新。计划在 2025 年 5 月前更新完 [例题精讲](./index.md) 部分的所有题解。
+    未纳入前言导读表中的题目表示还没有更新。计划在 2025 年 6 月前更新完 [例题精讲](./index.md) 部分的所有题解。
 
 本文精选一些「数据结构」的例题并进行详细的原理讲解与代码实现。题目来源主要是 Codeforces、洛谷、LeetCode。
 
 为了提升阅读效率，我将题目的重要元信息单独罗列为了一张表格，可以按照自己的实际需求按需跳转阅读。
 
-| 标签 🏷 | 难度 🔥  |                     链接 🔗                     |        锚点 ⚓         | 备注 ⭐ |
-| :----: | :-----: | :--------------------------------------------: | :-------------------: | :----: |
-| 广义表 | 洛谷 黄 | [洛谷](https://www.luogu.com.cn/problem/P1928) | [外星密码](#外星密码) |   /    |
+| 标签 🏷 |  难度 🔥   |                            链接 🔗                            |        锚点 ⚓         | 策略 ⭐                          |
+| :----: | :-------: | :----------------------------------------------------------: | :-------------------: | :------------------------------ |
+| 广义表 |  洛谷 黄  |        [洛谷](https://www.luogu.com.cn/problem/P1928)        | [外星密码](#外星密码) | 广义表                          |
+|   树   | CF 1400 * | [蓝桥](https://www.lanqiao.cn/problems/5890/learning/?contest_id=145) |     [串门](#串门)     | 树的直径                        |
+| 并查集 |  洛谷 绿  |        [洛谷](https://www.luogu.com.cn/problem/P1525)        | [关押罪犯](#关押罪犯) | 扩展域并查集、二分图 + 二分查找 |
 
 /// caption | <
 数据结构例题导读表（打 * 表示自己预估的难度）
@@ -124,6 +126,392 @@ title: 数据结构例题精讲
         return 0;    
     }
     ```
+
+## 串门
+
+题意：给定一棵边权为正的无向树，共有 $n\ (1\le n \le 10^5)$ 个结点。给出「在访问到树中每一个结点」情况下的最短路径长度。
+
+思路：
+
+- 不难发现一个性质。对于访问的起点与终点，路径总长度一定是「起点到终点的简单路径长度」+「所有分支路径长度的两倍」，等价于「所有边之和的两倍」-「起点到终点的简单路径长度」；
+- 有了上述的性质，为了最小化总路径长度，我们只需要找到简单距离最长的两个结点作为起点与终点即可，这里的简单路径其实就是「树的直径」；
+- 为了求解树的直径，我们首先需要确定直径的两个端点。容易证明，每遍历一次树即可确定直径的一个端点。
+
+时间复杂度：$O(n)$
+
+=== "Python"
+
+    ```python
+    from collections import deque
+    
+    n = int(input())
+    g = [[] for _ in range(n + 1)]
+    
+    ans = 0
+    for _ in range(n - 1):
+        u, v, w = tuple(map(int, input().split()))
+        g[u].append((v, w))
+        g[v].append((u, w))
+        ans += w << 1
+    
+    def bfs(u: int) -> tuple[int, int]:
+        dst = [0] * (n + 1)
+        vis = [False] * (n + 1)
+        q = deque()
+        dst[u] = 0
+        vis[u] = True
+        q.append(u)
+        while len(q):
+            u = q.popleft()
+            for v, w in g[u]:
+                if vis[v]:
+                    continue
+                dst[v] = dst[u] + w
+                vis[v] = True
+                q.append(v)
+        max_d = max(dst)
+        max_i = dst.index(max_d)
+        return max_d, max_i
+    
+    _, max_i = bfs(1)
+    max_d, _ = bfs(max_i)
+    
+    print(ans - max_d)
+    ```
+
+## 孤立点数量
+
+题意：给定一个无向图，可能不连通，没有重边和自环。现在需要给图中的每一条无向边定向，要求所有的边定完向以后 0 入度的点尽可能的少，给出最少的 0 入度点的数量。
+
+思路：我们知道对于一棵树而言，n 个结点一共有 n-1 条边，也就可以贡献 n-1 个入度，因此至少有一个点的入度为 0。而如果不是一棵树，就会有至少 n 条边，也就至少可以贡献 n 个入度，那么 n 个结点就至少全都有入度了。显然的，一个图至少含有 n 条边时就一定有环。有了上述思路以后就可以发现，这道题本质上就是在判断连通分量是否含有环，如果有环，那么该连通分量定向边以后就不会产生 0 入度的顶点，反之，如果没有环，那么定向边以后最少产生 1 个 0 入度的点。
+
+- 算法一：遍历图。我们采用 dfs 遍历的方式即可解决问题。一边遍历一边打标记，遇到已经打过标记的非父结点就表明当前连通分量有环。我们使用 C++ 实现。
+- 时间复杂度：$O(n+m)$
+- 算法二：并查集。由于没有重边，因此在判断每一个连通分量是否含有环时，可以直接通过该连通分量中点和边的数量关系得到结果。我们使用 Python 和 JavaScript 实现
+- 时间复杂度：$O(n)$
+
+C++
+
+```cpp
+// 实现 dfs 算法
+
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
+using namespace std;
+
+const int N = 100010;
+
+int n, m;
+vector<int> G[N];
+bool vis[N];
+
+void dfs(int fa, int now, bool& hasLoop) {
+    vis[now] = true;
+    for (auto& ch: G[now]) {
+        if (ch != fa) {
+            if (vis[ch]) hasLoop = true;
+            else dfs(now, ch, hasLoop);
+        }
+    }
+}
+
+void solve() {
+    cin >> n >> m;
+    while (m--) {
+        int a, b;
+        cin >> a >> b;
+        G[a].push_back(b);
+        G[b].push_back(a);
+    }
+    
+    int res = 0;
+    
+    for (int i = 1; i <= n; i++) {
+        if (!vis[i]) {
+            bool hasLoop = false;
+            dfs(-1, i, hasLoop);
+            if (!hasLoop) res++;
+        }
+    }
+    
+    cout << res << "\n";
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+Python
+
+```python
+# 实现 dsu 算法
+
+p = [_ for _ in range(100010)]
+
+
+def Find(x: int) -> int:
+    if x != p[x]: p[x] = Find(p[x])
+    return p[x]
+
+
+def solve() -> None:
+    n, m = map(int, input().split())
+
+    edgeNum = [0] * (n + 1) # 每个点的连边数
+
+    for _ in range(m):
+        u, v = map(int, input().split())
+        edgeNum[u] += 1
+        edgeNum[v] += 1
+        p[Find(u)] = Find(v)
+
+    union = {}
+
+    class node:
+        def __init__(self):
+            self.v = self.e = 0
+
+    for i in range(1, n + 1):
+        nowp = Find(i)
+        if nowp not in union: union[nowp] = node()
+
+        union[nowp].v += 1
+        union[nowp].e += edgeNum[i]
+
+    res = 0
+
+    for comp in union:
+        if union[comp].e >> 1 == union[comp].v - 1:
+            res += 1
+
+    print(res)
+
+
+if __name__ == "__main__":
+    solve()
+```
+
+JavaScript
+
+```javascript
+// 实现 dsu 算法
+
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+let n = null;
+let m = null;
+let p = [], edgeNum = [];
+
+rl.on('line', line => {
+    const [a, b] = line.split(' ').map(i => Number(i));
+    if (n === null) {
+        n = a;
+        m = b;
+        for (let i = 1; i <= n; i++) {
+            p[i] = i;
+            edgeNum[i] = 0;
+        }
+    } else {
+        edgeNum[a]++;
+        edgeNum[b]++;
+        p[Find(a)] = Find(b);
+    }
+});
+
+rl.on('close', () => {
+    const res = solve();
+    console.log(res);
+});
+
+function Find(x) {
+    if (x != p[x]) p[x] = Find(p[x]);
+    return p[x];
+}
+
+function solve() {
+    let res = 0;
+
+    // 自定义结构体
+    class Node {
+        constructor() {
+            this.v = 0;
+            this.e = 0;
+        }
+    }
+
+    /*
+        另一种结构体定义方法
+        function Node() {
+            this.v = 0;
+            this.e = 0;
+        }
+    */
+
+    // 哈希
+    let union = new Map();
+
+    for (let i = 1; i <= n; i++) {
+        let nowp = Find(i); // 当前结点的祖宗结点 nowp
+        if (!union.has(nowp)) union.set(nowp, new Node());
+
+        union.get(nowp).v += 1;
+        union.get(nowp).e += edgeNum[i];
+    }
+
+    // 判断
+    for (let i of union.keys()) {
+        if (union.get(i).e >> 1 === union.get(i).v - 1) {
+            res++;
+        }
+    }
+
+    return res;
+}
+```
+
+## 关押罪犯😭
+
+OJ：[洛谷](https://www.luogu.com.cn/problem/P1525)
+
+题意：给定一个含有 $n\ (n\le2\cdot 10^4)$ 个顶点 $m\ (m\le10^5)$ 条边的无向图，没有重边和自环，边权 $w\ (1\le w_i\le 10^9)$ 为正。现在需要将图中所有的顶点分为两部分，使得两部分中最大的边权尽可能小，输出该最小边权。
+
+思路一：拓展域并查集
+
+- TODO
+
+思路二：二分图 + 二分查找
+
+- 假设答案是 $m$ 条边中某一条的权重 $w_i$，那么所有权重小于 $w_i$ 的边对应的顶点如何分配无关紧要，我们只关注边权大于 $w_i$ 的边对应的顶点能不能被分到两部分。也就是说我们只关心边权大于 $w_i$ 的边对应的顶点组成的图是否可二分。采用染色法即可快速判定一个图是否可二分。注意这里的可二分的图其实不符合「二分图」的严格定义，因为两个部分的顶点之间可能有连边；
+- 由于 $w_i$ 越小需要判断的顶点数就越多，具备二分性。因此我们直接在 $m$ 条边中二分查找最小的符合条件的边即可。
+
+时间复杂度：$O(m\log n)$
+
+*[二分图]: 又称二部图 (Bipartite Graph)。定义为：节点由两个集合组成，且两个集合内部没有边的图。
+
+=== "Python 二分"
+
+    ```cpp
+    from collections import deque
+    
+    n, m = map(int, input().strip().split())
+    edges = [(-1, -1, 0)]  # 下标从 1 开始
+    for _ in range(m):
+        u, v, w = map(int, input().strip().split())
+        edges.append((u, v, w))
+    
+    edges.sort(key=lambda x: x[2])
+    
+    # 染色法 check 二分图
+    def chk(idx: int) -> bool:
+        g = [[] for _ in range(n + 1)]
+        for u, v, w in edges[idx + 1:]:
+            g[u].append((v, w))
+            g[v].append((u, w))
+    
+        color = [0] * (n + 1)
+    
+        def bfs(now: int) -> bool:
+            color[now] = 1
+            q = deque()
+            q.append(now)
+            while len(q):
+                fa = q.popleft()
+                for ch, _ in g[fa]:
+                    if color[ch] == 0:
+                        color[ch] = -color[fa]
+                        q.append(ch)
+                    elif color[ch] == color[fa]:
+                        return False
+            return True
+    
+        for i in range(1, n + 1):
+            if color[i] == 0:
+                ok = bfs(i)
+                if not ok:
+                    return False
+        return True
+    
+    l, r = 0, m
+    while l < r:
+        mid = (l + r) >> 1
+        if chk(mid):
+            r = mid
+        else:
+            l = mid + 1
+    
+    print(edges[r][2])
+    ```
+
+=== "Python 并查集"
+
+    ```python
+    class DSU:
+        def __init__(self, n: int) -> None:
+            self.n = n
+            self.sz = n                       # 集合个数
+            self.p = [i for i in range(n)]    # p[i]表示第i个结点的祖宗编号
+            self.cnt = [1 for i in range(n)]  # cnt[i]表示第i个结点所在集合中的结点总数
+    
+        def find(self, x: int) -> int:
+            if self.p[x] != x:
+                self.p[x] = self.find(self.p[x])
+            return self.p[x]
+    
+        def merge(self, a: int, b: int) -> None:
+            pa, pb = self.find(a), self.find(b)
+            if pa != pb:
+                self.p[pa] = pb
+                self.cnt[pb] += self.cnt[pa]
+                self.sz -= 1
+    
+        def same(self, a: int, b: int) -> bool:
+            return self.find(a) == self.find(b)
+    
+        def size(self) -> int:
+            return self.sz
+    
+        def size(self, a: int) -> int:
+            return self.cnt[a]
+    
+    n, m = map(int, input().strip().split())
+    edges = []
+    for _ in range(m):
+        u, v, w = map(int, input().strip().split())
+        edges.append((u, v, w))
+    
+    edges.sort(key=lambda edge: -edge[2])
+    dsu = DSU(n * 2 + 1)
+    for u, v, w in edges:
+        fu = dsu.find(u)
+        fv = dsu.find(v)
+        if fu == fv:
+            print(w)
+            exit()
+        dsu.merge(u, v + n)
+        dsu.merge(u + n, v)
+    print(0)
+    ```
+
+同类题推荐：
+
+- [洛谷绿 | The Door Problem | 洛谷 - (www.luogu.com.cn)](https://www.luogu.com.cn/problem/CF776D)
+- [洛谷绿 | 食物链 | 洛谷 - (www.luogu.com.cn)](https://www.luogu.com.cn/problem/P2024)
 
 ## 【模板】双链表
 
@@ -600,9 +988,7 @@ void solve() {
 }    
 ```
 
-## 栈
-
-#### 验证栈序列
+## 【栈】验证栈序列
 
 <https://www.luogu.com.cn/problem/P4387>
 
@@ -868,7 +1254,7 @@ signed main() {
 }
 ```
 
-## 【二叉树】医院设置 :fire:
+## 【二叉树】医院设置😭
 
 <https://www.luogu.com.cn/problem/P1364>
 
@@ -1346,9 +1732,7 @@ int main() {
 }
 ```
 
-## 并查集
-
-### Milk Visits S
+## 【并查集】Milk Visits S
 
 <https://www.luogu.com.cn/problem/P5836>
 
@@ -1410,7 +1794,7 @@ void solve() {
 }
 ```
 
-### 尽量减少恶意软件的传播
+## 【并查集】尽量减少恶意软件的传播
 
 <https://leetcode.cn/problems/minimize-malware-spread/description/>
 
@@ -1488,7 +1872,7 @@ public:
 };
 ```
 
-### 账户合并
+## 【并查集】账户合并
 
 <https://leetcode.cn/problems/accounts-merge/>
 
@@ -1611,9 +1995,7 @@ class Solution:
         return res
 ```
 
-## 树状数组
-
-### 将元素分配到两个数组中 II
+## 【树状数组】将元素分配到两个数组中 II
 
 <https://leetcode.cn/problems/distribute-elements-into-two-arrays-ii/description/>
 
@@ -1801,9 +2183,7 @@ class Solution:
         return v1 + v2
 ```
 
-## 线段树
-
-### 以组为单位订音乐会的门票 :fire:
+## 【线段树】以组为单位订音乐会的门票😭
 
 <https://leetcode.cn/problems/booking-concert-tickets-in-groups/>
 
@@ -1864,9 +2244,7 @@ class BookMyShow:
 
 ```
 
-## 哈希
-
-### 分组
+## 【哈希】分组
 
 <https://www.acwing.com/problem/content/5182/>
 
@@ -1940,7 +2318,7 @@ int main()
 }
 ```
 
-### 海港
+## 【哈希】海港
 
 <https://www.luogu.com.cn/problem/P2058>
 
@@ -2012,7 +2390,7 @@ signed main() {
 }
 ```
 
-### Cities and States S
+## 【哈希】Cities and States S
 
 <https://www.luogu.com.cn/problem/P3405>
 
@@ -2060,7 +2438,7 @@ signed main() {
 }
 ```
 
-### Torn Lucky Ticket
+## 【哈希】Torn Lucky Ticket
 
 <https://codeforces.com/contest/1895/problem/C>
 
@@ -2140,304 +2518,3 @@ if __name__ == '__main__':
         OUTs.append(solve())
     print('\n'.join(map(str, OUTs)))
 ```
-
-## 前言
-
-本文精选一些「进阶数据结构」的例题并进行详细的原理讲解与代码实现。
-
-算法标签主要是「并查集、树状数组、线段树」。题目来源主要是 Codeforces、洛谷、LeetCode。
-
-为了提升阅读效率，我将题目的重要元信息单独罗列为了一张表格，可以按照自己的实际需求按需跳转阅读。
-
-/// caption | <
-进阶数据结构例题导读表（打 * 表示自己预估的难度）
-///
-
-## 题解
-
-### 孤立点数量
-
-题意：给定一个无向图，可能不连通，没有重边和自环。现在需要给图中的每一条无向边定向，要求所有的边定完向以后 0 入度的点尽可能的少，给出最少的 0 入度点的数量。
-
-思路：我们知道对于一棵树而言，n 个结点一共有 n-1 条边，也就可以贡献 n-1 个入度，因此至少有一个点的入度为 0。而如果不是一棵树，就会有至少 n 条边，也就至少可以贡献 n 个入度，那么 n 个结点就至少全都有入度了。显然的，一个图至少含有 n 条边时就一定有环。有了上述思路以后就可以发现，这道题本质上就是在判断连通分量是否含有环，如果有环，那么该连通分量定向边以后就不会产生 0 入度的顶点，反之，如果没有环，那么定向边以后最少产生 1 个 0 入度的点。
-
-- 算法一：遍历图。我们采用 dfs 遍历的方式即可解决问题。一边遍历一边打标记，遇到已经打过标记的非父结点就表明当前连通分量有环。我们使用 C++ 实现。
-- 时间复杂度：$O(n+m)$
-- 算法二：并查集。由于没有重边，因此在判断每一个连通分量是否含有环时，可以直接通过该连通分量中点和边的数量关系得到结果。我们使用 Python 和 JavaScript 实现
-- 时间复杂度：$O(n)$
-
-C++
-
-```cpp
-// 实现 dfs 算法
-
-#include <iostream>
-#include <cstring>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <set>
-using namespace std;
-
-const int N = 100010;
-
-int n, m;
-vector<int> G[N];
-bool vis[N];
-
-void dfs(int fa, int now, bool& hasLoop) {
-    vis[now] = true;
-    for (auto& ch: G[now]) {
-        if (ch != fa) {
-            if (vis[ch]) hasLoop = true;
-            else dfs(now, ch, hasLoop);
-        }
-    }
-}
-
-void solve() {
-    cin >> n >> m;
-    while (m--) {
-        int a, b;
-        cin >> a >> b;
-        G[a].push_back(b);
-        G[b].push_back(a);
-    }
-    
-    int res = 0;
-    
-    for (int i = 1; i <= n; i++) {
-        if (!vis[i]) {
-            bool hasLoop = false;
-            dfs(-1, i, hasLoop);
-            if (!hasLoop) res++;
-        }
-    }
-    
-    cout << res << "\n";
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-Python
-
-```python
-# 实现 dsu 算法
-
-p = [_ for _ in range(100010)]
-
-
-def Find(x: int) -> int:
-    if x != p[x]: p[x] = Find(p[x])
-    return p[x]
-
-
-def solve() -> None:
-    n, m = map(int, input().split())
-
-    edgeNum = [0] * (n + 1) # 每个点的连边数
-
-    for _ in range(m):
-        u, v = map(int, input().split())
-        edgeNum[u] += 1
-        edgeNum[v] += 1
-        p[Find(u)] = Find(v)
-
-    union = {}
-
-    class node:
-        def __init__(self):
-            self.v = self.e = 0
-
-    for i in range(1, n + 1):
-        nowp = Find(i)
-        if nowp not in union: union[nowp] = node()
-
-        union[nowp].v += 1
-        union[nowp].e += edgeNum[i]
-
-    res = 0
-
-    for comp in union:
-        if union[comp].e >> 1 == union[comp].v - 1:
-            res += 1
-
-    print(res)
-
-
-if __name__ == "__main__":
-    solve()
-```
-
-JavaScript
-
-```javascript
-// 实现 dsu 算法
-
-const readline = require('readline');
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
-
-let n = null;
-let m = null;
-let p = [], edgeNum = [];
-
-rl.on('line', line => {
-    const [a, b] = line.split(' ').map(i => Number(i));
-    if (n === null) {
-        n = a;
-        m = b;
-        for (let i = 1; i <= n; i++) {
-            p[i] = i;
-            edgeNum[i] = 0;
-        }
-    } else {
-        edgeNum[a]++;
-        edgeNum[b]++;
-        p[Find(a)] = Find(b);
-    }
-});
-
-rl.on('close', () => {
-    const res = solve();
-    console.log(res);
-});
-
-function Find(x) {
-    if (x != p[x]) p[x] = Find(p[x]);
-    return p[x];
-}
-
-function solve() {
-    let res = 0;
-
-    // 自定义结构体
-    class Node {
-        constructor() {
-            this.v = 0;
-            this.e = 0;
-        }
-    }
-
-    /*
-        另一种结构体定义方法
-        function Node() {
-            this.v = 0;
-            this.e = 0;
-        }
-    */
-
-    // 哈希
-    let union = new Map();
-
-    for (let i = 1; i <= n; i++) {
-        let nowp = Find(i); // 当前结点的祖宗结点 nowp
-        if (!union.has(nowp)) union.set(nowp, new Node());
-
-        union.get(nowp).v += 1;
-        union.get(nowp).e += edgeNum[i];
-    }
-
-    // 判断
-    for (let i of union.keys()) {
-        if (union.get(i).e >> 1 === union.get(i).v - 1) {
-            res++;
-        }
-    }
-
-    return res;
-}
-```
-
-### 关押罪犯
-
-题意：给定一个含有 $n\ (n\le2\cdot 10^4)$ 个顶点 $m\ (m\le10^5)$ 条边的无向图，没有重边和自环，边权 $w\ (1\le w_i\le 10^9)$ 为正。现在需要将图中所有的顶点分为两部分，使得两部分中最大的边权尽可能小，输出该最小边权。
-
-思路：
-
-- 拓展域并查集。
-
-另一种解法见 [基础算法](./examples-basic-algo.md/#关押罪犯)。
-
-=== "Python"
-
-    ```python
-    class DSU:
-        def __init__(self, n: int) -> None:
-            self.n = n
-            self.sz = n                       # 集合个数
-            self.p = [i for i in range(n)]    # p[i]表示第i个结点的祖宗编号
-            self.cnt = [1 for i in range(n)]  # cnt[i]表示第i个结点所在集合中的结点总数
-    
-        def find(self, x: int) -> int:
-            if self.p[x] != x:
-                self.p[x] = self.find(self.p[x])
-            return self.p[x]
-    
-        def merge(self, a: int, b: int) -> None:
-            pa, pb = self.find(a), self.find(b)
-            if pa != pb:
-                self.p[pa] = pb
-                self.cnt[pb] += self.cnt[pa]
-                self.sz -= 1
-    
-        def same(self, a: int, b: int) -> bool:
-            return self.find(a) == self.find(b)
-    
-        def size(self) -> int:
-            return self.sz
-    
-        def size(self, a: int) -> int:
-            return self.cnt[a]
-    
-    n, m = map(int, input().strip().split())
-    edges = []
-    for _ in range(m):
-        u, v, w = map(int, input().strip().split())
-        edges.append((u, v, w))
-    
-    edges.sort(key=lambda edge: -edge[2])
-    dsu = DSU(n * 2 + 1)
-    for u, v, w in edges:
-        fu = dsu.find(u)
-        fv = dsu.find(v)
-        if fu == fv:
-            print(w)
-            exit()
-        dsu.merge(u, v + n)
-        dsu.merge(u + n, v)
-    print(0)
-    ```
-
-=== "C++"
-
-    ```c++
-    ```
-
-### The Door Problem
-
-思路：
-
-- 拓展域并查集。
-
-https://www.luogu.com.cn/problem/CF776D
-
-### 食物链
-
-https://www.luogu.com.cn/problem/P2024
-
-思路：
-
-- 拓展域并查集。

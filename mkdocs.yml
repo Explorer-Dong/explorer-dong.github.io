@@ -172,6 +172,7 @@ nav:
       - 机器学习:
         - base/ai/machine-learning/index.md
         - base/ai/machine-learning/data.md
+        - base/ai/machine-learning/eval.md
         - 模型:
           - base/ai/machine-learning/model/index.md
           - base/ai/machine-learning/model/linear-model.md
@@ -182,7 +183,6 @@ nav:
           - base/ai/machine-learning/model/lazy-learning.md
           - base/ai/machine-learning/model/cluster-learning.md
           - base/ai/machine-learning/model/semi-supervised-learning.md
-        - base/ai/machine-learning/eval.md
       - 深度学习:
         - base/ai/deep-learning/index.md
       - 数据挖掘:
@@ -269,20 +269,16 @@ nav:
     - ds-and-algo/index.md
     - ds-and-algo/templates.md
     - ds-and-algo/templates-py.md
-    - 理论剖析:
-      - ds-and-algo/theory/index.md
-      - ds-and-algo/theory/base.md
-      - ds-and-algo/theory/ds.md
-      - ds-and-algo/theory/dp.md
-      - ds-and-algo/theory/geometry.md
-      - ds-and-algo/theory/string.md
-      - ds-and-algo/theory/graph.md
-      - ds-and-algo/theory/math.md
-    - 例题精讲:
-      - ds-and-algo/examples/index.md
-      - ds-and-algo/examples/examples-basic-algo.md
-      - ds-and-algo/examples/examples-advanced-algo.md
-      - ds-and-algo/examples/examples-ds.md
+    - 专题解读:
+      - ds-and-algo/topic/index.md
+      - ds-and-algo/topic/base.md
+      - ds-and-algo/topic/ds.md
+      - ds-and-algo/topic/dp.md
+      - ds-and-algo/topic/geometry.md
+      - ds-and-algo/topic/string.md
+      - ds-and-algo/topic/graph.md
+      - ds-and-algo/topic/math.md
+      - ds-and-algo/topic/others.md
     - 蓝桥杯备赛指南:
       - ds-and-algo/lan-qiao-cup/index.md
       - ds-and-algo/lan-qiao-cup/16th-python-a.md

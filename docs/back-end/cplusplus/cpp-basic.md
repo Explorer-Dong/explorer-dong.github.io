@@ -376,13 +376,80 @@ int fun(int num) {
 
 TODO
 
-### 参考
-
-<https://www.zhihu.com/question/333560253/answer/2282723843>
+参考：<https://www.zhihu.com/question/333560253/answer/2282723843>
 
 ## C++ 宏
 
 TODO
+
+## C++ 字符串
+
+想要翻转一个字符串，大约有以下三种方法，同样适用于其他可迭代容器。
+
+=== "方法一：使用 `std::reverse()` 原地翻转"
+
+    ```c++
+    #include <algorithm>
+    #include <iostream>
+    
+    using namespace std;
+    
+    int main() {
+        string s = "hello world!";
+        cout << s << "\n";
+    
+        reverse(s.begin(), s.end());
+        cout << s << "\n";
+    
+        return 0;
+    }
+    ```
+
+=== "方法二：使用 `std::reverse_copy` 拷贝翻转"
+
+    ```c++
+    #include <algorithm>
+    #include <iostream>
+    
+    using namespace std;
+    
+    int main() {
+        string s = "hello world!";
+        cout << s << "\n";
+    
+        string t(s.size(), ' ');  // 需要提前申请好内存空间
+        reverse_copy(s.begin(), s.end(), t.begin());
+        cout << t << "\n";
+    
+        return 0;
+    }
+    ```
+
+=== "方法三：重新构造"
+
+    ```c++
+    #include <algorithm>
+    #include <iostream>
+    
+    using namespace std;
+    
+    int main() {
+        string s = "hello world!";
+        cout << s << "\n";
+    
+        string t = string(s.rbegin(), s.rend());
+        cout << t << "\n";
+    
+        return 0;
+    }
+    ```
+
+上述均输出：
+
+```c++
+hello world!
+!dlrow olleh
+```
 
 ## C++ 标准模板库
 

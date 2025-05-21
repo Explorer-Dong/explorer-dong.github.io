@@ -1,5 +1,5 @@
 ---
-title: Python 配置
+title: 配置
 ---
 
 本文记录 Python 的一些配置。包括外部工具、使用技巧等。

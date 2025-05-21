@@ -1,11 +1,11 @@
 ---
-title: Python Web 开发
+title: Flask
 ---
 
 !!! warning
     最近没有时间维护对应的项目，等后续有空了会重构内容并开源。
 
-Flask 是使用 Python 作为后端语言的 Web 微框架，旨在帮助开发者快速开发出一个小型网站。本文以一个实际的「搜索中台」小项目为例，展开 Python Flask 的具体介绍。项目开源在：<https://github.com/Explorer-Dong/YunJinWeb>。
+Flask 是使用 Python 作为后端语言的 Web 微框架，旨在帮助开发者快速开发出一个小型网站。本文以一个实际的「搜索中台」小项目为例，展开 Python Flask 的具体介绍。
 
 ## 项目简介
 

@@ -55,4 +55,8 @@ DIX Ethernet V2 的 MAC 帧格式
 
 ## 高速以太网
 
+TODO
+
 ## 无线局域网
+
+无线局域网 (Wireless Local Area Network, WLAN) 是指以无线信道作为传输介质的计算机局域网。

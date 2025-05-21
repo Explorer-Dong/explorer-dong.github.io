@@ -12,19 +12,82 @@ title: 图像超分
 
 ## 基本概念
 
-图像超分辨率 (Image super-resoltion, SR) 顾名思义就是将低分辨率图像转化到高分辨率图像的过程。低分辨率与高分辨率的区别就在于高分辨率图像的像素点更多，因此视觉效果上高分辨率图像的尺寸就更大，同时也更清晰。
+图像超分辨率 (Image super-resoltion, SR) 顾名思义就是将低分辨率图像转化到高分辨率图像的过程。可以简单地理解为全局放大。
 
-传统的方法在 [数字图像处理](../digital-image-processing/index.md) 中有过策略介绍，即：最近邻插值、双线性插值和双三次插值。但随着深度学习技术的成熟，基于深度学习的超分性能已经显著优于传统方法。
+传统超分方法在 [数字图像处理](../digital-image-processing/index.md#__tabbed_1_2) 中有过介绍，根据算法的不同分为「最近邻插值、双线性插值和双三次插值」共三种。但随着深度学习技术的成熟，基于深度学习的超分性能已经显著优于传统方法。本文将全方位展开基于深度学习方法的图像超分策略。
 
 ## 数据
 
-基于深度学习的图像超分在拥有原始图像的基础上，需要对应的低分辨率图像共同作为训练数据，这种数据对肯定是不容易直接获取的，这就需要我们手工构造这样的数据对。常规的方法就是将原始图像 (HR) 下采样得到低分辨率 (LR) 的结果。
+首先需要明确的一点就是，超分肯定是有监督策略，即同时需要一张图像的「低分 (LR) 和高分 (HR)」图像对，自然条件下肯定是很难获得的，但是我们可以很容易地构造出这样的图像对。
+
+具体地，这里以退化核已知的构造方法为例。将原始图像看作高分图像 (HR)，然后通过双三次插值对 HR 进行下采样即可得到低分辨率 (LR) 图像。
+
+因此超分的数据集很容易获得，只要来点高分辨率图像就行了，常见用来做超分任务的数据集有：Set5、Set14、Urban100、BSD100、Manga109 等，名称最后的数字就表示该数据集的图像数量。这些数据都可以在 huggingface 上找到。
+
+## 评价
+
+在得到超分辨率图像 (SR) 后，我们需要对其进行量化评价，人工评价的方法固然可行，但是在大规模数据集上肯定不可取，这就需要一些自动评价方法。常用的有以下两种评价指标。
+
+### PSNR
+
+峰值信噪比 (Peak Signal-to-Noise Ratio, PSNR)
+
+### SSIM
+
+结构相似性 (Structural SIMilarity, SSIM)
 
 ## SRCNN
 
-SRCNN [^srcnn] 是利用深度学习进行 SR 任务的开山之作，仅包含卷积层，不包含池化层和全连接层。
+SRCNN [^srcnn] 是利用深度学习方法进行图像超分的开山之作。
 
 [^srcnn]: Dong C, Loy C C, He K, et al. Learning a deep convolutional network for image super-resolution[C]//Computer Vision–ECCV 2014: 13th European Conference, Zurich, Switzerland, September 6-12, 2014, Proceedings, Part IV 13. Springer International Publishing, 2014: 184-199.
+
+![论文中的 SRCNN 网络结构](https://cdn.dwj601.cn/images/20250518094113352.jpg)
+
+/// fc
+论文中的 SRCNN 网络结构
+///
+
+文中首先将 LR 利用双三次插值上采样得到了 input，接着按照上图的结构：
+
+- 首先是一个 $f_1\times f_1$ 卷积 + ReLU 激活操作，学习提取 LR 特征的非线性映射函数；
+- 然后是一个 $f_2\times f_2$ 卷积 + ReLU 激活操作，学习从 LR 特征到 HR 特征的非线性映射函数；
+- 最后是一个 $f_3\times f_3$ 卷积操作，学习从 HR 特征重构到 HR 的线性映射函数。
+
+![SRCNN 网络结构解析](https://cdn.dwj601.cn/images/20250518100657841.png)
+
+/// fc
+SRCNN 网络结构解析
+///
+
+可以看出 SRCNN 仅包含卷积层且全部都是等宽卷积，不包含池化层和全连接层。整个网络的 PyTorch 代码如下：
+
+```python
+class SRCNN(nn.Module):
+    def __init__(self) -> None:
+        super(SRCNN, self).__init__()
+        # 1. ILR 特征提取层
+        self.features = nn.Sequential(
+            nn.Conv2d(1, 64, (9, 9), (1, 1), (4, 4)),
+            nn.ReLU(True)
+        )
+        # 2. 非线性映射层
+        self.map = nn.Sequential(
+            nn.Conv2d(64, 32, (5, 5), (1, 1), (2, 2)),
+            nn.ReLU(True)
+        )
+        # 3. SR 重构层
+        self.reconstruction = nn.Conv2d(32, 1, (5, 5), (1, 1), (2, 2))
+        
+        # 随机初始化模型权重
+        self._initialize_weights()
+    
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        out = self.features(x)
+        out = self.map(out)
+        out = self.reconstruction(out)
+        return out
+```
 
 ## 更窄的网络
 
@@ -91,15 +154,3 @@ EDSR [^edsr] 网络有以下几个特点：
 [^pixelsr]: Dahl R, Norouzi M, Shlens J. Pixel recursive super resolution[C]//Proceedings of the IEEE international conference on computer vision. 2017: 5439-5448.
 [^zssr]: Shocher A, Cohen N, Irani M. “zero-shot” super-resolution using deep internal learning[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2018: 3118-3126.
 [^ircnn]: Zhang K, Zuo W, Gu S, et al. Learning deep CNN denoiser prior for image restoration[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2017: 3929-3938.
-
-## 评价
-
-在得到超分辨率图像 (SR) 后，我们需要对其进行量化评价，人工评价的方法固然可行，但是在大规模数据集上肯定不可取，这就需要一些客观评价方法。常见的客观评价指标又根据是否参考原始图像分为全参考和无参考。
-
-### PSNR
-
-TODO
-
-### SSIM
-
-TODO

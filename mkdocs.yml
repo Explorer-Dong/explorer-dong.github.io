@@ -12,8 +12,8 @@ theme:
   language: zh
   custom_dir: overrides
   # 图标
-  logo: assets/images/wiki-16px.svg
-  favicon: assets/images/wiki-16px.svg
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil 
@@ -116,24 +116,24 @@ markdown_extensions:
 # 注入
 extra_javascript:
   # KaTeX
-  - assets/javascripts/katex.js
+  - javascripts/katex.js
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.js
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js
   # mermaid
   - https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js
   # 外链跳转
-  - assets/javascripts/link_blank.js
+  - javascripts/link_blank.js
   # 百度统计
-  - assets/javascripts/baidu_tongji.js
+  - javascripts/baidu_tongji.js
   # 首页脚本（暂时不用，会出现屏幕闪烁的情况）
-  # - assets/javascripts/homepage.js
+  # - javascripts/homepage.js
   # 聊天机器人（暂时不用，后期有机会自己部署到国内服务器）
-  # - assets/javascripts/robot.js
+  # - javascripts/robot.js
 extra_css:
   # KaTeX
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.css
   # 自定义样式
-  - assets/stylesheets/extra.css
+  - stylesheets/extra.css
 
 
 # 插件配置

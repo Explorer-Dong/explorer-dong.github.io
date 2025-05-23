@@ -1,8 +1,8 @@
 # 站点配置
 site_name: Open Wiki Community
 site_url: https://wiki.dwj601.cn/
-repo_url: https://github.com/Explorer-Dong/explorer-dong.github.io
-repo_name: explorer-dong.github.io
+repo_url: https://github.com/Explorer-Dong/wiki
+repo_name: Explorer-Dong/wiki
 edit_uri: edit/main/docs/
 
 

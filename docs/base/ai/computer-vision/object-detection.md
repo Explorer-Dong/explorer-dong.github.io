@@ -2,17 +2,9 @@
 title: 目标检测
 ---
 
-![目标检测效果图](https://cdn.dwj601.cn/images/20250408101017350.png)
+![目标检测最终效果图（三要素：框、类别、置信度）](https://cdn.dwj601.cn/images/20250408101017350.png)
 
-/// caption
-目标检测最终效果图（三要素：框、类别、置信度）
-///
-
-![[目标检测发展图](https://link.springer.com/article/10.1007/s11042-022-13801-3)](https://cdn.dwj601.cn/images/20250408113117212.png)
-
-/// caption
-目标检测发展图 [^A survey: object detection methods from CNN to transformer]
-///
+![目标检测发展图](https://cdn.dwj601.cn/images/20250408113117212.png)
 
 本文介绍计算机视觉中的目标检测 (Object Detection) 任务。部分内容参考：
 
@@ -39,10 +31,6 @@ title: 目标检测
 为了量化预测框与真实框之间的差异，定义了交并比 (Intersection over Union, IoU) 这个概念。一图胜千言：
 
 ![交并比计算示意图](https://cdn.dwj601.cn/images/20250408102137628.png)
-
-/// fc
-交并比计算示意图
-///
 
 ### 非极大值抑制
 
@@ -96,10 +84,6 @@ TODO
 
 ![Faster RCNN 网络结构](https://cdn.dwj601.cn/images/20250415090902170.jpg)
 
-/// fc
-Faster RCNN 网络结构
-///
-
 Faster R-CNN 提出了区域候选网络 (Region Proposal Network, RPN) 策略，用以替代 SS 算法。RPN 提出了锚点的概念：特征图中的「一个元素」都对应了原始图像的「一个感受野区域」，该区域的中心像素称为锚点 (Anchor) ，以锚点为中心按一定的纵横比 (ratio) 和尺度 (scale) 绘制的框称为锚框 (Anchor box)。
 
 ## 单阶段目标检测
@@ -109,10 +93,6 @@ Faster R-CNN 提出了区域候选网络 (Region Proposal Network, RPN) 策略�
 我们重点关注 YOLO v1 网络。
 
 ![YOLO v1 网络结构](https://cdn.dwj601.cn/images/20250422083554878.png)
-
-/// fc
-YOLO v1 网络结构
-///
 
 模型损失。解释一下最后输出的 $7 \times 7 \times 30$ 的张量。该模型在 VOC 2007 上进行的训练与测试，该数据集有 $20$ 个类别。YOLO v1 算法给每一个网格生成 2 个检测框，每一个检测框用 $[x,y,w,h,c]$ 共 $5$ 个变量来表示，分别表示检测框的位置和检测框的置信度，置信度的计算就用 IOU 来量化。因此最后输出的 $30$ 维的通道中，前 $10$ 维就是两个检测框共 $10$ 个变量，后 $20$ 维表示网格包含类对象的条件概率。因此最后就变成了一个回归问题：
 
@@ -180,7 +160,3 @@ YOLO-World [^yolo-world] 借鉴了 CLIP 的跨模态对比学习方法进行预�
 [^yolo-world]: Cheng T, Song L, Ge Y, et al. Yolo-world: Real-time open-vocabulary object detection[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2024: 16901-16911.
 
 ![YOLO-World: Real-Time Open-Vocabulary Object Detection](https://cdn.dwj601.cn/images/20250429090434001.png)
-
-/// fc
-YOLO-World: Real-Time Open-Vocabulary Object Detection
-///

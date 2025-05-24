@@ -3,11 +3,13 @@ title: 计算机网络导读
 status: new
 ---
 
-本文记录计算机网络的学习笔记。实验平台为学院 [自建服务](http://172.21.229.9/classrooms/cpnijula/announcement)，若要复现实验可以前往 [头歌](https://www.educoder.net/paths/zecl9i6m) 平台。参考：
+本文记录计算机网络的学习笔记。实验平台为学院自建服务 [^self-server]，若要复现实验可以前往头歌 [^touge] 平台。参考：
 
 - 官方教材：谢希仁的《计算机网络》[^book]；
 - 民间博客：小林 coding 的《图解网络》 [^xiaolin]。
 
+[^self-server]: [自建服务](http://172.21.229.9/classrooms/cpnijula/announcement)
+[^touge]: [计算机网络 | 头歌 - (www.educoder.net)](https://www.educoder.net/paths/zecl9i6m)
 [^book]: 谢希仁. 计算机网络 (第8版). 北京: 电子工业出版社, 2020.
 
 [^xiaolin]: [图解网络 | 小林 coding - (xiaolincoding.com)](https://xiaolincoding.com/network/)
@@ -31,13 +33,9 @@ TODO。
 
 网络模型：可以理解为将不同设备的进程通信封装为不同的 **功能模块**，各司其职并通过网络协议惊进行数据交互。其中 OSI 七层模型是 ISO 定制的形而上的玩意，因为不符合实际以及过于繁杂，现在没人用；五层模型是学院派爱讲的，也是我做笔记的知识体系框架来源；当然，现在业界主要简化为 TCP/IP 模型，也就是说我们需要重点关注网络层与传输层的协议。
 
-一图胜千言：
+一图胜千言 [^yupi]：
 
-<img src="https://cdn.dwj601.cn/images/20250228112919578.jpg" alt="网络模型" style="zoom:50%;" />
-
-/// fc
-网络模型概览 [^yupi]
-///
+<img src="https://cdn.dwj601.cn/images/20250228112919578.jpg" alt="网络模型概览" style="zoom:50%;" />
 
 [^yupi]: [一图搞懂所有计算机网络模型 | 程序员鱼皮 - (mp.weixin.qq.com)](https://mp.weixin.qq.com/s?__biz=MzI1NDczNTAwMA==&mid=2247571386&idx=3&sn=4c8e4bedb0db16e4f84e85378c1d51ff&chksm=e80c8b5dd2d937502e3c3793205b7540399368d039e51091036868e7425f09a7ac9229c7cdcc&scene=126&sessionid=1741312002#rd)
 

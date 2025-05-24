@@ -20,112 +20,15 @@ title: 基础算法
 - 交换法：如果交换两个对象会得到更差的结果，那么原来的方案（顺序）就是合理的；
 - 边界法：由于边界也需要满足相同的条件，并且边界的情况往往更少，因此从边界开始考虑（枚举）往往可以证明出贪心的正确性。也可以理解为从更小规模的问题开始考虑。
 
-### 例：通关
-
-> 策略：堆
->
-> 标签：贪心
->
-> 难度：CF 1200 *
->
-> OJ：[蓝桥](https://www.lanqiao.cn/problems/5889/learning/?contest_id=145)
-
-题意：给定一棵含有 $n$ 个结点的树和一个初始价值，树中每个结点代表一个关卡，每个关卡有「通过最低需求价值」和「通过奖励价值」两个属性。只有通过了父结点关卡才能继续挑战子结点关卡。现在从根结点开始尝试通关，问应该如何选择通关顺序使得通过的关卡数最多？给出最多通关的关卡数。
-
-思路：我们每次贪心地选择需求价值最小的关卡进行闯关即可。可以通过二叉堆来实现。
-
-时间复杂度：$O(n \log n)$
-
-=== "Python"
-
-    ```python
-    from heapq import *
-    
-    n, have = map(int, input().split())
-    g = [[] for _ in range(n + 1)]
-    
-    for i in range(1, n + 1):
-        fa, get, need = map(int, input().split())
-        g[fa].append((need, -get, i))
-    
-    ans = 0
-    h = [g[0][0]]
-    heapify(h)  # 默认小根堆
-    while h:
-        need, neg_get, now = heappop(h)
-        if have < need:
-            break
-        have += -neg_get
-        ans += 1
-        for ch in g[now]:
-            heappush(h, ch)
-    
-    print(ans)
-    ```
-
-=== "C++"
-
-    ```c++
-    #include <iostream>
-    #include <queue>
-    using namespace std;
-    using ll = long long;
-    
-    int main() {
-        int n;
-        ll have;
-        cin >> n >> have;
-    
-        struct Node {
-            int fa, get, need;
-            bool operator<(const Node& t) const {
-                if (need == t.need) {
-                    return get < t.get;
-                }
-                return need > t.need;
-            }
-        };
-    
-        vector<Node> g[n + 1];
-        for (int i = 1; i <= n; i++) {
-            int fa, get, need;
-            cin >> fa >> get >> need;
-            g[fa].push_back({i, get, need});
-        }
-    
-        priority_queue<Node> q;  // 默认大根堆
-        q.push({g[0][0]});
-        int ans = 0;
-        while (q.size()) {
-            auto [now, get, need] = q.top();
-            q.pop();
-            if (have < need) {
-                break;
-            }
-            ans++;
-            have += get;
-            for (auto ch: g[now]) {
-                q.push(ch);
-            }
-        }
-    
-        cout << ans << "\n";
-        
-        return 0;
-    }
-    ```
-
 ### 例：ABBC or BACB
 
-> 策略：翻转操作 $\xrightarrow{\text{看作}}$ 平移操作
->
-> 标签：贪心
+> 经典之处：翻转操作 $\xrightarrow{\text{看作}}$ 平移操作
 >
 > 难度：CF 1500
 >
 > OJ：[CF](https://codeforces.com/contest/1873/problem/G)
 
-题意：现在有一个由 A 和 B 两种字符组成的字符串 $s\ (1\le|s|\le2\cdot 10^5)$。操作一，可以将 AB 转化为 BC；操作二，可以将 BA 转化为 CB。问最多可以执行上述操作多少次。给出最多操作次数。
+题意：现在有一个由 A 和 B 两种字符组成的字符串 $s\ (1\le|s|\le2\cdot 10^5)$。操作一，可以将 AB 转化为 BC；操作二，可以将 BA 转化为 CB。问最多可以执行上述操作多少次。
 
 思路：
 
@@ -218,9 +121,7 @@ title: 基础算法
 
 ### 例：子序列最大优雅度
 
-> 策略：反悔贪心
->
-> 标签：贪心
+> 经典之处：反悔贪心
 >
 > 难度：CF 1800 *
 >
@@ -316,9 +217,7 @@ title: 基础算法
 
 ### 例：起床困难综合症
 
-> 策略：按位贪心
->
-> 标签：贪心
+> 经典之处：按位贪心
 >
 > 难度：洛谷 绿
 >
@@ -446,7 +345,7 @@ $$
 s_i =\sum_{j = 0}^{i}a_j
 $$
 
-那么当进行区间查询求解数组中下标在闭区间 $[p,q]$ 中的元素和时，只需要 $s_q-s_{p-1}$ 地 $O(1)$ 计算出来即可。我们称 $s$ 为数组 $a$ 的前缀和数组。为了维护出 $s$，我们采用 [递推](./dp.md#递推--记忆化搜索) 策略。即：
+那么当进行区间查询求解数组中下标在闭区间 $[p,q]$ 中的元素和时，只需要 $s_q-s_{p-1}$ 地 $O(1)$ 计算出来即可。我们称 $s$ 为数组 $a$ 的前缀和数组。为了维护出 $s$，我们采用 [递推](./dp.md#线性-dp) 策略。即：
 
 $$
 s_i =
@@ -472,9 +371,7 @@ $$
 
 ### 例：Decode
 
-> 策略：看到 01 数量相等，试着将 $0$ 转成 $-1$ 用前缀和做
->
-> 标签：前缀和
+> 经典之处：看到 01 数量相等，试着将 $0$ 转成 $-1$ 用前缀和做
 >
 > 难度：CF 1600
 >
@@ -568,9 +465,7 @@ $$
 
 ### 例：铺设道路
 
-> 策略：区间修改 $\xrightarrow{\text{差分}}$ 单点修改。
->
-> 标签：差分
+> 经典之处：区间修改 $\xrightarrow{\text{差分}}$ 单点修改。
 >
 > 难度：洛谷 黄
 >
@@ -647,9 +542,7 @@ $$
 
 ### 例：木材加工
 
-> 策略：二分答案找右边界
->
-> 标签：二分
+> 经典之处：二分答案找右边界模板
 >
 > 难度：洛谷 黄
 >
@@ -729,9 +622,7 @@ $$
 
 ### 例：盖楼
 
-> 策略：二分答案找左边界、集合的思维
->
-> 标签：二分
+> 经典之处：二分答案找左边界模板、集合的思维
 >
 > 难度：CF 1400 *
 >
@@ -742,10 +633,6 @@ $$
 思路：假设排列数共有 $h$ 个，能被 $x$ 整除的数有 $p$ 个，能被 $y$ 整除的数有 $q$ 个，能同时被 $x$ 和 $y$ 整除的数有 $a$ 个。一种贪心的分配策略就是，优先将自己不要的数分配给对方，然后再从 $h-p-q+a$ 中分配。由于 $h$ 越大，可分配的数字就越多，为了找到最小的 $h$，套二分查找左边界的板子即可。
 
 ![集合关系](https://cdn.dwj601.cn/images/20250225154154468.png)
-
-/// fc
-集合关系
-///
 
 时间复杂度：$O(\log n)$
 
@@ -898,9 +785,7 @@ return_type search(int node_index) {
 
 ### 例：组合总和
 
-> 策略：组合型枚举
->
-> 标签：搜索
+> 经典之处：组合型枚举
 >
 > 难度：CF 1200 *
 >
@@ -910,13 +795,9 @@ return_type search(int node_index) {
 
 思路：不考虑顺序就是组合数，即组合型搜索经典例题。在枚举序列中的元素时，需要从上一次枚举结束的位置开始，防止方案重复（也可以理解为剪枝操作）。下图对组合型搜索进行了可视化：
 
-![组合型搜索 - 剪枝逻辑](https://cdn.dwj601.cn/images/202407250146195.png)
+![组合型搜索](https://cdn.dwj601.cn/images/202407250146195.png)
 
-/// fc
-组合型搜索
-///
-
-时间复杂度：不太会计算时间复杂度，但是在本题的数据量下通过剪枝可以很快的算出方案。具体复杂度推导见 [三种方法：选或不选/枚举选哪个/完全背包预处理+可行性剪枝 - (leetcode.cn)](https://leetcode.cn/problems/combination-sum/solutions/2747858/liang-chong-fang-fa-xuan-huo-bu-xuan-mei-mhf9/)。
+时间复杂度：不太会计算时间复杂度，但是在本题的数据量下通过剪枝可以很快的算出方案。具体复杂度推导见 [三种方法：选或不选/枚举选哪个/完全背包预处理+可行性剪枝 | 灵茶山艾府 - (leetcode.cn)](https://leetcode.cn/problems/combination-sum/solutions/2747858/liang-chong-fang-fa-xuan-huo-bu-xuan-mei-mhf9/)。
 
 === "Python"
 
@@ -976,9 +857,7 @@ return_type search(int node_index) {
 
 ### 例：石头分散的最少移动次数
 
-> 策略：排列型枚举
->
-> 标签：搜索
+> 经典之处：排列型枚举
 >
 > 难度：  CF 1400 *
 >
@@ -1144,15 +1023,13 @@ return_type search(int node_index) {
     };
     ```
 
-### 例：01 迷宫
+### 例：扩展字符串
 
-> 策略：连通分量板子题
+> 经典之处：预处理设置上限 trick
 >
-> 标签：搜索
+> 难度：CF 1500 *
 >
-> 难度：洛谷 黄
->
-> OJ：[洛谷](https://www.luogu.com.cn/problem/P1141)
+> OJ：[AcWing](https://www.acwing.com/problem/content/5284/)
 
 题意：给定一种字符串构造方法，进行 $q\ (1\le q\le 10)$ 次查询，每次询问第 $n\ (0\le n\le 10^5)$ 个字符串中第 $k\ (1\le k \le 10^{18})$ 个字符是什么（字符串下标从 $1$ 开始）。如果越界输出 `'.'`。字符串构造方法如下：
 
@@ -1273,15 +1150,13 @@ return_type search(int node_index) {
     }
     ```
 
-### 例：扩展字符串
+### 例：01 迷宫
 
-> 策略：预处理设置上限 trick
+> 经典之处：连通分量板子题
 >
-> 标签：搜索
+> 难度：洛谷 黄
 >
-> 难度：CF 1500 *
->
-> OJ：[AcWing](https://www.acwing.com/problem/content/5284/)
+> OJ：[洛谷](https://www.luogu.com.cn/problem/P1141)
 
 题意：给定一个 $n\times n\ (1\le n\le 1000)$ 的 01 方阵，询问 $m\ (1\le m\le 10^5)$ 次，每次询问从 $i,j\ (1\le i,j\le n)$ 出发可以移动多少格。移动规则为：可以走到曼哈顿距离为 $1$ 且与当前数值不同的四个格子中。
 
@@ -1486,9 +1361,7 @@ return_type search(int node_index) {
 
 ### 例：随机排列
 
-> 策略：逆序数板子题
->
-> 标签：分治
+> 经典之处：分治法求解逆序数板子题
 >
 > 难度：CF 1400 *
 >

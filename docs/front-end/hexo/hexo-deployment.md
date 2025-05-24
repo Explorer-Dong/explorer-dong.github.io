@@ -32,15 +32,7 @@ graph LR
 
 ![创建一个鉴权 token：头像 >> Settings >> Developer settings >> Personal access tokens >> Tokens (classic)](https://cdn.dwj601.cn/images/202501230044185.png)
 
-/// fc
-创建一个鉴权 token：`头像 >> Settings >> Developer settings >> Personal access tokens >> Tokens (classic)`
-///
-
 ![赋予 GitHub Actions 读写权限：Settings >> Actions >> General >> Workflow permissions](https://cdn.dwj601.cn/images/202501230055064.png)
-
-/// fc
-赋予 GitHub Actions 读写权限：`Settings >> Actions >> General >> Workflow permissions`
-///
 
 2）初始化一个博客项目：
 
@@ -104,10 +96,6 @@ git push -u origin main
 
 ![在 GitHub Pages 上配置站点托管分支：Settings >> Pages >> Build and deployment](https://cdn.dwj601.cn/images/202501230103361.png)
 
-/// fc
-在 GitHub Pages 上配置站点托管分支：`Settings >> Pages >> Build and deployment`
-///
-
 GitHub Pages 按照上述工作流的指令，检测到 push 后开始执行，即 checkout、generate 和 deploy。等待所有流程结束后，重新加载 `https://<username>.github.io/<project>/` 就可以发现站点已经托管成功了！
 
 ## 基于 Git Hooks
@@ -122,10 +110,6 @@ GitHub Pages 按照上述工作流的指令，检测到 push 后开始执行，�
 1）域名解析。我们需要将自己的域名指向自己的服务器 IP，下图中记录值即你的云服务器 IP 地址：
 
 ![域名解析](https://cdn.dwj601.cn/images/202404051247292.png)
-
-/// fc
-域名解析
-///
 
 ### 服务器端
 
@@ -185,10 +169,6 @@ ssh-keygen
 
 ![使用 Git Bash 生成密钥](https://cdn.dwj601.cn/images/202404071758590.png)
 
-/// fc
-使用 Git Bash 生成密钥
-///
-
 2）在 `/home/git` 目录下右键新建名为 `.ssh` 的文件夹，并在该文件夹内新建名为 `authorized_keys` 的文本文件，将之前生成的公钥文件中的所有内容复制进去，保存。
 
 3）修改文件/文件夹的权限 [^chmod] 与属主 [^chown] ：
@@ -211,10 +191,6 @@ ssh git@xxx.xxx.xxx.xxx  # 填你的服务器 ip 地址
 首次连接需要输入一个 `yes` 用来在本地存储主机信息。如果不需要输入密码就进入了命令行界面，表示 ssh 通信建立成功！
 
 ![ssh 连接成功](https://cdn.dwj601.cn/images/202404071826099.png)
-
-/// fc
-ssh 连接成功
-///
 
 #### Nginx
 
@@ -255,29 +231,17 @@ deploy 字段配置如下：
 
 ![编辑 _config.yml 文件中的 deploy 字段](https://cdn.dwj601.cn/images/202404071833798.png)
 
-/// fc
-编辑 _config.yml 文件中的 deploy 字段
-///
-
 最后我们在本地只需要执行 `hexo clean && hexo generate && hexo deploy` 即可实现一步部署到自己的服务器！
 
 部署后可以进入服务器的 `--work-tree` 目录，检查站点是否被 checkout 过来。下图表示 checkout 成功：
 
 ![checkout 成功](https://cdn.dwj601.cn/images/202404071837567.png)
 
-/// fc
-checkout 成功
-///
-
 ### 原理
 
 **Hexo 持续部署的原理**。如下图所示（我自己画的，如有不对请及时矫正）：
 
 ![Hexo 持续部署的原理图](https://cdn.dwj601.cn/images/202404081614614.jpg)
-
-/// fc
-Hexo 持续部署的原理图
-///
 
 **Git Hooks 的定义与工作原理** [^githooks]。可以将其类比 github workflows，可以在我们做出某些行为的前后自动执行一些我们预设定的任务。此处使用到的就是 post-receive 任务，原文 [^post-receive] 是这样解释的：
 
@@ -297,7 +261,3 @@ Hexo 持续部署的原理图
 用一张图来更加清晰直观的理解：
 
 ![SSH 工作原理图](https://cdn.dwj601.cn/images/202404081642038.png)
-
-/// fc
-SSH 工作原理图
-///

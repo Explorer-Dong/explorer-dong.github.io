@@ -90,10 +90,6 @@ print(id(c))
 
 ![C++ 盒子模型 vs Python 标签模型](https://cdn.dwj601.cn/images/202407031133477.png)
 
-/// fc
-[C++ 盒子模型 vs. Python 标签模型](https://www.cnblogs.com/demon89/p/7400234.html)
-///
-
 即，C++ 中的变量相当于盒子，简单的赋值语句就相当于重新拿一个盒子装原来的数据；而 Python 中的变量相当于标签，简单的赋值语句就相当于所有标签都贴到了同一块数据上。
 
 知道了 Python 所有的赋值都是引用以后，新问题出现了：如果我们需要修改某个引用中的值，会发生什么呢？这就需要按照 Python 的数据类型分开讨论了。
@@ -247,7 +243,7 @@ corgi
 <       >       <=      >=      ==      !=
 ```
 
-然后再看一下 Python 的运算符优先级 [^op-pri]：
+然后再看一下 Python 的运算符优先级 [^op-pri] （越往下等级越低）：
 
 [^op-pri]: [运算符优先级 | Python - (docs.python.org)](https://docs.python.org/zh-cn/3.13/reference/expressions.html#operator-precedence)
 
@@ -277,10 +273,6 @@ corgi
 |                         `if -- else`                         |             条件表达式             |
 |                           `lambda`                           |           lambda 表达式            |
 |                             `:=`                             |             赋值表达式             |
-
-/// tc | <
-Python 的运算符优先级表（越往下等级越低）
-///
 
 ## 数据结构
 

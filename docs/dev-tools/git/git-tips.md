@@ -6,11 +6,7 @@ title: Git 使用贴士
 
 在使用 Git Bash 命令行工具时，其配套的 Git 程序会自动对中文进行转义，其他的程序则不会，如下图：
 
-![git bash VS other bash](https://cdn.dwj601.cn/images/202409010902437.png)
-
-/// fc
-Git 程序 VS 其他程序
-///
+![Git 程序 VS 其他程序](https://cdn.dwj601.cn/images/202409010902437.png)
 
 取消自动转义即可。在 Git Bash 终端输入下面的命令取消 Git 程序对中文的转义：
 
@@ -21,10 +17,6 @@ git config --global core.quotepath false
 最终效果如下：
 
 ![不会对中文自动转义了](https://cdn.dwj601.cn/images/202502071715678.png)
-
-/// fc
-不会对中文自动转义了
-///
 
 ## 将文件从 Git 系统中彻底删除
 

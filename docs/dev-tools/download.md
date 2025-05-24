@@ -9,10 +9,6 @@ status: new
 
 ![aria2 下载速度](https://cdn.dwj601.cn/images/20250423164102829.png)
 
-/// fc
-aria2 下载速度
-///
-
 Ubuntu 下载 aria2：
 
 ```bash

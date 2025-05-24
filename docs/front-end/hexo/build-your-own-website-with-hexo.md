@@ -102,9 +102,4 @@ hexo deploy  # 可简写为 hexo d
 
 ![配置 GitHub Pages 页面](https://cdn.dwj601.cn/images/202501220201709.png)
 
-/// fc
-配置 GitHub Pages 页面
-///
-
 现在访问 `https://<username>.github.io/demo/`，如果可以看到与之前本地测试时一样的界面，恭喜你，现在已经可以在项目的 `source/_post/` 目录下撰写博客并且全球共享了！
-

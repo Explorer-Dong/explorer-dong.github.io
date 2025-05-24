@@ -28,19 +28,11 @@ title: 语言基础
 
 ![C++ 的运算符](https://cdn.dwj601.cn/images/20250318171949224.png)
 
-/// fc
-C++ 的运算符
-///
-
 再看看这些运算符的优先级 [^cpp-op-pri]：
 
 [^cpp-op-pri]: [C++ 运算符优先级 - (zh.cppreference.com)](https://zh.cppreference.com/w/cpp/language/operator_precedence)
 
 ![C++ 的运算符优先级](https://cdn.dwj601.cn/images/20250318172044391.png)
-
-/// fc
-C++ 的运算符优先级
-///
 
 ## 命名空间
 
@@ -212,19 +204,11 @@ int fun(int num) {
 
 如果在函数定义中继续进行缺省参数初始化，则会报「重定义缺省参数」的错：
 
-![Redefinition of default argument](https://cdn.dwj601.cn/images/202403041428426.png)
-
-/// fc
-报错：Redefinition of default argument
-///
+![报错：Redefinition of default argument](https://cdn.dwj601.cn/images/202403041428426.png)
 
 原因在于，编译时编译器会查找函数的声明来获取该函数的签名信息，包括：参数类型和返回类型，并不关心函数体的内容。假如只在函数定义中定义了缺省参数，在函数声明时没有定义缺省参数，此时在调用该函数时没有传递参数，由于编译器在编译函数调用时只会寻找函数声明语句而不关心函数定义，就会发生无法寻找到目标函数的错误：
 
 ![无法寻找到目标函数](https://cdn.dwj601.cn/images/202403041428507.png)
-
-/// fc
-无法寻找到目标函数
-///
 
 因此，无论是非内联函数（全局函数）还是内联函数（成员函数），缺省参数都只能定义在函数声明的参数列表中，而不能只在函数声明中重复定义或者只在函数定义中定义缺省参数值。
 
@@ -272,10 +256,6 @@ int main() {
 
 ![输出](https://cdn.dwj601.cn/images/202403012308775.png)
 
-/// fc
-输出
-///
-
 我们知道在 python 中，导入一个模块后除了可以使用模块的类，还可以直接调用模块文件中的函数，那么在 C++ 文件中也可以这样吗？答案是可以的，下面开始实操。
 
 我们在上述 TestClassFunction 类的下面继续添加函数：
@@ -306,10 +286,6 @@ void globalFun() {
 答：不是的，只需要一个 `.cpp` 文件引用了该 `.h` 头文件，在其中进行函数定义即可。`函数声明文件名.cpp` 是一种命名规范，便于管理与识别
 
 ![不规范的 .cpp 文件命名方式](https://cdn.dwj601.cn/images/202403012308973.png)
-
-/// fc
-不规范的 .cpp 文件命名方式
-///
 
 问：内联函数不会产生函数重定义问题的原理是什么？
 

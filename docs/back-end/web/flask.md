@@ -77,21 +77,9 @@ TODO
 
 ![本地选择 MySQL 数据库](https://cdn.dwj601.cn/images/202401260126613.png)
 
-/// fc
-本地选择 MySQL 数据库
-///
-
 ![填写服务器信息和应用端口并测试连接](https://cdn.dwj601.cn/images/202401260126614.png)
 
-/// fc
-填写服务器信息和应用端口并测试连接
-///
-
 ![拷贝本地资源至远程的数据库](https://cdn.dwj601.cn/images/202401260126615.png)
-
-/// fc
-拷贝本地资源至远程的数据库
-///
 
 ### 配置 Nginx
 
@@ -100,10 +88,6 @@ TODO
 **下载 Nginx**。进入 [nginx 官网](http://nginx.org/en/download.html) 并找到以下内容：
 
 ![找到 Nginx 的下载链接](https://cdn.dwj601.cn/images/202401260126616.png)
-
-/// fc
-找到 Nginx 的下载链接
-///
 
 然后通过 wget 命令下载压缩包：
 
@@ -146,11 +130,7 @@ make && make install
 
 最后浏览器通过 http 协议默认的 80 端口访问公网 ip，就可以看到欢呼雀跃的一幕：
 
-![最终结果](https://cdn.dwj601.cn/images/202401260126618.png)
-
-/// fc
-Nginx 启动成功
-///
+![Nginx 启动成功](https://cdn.dwj601.cn/images/202401260126618.png)
 
 ### 配置 Python
 

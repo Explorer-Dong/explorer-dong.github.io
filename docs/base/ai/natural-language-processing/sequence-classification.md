@@ -20,10 +20,6 @@ title: 序列分类
 
 ![Transition-based Parsing 示例](https://cdn.dwj601.cn/images/20250317084734245.png)
 
-/// fc
-Transition-based Parsing 示例
-///
-
 假设某种语言一共有 $n$ 种依存关系，那么最终的任务就是一个 $2n+1$ 的「多分类任务」。其中 left-arc 对应 $n$ 种，right-arc 对应 $n$ 种，shift 对应 $1$ 种。
 
 在有监督学习场景下，学习准则就是最小化交叉熵损失函数。传统与现代依存分析方法本质的不同在于特征的构造上。 -->

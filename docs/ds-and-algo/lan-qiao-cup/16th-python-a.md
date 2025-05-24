@@ -62,7 +62,7 @@ title: 第 16 届 Python A 组（省赛）
 思路：
 
 - 贪心题，就是自定义一个排序规则。对于 $x$ 和 $y$ 两个二进制表示，如果 $x+y>y+x$，则 $x$ 要排在 $y$ 的前面（加号表示字符串拼接）；
-- Python 对字符串与十进制数的转换有限制，需要手动调大。每个数的二进制最多 $14$ 位，$n$ 个数开到 $150000$ 肯定可以，但这是 Python 3.11 引入的，不知道蓝桥杯的评测机能不能过；
+- Python 对字符串与十进制数的转换有限制，需要手动调大或者直接解除限制，但这是 Python 3.11 引入的，不知道蓝桥杯的评测机能不能过；
 - [力扣原题](https://leetcode.cn/problems/maximum-possible-number-by-binary-concatenation/description/)，[证明](https://leetcode.cn/problems/largest-number/solutions/716725/gong-shui-san-xie-noxiang-xin-ke-xue-xi-vn86e/)。
 
 时间复杂度：$O(n\log n)$
@@ -72,7 +72,7 @@ title: 第 16 届 Python A 组（省赛）
     ```python
     from functools import cmp_to_key
     import sys
-    sys.set_int_max_str_digits(150000)
+    sys.set_int_max_str_digits(0)  # 解除 Python 默认的 int 转 str 的长度限制
     
     def cmp(x: str, y: str) -> int:
         if x + y > y + x:

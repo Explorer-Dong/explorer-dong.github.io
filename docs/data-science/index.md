@@ -13,12 +13,4 @@ title: 炼丹专栏简介
 
 ![训练出一个通用人工智能](https://cdn.dwj601.cn/images/202501302119120.png)
 
-/// fc
-训练出一个通用人工智能
-///
-
-![动手学深度学习](https://cdn.dwj601.cn/images/20250306090820594.svg)
-
-/// fc
-[《动手学深度学习》](https://zh.d2l.ai/index.html) 全书框架
-///
+![《动手学深度学习》全书框架](https://cdn.dwj601.cn/images/20250306090820594.svg)

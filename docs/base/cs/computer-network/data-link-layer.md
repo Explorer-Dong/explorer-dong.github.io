@@ -16,15 +16,7 @@ title: 数据链路层
 
 ![MAC 帧格式（IEEE 的 802.3 的 MAC 帧格式就是将 Ether Type 换成了数据的 Length）](https://cdn.dwj601.cn/images/20250509095439785.png)
 
-/// fc
-MAC 帧格式（IEEE 的 802.3 的 MAC 帧格式就是将 Ether Type 换成了数据的 Length）
-///
-
 ![DIX Ethernet V2 的 MAC 帧格式](https://cdn.dwj601.cn/images/20250425103505035.svg)
-
-/// fc
-DIX Ethernet V2 的 MAC 帧格式
-///
 
 ## 扩展以太网
 

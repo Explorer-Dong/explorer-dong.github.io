@@ -18,10 +18,6 @@ print(np.__file__)
 
 ![直接打印的运行结果](https://cdn.dwj601.cn/images/202406052305698.png)
 
-/// fc
-直接打印的运行结果
-///
-
 有些库没有内置上述 `__file__` 方法，可以使用 pip 工具进行打印。语法规则如下：
 
 ```bash
@@ -35,10 +31,6 @@ pip show sortedcontainers
 ```
 
 ![基于 pip 工具的运行结果](https://cdn.dwj601.cn/images/202406052310960.png)
-
-/// fc
-基于 pip 工具的运行结果
-///
 
 ## 自动激活虚拟环境 (VSCode)
 

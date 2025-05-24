@@ -18,25 +18,13 @@ title: Hexo 功能增强
 
 ![进入域名控制台并点击解析按钮](https://cdn.dwj601.cn/images/202403101115508.png)
 
-/// fc
-进入域名控制台并点击解析按钮
-///
-
 2）填写表单，注意此处的解析请求来源一定要填默认！不要选择境外，否则无法解析成功：
 
 ![填写表单](https://cdn.dwj601.cn/images/202403101120914.png)
 
-/// fc
-填写表单
-///
-
 由于此处我解析的是顶级域名，希望通过 `www.example.cn` 和 `example.cn` 同时访问到博客站点，因此添加了两条解析记录：
 
 ![添加解析记录](https://cdn.dwj601.cn/images/202403101117553.png)
-
-/// fc
-添加解析记录
-///
 
 ### GitHub Pages 端
 
@@ -45,10 +33,6 @@ title: Hexo 功能增强
 进入仓库的 `Setting >> Pages` 页面，在 Custom domain 中填入 `<domain>.xxx` 域名并勾选强制 https 服务：
 
 ![在 Custom domain 中填入域名](https://cdn.dwj601.cn/images/202403101124296.png)
-
-/// fc
-在 Custom domain 中填入域名
-///
 
 等待几分钟 DNS 解析即可使用 `<domain>.xxx` 或 `www.<domain>.xxx` 或 `<username>.github.io` 访问自己的静态网站啦！在使用了 CNAME 的情况下，如果使用 `<username>.github.io` 访问站点，一般会做重定向，即重定向为你自己的域名。
 
@@ -60,17 +44,9 @@ title: Hexo 功能增强
 
 ![仓库内多了一个 CNAME 文件](https://cdn.dwj601.cn/images/202403101223383.png)
 
-/// fc
-仓库内多了一个 CNAME 文件
-///
-
 但是如果后期更新站点时，由于 Hexo 强制覆盖分支的特性，会自动覆盖掉这个 CNAME 文件，从而无法正确的路由请求，也就会出现 404 的错误。解决方案就是在 hexo 的 `source` 文件夹下添加一个 CNAME 文件。这样该 CNAME 文件就会被 hexo 识别为自己的内容，从而每次都可以部署到相应的分支上了：
 
 ![在 hexo 的 source 文件夹下添加一个 CNAME 文件](https://cdn.dwj601.cn/images/202403101140516.png)
-
-/// fc
-在 hexo 的 source 文件夹下添加一个 CNAME 文件
-///
 
 ## 更换 mermaid 的 CDN 源
 
@@ -84,27 +60,15 @@ Fuild 主题使用的 mermaid 版本较低，本文介绍更换 Fluid 主题的 
 
 ![本地 typora 支持的 mermaid 版本](https://cdn.dwj601.cn/images/202409120854588.png)
 
-/// fc
-本地 typora 支持的 mermaid 版本
-///
-
 站点 CDN 支持的 mermaid 版本：
 
 ![网站支持的 mermaid 版本](https://cdn.dwj601.cn/images/202409120858955.png)
-
-/// fc
-网站支持的 mermaid 版本
-///
 
 ### 问题解决
 
 修改 `_config_fluid.yml` 中的 mermaid CDN 信息。由于原来的 CDN 不支持更高版本的 mermaid.js，所以直接用官方的：
 
 ![修改 hexo-fluid 配置的 mermaid CDN 源](https://cdn.dwj601.cn/images/202409120902191.png)
-
-/// fc
-修改 hexo-fluid 配置的 mermaid CDN 源
-///
 
 注：官网给出的链接 [^mermaid-js-cdn] 无法在 Hexo 的 Fluid 主题中正常渲染，因为多了一个文件名 `mermaid.min.js`，由于 Fluid 会在配置的 CDN 路由下遍历 `.js` 文件，因此直接删除文件名即可。
 
@@ -113,10 +77,6 @@ Fuild 主题使用的 mermaid 版本较低，本文介绍更换 Fluid 主题的 
 最后 mermaid 内容可以正常渲染：
 
 ![正常渲染](https://cdn.dwj601.cn/images/202409120850752.png)
-
-/// fc
-正常渲染
-///
 
 ## 增强搜索功能
 
@@ -135,10 +95,6 @@ Fuild 主题使用的 mermaid 版本较低，本文介绍更换 Fluid 主题的 
 [^oss-limit]: [OSS 使用限制及性能指标 | 阿里云文档 - (help.aliyun.com)](https://help.aliyun.com/zh/oss/product-overview/limits)
 
 ![南京本地地域的流出带宽大概是我原来小破 3Mbps 的一千倍，艹！](https://cdn.dwj601.cn/images/202501192317447.png)
-
-/// fc
-南京本地地域的流出带宽大概是我原来小破 3Mbps 的一千倍，艹！
-///
 
 行吧，看来这个方案是可行的。
 
@@ -164,9 +120,5 @@ alias gpho='git push && hexo clean && hexo generate && hexo deploy && ossutil cp
 [^cors]: [OSS 设置跨域资源共享 CORS | 阿里云文档 - (help.aliyun.com)](https://help.aliyun.com/zh/oss/user-guide/cors-12/)
 
 ![配置对应 Bucket 的跨域规则即可](https://cdn.dwj601.cn/images/202501192333282.png)
-
-/// fc
-配置对应 Bucket 的跨域规则即可
-///
 
 现在 8.5MB 的 local-search.xml 只需要几百毫秒即可加载完成，美汁汁！

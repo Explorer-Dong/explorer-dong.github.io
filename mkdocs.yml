@@ -91,21 +91,12 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  # 图表标题
-  - pymdownx.blocks.caption:
-      types:
-        - caption
-        # 自动编号
-        - name: fc            # figure caption
-          prefix: '图 {}. '
-        - name: tc            # table caption
-          prefix: '表 {}. '
   # 代码高亮
   - pymdownx.highlight:
       # auto_title: true           # 自动标题
       use_pygments: true         # 第三方库增强
       pygments_lang_class: true  # 语言定制化高亮
-      linenums: true             # 显示行号
+      linenums: false             # 显示行号
       anchor_linenums: true      # 行号锚点
       line_spans: __span         # 行号容器（移动端适配）
   # 任务列表
@@ -125,6 +116,8 @@ extra_javascript:
   - javascripts/link_blank.js
   # 百度统计
   - javascripts/baidu_tongji.js
+  # 解析图片的 alt 属性
+  - javascripts/show_img_alt.js
   # 首页脚本（暂时不用，会出现屏幕闪烁的情况）
   # - javascripts/homepage.js
   # 聊天机器人（暂时不用，后期有机会自己部署到国内服务器）
@@ -148,11 +141,11 @@ plugins:
       timezone: Asia/Shanghai
   # 显示文章作者（头像与 GitHub Profile 链接）
   - git-committers:
-      repository: Explorer-Dong/explorer-dong.github.io
+      repository: Explorer-Dong/wiki
       branch: main
   # 图片可点击放大
   - glightbox:
-      auto_caption: true
+      auto_caption: false
   # meta 配置
   - meta
 

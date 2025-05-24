@@ -30,11 +30,7 @@ $$
 
 [^rnn-nmt-paper]: [Effective Approaches to Attention-based Neural Machine Translation | Stanford NLP - (aclanthology.org)](https://aclanthology.org/D15-1166.pdf)
 
-![传统的 Encoder-Decoder 架构](https://cdn.dwj601.cn/images/20250428083440132.png)
-
-/// fc
-基于 RNN 的 seq2seq 模型架构
-///
+![基于 RNN 的 seq2seq 模型架构](https://cdn.dwj601.cn/images/20250428083440132.png)
 
 ### Encoder 部分
 
@@ -55,11 +51,7 @@ $$
 
 2）**引入 Attention 机制**
 
-![基于 Attention 机制的 Encoder-Decoder 架构](https://cdn.dwj601.cn/images/20250428101226957.png)
-
-/// fc
-基于 RNN 的 seq2seq 模型架构（引入了 Attention 机制）
-///
+![基于 RNN 的 seq2seq 模型架构（引入了 Attention 机制）](https://cdn.dwj601.cn/images/20250428101226957.png)
 
 引入 Attention 机制的 seq2seq 模型结构和基本的 seq2seq 模型结构基本一致，只不过在解码时增加了一个注意力权重。具体地：
 
@@ -84,10 +76,6 @@ $$
 [^atten-paper]: [Attention Is All You Need | Google - (arxiv.org)](https://arxiv.org/pdf/1706.03762)
 
 <img src="https://cdn.dwj601.cn/images/20250512083359691.jpg" alt="Transformer 模型架构" style="zoom: 50%;" />
-
-/// fc
-Transformer 模型架构
-///
 
 可以看到 Transformer 的模型架构也是 Encoder-Decoder 架构。下面详细讲解两部分网络结构。
 

@@ -11,6 +11,9 @@ INHERIT: ./mkdocs.yml
 plugins:
   - meta
   - search
+  - glightbox:
+      auto_caption: false
 
 watch:
   - mkdocs.yml
+  - overrides/

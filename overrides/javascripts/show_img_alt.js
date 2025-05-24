@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageLinks = mdDiv.querySelectorAll("a > img[alt]");
 
     imageLinks.forEach((img) => {
+      // 跳过贡献者头像图片，位于 <aside class="md-source-file"> 内部的 img
+      if (img.closest("aside.md-source-file")) {
+        return;
+      }
+
       const altText = img.getAttribute("alt");
       const aTag = img.parentElement;
 

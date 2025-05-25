@@ -26,9 +26,9 @@ h2 {
 }
 
 /* 限制最大代码长度 */
-.md-typeset pre>code {
+/* .md-typeset pre>code {
     max-height: 25rem;
-}
+} */
 
 
 /* ==================== 表格 ==================== */

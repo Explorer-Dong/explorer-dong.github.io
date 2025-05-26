@@ -1,34 +1,45 @@
 ---
 title: 序列生成
+status: new
 ---
 
-序列生成常见的任务有：机器翻译、内容生成等。早期：基于规则、中期：基于统计、现在：基于神经网络。任务目标就是输入 $x$ 输出 $y$，建立的模型就是 $p(y\mid x)$。本文以神经机器翻译为例，展开自然语言处理中的序列生成任务。
+序列生成常见的任务有：机器翻译、文本摘要、智能问答等。本文以「机器翻译」为引，展开 Seq2Seq 架构、Attention 机制和 Transformer 模型。
 
-## 数据
+## 机器翻译任务定义
 
-常见的机器翻译的数据集有 WMT 系列数据集。
+机器翻译任务定义为：给定源语言，通过建立翻译模型，将其翻译为目标语言。
 
-## 评价 *
+## 机器翻译的数据集
+
+常见的机器翻译的数据集有 WMT 系列数据集，其他用于机器翻译的数据集可以参考 paper with code [^nmt-dataset] 中的内容。
+
+[^nmt-dataset]: [NMT Dataset | paperwithcode - (paperswithcode.com)](https://paperswithcode.com/datasets?mod=texts&task=machine-translation&page=1)
+
+以 WMT 2014 EN-DE 为例，其被划分出约 4.5M 个文本对作为训练集，3k 个文本对作为验证集，3k 个文本对作为测试集。文本对示例如下：
+
+```json
+{ "de": "Dazu kam es nicht.", "en": "That did not happen." }
+{ "de": "Zum Mittwoch:", "en": "Relating to Wednesday:" }
+{ "de": "Wir haben dann abgestimmt.", "en": "We then put it to a vote." }
+```
+
+## 机器翻译评价方法
 
 BLUE：
 
 ROUGH：
 
-## 基于统计方法 *
+## 传统方法
 
 由于 $p(x)$ 是已知的，根据乘法原理，可以将原来的建模方式等价于为 $p(x\mid y)\cdot p(y)$，其中 $p(x\mid y)$ 是反向翻译模型，$p(y)$ 是语言模型，统计机器学习方法需要分别训练这两个模型。
 
-给定 $t-1$ 个单词的序列，预测第 $t$ 个单词。建模方式是使用条件概率公式：
+给定 $t-1$ 个单词的序列，预测第 $t$ 个单词。
 
-$$
-p(\mid y_{t-1})
-$$
+## Seq2Seq 架构
 
-## 以 RNN 为基座
+2015 年，Stanford NLP 实验室在 EMNLP 上发表了一篇名为 *Effective Approaches to Attention-based Neural Machine Translation* [^rnn-based] 的文章，其介绍了一种基于 RNN 的神经网络翻译模型，开启了神经机器翻译的时代。
 
-2015 年，斯坦福 NLP 实验室在 EMNLP 上发表了一篇名为《Effective Approaches to Attention-based Neural Machine Translation》 [^rnn-nmt-paper] 的文章，其介绍了一种基于 RNN 的神经网络翻译模型，开启了神经机器翻译的时代。
-
-[^rnn-nmt-paper]: [Effective Approaches to Attention-based Neural Machine Translation | Stanford NLP - (aclanthology.org)](https://aclanthology.org/D15-1166.pdf)
+[^rnn-based]: [Effective Approaches to Attention-based Neural Machine Translation | Stanford NLP - (aclanthology.org)](https://aclanthology.org/D15-1166.pdf)
 
 ![基于 RNN 的 seq2seq 模型架构](https://cdn.dwj601.cn/images/20250428083440132.png)
 
@@ -37,8 +48,6 @@ $$
 利用任意一种模型将输入语句编码为「单一」向量 $h_0$。
 
 ### Decoder 部分
-
-1）**基本模式**
 
 在使用 RNN 作为解码器时，训练和测试阶段的模型输入是不一样的：
 
@@ -49,7 +58,9 @@ $$
 
 上述测试阶段的解码器每一步只选择当前最优的输出，这种贪心策略显然不一定是最优的，为此研究人员提出了 beam search 策略。具体地，其含有一个超参数 $K$，在编码阶段，保存每一个隐藏状态的前 $K$ 个最优预测单词，之后就按照 $K$ 叉树的形式基于前一个状态生成的 $K$ 个输出得到 $K \times K$ 个输出，以此类推。最后按照某种度量标准选择所有输出序列中最优的那一条即可。
 
-2）**引入 Attention 机制**
+## Attention 机制引入
+
+### 基础 Attention
 
 ![基于 RNN 的 seq2seq 模型架构（引入了 Attention 机制）](https://cdn.dwj601.cn/images/20250428101226957.png)
 
@@ -65,11 +76,11 @@ $$
 - 翻译效果更好：通过使用注意力机制，模型可以学习到全局关系，并且缓解了梯度消失问题，从而提升了翻译的效果；
 - 可解释性更好：相较于统计方法的硬对齐方法（只有对应与不对应），使用注意力机制其实就算一种软对齐（按照权重对应）。由于每一个时间步都可以计算每一个输入 token 与所有输入 token 之间的是注意力权重，那么就可以算出一个对齐矩阵，该矩阵完全是模型根据数据学习到的对齐结果。
 
-3）**Attention 进阶**
+### Attention 进阶
 
 上述思路都是针对单一句子进行的，如果涉及到更大规模的语料，就需要对注意力的计算方法进行一定的魔改。
 
-## 以 Transformer 为基座
+## Transformer 模型
 
 2017 年，Google 团队发表在 NIPS 上的一篇《Attention is all you need》 [^atten-paper] 替换了上述 RNN 结构，解决了 RNN 不能并行计算的问题。
 

@@ -185,8 +185,10 @@ nav:
         - base/ai/data-mining/anomaly-detection.md
       - 自然语言处理:
         - base/ai/natural-language-processing/index.md
+        - base/ai/natural-language-processing/word2vector.md
         - base/ai/natural-language-processing/sequence-classification.md
         - base/ai/natural-language-processing/sequence-generation.md
+        - base/ai/natural-language-processing/pre-training.md
       - 计算机视觉:
         - base/ai/computer-vision/index.md
         - base/ai/computer-vision/image-classification.md

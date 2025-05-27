@@ -17,5 +17,5 @@ title: 自然语言处理导读
 本专题的内容编排主要按照 NLP 的研究范式进行：
 
 - 第一范式：基于传统机器学习方法进行监督学习。该部分将会简单提及，但不会详细展开；
-- 第二范式：基于深度神经网络模型进行监督学习。该部分将会介绍 [静态词嵌入](./word2vector.md)、[序列分类任务](./sequence-classification.md)、[序列生成任务](./sequence-generation.md) 三个部分；
+- 第二范式：基于深度神经网络模型进行监督学习。该部分将会介绍 [静态词嵌入](./word-embedding.md)、[序列分类任务](./sequence-classification.md)、[序列生成任务](./sequence-generation.md) 三个部分；
 - 第三范式：基于预训练+微调的方式进行自监督+监督学习。该部分将会介绍一些具有里程碑意义的 [预训练](./pre-training.md) 范式。

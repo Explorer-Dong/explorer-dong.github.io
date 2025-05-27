@@ -1,12 +1,12 @@
-# 站点配置
-site_name: Open Wiki Community
+# ==================== 站点配置 ====================
+site_name: 开放知识社群
 site_url: https://wiki.dwj601.cn/
 repo_url: https://github.com/Explorer-Dong/wiki
-repo_name: Explorer-Dong/wiki
+repo_name: Open Wiki Community
 edit_uri: edit/main/docs/
 
 
-# 主题配置
+# ==================== 主题配置 ====================
 theme:
   name: material
   language: zh
@@ -56,7 +56,7 @@ theme:
     - announce.dismiss             # 支持手动关闭公告
 
 
-# md 语法扩展
+# ==================== 语法扩展 ====================
 markdown_extensions:
   # 并列嵌套（需要和 superfences 一起使用）
   - pymdownx.tabbed:
@@ -104,7 +104,7 @@ markdown_extensions:
       custom_checkbox: true
 
 
-# 注入
+# ==================== 样式注入 ====================
 extra_javascript:
   # KaTeX
   - javascripts/katex.js
@@ -129,7 +129,7 @@ extra_css:
   - stylesheets/extra.css
 
 
-# 插件配置
+# ==================== 插件配置 ====================
 plugins:
   # 搜索功能
   - search:
@@ -150,9 +150,31 @@ plugins:
   - meta
 
 
-draft_docs: _*.md
+# ==================== 额外配置 ====================
+extra:
+  # 谷歌分析
+  analytics:
+    provider: google
+    property: G-56NDVC0D5B
+  # 文章状态定义
+  status:
+    new: 待更新
+    deprecated: 即将废弃
+  # 页面底部社交链接
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Explorer-Dong
+      name: GitHub
+    - icon: fontawesome/solid/c
+      link: https://blog.csdn.net/qq_73408594
+      name: CSDN
 
-# 页面导航
+
+# ==================== 文章权限 ====================
+copyright: <a href="https://beian.miit.gov.cn/">苏ICP备2024087610号-1</a>
+
+
+# ==================== 页面导航 ====================
 nav:
   - index.md
   - 基础:
@@ -185,7 +207,7 @@ nav:
         - base/ai/data-mining/anomaly-detection.md
       - 自然语言处理:
         - base/ai/natural-language-processing/index.md
-        - base/ai/natural-language-processing/word2vector.md
+        - base/ai/natural-language-processing/word-embedding.md
         - base/ai/natural-language-processing/sequence-classification.md
         - base/ai/natural-language-processing/sequence-generation.md
         - base/ai/natural-language-processing/pre-training.md
@@ -194,6 +216,7 @@ nav:
         - base/ai/computer-vision/image-classification.md
         - base/ai/computer-vision/object-detection.md
         - base/ai/computer-vision/image-super-resolution.md
+        - base/ai/computer-vision/action-recognition.md
       - 智慧教育:
         - base/ai/intelligent-education/index.md
     - 计算机基础:
@@ -346,27 +369,3 @@ nav:
       - dev-tools/git/git-branch-conflict.md
       - dev-tools/git/git-tips.md
   - 博客: https://blog.dwj601.cn/
-
-
-# 额外配置
-extra:
-  # 谷歌分析
-  analytics:
-    provider: google
-    property: G-56NDVC0D5B
-  # 文章状态定义
-  status:
-    new: 待更新
-    deprecated: 即将废弃
-  # 页面底部社交链接
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/Explorer-Dong
-      name: GitHub
-    - icon: fontawesome/solid/c
-      link: https://blog.csdn.net/qq_73408594
-      name: CSDN
-
-
-# 页脚 Copyright
-copyright: <a href="https://beian.miit.gov.cn/">苏ICP备2024087610号-1</a>

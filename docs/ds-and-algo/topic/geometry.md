@@ -2,11 +2,7 @@
 title: 计算几何
 ---
 
-## 计算几何
-
-计算几何的「例题解析」。
-
-Minimum Manhattan Distance
+### 例：最小曼哈顿距离
 
 <https://codeforces.com/gym/104639/problem/J>
 
@@ -18,7 +14,7 @@ Minimum Manhattan Distance
 >
 > - 看似需要积分，其实我们可以发现，对于点 p 到 C1 中某个点 q1 的曼哈顿距离，我们一定可以找到 q1 关于 C1 对称的点 q2，那么点 p 到 q1 和 q2 的曼哈顿距离之和就是点 p 到 C1 的曼哈顿距离的两倍（证明就是中线定理）那么期望的最小值就是点 p 到 C1 的曼哈顿距离的最小值。目标转化后，我们开始思考如何计算此目标的最小值，思路如下图
 >
->     ![image-20240116175917260](https://cdn.dwj601.cn/images/202402252321057.png)
+>     ![思路](https://cdn.dwj601.cn/images/202402252321057.png)
 >
 > 注意点：
 >
@@ -44,7 +40,7 @@ void solve() {
 }
 ```
 
-三角形
+### 例：三角形
 
 <https://www.acwing.com/problem/content/5383/>
 
@@ -100,7 +96,7 @@ signed main() {
 }
 ```
 
-奶牛过马路
+### 例：奶牛过马路
 
 <https://www.acwing.com/problem/content/5572/>
 

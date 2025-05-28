@@ -1084,9 +1084,7 @@ TODO
 
 ## 背包 DP
 
-### 例题
-
-过河卒
+### 例：过河卒
 
 <https://www.luogu.com.cn/problem/P1002>
 
@@ -1208,7 +1206,7 @@ signed main() {
 }
 ```
 
-摘樱桃 II
+### 例：摘樱桃 II
 
 <https://leetcode.cn/problems/cherry-pickup-ii/>
 
@@ -1249,7 +1247,7 @@ class Solution:
         return res
 ```
 
-摘樱桃
+### 例：摘樱桃
 
 弱化版 $(n\le 50)$ ：<https://leetcode.cn/problems/cherry-pickup/>
 
@@ -1359,7 +1357,7 @@ public:
 };
 ```
 
-栈
+### 例：栈
 
 <https://www.luogu.com.cn/problem/P1044>
 
@@ -1484,7 +1482,7 @@ signed main() {
 }
 ```
 
-找出所有稳定的二进制数组 II
+### 例：找出稳定的二进制数组 II
 
 <https://leetcode.cn/problems/find-all-possible-stable-binary-arrays-ii/>
 
@@ -1539,7 +1537,7 @@ public:
 };
 ```
 
-学生出勤记录 II
+### 例：学生出勤记录 II
 
 <https://leetcode.cn/problems/student-attendance-record-ii/description/>
 
@@ -1630,9 +1628,7 @@ class Solution:
 
 ## 区间 DP
 
-### 例题
-
-对称山脉
+### 例：对称山脉
 
 <https://www.acwing.com/problem/content/5169/>
 
@@ -1729,11 +1725,7 @@ int main() {
 
 ## 树形 DP
 
-### 例题
-
-树的路径问题，考虑回溯。如何更新值？如何返回值？视频学习：<https://www.bilibili.com/video/BV17o4y187h1/>。
-
-最大社交深度和
+### 例：最大社交深度和
 
 <https://vijos.org/d/nnu_contest/p/1534>
 
@@ -1793,7 +1785,7 @@ int main() {
 >     }
 >     ```
 >
-> - 时间复杂度：$\Theta(2n)$
+> - 时间复杂度：$O(n)$
 
 暴力代码：
 
@@ -1895,9 +1887,7 @@ void solve() {
 
 ## 状压 DP
 
-### 例题
-
-Avoid K Palindrome
+### 例：Avoid K Palindrome
 
 <https://atcoder.jp/contests/abc359/tasks/abc359_d>
 
@@ -1905,7 +1895,7 @@ Avoid K Palindrome
 >
 > 思路：最暴力的做法就是 2^q 枚举所有可能的字符串，然后再 O(n) 的检查，这样时间复杂度为 $O(n2^n)$，只能通过 20 以内的数据。一般字符串回文问题可以考虑 dp。
 
-吃奶酪
+### 例：吃奶酪
 
 <https://www.luogu.com.cn/problem/P1433>
 

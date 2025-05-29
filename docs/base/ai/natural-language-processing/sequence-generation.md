@@ -1,6 +1,5 @@
 ---
 title: 序列生成
-status: new
 ---
 
 序列生成常见的任务有：机器翻译、文本摘要、智能问答等。本文以「机器翻译」为引，展开 Seq2Seq 架构、Attention 机制和 Transformer 模型。

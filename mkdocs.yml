@@ -186,25 +186,22 @@ nav:
         - base/ai/speech-signal-processing/index.md
       - 机器学习:
         - base/ai/machine-learning/index.md
-        - base/ai/machine-learning/data.md
-        - base/ai/machine-learning/eval.md
-        - 模型:
-          - base/ai/machine-learning/model/index.md
-          - base/ai/machine-learning/model/linear-model.md
-          - base/ai/machine-learning/model/decision-tree-model.md
-          - base/ai/machine-learning/model/bayes-model.md
-          - base/ai/machine-learning/model/probability-graph-model.md
-          - base/ai/machine-learning/model/ensemble-learning.md
-          - base/ai/machine-learning/model/lazy-learning.md
-          - base/ai/machine-learning/model/cluster-learning.md
-          - base/ai/machine-learning/model/semi-supervised-learning.md
-      - 深度学习:
-        - base/ai/deep-learning/index.md
+        - base/ai/machine-learning/data-process.md
+        - base/ai/machine-learning/model-select.md
+        - base/ai/machine-learning/linear-model.md
+        - base/ai/machine-learning/decision-tree-model.md
+        - base/ai/machine-learning/bayes-model.md
+        - base/ai/machine-learning/probability-graph-model.md
+        - base/ai/machine-learning/ensemble-learning.md
+        - base/ai/machine-learning/lazy-learning.md
+        - base/ai/machine-learning/cluster-learning.md
+        - base/ai/machine-learning/semi-supervised-learning.md
       - 数据挖掘:
         - base/ai/data-mining/index.md
-        - base/ai/data-mining/data-preprocess.md
         - base/ai/data-mining/association-analysis.md
         - base/ai/data-mining/anomaly-detection.md
+      - 深度学习:
+        - base/ai/deep-learning/index.md
       - 自然语言处理:
         - base/ai/natural-language-processing/index.md
         - base/ai/natural-language-processing/word-embedding.md
@@ -217,8 +214,12 @@ nav:
         - base/ai/computer-vision/object-detection.md
         - base/ai/computer-vision/image-super-resolution.md
         - base/ai/computer-vision/action-recognition.md
-      - 智慧教育:
-        - base/ai/intelligent-education/index.md
+      - 知识图谱:
+        - base/ai/knowledge-graph/index.md
+        - base/ai/knowledge-graph/kg-acquisition.md
+        - base/ai/knowledge-graph/kg-representation.md
+        - base/ai/knowledge-graph/kg-aware-application.md
+        - base/ai/knowledge-graph/temporal-kg.md
     - 计算机基础:
       - 面向对象程序设计:
         - base/cs/object-oriented-programming/index.md

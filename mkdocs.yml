@@ -202,6 +202,11 @@ nav:
         - base/ai/data-mining/anomaly-detection.md
       - 深度学习:
         - base/ai/deep-learning/index.md
+        - base/ai/deep-learning/full-connect-neural-network.md
+        - base/ai/deep-learning/auto-encoder.md
+        - base/ai/deep-learning/convolutional-neural-network.md
+        - base/ai/deep-learning/recurrent-neural-network.md
+        - base/ai/deep-learning/network-enhancement.md
       - 自然语言处理:
         - base/ai/natural-language-processing/index.md
         - base/ai/natural-language-processing/word-embedding.md

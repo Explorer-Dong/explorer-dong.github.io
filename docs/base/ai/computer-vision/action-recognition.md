@@ -2,23 +2,25 @@
 title: 动作识别
 ---
 
-## 动作识别定义
+## 基本概念
+
+### 动作识别定义
 
 假设时序长度为 $T$ 的视频表示为 $X = x_1, x_2, \cdots , x_T$，其中 $x_i$ 表示第 $i$ 帧图像。定义动作标签集合 $c\in C$，其中每个 $c$ 表示一个特定的动作类别。
 
 动作识别 (Action Recognition) 任务可以看作是一个分类问题，其目标是找到一个映射函数 $f$，该函数将 $X$ 映射到动作标签集合 $C$ 中的一个标签：$f: X \to C$。
 
-## 数据
+### 数据集
 
-UCF-101
+![动作识别经典数据集](https://cdn.dwj601.cn/images/20250603091413644.png)
 
-HMDB-51
-
-## 评价
+### 评价指标
 
 Clip Hit@k：从视频中提取多个片段 (clip)，每个片段独立预测，统计所有 clip 的 Top-k 准确率。
 
 Video Hit@k：将同一个视频的多个 clip 的预测结果进行聚合，统计所有 video 的 Top-k 准确率。
+
+*注：Top-k 表示模型输出 k 次的结果中是否存在正确答案，因此我们平时常说的准确率其实是 Top-1 指标。
 
 ## 早期做法
 
@@ -74,6 +76,54 @@ TODO
 
 ## 基于 3D 卷积的网络
 
+光流信息的计算与存储开销极大，人们开始尝试使用 3D 卷积来完成动作识别任务。
+
+![2D 卷积 vs. 3D 卷积](https://cdn.dwj601.cn/images/20250603081454178.png)
+
+### C3D
+
+C3D [^c3d] 直接将 VGG 的卷积操作从 $3\times 3$ 拓展到了 $3\times 3\times 3$，在 Sport-1M 数据集上进行训练。
+
+[^c3d]: Tran D, Bourdev L, Fergus R, et al. Learning spatiotemporal features with 3d convolutional networks[C]//Proceedings of the IEEE international conference on computer vision. 2015: 4489-4497.
+
+![C3D 模型架构](https://cdn.dwj601.cn/images/20250603081959259.png)
+
+特点：
+
+- C3D 直接在 Sport-1M 数据集上训练，取得的效果要好于缓慢融合网络；
+- C3D 在更大的数据集上预训练，再进行微调，则可以取得更好的效果；
+- C3D 的训练时间非常长，难以继续拓展。
+
+![实验结果](https://cdn.dwj601.cn/images/20250603081944380.png)
+
+### I3D
+
+使用预训练模型初始化网络的参数可以增强模型的效果并降低训练难度，因此 I3D [^i3d] 提出了膨胀 3D 卷积 (Inflated 3D convolution)。
+
+[^i3d]: Carreira J, Zisserman A. Quo vadis, action recognition? a new model and the kinetics dataset[C]//proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2017: 6299-6308.
+
+![I3D 模型架构](https://cdn.dwj601.cn/images/20250603081936376.png)
+
+![实验结果](https://cdn.dwj601.cn/images/20250603081922787.png)
+
 ## 基于 Transformer 的网络
 
-## 总结
+TimeSformer [^timesformer] 是第一个尝试将 ViT [^vit] 引入到动作识别任务的工作。如何将应用于 2D 图像的 ViT 迁移到视频领域的动作识别任务？
+
+[^timesformer]: Bertasius G, Wang H, Torresani L. Is space-time attention all you need for video understanding?[C]//ICML. 2021, 2(3): 4.
+[^vit]: [轻松理解 ViT(Vision Transformer) 原理及源码 | 000_error - (zhuanlan.zhihu.com)](https://zhuanlan.zhihu.com/p/640013974)
+
+<video controls src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/videos/ViT.mp4"></video>
+
+类似于之前的工作，TimeSformer 对于如何将 ViT 拓展到视频数据进行了大量的探索。
+
+![TimeSformer 的探索](https://cdn.dwj601.cn/images/20250603092020812.png)
+
+![可视化结果](https://cdn.dwj601.cn/images/20250603092041738.png)
+
+![实验指标](https://cdn.dwj601.cn/images/20250603092057978.png)
+
+用 Transformer 的好处：
+
+- Transformer 的全局建模能力使得相关模型能够更好地利用时序上下文信息，更易于应用到长时序的视频；
+- Transformer 没有归纳偏置 (inductive)，更易于拓展成多模态模型。

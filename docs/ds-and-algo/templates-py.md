@@ -6,7 +6,7 @@ title: 代码模板 (Python)
     本文记录 Python 语言的算法竞赛代码模板，全部使用 built-in 模块，有不严谨或错误的地方还望评论区斧正🤗。
 
 !!! warning
-    本文大部分内容将逐渐迁移至 [专题解析](./topic/index.md) 部分，仅保留代码模板。
+    考虑到本文内容过于庞大，放到一个网页渲染会极大地降低浏览体验，因此本文大部分讲解性内容将会逐渐迁移至 [专题解析](./topic/index.md) 部分，仅保留代码模板。
 
 ## 常用数据结构 API
 
@@ -233,8 +233,8 @@ from sortedcontainers import SortedList
 **思考**
 
 - 恢复顺序的依据: 通过 $(h_i, k_i)$ 能唯一确定此人的位置;
-- 由于被打乱, 恢复顺序一定需要排序; 
-- 由于 $k_i$ 为前面身高不小于他的人数, 可想到按照身高降序排序, 同身高内部按照 $k_i$ 升序排序; 
+- 由于被打乱, 恢复顺序一定需要排序;
+- 由于 $k_i$ 为前面身高不小于他的人数, 可想到按照身高降序排序, 同身高内部按照 $k_i$ 升序排序;
 - 对排序后的数组遍历, 按照 "插入排序" 的思想找到合适的位置
 
 ```python
@@ -1934,7 +1934,7 @@ class Solution:
 
     ```python hl_lines="9-12"
     from typing import Self
-
+    
     class Item:
         def __init__(self, height: int, score: int, age: int):
             self.height = height
@@ -1945,10 +1945,10 @@ class Solution:
             if self.score == other.score:
                 return self.age < other.age
             return self.score > other.score
-
+    
     a = [Item(180, 90, 21), Item(175, 92, 24), Item(185, 90, 22)]
     a.sort()
-
+    
     for item in a:
         print(f"height: {item.height}, "
             f"score: {item.score}, "
@@ -1965,27 +1965,27 @@ class Solution:
 
     ```python hl_lines="9-13 16"
     from functools import cmp_to_key
-
+    
     class Item:
         def __init__(self, height: int, score: int, age: int):
             self.height = height
             self.score = score
             self.age = age
-
+    
     def my_cmp(x: Item, y: Item) -> int:
         """返回负数或 0 表示 (x, y)，返回正数表示 (y, x)"""
         if x.score == y.score:
             return x.age - y.age
         return y.score - x.score
-
+    
     a = [Item(180, 90, 21), Item(175, 92, 24), Item(185, 90, 22)]
     a.sort(key=cmp_to_key(my_cmp))
-
+    
     for item in a:
         print(f"height: {item.height}, "
             f"score: {item.score}, "
             f"age: {item.age}")
-
+    
     """ 输出
     height: 175, score: 92, age: 24
     height: 180, score: 90, age: 21
@@ -2001,15 +2001,15 @@ class Solution:
             self.height = height
             self.score = score
             self.age = age
-
+    
     a = [Item(180, 90, 21), Item(175, 92, 24), Item(185, 90, 22)]
     a.sort(key=lambda x: (-x.score, x.age))
-
+    
     for item in a:
         print(f"height: {item.height}, "
             f"score: {item.score}, "
             f"age: {item.age}")
-
+    
     """ 输出
     height: 175, score: 92, age: 24
     height: 180, score: 90, age: 21
@@ -2076,6 +2076,53 @@ def getSubarrayBeauty(self, nums: List[int], k: int, x: int) -> List[int]:
 ```
 
 ## 数据结构
+
+### 双链表
+
+```python
+class myList:
+    # 初始化链表，地址从 0 开始赋
+    def __init__(self, n: int) -> None:
+        self.val = [0] * (n + 10)
+        self.left = [0] * (n + 10)
+        self.right = [0] * (n + 10)
+        self.idx = 2
+        self.right[0] = 1
+        self.left[1] = 0
+
+    # 头插入
+    def push_front(self, x: int):
+        self.insert_right(0, x)
+
+    # 尾插入
+    def push_back(self, x: int):
+        self.insert_left(1, x)
+
+    # 在第 k 个插入的数左侧插入一个数
+    def insert_left(self, k: int, x: int):
+        self.insert_right(self.left[k], x)
+
+    # 在第 k 个插入的数右侧插入一个数
+    def insert_right(self, k: int, x: int):
+        self.val[self.idx] = x
+        self.right[self.idx] = self.right[k]
+        self.left[self.right[k]] = self.idx
+        self.left[self.idx] = k
+        self.right[k] = self.idx
+        self.idx += 1
+
+    # 删除第 k 个插入的数
+    def erase(self, k: int):
+        self.left[self.right[k]] = self.left[k]
+        self.right[self.left[k]] = self.right[k]
+
+    # 输出整个链表
+    def output(self) -> None:
+        i = self.right[0]
+        while i != 1:
+            print(self.val[i], end=' ')
+            i = self.right[i]
+```
 
 ### 堆 / 优先队列
 
@@ -9423,80 +9470,77 @@ while i < n:
 在山形边界开区间所夹的区间内，满足所有元素大于等于山形边界元素 $x$ ，即 $x = \min(a[l+1] \sim a[r-1]) $。
 
 ```python
-    def validSubarraySize(self, nums: List[int], threshold: int) -> int:
-        n = len(nums)
-        # 单调栈解法
-        stk, left = [], [-1] * n
-        for i in range(n):
-            x = nums[i]
-            while stk and x <= nums[stk[-1]]: stk.pop() 
-            if stk: left[i] = stk[-1]
-            stk.append(i)
-        stk, right = [], [n] * n 
-        for i in range(n - 1, -1, -1):
-            x = nums[i]
-            while stk and x <= nums[stk[-1]]: stk.pop() 
-            if stk: right[i] = stk[-1]
-            stk.append(i)
-        for i, x in enumerate(nums):
-            l, r = left[i], right[i]
-            k = r - l - 1
-            if x > (threshold / k): return k 
-        return -1
+def validSubarraySize(self, nums: List[int], threshold: int) -> int:
+    n = len(nums)
+    # 单调栈解法
+    stk, left = [], [-1] * n
+    for i in range(n):
+        x = nums[i]
+        while stk and x <= nums[stk[-1]]: stk.pop() 
+        if stk: left[i] = stk[-1]
+        stk.append(i)
+    stk, right = [], [n] * n 
+    for i in range(n - 1, -1, -1):
+        x = nums[i]
+        while stk and x <= nums[stk[-1]]: stk.pop() 
+        if stk: right[i] = stk[-1]
+        stk.append(i)
+    for i, x in enumerate(nums):
+        l, r = left[i], right[i]
+        k = r - l - 1
+        if x > (threshold / k): return k 
+    return -1
 ```
 
+### 单调队列
 
-
-### 单调队列	
-
-**滑窗最大值 ~ 维护递减小队列； 滑窗最小值 ~  维护递增队列**
+- 滑窗最大值：维护递减队列；
+- 滑窗最小值：维护递增队列。
 
 [239. 滑动窗口最大值 - 力扣（LeetCode）](https://leetcode.cn/problems/sliding-window-maximum/)
 
 ```python
-    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        n = len(nums)
-        res = []
-        q = deque()
-        for i, x in enumerate(nums):
-            # 1.入，需要维护单调减队列的有序性
-            while q and x >= nums[q[-1]]:
-                q.pop()
-            q.append(i)
+def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+    n = len(nums)
+    res = []
+    q = deque()
+    for i, x in enumerate(nums):
+        # 1.入，需要维护单调减队列的有序性
+        while q and x >= nums[q[-1]]:
+            q.pop()
+        q.append(i)
 
-            # 2.出，当滑动窗口区间长度大于 k 的时候，弹出去左端的
-            if i - q[0] + 1 > k:
-                q.popleft()
-            
-            # 记录元素
-            if i >= k - 1:
-                res.append(nums[q[0]])
-        return res    
+        # 2.出，当滑动窗口区间长度大于 k 的时候，弹出去左端的
+        if i - q[0] + 1 > k:
+            q.popleft()
+        
+        # 记录元素
+        if i >= k - 1:
+            res.append(nums[q[0]])
+    return res
 ```
 
 [2398. 预算内的最多机器人数目 - 力扣（LeetCode）](https://leetcode.cn/problems/maximum-number-of-robots-within-budget/description/)
 
-单调队列 + 滑动窗口
-
 ```python
-  def maximumRobots(self, chargeTimes: List[int], runningCosts: List[int], budget: int) -> int:
-        n = len(chargeTimes)
-        res = 0
-        s = l = 0   # 滑窗的和 / 窗口左边界 
-        q = deque()     # 单调队列维护最大值
-        # 滑动窗口
-        for i, x in enumerate(chargeTimes):
-            while q and x >= chargeTimes[q[-1]]:
-                q.pop()
-            q.append(i)
-            s += runningCosts[i]
-            while i - l + 1 > 0 and s * (i - l + 1) + chargeTimes[q[0]] > budget:
-                s -= runningCosts[l]
-                l += 1
-                if l > q[0]:
-                    q.popleft()
-            res = max(res, i - l + 1)
-        return res
+def maximumRobots(self, chargeTimes: List[int], runningCosts: List[int], budget: int) -> int:
+    n = len(chargeTimes)
+    res = 0
+    s = l = 0   # 滑窗的和 / 窗口左边界 
+    q = deque()     # 单调队列维护最大值
+    # 滑动窗口
+    for i, x in enumerate(chargeTimes):
+        while q and x >= chargeTimes[q[-1]]:
+            q.pop()
+        q.append(i)
+        s += runningCosts[i]
+        while i - l + 1 > 0 and s * (i - l + 1) + chargeTimes[q[0]] > budget:
+            s -= runningCosts[l]
+            l += 1
+            if l > q[0]:
+                q.popleft()
+        res = max(res, i - l + 1)
+    return res
 ```
 
 ### 单调栈优化 dp

@@ -111,7 +111,7 @@ extra_javascript:
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.js
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/contrib/auto-render.min.js
   # mermaid
-  - https://cdn.dwj601.cn/cdn-js/mermaid/mermaid.min.js
+  - https://cdn.dwj601.cn/files/mermaid.min.js
   # 外链跳转
   - javascripts/link_blank.js
   # 百度统计
@@ -120,8 +120,6 @@ extra_javascript:
   - javascripts/show_img_alt.js
   # 首页脚本（暂时不用，会出现屏幕闪烁的情况）
   # - javascripts/homepage.js
-  # 聊天机器人（暂时不用，后期有机会自己部署到国内服务器）
-  # - javascripts/robot.js
 extra_css:
   # KaTeX
   - https://registry.npmmirror.com/katex/0.16.21/files/dist/katex.min.css

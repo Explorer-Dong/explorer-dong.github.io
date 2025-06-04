@@ -138,67 +138,104 @@ title: 代码模板 (C++)
 
 ## 数据结构
 
+### 双链表
+
+```c++
+template<class T>
+class myList {
+private:
+    int idx;
+    std::vector<T> val;
+    std::vector<int> left, right;
+
+public:
+    // 初始化，空间地址从 0 开始
+    myList(const int n) {
+        idx = 2;
+        val.resize(n + 10);
+        left.resize(n + 10);
+        right.resize(n + 10);
+        left[1] = 0, right[0] = 1;
+    }
+
+    // 尾插入
+    void push_back(T x) {
+        insert_left(1, x);
+    }
+
+    // 头插入
+    void push_front(T x) {
+        insert_right(0, x);
+    }
+
+    // 在第 k 个插入的数左侧插入一个数
+    void insert_left(int k, T x) {
+        insert_right(left[k], x);
+    }
+
+    // 在第 k 个插入的数右侧插入一个数
+    void insert_right(int k, T x) {
+        val[idx] = x;
+        right[idx] = right[k];
+        left[right[k]] = idx;
+        left[idx] = k;
+        right[k] = idx++;
+    }
+
+    // 将第 k 个插入的数删除
+    void erase(int k) {
+        right[left[k]] = right[k];
+        left[right[k]] = left[k];
+    }
+
+    // 输出整个链表
+    void output() {
+        for (int i = right[0]; i != 1; i = right[i]) {
+            cout << val[i] << " \n"[i == 1];
+        }
+    }
+};
+```
+
 ### 单调队列
 
-=== "C++"
+```c++
+#include <deque>
+#include <functional>
 
-    ```c++
-    #include <deque>
-    #include <functional>
-    
-    template<class T>
-    struct MonotonicQueue {
-        std::deque<T> q;
-        std::function<bool(T, T)> compare;
-        MonotonicQueue(bool is_min_queue) {
-            if (is_min_queue) {
-                compare = [](T a, T b) { return a < b; };
-            } else {
-                compare = [](T a, T b) { return a > b; };
-            }
-        }
-        void pushBack(T x) {
-            while (q.size() && compare(x, q.back())) {
-                q.pop_back();
-            }
-            q.push_back(x);
-        }
-        void popFront(T x) {
-            if (q.size() && q.front() == x) {
-                q.pop_front();
-            }
-        }
-        T getExtremeValue() {
-            return q.front();
-        }
-    };
-    ```
+template<class T>
+struct MonotonicQueue {
+    std::deque<T> q;
+    std::function<bool(T, T)> compare;
 
-=== "Python"
+    MonotonicQueue(bool min_queue) {
+        if (min_queue) {
+            // 队头为最小值：不严格单调递增队列
+            compare = [](T a, T b) { return a < b; };
+        } else {
+            // 队头为最大值：不严格单调递减队列
+            compare = [](T a, T b) { return a > b; };
+        }
+    }
 
-    ```python
-    from collections import deque
-    
-    class MonotonicQueue:
-        def __init__(self, is_min_queue: bool):
-            self.q = deque()
-            if is_min_queue:
-                self.compare = lambda a, b: a < b
-            else:
-                self.compare = lambda a, b: a > b
-    
-        def push_back(self, x):
-            while self.q and self.compare(x, self.q[-1]):
-                self.q.pop()
-            self.q.append(x)
-    
-        def pop_front(self, x):
-            if self.q and self.q[0] == x:
-                self.q.popleft()
-    
-        def get_extreme_value(self):
-            return self.q[0]
-    ```
+    void push_back(T x) {
+        while (q.size() && compare(x, q.back())) {
+            q.pop_back();
+        }
+        q.push_back(x);
+    }
+
+    void pop_front(T x) {
+        if (q.size() && x == q.front()) {
+            q.pop_front();
+        }
+    }
+
+    T get_extreme_value() {
+        return q.front();
+    }
+};
+```
 
 ### 哈希表
 

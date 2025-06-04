@@ -3,9 +3,9 @@ title: 数据结构
 ---
 
 !!! tip
-    数据结构只是一种手段，不可能与算法割裂。因此本文较多内容其实使用了 [动态规划](./dp.md)、[图论](./graph.md) 和 [字符串](./string.md) 等算法，若遇到难以理解的部分，建议提前学习对应算法的理论与例题。
+    数据结构只是一种手段，不能与算法割裂。因此本文较多内容其实使用了 [动态规划](./dp.md)、[图论](./graph.md) 和 [字符串](./string.md) 等算法，若遇到难以理解的部分，建议提前学习对应算法的理论与例题。
 
-数据结构由「数据」和「结构」两部分组成。我们主要讨论的是后者，即结构部分。按照逻辑结构可以将各种数据结果分类为「线性结构」和「非线性结构」。如下图所示：
+数据结构由「数据」和「结构」两部分组成，我们主要讨论后者。按照逻辑，可以将数据结构划分为「线性结构」和「非线性结构」两种。下图展示了部分分类结果：
 
 ![线性数据结构 vs. 非线性数据结构](https://cdn.dwj601.cn/images/202408301527018.png)
 
@@ -13,316 +13,44 @@ title: 数据结构
 
 算法的五大特性。1）正确性；2）健壮性（鲁棒性）；3）可读性；4）可扩展性；5）高效率。其中高效率中又引出了复杂度的大 $O$ 表示法，具体地：
 
-- $O()$ `upper bound`：最坏的时间复杂度；
-- $\Omega()$ `lower bound`：最好的时间复杂度；
-- $\Theta()$ `average bound`：平均时间复杂度。
+- $O()$：即 `upper bound`，表示算法的「最坏」时间复杂度；
+- $\Omega()$：即 `lower bound`，表示算法的「最好」时间复杂度；
+- $\Theta()$：即 `average bound`，表示算法的「平均」时间复杂度。
 
 ## 链表
 
-本节原本叫做「线性表」，但是考虑到顺序存储结构的线性表就是数组，因此这里只讨论链式存储结构的线性表，即链表。
+相较于顺序表（数组）在内存上连续存在，链表因其独特的结构在内存上的分散存在的，这就使得链表有着一些独特的性质：
 
-常见的链表结构。单链表、循环链表、双向链表共三种。但无论哪种结构，都是一个头结点 + 一个尾结点 + 若干中间结点的结构，且每个结点只有一个前驱结点和一个后继结点。
+1. 顺序表可以 $O(1)$ 访问，但是需要 $O(n)$ 插入与删除；
+2. 而链表需要 $O(n)$ 访问，但只需要 $O(1)$ 插入与删除。
 
-初始化技巧。一般来说，为了便于编码，都会提前设置空结点。例如单链表会设置一个空的头结点，循环链表会设置一个空的尾结点，双向链表会设置一个空的头结点和空的尾结点。
+常见的链表结构有「单链表、循环链表、双向链表」三种，链表中每个结点只有一个前驱结点和一个后继结点。一般来说，为了便于编码，都会提前设置空结点，例如：单链表会设置一个空的头结点，循环链表会设置一个空的尾结点，双向链表则会设置一个空的头结点和一个空的尾结点。
 
-常见操作。对于链表而言，其最大的特点就是删除或添加结点的开销很小，至于查询或修改直接链式遍历即可。因此我们应熟练掌握链表结点的删除与添加操作。
+对于链表上的增删改查，改和查直接链式遍历即可，唯一难点就是增和删。下面以双向链表为例讲讲结点的删除和添加操作：
 
-=== "双向链表结点添加"
+1）双向链表结点添加
 
-    ![添加结点](https://cdn.dwj601.cn/images/202406292218514.png)
-    
-    ```c++
-    s->prior = p;
-    s->next = p->next;
-    p->next->prior = s;
-    p->next = s;
-    ```
-
-=== "双向链表结点删除"
-
-    ![删除结点](https://cdn.dwj601.cn/images/202406292218515.png)
-    
-    ```c++
-    p->next->prior = p->prior;
-    p->prior->next = p->next;
-    ```
-
-### 例：双链表
-
-<https://www.acwing.com/problem/content/829/>
-
-> 思路：用两个空结点作为起始状态的边界，避免所有边界讨论。
->
-> 时间复杂度：插入、删除结点均为 $O(1)$，遍历为 $O(n)$
+![双向链表结点添加](https://cdn.dwj601.cn/images/202406292218514.png)
 
 ```cpp
-#include <bits/stdc++.h>
-
-using ll = long long;
-using namespace std;
-
-template<class T>
-class myList {
-private:
-    int idx;
-    std::vector<T> val;
-    std::vector<int> left, right;
-
-public:
-    myList(const int n) {
-        idx = 2;
-        val.resize(n + 10);
-        left.resize(n + 10);
-        right.resize(n + 10);
-        left[1] = 0, right[0] = 1;
-    }
-
-    void push_back(T x) {
-        insert_left(1, x);
-    }
-
-    void push_front(T x) {
-        insert_right(0, x);
-    }
-
-    void insert_left(int k, T x) {
-        insert_right(left[k], x);
-    }
-
-    void insert_right(int k, T x) {
-        val[idx] = x;
-        right[idx] = right[k];
-        left[right[k]] = idx;
-        left[idx] = k;
-        right[k] = idx++;
-    }
-
-    void erase(int k) {
-        right[left[k]] = right[k];
-        left[right[k]] = left[k];
-    }
-
-    void output() {
-        for (int i = right[0]; i != 1; i = right[i]) {
-            cout << val[i] << " \n"[i == 1];
-        }
-    }
-};
-
-void solve() {
-    int n;
-    cin >> n;
-
-    myList<int> ls(n);
-
-    while (n--) {
-        string op;
-        cin >> op;
-
-        int k, x;
-
-        if (op == "L") {
-            cin >> x;
-            ls.push_front(x);
-        } else if (op == "R") {
-            cin >> x;
-            ls.push_back(x);
-        } else if (op == "D") {
-            cin >> k;
-            ls.erase(k + 1);
-        } else if (op == "IL") {
-            cin >> k >> x;
-            ls.insert_left(k + 1, x);
-        } else {
-            cin >> k >> x;
-            ls.insert_right(k + 1, x);
-        }
-    }
-
-    ls.output();
-}
-
-signed main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    int T = 1;
-//    std::cin >> T;
-    while (T--) solve();
-    return 0;
-}
+s->prior = p;
+s->next = p->next;
+p->next->prior = s;
+p->next = s;
 ```
 
-```python
-import heapq
-from collections import defaultdict
-from typing import List, Tuple
-import math
-from itertools import combinations
+2）双向链表结点删除
 
-II = lambda: int(input())
-FI = lambda: float(input())
-MII = lambda: tuple(map(int, input().split()))
-LII = lambda: list(map(int, input().split()))
+![双向链表结点删除](https://cdn.dwj601.cn/images/202406292218515.png)
 
-
-class myList:
-    def __init__(self, n: int) -> None:
-        self.val = [0] * (n + 10)
-        self.left = [0] * (n + 10)
-        self.right = [0] * (n + 10)
-        self.idx = 2
-        self.right[0] = 1
-        self.left[1] = 0
-
-    def push_front(self, x: int):
-        self.insert_right(0, x)
-
-    def push_back(self, x: int):
-        self.insert_left(1, x)
-
-    def insert_left(self, k: int, x: int):
-        self.insert_right(self.left[k], x)
-
-    def insert_right(self, k: int, x: int):
-        self.val[self.idx] = x
-        self.right[self.idx] = self.right[k]
-        self.left[self.right[k]] = self.idx
-        self.left[self.idx] = k
-        self.right[k] = self.idx
-        self.idx += 1
-
-    def erase(self, k: int):
-        self.left[self.right[k]] = self.left[k]
-        self.right[self.left[k]] = self.right[k]
-
-    def output(self) -> None:
-        i = self.right[0]
-        while i != 1:
-            print(self.val[i], end=' ')
-            i = self.right[i]
-
-
-def solve() -> None:
-    n = II()
-
-    ls = myList(n)
-
-    for _ in range(n):
-        op = input().split()
-
-        if op[0] == 'L':
-            ls.push_front(int(op[-1]))
-        elif op[0] == 'R':
-            ls.push_back(int(op[-1]))
-        elif op[0] == 'D':
-            ls.erase(int(op[-1]) + 1)
-        elif op[0] == 'IL':
-            ls.insert_left(int(op[1]) + 1, int(op[-1]))
-        else:
-            ls.insert_right(int(op[1]) + 1, int(op[-1]))
-
-    ls.output()
-
-
-if __name__ == '__main__':
-    T = 1
-    # T = II()
-    while T: solve(); T -= 1
+```cpp
+p->prior->next = p->next;
+p->next->prior = p->prior;
 ```
 
 ## 栈
 
-### 普通栈
-
-先进后出型线性数据结构。分为顺序栈和链栈，顺序栈就是数组模拟，链栈就类似于头插法的单链表。由于结构比较简单，因此我们重点关注栈的应用。
-
-**卡特兰数**。其实是一种动态规划的算法思想。常见的释义为：当有 $n$ 个元素按照某种顺序压入栈中，且可在任意时刻弹出时，所获得可能的出栈序列个数可用卡特兰数计算，即 $\frac{1}{n+1} C_{2n}^{n}$。
-
-定义 $f(k)$ 表示在第 $k$ 个数是最后一个出栈的情况下出栈序列的总个数，则 $f(k)=f(k-1)f(n-k)$，其中 $f(0)=1$。那么卡特兰数的推导公式就是：
-
-$$
-\sum_{k = 1}^{n} f(k) = \sum_{k = 1}^{n} f(k-1) f(n-k)=\frac{1}{n+1} C_{2n}^{n}
-$$
-
-**表达式求值**。分为前缀、中缀和后缀三种表达式，本质上是对树的一种遍历。具体地：
-
-- 中缀表达式求值。「双栈」思路，算符优先法：
-    - 遇到数字，直接入数栈；
-    - 遇到符号：
-        - 如果是括号，左括号直接入栈，右括号进行运算直到遇到左括号；
-        - 如果是算符，在入算符栈之前，需要进行运算操作直到算符栈顶元素等级小于当前算符等级。
-- 中缀表达式转后缀表达式。「算符栈」即可，后缀先遇到就直接计算的运算符 $\to$ 中缀表达式需要先算的运算符，于是转化思路就是：
-    - 遇到数字，直接构造后缀表达式；
-    - 遇到算符：
-        - 如果是括号，左括号直接入栈，右括号进行后缀表达式构造直到遇到左括号；
-        - 如果是算符，在入算符栈之前，需要进行后缀表达式构造操作直到算符栈顶元素等级小于当前算符等级。
-- 后缀表达式求值。「数栈」即可：
-    - 遇到数字直接入数栈；
-    - 遇到算符直接进行运算。
-
-### 单调栈
-
-<https://www.acwing.com/problem/content/832/>
-
-> 题意：对于一个序列中的每一个元素，寻找每一个元素左侧最近的比其小的元素。
->
-> 思路一：暴力枚举
->
-> - 显然对于每一个元素 `nums[i]`，我们可以枚举倒序 `[0, i-1]` 直到找到第一个 `nums[j] < nums[i]`
-> - 时间复杂度：$O(n^2)$
->
-> 思路二：单调栈
->
-> - 可以发现时间开销主要在倒序枚举上，我们能少枚举一些元素吗？答案是可以的。我们定义「寻找 `[i-1, 0]` 中比当前元素小的第一个元素」的行为叫做「寻找合法对象」。显然我们在枚举每一个元素时都需要 **查询** 和 **维护** 这样的合法对象线性序列，可以理解为记忆化从而加速查询。那么如何高效查询和维护这样的线性序列呢？不妨考虑每一个合法对象对曾经的合法对象的影响：
->
->     - 若当前元素 `nums[i]` 可以成为后续 `[i+1, n-1]` 元素的合法对象。则从 `i-1` 开始一直往左，只要比当前大的元素，都不可能成为 `[i+1, n-1]` 的合法对象，肯定都被 `nums[i]` “拦住了”。那么在「合法对象序列」中插入当前合法对象之前，需要不断尾弹出比当前大的元素
->     - 若当前元素 `nums[i]` 不能成为后续 `[i+1, n-1]` 元素的合法对象。表明当前元素过大，此时就不用将当前元素插入「合法对象序列」
->
-> - 经过上述两个角度的讨论，很容易发现这样维护出来的的合法序列是严格单调递增的。于是，在查询操作时仅需要进行尾比较与尾弹出即可，在维护操作时，仅需要尾插入即可。满足这样的线性数据结构有很多，如栈、队列、数组、链表，我们就使用栈来演示，与标题遥相呼应
->
-> 时间复杂度：$O(n)$
-
-```cpp
-#include <bits/stdc++.h>
-
-using ll = long long;
-using namespace std;
-
-void solve() {
-    int n;
-    cin >> n;
-
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
-
-    stack<int> s;
-    for (int i = 0; i < n; i++) {
-        // 查询
-        while (s.size() && s.top() >= a[i]) {
-            s.pop();
-        }
-        cout << (s.size() ? s.top() : -1) << " ";
-        
-        // 维护
-        s.push(a[i]);
-    }
-}
-
-signed main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    int T = 1;
-//    std::cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-同类题推荐：
-
-- [CF 1400 * | 下一个更大元素 II | LeetCode - (leetcode.cn)](https://leetcode.cn/problems/next-greater-element-ii/)
+栈是一种「先进后出」型线性数据结构。分为顺序栈和链栈，顺序栈就是数组模拟，链栈就类似于头插法的单链表，结构都很简单，我们重点关注栈的算法。栈的算法都很有趣，主要有三类：进出栈顺序问题、表达式求值问题、单调栈问题，以及一些利用栈结构的思维题。
 
 ### 例：验证栈序列
 
@@ -382,494 +110,433 @@ signed main() {
 }
 ```
 
+补充：**卡特兰数**。其实是一种动态规划的算法思想。常见的释义为：当有 $n$ 个元素按照某种顺序压入栈中，且可在任意时刻弹出时，所获得可能的出栈序列个数可用卡特兰数计算，即 $\frac{1}{n+1} C_{2n}^{n}$。
+
+定义 $f(k)$ 表示在第 $k$ 个数是最后一个出栈的情况下出栈序列的总个数，则 $f(k)=f(k-1)f(n-k)$，其中 $f(0)=1$。那么卡特兰数的推导公式就是：
+
+$$
+\sum_{k = 1}^{n} f(k) = \sum_{k = 1}^{n} f(k-1) f(n-k)=\frac{1}{n+1} C_{2n}^{n}
+$$
+
+### 例：表达式求值
+
+分为前缀、中缀和后缀三种表达式，本质上是对树的一种遍历。具体地：
+
+- 中缀表达式求值。「双栈」思路，算符优先法：
+    - 遇到数字，直接入数栈；
+    - 遇到符号：
+        - 如果是括号，左括号直接入栈，右括号进行运算直到遇到左括号；
+        - 如果是算符，在入算符栈之前，需要进行运算操作直到算符栈顶元素等级小于当前算符等级。
+- 中缀表达式转后缀表达式。「算符栈」即可，后缀先遇到就直接计算的运算符 $\to$ 中缀表达式需要先算的运算符，于是转化思路就是：
+    - 遇到数字，直接构造后缀表达式；
+    - 遇到算符：
+        - 如果是括号，左括号直接入栈，右括号进行后缀表达式构造直到遇到左括号；
+        - 如果是算符，在入算符栈之前，需要进行后缀表达式构造操作直到算符栈顶元素等级小于当前算符等级。
+- 后缀表达式求值。「数栈」即可：
+    - 遇到数字直接入数栈；
+    - 遇到算符直接进行运算。
+
+### 例：单调栈
+
+> 经典之处：单调递减栈板子题
+>
+> OJ：[AcWing](https://www.acwing.com/problem/content/832/)，注意，该 OJ 需要付费，但思想很简单，理解板子后尝试同类题即可。
+>
+> 难度：CF 1300 *
+
+题意：给定一个长度为 $n\ (1\le n\le 10^5)$ 的序列 $a\ (1\le a_i\le 10^9)$，寻找序列每一个元素左边第一个比其小的元素，不存在就输出 $-1$。
+
+思路：
+
+- 显然直接双重循环是无法通过本题的，那么我们可以在第二层循环的倒序遍历中少枚举一些元素吗？答案是可以的。对于 $a_i$，我们将「$a_{0\sim i-1}$ 中比当前元素小的第一个元素」记为「合法对象」；
+- 正向考虑似乎有些困难，我们不妨逆向思考：当前元素如何才能成为后续元素的合法对象？显然的，如果 $a_i$ 可以成为后续元素的合法对象，那么 $a_{0\sim i-1}$ 中大于（大于等于）$a_i$ 的数都没有存在的意义了。基于该思想，可以发现保留下来的元素呈（严格）单调递增的趋势；
+- 如何在正向遍历时维护一个严格单调递增序列？这就很简单了，支持尾插入和尾弹出的数据结构就可以满足，而这非栈莫属，也正因为这里的栈维护的是单调序列，也就有了「单调栈」一说，本质上是一种算法思想；
+- 最后，如何寻找合法对象？按照维护递增序列的逻辑，从尾部开始逐个比较即可，如果合法就是答案，如果不合法就取而代之直到栈空；
+- 由于每一个元素最多只会经历「入栈」和「出栈」两种情况，因此时间复杂度是线性的，可以通过本题。
+
+时间复杂度：$O(n)$
+
+=== "Python"
+
+    ```python
+    n = int(input().strip())
+    a = list(map(int, input().strip().split()))
+    
+    stk = []
+    OUTs = []
+    for x in a:
+        # 查询
+        while len(stk) and x <= stk[-1]:  # 加上等号表示保持严格单调
+            stk.pop()
+        OUTs.append(-1 if len(stk) == 0 else stk[-1])
+        
+        # 入栈
+        stk.append(x)
+    
+    print(' '.join(map(str, OUTs)))
+    ```
+
+=== "C++"
+
+    ```cpp
+    #include <iostream>
+    #include <stack>
+    using namespace std;
+    
+    int main() {
+        int n;
+        cin >> n;
+    
+        stack<int> stk;
+        for (int i = 0; i < n; i++) {
+            int x;
+            cin >> x;
+    
+            // 查询
+            while (stk.size() && x <= stk.top()) {  // 加上等号表示保持严格单调
+                stk.pop();
+            }
+            cout << (stk.size() ? stk.top() : -1) << " ";
+    
+            // 入栈
+            stk.push(x);
+        }
+    
+        return 0;
+    }
+    ```
+
+同类题推荐：
+
+- [CF 1400 * | 下一个更大元素 II | 力扣 - (leetcode.cn)](https://leetcode.cn/problems/next-greater-element-ii/)
+
 ## 队列
 
-### 普通队列
-
-先进先出型线性数据结构。分为顺序队列和链式队列，顺序队列就是数组模拟，链式队列就类似于双向链表。队列的一些应用如下：
-
-**报数问题**。报到 $0$ 的出队，报到 $1$ 的重新入队，求解出队顺序。
-
-**最短路问题**。开一个记忆数组 $d[i][j]$ 表示从起点 $(0,0)$ 到终点 $(i,j)$ 点的最短路径的长度。可以将求最短路看做一个 **波心扩散** 的物理场景，队列中的每一个点都可以作为一个波心，从而实现“两点之间线段最短”的物理场景。讨论几个问题：
-
-- 为什么用队列？逐层搜索，每次搜素到的点就是当前点可以搜索到的最短的点，先搜到的点先扩展，于是就是队列的数据结构；
-- 为什么是最短？对于每一个点探索到的点都是最短的点，最终的搜索出来的路径就是最短的路径。
-
-**循环队列**。队列中衍生出的循环队列比较有意思，运行逻辑顾名思义不再赘述，有几个注意点：
-
-- 解决假溢出。在入队的时候不是单纯的指针 `+1`，而是 `+1` 后 `% MaxSize`；
-
-- 解决真溢出。即队空队满的冲突，有如下几种应对策略：
-
-    - 浪费一个元素空间并判断 `rear + 1 == head`；
-
-    - 设置一个辅助标志变量 `flag`；
-    - 设置一个计数器 `count`；
-
-### 单调队列
-
-TODO
+队列是一种「先进先出」型线性数据结构。分为顺序队列和链式队列，顺序队列就是数组模拟，链式队列就类似于双向链表。与栈类似，队列的结构也很简单，我们重点关注使用队列的算法。比较常见的利用队列的算法比如：出队顺序问题、BFS、单调队列等。
 
 ### 例：单调队列
 
-> 标签：单调队列
+> 经典之处：单调队列通法，学习之前请务必学习 [单调栈](#例单调栈) 算法。
 >
-> 题意：给定一个含有 n 个元素的序列，求解其中每个长度为 k 的子数组中的最值。
+> OJ：[AcWing](https://www.acwing.com/problem/content/156/)，注意，该 OJ 需要付费，但思想很简单，理解板子后尝试同类题即可。
 >
-> 思路：显然我们可以 $O(nk)$ 暴力求解，有没有什么方法可以将「求解子数组中最值」的时间开销从 $O(k)$ 降低为 $O(1)$ 呢？有的！我们重新定义一个队列就好了。为了做到线性时间复杂度的优化，我们对队列做以下自定义，以「求解子数组最小值」为例：
->
-> 1. 插入元素到队尾：此时和单调栈的逻辑类似。如果当前元素可以作为当前子数组或后续子数组的最小值，则需要从当前队尾开始依次弹出比当前元素严格大的元素，最后再将当前元素入队。**注意**：当遇到和当前元素值相等的元素时不能出队，因为每一个元素都会经历入队和出队的操作，一旦此时出队了，后续进行出队判定时会提前弹出本不应该出队的与其等值的元素。
-> 2. 弹出队头元素：如果队头元素和子数组左端点 `nums[i-k]` 的元素值相等，则弹出。
-> 3. 获得队头元素：$O(1)$ 的获取队头元素，即队列中的最小值。
->
-> 时间复杂度：$O(n)$
+> 难度：CF 1400 *
 
-```cpp
-#include <bits/stdc++.h>
+题意：给定一个含有 $n\ (1\le n\le 10^6)$ 个元素的序列 $a\ (-10^5\le a_i\le 10^5)$，求解其中每个窗口大小为 $k\ (1\le k\le n)$ 的子数组中的最值。
 
-using ll = long long;
-using namespace std;
+思路：显然我们可以 $O(nk)$ 暴力求解，有没有什么方法可以将「求解子数组中最值」的时间开销从 $O(k)$ 降低为 $O(1)$ 呢？有的！如果窗口中的元素是单调的，那么求解最值不就是 $O(1)$ 的了嘛！如何维护一个单调序列已经在单调栈数据结构中详细阐明，此处不再赘述，重点讲解与单调栈的不同之处：
 
-template<class T>
-struct minQueue {
-    std::deque<T> q;
-    void pushBack(T x) {
-        while (q.size() && x < q.back()) {
-            q.pop_back();
-        }
-        q.push_back(x);
-    }
-    void popFront(T x) {
-        if (q.size() && q.front() == x) {
-            q.pop_front();
-        }
-    }
-    T getMinValue() {
-        return q.front();
-    }
-};
+1. 由于是滑动窗口，因此此处的单调序列不仅要支持尾插入操作，还得支持头弹出操作。这也好办，在窗口划出元素 $a_{i-k}$ 时，只需要弹出单调序列中的 $a_{i-k}$ 即可。由于序列的尾插入操作会弹出所有「逆单调」的元素，因此如果头弹出真的弹出元素了，那么弹出的元素一定是原窗口的最值。为了支持头弹出和尾插入操作，双端队列就是最佳选项，这也是为什么这种窗口求最值的算法被称为「单调队列」了；
+2. 另外一个与单调栈不同的地方在于，先尾插入还是先头弹出？这其实是一个很有趣的问题，如果可以理解这个问题，那么这个算法你基本就算是理解了。理论上这两者谁先谁后都是可行的。但如果在尾插入时保持了严格单调，此时就必须先头弹出再尾插入，因为可能出现的极端情况就是：窗口中的最值就是 $a_i$ 并且 $a_i=a_{i-k}$，如果先尾插入，队列中就只剩 $a_i$ 一个元素，再执行头弹出的话就把这唯一的元素弹掉了，但其实被弹掉的元素已经在 $a_i$ 插入时提前弹掉了。所以保险起见，还是将尾插入的逻辑限定为不严格单调吧 ~
 
-template<class T>
-struct maxQueue {
-    std::deque<T> q;
-    void pushBack(T x) {
-        while (q.size() && x > q.back()) {
-            q.pop_back();
-        }
-        q.push_back(x);
-    }
-    void popFront(T x) {
-        if (q.size() && q.front() == x) {
-            q.pop_front();
-        }
-    }
-    T getMaxValue() {
-        return q.front();
-    }
-};
+时间复杂度：$O(n)$，原理与单调栈一致，每个元素都只会经历入队和出队两种情况，故复杂度是线性的。
 
-void solve() {
-    int n, k;
-    cin >> n >> k;
-    
-    vector<int> nums(n);
-    for (int i = 0; i < n; i++) {
-        cin >> nums[i];
-    }
-    
-    minQueue<int> minq;
-    for (int i = 0; i < n; i++) {
-        minq.pushBack(nums[i]);
-        if (i >= k) {
-            minq.popFront(nums[i - k]);
-        }
-        if (i >= k - 1) {
-            cout << minq.getMinValue() << " \n"[i == n - 1];
-        }
-    }
-    
-    maxQueue<int> maxq;
-    for (int i = 0; i < n; i++) {
-        maxq.pushBack(nums[i]);
-        if (i >= k) {
-            maxq.popFront(nums[i - k]);
-        }
-        if (i >= k - 1) {
-            cout << maxq.getMaxValue() << " \n"[i == n - 1];
-        }
-    }
-}
+=== "Python"
 
-signed main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    int T = 1;
-//    std::cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
+    ```python
+    from collections import deque
 
-```python
-from collections import defaultdict, deque
-from typing import List, Tuple
-from itertools import combinations, permutations
-import math, heapq, queue
+    class MonotonicQueue:
+        def __init__(self, min_queue: bool = True):
+            self.q = deque()
+            if min_queue:
+                # 队头为最小值：不严格单调递增队列
+                self.compare = lambda a, b: a < b
+            else:
+                # 队头为最大值：不严格单调递减队列
+                self.compare = lambda a, b: a > b
 
-II = lambda: int(input())
-FI = lambda: float(input())
-MII = lambda: tuple(map(int, input().split()))
-LII = lambda: list(map(int, input().split()))
+        def push_back(self, x):
+            while len(self.q) and self.compare(x, self.q[-1]):
+                self.q.pop()
+            self.q.append(x)
 
+        def pop_left(self, x):
+            if len(self.q) and x == self.q[0]:
+                self.q.popleft()
 
-def solve() -> None:
-    n, k = MII()
-    nums = LII()
-    
-    qa, qb = deque(), deque()
-    ra, rb = [], []
+        def get_extreme_value(self):
+            return self.q[0]
+
+    n, k = map(int, input().strip().split())
+    a = list(map(int, input().strip().split()))
+
+    min_outs, max_outs = [], []
+    minq, maxq = MonotonicQueue(True), MonotonicQueue(False)
     for i in range(n):
-        # push back
-        while len(qa) and nums[i] < qa[-1]:
-            qa.pop()
-        qa.append(nums[i])
-        while len(qb) and nums[i] > qb[-1]:
-            qb.pop()
-        qb.append(nums[i])
-        if i >= k:
-            # pop front
-            if len(qa) and qa[0] == nums[i - k]:
-                qa.popleft()
-            if len(qb) and qb[0] == nums[i - k]:
-                qb.popleft()
+        # 尾插入
+        minq.push_back(a[i])
+        maxq.push_back(a[i])
+
+        # 头弹出
+        if i - k >= 0:
+            minq.pop_left(a[i - k])
+            maxq.pop_left(a[i - k])
+
+        # 取极值
         if i >= k - 1:
-            # get ans
-            ra.append(qa[0])
-            rb.append(qb[0])
-    
-    print(' '.join(map(str, ra)))
-    print(' '.join(map(str, rb)))
+            min_outs.append(minq.get_extreme_value())
+            max_outs.append(maxq.get_extreme_value())
 
+    print(' '.join(map(str, min_outs)))
+    print(' '.join(map(str, max_outs)))
+    ```
 
-if __name__ == '__main__':
-    T = 1
-    # T = II()
-    while T: solve(); T -= 1
-```
+=== "C++"
+
+    ```c++
+    #include <deque>
+    #include <iostream>
+    #include <functional>
+    #include <vector>
+    using namespace std;
+
+    template<class T>
+    struct MonotonicQueue {
+        deque<T> q;
+        function<bool(T, T)> compare;
+
+        MonotonicQueue(bool min_queue) {
+            if (min_queue) {
+                // 队头为最小值：不严格单调递增队列
+                compare = [](T a, T b) { return a < b; };
+            } else {
+                // 队头为最大值：不严格单调递减队列
+                compare = [](T a, T b) { return a > b; };
+            }
+        }
+
+        void push_back(T x) {
+            while (q.size() && compare(x, q.back())) {
+                q.pop_back();
+            }
+            q.push_back(x);
+        }
+
+        void pop_front(T x) {
+            if (q.size() && x == q.front()) {
+                q.pop_front();
+            }
+        }
+
+        T get_extreme_value() {
+            return q.front();
+        }
+    };
+
+    int main() {
+        int n, k;
+        cin >> n >> k;
+
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+
+        // 求窗口最小值
+        MonotonicQueue<int> minq(true);
+        for (int i = 0; i < n; i++) {
+            // 尾插入
+            minq.push_back(a[i]);
+
+            // 头弹出
+            if (i - k >= 0) {
+                minq.pop_front(a[i - k]);
+            }
+
+            // 取极值
+            if (i >= k - 1) {
+                cout << minq.get_extreme_value() << " \n"[i == n - 1];
+            }
+        }
+
+        // 求窗口最大值
+        MonotonicQueue<int> maxq(false);
+        for (int i = 0; i < n; i++) {
+            // 尾插入
+            maxq.push_back(a[i]);
+
+            // 头弹出
+            if (i - k >= 0) {
+                maxq.pop_front(a[i - k]);
+            }
+
+            // 取极值
+            if (i >= k - 1) {
+                cout << maxq.get_extreme_value() << " \n"[i == n - 1];
+            }
+        }
+
+        return 0;
+    }
+    ```
+
+同类题推荐：
+
+- [CF 1300 * | 预算内的最多机器人数目 | 力扣 - (leetcode.cn)](https://leetcode.cn/problems/maximum-number-of-robots-within-budget/description/)
 
 ## 哈希表
 
-哈希是一种应用极其广泛的算法，其核心功能为：**给定任意一个对象 A，能利用哈希表迅速找到以 A 的名义存储的结果**。关键点如下：
+哈希是一种应用极其广泛的算法，其核心功能为：**给定任意一个对象 A，能利用哈希表迅速找到以 A 的名义存储的数据**。该算法的关键在于这里的 A 必须是可哈希的，可以简单地理解为 A 是不可变的。
 
-- 这里的 A 必须是可哈希的；
-- 这里的哈希表其实是一个数组；
-- 所谓的迅速其实是利用哈希函数计算出这个可哈希对象 A 的哈希码（就是一个数字对应到哈希表数组中的某一个下标索引值），然后 $O(1)$ 地在哈希表数组中索引出存储的内容。
+而所谓的哈希表其实就是一个一维数组，哈希算法通过哈希函数（一种映射），将「不可变的数据」映射为「一个数字（称为哈希码）」作为哈希表数组的下标，进而存储到哈希表中。由于数组是内存连续的，因此一旦知道哈希码，就可以 $O(1)$ 地在哈希表数组中索引出存储的内容。是一种典型的空间换时间的概念。
 
-举个例子。现在需要查询出你这学期翘了几次课，一个最直观的做法就是遍历数据库然后匹配你的学号（假设学号唯一），这样的时间复杂度为 $O(n)$，空间复杂度为 $O(1)$。但如果提前利用哈希算法存储了每一个学号对应的翘课次数，那么在输入你的学号后，就可以通过哈希函数计算出你学号对应的哈希码，然后在哈希表数组中索引出翘课的次数即可，这样的时间复杂度为 $O(1)$，空间复杂度为 $O(n)$。
+举个例子，现在需要查询出你这学期翘了几次课。一个最直观的做法就是遍历数据库然后匹配你的学号（假设学号唯一），这样的时间复杂度为 $O(n)$，空间复杂度为 $O(1)$。但如果提前利用哈希算法存储了每一个学号对应的翘课次数，那么在输入你的学号后，就可以通过哈希函数计算出你学号的哈希码，然后在哈希表数组中索引出翘课的次数即可，这样的时间复杂度为 $O(1)$，空间复杂度为 $O(n)$。
 
 大多数编程语言都实现了哈希的功能，只要对象是可哈希的，就可以利用该算法完成空间换时间的操作。例如 C++ 中的 `unordered_map` 类、Python 中的 `dict` 类、Java 中的 `HashMap` 类等。
 
-**哈希冲突**。当然，哈希算法没法保证不同对象的哈希码都是不同的，有小概率会发生不同的对象映射出了相同的哈希码，此时就发生了哈希冲突。为了解决这个问题，要么优化哈希函数从而降低哈希冲突的概率，要么修改哈希表的一维数组结构，彻底解决哈希冲突。我们关注后者，有两种方法：
+### 哈希冲突
 
-1. 拉链法 (Chaining)。我们仍然沿用一维数组作为哈希表，只不过将数组元素修改为单链表。一旦发生哈希冲突映射到了同一个数组位置，就在对应位置的单链表中往后拉链即可；
-2. 开放地址法 (Open Addressing)。该法保持原来的一维数组结构不变，将产生哈希冲突的元素移动到其他还没有被占用的位置（称为空桶）存储。这种方法在频繁产生哈希冲突时性能较差。而为了找到其他空位，开放地址法需要进行「空桶探测」，常见的探测方法有线性探测（从产生冲突的地方开始沿着某个方向枚举）、双重哈希探测（利用第二个哈希函数探测其余位置）。
+如果你看懂了上面的表述，一定会产生这样的疑问：哈希表是内存连续的，那么哈希函数的映射一定要被约束在某个范围吧？并且还得一一映射吧？没错，这是哈希算法最需要解决的难题：哈希冲突，即不同的对象有可能被映射为同一个结果。比如你是一个从不翘课的好孩子，但是小明经常翘课，结果哈希算法把你和小明哈希成了同一个结果，导致你的翘课次数查出来和小明一样，那这不就出问题了嘛。
 
-**哈希表的数据结构**。在 C++ 的 unordered_map 库中，unordered_map 与 unordered_multimap 的基类 _Hashtable 定义了哈希表的具体结构。具体地，其定义的哈希表是一维动态数组，数组元素是前向链表（即单链表）。源码 `/path/to/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable.h` 是这样解释的：
+为了解决这个问题，要么优化哈希函数从而降低哈希冲突的概率，要么修改哈希表的一维数组结构，彻底解决哈希冲突。我们关注后者，常见的有以下两种方法：
+
+1. 拉链法 (Chaining)。我们仍然沿用一维数组作为哈希表，只不过将数组元素修改为单链表。一旦发生哈希冲突映射到了同一个数组位置，就在对应位置的单链表中往后拉链即可。后续查询到该位置时，如果没有直接匹配，需要遍历该位置的单链表逐个进行匹配；
+2. 开放地址法 (Open Addressing)。该法保持原来的一维数组结构不变，核心思想是将产生哈希冲突的元素存储到其他还没有被占用的位置。这种方法在频繁产生哈希冲突时性能较差，因为找其他空位需要进行「空位探测」。常见的空位探测方法有：线性探测（从产生冲突的地方开始沿着某个方向探测空位）、双重哈希探测（利用第二个哈希函数探测其余空位）等。后续查询到该位置时，如果没有直接匹配，需要按照空位探测的逻辑遍历其他可能的位置逐个匹配。
+
+### 哈希表的数据结构
+
+在 C++ 的 `unordered_map` 库中，`unordered_map` 与 `unordered_multimap` 类均继承自 `_Hashtable` 基类 [^hashtable-path]，该基类定义了哈希表的具体结构：
+
+[^hashtable-path]: "D:\software\Jetbrains\CLion\bin\mingw\lib\gcc\x86_64-w64-mingw32\13.1.0\include\c++\bits\hashtable.h"
 
 > In terms of Standard containers the hashtable is like the aggregation of:
 >
-> - `std:: forward_list <_Node > containing the elements`
-> - `std:: vector < std:: forward_list <_Node >:: iterator > representing the buckets`
+> - `std::forward_list<_Node> containing the elements`
+> - `std::vector<std::forward_list<_Node>::iterator> representing the buckets`
 
-### 例：分组
+可以看出，其定义的哈希表是一维动态数组，数组元素是前向链表（即单链表）。也正因如此，哈希表在算法竞赛场景中往往是 useless 的，因为出题人很容易构造一些数据使得默认的哈希函数频繁出现哈希冲突，此时有两种解决方法：
 
-<https://www.acwing.com/problem/content/5182/>
-
-> 存储不想同组和想同组的人员信息：存入数组，数据类型为一对字符串
->
-> 存储所有的组队信息：存入哈希表，数据类型为“键:字符串”“值:一对字符串”
->
-> 想要知道最终的分组情况，只需要查询数组中的队员情况与想同组 or 不想同组的成员名字是否一致即可
->
-> 时间复杂度 $O(n)$，空间复杂度 $O(n\ len(name))_{max}$
-
-```cpp
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-using namespace std;
-
-int main()
-{
-    int x;
-    cin >> x;
-    
-    vector<pair<string, string>> X(x);
-    
-    for (int i = 0; i < x; i ++)
-        cin >> X[i].first >> X[i].second;
-    
-    int y;
-    cin >> y;
-    
-    vector<pair<string, string>> Y(y);
-    
-    for (int i = 0; i < y; i ++)
-        cin >> Y[i].first >> Y[i].second;
-        
-    int sum;
-    cin >> sum;
-    
-    unordered_map<string, pair<string, string>> a;
-    
-    for (int i = 0; i < sum; i ++)
-    {
-        string s, t, p;
-        cin >> s >> t >> p;
-        a[s] = {t, p};
-        a[t] = {s, p};
-        a[p] = {s, t};
-    }
-    
-    int res = 0;
-    
-    // 想同组 
-    for (int i = 0; i < x; i ++)
-    {
-        string s = X[i].first, t = X[i].second;
-        if (a[s].first != t && a[s].second != t)
-            res ++;
-    }
-    
-    // 不想同组 
-    for (int i = 0; i < y; i ++)
-    {
-        string s = Y[i].first, t = Y[i].second;
-        if (a[s].first == t || a[s].second == t)
-            res ++; 
-    }
-    
-    cout << res << endl; 
-    
-    return 0;
-}
-```
-
-### 例：海港
-
-<https://www.luogu.com.cn/problem/P2058>
-
-> - 题意：给定 n 艘船只的到达时间、载客信息（载客人数和每一个客人的国籍），现在需要知道对于每一艘抵达的船只，前 24 小时中抵达的客人的国籍总数
-> - 思路：本题思路很简单，就是一个队列的应用以及哈希客人国籍的过程。由于船只抵达的时间是顺序增加的，故每抵达一艘船只，就对新来的客人国籍进行哈希，为了计算前 24 小时的情况，需要对船只抵达队列进行删减，即只保留 24 小时以内的船只抵达信息。对于删除的船只信息，需要将这些船只上的客人国籍信息从哈希表中删除，故每一艘船只的访问次数为 2。
-> - `unordered_map` 补充：在进行哈希统计时。为了判断当前 24 小时内客人国籍数，在删除哈希记录时，为了判断是否将当前国籍的游客全部删除时，需要统计哈希表中某个国籍是否减为了 0，我用了 `.count(x)` 内置方法，但这是不正确的，因为我想要统计的是 值 是否为 0，而 `.count(x)` 统计的是哈希表中 x 这个 键 的个数，而 `unordered_map` 中是没有重复的键的，故 `.count(x)` 方法只会返回 0 或 1，返回 0 就表示当前哈希表中没有 x 这个键，返回 1 就表示哈希表中有 x 这个键，但是有这个键不代表对应的值就存在，可能是 `x: 0` 的情况，即键存在，但是值记录为 0
-> - 时间复杂度：$O(2 \sum x_i)$，即两倍的所有游客数。
-
-```cpp
-// #include <bits/stdc++.h>
-// #define int long long
-#include <iostream>
-#include <unordered_map>
-#include <stack>
-#include <queue>
-using namespace std;
-
-const int N = 1e5 + 10;
-
-struct Ship { int idx, t; };
-
-int n;
-queue<Ship> q;
-vector<int> G[N];
-unordered_map<int, int> cnt;
-int kind;
-
-void solve() {
-    cin >> n;
-
-    for (int i = 1; i <= n; i++) {
-        int t, num;
-        cin >> t >> num;
-        
-        q.push({i, t});
-        
-        // 哈希
-        while (num--) {
-            int id;
-            cin >> id;
-            
-            if (!cnt[id]) kind++;
-            cnt[id]++;
-            G[i].push_back(id);
-        }
-        
-        // 去哈希
-        Ship h = q.front();
-        while (t - h.t >= 86400) {
-            for (auto& id: G[h.idx]) {
-                cnt[id]--;
-                if (!cnt[id]) kind--;
-            }
-            q.pop();
-            h = q.front();
-        }
-        
-        cout << kind << "\n";
-    }
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-### 例：Cities and States S
-
-<https://www.luogu.com.cn/problem/P3405>
-
-> 题意：给定 n 个字符串，每一个字符串归属一个集合，现在需要统计字符串与集合名相反相等的对数
->
-> 思路：很显然的哈希计数。难点有两个，如何哈希？如何计数？哈希可以采用扩展字符的方法进行，即第一个字符乘某一个较大的质数再加上第二个字符。此处采用一种较为巧妙的方法，直接将两个字符串与集合名加起来进行唯一性哈希，降低编码难度。计数有两种方式，第一种就是全部哈希结束之后，再遍历哈希表进行统计，最后将结果除二即可。第二种就是边哈希边计数，遇到相反相等的就直接计数，这样就不会重复计数了，也很巧妙
->
-> 时间复杂度：$O(n)$
-
-```cpp
-#include <iostream>
-#include <algorithm>
-#include <unordered_map>
-#include <stack>
-#include <queue>
-#include <set>
-using namespace std;
-
-int n;
-unordered_map<string, int> a;
-
-void solve() {
-    cin >> n;
-    
-    int res = 0;
-    
-    while (n--) {
-        string s, t;
-        cin >> s >> t;
-        s = s.substr(0, 2);
-        res += a[t + " " + s] * (s != t);
-        a[s + " " + t]++;
-    }
-    
-    cout << res << "\n";
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
+1. 自己 [重新定义哈希函数](../templates.md#哈希表)；
+2. 不使用哈希表，使用 [平衡树](./ds.md#平衡树)。
 
 ### 例：Torn Lucky Ticket
 
-<https://codeforces.com/contest/1895/problem/C>
+> 经典之处：缓存思想
+>
+> 难度：CF 1400
+>
+> OJ：[CF](https://codeforces.com/contest/1895/problem/C)
 
-> 题意: 给定一个长度为 n 的字符串数组 nums, 数组的每一个元素长度不超过 5 且仅由数字组成. 问能找到多少对 $(i,j)$ 可以使得拼接后的 $nums[i]+nums[j]$ 长度为偶数且左半部分的数字之和与右半部分的数字之和相等.
->
-> 思路:
->
-> - 首先最暴力的做法就是 $O(n^2)$ 枚举,所有的 $(i,j)$ 然后 check 合法性.
->
-> - 尝试优化掉第二层的枚举循环. 对于第二层循环, 我们就是要寻找合适的 $nums[j]$ 并和当前的 $nums[i]$ 拼接. 显然我们可以通过扫描当前的 $nums[i]$ 并 $O(1)$ 的计算出所有 $len(nums[j])\le len(nums[i])$ 且可以和 $nums[i]$ 匹配的字符串的 `[长度][数字和]` 信息, 只需要一个二维数组预存储每一个字符串的 **长度** **数字和** 信息即可.
->
-> - 那么对于 $len(nums[j])> len(nums[i])$ 的情况如何统计呢. 显然此时我们没法 $O(1)$ 的检查 $nums[i]+nums[j]$ 的合法性. 不妨换一个角度, 当我们枚举 $nums[i]$ 时:
->
->     $$
->     \text{统计右侧拼接长度更大的 nums[j] 的合法情况数} \iff \text{统计左侧拼接长度更小的 nums[j] 的合法情况数}
->     $$
->
->     于是合法情况数就可以表示为
->
->     $$
->     \sum_{i=0}^{n-1}\big[\text{cond}_1(nums[i])+\text{cond}_2(nums[i])\big]
->     $$
->
->     其中第一种情况 $\text{cond}_1$ 就是统计右侧拼接长度更小的字符串数量, 第二种情况 $\text{cond}_1$ 就是统计左侧拼接长度更小的字符串数量. 这两步可以同时计算.
->
-> 时间复杂度: $O(n)$
+题意：给定一个长度为 $n\ (1\le n\le 2\times 10^5)$ 的字符串数组 $a$，$a_i$ 的长度不超过 $5$ 且仅由数字组成。问有多少对 $(i,j)$ 可以使得拼接后的字符串 $a_i+a_j$ 长度为偶数且左半部分的数字之和与右半部分的数字之和相等。
 
-```python
-from typing import List, Tuple, Dict, Optional
-from collections import defaultdict, deque
-from itertools import combinations, permutations
-import math, heapq, queue
+思路：
 
-II = lambda: int(input())
-FI = lambda: float(input())
-MII = lambda: tuple(map(int, input().split()))
-LII = lambda: list(map(int, input().split()))
-LSI = lambda: list(map(str, input().split()))
+- 根据数据量，我们肯定不能 $O(n^2)$ 暴力枚举，考虑优化；
+- 对于每一个字符串 $a_i$，我们只关心「长度与总和」同时满足的 $a_j$，因此我们预先哈希存储每一个字符串的长度与总和，后续在枚举时直接 $O(1)$ 地取出进行计数即可。
 
-def solve() -> Optional:
-    n, nums = II(), LSI()
+时间复杂度：$O(n)$
+
+=== "Python"
+
+    ```python
+    n = int(input().strip())
+    a = list(map(str, input().strip().split()))
     
-    f = [[0 for _ in range(46)] for _ in range(6)]
-    for num in nums:
-        m = len(num)
-        s = sum([int(c) for c in num])
-        f[m][s] += 1
+    # 哈希每一个字符串的长度与总和
+    f = [[0] * 46 for _ in range(6)]
+    for s in a:
+        f[len(s)][sum([int(c) for c in s])] += 1
     
-    res = 0
-    for num in nums:
-        m = len(num)
-        s = [0] * (m + 1)
-        for i in range(m - 1, -1, -1):
-            s[i] = s[i + 1] + int(num[i])
+    # 逐个枚举并计数
+    ans = 0
+    for s in a:
+        m = len(s)
+        pre = [0] * (m + 1)
+        for i in range(1, m + 1):
+            pre[i] = pre[i - 1] + int(s[i - 1])
         
-        # cond1: now + right -> len(now) >= len(right)
-        for i in range(m - 1, -1, -1):
-            now_len, now_sum = i + 1, s[0] - s[i + 1]
-            r_len, r_sum = now_len - (m - 1 - i), now_sum - s[i + 1]
-            if 1 <= r_len <= now_len and r_sum >= 0:
-                res += f[r_len][r_sum]
-        
-        # cond2: left + now -> len(left) < len(now)
+        # 当前为右半部分
         for i in range(m):
-            now_len, now_sum = m - i, s[i]
-            l_len, l_sum = now_len - i, now_sum - (s[0] - s[i])
-            if 1 <= l_len < now_len and l_sum >= 0:
-                res += f[l_len][l_sum]
+            now_len, now_sum = m - i, pre[m] - pre[i]
+            tgt_len, tgt_sum = now_len - i, now_sum - pre[i]
+            if tgt_len >= 0 and tgt_sum >= 0:
+                ans += f[tgt_len][tgt_sum]
     
-    return res
+        # 当前为左半部分
+        for i in range(m - 1, 0, -1):
+            now_len, now_sum = i, pre[i]
+            tgt_len, tgt_sum = now_len - (m - i), now_sum - (pre[m] - pre[i])
+            if tgt_len >= 0 and tgt_sum >= 0:
+                ans += f[tgt_len][tgt_sum]
+    
+    print(ans)
+    ```
 
-if __name__ == '__main__':
-    OUTs = []
-    N = 1
-    # N = II()
-    for _ in range(N):
-        OUTs.append(solve())
-    print('\n'.join(map(str, OUTs)))
-```
+=== "C++"
+
+    ```c++
+    #include <iostream>
+    #include <vector>
+    using namespace std;
+    
+    int main() {
+        int n;
+        cin >> n;
+    
+        vector<string> a(n);
+        vector<vector<int>> f(6, vector<int>(46, 0));
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+            int s = 0;
+            for (char c: a[i]) {
+                s += c - '0';
+            }
+            f[a[i].size()][s]++;
+        }
+    
+        long long ans = 0;
+        for (string s: a) {
+            int m = s.size();
+            vector<int> pre(m + 1, 0);
+            for (int i = 1; i <= m; i++) {
+                pre[i] = pre[i - 1] + s[i - 1] - '0';
+            }
+    
+            // 当前作为右半部分
+            for (int i = 0; i < m; i++) {
+                int now_len = m - i, now_sum = pre[m] - pre[i];
+                int tgt_len = now_len - i, tgt_sum = now_sum - pre[i];
+                if (tgt_len >= 0 && tgt_sum >= 0) {
+                    ans += f[tgt_len][tgt_sum];
+                }
+            }
+    
+            // 当前作为左半部分
+            for (int i = m - 1; i > 0; i--) {
+                int now_len = i, now_sum = pre[i];
+                int tgt_len = now_len - (m - i), tgt_sum = now_sum - (pre[m] - pre[i]);
+                if (tgt_len >= 0 && tgt_sum >= 0) {
+                    ans += f[tgt_len][tgt_sum];
+                }
+            }
+        }
+    
+        cout << ans << "\n";
+    
+        return 0;
+    }
+    ```
+
+同类题推荐：
+
+- [洛谷 橙 | 洛谷 | Cities and States S - (www.luogu.com.cn)](https://www.luogu.com.cn/problem/P3405)
+- [洛谷 黄 | 洛谷 | 海港 - (www.luogu.com.cn)](https://www.luogu.com.cn/problem/P2058)
 
 ## 广义表
 
-广义表可以看作单链表的扩展版，可以应用在存储空间的分配策略上，对应的算法叫做「成组拉链法」。其结点需要存储三类数据，示意图如下所示：
+广义表可以看作单链表的扩展版，具备递归结构。其结点需要存储三类数据：
 
 ![广义表结点结构示意图](https://cdn.dwj601.cn/images/202406292218530.png)
 
 具体地：
 
-1. `type`：存储当前结点的类型。以枚举类型存在，起标识作用。因此 `type` 是一个枚举体 (enum)；
+1. `type`：存储当前结点的类型，要么是结点，要么是子链表。以枚举类型 `enum` 存在，起标识作用；
 
-- `data/sublist`：存储当前结点的内容。如果是 data 类型的结点，就存储数据；如果是 sublist 类型的结点，就存储子链表的地址。因此 `data/sublist` 是一个联合体 (union)；
-- `next`：存储下一个结点的地址。因此 `next` 是一个指针。
+2. `data/sublist`：存储当前结点的内容。如果是 data 类型就存储数据；如果是 sublist 类型就存储子链表的地址。以联合体类型 `union` 存在；
+3. `next`：存储下一个结点的地址。以指针形式存在。
 
-广义表结点的 C++ 代码如下：
+广义表结点定义的 C++ 代码：
 
 ```c++
 enum GListNodeType {
@@ -886,13 +553,13 @@ struct GListNode {
 };
 ```
 
-广义表的结构示例图如下：
+广义表的结构示意图：
 
-![广义表的结构示意图](https://cdn.dwj601.cn/images/202406292218531.png)
+<img src="https://cdn.dwj601.cn/images/202406292218531.png" alt="广义表的结构示意图" style="zoom:67%;" />
 
 ### 例：外星密码
 
-> 经典之处：很少见的可以用广义表思路完成的题，就先放在这里
+> 经典之处：很少见的可以用广义表思路完成的题
 >
 > 难度：洛谷 黄
 >
@@ -1165,7 +832,7 @@ void solve() {
 >     ![六种情况](https://cdn.dwj601.cn/images/202403282344777.jpg)
 >
 > - **如何快速计算树上任意两个点之间的距离**？我们可以使用最近公共祖先 LCA 算法。则树上任意两点 $x,y$ 之间的距离 $\text{dist}(x,y)$ 为：
-> 
+>
 >     $$
 >     \text{dist}(x, y) = \text{dist}(x, root) + \text{dist}(y, root) - 2 \times \text{dist}(\text{lca}(x, y), root)
 >     $$

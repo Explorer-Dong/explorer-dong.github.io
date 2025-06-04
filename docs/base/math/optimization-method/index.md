@@ -71,12 +71,12 @@ $$
 
         $$
         \begin{aligned}
-        D_1 \subset H^+ = \{ x \in R^n \ | \ \alpha^T x \ge \beta\} \\
-        D_2 \subset H^- = \{ x \in R^n \ | \ \alpha^T x \le \beta\}
+        D_1 \subset H^+ = \{ x \in R^n \mid \alpha^T x \ge \beta\} \\
+        D_2 \subset H^- = \{ x \in R^n \mid \alpha^T x \le \beta\}
         \end{aligned}
         $$
 
-        则称超平面 $H = \{ x \in R^n \ | \ \alpha^Tx=\beta \}$ **分离** 集合 $D_1$ 和 $D_2$，**严格分离** 时上述不等式无法取等
+        则称超平面 $H = \{ x \in R^n \mid \alpha^Tx=\beta \}$ **分离** 集合 $D_1$ 和 $D_2$，**严格分离** 时上述不等式无法取等
 
     - 投影定理：设 $D \in R^n$ 是非空闭凸集，$y \in R^n$ 但 $y \notin D$，则
 

@@ -13,7 +13,7 @@ $$
 
 其中 $\boldsymbol {w} = [w_1,w_2,\cdots,w_D,b]^T, \boldsymbol {x} = [x_1,x_2,\cdots,x_D,1]^T$ 均为增广向量。样本的特征个数为 $D$，样本的总个数为 $N$，模型为 $f(\cdot)$。
 
-基于此模型，我们就可以通过机器学习来进行分类与回归任务。值得注意的是，尽管线性模型无法解决线性不可分的问题，但其强就强在形式简单、易于建模以及高可解释性，同时也是很多非线性模型的基础。
+基于此模型，我们就可以通过机器学习来进行分类与回归任务。值得注意的是，尽管线性模型无法解决线性不可分的问题，但其形式简单、易于建模、可解释，是很多非线性模型的基础。
 
 ## 线性回归
 
@@ -25,7 +25,7 @@ $$
 
 ### 学习准则
 
-我们定义学习准则为平方误差，那么损失函数 $\mathcal L_{\boldsymbol w}$ 就是：
+我们定义学习准则为平方误差，即「经验风险最小化」，那么损失函数 $\mathcal L_{\boldsymbol w}$ 就是：
 
 $$
 \mathcal L_{\boldsymbol w} = (\boldsymbol y -\boldsymbol X \boldsymbol w) ^T (\boldsymbol y - \boldsymbol X\boldsymbol w)
@@ -44,7 +44,7 @@ $$
 
 ### 优化算法
 
-为了最小化这个损失函数，我们用最常规的梯度下降算法。令 $\dfrac{\partial \mathcal L_{\boldsymbol w}}{\partial \boldsymbol w}=0$，得：
+为了最小化这个损失函数，我们用梯度下降法。令 $\dfrac{\partial \mathcal L_{\boldsymbol w}}{\partial \boldsymbol w}=0$，得：
 
 $$
 \boldsymbol X^T\boldsymbol X \boldsymbol w = \boldsymbol X^T \boldsymbol y
@@ -62,8 +62,9 @@ $$
 \mathcal L_{\boldsymbol w} = (\boldsymbol y - \boldsymbol X \boldsymbol w) ^T (\boldsymbol y - \boldsymbol X \boldsymbol w) + \alpha \| \boldsymbol w \|^2
 $$
 
-上式有一个别名叫做「岭回归」。同样令 $\dfrac{\partial \mathcal L_{\boldsymbol w}}{\partial \boldsymbol w}=0$，得：
+上式有一个别名叫做「岭回归」，属于「结构风险最小化」准则的一个实例。
 
+同样令 $\dfrac{\partial \mathcal L_{\boldsymbol w}}{\partial \boldsymbol w}=0$，得：
 $$
 \boldsymbol w^* = (\boldsymbol X^T \boldsymbol X + \alpha \boldsymbol I)^{-1} \boldsymbol X^T \boldsymbol y
 $$
@@ -99,12 +100,12 @@ $$
 若想要利用线性回归的实数结果进行「二分类」，我们需要将回归结果映射成一个固定区间，便于定义阈值从而二分类。常见的映射函数如下：
 
 $$
-g(x) = \frac{1}{1+e^{-x}}
+\sigma(x) = \frac{1}{1+e^{-x}}
 $$
 
-该函数被叫做：逻辑函数 (logistic function)。不过在深度学习里面这又被叫做 sigmoid 激活函数。该函数的数学性质比较好，比如她是任意阶连续可导的凸函数，以及她的值域是 $(0,1)$。如下图所示：
+该函数被叫做：逻辑函数 (Logistic Function)。不过在深度学习里面这又被叫做 Sigmoid 激活函数。该函数的数学性质比较好，比如她是任意阶连续可导的凸函数，以及她的值域是 $(0,1)$。如下图所示：
 
-![逻辑函数示意图](https://cdn.dwj601.cn/images/20250305202438099.png){width=400}
+<img src="https://cdn.dwj601.cn/images/20250305202438099.png" alt="逻辑函数示意图" style="zoom:50%;" />
 
 ### 模型
 
@@ -117,35 +118,37 @@ $$
 模型有一个可学习参数「权重向量 $\boldsymbol {w}$」和一个不可学习的超参数「二分类映射阈值 $\text{threshold}$」。其中：
 
 - 权重向量 $\boldsymbol{w}$ 已经包含了偏执项 $b$，因此参数个数为 $D+1$；
-- 分类映射阈值 $\text{threshold}$ 需要人为定义。
+- 分类映射阈值 $\text{threshold}$ 需要人为定义，在数据平衡的情况下一般定义为 $0.5$，否则需要进行 [阈值移动](./data-process.md/#阈值移动)。
 
-由于我们将正例标记为 $1$，将负例标记为 $0$，且逻辑函数可以将实数域单调递增地压缩到 $(0,1)$ 之间，因此我们可以将逻辑回归模型输出的结果视为「样本属于正例的后验概率」，即 $p(y=1 \ | \ \boldsymbol x)$。
+由于我们将正例标记为 $1$，负例标记为 $0$，且逻辑函数可以将实数域单调递增地压缩到 $(0,1)$ 之间，因此我们可以将逻辑回归模型输出的结果视为「样本属于正例的后验概率」，即 $p(y=1 \mid \boldsymbol x)$。
 
 至于为什么叫做「后验」，是因为逻辑回归模型已经知道了输入的 $x$，也就是已经知道了某一个前提了。反之如果不知道任何前提直接建模事件发生的概率，就叫做先验概率。
 
 ### 学习准则
 
-我们采用最大似然估计 (Maximum Likelihood Estimation, MLE)，即在没有任何先验假设的情况下估计模型的参数使得当前的数据发生的概率最大。这是频率派的一种参数估计策略。
+我们采用最大似然估计 (Maximum Likelihood Estimation, MLE) 作为学习准则。即在没有任何先验假设的情况下估计模型的参数使得当前的数据发生的概率最大。这是频率派的一种参数估计策略。
 
-若我们将 $y$ 视作类后验概率 $p(y=1 \ | \ x)$，则有
+TODO
+
+若我们将 $y$ 视作类后验概率 $p(y=1 \mid x)$，则有：
 
 $$
-\ln \frac{p(y = 1 \ | \ x)}{p(y = 0 \ | \ x)} = w^Tx+b
+\ln \frac{p(y = 1 \mid x)}{p(y = 0 \mid x)} = w^Tx+b
 $$
 
-同时，显然有
+同时，显然有：
 
 $$
 \begin{aligned}
-p(y = 1 \ | \ x) = \frac{1}{1 + e^{-(w^Tx+b)}} = \frac{e^{w^Tx+b}}{1 + e^{w^Tx+b}} \\
-p(y = 0 \ | \ x) = \frac{e^{-(w^Tx+b)}}{1 + e^{-(w^Tx+b)}} = \frac{1}{1 + e^{w^Tx+b}}
+p(y = 1 \mid x) = \frac{1}{1 + e^{-(w^Tx+b)}} = \frac{e^{w^Tx+b}}{1 + e^{w^Tx+b}} \\
+p(y = 0 \mid x) = \frac{e^{-(w^Tx+b)}}{1 + e^{-(w^Tx+b)}} = \frac{1}{1 + e^{w^Tx+b}}
 \end{aligned}
 $$
 
 于是我们可以确定学习准则了。我们取学习准则为 **对数似然函数**，于是参数的学习就是需要求解下式：
 
 $$
-\arg \max_{w, b} l(w, b) = \sum_{i = 1}^m \ln p(y_i\ | \ x_i; w, b)
+\arg \max_{w, b} l(w, b) = \sum_{i = 1}^m \ln p(y_i\mid x_i; w, b)
 $$
 
 而所谓的对数似然函数，就是 **最大化类后验概率** 使得样本属于真实标记的概率尽可能大。
@@ -160,10 +163,10 @@ $$
 \end{cases}
 &\to w^Tx + b = \beta^T\hat x \\
 \begin{cases}
-p_1(\hat x; \beta) = p(y = 1 \ | \ \hat x; \beta) \\
-p_0(\hat x; \beta) = p(y = 0 \ | \ \hat x; \beta) \\
+p_1(\hat x; \beta) = p(y = 1 \mid \hat x; \beta) \\
+p_0(\hat x; \beta) = p(y = 0 \mid \hat x; \beta) \\
 \end{cases}
-&\to p(y_i\ | \ x_i; w, b) = y_i p_1(\hat x; \beta) + (1 - y_i) p_0(\hat x; \beta)
+&\to p(y_i\mid x_i; w, b) = y_i p_1(\hat x; \beta) + (1 - y_i) p_0(\hat x; \beta)
 \end{aligned}
 $$
 
@@ -173,7 +176,7 @@ $$
 \begin{aligned}
 l(w, b) &= l(\beta) \\
 &= \sum_{i = 1}^m \ln \left [y_i p_1(\hat x; \beta) + (1 - y_i) p_0(\hat x; \beta) \right ] \\
-&= \sum_{i = 1}^m \ln \left [y_i p(y = 1 \ | \ \hat x; \beta) + (1 - y_i) p(y = 0 \ | \ \hat x; \beta) \right ] \\
+&= \sum_{i = 1}^m \ln \left [y_i p(y = 1 \mid \hat x; \beta) + (1 - y_i) p(y = 0 \mid \hat x; \beta) \right ] \\
 &= \sum_{i = 1}^m \ln \left [ y_i \frac{e^{\beta^T\hat x}}{1 + e^{\beta^T\hat x}} + (1-y_i) \frac{1}{1 + e^{\beta^T\hat x}} \right ] \\
 &= \sum_{i = 1}^m \ln \left [ \frac{y_i \beta^T\hat x +1 -y_i}{1 + e^{\beta^T\hat x}} \right ] \\
 &=
@@ -207,8 +210,6 @@ $$
 $$
 \beta ^{t+1} = \beta^t - \left( \frac{\partial^2{l(\beta)}}{\partial{\beta} \partial{\beta^T}} \right)^{-1} \frac{\partial{l(\beta)}}{\partial{\beta}}
 $$
-
-其中 $l(\beta)$ 关于 $\beta$ 的一阶导、二阶导的推导过程如下：
 
 ## 支持向量机
 

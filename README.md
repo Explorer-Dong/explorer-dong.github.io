@@ -1,12 +1,12 @@
 <div align="center">
     <a href="https://wiki.dwj601.cn/">
-        <img src="https://cdn.dwj601.cn/images/20250321124008628.png" alt="site logo" style="zoom:40%;" />
+        <img src="./overrides/assets/cover-image.png" alt="Site Cover Image" />
     </a>
 </div>
 
 本网站以「AI/CS 学科基础笔记」与「工程实践技术文章」为基础，旨在构建一个 **开放知识社群 (Open Wiki Community)**。内容按照 Markdown 撰写，站点采用 MkDocs 编译，云端基于 Aliyun OSS 部署。如果您觉得内容不错，欢迎⭐！访问链接：<https://wiki.dwj601.cn/>。
 
-<div align="center"><h2>站点预览 (Site Preview)</h2></div>
+## 站点预览 / Site Preview
 
 <div align="center">
 
@@ -76,3 +76,13 @@ graph LR
 <caption> 拓扑图 2. 工程实践技术文章 </caption>
 
 </div>  
+
+## 贡献名单 / Contributors
+
+<a href="https://github.com/Explorer-Dong/wiki/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Explorer-Dong/wiki" />
+</a>
+
+## 星标历史 / Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Explorer-Dong/wiki&type=Date)](https://www.star-history.com/#Explorer-Dong/wiki&Date)

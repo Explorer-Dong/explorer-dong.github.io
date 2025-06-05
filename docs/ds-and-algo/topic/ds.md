@@ -54,65 +54,83 @@ p->next->prior = p->prior;
 
 ### 例：验证栈序列
 
-<https://www.luogu.com.cn/problem/P4387>
+> 经典之处：进出栈顺序问题
+>
+> 难度：洛谷 黄
+>
+> OJ：[洛谷](https://www.luogu.com.cn/problem/P4387)
 
-> - 题意：给定入栈序列与出栈序列，问出栈序列是否合法
->
-> - 思路：思路很简单，就是对于当前出栈的数，和入栈序列中最后已出栈的数之间，如果还有数没有出，那么就是不合法的出栈序列，反之合法。这是从入栈的结果来看的，如果这么判断就需要扫描入栈序列 n 次，时间复杂度为 $O(n^2)$。我们按照入栈的顺序来看，对于当前待入栈的数，若与出栈序列的队头不等，则成功入栈等待后续出栈；若与出栈序列相等，则匹配成功直接出栈无需入栈，同时对已入栈的数与出栈序列队头不断匹配直到不相等。最后判断待入栈的数与出栈序列是否全部匹配掉了，如果全部匹配掉了说明该出栈序列合法，反之不合法
->
->     抽象总结上述思路：为了判断出栈序列是否合法，我们不妨思考：对于每一个出栈的数，出栈的时机是什么？可以发现出栈的时机无非两种：
->
->     - 一入栈就出栈（对应于枚举待入栈序列时发现待入栈的数与出栈序列队头相等）
->     - 紧跟着刚出栈的数继续出栈（对应于枚举待入栈序列时发现待入栈的数与出栈序列队头相等之后，继续判断出栈序列队头与已入栈的数是否相等，若相等则不断判断并出栈）
->
-> - 时间复杂度：$O(n)$
+题意：给定两个长度为 $n\ (1\le n\le 10^5)$ 的排列 $a,b$，若 $a$ 表示入栈序列，则 $b$ 表示的出栈序列是否合法，合法输出 Yes，不合法输出 No。
 
-```cpp
-// #include <bits/stdc++.h>
-// #define int long long
-#include <iostream>
-#include <unordered_map>
-#include <stack>
-#include <queue>
-using namespace std;
+思路：对于每一个入栈元素，只有两种状态，要么入栈后立即出栈，要么被压入等待后入栈的元素出栈时将其一起带出。这两种状态可以归纳为，一旦入栈元素与出栈元素相等，就可以对一个连续序列进行匹配，其中对入栈元素是从后往前逆序匹配（可以用栈模拟），对出栈元素是从前往后顺序匹配（可以用数组 + 指针模拟），不断重复直到枚举完所有入栈元素，如果所有元素都匹配上了表明出栈序列是合法的，反之不合法。
 
-void solve() {
-    int n;
-    cin >> n;
+时间复杂度：$O(n)$，每个元素只会经历入栈和出栈两种情况，故时间复杂度是线性的。
+
+=== "Python"
+
+    ```python
+    for _ in range(int(input().strip())):
     
-    vector<int> a(n), b(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
-    for (int i = 0; i < n; i++) cin >> b[i];
+        n = int(input().strip())
+        a = list(map(int, input().strip().split()))
+        b = list(map(int, input().strip().split()))
     
-    stack<int> stk;
-    int i = 0, j = 0;
-    while (i < n) {
-        if (a[i] != b[j]) stk.push(a[i++]);
-        else {
-            i++, j++;
-            while (!stk.empty() && b[j] == stk.top()) {
+        stk = []
+        j = 0
+        for x in a:
+            stk.append(x)
+            while len(stk) and stk[-1] == b[j]:
+                stk.pop()
+                j += 1
+    
+        print('No' if len(stk) else 'Yes')
+    ```
+
+=== "C++"
+
+    ```cpp
+    #include <iostream>
+    #include <stack>
+    #include <vector>
+    using namespace std;
+    
+    void solve() {
+        int n;
+        cin >> n;
+    
+        vector<int> a(n), b(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        for (int i = 0; i < n; i++) {
+            cin >> b[i];
+        }
+    
+        stack<int> stk;
+        for (int i = 0, j = 0; i < n; i++) {
+            stk.push(a[i]);
+            while (stk.size() && stk.top() == b[j]) {
                 stk.pop();
                 j++;
             }
         }
+    
+        cout << (stk.size() ? "No" : "Yes") << "\n";
     }
     
-    cout << (stk.empty() ? "Yes" : "No") << "\n";
-}
+    int main() {
+        int T;
+        cin >> T;
+        while (T--) {
+            solve();
+        }
+        return 0;
+    }
+    ```
 
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
+**卡特兰数**。若有 $n$ 个元素按照某种顺序压入栈中且可在任意时刻弹出时，则可能的出栈序列个数可用卡特兰数计算，即 $\frac{1}{n+1} C_{2n}^{n}$。
 
-补充：**卡特兰数**。其实是一种动态规划的算法思想。常见的释义为：当有 $n$ 个元素按照某种顺序压入栈中，且可在任意时刻弹出时，所获得可能的出栈序列个数可用卡特兰数计算，即 $\frac{1}{n+1} C_{2n}^{n}$。
-
-定义 $f(k)$ 表示在第 $k$ 个数是最后一个出栈的情况下出栈序列的总个数，则 $f(k)=f(k-1)f(n-k)$，其中 $f(0)=1$。那么卡特兰数的推导公式就是：
+推导过程可以用动态规划的思想进行：定义 $f(k)$ 表示在第 $k$ 个数是最后一个出栈的情况下出栈序列的总个数，则 $f(k)=f(k-1)f(n-k)$，其中 $f(0)=1$。那么卡特兰数的推导公式就是：
 
 $$
 \sum_{k = 1}^{n} f(k) = \sum_{k = 1}^{n} f(k-1) f(n-k)=\frac{1}{n+1} C_{2n}^{n}
@@ -235,7 +253,7 @@ $$
 
     ```python
     from collections import deque
-
+    
     class MonotonicQueue:
         def __init__(self, min_queue: bool = True):
             self.q = deque()
@@ -245,39 +263,39 @@ $$
             else:
                 # 队头为最大值：不严格单调递减队列
                 self.compare = lambda a, b: a > b
-
+    
         def push_back(self, x):
             while len(self.q) and self.compare(x, self.q[-1]):
                 self.q.pop()
             self.q.append(x)
-
+    
         def pop_left(self, x):
             if len(self.q) and x == self.q[0]:
                 self.q.popleft()
-
+    
         def get_extreme_value(self):
             return self.q[0]
-
+    
     n, k = map(int, input().strip().split())
     a = list(map(int, input().strip().split()))
-
+    
     min_outs, max_outs = [], []
     minq, maxq = MonotonicQueue(True), MonotonicQueue(False)
     for i in range(n):
         # 尾插入
         minq.push_back(a[i])
         maxq.push_back(a[i])
-
+    
         # 头弹出
         if i - k >= 0:
             minq.pop_left(a[i - k])
             maxq.pop_left(a[i - k])
-
+    
         # 取极值
         if i >= k - 1:
             min_outs.append(minq.get_extreme_value())
             max_outs.append(maxq.get_extreme_value())
-
+    
     print(' '.join(map(str, min_outs)))
     print(' '.join(map(str, max_outs)))
     ```
@@ -290,12 +308,12 @@ $$
     #include <functional>
     #include <vector>
     using namespace std;
-
+    
     template<class T>
     struct MonotonicQueue {
         deque<T> q;
         function<bool(T, T)> compare;
-
+    
         MonotonicQueue(bool min_queue) {
             if (min_queue) {
                 // 队头为最小值：不严格单调递增队列
@@ -305,68 +323,68 @@ $$
                 compare = [](T a, T b) { return a > b; };
             }
         }
-
+    
         void push_back(T x) {
             while (q.size() && compare(x, q.back())) {
                 q.pop_back();
             }
             q.push_back(x);
         }
-
+    
         void pop_front(T x) {
             if (q.size() && x == q.front()) {
                 q.pop_front();
             }
         }
-
+    
         T get_extreme_value() {
             return q.front();
         }
     };
-
+    
     int main() {
         int n, k;
         cin >> n >> k;
-
+    
         vector<int> a(n);
         for (int i = 0; i < n; i++) {
             cin >> a[i];
         }
-
+    
         // 求窗口最小值
         MonotonicQueue<int> minq(true);
         for (int i = 0; i < n; i++) {
             // 尾插入
             minq.push_back(a[i]);
-
+    
             // 头弹出
             if (i - k >= 0) {
                 minq.pop_front(a[i - k]);
             }
-
+    
             // 取极值
             if (i >= k - 1) {
                 cout << minq.get_extreme_value() << " \n"[i == n - 1];
             }
         }
-
+    
         // 求窗口最大值
         MonotonicQueue<int> maxq(false);
         for (int i = 0; i < n; i++) {
             // 尾插入
             maxq.push_back(a[i]);
-
+    
             // 头弹出
             if (i - k >= 0) {
                 maxq.pop_front(a[i - k]);
             }
-
+    
             // 取极值
             if (i >= k - 1) {
                 cout << maxq.get_extreme_value() << " \n"[i == n - 1];
             }
         }
-
+    
         return 0;
     }
     ```
@@ -673,7 +691,11 @@ struct GListNode {
 
 ## 树
 
-树是一种特殊的 [图](./graph.md)，即无环图。多棵树就组成了一个森林。我们称树中每一个结点的子结点数量为该结点的度，同时对于一棵树，有时会称其为 $x$ 叉树，这里的 $x$ 即树中结点度数的最大值。
+树是一种特殊的 [图](./graph.md) 结构，即无环图。多棵树（不连通）就组成了一个森林。如果边有方向，则这类树其实是有向无环图；如果边没有方向，则这类树其实是无向无环图，一般情况下默认都是有向树，比如根树，即从根结点开始逐层指向孩子结点。
+
+对于一棵有向 $x$ 叉树，我们称树中每一个结点的子结点数量为该结点的出度，$x$ 即树中结点出度的最大值。
+
+### 树的基础
 
 **树的存储**。与广义表类型，我们同样用链表来存储树。下面介绍两种较为常见的树的存储方式：
 
@@ -683,9 +705,7 @@ struct GListNode {
 **二叉树**。即树中的每一个结点最多只有两个孩子结点。二叉树中有两种比较特殊的情况，即：
 
 1. 满二叉树。每一层都是满结点；
-
 2. 完全二叉树：对于一个 $k$ 层的二叉树，$1\to k-1$ 都是满的，第 $k$ 层的叶子结点从左到右排列。
-
 
 由于二叉树对应的算法比较多，就放在后面的图论中详细介绍，此处我们只介绍两种二叉树的「构造方法」。具体地：
 
@@ -706,315 +726,13 @@ struct GListNode {
 
 具体地，对于一个结点序列 $id \in [1,n]$，每次选择其中权值最小的两个结点进行合并，合并 $n-1$ 次之后得到的二叉树就是哈夫曼树。基于这棵哈夫曼树，我们就可以展开信息的编码与解码工作。
 
-**二叉搜索树 & 平衡二叉搜索树**。如果我们想要在 $O(\log n)$ 时间复杂度内对数据进行增删查改的操作，就可以引入「二叉搜索树 (Binary Search Tree)」这一数据结构。然而，在某些极端的情况下，例如当插入的数据是单调不减或不增时，这棵树就会退化为一条链从而导致所有的增删查改操作退化到 $O(n)$，这是我们不愿意看到的。因此我们引入「平衡二叉搜索树 (Balanced Binary Search Tree) 简称平衡树」这一数据结构。
+**树的遍历**。TODO
 
-关于平衡二叉搜索树，有非常多的变种与实现，不同的应用场景会选择不同的变种。例如：
+**树的重心**。TODO
 
-- 「Treap」更灵活，通过随机化优先级实现预期的平衡，但在最坏情况下可能退化；
-- 「AVL 树」严格保持平衡，保证了 $O(\log n)$ 的性能，但在频繁插入和删除的场景下可能有较大的旋转开销；
-- 「红黑树」通过较宽松的平衡条件实现了较好的插入和删除性能，通常被广泛用于需要高效插入删除操作的系统（如 STL 中的 `map` 和 `set`）。
+**树的直径**。TODO，<https://www.bilibili.com/video/BV17o4y187h1/>。
 
-一般来说，红黑树是一个较为通用的选择，而在需要严格平衡性时，AVL 树可能是更好的选择。有关平衡树的知识点较为复杂，将会在 **进阶数据结构** 部分详细展开。
-
-### 树的基础问题
-
-1）**树的遍历**
-
-2）**树的重心**
-
-3）**树的直径**
-
-视频学习：<https://www.bilibili.com/video/BV17o4y187h1/>。
-
-4）**最近公共祖先**
-
-<https://www.luogu.com.cn/problem/P3379>
-
-> 题意：寻找树中指定两个结点的最近公共祖先 $\text{(Lowest Common Ancestor, 简称 LCA)}$。
->
-> 思路：对于每次查询，我们可以从指定的两个结点开始往上跳，第一个公共结点就是目标的 LCA，每一次询问的时间复杂度均为 $O(n)$，为了加速查询，我们可以采用倍增法，预处理出往上跳的结果，即 `fa[i][j]` 数组，表示 $i$ 号点向上跳 $2^j$ 步后到达的结点。接下来在往上跳跃的过程中，利用二进制拼凑的思路，即可在 $O(\log n)$ 的时间内查询到 LCA。
->
-> 预处理：可以发现，对于 `fa[i][j]`，我们可以通过递推的方式获得，即 `fa[i][j] = fa[fa[i][j-1]][j-1]`，当前结点向上跳跃 $2^j$ 步可以拆分为先向上 $2^{j-1}$ 步, 在此基础之上再向上 $2^{j-1}$ 步.于是我们可以采用宽搜 $or$ 深搜的顺序维护 $fa$ 数组。
->
-> 跳跃：我们首先需要将两个结点按照倍增的思路向上跳到同一个深度，接下来两个结点同时按照倍增的思路向上跳跃，为了确保求出最近的，我们需要确保在跳跃的步调一致的情况下，两者的祖先始终不相同，那么倍增结束后，两者的父结点就是最近公共祖先，即 `fa[x][k]` 或 `fa[y][k]`
->
-> 时间复杂度：$\Theta(n \log n + m \log n)$
->
-> - $n \log n$ 为预处理每一个结点向上跳跃抵达的情况
-> - $m \log n$ 为 $m$ 次询问的情况
-
-```cpp
-const int N = 5e5 + 10;
-
-int n, Q, root;
-vector<int> G[N];
-int fa[N][20], dep[N];
-queue<int> q;
-
-void init() {
-    dep[root] = 1;
-    q.push(root);
-
-    while (q.size()) {
-        int now = q.front();
-        q.pop();
-        for (int ch: G[now]) {
-            if (!dep[ch]) {
-                dep[ch] = dep[now] + 1;
-                fa[ch][0] = now;
-                for (int k = 1; k <= 19; k++) {
-                    fa[ch][k] = fa[ fa[ch][k-1] ][k-1];
-                }
-                q.push(ch);
-            }
-        }
-    }
-}
-
-int lca(int a, int b) {
-    if (dep[a] < dep[b]) swap(a, b);
-
-    // 二进制拼凑从而跳到一样高
-    for (int k = 19; k >= 0; k--)
-        if (dep[fa[a][k]] >= dep[b])
-            a = fa[a][k];
-
-    if (a == b) return a;
-
-    for (int k = 19; k >= 0; k--)
-        if (fa[a][k] != fa[b][k])
-            a = fa[a][k], b = fa[b][k];
-
-    return fa[a][0];
-}
-
-void solve() {
-    cin >> n >> Q >> root;
-    for (int i = 0; i < n - 1; ++i) {
-        int a, b;
-        cin >> a >> b;
-        G[a].push_back(b);
-        G[b].push_back(a);
-    }
-
-    init();
-
-    while (Q--) {
-        int a, b;
-        cin >> a >> b;
-        cout << lca(a, b) << "\n";
-    }
-}    
-```
-
-实战：<https://www.acwing.com/problem/content/5563/>。
-
-> 题意：给定一棵树，初始时含有 4 个结点分别为 1 到 4，其中 1 号为根结点，2 到 4 均为根结点的叶子结点。现在进行 Q 次操作，每次指定一个已经存在的结点向其插入两个新结点作为叶节点。现在需要在每次操作以后输出这棵树的直径。我们定义 **树的直径** 为：树中距离最远的两个点之间的距离。
->
-> 思路一：暴力搜索。
->
-> - 我们将树重构为无向图，对于每一个状态的无向图，首先从任意一个已存在的结点 A 开始搜索到距离他最远的点 B，然后从 B 点出发搜索到离他最远的点 C，则 B 与 C 之间的距离就是当前状态的树的直径。由于每一个状态的树都要遍历两遍树，于是时间复杂度就是平方阶
->
-> - 时间复杂度：$O(qn)$
->
-> 思路二：最近公共祖先 LCA。
->
-> - **从树的直径出发**。我们知道，树的直径由直径的两个结点之间的距离决定，因此我们着眼于这两个结点 $A$ 和 $B$ 展开。不妨设当前局面直径的两个结点已知为 $A$ 和 $B$，现在插入两个叶子结点 $L_1$ 和 $L_2$。是否改变了树的直径大小取决于新插入的两个结点对于当前树的影响情况。如果 $L_1$ 或 $L_2$ 可以替代 $A$ 或 $B$，则树的直径就会改变。很显然新插入的两个叶子结点对于直径的两个端点影响是同效果的，因此我们统称新插入的叶子结点为 $L$。
->
-> - **什么时候树的直径会改变**？对于 $A$、$B$ 和 $L$ 来说，直径是否改变取决于 $L$ 能否替代 $A$ 或 $B$，一共有六种情况。我们记 $\text{dist}(A,L)=da$，$\text{dist}(B,L)=db$，当前树的直径为 $res$，六种情况如下：
->
->     1. $\text{max}(da, db) \le \text{res}$，交换 $A$ 和 $B$ 得到 $2$ 种
->     2. $\text{min}(da,db) \ge \text{res}$，交换 $A$ 和 $B$ 得到 $2$ 种
->     3. $\text{max}(da,db) >res,\text{min}(da,db) < \text{res}$，交换 $A$ 和 $B$ 得到 $2$​ 种
->
->     如图：我们只需要在其中的最大值严格超过当前树的直径 $\text{res}$ 时更新 **直径对应的结点** 以及 **直径的长度** 即可
->
->     ![六种情况](https://cdn.dwj601.cn/images/202403282344777.jpg)
->
-> - **如何快速计算树上任意两个点之间的距离**？我们可以使用最近公共祖先 LCA 算法。则树上任意两点 $x,y$ 之间的距离 $\text{dist}(x,y)$ 为：
->
->     $$
->     \text{dist}(x, y) = \text{dist}(x, root) + \text{dist}(y, root) - 2 \times \text{dist}(\text{lca}(x, y), root)
->     $$
->
-> - 时间复杂度：$O(q \log n)$
-
-暴力搜索代码
-
-```cpp
-#include <iostream>
-#include <cstring>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <set>
-using namespace std;
-
-const int N = 500010;
-
-vector<int> g[N];
-int d[N];
-bool vis[N];
-pair<int, int> res;     // first 为最远距离；second 为对应结点编号
-
-void dfs(int pre, int now) {
-    if (vis[now]) return;
-    
-    vis[now] = true;
-    
-    if (pre != -1) {
-        d[now] = d[pre] + 1;
-        if (d[now] > res.first) {
-            res = {d[now], now};
-        }
-    }
-    
-    for (auto& ch: g[now]) {
-        dfs(now, ch);
-    }
-}
-
-void solve() {
-    // init
-    for (int i = 2; i <= 4; i++) {
-        g[1].push_back(i);
-        g[i].push_back(1);
-    }
-    
-    int now = 4;
-    
-    int Q;
-    cin >> Q;
-    while (Q--) {
-        int id;
-        cin >> id;
-        
-        g[id].push_back(++now);
-        g[now].push_back(id);
-        
-        g[id].push_back(++now);
-        g[now].push_back(id);
-        
-        res = {-1, -1};
-        
-        // 第一趟
-        memset(vis, false, sizeof vis);
-        memset(d, 0, sizeof d);
-        d[1] = 0;
-        dfs(-1, 1);
-        
-        // 第二趟
-        memset(vis, false, sizeof vis);
-        memset(d, 0, sizeof d);
-        d[res.second] = 0;
-        dfs(-1, res.second);
-        
-        cout << res.first << "\n";
-    }
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-LCA 代码
-
-```cpp
-#include <iostream>
-#include <cstring>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <set>
-using namespace std;
-
-const int N = 1000010, M = 20;
-
-int d[N];        // d[i] 表示 i 号点到根结点的距离
-int to[N][M];    // to[i][j] 表示 i 号点向上跳 2^j 步后到达的结点编号
-
-int lca(int a, int b) {
-    if (d[a] < d[b]) swap(a, b);
-
-    for (int k = M - 1; k >= 0; k--)
-        if (d[to[a][k]] >= d[b])
-            a = to[a][k];
-
-    if (a == b) return a;
-
-    for (int k = M - 1; k >= 0; k--)
-        if (to[a][k] != to[b][k])
-            a = to[a][k], b = to[b][k];
-
-    return to[a][0];
-}
-
-int dist(int a, int b) {
-    return d[a] + d[b] - 2 * d[lca(a, b)];
-}
-
-void solve() {
-    int Q;
-    cin >> Q;
-
-    // init lca
-    for (int i = 2; i <= 4; i++) {
-        d[i] = 1;
-        to[i][0] = 1;
-    }
-
-    int A = 2, B = 4, now = 4, res = 2;
-
-    while (Q--) {
-        int fa;
-        cin >> fa;
-
-        int L1 = ++now, L2 = ++now;
-
-        // upd lca
-        d[L1] = d[fa] + 1;
-        d[L2] = d[fa] + 1;
-        to[L1][0] = fa;
-        to[L2][0] = fa;
-        for (int k = 1; k <= M - 1; k++) {
-            to[L1][k] = to[ to[L1][k-1] ][ k-1 ];
-            to[L2][k] = to[ to[L2][k-1] ][ k-1 ];
-        }
-
-        int da = dist(A, L1), db = dist(B, L1);
-
-        if (max(da, db) <= res) res = res;
-        else if (min(da, db) >= res) {
-            if (da > db) res = da, B = L1;
-            else res = db, A = L1;
-        } else {
-            if (da > db) res = da, B = L1;
-            else res = db, A = L1;
-        }
-
-        cout << res << "\n";
-    }
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
+**最近公共祖先**。TODO
 
 ### 树状数组
 
@@ -1029,19 +747,23 @@ TODO
 
 ### 平衡树
 
-1）二叉搜索树
+如果我们想要在 $O(\log n)$ 时间复杂度内对数据进行增删查改的操作，就可以引入「二叉搜索树 (Binary Search Tree)」这一数据结构。然而，在某些极端的情况下，例如当插入的数据是单调不减或不增时，这棵树就会退化为一条链从而导致所有的增删查改操作退化到 $O(n)$，这是我们不愿意看到的。因此我们引入「平衡二叉搜索树 (Balanced Binary Search Tree) 简称平衡树」这一数据结构。
 
-二叉搜索树又叫二叉排序树、二叉查找树。
+关于平衡二叉搜索树，有非常多的变种与实现，不同的应用场景会选择不同的变种。例如：
 
-定义：根结点比左子树所有结点的值都大，比右子树所有结点的值都小。关键字唯一。
+- 「Treap」更灵活，通过随机化优先级实现预期的平衡，但在最坏情况下可能退化；
+- 「AVL 树」严格保持平衡，保证了 $O(\log n)$ 的性能，但在频繁插入和删除的场景下可能有较大的旋转开销；
+- 「红黑树」通过较宽松的平衡条件实现了较好的插入和删除性能，通常被广泛用于需要高效插入删除操作的系统（如 STL 中的 `map` 和 `set`）。
 
-操作：增加、修改、查询、删除。
+一般来说，红黑树是一个较为通用的选择，而在需要严格平衡性时，AVL 树可能是更好的选择。
 
-判定：想要判定一棵二叉树是否为二叉搜索树，只需要判断中序遍历的结果是不是递增的即可，可以采取中序遍历序列比对的方法，也可以在递归遍历二叉树的过程中通过记录前驱结点的值直接进行比较判断。时间复杂度 $O(n)$。
+**二叉搜索树**。二叉搜索树又叫二叉排序树、二叉查找树。
 
-2）平衡二叉搜索树
+- 定义：根结点比左子树所有结点的值都大，比右子树所有结点的值都小。关键字唯一；
+- 操作：增加、修改、查询、删除；
+- 判定：想要判定一棵二叉树是否为二叉搜索树，只需要判断中序遍历的结果是不是递增的即可，可以采取中序遍历序列比对的方法，也可以在递归遍历二叉树的过程中通过记录前驱结点的值直接进行比较判断。时间复杂度 $O(n)$。
 
-C++ 中叫做 `std::map`，Python 中叫做 `from sortedcontainers import SortedList`。
+**平衡二叉搜索树**。C++ 中叫做 `std::map`，Python 中叫做 `from sortedcontainers import SortedList`。
 
 > 例程：[切蛋糕 - AcWing](https://www.acwing.com/activity/content/code/content/8475415/)
 >
@@ -1059,137 +781,60 @@ C++ 中叫做 `std::map`，Python 中叫做 `from sortedcontainers import Sorted
 
 **Treap**。二叉搜索树和堆的结合体。它通过维护两种性质来保持平衡：
 
->- **二叉搜索树性质**：每个节点的左子树的所有节点值小于该节点的值，右子树的所有节点值大于该节点的值。
->- **堆性质**：每个节点的优先级（通常随机生成）要大于或等于其子节点的优先级。
->
->**平衡机制**：
->
->- Treap 使用随机化优先级使得树的形状接近于理想的平衡树（期望树高为 $O(\log n)$）。
->- 通过旋转操作（左旋和右旋）在插入和删除时保持堆的性质。
->
->**优点**：
->
->- 实现相对简单。
->- 由于随机化的优先级，在期望情况下，树的高度是 $O(\log n)$。
->- 灵活性高，可以根据需要调整优先级函数。
->
->**缺点**：
->
->- 最坏情况下，树的高度可能退化为 $O(n)$（例如所有优先级相同或顺序生成的优先级），尽管发生概率很低。
+- 二叉搜索树性质：每个节点的左子树的所有节点值小于该节点的值，右子树的所有节点值大于该节点的值。
+- 堆性质：每个节点的优先级（通常随机生成）要大于或等于其子节点的优先级。
+
+平衡机制：
+
+- Treap 使用随机化优先级使得树的形状接近于理想的平衡树（期望树高为 $O(\log n)$）。
+- 通过旋转操作（左旋和右旋）在插入和删除时保持堆的性质。
+
+优点：
+
+- 实现相对简单。
+- 由于随机化的优先级，在期望情况下，树的高度是 $O(\log n)$。
+- 灵活性高，可以根据需要调整优先级函数。
+
+缺点：
+
+- 最坏情况下，树的高度可能退化为 $O(n)$（例如所有优先级相同或顺序生成的优先级），尽管发生概率很低。
 
 **AVL 树**。是最早被发明出来的的自平衡二叉搜索树，1962 年由 Adelson-Velsky 和 Landis 发明。
 
+- 定义：平衡因子为左子树的高度 - 右子树的高度，平衡二叉树的平衡因子绝对值 $\le$ 1；
+- 构建：当插入结点进行构建时出现了有结点平衡因子的绝对值超过了 1，则进行“旋转”调整，旋转共分为 4 种，左旋转、右旋转、左右双旋转和右左双旋转；
+- 平衡机制：插入或删除节点后，如果某个节点的平衡因子不再为 $-1$、$0$ 或 $1$，就需要通过旋转（单旋转或双旋转）来恢复平衡。
+- 优点：严格的平衡条件保证了树的高度始终为 $O(\log n)$，因此搜索、插入和删除操作的时间复杂度为 $O(\log n)$；
+- 缺点：由于平衡条件严格，每次插入和删除后可能需要较多的旋转操作，从而导致实现较复杂，插入和删除操作的常数时间开销较大。
 
-定义：平衡因子为左子树的高度 - 右子树的高度，平衡二叉树的平衡因子绝对值 <= 1
+下面四张图演示了四种旋转逻辑：
 
-构建：当插入结点进行构建时出现了有结点平衡因子的绝对值超过了 1，则进行“旋转”调整，旋转共分为 4 种
+=== "LL 型调整过程"
+    ![LL 型调整过程](https://cdn.dwj601.cn/images/20250605110429804.png)
 
-![旋转 - LL、LR](https://cdn.dwj601.cn/images/202406292218546.png)
+=== "RR 型调整过程"
+    ![RR 型调整过程](https://cdn.dwj601.cn/images/20250605110426398.png)
 
-![旋转 - LR](https://cdn.dwj601.cn/images/202406292218547.png)
+=== "LR 型调整过程"
+    ![LR 型调整过程](https://cdn.dwj601.cn/images/202406292218547.png)
 
-![旋转 - RL](https://cdn.dwj601.cn/images/202406292218548.png)
+=== "RL 型调整过程"
+    ![RL 型调整过程](https://cdn.dwj601.cn/images/202406292218548.png)
 
 尝试模拟一遍下列序列的构造过程就可以理解了：
 
 ![例题](https://cdn.dwj601.cn/images/202406292218549.png)
 
->- **平衡因子**：每个节点的左右子树高度差不能超过 $1$，且需要记录每个节点的高度。
->
->**平衡机制**：
->
->- 插入或删除节点后，如果某个节点的平衡因子不再为 $-1$、$0$ 或 $1$，就需要通过旋转（单旋转或双旋转）来恢复平衡。
->- 旋转操作包括：左旋转、右旋转、左右双旋转和右左双旋转。
->
->**优点**：
->
->- 严格的平衡条件保证了树的高度始终为 $O(\log n)$，因此搜索、插入和删除操作的时间复杂度为 $O(\log n)$。
->
->**缺点**：
->
->- 由于平衡条件严格，每次插入和删除后可能需要较多的旋转操作，从而导致实现较复杂，插入和删除操作的常数时间开销较大。
+**红黑树**。一种较为宽松的自平衡二叉搜索树，由 Rudolf Bayer 于 1972 年发明。每个节点都有红色或黑色两种颜色，通过这些颜色约束树的平衡性。
 
-**红黑树**。一种较为宽松的自平衡二叉搜索树，由 Rudolf Bayer 于 1972 年发明。
-
-> - **颜色属性**：每个节点都有红色或黑色两种颜色，通过这些颜色约束树的平衡性。
->
-> **平衡机制**：
->
-> - 通过遵循红黑树的五个性质来保持平衡：
->     1. 每个节点要么是红色，要么是黑色。
->     2. 根节点是黑色。
->     3. 叶子节点（NIL 节点）是黑色。
->     4. 如果一个节点是红色的，那么它的子节点必须是黑色（红节点不能连续出现）。
->     5. 从任一节点到其每个叶子节点的所有路径都包含相同数量的黑色节点。
-> - 插入和删除操作可能破坏红黑树的性质，需要通过重新着色和旋转来恢复平衡。
->
-> **优点**：
->
-> - 红黑树的高度最多是 $\Theta (2  \log n)$，因此搜索、插入和删除操作的时间复杂度仍为 $O(\log n)$。
-> - 由于平衡条件较为宽松，插入和删除操作需要的旋转操作通常比 AVL 树少，效率更高。
->
-> **缺点**：
->
-> - 实现较复杂，特别是插入和删除的平衡修复过程。
-> - 虽然红黑树的搜索效率与 AVL 树相似，但由于平衡条件较宽松，实际应用中的树高度通常略高于 AVL 树，因此搜索操作的效率稍低。
-
-### 例：串门
-
-> 经典之处：树的直径
->
-> 难度：CF 1400 *
->
-> OJ：[蓝桥](https://www.lanqiao.cn/problems/5890/learning/?contest_id=145)
-
-题意：给定一棵边权为正的无向树，共有 $n\ (1\le n \le 10^5)$ 个结点。给出「在访问到树中每一个结点」情况下的最短路径长度。
-
-思路：
-
-- 不难发现一个性质。对于访问的起点与终点，路径总长度一定是「起点到终点的简单路径长度」+「所有分支路径长度的两倍」，等价于「所有边之和的两倍」-「起点到终点的简单路径长度」；
-- 有了上述的性质，为了最小化总路径长度，我们只需要找到简单距离最长的两个结点作为起点与终点即可，这里的简单路径其实就是「树的直径」；
-- 为了求解树的直径，我们首先需要确定直径的两个端点。容易证明，每遍历一次树即可确定直径的一个端点。
-
-时间复杂度：$O(n)$
-
-=== "Python"
-
-    ```python
-    from collections import deque
-    
-    n = int(input())
-    g = [[] for _ in range(n + 1)]
-    
-    ans = 0
-    for _ in range(n - 1):
-        u, v, w = tuple(map(int, input().split()))
-        g[u].append((v, w))
-        g[v].append((u, w))
-        ans += w << 1
-    
-    def bfs(u: int) -> tuple[int, int]:
-        dst = [0] * (n + 1)
-        vis = [False] * (n + 1)
-        q = deque()
-        dst[u] = 0
-        vis[u] = True
-        q.append(u)
-        while len(q):
-            u = q.popleft()
-            for v, w in g[u]:
-                if vis[v]:
-                    continue
-                dst[v] = dst[u] + w
-                vis[v] = True
-                q.append(v)
-        max_d = max(dst)
-        max_i = dst.index(max_d)
-        return max_d, max_i
-    
-    _, max_i = bfs(1)
-    max_d, _ = bfs(max_i)
-    
-    print(ans - max_d)
-    ```
+- 平衡机制：插入和删除操作可能破坏红黑树的性质，需要通过重新着色和旋转来恢复平衡。通过遵循红黑树的五个性质来保持平衡：
+    1. 每个节点要么是红色，要么是黑色；
+    2. 根节点是黑色；
+    3. 叶子节点（NIL 节点）是黑色；
+    4. 如果一个节点是红色的，那么它的子节点必须是黑色（红节点不能连续出现）；
+    5. 从任一节点到其每个叶子节点的所有路径都包含相同数量的黑色节点。
+- 优点：红黑树的高度最多是 $\Theta (2  \log n)$，因此搜索、插入和删除操作的时间复杂度仍为 $O(\log n)$；由于平衡条件较为宽松，插入和删除操作需要的旋转操作通常比 AVL 树少，效率更高；
+- 缺点：实现较复杂，特别是插入和删除的平衡修复过程；虽然红黑树的搜索效率与 AVL 树相似，但由于平衡条件较宽松，实际应用中的树高度通常略高于 AVL 树，因此搜索操作的效率稍低。
 
 ### 例：美国血统
 
@@ -1365,7 +1010,7 @@ signed main() {
 >
 > 如何寻找单分支结点呢？根据下面的递归图可以发现，无论是左单分支还是右单分支，如果 pre 的连续两个结点与 post 的连续两个结点对称相同，那么就一定有一个单分支结点，故只需要寻找前后序序列中连续两个字符对称相同的情况数 cnt 即可。最终的答案数就是 $2^{cnt}$
 >
-> ![图例](https://cdn.dwj601.cn/images/202406061327025.png)
+> <img src="https://cdn.dwj601.cn/images/202406061327025.png" alt="图例" style="zoom:50%;" />
 >
 > 时间复杂度：$O(nm)$
 
@@ -1387,153 +1032,6 @@ void solve() {
                 cnt++;
     
     cout << (1 << cnt) << "\n";
-} 
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-### 例：医院设置
-
-<https://www.luogu.com.cn/problem/P1364>
-
-> 题意：给定一棵二叉树，树中每一个结点存储了一个数值表示一个医院的人数，现在需要在所有的结点中将一个结点设置为医院使得其余结点中的所有人到达该医院走的路总和最小。路程为结点到医院的最短路，边权均为 1。给出最终的最短路径总和
->
-> 思路一：暴力
->
-> - 显然的对于已经设置好医院的局面，需要求解的路径总和就直接将树遍历一边即可。每一个结点都可以作为医院进行枚举，每次遍历是 $O(n)$ 的
->
-> - 时间复杂度：$O(n^2)$
->
-> 思路二：带权树的重心
->
-> - TODO
-> - 时间复杂度：$O(n)$
-
-暴力代码
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-const int N = 110;
-
-int n;
-
-vector<int> G[N];
-int cnt[N];
-
-int bfs(int v) {
-    int res = 0;
-    vector<bool> vis(n + 1, false);
-    vector<int> d(n + 1, 0); // d[i] 表示点 i 到点 v 的距离
-        
-    queue<int> q;
-    vis[v] = true;
-    d[v] = 0;
-    q.push(v);
-    
-    while (q.size()) {
-        int now = q.front();
-        q.pop();
-        
-        for (auto& ch: G[now]) {
-            if (!vis[ch]) {
-                vis[ch] = true;
-                d[ch] = d[now] + 1;
-                q.push(ch);
-                
-                res += cnt[ch] * d[ch]; 
-            }
-        }
-    }
-    
-    return res;
-}
-
-void solve() {
-    cin >> n;
-    for (int i = 1; i <= n; i++) {
-        int count, l, r;
-        cin >> count >> l >> r;
-        cnt[i] = count;
-        
-        if (l) {
-            G[i].push_back(l);
-            G[l].push_back(i);
-        }
-        
-        if (r) {
-            G[i].push_back(r);
-            G[r].push_back(i);
-        }
-    }
-    
-    int res = 1e7 + 10;
-    
-    for (int i = 1; i <= n; i++) {
-        res = min(res, bfs(i));
-    }
-    
-    cout << res << "\n";
-} 
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-优化代码
-
-### 例：二叉树深度
-
-<https://www.luogu.com.cn/problem/P4913>
-
-> 题意：给定一棵二叉树，求解这棵二叉树的深度
->
-> 思路：有两个考点，一个是如何根据给定的信息（从根结点开始依次给出已存在树上结点的左右孩子的编号）构建二叉树，一个是如何求解已经构建好的二叉树的深度。对于构建二叉树，我们沿用 T5 数组模拟构建的思路，直接定义结点类型即可；对于求解深度，很显然的一个递归求解，即左右子树深度值 +1 即可
->
-> 时间复杂度：$O(n)$
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-const int N = 1000010;
-
-int n;
-
-struct Node {
-    int l, r;
-} t[N];
-
-int dep(int now) {
-    if (!now) return 0;
-    return max(dep(t[now].l), dep(t[now].r)) + 1;
-}
-
-void solve() {
-    cin >> n;
-    for (int i = 1; i <= n; i++) {
-        int x, y;
-        cin >> x >> y;
-        t[i].l = x, t[i].r = y;
-    }
-    
-    cout << dep(1);
 } 
 
 signed main() {
@@ -1678,6 +1176,458 @@ void solve() {
 }
 
 signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+### 例：医院设置
+
+<https://www.luogu.com.cn/problem/P1364>
+
+> 题意：给定一棵二叉树，树中每一个结点存储了一个数值表示一个医院的人数，现在需要在所有的结点中将一个结点设置为医院使得其余结点中的所有人到达该医院走的路总和最小。路程为结点到医院的最短路，边权均为 1。给出最终的最短路径总和
+>
+> 思路一：暴力
+>
+> - 显然的对于已经设置好医院的局面，需要求解的路径总和就直接将树遍历一边即可。每一个结点都可以作为医院进行枚举，每次遍历是 $O(n)$ 的
+>
+> - 时间复杂度：$O(n^2)$
+>
+> 思路二：带权树的重心
+>
+> - TODO
+> - 时间复杂度：$O(n)$
+
+暴力代码
+
+```cpp
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+
+const int N = 110;
+
+int n;
+
+vector<int> G[N];
+int cnt[N];
+
+int bfs(int v) {
+    int res = 0;
+    vector<bool> vis(n + 1, false);
+    vector<int> d(n + 1, 0); // d[i] 表示点 i 到点 v 的距离
+        
+    queue<int> q;
+    vis[v] = true;
+    d[v] = 0;
+    q.push(v);
+    
+    while (q.size()) {
+        int now = q.front();
+        q.pop();
+        
+        for (auto& ch: G[now]) {
+            if (!vis[ch]) {
+                vis[ch] = true;
+                d[ch] = d[now] + 1;
+                q.push(ch);
+                
+                res += cnt[ch] * d[ch]; 
+            }
+        }
+    }
+    
+    return res;
+}
+
+void solve() {
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        int count, l, r;
+        cin >> count >> l >> r;
+        cnt[i] = count;
+        
+        if (l) {
+            G[i].push_back(l);
+            G[l].push_back(i);
+        }
+        
+        if (r) {
+            G[i].push_back(r);
+            G[r].push_back(i);
+        }
+    }
+    
+    int res = 1e7 + 10;
+    
+    for (int i = 1; i <= n; i++) {
+        res = min(res, bfs(i));
+    }
+    
+    cout << res << "\n";
+} 
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+优化代码
+
+```c++
+
+```
+
+### 例：串门
+
+> 经典之处：离线求树的直径经典例题
+>
+> 难度：CF 1400 *
+>
+> OJ：[蓝桥](https://www.lanqiao.cn/problems/5890/learning/?contest_id=145)
+
+题意：给定一棵边权为正的无向树，共有 $n\ (1\le n \le 10^5)$ 个结点。给出「在访问到树中每一个结点」情况下的最短路径长度。
+
+思路：
+
+- 不难发现一个性质。对于访问的起点与终点，路径总长度一定是「起点到终点的简单路径长度」+「所有分支路径长度的两倍」，等价于「所有边之和的两倍」-「起点到终点的简单路径长度」；
+- 有了上述的性质，为了最小化总路径长度，我们只需要找到简单距离最长的两个结点作为起点与终点即可，这里的简单路径其实就是「树的直径」；
+- 为了求解树的直径，我们首先需要确定直径的两个端点。容易证明，每遍历一次树即可确定直径的一个端点。
+
+时间复杂度：$O(n)$
+
+=== "Python"
+
+    ```python
+    from collections import deque
+    
+    n = int(input())
+    g = [[] for _ in range(n + 1)]
+    
+    ans = 0
+    for _ in range(n - 1):
+        u, v, w = tuple(map(int, input().split()))
+        g[u].append((v, w))
+        g[v].append((u, w))
+        ans += w << 1
+    
+    def bfs(u: int) -> tuple[int, int]:
+        dst = [0] * (n + 1)
+        vis = [False] * (n + 1)
+        q = deque()
+        dst[u] = 0
+        vis[u] = True
+        q.append(u)
+        while len(q):
+            u = q.popleft()
+            for v, w in g[u]:
+                if vis[v]:
+                    continue
+                dst[v] = dst[u] + w
+                vis[v] = True
+                q.append(v)
+        max_d = max(dst)
+        max_i = dst.index(max_d)
+        return max_d, max_i
+    
+    _, max_i = bfs(1)
+    max_d, _ = bfs(max_i)
+    
+    print(ans - max_d)
+    ```
+
+### 例：静态最近公共祖先
+
+<https://www.luogu.com.cn/problem/P3379>
+
+> 题意：寻找树中指定两个结点的最近公共祖先 $\text{(Lowest Common Ancestor, 简称 LCA)}$。
+>
+> 思路：对于每次查询，我们可以从指定的两个结点开始往上跳，第一个公共结点就是目标的 LCA，每一次询问的时间复杂度均为 $O(n)$，为了加速查询，我们可以采用倍增法，预处理出往上跳的结果，即 `fa[i][j]` 数组，表示 $i$ 号点向上跳 $2^j$ 步后到达的结点。接下来在往上跳跃的过程中，利用二进制拼凑的思路，即可在 $O(\log n)$ 的时间内查询到 LCA。
+>
+> 预处理：可以发现，对于 `fa[i][j]`，我们可以通过递推的方式获得，即 `fa[i][j] = fa[fa[i][j-1]][j-1]`，当前结点向上跳跃 $2^j$ 步可以拆分为先向上 $2^{j-1}$ 步, 在此基础之上再向上 $2^{j-1}$ 步.于是我们可以采用宽搜 $or$ 深搜的顺序维护 $fa$ 数组。
+>
+> 跳跃：我们首先需要将两个结点按照倍增的思路向上跳到同一个深度，接下来两个结点同时按照倍增的思路向上跳跃，为了确保求出最近的，我们需要确保在跳跃的步调一致的情况下，两者的祖先始终不相同，那么倍增结束后，两者的父结点就是最近公共祖先，即 `fa[x][k]` 或 `fa[y][k]`
+>
+> 时间复杂度：$\Theta(n \log n + m \log n)$
+>
+> - $n \log n$ 为预处理每一个结点向上跳跃抵达的情况
+> - $m \log n$ 为 $m$ 次询问的情况
+
+```cpp
+const int N = 5e5 + 10;
+
+int n, Q, root;
+vector<int> G[N];
+int fa[N][20], dep[N];
+queue<int> q;
+
+void init() {
+    dep[root] = 1;
+    q.push(root);
+
+    while (q.size()) {
+        int now = q.front();
+        q.pop();
+        for (int ch: G[now]) {
+            if (!dep[ch]) {
+                dep[ch] = dep[now] + 1;
+                fa[ch][0] = now;
+                for (int k = 1; k <= 19; k++) {
+                    fa[ch][k] = fa[ fa[ch][k-1] ][k-1];
+                }
+                q.push(ch);
+            }
+        }
+    }
+}
+
+int lca(int a, int b) {
+    if (dep[a] < dep[b]) swap(a, b);
+
+    // 二进制拼凑从而跳到一样高
+    for (int k = 19; k >= 0; k--)
+        if (dep[fa[a][k]] >= dep[b])
+            a = fa[a][k];
+
+    if (a == b) return a;
+
+    for (int k = 19; k >= 0; k--)
+        if (fa[a][k] != fa[b][k])
+            a = fa[a][k], b = fa[b][k];
+
+    return fa[a][0];
+}
+
+void solve() {
+    cin >> n >> Q >> root;
+    for (int i = 0; i < n - 1; ++i) {
+        int a, b;
+        cin >> a >> b;
+        G[a].push_back(b);
+        G[b].push_back(a);
+    }
+
+    init();
+
+    while (Q--) {
+        int a, b;
+        cin >> a >> b;
+        cout << lca(a, b) << "\n";
+    }
+}
+```
+
+### 例：动态最近公共祖先
+
+[CF 1400 * | 树的直径 | AcWing - (www.acwing.com)](https://www.acwing.com/problem/content/5563/)
+
+> 题意：给定一棵树，初始时含有 4 个结点分别为 1 到 4，其中 1 号为根结点，2 到 4 均为根结点的叶子结点。现在进行 Q 次操作，每次指定一个已经存在的结点向其插入两个新结点作为叶节点。现在需要在每次操作以后输出这棵树的直径。我们定义 **树的直径** 为：树中距离最远的两个点之间的距离。
+>
+> 思路一：暴力搜索。
+>
+> - 我们将树重构为无向图，对于每一个状态的无向图，首先从任意一个已存在的结点 A 开始搜索到距离他最远的点 B，然后从 B 点出发搜索到离他最远的点 C，则 B 与 C 之间的距离就是当前状态的树的直径。由于每一个状态的树都要遍历两遍树，于是时间复杂度就是平方阶
+>
+> - 时间复杂度：$O(qn)$
+>
+> 思路二：最近公共祖先 LCA。
+>
+> - **从树的直径出发**。我们知道，树的直径由直径的两个结点之间的距离决定，因此我们着眼于这两个结点 $A$ 和 $B$ 展开。不妨设当前局面直径的两个结点已知为 $A$ 和 $B$，现在插入两个叶子结点 $L_1$ 和 $L_2$。是否改变了树的直径大小取决于新插入的两个结点对于当前树的影响情况。如果 $L_1$ 或 $L_2$ 可以替代 $A$ 或 $B$，则树的直径就会改变。很显然新插入的两个叶子结点对于直径的两个端点影响是同效果的，因此我们统称新插入的叶子结点为 $L$。
+>
+> - **什么时候树的直径会改变**？对于 $A$、$B$ 和 $L$ 来说，直径是否改变取决于 $L$ 能否替代 $A$ 或 $B$，一共有六种情况。我们记 $\text{dist}(A,L)=da$，$\text{dist}(B,L)=db$，当前树的直径为 $res$，六种情况如下：
+>
+>     1. $\text{max}(da, db) \le \text{res}$，交换 $A$ 和 $B$ 得到 $2$ 种；
+>     2. $\text{min}(da,db) \ge \text{res}$，交换 $A$ 和 $B$ 得到 $2$ 种；
+>     3. $\text{max}(da,db) >res,\text{min}(da,db) < \text{res}$，交换 $A$ 和 $B$ 得到 $2$ 种。
+>
+>     如图：我们只需要在其中的最大值严格超过当前树的直径 $\text{res}$ 时更新 **直径对应的结点** 以及 **直径的长度** 即可
+>
+>     <img src="https://cdn.dwj601.cn/images/202403282344777.jpg" alt="六种情况" style="zoom: 25%;" />
+>
+> - **如何快速计算树上任意两个点之间的距离**？我们可以使用最近公共祖先 LCA 算法。则树上任意两点 $x,y$ 之间的距离 $\text{dist}(x,y)$ 为：
+>
+>    $$
+>     \text{dist}(x, y) = \text{dist}(x, root) + \text{dist}(y, root) - 2 \times \text{dist}(\text{lca}(x, y), root)
+>    $$
+>
+> - 时间复杂度：$O(q \log n)$
+
+暴力搜索代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
+using namespace std;
+
+const int N = 500010;
+
+vector<int> g[N];
+int d[N];
+bool vis[N];
+pair<int, int> res;     // first 为最远距离；second 为对应结点编号
+
+void dfs(int pre, int now) {
+    if (vis[now]) return;
+    
+    vis[now] = true;
+    
+    if (pre != -1) {
+        d[now] = d[pre] + 1;
+        if (d[now] > res.first) {
+            res = {d[now], now};
+        }
+    }
+    
+    for (auto& ch: g[now]) {
+        dfs(now, ch);
+    }
+}
+
+void solve() {
+    // init
+    for (int i = 2; i <= 4; i++) {
+        g[1].push_back(i);
+        g[i].push_back(1);
+    }
+    
+    int now = 4;
+    
+    int Q;
+    cin >> Q;
+    while (Q--) {
+        int id;
+        cin >> id;
+        
+        g[id].push_back(++now);
+        g[now].push_back(id);
+        
+        g[id].push_back(++now);
+        g[now].push_back(id);
+        
+        res = {-1, -1};
+        
+        // 第一趟
+        memset(vis, false, sizeof vis);
+        memset(d, 0, sizeof d);
+        d[1] = 0;
+        dfs(-1, 1);
+        
+        // 第二趟
+        memset(vis, false, sizeof vis);
+        memset(d, 0, sizeof d);
+        d[res.second] = 0;
+        dfs(-1, res.second);
+        
+        cout << res.first << "\n";
+    }
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
+
+LCA 代码
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
+using namespace std;
+
+const int N = 1000010, M = 20;
+
+int d[N];        // d[i] 表示 i 号点到根结点的距离
+int to[N][M];    // to[i][j] 表示 i 号点向上跳 2^j 步后到达的结点编号
+
+int lca(int a, int b) {
+    if (d[a] < d[b]) swap(a, b);
+
+    for (int k = M - 1; k >= 0; k--)
+        if (d[to[a][k]] >= d[b])
+            a = to[a][k];
+
+    if (a == b) return a;
+
+    for (int k = M - 1; k >= 0; k--)
+        if (to[a][k] != to[b][k])
+            a = to[a][k], b = to[b][k];
+
+    return to[a][0];
+}
+
+int dist(int a, int b) {
+    return d[a] + d[b] - 2 * d[lca(a, b)];
+}
+
+void solve() {
+    int Q;
+    cin >> Q;
+
+    // init lca
+    for (int i = 2; i <= 4; i++) {
+        d[i] = 1;
+        to[i][0] = 1;
+    }
+
+    int A = 2, B = 4, now = 4, res = 2;
+
+    while (Q--) {
+        int fa;
+        cin >> fa;
+
+        int L1 = ++now, L2 = ++now;
+
+        // upd lca
+        d[L1] = d[fa] + 1;
+        d[L2] = d[fa] + 1;
+        to[L1][0] = fa;
+        to[L2][0] = fa;
+        for (int k = 1; k <= M - 1; k++) {
+            to[L1][k] = to[ to[L1][k-1] ][ k-1 ];
+            to[L2][k] = to[ to[L2][k-1] ][ k-1 ];
+        }
+
+        int da = dist(A, L1), db = dist(B, L1);
+
+        if (max(da, db) <= res) res = res;
+        else if (min(da, db) >= res) {
+            if (da > db) res = da, B = L1;
+            else res = db, A = L1;
+        } else {
+            if (da > db) res = da, B = L1;
+            else res = db, A = L1;
+        }
+
+        cout << res << "\n";
+    }
+}
+
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int T = 1;
@@ -2287,8 +2237,8 @@ OJ：[洛谷](https://www.luogu.com.cn/problem/P1525)
 
 同类题推荐：
 
-- [洛谷绿 | The Door Problem | 洛谷 - (www.luogu.com.cn)](https://www.luogu.com.cn/problem/CF776D)
-- [洛谷绿 | 食物链 | 洛谷 - (www.luogu.com.cn)](https://www.luogu.com.cn/problem/P2024)
+- [洛谷 绿 | The Door Problem | 洛谷 - (www.luogu.com.cn)](https://www.luogu.com.cn/problem/CF776D)
+- [洛谷 绿 | 食物链 | 洛谷 - (www.luogu.com.cn)](https://www.luogu.com.cn/problem/P2024)
 
 ### 例：Milk Visits S
 

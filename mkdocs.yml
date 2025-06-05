@@ -234,7 +234,6 @@ nav:
         - base/cs/database/index.md
       - 操作系统:
         - base/cs/operating-system/index.md
-        - base/cs/operating-system/intro.md
         - base/cs/operating-system/concurrent.md
         - base/cs/operating-system/virtualization.md
         - base/cs/operating-system/persistence.md

@@ -6,18 +6,16 @@ title: 目标检测
 
 ![目标检测发展图](https://cdn.dwj601.cn/images/20250408113117212.png)
 
-本文介绍计算机视觉中的目标检测 (Object Detection) 任务。部分内容参考：
+本章介绍目标检测 (Object Detection) 任务。目标检测可以分解为「定位 + 分类」两个子任务。考虑到图像分类已经在上一章介绍过了，此处我们重点关注目标定位。参考综述如下：
 
-- A survey: object detection methods from CNN to transformer [^A survey: object detection methods from CNN to transformer]
-- Object Detection in 20 Years: A Survey [^Object Detection in 20 Years: A Survey]
+- *A survey: object detection methods from CNN to transformer* [^A survey: object detection methods from CNN to transformer]
+- *Object Detection in 20 Years: A Survey* [^Object Detection in 20 Years: A Survey]
 
 [^A survey: object detection methods from CNN to transformer]: [A survey: object detection methods from CNN to transformer | MTA 2022 - (link.springer.com)](https://link.springer.com/article/10.1007/s11042-022-13801-3)
 
 [^Object Detection in 20 Years: A Survey]: [Object Detection in 20 Years: A Survey | IEEE 2023 - (arxiv.org)](https://arxiv.org/pdf/1905.05055)
 
-## 基本原理
-
-目标检测可以分解为「定位 + 分类」两个子任务。考虑到图像分类已经在上一章介绍过了，因此本章我们重点关注目标定位。
+## 基本概念
 
 ### 各种框
 
@@ -28,15 +26,15 @@ title: 目标检测
 
 ### 交并比
 
-为了量化预测框与真实框之间的差异，定义了交并比 (Intersection over Union, IoU) 这个概念。一图胜千言：
+为了量化预测框和真实框之间的差异，定义了交并比 (Intersection over Union, IoU) 的计算方法：
 
 ![交并比计算示意图](https://cdn.dwj601.cn/images/20250408102137628.png)
 
 ### 非极大值抑制
 
-在对一张图像进行目标检测时，模型可能会输出很多预测框，为了简化输出，我们需要筛选出最合适的预测框，为此我们引入非极大值抑制 (non‐maximum suppression, NMS) 算法。
+在对一张图像进行目标检测时，模型可能会输出很多预测框，为了简化输出，我们需要筛选出最合适的预测框，为此我们引入非极大值抑制 (non-maximum suppression, NMS) 算法。
 
-定义待输出的预测框列表为 $L$，定义每个预测框中类别的预测概率为置信度。算法输入为检测框列表、置信度列表和 IoU 阈值，算法输出为最终的检测框列表与置信度列表。NMS 算法流程如下：
+定义待输出的预测框列表为 $L$，定义每个预测框中类别的预测概率为置信度。算法输入检测框列表、置信度列表和 IoU 阈值，算法输出最终的检测框列表与置信度列表。NMS 算法流程如下：
 
 1. 给 $L$ 按照置信度降序排序；
 2. 取出 $L$ 中置信度最大的预测框 $B_1$，枚举剩余所有的预测框 $B_i (i\neq 1)$，从 $L$ 中去除与 $B_1$ 的交并比超过阈值 $T$ 的检测框；
@@ -67,7 +65,7 @@ TODO
 
 ### SPPNet
 
-为了解决输入图像尺寸受限的问题，SPP-Net 提出了空间金字塔池化 (Spatial Pyramid Pooling, SPP) 的网络层。
+为了解决输入图像尺寸受限的问题，SPP-Net [^sppnet] 提出了空间金字塔池化 (Spatial Pyramid Pooling, SPP) 的网络层。
 
 [^sppnet]: He K, Zhang X, Ren S, et al. Spatial pyramid pooling in deep convolutional networks for visual recognition[J]. IEEE transactions on pattern analysis and machine intelligence, 2015, 37(9): 1904-1916.
 
@@ -77,7 +75,7 @@ TODO
 
 ### Faster R-CNN
 
-该算法对应论文为：Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks [^faster-rcnn]。本部分的一些解读参考：《一文读懂 Faster RCNN》[^faster-rcnn-zhihu]。
+该算法对应论文为：*Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks* [^faster-rcnn]。本部分的一些解读参考：*一文读懂 Faster RCNN* [^faster-rcnn-zhihu]。
 
 [^faster-rcnn]: [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks | NeurIPS 2015 - (arxiv.org)](https://arxiv.org/pdf/1506.01497)
 [^faster-rcnn-zhihu]: [一文读懂 Faster RCNN | 你再好好想想 - (zhuanlan.zhihu.com)](https://zhuanlan.zhihu.com/p/31426458)

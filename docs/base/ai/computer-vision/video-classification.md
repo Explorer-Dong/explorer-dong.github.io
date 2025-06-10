@@ -1,6 +1,8 @@
 ---
-title: 动作识别
+title: 视频分类
 ---
+
+本文介绍的视频分类任务主要用于以视频为单位的动作识别任务，即给定一个视频，输出视频中包含的动作类别。
 
 ## 基本概念
 
@@ -113,7 +115,7 @@ TimeSformer [^timesformer] 是第一个尝试将 ViT [^vit] 引入到动作识�
 [^timesformer]: Bertasius G, Wang H, Torresani L. Is space-time attention all you need for video understanding?[C]//ICML. 2021, 2(3): 4.
 [^vit]: [轻松理解 ViT(Vision Transformer) 原理及源码 | 000_error - (zhuanlan.zhihu.com)](https://zhuanlan.zhihu.com/p/640013974)
 
-<video controls src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/videos/ViT.mp4"></video>
+<video controls src="https://cdn.dwj601.cn/videos/ViT.mp4"></video>
 
 类似于之前的工作，TimeSformer 对于如何将 ViT 拓展到视频数据进行了大量的探索。
 

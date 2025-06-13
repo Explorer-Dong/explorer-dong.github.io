@@ -136,7 +136,7 @@ $$
 \sum_{k = 1}^{n} f(k) = \sum_{k = 1}^{n} f(k-1) f(n-k)=\frac{1}{n+1} C_{2n}^{n}
 $$
 
-### 例：表达式求值
+### 例：表达式求值🤨
 
 分为前缀、中缀和后缀三种表达式，本质上是对树的一种遍历。具体地：
 
@@ -691,55 +691,484 @@ struct GListNode {
 
 ## 树
 
-树是一种特殊的 [图](./graph.md) 结构，即无环图。多棵树（不连通）就组成了一个森林。如果边有方向，则这类树其实是有向无环图；如果边没有方向，则这类树其实是无向无环图，一般情况下默认都是有向树，比如根树，即从根结点开始逐层指向孩子结点。
+树是一种特殊的 [图](./graph.md) 结构，即无环图。多棵树（不连通）就组成了一个森林。如果边有方向，则这类树其实是有向无环图；如果边没有方向，则这类树其实是无向无环图，一般情况下默认都是有向树，比如根树，表示从根结点开始逐层指向孩子结点。
 
 对于一棵有向 $x$ 叉树，我们称树中每一个结点的子结点数量为该结点的出度，$x$ 即树中结点出度的最大值。
 
+根树有两种结点，一种为分支结点，一种为叶子结点。其中，分支结点表示该结点存在孩子结点，而叶子结点表示该结点不存在孩子结点了，其孩子域为空。
+
 ### 树的基础
 
-**树的存储**。与广义表类型，我们同样用链表来存储树。下面介绍两种较为常见的树的存储方式：
+**树的存储**。与广义表类型，我们同样可以用链表来存储树。下面介绍两种较为常见的树的存储方式：
 
-1. 多叉链表表示法。即每一个结点存储所有的孩子结点的指针，可以用静态数组存储，但是这需要将数组空间开到结点的最大度数，有些浪费空间。因此可以使用动态数组来存储所有孩子结点的指针；
-2. 孩子兄弟表示法。即每一个结点只存储两个指针，其中左指针指向当前结点的孩子结点，右指针指向当前结点的兄弟结点。
+1. 多叉链表表示法：即每一个结点存储所有孩子结点的指针，可以用静态数组存储，但是这需要将数组空间开到结点的最大度数，有些浪费空间，因此可以使用动态数组来存储；
+2. 孩子兄弟表示法：即每一个结点只存储两个指针，其中左指针指向当前结点的孩子结点，右指针指向当前结点的兄弟结点。
 
-**二叉树**。即树中的每一个结点最多只有两个孩子结点。二叉树中有两种比较特殊的情况，即：
+上述方法都可以使用数组进行模拟。尤其是使用动态数组的多叉表示法，该方法也是算法竞赛中比较常见也比较方便的写法，后文默认使用该方法存储树。
 
-1. 满二叉树。每一层都是满结点；
-2. 完全二叉树：对于一个 $k$ 层的二叉树，$1\to k-1$ 都是满的，第 $k$ 层的叶子结点从左到右排列。
+**二叉树**。即树中的每一个结点最多只有两个孩子结点。二叉树中有一些比较特殊的情况，即：
 
-由于二叉树对应的算法比较多，就放在后面的图论中详细介绍，此处我们只介绍两种二叉树的「构造方法」。具体地：
+1. 满二叉树：树的每一层都是满结点，假设根结点为第 $0$ 层，则满二叉树的第 $i$ 层就拥有 $2^i$ 个结点；
+2. 完全二叉树：对于一个 $k$ 层的二叉树（层数从 0 开始），其 $0\to k - 2$ 层都是满结点，第 $k-1$ 层的叶子结点从左到右依次排列；
+3. 线索二叉树：二叉树的扩展版，将二叉树中所有结点的空指针指向其前驱或后继结点。
+
+介绍两种二叉树的构造方法：
 
 - 用一个含有空指针标记的遍历序列构造二叉树。有如下三种情况：
 
-    1. 先序序列进行构造。按照遍历的思路来，对于先序序列而言，第一个元素一定是根元素，因此首先根据“当前局面”的第一个元素创建根结点，接着递归创建左子树和右子树即可，递归终点就是空指针标记。
-    2. 中序序列进行构造。 不可以，因为不能确定根节点以及左子树和右子树的部分。
-    3. 后序序列进行构造。与上述先序序列进行构建的逻辑类似，我们从后序序列的最后一个元素开始构建，第一个元素就是根结点，然后再分别递归构建右子树和左子树，递归终点同样也是空指针标记。
+    1. 遍历序列为先序序列：按照遍历的思路来，对于先序序列而言，第一个元素一定是根元素，因此首先根据“当前局面”的第一个元素创建根结点，接着递归创建左子树和右子树即可，递归终点就是空指针标记；
+    2. 遍历序列为中序序列：不可以，因为不能确定根节点以及左子树和右子树的部分；
+    3. 遍历序列为后序序列：与上述先序序列进行构建的逻辑类似，我们从后序序列的最后一个元素开始构建，第一个元素就是根结点，然后再分别递归构建右子树和左子树，递归终点同样也是空指针标记。
 
 - 用两个不含空指针标记的遍历序列构造二叉树。有如下两种情况：
 
-    1. 先序序列 + 中序序列。现在我们没有空指针标记了，那么如何确定递归终点呢？可以根据先序序列的首个元素在中序序列查询，查询结果的左半部分就是左子树，右半部分就是右子树，基于此进行构造即可。
-    2. 后序序列 + 中序序列。与上述一致，不再赘述。
+    1. 先序序列 + 中序序列：现在我们没有空指针标记了，那么如何确定递归终点呢？可以根据先序序列的首个元素在中序序列查询，查询结果的左半部分就是左子树，右半部分就是右子树，基于此进行构造即可；
+    2. 后序序列 + 中序序列：与上述一致，不再赘述。
 
-**线索二叉树**。二叉树的扩展版，将二叉树中所有结点的空指针指向其前驱或后继结点。
+**哈夫曼树**。一种利用贪心的算法思想设计出来的编码方式，可以达到最佳的编码压缩效果，从而提升数据在信道中的传输效率。我们定义一棵树的带权路径长度 (Weighted Path Length, WPL) 为所有叶子结点「路径长度 $\times$ 权重」之和。WPL 最小的树就叫做哈夫曼树。为了得到这样的一棵树，我们可以如下操作：每次选择权值最小的两个结点进行合并，得到一个分支结点，合并 $n-1$ 次之后得到的二叉树就是哈夫曼树。基于这棵哈夫曼树，我们就可以展开信息的编码与解码工作。
 
-**哈夫曼树**。一种利用贪心的算法思想设计出来的编码方式，可以达到最佳的编码压缩效果，从而提升数据在信道中的传输效率。我们定义一棵树的带权路径长度 $\text{WPL}$ 为所有叶子结点「路径长度 $\times$ 权重」之和。$\text{WPL}$ 最小的树就叫做哈夫曼树。
+**树的遍历**。可以使用 DFS 或者 BFS 的方式进行。以多叉有向树为例，假设树中每个结点都用一个数字 ID 来唯一表示，那么就有以下遍历伪代码：
 
-具体地，对于一个结点序列 $id \in [1,n]$，每次选择其中权值最小的两个结点进行合并，合并 $n-1$ 次之后得到的二叉树就是哈夫曼树。基于这棵哈夫曼树，我们就可以展开信息的编码与解码工作。
+=== "DFS"
 
-**树的遍历**。TODO
+    ```c++
+    vector<int> g[N];
+    
+    void dfs(int idx) {
+        // do something
+        for (auto& ch: g[idx]) {
+            dfs(ch)
+        }
+    }
+    
+    dfs(0)
+    ```
 
-**树的重心**。TODO
+=== "BFS"
 
-**树的直径**。TODO，<https://www.bilibili.com/video/BV17o4y187h1/>。
+    ```c++
+    vector<int> g[N];
+    
+    void bfs(int idx) {
+        // do something
+    
+        queue<int> q;
+        q.push(idx);
+    
+        while (q.size()) {
+            auto now = q.front();
+            q.pop();
+    
+            // do something
+    
+            for (auto& ch: g[idx]) {
+                q.push(ch);
+            }
+        }
+    }
+    
+    bfs(0)
+    ```
 
-**最近公共祖先**。TODO
+如果是无向树，那么遍历的时候要注意不能回过头又遍历到自己的父结点了。为了规避这个问题，有以下两种方法：
+
+- 新开一个元素值为 `bool` 的 vis 数组用来标记每一个结点是否被遍历过；
+- DFS 时多传一个父结点 ID 参数，用来标记子结点不要遍历父结点。
+
+### 树的重心
+
+树的重心定义：给定一棵含有 $n$ 个结点的无向树，找到树中的一个结点，使得删除该结点后，剩余子树中结点数量的最大值最小。树的重心就定义为这个结点。
+
+这里不加证明的给出树的重心的一些性质 [^property-tree-center]：
+
+1. 树的重心如果不唯一，则至多有两个，且这两个重心相邻；
+2. 把两棵树通过一条边相连得到一棵新树，那么新树的重心在连接原来两棵树的重心的路径上。
+
+[^property-tree-center]: [树的重心的性质 | OI Wiki - (oi-wiki.org)](https://oi-wiki.org/graph/tree-centroid/#性质)
+
+显然可以每枚举一个结点就遍历一整棵树，这样的时间复杂度是 $O(n^2)$ 的，能否优化？答案是可以的，我们采用分治策略。具体地，我们设计这样一个递归函数 `dfs(idx)`，其返回以 `idx` 为根结点的子树大小，然后在分治递归的过程中找到使得最大子树最小的结点即可。这样每个结点只需要遍历两遍，因此时间复杂度是 $O(n)$。当然，这也可以说这是一种回溯法的应用。代码示例：
+
+```python
+n = int(input().strip())
+g = [[] for _ in range(n + 1)]
+
+for _ in range(n - 1):
+    u, v = map(int, input().strip().split())
+    g[u].append(v)
+    g[v].append(u)
+
+core = 1  # 树的重心
+min_max_size = n  # 最小的最大子树
+
+def dfs(u: int, fa: int) -> int:
+    """返回点 u 除了 fa 方向的所有子树中，结点数最多的子树的结点数"""
+    global core, min_max_size
+
+    all_size = 0  # 所有子树的大小（除了 fa 方向的子树）
+    max_size = 0  # 最大子树的大小（除了 fa 方向的子树）
+
+    for v in g[u]:
+        if v == fa:
+            continue
+        v_size = dfs(v, u)
+        all_size += v_size
+        if v_size > max_size:
+            core = v
+            max_size = v_size
+
+    # fa 方向的子树大小
+    if n - all_size - 1 > max_size:
+        core = u
+        max_size = n - all_size - 1
+
+    # 更新答案
+    min_max_size = min(min_max_size, max_size)
+
+    return all_size + 1
+
+dfs(1, -1)
+
+print(f"树的重心：{core}")
+print(f"最小的最大子树：{min_max_size}")
+```
+
+对于下面这棵树：
+
+![示例树](https://cdn.dwj601.cn/images/20250613213451082.png)
+
+程序输出结果为：
+
+```text
+树的重心：4
+最小的最大子树：4
+```
+
+当然，$1$ 号点其实也是树的重心，这也验证了上述第一条性质。
+
+### 树的直径
+
+树的直径定义为：树上任意两点间的最长简单路径长度。这里不加证明地给出一些性质 [^diameter-property-1] [^diameter-property-2]：
+
+1. 树的多条直径必相交；
+2. 树的多条直径的交点必为所有直径的中点。
+
+[^diameter-property-1]: [树的直径 | Dangerise - (www.luogu.com.cn)](https://www.luogu.com.cn/article/zbu09jkr)
+[^diameter-property-2]: [树的直径，树的中心性质整理 | dbxxx - (www.cnblogs.com)](https://www.cnblogs.com/crab-in-the-northeast/p/diameter-and-center-on-tree.html)
+
+求解方法 [^0x3f-diameter] [^oiwiki-diameter] 有两种：
+
+1. 选择任意一点 $x$ 进行 DFS/BFS，找到离其最远的点 $u$，则 $u$ 就是直径的一个端点，接着以 $u$ 为起点再进行一次 DFS/BFS 找到离其最远的点 $v$，则 $u,v$ 就是直径的两个端点。该方法不适用于负权树；
+2. 遍历每一个结点并计算以当前结点为根的子树中，最长的两条子链长度之和，取最大值即为树的直径。可以利用回溯法在 $O(n)$ 的时间复杂度内进行求解。该方法在负权树上也适用。
+
+[^0x3f-diameter]:[树形 DP：树的直径【基础算法精讲 23】 | 灵茶山艾府 - (www.bilibili.com)](https://www.bilibili.com/video/BV17o4y187h1/)
+[^oiwiki-diameter]: [树的直径 | OI Wiki - (oi-wiki.org)](https://oi-wiki.org/graph/tree-diameter/)
+
+以 [串门 | 蓝桥 - (www.lanqiao.cn)](https://www.lanqiao.cn/problems/5890/learning/?contest_id=145) 这道题为例：给定一棵无向树，共有 $n\ (1\le n \le 10^5)$ 个结点，结点编号从 $1$ 开始，边权为 $w\ (1\le w_i\le 10^9)$。给出「在访问到树中每一个结点」的情况下，最短路径长度。
+
+显然我们可以枚举每一个点作为起点遍历整棵树得到路径长度，最后取最小值即可，时间复杂度为 $O(n^2)$，考虑优化。不难发现：对于一次遍历下访问到的起点和终点，路径长度一定是 `起点到终点的简单路径长度 + 所有分支路径长度的两倍`，而这恰好等于 `所有边之和的两倍 - 起点到终点的简单路径长度`。于是问题就转化为了求解树的直径。由于本题权重为正，故两次遍历或者回溯法都可以解决，下面给出所有解法。
+
+时间复杂度：$O(n)$
+
+=== "Python 两次 BFS"
+
+    ```python
+    from collections import deque
+    from typing import Tuple
+    
+    n = int(input().strip())
+    g = [[] for _ in range(n + 1)]
+    
+    double_path_length = 0
+    
+    for _ in range(n - 1):
+        u, v, w = map(int, input().strip().split())
+        g[u].append((v, w))
+        g[v].append((u, w))
+        double_path_length += w << 1
+    
+    def bfs(u: int) -> Tuple[int, int]:
+        """返回距离 u 最远的点以及对应的距离"""
+        q = deque()
+        d = [0] * (n + 1)
+        vis = [False] * (n + 1)
+    
+        q.append(u)
+        d[u] = 0
+        vis[u] = True
+    
+        while len(q):
+            now = q.popleft()
+            for ch, w in g[now]:
+                if vis[ch]:
+                    continue
+                q.append(ch)
+                d[ch] = d[now] + w
+                vis[ch] = True
+    
+        max_d = max(d)
+        return d.index(max_d), max_d
+    
+    x, _ = bfs(1)
+    _, diameter = bfs(x)
+    
+    print(double_path_length - diameter)
+    ```
+
+=== "Python 两次 DFS"
+
+    ```python
+    import sys
+    sys.setrecursionlimit(10**5 + 1)
+    
+    n = int(input().strip())
+    g = [[] for _ in range(n + 1)]
+    
+    double_path_length = 0
+    
+    for _ in range(n - 1):
+        u, v, w = map(int, input().strip().split())
+        g[u].append((v, w))
+        g[v].append((u, w))
+        double_path_length += w << 1
+    
+    diameter = 0
+    v = 1  # 直径的某个端点
+    
+    def dfs(u: int, dep: int, fa: int) -> None:
+        """递归：当前结点为 u，距离根结点为 dep，父结点为 fa"""
+        global diameter, v
+        if dep > diameter:
+            diameter = dep
+            v = u
+        for ch, w in g[u]:
+            if ch != fa:
+                dfs(ch, dep + w, u)
+    
+    dfs(v, 0, -1)
+    dfs(v, 0, -1)
+    
+    print(double_path_length - diameter)
+    ```
+
+=== "Python 回溯法"
+
+    ```python
+    import sys
+    sys.setrecursionlimit(10**5 + 1)
+    
+    n = int(input().strip())
+    g = [[] for _ in range(n + 1)]
+    
+    double_path_length = 0
+    
+    for _ in range(n - 1):
+        u, v, w = map(int, input().strip().split())
+        g[u].append((v, w))
+        g[v].append((u, w))
+        double_path_length += w << 1
+    
+    diameter = 0
+    
+    def dfs(u: int, fa: int) -> int:
+        """返回以 u 为根且不包括 fa 分支方向的子树的最大深度"""
+        global diameter
+        u_dep = 0
+        for v, w in g[u]:
+            if v == fa:
+                continue
+            v_dep = dfs(v, u) + w
+            diameter = max(diameter, u_dep + v_dep)
+            u_dep = max(u_dep, v_dep)
+        return u_dep
+    
+    dfs(1, -1)
+    
+    print(double_path_length - diameter)
+    ```
+
+### 最近公共祖先
+
+对于一棵有根树，结点 $u$ 和 $v$ 的最近公共祖先 (Lowest Common Ancestor, LCA) 定义为 $u$ 和 $v$ 的公共祖先中，距离根结点最远的那个结点。我们记 $\text{lca}(u,v)$ 为 $u,v$ 两个结点的最近公共祖先。下面以模板题 [最近公共祖先 | 洛谷 - (www.luogu.com.cn)](https://www.luogu.com.cn/problem/P3379) 为例进行讲解。
+
+为了求解 $\text{lca}(u,v)$，朴素做法就是从 $u$ 和 $v$ 开始一步步向根结点跳，直到探测到最近公共祖先。代码实现上，可以先从根结点开始 DFS/BFS 整棵树，维护每一个结点的父结点及其深度。后续查询的过程中，先将深度大的结点跳到和另一个结点一样高，然后两个结点一起往上跳并判定是否找到了最近公共祖先。对于一棵含有 $n$ 个结点的有根树，朴素法每次查询的时间复杂度为 $O(n)$。
+
+考虑优化。一个结点往上跳的过程可以使用倍增算法进行优化。例如，结点向上跳 $k$ 步，可以拆分为向上跳「$k$ 的二进制表示中 $1$ 的个数」步。这样就可以将每次查询时 $O(n)$ 的跳跃复杂度优化到 $O(\log n)$。代码示例：
+
+```python
+def lca(u: int, v: int) -> int:
+    """返回 u 和 v 的最近公共祖先结点编号"""
+    
+    # 保证 u 不高于 v
+    if d[u] < d[v]:
+        u, v = v, u
+    
+    # 让 u 跳到与 v 同一个深度
+    for i in range(19, -1, -1):
+        if d[f[u][i]] >= d[v]:
+            u = f[u][i]
+    
+    # 特判：u、v 和 root 在一条链上
+    if u == v:
+        return u
+
+    # u 和 v 一起往上跳
+    for i in range(19, -1, -1):
+        if f[u][i] != f[v][i]:
+            u, v = f[u][i], f[v][i]
+    
+    return f[u][0]
+```
+
+为了达到上述倍增跳跃的目的，我们需要预先维护出每一个结点向上跳跃 $2^i\ (0\le i\le \log n)$ 步以后到达的结点编号。记 $f_{u,i}$ 表示 $u$ 号结点向上跳跃 $2^i$ 步后到达的结点编号，$u$ 号结点的父结点编号为 $fa$，显然有 $f_{u,0}=fa$，又由于 $u$ 号结点向上跳跃 $2^i$ 步等价于先向上跳跃 $2^{i-1}$ 步，再向上跳跃 $2^{i-1}$ 步，即 $f_{u,i}=f_{f_{u,i-1},i-1}$，因此 $f$ 数组可以使用递推算法维护。每个结点需要 $O(\log n)$ 维护，那么 $n$ 个结点就要 $O(n\log n)$ 维护。代码示例：
+
+```python
+f[u][0] = fa
+for i in range(1, 20):
+    f[u][i] = f[f[u][i - 1]][i - 1]
+```
+
+有了 $f$ 数组，求解 $\text{lca}(u,v)$ 的思路就可以仍然沿用朴素算法，只不过在跳跃时可以利用倍增算法进行优化了。完整代码示例：
+
+=== "Python 朴素 LCA"
+
+    ```python
+    import sys
+    sys.setrecursionlimit(5 * 10**5 + 1)
+    
+    n, q, root = map(int, input().strip().split())
+    g = [[] for _ in range(n + 1)]
+    d = [0] * (n + 1)  # d[u] 表示 u 号点到根结点的距离，或者理解为深度
+    f = [0] * (n + 1)  # f[u] 表示 u 号点的父结点
+    
+    def dfs(u: int, fa: int) -> None:
+        """递归：当前结点为 u，父结点为 fa"""
+    
+        # 维护深度
+        d[u] = d[fa] + 1
+    
+        # 维护祖先
+        f[u] = fa
+    
+        # 递归
+        for ch in g[u]:
+            if ch != fa:
+                dfs(ch, u)
+    
+    def lca(u: int, v: int) -> int:
+        """返回 u 和 v 的最近公共祖先结点编号"""
+    
+        # 保证 u 不高于 v
+        if d[u] < d[v]:
+            u, v = v, u
+    
+        # 让 u 跳到与 v 同一个深度
+        while d[u] > d[v]:
+            u = f[u]
+    
+        # 特判：u、v 和 root 在一条链上
+        if u == v:
+            return u
+    
+        # u 和 v 一起往上跳
+        while f[u] != f[v]:
+            u, v= f[u], f[v]
+    
+        return f[u]
+    
+    if __name__ == "__main__":
+        # 建树
+        for _ in range(n - 1):
+            u, v = map(int, input().strip().split())
+            g[u].append(v)
+            g[v].append(u)
+    
+        # 维护深度 & 朴素维护祖先
+        d[0] = -1
+        dfs(root, 0)
+    
+        # 求解 LCA
+        OUTs = []
+        for _ in range(q):
+            u, v = map(int, input().strip().split())
+            OUTs.append(lca(u, v))
+        print('\n'.join(map(str, OUTs)))
+    ```
+
+=== "Python 倍增 LCA"
+
+    ```python
+    import sys
+    sys.setrecursionlimit(5 * 10**5 + 1)
+    
+    n, q, root = map(int, input().strip().split())
+    g = [[] for _ in range(n + 1)]
+    d = [0] * (n + 1)  # d[u] 表示 u 号点到根结点的距离，或者理解为深度
+    f = [[0] * 20 for _ in range(n + 1)]  # f[u][i] 表示 u 号点向上跳跃 2^i 步后可以到达的结点编号
+    
+    def dfs(u: int, fa: int) -> None:
+        """递归：当前结点为 u，父结点为 fa"""
+    
+        # 维护深度
+        d[u] = d[fa] + 1
+    
+        # 维护祖先
+        f[u][0] = fa
+        for i in range(1, 20):
+            f[u][i] = f[f[u][i - 1]][i - 1]
+    
+        # 递归
+        for ch in g[u]:
+            if ch != fa:
+                dfs(ch, u)
+    
+    def lca(u: int, v: int) -> int:
+        """返回 u 和 v 的最近公共祖先结点编号"""
+    
+        # 保证 u 不高于 v
+        if d[u] < d[v]:
+            u, v = v, u
+    
+        # 让 u 跳到与 v 同一个深度
+        for i in range(19, -1, -1):
+            if d[f[u][i]] >= d[v]:
+                u = f[u][i]
+    
+        # 特判：u、v 和 root 在一条链上
+        if u == v:
+            return u
+    
+        # u 和 v 一起往上跳
+        for i in range(19, -1, -1):
+            if f[u][i] != f[v][i]:
+                u, v = f[u][i], f[v][i]
+    
+        return f[u][0]
+    
+    if __name__ == "__main__":
+        # 建树
+        for _ in range(n - 1):
+            u, v = map(int, input().strip().split())
+            g[u].append(v)
+            g[v].append(u)
+    
+        # 维护深度 & 倍增维护祖先
+        d[0] = -1
+        dfs(root, 0)
+    
+        # 求解 LCA
+        OUTs = []
+        for _ in range(q):
+            u, v = map(int, input().strip().split())
+            OUTs.append(lca(u, v))
+        print('\n'.join(map(str, OUTs)))
+    ```
 
 ### 树状数组
 
-利用更多的区间维护一个序列的信息，所有维护信息的区间组成的形状形如一棵树，故称为树状数组。支持的操作有：
+树状数组的核心思想是利用额外的空间来维护序列的区间和，所有被维护的区间信息就组成了一棵树，故该算法被称为树状数组。一般情况下，为了编码方便，该算法的序列 $a$ 下标从 $1$ 开始。树状数组支持的操作有：
 
-- 区间查询：查询序列 `[1, pos]` 索引的元素之和。时间复杂度 $O(\log n)$；
-- 单点修改：修改序列 `pos` 索引的元素值。时间复杂度 $O(\log n)$。
+- 区间查询：给定下标索引 $i$，输出序列被索引的区间和 $\sum_{i=1}^i a_i$。时间复杂度 $O(\log n)$；
+- 单点修改：给定下标索引 $i$，修改序列被索引的元素值 $a_i$。时间复杂度 $O(\log n)$。
 
 ### 线段树
 
@@ -836,805 +1265,218 @@ TODO
 - 优点：红黑树的高度最多是 $\Theta (2  \log n)$，因此搜索、插入和删除操作的时间复杂度仍为 $O(\log n)$；由于平衡条件较为宽松，插入和删除操作需要的旋转操作通常比 AVL 树少，效率更高；
 - 缺点：实现较复杂，特别是插入和删除的平衡修复过程；虽然红黑树的搜索效率与 AVL 树相似，但由于平衡条件较宽松，实际应用中的树高度通常略高于 AVL 树，因此搜索操作的效率稍低。
 
-### 例：美国血统
-
-<https://www.luogu.com.cn/problem/P1827>
-
-> 题意：给定二叉树的中序和先序序列，输出后序序列
->
-> 思路：经典二叉树的题目，主要用于巩固加强对于递归的理解。指针其实是没有必要的，为了得到后序序列，我们只需要有一个 dfs 序即可，为了得到 dfs 序，我们只需要根据给出的中序和前序序列即可得到 dfs 序
->
-> 时间复杂度：$O(n)$
-
-指针做法
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-const int N = 30;
-
-string mid, pre;
-
-struct Node {
-    char data;
-    Node* le, * ri;
-    Node(char _data) : data(_data), le(nullptr), ri(nullptr) {}
-};
-
-Node* build(int i, int j, int p, int q) {
-    if (i > j) return nullptr;
-    
-    Node* root = new Node(pre[i]);
-    
-    int k; // 根结点在中序序列的下标 
-    for (k = p; k <= q; k++)
-        if (mid[k] == root->data)
-            break;
-    
-    root->le = build(i + 1, k - p + i, p, k - 1);
-    root->ri = build(k - p + i + 1, j, k + 1, q);
-    
-    cout << root->data; 
-    
-    return root;
-}
-
-void solve() {
-    cin >> mid >> pre;
-    
-    int i = 0, j = pre.size() - 1;
-    int p = 0, q = mid.size() - 1;
-    
-    build(i, j, p, q);
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-构造出 dfs 序直接输出
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-const int N = 30;
-
-string mid, pre;
-
-// 前序起始 i，前序末尾 j，中序起始 p，中序末尾 q 
-void build(int i, int j, int p, int q) {
-    if (i > j) return;
-    
-    char root = pre[i];
-    
-    int k;
-    for (k = p; k <= q; k++)
-        if (mid[k] == root)
-            break;
-            
-    build(i + 1, k - p + i, p, k - 1);
-    build(k - p + i + 1, j, k + 1, q);
-    
-    cout << root;
-} 
-
-void solve() {
-    cin >> mid >> pre;
-    
-    int i = 0, j = pre.size() - 1;
-    int p = 0, q = mid.size() - 1;
-    
-    build(i, j, p, q);
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-### 例：新二叉树
-
-<https://www.luogu.com.cn/problem/P1305>
-
-> 题意：给定一棵二叉树的 n 个结点信息，分别为当前结点的数据信息、左孩子结点信息和右结点信息，输出这棵二叉树的前序序列
->
-> 思路：我们首先将这棵二叉树构建出来，接着遍历输出前序序列即可。关键在于如何构建二叉树？我们使用数组存储二叉树，对于每一个树上结点，我们将数组中元素的索引存储为树上结点信息，每一个结点再存储左孩子与右孩子的信息
->
-> 时间复杂度：$O(n)$
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-int n;
-string s;
-char root;
-
-struct Node {
-    char l, r;
-} tree[200];
-
-void pre(char now) {
-    if (now == '*') return;
-    cout << now;
-    pre(tree[now].l);
-    pre(tree[now].r);
-}
-
-void solve() {
-    cin >> n;
-    
-    for (int i = 1; i <= n; i++) {
-        cin >> s;
-        if (i == 1) root = s[0];
-        tree[s[0]].l = s[1];
-        tree[s[0]].r = s[2];
-    }
-    
-    pre(root);
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
 ### 例：遍历问题
 
-<https://www.luogu.com.cn/problem/P1229>
-
-> 题意：给定一棵二叉树的前序序列与后序序列，问中序序列的可能情况有多少种
+> 经典之处：二叉树序列问题
 >
-> 思路：我们采用从最小结构单元的思路进行考虑，即假设当前二叉树只有一个根结点与两个叶子结点，而非两棵子树。然后将题意进行等价变换，即问对于已经固定的前序和后序二叉树，该二叉树有多少种不同的形状？对于当前的最小结构二叉树，形状就是 **左右根** or **根左右**，现在的根可以直接确定，那么就只能从左右孩子进行变形，很显然只能进行左右交换的变形，但是问题是一旦左右变换，前序 or 后序都会变掉，说明这种左右孩子都存在的前后序固定的二叉树是唯一的，那么如何才是不唯一的呢？我们考虑减少孩子数量。假设没有孩子，那么很显然也只有一个形状，就是一个根结点，故排除。于是答案就呼之欲出了，就是当根结点只有一个孩子时，这个孩子无论是在左边还是右边，前后序都是相同的，但是中序序列就不同了，于是就产生了两种中序序列。于是最终的结论是：对于前后序确定的二叉树来说，中序序列的情况是就是 $2^{\text{单分支结点数}}$ 个。现在的问题就转变为了在给定前后序的二叉树中求解单分支结点个数的问题。
+> 难度：洛谷 黄
 >
-> 如何寻找单分支结点呢？根据下面的递归图可以发现，无论是左单分支还是右单分支，如果 pre 的连续两个结点与 post 的连续两个结点对称相同，那么就一定有一个单分支结点，故只需要寻找前后序序列中连续两个字符对称相同的情况数 cnt 即可。最终的答案数就是 $2^{cnt}$
->
-> <img src="https://cdn.dwj601.cn/images/202406061327025.png" alt="图例" style="zoom:50%;" />
->
-> 时间复杂度：$O(nm)$
+> OJ：[洛谷](https://www.luogu.com.cn/problem/P1229)
 
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-string pre, post;
-
-void solve() {
-    cin >> pre >> post;
-    
-    int cnt = 0;
-    
-    for (int i = 0; i < pre.size() - 1; i++)
-        for (int j = 0; j < post.size(); j++)
-            if (pre[i] == post[j + 1] && pre[i + 1] == post[j])
-                cnt++;
-    
-    cout << (1 << cnt) << "\n";
-} 
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-### 例：淘汰赛
-
-<https://www.luogu.com.cn/problem/P1364>
-
-> 题意：给定 $2^n$ 支球队的编号与能力值，进行淘汰赛，能力值者晋级下一轮直到赛出冠军。输出亚军编号
->
-> 思路：很显然的一个完全二叉树的题目。我们都不需要进行递归操作，直接利用完全二叉树的下标性质利用数组模拟循环计算即可。给出的信息就是完全二叉树的全部叶子结点的信息，分别为球队编号 id 与球队能力值 val，我们从第 n-1 个结点开始循环枚举到第 1 个结点计算每一轮的胜者信息，最终输出最后一场的能力值较小者球队编号即可
->
-> 时间复杂度：$\Theta(2n)$
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-const int N = 1 << 8;
-
-struct Node {
-    int id, val;
-} a[N];
-
-int n;
-
-void solve() {
-    cin >> n;
-    
-    n = 1 << n;
-    
-    for (int i = n; i <= 2 * n - 1; i++) {
-        a[i].id = i - n + 1;
-        cin >> a[i].val;
-    }
-    
-    for (int i = n - 1; i >= 1; i--)
-        if (a[i * 2].val > a[i * 2 + 1].val) a[i] = a[i * 2];
-        else a[i] = a[i * 2 + 1];
-            
-    if (a[2].val > a[3].val) cout << a[3].id;
-    else cout << a[2].id;
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-### 例：二叉树问题
-
-<https://www.luogu.com.cn/problem/P3884>
-
-> 题意：给定一棵二叉树的结点关系信息，求出这棵二叉树的深度、宽度和两个指定结点之间的最短路径长度
->
-> 思路：二叉树的构建直接采用有向图的构造方法。深度直接 dfs 即可，宽度直接在 dfs 遍历时哈希深度值即可。问题的关键在于如何求解两个给定结点之间的路径长度，很显然需要求解两个结点的 LCA，由于结点数 $\le 100$ 故直接采用暴力的方法，可以重定义结点，增加父结点域。也可以通过比对根结点到两个指定结点的路径信息得到 LCA 即最后一个相同的结点编号（本题采用），通过在 dfs 遍历树时存储路径即可得到根结点到两个指定结点的路径信息。之后直接根据题中新定义的路径长度输出即可，即
->
-> $$
-> \text{length} = 2 \times (d_x - d_{lca}) + (d_y - d_{lca})
-> $$
->
-> 其中 $d_i$ 表示：根结点到第 $i$ 号点之间的路径长度，在 dfs 时通过传递深度值维护得到
->
-> 时间复杂度：$O(n)$
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-const int N = 110;
-
-int n, x, y;
-vector<int> G[N];
-int depth, width;
-unordered_map<int, int> ha; // 将所有的深度值进行哈希
-int d[N];                   // d[i] 表示第 i 个点到根结点的边数
-vector<int> temp, rx, ry;   // 根结点到 x 号点与 y 号点直接的路径结点编号
-
-// 当前结点编号 now，当前深度 level
-void dfs(int now, int level) {
-    depth = max(depth, level);
-    
-    temp.push_back(now);
-    if (now == x) rx = temp;
-    if (now == y) ry = temp;
-    
-    ha[level]++;
-    d[now] = level - 1;
-    
-    for (auto& ch: G[now]) {
-        dfs(ch, level + 1);
-        temp.pop_back();
-    }
-}
-
-// 暴力 lca + 计算路径长度
-int len(int x, int y) {
-    int i = 0;
-    while (i < rx.size() && i < ry.size() && rx[i] == ry[i]) i++;
-    
-    int lca = rx[--i];
-    
-    return 2 * (d[x] - d[lca]) + (d[y] - d[lca]);
-}
-
-void solve() {
-    cin >> n;
-    
-    for (int i = 1; i <= n - 1; i++) {
-        int a, b;
-        cin >> a >> b;
-        G[a].push_back(b);
-    }
-    
-    cin >> x >> y;
-    
-    // 二叉树的深度 depth
-    dfs(1, 1);
-    cout << depth << "\n";
-    
-    // 二叉树的宽度 width
-    for (auto& item: ha) width = max(width, item.second);
-    cout << width << "\n";
-    
-    // 两个结点之间的路径长度
-    cout << len(x, y) << "\n";
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-### 例：医院设置
-
-<https://www.luogu.com.cn/problem/P1364>
-
-> 题意：给定一棵二叉树，树中每一个结点存储了一个数值表示一个医院的人数，现在需要在所有的结点中将一个结点设置为医院使得其余结点中的所有人到达该医院走的路总和最小。路程为结点到医院的最短路，边权均为 1。给出最终的最短路径总和
->
-> 思路一：暴力
->
-> - 显然的对于已经设置好医院的局面，需要求解的路径总和就直接将树遍历一边即可。每一个结点都可以作为医院进行枚举，每次遍历是 $O(n)$ 的
->
-> - 时间复杂度：$O(n^2)$
->
-> 思路二：带权树的重心
->
-> - TODO
-> - 时间复杂度：$O(n)$
-
-暴力代码
-
-```cpp
-#include <bits/stdc++.h>
-#define int long long
-using namespace std;
-
-const int N = 110;
-
-int n;
-
-vector<int> G[N];
-int cnt[N];
-
-int bfs(int v) {
-    int res = 0;
-    vector<bool> vis(n + 1, false);
-    vector<int> d(n + 1, 0); // d[i] 表示点 i 到点 v 的距离
-        
-    queue<int> q;
-    vis[v] = true;
-    d[v] = 0;
-    q.push(v);
-    
-    while (q.size()) {
-        int now = q.front();
-        q.pop();
-        
-        for (auto& ch: G[now]) {
-            if (!vis[ch]) {
-                vis[ch] = true;
-                d[ch] = d[now] + 1;
-                q.push(ch);
-                
-                res += cnt[ch] * d[ch]; 
-            }
-        }
-    }
-    
-    return res;
-}
-
-void solve() {
-    cin >> n;
-    for (int i = 1; i <= n; i++) {
-        int count, l, r;
-        cin >> count >> l >> r;
-        cnt[i] = count;
-        
-        if (l) {
-            G[i].push_back(l);
-            G[l].push_back(i);
-        }
-        
-        if (r) {
-            G[i].push_back(r);
-            G[r].push_back(i);
-        }
-    }
-    
-    int res = 1e7 + 10;
-    
-    for (int i = 1; i <= n; i++) {
-        res = min(res, bfs(i));
-    }
-    
-    cout << res << "\n";
-} 
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
-```
-
-优化代码
-
-```c++
-
-```
-
-### 例：串门
-
-> 经典之处：离线求树的直径经典例题
->
-> 难度：CF 1400 *
->
-> OJ：[蓝桥](https://www.lanqiao.cn/problems/5890/learning/?contest_id=145)
-
-题意：给定一棵边权为正的无向树，共有 $n\ (1\le n \le 10^5)$ 个结点。给出「在访问到树中每一个结点」情况下的最短路径长度。
+题意：给定一棵二叉树的前序和后序遍历序列 $a,b\ (1\le \lvert a\rvert = \lvert b \rvert\le n)$，同一个序列中不存在两个相同的元素。问中序遍历序列的可能情况有多少种。
 
 思路：
 
-- 不难发现一个性质。对于访问的起点与终点，路径总长度一定是「起点到终点的简单路径长度」+「所有分支路径长度的两倍」，等价于「所有边之和的两倍」-「起点到终点的简单路径长度」；
-- 有了上述的性质，为了最小化总路径长度，我们只需要找到简单距离最长的两个结点作为起点与终点即可，这里的简单路径其实就是「树的直径」；
-- 为了求解树的直径，我们首先需要确定直径的两个端点。容易证明，每遍历一次树即可确定直径的一个端点。
+- 我们将二叉树的每一个结点都抽象为「根结点、左子树、右子树」的结构。显然，如果一个结点的左右子树都存在或者都不存在，那么中序序列的情况是唯一的，当且仅当缺少左子树或缺少右子树时，中序序列才会出现两种可能的情况，即唯一存在的那棵子树可以是左子树也可以是右子树。而一旦有一个单分支结点，答案数就会翻倍，因此本题就转化为了寻找二叉树中的单分支结点数；
+- 如何根据前序和后序遍历序列判定单分支结点呢？我们把所有的情况都罗列一下，尝试寻找「只存在一个分支的序列」和「不存在分支或存在两个分支的序列」的不同之处。简单分析后不难发现，只存在一个分支的前序与后序序列具备「一级根和二级根相邻」的特点，反之不具备。为了找到这样的相邻元素，双重循环判断一下即可。
 
-时间复杂度：$O(n)$
+时间复杂度：$O(n^2)$
 
 === "Python"
 
     ```python
-    from collections import deque
+    a, b = input().strip(), input().strip()
     
-    n = int(input())
-    g = [[] for _ in range(n + 1)]
+    cnt = 0
+    for i in range(len(a) - 1):
+        for j in range(1, len(b)):
+            cnt += a[i] == b[j] and a[i + 1] == b[j - 1]
     
-    ans = 0
-    for _ in range(n - 1):
-        u, v, w = tuple(map(int, input().split()))
-        g[u].append((v, w))
-        g[v].append((u, w))
-        ans += w << 1
-    
-    def bfs(u: int) -> tuple[int, int]:
-        dst = [0] * (n + 1)
-        vis = [False] * (n + 1)
-        q = deque()
-        dst[u] = 0
-        vis[u] = True
-        q.append(u)
-        while len(q):
-            u = q.popleft()
-            for v, w in g[u]:
-                if vis[v]:
-                    continue
-                dst[v] = dst[u] + w
-                vis[v] = True
-                q.append(v)
-        max_d = max(dst)
-        max_i = dst.index(max_d)
-        return max_d, max_i
-    
-    _, max_i = bfs(1)
-    max_d, _ = bfs(max_i)
-    
-    print(ans - max_d)
+    print(1 << cnt)
     ```
 
-### 例：静态最近公共祖先
+=== "C++"
 
-<https://www.luogu.com.cn/problem/P3379>
-
-> 题意：寻找树中指定两个结点的最近公共祖先 $\text{(Lowest Common Ancestor, 简称 LCA)}$。
->
-> 思路：对于每次查询，我们可以从指定的两个结点开始往上跳，第一个公共结点就是目标的 LCA，每一次询问的时间复杂度均为 $O(n)$，为了加速查询，我们可以采用倍增法，预处理出往上跳的结果，即 `fa[i][j]` 数组，表示 $i$ 号点向上跳 $2^j$ 步后到达的结点。接下来在往上跳跃的过程中，利用二进制拼凑的思路，即可在 $O(\log n)$ 的时间内查询到 LCA。
->
-> 预处理：可以发现，对于 `fa[i][j]`，我们可以通过递推的方式获得，即 `fa[i][j] = fa[fa[i][j-1]][j-1]`，当前结点向上跳跃 $2^j$ 步可以拆分为先向上 $2^{j-1}$ 步, 在此基础之上再向上 $2^{j-1}$ 步.于是我们可以采用宽搜 $or$ 深搜的顺序维护 $fa$ 数组。
->
-> 跳跃：我们首先需要将两个结点按照倍增的思路向上跳到同一个深度，接下来两个结点同时按照倍增的思路向上跳跃，为了确保求出最近的，我们需要确保在跳跃的步调一致的情况下，两者的祖先始终不相同，那么倍增结束后，两者的父结点就是最近公共祖先，即 `fa[x][k]` 或 `fa[y][k]`
->
-> 时间复杂度：$\Theta(n \log n + m \log n)$
->
-> - $n \log n$ 为预处理每一个结点向上跳跃抵达的情况
-> - $m \log n$ 为 $m$ 次询问的情况
-
-```cpp
-const int N = 5e5 + 10;
-
-int n, Q, root;
-vector<int> G[N];
-int fa[N][20], dep[N];
-queue<int> q;
-
-void init() {
-    dep[root] = 1;
-    q.push(root);
-
-    while (q.size()) {
-        int now = q.front();
-        q.pop();
-        for (int ch: G[now]) {
-            if (!dep[ch]) {
-                dep[ch] = dep[now] + 1;
-                fa[ch][0] = now;
-                for (int k = 1; k <= 19; k++) {
-                    fa[ch][k] = fa[ fa[ch][k-1] ][k-1];
-                }
-                q.push(ch);
+    ```cpp
+    #include <iostream>
+    using namespace std;
+    
+    int main() {
+        string a, b;
+        cin >> a >> b;
+    
+        int cnt = 0;
+        for (int i = 0; i < a.size() - 1; i++) {
+            for (int j = 1; j < b.size(); j++) {
+                cnt += a[i] == b[j] && a[i + 1] == b[j - 1];
             }
         }
+    
+        cout << (1 << cnt) << "\n";
+    
+        return 0;
     }
-}
+    ```
 
-int lca(int a, int b) {
-    if (dep[a] < dep[b]) swap(a, b);
+同类题推荐：
 
-    // 二进制拼凑从而跳到一样高
-    for (int k = 19; k >= 0; k--)
-        if (dep[fa[a][k]] >= dep[b])
-            a = fa[a][k];
+- [洛谷 橙 | 美国血统 | 洛谷 - (www.luogu.com.cn)](https://www.luogu.com.cn/problem/P1827)
+- [洛谷 黄 | 二叉树问题 | 洛谷 - (www.luogu.com.cn)](https://www.luogu.com.cn/problem/P3884)
 
-    if (a == b) return a;
+### 例：医院设置🤨
 
-    for (int k = 19; k >= 0; k--)
-        if (fa[a][k] != fa[b][k])
-            a = fa[a][k], b = fa[b][k];
+> 经典之处：带权树的重心
+>
+> 难度：$1\le n \le100$ 难度为洛谷 黄，$1\le n\le 10^5$ 难度约为洛谷 绿
+>
+> OJ：[洛谷](https://www.luogu.com.cn/problem/P1364)
 
-    return fa[a][0];
-}
+题意：给定一棵含有 $n\ (1\le n\le 100)$ 个结点的二叉树，含有点权 $w\ (1\le w_i\le10^5)$ 和边权 $e\ (e_i=1)$。寻找目标结点，使得所有结点到该点的路径和（点权乘以该点到目标结点的最短路径长度）最小，输出最小路径和。
 
-void solve() {
-    cin >> n >> Q >> root;
-    for (int i = 0; i < n - 1; ++i) {
-        int a, b;
-        cin >> a >> b;
-        G[a].push_back(b);
-        G[b].push_back(a);
-    }
+思路：
 
-    init();
+- 最朴素的做法比较显然，枚举每一个点然后 DFS 或 BFS 一遍即可，时间复杂度为 $O(n^2)$，虽然可以通过本题，但数据量一旦调大就挂了，考虑优化；
+- 带权树的重心，TODO。
 
-    while (Q--) {
-        int a, b;
-        cin >> a >> b;
-        cout << lca(a, b) << "\n";
-    }
-}
+### 例：树的直径
+
+> 经典之处：树的直径性质运用、通过动态 LCA 快速求解树上任意两点之间的距离
+>
+> OJ：[AcWing](https://www.acwing.com/problem/content/5563/)
+>
+> 难度：CF 1500 *
+
+题意：给定一棵有根树，初始时含有 $4$ 个结点，编号分别为 $1$ 到 $4$，其中 $1$ 号为根结点，$2$ 到 $4$ 均为根结点的叶子结点。现在进行 $q\ (1\le q\le 5 \times 10^5)$ 次操作，每次指定一个已经存在的叶结点并为其添加两个新结点作为叶节点，新结点编号从 $5$ 开始递增。每次操作后输出这棵树的直径，树中边权均为 $1$。
+
+思路：
+
+- 如果直接使用上文提到的 [离线法求树的直径](#树的直径)，那么每次查询的时间复杂度就是 $O(n)$ 的，其中 $n$ 为树中结点数量，总时间复杂度为 $O(qn)$，肯定会超时，考虑优化；
+- 对于任一局面，记新插入的两个叶结点分别为 $x_1$ 和 $x_2$，显然这两个结点对直径的影响是等价的，因此将其统一记作 $x$。树的直径的两个端点记作 $u$ 和 $v$。任意两点之间 $a,b$ 的距离记作 $h_{a,b}$，任意一点 $c$ 的深度记作 $d_c$；
+- 容易用反证法证明，$x$ 最多只会顶替直径的一个端点。因此我们在判断树的直径是否变化时，只需要计算 $h_{u,x}$ 和 $h_{v,x}$ 是否超过原来的直径长度即可；
+- 我们肯定不能 DFS/BFS 整棵树来计算 $h_{u,x}$ 和 $h_{v,x}$。这里我们借助 LCA 的 trick：$h_{a,b}=d_a+d_b-2\times d_{\text{lca}(a,b)}$，其中深度数组 $d$ 可以在插入新点时 $O(1)$ 维护，LCA 的祖先数组 $f$ 可以在插入新点时 $O(\log n)$ 维护。从而做到在 $O(\log n)$ 的时间复杂度内计算树上任意两点之间的距离。
+
+时间复杂度：$O(q \log n)$
+
+```python
+import sys
+sys.setrecursionlimit(5 * 10**5 + 1)
+
+II = lambda: int(input().strip())
+N = 10**6 + 10
+
+d = [0] * N  # 深度
+d[2] = d[3] = d[4] = 1
+f = [[0] * 21 for _ in range(N)]
+f[2][0] = f[3][0] = f[4][0] = 1
+idx = 4  # 结点下标
+u, v = 2, 3  # 直径端点的下标
+diameter = 2
+
+def lca(a: int, b: int) -> int:
+    if d[a] < d[b]:
+        a, b = b, a
+    
+    for i in range(20, -1, -1):
+        if d[f[a][i]] >= d[b]:
+            a = f[a][i]
+    
+    if a == b:
+        return a
+
+    for i in range(20, -1, -1):
+        if f[a][i] != f[b][i]:
+            a, b = f[a][i], f[b][i]
+    
+    return f[a][0]
+
+OUTs = []
+for _ in range(II()):
+    fa = II()
+    x1, x2 = idx + 1, idx + 2
+    idx += 2
+
+    # 维护深度
+    d[x1] = d[x2] = d[fa] + 1
+
+    # 维护祖先
+    f[x1][0] = f[x2][0] = fa
+    for i in range(1, 21):
+        f[x1][i] = f[x2][i] = f[f[x1][i - 1]][i - 1]
+    
+    # 计算新直径
+    dist_x1_u = d[x1] + d[u] - 2 * d[lca(x1, u)]
+    dist_x1_v = d[x1] + d[v] - 2 * d[lca(x1, v)]
+    if dist_x1_u > diameter:
+        v = x1
+        diameter = dist_x1_u
+    elif dist_x1_v > diameter:
+        u = x1
+        diameter = dist_x1_v
+
+    OUTs.append(diameter)
+
+print('\n'.join(map(str, OUTs)))
 ```
 
-### 例：动态最近公共祖先
+### 例：以组为单位订门票🤨
 
-[CF 1400 * | 树的直径 | AcWing - (www.acwing.com)](https://www.acwing.com/problem/content/5563/)
+<https://leetcode.cn/problems/booking-concert-tickets-in-groups/>
 
-> 题意：给定一棵树，初始时含有 4 个结点分别为 1 到 4，其中 1 号为根结点，2 到 4 均为根结点的叶子结点。现在进行 Q 次操作，每次指定一个已经存在的结点向其插入两个新结点作为叶节点。现在需要在每次操作以后输出这棵树的直径。我们定义 **树的直径** 为：树中距离最远的两个点之间的距离。
+> 题意：给定一个长为 $n\le 5 \times 10^4$ 且初始值均为 $0$ 的数组 $a$，数组中的每个元素最多增加到 $m$。现在需要以这个数组为基础进行 $q\le 5 \times 10^4$ 次询问，每次询问是以下两者之一：
 >
-> 思路一：暴力搜索。
+> 1. 给定一个 $k$ 和 $lim$，找到最小的 $i \in [0,lim]$ 使得 $m - a_i \ge k$
+> 2. 给定一个 $k$ 和 $lim$，找到最小的 $i \in [0,lim]$ 使得 $\displaystyle m\times (i+1) - \sum_{j=0}^i a_j \ge k$
 >
-> - 我们将树重构为无向图，对于每一个状态的无向图，首先从任意一个已存在的结点 A 开始搜索到距离他最远的点 B，然后从 B 点出发搜索到离他最远的点 C，则 B 与 C 之间的距离就是当前状态的树的直径。由于每一个状态的树都要遍历两遍树，于是时间复杂度就是平方阶
+> 思路一：**暴力**。
 >
-> - 时间复杂度：$O(qn)$
+> - 对于询问 1，我们直接顺序遍历 a 数组直到找到第一个符合条件的即可；对于询问 2，同样直接顺序遍历 a 数组直到找到第一个符合条件的即可；
+> - 时间复杂度 $O(qn)$。
 >
-> 思路二：最近公共祖先 LCA。
+> 思路二：**线段树上二分**。
 >
-> - **从树的直径出发**。我们知道，树的直径由直径的两个结点之间的距离决定，因此我们着眼于这两个结点 $A$ 和 $B$ 展开。不妨设当前局面直径的两个结点已知为 $A$ 和 $B$，现在插入两个叶子结点 $L_1$ 和 $L_2$。是否改变了树的直径大小取决于新插入的两个结点对于当前树的影响情况。如果 $L_1$ 或 $L_2$ 可以替代 $A$ 或 $B$，则树的直径就会改变。很显然新插入的两个叶子结点对于直径的两个端点影响是同效果的，因此我们统称新插入的叶子结点为 $L$。
->
-> - **什么时候树的直径会改变**？对于 $A$、$B$ 和 $L$ 来说，直径是否改变取决于 $L$ 能否替代 $A$ 或 $B$，一共有六种情况。我们记 $\text{dist}(A,L)=da$，$\text{dist}(B,L)=db$，当前树的直径为 $res$，六种情况如下：
->
->     1. $\text{max}(da, db) \le \text{res}$，交换 $A$ 和 $B$ 得到 $2$ 种；
->     2. $\text{min}(da,db) \ge \text{res}$，交换 $A$ 和 $B$ 得到 $2$ 种；
->     3. $\text{max}(da,db) >res,\text{min}(da,db) < \text{res}$，交换 $A$ 和 $B$ 得到 $2$ 种。
->
->     如图：我们只需要在其中的最大值严格超过当前树的直径 $\text{res}$ 时更新 **直径对应的结点** 以及 **直径的长度** 即可
->
->     <img src="https://cdn.dwj601.cn/images/202403282344777.jpg" alt="六种情况" style="zoom: 25%;" />
->
-> - **如何快速计算树上任意两个点之间的距离**？我们可以使用最近公共祖先 LCA 算法。则树上任意两点 $x,y$ 之间的距离 $\text{dist}(x,y)$ 为：
->
->    $$
->     \text{dist}(x, y) = \text{dist}(x, root) + \text{dist}(y, root) - 2 \times \text{dist}(\text{lca}(x, y), root)
->    $$
->
-> - 时间复杂度：$O(q \log n)$
+> - TODO
+> - 时间复杂度 $O(q\log n)$。
 
-暴力搜索代码
+暴力代码：
 
-```cpp
-#include <iostream>
-#include <cstring>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <set>
-using namespace std;
+```python
+class BookMyShow:
 
-const int N = 500010;
+    def __init__(self, n: int, m: int):
+        self.a = [0] * n  # a[i] 表示第 i 行已入座的人数
+        self.n = n
+        self.m = m
 
-vector<int> g[N];
-int d[N];
-bool vis[N];
-pair<int, int> res;     // first 为最远距离；second 为对应结点编号
+    def gather(self, k: int, lim: int) -> List[int]:
+        # 在 [0, lim] 行中找到第一个可以容纳 k 人的行
+        for i in range(lim + 1):
+            if self.m - self.a[i] >= k:
+                l, r = i, self.a[i]
+                self.a[i] += k
+                return [l, r]
+        return []
 
-void dfs(int pre, int now) {
-    if (vis[now]) return;
-    
-    vis[now] = true;
-    
-    if (pre != -1) {
-        d[now] = d[pre] + 1;
-        if (d[now] > res.first) {
-            res = {d[now], now};
-        }
-    }
-    
-    for (auto& ch: g[now]) {
-        dfs(now, ch);
-    }
-}
+    def scatter(self, k: int, lim: int) -> bool:
+        # 在 [0, lim] 行中找到最小的 i 使得 [0, i] 行可以容纳 k 人
+        if self.m * (lim + 1) - sum(self.a[:lim+1]) < k:
+            return False
 
-void solve() {
-    // init
-    for (int i = 2; i <= 4; i++) {
-        g[1].push_back(i);
-        g[i].push_back(1);
-    }
-    
-    int now = 4;
-    
-    int Q;
-    cin >> Q;
-    while (Q--) {
-        int id;
-        cin >> id;
-        
-        g[id].push_back(++now);
-        g[now].push_back(id);
-        
-        g[id].push_back(++now);
-        g[now].push_back(id);
-        
-        res = {-1, -1};
-        
-        // 第一趟
-        memset(vis, false, sizeof vis);
-        memset(d, 0, sizeof d);
-        d[1] = 0;
-        dfs(-1, 1);
-        
-        // 第二趟
-        memset(vis, false, sizeof vis);
-        memset(d, 0, sizeof d);
-        d[res.second] = 0;
-        dfs(-1, res.second);
-        
-        cout << res.first << "\n";
-    }
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
+        i = 0
+        while k > 0:
+            if self.m - self.a[i] >= k:
+                self.a[i] += k
+                k = 0
+            else:
+                k -= self.m - self.a[i]
+                self.a[i] = self.m
+            i += 1
+        return True
 ```
 
-LCA 代码
+线段树上二分代码：
 
-```cpp
-#include <iostream>
-#include <cstring>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <set>
-using namespace std;
+```python
 
-const int N = 1000010, M = 20;
-
-int d[N];        // d[i] 表示 i 号点到根结点的距离
-int to[N][M];    // to[i][j] 表示 i 号点向上跳 2^j 步后到达的结点编号
-
-int lca(int a, int b) {
-    if (d[a] < d[b]) swap(a, b);
-
-    for (int k = M - 1; k >= 0; k--)
-        if (d[to[a][k]] >= d[b])
-            a = to[a][k];
-
-    if (a == b) return a;
-
-    for (int k = M - 1; k >= 0; k--)
-        if (to[a][k] != to[b][k])
-            a = to[a][k], b = to[b][k];
-
-    return to[a][0];
-}
-
-int dist(int a, int b) {
-    return d[a] + d[b] - 2 * d[lca(a, b)];
-}
-
-void solve() {
-    int Q;
-    cin >> Q;
-
-    // init lca
-    for (int i = 2; i <= 4; i++) {
-        d[i] = 1;
-        to[i][0] = 1;
-    }
-
-    int A = 2, B = 4, now = 4, res = 2;
-
-    while (Q--) {
-        int fa;
-        cin >> fa;
-
-        int L1 = ++now, L2 = ++now;
-
-        // upd lca
-        d[L1] = d[fa] + 1;
-        d[L2] = d[fa] + 1;
-        to[L1][0] = fa;
-        to[L2][0] = fa;
-        for (int k = 1; k <= M - 1; k++) {
-            to[L1][k] = to[ to[L1][k-1] ][ k-1 ];
-            to[L2][k] = to[ to[L2][k-1] ][ k-1 ];
-        }
-
-        int da = dist(A, L1), db = dist(B, L1);
-
-        if (max(da, db) <= res) res = res;
-        else if (min(da, db) >= res) {
-            if (da > db) res = da, B = L1;
-            else res = db, A = L1;
-        } else {
-            if (da > db) res = da, B = L1;
-            else res = db, A = L1;
-        }
-
-        cout << res << "\n";
-    }
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr), cout.tie(nullptr);
-    int T = 1;
-//    cin >> T;
-    while (T--) solve();
-    return 0;
-}
 ```
 
 ### 例：营业额统计
@@ -2014,67 +1856,6 @@ class Solution:
         return v1 + v2
 ```
 
-### 例：以组为单位订门票
-
-<https://leetcode.cn/problems/booking-concert-tickets-in-groups/>
-
-> 题意：给定一个长为 $n\le 5 \times 10^4$ 且初始值均为 $0$ 的数组 $a$，数组中的每个元素最多增加到 $m$。现在需要以这个数组为基础进行 $q\le 5 \times 10^4$ 次询问，每次询问是以下两者之一：
->
-> 1. 给定一个 $k$ 和 $lim$，找到最小的 $i \in [0,lim]$ 使得 $m - a_i \ge k$
-> 2. 给定一个 $k$ 和 $lim$，找到最小的 $i \in [0,lim]$ 使得 $\displaystyle m\times (i+1) - \sum_{j=0}^i a_j \ge k$
->
-> 思路一：**暴力**。
->
-> - 对于询问 1，我们直接顺序遍历 a 数组直到找到第一个符合条件的即可；对于询问 2，同样直接顺序遍历 a 数组直到找到第一个符合条件的即可；
-> - 时间复杂度 $O(qn)$。
->
-> 思路二：**线段树上二分**。
->
-> - TODO
-> - 时间复杂度 $O(q\log n)$。
-
-暴力代码：
-
-```python
-class BookMyShow:
-
-    def __init__(self, n: int, m: int):
-        self.a = [0] * n  # a[i] 表示第 i 行已入座的人数
-        self.n = n
-        self.m = m
-
-    def gather(self, k: int, lim: int) -> List[int]:
-        # 在 [0, lim] 行中找到第一个可以容纳 k 人的行
-        for i in range(lim + 1):
-            if self.m - self.a[i] >= k:
-                l, r = i, self.a[i]
-                self.a[i] += k
-                return [l, r]
-        return []
-
-    def scatter(self, k: int, lim: int) -> bool:
-        # 在 [0, lim] 行中找到最小的 i 使得 [0, i] 行可以容纳 k 人
-        if self.m * (lim + 1) - sum(self.a[:lim+1]) < k:
-            return False
-
-        i = 0
-        while k > 0:
-            if self.m - self.a[i] >= k:
-                self.a[i] += k
-                k = 0
-            else:
-                k -= self.m - self.a[i]
-                self.a[i] = self.m
-            i += 1
-        return True
-```
-
-线段树上二分代码：
-
-```python
-
-```
-
 ## 堆
 
 ### 普通堆
@@ -2099,6 +1880,57 @@ class BookMyShow:
 ### 对顶堆
 
 TODO
+
+### 例：淘汰赛
+
+<https://www.luogu.com.cn/problem/P4715>
+
+> 题意：给定 $2^n$ 支球队的编号与能力值，进行淘汰赛，能力值者晋级下一轮直到赛出冠军。输出亚军编号
+>
+> 思路：很显然的一个完全二叉树的题目。我们都不需要进行递归操作，直接利用完全二叉树的下标性质利用数组模拟循环计算即可。给出的信息就是完全二叉树的全部叶子结点的信息，分别为球队编号 id 与球队能力值 val，我们从第 n-1 个结点开始循环枚举到第 1 个结点计算每一轮的胜者信息，最终输出最后一场的能力值较小者球队编号即可
+>
+> 时间复杂度：$\Theta(2n)$
+
+```cpp
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+
+const int N = 1 << 8;
+
+struct Node {
+    int id, val;
+} a[N];
+
+int n;
+
+void solve() {
+    cin >> n;
+    
+    n = 1 << n;
+    
+    for (int i = n; i <= 2 * n - 1; i++) {
+        a[i].id = i - n + 1;
+        cin >> a[i].val;
+    }
+    
+    for (int i = n - 1; i >= 1; i--)
+        if (a[i * 2].val > a[i * 2 + 1].val) a[i] = a[i * 2];
+        else a[i] = a[i * 2 + 1];
+            
+    if (a[2].val > a[3].val) cout << a[3].id;
+    else cout << a[2].id;
+}
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr), cout.tie(nullptr);
+    int T = 1;
+//    cin >> T;
+    while (T--) solve();
+    return 0;
+}
+```
 
 ## 并查集
 

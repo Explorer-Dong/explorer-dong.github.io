@@ -729,13 +729,38 @@ int main() {
 
 ## 其他
 
-C++ 快读快写：
+### 快读快写
 
-```c++
+同时也绑定了 I/O 流，即程序会在全部执行完成后再执行输出流：
+
+```c++ hl_lines="4-5"
 #include <iostream>
 
 int main() {
     std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr), std::cout.tie(nullptr);
+    std::cin.tie(nullptr);
+    
+    return 0;
 }
 ```
+
+### 读取未知行数且带空格的字符串
+
+```c++ hl_lines="8-11"
+#include <iostream>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    string s;
+    while (getline(cin, s)) {
+        cout << s << "\n";
+    }
+
+    return 0;
+}
+```
+
+![输出结果](https://cdn.dwj601.cn/images/20250607211732054.png)

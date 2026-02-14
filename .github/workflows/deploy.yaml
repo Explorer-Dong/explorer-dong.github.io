@@ -23,7 +23,7 @@ jobs:
       - name: Deploy to Aliyun OSS
         run: |
           aliyun ossutil rm ${{ vars.WEB_OSS_PATH }} -r -f
-          aliyun ossutil cp ./site/ ${{ vars.WEB_OSS_PATH }} -r -f -j 20
+          aliyun ossutil cp ./frontend/ ${{ vars.WEB_OSS_PATH }} -r -f -j 20
       
       - name: Refresh Aliyun CDN
         run: |

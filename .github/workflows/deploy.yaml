@@ -1,0 +1,34 @@
+name: Deploy
+
+on: push
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      
+      - name: Setup Aliyun CLI
+        uses: aliyun/setup-aliyun-cli-action@v1
+      
+      - name: Config Aliyun CLI
+        run: |
+          aliyun configure set \
+            --mode AK \
+            --region ${{ vars.REGION }} \
+            --access-key-id ${{ secrets.ALIYUN_ACCESS_KEY_ID  }} \
+            --access-key-secret ${{ secrets.ALIYUN_ACCESS_KEY_SECRET  }}
+      
+      - name: Deploy to Aliyun OSS
+        run: |
+          aliyun ossutil rm ${{ vars.WEB_OSS_PATH }} -r -f
+          aliyun ossutil cp ./site/ ${{ vars.WEB_OSS_PATH }} -r -f -j 20
+      
+      - name: Refresh Aliyun CDN
+        run: |
+          aliyun cdn RefreshObjectCaches \
+            --region ${{ vars.REGION }} \
+            --ObjectPath ${{ vars.WEB_DIRECTORY }} \
+            --ObjectType Directory \
+            --Force false

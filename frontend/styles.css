@@ -1,0 +1,35 @@
+/* 基础链接 */
+a {
+    color: #1a73e8;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    border-radius: 4px;
+    padding: 1px 0;
+    margin: 0 2px;
+}
+
+a:hover {
+    color: #1557b0;
+    background-color: rgba(26, 115, 232, 0.08);
+}
+
+a:active {
+    color: #0d3f8f;
+    background-color: rgba(26, 115, 232, 0.15);
+}
+
+/* 邮件链接 */
+a[href^="mailto:"] {
+    color: #188038;
+}
+
+a[href^="mailto:"]:hover {
+    color: #137333;
+    background-color: rgba(24, 128, 56, 0.08);
+}
+
+a[href^="mailto:"]:active {
+    color: #074e2b;
+    background-color: rgba(14, 116, 110, 0.15);
+}

@@ -3,28 +3,50 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Explorer Dong's 个人主页</title>
-    <link rel="icon" href="bulb.svg" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorer Dong's Homepage</title>
+    <link rel="icon" href="assets/bulb.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
-    <p>你好，这里是我的个人主页，持续更新中~</p>
-    <p>我目前专注于维护以下网站：</p>
-    <ul>
-        <li><a href="https://wiki.dwj601.cn/index.html">技术博客</a></li>
-        <li><a href="https://blog.dwj601.cn/index.html">生活博客</a></li>
-    </ul>
-    <p>联系方式：<a href="mailto:explorer-dong@foxmail.com">explorer-dong@foxmail.com</a></p>
-    <p>代码仓库：<a href="https://github.com/Explorer-Dong/www">Explorer-Dong/www</a></p>
+    <main>
+        <header>
+            <h1>Explorer Dong</h1>
+            <p class="intro">你好，这里是我的个人主页，持续更新中~</p>
+        </header>
 
-    <p>&copy; 2026 Explorer Dong</p>
+        <section class="sites">
+            <h2>我目前专注于维护以下网站</h2>
+            <div class="card-list">
+                <a href="https://wiki.dwj601.cn/index.html" class="card">
+                    <span class="card-title">开放 CS/AI 知识库</span>
+                    <span class="card-desc">wiki.dwj601.cn</span>
+                </a>
+                <a href="https://blog.dwj601.cn/index.html" class="card">
+                    <span class="card-title">个人博客</span>
+                    <span class="card-desc">blog.dwj601.cn</span>
+                </a>
+            </div>
+        </section>
 
-    <a href="https://stats.uptimerobot.com/uDFPc6P9Xc">服务状态</a>
-    ·
-    <a href="https://beian.miit.gov.cn/">苏ICP备2024087610号-1</a>
+        <section class="contact">
+            <h2>联系我</h2>
+            <p>邮箱：<a href="mailto:explorer-dong@foxmail.com">explorer-dong@foxmail.com</a></p>
+            <p>代码仓库：<a href="https://github.com/Explorer-Dong/explorer-dong.github.io">GitHub Repository</a></p>
+        </section>
 
-    <script src="scripts.js"></script>
+        <footer>
+            <p>&copy; 2026 Explorer Dong</p>
+            <div class="footer-links">
+                <a href="https://stats.uptimerobot.com/uDFPc6P9Xc">服务状态</a>
+                <span class="separator">&middot;</span>
+                <a href="https://beian.miit.gov.cn/">苏ICP备2024087610号-1</a>
+            </div>
+        </footer>
+    </main>
+
+    <script src="assets/scripts.js"></script>
 </body>
 
 </html>

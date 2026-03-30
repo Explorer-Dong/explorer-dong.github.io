@@ -1,0 +1,225 @@
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 0 24px;
+}
+
+/* ===== Main Container ===== */
+main {
+    width: 100%;
+    max-width: 640px;
+    padding: 48px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* ===== Header ===== */
+header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+}
+
+.intro {
+    color: #5a6a7a;
+    font-size: 1rem;
+}
+
+/* ===== Section Titles ===== */
+h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #5a6a7a;
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+}
+
+/* ===== Card List ===== */
+.card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 20px;
+    background: #fff;
+    border: 1px solid #e8ecf1;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.card:hover {
+    border-color: #c4d0e0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+    background-color: #fff;
+}
+
+.card:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a73e8;
+}
+
+.card-desc {
+    font-size: 0.85rem;
+    color: #8896a6;
+}
+
+/* ===== Contact Section ===== */
+.contact p {
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+
+/* ===== Links ===== */
+a {
+    color: #1a73e8;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    border-radius: 4px;
+    padding: 1px 0;
+    margin: 0 2px;
+}
+
+a:hover {
+    color: #1557b0;
+    background-color: rgba(26, 115, 232, 0.08);
+}
+
+a:active {
+    color: #0d3f8f;
+    background-color: rgba(26, 115, 232, 0.15);
+}
+
+/* Mail link */
+a[href^="mailto:"] {
+    color: #188038;
+}
+
+a[href^="mailto:"]:hover {
+    color: #137333;
+    background-color: rgba(24, 128, 56, 0.08);
+}
+
+a[href^="mailto:"]:active {
+    color: #074e2b;
+    background-color: rgba(14, 116, 110, 0.15);
+}
+
+/* Card links override */
+.card,
+.card:hover,
+.card:active {
+    margin: 0;
+    padding: 16px 20px;
+}
+
+/* ===== Footer ===== */
+footer {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid #e8ecf1;
+    font-size: 0.85rem;
+    color: #8896a6;
+}
+
+footer p {
+    margin-bottom: 6px;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #8896a6;
+    font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+    color: #5a6a7a;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.separator {
+    color: #c4d0e0;
+}
+
+/* ===== Responsive: Tablet ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 0 20px;
+    }
+
+    main {
+        padding: 40px 0;
+        gap: 28px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ===== Responsive: Mobile ===== */
+@media (max-width: 480px) {
+    body {
+        padding: 0 16px;
+    }
+
+    main {
+        padding: 32px 0;
+        gap: 24px;
+    }
+
+    header h1 {
+        font-size: 1.35rem;
+    }
+
+    .card {
+        padding: 14px 16px;
+    }
+
+    .card,
+    .card:hover,
+    .card:active {
+        padding: 14px 16px;
+    }
+}

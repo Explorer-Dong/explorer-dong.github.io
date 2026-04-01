@@ -36,6 +36,8 @@
     --color-footer-link-hover: #5a6a7a;
     --color-footer-link-hover-bg: rgba(0, 0, 0, 0.04);
     --color-separator: #c4d0e0;
+    --color-tag-bg: rgba(26, 115, 232, 0.1);
+    --color-tag-text: #1a73e8;
 }
 
 /* System dark preference (no user override) */
@@ -68,6 +70,8 @@
         --color-footer-link-hover: #d1d5db;
         --color-footer-link-hover-bg: rgba(255, 255, 255, 0.06);
         --color-separator: #5a5a8a;
+        --color-tag-bg: rgba(110, 168, 254, 0.15);
+        --color-tag-text: #6ea8fe;
     }
 }
 
@@ -100,6 +104,8 @@
     --color-footer-link-hover: #d1d5db;
     --color-footer-link-hover-bg: rgba(255, 255, 255, 0.06);
     --color-separator: #5a5a8a;
+    --color-tag-bg: rgba(110, 168, 254, 0.15);
+    --color-tag-text: #6ea8fe;
 }
 
 /* ===== Theme Transition ===== */
@@ -205,6 +211,19 @@ h2 {
 .card-desc {
     font-size: 0.85rem;
     color: var(--color-card-desc);
+}
+
+.tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: var(--color-tag-bg);
+    color: var(--color-tag-text);
+    vertical-align: middle;
+    margin-left: 6px;
+    line-height: 1.4;
 }
 
 /* ===== Links ===== */

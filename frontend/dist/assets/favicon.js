@@ -6,21 +6,46 @@
         var cards = document.querySelectorAll('.card[href]');
 
         cards.forEach(function (card) {
-            var url = card.href;
-            var origin = new URL(url).origin;
+            var placeholder = card.querySelector('.card-favicon-placeholder');
+            var override = card.getAttribute('data-favicon');
 
-            fetchFavicon(origin).then(function (faviconUrl) {
-                if (!faviconUrl) return;
-                var img = document.createElement('img');
-                img.className = 'card-favicon';
-                img.src = faviconUrl;
-                img.alt = '';
-                img.width = 32;
-                img.height = 32;
-                card.appendChild(img);
-            });
+            if (override) {
+                applyFavicon(override, placeholder);
+            } else {
+                var url = card.href;
+                var origin = new URL(url).origin;
+                fetchFavicon(origin).then(function (faviconUrl) {
+                    applyFavicon(faviconUrl, placeholder);
+                });
+            }
         });
     });
+
+    function applyFavicon(faviconUrl, placeholder) {
+        if (!faviconUrl) {
+            if (placeholder) {
+                placeholder.style.animation = 'none';
+                placeholder.style.background = 'none';
+            }
+            return;
+        }
+        var img = document.createElement('img');
+        img.className = 'card-favicon';
+        img.alt = '';
+        img.onload = function () {
+            if (placeholder) {
+                placeholder.classList.add('loaded');
+                placeholder.appendChild(img);
+            }
+        };
+        img.onerror = function () {
+            if (placeholder) {
+                placeholder.style.animation = 'none';
+                placeholder.style.background = 'none';
+            }
+        };
+        img.src = faviconUrl;
+    }
 
     function fetchFavicon(origin) {
         return fetch(origin + '/', { mode: 'cors' })
@@ -32,8 +57,9 @@
                 return parseFaviconFromHTML(html, origin);
             })
             .catch(function () {
-                // Fallback: try the conventional /favicon.ico path
-                return origin + '/favicon.ico';
+                // Fallback: use Google's favicon service when CORS blocks direct fetch
+                var domain = new URL(origin).hostname;
+                return 'https://www.google.com/s2/favicons?sz=64&domain=' + domain;
             });
     }
 
@@ -48,6 +74,11 @@
         }
 
         var href = link.getAttribute('href');
+
+        // Data / Blob URI — use as-is
+        if (href.startsWith('data:') || href.startsWith('blob:')) {
+            return href;
+        }
 
         // Absolute URL
         if (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('//')) {

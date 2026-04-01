@@ -222,13 +222,32 @@ h2 {
     min-width: 0;
 }
 
-.card-favicon {
+.card-favicon-placeholder {
     order: -1;
     flex-shrink: 0;
     width: 32px;
     height: 32px;
     border-radius: 6px;
+    background: var(--color-card-border);
+    animation: shimmer 1.5s infinite ease-in-out;
+}
+
+.card-favicon-placeholder.loaded {
+    background: none;
+    animation: none;
+}
+
+.card-favicon-placeholder .card-favicon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
     opacity: 0.85;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
 }
 
 .tag {

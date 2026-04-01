@@ -179,8 +179,10 @@ h2 {
 
 .card {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
     padding: 16px 20px;
     background: var(--color-card-bg);
     border: 1px solid var(--color-card-border);
@@ -211,6 +213,22 @@ h2 {
 .card-desc {
     font-size: 0.85rem;
     color: var(--color-card-desc);
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.card-favicon {
+    order: -1;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    opacity: 0.85;
 }
 
 .tag {

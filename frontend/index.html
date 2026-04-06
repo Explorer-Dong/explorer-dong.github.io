@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincent's Homepage</title>
+    <link rel="icon" type="image/svg" href="src/assets/bulb.svg">
+    <script>
+        (function () {
+            var stored = localStorage.getItem('theme');
+            if (stored === 'dark' || stored === 'light') {
+                document.documentElement.setAttribute('data-theme', stored);
+            }
+            document.documentElement.classList.add('no-transition');
+        })();
+    </script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="module" src="src/scripts/main.js"></script>
+</body>
+
+</html>

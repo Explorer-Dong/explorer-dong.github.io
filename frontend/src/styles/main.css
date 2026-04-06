@@ -43,7 +43,7 @@
 /* System dark preference (no user override) */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --color-bg: #1a1a2e;
+        --color-bg: #0b0c0f;
         --color-text: #d1d5db;
         --color-heading: #f0f0f5;
         --color-subtext: #9ca3af;
@@ -125,6 +125,7 @@ footer {
 html {
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
 }
 
 body {
@@ -138,10 +139,16 @@ body {
     padding: 0 24px;
 }
 
+#app {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 /* ===== Main Container ===== */
 main {
     width: 100%;
-    max-width: 640px;
+    max-width: 720px;
     padding: 48px 0;
     display: flex;
     flex-direction: column;
@@ -149,16 +156,52 @@ main {
 }
 
 /* ===== Header ===== */
-header h1 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--color-heading);
-    margin-bottom: 8px;
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.intro {
+.site-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
+.site-title:hover {
+    color: var(--color-heading);
+    background: none;
+}
+
+/* ===== Navigation Bar ===== */
+.nav-bar {
+    display: flex;
+    gap: 4px;
+}
+
+.nav-item {
+    padding: 4px 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
     color: var(--color-subtext);
-    font-size: 2rem;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    background: none;
+}
+
+.nav-item:hover {
+    color: var(--color-text);
+    background: none;
+}
+
+.nav-item.active {
+    color: var(--color-link);
+    border-bottom-color: var(--color-link);
 }
 
 /* ===== Section Titles ===== */
@@ -174,59 +217,54 @@ h2 {
 .card-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
 .card {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
     gap: 12px;
-    padding: 16px 20px;
-    background: var(--color-card-bg);
+    padding: 12px 16px;
     border: 1px solid var(--color-card-border);
-    border-radius: 10px;
+    border-radius: 8px;
     text-decoration: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease, background-color 0.3s ease;
+    background: none;
+    transition: border-color 0.2s ease;
 }
 
 .card:hover {
     border-color: var(--color-card-hover-border);
-    box-shadow: 0 2px 12px var(--color-card-hover-shadow);
-    transform: translateY(-1px);
-    background-color: var(--color-card-bg);
+    background: none;
 }
 
 .card:active {
-    transform: translateY(0);
-    box-shadow: 0 1px 4px var(--color-card-active-shadow);
-    background-color: var(--color-card-bg);
+    border-color: var(--color-card-hover-border);
+    background: none;
 }
 
 .card-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-card-title);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text);
 }
 
 .card-desc {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--color-card-desc);
 }
 
 .card-info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
     min-width: 0;
 }
 
 .card-favicon-placeholder {
     order: -1;
     flex-shrink: 0;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 6px;
     background: var(--color-card-border);
     animation: shimmer 1.5s infinite ease-in-out;
@@ -239,28 +277,34 @@ h2 {
 
 .card-favicon-placeholder .card-favicon {
     display: block;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 6px;
-    opacity: 0.85;
 }
 
 @keyframes shimmer {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 .tag {
     display: inline-block;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 500;
-    padding: 1px 6px;
-    border-radius: 4px;
+    padding: 0 5px;
+    border-radius: 3px;
     background: var(--color-tag-bg);
     color: var(--color-tag-text);
     vertical-align: middle;
     margin-left: 6px;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 /* ===== Links ===== */
@@ -289,7 +333,7 @@ a:active {
 .card:hover,
 .card:active {
     margin: 0;
-    padding: 16px 20px;
+    padding: 12px 16px;
 }
 
 /* ===== Footer ===== */
@@ -367,17 +411,41 @@ footer p {
 }
 
 /* Icon visibility: default (system) */
-.theme-toggle .icon-sun { display: none; }
-.theme-toggle .icon-moon { display: none; }
-.theme-toggle .icon-system { display: block; }
+.theme-toggle .icon-sun {
+    display: none;
+}
 
-[data-theme="light"] .theme-toggle .icon-sun { display: block; }
-[data-theme="light"] .theme-toggle .icon-moon { display: none; }
-[data-theme="light"] .theme-toggle .icon-system { display: none; }
+.theme-toggle .icon-moon {
+    display: none;
+}
 
-[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
-[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
-[data-theme="dark"] .theme-toggle .icon-system { display: none; }
+.theme-toggle .icon-system {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .icon-sun {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .icon-moon {
+    display: none;
+}
+
+[data-theme="light"] .theme-toggle .icon-system {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+    display: block;
+}
+
+[data-theme="dark"] .theme-toggle .icon-system {
+    display: none;
+}
 
 /* ===== Responsive: Tablet ===== */
 @media (max-width: 768px) {
@@ -411,13 +479,13 @@ footer p {
     }
 
     .card {
-        padding: 14px 16px;
+        padding: 10px 14px;
     }
 
     .card,
     .card:hover,
     .card:active {
-        padding: 14px 16px;
+        padding: 10px 14px;
     }
 
     .theme-toggle {
@@ -426,4 +494,129 @@ footer p {
         width: 36px;
         height: 36px;
     }
+}
+
+/* ===== Markdown Content ===== */
+.markdown-body {
+    line-height: 1.8;
+    color: var(--color-text);
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+    color: var(--color-heading);
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+
+.markdown-body h1 {
+    font-size: 1.75rem;
+}
+
+.markdown-body h2 {
+    font-size: 1.4rem;
+    border-bottom: 1px solid var(--color-footer-border);
+    padding-bottom: 0.3em;
+}
+
+.markdown-body h3 {
+    font-size: 1.15rem;
+}
+
+.markdown-body p {
+    margin-bottom: 1em;
+}
+
+.markdown-body code {
+    background: var(--color-tag-bg);
+    color: var(--color-tag-text);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.markdown-body pre {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+    margin-bottom: 1em;
+}
+
+.markdown-body pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+}
+
+.markdown-body blockquote {
+    border-left: 3px solid var(--color-link);
+    padding-left: 16px;
+    margin: 1em 0;
+    color: var(--color-subtext);
+}
+
+.markdown-body ul,
+.markdown-body ol {
+    padding-left: 2em;
+    margin-bottom: 1em;
+}
+
+.markdown-body img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    display: block;
+    overflow-x: auto;
+}
+
+.markdown-body th,
+.markdown-body td {
+    border: 1px solid var(--color-card-border);
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.markdown-body th {
+    background: var(--color-card-bg);
+    font-weight: 600;
+}
+
+.markdown-body hr {
+    border: none;
+    border-top: 1px solid var(--color-footer-border);
+    margin: 2em 0;
+}
+
+/* ===== KaTeX Overflow ===== */
+.markdown-body .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.markdown-body .katex-display::-webkit-scrollbar {
+    height: 4px;
+}
+
+.markdown-body .katex-display::-webkit-scrollbar-thumb {
+    background: var(--color-card-border);
+    border-radius: 2px;
+}
+
+.markdown-body .katex-display.scrolled::-webkit-scrollbar-thumb {
+    background: transparent;
 }

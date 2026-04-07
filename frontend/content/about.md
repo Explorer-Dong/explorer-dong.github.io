@@ -8,7 +8,7 @@ title: 关于作者
 
 我的研究方向为 **大语言模型**，但其实我也对 **软件开发** 感兴趣。
 
-我很喜欢写作，比如我的 [`📄 技术博客`](https://wiki.dwj601.cn/ "wiki") 和 [`🍀 生活博客`](https://blog.dwj601.cn/ "blog")。如果有任何问题，欢迎 [`📧 邮件`](mailto:explorer-dong@foxmail.com) 联系。
+我很喜欢写作，比如我的 [`📄 知识库`](https://wiki.dwj601.cn/ "wiki") 和 [`🍀 博客`](https://blog.dwj601.cn/ "blog")。如果有任何问题，欢迎 [`📧 邮件`](mailto:explorer-dong@foxmail.com) 联系。
 
 ## 关于我的 GitHub
 
@@ -25,12 +25,11 @@ title: 关于作者
 
 ## 关于我的技术栈
 
-| 领域 / Fields     | 内容 / Contents                                              |
-| :---------------- | ------------------------------------------------------------ |
-| 语言 / Languages  | ![skills](https://skillicons.dev/icons?i=c,cpp,python)       |
-| 框架 / Frameworks | ![skills](https://skillicons.dev/icons?i=qt,pytorch,fastapi) |
-| 工具 / Tools      | ![skills](https://skillicons.dev/icons?i=git,md,linux,docker) |
-
+| 领域 | 内容                                                         |
+| ---- | ------------------------------------------------------------ |
+| 语言 | ![skills](https://skillicons.dev/icons?i=c,cpp,python)       |
+| 框架 | ![skills](https://skillicons.dev/icons?i=qt,pytorch,fastapi) |
+| 工具 | ![skills](https://skillicons.dev/icons?i=git,linux,docker)   |
 
 ## 教育经历
 

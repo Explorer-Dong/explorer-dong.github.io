@@ -573,13 +573,15 @@ footer p {
 .markdown-body img {
     max-width: 100%;
     border-radius: 8px;
+    display: block;
+    margin: 1em auto;
 }
 
 .markdown-body table {
-    width: 100%;
+    width: auto;
     border-collapse: collapse;
-    margin-bottom: 1em;
-    display: block;
+    margin: 0 auto 1em;
+    display: table;
     overflow-x: auto;
 }
 

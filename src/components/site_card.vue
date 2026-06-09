@@ -2,17 +2,18 @@
     <a :href="url" class="card">
         <div ref="placeholderRef" class="card-favicon-placeholder"></div>
         <div class="card-info">
-            <span class="card-title">
-                {{ title }}
-                <span v-for="tag in (tags || [])" :key="tag" class="tag">{{ tag }}</span>
-            </span>
+            <span class="card-title">{{ title }}</span>
             <span class="card-desc">{{ desc }}</span>
+            <span v-if="tags.length" class="card-tags">
+                <span v-for="tag in tags" :key="tag" class="tag">{{ tag }}</span>
+            </span>
         </div>
     </a>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import defaultFavicon from '../assets/bulb.svg'
 
 const props = defineProps({
     url: { type: String, required: true },
@@ -23,6 +24,7 @@ const props = defineProps({
 })
 
 const placeholderRef = ref(null)
+const faviconCache = new Map()
 
 function applyFavicon(faviconUrl, placeholder) {
     if (!faviconUrl) {
@@ -42,6 +44,10 @@ function applyFavicon(faviconUrl, placeholder) {
         }
     }
     img.onerror = () => {
+        if (placeholder && faviconUrl !== defaultFavicon) {
+            applyFavicon(defaultFavicon, placeholder)
+            return
+        }
         if (placeholder) {
             placeholder.style.animation = 'none'
             placeholder.style.background = 'none'
@@ -51,16 +57,17 @@ function applyFavicon(faviconUrl, placeholder) {
 }
 
 function fetchFavicon(origin) {
-    return fetch(origin + '/', { mode: 'cors' })
-        .then((res) => {
-            if (!res.ok) throw new Error(res.status)
-            return res.text()
-        })
-        .then((html) => parseFaviconFromHTML(html, origin))
-        .catch(() => {
-            const domain = new URL(origin).hostname
-            return 'https://www.google.com/s2/favicons?sz=64&domain=' + domain
-        })
+    if (!faviconCache.has(origin)) {
+        faviconCache.set(origin, fetch(origin + '/', { mode: 'cors' })
+            .then((res) => {
+                if (!res.ok) throw new Error(res.status)
+                return res.text()
+            })
+            .then((html) => parseFaviconFromHTML(html, origin))
+            .catch(() => defaultFavicon))
+    }
+
+    return faviconCache.get(origin)
 }
 
 function parseFaviconFromHTML(html, origin) {

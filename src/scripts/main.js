@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from '../app.vue'
 import 'katex/dist/katex.min.css'
+import 'highlight.js/styles/github.css'
 import '../styles/main.css'
 
 // Remove no-transition class after first paint
@@ -22,15 +23,8 @@ document.addEventListener('click', (e) => {
     }
 })
 
-// Baidu analytics
-const _hmt = window._hmt || []
-window._hmt = _hmt
-    ; (function () {
-        const hm = document.createElement('script')
-        hm.src = 'https://hm.baidu.com/hm.js?56e04b82ea944342458b4f274efd5bc1'
-        const s = document.getElementsByTagName('script')[0]
-        s.parentNode.insertBefore(hm, s)
-    })()
+// Remove Baidu analytics script in template
+// You can add your own analytics here if you want.
 
 // Hide katex scrollbar after first scroll
 document.addEventListener('scroll', (e) => {

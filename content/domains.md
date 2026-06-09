@@ -1,5 +1,5 @@
 ---
-title: Recently focus on
+title: 我的域
 sites:
   - url: https://www.dwj601.cn/index.html
     title: Homepage
@@ -7,9 +7,6 @@ sites:
   - url: https://wiki.dwj601.cn/index.html
     title: Open CS/AI Wiki
     desc: wiki.dwj601.cn
-  - url: https://blog.dwj601.cn/index.html
-    title: Blog
-    desc: blog.dwj601.cn
   - url: https://cdn.dwj601.cn/
     title: CDN
     desc: cdn.dwj601.cn

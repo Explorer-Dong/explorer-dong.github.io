@@ -1,6 +1,6 @@
 {
-  "templateVersion": "0.1.0",
-  "updatedAt": "2026-06-09T09:19:08.567Z",
+  "templateVersion": "0.1.2",
+  "updatedAt": "2026-06-09T10:56:25.896Z",
   "files": {
     "index.html": "12f65239d2947fc44738921497a54406fbef709a9ece3629d297757dd86fe77b",
     "src/app.vue": "cd2080a5eb5ea8f66bc4ff313b78d470329bfd2d46c954b5cb782f5aa13e0972",

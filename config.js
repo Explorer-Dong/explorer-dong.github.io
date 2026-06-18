@@ -1,7 +1,6 @@
 export default {
-    title: "Vincent's Homepage",
-    tabTitle: "Vincent's Homepage",
-    favicon: "/src/assets/bulb.svg",
+    title: "斟言",
+    tabTitle: "斟言",
     author: "Vincent",
     year: new Date().getFullYear(),
     footerLinks: [

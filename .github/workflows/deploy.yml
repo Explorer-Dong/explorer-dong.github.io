@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 24
 
-      - run: npm install -g @x-withu/page-withu
+      - run: npm install -g @x-withu/page-withu@latest
 
       - run: page-withu build
 
